@@ -1,6 +1,8 @@
 Keycloak Documentation translation project
 ======================
 
+[![CircleCI](https://circleci.com/gh/openstandia/keycloak-documentation-i18n.svg?style=svg)](https://circleci.com/gh/openstandia/keycloak-documentation-i18n)
+
 Building Translated Keycloak Documentation
 -------------------------------
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
 "POT-Creation-Date: 2017-09-14 01:44+0000\n"
-"PO-Revision-Date: 2017-09-13 22:10-0400\n"
+"PO-Revision-Date: 2017-09-14 01:41-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -19,12 +19,12 @@ msgstr ""
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:2
 #, no-wrap
 msgid "Configuring the Subsystem"
-msgstr ""
+msgstr "サブシステムの設定"
 
 #. type: Plain text
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:6
 msgid "Now that you have copied the XML template from the Installation page, you need to paste this into the _standalone.xml_ file that resides in the _standalone/configuration_ directory of the application server instance on which your application is deployed."
-msgstr ""
+msgstr "いまインストールページからXMLテンプレートをコピーしたところですが、これをstandalone.xmlファイルにペーストする必要があります。standalone.xmlファイルは アプリケーションをデプロイしたアプリケーションサーバーインスタンスのstandalone/configurationディレクトリにあります。"
 
 #. type: Plain text
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:8
@@ -35,24 +35,25 @@ msgstr ""
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:12
 #, no-wrap
 msgid "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\"/>\n"
-msgstr ""
+msgstr "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\"/>\n"
 
 #. type: Plain text
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:15
 msgid "Modify this to prepare it for pasting in your template from the Installation page:"
-msgstr ""
+msgstr "インストールページからテンプレートをペーストするために、以下の通りに修正します。"
 
 #. type: delimited block -
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:20
 #, no-wrap
 msgid "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
 "</subsystem>\n"
-msgstr ""
+msgstr "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
+"</subsystem>\n"
 
 #. type: Plain text
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:23
 msgid "Within the <subsystem> element, paste in the template. It will look something like this:"
-msgstr ""
+msgstr "<subsystem> エレメントの要素内で、テンプレートを貼り付けます。そうすると、以下のようになります。"
 
 #. type: delimited block -
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:35
@@ -66,12 +67,20 @@ msgid "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
 "    <resource>vanilla</resource>\n"
 "  </secure-deployment>\n"
 "</subsystem>\n"
-msgstr ""
+msgstr "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
+"  <secure-deployment name=\"WAR MODULE NAME.war\">\n"
+"    <realm>demo</realm>\n"
+"    <auth-server-url>http://localhost:8180/auth</auth-server-url>\n"
+"    <public-client>true</public-client>\n"
+"    <ssl-required>EXTERNAL</ssl-required>\n"
+"    <resource>vanilla</resource>\n"
+"  </secure-deployment>\n"
+"</subsystem>\n"
 
 #. type: Plain text
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:38
 msgid "Change the *WAR MODULE NAME* text to *vanilla* as follows:"
-msgstr ""
+msgstr "*WAR MODULE NAME* を*vanilla* に書き換えます。そうすると、以下の通りになります。"
 
 #. type: delimited block -
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:45
@@ -80,7 +89,10 @@ msgid "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
 "  <secure-deployment name=\"vanilla.war\">\n"
 "  ...\n"
 "</subsystem>\n"
-msgstr ""
+msgstr "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
+"  <secure-deployment name=\"vanilla.war\">\n"
+"  ...\n"
+"</subsystem>\n"
 
 #. type: Plain text
 #: source/getting_started/topics/secure-jboss-app/subsystem.adoc:48

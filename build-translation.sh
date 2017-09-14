@@ -34,7 +34,7 @@ type po4a
 if [ "$?" -eq 0 ]; then
     po4a po4a.cfg
 else
-    docker run --rm -it -v $(pwd):/build -w /build -u $UID:$GID openstandia/keycloak-documentation po4a po4a.cfg
+    docker run --rm -it -v $(pwd):/build -w /build -u $UID:$GID openstandia/keycloak-documentation po4a --no-update po4a.cfg
 fi
 
 

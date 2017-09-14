@@ -15,7 +15,7 @@ cd $REPO_DIR && git checkout $SOURCE_REVISION
 cat << EOS > $OUT_FILE
 # Don't edit this file directly!
 [po4a_langs] ja
-[po4a_paths] i18n/pot/\$master.pot \$lang:i18n/po/\$master.\$lang.po
+[po4a_paths] i18n/pot/\$master.pot \$lang:i18n/po/\$lang/\$master.\$lang.po
 
 [po4a_alias:myadoc] asciidoc opt:"-k 0 -M utf-8 -L utf-8"
 

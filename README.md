@@ -1,7 +1,14 @@
 Keycloak Documentation translation project
 ======================
 
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/keycloak-documentation-i18n/localized.svg)](https://crowdin.com/project/keycloak-documentation-i18n)
 [![CircleCI](https://circleci.com/gh/openstandia/keycloak-documentation-i18n.svg?style=svg)](https://circleci.com/gh/openstandia/keycloak-documentation-i18n)
+
+Support Languages
+-------------------------------
+Support languages are as follows. If you can help to translate to other language, [please create a issue](https://github.com/openstandia/keycloak-documentation-i18n/issues/new).
+
+* Japanese (ja_JP)
 
 Building Translated Keycloak Documentation
 -------------------------------

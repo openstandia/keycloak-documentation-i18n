@@ -18,7 +18,7 @@ cat << EOS > $OUT_FILE
 [po4a_paths] i18n/pot/\$master.pot \$lang:i18n/po/\$lang/\$master.\$lang.po
 
 [po4a_alias:myadoc] asciidoc opt:"-k 0 -M utf-8 -L utf-8"
-[po4a_alias:mytext] text opt:"-k 0 -M utf-8 -L utf-8 -o asciidoc"
+[po4a_alias:mytext] text opt:"-k 0 -M utf-8 -L utf-8 -o asciidoc -o neverwrap"
 
 EOS
 

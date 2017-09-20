@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n  \n"
-"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"POT-Creation-Date: 2017-09-20 10:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,6 +70,17 @@ msgstr ""
 msgid "Adapter Installation"
 msgstr ""
 
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/jetty8-adapter.adoc:14
+#: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:14
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty8-installation.adoc:10
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_installation.adoc:11
+msgid ""
+"Adapters are no longer included with the appliance or war distribution.Each "
+"adapter is a separate download on the Keycloak download site.  They are also "
+"available as a maven artifact."
+msgstr ""
+
 #. type: Title ====
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:3
 #, no-wrap
@@ -78,28 +89,20 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:8
-#, no-wrap
 msgid ""
-"Keycloak has a separate adapter for Jetty 9.1.x, Jetty 9.2.x and Jetty 9.3.x that you will have to install into your Jetty installation.\n"
-"You then have to provide some extra configuration in each WAR you deploy to Jetty.\n"
-"Let's go over these steps.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:14
-#, no-wrap
-msgid ""
-"Adapters are no longer included with the appliance or war distribution.Each adapter is a separate download on the Keycloak download site.\n"
-"They are also available as a maven artifact.\n"
+"Keycloak has a separate adapter for Jetty 9.1.x, Jetty 9.2.x and Jetty 9.3.x "
+"that you will have to install into your Jetty installation.  You then have "
+"to provide some extra configuration in each WAR you deploy to Jetty.  Let's "
+"go over these steps."
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:18
-#, no-wrap
 msgid ""
-"You must unzip the Jetty 9.x  distro into Jetty 9.x's link:https://www.eclipse.org/jetty/documentation/current/startup-base-and-home.html[base directory.]\n"
-"Including adapter's jars within your WEB-INF/lib directory will not work!\n"
-"In the example below, the Jetty base is named `your-base`:\n"
+"You must unzip the Jetty 9.x distro into Jetty 9.x's link:https://www."
+"eclipse.org/jetty/documentation/current/startup-base-and-home.html[base "
+"directory.] Including adapter's jars within your WEB-INF/lib directory will "
+"not work! In the example below, the Jetty base is named `your-base`:"
 msgstr ""
 
 #. type: delimited block -
@@ -112,8 +115,8 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:27
-#, no-wrap
-msgid "Next, you will have to enable the `keycloak` module for your Jetty base:\n"
+msgid ""
+"Next, you will have to enable the `keycloak` module for your Jetty base:"
 msgstr ""
 
 #. type: delimited block -
@@ -124,16 +127,22 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:38
-#, no-wrap
-msgid "This section describes how to secure a WAR directly by adding config and editing files within your WAR package.\n"
+#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:34
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_per_war_config.adoc:6
+#: source/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_per_war_config.adoc:5
+#: source/securing_apps/topics/saml/java/jboss-adapter/required_per_war_configuration.adoc:5
+msgid ""
+"This section describes how to secure a WAR directly by adding config and "
+"editing files within your WAR package."
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:41
-#, no-wrap
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_per_war_config.adoc:9
 msgid ""
-"The first thing you must do is create a `WEB-INF/jetty-web.xml` file in your WAR package.\n"
-"This is a Jetty specific config file and you must define a Keycloak specific authenticator within it.\n"
+"The first thing you must do is create a `WEB-INF/jetty-web.xml` file in your "
+"WAR package.  This is a Jetty specific config file and you must define a "
+"Keycloak specific authenticator within it."
 msgstr ""
 
 #. type: delimited block -
@@ -152,11 +161,11 @@ msgid ""
 "</Configure>\n"
 msgstr ""
 
-#. type: delimited block -
+#. type: Plain text
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:59
-#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:48
-#, no-wrap
-msgid "Next you must create a `keycloak.json` adapter config file within the `WEB-INF` directory of your WAR.\n"
+msgid ""
+"Next you must create a `keycloak.json` adapter config file within the `WEB-"
+"INF` directory of your WAR."
 msgstr ""
 
 #. type: Plain text
@@ -167,10 +176,10 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:64
-#, no-wrap
 msgid ""
-"The Jetty 9.1.x adapter will not be able to find the `keycloak.json` file.\n"
-"You will have to define all adapter settings within the `jetty-web.xml` file as described below.\n"
+"The Jetty 9.1.x adapter will not be able to find the `keycloak.json` file.  "
+"You will have to define all adapter settings within the `jetty-web.xml` file "
+"as described below."
 msgstr ""
 
 #. type: Plain text
@@ -215,20 +224,20 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:105
-#, no-wrap
 msgid ""
-"You do not have to crack open your WAR to secure it with keycloak.\n"
-"Instead create the jetty-web.xml file in your webapps directory with the name of yourwar.xml.\n"
-"Jetty should pick it up.\n"
-"In this mode, you'll have to declare keycloak.json configuration directly within the xml file.\n"
+"You do not have to crack open your WAR to secure it with keycloak.  Instead "
+"create the jetty-web.xml file in your webapps directory with the name of "
+"yourwar.xml.  Jetty should pick it up.  In this mode, you'll have to declare "
+"keycloak.json configuration directly within the xml file."
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:108
-#, no-wrap
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_per_war_config.adoc:29
+#: source/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_per_war_config.adoc:21
 msgid ""
-"Finally you must specify both a `login-config` and use standard servlet security to specify role-base constraints on your URLs.\n"
-"Here's an example:\n"
+"Finally you must specify both a `login-config` and use standard servlet "
+"security to specify role-base constraints on your URLs.  Here's an example:"
 msgstr ""
 
 #. type: delimited block -

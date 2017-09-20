@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n  \n"
-"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"POT-Creation-Date: 2017-09-20 10:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,10 @@ msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/client-registration.adoc:99
-#: source/securing_apps/topics/oidc/java/application-clustering.adoc:89
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:109
-#: source/securing_apps/topics/oidc/java/jetty8-adapter.adoc:31
 #: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:39
-#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:56
-#: source/securing_apps/topics/oidc/javascript-adapter.adoc:66
-#: source/securing_apps/topics/saml/java/jetty-adapter/jetty8-installation.adoc:23
-#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_installation.adoc:23
-#: source/server_development/topics/auth-spi.adoc:148
-#: source/server_development/topics/preface.adoc:16
 #: source/server_development/topics/providers.adoc:202
-#, no-wrap
-msgid "[source]\n"
+msgid "[source]"
 msgstr ""
 
 #. type: Title ====
@@ -41,52 +32,46 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:10
-#, no-wrap
 msgid ""
-"ifeval::[{project_community}==true]\n"
-"This chapter is related to supporting clustered applications deployed to JBoss EAP, WildFly and JBoss AS.\n"
-"endif::[]\n"
-"ifeval::[{project_product}==true]\n"
-"This chapter is related to supporting clustered applications deployed to JBoss EAP.\n"
-"endif::[]\n"
+"ifeval::[{project_community}==true] This chapter is related to supporting "
+"clustered applications deployed to JBoss EAP, WildFly and JBoss AS.  endif::"
+"[] ifeval::[{project_product}==true] This chapter is related to supporting "
+"clustered applications deployed to JBoss EAP.  endif::[]"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:12
-#, no-wrap
-msgid "There are a few options available depending on whether your application is:\n"
+msgid ""
+"There are a few options available depending on whether your application is:"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:14
-#, no-wrap
-msgid "Stateless or stateful\n"
+msgid "Stateless or stateful"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:15
-#, no-wrap
-msgid "Distributable (replicated http session) or non-distributable\n"
+msgid "Distributable (replicated http session) or non-distributable"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:16
-#, no-wrap
-msgid "Relying on sticky sessions provided by load balancer\n"
+msgid "Relying on sticky sessions provided by load balancer"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:17
-#, no-wrap
-msgid "Hosted on same domain as {project_name}\n"
+msgid "Hosted on same domain as {project_name}"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:20
-#, no-wrap
 msgid ""
-"Dealing with clustering is not quite as simple as for a regular application. Mainly due to the fact that both the browser and the server-side application\n"
-"sends requests to {project_name}, so it's not as simple as enabling sticky sessions on your load balancer.\n"
+"Dealing with clustering is not quite as simple as for a regular application. "
+"Mainly due to the fact that both the browser and the server-side application "
+"sends requests to {project_name}, so it's not as simple as enabling sticky "
+"sessions on your load balancer."
 msgstr ""
 
 #. type: Title =====
@@ -97,26 +82,26 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:25
-#, no-wrap
 msgid ""
-"By default, the web application secured by {project_name} uses the HTTP session to store security context. This means that you either have to\n"
-"enable sticky sessions or replicate the HTTP session.\n"
+"By default, the web application secured by {project_name} uses the HTTP "
+"session to store security context. This means that you either have to enable "
+"sticky sessions or replicate the HTTP session."
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:28
-#, no-wrap
 msgid ""
-"As an alternative to storing the security context in the HTTP session the adapter can be configured to store this in a cookie instead. This is useful if you want\n"
-"to make your application stateless or if you don't want to store the security context in the HTTP session.\n"
+"As an alternative to storing the security context in the HTTP session the "
+"adapter can be configured to store this in a cookie instead. This is useful "
+"if you want to make your application stateless or if you don't want to store "
+"the security context in the HTTP session."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/application-clustering.adoc:31
-#, no-wrap
+#: source/securing_apps/topics/oidc/java/application-clustering.adoc:30
 msgid ""
-"To use the cookie store for saving the security context, edit your applications `WEB-INF/keycloak.json` and add:\n"
-"[source,json]\n"
+"To use the cookie store for saving the security context, edit your "
+"applications `WEB-INF/keycloak.json` and add:"
 msgstr ""
 
 #. type: delimited block -
@@ -156,24 +141,25 @@ msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:47
-#, no-wrap
 msgid ""
-"In deployment scenarios where {project_name} and the application is hosted on the same domain (through a reverse proxy or load balancer) it can be\n"
-"convenient to use relative URI options in your client configuration.\n"
+"In deployment scenarios where {project_name} and the application is hosted "
+"on the same domain (through a reverse proxy or load balancer) it can be "
+"convenient to use relative URI options in your client configuration."
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:49
-#, no-wrap
-msgid "With relative URIs the URI is resolved as relative to the URL of the URL used to access {project_name}.\n"
+msgid ""
+"With relative URIs the URI is resolved as relative to the URL of the URL "
+"used to access {project_name}."
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:52
-#, no-wrap
 msgid ""
-"For example if the URL to your application is `$$https://acme.org/myapp$$` and the URL to {project_name} is `$$https://acme.org/auth$$`, then you can use\n"
-"the redirect-uri `/myapp` instead of `$$https://acme.org/myapp$$`.\n"
+"For example if the URL to your application is `$$https://acme.org/myapp$$` "
+"and the URL to {project_name} is `$$https://acme.org/auth$$`, then you can "
+"use the redirect-uri `/myapp` instead of `$$https://acme.org/myapp$$`."
 msgstr ""
 
 #. type: Title =====
@@ -184,39 +170,39 @@ msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:57
-#, no-wrap
 msgid ""
-"Admin URL for a particular client can be configured in the {project_name} Administration Console.\n"
-"It's used by the {project_name} server to send backend requests to the application for various tasks, like logout users or push revocation policies.\n"
+"Admin URL for a particular client can be configured in the {project_name} "
+"Administration Console.  It's used by the {project_name} server to send "
+"backend requests to the application for various tasks, like logout users or "
+"push revocation policies."
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:59
-#, no-wrap
-msgid "For example the way backchannel logout works is:\n"
+msgid "For example the way backchannel logout works is:"
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:65
-#, no-wrap
 msgid ""
-". User sends logout request from one application\n"
-". The application sends logout request to {project_name}\n"
-". The {project_name} server invalidates the user session\n"
-". The {project_name} server then sends a backchannel request to application with an admin url that are associated with the session\n"
-". When an application receives the logout request it invalidates the corresponding HTTP session\n"
+". User sends logout request from one application . The application sends "
+"logout request to {project_name} . The {project_name} server invalidates the "
+"user session . The {project_name} server then sends a backchannel request to "
+"application with an admin url that are associated with the session . When an "
+"application receives the logout request it invalidates the corresponding "
+"HTTP session"
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:67
-#, no-wrap
-msgid "If admin URL contains `${application.session.host}` it will be replaced with the URL to the node associated with the HTTP session.\n"
+msgid ""
+"If admin URL contains `${application.session.host}` it will be replaced with "
+"the URL to the node associated with the HTTP session."
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:69
-#, no-wrap
-msgid "[[_registration_app_nodes]]\n"
+msgid "[[_registration_app_nodes]]"
 msgstr ""
 
 #. type: Title =====
@@ -227,19 +213,20 @@ msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:74
-#, no-wrap
 msgid ""
-"The previous section describes how {project_name} can send logout request to node associated with a specific HTTP session.\n"
-"However, in some cases admin may want to propagate admin tasks to all registered cluster nodes, not just one of them.\n"
-"For example to push a new not before policy to the application or to logout all users from the application.\n"
+"The previous section describes how {project_name} can send logout request to "
+"node associated with a specific HTTP session.  However, in some cases admin "
+"may want to propagate admin tasks to all registered cluster nodes, not just "
+"one of them.  For example to push a new not before policy to the application "
+"or to logout all users from the application."
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:77
-#, no-wrap
 msgid ""
-"In this case {project_name} needs to be aware of all application cluster nodes, so it can send the event to all of them.\n"
-"To achieve this, we support auto-discovery mechanism: \n"
+"In this case {project_name} needs to be aware of all application cluster "
+"nodes, so it can send the event to all of them.  To achieve this, we support "
+"auto-discovery mechanism:"
 msgstr ""
 
 #. type: delimited block -
@@ -261,17 +248,26 @@ msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:87
-#: source/securing_apps/topics/oidc/java/application-clustering.adoc:107
 #, no-wrap
 msgid "To enable the feature edit the `WEB-INF/keycloak.json` file for your application and add:\n"
 msgstr ""
 
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/application-clustering.adoc:89
+#: source/securing_apps/topics/oidc/java/jetty8-adapter.adoc:31
+#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:56
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:66
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty8-installation.adoc:23
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_installation.adoc:23
+#: source/server_development/topics/auth-spi.adoc:148
+#: source/server_development/topics/preface.adoc:16
+#, no-wrap
+msgid "[source]\n"
+msgstr ""
+
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:92
-#, no-wrap
-msgid ""
-"\"register-node-at-startup\": true,\n"
-"\"register-node-period\": 600,\n"
+msgid "\"register-node-at-startup\": true, \"register-node-period\": 600,"
 msgstr ""
 
 #. type: delimited block -
@@ -303,10 +299,18 @@ msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:105
-#, no-wrap
 msgid ""
-"By default the application adapter will only refresh the access token when it's expired. However, you can also configure the adapter to refresh the token on every\n"
-"request. This may have a performance impact as your application will send more requests to the {project_name} server.\n"
+"By default the application adapter will only refresh the access token when "
+"it's expired. However, you can also configure the adapter to refresh the "
+"token on every request. This may have a performance impact as your "
+"application will send more requests to the {project_name} server."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/application-clustering.adoc:107
+msgid ""
+"To enable the feature edit the `WEB-INF/keycloak.json` file for your "
+"application and add:"
 msgstr ""
 
 #. type: Plain text

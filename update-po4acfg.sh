@@ -17,9 +17,8 @@ cat << EOS > $OUT_FILE
 [po4a_langs] $TARGET_LANG
 [po4a_paths] i18n/pot/\$master.pot \$lang:i18n/po/\$lang/\$master.\$lang.po
 
-# [po4a_alias:myadoc] asciidoc opt:"-k 0 -M utf-8 -L utf-8"
-# Workaround for handling asciidoc table and so on
-[po4a_alias:myadoc] text opt:"-k 0 -M utf-8 -L utf-8 -o asciidoc -o neverwrap"
+[po4a_alias:myadoc] asciidoc opt:"-k 0 -M utf-8 -L utf-8"
+[po4a_alias:mytext] text opt:"-k 0 -M utf-8 -L utf-8 -o asciidoc -o neverwrap"
 
 EOS
 
@@ -40,9 +39,15 @@ for doc in $DOCS; do
             continue
         fi
 
+        PO4A_TYPE=myadoc
+        if [[ "$file" =~ ${FORCE_TEXT_FILE} ]]; then
+            echo "Handling as text: $file"
+            PO4A_TYPE=mytext
+        fi
+
         MASTER_FILE=`echo $file | sed -e "s|^$DIR||"`
         OUT_MASTER_FILE=`echo $MASTER_FILE | sed -e "s|/|__|g" | sed -e "s|\.$TARGET_EXT$||"`
-        echo "[type: myadoc] $SOURCE_DIR/$MASTER_FILE \$lang:$TRANSLATED_DIR/\$lang/$MASTER_FILE master:file=$OUT_MASTER_FILE" >> $OUT_FILE
+        echo "[type: $PO4A_TYPE] $SOURCE_DIR/$MASTER_FILE \$lang:$TRANSLATED_DIR/\$lang/$MASTER_FILE master:file=$OUT_MASTER_FILE" >> $OUT_FILE
         echo "Add: $file"
     done
 

@@ -1,0 +1,804 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: 2017-09-20 05:30-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /master/i18n/pot/server_admin__topics__authentication__x509.pot\n"
+
+#. type: Plain text
+#: source/server_installation/topics/clustering/load-balancer.adoc:42
+#: source/server_installation/topics/clustering/load-balancer.adoc:64
+#: source/server_installation/topics/clustering/load-balancer.adoc:157
+#: source/server_installation/topics/network/https.adoc:142
+#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:60
+#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:16
+#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:29
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:16
+#: source/securing_apps/topics/saml/java/general-config.adoc:9
+#: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:51
+#: source/server_admin/topics/authentication/x509.adoc:115
+#, no-wrap
+msgid "[source,xml,subs=\"attributes+\"]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:2
+#, no-wrap
+msgid "## X.509 Client Certificate User Authentication\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:4
+#, no-wrap
+msgid "Keycloak supports login with a X.509 client certificate if the server is configured for mutual SSL authentication.\t\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:6
+#, no-wrap
+msgid "A typical workflow is as follows:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:8
+#, no-wrap
+msgid "A client sends an authentication request over SSL/TLS channel\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:9
+#, no-wrap
+msgid "During SSL/TLS handshake, the server and the client exchange their x.509/v3 certificates\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:10
+#, no-wrap
+msgid "The container (wildfly) validates the certificate PKIX path and the certificate expiration\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:11
+#, no-wrap
+msgid "The x.509 client certificate authenticator validates the client certificate as follows:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:12
+#, no-wrap
+msgid "Optionally checks the certificate revocation status using CRL and/or CRL Distribution Points\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:13
+#, no-wrap
+msgid "Optionally checks the Certificate revocation status using OCSP (Online Certificate Status Protocol)\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:14
+#, no-wrap
+msgid "Optinally validates whether the key usage in the certificate matches the expected key usage\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:15
+#, no-wrap
+msgid "Optionally validates whether the extended key usage in the certificate matches the expected extended key usage\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:16
+#, no-wrap
+msgid "If any of the above checks fails, the x.509 authentication fails\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:17
+#, no-wrap
+msgid "Otherwise, the authenticator extracts the certificate identity and maps it to an existing user\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:18
+#, no-wrap
+msgid "Once the certificate is mapped to an existing user, the behavior diverges depending on the authentication flow:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:19
+#, no-wrap
+msgid "In the Browser Flow, the server prompts the user to confirm identity or to ignore it and instead sign in with username/password \n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:20
+#, no-wrap
+msgid "In the case of the Direct Grant Flow, the server signs in the user\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:22
+#, no-wrap
+msgid "### Features\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:24
+#, no-wrap
+msgid "#### Supported Certificate Identity Sources\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:25
+#, no-wrap
+msgid "Match SubjectDN using regular expression\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:26
+#, no-wrap
+msgid "X500 Subject's e-mail attribute\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:27
+#, no-wrap
+msgid "X500 Subject's Common Name attribute\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:28
+#, no-wrap
+msgid "Match IssuerDN using regular expression\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:29
+#, no-wrap
+msgid "X500 Issuer's e-mail attribute\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:30
+#, no-wrap
+msgid "X500 Issuer's Common Name attribute\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:31
+#, no-wrap
+msgid "Certificate Serial Number\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:38
+#, no-wrap
+msgid "#### Regular Expressions\n"
+"The certificate identity can be extracted from either Subject DN or Issuer DN using a regular expression as a filter. For example, the regular expression below will match the e-mail attribute:\n"
+"```\n"
+"emailAddress=(.*?)(?:,|$)\n"
+"```\n"
+"The regular expression filtering is applicable only if the `Identity Source` is set to either `Match SubjectDN using regular expression` or `Match IssuerDN using regular expression`. \n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:40
+#, no-wrap
+msgid "#### Mapping certificate identity to an existing user\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:42
+#, no-wrap
+msgid "The certificate identity mapping can be configured to map the extracted user identity to an existing user's username or e-mail or to a custom attribute which value matches the certificate identity. For example, setting the `Identity source` to _Subject's e-mail_ and `User mapping method` to _Username or email_ will have the X.509 client certificate authenticator use the e-mail attribute in the certificate's Subject DN  as a search criteria to look up an existing user by username or by e-mail.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:44
+#, no-wrap
+msgid "#### Other Features: Extended Certificate Validation\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:45
+#, no-wrap
+msgid "Revocation status checking using CRL\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:46
+#, no-wrap
+msgid "Revocation status checking using CRL/Distribution Point\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:47
+#, no-wrap
+msgid "Revocation status checking using OCSP/Responder URI\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:48
+#, no-wrap
+msgid "Certificate KeyUsage validation\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:49
+#, no-wrap
+msgid "Certificate ExtendedKeyUsage validation\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:51
+#, no-wrap
+msgid "### Enable X.509 Client Certificate User Authentication\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:53
+#, no-wrap
+msgid "The following sections describe how to configure Wildfly/Undertow and the Keycloak Server to enable X.509 client certificate authentication.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:56
+#, no-wrap
+msgid "#### Enable mutual SSL in WildFly\n"
+"See link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide#AdminGuide-EnableSSL[Enable SSL] and link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide#AdminGuide-%7B%7B%3Cssl%2F%3E%7D%7D[SSL] for the instructions how to enable SSL in Wildfly.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:76
+#, no-wrap
+msgid "Open $KEYCLOAK_HOME/standalone/configuration/standalone.xml and add a new realm:\n"
+"```\n"
+"<security-realms>\n"
+"    <security-realm name=\"ssl-realm\">\n"
+"        <server-identities>\n"
+"            <ssl>\n"
+"                <keystore path=\"servercert.jks\" \n"
+"                          relative-to=\"jboss.server.config.dir\" \n"
+"                          keystore-password=\"servercert password\"/>\n"
+"            </ssl>\n"
+"        </server-identities>\n"
+"        <authentication>\n"
+"            <truststore path=\"truststore.jks\" \n"
+"                        relative-to=\"jboss.server.config.dir\" \n"
+"                        keystore-password=\"truststore password\"/>\n"
+"        </authentication>\n"
+"    </security-realm>\n"
+"</security-realms>\n"
+"```\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:77
+#, no-wrap
+msgid "`ssl/keystore`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:79
+#, no-wrap
+msgid "The `ssl` element contains the `keystore` element that defines how to load the server public key pair from a JKS keystore\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:80
+#, no-wrap
+msgid "`ssl/keystore/path`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:82
+#, no-wrap
+msgid "A path to a JKS keystore \n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:83
+#, no-wrap
+msgid "`ssl/keystore/relative-to`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:85
+#, no-wrap
+msgid "Defines a path the keystore path is relative to\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:86
+#, no-wrap
+msgid "`ssl/keystore/keystore-password`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:88
+#, no-wrap
+msgid "The password to open the keystore\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:89
+#, no-wrap
+msgid "`ssl/keystore/alias` (optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:91
+#, no-wrap
+msgid "The alias of the entry in the keystore. Set it if the keystore contains multiple entries\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:92
+#, no-wrap
+msgid "`ssl/keystore/key-password` (optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:94
+#, no-wrap
+msgid "The private key password, if different from the keystore password.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:95
+#, no-wrap
+msgid "`authentication/truststore`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:97
+#, no-wrap
+msgid "Defines how to load a trust store to verify the certificate presented by the remote side of the inbound/outgoing connection. Typically, the truststore contains a collection of trusted CA certificates.   \n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:98
+#, no-wrap
+msgid "`authentication/truststore/path`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:100
+#, no-wrap
+msgid "A path to a JKS keystore that contains the certificates of the trusted CAs (certificate authorities)\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:101
+#, no-wrap
+msgid "`authentication/truststore/relative-to`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:103
+#, no-wrap
+msgid "Defines a path the truststore path is relative to\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:104
+#, no-wrap
+msgid "`authentication/truststore/keystore-password`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:106
+#, no-wrap
+msgid "The password to open the truststore\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:109
+#, no-wrap
+msgid "#### Enable https listener \n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:111
+#, no-wrap
+msgid "See link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide#AdminGuide-HTTPSlistener[HTTPS Listener] for the instructions how to enable HTTPS in Wildfly.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:113
+#, no-wrap
+msgid "Add the <https-listener> element as shown below:\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_admin/topics/authentication/x509.adoc:125
+#, no-wrap
+msgid "<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
+"\t....\n"
+"    <server name=\"default-server\">\n"
+"\t    <https-listener name=\"default\"\n"
+"                        socket-binding=\"https\"\n"
+"                        security-realm=\"ssl-realm\"\n"
+"                        verify-client=\"REQUESTED\"/>\n"
+"    </server>\n"
+"</subsystem>\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:127
+#, no-wrap
+msgid "`https-listener/security-realm`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:129
+#, no-wrap
+msgid "The value must match the name of the realm from the previous section\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:130
+#, no-wrap
+msgid "`https-listener/verify-client`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:132
+#, no-wrap
+msgid "If set to `REQUESTED`, the server will optionally ask for a client certificate. Setting the attribute to `REQUIRED` will have the server to refuse inbound connections if no client certificate has been provided.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:134
+#, no-wrap
+msgid "### Adding X.509 Client Certificate Authentication to a Browser Flow\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:136
+#, no-wrap
+msgid "Select a realm, click on Authentication link, select the \"Browser\" flow \n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:137
+#, no-wrap
+msgid "Make a copy of the buit-in \"Browser\" flow. You may want to give the new flow a distinctive name, i.e. \"X.509 Browser\"\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:138
+#, no-wrap
+msgid "Using the drop down, select the copied flow, and click on \"Add Execution\"\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:139
+#, no-wrap
+msgid "Select \"X509/Validate User Form\" using the drop down and click on \"Save\"  \n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:141
+#, no-wrap
+msgid "image:images/x509-execution.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:143
+#, no-wrap
+msgid "Using the up/down arrows, change the order of the \"X509/Validate Username Form\" by moving it above the \"Browser Forms\" execution, and set the requirement to \"ALTERNATIVE\"\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:145
+#, no-wrap
+msgid "image:images/x509-browser-flow.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:147
+#, no-wrap
+msgid "#### Configuring X.509 Client Certificate Authentication\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:149
+#, no-wrap
+msgid "image:images/x509-configuration.png[]\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:150
+#, no-wrap
+msgid "`User Identity Source`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:152
+#, no-wrap
+msgid "Defines how to extract the user identity from a client certificate.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:153
+#, no-wrap
+msgid "`A regular expression` (optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:155
+#, no-wrap
+msgid "Defines a regular expression to use as a filter to extract the certificate identity. The regular expression must contain a single group.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:156
+#, no-wrap
+msgid "`User Mapping Method`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:158
+#, no-wrap
+msgid "Defines how to match the certificate identity to an existing user. _Username or e-mail_ will search for an existing user by username or e-mail. _Custom Attribute Mapper_ will  search for an existing user with a custom attribute which value matches the certificate identity. The name of the custom attribute is configurable.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:159
+#, no-wrap
+msgid "`A name of user attribute` (optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:161
+#, no-wrap
+msgid "A custom attribute which value will be matched against the certificate identity.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:162
+#, no-wrap
+msgid "`CRL Checking Enabled` (optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:164
+#, no-wrap
+msgid "Defines whether to check the revocation status of the certificate using Certificate Revocation List.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:165
+#, no-wrap
+msgid "`Enable CRL Distribution Point to check certificate revocation status` (optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:167
+#, no-wrap
+msgid "Defines whether to use CDP to check the certificate revocation status. Most PKI authorities include CDP in their certificates.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:168
+#, no-wrap
+msgid "`CRL file path` (optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:170
+#, no-wrap
+msgid "Defines a path to a file that contains a CRL list. The value must be a path to a valid file if `CRL Checking Enabled` option is turned on.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:171
+#, no-wrap
+msgid "`OCSP Checking Enabled`(optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:173
+#, no-wrap
+msgid "Defines whether to check the certificate revocation status using Online Certificate Status Protocol. \n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:174
+#, no-wrap
+msgid "`OCSP Responder URI` (optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:176
+#, no-wrap
+msgid "Allows to override a value of the OCSP responder URI in the certificate.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:177
+#, no-wrap
+msgid "`Validate Key Usage` (optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:179
+#, no-wrap
+msgid "Verifies whether the certificate's KeyUsage extension bits are set. For example, \"digitalSignature,KeyEncipherment\" will verify if  bits 0 and 2 in the KeyUsage extension are asserted. Leave the parameter empty to disable the Key Usage validaion. See link:https://tools.ietf.org/html/rfc5280#section-4.2.1.3[RFC5280, Section-4.2.1.3]\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:180
+#, no-wrap
+msgid "`Validate Extended Key Usage` (optional)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:182
+#, no-wrap
+msgid "Verifies one or more purposes as defined in the Extended Key Usage extension. See link:https://tools.ietf.org/html/rfc5280#section-4.2.1.12[RFC5280, Section-4.2.1.12]. Leave the parameter empty to disable the Extended Key Usage validation.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:183
+#, no-wrap
+msgid "`Bypass identity confirmation`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:185
+#, no-wrap
+msgid "If set, X.509 client certificate authentication will not prompt the user to confirm the certificate identity and will automatiocally sign in the user upon successful authentication.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:187
+#, no-wrap
+msgid "### Adding X.509 Client Certificate Authentication to a Direct Grant Flow\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:189
+#, no-wrap
+msgid "Using keycloak admin console, click on \"Authentication\" and select the \"Direct Grant\" flow,\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:190
+#, no-wrap
+msgid "Make a copy of the build-in \"Direct Grant\" flow. You may want to give the new flow a distinctive name, i.e. \"X509 Direct Grant\",\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:191
+#, no-wrap
+msgid "Delete \"Validate Username\" and \"Password\" authenticators,\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:192
+#, no-wrap
+msgid "Click on \"Execution\" and add \"X509/Validate Username\" and click on \"Save\" to add the execution step to the parent flow.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:194
+#, no-wrap
+msgid "image:images/x509-directgrant-execution.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:196
+#, no-wrap
+msgid "Change the `Requirement` to _REQUIRED_.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:198
+#, no-wrap
+msgid "image:images/x509-directgrant-flow.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:200
+#, no-wrap
+msgid "Set up the x509 authentication configuration by following the steps described earlier in the x.509 Browser Flow section. \n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:202
+#, no-wrap
+msgid "### Troubleshooting\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:205
+#, no-wrap
+msgid "#### Direct Grant authentication with X.509 \n"
+"The following template can be used to request a token using the Resource Owner Password Credentials Grant: \n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:213
+#, no-wrap
+msgid "```\n"
+"$ curl https://[host][:port]/auth/realms/master/protocol/openid-connect/token \\\n"
+"       --insecure \\\n"
+"       --data \"grant_type=password&scope=openid profile&username=&password=&client_id=CLIENT_ID&client_secret=CLIENT_SECRET\" \\\n"
+"       -E /path/to/client_cert.crt \\\n"
+"       --key /path/to/client_cert.key\n"
+"```\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:214
+#, no-wrap
+msgid "`[host][:port]`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:216
+#, no-wrap
+msgid "The host and the port number of a remote Keycloak server that has been configured to allow users authenticate with x.509 client certificates using the Direct Grant Flow.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:217
+#, no-wrap
+msgid "`CLIENT_ID`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:219
+#, no-wrap
+msgid "A client id.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:220
+#, no-wrap
+msgid "`CLIENT_SECRET`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:222
+#, no-wrap
+msgid "For confidential clients, a client secret; otherwise, leave it empty.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:223
+#, no-wrap
+msgid "`client_cert.crt`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:225
+#, no-wrap
+msgid "A public key certificate that will be used to verify the identity of the client in mutual SSL authentication. The certificate should be in PEM format.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/x509.adoc:226
+#, no-wrap
+msgid "`client_cert.key`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:228
+#, no-wrap
+msgid "A private key in the public key pair. Also expected in PEM format.\n"
+msgstr ""
+

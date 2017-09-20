@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: 2017-09-20 05:30-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /master/i18n/pot/server_admin__topics__clients__saml__idp-initiated-login.pot\n"
+
+#. type: Title ====
+#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:2
+#, no-wrap
+msgid "IDP Initiated Login"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:8
+#, no-wrap
+msgid "IDP Initiated Login is a feature that allows you to set up an endpoint on the {project_name} server that will log you into a specific application/client.\n"
+"In the `Settings` tab for your client, you need to specify the `IDP Initiated SSO URL Name`.\n"
+"This is a simple string with no whitespace in it.\n"
+"After this you can reference your client at the following URL: `root/auth/realms/{realm}/protocol/saml/clients/{url-name}`\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:12
+#, no-wrap
+msgid "If your client requires a special relay state, you can also configure this on the `Settings` tab in the `IDP Initiated SSO Relay State` field.\n"
+"Alternatively, browsers can specify the relay state in a `RelayState` query parameter, i.e.\n"
+"`root/auth/realms/{realm}/protocol/saml/clients/{url-name}?RelayState=thestate`.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:18
+#, no-wrap
+msgid "When using <<_identity_broker,identity brokering>>, it is possible to set up an IDP Initiated Login for a client from an\n"
+"external IDP. The actual client is set up for IDP Initiated Login at broker IDP as described above. The external IDP has\n"
+"to set up the client for application IDP Initiated Login that will point to a special URL pointing to the broker and\n"
+"representing IDP Initiated Login endpoint for a selected client at the brokering IDP. This means that in client settings\n"
+"at the external IDP:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:20
+#, no-wrap
+msgid "`IDP Initiated SSO URL Name` is set to a name that will be published as IDP Initiated Login initial point,\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:23
+#, no-wrap
+msgid "`Assertion Consumer Service POST Binding URL` in the `Fine Grain SAML Endpoint Configuration` section has\n"
+"to be set to the following URL:\n"
+"`broker-root/auth/realms/{broker-realm}/broker/{idp-name}/endpoint/clients/{client-id}`, where:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:28
+#, no-wrap
+msgid "** _broker-root_ is base broker URL\n"
+"** _broker-realm_ is name of the realm at broker where external IDP is declared\n"
+"** _idp-name_ is name of the external IDP at broker\n"
+"** _client-id_ is the value of `IDP Initiated SSO URL Name` attribute of the SAML client defined at broker. It is\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:29
+#, no-wrap
+msgid "this client, which will be made available for IDP Initiated Login from the external IDP.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:32
+#, no-wrap
+msgid "Please note that you can import basic client settings from the brokering IDP into client settings of the external IDP -\n"
+"just use <<_identity_broker_saml_sp_descriptor,SP Descriptor>> available from the settings of the identity provider in\n"
+"the brokering IDP, and add `clients/_client-id_` to the endpoint URL.\n"
+msgstr ""
+

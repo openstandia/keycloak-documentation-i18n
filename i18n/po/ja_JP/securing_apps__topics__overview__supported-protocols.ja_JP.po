@@ -1,0 +1,145 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: 2017-09-20 05:34-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /master/i18n/pot/securing_apps__topics__overview__supported-protocols.pot\n"
+
+#. type: Title ==
+#: source/securing_apps/topics/overview/supported-platforms.adoc:3
+#: source/securing_apps/topics/overview/supported-protocols.adoc:5
+#: source/securing_apps/topics/oidc/oidc-overview.adoc:1
+#, no-wrap
+msgid "OpenID Connect"
+msgstr ""
+
+#. type: Title ===
+#: source/securing_apps/topics/overview/supported-protocols.adoc:3
+#, no-wrap
+msgid "Supported Protocols"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:11
+#: source/server_admin/topics/sso-protocols/oidc.adoc:9
+#, no-wrap
+msgid "link:http://openid.net/connect/[Open ID Connect] (OIDC) is an authentication protocol that is an extension of link:https://tools.ietf.org/html/rfc6749[OAuth 2.0].\n"
+"While OAuth 2.0 is only a framework for building authorization protocols and is mainly incomplete, OIDC is a full-fledged authentication and authorization\n"
+"protocol.  OIDC also makes heavy use of the link:https://jwt.io[Json Web Token] (JWT) set of standards.  These standards define an\n"
+"identity token JSON format and ways to digitally sign and encrypt that data in a compact and web-friendly way.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:17
+#, no-wrap
+msgid "There is really two types of use cases when using OIDC.  The first is an application that asks the {project_name} server to authenticate\n"
+"a user for them.  After a successful login, the application will receive an _identity token_ and an _access token_.  The _identity token_\n"
+"contains information about the user such as username, email, and other profile information.  The _access token_ is digitally signed by\n"
+"the realm and contains access information (like user role mappings) that the application can use to determine what resources the user\n"
+"is allowed to access on the application.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:24
+#: source/server_admin/topics/sso-protocols/oidc.adoc:22
+#, no-wrap
+msgid "The second type of use cases is that of a client that wants to gain access to remote services.  In this case, the client asks {project_name}\n"
+"to obtain an _access token_ it can use to invoke on other remote services on behalf of the user.  {project_name} authenticates the user\n"
+"then asks the user for consent to grant access to the client requesting it.  The client then receives the _access token_.  This _access token_\n"
+"is digitally signed by the realm.  The client can make REST invocations on remote services using this _access token_.  The REST service\n"
+"extracts the _access token_, verifies the signature of the token, then decides based on access information within the token whether or not to process\n"
+"the request.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/overview/supported-protocols.adoc:25
+#, no-wrap
+msgid "SAML 2.0"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:30
+#, no-wrap
+msgid "link:http://saml.xml.org/saml-specifications[SAML 2.0] is a similar specification to OIDC but a lot older and more mature.  It has its roots in SOAP and the plethora\n"
+"of WS-* specifications so it tends to be a bit more verbose than OIDC.  SAML 2.0 is primarily an authentication protocol\n"
+"that works by exchanging XML documents between the authentication server and the application.  XML signatures and encryption are used to verify requests and responses.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:32
+#, no-wrap
+msgid "In {project_name} SAML serves two types of use cases: browser applications and REST invocations.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:38
+#, no-wrap
+msgid "There is really two types of use cases when using SAML.  The first is an application that asks the {project_name} server to authenticate\n"
+"a user for them.  After a successful login, the application will receive an XML document that contains\n"
+"something called a SAML assertion that specifies various attributes about the user.  This XML document is digitally signed by\n"
+"the realm and contains access information (like user role mappings) that the application can use to determine what resources the user\n"
+"is allowed to access on the application.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:41
+#, no-wrap
+msgid "The second type of use cases is that of a client that wants to gain access to remote services.  In this case, the client asks {project_name}\n"
+"to obtain a SAML assertion it can use to invoke on other remote services on behalf of the user.\n"
+msgstr ""
+
+#. type: Title ===
+#: source/securing_apps/topics/overview/supported-protocols.adoc:42
+#: source/server_admin/topics/sso-protocols/saml-vs-oidc.adoc:2
+#, no-wrap
+msgid "OpenID Connect vs. SAML"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:45
+#: source/server_admin/topics/sso-protocols/saml-vs-oidc.adoc:5
+#, no-wrap
+msgid "Choosing between OpenID Connect and SAML is not just a matter of using a newer protocol (OIDC) instead of the older more mature protocol (SAML).\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:47
+#: source/server_admin/topics/sso-protocols/saml-vs-oidc.adoc:7
+#, no-wrap
+msgid "In most cases {project_name} recommends using OIDC.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:49
+#: source/server_admin/topics/sso-protocols/saml-vs-oidc.adoc:9
+#, no-wrap
+msgid "SAML tends to be a bit more verbose than OIDC.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:54
+#: source/server_admin/topics/sso-protocols/saml-vs-oidc.adoc:14
+#, no-wrap
+msgid "Beyond verbosity of exchanged data, if you compare the specifications you'll find that OIDC was designed to work with the web while SAML was retrofitted to work on top of the web.  For example, OIDC is also more suited for HTML5/JavaScript applications because it is\n"
+"easier to implement on the client side than SAML. As tokens are in the JSON format,\n"
+"they are easier to consume by JavaScript. You will also find several nice features that\n"
+"make implementing security in your web applications easier. For example, check out the link:http://openid.net/specs/openid-connect-session-1_0.html#ChangeNotification[iframe trick] that the specification uses to easily determine if a user is still logged in or not.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/overview/supported-protocols.adoc:56
+#: source/server_admin/topics/sso-protocols/saml-vs-oidc.adoc:15
+#, no-wrap
+msgid "SAML has its uses though. As you see the OIDC specifications evolve you see they implement more and more features that SAML has had for years. What we often see is that people pick SAML over OIDC because of the perception that it is more mature and also because they already have existing applications that are secured with it.\n"
+msgstr ""
+

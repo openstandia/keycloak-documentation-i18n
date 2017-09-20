@@ -59,7 +59,13 @@ workflows:
   build_and_deploy:
     jobs:
       - build
+          filters:
+            branches:
+              ignore: /.*-crowdin/
       - deploy:
           requires:
             - build
+          filters:
+            branches:
+              ignore: /.*-crowdin/
 

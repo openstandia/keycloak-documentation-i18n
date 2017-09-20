@@ -1,0 +1,146 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: 2017-09-20 05:31-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /master/i18n/pot/server_admin__topics__clients__oidc__confidential.pot\n"
+
+#. type: Title ====
+#: source/server_admin/topics/clients/oidc/confidential.adoc:3
+#, no-wrap
+msgid "Confidential Client Credentials"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:8
+#, no-wrap
+msgid "If you've set the client's <<_access-type, access type>> to `confidential` in the client's\n"
+"`Settings` tab, a new `Credentials` tab will show up. As part of dealing with this\n"
+"type of client you have to configure the client's credentials.\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/clients/oidc/confidential.adoc:9
+#, no-wrap
+msgid "Credentials Tab"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:11
+#, no-wrap
+msgid "image:{project_images}/client-credentials.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:15
+#, no-wrap
+msgid "The `Client Authenticator` list box specifies the type of credential you are going to use for your confidential client.\n"
+"It defaults to client ID and secret.  The secret is automatically generated for you and the `Regenerate Secret`\n"
+"button allows you to recreate this secret if you want or need to.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:17
+#, no-wrap
+msgid "Alternatively, you can opt to use a signed Json Web Token (JWT) instead of a secret.\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/clients/oidc/confidential.adoc:18
+#, no-wrap
+msgid "Signed JWT"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:20
+#, no-wrap
+msgid "image:{project_images}/client-credentials-jwt.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:24
+#, no-wrap
+msgid "When choosing this credential type you will have to also generate a private key and certificate for the client.  The private key\n"
+"will be used to sign the JWT, while the certificate is used by the server to verify the signature.  Click on the\n"
+"`Generate new keys and certificate` button to start this process.\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/clients/oidc/confidential.adoc:25
+#, no-wrap
+msgid "Generate Keys"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:27
+#, no-wrap
+msgid "image:{project_images}/generate-client-keys.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:31
+#, no-wrap
+msgid "When you generate these keys, {project_name} will store the certificate, and you'll need to download the private key\n"
+"and certificate for your client to use.  Pick the archive format you want and specify the password for the private key\n"
+"and store.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:34
+#, no-wrap
+msgid "You can also opt to\n"
+"generate these via an external tool and just import the client's certificate.\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/clients/oidc/confidential.adoc:35
+#, no-wrap
+msgid "Import Certificate"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:37
+#, no-wrap
+msgid "image:{project_images}/import-client-cert.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:40
+#, no-wrap
+msgid "There are multiple formats you can import from, just choose the archive format you have the certificate stored in,\n"
+"select the file, and click the `Import` button.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:44
+#, no-wrap
+msgid "Finally note that you don't even need to import certificate if you choose to `Use JWKS URL` . In that case, you can provide the URL where\n"
+"client publishes it's public key in https://self-issued.info/docs/draft-ietf-jose-json-web-key.html[JWK] format. This is flexible because when\n"
+"client changes it's keys, {project_name} will automatically download them without need to re-import anything on {project_name} side.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:47
+#, no-wrap
+msgid "If you use client secured by {project_name} adapter, you can configure the JWKS URL like https://myhost.com/myapp/k_jwks assuming that https://myhost.com/myapp is the\n"
+"root URL of your client application. See link:{developerguide_link}[{developerguide_name}] for additional details.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/clients/oidc/confidential.adoc:51
+#, no-wrap
+msgid "For the performance purposes, {project_name} caches the public keys of the OIDC clients. If you think that private key of your client\n"
+"was compromised, it is obviously good to update your keys, but it's also good to clear the keys cache. See <<_clear-cache, Clearing the cache>>\n"
+"section for more details.\n"
+msgstr ""
+

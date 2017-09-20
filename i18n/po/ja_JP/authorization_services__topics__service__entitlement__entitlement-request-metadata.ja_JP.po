@@ -1,0 +1,142 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: 2017-09-20 05:28-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /master/i18n/pot/authorization_services__topics__service__entitlement__entitlement-request-metadata.pot\n"
+
+#. type: Title ====
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:2
+#, no-wrap
+msgid "Entitlement Request Metadata"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:6
+#, no-wrap
+msgid "When requesting entitlements client applications are allowed to associate metadata information to the request and define how\n"
+"they expect to obtain the permissions.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:17
+#, no-wrap
+msgid "```bash\n"
+"curl -X POST -H \"Authorization: Bearer ${access_token}\" -d '{\n"
+"    \"metadata\" : {\n"
+"        \"include_resource_name\" : false\n"
+"    },\n"
+"    \"permissions\" : [\n"
+"        ...\n"
+"    ]\n"
+"}' \"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\"\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:20
+#, no-wrap
+msgid "The Entitlement API endpoint only allows passing metadata along an entitlement request when using HTTP POST.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:22
+#, no-wrap
+msgid "The following sections will explain how and when you can use the different information you can include in an entitlement request as a metadata.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:23
+#, no-wrap
+msgid "Decide whether or not resource's name should be included the response"
+msgstr ""
+
+#. type: Block title
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:25
+#, no-wrap
+msgid "include_resource_name"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:38
+#, no-wrap
+msgid "```bash\n"
+"curl -X POST -H \"Authorization: Bearer ${access_token}\" -d '{\n"
+"    \"metadata\" : {\n"
+"        \"include_resource_name\" : false\n"
+"    },\n"
+"    \"permissions\" : [\n"
+"        ...\n"
+"    ]\n"
+"}' \"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\"\n"
+"```\n"
+"Clients can use ```include_resource_name``` to decide whether or not resource`s name should be included on each permission granted by the server. This option\n"
+"can be used to reduce the size of RPTs and optimize client-server communication.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:41
+#, no-wrap
+msgid "By default, permissions in a RPT contain both the id and name of the resource that was granted by every single permission. This option is specially useful\n"
+"when the resource server is capable of map their resources only based on the resource`s id.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:42
+#, no-wrap
+msgid "Limiting the number of permissions within a RPT"
+msgstr ""
+
+#. type: Block title
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:44
+#, no-wrap
+msgid "limit"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:56
+#, no-wrap
+msgid "```bash\n"
+"curl -X POST -H \"Authorization: Bearer ${access_token}\" -d '{\n"
+"    \"metadata\" : {\n"
+"        \"limit\" : 10\n"
+"    },\n"
+"    \"permissions\" : [\n"
+"        ...\n"
+"    ]\n"
+"}' \"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\"\n"
+"```\n"
+"Clients can use ```limit``` to specify how many permissions they expected within a RPT returned by the server. The limit option works as follows:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:58
+#, no-wrap
+msgid "If a request is sent *without* a previously issued RPT, only ```limit``` permissions will be returned based on the resources/scopes from the ```permissions``` claim.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:61
+#, no-wrap
+msgid "If a request is sent *with* a previously issued RPT, the permissions associated with the resources/scopes from the ```permissions``` claim take precedence where the permissions\n"
+"from the previously issued RPT are only included if ```limit``` is not reached. In case there is enough room for permissions from a previously issued RPT, the server\n"
+"will include the first permissions defined there.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-request-metadata.adoc:64
+#, no-wrap
+msgid "This option allows clients to control the size of RPTs and keep only last permissions granted by the server. It usually makes sense only in cases your client\n"
+"is capable of sending previously issued RPTs while asking for new permissions (a.k.a.: incremental authorization).\n"
+msgstr ""
+

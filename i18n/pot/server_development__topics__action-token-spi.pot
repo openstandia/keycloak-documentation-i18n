@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n  \n"
-"POT-Creation-Date: 2017-09-20 07:58+0000\n"
+"POT-Creation-Date: 2017-09-20 08:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,45 +24,49 @@ msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:7
+#, no-wrap
 msgid ""
-"An action token is a special instance of Json Web Token (JWT) that permits "
-"its bearer to perform some actions, e. g. to reset a password or validate e-"
-"mail address. They are usually sent to users in form of a link that points "
-"to an endpoint processing action tokens for a particular realm."
+"An action token is a special instance of Json Web Token (JWT) that permits its bearer to perform some actions, e. g. to\n"
+"reset a password or validate e-mail address. They are usually sent to users in form of a link that points to an endpoint\n"
+"processing action tokens for a particular realm.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:9
-msgid "{project_name} offers four basic token types allowing the bearer to:"
+#, no-wrap
+msgid "{project_name} offers four basic token types allowing the bearer to:\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:11
-msgid "Reset credentials"
+#, no-wrap
+msgid "Reset credentials\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:12
-msgid "Confirm e-mail address"
+#, no-wrap
+msgid "Confirm e-mail address\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:13
-msgid "Execute required action(s)"
+#, no-wrap
+msgid "Execute required action(s)\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:14
-msgid ""
-"Confirm linking of an account with account in external identity provider"
+#, no-wrap
+msgid "Confirm linking of an account with account in external identity provider\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:17
+#, no-wrap
 msgid ""
-"In addition to that, it is possible to implement any functionality that "
-"initiates or modifies authentication session using action token SPI, details "
-"of which are described in the text below."
+"In addition to that, it is possible to implement any functionality that initiates or modifies authentication session\n"
+"using action token SPI, details of which are described in the text below.\n"
 msgstr ""
 
 #. type: Title ===
@@ -73,58 +77,62 @@ msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:22
-msgid ""
-"Action token is a standard Json Web Token signed with active realm key where "
-"the payload contains several fields:"
+#, no-wrap
+msgid "Action token is a standard Json Web Token signed with active realm key where the payload contains several fields:\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:24
-msgid "`typ` - Identification of the action (e.g. `verify-email`)"
+#, no-wrap
+msgid "`typ` - Identification of the action (e.g. `verify-email`)\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:25
-msgid "`iat` and `exp` - Times of token validity"
+#, no-wrap
+msgid "`iat` and `exp` - Times of token validity\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:26
-msgid "`sub` - ID of the user"
+#, no-wrap
+msgid "`sub` - ID of the user\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:27
-msgid "`azp` - Client name"
+#, no-wrap
+msgid "`azp` - Client name\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:28
-msgid "`iss` - Issuer - URL of the issuing realm"
+#, no-wrap
+msgid "`iss` - Issuer - URL of the issuing realm\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:29
-msgid "`aud` - Audience - list containing URL of the issuing realm"
+#, no-wrap
+msgid "`aud` - Audience - list containing URL of the issuing realm\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:30
-msgid "`asid` - ID of the authentication session (_optional_)"
+#, no-wrap
+msgid "`asid` - ID of the authentication session (_optional_)\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:31
-msgid ""
-"`nonce` - Random nonce to guarantee uniqueness of use if the operation can "
-"only be executed once (_optional_)"
+#, no-wrap
+msgid "`nonce` - Random nonce to guarantee uniqueness of use if the operation can only be executed once (_optional_)\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:33
-msgid ""
-"In addition, an action token can contain any number of custom fields "
-"serializable into JSON."
+#, no-wrap
+msgid "In addition, an action token can contain any number of custom fields serializable into JSON.\n"
 msgstr ""
 
 #. type: Title ===
@@ -135,16 +143,14 @@ msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:42
+#, no-wrap
 msgid ""
-"When an action token is passed to a {project_name} endpoint `_KEYCLOAK_ROOT_/"
-"auth/realms/master/login-actions/action-token` via `key` parameter, it is "
-"validated and a proper action token handler is executed. The processing "
-"always takes place in a context of an authentication session, either a fresh "
-"one or the action token service joins an existing authentication session "
-"(details are described below). The action token handler can perform actions "
-"prescribed by the token (often it alters the authentication session) and "
-"results into a HTTP response (e.g. it can continue in authentication or "
-"display an information/error page). These steps are detailed below."
+"When an action token is passed to a {project_name} endpoint\n"
+"`_KEYCLOAK_ROOT_/auth/realms/master/login-actions/action-token` via `key` parameter, it is validated and a proper action\n"
+"token handler is executed. The processing always takes place in a context of an authentication session, either a fresh\n"
+"one or the action token service joins an existing authentication session (details are described below). The action token\n"
+"handler can perform actions prescribed by the token (often it alters the authentication session) and results into a HTTP\n"
+"response (e.g. it can continue in authentication or display an information/error page). These steps are detailed below.\n"
 msgstr ""
 
 #. type: Plain text
@@ -157,14 +163,13 @@ msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:51
+#, no-wrap
 msgid ""
-"[[determining-auth-sess]]*Determining authentication session.* If the action "
-"token URL was opened in browser with existing authentication session, and "
-"the token contains authentication session ID matching the authentication "
-"session from the browser, action token validation and handling will attach "
-"this ongoing authentication session. Otherwise, action token handler creates "
-"a fresh authentication session that replaces any other authentication "
-"session present at that time in the browser."
+"[[determining-auth-sess]]*Determining authentication session.* If the action token URL was opened in browser with\n"
+"existing authentication session, and the token contains authentication session ID matching the authentication session\n"
+"from the browser, action token validation and handling will attach this ongoing authentication session. Otherwise,\n"
+"action token handler creates a fresh authentication session that replaces any other authentication session present at\n"
+"that time in the browser.\n"
 msgstr ""
 
 #. type: Plain text
@@ -207,14 +212,12 @@ msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:71
+#, no-wrap
 msgid ""
-"As action token is just a signed JWT with few mandatory fields (see "
-"<<_action_token_anatomy,Anatomy of action token>> above), it can be "
-"serialized and signed as such using Keycloak's `JWSBuilder` class. This way "
-"has been already implemented in `serialize(session, realm, uriInfo)` method "
-"of `org.keycloak.authentication.actiontoken.DefaultActionToken` and can be "
-"leveraged by implementors by using that class for tokens instead of plain "
-"`JsonWebToken`."
+"As action token is just a signed JWT with few mandatory fields (see <<_action_token_anatomy,Anatomy of action token>>\n"
+"above), it can be serialized and signed as such using Keycloak's `JWSBuilder` class. This way has been already\n"
+"implemented in `serialize(session, realm, uriInfo)` method of `org.keycloak.authentication.actiontoken.DefaultActionToken`\n"
+"and can be leveraged by implementors by using that class for tokens instead of plain `JsonWebToken`.\n"
 msgstr ""
 
 #. type: Title ====
@@ -227,9 +230,8 @@ msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:75
-msgid ""
-"To plug your own action token and its handler, you need to implement few "
-"interfaces on server side:"
+#, no-wrap
+msgid "To plug your own action token and its handler, you need to implement few interfaces on server side:\n"
 msgstr ""
 
 #. type: Plain text
@@ -242,86 +244,79 @@ msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:83
+#, no-wrap
 msgid ""
-"The central method in that interface is `handleToken(token, context)` which "
-"defines actual operation executed upon receiving the action token. Usually "
-"it is some alteration of authentication session notes but generally it can "
-"be arbitrary. This method is only called if all verifiers (including those "
-"defined in `getVerifiers(context)`) have succeeded, and it is guaranteed "
-"that the `token` would be of the class returned by `getTokenClass()` method."
+"The central method in that interface is `handleToken(token, context)` which defines actual operation executed upon\n"
+"receiving the action token. Usually it is some alteration of authentication session notes but generally it can be\n"
+"arbitrary. This method is only called if all verifiers (including those defined in `getVerifiers(context)`) have\n"
+"succeeded, and it is guaranteed that the `token` would be of the class returned by `getTokenClass()` method.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:90
+#, no-wrap
 msgid ""
-"To be able to determine whether the action token was issued for the current "
-"authentication session as described in <<determining-auth-sess,Item 2 "
-"above>>, method for extracting authentication session ID has to be declared "
-"in `getAuthenticationSessionIdFromToken(token, context)` method. The "
-"implementation in `DefaultActionToken` returns the value of `asid` field "
-"from the token if it is defined. Note that you can override that method to "
-"return current authentication session ID regardless of the token - that way "
-"you can create tokens that would step into the ongoing authentication flow "
-"before any authentication flow would be started."
+"To be able to determine whether the action token was issued for the current authentication session as described in\n"
+"<<determining-auth-sess,Item 2 above>>, method for extracting authentication session ID has to be declared in\n"
+"`getAuthenticationSessionIdFromToken(token, context)` method. The implementation in `DefaultActionToken` returns the\n"
+"value of `asid` field from the token if it is defined. Note that you can override that method to return current\n"
+"authentication session ID regardless of the token - that way you can create tokens that would step into the ongoing\n"
+"authentication flow before any authentication flow would be started.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:94
+#, no-wrap
 msgid ""
-"If the authentication session from the token does not match the current one, "
-"the action token handler would be asked to start a fresh one by calling "
-"`startFreshAuthenticationSession(token, context)`. It can throw a "
-"`VerificationException` (or better its more descriptive variant "
-"`ExplainedTokenVerificationException`) to signal that would be forbidden."
+"If the authentication session from the token does not match the current one, the action token handler would be asked to\n"
+"start a fresh one by calling `startFreshAuthenticationSession(token, context)`. It can throw a `VerificationException`\n"
+"(or better its more descriptive variant `ExplainedTokenVerificationException`) to signal that would be forbidden.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:99
+#, no-wrap
 msgid ""
-"The token handler also determines via method `canUseTokenRepeatedly(token, "
-"context)` whether the token would be invalidated after it is used and "
-"authentication completes. Note that if you would have a flow utilizing "
-"multiple action token, only the last token would be invalidated. In that "
-"case, you should use `org.keycloak.models.ActionTokenStoreProvider` in "
-"action token handler to invalidate the used tokens manually."
+"The token handler also determines via method `canUseTokenRepeatedly(token, context)` whether the token would be\n"
+"invalidated after it is used and authentication completes. Note that if you would have a flow utilizing multiple action\n"
+"token, only the last token would be invalidated. In that case, you should use\n"
+"`org.keycloak.models.ActionTokenStoreProvider` in action token handler to invalidate the used tokens manually.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:103
+#, no-wrap
 msgid ""
-"Default implementation of most of the `ActionTokenHandler` methods is the "
-"`org.keycloak.authentication.actiontoken.AbstractActionTokenHander` abstract "
-"class in `keycloak-services` module. The only method that needs to be "
-"implemented is `handleToken(token, context)` that performs the actual action."
+"Default implementation of most of the `ActionTokenHandler` methods is the\n"
+"`org.keycloak.authentication.actiontoken.AbstractActionTokenHander` abstract class in `keycloak-services` module. The\n"
+"only method that needs to be implemented is `handleToken(token, context)` that performs the actual action.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:107
+#, no-wrap
 msgid ""
-"`org.keycloak.authentication.actiontoken.ActionTokenHandlerFactory` - "
-"factory that instantiates action token handler. Implementations have to "
-"override `getId()` to return value that must match precisely the value of "
-"`typ` field in the action token."
+"`org.keycloak.authentication.actiontoken.ActionTokenHandlerFactory` - factory that instantiates action token\n"
+"handler. Implementations have to override `getId()` to return value that must match precisely the value of `typ`\n"
+"field in the action token.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:110
+#, no-wrap
 msgid ""
-"Note that you have to register the custom `ActionTokenHandlerFactory` "
-"implementation as explained in the <<_providers,Service Provider "
-"Interfaces>> section of this guide."
+"Note that you have to register the custom `ActionTokenHandlerFactory` implementation as explained in the\n"
+"<<_providers,Service Provider Interfaces>> section of this guide.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/action-token-spi.adoc:117
+#, no-wrap
 msgid ""
-"If the action token you are implementing contains any custom fields that "
-"should be serializabled to JSON fields, you should consider implementing a "
-"descendant of `org.keycloak.representations.JsonWebToken` class that would "
-"implement `org.keycloak.models.ActionTokenKeyModel` interface. In that case, "
-"you can take advantage of the existing `org.keycloak.authentication."
-"actiontoken.DefaultActionToken` class as it already satisfies both these "
-"conditions, and either use it directly or implement its child, the fields of "
-"which can be annotated with appropriate Jackson annotations, e.g. `com."
-"fasterxml.jackson.annotation.JsonProperty` to serialize them to JSON."
+"If the action token you are implementing contains any custom fields that should be serializabled to JSON fields, you\n"
+"should consider implementing a descendant of `org.keycloak.representations.JsonWebToken` class that would implement\n"
+"`org.keycloak.models.ActionTokenKeyModel` interface. In that case, you can take advantage of the existing\n"
+"`org.keycloak.authentication.actiontoken.DefaultActionToken` class as it already satisfies both these conditions,\n"
+"and either use it directly or implement its child, the fields of which can be annotated with appropriate Jackson\n"
+"annotations, e.g. `com.fasterxml.jackson.annotation.JsonProperty` to serialize them to JSON.\n"
 msgstr ""

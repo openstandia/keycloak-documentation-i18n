@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n  \n"
-"POT-Creation-Date: 2017-09-20 07:58+0000\n"
+"POT-Creation-Date: 2017-09-20 08:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,12 +24,8 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:5
-msgid ""
-"When a confidential OIDC client needs to send a backchannel request (for "
-"example, to exchange code for the token, or to refresh the token) it needs "
-"to authenticate against the {project_name} server. By default, there are two "
-"ways to authenticate the client: client ID and client secret, or client "
-"authentication with signed JWT."
+#, no-wrap
+msgid "When a confidential OIDC client needs to send a backchannel request (for example, to exchange code for the token, or to refresh the token) it needs to authenticate against the {project_name} server. By default, there are two ways to authenticate the client: client ID and client secret, or client authentication with signed JWT.\n"
 msgstr ""
 
 #. type: Title =====
@@ -40,12 +36,10 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:10
+#, no-wrap
 msgid ""
-"This is the traditional method described in the OAuth2 specification. The "
-"client has a secret, which needs to be known to both the adapter "
-"(application) and the {project_name} server.  You can generate the secret "
-"for a particular client in the {project_name} administration console, and "
-"then paste this secret into the `keycloak.json` file on the application side:"
+"This is the traditional method described in the OAuth2 specification. The client has a secret, which needs to be known to both the adapter (application) and the {project_name} server.\n"
+"You can generate the secret for a particular client in the {project_name} administration console, and then paste this secret into the `keycloak.json` file on the application side:\n"
 msgstr ""
 
 #. type: delimited block -
@@ -65,67 +59,46 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:22
-msgid ""
-"This is based on the https://tools.ietf.org/html/rfc7523[RFC7523] "
-"specification. It works this way:"
+#, no-wrap
+msgid "This is based on the https://tools.ietf.org/html/rfc7523[RFC7523] specification. It works this way:\n"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:24
-msgid ""
-"The client must have the private key and certificate. For {project_name} "
-"this is available through the traditional `keystore` file, which is either "
-"available on the client application's classpath or somewhere on the file "
-"system."
+#, no-wrap
+msgid "The client must have the private key and certificate. For  {project_name} this is available through the traditional `keystore` file, which is either available on the client application's classpath or somewhere on the file system.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:26
-msgid ""
-"Once the client application is started, it allows to download its public key "
-"in https://self-issued.info/docs/draft-ietf-jose-json-web-key.html[JWKS] "
-"format using a URL such as \\http://myhost.com/myapp/k_jwks, assuming that "
-"\\http://myhost.com/myapp is the base URL of your client application. This "
-"URL can be used by {project_name} (see below)."
+#, no-wrap
+msgid "Once the client application is started, it allows to download its public key in https://self-issued.info/docs/draft-ietf-jose-json-web-key.html[JWKS] format using a URL such as \\http://myhost.com/myapp/k_jwks, assuming that \\http://myhost.com/myapp is the base URL of your client application. This URL can be used by {project_name} (see below).\n"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:29
+#, no-wrap
 msgid ""
-"During authentication, the client generates a JWT token and signs it with "
-"its private key and sends it to {project_name} in the particular backchannel "
-"request (for example, code-to-token request) in the `client_assertion` "
-"parameter."
+"During authentication, the client generates a JWT token and signs it with its private key and sends it to {project_name} in\n"
+"the particular backchannel request (for example, code-to-token request) in the `client_assertion` parameter.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:36
+#, no-wrap
 msgid ""
-"{project_name} must have the public key or certificate of the client so that "
-"it can verify the signature on JWT. In {project_name} you need to configure "
-"client credentials for your client. First you need to choose `Signed JWT` as "
-"the method of authenticating your client in the tab `Credentials` in "
-"administration console.  Then you can choose to either: ** Configure the "
-"JWKS URL where {project_name} can download the client's public keys. This "
-"can be a URL such as \\http://myhost.com/myapp/k_jwks (see details above). "
-"This option is the most flexible, since the client can rotate its keys "
-"anytime and {project_name} then always downloads new keys when needed "
-"without needing to change the configuration. More accurately, {project_name} "
-"downloads new keys when it sees the token signed by an unknown `kid` (Key "
-"ID).  ** Upload the client's public key or certificate, either in PEM "
-"format, in JWK format, or from the keystore. With this option, the public "
-"key is hardcoded and must be changed when the client generates a new key "
-"pair.  You can even generate your own keystore from the {project_name} "
-"admininstration console if you don't have your own available.  For more "
-"details on how to set up the {project_name} administration console see "
-"{adminguide_link}[{adminguide_name}]."
+"{project_name} must have the public key or certificate of the client so that it can verify the signature on JWT. In {project_name} you need to configure client credentials for your client. First you need to choose `Signed JWT` as the method of authenticating your client in the tab `Credentials` in administration console.\n"
+"Then you can choose to either:\n"
+"** Configure the JWKS URL where {project_name} can download the client's public keys. This can be a URL such as  \\http://myhost.com/myapp/k_jwks (see details above). This option is the most flexible, since the client can rotate its keys anytime and {project_name} then always downloads new keys when needed without needing to change the configuration. More accurately,  {project_name} downloads new keys when it sees the token signed by an unknown `kid` (Key ID).\n"
+"** Upload the client's public key or certificate, either in PEM format, in JWK format, or from the keystore. With this option, the public key is hardcoded and must be changed when the client generates a new key pair.\n"
+"You can even generate your own keystore from the {project_name} admininstration console if you don't have your own available.\n"
+"For more details on how to set up the {project_name} administration console see {adminguide_link}[{adminguide_name}].\n"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:38
-msgid ""
-"For set up on the adapter side you need to have something like this in your "
-"`keycloak.json` file:"
+#, no-wrap
+msgid "For set up on the adapter side you need to have something like this in your `keycloak.json` file:\n"
 msgstr ""
 
 #. type: delimited block -
@@ -146,19 +119,18 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:55
+#, no-wrap
 msgid ""
-"With this configuration, the keystore file `keystore-client.jks` must be "
-"available on classpath in your WAR. If you do not use the prefix `classpath:"
-"` you can point to any file on the file system where the client application "
-"is running."
+"With this configuration, the keystore file `keystore-client.jks` must be available on classpath in your WAR. If you do not use the prefix `classpath:`\n"
+"you can point to any file on the file system where the client application is running.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:58
+#, no-wrap
 msgid ""
-"ifeval::[{project_community}==true] For inspiration, you can take a look at "
-"the examples distribution into the main demo example into the `product-"
-"portal` application."
+"ifeval::[{project_community}==true]\n"
+"For inspiration, you can take a look at the examples distribution into the main demo example into the `product-portal` application.\n"
 msgstr ""
 
 #. type: Title =====
@@ -169,9 +141,8 @@ msgstr ""
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:64
+#, no-wrap
 msgid ""
-"You can add your own client authentication method as well. You will need to "
-"implement both client-side and server-side providers. For more details see "
-"the `Authentication SPI` section in link:{developerguide_link}"
-"[{developerguide_name}].  endif::[]"
+"You can add your own client authentication method as well. You will need to implement both client-side and server-side providers. For more details see the `Authentication SPI` section in link:{developerguide_link}[{developerguide_name}].\n"
+"endif::[]\n"
 msgstr ""

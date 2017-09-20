@@ -42,6 +42,10 @@ fi
 for l in $TARGET_LANG; do
     cd $TRANSLATED_DIR/$l
     mvn install -DskipTests=true
+    if [ "$?" -ne 0 ]; then
+        echo "Translation failed!"
+        exit 1
+    fi 
 done
 
 

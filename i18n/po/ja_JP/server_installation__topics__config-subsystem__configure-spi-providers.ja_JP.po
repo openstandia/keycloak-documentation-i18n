@@ -1,0 +1,114 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: 2017-09-20 05:28-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /master/i18n/pot/server_installation__topics__config-subsystem__configure-spi-providers.pot\n"
+
+#. type: Title ===
+#: source/server_installation/topics/config-subsystem/configure-spi-providers.adoc:3
+#, no-wrap
+msgid "Configure SPI Providers"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/config-subsystem/configure-spi-providers.adoc:8
+#, no-wrap
+msgid "The specifics of each configuration setting is discussed elsewhere in \n"
+"context with that setting.  However, it is useful to understand the format used\n"
+"to declare settings on SPI providers. \n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/config-subsystem/configure-spi-providers.adoc:13
+#, no-wrap
+msgid "{project_name} is a highly modular system that allows great\n"
+"flexibility.  There are more than 50 service provider interfaces (SPIs), and\n"
+"you are allowed to swap out implementations of each SPI.  An implementation of \n"
+"an SPI is known as a _provider_.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/config-subsystem/configure-spi-providers.adoc:17
+#, no-wrap
+msgid "All elements in an SPI declaration are optional, but a full SPI declaration\n"
+" looks like this:\n"
+"[source,xml]\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/config-subsystem/configure-spi-providers.adoc:31
+#, no-wrap
+msgid "<spi name=\"myspi\">\n"
+"    <default-provider>myprovider</default-provider>\n"
+"    <provider name=\"myprovider\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"foo\" value=\"bar\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"    <provider name=\"mysecondprovider\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"foo\" value=\"foo\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/config-subsystem/configure-spi-providers.adoc:36
+#, no-wrap
+msgid "Here we have two providers defined for the SPI `myspi`.  The `default-provider`\n"
+"is listed as `myprovider`.  However it is up to the SPI to decide how it will treat\n"
+"this setting.  Some SPIs allow more than one provider and some do not.  So\n"
+"`default-provider` can help the SPI to choose.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/config-subsystem/configure-spi-providers.adoc:40
+#, no-wrap
+msgid "Also notice that each provider defines its own set of configuration properties.  \n"
+"The fact that both providers above have a property called `foo` is just a\n"
+"coincidence.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/config-subsystem/configure-spi-providers.adoc:44
+#, no-wrap
+msgid "The type of each property value is interpreted by the provider.  However, there\n"
+"is one exception.  Consider the `jpa` provider for the `eventStore` API:\n"
+"[source,xml]\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/config-subsystem/configure-spi-providers.adoc:53
+#, no-wrap
+msgid "<spi name=\"eventsStore\">\n"
+"    <provider name=\"jpa\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"exclude-events\" value=\"[&quot;EVENT1&quot;,\n"
+"                                                    &quot;EVENT2&quot;]\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/config-subsystem/configure-spi-providers.adoc:58
+#, no-wrap
+msgid "We see that the value begins and ends with square brackets.  That means that\n"
+"the value will be passed to the provider as a list.  In this example, the system will pass the\n"
+"provider a list with two element values _EVENT1_ and _EVENT2_. To add more values\n"
+"to the list, just separate each list element with a comma. Unfortunately,\n"
+"you do need to escape the quotes surrounding each list element with `\\&quot;`.\n"
+msgstr ""
+

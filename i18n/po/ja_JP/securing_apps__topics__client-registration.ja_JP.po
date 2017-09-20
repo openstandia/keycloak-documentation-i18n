@@ -1,0 +1,637 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: 2017-09-20 05:28-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /master/i18n/pot/securing_apps__topics__client-registration.pot\n"
+
+#. type: Title ==
+#: source/securing_apps/topics/client-registration.adoc:2
+#, no-wrap
+msgid "Client Registration"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:7
+#, no-wrap
+msgid "In order for an application or service to utilize {project_name} it has to register a client in {project_name}.\n"
+"An admin can do this through the admin console (or admin REST endpoints), but clients can also register themselves through the {project_name} client\n"
+"registration service.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:10
+#, no-wrap
+msgid "The Client Registration Service provides built-in support for {project_name} Client Representations, OpenID Connect Client Meta Data and SAML Entity Descriptors.\n"
+"The Client Registration Service endpoint is `/realms/<realm>/clients-registrations/<provider>`.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:12
+#, no-wrap
+msgid "The built-in supported `providers` are: \n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:14
+#, no-wrap
+msgid "default - {project_name} Client Representation (JSON)\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:15
+#, no-wrap
+msgid "install - {project_name} Adapter Configuration (JSON)\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:16
+#, no-wrap
+msgid "openid-connect - OpenID Connect Client Metadata Description (JSON)\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:17
+#, no-wrap
+msgid "saml2-entity-descriptor - SAML Entity Descriptor (XML)\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:19
+#, no-wrap
+msgid "The following sections will describe how to use the different providers. \n"
+msgstr ""
+
+#. type: Title ==
+#: source/securing_apps/topics/client-registration.adoc:20
+#: source/server_admin/topics/authentication.adoc:2
+#, no-wrap
+msgid "Authentication"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:24
+#, no-wrap
+msgid "To invoke the Client Registration Services you usually need a token. The token can be a bearer token, an initial access token or a registration access token.\n"
+"There is an alternative to register new client without any token as well, but then you need to configure Client Registration Policies (see below).\n"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/client-registration.adoc:25
+#, no-wrap
+msgid "Bearer Token"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:28
+#, no-wrap
+msgid "The bearer token can be issued on behalf of a user or a Service Account. The following permissions are required to invoke the endpoints (see link:{adminguide_link}[{adminguide_name}] for more details):\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:30
+#, no-wrap
+msgid "create-client or manage-client - To create clients\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:31
+#, no-wrap
+msgid "view-client or manage-client - To view clients\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:32
+#, no-wrap
+msgid "manage-client - To update or delete client\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:34
+#, no-wrap
+msgid "If you are using a bearer token to create clients it's recommend to use a token from a Service Account with only the `create-client` role (see link:{adminguide_link}[{adminguide_name}] for more details).\n"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/client-registration.adoc:35
+#, no-wrap
+msgid "Initial Access Token"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:39
+#, no-wrap
+msgid "The recommended approach to registering new clients is by using initial access tokens.\n"
+"An initial access token can only be used to create clients and has a configurable expiration as well as a configurable limit on how many clients can be created. \n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:43
+#, no-wrap
+msgid "An initial access token can be created through the admin console.\n"
+"To create a new initial access token first select the realm in the admin console, then click on `Realm Settings` in the menu on the left, followed by\n"
+"`Client Registration` in the tabs displayed in the page. Then finally click on `Initial Access Tokens` sub-tab.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:47
+#, no-wrap
+msgid "You will now be able to see any existing initial access tokens. If you have access you can delete tokens that are no longer required. You can only retrieve the\n"
+"value of the token when you are creating it. To create a new token click on `Create`. You can now optionally add how long the token should be valid, also how\n"
+"many clients can be created using the token. After you click on `Save` the token value is displayed.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:49
+#, no-wrap
+msgid "It is important that you copy/paste this token now as you won't be able to retrieve it later. If you forget to copy/paste it, then delete the token and create another one.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:52
+#, no-wrap
+msgid "The token value is used as a standard bearer token when invoking the Client Registration Services, by adding it to the Authorization header in the request.\n"
+"For example: \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:57
+#, no-wrap
+msgid "Authorization: bearer eyJhbGciOiJSUz...\n"
+"----            \n"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/client-registration.adoc:58
+#, no-wrap
+msgid "Registration Access Token"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:64
+#, no-wrap
+msgid "When you create a client through the Client Registration Service the response will include a registration access token.\n"
+"The registration access token provides access to retrieve the client configuration later, but also to update or delete the client.\n"
+"The registration access token is included with the request in the same way as a bearer token or initial access token.\n"
+"Registration access tokens are only valid once when it's used the response will include a new token. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:68
+#, no-wrap
+msgid "If a client was created outside of the Client Registration Service it won't have a registration access token associated with it.\n"
+"You can create one through the admin console. This can also be useful if you loose the token for a particular client.\n"
+"To create a new token find the client in the admin console and click on `Credentials`. Then click on `Generate registration access token`.\n"
+msgstr ""
+
+#. type: Title ===
+#: source/securing_apps/topics/client-registration.adoc:69
+#, no-wrap
+msgid "{project_name} Representations"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:74
+#, no-wrap
+msgid "The `default` client registration provider can be used to create, retrieve, update and delete a client.\n"
+"It uses {project_name} Client Representation format which provides support for configuring clients exactly as they can be configured through the admin\n"
+"console, including for example configuring protocol mappers.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:76
+#, no-wrap
+msgid "To create a client create a Client Representation (JSON) then do a HTTP POST to `/realms/<realm>/clients-registrations/default`.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:79
+#, no-wrap
+msgid "It will return a Client Representation that also includes the registration access token.\n"
+"You should save the registration access token somewhere if you want to retrieve the config, update or delete the client later. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:81
+#, no-wrap
+msgid "To retrieve the Client Representation then do a HTTP GET to `/realms/<realm>/clients-registrations/default/<client id>`.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:83
+#: source/securing_apps/topics/client-registration.adoc:88
+#, no-wrap
+msgid "It will also return a new registration access token. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:86
+#, no-wrap
+msgid "To update the Client Representation then do a HTTP PUT to with the updated Client Representation to:\n"
+"`/realms/<realm>/clients-registrations/default/<client id>`.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:91
+#, no-wrap
+msgid "To delete the Client Representation then do a HTTP DELETE to:\n"
+"`/realms/<realm>/clients-registrations/default/<client id>`\n"
+msgstr ""
+
+#. type: Title ===
+#: source/securing_apps/topics/client-registration.adoc:92
+#, no-wrap
+msgid "{project_name} Adapter Configuration"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:97
+#, no-wrap
+msgid "The `installation` client registration provider can be used to retrieve the adapter configuration for a client.\n"
+"In addition to token authentication you can also authenticate with client credentials using HTTP basic authentication.\n"
+"To do this include the following header in the request: \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:99
+#: source/securing_apps/topics/oidc/java/application-clustering.adoc:89
+#: source/securing_apps/topics/oidc/java/application-clustering.adoc:109
+#: source/securing_apps/topics/oidc/java/jetty8-adapter.adoc:31
+#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:39
+#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:56
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:66
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty8-installation.adoc:23
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_installation.adoc:23
+#: source/server_development/topics/auth-spi.adoc:148
+#: source/server_development/topics/preface.adoc:16
+#: source/server_development/topics/providers.adoc:202
+#, no-wrap
+msgid "[source]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:102
+#, no-wrap
+msgid "Authorization: basic BASE64(client-id + ':' + client-secret)\n"
+"----        \n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:104
+#, no-wrap
+msgid "To retrieve the Adapter Configuration then do a HTTP GET to `/realms/<realm>/clients-registrations/install/<client id>`.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:107
+#, no-wrap
+msgid "No authentication is required for public clients.\n"
+"This means that for the JavaScript adapter you can load the client configuration directly from {project_name} using the above URL.\n"
+msgstr ""
+
+#. type: Title ===
+#: source/securing_apps/topics/client-registration.adoc:108
+#, no-wrap
+msgid "OpenID Connect Dynamic Client Registration"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:111
+#, no-wrap
+msgid "{project_name} implements https://openid.net/specs/openid-connect-registration-1_0.html[OpenID Connect Dynamic Client Registration], which extends https://tools.ietf.org/html/rfc7591[OAuth 2.0 Dynamic Client Registration Protocol] and https://tools.ietf.org/html/rfc7592[OAuth 2.0 Dynamic Client Registration Management Protocol].\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:113
+#, no-wrap
+msgid "The endpoint to use these specifications to register clients in {project_name} is `/realms/<realm>/clients-registrations/openid-connect[/<client id>]`.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:115
+#, no-wrap
+msgid "This endpoints can also be found in the OpenID Connect Discovery endpoint for the realm, `/realms/<realm>/.well-known/openid-configuration`.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/client-registration.adoc:116
+#: source/server_admin/topics/clients/saml/entity-descriptors.adoc:2
+#, no-wrap
+msgid "SAML Entity Descriptors"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:122
+#, no-wrap
+msgid "The SAML Entity Descriptor endpoint only supports using SAML v2 Entity Descriptors to create clients.\n"
+"It doesn't support retrieving, updating or deleting clients.\n"
+"For those operations the {project_name} representation endpoints should be used.\n"
+"When creating a client a {project_name} Client Representation is returned with details about the created client, including a registration access token.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:124
+#, no-wrap
+msgid "To create a client do a HTTP POST with the SAML Entity Descriptor to `/realms/<realm>/clients-registrations/saml2-entity-descriptor`.\n"
+msgstr ""
+
+#. type: Title ===
+#: source/securing_apps/topics/client-registration.adoc:125
+#: source/server_development/topics/admin-rest-api.adoc:13
+#, no-wrap
+msgid "Example using CURL"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:129
+#, no-wrap
+msgid "The following example creates a client with the clientId `myclient` using CURL. You need to replace `eyJhbGciOiJSUz...` with a proper initial access token or\n"
+"bearer token.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:131
+#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:86
+#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:95
+#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:115
+#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:197
+#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:212
+#: source/securing_apps/topics/oidc/oidc-generic.adoc:140
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:18
+#: source/server_development/topics/admin-rest-api.adoc:34
+#: source/server_development/topics/themes.adoc:331
+#: source/upgrading/topics/migrate_db.adoc:25
+#: source/upgrading/topics/migrate_db.adoc:49
+#, no-wrap
+msgid "[source,bash]\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:137
+#, no-wrap
+msgid "curl -X POST \\\n"
+"    -d '{ \"clientId\": \"myclient\" }' \\\n"
+"    -H \"Content-Type:application/json\" \\\n"
+"    -H \"Authorization: bearer eyJhbGciOiJSUz...\" \\\n"
+"    http://localhost:8080/auth/realms/master/clients-registrations/default\n"
+msgstr ""
+
+#. type: Title ===
+#: source/securing_apps/topics/client-registration.adoc:139
+#, no-wrap
+msgid "Example using Java Client Registration API"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:143
+#, no-wrap
+msgid "The Client Registration Java API makes it easy to use the Client Registration Service using Java.\n"
+"To use include the dependency `org.keycloak:keycloak-client-registration-api:>VERSION<` from Maven. \n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:146
+#, no-wrap
+msgid "For full instructions on using the Client Registration refer to the JavaDocs.\n"
+"Below is an example of creating a client. You need to replace `eyJhbGciOiJSUz...` with a proper initial access token or bearer token.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:148
+#: source/securing_apps/topics/oidc/java/adapter-context.adoc:16
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:24
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:17
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:11
+#: source/server_admin/topics/identity-broker/suggested.adoc:15
+#: source/server_admin/topics/identity-broker/suggested.adoc:25
+#: source/server_admin/topics/identity-broker/tokens.adoc:12
+#: source/server_development/topics/user-storage/augmenting.adoc:15
+#: source/server_development/topics/user-storage/augmenting.adoc:47
+#: source/server_development/topics/user-storage/cache.adoc:14
+#: source/server_development/topics/user-storage/cache.adoc:52
+#: source/server_development/topics/user-storage/cache.adoc:63
+#: source/server_development/topics/user-storage/configuration.adoc:9
+#: source/server_development/topics/user-storage/configuration.adoc:38
+#: source/server_development/topics/user-storage/configuration.adoc:66
+#: source/server_development/topics/user-storage/configuration.adoc:85
+#: source/server_development/topics/user-storage/import.adoc:31
+#: source/server_development/topics/user-storage/import.adoc:85
+#: source/server_development/topics/user-storage/import.adoc:111
+#: source/server_development/topics/user-storage/javaee.adoc:16
+#: source/server_development/topics/user-storage/javaee.adoc:60
+#: source/server_development/topics/user-storage/model-interfaces.adoc:7
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:10
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:59
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:94
+#: source/server_development/topics/user-storage/registration-query.adoc:15
+#: source/server_development/topics/user-storage/registration-query.adoc:33
+#: source/server_development/topics/user-storage/registration-query.adoc:65
+#: source/server_development/topics/user-storage/registration-query.adoc:81
+#: source/server_development/topics/user-storage/registration-query.adoc:99
+#: source/server_development/topics/user-storage/registration-query.adoc:132
+#: source/server_development/topics/user-storage/registration-query.adoc:163
+#: source/server_development/topics/user-storage/registration-query.adoc:191
+#: source/server_development/topics/user-storage/registration-query.adoc:212
+#: source/server_development/topics/user-storage/rest.adoc:16
+#: source/server_development/topics/user-storage/rest.adoc:62
+#: source/server_development/topics/user-storage/simple-example.adoc:10
+#: source/server_development/topics/user-storage/simple-example.adoc:24
+#: source/server_development/topics/user-storage/simple-example.adoc:43
+#: source/server_development/topics/user-storage/simple-example.adoc:100
+#: source/server_development/topics/user-storage/simple-example.adoc:134
+#: source/server_development/topics/user-storage/simple-example.adoc:160
+#: source/server_development/topics/user-storage/simple-example.adoc:182
+#: source/server_development/topics/user-storage/simple-example.adoc:229
+#: source/server_development/topics/user-storage/simple-example.adoc:243
+#: source/server_development/topics/admin-rest-api.adoc:49
+#: source/server_development/topics/auth-spi.adoc:170
+#: source/server_development/topics/auth-spi.adoc:186
+#: source/server_development/topics/auth-spi.adoc:199
+#: source/server_development/topics/auth-spi.adoc:231
+#: source/server_development/topics/auth-spi.adoc:259
+#: source/server_development/topics/auth-spi.adoc:287
+#: source/server_development/topics/auth-spi.adoc:310
+#: source/server_development/topics/auth-spi.adoc:327
+#: source/server_development/topics/auth-spi.adoc:341
+#: source/server_development/topics/auth-spi.adoc:383
+#: source/server_development/topics/auth-spi.adoc:437
+#: source/server_development/topics/auth-spi.adoc:452
+#: source/server_development/topics/auth-spi.adoc:474
+#: source/server_development/topics/auth-spi.adoc:498
+#: source/server_development/topics/auth-spi.adoc:546
+#: source/server_development/topics/auth-spi.adoc:585
+#: source/server_development/topics/auth-spi.adoc:625
+#: source/server_development/topics/auth-spi.adoc:681
+#: source/server_development/topics/auth-spi.adoc:708
+#: source/server_development/topics/extensions.adoc:21
+#: source/server_development/topics/extensions.adoc:41
+#: source/server_development/topics/extensions.adoc:99
+#: source/server_development/topics/extensions.adoc:130
+#: source/server_development/topics/providers.adoc:18
+#: source/server_development/topics/providers.adoc:53
+#: source/server_development/topics/providers.adoc:111
+#: source/server_development/topics/providers.adoc:121
+#: source/server_development/topics/providers.adoc:157
+#: source/server_development/topics/providers.adoc:279
+#: source/server_development/topics/providers.adoc:323
+#: source/server_development/topics/identity-brokering/account-linking.adoc:24
+#: source/server_development/topics/identity-brokering/account-linking.adoc:54
+#: source/server_development/topics/identity-brokering/tokens.adoc:12
+#, no-wrap
+msgid "[source,java]\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:150
+#, no-wrap
+msgid "String token = \"eyJhbGciOiJSUz...\";\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:153
+#, no-wrap
+msgid "ClientRepresentation client = new ClientRepresentation();\n"
+"client.setClientId(CLIENT_ID);\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:157
+#, no-wrap
+msgid "ClientRegistration reg = ClientRegistration.create()\n"
+"    .url(\"http://localhost:8080/auth\", \"myrealm\")\n"
+"    .build();\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:159
+#, no-wrap
+msgid "reg.auth(Auth.token(token));\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:161
+#, no-wrap
+msgid "client = reg.create(client);\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/client-registration.adoc:163
+#, no-wrap
+msgid "String registrationAccessToken = client.getRegistrationAccessToken();\n"
+msgstr ""
+
+#. type: Title ===
+#: source/securing_apps/topics/client-registration.adoc:165
+#, no-wrap
+msgid "Client Registration Policies"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:168
+#, no-wrap
+msgid "{project_name} currently supports 2 ways how can be new clients registered through Client Registration Service.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:170
+#, no-wrap
+msgid "Authenticated requests - Request to register new client must contain either `Initial Access Token` or `Bearer Token` as mentioned above.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:172
+#, no-wrap
+msgid "Anonymous requests - Request to register new client doesn't need to contain any token at all\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:175
+#, no-wrap
+msgid "Anonymous client registration requests are very interesting and powerful feature, however you usually don't want that anyone is able to register new\n"
+"client without any limitations. Hence we have `Client Registration Policy SPI`, which provide a way to limit who can register new clients and under which conditions.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:178
+#, no-wrap
+msgid "In {project_name} admin console, you can click to `Client Registration` tab and then `Client Registration Policies` sub-tab. Here you will see what policies\n"
+"are configured by default for anonymous requests and what policies are configured for authenticated requests.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:184
+#, no-wrap
+msgid "The anonymous requests (requests without any token) are allowed just for creating (registration) of new clients. So when you register\n"
+"new client through anonymous request, the response will contain Registration Access Token, which must be used for Read, Update or Delete request of particular client.\n"
+"However using this Registration Access Token from anonymous registration will be then subject to Anonymous Policy too! This means that for example request for update\n"
+"client also needs to come from Trusted Host if you have `Trusted Hosts` policy. Also for example it won't be allowed to disable `Consent Required` when updating client and\n"
+"when `Consent Required` policy is present etc.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:186
+#, no-wrap
+msgid "Currently we have these policy implementations:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:190
+#, no-wrap
+msgid "Trusted Hosts Policy - You can configure list of trusted hosts and trusted domains. Request to Client Registration Service can be sent just from those hosts or domains.\n"
+"Request sent from some untrusted IP will be rejected. URLs of newly registered client must also use just those trusted hosts or domains. For example it won't be allowed\n"
+"to set `Redirect URI` of client pointing to some untrusted host. By default, there is not any whitelisted host, so anonymous client registration is de-facto disabled by default.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:194
+#, no-wrap
+msgid "Consent Required Policy - Newly registered clients will have `Consent Allowed` switch enabled. So after successful authentication, user will always\n"
+"see consent screen when he needs to approve personal info and permissions (protocol mappers and roles). It means that client won't have access to any personal\n"
+"info or permission of user unless user approves it.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:198
+#, no-wrap
+msgid "Protocol Mappers Policy - Allows to configure list of whitelisted protocol mapper implementations. New client can't be registered\n"
+"or updated if it contains some non-whitelisted protocol mapper. Note that this policy is used for authenticated requests as well, so\n"
+"even for authenticated request there are some limitations which protocol mappers can be used.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:201
+#, no-wrap
+msgid "Client Template Policy - Allow to whitelist `Client Templates`, which can be used with newly registered or updated clients.\n"
+"There are no whitelisted templates by default.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:204
+#, no-wrap
+msgid "Full Scope Policy - Newly registered clients will have `Full Scope Allowed` switch disabled. This means they won't have any scoped\n"
+"realm roles or client roles of other clients.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:206
+#, no-wrap
+msgid "Max Clients Policy - Rejects registration if current number of clients in the realm is same or bigger than specified limit. It's 200 by default for anonymous registrations.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:209
+#, no-wrap
+msgid "Client Disabled Policy - Newly registered client will be disabled. This means that admin needs to manually approve and enable all newly registered clients.\n"
+"This policy is not used by default even for anonymous registration.\n"
+msgstr ""
+

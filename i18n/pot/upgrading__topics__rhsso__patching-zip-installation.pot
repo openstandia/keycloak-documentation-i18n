@@ -1,0 +1,439 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Block title
+#: source/server_installation/topics/installation/installing-rpm.adoc:14
+#: source/server_installation/topics/installation/installing-rpm.adoc:26
+#: source/upgrading/topics/rhsso/patching-rpm-installation.adoc:4
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:86
+#, no-wrap
+msgid "Prerequisites"
+msgstr ""
+
+#. type: Title =
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:2
+#, no-wrap
+msgid "Patching a ZIP/Installer Installation"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:6
+#, no-wrap
+msgid ""
+"Patches for a ZIP installation of RH-SSO are available to download from the\n"
+"link:https://access.redhat.com/[Red Hat Customer Portal].\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:8
+#, no-wrap
+msgid "For multiple RH-SSO hosts in a managed domain environment, individual hosts can be patched from your RH-SSO domain controller.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:10
+#, no-wrap
+msgid "In addition to applying a patch, you can also roll back the application of a patch.\n"
+msgstr ""
+
+#. type: Title ==
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:11
+#, no-wrap
+msgid "Important Notes on ZIP Installation Patching"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:14
+#, no-wrap
+msgid "If you apply a patch that updates a module, the new patched JARs that are used at runtime are stored in `RHSSO_HOME/modules/system/layers/base/.overlays/_PATCH_ID_/_MODULE_`. The original unpatched files are left in `RHSSO_HOME/modules/system/layers/base/_MODULE_`, but these JARs are *not* used at runtime.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:15
+#, no-wrap
+msgid "In order to significantly decrease the size of cumulative patch releases for RH-SSO 7 you cannot perform a partial roll back of a cumulative patch. For a patch that has been applied, you will only be able to roll back the whole patch.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:17
+#, no-wrap
+msgid "For example, if you apply CP03 to RH-SSO 7.0.0, you will not be able to roll back to CP01 or CP02. If you would like the ability to roll back to each cumulative patch release, each cumulative patch must be applied separately in the order they were released.\n"
+msgstr ""
+
+#. type: Title ==
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:18
+#, no-wrap
+msgid "Applying a Patch"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:21
+#, no-wrap
+msgid "RH-SSO servers that have been installed using the RPM method cannot be updated using these instructions. See the xref:rpm-patching[RPM instructions for applying a patch] instead.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:24
+#, no-wrap
+msgid "You can apply downloaded patches to a RH-SSO server using either the xref:zip_patching_management_cli[management CLI] or the xref:zip_patching_management_console[management console].\n"
+msgstr ""
+
+#. type: Block title
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:26
+#, no-wrap
+msgid "Applying a Patch to RH-SSO Using the Management CLI"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:29
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:59
+#, no-wrap
+msgid "Download the patch file from the Red Hat Customer Portal at https://access.redhat.com/downloads/.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:31
+#, no-wrap
+msgid "From the link:{appserver_managementcli_link}[management CLI], apply the patch using the following command, including the appropriate path to the patch file:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:33
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:42
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:52
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:109
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:118
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:151
+#, no-wrap
+msgid "[options=\"nowrap\"]\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:35
+#, no-wrap
+msgid "patch apply /path/to/downloaded-patch.zip\n"
+msgstr ""
+
+#. type: delimited block =
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:40
+#, no-wrap
+msgid "To patch another RH-SSO host in a managed domain, you can specify the RH-SSO host name using the `--host=` argument. For example:\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:44
+#, no-wrap
+msgid "patch apply /path/to/downloaded-patch.zip --host=my-host\n"
+msgstr ""
+
+#. type: delimited block =
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:48
+#, no-wrap
+msgid "The patch tool will warn if there are any conflicts in attempting to apply the patch. If there are conflicts, enter `patch --help` for the available arguments to re-run the command with an argument specifying how to resolve the conflicts.\n"
+msgstr ""
+
+#. type: delimited block =
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:50
+#, no-wrap
+msgid "Restart the RH-SSO server for the patch to take effect:\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:54
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:120
+#, no-wrap
+msgid "shutdown --restart=true\n"
+msgstr ""
+
+#. type: Block title
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:57
+#, no-wrap
+msgid "Applying a Patch to RH-SSO Using the Management Console"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:60
+#, no-wrap
+msgid "Open the link:{appserver_managementconsole_link}[management console] and navigate to the *Patch Management* view.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:61
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:126
+#, no-wrap
+msgid "For a standalone server, click the *Patching* tab.\n"
+msgstr ""
+
+#. type: Block title
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:62
+#, no-wrap
+msgid "The Patch Management Screen for a Standalone Server"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:64
+#, no-wrap
+msgid "image:images/patching-standalone-tab.png[The Patch Management Screen for a Standalone Server]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:65
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:127
+#, no-wrap
+msgid "For a server in a managed domain, click the *Patching* tab, then select the host that you want to patch from the table, and click *View*.\n"
+msgstr ""
+
+#. type: Block title
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:66
+#, no-wrap
+msgid "The Patch Management Screen for a Managed Domain"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:68
+#, no-wrap
+msgid "image:images/patching-domain-tab.png[The Patch Management Screen for a Managed Domain]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:70
+#, no-wrap
+msgid "Click *Apply a New Patch*.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:71
+#, no-wrap
+msgid "If you are patching a managed domain host, on the next screen select whether to shutdown the servers on the host, and click *Next*.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:73
+#, no-wrap
+msgid "Click the *Browse* button, select the downloaded patch you want to apply, and then click *Next*.\n"
+msgstr ""
+
+#. type: Block title
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:74
+#, no-wrap
+msgid "Apply Patch Screen"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:76
+#, no-wrap
+msgid "image:images/patching-select-patch.png[Apply Patch Screen]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:77
+#, no-wrap
+msgid "If there are any conflicts in attempting to apply the patch, a warning will be displayed. Click *View error details* to see the detail of the conflicts. If there is a conflict, you can either cancel the operation, or select the *Override all conflicts* check box and click *Next*. Overriding conflicts will result in the content of the patch overriding any user modifications.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:79
+#, no-wrap
+msgid "After the patch has been successfully applied, select whether to restart RH-SSO now for the patch to take effect, and click *Finish*.\n"
+msgstr ""
+
+#. type: Title ==
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:80
+#, no-wrap
+msgid "Rolling Back a Patch"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:83
+#, no-wrap
+msgid "You can roll back a previously applied RH-SSO patch using either the xref:zip_rollback_management_cli[management CLI] or the xref:zip_rollback_management_console[management console].\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:85
+#, no-wrap
+msgid "Rolling back a patch using the patch management system is not intended as a general uninstall functionality. It is only intended to be used immediately after the application of a patch that had undesirable effects.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:88
+#, no-wrap
+msgid "A patch that was previously applied.\n"
+msgstr ""
+
+#. type: delimited block =
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:92
+#, no-wrap
+msgid "When following either procedure, use caution when specifying the value of the `Reset Configuration` option:\n"
+msgstr ""
+
+#. type: delimited block =
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:94
+#, no-wrap
+msgid "If set to `TRUE`, the patch rollback process will also roll back the RH-SSO server configuration files to their pre-patch state. Any changes that were made to the RH-SSO server configuration files after the patch was applied will be lost.\n"
+msgstr ""
+
+#. type: delimited block =
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:96
+#, no-wrap
+msgid "If set to `FALSE`, the server configuration files will not be rolled back. In this situation, it is possible that the server will not start after the rollback, as the patch may have altered configurations, such as namespaces, which may no longer be valid and will have to be fixed manually.\n"
+msgstr ""
+
+#. type: Block title
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:99
+#, no-wrap
+msgid "Rolling Back a Patch Using the Management CLI"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:101
+#, no-wrap
+msgid "From the management CLI, use the `patch history` command to find the ID of the patch that you want to roll back.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:104
+#, no-wrap
+msgid "If you are using a managed domain, you must add the `--host=_HOSTNAME_` argument to the commands in this procedure to specify the RH-SSO host.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:107
+#, no-wrap
+msgid "Roll back the patch with the appropriate patch ID from the previous step.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:111
+#, no-wrap
+msgid "patch rollback --patch-id=PATCH_ID --reset-configuration=TRUE\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:114
+#, no-wrap
+msgid "The patch tool will warn if there are any conflicts in attempting to roll back the patch. If there are conflicts, enter `patch --help` for the available arguments to re-run the command with an argument specifying how to resolve the conflicts.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:116
+#, no-wrap
+msgid "Restart the RH-SSO server for the patch roll back to take effect:\n"
+msgstr ""
+
+#. type: Block title
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:123
+#, no-wrap
+msgid "Rolling Back a Patch Using the Management Console"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:125
+#, no-wrap
+msgid "Open the management console and navigate to the *Patch Management* view.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:129
+#, no-wrap
+msgid "Select the patch that you want to rollback from those listed in the table, then click *Rollback*.\n"
+msgstr ""
+
+#. type: Block title
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:130
+#, no-wrap
+msgid "Recent Patch History Screen"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:132
+#, no-wrap
+msgid "image:images/patching-rollback-table.png[Recent Patch History Screen]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:133
+#, no-wrap
+msgid "If you are rolling back a patch on a managed domain host, on the next screen select whether to shutdown the servers on the host, and click *Next*.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:135
+#, no-wrap
+msgid "Choose your options for the rollback process, then click *Next*.\n"
+msgstr ""
+
+#. type: Block title
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:136
+#, no-wrap
+msgid "Patch Rollback Options"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:138
+#, no-wrap
+msgid "image:images/patching-rollback-options.png[Patch Rollback Options]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:140
+#, no-wrap
+msgid "Confirm the options and the patch to be rolled back, then click *Next*.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:141
+#, no-wrap
+msgid "If there are any conflicts in attempting to rollback the patch and the *Override all* option was not selected, a warning will be displayed. Click *View error details* to see the detail of the conflicts. If there is a conflict, you can either cancel the operation, or click *Choose Options* and try the operation again with the *Override all* check box selected. Overriding conflicts will result in the rollback operation overriding any user modifications.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:143
+#, no-wrap
+msgid "After the patch has been successfully rolled back, select whether to restart the RH-SSO server now for the changes to take effect, and click *Finish*.\n"
+msgstr ""
+
+#. type: Title ==
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:144
+#, no-wrap
+msgid "Clearing Patch History"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:147
+#, no-wrap
+msgid "When patches are applied to a RH-SSO server, the content and history of the patches are preserved for use in rollback operations. If multiple cumulative patches are applied, the patch history may use a significant amount of disk space.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:149
+#, no-wrap
+msgid "You can use the following management CLI command to remove all older patches that are not currently in use. When using this command, only the latest cumulative patch is preserved along with the GA release. This is only useful for freeing space if multiple cumulative patches have previously been applied.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:153
+#, no-wrap
+msgid "/core-service=patching:ageout-history\n"
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/rhsso/patching-zip-installation.adoc:155
+#, no-wrap
+msgid "If you clear the patch history, you will not be able to roll back a previously applied patch.\n"
+msgstr ""

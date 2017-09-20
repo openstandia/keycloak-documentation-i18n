@@ -34,7 +34,7 @@ type po4a
 if [ "$?" -eq 0 ]; then
     po4a po4a.cfg
 else
-    docker run --rm -it -v $(pwd):/build -w /build -u $UID:$GID openstandia/keycloak-documentation po4a --no-update po4a.cfg
+    docker run --rm -it -v $(pwd):/build -w /build -u $UID:$GID openstandia/keycloak-documentation po4a --no-update --package-name="keycloak-documentation-i18n" --package-version=" " --copyright-holder="Nomura Research Institute, Ltd." po4a.cfg
 fi
 
 
@@ -42,6 +42,10 @@ fi
 for l in $TARGET_LANG; do
     cd $TRANSLATED_DIR/$l
     mvn install -DskipTests=true
+    if [ "$?" -ne 0 ]; then
+        echo "Translation failed!"
+        exit 1
+    fi 
 done
 
 

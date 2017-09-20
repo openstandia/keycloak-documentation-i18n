@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ====
+#: source/securing_apps/topics/oidc/java/jaas.adoc:2
+#, no-wrap
+msgid "JAAS plugin"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/jaas.adoc:7
+#, no-wrap
+msgid ""
+"It's generally not needed to use JAAS for most of the applications, especially if they are HTTP based, and you should most likely choose one of our other adapters.\n"
+"However, some applications and systems may still rely on pure legacy JAAS solution.\n"
+"{project_name} provides two login modules to help in these situations.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/jaas.adoc:9
+#, no-wrap
+msgid "The provided login modules are:\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/securing_apps/topics/oidc/java/jaas.adoc:10
+#, no-wrap
+msgid "org.keycloak.adapters.jaas.DirectAccessGrantsLoginModule"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/jaas.adoc:15
+#, no-wrap
+msgid ""
+"This login module allows to authenticate with username/password from {project_name}.\n"
+"It's using <<_resource_owner_password_credentials_flow,Resource Owner Password Credentials>> flow to validate if the provided\n"
+"username/password is valid. It's useful for non-web based systems, which need to rely on JAAS and want to use {project_name}, but can't use the standard browser\n"
+"based flows due to their non-web nature. Example of such application could be messaging or SSH.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/securing_apps/topics/oidc/java/jaas.adoc:16
+#, no-wrap
+msgid "org.keycloak.adapters.jaas.BearerTokenLoginModule"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/jaas.adoc:20
+#, no-wrap
+msgid ""
+"This login module allows to authenticate with {project_name} access token passed to it through CallbackHandler as password.\n"
+"It may be useful for example in case, when you have {project_name} access token from standard based authentication flow and your web application then\n"
+"needs to talk to external non-web based system, which rely on JAAS. For example a messaging system.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/jaas.adoc:22
+#, no-wrap
+msgid "Both modules use the following configuration properties:\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/securing_apps/topics/oidc/java/jaas.adoc:23
+#, no-wrap
+msgid "keycloak-config-file"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/jaas.adoc:27
+#, no-wrap
+msgid ""
+"The location of the `keycloak.json` configuration file. The configuration file can either be located on the filesystem or on the classpath. If it's located\n"
+"on the classpath you need to prefix the location with `classpath:` (for example `classpath:/path/keycloak.json`).\n"
+"This is _REQUIRED._\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/securing_apps/topics/oidc/java/jaas.adoc:28
+#, no-wrap
+msgid "`role-principal-class`"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/jaas.adoc:31
+#, no-wrap
+msgid ""
+"Configure alternative class for Role principals attached to JAAS Subject.\n"
+"Default value is `org.keycloak.adapters.jaas.RolePrincipal`. Note: The class is required to have a constructor with a single `String` argument.\n"
+msgstr ""

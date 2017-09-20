@@ -1,0 +1,256 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ===
+#: source/server_admin/topics/realms/keys.adoc:2
+#: source/upgrading/topics/rhsso/changes.adoc:5
+#, no-wrap
+msgid "Realm Keys"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:6
+#, no-wrap
+msgid ""
+"The authentication protocols that are used by {project_name} require cryptographic signatures and sometimes\n"
+"encryption.  {project_name} uses asymmetric key pairs, a private and public key, to accomplish this.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:10
+#, no-wrap
+msgid ""
+"{project_name} has a single active keypair at a time, but can have several passive keys as well. The active keypair\n"
+"is used to create new signatures, while the passive keypairs can be used to verify previous signatures. This makes it\n"
+"possible to regularly rotate the keys without any downtime or interruption to users.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:12
+#, no-wrap
+msgid "When a realm is created a key pair and a self-signed certificate is automatically generated.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:16
+#, no-wrap
+msgid ""
+"To view the active keys for a realm select the realm in the admin console click on `Realm settings` then `Keys`. This\n"
+"will show the currently active keys for the realm. {project_name} currently only supports RSA signatures so there\n"
+"is only one active keypair. In the future as more signature algorithms are added there will be more active keypairs.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:21
+#, no-wrap
+msgid ""
+"To view all available keys select `All`. This will show all active, passive and disabled keys. A keypair can have the\n"
+"status `Active`, but still not be selected as the currently active keypair for the realm. The selected active pair which\n"
+"is used for signatures is selected based on the first key provider sorted by priority that is able to provide an\n"
+" active keypair.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/realms/keys.adoc:22
+#, no-wrap
+msgid "Rotating keys"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:26
+#, no-wrap
+msgid ""
+"It's recommended to regularly rotate keys. To do so you should start by creating new keys with a higher priority than\n"
+"the existing active keys. Or create new keys with the same priority and making the previous keys passive.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:31
+#, no-wrap
+msgid ""
+"Once new keys are available all new tokens and cookies will be signed with the new keys. When a user authenticates to an\n"
+"application the SSO cookie is updated with the new signature. When OpenID Connect tokens are refreshed new tokens are\n"
+"signed with the new keys. This means that over time all cookies and tokens will use the new keys and after a while the\n"
+"old keys can be removed.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:35
+#, no-wrap
+msgid ""
+"How long you wait to delete old keys is a tradeoff between security and making sure all cookies and tokens are updated.\n"
+"In general it should be acceptable to drop old keys after a few weeks. Users that have not been active in the period\n"
+"between the new keys where added and the old keys removed will have to re-authenticate.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:38
+#, no-wrap
+msgid ""
+"This also applies to offline tokens. To make sure they are updated the applications need to refresh the tokens before\n"
+"the old keys are removed.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:41
+#, no-wrap
+msgid ""
+"As a guideline it may be a good idea to create new keys every 3-6 months and delete old keys 1-2 months after the new\n"
+"keys where created.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/realms/keys.adoc:42
+#, no-wrap
+msgid "Adding a generated keypair"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:47
+#, no-wrap
+msgid ""
+"To add a new generated keypair select `Providers` and choose `rsa-generated` from the dropdown. You can change the priority\n"
+"to make sure the new keypair becomes the active keypair. You can also change the `keysize` if you want smaller or larger keys (default is 2048,\n"
+"supported values are 1024, 2048 and 4096).\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:49
+#, no-wrap
+msgid "Click `Save` to add the new keys. This will generated a new keypair including a self-signed certificate.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:52
+#, no-wrap
+msgid ""
+"Changing the priority for a provider will not cause the keys to be re-generated, but if you want to change the keysize\n"
+"you can edit the provider and new keys will be generated.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/realms/keys.adoc:53
+#, no-wrap
+msgid "Adding an existing keypair and certificate"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:57
+#, no-wrap
+msgid ""
+"To add a keypair and certificate obtained elsewhere select `Providers` and choose `rsa` from the dropdown. You can change\n"
+"the priority to make sure the new keypair becomes the active keypair.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:60
+#, no-wrap
+msgid ""
+"Click on `Select file` for `Private RSA Key` to upload your private key. The file should be encoded in PEM format. You\n"
+"don't need to upload the public key as it is automatically extracted from the private key.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:63
+#, no-wrap
+msgid ""
+"If you have a signed certificate for the keys click on `Select file` next to `X509 Certificate`. If you don't have one\n"
+" you can skip this and a self-signed certificate will be generated.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/realms/keys.adoc:64
+#, no-wrap
+msgid "Loading keys from a Java Keystore"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:68
+#, no-wrap
+msgid ""
+"To add a keypair and certificate stored in a Java Keystore file on the host select `Providers` and choose `java-keystore`\n"
+"from the dropdown. You can change the priority to make sure the new keypair becomes the active keypair.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:70
+#, no-wrap
+msgid "Fill in the values for `Keystore`, `Keystore Password`, `Key Alias` and `Key Password` and click on `Save`.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/realms/keys.adoc:71
+#, no-wrap
+msgid "Making keys passive"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:76
+#, no-wrap
+msgid ""
+"Locate the keypair in `Active` or `All` then click on the provider in the `Provider` column. This will take you to the\n"
+"configuration screen for the key provider for the keys. Click on `Active` to turn it `OFF`, then click on `Save`. The\n"
+"keys will no longer be active and can only be used for verifying signatures.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/realms/keys.adoc:77
+#, no-wrap
+msgid "Disabling keys"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:82
+#, no-wrap
+msgid ""
+"Locate the keypair in `Active` or `All` then click on the provider in the `Provider` column. This will take you to the\n"
+"configuration screen for the key provider for the keys. Click on `Enabled` to turn it `OFF`, then click on `Save`. The\n"
+"keys will no longer be enabled.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:84
+#, no-wrap
+msgid "Alternatively, you can delete the provider from the `Providers` table.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/realms/keys.adoc:85
+#, no-wrap
+msgid "Compromised keys"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:90
+#, no-wrap
+msgid ""
+"{project_name} has the signing keys stored just locally and they are never shared with the client applications, users or other\n"
+"entities. However if you think that your realm signing key was compromised, you should first generate new keypair as described above and\n"
+"then immediatelly remove the compromised keypair.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/realms/keys.adoc:95
+#, no-wrap
+msgid ""
+"Then to ensure that client applications won't accept the tokens signed by the compromised key, you should update and push not-before policy for\n"
+"the realm, which is doable from the admin console. Pushing new policy will ensure that client applications won't accept the existing\n"
+"tokens signed by the compromised key, but also the client application will be forced to download new keypair from the {project_name}, hence\n"
+"the tokens signed by the compromised key won't be valid anymore. Note that your REST and confidential clients must have set `Admin URL`, so that\n"
+"{project_name} is able to send them the request about pushed not-before policy.\n"
+msgstr ""

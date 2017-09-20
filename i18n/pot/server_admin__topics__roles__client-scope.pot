@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ===
+#: source/server_admin/topics/roles/client-scope.adoc:3
+#, no-wrap
+msgid "Client Scope"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/roles/client-scope.adoc:11
+#, no-wrap
+msgid ""
+"When an OIDC access token or SAML assertion is created, all the user role mappings of the user are, by default, added as claims\n"
+"within the token or assertion.  Applications use this information to make access decisions on the resources controlled by that\n"
+"application.  In {project_name}, access tokens are digitally signed and can actually be re-used by the application\n"
+"to invoke on other remotely secured REST services.  This means that if an application gets compromised or there is a rogue\n"
+"client registered with the realm, attackers can get access tokens that have a broad range of permissions and your whole\n"
+"network is compromised.  This is where _client scope_ becomes important.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/roles/client-scope.adoc:17
+#, no-wrap
+msgid ""
+"_Client scope_ is a way to limit the roles that get declared inside an access token.  When a client requests that a user\n"
+"be authenticated, the access token they receive back will only contain the role mappings you've explicitly specified\n"
+"for the client's scope.  This allows you to limit the permissions each individual access token has rather than giving the\n"
+"client access to all of the user's permissions.  By default, each client gets all the role mappings of the user.\n"
+"You can view this in the `Scope` tab of each client.\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/roles/client-scope.adoc:18
+#, no-wrap
+msgid "Full Scope"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/roles/client-scope.adoc:20
+#, no-wrap
+msgid "image:{project_images}/full-client-scope.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/roles/client-scope.adoc:25
+#, no-wrap
+msgid ""
+"You can see from the picture that the effective roles of the scope are every declared role in the realm.\n"
+"To change this default behavior, you must explicitly turn off the `Full Scope Allowed` switch and declare the specific roles you want in each individual\n"
+"client.  Alternatively, you can also use <<_client_templates, client templates>>\n"
+"to define the scope for a whole set of clients.\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/roles/client-scope.adoc:26
+#, no-wrap
+msgid "Partial Scope"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/roles/client-scope.adoc:28
+#, no-wrap
+msgid "image:{project_images}/client-scope.png[]\n"
+msgstr ""

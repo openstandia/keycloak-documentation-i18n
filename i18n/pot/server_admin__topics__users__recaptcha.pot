@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ====
+#: source/server_admin/topics/users/recaptcha.adoc:3
+#, no-wrap
+msgid "reCAPTCHA Support"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/users/recaptcha.adoc:9
+#, no-wrap
+msgid ""
+"To safeguard registration against bots, {project_name} has integration with Google reCAPTCHA.\n"
+"To enable this you need to first go to link:https://developers.google.com/recaptcha/[Google Recaptcha Website]\n"
+"and create an API key so that you can get your reCAPTCHA site key and secret.\n"
+"(FYI, localhost works by default so you don't have to specify a domain).\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/users/recaptcha.adoc:13
+#, no-wrap
+msgid ""
+"Next, there are a few steps you need to perform in the {project_name} Admin Console.\n"
+"Click the `Authentication` left menu item and go to the `Flows` tab.  Select the `Registration` flow from the drop down\n"
+"list on this page.\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/users/recaptcha.adoc:14
+#, no-wrap
+msgid "Registration Flow"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/users/recaptcha.adoc:16
+#, no-wrap
+msgid "image:{project_images}/registration-flow.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/users/recaptcha.adoc:21
+#, no-wrap
+msgid ""
+"Set the 'reCAPTCHA' requirement to `Required` by clicking the appropriate radio button.  This will enable\n"
+"reCAPTCHA on the screen.  Next, you have to enter in the reCAPTCHA site key and secret that you generated at the Google reCAPTCHA Website.\n"
+"Click on the 'Actions' button that is to the right of the reCAPTCHA flow entry, then \"Config\" link, and enter in the reCAPTCHA site key and secret on this config page.\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/users/recaptcha.adoc:22
+#, no-wrap
+msgid "Recaptcha Config Page"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/users/recaptcha.adoc:24
+#, no-wrap
+msgid "image:{project_images}/recaptcha-config.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/users/recaptcha.adoc:31
+#, no-wrap
+msgid ""
+"The final step you have to do is to change some default HTTP response headers that {project_name} sets.  {project_name}\n"
+"will prevent a website from including any login page within an iframe.  This is to prevent clickjacking attacks.  You need to\n"
+"authorize Google to use the registration page within an iframe.  Go to\n"
+"the `Realm Settings` left menu item and then go to the `Security Defenses` tab.  You will need to add `\\https://www.google.com` to the\n"
+"values of both the `X-Frame-Options` and `Content-Security-Policy` headers.\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/users/recaptcha.adoc:32
+#, no-wrap
+msgid "Authorizing Iframes"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/users/recaptcha.adoc:34
+#: source/server_admin/topics/threat/clickjacking.adoc:16
+#, no-wrap
+msgid "image:{project_images}/security-headers.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/users/recaptcha.adoc:37
+#, no-wrap
+msgid ""
+"Once you do this, reCAPTCHA should show up on your registration page.  You may want to edit _register.ftl_ in your login\n"
+"theme to muck around with the placement and styling of the reCAPTCHA button.  See the link:{developerguide_link}[{developerguide_name}]\n"
+"for more information on extending and creating themes.\n"
+msgstr ""

@@ -1,0 +1,237 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/import.adoc:15
+#: source/server_development/topics/user-storage/migration.adoc:27
+#, no-wrap
+msgid "There are some obvious disadvantages though to using an import strategy:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/import.adoc:21
+#: source/server_development/topics/user-storage/migration.adoc:33
+#, no-wrap
+msgid ""
+"With the import approach, you have to keep local keycloak storage and external storage in sync. The User Storage SPI\n"
+"has capability interfaces that you can implement to support synchronization, but this can quickly become painful and messy.\n"
+msgstr ""
+
+#. type: Title ===
+#: source/server_development/topics/user-storage/migration.adoc:2
+#, no-wrap
+msgid "Migrating from an Earlier User Federation SPI"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:6
+#, no-wrap
+msgid ""
+"This chapter is only applicable if you have implemented a provider using the earlier (and now removed)\n"
+"       User Federation SPI.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:10
+#, no-wrap
+msgid ""
+"In Keycloak version 2.4.0 and earlier there was a User Federation SPI. Red Hat Single Sign-On version 7.0, although unsupported, also had\n"
+"this earlier SPI available as well. This earlier User Federation SPI has been removed from Keycloak version 2.5.0 and Red Hat Single Sign-On version 7.1.\n"
+"However, if you have written a provider with this earlier SPI, this chapter discusses some strategies you can use to port it.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/migration.adoc:12
+#, no-wrap
+msgid "Import vs. Non-Import"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:17
+#, no-wrap
+msgid ""
+"The earlier User Federation SPI required you to create a local copy of a user in the {project_name}'s database\n"
+"and import information from your external store to the local copy. However, this is no longer a requirement. You can still\n"
+"port your earlier provider as-is, but you should consider whether a non-import strategy might be a better approach.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:19
+#, no-wrap
+msgid "Advantages of the import strategy:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:22
+#, no-wrap
+msgid ""
+"{project_name} basically becomes a persistence user cache for your external store. Once the user is imported\n"
+"you'll no longer hit the external store, thus taking load off of it.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:25
+#, no-wrap
+msgid ""
+"If you are moving to {project_name} as your official user store and deprecating the earlier external store, you\n"
+"can slowly migrate applications to use {project_name}. When all applications have been migrated, unlink the\n"
+"imported user, and retire the earlier legacy external store.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:31
+#, no-wrap
+msgid ""
+"Looking up a user for the first time will require multiple updates to {project_name} database. This can\n"
+"be a big performance loss under load and put a lot of strain on the {project_name} database. The user federated\n"
+"storage approach will only store extra data as needed and might never be used depending on the capabilities of your external store.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/migration.adoc:34
+#, no-wrap
+msgid "UserFederationProvider vs. UserStorageProvider"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:37
+#, no-wrap
+msgid "The first thing to notice is that `UserFederationProvider` was a complete interface. You implemented every method in this interface. However, `UserStorageProvider` has instead broken up this interface into multiple capability interfaces that you implement as needed.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:40
+#, no-wrap
+msgid ""
+"`UserFederationProvider.getUserByUsername()` and `getUserByEmail()` have exact equivalents in the new SPI. The difference between the two is how you import. If you are going to continue with an import strategy, you no longer call `KeycloakSession.userStorage().addUser()` to create the user locally. Instead you call `KeycloakSession.userLocalStorage().addUser()`.\n"
+"The `userStorage()` method no longer exists.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:46
+#, no-wrap
+msgid ""
+"The `UserFederationProvider.validateAndProxy()` method has been moved to an optional capability interface, `ImportedUserValidation`.\n"
+"You want to implement this interface if you are porting your earlier provider as-is.\n"
+"Also note that in the earlier SPI, this method was called every time the user was accessed, even if the local user is in the cache.\n"
+"In the later SPI, this method is only called when the local user is loaded from local storage. If the local user is cached,\n"
+"then the `ImportedUserValidation.validate()` method is not called at all.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:48
+#, no-wrap
+msgid "The `UserFederationProvider.isValid()` method no longer exists in the later model.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:54
+#, no-wrap
+msgid ""
+"The `UserFederationProvider` methods `synchronizeRegistrations()`, `registerUser()`, and `removeUser()` have been\n"
+"moved to the `UserRegistrationProvider` capability interface. This new interface is optional to implement so if your\n"
+"provider does not support creating and removing users, you don't have to implement it. If your earlier provider had switch\n"
+"to toggle support for registering new users, this is supported in the new SPI, returning `null` from\n"
+"`UserRegistrationProvider.addUser()` if the provider doesn't support adding users.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:63
+#, no-wrap
+msgid ""
+"The earlier `UserFederationProvider` methods centered around credentials are now encapsulated in the `CredentialInputValidator`\n"
+"and `CredentialInputUpdater` interfaces, which are also optional to implement depending on if you support validating or\n"
+"updating credentials.  Credential management used to exist in `UserModel` methods. These also have been moved to the\n"
+"`CredentialInputValidator` and `CredentialInputUpdater` interfaces.\n"
+"One thing to note that if you do not implement the `CredentialInputUpdater` interface, then\n"
+"any credentials provided by your provider can be overridden locally in {project_name} storage. So if you want\n"
+"your credentials to be read-only, implement the `CredentialInputUpdater.updateCredential()` method and\n"
+"return a `ReadOnlyException`.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:67
+#, no-wrap
+msgid ""
+"The `UserFederationProvider` query methods such as `searchByAttributes()` and `getGroupMembers()` are now encapsulated\n"
+"in an optional interface `UserQueryProvider`. If you do not implement this interface, then users will not be viewable\n"
+"in the admin console.  You'll still be able to login though.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/migration.adoc:68
+#, no-wrap
+msgid "UserFederationProviderFactory vs. UserStorageProviderFactory"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:73
+#, no-wrap
+msgid ""
+"The synchronization methods in the earlier SPI are now encapsulated within an optional `ImportSynchronization` interface.\n"
+"If you have implemented synchronization logic, then have your new `UserStorageProviderFactory` implement the\n"
+"`ImportSynchronization` interface.\n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/migration.adoc:74
+#, no-wrap
+msgid "Upgrading to a New Model"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:80
+#, no-wrap
+msgid ""
+"The User Storage SPI instances are stored in a different set of relational tables. {project_name}\n"
+"automatically runs a migration script. If any earlier User Federation providers are deployed for a realm, they are converted\n"
+"to the later storage model as is, including the `id` of the data. This migration will only happen if a User Storage provider exists\n"
+"with the same provider ID (i.e., \"ldap\", \"kerberos\") as the earlier User Federation provider.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:82
+#, no-wrap
+msgid "So, knowing this there are different approaches you can take.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:85
+#, no-wrap
+msgid ""
+"You can remove the earlier provider in your earlier {project_name} deployment. This will remove all local linked copies\n"
+"of imported users.  Then, when you upgrade {project_name}, just deploy and configure your new provider for your realm.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:89
+#, no-wrap
+msgid ""
+"The second option is to write your new provider making sure it has the same provider ID: `UserStorageProviderFactory.getId()`.\n"
+"Make sure this provider is in the `deploy/` directory of the new {project_name} installation.  Boot the server, and have\n"
+"the built-in migration script convert from the earlier data model to the later data model. In this case all your earlier linked imported\n"
+"users will work and be the same.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/migration.adoc:91
+#, no-wrap
+msgid ""
+"If you have decided to get rid of the import strategy and rewrite your User Storage provider, we suggest that you remove the earlier provider\n"
+"before upgrading {project_name}. This will remove linked local imported copies of any user you imported.\n"
+msgstr ""

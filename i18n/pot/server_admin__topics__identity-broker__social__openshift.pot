@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: source/securing_apps/topics/client-registration.adoc:131
+#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:86
+#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:95
+#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:115
+#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:197
+#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:212
+#: source/securing_apps/topics/oidc/oidc-generic.adoc:140
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:18
+#: source/server_development/topics/admin-rest-api.adoc:34
+#: source/server_development/topics/themes.adoc:331
+#: source/upgrading/topics/migrate_db.adoc:25
+#: source/upgrading/topics/migrate_db.adoc:49
+#, no-wrap
+msgid "[source,bash]\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/identity-broker/configuration.adoc:17
+#: source/server_admin/topics/identity-broker/oidc.adoc:10
+#: source/server_admin/topics/identity-broker/saml.adoc:9
+#: source/server_admin/topics/identity-broker/social/facebook.adoc:7
+#: source/server_admin/topics/identity-broker/social/github.adoc:7
+#: source/server_admin/topics/identity-broker/social/google.adoc:6
+#: source/server_admin/topics/identity-broker/social/linked-in.adoc:7
+#: source/server_admin/topics/identity-broker/social/microsoft.adoc:7
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:9
+#: source/server_admin/topics/identity-broker/social/paypal.adoc:7
+#: source/server_admin/topics/identity-broker/social/stack-overflow.adoc:7
+#: source/server_admin/topics/identity-broker/social/twitter.adoc:7
+#, no-wrap
+msgid "Add Identity Provider"
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:2
+#, no-wrap
+msgid "Openshift"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:5
+#, no-wrap
+msgid "Openshift Online is currently in the developer preview mode. This documentation has been based on on-premise installations and local `minishift` development environment.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:8
+#, no-wrap
+msgid ""
+"There are a just a few steps you have to complete to be able to login to OpenShift.  First, go to the `Identity Providers` left menu item\n"
+"and select `Openshift` from the `Add provider` drop down list.  This will bring you to the `Add identity provider` page.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:11
+#, no-wrap
+msgid "image:images/openshift-add-identity-provider.png[]\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:12
+#, no-wrap
+msgid "Registering OAuth client"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:15
+#, no-wrap
+msgid "You can register your client using `oc` command line tool.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:29
+#, no-wrap
+msgid ""
+"$ oc create -f <(echo '\n"
+"kind: OAuthClient\n"
+"apiVersion: v1\n"
+"metadata:\n"
+" name: kc-client <1>\n"
+"secret: \"...\" <2>\n"
+"redirectURIs:\n"
+" - \"http://www.example.com/\" <3>\n"
+"grantMethod: prompt <4>\n"
+"')\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:31
+#, no-wrap
+msgid "The `name` of your OAuth client. Passed as `client_id` request parameter when making requests to `_<openshift_master>_/oauth/authorize` and `_<openshift_master>_/oauth/token`.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:32
+#, no-wrap
+msgid "`secret` is used as the `client_secret` request parameter.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:33
+#, no-wrap
+msgid "The `redirect_uri` parameter specified in requests to `_<openshift_master>_/oauth/authorize` and `_<openshift_master>_/oauth/token` must be equal to (or prefixed by) one of the URIs in `redirectURIs`.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:34
+#, no-wrap
+msgid "The `grantMethod` is used to determine what action to take when this client requests tokens and has not yet been granted access by the user.\n"
+msgstr ""
+
+#. type: delimited block =
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:38
+#, no-wrap
+msgid ""
+"Use client ID and secret defined by `oc create` command to enter them back on the {project_name} `Add identity provider` page.\n"
+"Go back to {project_name} and specify those items.\n"
+msgstr ""
+
+#. type: delimited block =
+#: source/server_admin/topics/identity-broker/social/openshift.adoc:39
+#, no-wrap
+msgid "Please refer to https://docs.openshift.org/latest/architecture/additional_concepts/authentication.html#oauth[official Openshift documentation] for more detailed guides.\n"
+msgstr ""

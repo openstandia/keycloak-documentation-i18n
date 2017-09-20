@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: source/server_installation/topics/clustering/load-balancer.adoc:42
+#: source/server_installation/topics/clustering/load-balancer.adoc:64
+#: source/server_installation/topics/clustering/load-balancer.adoc:157
+#: source/server_installation/topics/network/https.adoc:142
+#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:60
+#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:16
+#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:29
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:16
+#: source/securing_apps/topics/saml/java/general-config.adoc:9
+#: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:51
+#: source/server_admin/topics/authentication/x509.adoc:115
+#, no-wrap
+msgid "[source,xml,subs=\"attributes+\"]\n"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/saml/java/general-config.adoc:3
+#, no-wrap
+msgid "General Adapter Config"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/general-config.adoc:7
+#, no-wrap
+msgid ""
+"Each SAML client adapter supported by {project_name} can be configured by a simple XML text file.\n"
+"This is what one might look like: \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/general-config.adoc:38
+#, no-wrap
+msgid ""
+"<keycloak-saml-adapter xmlns=\"urn:keycloak:saml:adapter\"\n"
+"                       xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"                       xsi:schemaLocation=\"urn:keycloak:saml:adapter {saml_adapter_xsd_urn}\">\n"
+"    <SP entityID=\"http://localhost:8081/sales-post-sig/\"\n"
+"        sslPolicy=\"EXTERNAL\"\n"
+"        nameIDPolicyFormat=\"urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified\"\n"
+"        logoutPage=\"/logout.jsp\"\n"
+"        forceAuthentication=\"false\"\n"
+"        isPassive=\"false\"\n"
+"        turnOffChangeSessionIdOnLogin=\"false\"\n"
+"        autodetectBearerOnly=\"false\">\n"
+"        <Keys>\n"
+"            <Key signing=\"true\" >\n"
+"                <KeyStore resource=\"/WEB-INF/keystore.jks\" password=\"store123\">\n"
+"                    <PrivateKey alias=\"http://localhost:8080/sales-post-sig/\" password=\"test123\"/>\n"
+"                    <Certificate alias=\"http://localhost:8080/sales-post-sig/\"/>\n"
+"                </KeyStore>\n"
+"            </Key>\n"
+"        </Keys>\n"
+"        <PrincipalNameMapping policy=\"FROM_NAME_ID\"/>\n"
+"        <RoleIdentifiers>\n"
+"            <Attribute name=\"Role\"/>\n"
+"        </RoleIdentifiers>\n"
+"        <IDP entityID=\"idp\"\n"
+"             signaturesRequired=\"true\">\n"
+"        <SingleSignOnService requestBinding=\"POST\"\n"
+"                             bindingUrl=\"http://localhost:8081/auth/realms/demo/protocol/saml\"\n"
+"                    />\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/general-config.adoc:56
+#, no-wrap
+msgid ""
+"            <SingleLogoutService\n"
+"                    requestBinding=\"POST\"\n"
+"                    responseBinding=\"POST\"\n"
+"                    postBindingUrl=\"http://localhost:8081/auth/realms/demo/protocol/saml\"\n"
+"                    redirectBindingUrl=\"http://localhost:8081/auth/realms/demo/protocol/saml\"\n"
+"                    />\n"
+"            <Keys>\n"
+"                <Key signing=\"true\">\n"
+"                    <KeyStore resource=\"/WEB-INF/keystore.jks\" password=\"store123\">\n"
+"                        <Certificate alias=\"demo\"/>\n"
+"                    </KeyStore>\n"
+"                </Key>\n"
+"            </Keys>\n"
+"        </IDP>\n"
+"     </SP>\n"
+"</keycloak-saml-adapter>\n"
+"----    \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/general-config.adoc:60
+#, no-wrap
+msgid ""
+"Some of these configuration switches may be adapter specific and some are common across all adapters.\n"
+"For Java adapters you can use `${...}` enclosure as System property replacement.\n"
+"For example `${jboss.server.config.dir}`.\n"
+msgstr ""

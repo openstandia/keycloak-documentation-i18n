@@ -1,0 +1,351 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 06:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:3
+#, no-wrap
+msgid "Securing an Apache Camel Application"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:6
+msgid ""
+"You can secure Apache camel endpoints implemented with the http://camel."
+"apache.org/jetty.html[camel-jetty] component by adding securityHandler with "
+"`KeycloakJettyAuthenticator` and the proper security constraints injected. "
+"You can add the `OSGI-INF/blueprint/blueprint.xml` file to your camel "
+"application with a similar configuration as below. The roles, security "
+"constraint mappings, and {project_name} adapter configuration might differ "
+"slightly depending on your environment and needs."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:8
+#: source/securing_apps/topics/oidc/java/fuse/classic-war.adoc:13
+#: source/securing_apps/topics/oidc/java/fuse/classic-war.adoc:55
+#: source/server_admin/topics/admin-cli.adoc:104
+#: source/server_admin/topics/admin-cli.adoc:168
+#: source/server_admin/topics/admin-cli.adoc:262
+#: source/server_admin/topics/admin-cli.adoc:407
+#: source/server_admin/topics/admin-cli.adoc:433
+#: source/server_admin/topics/admin-cli.adoc:453
+#: source/server_admin/topics/admin-cli.adoc:463
+#: source/server_admin/topics/admin-cli.adoc:471
+#: source/server_admin/topics/admin-cli.adoc:482
+#: source/server_admin/topics/admin-cli.adoc:522
+#: source/server_admin/topics/admin-cli.adoc:529
+#: source/server_admin/topics/admin-cli.adoc:536
+#: source/server_admin/topics/admin-cli.adoc:548
+#: source/server_admin/topics/admin-cli.adoc:555
+#: source/server_admin/topics/admin-cli.adoc:562
+#: source/server_admin/topics/admin-cli.adoc:632
+#: source/server_admin/topics/admin-cli.adoc:641
+#: source/server_admin/topics/admin-cli.adoc:693
+#: source/server_admin/topics/admin-cli.adoc:728
+#: source/server_admin/topics/admin-cli.adoc:744
+#: source/server_admin/topics/admin-cli.adoc:751
+#: source/server_admin/topics/admin-cli.adoc:758
+#: source/server_admin/topics/admin-cli.adoc:770
+#: source/server_admin/topics/admin-cli.adoc:777
+#: source/server_admin/topics/admin-cli.adoc:784
+#: source/server_admin/topics/admin-cli.adoc:831
+#: source/server_admin/topics/admin-cli.adoc:878
+#: source/server_admin/topics/admin-cli.adoc:901
+#: source/server_admin/topics/admin-cli.adoc:919
+#: source/server_admin/topics/admin-cli.adoc:928
+#: source/server_admin/topics/admin-cli.adoc:937
+#: source/server_admin/topics/admin-cli.adoc:951
+#: source/server_admin/topics/admin-cli.adoc:958
+#: source/server_admin/topics/admin-cli.adoc:965
+#: source/server_admin/topics/admin-cli.adoc:977
+#: source/server_admin/topics/admin-cli.adoc:984
+#: source/server_admin/topics/admin-cli.adoc:991
+#: source/server_admin/topics/admin-cli.adoc:1020
+#: source/server_admin/topics/admin-cli.adoc:1038
+#: source/server_admin/topics/admin-cli.adoc:1053
+#: source/server_admin/topics/admin-cli.adoc:1120
+#: source/server_admin/topics/admin-cli.adoc:1148
+#: source/server_admin/topics/admin-cli.adoc:1158
+#: source/server_admin/topics/admin-cli.adoc:1167
+#: source/server_admin/topics/admin-cli.adoc:1176
+#: source/server_admin/topics/admin-cli.adoc:1189
+#: source/server_admin/topics/admin-cli.adoc:1199
+#: source/server_admin/topics/admin-cli.adoc:1209
+#: source/server_admin/topics/admin-cli.adoc:1219
+#: source/server_admin/topics/admin-cli.adoc:1229
+msgid "For example:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:12
+#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:12
+#, no-wrap
+msgid "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:19
+#, no-wrap
+msgid ""
+"<blueprint xmlns=\"http://www.osgi.org/xmlns/blueprint/v1.0.0\"\n"
+"           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"           xmlns:camel=\"http://camel.apache.org/schema/blueprint\"\n"
+"           xsi:schemaLocation=\"\n"
+"       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd\n"
+"       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd\">\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:27
+#, no-wrap
+msgid ""
+"    <bean id=\"kcAdapterConfig\" class=\"org.keycloak.representations.adapters.config.AdapterConfig\">\n"
+"        <property name=\"realm\" value=\"demo\"/>\n"
+"        <property name=\"resource\" value=\"admin-camel-endpoint\"/>\n"
+"        <property name=\"bearerOnly\" value=\"true\"/>\n"
+"        <property name=\"authServerUrl\" value=\"http://localhost:8080/auth\" />\n"
+"        <property name=\"sslRequired\" value=\"EXTERNAL\"/>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:31
+#, no-wrap
+msgid ""
+"    <bean id=\"keycloakAuthenticator\" class=\"org.keycloak.adapters.jetty.KeycloakJettyAuthenticator\">\n"
+"        <property name=\"adapterConfig\" ref=\"kcAdapterConfig\"/>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:42
+#, no-wrap
+msgid ""
+"    <bean id=\"constraint\" class=\"org.eclipse.jetty.util.security.Constraint\">\n"
+"        <property name=\"name\" value=\"Customers\"/>\n"
+"        <property name=\"roles\">\n"
+"            <list>\n"
+"                <value>admin</value>\n"
+"            </list>\n"
+"        </property>\n"
+"        <property name=\"authenticate\" value=\"true\"/>\n"
+"        <property name=\"dataConstraint\" value=\"0\"/>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:47
+#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:54
+#, no-wrap
+msgid ""
+"    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
+"        <property name=\"constraint\" ref=\"constraint\"/>\n"
+"        <property name=\"pathSpec\" value=\"/*\"/>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:58
+#, no-wrap
+msgid ""
+"    <bean id=\"securityHandler\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
+"        <property name=\"authenticator\" ref=\"keycloakAuthenticator\" />\n"
+"        <property name=\"constraintMappings\">\n"
+"            <list>\n"
+"                <ref component-id=\"constraintMapping\" />\n"
+"            </list>\n"
+"        </property>\n"
+"        <property name=\"authMethod\" value=\"BASIC\"/>\n"
+"        <property name=\"realmName\" value=\"does-not-matter\"/>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:62
+#, no-wrap
+msgid ""
+"    <bean id=\"sessionHandler\" class=\"org.keycloak.adapters.jetty.spi.WrappingSessionHandler\">\n"
+"        <property name=\"handler\" ref=\"securityHandler\" />\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:64
+#, no-wrap
+msgid "    <bean id=\"helloProcessor\" class=\"org.keycloak.example.CamelHelloProcessor\" />\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:74
+#, no-wrap
+msgid ""
+"    <camelContext id=\"blueprintContext\"\n"
+"                  trace=\"false\"\n"
+"                  xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
+"        <route id=\"httpBridge\">\n"
+"            <from uri=\"jetty:http://0.0.0.0:8383/admin-camel-endpoint?handlers=sessionHandler&amp;matchOnUriPrefix=true\" />\n"
+"            <process ref=\"helloProcessor\" />\n"
+"            <log message=\"The message from camel endpoint contains ${body}\"/>\n"
+"        </route>\n"
+"    </camelContext>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:76
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:71
+#: source/securing_apps/topics/oidc/java/fuse/servlet-whiteboard.adoc:60
+#, no-wrap
+msgid "</blueprint>\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:80
+msgid ""
+"The `Import-Package` in `META-INF/MANIFEST.MF` needs to contain these "
+"imports:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:94
+#, no-wrap
+msgid ""
+"javax.servlet;version=\"[3,4)\",\n"
+"javax.servlet.http;version=\"[3,4)\",\n"
+"org.apache.camel.*,\n"
+"org.apache.camel;version=\"[2.13,3)\",\n"
+"org.eclipse.jetty.security;version=\"[8,10)\",\n"
+"org.eclipse.jetty.server.nio;version=\"[8,10)\",\n"
+"org.eclipse.jetty.util.security;version=\"[8,10)\",\n"
+"org.keycloak.*;version=\"{project_versionMvn}\",\n"
+"org.osgi.service.blueprint,\n"
+"org.osgi.service.blueprint.container,\n"
+"org.osgi.service.event,\n"
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:96
+#, no-wrap
+msgid "Camel RestDSL"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:99
+msgid ""
+"Camel RestDSL is a Camel feature used to define your REST endpoints in a "
+"fluent way. But you must still use specific implementation classes and "
+"provide instructions on how to integrate with {project_name}."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:101
+msgid ""
+"The way to configure the integration mechanism depends on the Camel "
+"component for which you configure your RestDSL-defined routes."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:103
+msgid ""
+"The following example shows how to configure integration using the jetty "
+"component, with references to some of the beans defined in previous "
+"Blueprint example."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:116
+#, no-wrap
+msgid ""
+"<bean id=\"securityHandlerRest\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
+"    <property name=\"authenticator\" ref=\"keycloakAuthenticator\" />\n"
+"    <property name=\"constraintMappings\">\n"
+"        <list>\n"
+"            <ref component-id=\"constraintMapping\" />\n"
+"        </list>\n"
+"    </property>\n"
+"    <property name=\"authMethod\" value=\"BASIC\"/>\n"
+"    <property name=\"realmName\" value=\"does-not-matter\"/>\n"
+"</bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:120
+#, no-wrap
+msgid ""
+"<bean id=\"sessionHandlerRest\" class=\"org.keycloak.adapters.jetty.spi.WrappingSessionHandler\">\n"
+"    <property name=\"handler\" ref=\"securityHandlerRest\" />\n"
+"</bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:125
+#, no-wrap
+msgid ""
+"<camelContext id=\"blueprintContext\"\n"
+"              trace=\"false\"\n"
+"              xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:132
+#, no-wrap
+msgid ""
+"    <restConfiguration component=\"jetty\" contextPath=\"/restdsl\"\n"
+"                       port=\"8484\">\n"
+"        <!--the link with Keycloak security handlers happens here-->\n"
+"        <endpointProperty key=\"handlers\" value=\"sessionHandlerRest\"></endpointProperty>\n"
+"        <endpointProperty key=\"matchOnUriPrefix\" value=\"true\"></endpointProperty>\n"
+"    </restConfiguration>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:139
+#, no-wrap
+msgid ""
+"    <rest path=\"/hello\" >\n"
+"        <description>Hello rest service</description>\n"
+"        <get uri=\"/{id}\" outType=\"java.lang.String\">\n"
+"            <description>Just an helllo</description>\n"
+"            <to uri=\"direct:justDirect\" />\n"
+"        </get>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:141
+#, no-wrap
+msgid "    </rest>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:150
+#, no-wrap
+msgid ""
+"    <route id=\"justDirect\">\n"
+"        <from uri=\"direct:justDirect\"/>\n"
+"        <process ref=\"helloProcessor\" />\n"
+"        <log message=\"RestDSL correctly invoked ${body}\"/>\n"
+"        <setBody>\n"
+"            <constant>(__This second sentence is returned from a Camel RestDSL endpoint__)</constant>\n"
+"        </setBody>\n"
+"    </route>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:152
+#, no-wrap
+msgid "</camelContext>\n"
+msgstr ""

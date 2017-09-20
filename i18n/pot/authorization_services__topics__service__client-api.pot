@@ -1,0 +1,341 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 06:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ====
+#: source/authorization_services/topics/permission/create-resource.adoc:11
+#: source/authorization_services/topics/permission/create-scope.adoc:11
+#: source/authorization_services/topics/service/client-api.adoc:21
+#: source/authorization_services/topics/policy/aggregated-policy.adoc:19
+#: source/authorization_services/topics/policy/client-policy.adoc:11
+#: source/authorization_services/topics/policy/drools-policy.adoc:13
+#: source/authorization_services/topics/policy/js-policy.adoc:12
+#: source/authorization_services/topics/policy/role-policy.adoc:15
+#: source/authorization_services/topics/policy/time-policy.adoc:11
+#: source/authorization_services/topics/policy/user-policy.adoc:11
+#, no-wrap
+msgid "Configuration"
+msgstr ""
+
+#.  now you can use the RPT to access protected resources on the resource server
+#. type: Plain text
+#: source/authorization_services/topics/getting-started/hello-world/deploy.adoc:99
+#: source/authorization_services/topics/service/client-api.adoc:82
+#: source/authorization_services/topics/service/client-api.adoc:109
+msgid "```"
+msgstr ""
+
+#. type: Title ===
+#: source/authorization_services/topics/service/client-api.adoc:2
+#, no-wrap
+msgid "Authorization Client Java API"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:6
+msgid ""
+"Depending on your requirements, a resource server should be able to manage "
+"resources remotely or even check for permissions programmatically.  If you "
+"are using Java, you can access the {project_name} Authorization Services "
+"using the Authorization Client API."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:8
+msgid ""
+"It is targeted for resource servers that want to access the different APIs "
+"provided by the server such as the Protection, Authorization and Entitlement "
+"APIs."
+msgstr ""
+
+#. type: Title ====
+#: source/authorization_services/topics/service/client-api.adoc:9
+#, no-wrap
+msgid "Maven Dependency"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:20
+#, no-wrap
+msgid ""
+"```xml\n"
+"<dependencies>\n"
+"    <dependency>\n"
+"        <groupId>org.keycloak</groupId>\n"
+"        <artifactId>keycloak-authz-client</artifactId>\n"
+"        <version>${KEYCLOAK_VERSION}</version>\n"
+"    </dependency>\n"
+"</dependencies>\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:24
+msgid ""
+"The client configuration is defined in a ``keycloak.json`` file as follows:"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:35
+#, no-wrap
+msgid ""
+"```json\n"
+"{\n"
+"  \"realm\": \"hello-world-authz\",\n"
+"  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"  \"resource\" : \"hello-world-authz-service\",\n"
+"  \"credentials\": {\n"
+"    \"secret\": \"secret\"\n"
+"  }\n"
+"}\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:37
+#, no-wrap
+msgid "*realm* (required)\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:39
+msgid "The name of the realm."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:41
+#, no-wrap
+msgid "*auth-server-url* (required)\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:43
+msgid ""
+"The base URL of the {project_name} server. All other {project_name} pages "
+"and REST service endpoints are derived from this. It is usually in the form "
+"https://host:port/auth."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:45
+#, no-wrap
+msgid "*resource* (required)\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:47
+msgid ""
+"The client-id of the application. Each application has a client-id that is "
+"used to identify the application."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:50
+#, no-wrap
+msgid ""
+"*credentials* (required)\n"
+"Specifies the credentials of the application. This is an object notation where the key is the credential type and the value is the value of the credential type.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:52
+msgid ""
+"The configuration file is usually located in your application's classpath, "
+"the default location from where the client is going to try to find a "
+"```keycloak.json``` file."
+msgstr ""
+
+#. type: Title ====
+#: source/authorization_services/topics/service/client-api.adoc:53
+#, no-wrap
+msgid "Creating the Authorization Client"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:56
+msgid ""
+"Considering you have a ```keycloak.json``` file in your classpath, you can "
+"create a new ```AuthzClient``` instance as follows:"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:61
+#, no-wrap
+msgid ""
+"```java\n"
+"    // create a new instance based on the configuration defined in a keycloak.json located in your classpath\n"
+"    AuthzClient authzClient = AuthzClient.create();\n"
+"```\n"
+msgstr ""
+
+#. type: Title ====
+#: source/authorization_services/topics/service/client-api.adoc:62
+#, no-wrap
+msgid "Obtaining User Entitlements"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:65
+msgid "Here is an example illustrating how to obtain user entitlements:"
+msgstr ""
+
+#.  create a new instance based on the configuration defined in keycloak-authz.json
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:69
+#: source/authorization_services/topics/service/client-api.adoc:88
+#: source/authorization_services/topics/service/client-api.adoc:115
+msgid "```java AuthzClient authzClient = AuthzClient.create();"
+msgstr ""
+
+#.  obtain an Entitlement API Token to get access to the Entitlement API.
+#.  this token is an access token issued to a client on behalf of an user
+#.  with a uma_authorization scope
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:74
+#: source/authorization_services/topics/service/client-api.adoc:93
+msgid "String eat = getEntitlementAPIToken(authzClient);"
+msgstr ""
+
+#.  send the entitlement request to the server to
+#.  obtain an RPT with all permissions granted to the user
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:79
+msgid ""
+"EntitlementResponse response = authzClient.entitlement(eat).getAll(\"hello-"
+"world-authz-service\"); String rpt = response.getRpt();"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:84
+msgid ""
+"Here is an example illustrating how to obtain user entitlements for a set of "
+"one or more resources:"
+msgstr ""
+
+#.  create an entitlement request
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:97
+msgid ""
+"EntitlementRequest request = new EntitlementRequest(); PermissionRequest "
+"permission = new PermissionRequest();"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:99
+msgid "permission.setResourceSetName(\"Hello World Resource\");"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:101
+msgid "request.addPermission(permission);"
+msgstr ""
+
+#.  send the entitlement request to the server to obtain an RPT
+#.  with all permissions granted to the user
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:106
+msgid ""
+"EntitlementResponse response = authzClient.entitlement(eat).get(\"hello-"
+"world-authz-service\", request); String rpt = response.getRpt();"
+msgstr ""
+
+#. type: Title ====
+#: source/authorization_services/topics/service/client-api.adoc:110
+#, no-wrap
+msgid "Creating a Resource Using the Protection API"
+msgstr ""
+
+#.  create a new resource representation with the information we want
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:118
+msgid "ResourceRepresentation newResource = new ResourceRepresentation();"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:121
+msgid ""
+"newResource.setName(\"New Resource\"); newResource.setType(\"urn:hello-world-"
+"authz:resources:example\");"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:123
+msgid ""
+"newResource.addScope(new ScopeRepresentation(\"urn:hello-world-authz:scopes:"
+"view\"));"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:126
+msgid ""
+"ProtectedResource resourceClient = authzClient.protection().resource(); "
+"Set<String> existingResource = resourceClient.findByFilter(\"name=\" + "
+"newResource.getName());"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:130
+#, no-wrap
+msgid ""
+"if (!existingResource.isEmpty()) {\n"
+"    resourceClient.delete(existingResource.iterator().next());\n"
+"}\n"
+msgstr ""
+
+#.  create the resource on the server
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:134
+msgid ""
+"RegistrationResponse response = resourceClient.create(newResource); String "
+"resourceId = response.getId();"
+msgstr ""
+
+#.  query the resource using its newly generated id
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:138
+msgid ""
+"ResourceRepresentation resource = resourceClient.findById(resourceId)."
+"getResourceDescription(); ```"
+msgstr ""
+
+#. type: Title ====
+#: source/authorization_services/topics/service/client-api.adoc:139
+#, no-wrap
+msgid "Introspecting a RPT"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:145
+#, no-wrap
+msgid ""
+"```java\n"
+"    AuthzClient authzClient = AuthzClient.create();\n"
+"    String rpt = getRequestingPartyToken(authzClient);\n"
+"    TokenIntrospectionResponse requestingPartyToken = authzClient.protection().introspectRequestingPartyToken(rpt);\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/client-api.adoc:151
+#, no-wrap
+msgid ""
+"    if (requestingPartyToken.getActive()) {\n"
+"        for (Permission granted : requestingPartyToken.getPermissions()) {\n"
+"            // iterate over the granted permissions\n"
+"        }\n"
+"    }\n"
+"```\n"
+msgstr ""

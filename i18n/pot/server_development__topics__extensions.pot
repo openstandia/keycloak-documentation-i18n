@@ -1,0 +1,343 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 06:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:41
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:52
+#: source/server_development/topics/extensions.adoc:70
+#: source/server_development/topics/providers.adoc:143
+#, no-wrap
+msgid "}\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:196
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:295
+#: source/server_development/topics/user-storage/simple-example.adoc:236
+#: source/server_development/topics/extensions.adoc:123
+#, no-wrap
+msgid ""
+"    ...\n"
+"}\n"
+msgstr ""
+
+#. type: Title ==
+#: source/server_development/topics/extensions.adoc:3
+#, no-wrap
+msgid "Extending the Server"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:7
+msgid ""
+"The {project_name} SPI framework offers the possibility to implement or "
+"override particular built-in providers. However {project_name} also provides "
+"capabilities to extend it's core functionalities and domain. This includes "
+"possibilities to:"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:9
+msgid "Add custom REST endpoints to the {project_name} server"
+msgstr ""
+
+#. type: Title ===
+#: source/server_development/topics/extensions.adoc:10
+#: source/server_development/topics/extensions.adoc:35
+#, no-wrap
+msgid "Add your own custom SPI"
+msgstr ""
+
+#. type: Title ===
+#: source/server_development/topics/extensions.adoc:11
+#: source/server_development/topics/extensions.adoc:89
+#, no-wrap
+msgid "Add custom JPA entities to the {project_name} data model"
+msgstr ""
+
+#. type: Title ===
+#: source/server_development/topics/extensions.adoc:13
+#, no-wrap
+msgid "Add custom REST endpoints"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:17
+msgid ""
+"This is a very powerful extension, which allows you to deploy your own REST "
+"endpoints to the {project_name} server. It enables all kinds of extensions, "
+"for example the possibility to trigger functionality on the {project_name} "
+"server, which is not available through the default set of built-in "
+"{project_name} REST endpoints."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:19
+msgid ""
+"To add a custom REST endpoint, you need to implement the "
+"`RealmResourceProviderFactory` and `RealmResourceProvider` interfaces. "
+"`RealmResourceProvider` has one important method:"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:24
+#, no-wrap
+msgid "Object getResource();\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:31
+msgid ""
+"which allows you to return an object, which acts as a https://github.com/jax-"
+"rs[JAX-RS Resource]. For more details, see the Javadoc and our examples.  "
+"There is a very simple example in the example distribution in `providers/"
+"rest` and there is a more advanced example in `providers/domain-extension`, "
+"which shows how to add an authenticated REST endpoint and other "
+"functionalities like <<extensions.adoc#_extensions_spi,Adding your own SPI>> "
+"or <<extensions.adoc#_extensions_jpa,Extending datamodel with your own JPA "
+"entities>>."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:33
+msgid ""
+"For details on how to package and deploy a custom provider, refer to the "
+"<<providers.adoc#_providers,Service Provider Interfaces>> chapter."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:39
+msgid ""
+"This is useful especially with the <<extensions.adoc#_extensions_rest,Custom "
+"REST endpoints>>. To add your own kind of SPI, you need to implement the "
+"interface `org.keycloak.provider.Spi` and define the ID of your SPI and the "
+"`ProviderFactory` and `Provider` classes. That looks like this:"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:43
+#, no-wrap
+msgid "package org.keycloak.examples.domainextension.spi;\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:45
+#: source/server_development/topics/providers.adoc:22
+#: source/server_development/topics/providers.adoc:57
+#: source/server_development/topics/providers.adoc:161
+#, no-wrap
+msgid "import ...\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:47
+#, no-wrap
+msgid "public class ExampleSpi implements Spi {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:52
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public boolean isInternal() {\n"
+"        return false;\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:57
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public String getName() {\n"
+"        return \"example\";\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:62
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public Class<? extends Provider> getProviderClass() {\n"
+"        return ExampleService.class;\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:68
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    @SuppressWarnings(\"rawtypes\")\n"
+"    public Class<? extends ProviderFactory> getProviderFactoryClass() {\n"
+"        return ExampleServiceProviderFactory.class;\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:74
+msgid ""
+"Then you need to create the file `META-INF/services/org.keycloak.provider."
+"Spi` and add the class of your SPI to it. For example:"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:78
+#, no-wrap
+msgid "org.keycloak.examples.domainextension.spi.ExampleSpi\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:83
+msgid ""
+"The next step is to create the interfaces `ExampleServiceProviderFactory`, "
+"which extends from `ProviderFactory` and `ExampleService`, which extends "
+"from `Provider`.  The `ExampleService` will usually contain the business "
+"methods you need for your use case. Note that the "
+"`ExampleServiceProviderFactory` instance is always scoped per application, "
+"however `ExampleService` is scoped per-request (or more accurately per "
+"`KeycloakSession` lifecycle)."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:85
+msgid ""
+"Finally you need to implement your providers in the same manner as described "
+"in the <<providers.adoc#_providers,Service Provider Interfaces>> chapter."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:87
+msgid ""
+"For more details, take a look at the example distribution at `providers/"
+"domain-extension`, which shows an Example SPI similar to the one above."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:94
+msgid ""
+"If the {project_name} data model does not exactly match your desired "
+"solution, or if you want to add some core functionality to {project_name}, "
+"or when you have your own REST endpoint, you might want to extend the "
+"{project_name} data model. We enable you to add your own JPA entities to the "
+"{project_name} JPA `EntityManager` ."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:97
+msgid ""
+"To add your own JPA entities, you need to implement "
+"`JpaEntityProviderFactory` and `JpaEntityProvider`. The `JpaEntityProvider` "
+"allows you to return a list of your custom JPA entities and provide the "
+"location and id of the liquibase changelog. An example implementation can "
+"look like this:"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:101
+#, no-wrap
+msgid "public class ExampleJpaEntityProvider implements JpaEntityProvider {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:107
+#, no-wrap
+msgid ""
+"    // List of your JPA entities.\n"
+"    @Override\n"
+"    public List<Class<?>> getEntities() {\n"
+"        return Collections.<Class<?>>singletonList(Company.class);\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:114
+#, no-wrap
+msgid ""
+"    // This is used to return the location of the Liquibase changelog file.\n"
+"    // You can return null if you don't want Liquibase to create and update the DB schema.\n"
+"    @Override\n"
+"    public String getChangelogLocation() {\n"
+"    \treturn \"META-INF/example-changelog.xml\";\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:120
+#, no-wrap
+msgid ""
+"    // Helper method, which will be used internally by Liquibase.\n"
+"    @Override\n"
+"    public String getFactoryId() {\n"
+"        return \"sample\";\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:127
+msgid ""
+"In the example above, we added a single JPA entity represented by class "
+"`Company`. In the code of your REST endpoint, you can then use something "
+"like this to retrieve `EntityManager` and call DB operations on it."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/extensions.adoc:133
+#, no-wrap
+msgid ""
+"EntityManager em = session.getProvider(JpaConnectionProvider.class).getEntityManager();\n"
+"Company myCompany = em.find(Company.class, \"123\");\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:143
+msgid ""
+"The methods `getChangelogLocation` and `getFactoryId` are important to "
+"support automatic updating of your entities by Liquibase. http://www."
+"liquibase.org/[Liquibase] is a framework for updating the database schema, "
+"which {project_name} internally uses to create the DB schema and update the "
+"DB schema among versions. You may need to use it as well and create a "
+"changelog for your entities. Note that versioning of your own liquibase "
+"changelog is independent of {project_name} versions. In other words, when "
+"you update to a new {project_name} version, you are not forced to update "
+"your schema at the same time. And vice versa, you can update your schema "
+"even without updating the {project_name} version. The Liquibase update is "
+"always done at the server startup, so to trigger a DB update of your schema, "
+"you just need to add the new changeset to your liquibase changelog file (in "
+"the example above it's the file `META-INF/example-changelog.xml` (which must "
+"be packed in same JAR as the JPA entities and `ExampleJpaEntityProvider`) "
+"and then restart server.  The DB schema will be automatically updated at "
+"startup."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:145
+msgid ""
+"For more details, take a look at the example distribution at example "
+"`providers/domain-extension`, which shows the `ExampleJpaEntityProvider` and "
+"`example-changelog.xml` described above."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/extensions.adoc:147
+msgid ""
+"Don't forget to always backup your database before doing any changes in the "
+"Liquibase changelog and triggering a DB update."
+msgstr ""

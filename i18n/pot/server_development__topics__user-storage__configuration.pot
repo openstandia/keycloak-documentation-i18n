@@ -1,0 +1,315 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 06:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: source/getting_started/topics/secure-jboss-app/install-client-adapter.adoc:34
+#: source/server_installation/topics/installation/directory-structure.adoc:21
+#: source/securing_apps/topics/overview/supported-platforms.adoc:17
+#: source/securing_apps/topics/overview/supported-platforms.adoc:23
+#: source/securing_apps/topics/overview/supported-platforms.adoc:34
+#: source/securing_apps/topics/overview/supported-platforms.adoc:40
+#: source/securing_apps/topics/overview/supported-platforms.adoc:45
+#: source/securing_apps/topics/overview/supported-platforms.adoc:50
+#: source/securing_apps/topics/overview/supported-platforms.adoc:56
+#: source/securing_apps/topics/overview/supported-platforms.adoc:62
+#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:4
+#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:95
+#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:113
+#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:24
+#: source/securing_apps/topics/saml/java/saml-jboss-adapter.adoc:4
+#: source/securing_apps/topics/saml/java/jboss-adapter/jboss_adapter_installation.adoc:56
+#: source/server_admin/topics/authentication/flows.adoc:50
+#: source/server_admin/topics/authentication/kerberos.adoc:128
+#: source/server_admin/topics/authentication/password-policies.adoc:31
+#: source/server_admin/topics/user-federation/sssd.adoc:58
+#: source/server_admin/topics/user-federation/sssd.adoc:112
+#: source/server_development/topics/user-storage/configuration.adoc:110
+#: source/server_development/topics/user-storage/simple-example.adoc:267
+#: source/server_development/topics/user-storage/simple-example.adoc:274
+#: source/server_development/topics/user-storage/simple-example.adoc:281
+#: source/server_development/topics/admin-rest-api.adoc:41
+msgid "ifeval::[{project_community}==true]"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:57
+#: source/server_development/topics/user-storage/configuration.adoc:18
+#: source/server_development/topics/user-storage/configuration.adoc:23
+#: source/server_development/topics/user-storage/configuration.adoc:28
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:26
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:38
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:50
+#: source/server_development/topics/user-storage/registration-query.adoc:109
+#: source/server_development/topics/user-storage/simple-example.adoc:146
+#: source/server_development/topics/providers.adoc:75
+#, no-wrap
+msgid "    }\n"
+msgstr ""
+
+#. type: Title ===
+#: source/server_development/topics/user-storage/configuration.adoc:2
+#, no-wrap
+msgid "Configuration Techniques"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:5
+msgid ""
+"Our `PropertyFileUserStorageProvider` example is bit contrived. It is "
+"hardcoded to a property file that is embedded in the jar of the provider. "
+"Not very useful at all. We might want to make the location of this file "
+"configurable per instance of the provider. In other words, we might want to "
+"reuse this provider mulitple times in multiple different realms and point to "
+"completely different user property files. We'll also want to perform this "
+"configuration within the administration console UI."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:7
+msgid ""
+"The `UserStorageProviderFactory` has additional methods you can implement "
+"that handle provider configuration. You describe the variables you want to "
+"configure per provider and the administration console automatically renders "
+"a generic input page to gather this configuration. When implemented, "
+"callback methods also validate the configuration before it is saved, when a "
+"provider is created for the first time, and when it is updated. "
+"`UserStorageProviderFactory` inherits these methods from the `org.keycloak."
+"component.ComponentFactory` interface."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:11
+#, no-wrap
+msgid "    List<ProviderConfigProperty> getConfigProperties();\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:16
+#, no-wrap
+msgid ""
+"    default\n"
+"    void validateConfiguration(KeycloakSession session, RealmModel realm, ComponentModel model)\n"
+"            throws ComponentValidationException\n"
+"    {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:21
+#, no-wrap
+msgid ""
+"    default\n"
+"    void onCreate(KeycloakSession session, RealmModel realm, ComponentModel model) {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:26
+#, no-wrap
+msgid ""
+"    default\n"
+"    void onUpdate(KeycloakSession session, RealmModel realm, ComponentModel model) {\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:31
+msgid ""
+"The `ComponentFactory.getConfigProperties()` method returns a list of `org."
+"keycloak.provider.ProviderConfigProperty` instances. These instances declare "
+"metadata that is needed to render and store each configuration variable of "
+"the provider."
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/configuration.adoc:32
+#, no-wrap
+msgid "Configuration Example"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:35
+msgid ""
+"Let's expand our `PropertyFileUserStorageProviderFactory` example to allow "
+"you to point a provider instance to a specific file on disk."
+msgstr ""
+
+#. type: Block title
+#: source/server_development/topics/user-storage/configuration.adoc:36
+#, no-wrap
+msgid "PropertyFileUserStorageProviderFactory"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:41
+#, no-wrap
+msgid ""
+"public class PropertyFileUserStorageProviderFactory\n"
+"                  implements UserStorageProviderFactory<PropertyFileUserStorageProvider> {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:43
+#, no-wrap
+msgid "    protected static final List<ProviderConfigProperty> configMetadata;\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:54
+#, no-wrap
+msgid ""
+"    static {\n"
+"        configMetadata = ProviderConfigurationBuilder.create()\n"
+"                .property().name(\"path\")\n"
+"                .type(ProviderConfigProperty.STRING_TYPE)\n"
+"                .label(\"Path\")\n"
+"                .defaultValue(\"${jboss.server.config.dir}/example-users.properties\")\n"
+"                .helpText(\"File path to properties file\")\n"
+"                .default\n"
+"                .add().build();\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:59
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public List<ProviderConfigProperty> getConfigProperties() {\n"
+"        return configMetadata;\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:62
+msgid ""
+"The `ProviderConfigurationBuilder` class is a great helper class to create a "
+"list of configuration properties. Here we specify a variable named `path` "
+"that is a String type. On the administration console configuration page for "
+"this provider, this configuration variable is labeled as `Path` and has a "
+"default value of `${jboss.server.config.dir}/example-users.properties`. When "
+"you hover over the tooltip of this configuration option, it displays the "
+"help text, `File path to properties file`."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:64
+msgid ""
+"The next thing we want to do is to verify that this file exists on disk. We "
+"do not want to enable an instance of this provider in the realm unless it "
+"points to a valid user property file. To do this, we implement the "
+"`validateConfiguration()` method."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:78
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public void validateConfiguration(KeycloakSession session, RealmModel realm, ComponentModel config)\n"
+"                   throws ComponentValidationException {\n"
+"        String fp = config.getConfig().getFirst(\"path\");\n"
+"        if (fp == null) throw new ComponentValidationException(\"user property file does not exist\");\n"
+"        fp = EnvUtil.replace(fp);\n"
+"        File file = new File(fp);\n"
+"        if (!file.exists()) {\n"
+"            throw new ComponentValidationException(\"user property file does not exist\");\n"
+"        }\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:81
+msgid ""
+"In the `validateConfiguration()` method we get the configuration variable "
+"from the `ComponentModel` and we check to see if that file exists on disk. "
+"Notice that we use the `org.keycloak.common.util.EnvUtil.replace()` method. "
+"With this method any string that has `${}` within it will replace that with "
+"a system property value. The `${jboss.server.config.dir}` string corresponds "
+"to the `configuration/` directory of our server and is really useful for "
+"this example."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:83
+msgid ""
+"Next thing we have to do is remove the old `init()` method. We do this "
+"because user property files are going to be unique per provider instance. We "
+"move this logic to the `create()` method."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:89
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public PropertyFileUserStorageProvider create(KeycloakSession session, ComponentModel model) {\n"
+"        String path = model.getConfig().getFirst(\"path\");\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:98
+#, no-wrap
+msgid ""
+"        Properties props = new Properties();\n"
+"        try {\n"
+"            InputStream is = new FileInputStream(path);\n"
+"            props.load(is);\n"
+"            is.close();\n"
+"        } catch (IOException e) {\n"
+"            throw new RuntimeException(e);\n"
+"        }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/configuration.adoc:101
+#, no-wrap
+msgid ""
+"        return new PropertyFileUserStorageProvider(session, model, props);\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:104
+msgid ""
+"This logic is, of course, inefficient as every transaction reads the entire "
+"user property file from disk, but hopefully this illustrates, in a simple "
+"way, how to hook in configuration variables."
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/configuration.adoc:105
+#, no-wrap
+msgid "Configuring the Provider in the Administration Console"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:108
+msgid ""
+"Now that the configuration is enabled, you can set the `path` variable when "
+"you configure the provider in the administration console."
+msgstr ""
+
+#. type: Block title
+#: source/server_development/topics/user-storage/configuration.adoc:110
+#: source/server_development/topics/user-storage/simple-example.adoc:274
+#, no-wrap
+msgid "Configured Provider"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/configuration.adoc:112
+msgid "image:{project_images}/storage-provider-with-config.png[] endif::[]"
+msgstr ""

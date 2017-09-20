@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 06:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Block title
+#: source/server_installation/topics/database/datasource.adoc:9
+#: source/server_installation/topics/database/jdbc.adoc:56
+#, no-wrap
+msgid "Declare Your JDBC Drivers"
+msgstr ""
+
+#. type: Title ===
+#: source/server_installation/topics/database/jdbc.adoc:2
+#, no-wrap
+msgid "Package the JDBC Driver"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/database/jdbc.adoc:5
+msgid ""
+"Find and download the JDBC driver JAR for your RDBMS. Before you can use "
+"this driver, you must package it up into a module and install it into the "
+"server. Modules define JARs that are loaded into the {project_name} "
+"classpath and the dependencies those JARs have on other modules. They are "
+"pretty simple to set up."
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/database/jdbc.adoc:7
+msgid ""
+"Within the _.../modules/_ directory of your {project_name} distribution, you "
+"need to create a directory structure to hold your module definition.  The "
+"convention is use the Java package name of the JDBC driver for the name of "
+"the directory structure. For PostgreSQL, create the directory _org/"
+"postgresql/main_. Copy your database driver JAR into this directory and "
+"create an empty _module.xml_ file within it too."
+msgstr ""
+
+#. type: Block title
+#: source/server_installation/topics/database/jdbc.adoc:8
+#, no-wrap
+msgid "Module Directory"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/database/jdbc.adoc:10
+msgid "image:{project_images}/db-module.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/database/jdbc.adoc:12
+msgid ""
+"After you have done this, open up the _module.xml_ file and create the "
+"following XML:"
+msgstr ""
+
+#. type: Block title
+#: source/server_installation/topics/database/jdbc.adoc:13
+#, no-wrap
+msgid "Module XML"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/database/jdbc.adoc:18
+#, no-wrap
+msgid ""
+"<?xml version=\"1.0\" ?>\n"
+"<module xmlns=\"urn:jboss:module:1.3\" name=\"org.postgresql\">\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/database/jdbc.adoc:22
+#, no-wrap
+msgid ""
+"    <resources>\n"
+"        <resource-root path=\"postgresql-9.4.1212.jar\"/>\n"
+"    </resources>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/database/jdbc.adoc:28
+#, no-wrap
+msgid ""
+"    <dependencies>\n"
+"        <module name=\"javax.api\"/>\n"
+"        <module name=\"javax.transaction.api\"/>\n"
+"    </dependencies>\n"
+"</module>\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/database/jdbc.adoc:31
+msgid ""
+"The module name should match the directory structure of your module. So, "
+"_org/postgresql_ maps to `org.postgresql`. The `resource-root path` "
+"attribute should specify the JAR filename of the driver.  The rest are just "
+"the normal dependencies that any JDBC driver JAR would have."
+msgstr ""
+
+#. type: Title ===
+#: source/server_installation/topics/database/jdbc.adoc:32
+#, no-wrap
+msgid "Declare and Load JDBC Driver"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/database/jdbc.adoc:35
+msgid ""
+"The next thing you have to do is declare your newly packaged JDBC driver "
+"into your deployment profile so that it loads and becomes available when the "
+"server boots up. Where you perform this action depends on your <<_operating-"
+"mode, operating mode>>. If you're deploying in standard mode, edit _.../"
+"standalone/configuration/standalone.xml_.  If you're deploying in standard "
+"clustering mode, edit _.../standalone/configuration/standalone-ha.xml_.  If "
+"you're deploying in domain mode, edit _.../domain/configuration/domain.xml_. "
+"In domain mode, you'll need to make sure you edit the profile you are using: "
+"either `auth-server-standalone` or `auth-server-clustered`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/database/jdbc.adoc:37
+msgid ""
+"Within the profile, search for the `drivers` XML block within the "
+"`datasources` subsystem. You should see a pre-defined driver declared for "
+"the H2 JDBC driver. This is where you'll declare the JDBC driver for your "
+"external database."
+msgstr ""
+
+#. type: Block title
+#: source/server_installation/topics/database/jdbc.adoc:38
+#, no-wrap
+msgid "JDBC Drivers"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/database/jdbc.adoc:51
+#, no-wrap
+msgid ""
+"  <subsystem xmlns=\"urn:jboss:domain:datasources:4.0\">\n"
+"     <datasources>\n"
+"       ...\n"
+"       <drivers>\n"
+"          <driver name=\"h2\" module=\"com.h2database.h2\">\n"
+"              <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>\n"
+"          </driver>\n"
+"       </drivers>\n"
+"     </datasources>\n"
+"  </subsystem>\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/database/jdbc.adoc:54
+msgid ""
+"Within the `drivers` XML block you'll need to declare an additional JDBC "
+"driver.  It needs to have a `name` which you can choose to be anything you "
+"want.  You specify the `module` attribute which points to the `module` "
+"package you created earlier for the driver JAR.  Finally you have to specify "
+"the driver's Java class.  Here's an example of installing PostgreSQL driver "
+"that lives in the module example defined earlier in this chapter."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/database/jdbc.adoc:72
+#, no-wrap
+msgid ""
+"  <subsystem xmlns=\"urn:jboss:domain:datasources:4.0\">\n"
+"     <datasources>\n"
+"       ...\n"
+"       <drivers>\n"
+"          <driver name=\"postgresql\" module=\"org.postgresql\">\n"
+"              <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>\n"
+"          </driver>\n"
+"          <driver name=\"h2\" module=\"com.h2database.h2\">\n"
+"              <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>\n"
+"          </driver>\n"
+"       </drivers>\n"
+"     </datasources>\n"
+"  </subsystem>\n"
+msgstr ""

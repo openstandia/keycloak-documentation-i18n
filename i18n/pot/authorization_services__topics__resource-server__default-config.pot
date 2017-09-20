@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-20 06:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ===
+#: source/authorization_services/topics/resource-server/default-config.adoc:2
+#, no-wrap
+msgid "Default Configuration"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:5
+msgid ""
+"When you create a resource server, {project_name} creates a default "
+"configuration for your newly created resource server."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:7
+msgid "The default configuration consists of:"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:9
+msgid ""
+"A default protected resource representing all resources in your application."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:10
+msgid ""
+"A policy that always grants access to the resources protected by this policy."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:11
+msgid ""
+"A permission that governs access to all resources based on the default "
+"policy."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:13
+msgid ""
+"The default protected resource is referred to as the *default resource* and "
+"you can view it if you navigate to the *Resources* tab."
+msgstr ""
+
+#. type: Block title
+#: source/authorization_services/topics/resource-server/default-config.adoc:14
+#, no-wrap
+msgid "Default Resource"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:16
+msgid ""
+"image:{project_images}/resource-server/default-resource.png[alt=\"Default "
+"Resource\"]"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:21
+msgid ""
+"This resource defines a `Type`, namely `urn:my-resource-server:resources:"
+"default` and a `URI` `/*`. Here, the `URI` field defines a wildcard pattern "
+"that indicates to {project_name} that this resource represents all the paths "
+"in your application. In other words, when enabling <<_enforcer_overview, "
+"policy enforcement>> for your application, all the permissions associated "
+"with the resource will be examined before granting access."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:24
+msgid ""
+"The `Type` mentioned previously defines a value that can be used to create "
+"<<_permission_typed_resource, typed resource permissions>> that must be "
+"applied to the default resource or any other resource you create using the "
+"same type."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:26
+msgid ""
+"The default policy is referred to as the *only from realm policy* and you "
+"can view it if you navigate to the *Policies* tab."
+msgstr ""
+
+#. type: Block title
+#: source/authorization_services/topics/resource-server/default-config.adoc:27
+#, no-wrap
+msgid "Default Policy"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:29
+msgid ""
+"image:{project_images}/resource-server/default-policy.png[alt=\"Default "
+"Policy\"]"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:31
+msgid ""
+"This policy is a <<_policy_js, JavaScript-based policy>> defining a "
+"condition that always grants access to the resources protected by this "
+"policy. If you click this policy you can see that it defines a rule as "
+"follows:"
+msgstr ""
+
+#.  by default, grants any permission associated with this policy
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:36
+msgid "```js $evaluation.grant(); ```"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:38
+msgid ""
+"Lastly, the default permission is referred to as the *default permission* "
+"and you can view it if you navigate to the *Permissions* tab."
+msgstr ""
+
+#. type: Block title
+#: source/authorization_services/topics/resource-server/default-config.adoc:39
+#, no-wrap
+msgid "Default Permission"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:41
+msgid ""
+"image:{project_images}/resource-server/default-permission.png[alt=\"Default "
+"Permission\"]"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:43
+msgid ""
+"This permission is a <<_permission_create_resource, resource-based "
+"permission>>, defining a set of one or more policies that are applied to all "
+"resources with a given type."
+msgstr ""
+
+#. type: Title ====
+#: source/authorization_services/topics/resource-server/default-config.adoc:44
+#, no-wrap
+msgid "Changing the Default Configuration"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:47
+msgid ""
+"You can change the default configuration by removing the default resource, "
+"policy, or permission definitions and creating your own."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/resource-server/default-config.adoc:49
+msgid ""
+"The default configuration defines a resource that maps to all paths in your "
+"application. If you are about to write permissions to your own resources, be "
+"sure to remove the *Default Resource* or change its ```URI``` field to a "
+"more specific path in your application. Otherwise, the policy associated "
+"with the default resource (which by default always grants access) will allow "
+"{project_name} to grant access to any protected resource."
+msgstr ""

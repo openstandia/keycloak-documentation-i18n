@@ -5,7 +5,15 @@ SOURCE_REVISION=4cb5b9dd2daea2f61d372e39629b65013b21c57d
 SOURCE_DIR=source
 TRANSLATED_DIR=translated
 TARGET_LANG=ja_JP
-DOCS=getting_started
+DOCS="\
+  getting_started \
+  server_installation \
+  securing_apps \
+  server_admin \
+  server_development \
+  authorization_services \
+  upgrading \
+  topics"
 
 TARGET_EXT=adoc
 OUT_FILE=po4a.cfg

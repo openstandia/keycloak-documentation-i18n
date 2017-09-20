@@ -51,7 +51,7 @@ jobs:
             - dist-
       - run:
           name: deply to s3
-          command: aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/ --delete
+          command: aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_BRANCH/ --delete
 
 
 workflows:
@@ -62,7 +62,4 @@ workflows:
       - deploy:
           requires:
             - build
-          filters:
-            branches:
-              only: master
 

@@ -1,0 +1,356 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-20 08:59+0000\n"
+"PO-Revision-Date: 2017-09-20 05:30-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /master/i18n/pot/server_admin__topics__authentication__flows.pot\n"
+
+#. type: Plain text
+#: source/getting_started/topics/secure-jboss-app/install-client-adapter.adoc:34
+#: source/server_installation/topics/installation/directory-structure.adoc:21
+#: source/securing_apps/topics/overview/supported-platforms.adoc:17
+#: source/securing_apps/topics/overview/supported-platforms.adoc:23
+#: source/securing_apps/topics/overview/supported-platforms.adoc:34
+#: source/securing_apps/topics/overview/supported-platforms.adoc:40
+#: source/securing_apps/topics/overview/supported-platforms.adoc:45
+#: source/securing_apps/topics/overview/supported-platforms.adoc:50
+#: source/securing_apps/topics/overview/supported-platforms.adoc:56
+#: source/securing_apps/topics/overview/supported-platforms.adoc:62
+#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:4
+#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:95
+#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:113
+#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:24
+#: source/securing_apps/topics/saml/java/saml-jboss-adapter.adoc:4
+#: source/securing_apps/topics/saml/java/jboss-adapter/jboss_adapter_installation.adoc:56
+#: source/server_admin/topics/authentication/flows.adoc:50
+#: source/server_admin/topics/authentication/kerberos.adoc:128
+#: source/server_admin/topics/authentication/password-policies.adoc:31
+#: source/server_admin/topics/user-federation/sssd.adoc:58
+#: source/server_admin/topics/user-federation/sssd.adoc:112
+#: source/server_development/topics/user-storage/configuration.adoc:110
+#: source/server_development/topics/user-storage/simple-example.adoc:267
+#: source/server_development/topics/user-storage/simple-example.adoc:274
+#: source/server_development/topics/user-storage/simple-example.adoc:281
+#: source/server_development/topics/admin-rest-api.adoc:41
+#, no-wrap
+msgid "ifeval::[{project_community}==true]\n"
+msgstr ""
+
+#. type: Title ===
+#: source/server_admin/topics/authentication/flows.adoc:3
+#, no-wrap
+msgid "Authentication Flows"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:10
+#, no-wrap
+msgid "An _authentication flow_ is a container for all authentications, screens, and actions that must happen during login, registration, and other\n"
+"{project_name} workflows.\n"
+"If you go to the admin console `Authentication` left menu item and go to the `Flows` tab, you can view all the defined flows\n"
+"in the system and what actions and checks each flow requires.  This section does a walk through of the browser login flow.  In the\n"
+"left drop down list select `browser` to come to the screen shown below:\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/authentication/flows.adoc:11
+#: source/server_admin/topics/authentication/kerberos.adoc:88
+#, no-wrap
+msgid "Browser Flow"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:13
+#: source/server_admin/topics/authentication/kerberos.adoc:90
+#, no-wrap
+msgid "image:{project_images}/browser-flow.png[]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:16
+#, no-wrap
+msgid "If you hover over the tooltip (the tiny question mark) to the right of the flow selection list, this will describe what the\n"
+"flow is and does.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:21
+#, no-wrap
+msgid "The `Auth Type` column is the name of authentication or action that will be executed.  If an authentication is indented\n"
+"this means it is in a sub-flow and may or may not be executed depending on the behavior of its parent.  The `Requirement`\n"
+"column is a set of radio buttons which define whether or not the action will execute.  Let's describe what each radio\n"
+"button means:\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:22
+#, no-wrap
+msgid "Required"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:27
+#, no-wrap
+msgid "This authentication execution must execute successfully.  If the user doesn't have that type of authentication mechanism\n"
+"configured and there is a required action associated with that authentication type, then a required action will be attached\n"
+"to that account.  For example, if you switch `OTP Form` to `Required`, users that don't have an OTP generator configured\n"
+"will be asked to do so.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:27
+#, no-wrap
+msgid "Optional"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:29
+#, no-wrap
+msgid "If the user has the authentication type configured, it will be executed.  Otherwise, it will be ignored.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:29
+#, no-wrap
+msgid "Disabled"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:31
+#, no-wrap
+msgid "If disabled, the authentication type is not executed.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:31
+#, no-wrap
+msgid "Alternative"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:33
+#, no-wrap
+msgid "This means that at least one alternative authentication type must execute successfully at that level of the flow.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:35
+#, no-wrap
+msgid "This is better described in an example.  Let's walk through the `browser` authentication flow.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:39
+#, no-wrap
+msgid "The first authentication type is `Cookie`.  When a user successfully logs in for the first time, a session cookie is set.\n"
+"If this cookie has already been set, then this authentication type is successful.\n"
+"Since the cookie provider returned success and each execution at this level of the flow is _alternative_, no other execution is executed and this results in a successful login.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:40
+#, no-wrap
+msgid "Next the flow looks at the Kerberos execution.  This authenticator is disabled by default and will be skipped.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:43
+#, no-wrap
+msgid "The next execution is a subflow called Forms.  Since this subflow is marked as _alternative_ it will not be executed if the `Cookie` authentication type passed.\n"
+"This subflow contains additional authentication type that needs to be executed.\n"
+"The executions for this subflow are loaded and the same processing logic occurs\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:45
+#, no-wrap
+msgid "The first execution in the Forms subflow is the Username Password Form.  This authentication type renders the username and password page.\n"
+"It is marked as _required_ so the user must enter in a valid username and password.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:48
+#, no-wrap
+msgid "The next execution is the OTP Form.\n"
+"This is marked as _optional_.  If the user has OTP set up, then this authentication type must run and be successful.  If the user doesn't\n"
+"have OTP set up, this authentication type is ignored.\n"
+msgstr ""
+
+#. type: Title ===
+#: source/server_admin/topics/authentication/flows.adoc:50
+#, no-wrap
+msgid "Executions"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:53
+#, no-wrap
+msgid "Executions can be used \n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/authentication/flows.adoc:54
+#, no-wrap
+msgid "Script Authenticator"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:59
+#, no-wrap
+msgid "A _script_ authenticator allows to define custom authentication logic via JavaScript.\n"
+"Custom authenticators. Authentication scripts must at least provide one of the following functions:\n"
+"`authenticate(..)` which is called from `Authenticator#authenticate(AuthenticationFlowContext)`\n"
+"`action(..)` which is called from `Authenticator#action(AuthenticationFlowContext)`\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:62
+#, no-wrap
+msgid "Custom `Authenticator`'s should at least provide the `authenticate(..)` function.\n"
+"The following script `javax.script.Bindings` are available for convenient use within script code.\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:63
+#, no-wrap
+msgid "`script`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:65
+#, no-wrap
+msgid "the `ScriptModel` to access script metadata\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:65
+#, no-wrap
+msgid "`realm`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:67
+#, no-wrap
+msgid "the `RealmModel`\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:67
+#, no-wrap
+msgid "`user`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:69
+#, no-wrap
+msgid "the current `UserModel`\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:69
+#, no-wrap
+msgid "`session`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:71
+#, no-wrap
+msgid "the active `KeycloakSession`\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:71
+#, no-wrap
+msgid "`authenticationSession`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:73
+#, no-wrap
+msgid "the current `AuthenticationSessionModel`\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:73
+#, no-wrap
+msgid "`httpRequest`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:75
+#, no-wrap
+msgid "the current `org.jboss.resteasy.spi.HttpRequest`\n"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/flows.adoc:75
+#, no-wrap
+msgid "`LOG`"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:77
+#, no-wrap
+msgid "a `org.jboss.logging.Logger` scoped to `ScriptBasedAuthenticator`\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/flows.adoc:80
+#, no-wrap
+msgid "Note that additional context information can be extracted from the `context` argument passed \n"
+"to the `authenticate(context)` `action(context)` function.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_admin/topics/authentication/flows.adoc:84
+#, no-wrap
+msgid "AuthenticationFlowError = Java.type(\"org.keycloak.authentication.AuthenticationFlowError\");\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_admin/topics/authentication/flows.adoc:86
+#, no-wrap
+msgid "function authenticate(context) {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_admin/topics/authentication/flows.adoc:88
+#, no-wrap
+msgid "  LOG.info(script.name + \" --> trace auth for: \" + user.username);\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_admin/topics/authentication/flows.adoc:92
+#, no-wrap
+msgid "  if (   user.username === \"tester\"\n"
+"      && user.getAttribute(\"someAttribute\")\n"
+"      && user.getAttribute(\"someAttribute\").contains(\"someValue\")) {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_admin/topics/authentication/flows.adoc:96
+#, no-wrap
+msgid "      context.failure(AuthenticationFlowError.INVALID_USER);\n"
+"      return;\n"
+"  }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_admin/topics/authentication/flows.adoc:100
+#, no-wrap
+msgid "  context.success();\n"
+"}\n"
+"----                        \n"
+"endif::[]\n"
+msgstr ""
+

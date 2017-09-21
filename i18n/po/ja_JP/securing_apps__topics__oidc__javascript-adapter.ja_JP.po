@@ -1,0 +1,917 @@
+# Japanese translations for keycloak-documentation-i18n package
+# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# Automatically generated, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"POT-Creation-Date: 2017-09-21 04:04+0000\n"
+"PO-Revision-Date: 2017-09-21 04:04+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:22
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:321
+#, no-wrap
+msgid "For example:\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/application-clustering.adoc:89
+#: source/securing_apps/topics/oidc/java/jetty8-adapter.adoc:31
+#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:56
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:66
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty8-installation.adoc:23
+#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_installation.adoc:23
+#: source/server_development/topics/auth-spi.adoc:148
+#: source/server_development/topics/preface.adoc:16
+#, no-wrap
+msgid "[source]\n"
+msgstr ""
+
+#. type: Title ===
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:2
+#, no-wrap
+msgid "Javascript Adapter"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:5
+msgid ""
+"{project_name} comes with a client-side JavaScript library that can be used "
+"to secure HTML5/JavaScript applications. The JavaScript adapter has built-in "
+"support for Cordova applications."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:7
+msgid ""
+"The library can be retrieved directly from the {project_name} server at `/"
+"auth/js/keycloak.js` and is also distributed as a ZIP archive."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:9
+msgid ""
+"A best practice is to load the JavaScript adapter directly from "
+"{project_name} Server as it will automatically be updated when you upgrade "
+"the server. If you copy the adapter to your web application instead, make "
+"sure you upgrade the adapter only after you have upgraded the server."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:12
+msgid ""
+"One important thing to note about using client-side applications is that the "
+"client has to be a public client as there is no secure way to store client "
+"credentials in a client-side application. This makes it very important to "
+"make sure the redirect URIs you have configured for the client are correct "
+"and as specific as possible."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:15
+msgid ""
+"To use the JavaScript adapter you must first create a client for your "
+"application in the {project_name} Administration Console. Make sure `public` "
+"is selected for `Access Type`."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:17
+msgid ""
+"You also need to configure valid redirect URIs and valid web origins. Be as "
+"specific as possible as failing to do so may result in a security "
+"vulnerability."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:20
+msgid ""
+"Once the client is created click on the `Installation` tab select `Keycloak "
+"OIDC JSON` for `Format Option` then click `Download`. The downloaded "
+"`keycloak.json` file should be hosted on your web server at the same "
+"location as your HTML pages."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:22
+msgid ""
+"Alternatively, you can skip the configuration file and manually configure "
+"the adapter."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:24
+msgid "The following example shows how to initialize the JavaScript adapter:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:39
+#, no-wrap
+msgid ""
+"<head>\n"
+"    <script src=\"keycloak.js\"></script>\n"
+"    <script>\n"
+"        var keycloak = Keycloak();\n"
+"        keycloak.init().success(function(authenticated) {\n"
+"            alert(authenticated ? 'authenticated' : 'not authenticated');\n"
+"        }).error(function() {\n"
+"            alert('failed to initialize');\n"
+"        });\n"
+"    </script>\n"
+"</head>\n"
+"----        \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:41
+#, no-wrap
+msgid "If the `keycloak.json` file is in a different location you can specify it:\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:43
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:50
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:160
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:323
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:344
+#: source/securing_apps/topics/saml/java/error_handling.adoc:26
+#, no-wrap
+msgid "[source,javascript]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:45
+msgid "var keycloak = Keycloak('http://localhost:8080/myapp/keycloak.json'));"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:48
+#, no-wrap
+msgid "Alternatively, you can pass in a JavaScript object with the required configuration instead:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:56
+#, no-wrap
+msgid ""
+"var keycloak = Keycloak({\n"
+"    url: 'http://keycloak-server/auth',\n"
+"    realm: 'myrealm',\n"
+"    clientId: 'myapp'\n"
+"});\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:62
+#, no-wrap
+msgid ""
+"By default to authenticate you need to call the `login` function. However, there are two options available to make the adapter automatically authenticate. You\n"
+"can pass `login-required` or `check-sso` to the init function. `login-required` will authenticate the client if the user is logged-in to {project_name}\n"
+"or display the login page if not. `check-sso` will only authenticate the client if the user is already logged-in, if the user is not logged-in the browser will be\n"
+"redirected back to the application and remain unauthenticated.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:64
+#, no-wrap
+msgid "To enable `login-required` set `onLoad` to `login-required` and pass to the init method:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:69
+#, no-wrap
+msgid ""
+"keycloak.init({ onLoad: 'login-required' })\n"
+"----    \n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:72
+msgid ""
+"After the user is authenticated the application can make requests to RESTful "
+"services secured by {project_name} by including the bearer token in the "
+"`Authorization` header. For example:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:77
+#, no-wrap
+msgid ""
+"var loadData = function () {\n"
+"    document.getElementById('username').innerText = keycloak.subject;\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:79
+#, no-wrap
+msgid "    var url = 'http://localhost:8080/restful-service';\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:84
+#, no-wrap
+msgid ""
+"    var req = new XMLHttpRequest();\n"
+"    req.open('GET', url, true);\n"
+"    req.setRequestHeader('Accept', 'application/json');\n"
+"    req.setRequestHeader('Authorization', 'Bearer ' + keycloak.token);\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:94
+#, no-wrap
+msgid ""
+"    req.onreadystatechange = function () {\n"
+"        if (req.readyState == 4) {\n"
+"            if (req.status == 200) {\n"
+"                alert('Success');\n"
+"            } else if (req.status == 403) {\n"
+"                alert('Forbidden');\n"
+"            }\n"
+"        }\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:97
+#, no-wrap
+msgid ""
+"    req.send();\n"
+"};\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:102
+msgid ""
+"One thing to keep in mind is that the access token by default has a short "
+"life expiration so you may need to refresh the access token prior to sending "
+"the request. You can do this by the `updateToken` method. The `updateToken` "
+"method returns a promise object which makes it easy to invoke the service "
+"only if the token was successfully refreshed and for example display an "
+"error to the user if it wasn't. For example:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:111
+#, no-wrap
+msgid ""
+"keycloak.updateToken(30).success(function() {\n"
+"    loadData();\n"
+"}).error(function() {\n"
+"    alert('Failed to refresh token');\n"
+");\n"
+"----    \n"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:112
+#, no-wrap
+msgid "Session Status iframe"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:117
+msgid ""
+"By default, the JavaScript adapter creates a hidden iframe that is used to "
+"detect if a Single-Sign Out has occurred.  This does not require any network "
+"traffic, instead the status is retrieved by looking at a special status "
+"cookie.  This feature can be disabled by setting `checkLoginIframe: false` "
+"in the options passed to the `init` method."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:120
+msgid ""
+"You should not rely on looking at this cookie directly. It's format can "
+"change and it's also associated with the URL of the {project_name} server, "
+"not your application."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:122
+msgid "[[_javascript_implicit_flow]]"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:122
+#, no-wrap
+msgid "Implicit and Hybrid Flow"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:125
+msgid ""
+"By default, the JavaScript adapter uses the http://openid.net/specs/openid-"
+"connect-core-1_0.html#CodeFlowAuth[Authorization Code] flow."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:128
+msgid ""
+"With this flow the {project_name} server returns an authorization code, not "
+"an authentication token, to the application. The JavaScript adapter "
+"exchanges the `code` for an access token and a refresh token after the "
+"browser is redirected back to the application."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:132
+msgid ""
+"{project_name} also supports the http://openid.net/specs/openid-connect-"
+"core-1_0.html#ImplicitFlowAuth[Implicit] flow where an access token is sent "
+"immediately after successful authentication with {project_name}. This may "
+"have better performance than standard flow, as there is no additional "
+"request to exchange the code for tokens, but it has implications when the "
+"access token expires."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:135
+msgid ""
+"However, sending the access token in the URL fragment can be a security "
+"vulnerability. For example the token could be leaked through web server logs "
+"and or browser history."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:138
+msgid ""
+"To enable implicit flow, you need to enable the `Implicit Flow Enabled` flag "
+"for the client in the {project_name} Administration Console.  You also need "
+"to pass the parameter `flow` with value `implicit` to `init` method:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:140
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:179
+msgid "[source,javascript]"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:142
+msgid "keycloak.init({ flow: 'implicit' })"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:146
+#, no-wrap
+msgid ""
+"One thing to note is that only an access token is provided and there is no refresh token. This means that once the access token has expired the application\n"
+"has to do the redirect to the {project_name} again to obtain a new access token.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:148
+#, no-wrap
+msgid "{project_name} also supports the http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth[Hybrid] flow.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:154
+#, no-wrap
+msgid ""
+"This requires the client to have both the `Standard Flow Enabled` and `Implicit Flow Enabled` flags enabled in the admin console.\n"
+"The {project_name} server will then send both the code and tokens to your application.\n"
+"The access token can be used immediately while the code can be exchanged for access and refresh tokens.\n"
+"Similar to the implicit flow, the hybrid flow is good for performance because the access token is available immediately.\n"
+"But, the token is still sent in the URL, and the security vulnerability mentioned earlier may still apply.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:156
+#, no-wrap
+msgid "One advantage in the Hybrid flow is that the refresh token is made available to the application.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:158
+#, no-wrap
+msgid "For the Hybrid flow, you need to pass the parameter `flow` with value `hybrid` to the `init` method:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:162
+msgid "keycloak.init({ flow: 'hybrid' })"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:164
+#, no-wrap
+msgid "Earlier Browsers"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:168
+msgid ""
+"The JavaScript adapter depends on Base64 (window.btoa and window.atob) and "
+"HTML5 History API.  If you need to support browsers that do not have these "
+"available (for example, IE9) you need to add polyfillers."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:170
+msgid "Example polyfill libraries:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:173
+#, no-wrap
+msgid ""
+"* https://github.com/davidchambers/Base64.js\n"
+"* https://github.com/devote/HTML5-History-API        \n"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:174
+#, no-wrap
+msgid "JavaScript Adapter Reference"
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:176
+#, no-wrap
+msgid "Constructor"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:183
+msgid ""
+"new Keycloak(); new Keycloak('http://localhost/keycloak.json'); new "
+"Keycloak({ url: 'http://localhost/auth', realm: 'myrealm', clientId: "
+"'myApp' });"
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:185
+#, no-wrap
+msgid "Properties"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:189
+#, no-wrap
+msgid ""
+"authenticated::\n"
+"    Is `true` if the user is authenticated, `false` otherwise.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:192
+#, no-wrap
+msgid ""
+"token::\n"
+"    The base64 encoded token that can be sent in the `Authorization` header in requests to services.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:195
+#, no-wrap
+msgid ""
+"tokenParsed::\n"
+"    The parsed token as a JavaScript object.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:198
+#, no-wrap
+msgid ""
+"subject::\n"
+"    The user id.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:201
+#, no-wrap
+msgid ""
+"idToken::\n"
+"    The base64 encoded ID token.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:204
+#, no-wrap
+msgid ""
+"idTokenParsed::\n"
+"    The parsed id token as a JavaScript object.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:207
+#, no-wrap
+msgid ""
+"realmAccess::\n"
+"    The realm roles associated with the token.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:210
+#, no-wrap
+msgid ""
+"resourceAccess::\n"
+"    The resource roles associated with the token.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:213
+#, no-wrap
+msgid ""
+"refreshToken::\n"
+"    The base64 encoded refresh token that can be used to retrieve a new token.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:216
+#, no-wrap
+msgid ""
+"refreshTokenParsed::\n"
+"    The parsed refresh token as a JavaScript object.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:220
+#, no-wrap
+msgid ""
+"timeSkew::\n"
+"    The estimated time difference between the browser time and the {project_name} server in seconds. This value is just an estimation, but is accurate\n"
+"    enough when determining if a token is expired or not.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:223
+#, no-wrap
+msgid ""
+"responseMode::\n"
+"    Response mode passed in init (default value is fragment).\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:226
+#, no-wrap
+msgid ""
+"flow::\n"
+"    Flow passed in init.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:229
+#, no-wrap
+msgid ""
+"responseType::\n"
+"    Response type sent to {project_name} with login requests. This is determined based on the flow value used during initialization, but can be overridden by setting this value.\n"
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:230
+#, no-wrap
+msgid "Methods"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:233
+msgid "====== init(options)"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:235
+msgid "Called to initialize the adapter."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:237
+msgid "Options is an Object, where:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:247
+#, no-wrap
+msgid ""
+"* onLoad - Specifies an action to do on load. Supported values are 'login-required' or 'check-sso'.\n"
+"* token - Set an initial value for the token.\n"
+"* refreshToken - Set an initial value for the refresh token.\n"
+"* idToken - Set an initial value for the id token (only together with token or refreshToken).\n"
+"* timeSkew - Set an initial value for skew between local time and {project_name} server in seconds (only together with token or refreshToken).\n"
+"* checkLoginIframe - Set to enable/disable monitoring login state (default is true).\n"
+"* checkLoginIframeInterval - Set the interval to check login state (default is 5 seconds).\n"
+"* responseMode - Set the OpenID Connect response mode send to {project_name} server at login request. Valid values are query or fragment . Default value is fragment, which means that after successful authentication will {project_name} redirect to javascript application with OpenID Connect parameters added in URL fragment. This is generally safer and recommended over query.\n"
+"* flow - Set the OpenID Connect flow. Valid values are standard, implicit or hybrid.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:249
+#, no-wrap
+msgid "Returns promise to set functions to be invoked on success or error.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:251
+#, no-wrap
+msgid "====== login(options)\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:253
+#, no-wrap
+msgid "Redirects to login form on (options is an optional object with redirectUri and/or prompt fields).\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:255
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:274
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:282
+#, no-wrap
+msgid "Options is an Object, where: \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:262
+#, no-wrap
+msgid ""
+"* redirectUri - Specifies the uri to redirect to after login.\n"
+"* prompt - By default the login screen is displayed if the user is not logged-in to {project_name}. To only authenticate to the application if the user is already logged-in and not display the login page if the user is not logged-in, set this option to `none`. To always require re-authentication and ignore SSO, set this option to `login` .\n"
+"* maxAge - Used just if user is already authenticated. Specifies maximum time since the authentication of user happened. If user is already authenticated for longer time than `maxAge`, the SSO is ignored and he will need to re-authenticate again.\n"
+"* loginHint - Used to pre-fill the username/email field on the login form.\n"
+"* action - If value is 'register' then user is redirected to registration page, otherwise to login page.\n"
+"* locale - Specifies the desired locale for the UI.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:264
+#, no-wrap
+msgid "====== createLoginUrl(options)\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:266
+#, no-wrap
+msgid "Returns the URL to login form on (options is an optional object with redirectUri and/or prompt fields).\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:268
+#, no-wrap
+msgid "Options is an Object, which supports same options like the function `login` .\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:270
+#, no-wrap
+msgid "====== logout(options)\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:272
+#, no-wrap
+msgid "Redirects to logout.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:276
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:284
+#, no-wrap
+msgid "* redirectUri - Specifies the uri to redirect to after logout.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:278
+#, no-wrap
+msgid "====== createLogoutUrl(options)\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:280
+#, no-wrap
+msgid "Returns the URL to logout the user.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:286
+#, no-wrap
+msgid "====== register(options)\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:288
+#, no-wrap
+msgid "Redirects to registration form. Shortcut for login with option action = 'register'\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:290
+#, no-wrap
+msgid "Options are same as for the login method but 'action' is set to 'register'\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:292
+#, no-wrap
+msgid "====== createRegisterUrl(options)\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:294
+#, no-wrap
+msgid "Returns the url to registration page. Shortcut for createLoginUrl with option action = 'register'\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:296
+#, no-wrap
+msgid "Options are same as for the createLoginUrl method but 'action' is set to 'register'\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:298
+#, no-wrap
+msgid "====== accountManagement()\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:300
+#, no-wrap
+msgid "Redirects to the Account Management Console.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:302
+#, no-wrap
+msgid "====== createAccountUrl()\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:304
+#, no-wrap
+msgid "Returns the URL to the Account Management Console.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:306
+#, no-wrap
+msgid "====== hasRealmRole(role)\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:308
+#, no-wrap
+msgid "Returns true if the token has the given realm role.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:310
+#, no-wrap
+msgid "====== hasResourceRole(role, resource)\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:312
+#, no-wrap
+msgid "Returns true if the token has the given role for the resource (resource is optional, if not specified clientId is used).\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:314
+#, no-wrap
+msgid "====== loadUserProfile()\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:316
+#, no-wrap
+msgid "Loads the users profile.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:319
+#, no-wrap
+msgid ""
+"Returns promise to set functions to be invoked if the profile was loaded successfully, or if the profile could not be\n"
+"loaded.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:329
+#, no-wrap
+msgid ""
+"keycloak.loadUserProfile().success(function(profile) {\n"
+"        alert(JSON.stringify(test, null, \"  \"));\n"
+"    }).error(function() {\n"
+"        alert('Failed to load user profile');\n"
+"    });\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:332
+#, no-wrap
+msgid "====== isTokenExpired(minValidity)\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:334
+#, no-wrap
+msgid "Returns true if the token has less than minValidity seconds left before it expires (minValidity is optional, if not specified 0 is used).\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:336
+#, no-wrap
+msgid "====== updateToken(minValidity)\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:339
+#, no-wrap
+msgid ""
+"If the token expires within minValidity seconds (minValidity is optional, if not specified 5 is used) the token is refreshed.\n"
+"If the session status iframe is enabled, the session status is also checked. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:342
+#, no-wrap
+msgid ""
+"Returns promise to set functions that can be invoked if the token is still valid, or if the token is no longer valid.\n"
+"For example:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:354
+#, no-wrap
+msgid ""
+"keycloak.updateToken(5).success(function(refreshed) {\n"
+"        if (refreshed) {\n"
+"            alert('Token was successfully refreshed');\n"
+"        } else {\n"
+"            alert('Token is still valid');\n"
+"        }\n"
+"    }).error(function() {\n"
+"        alert('Failed to refresh the token, or the session has expired');\n"
+"    });\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:357
+#, no-wrap
+msgid "====== clearToken()\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:360
+#, no-wrap
+msgid ""
+"Clear authentication state, including tokens.\n"
+"This can be useful if application has detected the session was expired, for example if updating token fails.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:362
+#, no-wrap
+msgid "Invoking this results in onAuthLogout callback listener being invoked. \n"
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:363
+#, no-wrap
+msgid "Callback Events"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:366
+msgid "The adapter supports setting callback listeners for certain events."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:369
+msgid "For example: [source,javascript]"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:371
+msgid "keycloak.onAuthSuccess = function() { alert('authenticated'); }"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:374
+#, no-wrap
+msgid "The available events are:\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:381
+#, no-wrap
+msgid ""
+"* onReady(authenticated) - Called when the adapter is initialized.\n"
+"* onAuthSuccess - Called when a user is successfully authenticated.\n"
+"* onAuthError - Called if there was an error during authentication.\n"
+"* onAuthRefreshSuccess - Called when the token is refreshed.\n"
+"* onAuthRefreshError - Called if there was an error while trying to refresh the token.\n"
+"* onAuthLogout - Called if the user is logged out (will only be called if the session status iframe is enabled, or in Cordova mode).\n"
+"* onTokenExpired - Called when the access token is expired. If a refresh token is available the token can be refreshed with updateToken, or in cases where it is not (that is, with implicit flow) you can redirect to login screen to obtain a new access token.\n"
+msgstr ""

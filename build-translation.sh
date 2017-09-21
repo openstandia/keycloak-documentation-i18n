@@ -25,6 +25,9 @@ for l in $TARGET_LANG; do
         cp -rap $d $TRANSLATED_DIR/$l/
     done
     cp -ap $REPO_DIR/pom.xml $TRANSLATED_DIR/$l/
+
+    # custom resources
+    cp $DIR/images/*.png $TRANSLATED_DIR/$l/aggregation/src/
 done
 
 

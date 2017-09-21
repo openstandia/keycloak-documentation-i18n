@@ -21,7 +21,7 @@ cat << EOS > $OUT_FILE
 [po4a_alias:mytext] text opt:"-k 0 -M utf-8 -L utf-8 -o asciidoc -o neverwrap"
 
 # aggregation
-[type: myadoc] source/aggregation/navbar.html $\lang:translated/$\lang/aggregation/navbar.html master:file=aggregation__navbar
+[type: myadoc] source/aggregation/navbar.html \$lang:translated/\$lang/aggregation/navbar.html master:file=aggregation__navbar
 
 EOS
 

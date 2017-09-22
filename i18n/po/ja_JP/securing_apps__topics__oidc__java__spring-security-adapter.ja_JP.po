@@ -1,0 +1,406 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-21 04:04+0000\n"
+"PO-Revision-Date: 2017-09-21 00:27-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /develop/i18n/po/ja_JP/securing_apps__topics__oidc__java__spring-security-adapter.ja_JP.po\n"
+
+#. type: Title =====
+#| msgid "Installation Tab"
+msgid "Adapter Installation"
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Multi Tenancy"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Spring Security Adapter"
+msgstr ""
+
+#. type: Plain text
+msgid "To secure an application with Spring Security and Keycloak, add this adapter as a dependency to your project.  You then have to provide some extra beans in your Spring Security configuration file and add the Keycloak security filter to your pipeline."
+msgstr ""
+
+#. type: Plain text
+msgid "Unlike the other Keycloak Adapters, you should not configure your security in web.xml.  However, keycloak.json is still required."
+msgstr ""
+
+#. type: Plain text
+msgid "Add Keycloak Spring Security adapter as a dependency to your Maven POM or Gradle build."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "<dependency>\n"
+"    <groupId>org.keycloak</groupId>\n"
+"    <artifactId>keycloak-spring-security-adapter</artifactId>\n"
+"    <version>{project_versionMvn}</version>\n"
+"</dependency>\n"
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Spring Security Configuration"
+msgstr ""
+
+#. type: Plain text
+msgid "The Keycloak Spring Security adapter takes advantage of Spring Security's flexible security configuration syntax."
+msgstr ""
+
+#. type: Plain text
+msgid "====== Java Configuration"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "Keycloak provides a KeycloakWebSecurityConfigurerAdapter as a convenient base class for creating a https://docs.spring.io/spring-security/site/docs/4.0.x/apidocs/org/springframework/security/config/annotation/web/WebSecurityConfigurer.html[WebSecurityConfigurer]                instance.\n"
+"The implementation allows customization by overriding methods.\n"
+"While its use is not required, it greatly simplifies your security context configuration.\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "@KeycloakConfiguration\n"
+"public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter\n"
+"{\n"
+"    /**\n"
+"     * Registers the KeycloakAuthenticationProvider with the authentication manager.\n"
+"     */\n"
+"    @Autowired\n"
+"    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {\n"
+"        auth.authenticationProvider(keycloakAuthenticationProvider());\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    /**\n"
+"     * Defines the session authentication strategy.\n"
+"     */\n"
+"    @Bean\n"
+"    @Override\n"
+"    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {\n"
+"        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    @Override\n"
+"    protected void configure(HttpSecurity http) throws Exception\n"
+"    {\n"
+"        super.configure(http);\n"
+"        http\n"
+"                .authorizeRequests()\n"
+"                .antMatchers(\"/customers*\").hasRole(\"USER\")\n"
+"                .antMatchers(\"/admin*\").hasRole(\"ADMIN\")\n"
+"                .anyRequest().permitAll();\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid "You must provide a session authentication strategy bean which should be of type `RegisterSessionAuthenticationStrategy` for public or confidential applications and `NullAuthenticatedSessionStrategy` for bearer-only applications."
+msgstr ""
+
+#. type: Plain text
+msgid "Spring Security's `SessionFixationProtectionStrategy` is currently not supported because it changes the session identifier after login via Keycloak.  If the session identifier changes, universal log out will not work because Keycloak is unaware of the new session identifier."
+msgstr ""
+
+#. type: Plain text
+msgid "The `@KeycloakConfiguration` annotation is a metadata annotion that defines all annotations that are needed to integrate KeyCloak in Spring security. If you have a complexe Spring security setup you can simply have a look ath the annotations of the `@KeycloakConfiguration` annotation and create your own custom meta annotation or just use specific Spring annotations for the KeyCloak adapter."
+msgstr ""
+
+#. type: Plain text
+msgid "====== XML Configuration"
+msgstr ""
+
+#. type: Plain text
+msgid "While Spring Security's XML namespace simplifies configuration, customizing the configuration can be a bit verbose."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+"<beans xmlns=\"http://www.springframework.org/schema/beans\"\n"
+"       xmlns:context=\"http://www.springframework.org/schema/context\"\n"
+"       xmlns:security=\"http://www.springframework.org/schema/security\"\n"
+"       xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"       xsi:schemaLocation=\"\n"
+"       http://www.springframework.org/schema/beans\n"
+"       http://www.springframework.org/schema/beans/spring-beans.xsd\n"
+"       http://www.springframework.org/schema/context\n"
+"       http://www.springframework.org/schema/context/spring-context.xsd\n"
+"       http://www.springframework.org/schema/security\n"
+"       http://www.springframework.org/schema/security/spring-security.xsd\">\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <context:component-scan base-package=\"org.keycloak.adapters.springsecurity\" />\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <security:authentication-manager alias=\"authenticationManager\">\n"
+"        <security:authentication-provider ref=\"keycloakAuthenticationProvider\" />\n"
+"    </security:authentication-manager>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <bean id=\"adapterDeploymentContext\" class=\"org.keycloak.adapters.springsecurity.AdapterDeploymentContextFactoryBean\">\n"
+"        <constructor-arg value=\"/WEB-INF/keycloak.json\" />\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <bean id=\"keycloakAuthenticationEntryPoint\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationEntryPoint\" />\n"
+"    <bean id=\"keycloakAuthenticationProvider\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider\" />\n"
+"    <bean id=\"keycloakPreAuthActionsFilter\" class=\"org.keycloak.adapters.springsecurity.filter.KeycloakPreAuthActionsFilter\" />\n"
+"    <bean id=\"keycloakAuthenticationProcessingFilter\" class=\"org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticationProcessingFilter\">\n"
+"        <constructor-arg name=\"authenticationManager\" ref=\"authenticationManager\" />\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <bean id=\"keycloakLogoutHandler\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakLogoutHandler\">\n"
+"        <constructor-arg ref=\"adapterDeploymentContext\" />\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <bean id=\"logoutFilter\" class=\"org.springframework.security.web.authentication.logout.LogoutFilter\">\n"
+"        <constructor-arg name=\"logoutSuccessUrl\" value=\"/\" />\n"
+"        <constructor-arg name=\"handlers\">\n"
+"            <list>\n"
+"                <ref bean=\"keycloakLogoutHandler\" />\n"
+"                <bean class=\"org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler\" />\n"
+"            </list>\n"
+"        </constructor-arg>\n"
+"        <property name=\"logoutRequestMatcher\">\n"
+"            <bean class=\"org.springframework.security.web.util.matcher.AntPathRequestMatcher\">\n"
+"                <constructor-arg name=\"pattern\" value=\"/sso/logout**\" />\n"
+"                <constructor-arg name=\"httpMethod\" value=\"GET\" />\n"
+"            </bean>\n"
+"        </property>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <security:http auto-config=\"false\" entry-point-ref=\"keycloakAuthenticationEntryPoint\">\n"
+"        <security:custom-filter ref=\"keycloakPreAuthActionsFilter\" before=\"LOGOUT_FILTER\" />\n"
+"        <security:custom-filter ref=\"keycloakAuthenticationProcessingFilter\" before=\"FORM_LOGIN_FILTER\" />\n"
+"        <security:intercept-url pattern=\"/customers**\" access=\"ROLE_USER\" />\n"
+"        <security:intercept-url pattern=\"/admin**\" access=\"ROLE_ADMIN\" />\n"
+"        <security:custom-filter ref=\"logoutFilter\" position=\"LOGOUT_FILTER\" />\n"
+"    </security:http>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "</beans>\n"
+msgstr ""
+
+#. type: Plain text
+msgid "The Keycloak Spring Security adapter also supports multi tenancy.  Instead of injecting `AdapterDeploymentContextFactoryBean` with the path to `keycloak.json` you can inject an implementation of the `KeycloakConfigResolver` interface.  More details on how to implement the `KeycloakConfigResolver` can be found in <<_multi_tenancy,Multi Tenancy>>."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Naming Security Roles"
+msgstr ""
+
+#. type: Plain text
+msgid "Spring Security, when using role-based authentication, requires that role names start with `ROLE_`.  For example, an administrator role must be declared in Keycloak as `ROLE_ADMIN` or similar, not simply `ADMIN`."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "The class `org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider`            supports an optional `org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper`            which can be used to map roles coming from Keycloak to roles recognized by Spring Security.\n"
+"Use, for example, `org.springframework.security.core.authority.mapping.SimpleAuthorityMapper` to insert the `ROLE_` prefix and convert the role name to upper case.\n"
+"The class is part of Spring Security Core module.\n"
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Client to Client Support"
+msgstr ""
+
+#. type: Plain text
+msgid "To simplify communication between clients, Keycloak provides an extension of Spring's `RestTemplate` that handles bearer token authentication for you.  To enable this feature your security configuration must add the `KeycloakRestTemplate` bean.  Note that it must be scoped as a prototype to function correctly."
+msgstr ""
+
+#. type: Plain text
+msgid "For Java configuration:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "@Configuration\n"
+"@EnableWebSecurity\n"
+"@ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)\n"
+"public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    ...\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    @Autowired\n"
+"    public KeycloakClientRequestFactory keycloakClientRequestFactory;\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    @Bean\n"
+"    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)\n"
+"    public KeycloakRestTemplate keycloakRestTemplate() {\n"
+"        return new KeycloakRestTemplate(keycloakClientRequestFactory);\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    ...\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid "For XML configuration:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "<bean id=\"keycloakRestTemplate\" class=\"org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate\" scope=\"prototype\">\n"
+"    <constructor-arg name=\"factory\" ref=\"keycloakClientRequestFactory\" />\n"
+"</bean>\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Your application code can then use `KeycloakRestTemplate` any time it needs to make a call to another client.  For example:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "@Service\n"
+"public class RemoteProductService implements ProductService {\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    @Autowired\n"
+"    private KeycloakRestTemplate template;\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    private String endpoint;\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    @Override\n"
+"    public List<String> getProducts() {\n"
+"        ResponseEntity<String[]> response = template.getForEntity(endpoint, String[].class);\n"
+"        return Arrays.asList(response.getBody());\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Spring Boot Integration"
+msgstr ""
+
+#. type: Plain text
+msgid "The Spring Boot and the Spring Security adapters can be combined."
+msgstr ""
+
+#. type: Plain text
+msgid "If you are using the Keycloak Spring Boot Starter to make use of the Spring Security adapter you just need to add the Spring Security starter :"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "<dependency>\n"
+"  <groupId>org.springframework.boot</groupId>\n"
+"  <artifactId>spring-boot-starter-security</artifactId>\n"
+"</dependency>\n"
+msgstr ""
+
+#. type: Plain text
+msgid "====== Using Spring Boot Configuration"
+msgstr ""
+
+#. type: Plain text
+msgid "By Default, the Spring Security Adapter looks for a `keycloak.json` configuration file. You can make sure it looks at the configuration provided by the Spring Boot Adapter by adding this bean :"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "@Bean\n"
+"public KeycloakConfigResolver KeycloakConfigResolver() {\n"
+"    return new KeycloakSpringBootConfigResolver();\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid "====== Avoid double Filter bean registration"
+msgstr ""
+
+#. type: Plain text
+msgid "Spring Boot attempts to eagerly register filter beans with the web application context.  Therefore, when running the Keycloak Spring Security adapter in a Spring Boot environment, it may be necessary to add two ``FilterRegistrationBean``s to your security configuration to prevent the Keycloak filters from being registered twice."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "@Configuration\n"
+"@EnableWebSecurity\n"
+"public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter\n"
+"{\n"
+"    ...\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    @Bean\n"
+"    public FilterRegistrationBean keycloakAuthenticationProcessingFilterRegistrationBean(\n"
+"            KeycloakAuthenticationProcessingFilter filter) {\n"
+"        FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);\n"
+"        registrationBean.setEnabled(false);\n"
+"        return registrationBean;\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    @Bean\n"
+"    public FilterRegistrationBean keycloakPreAuthActionsFilterRegistrationBean(\n"
+"            KeycloakPreAuthActionsFilter filter) {\n"
+"        FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);\n"
+"        registrationBean.setEnabled(false);\n"
+"        return registrationBean;\n"
+"    }\n"
+msgstr ""
+

@@ -1,0 +1,139 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-21 04:04+0000\n"
+"PO-Revision-Date: 2017-09-21 00:25-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /develop/i18n/po/ja_JP/securing_apps__topics__saml__java__logout.ja_JP.po\n"
+
+#. type: Title ====
+#: source/securing_apps/topics/oidc/java/logout.adoc:1
+#: source/securing_apps/topics/saml/java/logout.adoc:1
+#, no-wrap
+msgid "Logout"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:7
+msgid "There are multiple ways you can logout from a web application.  For Java EE servlet containers, you can call `HttpServletRequest.logout()`. For any other browser application, you can point the browser at any url of your web application that has a security constraint and pass in a query parameter GLO, i.e. `$$http://myapp?GLO=true$$`.  This will log you out if you have an SSO session with your browser."
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/saml/java/logout.adoc:9
+#, no-wrap
+msgid "Logout in Clustered Environment"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:15
+msgid "Internally, the SAML adapter stores a mapping between the SAML session index, principal name (when known), and HTTP session ID.  This mapping can be maintained in JBoss application server family (Wildfly 10/11, EAP 6/7) across cluster for distributable applications. As a precondition, the HTTP sessions need to be distributed across cluster (i.e. application is marked with `<distributable/>` tag in application's `web.xml`)."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:17
+msgid "To enable the functionality, add the following section to your `/WEB_INF/web.xml` file:"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:19
+msgid "For EAP 7, Wildfly 10/11:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/logout.adoc:26
+#, no-wrap
+msgid "<context-param>\n"
+"    <param-name>keycloak.sessionIdMapperUpdater.classes</param-name>\n"
+"    <param-value>org.keycloak.adapters.saml.wildfly.infinispan.InfinispanSessionCacheIdMapperUpdater</param-value>\n"
+"</context-param>\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:29
+msgid "For EAP 6:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/logout.adoc:36
+#, no-wrap
+msgid "<context-param>\n"
+"    <param-name>keycloak.sessionIdMapperUpdater.classes</param-name>\n"
+"    <param-value>org.keycloak.adapters.saml.jbossweb.infinispan.InfinispanSessionCacheIdMapperUpdater</param-value>\n"
+"</context-param>\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:43
+msgid "If the session cache of the deployment is named `_deployment-cache_`, the cache used for SAML mapping will be named as `_deployment-cache_.ssoCache`. The name of the cache can be overridden by a context parameter `keycloak.sessionIdMapperUpdater.infinispan.cacheName`. The cache container containing the cache will be the same as the one containing the deployment session cache, but can be overridden by a context parameter `keycloak.sessionIdMapperUpdater.infinispan.containerName`."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:46
+msgid "By default, the configuration of the SAML mapping cache will be derived from session cache. The configuration can be manually overridden in cache configuration section of the server just the same as other caches."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:50
+msgid "Currently, to provide reliable service, it is recommended to use replicated cache for the SAML session cache.  Using distributed cache may lead to results where the SAML logout request would land to a node with no access to SAML session index to HTTP session mapping which would lead to unsuccessful logout."
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/saml/java/logout.adoc:52
+#, no-wrap
+msgid "Logout in Cross DC Scenario"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:55
+msgid "The cross DC scenario only applies to Wildfly 10 and higher, and EAP 7 and higher."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:57
+msgid "Special handling is needed for handling sessions that span multiple data centers. Imagine the following scenario:"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:59
+msgid "Login requests are handled within cluster in data center 1."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:61
+msgid "Admin issues logout request for a particular SAML session, the request lands in data center 2."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:64
+msgid "The data center 2 has to log out all sessions that are present in data center 1 (and all other data centers that share HTTP sessions)."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:68
+msgid "To cover this case, the SAML session cache described <<_saml_logout_in_cluster,above>> needs to be replicated not only within individual clusters but across all the data centers e.g.  https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Data_Grid/6.6/html/Administration_and_Configuration_Guide/chap-Externalize_Sessions.html#Externalize_HTTP_Session_from_JBoss_EAP_6.x_to_JBoss_Data_Grid[via standalone Infinispan/JDG server]:"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:70
+msgid "A cache has to be added to the standalone Infinispan/JDG server."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:72
+msgid "The cache from previous item has to be added as a remote store for the respective SAML session cache."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/logout.adoc:74
+msgid "Once remote store is found to be present on SAML session cache during deployment, it is watched for changes and the local SAML session cache is updated accordingly."
+msgstr ""
+

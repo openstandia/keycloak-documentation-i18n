@@ -1,0 +1,182 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-21 04:04+0000\n"
+"PO-Revision-Date: 2017-09-21 00:27-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /develop/i18n/po/ja_JP/securing_apps__topics__saml__java__assertion-api.ja_JP.po\n"
+
+#. type: Title ====
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:2
+#, no-wrap
+msgid "Obtaining Assertion Attributes"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:8
+msgid "After a successful SAML login, your application code may want to obtain attribute values passed with the SAML assertion.  `HttpServletRequest.getUserPrincipal()` returns a `Principal` object that you can typecast into a {project_name} specific class called `org.keycloak.adapters.saml.SamlPrincipal`.  This object allows you to look at the raw assertion and also has convenience functions to look up attribute values."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:13
+#, no-wrap
+msgid "package org.keycloak.adapters.saml;\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:23
+#, no-wrap
+msgid "public class SamlPrincipal implements Serializable, Principal {\n"
+"    /**\n"
+"     * Get full saml assertion\n"
+"     *\n"
+"     * @return\n"
+"     */\n"
+"    public AssertionType getAssertion() {\n"
+"       ...\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:32
+#, no-wrap
+msgid "    /**\n"
+"     * Get SAML subject sent in assertion\n"
+"     *\n"
+"     * @return\n"
+"     */\n"
+"    public String getSamlSubject() {\n"
+"        ...\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:41
+#, no-wrap
+msgid "    /**\n"
+"     * Subject nameID format\n"
+"     *\n"
+"     * @return\n"
+"     */\n"
+"    public String getNameIDFormat() {\n"
+"        ...\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:46
+#, no-wrap
+msgid "    @Override\n"
+"    public String getName() {\n"
+"        ...\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:55
+#, no-wrap
+msgid "    /**\n"
+"     * Convenience function that gets Attribute value by attribute name\n"
+"     *\n"
+"     * @param name\n"
+"     * @return\n"
+"     */\n"
+"    public List<String> getAttributes(String name) {\n"
+"        ...\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:57
+#: source/server_development/topics/user-storage/configuration.adoc:18
+#: source/server_development/topics/user-storage/configuration.adoc:23
+#: source/server_development/topics/user-storage/configuration.adoc:28
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:26
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:38
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:50
+#: source/server_development/topics/user-storage/registration-query.adoc:109
+#: source/server_development/topics/user-storage/simple-example.adoc:146
+#: source/server_development/topics/providers.adoc:75
+#, no-wrap
+msgid "    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:67
+#, no-wrap
+msgid "    /**\n"
+"     * Convenience function that gets Attribute value by attribute friendly name\n"
+"     *\n"
+"     * @param friendlyName\n"
+"     * @return\n"
+"     */\n"
+"    public List<String> getFriendlyAttributes(String friendlyName) {\n"
+"        ...\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:77
+#, no-wrap
+msgid "    /**\n"
+"     * Convenience function that gets first  value of an attribute by attribute name\n"
+"     *\n"
+"     * @param name\n"
+"     * @return\n"
+"     */\n"
+"    public String getAttribute(String name) {\n"
+"        ...\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:88
+#, no-wrap
+msgid "    /**\n"
+"     * Convenience function that gets first  value of an attribute by attribute name\n"
+"     *\n"
+"     *\n"
+"     * @param friendlyName\n"
+"     * @return\n"
+"     */\n"
+"    public String getFriendlyAttribute(String friendlyName) {\n"
+"        ...\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:97
+#, no-wrap
+msgid "    /**\n"
+"     * Get set of all assertion attribute names\n"
+"     *\n"
+"     * @return\n"
+"     */\n"
+"    public Set<String> getAttributeNames() {\n"
+"        ...\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:107
+#, no-wrap
+msgid "    /**\n"
+"     * Get set of all assertion friendly attribute names\n"
+"     *\n"
+"     * @return\n"
+"     */\n"
+"    public Set<String> getFriendlyNames() {\n"
+"        ...\n"
+"    }\n"
+"}\n"
+"----    \n"
+msgstr ""
+

@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"POT-Creation-Date: 2017-09-21 04:04+0000\n"
+"PO-Revision-Date: 2017-09-21 00:26-0400\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /develop/i18n/po/ja_JP/securing_apps__topics__oidc__java__fuse__cxf-builtin.ja_JP.po\n"
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:76
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:71
+#: source/securing_apps/topics/oidc/java/fuse/servlet-whiteboard.adoc:60
+#, no-wrap
+msgid "</blueprint>\n"
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:3
+#, no-wrap
+msgid "Securing an Apache CXF Endpoint on the Default Jetty Engine"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:6
+msgid "Some services automatically come with deployed servlets on startup. One such service is the CXF servlet running in the $$http://localhost:8181/cxf$$ context. Securing such endpoints can be complicated. One approach, which {project_name} is currently using, is ServletReregistrationService, which undeploys a built-in servlet at startup, enabling you to redeploy it on a context secured by {project_name}."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:8
+msgid "The configuration file `OSGI-INF/blueprint/blueprint.xml` inside your application might resemble the one below. Note that it adds the JAX-RS `customerservice` endpoint, which is endpoint-specific to your application, but more importantly, secures the entire `/cxf` context."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:18
+#, no-wrap
+msgid "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+"<blueprint xmlns=\"http://www.osgi.org/xmlns/blueprint/v1.0.0\"\n"
+"           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"           xmlns:jaxrs=\"http://cxf.apache.org/blueprint/jaxrs\"\n"
+"           xsi:schemaLocation=\"\n"
+"\t\thttp://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd\n"
+"\t\thttp://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd\">\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:20
+#, no-wrap
+msgid "    <!-- JAXRS Application -->\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:22
+#, no-wrap
+msgid "    <bean id=\"customerBean\" class=\"org.keycloak.example.rs.CxfCustomerService\" />\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:31
+#, no-wrap
+msgid "    <jaxrs:server id=\"cxfJaxrsServer\" address=\"/customerservice\">\n"
+"        <jaxrs:providers>\n"
+"            <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
+"        </jaxrs:providers>\n"
+"        <jaxrs:serviceBeans>\n"
+"            <ref component-id=\"customerBean\" />\n"
+"        </jaxrs:serviceBeans>\n"
+"    </jaxrs:server>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:34
+#, no-wrap
+msgid "    <!-- Securing of whole /cxf context by unregister default cxf servlet from paxweb and re-register with applied security constraints -->\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:50
+#, no-wrap
+msgid "    <bean id=\"cxfConstraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
+"        <property name=\"constraint\">\n"
+"            <bean class=\"org.eclipse.jetty.util.security.Constraint\">\n"
+"                <property name=\"name\" value=\"cst1\"/>\n"
+"                <property name=\"roles\">\n"
+"                    <list>\n"
+"                        <value>user</value>\n"
+"                    </list>\n"
+"                </property>\n"
+"                <property name=\"authenticate\" value=\"true\"/>\n"
+"                <property name=\"dataConstraint\" value=\"0\"/>\n"
+"            </bean>\n"
+"        </property>\n"
+"        <property name=\"pathSpec\" value=\"/cxf/*\"/>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:61
+#, no-wrap
+msgid "    <bean id=\"cxfKeycloakPaxWebIntegration\" class=\"org.keycloak.adapters.osgi.PaxWebIntegrationService\"\n"
+"          init-method=\"start\" destroy-method=\"stop\">\n"
+"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
+"        <property name=\"jettyWebXmlLocation\" value=\"/WEB-INF/jetty-web.xml\" />\n"
+"        <property name=\"constraintMappings\">\n"
+"            <list>\n"
+"                <ref component-id=\"cxfConstraintMapping\" />\n"
+"            </list>\n"
+"        </property>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:69
+#, no-wrap
+msgid "    <bean id=\"defaultCxfReregistration\" class=\"org.keycloak.adapters.osgi.ServletReregistrationService\" depends-on=\"cxfKeycloakPaxWebIntegration\"\n"
+"          init-method=\"start\" destroy-method=\"stop\">\n"
+"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
+"        <property name=\"managedServiceReference\">\n"
+"            <reference interface=\"org.osgi.service.cm.ManagedService\" filter=\"(service.pid=org.apache.cxf.osgi)\" timeout=\"5000\"  />\n"
+"        </property>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:75
+msgid "As a result, all other CXF services running on the default CXF HTTP destination are also secured. Similarly, when the application is undeployed, the entire `/cxf` context becomes unsecured as well. For this reason, using your own Jetty engine for your applications as described in <<_fuse_adapter_cxf_separate,Secure CXF Application on separate Jetty Engine>> then gives you more control over security for each individual application."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:78
+msgid "The `WEB-INF` directory might need to be inside your project (even if your project is not a web application). You might also need to edit the `/WEB-INF/jetty-web.xml` and `/WEB-INF/keycloak.json` files in a similar way as in <<_fuse_adapter_classic_war,Classic WAR application>>.  Note that you do not need the `web.xml` file as the security constraints are declared in the blueprint configuration file."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:80
+msgid "The `Import-Package` in `META-INF/MANIFEST.MF` must contain these imports:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:93
+#, no-wrap
+msgid "META-INF.cxf;version=\"[2.7,3.2)\",\n"
+"META-INF.cxf.osgi;version=\"[2.7,3.2)\";resolution:=optional,\n"
+"org.apache.cxf.transport.http;version=\"[2.7,3.2)\",\n"
+"org.apache.cxf.*;version=\"[2.7,3.2)\",\n"
+"com.fasterxml.jackson.jaxrs.json;version=\"[2.5,3)\",\n"
+"org.eclipse.jetty.security;version=\"[8,10)\",\n"
+"org.eclipse.jetty.util.security;version=\"[8,10)\",\n"
+"org.keycloak.*;version=\"{project_versionMvn}\",\n"
+"org.keycloak.adapters.jetty;version=\"{project_versionMvn}\",\n"
+"*;resolution:=optional\n"
+msgstr ""
+

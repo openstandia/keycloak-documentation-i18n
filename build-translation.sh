@@ -18,13 +18,16 @@ cd $REPO_DIR && git checkout $SOURCE_REVISION
 git reset --hard HEAD && git clean -f
 
 # Preparation for building translated documents
-SOURCE_DIRS=`find $REPO_DIR -maxdepth 1 -type d -not -name '.git' -not -name 'i18n' -not -name 'translated' -not -name '.'`
 for l in $TARGET_LANG; do
     mkdir -p $TRANSLATED_DIR/$l
-    for d in $SOURCE_DIRS; do
-        cp -rap $d $TRANSLATED_DIR/$l/
-    done
-    cp -ap $REPO_DIR/pom.xml $TRANSLATED_DIR/$l/
+    cp -rap $REPO_DIR/* $TRANSLATED_DIR/$l/
+
+    # custom pom.xml
+    # TODO: toc-title need to be translated for the lang
+    sed -i -e "s|<attributes>|<attributes><toc-title>目次</toc-title><nofooter>true</nofooter>|" $TRANSLATED_DIR/$l/pom.xml
+
+    # custom image
+    cp $DIR/site/*.png $TRANSLATED_DIR/$l/aggregation/src/
 done
 
 
@@ -35,6 +38,10 @@ if [ "$?" -eq 0 ]; then
     po4a po4a.cfg
 else
     docker run --rm -it -v $(pwd):/build -w /build -u $UID:$GID openstandia/keycloak-documentation po4a --no-update --package-name="keycloak-documentation-i18n" --package-version=" " --copyright-holder="Nomura Research Institute, Ltd." --msgmerge-opt '--no-location --no-wrap --previous' po4a.cfg
+fi
+
+if [ "$?" -ne 0 ]; then
+    exit 1
 fi
 
 

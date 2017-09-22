@@ -37,11 +37,12 @@ jobs:
       - save_cache:
           paths:
             - ~/repo/translated/dist
+            - ~/repo/site
           key: dist-{{ epoch }}
 
   deploy:
     docker:
-      - image: openstandia/keycloak-documentation
+      - image: openstandia/keycloak-documentation-i18n
 
     working_directory: ~/repo
 
@@ -51,7 +52,9 @@ jobs:
             - dist-
       - run:
           name: deply to s3
-          command: aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_BRANCH/ --delete
+          command: |
+              aws s3 sync ~/repo/site/ s3://keycloak-documentation/
+              aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_BRANCH/ --delete
 
 
 workflows:

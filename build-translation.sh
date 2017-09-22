@@ -18,16 +18,15 @@ cd $REPO_DIR && git checkout $SOURCE_REVISION
 git reset --hard HEAD && git clean -f
 
 # Preparation for building translated documents
-SOURCE_DIRS=`find $REPO_DIR -maxdepth 1 -type d -not -name '.git' -not -name 'i18n' -not -name 'translated' -not -name '.'`
 for l in $TARGET_LANG; do
     mkdir -p $TRANSLATED_DIR/$l
-    for d in $SOURCE_DIRS; do
-        cp -rap $d $TRANSLATED_DIR/$l/
-    done
-    cp -ap $REPO_DIR/pom.xml $TRANSLATED_DIR/$l/
+    cp -rap $REPO_DIR/* $TRANSLATED_DIR/$l/
+
+    # custom pom.xml
+    sed -i -e "s|<attributes>|<attributes><toc-title>目次</toc-title><nofooter>true</nofooter>|" $TRANSLATED_DIR/$l/pom.xml
 
     # custom resources
-    cp $DIR/images/*.png $TRANSLATED_DIR/$l/aggregation/src/
+    cp $DIR/images/* $TRANSLATED_DIR/$l/aggregation/src/
 done
 
 

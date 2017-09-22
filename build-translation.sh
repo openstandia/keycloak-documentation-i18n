@@ -23,6 +23,7 @@ for l in $TARGET_LANG; do
     cp -rap $REPO_DIR/* $TRANSLATED_DIR/$l/
 
     # custom pom.xml
+    # TODO: toc-title need to be translated for the lang
     sed -i -e "s|<attributes>|<attributes><toc-title>目次</toc-title><nofooter>true</nofooter>|" $TRANSLATED_DIR/$l/pom.xml
 
     # custom resources

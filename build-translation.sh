@@ -26,8 +26,8 @@ for l in $TARGET_LANG; do
     # TODO: toc-title need to be translated for the lang
     sed -i -e "s|<attributes>|<attributes><toc-title>目次</toc-title><nofooter>true</nofooter>|" $TRANSLATED_DIR/$l/pom.xml
 
-    # custom resources
-    cp $DIR/images/* $TRANSLATED_DIR/$l/aggregation/src/
+    # custom image
+    cp $DIR/site/*.png $TRANSLATED_DIR/$l/aggregation/src/
 done
 
 

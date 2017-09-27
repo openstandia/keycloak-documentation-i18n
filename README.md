@@ -1,7 +1,6 @@
 Keycloak Documentation translation project
 ======================
 
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/keycloak-documentation-i18n/localized.svg)](https://crowdin.com/project/keycloak-documentation-i18n)
 [![CircleCI](https://circleci.com/gh/openstandia/keycloak-documentation-i18n.svg?style=svg)](https://circleci.com/gh/openstandia/keycloak-documentation-i18n)
 
 Support Languages

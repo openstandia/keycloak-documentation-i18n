@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
 "POT-Creation-Date: 2017-09-21 04:04+0000\n"
-"PO-Revision-Date: 2017-09-21 00:27-0400\n"
+"PO-Revision-Date: 2017-09-27 04:21-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -141,7 +141,8 @@ msgid "Wildfly 11"
 msgstr ""
 
 msgid "$ ./bin/jboss-cli.sh --file=adapter-elytron-install-offline.cli\n"
-msgstr ""
+msgstr "$ cd bin\n"
+"$ ./jboss-cli.sh --file=adapter-elytron-install-offline.cli\n"
 
 #. type: Block title
 #, no-wrap
@@ -149,7 +150,8 @@ msgid "Any other server but Wildfly 11"
 msgstr ""
 
 msgid "$ ./bin/jboss-cli.sh --file=adapter-install-offline.cli\n"
-msgstr ""
+msgstr "$ cd bin\n"
+"$ ./jboss-cli.sh --file=adapter-install-offline.cli\n"
 
 #. type: Plain text
 msgid "The offline script is not available for JBoss EAP 6"
@@ -160,10 +162,12 @@ msgid "Alternatively, if the server is running execute:"
 msgstr ""
 
 msgid "$ ./bin/jboss-cli.sh --file=adapter-elytron-install.cli\n"
-msgstr ""
+msgstr "$ cd bin\n"
+"$ ./jboss-cli.sh --file=adapter-elytron-install-offline.cli\n"
 
 msgid "$ ./bin/jboss-cli.sh --file=adapter-install.cli\n"
-msgstr ""
+msgstr "$ cd bin\n"
+"$ ./jboss-cli.sh --file=adapter-install-offline.cli\n"
 
 #. type: Title =====
 #, no-wrap
@@ -277,7 +281,17 @@ msgid "<profile>\n"
 "     </secure-deployment>\n"
 "  </subsystem>\n"
 "</profile>\n"
-msgstr ""
+msgstr "<profile>\n"
+"  <subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
+"     <secure-deployment name=\"WAR MODULE NAME.war\">\n"
+"        <realm>demo</realm>\n"
+"        <auth-server-url>http://localhost:8081/auth</auth-server-url>\n"
+"        <ssl-required>external</ssl-required>\n"
+"        <resource>customer-portal</resource>\n"
+"        <credential name=\"secret\">password</credential>\n"
+"     </secure-deployment>\n"
+"  </subsystem>\n"
+"</profile>\n"
 
 #. type: Plain text
 msgid "The `secure-deployment` `name` attribute identifies the WAR you want to secure.  Its value is the `module-name` defined in `web.xml` with `.war` appended. The rest of the configuration corresponds pretty much one to one with the `keycloak.json` configuration options defined in <<_java_adapter_config,Java adapter configuration>>."

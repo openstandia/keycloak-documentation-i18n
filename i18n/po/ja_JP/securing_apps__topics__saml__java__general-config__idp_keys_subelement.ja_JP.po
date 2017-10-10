@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
 "POT-Creation-Date: 2017-09-21 04:04+0000\n"
-"PO-Revision-Date: 2017-10-06 04:52-0400\n"
+"PO-Revision-Date: 2017-10-10 03:41-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -19,12 +19,12 @@ msgstr ""
 #: source/securing_apps/topics/saml/java/general-config/idp_keys_subelement.adoc:3
 #, no-wrap
 msgid "IDP Keys sub element"
-msgstr ""
+msgstr "IDP Keysサブ要素"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/general-config/idp_keys_subelement.adoc:9
 msgid "The Keys sub element of IDP is only used to define the certificate or public key to use to verify documents signed by the IDP.  It is defined in the same way as the <<_saml-sp-keys,SP's Keys element>>.  But again, you only have to define one certificate or public key reference. Note that, if both IDP and SP are realized by {project_name} server and adapter, respectively, there is no need to specify the keys for signature validation, see below."
-msgstr ""
+msgstr "IDPのKeysサブ要素は、IDPによって署名されたドキュメントの検証に使用する証明書や公開鍵を定義するために使用されます。Keysサブ要素は、<<_saml-sp-keys,SP's Keys element>>と同じ方法で定義されます。しかし、証明書または公開鍵の参照を1つだけ定義する必要があります。IDPとSPがともに{project_name}サーバーとアダプターによって実現された場合、それぞれで、署名の検証のために鍵を指定する必要はないことに注意して下さい（以下を参照してください）。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/general-config/idp_keys_subelement.adoc:22
@@ -54,5 +54,14 @@ msgid "       <IDP entityID=\"idp\">\n"
 "                </Key>\n"
 "            </Keys>\n"
 "        </IDP>\n"
-msgstr ""
+msgstr "       <IDP entityID=\"idp\">\n"
+"            ...\n"
+"            <Keys>\n"
+"                <Key signing=\"true\">\n"
+"                    <KeyStore resource=\"/WEB-INF/keystore.jks\" password=\"store123\">\n"
+"                        <Certificate alias=\"demo\"/>\n"
+"                    </KeyStore>\n"
+"                </Key>\n"
+"            </Keys>\n"
+"        </IDP>\n"
 

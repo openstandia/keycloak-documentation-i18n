@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
 "POT-Creation-Date: 2017-09-21 04:04+0000\n"
-"PO-Revision-Date: 2017-10-10 03:10-0400\n"
+"PO-Revision-Date: 2017-10-10 03:20-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -30,12 +30,12 @@ msgstr "トラスト・ストアのキーストアのパスワードです。こ
 
 #. type: Plain text
 msgid "This is the file path to a keystore file.  This keystore contains client certificate for two-way SSL when the adapter makes HTTPS requests to the {project_name} server.  This is _OPTIONAL_."
-msgstr ""
+msgstr "キーストア・ファイルへのファイル・パスです。このキーストアには、アダプターが{project_name}サーバーにHTTPSリクエストを行う際の、双方向SSLのためのクライアント証明書が含まれます。これは _OPTIONAL_ です。"
 
 #. type: Title =====
 #, no-wrap
 msgid "IDP HttpClient sub element"
-msgstr ""
+msgstr "IDP HttpClient サブ要素"
 
 #. type: Plain text
 msgid "The `HttpClient` optional sub element defines the properties of HTTP client used for automatic obtaining of certificates containing public keys for IDP signature verification via SAML descriptor of the IDP when <<_sp-idp-keys-automatic,enabled>>."
@@ -51,26 +51,33 @@ msgid "<HttpClient connectionPoolSize=\"10\"\n"
 "            truststore=\"classpath:truststore.jks\"\n"
 "            truststorePassword=\"pwd\"\n"
 "            proxyUrl=\"http://proxy/\" />\n"
-msgstr ""
+msgstr "<HttpClient connectionPoolSize=\"10\"\n"
+"            disableTrustManager=\"false\"\n"
+"            allowAnyHostname=\"false\"\n"
+"            clientKeystore=\"classpath:keystore.jks\"\n"
+"            clientKeystorePassword=\"pwd\"\n"
+"            truststore=\"classpath:truststore.jks\"\n"
+"            truststorePassword=\"pwd\"\n"
+"            proxyUrl=\"http://proxy/\" />\n"
 
 #. type: Labeled list
 #, no-wrap
 msgid "connectionPoolSize"
-msgstr ""
+msgstr "connectionPoolSize"
 
 #. type: Plain text
 msgid "Adapters will make separate HTTP invocations to the {project_name} server to turn an access code into an access token.  This config option defines how many connections to the {project_name} server should be pooled.  This is _OPTIONAL_.  The default value is `10`."
-msgstr ""
+msgstr "アダプターは、アクセス・コードをアクセス・トークンに変換するために、{project_name}サーバーに別のHTTP呼び出しを行います。この設定オプションは、{project_name}サーバーにプールすべきコネクション数を定義します。 これは _OPTIONAL_ です。デフォルトは `10` です。"
 
 #. type: Labeled list
 #, no-wrap
 msgid "disableTrustManager"
-msgstr ""
+msgstr "disableTrustManager"
 
 #. type: Labeled list
 #, no-wrap
 msgid "allowAnyHostname"
-msgstr ""
+msgstr "allowAnyHostname"
 
 #. type: Plain text
 msgid "If the {project_name} server requires HTTPS and this config option is set to `true` the {project_name} server's certificate is validated via the truststore, but host name validation is not done.  This setting should only be used during development and *never* in production as it will partly disable verification of SSL certificates.  This seting may be useful in test environments. This is _OPTIONAL_.  The default value is `false`."
@@ -83,28 +90,28 @@ msgstr ""
 #. type: Labeled list
 #| msgid "Update Password"
 msgid "truststorePassword"
-msgstr ""
+msgstr "truststorePassword"
 
 #. type: Labeled list
 #, no-wrap
 msgid "clientKeystore"
-msgstr ""
+msgstr "clientKeystore"
 
 #. type: Labeled list
 #, no-wrap
 msgid "clientKeystorePassword"
-msgstr ""
+msgstr "clientKeystorePassword"
 
 #. type: Plain text
 msgid "Password for the client keystore and for the client's key.  This is _REQUIRED_ if `clientKeystore` is set."
-msgstr ""
+msgstr "クライアントのキーとクライアントのキーストアのパスワード。 `clientKeystore` が設定されている場合は、 _REQUIRED_ です。"
 
 #. type: Labeled list
 #, no-wrap
 msgid "proxyUrl"
-msgstr ""
+msgstr "proxyUrl"
 
 #. type: Plain text
 msgid "URL to HTTP proxy to use for HTTP connections.  This is _OPTIONAL_."
-msgstr ""
+msgstr "HTTP接続に使用するHTTPプロキシのURL。これは _OPTIONAL_ です。"
 

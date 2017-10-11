@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"PO-Revision-Date: 2017-10-11 00:36-0400\n"
+"PO-Revision-Date: 2017-10-11 02:02-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -34,8 +34,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"<blueprint xmlns=\"http://www.osgi.org/xmlns/blueprint/v1.0.0\"\n"
+msgid "<blueprint xmlns=\"http://www.osgi.org/xmlns/blueprint/v1.0.0\"\n"
 "           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
 "           xmlns:camel=\"http://camel.apache.org/schema/blueprint\"\n"
 "           xsi:schemaLocation=\"\n"
@@ -45,8 +44,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    <bean id=\"kcAdapterConfig\" class=\"org.keycloak.representations.adapters.config.AdapterConfig\">\n"
+msgid "    <bean id=\"kcAdapterConfig\" class=\"org.keycloak.representations.adapters.config.AdapterConfig\">\n"
 "        <property name=\"realm\" value=\"demo\"/>\n"
 "        <property name=\"resource\" value=\"admin-camel-endpoint\"/>\n"
 "        <property name=\"bearerOnly\" value=\"true\"/>\n"
@@ -57,16 +55,14 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    <bean id=\"keycloakAuthenticator\" class=\"org.keycloak.adapters.jetty.KeycloakJettyAuthenticator\">\n"
+msgid "    <bean id=\"keycloakAuthenticator\" class=\"org.keycloak.adapters.jetty.KeycloakJettyAuthenticator\">\n"
 "        <property name=\"adapterConfig\" ref=\"kcAdapterConfig\"/>\n"
 "    </bean>\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    <bean id=\"constraint\" class=\"org.eclipse.jetty.util.security.Constraint\">\n"
+msgid "    <bean id=\"constraint\" class=\"org.eclipse.jetty.util.security.Constraint\">\n"
 "        <property name=\"name\" value=\"Customers\"/>\n"
 "        <property name=\"roles\">\n"
 "            <list>\n"
@@ -80,8 +76,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
+msgid "    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
 "        <property name=\"constraint\" ref=\"constraint\"/>\n"
 "        <property name=\"pathSpec\" value=\"/*\"/>\n"
 "    </bean>\n"
@@ -89,8 +84,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    <bean id=\"securityHandler\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
+msgid "    <bean id=\"securityHandler\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
 "        <property name=\"authenticator\" ref=\"keycloakAuthenticator\" />\n"
 "        <property name=\"constraintMappings\">\n"
 "            <list>\n"
@@ -104,8 +98,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    <bean id=\"sessionHandler\" class=\"org.keycloak.adapters.jetty.spi.WrappingSessionHandler\">\n"
+msgid "    <bean id=\"sessionHandler\" class=\"org.keycloak.adapters.jetty.spi.WrappingSessionHandler\">\n"
 "        <property name=\"handler\" ref=\"securityHandler\" />\n"
 "    </bean>\n"
 msgstr ""
@@ -117,8 +110,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    <camelContext id=\"blueprintContext\"\n"
+msgid "    <camelContext id=\"blueprintContext\"\n"
 "                  trace=\"false\"\n"
 "                  xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
 "        <route id=\"httpBridge\">\n"
@@ -140,8 +132,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"javax.servlet;version=\"[3,4)\",\n"
+msgid "javax.servlet;version=\"[3,4)\",\n"
 "javax.servlet.http;version=\"[3,4)\",\n"
 "org.apache.camel.*,\n"
 "org.apache.camel;version=\"[2.13,3)\",\n"
@@ -173,8 +164,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"<bean id=\"securityHandlerRest\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
+msgid "<bean id=\"securityHandlerRest\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
 "    <property name=\"authenticator\" ref=\"keycloakAuthenticator\" />\n"
 "    <property name=\"constraintMappings\">\n"
 "        <list>\n"
@@ -188,24 +178,21 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"<bean id=\"sessionHandlerRest\" class=\"org.keycloak.adapters.jetty.spi.WrappingSessionHandler\">\n"
+msgid "<bean id=\"sessionHandlerRest\" class=\"org.keycloak.adapters.jetty.spi.WrappingSessionHandler\">\n"
 "    <property name=\"handler\" ref=\"securityHandlerRest\" />\n"
 "</bean>\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"<camelContext id=\"blueprintContext\"\n"
+msgid "<camelContext id=\"blueprintContext\"\n"
 "              trace=\"false\"\n"
 "              xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    <restConfiguration component=\"jetty\" contextPath=\"/restdsl\"\n"
+msgid "    <restConfiguration component=\"jetty\" contextPath=\"/restdsl\"\n"
 "                       port=\"8484\">\n"
 "        <!--the link with Keycloak security handlers happens here-->\n"
 "        <endpointProperty key=\"handlers\" value=\"sessionHandlerRest\"></endpointProperty>\n"
@@ -215,8 +202,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    <rest path=\"/hello\" >\n"
+msgid "    <rest path=\"/hello\" >\n"
 "        <description>Hello rest service</description>\n"
 "        <get uri=\"/{id}\" outType=\"java.lang.String\">\n"
 "            <description>Just an helllo</description>\n"
@@ -231,8 +217,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    <route id=\"justDirect\">\n"
+msgid "    <route id=\"justDirect\">\n"
 "        <from uri=\"direct:justDirect\"/>\n"
 "        <process ref=\"helloProcessor\" />\n"
 "        <log message=\"RestDSL correctly invoked ${body}\"/>\n"
@@ -246,3 +231,4 @@ msgstr ""
 #, no-wrap
 msgid "</camelContext>\n"
 msgstr ""
+

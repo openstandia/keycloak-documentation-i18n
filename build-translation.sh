@@ -13,7 +13,7 @@ mkdir -p $REPO_DIR
 mkdir -p $TRANSLATED_DIR
 
 # Clone
-git clone --depth=1 $SOURCE_REPO $REPO_DIR
+git clone $SOURCE_REPO $REPO_DIR
 cd $REPO_DIR && git checkout $SOURCE_REVISION
 git reset --hard HEAD && git clean -f
 
@@ -37,7 +37,7 @@ type po4a
 if [ "$?" -eq 0 ]; then
     po4a po4a.cfg
 else
-    docker run --rm -it -v $(pwd):/build -w /build -u $UID:$GID openstandia/keycloak-documentation po4a --no-update --package-name="keycloak-documentation-i18n" --package-version=" " --copyright-holder="Nomura Research Institute, Ltd." --msgmerge-opt '--no-location --no-wrap --previous' po4a.cfg
+    docker run --rm -it -v $(pwd):/build -w /build -u $UID:$GID openstandia/keycloak-documentation-i18n po4a --no-update --package-name="keycloak-documentation-i18n" --package-version=" " --copyright-holder="Nomura Research Institute, Ltd." --msgmerge-opt '--no-location --no-wrap --previous' po4a.cfg
 fi
 
 if [ "$?" -ne 0 ]; then

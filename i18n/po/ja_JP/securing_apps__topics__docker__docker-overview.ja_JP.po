@@ -1,8 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"POT-Creation-Date: 2017-09-21 04:04+0000\n"
-"PO-Revision-Date: 2017-10-06 04:51-0400\n"
+"PO-Revision-Date: 2017-10-11 00:36-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,42 +15,35 @@ msgstr ""
 "X-Crowdin-File: /develop/i18n/po/ja_JP/securing_apps__topics__docker__docker-overview.ja_JP.po\n"
 
 #. type: Title ==
-#: source/securing_apps/topics/docker/docker-overview.adoc:2
 #, no-wrap
 msgid "Docker Registry Configuration"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:5
-#: source/server_admin/topics/sso-protocols/docker.adoc:6
 msgid "Docker authentication is disabled by default. To enable see link:{installguide_profile_link}[{installguide_profile_name}]."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:7
 msgid "This section describes how you can configure a Docker registry to use {project_name} as its authentication server."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:9
 msgid "Fore more information on how to set up and configure a Docker registry, see the link:https://docs.docker.com/registry/configuration/[Docker Registry Configuration Guide]."
 msgstr ""
 
 #. type: Title ===
-#: source/securing_apps/topics/docker/docker-overview.adoc:12
 #, no-wrap
 msgid "Docker Registry Configuration File Installation"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:15
 msgid "For users with more advanced docker registry configurations, it is generally recommended to provide your own registry configuration file.  The {project_name} docker provider supports this mechanism via the _Registry Config File_ Format Option.  Choosing this option will generate output similar to the following:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:21
 #, no-wrap
-msgid "\tauth:\n"
+msgid ""
+"\tauth:\n"
 "\t  token:\n"
 "\t    realm: http://localhost:8080/auth/auth/realms/master/protocol/docker-v2/auth\n"
 "\t    service: docker-test\n"
@@ -59,90 +51,75 @@ msgid "\tauth:\n"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:23
 msgid "This output can then be copied into any existing registry config file.  See the link:https://docs.docker.com/registry/configuration/[registry config file specification] for more information on how the file should be set up, or start with href:https://github.com/docker/distribution/blob/master/cmd/registry/config-example.yml[a basic example]."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:25
 msgid "Don't forget to configure the `rootcertbundle` field with the location of the {project_name} realm's pulic certificate.  The auth configuration will not work without this argument."
 msgstr ""
 
 #. type: Title ===
-#: source/securing_apps/topics/docker/docker-overview.adoc:27
 #, no-wrap
 msgid "Docker Registry Environment Variable Override Installation"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:30
 msgid "Often times it is appropriate to use a simple environment variable override for develop or POC Docker registries.  While this apporach is usually not recommended for production use, it can be helpful when one requires quick-and-dirty way to stand up a registry.  Simply use the _Variable Override_ Format Option from the client installation tab, and an output should appear like the one below:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:34
 #, no-wrap
-msgid "    REGISTRY_AUTH_TOKEN_REALM: http://localhost:8080/auth/auth/realms/master/protocol/docker-v2/auth\n"
+msgid ""
+"    REGISTRY_AUTH_TOKEN_REALM: http://localhost:8080/auth/auth/realms/master/protocol/docker-v2/auth\n"
 "    REGISTRY_AUTH_TOKEN_SERVICE: docker-test\n"
 "    REGISTRY_AUTH_TOKEN_ISSUER: http://localhost:8080/auth/auth/realms/master\n"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:36
 msgid "Don't forget to configure the `REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE` override with the location of the {project_name} realm's pulic certificate.  The auth configuration will not work without this argument."
 msgstr ""
 
 #. type: Title ===
-#: source/securing_apps/topics/docker/docker-overview.adoc:38
 #, no-wrap
 msgid "Docker Compose YAML File"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:41
 msgid "This installation method is meant to be an easy way to get a docker registry authenticating against a keycloak server.  It is intended for development purposes only and should never be used in a production or production-like environment."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:43
 msgid "The zip file installation mechanism provides a quickstart for developers who want to understand how the keycloak server can interact with the docker registry.  In order to configure:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:45
 msgid "From the desired realm, create a client configuration.  At this point you won't have a docker registry - the quickstart will take care of that part."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:46
 msgid "Choose the \"Docker Compose YAML\" option from the installation tab and download the .zip file"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:47
 msgid "Unzip the archive to the desired location, and open the directory."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:48
 msgid "Start the docker registry with `docker-compose up`"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:50
 msgid "INFO: it is recommended that you configure the docker registry client in a realm other than 'master', since the HTTP Basic auth flow will not present forms."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:52
 msgid "Once the above configuration has taken place, and the keycloak server and docker registry are running, docker authentication should be successful:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:55
 #, no-wrap
-msgid "\t[user ~]# docker login localhost:5000 -u $username\n"
+msgid ""
+"\t[user ~]# docker login localhost:5000 -u $username\n"
 "\tPassword: *******\n"
 "\tLogin Succeeded\n"
 msgstr ""
-

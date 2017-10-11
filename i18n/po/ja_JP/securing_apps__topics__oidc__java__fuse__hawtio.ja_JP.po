@@ -1,8 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"POT-Creation-Date: 2017-09-21 04:04+0000\n"
-"PO-Revision-Date: 2017-09-27 04:21-0400\n"
+"PO-Revision-Date: 2017-10-11 00:36-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -21,7 +20,6 @@ msgid "Securing the Hawtio Administration Console"
 msgstr ""
 
 #. type: Plain text
-#| msgid "To create a new realm, complete the following steps:"
 msgid "To secure the Hawtio Administration Console with {project_name}, complete the following steps:"
 msgstr ""
 
@@ -31,7 +29,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "hawtio.keycloakEnabled=true\n"
+msgid ""
+"hawtio.keycloakEnabled=true\n"
 "hawtio.realm=keycloak\n"
 "hawtio.keycloakClientConfig=file://${karaf.base}/etc/keycloak-hawtio-client.json\n"
 "hawtio.rolePrincipalClasses=org.keycloak.adapters.jaas.RolePrincipal,org.apache.karaf.jaas.boot.principal.RolePrincipal\n"
@@ -47,7 +46,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "{\n"
+msgid ""
+"{\n"
 "  \"realm\" : \"demo\",\n"
 "  \"resource\" : \"hawtio-client\",\n"
 "  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
@@ -62,7 +62,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "{\n"
+msgid ""
+"{\n"
 "  \"realm\" : \"demo\",\n"
 "  \"resource\" : \"jaas\",\n"
 "  \"bearer-only\" : true,\n"
@@ -79,7 +80,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+msgid ""
+"features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
 "features:install keycloak\n"
 msgstr ""
 
@@ -96,7 +98,6 @@ msgid "====== Securing Hawtio on {fuseHawtioEAPVersion}"
 msgstr ""
 
 #. type: Plain text
-#| msgid "To create a new realm, complete the following steps:"
 msgid "To run Hawtio on the {fuseHawtioEAPVersion} server, complete the following steps:"
 msgstr ""
 
@@ -129,20 +130,21 @@ msgid "Install the {project_name} adapter subsystem to your {fuseHawtioEAPVersio
 msgstr ""
 
 #. type: Plain text
-#| msgid "Open the standalone/configuration/standalone.xml file and search for the following text:"
 msgid "In the `$EAP_HOME/standalone/configuration/standalone.xml` file configure the system properties as in this example:"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "<extensions>\n"
+msgid ""
+"<extensions>\n"
 "...\n"
 "</extensions>\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "<system-properties>\n"
+msgid ""
+"<system-properties>\n"
 "    <property name=\"hawtio.authenticationEnabled\" value=\"true\" />\n"
 "    <property name=\"hawtio.realm\" value=\"hawtio\" />\n"
 "    <property name=\"hawtio.roles\" value=\"admin,viewer\" />\n"
@@ -159,7 +161,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "<security-domain name=\"hawtio\" cache-type=\"default\">\n"
+msgid ""
+"<security-domain name=\"hawtio\" cache-type=\"default\">\n"
 "    <authentication>\n"
 "        <login-module code=\"org.keycloak.adapters.jaas.BearerTokenLoginModule\" flag=\"required\">\n"
 "            <module-option name=\"keycloak-config-file\" value=\"${hawtio.keycloakServerConfig}\"/>\n"
@@ -172,10 +175,13 @@ msgstr ""
 msgid "Add the `secure-deployment` section `hawtio` to the adapter subsystem. This ensures that the Hawtio WAR is able to find the JAAS login module classes."
 msgstr ""
 
+#. type: delimited block -
+#, no-wrap
 msgid "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
 "    <secure-deployment name=\"{fuseHawtioWARVersion}\" />\n"
 "</subsystem>\n"
-msgstr "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
+msgstr ""
+"<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
 "    <secure-deployment name=\"{fuseHawtioWARVersion}\" />\n"
 "</subsystem>\n"
 
@@ -184,7 +190,7 @@ msgid "Restart the {fuseHawtioEAPVersion} server with Hawtio:"
 msgstr ""
 
 #. type: delimited block -
-#| msgid "$ .../bin/standalone.sh -Djboss.socket.binding.port-offset=100\n"
+#, no-wrap
 msgid "cd $EAP_HOME/bin\n"
 "./standalone.sh -Djboss.socket.binding.port-offset=101\n"
 msgstr ""
@@ -192,4 +198,3 @@ msgstr ""
 #. type: Plain text
 msgid "Access Hawtio at http://localhost:8181/hawtio. It is secured by {project_name}."
 msgstr ""
-

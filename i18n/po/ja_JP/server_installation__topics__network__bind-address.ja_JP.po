@@ -1,8 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"POT-Creation-Date: 2017-09-21 04:04+0000\n"
-"PO-Revision-Date: 2017-10-06 04:51-0400\n"
+"PO-Revision-Date: 2017-10-11 00:35-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,41 +15,35 @@ msgstr ""
 "X-Crowdin-File: /develop/i18n/po/ja_JP/server_installation__topics__network__bind-address.ja_JP.po\n"
 
 #. type: Title ===
-#: source/server_installation/topics/network/bind-address.adoc:4
 #, no-wrap
 msgid "Bind Addresses"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/network/bind-address.adoc:10
 msgid "By default {project_name} binds to the localhost loopback address `127.0.0.1`.  That's not a very useful default if you want the authentication server available on your network.  Generally, what we recommend is that you deploy a reverse proxy or load balancer on a public network and route traffic to individual {project_name} server instances on a private network.  In either case though, you still need to set up your network interfaces to bind to something other than `localhost`."
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/network/bind-address.adoc:13
 msgid "Setting the bind address is quite easy and can be done on the command line with either the _standalone.sh_ or _domain.sh_ boot scripts discussed in the <<_operating-mode, Choosing an Operating Mode>> chapter."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/network/bind-address.adoc:17
 #, no-wrap
 msgid "$ standalone.sh -b 192.168.0.5\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/network/bind-address.adoc:20
 msgid "The `-b` switch sets the IP bind address for any public interfaces."
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/network/bind-address.adoc:24
 msgid "Alternatively, if you don't want to set the bind address at the command line, you can edit the profile configuration of your deployment.  Open up the profile configuration file (_standalone.xml_ or _domain.xml_ depending on your <<_operating-mode, operating mode>>) and look for the `interfaces` XML block."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/network/bind-address.adoc:35
 #, no-wrap
-msgid "    <interfaces>\n"
+msgid ""
+"    <interfaces>\n"
 "        <interface name=\"management\">\n"
 "            <inet-address value=\"${jboss.bind.address.management:127.0.0.1}\"/>\n"
 "        </interface>\n"
@@ -61,28 +54,22 @@ msgid "    <interfaces>\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/network/bind-address.adoc:41
 msgid "The `public` interface corresponds to subsystems creating sockets that are available publicly.  An example of one of these subsystems is the web layer which serves up the authentication endpoints of {project_name}.  The `management` interface corresponds to sockets opened up by the management layer of the {appserver_name}.  Specifically the sockets which allow you to use the `jboss-cli.sh` command line interface and the {appserver_name} web console."
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/network/bind-address.adoc:44
 msgid "In looking at the `public` interface you see that it has a special string `${jboss.bind.address:127.0.0.1}`.  This string denotes a value `127.0.0.1` that can be overriden on the command line by setting a Java system property, i.e.:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/network/bind-address.adoc:48
 #, no-wrap
 msgid "$ domain.sh -Djboss.bind.address=192.168.0.5\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/network/bind-address.adoc:52
 msgid "The `-b` is just a shorthand notation for this command.  So, you can either change the bind address value directly in the profile config, or change it on the command line when you boot up."
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/network/bind-address.adoc:53
 msgid "There are many more options available when setting up `interface` definitions. For more information, see link:{appserver_network_link}[the network interface] in the _{appserver_network_name}_."
 msgstr ""
-

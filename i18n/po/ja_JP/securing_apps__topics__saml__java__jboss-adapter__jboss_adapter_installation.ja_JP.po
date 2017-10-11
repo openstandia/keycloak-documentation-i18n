@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"PO-Revision-Date: 2017-09-27 04:21-0400\n"
+"PO-Revision-Date: 2017-10-11 00:50-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -17,7 +17,7 @@ msgstr ""
 #. type: Block title
 #, no-wrap
 msgid "Wildfly 11"
-msgstr ""
+msgstr "Wildfly 11"
 
 #. type: Block title
 #, no-wrap
@@ -42,27 +42,28 @@ msgstr ""
 msgid ""
 "$ cd $WILDFLY_HOME\n"
 "$ unzip keycloak-saml-wildfly-adapter-dist.zip\n"
-msgstr ""
+msgstr "$ cd $WILDFLY_HOME\n"
+"$ unzip keycloak-saml-wildfly-adapter-dist.zip\n"
 
 #. type: Plain text
-#, fuzzy
-#| msgid "JBoss EAP 6.4"
 msgid "Install on JBoss EAP 6.x:"
-msgstr "JBoss EAP 6.4"
+msgstr ""
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
 "$ cd $JBOSS_HOME\n"
 "$ unzip keycloak-saml-eap6-adapter-dist.zip\n"
-msgstr ""
+msgstr "$ cd $JBOSS_HOME\n"
+"$ unzip keycloak-saml-eap6-adapter-dist.zip\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
 "$ cd $JBOSS_HOME\n"
 "$ unzip rh-sso-saml-eap6-adapter.zip\n"
-msgstr ""
+msgstr "$ cd $JBOSS_HOME\n"
+"$ unzip rh-sso-saml-eap6-adapter.zip\n"
 
 #. type: Plain text
 msgid "Install on JBoss EAP 7.x:"
@@ -73,7 +74,8 @@ msgstr ""
 msgid ""
 "$ cd $JBOSS_HOME\n"
 "$ unzip rh-sso-saml-eap7-adapter.zip\n"
-msgstr ""
+msgstr "$ cd $JBOSS_HOME\n"
+"$ unzip rh-sso-saml-eap7-adapter.zip\n"
 
 #. type: Plain text
 msgid "These zip files create new JBoss Modules specific to the Wildfly/JBoss EAP SAML Adapter within your Wildfly or JBoss EAP distro."
@@ -106,11 +108,11 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "[source,xml]\n"
-msgstr ""
+msgstr "[source,xml]\n"
 
 #. type: Plain text
 msgid "<server xmlns=\"urn:jboss:domain:1.4\">"
-msgstr ""
+msgstr "<server xmlns=\"urn:jboss:domain:1.4\">"
 
 #. type: Plain text
 #, no-wrap
@@ -119,12 +121,14 @@ msgid ""
 "        <extension module=\"org.keycloak.keycloak-saml-adapter-subsystem\"/>\n"
 "          ...\n"
 "    </extensions>\n"
-msgstr ""
+msgstr "    <extensions>\n"
+"        <extension module=\"org.keycloak.keycloak-saml-adapter-subsystem\"/>\n"
+"          ...\n"
+"    </extensions>\n"
 
 #. type: Plain text
 #, no-wrap
-msgid ""
-"    <profile>\n"
+msgid "    <profile>\n"
 "        <subsystem xmlns=\"urn:jboss:domain:keycloak-saml:1.1\"/>\n"
 "         ...\n"
 "    </profile>\n"
@@ -154,7 +158,17 @@ msgid ""
 "          </authentication>\n"
 "      </security-domain>\n"
 "    </security-domains>\n"
-msgstr ""
+msgstr "<server xmlns=\"urn:jboss:domain:1.4\">\n"
+" <subsystem xmlns=\"urn:jboss:domain:security:1.2\">\n"
+"    <security-domains>\n"
+"...\n"
+"      <security-domain name=\"keycloak\">\n"
+"         <authentication>\n"
+"           <login-module code=\"org.keycloak.adapters.jboss.KeycloakLoginModule\"\n"
+"                         flag=\"required\"/>\n"
+"          </authentication>\n"
+"      </security-domain>\n"
+"    </security-domains>\n"
 
 #. type: Plain text
 msgid "For example, if you have a JAX-RS service that is an EJB within your WEB-INF/classes directory, you'll want to annotate it with the `@SecurityDomain` annotation as follows:"
@@ -165,7 +179,8 @@ msgstr ""
 msgid ""
 "import org.jboss.ejb3.annotation.SecurityDomain;\n"
 "import org.jboss.resteasy.annotations.cache.NoCache;\n"
-msgstr ""
+msgstr "import org.jboss.ejb3.annotation.SecurityDomain;\n"
+"import org.jboss.resteasy.annotations.cache.NoCache;\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -178,7 +193,14 @@ msgid ""
 "import javax.ws.rs.Produces;\n"
 "import java.util.ArrayList;\n"
 "import java.util.List;\n"
-msgstr ""
+msgstr "import javax.annotation.security.RolesAllowed;\n"
+"import javax.ejb.EJB;\n"
+"import javax.ejb.Stateless;\n"
+"import javax.ws.rs.GET;\n"
+"import javax.ws.rs.Path;\n"
+"import javax.ws.rs.Produces;\n"
+"import java.util.ArrayList;\n"
+"import java.util.List;\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -187,14 +209,18 @@ msgid ""
 "@Stateless\n"
 "@SecurityDomain(\"keycloak\")\n"
 "public class CustomerService {\n"
-msgstr ""
+msgstr "@Path(\"customers\")\n"
+"@Stateless\n"
+"@SecurityDomain(\"keycloak\")\n"
+"public class CustomerService {\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
 "    @EJB\n"
 "    CustomerDB db;\n"
-msgstr ""
+msgstr "    @EJB\n"
+"    CustomerDB db;\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -207,7 +233,14 @@ msgid ""
 "        return db.getCustomers();\n"
 "    }\n"
 "}\n"
-msgstr ""
+msgstr "    @GET\n"
+"    @Produces(\"application/json\")\n"
+"    @NoCache\n"
+"    @RolesAllowed(\"db_user\")\n"
+"    public List<String> getCustomers() {\n"
+"        return db.getCustomers();\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 msgid "We hope to improve our integration in the future so that you don't have to specify the `@SecurityDomain` annotation when you want to propagate a keycloak security context to the EJB tier."

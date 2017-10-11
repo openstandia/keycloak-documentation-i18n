@@ -1,7 +1,6 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"POT-Creation-Date: 2017-09-21 04:04+0000\n"
 "PO-Revision-Date: 2017-10-06 04:51-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
@@ -16,45 +15,39 @@ msgstr ""
 "X-Crowdin-File: /develop/i18n/po/ja_JP/server_installation__topics__cache__replication.ja_JP.po\n"
 
 #. type: Title ===
-#: source/server_installation/topics/cache/replication.adoc:2
 #, no-wrap
 msgid "Replication and Failover"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/cache/replication.adoc:9
 msgid "The `sessions`, `authenticationSessions`, `offlineSessions` and `loginFailures` caches are the only caches that may perform replication.  Entries are not replicated to every single node, but instead one or more nodes is chosen as an owner of that data.  If a node is not the owner of a specific cache entry it queries the cluster to obtain it.  What this means for failover is that if all the nodes that own a piece of data go down, that data is lost forever.  By default, {project_name} only specifies one owner for data.  So if that one node goes down that data is lost.  This usually means that users will be logged out and will have to login again."
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/cache/replication.adoc:11
 msgid "You can change the number of nodes that replicate a piece of data by change the `owners` attribute in the `distributed-cache` declaration."
 msgstr ""
 
 #. type: Block title
-#: source/server_installation/topics/cache/replication.adoc:12
 #, no-wrap
 msgid "owners"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/cache/replication.adoc:19
 #, no-wrap
-msgid "<subsystem xmlns=\"urn:jboss:domain:infinispan:4.0\">\n"
+msgid ""
+"<subsystem xmlns=\"urn:jboss:domain:infinispan:4.0\">\n"
 "   <cache-container name=\"keycloak\" jndi-name=\"infinispan/Keycloak\">\n"
 "       <distributed-cache name=\"sessions\" mode=\"SYNC\" owners=\"2\"/>\n"
 "...\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/cache/replication.adoc:22
 msgid "Here we've changed it so at least two nodes will replicate one specific user login session."
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/cache/replication.adoc:25
 #, no-wrap
-msgid "The number of owners recommended is really dependent on your deployment.  If you do not care if users are logged\n"
+msgid ""
+"The number of owners recommended is really dependent on your deployment.  If you do not care if users are logged\n"
 "      out when a node goes down, then one owner is good enough and you will avoid replication.\n"
 msgstr ""
-

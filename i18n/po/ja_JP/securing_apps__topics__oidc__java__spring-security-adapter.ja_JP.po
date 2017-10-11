@@ -1,7 +1,6 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"POT-Creation-Date: 2017-09-21 04:04+0000\n"
 "PO-Revision-Date: 2017-09-21 00:27-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
@@ -16,7 +15,7 @@ msgstr ""
 "X-Crowdin-File: /develop/i18n/po/ja_JP/securing_apps__topics__oidc__java__spring-security-adapter.ja_JP.po\n"
 
 #. type: Title =====
-#| msgid "Installation Tab"
+#, no-wrap
 msgid "Adapter Installation"
 msgstr ""
 
@@ -44,7 +43,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "<dependency>\n"
+msgid ""
+"<dependency>\n"
 "    <groupId>org.keycloak</groupId>\n"
 "    <artifactId>keycloak-spring-security-adapter</artifactId>\n"
 "    <version>{project_versionMvn}</version>\n"
@@ -66,14 +66,16 @@ msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid "Keycloak provides a KeycloakWebSecurityConfigurerAdapter as a convenient base class for creating a https://docs.spring.io/spring-security/site/docs/4.0.x/apidocs/org/springframework/security/config/annotation/web/WebSecurityConfigurer.html[WebSecurityConfigurer]                instance.\n"
+msgid ""
+"Keycloak provides a KeycloakWebSecurityConfigurerAdapter as a convenient base class for creating a https://docs.spring.io/spring-security/site/docs/4.0.x/apidocs/org/springframework/security/config/annotation/web/WebSecurityConfigurer.html[WebSecurityConfigurer]                instance.\n"
 "The implementation allows customization by overriding methods.\n"
 "While its use is not required, it greatly simplifies your security context configuration.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "@KeycloakConfiguration\n"
+msgid ""
+"@KeycloakConfiguration\n"
 "public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter\n"
 "{\n"
 "    /**\n"
@@ -87,7 +89,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    /**\n"
+msgid ""
+"    /**\n"
 "     * Defines the session authentication strategy.\n"
 "     */\n"
 "    @Bean\n"
@@ -99,7 +102,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    @Override\n"
+msgid ""
+"    @Override\n"
 "    protected void configure(HttpSecurity http) throws Exception\n"
 "    {\n"
 "        super.configure(http);\n"
@@ -134,7 +138,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+msgid ""
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 "<beans xmlns=\"http://www.springframework.org/schema/beans\"\n"
 "       xmlns:context=\"http://www.springframework.org/schema/context\"\n"
 "       xmlns:security=\"http://www.springframework.org/schema/security\"\n"
@@ -155,21 +160,24 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    <security:authentication-manager alias=\"authenticationManager\">\n"
+msgid ""
+"    <security:authentication-manager alias=\"authenticationManager\">\n"
 "        <security:authentication-provider ref=\"keycloakAuthenticationProvider\" />\n"
 "    </security:authentication-manager>\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    <bean id=\"adapterDeploymentContext\" class=\"org.keycloak.adapters.springsecurity.AdapterDeploymentContextFactoryBean\">\n"
+msgid ""
+"    <bean id=\"adapterDeploymentContext\" class=\"org.keycloak.adapters.springsecurity.AdapterDeploymentContextFactoryBean\">\n"
 "        <constructor-arg value=\"/WEB-INF/keycloak.json\" />\n"
 "    </bean>\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    <bean id=\"keycloakAuthenticationEntryPoint\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationEntryPoint\" />\n"
+msgid ""
+"    <bean id=\"keycloakAuthenticationEntryPoint\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationEntryPoint\" />\n"
 "    <bean id=\"keycloakAuthenticationProvider\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider\" />\n"
 "    <bean id=\"keycloakPreAuthActionsFilter\" class=\"org.keycloak.adapters.springsecurity.filter.KeycloakPreAuthActionsFilter\" />\n"
 "    <bean id=\"keycloakAuthenticationProcessingFilter\" class=\"org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticationProcessingFilter\">\n"
@@ -179,14 +187,16 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    <bean id=\"keycloakLogoutHandler\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakLogoutHandler\">\n"
+msgid ""
+"    <bean id=\"keycloakLogoutHandler\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakLogoutHandler\">\n"
 "        <constructor-arg ref=\"adapterDeploymentContext\" />\n"
 "    </bean>\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    <bean id=\"logoutFilter\" class=\"org.springframework.security.web.authentication.logout.LogoutFilter\">\n"
+msgid ""
+"    <bean id=\"logoutFilter\" class=\"org.springframework.security.web.authentication.logout.LogoutFilter\">\n"
 "        <constructor-arg name=\"logoutSuccessUrl\" value=\"/\" />\n"
 "        <constructor-arg name=\"handlers\">\n"
 "            <list>\n"
@@ -205,7 +215,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    <security:http auto-config=\"false\" entry-point-ref=\"keycloakAuthenticationEntryPoint\">\n"
+msgid ""
+"    <security:http auto-config=\"false\" entry-point-ref=\"keycloakAuthenticationEntryPoint\">\n"
 "        <security:custom-filter ref=\"keycloakPreAuthActionsFilter\" before=\"LOGOUT_FILTER\" />\n"
 "        <security:custom-filter ref=\"keycloakAuthenticationProcessingFilter\" before=\"FORM_LOGIN_FILTER\" />\n"
 "        <security:intercept-url pattern=\"/customers**\" access=\"ROLE_USER\" />\n"
@@ -234,7 +245,8 @@ msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid "The class `org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider`            supports an optional `org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper`            which can be used to map roles coming from Keycloak to roles recognized by Spring Security.\n"
+msgid ""
+"The class `org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider`            supports an optional `org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper`            which can be used to map roles coming from Keycloak to roles recognized by Spring Security.\n"
 "Use, for example, `org.springframework.security.core.authority.mapping.SimpleAuthorityMapper` to insert the `ROLE_` prefix and convert the role name to upper case.\n"
 "The class is part of Spring Security Core module.\n"
 msgstr ""
@@ -254,7 +266,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "@Configuration\n"
+msgid ""
+"@Configuration\n"
 "@EnableWebSecurity\n"
 "@ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)\n"
 "public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {\n"
@@ -267,13 +280,15 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    @Autowired\n"
+msgid ""
+"    @Autowired\n"
 "    public KeycloakClientRequestFactory keycloakClientRequestFactory;\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    @Bean\n"
+msgid ""
+"    @Bean\n"
 "    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)\n"
 "    public KeycloakRestTemplate keycloakRestTemplate() {\n"
 "        return new KeycloakRestTemplate(keycloakClientRequestFactory);\n"
@@ -282,7 +297,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    ...\n"
+msgid ""
+"    ...\n"
 "}\n"
 msgstr ""
 
@@ -292,7 +308,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "<bean id=\"keycloakRestTemplate\" class=\"org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate\" scope=\"prototype\">\n"
+msgid ""
+"<bean id=\"keycloakRestTemplate\" class=\"org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate\" scope=\"prototype\">\n"
 "    <constructor-arg name=\"factory\" ref=\"keycloakClientRequestFactory\" />\n"
 "</bean>\n"
 msgstr ""
@@ -303,13 +320,15 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "@Service\n"
+msgid ""
+"@Service\n"
 "public class RemoteProductService implements ProductService {\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    @Autowired\n"
+msgid ""
+"    @Autowired\n"
 "    private KeycloakRestTemplate template;\n"
 msgstr ""
 
@@ -320,7 +339,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    @Override\n"
+msgid ""
+"    @Override\n"
 "    public List<String> getProducts() {\n"
 "        ResponseEntity<String[]> response = template.getForEntity(endpoint, String[].class);\n"
 "        return Arrays.asList(response.getBody());\n"
@@ -343,7 +363,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "<dependency>\n"
+msgid ""
+"<dependency>\n"
 "  <groupId>org.springframework.boot</groupId>\n"
 "  <artifactId>spring-boot-starter-security</artifactId>\n"
 "</dependency>\n"
@@ -359,7 +380,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "@Bean\n"
+msgid ""
+"@Bean\n"
 "public KeycloakConfigResolver KeycloakConfigResolver() {\n"
 "    return new KeycloakSpringBootConfigResolver();\n"
 "}\n"
@@ -375,7 +397,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "@Configuration\n"
+msgid ""
+"@Configuration\n"
 "@EnableWebSecurity\n"
 "public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter\n"
 "{\n"
@@ -384,7 +407,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    @Bean\n"
+msgid ""
+"    @Bean\n"
 "    public FilterRegistrationBean keycloakAuthenticationProcessingFilterRegistrationBean(\n"
 "            KeycloakAuthenticationProcessingFilter filter) {\n"
 "        FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);\n"
@@ -395,7 +419,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    @Bean\n"
+msgid ""
+"    @Bean\n"
 "    public FilterRegistrationBean keycloakPreAuthActionsFilterRegistrationBean(\n"
 "            KeycloakPreAuthActionsFilter filter) {\n"
 "        FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);\n"
@@ -403,4 +428,3 @@ msgid "    @Bean\n"
 "        return registrationBean;\n"
 "    }\n"
 msgstr ""
-

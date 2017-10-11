@@ -1,7 +1,6 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"POT-Creation-Date: 2017-09-21 04:04+0000\n"
 "PO-Revision-Date: 2017-09-21 00:25-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
@@ -49,11 +48,10 @@ msgid "mod_auth_mellon-specific Apache HTTPD module configuration."
 msgstr ""
 
 #. type: Plain text
-msgid "ifeval::[{project_community}==true] If you have already defined and registered the client application within a realm on the {project_name} application server, {project_name} can generate all the files you need except the Apache HTTPD module configuration."
+msgid "If you have already defined and registered the client application within a realm on the {project_name} application server, {project_name} can generate all the files you need except the Apache HTTPD module configuration."
 msgstr ""
 
 #. type: Plain text
-#| msgid "To create a new realm, complete the following steps:"
 msgid "To generate the Apache HTTPD module configuration, complete the following steps:"
 msgstr ""
 
@@ -67,12 +65,11 @@ msgid "mod_auth_mellon config download"
 msgstr ""
 
 #. type: Plain text
-#| msgid "image:{project_images}/admin-console.png[]"
 msgid "image:{project_images}/mod-auth-mellon-config-download.png[]"
 msgstr ""
 
 #. type: Plain text
-msgid "Click *Download* to download a zip file that contains the XML descriptor and PEM files you need.  endif::[]"
+msgid "Click *Download* to download a zip file that contains the XML descriptor and PEM files you need."
 msgstr ""
 
 #. type: Title ====
@@ -97,7 +94,7 @@ msgid "All of the following steps need to performed on $sp_host with root privil
 msgstr ""
 
 #. type: Title =====
-#| msgid "Installing the Server"
+#, no-wrap
 msgid "Installing the Packages"
 msgstr ""
 
@@ -174,7 +171,6 @@ msgid "This example has just one protected location: \\https://$sp_host/protecte
 msgstr ""
 
 #. type: Plain text
-#| msgid "To create a new realm, complete the following steps:"
 msgid "To configure the Mellon service provider, complete the following steps:"
 msgstr ""
 
@@ -184,7 +180,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid " <Location / >\n"
+msgid ""
+" <Location / >\n"
 "    MellonEnable info\n"
 "    MellonEndpointPath /mellon/\n"
 "    MellonSPMetadataFile /etc/httpd/saml2/mellon_metadata.xml\n"
@@ -253,7 +250,6 @@ msgid "The URL where SAML messages for the SP will be consumed, which Mellon cal
 msgstr ""
 
 #. type: Plain text
-#| msgid "To create a new realm, complete the following steps:"
 msgid "To create the SP metadata, complete the following steps:"
 msgstr ""
 
@@ -263,7 +259,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "fqdn=`hostname`\n"
+msgid ""
+"fqdn=`hostname`\n"
 "mellon_endpoint_url=\"https://${fqdn}/mellon\"\n"
 "mellon_entity_id=\"${mellon_endpoint_url}/metadata\"\n"
 "file_prefix=\"$(echo \"$mellon_entity_id\" | sed 's/[^A-Za-z.]/_/g' | sed 's/__*/_/g')\"\n"
@@ -284,7 +281,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "mv ${file_prefix}.cert /etc/httpd/saml2/mellon.crt\n"
+msgid ""
+"mv ${file_prefix}.cert /etc/httpd/saml2/mellon.crt\n"
 "mv ${file_prefix}.key /etc/httpd/saml2/mellon.key\n"
 "mv ${file_prefix}.xml /etc/httpd/saml2/mellon_metadata.xml\n"
 msgstr ""
@@ -307,7 +305,6 @@ msgid "All these operations are performed using the {project_name} administratio
 msgstr ""
 
 #. type: Plain text
-#| msgid "To create a new realm, complete the following steps:"
 msgid "To complete the following steps:"
 msgstr ""
 
@@ -344,7 +341,6 @@ msgid "====== Adding the Mellon SP Client"
 msgstr ""
 
 #. type: Plain text
-#| msgid "To create a new realm, complete the following steps:"
 msgid "To add the Mellon SP client, complete the following steps:"
 msgstr ""
 
@@ -401,7 +397,6 @@ msgid "Click the Mappers tab of the client."
 msgstr ""
 
 #. type: Plain text
-#| msgid "On the right side of the empty user list, click *Add User*."
 msgid "In the upper right corner of the Mappers page, click *Create*."
 msgstr ""
 
@@ -439,7 +434,8 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "curl -k -o /etc/httpd/saml2/idp_metadata.xml \\\n"
+msgid ""
+"curl -k -o /etc/httpd/saml2/idp_metadata.xml \\\n"
 "https://$idp_host/auth/realms/test_realm/protocol/saml/descriptor\n"
 msgstr ""
 
@@ -472,4 +468,3 @@ msgstr ""
 #. type: Plain text
 msgid "You have now set up both {project_name} as a SAML IdP in the test_realm and mod_auth_mellon as SAML SP protecting the URL $sp_host/protected (and everything beneath it) by authenticating against the ``$idp_host`` IdP."
 msgstr ""
-

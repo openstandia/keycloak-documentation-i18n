@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"PO-Revision-Date: 2017-10-11 00:36-0400\n"
+"PO-Revision-Date: 2017-10-11 02:00-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -67,8 +67,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"<head>\n"
+msgid "<head>\n"
 "    <script src=\"keycloak.js\"></script>\n"
 "    <script>\n"
 "        var keycloak = Keycloak();\n"
@@ -90,7 +89,7 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "[source,javascript]\n"
-msgstr "[source,javascript]\n"
+msgstr ""
 
 #. type: Plain text
 msgid "var keycloak = Keycloak('http://localhost:8080/myapp/keycloak.json'));"
@@ -103,8 +102,7 @@ msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid ""
-"var keycloak = Keycloak({\n"
+msgid "var keycloak = Keycloak({\n"
 "    url: 'http://keycloak-server/auth',\n"
 "    realm: 'myrealm',\n"
 "    clientId: 'myapp'\n"
@@ -113,8 +111,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"By default to authenticate you need to call the `login` function. However, there are two options available to make the adapter automatically authenticate. You\n"
+msgid "By default to authenticate you need to call the `login` function. However, there are two options available to make the adapter automatically authenticate. You\n"
 "can pass `login-required` or `check-sso` to the init function. `login-required` will authenticate the client if the user is logged-in to {project_name}\n"
 "or display the login page if not. `check-sso` will only authenticate the client if the user is already logged-in, if the user is not logged-in the browser will be\n"
 "redirected back to the application and remain unauthenticated.\n"
@@ -127,8 +124,7 @@ msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid ""
-"keycloak.init({ onLoad: 'login-required' })\n"
+msgid "keycloak.init({ onLoad: 'login-required' })\n"
 "----    \n"
 msgstr ""
 
@@ -138,8 +134,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"var loadData = function () {\n"
+msgid "var loadData = function () {\n"
 "    document.getElementById('username').innerText = keycloak.subject;\n"
 msgstr ""
 
@@ -150,8 +145,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    var req = new XMLHttpRequest();\n"
+msgid "    var req = new XMLHttpRequest();\n"
 "    req.open('GET', url, true);\n"
 "    req.setRequestHeader('Accept', 'application/json');\n"
 "    req.setRequestHeader('Authorization', 'Bearer ' + keycloak.token);\n"
@@ -159,8 +153,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    req.onreadystatechange = function () {\n"
+msgid "    req.onreadystatechange = function () {\n"
 "        if (req.readyState == 4) {\n"
 "            if (req.status == 200) {\n"
 "                alert('Success');\n"
@@ -173,8 +166,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"    req.send();\n"
+msgid "    req.send();\n"
 "};\n"
 msgstr ""
 
@@ -184,8 +176,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"keycloak.updateToken(30).success(function() {\n"
+msgid "keycloak.updateToken(30).success(function() {\n"
 "    loadData();\n"
 "}).error(function() {\n"
 "    alert('Failed to refresh token');\n"
@@ -245,8 +236,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"One thing to note is that only an access token is provided and there is no refresh token. This means that once the access token has expired the application\n"
+msgid "One thing to note is that only an access token is provided and there is no refresh token. This means that once the access token has expired the application\n"
 "has to do the redirect to the {project_name} again to obtain a new access token.\n"
 msgstr ""
 
@@ -257,8 +247,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"This requires the client to have both the `Standard Flow Enabled` and `Implicit Flow Enabled` flags enabled in the admin console.\n"
+msgid "This requires the client to have both the `Standard Flow Enabled` and `Implicit Flow Enabled` flags enabled in the admin console.\n"
 "The {project_name} server will then send both the code and tokens to your application.\n"
 "The access token can be used immediately while the code can be exchanged for access and refresh tokens.\n"
 "Similar to the implicit flow, the hybrid flow is good for performance because the access token is available immediately.\n"
@@ -294,8 +283,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"* https://github.com/davidchambers/Base64.js\n"
+msgid "* https://github.com/davidchambers/Base64.js\n"
 "* https://github.com/devote/HTML5-History-API        \n"
 msgstr ""
 
@@ -320,100 +308,86 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"authenticated::\n"
+msgid "authenticated::\n"
 "    Is `true` if the user is authenticated, `false` otherwise.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"token::\n"
+msgid "token::\n"
 "    The base64 encoded token that can be sent in the `Authorization` header in requests to services.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"tokenParsed::\n"
+msgid "tokenParsed::\n"
 "    The parsed token as a JavaScript object.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"subject::\n"
+msgid "subject::\n"
 "    The user id.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"idToken::\n"
+msgid "idToken::\n"
 "    The base64 encoded ID token.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"idTokenParsed::\n"
+msgid "idTokenParsed::\n"
 "    The parsed id token as a JavaScript object.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"realmAccess::\n"
+msgid "realmAccess::\n"
 "    The realm roles associated with the token.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"resourceAccess::\n"
+msgid "resourceAccess::\n"
 "    The resource roles associated with the token.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"refreshToken::\n"
+msgid "refreshToken::\n"
 "    The base64 encoded refresh token that can be used to retrieve a new token.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"refreshTokenParsed::\n"
+msgid "refreshTokenParsed::\n"
 "    The parsed refresh token as a JavaScript object.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"timeSkew::\n"
+msgid "timeSkew::\n"
 "    The estimated time difference between the browser time and the {project_name} server in seconds. This value is just an estimation, but is accurate\n"
 "    enough when determining if a token is expired or not.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"responseMode::\n"
+msgid "responseMode::\n"
 "    Response mode passed in init (default value is fragment).\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"flow::\n"
+msgid "flow::\n"
 "    Flow passed in init.\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"responseType::\n"
+msgid "responseType::\n"
 "    Response type sent to {project_name} with login requests. This is determined based on the flow value used during initialization, but can be overridden by setting this value.\n"
 msgstr ""
 
@@ -436,8 +410,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"* onLoad - Specifies an action to do on load. Supported values are 'login-required' or 'check-sso'.\n"
+msgid "* onLoad - Specifies an action to do on load. Supported values are 'login-required' or 'check-sso'.\n"
 "* token - Set an initial value for the token.\n"
 "* refreshToken - Set an initial value for the refresh token.\n"
 "* idToken - Set an initial value for the id token (only together with token or refreshToken).\n"
@@ -470,8 +443,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"* redirectUri - Specifies the uri to redirect to after login.\n"
+msgid "* redirectUri - Specifies the uri to redirect to after login.\n"
 "* prompt - By default the login screen is displayed if the user is not logged-in to {project_name}. To only authenticate to the application if the user is already logged-in and not display the login page if the user is not logged-in, set this option to `none`. To always require re-authentication and ignore SSO, set this option to `login` .\n"
 "* maxAge - Used just if user is already authenticated. Specifies maximum time since the authentication of user happened. If user is already authenticated for longer time than `maxAge`, the SSO is ignored and he will need to re-authenticate again.\n"
 "* loginHint - Used to pre-fill the username/email field on the login form.\n"
@@ -601,15 +573,13 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"Returns promise to set functions to be invoked if the profile was loaded successfully, or if the profile could not be\n"
+msgid "Returns promise to set functions to be invoked if the profile was loaded successfully, or if the profile could not be\n"
 "loaded.\n"
 msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid ""
-"keycloak.loadUserProfile().success(function(profile) {\n"
+msgid "keycloak.loadUserProfile().success(function(profile) {\n"
 "        alert(JSON.stringify(test, null, \"  \"));\n"
 "    }).error(function() {\n"
 "        alert('Failed to load user profile');\n"
@@ -633,22 +603,19 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"If the token expires within minValidity seconds (minValidity is optional, if not specified 5 is used) the token is refreshed.\n"
+msgid "If the token expires within minValidity seconds (minValidity is optional, if not specified 5 is used) the token is refreshed.\n"
 "If the session status iframe is enabled, the session status is also checked. \n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"Returns promise to set functions that can be invoked if the token is still valid, or if the token is no longer valid.\n"
+msgid "Returns promise to set functions that can be invoked if the token is still valid, or if the token is no longer valid.\n"
 "For example:\n"
 msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid ""
-"keycloak.updateToken(5).success(function(refreshed) {\n"
+msgid "keycloak.updateToken(5).success(function(refreshed) {\n"
 "        if (refreshed) {\n"
 "            alert('Token was successfully refreshed');\n"
 "        } else {\n"
@@ -666,8 +633,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"Clear authentication state, including tokens.\n"
+msgid "Clear authentication state, including tokens.\n"
 "This can be useful if application has detected the session was expired, for example if updating token fails.\n"
 msgstr ""
 
@@ -700,8 +666,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"* onReady(authenticated) - Called when the adapter is initialized.\n"
+msgid "* onReady(authenticated) - Called when the adapter is initialized.\n"
 "* onAuthSuccess - Called when a user is successfully authenticated.\n"
 "* onAuthError - Called if there was an error during authentication.\n"
 "* onAuthRefreshSuccess - Called when the token is refreshed.\n"
@@ -709,3 +674,4 @@ msgid ""
 "* onAuthLogout - Called if the user is logged out (will only be called if the session status iframe is enabled, or in Cordova mode).\n"
 "* onTokenExpired - Called when the access token is expired. If a refresh token is available the token can be refreshed with updateToken, or in cases where it is not (that is, with implicit flow) you can redirect to login screen to obtain a new access token.\n"
 msgstr ""
+

@@ -3,6 +3,7 @@ FROM fedora:rawhide
 RUN yum install -y maven zip awscli git
 RUN yum install -y gettext
 RUN yum install -y perl-Module-Build perl-Locale-gettext perl-Text-WrapI18N perl-TermReadKey perl-Pod-Parser perl-SGMLSpm perl-Unicode-LineBreak docbook-style-xsl
+RUN yum install -y libxslt
 
 ENV LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"PO-Revision-Date: 2017-10-11 02:01-0400\n"
+"PO-Revision-Date: 2017-10-12 03:40-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -17,17 +17,17 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "connection-pool-size"
-msgstr ""
+msgstr "connection-pool-size"
 
 #. type: Labeled list
 #, no-wrap
 msgid "client-keystore"
-msgstr ""
+msgstr "client-keystore"
 
 #. type: Labeled list
 #, no-wrap
 msgid "client-keystore-password"
-msgstr ""
+msgstr "client-keystore-password"
 
 #. type: Plain text
 msgid "Password for the client keystore.  This is _REQUIRED_ if `client-keystore` is set."
@@ -36,7 +36,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "client-key-password"
-msgstr ""
+msgstr "client-key-password"
 
 #. type: Plain text
 msgid "Password for the client's key.  This is _REQUIRED_ if `client-keystore` is set."
@@ -70,7 +70,23 @@ msgid "{\n"
 "   \"credentials\" : {\n"
 "      \"secret\" : \"234234-234234-234234\"\n"
 "   },\n"
-msgstr ""
+msgstr "{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"resource\" : \"customer-portal\",\n"
+"  \"realm-public-key\" : \"MIGfMA0GCSqGSIb3D...31LwIDAQAB\",\n"
+"  \"auth-server-url\" : \"https://localhost:8443/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"use-resource-role-mappings\" : false,\n"
+"  \"enable-cors\" : true,\n"
+"  \"cors-max-age\" : 1000,\n"
+"  \"cors-allowed-methods\" : \"POST, PUT, DELETE, GET\",\n"
+"  \"cors-exposed-headers\" : \"WWW-Authenticate, My-custom-exposed-Header\",\n"
+"  \"bearer-only\" : false,\n"
+"  \"enable-basic-auth\" : false,\n"
+"  \"expose-token\" : true,\n"
+"   \"credentials\" : {\n"
+"      \"secret\" : \"234234-234234-234234\"\n"
+"   },\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -89,7 +105,21 @@ msgid "   \"connection-pool-size\" : 20,\n"
 "   \"^/wsmaster/api/(.*)$\" : \"/api/$1\"\n"
 "   }\n"
 "}\n"
-msgstr ""
+msgstr "   \"connection-pool-size\" : 20,\n"
+"   \"disable-trust-manager\": false,\n"
+"   \"allow-any-hostname\" : false,\n"
+"   \"truststore\" : \"path/to/truststore.jks\",\n"
+"   \"truststore-password\" : \"geheim\",\n"
+"   \"client-keystore\" : \"path/to/client-keystore.jks\",\n"
+"   \"client-keystore-password\" : \"geheim\",\n"
+"   \"client-key-password\" : \"geheim\",\n"
+"   \"token-minimum-time-to-live\" : 10,\n"
+"   \"min-time-between-jwks-requests\" : 10,\n"
+"   \"public-key-cache-ttl\": 86400,\n"
+"   \"redirect-rewrite-rules\" : {\n"
+"   \"^/wsmaster/api/(.*)$\" : \"/api/$1\"\n"
+"   }\n"
+"}\n"
 
 #. type: Plain text
 msgid "You can use `${...}` enclosure for system property replacement. For example `${jboss.server.config.dir}` would be replaced by `/path/to/{project_name}`.  Replacement of environment variables is also supported via the `env` prefix, e.g. `${env.MY_ENVIRONMENT_VARIABLE}`."
@@ -196,7 +226,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "cors-allowed-headers"
-msgstr ""
+msgstr "cors-allowed-headers"
 
 #. type: Plain text
 msgid "If CORS is enabled, this sets the value of the `Access-Control-Allow-Headers` header.  This should be a comma-separated string.  This is _OPTIONAL_.  If not set, this header is not returned in CORS responses."
@@ -205,7 +235,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "cors-exposed-headers"
-msgstr ""
+msgstr "cors-exposed-headers"
 
 #. type: Plain text
 msgid "If CORS is enabled, this sets the value of the `Access-Control-Expose-Headers` header.  This should be a comma-separated string.  This is _OPTIONAL_.  If not set, this header is not returned in CORS responses."
@@ -214,7 +244,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "bearer-only"
-msgstr ""
+msgstr "bearer-only"
 
 #. type: Plain text
 msgid "This should be set to _true_ for services. If enabled the adapter will not attempt to authenticate users, but only verify bearer tokens.  This is _OPTIONAL_.  The default value is _false_."
@@ -223,7 +253,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "autodetect-bearer-only"
-msgstr ""
+msgstr "autodetect-bearer-only"
 
 #. type: Plain text
 msgid "This should be set to __true__ if your application serves both a web application and web services (e.g. SOAP or REST).  It allows you to redirect unauthenticated users of the web application to the Keycloak login page, but send an HTTP `401` status code to unauthenticated SOAP or REST clients instead as they would not understand a redirect to the login page.  Keycloak auto-detects SOAP or REST clients based on typical headers like `X-Requested-With`, `SOAPAction` or `Accept`.  The default value is _false_."
@@ -232,7 +262,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "enable-basic-auth"
-msgstr ""
+msgstr "enable-basic-auth"
 
 #. type: Plain text
 msgid "This tells the adapter to also support basic authentication. If this option is enabled, then _secret_ must also be provided.  This is _OPTIONAL_.  The default value is _false_."
@@ -241,7 +271,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "expose-token"
-msgstr ""
+msgstr "expose-token"
 
 #. type: Plain text
 msgid "If `true`, an authenticated browser client (via a Javascript HTTP invocation) can obtain the signed access token via the URL `root/k_query_bearer_token`.  This is _OPTIONAL_.  The default value is _false_."
@@ -272,7 +302,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "allow-any-hostname"
-msgstr ""
+msgstr "allow-any-hostname"
 
 #. type: Plain text
 msgid "If the {project_name} server requires HTTPS and this config option is set to `true` the {project_name} server's certificate is validated via the truststore, but host name validation is not done.  This setting should only be used during development and *never* in production as it will disable verification of SSL certificates.  This seting may be useful in test environments This is _OPTIONAL_.  The default value is `false`."
@@ -281,7 +311,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "proxy-url"
-msgstr ""
+msgstr "proxy-url"
 
 #. type: Plain text
 msgid "The URL for the HTTP proxy if one is used."
@@ -290,7 +320,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "truststore"
-msgstr ""
+msgstr "truststore"
 
 #. type: Plain text
 msgid "The value is the file path to a keystore file.  If you prefix the path with `classpath:`, then the truststore will be obtained from the deployment's classpath instead.  Used for outgoing HTTPS communications to the {project_name} server.  Client making HTTPS requests need a way to verify the host of the server they are talking to.  This is what the trustore does.  The keystore contains one or more trusted host certificates or certificate authorities.  You can create this truststore by extracting the public certificate of the {project_name} server's SSL keystore.  This is _REQUIRED_ unless `ssl-required` is `none` or `disable-trust-manager` is `true`."
@@ -299,15 +329,15 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "truststore-password"
-msgstr ""
+msgstr "truststore-password"
 
 #. type: Plain text
 msgid "Password for the truststore keystore.  This is _REQUIRED_ if `truststore` is set and the truststore requires a password."
-msgstr ""
+msgstr "トラスト・ストアのキーストアのパスワードです。これは _REQUIRED_ で、 `truststore` を設定すると、トラスト・ストアはパスワードを必要とします。"
 
 #. type: Plain text
 msgid "This is the file path to a keystore file.  This keystore contains client certificate for two-way SSL when the adapter makes HTTPS requests to the {project_name} server.  This is _OPTIONAL_."
-msgstr ""
+msgstr "キーストア・ファイルへのファイル・パスです。このキーストアには、アダプターが{project_name}サーバーにHTTPSリクエストを行う際の、双方向SSLのためのクライアント証明書が含まれます。これは _OPTIONAL_ です。"
 
 #. type: Labeled list
 #, no-wrap

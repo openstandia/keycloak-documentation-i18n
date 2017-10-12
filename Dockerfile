@@ -1,4 +1,4 @@
-FROM fedora:26
+FROM fedora:rawhide
 
 RUN yum install -y maven zip awscli git
 RUN yum install -y gettext

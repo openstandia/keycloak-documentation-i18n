@@ -9,11 +9,13 @@ DOCS="\
   getting_started \
   server_installation \
   securing_apps \
+  topics"
+
+DOCS2="\
   server_admin \
   server_development \
   authorization_services \
-  upgrading \
-  topics"
+  upgrading"
 
 TARGET_EXT=adoc
 OUT_FILE=po4a.cfg

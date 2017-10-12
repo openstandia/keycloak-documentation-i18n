@@ -1,0 +1,113 @@
+# Japanese translations for keycloak-documentation-i18n package
+# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# Automatically generated, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Example using CURL"
+msgstr ""
+
+#. type: delimited block -
+#, fuzzy, no-wrap
+msgid ""
+"import org.keycloak.admin.client.Keycloak;\n"
+"import org.keycloak.representations.idm.RealmRepresentation;\n"
+"...\n"
+msgstr "import org.keycloak.adapters.OIDCAuthenticationError; import org.keycloak.adapters.OIDCAuthenticationError.Reason; ..."
+
+#. type: Title ===
+#, fuzzy, no-wrap
+msgid "Admin REST API"
+msgstr "Administration REST API"
+
+#. type: Plain text
+msgid "{project_name} comes with a fully functional Admin REST API with all features provided by the Admin Console."
+msgstr ""
+
+#. type: Plain text
+msgid "To invoke the API you need to obtain an access token with the appropriate permissions. The required permissions are described in {adminguide_link}[{adminguide_name}]."
+msgstr ""
+
+#. type: Plain text
+msgid "A token can be obtained by enabling authenticating to your application with {project_name}; see the {adapterguide_link}[{adapterguide_name}]. You can also use direct access grant to obtain an access token."
+msgstr ""
+
+#. type: Plain text
+msgid "For complete documentation see {apidocs_link}[{apidocs_name}]."
+msgstr ""
+
+#. type: Plain text
+msgid "Obtain access token for user in the realm `master` with username `admin` and password `password`:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"curl \\\n"
+"  -d \"client_id=admin-cli\" \\\n"
+"  -d \"username=admin\" \\\n"
+"  -d \"password=password\" \\\n"
+"  -d \"grant_type=password\" \\\n"
+"  \"http://localhost:8080/auth/realms/master/protocol/openid-connect/token\"\n"
+msgstr ""
+
+#. type: Plain text
+msgid "By default this token expires in 1 minute"
+msgstr ""
+
+#. type: Plain text
+msgid "The result will be a JSON document. To invoke the API you need to extract the value of the `access_token` property. You can then invoke the API by including the value in the `Authorization` header of requests to the API."
+msgstr ""
+
+#. type: Plain text
+msgid "The following example shows how to get the details of the master realm:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"curl \\\n"
+"  -H \"Authorization: bearer eyJhbGciOiJSUz...\" \\\n"
+"  \"http://localhost:8080/auth/admin/realms/master\"\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Example using Java"
+msgstr ""
+
+#. type: Plain text
+msgid "There's a Java client library for the Admin REST API that makes it easy to use from Java. To use it from your application add a dependency on the `keycloak-admin-client` library."
+msgstr ""
+
+#. type: Plain text
+msgid "The following example shows how to use the Java client library to get the details of the master realm:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"Keycloak keycloak = Keycloak.getInstance(\n"
+"    \"http://localhost:8080/auth\",\n"
+"    \"master\",\n"
+"    \"admin\",\n"
+"    \"password\",\n"
+"    \"admin-cli\");\n"
+"RealmRepresentation realm = keycloak.realm(\"master\").toRepresentation();\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Complete Javadoc for the admin client is available at {apidocs_link}[{apidocs_name}]."
+msgstr ""

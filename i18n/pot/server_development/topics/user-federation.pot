@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: source/server_development/topics/events.adoc:8
+#: source/server_development/topics/user-federation-mapper.adoc:15
+#: source/server_development/topics/user-federation.adoc:15
+msgid ""
+"For details on how to package and deploy a custom provider refer to the "
+"<<providers.adoc#providers,Service Provider Interfaces>> chapter."
+msgstr ""
+
+#. type: Title ==
+#: source/server_development/topics/user-federation.adoc:2
+#, no-wrap
+msgid "User Federation SPI"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-federation.adoc:6
+msgid ""
+"The keycloak examples directory contains an example of a simple User "
+"Federation Provider backed by a simple properties file. See `providers/"
+"federation-provider` in the examples distribution. Most of how to create a "
+"federation provider is explained directly within the example code, but some "
+"information is here too."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-federation.adoc:9
+msgid ""
+"Writing a User Federation Provider starts by implementing the "
+"`UserFederationProvider` and `UserFederationProviderFactory` interfaces. "
+"Please see the Javadoc and example for complete details on how to do this."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-federation.adoc:14
+msgid ""
+"Some important methods of note: getUserByUsername() and getUserByEmail() "
+"require that you query your federated storage and if the user exists create "
+"and import the user into Keycloak storage. How much metadata you import is "
+"fully up to you. This import is done by invoking methods on the object "
+"returned `KeycloakSession.userStorage()` to add and import user information. "
+"The proxy() method will be called whenever Keycloak has found an imported "
+"UserModel.  This allows the federation provider to proxy the UserModel which "
+"is useful if you want to support external storage updates on demand."
+msgstr ""

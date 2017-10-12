@@ -1,0 +1,212 @@
+# Japanese translations for keycloak-documentation-i18n package
+# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# Automatically generated, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Plain text
+#, no-wrap
+msgid "*Name*\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*Description*\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Examples"
+msgstr ""
+
+#. type: Title ====
+#, fuzzy, no-wrap
+msgid "Configuration"
+msgstr "スタンドアロン設定"
+
+#. type: Plain text
+#, no-wrap
+msgid "A string with more details about this policy.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*Logic*\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "The <<_policy_logic, Logic>> of this policy to apply after the other conditions have been evaluated.\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Rule-Based Policy"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"With this type of policy you can define conditions for your permissions using http://www.drools.org[Drools], which is a rule evaluation environment. It is one of the _Rule-Based_ policy types\n"
+"supported by {project_name}, and provides flexibility to write any policy based on the <<_policy_evaluation_api, Evaluation API>>.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"To create a new Rule-based policy, in the dropdown list in the right upper corner of the policy listing,\n"
+" select *Rule*.\n"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Add Rule Policy"
+msgstr ""
+
+#. type: Plain text
+#, fuzzy, no-wrap
+#| msgid "image:{project_images}/create-realm.png[]"
+msgid "image:{project_images}/policy/create-drools.png[alt=\"Add Rule Policy\"]\n"
+msgstr "image:{project_images}/create-realm.png[]"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"A human-readable and unique string describing the policy. We strongly suggest that you use names that are closely related with your business and security requirements, so you\n"
+"can identify them more easily and also know what they actually mean.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*Policy Maven Artifact*\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "A Maven groupId-artifactId-version (GAV) pointing to an artifact where the rules are defined. Once you have provided the GAV, you can click *Resolve* to load both *Module* and *Session* fields.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "** Group Id\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "The groupId of the artifact.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "** Artifact Id\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "The artifactId of the artifact.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "** Version\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "The version of the artifact.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*Module*\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "The module used by this policy. You must provide a module to select a specific session from which rules will be loaded.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*Session*\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "The session used by this policy. The session provides all the rules to evaluate when processing the policy.\n"
+msgstr ""
+
+#. type: Plain text
+#, fuzzy, no-wrap
+#| msgid "Update Password"
+msgid "*Update Period*\n"
+msgstr "パスワードの更新"
+
+#. type: Plain text
+#, no-wrap
+msgid "Specifies an interval for scanning for artifact updates.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Here is a simple example of a Drools-based policy that uses attribute-based access control (ABAC) to define a condition that evaluates to a GRANT\n"
+"only if the authenticated user is the owner of the requested resource:\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"```javascript\n"
+"import org.keycloak.authorization.policy.evaluation.Evaluation;\n"
+"rule \"Authorize Resource Owner\"\n"
+"    dialect \"mvel\"\n"
+"    when\n"
+"       $evaluation : Evaluation(\n"
+"           $identity: context.identity,\n"
+"           $permission: permission,\n"
+"           $permission.resource != null && $permission.resource.owner.equals($identity.id)\n"
+"       )\n"
+"    then\n"
+"        $evaluation.grant();\n"
+"end\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "You can even use another variant of ABAC to obtain attributes from the identity and define a condition accordingly:\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"```javascript\n"
+"import org.keycloak.authorization.policy.evaluation.Evaluation;\n"
+"rule \"Authorize Using Identity Information\"\n"
+"    dialect \"mvel\"\n"
+"    when\n"
+"       $evaluation : Evaluation(\n"
+"           $identity: context.identity,\n"
+"           identity.attributes.containsValue(\"someAttribute\", \"you_can_access\")\n"
+"       )\n"
+"    then\n"
+"        $evaluation.grant();\n"
+"end\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "For more information about what you can access from the `org.keycloak.authorization.policy.evaluation.Evaluation` interface, see <<_policy_evaluation_api, Evaluation API>>.\n"
+msgstr ""

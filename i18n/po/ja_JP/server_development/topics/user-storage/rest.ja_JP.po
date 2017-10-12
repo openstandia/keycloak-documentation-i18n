@@ -1,0 +1,190 @@
+# Japanese translations for keycloak-documentation-i18n package
+# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# Automatically generated, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "REST Management API"
+msgstr ""
+
+#. type: Plain text
+msgid "You can create, remove, and update your user storage provider deployments through the administrator REST API. The User Storage SPI is built on top of a generic component interface so you will be using that generic API to manage your providers."
+msgstr ""
+
+#. type: Plain text
+msgid "The REST Component API lives under your realm admin resource."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "/admin/realms/{realm-name}/components\n"
+msgstr ""
+
+#. type: Plain text
+msgid "We will only show this REST API interaction with the Java client. Hopefully you can extract how to do this from `curl` from this API."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"public interface ComponentsResource {\n"
+"    @GET\n"
+"    @Produces(MediaType.APPLICATION_JSON)\n"
+"    public List<ComponentRepresentation> query();\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @GET\n"
+"    @Produces(MediaType.APPLICATION_JSON)\n"
+"    public List<ComponentRepresentation> query(@QueryParam(\"parent\") String parent);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @GET\n"
+"    @Produces(MediaType.APPLICATION_JSON)\n"
+"    public List<ComponentRepresentation> query(@QueryParam(\"parent\") String parent, @QueryParam(\"type\") String type);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @GET\n"
+"    @Produces(MediaType.APPLICATION_JSON)\n"
+"    public List<ComponentRepresentation> query(@QueryParam(\"parent\") String parent,\n"
+"                                               @QueryParam(\"type\") String type,\n"
+"                                               @QueryParam(\"name\") String name);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @POST\n"
+"    @Consumes(MediaType.APPLICATION_JSON)\n"
+"    Response add(ComponentRepresentation rep);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Path(\"{id}\")\n"
+"    ComponentResource component(@PathParam(\"id\") String id);\n"
+"}\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"public interface ComponentResource {\n"
+"    @GET\n"
+"    public ComponentRepresentation toRepresentation();\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @PUT\n"
+"    @Consumes(MediaType.APPLICATION_JSON)\n"
+"    public void update(ComponentRepresentation rep);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @DELETE\n"
+"    public void remove();\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid "To create a user storage provider, you must specify the provider id, a provider type of the string `org.keycloak.storage.UserStorageProvider`, as well as the configuration."
+msgstr ""
+
+#. type: delimited block -
+#, fuzzy, no-wrap
+msgid ""
+"import org.keycloak.admin.client.Keycloak;\n"
+"import org.keycloak.representations.idm.RealmRepresentation;\n"
+"...\n"
+msgstr "import org.keycloak.adapters.OIDCAuthenticationError; import org.keycloak.adapters.OIDCAuthenticationError.Reason; ..."
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"Keycloak keycloak = Keycloak.getInstance(\n"
+"    \"http://localhost:8080/auth\",\n"
+"    \"master\",\n"
+"    \"admin\",\n"
+"    \"password\",\n"
+"    \"admin-cli\");\n"
+"RealmResource realmResource = keycloak.realm(\"master\");\n"
+"RealmRepresentation realm = realmResource.toRepresentation();\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"ComponentRepresentation component = new ComponentRepresentation();\n"
+"component.setName(\"home\");\n"
+"component.setProviderId(\"readonly-property-file\");\n"
+"component.setProviderType(\"org.keycloak.storage.UserStorageProvider\");\n"
+"component.setParentId(realm.getId());\n"
+"component.setConfig(new MultivaluedHashMap());\n"
+"component.getConfig().putSingle(\"path\", \"~/users.properties\");\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "realmResource.components().add(component);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "// retrieve a component\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"List<ComponentRepresentation> components = realmResource.components().query(realm.getId(),\n"
+"                                                                    \"org.keycloak.storage.UserStorageProvider\",\n"
+"                                                                    \"home\");\n"
+"component = components.get(0);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "// Update a component\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"component.getConfig().putSingle(\"path\", \"~/my-users.properties\");\n"
+"realmResource.components().component(component.getId()).update(component);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "// Remove a component\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "realmREsource.components().component(component.getId()).remove();\n"
+msgstr ""

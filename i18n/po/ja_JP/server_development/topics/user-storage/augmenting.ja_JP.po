@@ -1,0 +1,110 @@
+# Japanese translations for keycloak-documentation-i18n package
+# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# Automatically generated, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Augmenting External Storage"
+msgstr ""
+
+#. type: Plain text
+msgid "The `PropertyProfileUserStorageProvider` example is really limited.  While we will be able to login with users stored in a property file, we won't be able to do much else.  If users loaded by this provider need special role or group mappings to fully access particular applications there is no way for us to add additional role mappings to these users.  You also can't modify or add additional important attributes like email, first and last name."
+msgstr ""
+
+#. type: Plain text
+msgid "For these types of situations, {project_name} allows you to augment your external store by storing extra information in {project_name}'s database.  This is called federated user storage and is encapsulated within the `org.keycloak.storage.federated.UserFederatedStorageProvider` class."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "UserFederatedStorageProvider"
+msgstr ""
+
+#. type: delimited block -
+#, fuzzy, no-wrap
+#| msgid "package org.keycloak.adapters.saml;\n"
+msgid "package org.keycloak.storage.federated;\n"
+msgstr "package org.keycloak.adapters.saml;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "public interface UserFederatedStorageProvider extends Provider {\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    Set<GroupModel> getGroups(RealmModel realm, String userId);\n"
+"    void joinGroup(RealmModel realm, String userId, GroupModel group);\n"
+"    void leaveGroup(RealmModel realm, String userId, GroupModel group);\n"
+"    List<String> getMembership(RealmModel realm, GroupModel group, int firstResult, int max);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "...\n"
+msgstr ""
+
+#. type: Plain text
+msgid "The `UserFederatedStorageProvider` instance is available on the `KeycloakSession.userFederatedStorage()` method.  It has all different kinds of methods for storing attributes, group and role mappings, different credential types, and required actions.  If your external store's datamodel cannot support the full {project_name} feature set, then this service can fill in the gaps."
+msgstr ""
+
+#. type: Plain text
+msgid "{project_name} comes with a helper class `org.keycloak.storage.adapter.AbstractUserAdapterFederatedStorage` that will delegate every single `UserModel` method except get/set of username to user federated storage.  Override the methods you need to override to delegate to your external storage representations.  It is strongly suggested you read the javadoc of this class as it has smaller protected methods you may want to override.  Specifically surrounding group membership and role mappings."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Augmentation Example"
+msgstr ""
+
+#. type: Plain text
+msgid "In our `PropertyFileUserStorageProvider` example, we just need a simple change to our provider to use the `AbstractUserAdapterFederatedStorage`."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "PropertyFileUserStorageProvider"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    protected UserModel createAdapter(RealmModel realm, String username) {\n"
+"        return new AbstractUserAdapterFederatedStorage(session, realm, model) {\n"
+"            @Override\n"
+"            public String getUsername() {\n"
+"                return username;\n"
+"            }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"            @Override\n"
+"            public void setUsername(String username) {\n"
+"                String pw = (String)properties.remove(username);\n"
+"                if (pw != null) {\n"
+"                    properties.put(username, pw);\n"
+"                    save();\n"
+"                }\n"
+"            }\n"
+"        };\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+msgid "We instead define an anonymous class implementation of `AbstractUserAdapterFederatedStorage`.  The `setUsername()` method makes changes to the properties file and saves it."
+msgstr ""

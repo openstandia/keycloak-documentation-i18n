@@ -1,0 +1,136 @@
+# Japanese translations for keycloak-documentation-i18n package
+# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# Automatically generated, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Leveraging Java EE"
+msgstr ""
+
+#. type: Plain text
+msgid "The user storage providers can be packaged within any Java EE component if you set up the `META-INF/services` file correctly to point to your providers. For example, if your provider needs to use third-party libraries, you can package up your provider within an EAR and store these third-party libraries in the `lib/` directory of the EAR.  Also note that provider JARs can make use of the `jboss-deployment-structure.xml` file that EJBs, WARS, and EARs can use in a JBoss/Wildfly environment. For more details on this file, see the JBoss/Wildfly documentation. It allows you to pull in external dependencies among other fine-grained actions."
+msgstr ""
+
+#. type: Plain text
+msgid "Implementations of `UserStorageProviderFactory` are required to be plain java objects. But we also currently support implementing `UserStorageProvider` classes as Stateful EJBs. This is especially useful if you want to use JPA to connect to a relational store. This is how you would do it:"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"@Stateful\n"
+"@Local(EjbExampleUserStorageProvider.class)\n"
+"public class EjbExampleUserStorageProvider implements UserStorageProvider,\n"
+"        UserLookupProvider,\n"
+"        UserRegistrationProvider,\n"
+"        UserQueryProvider,\n"
+"        CredentialInputUpdater,\n"
+"        CredentialInputValidator,\n"
+"        OnUserCache\n"
+"{\n"
+"    @PersistenceContext\n"
+"    protected EntityManager em;\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"    protected ComponentModel model;\n"
+"    protected KeycloakSession session;\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"    public void setModel(ComponentModel model) {\n"
+"        this.model = model;\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"    public void setSession(KeycloakSession session) {\n"
+"        this.session = session;\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#, fuzzy, no-wrap
+msgid ""
+"    @Remove\n"
+"    @Override\n"
+"    public void close() {\n"
+"    }\n"
+"...\n"
+"}\n"
+msgstr ""
+"    @Override\n"
+"    public String getName() {\n"
+"        ...\n"
+"    }\n"
+
+#. type: Plain text
+msgid "You have to define the `@Local` annotation and specify your provider class there. If you do not do this, EJB will not proxy the user correctly and your provider won't work."
+msgstr ""
+
+#. type: Plain text
+msgid "You must put the `@Remove` annotation on the `close()` method of your provider. If you do not, the stateful bean will never be cleaned up and you might eventually see error messages."
+msgstr ""
+
+#. type: Plain text
+msgid "Implementations of `UserStorageProviderFactory` are required to be plain java objects. Your factory class would perform a JNDI lookup of the Stateful EJB in its create() method."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"public class EjbExampleUserStorageProviderFactory\n"
+"        implements UserStorageProviderFactory<EjbExampleUserStorageProvider> {\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public EjbExampleUserStorageProvider create(KeycloakSession session, ComponentModel model) {\n"
+"        try {\n"
+"            InitialContext ctx = new InitialContext();\n"
+"            EjbExampleUserStorageProvider provider = (EjbExampleUserStorageProvider)ctx.lookup(\n"
+"                     \"java:global/user-storage-jpa-example/\" + EjbExampleUserStorageProvider.class.getSimpleName());\n"
+"            provider.setModel(model);\n"
+"            provider.setSession(session);\n"
+"            return provider;\n"
+"        } catch (Exception e) {\n"
+"            throw new RuntimeException(e);\n"
+"        }\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+msgid "This example also assumes that you have defined a JPA deployment in the same JAR as the provider. This means a `persistence.xml` file as well as any JPA `@Entity` classes."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"When using JPA any additional datasource must be an XA datasource. The {project_name} datasource\n"
+"         is not an XA datasource. If you interact with two or more non-XA datasources in the same transaction, the server returns\n"
+"         an error message. Only one non-XA resource is permitted in a single transaction.\n"
+msgstr ""
+
+#. type: Plain text
+msgid "See the JBoss/Wildfly manual for more details on deploying an XA datasource."
+msgstr ""

@@ -1,0 +1,106 @@
+# Japanese translations for keycloak-documentation-i18n package
+# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# Automatically generated, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Model Interfaces"
+msgstr ""
+
+#. type: Plain text
+msgid "Most of the methods defined in the _capability_ _interfaces_ either return or are passed in representations of a user. These representations are defined by the `org.keycloak.models.UserModel` interface. App developers are required to implement this interface. It provides a mapping between the external user store and the user metamodel that {project_name} uses."
+msgstr ""
+
+#. type: delimited block -
+#, fuzzy, no-wrap
+#| msgid "package org.keycloak.adapters.saml;\n"
+msgid "package org.keycloak.models;\n"
+msgstr "package org.keycloak.adapters.saml;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"public interface UserModel extends RoleMapperModel {\n"
+"    String getId();\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    String getUsername();\n"
+"    void setUsername(String username);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    String getFirstName();\n"
+"    void setFirstName(String firstName);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    String getLastName();\n"
+"    void setLastName(String lastName);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    String getEmail();\n"
+"    void setEmail(String email);\n"
+"...\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid "`UserModel` implementations provide access to read and update metadata about the user including things like username, name, email, role and group mappings, as well as other arbitrary attributes."
+msgstr ""
+
+#. type: Plain text
+msgid "There are other model classes within the `org.keycloak.models` package that represent other parts of the {project_name} metamodel: `RealmModel`, `RoleModel`, `GroupModel`, and `ClientModel`."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Storage Ids"
+msgstr ""
+
+#. type: Plain text
+msgid "One important method of `UserModel` is the `getId()` method. When implementing `UserModel` developers must be aware of the user id format. The format must be:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "\"f:\" + component id + \":\" + external id\n"
+msgstr ""
+
+#. type: Plain text
+msgid "The {project_name} runtime often has to look up users by their user id. The user id contains enough information so that the runtime does not have to query every single `UserStorageProvider` in the system to find the user."
+msgstr ""
+
+#. type: Plain text
+msgid "The component id is the id returned from `ComponentModel.getId()`. The `ComponentModel` is passed in as a parameter when creating the provider class so you can get it from there. The external id is information your provider class needs to find the user in the external store. This is often a username or a uid. For example, it might look something like this:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "f:332a234e31234:wburke\n"
+msgstr ""
+
+#. type: Plain text
+msgid "When the runtime does a lookup by id, the id is parsed to obtain the component id. The component id is used to locate the `UserStorageProvider` that was originally used to load the user. That provider is then passed the id. The provider again parses the id to obtain the external id it will use to locate the user in external user storage."
+msgstr ""

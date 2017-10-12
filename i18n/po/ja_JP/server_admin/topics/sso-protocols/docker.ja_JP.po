@@ -1,0 +1,74 @@
+# Japanese translations for keycloak-documentation-i18n package
+# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# Automatically generated, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Plain text
+msgid "Docker authentication is disabled by default. To enable see link:{installguide_profile_link}[{installguide_profile_name}]."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Docker Registry v2 Authentication"
+msgstr ""
+
+#. type: Plain text
+msgid "link:https://docs.docker.com/registry/spec/auth/[Docker Registry V2 Authentciation] is an OIDC-Like protocol used to authenticate users against a Docker registry.  {project_name}'s implementation of this protocol allows for a {project_name} authentication server to be used by a Docker client to authenticate against a registry.  While this protocol uses fairly standard token and signature mechanisms, it has a few wrinkles that prevent it from being treated as a true OIDC implementation.  The largest deviations include a very specific JSON format for requests and responses as well as the ability to understand how to map repository names and permissions to the OAuth scope mechanism."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Docker Auth Flow"
+msgstr ""
+
+#. type: Plain text
+msgid "The link:https://docs.docker.com/registry/spec/auth/token/[Docker API documentation] best describes and illustrates this process, however a brief summary will be given below from the perspective of they {project_name} authentication server."
+msgstr ""
+
+#. type: Plain text
+msgid "This flow assumes that a `docker login` command has already been performed"
+msgstr ""
+
+#. type: Plain text
+msgid "The flow begins when the Docker client requests a resource from the Docker registry.  If the resource is protected and no auth token is present in the request, the Docker registry server will respond to the client with a 401 + some information on required permissions and where to find the authorization server."
+msgstr ""
+
+#. type: Plain text
+msgid "The Docker client will construct an authentication request based on the 401 response from the Docker registry.  The client will then use the locally cached credentials (from a previously run `docker login` command) as part of a link:https://tools.ietf.org/html/rfc2617[HTTP Basic Authentication] request to the {project_name} authentication server."
+msgstr ""
+
+#. type: Plain text
+msgid "The {project_name} authentication server will attempt to authenticate the user and return a JSON body containing an OAuth-style Bearer token."
+msgstr ""
+
+#. type: Plain text
+msgid "The Docker client will get the bearer token from the JSON response and use it in the Authorization header to request the protected resource."
+msgstr ""
+
+#. type: Plain text
+msgid "When the Docker registry recieves the new request for the protected resource with the token from the {project_name} server, the registry validates the token and grants access to the requested resource (if appropriate)."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "{project_name} Docker Registry v2 Authentication Server URI Endpoints"
+msgstr ""
+
+#. type: Plain text
+msgid "{project_name} really only has one endpoint for all Docker auth v2 requests."
+msgstr ""
+
+#. type: Plain text
+msgid "`http(s)://authserver.host/auth/realms/{realm-name}/protocol/docker-v2`"
+msgstr ""

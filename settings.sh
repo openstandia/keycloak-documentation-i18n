@@ -6,8 +6,7 @@ SOURCE_DIR=source
 TRANSLATED_DIR=translated
 TARGET_LANG=ja_JP
 DOCS="\
-  server_installation \
-  topics"
+  server_installation"
 
 DOCS2="\
   getting_started \
@@ -15,7 +14,8 @@ DOCS2="\
   server_admin \
   server_development \
   authorization_services \
-  upgrading"
+  upgrading \
+  topics"
 
 TARGET_EXT=adoc
 OUT_FILE=po4a.cfg

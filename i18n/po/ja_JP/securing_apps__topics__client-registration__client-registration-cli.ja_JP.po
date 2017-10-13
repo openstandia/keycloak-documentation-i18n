@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"PO-Revision-Date: 2017-10-11 02:02-0400\n"
+"PO-Revision-Date: 2017-10-13 01:30-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -17,24 +17,24 @@ msgstr ""
 #. type: Title ====
 #, no-wrap
 msgid "Troubleshooting"
-msgstr ""
+msgstr "トラブルシューティング"
 
 #. type: Title ==
 #, no-wrap
 msgid "Client Registration CLI"
-msgstr ""
+msgstr "クライアント登録CLI"
 
 #. type: Plain text
 msgid "Client Registration CLI is a Technology Preview feature and is not fully supported."
-msgstr ""
+msgstr "クライアント登録CLIはテクニカル・プレビュー機能であり、完全にはサポートされていません。"
 
 #. type: Plain text
 msgid "`Client Registration CLI` is a command line interface tool that can be used by application developers to configure new clients to integrate with {project_name}. It is specifically designed to interact with {project_name} Client Registration REST endpoints."
-msgstr ""
+msgstr "`Client Registration CLI` は、{project_name}と統合する新しいクライアントを設定するために、アプリケーション開発者が使用できるコマンドライン・インターフェイス・ツールです。{project_name}クライアント登録RESTエンドポイントと対話するためだけに設計されています。"
 
 #. type: Plain text
 msgid "It is necessary to create a new client configuration for each new application hosted on a unique hostname in order for Keycloak to be able to interact with the application (and vice-versa) and perform its function of providing a login page, SSO session management etc."
-msgstr ""
+msgstr "{project_name}がアプリケーションと相互に対話したり、ログイン・ページやSSOセッション管理などを提供する機能を実行できるようにするには、一意なホスト名でホストされるアプリケーション毎にクライアントの設定を作成する必要があります。"
 
 #. type: Plain text
 msgid "`Client Registration CLI` allows you to configure application clients from a command line, and can be used in shell scripts as well."
@@ -95,7 +95,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "Client Registration CLI is packaged inside Keycloak Server distribution. You can find execution scripts inside `bin` directory."
-msgstr ""
+msgstr "クライアント登録CLIは、{project_name}サーバーのディストリビューションの中にパッケージされています。 `bin` ディレクトリ内に実行スクリプトがあります。"
 
 #. type: Plain text
 msgid "The Linux script is called `kcreg.sh`, and the one for Windows is called `kcreg.bat`."
@@ -103,27 +103,29 @@ msgstr ""
 
 #. type: Plain text
 msgid "In order to setup the client to be used from any location on the filesystem you may want to add Keycloak server directory to your PATH."
-msgstr ""
+msgstr "ファイルシステム上の任意の場所から使用できるようにクライアントをセットアップするために、{project_name}サーバーのディレクトリをPATHに追加した方がいいです。"
 
 #. type: Plain text
 msgid "On Linux:"
-msgstr ""
+msgstr "Linuxの場合:"
 
 #. type: delimited block -
 #, no-wrap
 msgid "$ export PATH=$PATH:$KEYCLOAK_HOME/bin\n"
 "$ kcreg.sh\n"
-msgstr ""
+msgstr "$ export PATH=$PATH:$KEYCLOAK_HOME/bin\n"
+"$ kcreg.sh\n"
 
 #. type: Plain text
 msgid "On Windows:"
-msgstr ""
+msgstr "Windowsの場合:"
 
 #. type: delimited block -
 #, no-wrap
 msgid "c:\\> set PATH=%PATH%;%KEYCLOAK_HOME%\\bin\n"
 "c:\\> kcreg\n"
-msgstr ""
+msgstr "c:\\> set PATH=%PATH%;%KEYCLOAK_HOME%\\bin\n"
+"c:\\> kcreg\n"
 
 #. type: Title ===
 #, no-wrap
@@ -136,39 +138,43 @@ msgstr ""
 
 #. type: Plain text
 msgid "For example on Linux:"
-msgstr ""
+msgstr "例えば、Linux の場合:"
 
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcreg.sh config credentials --server http://localhost:8080/auth --realm demo --user user --client reg-cli\n"
 "$ kcreg.sh create -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]'\n"
 "$ kcreg.sh get my_client\n"
-msgstr ""
+msgstr "$ kcreg.sh config credentials --server http://localhost:8080/auth --realm demo --user user --client reg-cli\n"
+"$ kcreg.sh create -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]'\n"
+"$ kcreg.sh get my_client\n"
 
 #. type: Plain text
 msgid "Or on Windows:"
-msgstr ""
+msgstr "またはWindowsの場合:"
 
 #. type: delimited block -
 #, no-wrap
 msgid "c:\\> kcreg config credentials --server http://localhost:8080/auth --realm demo --user user --client reg-cli\n"
 "c:\\> kcreg create -s clientId=my_client -s \"redirectUris=[\\\"http://localhost:8980/myapp/*\\\"]\"\n"
 "c:\\> kcreg get my_client\n"
-msgstr ""
+msgstr "c:\\> kcreg config credentials --server http://localhost:8080/auth --realm demo --user user --client reg-cli\n"
+"c:\\> kcreg create -s clientId=my_client -s \"redirectUris=[\\\"http://localhost:8980/myapp/*\\\"]\"\n"
+"c:\\> kcreg get my_client\n"
 
 #. type: Plain text
 msgid "In a production environment Keycloak has to be accessed with `https:` to avoid exposing tokens to network sniffers. If server's certificate is not issued by one of the trusted CAs that are included in Java's default certificate truststore, then you will need to prepare a truststore.jks file, and instruct `Client Registration CLI` to use it."
-msgstr ""
+msgstr "本番環境では、ネットワーク・スニッファでトークンを解読されることを避けるために、{project_name}には `https:` でアクセスできなければなりません。サーバーの証明書がJavaのデフォルト証明書のトラスト・ストアに含まれる信頼できるCAによって発行されていない場合、truststore.jksファイルを用意し、それを使用するように `Client Registration CLI` に指示する必要があります。"
 
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcreg.sh config truststore --trustpass $PASSWORD ~/.keycloak/truststore.jks\n"
-msgstr ""
+msgstr "$ kcreg.sh config truststore --trustpass $PASSWORD ~/.keycloak/truststore.jks\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "c:\\> kcreg config truststore --trustpass %PASSWORD% %HOMEPATH%\\.keycloak\\truststore.jks\n"
-msgstr ""
+msgstr "c:\\> kcreg config truststore --trustpass %PASSWORD% %HOMEPATH%\\.keycloak\\truststore.jks\n"
 
 #. type: Title ====
 #, no-wrap
@@ -198,12 +204,12 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcreg.sh help\n"
-msgstr ""
+msgstr "$ kcreg.sh help\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "c:\\> kcreg help\n"
-msgstr ""
+msgstr "c:\\> kcreg help\n"
 
 #. type: Plain text
 msgid "See `kcreg config credentials --help` for more information about starting an authenticated session."
@@ -216,7 +222,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "By default, `Client Registration CLI` automatically maintains a configuration file at a default location - `.keycloak/kcreg.config` under user's home directory."
-msgstr ""
+msgstr "`Client Registration CLI` は、デフォルトの場所に設定ファイルを自動的に保持します（デフォルトでは、ユーザーのホーム・ディレクトリの下の `.keycloak/kcreg.config` ）。"
 
 #. type: Plain text
 msgid "You can use `--config` option at any time to point to a different file / location. This way you can mantain multiple authenticated sessions in parallel. It is safest to perform operations tied to a single config file from a single thread."
@@ -237,7 +243,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "`Client Registration CLI` can be used by developers who don't have an account configured at Keycloak server they want to use.  That's possible when realm administrator issues developer an `Initial Access Token`. It is up to realm administrator to decide how to issue and distribute these tokens. Admin can limit an Initial Access Token by maximum age, and a total number of clients that can be created with it. Many Initial Access Tokens can be created, and it's up to realm administrator to distribute them."
-msgstr ""
+msgstr "`Client Registration CLI`は、使用したい{project_name}サーバーで設定されたアカウントを持っていない開発者が使用できます。レルム管理者が開発者に `Initial Access Token` を発行するときに可能です。 これらのトークンを発行して配布する方法を決定するのは、レルム管理者次第です。 管理者は、初期アクセストークンを最大経過時間と作成できるクライアントの総数で制限できます。 多くの初期アクセストークンを作成することができ、また、それらを配布するのはレルム管理者の責任です。"
 
 #. type: Plain text
 msgid "Once a developer is in possession of Initial Access Token they can use it to create new clients without authenticating with `kcreg config credentials`. Rather, Initial Access Token can be stored in configuration, or specified as part of `kcreg create` command."
@@ -247,11 +253,12 @@ msgstr ""
 #, no-wrap
 msgid "$ kcreg.sh config initial-token $TOKEN\n"
 "$ kcreg.sh create -s clientId=myclient\n"
-msgstr ""
+msgstr "$ kcreg.sh config initial-token $TOKEN\n"
+"$ kcreg.sh create -s clientId=myclient\n"
 
 #. type: Plain text
 msgid "or"
-msgstr ""
+msgstr "または"
 
 #. type: delimited block -
 #, no-wrap
@@ -262,12 +269,13 @@ msgstr ""
 #, no-wrap
 msgid "c:\\> kcreg config initial-token %TOKEN%\n"
 "c:\\> kcreg create -s clientId=myclient\n"
-msgstr ""
+msgstr "c:\\> kcreg config initial-token %TOKEN%\n"
+"c:\\> kcreg create -s clientId=myclient\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "c:\\> kcreg create -s clientId=myclient -t %TOKEN%\n"
-msgstr ""
+msgstr "c:\\> kcreg create -s clientId=myclient -t %TOKEN%\n"
 
 #. type: Plain text
 msgid "When Initial Access Token is used, the server response will include a newly issued Registration Access Token for client that was just created. Any subsequent operation for that client needs to be performed by authenticating with that token."
@@ -301,12 +309,12 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcreg.sh create -s clientId=myclient -f client-template.json -s baseUrl=/myclient -s 'redirectUris=[\"/myclient/*\"]' -o\n"
-msgstr ""
+msgstr "$ kcreg.sh create -s clientId=myclient -f client-template.json -s baseUrl=/myclient -s 'redirectUris=[\"/myclient/*\"]' -o\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "C:\\> kcreg create -s clientId=myclient -f client-template.json -s baseUrl=/myclient -s \"redirectUris=[\\\"/myclient/*\\\"]\" -o\n"
-msgstr ""
+msgstr "C:\\> kcreg create -s clientId=myclient -f client-template.json -s baseUrl=/myclient -s \"redirectUris=[\\\"/myclient/*\\\"]\" -o\n"
 
 #. type: Plain text
 msgid "See `kcreg create --help` for more information about `kcreg create`."
@@ -323,26 +331,26 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcreg.sh get myclient\n"
-msgstr ""
+msgstr "$ kcreg.sh get myclient\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "C:\\> kcreg get myclient\n"
-msgstr ""
+msgstr "C:\\> kcreg get myclient\n"
 
 #. type: Plain text
 msgid "You can also get an adapter configuration which you can drop into your web application in order to integrate with Keycloak server."
-msgstr ""
+msgstr "また、{project_name}サーバーと統合するために、webアプリケーションに組み込めるアダプターの設定を取得できます。"
 
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcreg.sh get myclient -e install\n"
-msgstr ""
+msgstr "$ kcreg.sh get myclient -e install\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "C:\\> kcreg get myclient -e install\n"
-msgstr ""
+msgstr "C:\\> kcreg get myclient -e install\n"
 
 #. type: Plain text
 msgid "See `kcreg get --help` for more information about `kcreg get`."
@@ -361,14 +369,18 @@ msgstr ""
 msgid "$ kcreg.sh get myclient > myclient.json\n"
 "$ vi myclient.json\n"
 "$ kcreg.sh update myclient -f myclient.json\n"
-msgstr ""
+msgstr "$ kcreg.sh get myclient > myclient.json\n"
+"$ vi myclient.json\n"
+"$ kcreg.sh update myclient -f myclient.json\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "C:\\> kcreg get myclient > myclient.json\n"
 "C:\\> notepad myclient.json\n"
 "C:\\> kcreg update myclient -f myclient.json\n"
-msgstr ""
+msgstr "C:\\> kcreg get myclient > myclient.json\n"
+"C:\\> notepad myclient.json\n"
+"C:\\> kcreg update myclient -f myclient.json\n"
 
 #. type: Plain text
 msgid "Another is to get current client, set or delete fields on it, and post it back all in one single step."
@@ -377,12 +389,12 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcreg.sh update myclient -s enabled=false -d redirectUris\n"
-msgstr ""
+msgstr "$ kcreg.sh update myclient -s enabled=false -d redirectUris\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "C:\\> kcreg update myclient -s enabled=false -d redirectUris\n"
-msgstr ""
+msgstr "C:\\> kcreg update myclient -s enabled=false -d redirectUris\n"
 
 #. type: Plain text
 msgid "You can even use a file that contains only changes to be applied so you don't have to specify too many values as arguments.  In this case we specify `--merge` to tell `Client Registration CLI` that rather than treating mychanges.json as full new configuration, it should see it as a set of attributes to be applied over existing configuration."
@@ -391,12 +403,12 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcreg.sh update myclient --merge -d redirectUris -f mychanges.json\n"
-msgstr ""
+msgstr "$ kcreg.sh update myclient --merge -d redirectUris -f mychanges.json\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "C:\\> kcreg update myclient --merge -d redirectUris -f mychanges.json\n"
-msgstr ""
+msgstr "C:\\> kcreg update myclient --merge -d redirectUris -f mychanges.json\n"
 
 #. type: Plain text
 msgid "See `kcreg update --help` for more information about `kcreg update`."
@@ -409,12 +421,12 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcreg.sh delete myclient\n"
-msgstr ""
+msgstr "$ kcreg.sh delete myclient\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "C:\\> kcreg delete myclient\n"
-msgstr ""
+msgstr "C:\\> kcreg delete myclient\n"
 
 #. type: Plain text
 msgid "See `kcreg delete --help` for more information about `kcreg delete`."

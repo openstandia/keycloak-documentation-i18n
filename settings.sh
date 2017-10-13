@@ -8,10 +8,10 @@ TARGET_LANG=ja_JP
 DOCS="\
   getting_started \
   server_installation \
-  securing_apps \
   topics"
 
 DOCS2="\
+  securing_apps \
   server_admin \
   server_development \
   authorization_services \

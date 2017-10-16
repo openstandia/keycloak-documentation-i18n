@@ -1,180 +1,306 @@
-# Japanese translations for keycloak-documentation-i18n package
-# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
-# Automatically generated, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: keycloak-documentation-i18n  \n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ja\n"
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
+#: source/securing_apps/topics/saml/java/MigrationFromOlderVersions.adoc:3
+#: source/upgrading/topics/keycloak/changes.adoc:176
 #, no-wrap
 msgid "Migrating to 1.9.0"
 msgstr ""
 
 #. type: Title ==
+#: source/upgrading/topics/keycloak/changes.adoc:1
 #, no-wrap
 msgid "Migration Changes"
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:3
 #, no-wrap
 msgid "Migrating to 3.2.0"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:5
 #, no-wrap
 msgid "New Password Hashing algorithms"
 msgstr ""
 
 #. type: Plain text
-msgid "We've added two new password hashing algorithms (pbkdf2-sha256 and pbkdf2-sha512). New realms will use the pbkdf2-sha256 hashing algorithm with 27500 hashing iterations. Since pbkdf2-sha256 is slightly faster than pbkdf2 the iterations was increased to 27500 from 20000."
+#: source/upgrading/topics/keycloak/changes.adoc:10
+msgid ""
+"We've added two new password hashing algorithms (pbkdf2-sha256 and "
+"pbkdf2-sha512). New realms will use the pbkdf2-sha256 hashing algorithm with"
+" 27500 hashing iterations. Since pbkdf2-sha256 is slightly faster than "
+"pbkdf2 the iterations was increased to 27500 from 20000."
 msgstr ""
 
 #. type: Plain text
-msgid "Existing realms are upgraded if the password policy contains the default value for hashing algorithm (not specified) and iteration (20000). If you have changed the hashing iterations you need to manually change to pbkdf2-sha256 if you'd like to use the more secure hashing algorithm."
+#: source/upgrading/topics/keycloak/changes.adoc:14
+msgid ""
+"Existing realms are upgraded if the password policy contains the default "
+"value for hashing algorithm (not specified) and iteration (20000). If you "
+"have changed the hashing iterations you need to manually change to "
+"pbkdf2-sha256 if you'd like to use the more secure hashing algorithm."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:15
 #, no-wrap
 msgid "ID Token requires scope=openid"
 msgstr ""
 
 #. type: Plain text
-msgid "OpenID Connect specification requires that parameter `scope` with value `openid` is used in initial authorization request. So in {project_name} 2.1.0 we changed our adapters to use `scope=openid` in the redirect URI to {project_name}. Now we changed the server part too and ID token will be sent to the application just if `scope=openid` is really used. If it's not used, then ID token will be skipped and just Access token and Refresh token will be sent to the application.  This also allows that you can ommit the generation of ID Token on purpose - for example for space or performance purposes."
+#: source/upgrading/topics/keycloak/changes.adoc:21
+msgid ""
+"OpenID Connect specification requires that parameter `scope` with value "
+"`openid` is used in initial authorization request. So in {project_name} "
+"2.1.0 we changed our adapters to use `scope=openid` in the redirect URI to "
+"{project_name}. Now we changed the server part too and ID token will be sent"
+" to the application just if `scope=openid` is really used. If it's not used,"
+" then ID token will be skipped and just Access token and Refresh token will "
+"be sent to the application.  This also allows that you can ommit the "
+"generation of ID Token on purpose - for example for space or performance "
+"purposes."
 msgstr ""
 
 #. type: Plain text
-msgid "Direct grants (OAuth2 Resource Owner Password Credentials Grant) and Service accounts login (OAuth2 Client credentials grant) also don't use ID Token by default now.  You need to explicitly add `scope=openid` parameter to have ID Token included."
+#: source/upgrading/topics/keycloak/changes.adoc:24
+msgid ""
+"Direct grants (OAuth2 Resource Owner Password Credentials Grant) and Service"
+" accounts login (OAuth2 Client credentials grant) also don't use ID Token by"
+" default now.  You need to explicitly add `scope=openid` parameter to have "
+"ID Token included."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:25
 #, no-wrap
 msgid "Authentication sessions and Action tokens"
 msgstr ""
 
 #. type: Plain text
-msgid "We are working on support for multiple datacenters. As the initial step, we introduced authentication session and action tokens.  Authentication session replaces Client session, which was used in previous versions. Action tokens are currently used especially for the scenarios, where the authenticator or requiredActionProvider requires sending email to the user and requires user to click on the link in email."
+#: source/upgrading/topics/keycloak/changes.adoc:30
+msgid ""
+"We are working on support for multiple datacenters. As the initial step, we "
+"introduced authentication session and action tokens.  Authentication session"
+" replaces Client session, which was used in previous versions. Action tokens"
+" are currently used especially for the scenarios, where the authenticator or"
+" requiredActionProvider requires sending email to the user and requires user"
+" to click on the link in email."
 msgstr ""
 
 #. type: Plain text
-msgid "Here are concrete changes related to this, which may affect you for the migration."
+#: source/upgrading/topics/keycloak/changes.adoc:32
+msgid ""
+"Here are concrete changes related to this, which may affect you for the "
+"migration."
 msgstr ""
 
 #. type: Plain text
-msgid "First change related to this is introducing new infinispan caches `authenticationSessions` and `actionTokens` in `standalone.xml` or `standalone-ha.xml`. If you use our migration CLI, you don't need to care much as your `standalone(-ha).xml` files will be migrated automatically."
+#: source/upgrading/topics/keycloak/changes.adoc:35
+msgid ""
+"First change related to this is introducing new infinispan caches "
+"`authenticationSessions` and `actionTokens` in `standalone.xml` or "
+"`standalone-ha.xml`. If you use our migration CLI, you don't need to care "
+"much as your `standalone(-ha).xml` files will be migrated automatically."
 msgstr ""
 
 #. type: Plain text
-msgid "Second change is changing of some signatures in methods of authentication SPI. This may affect you if you use custom `Authenticator` or `RequiredActionProvider`. Classes `AuthenticationFlowContext` and `RequiredActionContext` now allow to retrieve authentication session instead of client session."
+#: source/upgrading/topics/keycloak/changes.adoc:39
+msgid ""
+"Second change is changing of some signatures in methods of authentication "
+"SPI. This may affect you if you use custom `Authenticator` or "
+"`RequiredActionProvider`. Classes `AuthenticationFlowContext` and "
+"`RequiredActionContext` now allow to retrieve authentication session instead"
+" of client session."
 msgstr ""
 
 #. type: Plain text
-msgid "We also added some initial support for sticky sessions. You may want to change your loadbalancer/proxy server and configure it if you want to suffer from it and have better performance.  The route is added to the new `AUTH_SESSION_ID` cookie. More info in the clustering documentation."
+#: source/upgrading/topics/keycloak/changes.adoc:42
+msgid ""
+"We also added some initial support for sticky sessions. You may want to "
+"change your loadbalancer/proxy server and configure it if you want to suffer"
+" from it and have better performance.  The route is added to the new "
+"`AUTH_SESSION_ID` cookie. More info in the clustering documentation."
 msgstr ""
 
 #. type: Plain text
-msgid "Another change is, that `token.getClientSession()` was removed. This may affect you for example if you're using Client Initiated Identity Broker Linking feature."
+#: source/upgrading/topics/keycloak/changes.adoc:44
+msgid ""
+"Another change is, that `token.getClientSession()` was removed. This may "
+"affect you for example if you're using Client Initiated Identity Broker "
+"Linking feature."
 msgstr ""
 
 #. type: Plain text
-msgid "The `ScriptBasedAuthenticator` changed the binding name from `clientSession` to `authenticationSession`, so you would need to update your scripts if you're using this authenticator."
+#: source/upgrading/topics/keycloak/changes.adoc:46
+msgid ""
+"The `ScriptBasedAuthenticator` changed the binding name from `clientSession`"
+" to `authenticationSession`, so you would need to update your scripts if "
+"you're using this authenticator."
 msgstr ""
 
 #. type: Plain text
-msgid "Finally we added some new timeouts to the admin console. This allows you for example to specify different timeouts for the email actions triggered by admin and by user himself."
+#: source/upgrading/topics/keycloak/changes.adoc:48
+msgid ""
+"Finally we added some new timeouts to the admin console. This allows you for"
+" example to specify different timeouts for the email actions triggered by "
+"admin and by user himself."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:49
 #, no-wrap
 msgid "Migrating to 2.5.1"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:51
 #, no-wrap
 msgid "Migration of old offline tokens"
 msgstr ""
 
 #. type: Plain text
-msgid "If you migrate from version 2.2.0 or older and you used offline tokens, then your offline tokens didn't have KID in the token header.  We added KID to the token header in 2.3.0 together with the ability to have multiple realm keys, so {project_name} is able to find the correct key based on the token KID."
+#: source/upgrading/topics/keycloak/changes.adoc:55
+msgid ""
+"If you migrate from version 2.2.0 or older and you used offline tokens, then"
+" your offline tokens didn't have KID in the token header.  We added KID to "
+"the token header in 2.3.0 together with the ability to have multiple realm "
+"keys, so {project_name} is able to find the correct key based on the token "
+"KID."
 msgstr ""
 
 #. type: Plain text
-msgid "For the offline tokens without KID, {project_name} 2.5.1 will always use the active realm key to find the proper key for the token verification. In other words, migration of old offline tokens will work. So for example, your user requested offline token in 1.9.8, then you migrate from 1.9.8 to 2.5.1 and then your user will be still able to refresh his old offline token in 2.5.1 version."
+#: source/upgrading/topics/keycloak/changes.adoc:59
+msgid ""
+"For the offline tokens without KID, {project_name} 2.5.1 will always use the"
+" active realm key to find the proper key for the token verification. In "
+"other words, migration of old offline tokens will work. So for example, your"
+" user requested offline token in 1.9.8, then you migrate from 1.9.8 to 2.5.1"
+" and then your user will be still able to refresh his old offline token in "
+"2.5.1 version."
 msgstr ""
 
 #. type: Plain text
-msgid "But there is limitation, that once you change the realm active key, the users won't be able to refresh old offline tokens anymore. So you shouldn't change the active realm key until all your users with offline tokens refreshed their tokens. Obviously newly refreshed tokens will have KID in the header, so after all users exchange their old offline tokens, you are free to change the active realm key."
+#: source/upgrading/topics/keycloak/changes.adoc:63
+msgid ""
+"But there is limitation, that once you change the realm active key, the "
+"users won't be able to refresh old offline tokens anymore. So you shouldn't "
+"change the active realm key until all your users with offline tokens "
+"refreshed their tokens. Obviously newly refreshed tokens will have KID in "
+"the header, so after all users exchange their old offline tokens, you are "
+"free to change the active realm key."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:64
 #, no-wrap
 msgid "Migrating to 2.5.0"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:66
 #, no-wrap
 msgid "Changes to the infinispan caches"
 msgstr ""
 
 #. type: Plain text
-msgid "The `realms` cache defined in the infinispan subsystem in `standalone.xml` or `standalone-ha.xml` configuration file, now has the eviction with the 10000 records by default.  This is the same default like the `users` cache."
+#: source/upgrading/topics/keycloak/changes.adoc:70
+msgid ""
+"The `realms` cache defined in the infinispan subsystem in `standalone.xml` "
+"or `standalone-ha.xml` configuration file, now has the eviction with the "
+"10000 records by default.  This is the same default like the `users` cache."
 msgstr ""
 
 #. type: Plain text
-msgid "Also the `authorization` cache now doesn't have any eviction on it by default."
+#: source/upgrading/topics/keycloak/changes.adoc:72
+msgid ""
+"Also the `authorization` cache now doesn't have any eviction on it by "
+"default."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:74
 #, no-wrap
 msgid "Migrating to 2.4.0"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:76
 #, no-wrap
 msgid "Server SPI split into Server SPI and Sever SPI Private"
 msgstr ""
 
 #. type: Plain text
-msgid "The keycloak-server-spi module has been split into keycloak-server-spi and keycloak-server-spi-private. APIs within keycloak-server-spi will not change between minor releases, while we reserve the right and may quite likely change APIs in keycloak-server-spi-private between minor releases."
+#: source/upgrading/topics/keycloak/changes.adoc:81
+msgid ""
+"The keycloak-server-spi module has been split into keycloak-server-spi and "
+"keycloak-server-spi-private. APIs within keycloak-server-spi will not change"
+" between minor releases, while we reserve the right and may quite likely "
+"change APIs in keycloak-server-spi-private between minor releases."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:82
 #, no-wrap
 msgid "Key encryption algorithm in SAML assertions"
 msgstr ""
 
 #. type: Plain text
-msgid "Key in SAML assertions and documents are now encrypted using RSA-OAEP encryption scheme.  If you want to use encrypted assertions, make sure that service providers understand this encryption scheme.  In the unlikely case that SP would not be able to handle the new scheme, {project_name} can be made to use legacy RSA-v1.5 encryption scheme when started with system property `keycloak.saml.key_trans.rsa_v1.5` set to `true`."
+#: source/upgrading/topics/keycloak/changes.adoc:89
+msgid ""
+"Key in SAML assertions and documents are now encrypted using RSA-OAEP "
+"encryption scheme.  If you want to use encrypted assertions, make sure that "
+"service providers understand this encryption scheme.  In the unlikely case "
+"that SP would not be able to handle the new scheme, {project_name} can be "
+"made to use legacy RSA-v1.5 encryption scheme when started with system "
+"property `keycloak.saml.key_trans.rsa_v1.5` set to `true`."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:90
 #, no-wrap
 msgid "Infinispan caches realms and users are always local"
 msgstr ""
 
 #. type: Plain text
-msgid "Even if you use {project_name} in cluster, the caches `realms` and `users` defined in infinispan subsystem in `standalone-ha.xml` are always local caches now. There is separate cache `work`, which handles sending invalidation messages between cluster nodes and informing whole cluster what records in underlying `realms` and `users` caches should be invalidated."
+#: source/upgrading/topics/keycloak/changes.adoc:95
+msgid ""
+"Even if you use {project_name} in cluster, the caches `realms` and `users` "
+"defined in infinispan subsystem in `standalone-ha.xml` are always local "
+"caches now. There is separate cache `work`, which handles sending "
+"invalidation messages between cluster nodes and informing whole cluster what"
+" records in underlying `realms` and `users` caches should be invalidated."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:96
 #, no-wrap
 msgid "Migrating to 2.3.0"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:98
 #, no-wrap
 msgid "Default max results on paginated endpoints"
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:102
 #, no-wrap
 msgid ""
 "All Admin REST API endpoints that support pagination now have a default max results set to 100. If you want to return\n"
@@ -182,337 +308,581 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:103
 #, no-wrap
 msgid "`realm-public-key` adapter property not recommended"
 msgstr ""
 
 #. type: Plain text
-msgid "In 2.3.0 release we added support for Public Key Rotation. When admin rotates the realm keys in Keycloak admin console, the Client Adapter will be able to recognize it and automatically download new public key from Keycloak. However this automatic download of new keys is done just if you don't have `realm-public-key` option in your adapter with the hardcoded public key. For this reason, we don't recommend to use `realm-public-key` option in adapter configuration anymore."
+#: source/upgrading/topics/keycloak/changes.adoc:109
+msgid ""
+"In 2.3.0 release we added support for Public Key Rotation. When admin "
+"rotates the realm keys in Keycloak admin console, the Client Adapter will be"
+" able to recognize it and automatically download new public key from "
+"Keycloak. However this automatic download of new keys is done just if you "
+"don't have `realm-public-key` option in your adapter with the hardcoded "
+"public key. For this reason, we don't recommend to use `realm-public-key` "
+"option in adapter configuration anymore."
 msgstr ""
 
 #. type: Plain text
-msgid "Note this option is still supported, but it may be useful just if you really want to have hardcoded public key in your adapter configuration and never download the public key from Keycloak. In theory, one reason for this can be to avoid man-in-the-middle attack if you have untrusted network between adapter and Keycloak, however in that case, it is much better option to use HTTPS, which will secure all the requests between adapter and Keycloak."
+#: source/upgrading/topics/keycloak/changes.adoc:113
+msgid ""
+"Note this option is still supported, but it may be useful just if you really"
+" want to have hardcoded public key in your adapter configuration and never "
+"download the public key from Keycloak. In theory, one reason for this can be"
+" to avoid man-in-the-middle attack if you have untrusted network between "
+"adapter and Keycloak, however in that case, it is much better option to use "
+"HTTPS, which will secure all the requests between adapter and Keycloak."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:114
 #, no-wrap
 msgid "Added infinispan cache `keys`"
 msgstr ""
 
 #. type: Plain text
-msgid "In this release, we added new cache `keys` to the infinispan subsystem, which is defined in `standalone.xml` or `standalone-ha.xml` configuration file.  It has also some eviction and expiration defined. This cache is internally used for caching the external public keys of the entities trusted by the server (Identity providers or clients, which uses authentication with signed JWT)."
+#: source/upgrading/topics/keycloak/changes.adoc:119
+msgid ""
+"In this release, we added new cache `keys` to the infinispan subsystem, "
+"which is defined in `standalone.xml` or `standalone-ha.xml` configuration "
+"file.  It has also some eviction and expiration defined. This cache is "
+"internally used for caching the external public keys of the entities trusted"
+" by the server (Identity providers or clients, which uses authentication "
+"with signed JWT)."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:120
 #, no-wrap
 msgid "Migrating to 2.2.0"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:122
 #, no-wrap
 msgid "`databaseSchema` property deprecated"
 msgstr ""
 
 #. type: Plain text
-msgid "The `databaseSchema` property for both JPA and Mongo is now deprecated and has been replaced by `initializeEmpty` and `migrationStrategy`. `initializeEmpty` can bet set to `true` or `false` and controls if an empty database should be initialized. `migrationStrategy` can be set to `update`, `validate` and `manual`. `manual` is only supported for relational databases and will write an SQL file with the required changes to the database schema. Please note that for Oracle database, the created SQL file contains `SET DEFINE OFF` command understood by Oracle SQL clients.  Should the script be consumed by any other client, please replace the lines with equivalent command of the tool of your choice that disables variable expansion or remove it completely if such functionality is not applicable."
+#: source/upgrading/topics/keycloak/changes.adoc:131
+msgid ""
+"The `databaseSchema` property for both JPA and Mongo is now deprecated and "
+"has been replaced by `initializeEmpty` and `migrationStrategy`. "
+"`initializeEmpty` can bet set to `true` or `false` and controls if an empty "
+"database should be initialized. `migrationStrategy` can be set to `update`, "
+"`validate` and `manual`. `manual` is only supported for relational databases"
+" and will write an SQL file with the required changes to the database "
+"schema. Please note that for Oracle database, the created SQL file contains "
+"`SET DEFINE OFF` command understood by Oracle SQL clients.  Should the "
+"script be consumed by any other client, please replace the lines with "
+"equivalent command of the tool of your choice that disables variable "
+"expansion or remove it completely if such functionality is not applicable."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:132
 #, no-wrap
 msgid "Changes in Client's Valid Redirect URIs"
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:134
 msgid "The following scenarios are affected:"
 msgstr ""
 
 #. type: Plain text
-msgid "When a Valid Redirect URI with query component is saved in a Client (e.g. `\\http://localhost/auth?foo=bar`), `redirect_uri` in authorization request must exactly match this URI (or other registered URI in this Client)."
+#: source/upgrading/topics/keycloak/changes.adoc:136
+msgid ""
+"When a Valid Redirect URI with query component is saved in a Client (e.g. "
+"`\\http://localhost/auth?foo=bar`), `redirect_uri` in authorization request "
+"must exactly match this URI (or other registered URI in this Client)."
 msgstr ""
 
 #. type: Plain text
-msgid "When a Valid Redirect URI without a query component is saved in a Client, `redirect_uri` must exactly match as well."
+#: source/upgrading/topics/keycloak/changes.adoc:137
+msgid ""
+"When a Valid Redirect URI without a query component is saved in a Client, "
+"`redirect_uri` must exactly match as well."
 msgstr ""
 
 #. type: Plain text
-msgid "Wildcards in registered Valid Redirect URIs are no longer supported when query component is present in this URI, so the `redirect_uri` needs to exactly match this saved URI as well."
+#: source/upgrading/topics/keycloak/changes.adoc:138
+msgid ""
+"Wildcards in registered Valid Redirect URIs are no longer supported when "
+"query component is present in this URI, so the `redirect_uri` needs to "
+"exactly match this saved URI as well."
 msgstr ""
 
 #. type: Plain text
-msgid "Fragments in registered Valid Redirect URIs (like `\\http://localhost/auth#fragment`) are no longer allowed."
+#: source/upgrading/topics/keycloak/changes.adoc:139
+msgid ""
+"Fragments in registered Valid Redirect URIs (like "
+"`\\http://localhost/auth#fragment`) are no longer allowed."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:140
 #, no-wrap
 msgid "Authenticate by default removed from Identity Providers"
 msgstr ""
 
 #. type: Plain text
-msgid "Identity providers no longer has an option to set it as a default authenticaton provider. Instead go to Authentication, select the `Browser` flow and configure the `Identity Provider Redirector`. It has an option to set the default identity provider."
+#: source/upgrading/topics/keycloak/changes.adoc:143
+msgid ""
+"Identity providers no longer has an option to set it as a default "
+"authenticaton provider. Instead go to Authentication, select the `Browser` "
+"flow and configure the `Identity Provider Redirector`. It has an option to "
+"set the default identity provider."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:144
 #, no-wrap
 msgid "Migrating to 2.0.0"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:146
 #, no-wrap
 msgid "Upgrading from 1.0.0.Final no longer supported"
 msgstr ""
 
 #. type: Plain text
-msgid "Upgrading from 1.0.0.Final is no longer supported. To upgrade to this version upgrade to 1.9.8.Final prior to upgrading to 2.0.0."
+#: source/upgrading/topics/keycloak/changes.adoc:150
+msgid ""
+"Upgrading from 1.0.0.Final is no longer supported. To upgrade to this "
+"version upgrade to 1.9.8.Final prior to upgrading to 2.0.0."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:151
 #, no-wrap
 msgid "Migrating to 1.9.5"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:153
 #, no-wrap
 msgid "Default password hashing interval increased to 20K"
 msgstr ""
 
 #. type: Plain text
-msgid "The default password hashing interval for new realms has been increased to 20K (from 1 previously). This change will have an impact on performance when users authenticate. For example with the old default (1) it takes less than 1 ms to hash a password, but with the new default (20K) the same operation can take 50-100 ms."
+#: source/upgrading/topics/keycloak/changes.adoc:158
+msgid ""
+"The default password hashing interval for new realms has been increased to "
+"20K (from 1 previously). This change will have an impact on performance when"
+" users authenticate. For example with the old default (1) it takes less than"
+" 1 ms to hash a password, but with the new default (20K) the same operation "
+"can take 50-100 ms."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:159
 #, no-wrap
 msgid "Migrating to 1.9.3"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:161
 #, no-wrap
 msgid "Add User script renamed"
 msgstr ""
 
 #. type: Plain text
-msgid "The script to add admin users to Keycloak has been renamed to `add-user-keycloak`."
+#: source/upgrading/topics/keycloak/changes.adoc:164
+msgid ""
+"The script to add admin users to Keycloak has been renamed to `add-user-"
+"keycloak`."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:165
 #, no-wrap
 msgid "Migrating to 1.9.2"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:167
 #, no-wrap
 msgid "Adapter option auth-server-url-for-backend-requests removed"
 msgstr ""
 
 #. type: Plain text
-msgid "We've removed the option auth-server-url-for-backend-requests as there were issues in some scenarios when it was used. In more details, it was possible to access the Keycloak server from 2 different contexts (internal and external), which was causing issues in token validations etc."
+#: source/upgrading/topics/keycloak/changes.adoc:171
+msgid ""
+"We've removed the option auth-server-url-for-backend-requests as there were "
+"issues in some scenarios when it was used. In more details, it was possible "
+"to access the Keycloak server from 2 different contexts (internal and "
+"external), which was causing issues in token validations etc."
 msgstr ""
 
 #. type: Plain text
-msgid "If you still want to use the optimization of network, which this option provided (avoid the application to send backchannel requests through loadbalancer but send them to local Keycloak server directly) you may need to handle it at hosts configuration (DNS) level."
+#: source/upgrading/topics/keycloak/changes.adoc:174
+msgid ""
+"If you still want to use the optimization of network, which this option "
+"provided (avoid the application to send backchannel requests through "
+"loadbalancer but send them to local Keycloak server directly) you may need "
+"to handle it at hosts configuration (DNS) level."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:178
 #, no-wrap
 msgid "Themes and providers directory moved"
 msgstr ""
 
 #. type: Plain text
-msgid "We've moved the themes and providers directories from `standalone/configuration/themes` and `standalone/configuration/providers` to `themes` and `providers` respectively.  If you have added custom themes and providers you need to move them to the new location.  You also need to update `keycloak-server.json` as it's changed due to this."
+#: source/upgrading/topics/keycloak/changes.adoc:183
+msgid ""
+"We've moved the themes and providers directories from "
+"`standalone/configuration/themes` and `standalone/configuration/providers` "
+"to `themes` and `providers` respectively.  If you have added custom themes "
+"and providers you need to move them to the new location.  You also need to "
+"update `keycloak-server.json` as it's changed due to this."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:184
 #, no-wrap
 msgid "Adapter Subsystems only bring in dependencies if Keycloak is on"
 msgstr ""
 
 #. type: Plain text
-msgid "Previously, if you had installed our SAML or OIDC Keycloak subsystem adapters into Wildfly or JBoss EAP, we would automatically include Keycloak client jars into EVERY application irregardless if you were using Keycloak or not.  These libraries are now only added to your deployment if you have Keycloak authentication turned on for that adapter (via the subsystem, or auth-method in web.xml"
+#: source/upgrading/topics/keycloak/changes.adoc:188
+msgid ""
+"Previously, if you had installed our SAML or OIDC Keycloak subsystem "
+"adapters into Wildfly or JBoss EAP, we would automatically include Keycloak "
+"client jars into EVERY application irregardless if you were using Keycloak "
+"or not.  These libraries are now only added to your deployment if you have "
+"Keycloak authentication turned on for that adapter (via the subsystem, or "
+"auth-method in web.xml"
 msgstr ""
 
 #. type: Title ====
-#, fuzzy, no-wrap
-#| msgid "Client Registration"
+#: source/upgrading/topics/keycloak/changes.adoc:189
+#, no-wrap
 msgid "Client Registration service endpoints moved"
-msgstr "クライアントの登録"
+msgstr ""
 
 #. type: Plain text
-msgid "The Client Registration service endpoints have been moved from `{realm-name}/clients` to `{realm-name}/clients-registrations`."
+#: source/upgrading/topics/keycloak/changes.adoc:192
+msgid ""
+"The Client Registration service endpoints have been moved from `{realm-"
+"name}/clients` to `{realm-name}/clients-registrations`."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:193
 #, no-wrap
 msgid "Session state parameter in authentication response renamed"
 msgstr ""
 
 #. type: Plain text
-msgid "In the OpenID Connect authentication response we used to return the session state as `session-state` this is not correct according to the specification and has been renamed to `session_state`."
+#: source/upgrading/topics/keycloak/changes.adoc:196
+msgid ""
+"In the OpenID Connect authentication response we used to return the session "
+"state as `session-state` this is not correct according to the specification "
+"and has been renamed to `session_state`."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:197
 #, no-wrap
 msgid "Deprecated OpenID Connect endpoints"
 msgstr ""
 
 #. type: Plain text
-msgid "In 1.2 we deprecated a number of endpoints that where not consistent with the OpenID Connect specifications, these have now been removed.  This also applies to the validate token endpoints that was replaced with the new introspect endpoint in 1.8."
+#: source/upgrading/topics/keycloak/changes.adoc:201
+msgid ""
+"In 1.2 we deprecated a number of endpoints that where not consistent with "
+"the OpenID Connect specifications, these have now been removed.  This also "
+"applies to the validate token endpoints that was replaced with the new "
+"introspect endpoint in 1.8."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:202
 #, no-wrap
 msgid "Updates to theme templates"
 msgstr ""
 
 #. type: Plain text
-msgid "Feedback in template.ftl has been moved and format has changed slightly."
+#: source/upgrading/topics/keycloak/changes.adoc:205
+msgid ""
+"Feedback in template.ftl has been moved and format has changed slightly."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:206
 #, no-wrap
 msgid "Module and Source Code Re-org"
 msgstr ""
 
 #. type: Plain text
-msgid "Most of our modules and source code have been consolidated into two maven modules: keycloak-server-spi and keycloak-services.  SPI interfaces are in server-spi, implementations are in keycloak-services.  All JPA dependent modules have been consolidated under keycloak-model-jpa.  Same goes with mongo and Infinispan under modules keycloak-model-mongo and keycloak-model-infinispan."
+#: source/upgrading/topics/keycloak/changes.adoc:212
+msgid ""
+"Most of our modules and source code have been consolidated into two maven "
+"modules: keycloak-server-spi and keycloak-services.  SPI interfaces are in "
+"server-spi, implementations are in keycloak-services.  All JPA dependent "
+"modules have been consolidated under keycloak-model-jpa.  Same goes with "
+"mongo and Infinispan under modules keycloak-model-mongo and keycloak-model-"
+"infinispan."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:213
 #, no-wrap
 msgid "For adapters, session id changed after login"
 msgstr ""
 
 #. type: Plain text
-msgid "To plug a security attack vector, for platforms that support it (Tomcat 8, Undertow/Wildfly, Jetty 9), the Keycloak OIDC and SAML adapters will change the session id after login.  You can turn off this behavior check adapter config switches."
+#: source/upgrading/topics/keycloak/changes.adoc:217
+msgid ""
+"To plug a security attack vector, for platforms that support it (Tomcat 8, "
+"Undertow/Wildfly, Jetty 9), the Keycloak OIDC and SAML adapters will change "
+"the session id after login.  You can turn off this behavior check adapter "
+"config switches."
 msgstr ""
 
 #. type: Title ====
-#, fuzzy, no-wrap
-#| msgid "What are Client Adapters?"
+#: source/upgrading/topics/keycloak/changes.adoc:218
+#, no-wrap
 msgid "SAML SP Client Adapter Changes"
-msgstr "クライアント・アダプターとは？"
+msgstr ""
 
 #. type: Plain text
-msgid "Keycloak SAML SP Client Adapter now requires a specific endpoint, `/saml` to be registered with your IDP."
+#: source/upgrading/topics/keycloak/changes.adoc:221
+msgid ""
+"Keycloak SAML SP Client Adapter now requires a specific endpoint, `/saml` to"
+" be registered with your IDP."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:222
 #, no-wrap
 msgid "Migrating to 1.8.0"
 msgstr ""
 
 #. type: Title ====
-#, fuzzy, no-wrap
-#| msgid "Creating the Admin Account"
+#: source/upgrading/topics/keycloak/changes.adoc:224
+#, no-wrap
 msgid "Admin account"
-msgstr "管理者アカウントの作成"
+msgstr ""
 
 #. type: Plain text
-msgid "In previous releases we shipped with a default admin user with a default password, this has now been removed.  If you are doing a new installation of 1.8 you will have to create an admin user as a first step."
+#: source/upgrading/topics/keycloak/changes.adoc:228
+msgid ""
+"In previous releases we shipped with a default admin user with a default "
+"password, this has now been removed.  If you are doing a new installation of"
+" 1.8 you will have to create an admin user as a first step."
 msgstr ""
 
 #. type: Title ====
-#, fuzzy, no-wrap
-#| msgid "Authentication"
+#: source/upgrading/topics/keycloak/changes.adoc:229
+#, no-wrap
 msgid "OAuth2 Token Introspection"
-msgstr "認証"
-
-#. type: Plain text
-msgid "In order to add more compliance with OAuth2 specification, we added a new endpoint for token introspection.  The new endpoint can reached at `/realms/{realm-name}/protocols/openid-connect/token/introspect` and it is solely based on `RFC-7662.`"
 msgstr ""
 
 #. type: Plain text
-msgid "The `/realms/{realm-name}/protocols/openid-connect/validate` endpoint is now deprecated and we strongly recommend you to move to the new introspection endpoint as soon as possible.  The reason for this change is that RFC-7662 provides a more standard and secure introspection endpoint."
+#: source/upgrading/topics/keycloak/changes.adoc:233
+msgid ""
+"In order to add more compliance with OAuth2 specification, we added a new "
+"endpoint for token introspection.  The new endpoint can reached at `/realms"
+"/{realm-name}/protocols/openid-connect/token/introspect` and it is solely "
+"based on `RFC-7662.`"
 msgstr ""
 
 #. type: Plain text
-msgid "The new token introspection URL can now be obtained from OpenID Connect Provider's configuration at `/realms/{realm-name}/.well-known/openid-configuration`.  There you will find a claim with name `token_introspection_endpoint` within the response.  Only `confidential clients` are allowed to invoke the new endpoint, where these clients will be usually acting as a resource server and looking for token metadata in order to perform local authorization checks."
+#: source/upgrading/topics/keycloak/changes.adoc:236
+msgid ""
+"The `/realms/{realm-name}/protocols/openid-connect/validate` endpoint is now"
+" deprecated and we strongly recommend you to move to the new introspection "
+"endpoint as soon as possible.  The reason for this change is that RFC-7662 "
+"provides a more standard and secure introspection endpoint."
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:240
+msgid ""
+"The new token introspection URL can now be obtained from OpenID Connect "
+"Provider's configuration at `/realms/{realm-name}/.well-known/openid-"
+"configuration`.  There you will find a claim with name "
+"`token_introspection_endpoint` within the response.  Only `confidential "
+"clients` are allowed to invoke the new endpoint, where these clients will be"
+" usually acting as a resource server and looking for token metadata in order"
+" to perform local authorization checks."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:241
 #, no-wrap
 msgid "Migrating to 1.7.0.CR1"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:243
 #, no-wrap
 msgid "Direct access grants disabled by default for clients"
 msgstr ""
 
 #. type: Plain text
-msgid "In order to add more compliance with OpenID Connect specification, we added flags into admin console to Client Settings page, where you can enable/disable various kinds of OpenID Connect/OAuth2 flows (Standard flow, Implicit flow, Direct Access Grants, Service Accounts). As part of this, we have `Direct Access Grants` (corresponds to OAuth2 `Resource Owner Password Credentials Grant`) disabled by default for new clients."
+#: source/upgrading/topics/keycloak/changes.adoc:246
+msgid ""
+"In order to add more compliance with OpenID Connect specification, we added "
+"flags into admin console to Client Settings page, where you can "
+"enable/disable various kinds of OpenID Connect/OAuth2 flows (Standard flow, "
+"Implicit flow, Direct Access Grants, Service Accounts). As part of this, we "
+"have `Direct Access Grants` (corresponds to OAuth2 `Resource Owner Password "
+"Credentials Grant`) disabled by default for new clients."
 msgstr ""
 
 #. type: Plain text
-msgid "Clients migrated from previous version have `Direct Access Grants` enabled just if they had flag `Direct Grants Only` on.  The `Direct Grants Only` flag was removed as if you enable Direct Access Grants and disable both Standard+Implicit flow, you will achieve same effect."
+#: source/upgrading/topics/keycloak/changes.adoc:249
+msgid ""
+"Clients migrated from previous version have `Direct Access Grants` enabled "
+"just if they had flag `Direct Grants Only` on.  The `Direct Grants Only` "
+"flag was removed as if you enable Direct Access Grants and disable both "
+"Standard+Implicit flow, you will achieve same effect."
 msgstr ""
 
 #. type: Plain text
-msgid "We also added built-in client `admin-cli` to each realm.  This client has `Direct Access Grants` enabled.  So if you're using Admin REST API or Keycloak admin-client, you should update your configuration to use `admin-cli` instead of `security-admin-console` as the latter one doesn't have direct access grants enabled anymore by default."
+#: source/upgrading/topics/keycloak/changes.adoc:253
+msgid ""
+"We also added built-in client `admin-cli` to each realm.  This client has "
+"`Direct Access Grants` enabled.  So if you're using Admin REST API or "
+"Keycloak admin-client, you should update your configuration to use `admin-"
+"cli` instead of `security-admin-console` as the latter one doesn't have "
+"direct access grants enabled anymore by default."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:254
 #, no-wrap
-msgid "Option 'Update Profile On First Login' moved from Identity provider to Review Profile authenticator"
+msgid ""
+"Option 'Update Profile On First Login' moved from Identity provider to "
+"Review Profile authenticator"
 msgstr ""
 
 #. type: Plain text
-msgid "In this version, we added `First Broker Login`, which allows you to specify what exactly should be done when new user is logged through Identity provider (or Social provider), but there is no existing Keycloak user yet linked to the social account.  As part of this work, we added option `First Login Flow` to identity providers where you can specify the flow and then you can configure this flow under `Authentication` tab in admin console."
+#: source/upgrading/topics/keycloak/changes.adoc:258
+msgid ""
+"In this version, we added `First Broker Login`, which allows you to specify "
+"what exactly should be done when new user is logged through Identity "
+"provider (or Social provider), but there is no existing Keycloak user yet "
+"linked to the social account.  As part of this work, we added option `First "
+"Login Flow` to identity providers where you can specify the flow and then "
+"you can configure this flow under `Authentication` tab in admin console."
 msgstr ""
 
 #. type: Plain text
-msgid "We also removed the option `Update Profile On First Login` from the Identity provider settings and moved it to the configuration of `Review Profile` authenticator.  So once you specify which flow should be used for your Identity provider (by default it's `First Broker Login` flow), you go to `Authentication` tab, select the flow and then you configure the option under `Review Profile` authenticator."
+#: source/upgrading/topics/keycloak/changes.adoc:261
+msgid ""
+"We also removed the option `Update Profile On First Login` from the Identity"
+" provider settings and moved it to the configuration of `Review Profile` "
+"authenticator.  So once you specify which flow should be used for your "
+"Identity provider (by default it's `First Broker Login` flow), you go to "
+"`Authentication` tab, select the flow and then you configure the option "
+"under `Review Profile` authenticator."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:262
 #, no-wrap
 msgid "Element 'form-error-page' in web.xml not supported anymore"
 msgstr ""
 
 #. type: Plain text
-msgid "form-error-page in web.xml will no longer work for client adapter authentication errors.  You must define an error-page for the various HTTP error codes.  See documentation for more details if you want to catch and handle adapter error conditions."
+#: source/upgrading/topics/keycloak/changes.adoc:267
+msgid ""
+"form-error-page in web.xml will no longer work for client adapter "
+"authentication errors.  You must define an error-page for the various HTTP "
+"error codes.  See documentation for more details if you want to catch and "
+"handle adapter error conditions."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:268
 #, no-wrap
 msgid "IdentityProviderMapper changes"
 msgstr ""
 
 #. type: Plain text
-msgid "There is no change in the interface itself or method signatures.  However there is some change in behavior.  We added `First Broker Login` flow in this release and the method `IdentityProviderMapper.importNewUser` is now called after `First Broker Login` flow is finished.  So if you want to have any attribute available in `Review Profile` page, you would need to use the method `preprocessFederatedIdentity` instead of `importNewUser` . You can set any attribute by invoke `BrokeredIdentityContext.setUserAttribute` and that will be available on `Review profile` page."
+#: source/upgrading/topics/keycloak/changes.adoc:274
+msgid ""
+"There is no change in the interface itself or method signatures.  However "
+"there is some change in behavior.  We added `First Broker Login` flow in "
+"this release and the method `IdentityProviderMapper.importNewUser` is now "
+"called after `First Broker Login` flow is finished.  So if you want to have "
+"any attribute available in `Review Profile` page, you would need to use the "
+"method `preprocessFederatedIdentity` instead of `importNewUser` . You can "
+"set any attribute by invoke `BrokeredIdentityContext.setUserAttribute` and "
+"that will be available on `Review profile` page."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:275
 #, no-wrap
 msgid "Migrating to 1.6.0.Final"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:277
 #, no-wrap
 msgid "Option that refresh tokens are not reusable anymore"
 msgstr ""
 
 #. type: Plain text
-msgid "Old versions of Keycloak allowed reusing refresh tokens multiple times.  Keycloak still permits this, but also have an option `Revoke refresh token` to disallow it.  Option is in in admin console under token settings.  When a refresh token is used to obtain a new access token a new refresh token is also included.  When option is enabled, then this new refresh token should be used next time the access token is refreshed.  It won't be possible to reuse old refresh token multiple times."
+#: source/upgrading/topics/keycloak/changes.adoc:285
+msgid ""
+"Old versions of Keycloak allowed reusing refresh tokens multiple times.  "
+"Keycloak still permits this, but also have an option `Revoke refresh token` "
+"to disallow it.  Option is in in admin console under token settings.  When a"
+" refresh token is used to obtain a new access token a new refresh token is "
+"also included.  When option is enabled, then this new refresh token should "
+"be used next time the access token is refreshed.  It won't be possible to "
+"reuse old refresh token multiple times."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:286
 #, no-wrap
 msgid "Some packages renamed"
 msgstr ""
 
 #. type: Plain text
-msgid "We did a bit of restructure and renamed some packages.  It is mainly about renaming internal packages of util classes.  The most important classes used in your application ( for example AccessToken or KeycloakSecurityContext ) as well as the SPI are still unchanged.  However there is slight chance that you will be affected and will need to update imports of your classes.  For example if you are using multitenancy and KeycloakConfigResolver, you will be affected as for example class HttpFacade was moved to different package - it is `org.keycloak.adapters.spi.HttpFacade` now."
+#: source/upgrading/topics/keycloak/changes.adoc:293
+msgid ""
+"We did a bit of restructure and renamed some packages.  It is mainly about "
+"renaming internal packages of util classes.  The most important classes used"
+" in your application ( for example AccessToken or KeycloakSecurityContext ) "
+"as well as the SPI are still unchanged.  However there is slight chance that"
+" you will be affected and will need to update imports of your classes.  For "
+"example if you are using multitenancy and KeycloakConfigResolver, you will "
+"be affected as for example class HttpFacade was moved to different package -"
+" it is `org.keycloak.adapters.spi.HttpFacade` now."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:294
 #, no-wrap
 msgid "Persisting user sessions"
 msgstr ""
 
 #. type: Plain text
-msgid "We added support for offline tokens in this release, which means that we are persisting \"offline\" user sessions into database now.  If you are not using offline tokens, nothing will be persisted for you, so you don't need to care about worse performance for more DB writes.  However in all cases, you will need to update `standalone/configuration/keycloak-server.json` and add `userSessionPersister` like this:"
+#: source/upgrading/topics/keycloak/changes.adoc:299
+msgid ""
+"We added support for offline tokens in this release, which means that we are"
+" persisting \"offline\" user sessions into database now.  If you are not "
+"using offline tokens, nothing will be persisted for you, so you don't need "
+"to care about worse performance for more DB writes.  However in all cases, "
+"you will need to update `standalone/configuration/keycloak-server.json` and "
+"add `userSessionPersister` like this:"
 msgstr ""
 
 #. type: delimited block -
+#: source/upgrading/topics/keycloak/changes.adoc:305
 #, no-wrap
 msgid ""
 "\"userSessionPersister\": {\n"
@@ -521,390 +891,643 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "If you want sessions to be persisted in Mongo instead of classic RDBMS, use provider `mongo` instead."
+#: source/upgrading/topics/keycloak/changes.adoc:307
+msgid ""
+"If you want sessions to be persisted in Mongo instead of classic RDBMS, use "
+"provider `mongo` instead."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:308
 #, no-wrap
 msgid "Migrating to 1.5.0.Final"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:310
 #, no-wrap
 msgid "Realm and User cache providers"
 msgstr ""
 
 #. type: Plain text
-msgid "Infinispan is now the default and only realm and user cache providers.  In non-clustered mode a local Infinispan cache is used.  We've also removed our custom in-memory cache and the no cache providers.  If you have realmCache or userCache set in keycloak-server.json to mem or none please remove these.  As Infinispan is the only provider there's no longer any need for the realmCache and userCache objects so these can be removed."
+#: source/upgrading/topics/keycloak/changes.adoc:317
+msgid ""
+"Infinispan is now the default and only realm and user cache providers.  In "
+"non-clustered mode a local Infinispan cache is used.  We've also removed our"
+" custom in-memory cache and the no cache providers.  If you have realmCache "
+"or userCache set in keycloak-server.json to mem or none please remove these."
+"  As Infinispan is the only provider there's no longer any need for the "
+"realmCache and userCache objects so these can be removed."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:318
 #, no-wrap
 msgid "Uses Session providers"
 msgstr ""
 
 #. type: Plain text
-msgid "Infinispan is now the default and only user session provider.  In non-clustered mode a local Infinispan cache is used.  We've also removed the JPA and Mongo user session providers.  If you have userSession set in keycloak-server.json to mem, jpa or mongo please remove it.  As Infinispan is the only provider there's no longer any need for the userSession object so it can be removed."
+#: source/upgrading/topics/keycloak/changes.adoc:325
+msgid ""
+"Infinispan is now the default and only user session provider.  In non-"
+"clustered mode a local Infinispan cache is used.  We've also removed the JPA"
+" and Mongo user session providers.  If you have userSession set in keycloak-"
+"server.json to mem, jpa or mongo please remove it.  As Infinispan is the "
+"only provider there's no longer any need for the userSession object so it "
+"can be removed."
 msgstr ""
 
 #. type: Plain text
-msgid "For anyone that wants to achieve increased durability of user sessions this can be achieved by configuring the user session cache with more than one owner or use a replicated cache.  It's also possible to configure Infinispan to persist caches, although that would have impacts on performance."
+#: source/upgrading/topics/keycloak/changes.adoc:328
+msgid ""
+"For anyone that wants to achieve increased durability of user sessions this "
+"can be achieved by configuring the user session cache with more than one "
+"owner or use a replicated cache.  It's also possible to configure Infinispan"
+" to persist caches, although that would have impacts on performance."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:329
 #, no-wrap
 msgid "Contact details removed from registration and account management"
 msgstr ""
 
 #. type: Plain text
-msgid "In the default theme we have now removed the contact details from the registration page and account management.  The admin console now lists all the users attributes, not just contact specific attributes.  The admin console also has the ability to add/remove attributes to a user.  If you want to add contact details, please refer to the address theme included in the examples."
+#: source/upgrading/topics/keycloak/changes.adoc:335
+msgid ""
+"In the default theme we have now removed the contact details from the "
+"registration page and account management.  The admin console now lists all "
+"the users attributes, not just contact specific attributes.  The admin "
+"console also has the ability to add/remove attributes to a user.  If you "
+"want to add contact details, please refer to the address theme included in "
+"the examples."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:336
 #, no-wrap
 msgid "Migrating to 1.3.0.Final"
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:338
 #, no-wrap
 msgid "Direct Grant API always enabled"
 msgstr ""
 
 #. type: Plain text
-msgid "In the past Direct Grant API (or Resource Owner Password Credentials) was disabled by default and there was an option on a realm to enable it.  The Direct Grant API is now always enabled and the option to enable/disable for a realm is removed."
+#: source/upgrading/topics/keycloak/changes.adoc:342
+msgid ""
+"In the past Direct Grant API (or Resource Owner Password Credentials) was "
+"disabled by default and there was an option on a realm to enable it.  The "
+"Direct Grant API is now always enabled and the option to enable/disable for "
+"a realm is removed."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:343
+#: source/upgrading/topics/keycloak/changes.adoc:385
+#: source/upgrading/topics/keycloak/changes.adoc:400
 #, no-wrap
 msgid "Database changed"
 msgstr ""
 
 #. type: Plain text
-msgid "There are again few database changes.  Remember to backup your database prior to upgrading."
+#: source/upgrading/topics/keycloak/changes.adoc:347
+msgid ""
+"There are again few database changes.  Remember to backup your database "
+"prior to upgrading."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:348
 #, no-wrap
 msgid "UserFederationProvider changed"
 msgstr ""
 
 #. type: Plain text
-msgid "There are few minor changes in UserFederationProvider interface.  You may need to sync your implementation when upgrade to newer version and upgrade few methods, which has changed signature.  Changes are really minor, but were needed to improve performance of federation."
+#: source/upgrading/topics/keycloak/changes.adoc:353
+msgid ""
+"There are few minor changes in UserFederationProvider interface.  You may "
+"need to sync your implementation when upgrade to newer version and upgrade "
+"few methods, which has changed signature.  Changes are really minor, but "
+"were needed to improve performance of federation."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:354
 #, no-wrap
 msgid "WildFly 9.0.0.Final"
 msgstr ""
 
 #. type: Plain text
-msgid "Following on from the distribution changes that was done in the last release the standalone download of Keycloak is now based on WildFly 9.0.0.Final.  This also affects the overlay which can only be deployed to WildFly 9.0.0.Final or JBoss EAP 6.4.0.GA.  WildFly 8.2.0.Final is no longer supported for the server."
+#: source/upgrading/topics/keycloak/changes.adoc:359
+msgid ""
+"Following on from the distribution changes that was done in the last release"
+" the standalone download of Keycloak is now based on WildFly 9.0.0.Final.  "
+"This also affects the overlay which can only be deployed to WildFly "
+"9.0.0.Final or JBoss EAP 6.4.0.GA.  WildFly 8.2.0.Final is no longer "
+"supported for the server."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:360
 #, no-wrap
 msgid "WildFly, JBoss EAP and JBoss AS7 adapters"
 msgstr ""
 
 #. type: Plain text
-msgid "There are now 3 separate adapter downloads for WildFly, JBoss EAP and JBoss AS7:"
+#: source/upgrading/topics/keycloak/changes.adoc:363
+msgid ""
+"There are now 3 separate adapter downloads for WildFly, JBoss EAP and JBoss "
+"AS7:"
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:365
 msgid "eap6"
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:366
 msgid "wf9"
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:367
 msgid "wf8"
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:368
 msgid "as7"
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:370
 msgid "Make sure you grab the correct one."
 msgstr ""
 
 #. type: Plain text
-msgid "You also need to update standalone.xml as the extension module and subsystem definition has changed.  See link:{adapterguide_link}[{adapterguide_name] for details."
+#: source/upgrading/topics/keycloak/changes.adoc:373
+msgid ""
+"You also need to update standalone.xml as the extension module and subsystem"
+" definition has changed.  See link:{adapterguide_link}[{adapterguide_name] "
+"for details."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:374
 #, no-wrap
 msgid "Migrating from 1.2.0.Beta1 to 1.2.0.RC1"
 msgstr ""
 
 #. type: Title ====
-#, fuzzy, no-wrap
-#| msgid "Installing Distribution Files"
+#: source/upgrading/topics/keycloak/changes.adoc:376
+#, no-wrap
 msgid "Distribution changes"
-msgstr "配布ファイルのインストール"
-
-#. type: Plain text
-msgid "Keycloak is now available in 3 downloads: standalone, overlay and demo bundle.  The standalone is intended for production and non-JEE developers.  Overlay is aimed at adding Keycloak to an existing WildFly 8.2 or EAP 6.4 installation and is mainly for development.  Finally we have a demo (or dev) bundle that is aimed at developers getting started with Keycloak.  This bundle contains a WildFly server, with Keycloak server and adapter included.  It also contains all documentation and examples."
 msgstr ""
 
 #. type: Plain text
-msgid "This release contains again a number of changes to the database.  The biggest one is Application and OAuth client merge.  Remember to backup your database prior to upgrading."
+#: source/upgrading/topics/keycloak/changes.adoc:384
+msgid ""
+"Keycloak is now available in 3 downloads: standalone, overlay and demo "
+"bundle.  The standalone is intended for production and non-JEE developers.  "
+"Overlay is aimed at adding Keycloak to an existing WildFly 8.2 or EAP 6.4 "
+"installation and is mainly for development.  Finally we have a demo (or dev)"
+" bundle that is aimed at developers getting started with Keycloak.  This "
+"bundle contains a WildFly server, with Keycloak server and adapter included."
+"  It also contains all documentation and examples."
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:390
+msgid ""
+"This release contains again a number of changes to the database.  The "
+"biggest one is Application and OAuth client merge.  Remember to backup your "
+"database prior to upgrading."
 msgstr ""
 
 #. type: Title ====
-#, fuzzy, no-wrap
-#| msgid "Application Login Page"
+#: source/upgrading/topics/keycloak/changes.adoc:391
+#, no-wrap
 msgid "Application and OAuth client merge"
-msgstr "アプリケーションのログインページ"
+msgstr ""
 
 #. type: Plain text
-msgid "Application and OAuth clients are now merged into `Clients`.  The UI of admin console is updated and database as well.  Your data from database should be automatically updated.  The previously set Applications will be converted into Clients with `Consent required` switch off and OAuth Clients will be converted into Clients with this switch on."
+#: source/upgrading/topics/keycloak/changes.adoc:397
+msgid ""
+"Application and OAuth clients are now merged into `Clients`.  The UI of "
+"admin console is updated and database as well.  Your data from database "
+"should be automatically updated.  The previously set Applications will be "
+"converted into Clients with `Consent required` switch off and OAuth Clients "
+"will be converted into Clients with this switch on."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:398
 #, no-wrap
 msgid "Migrating from 1.1.0.Final to 1.2.0.Beta1"
 msgstr ""
 
 #. type: Plain text
-msgid "This release contains a number of changes to the database.  Remember to backup your database prior to upgrading."
+#: source/upgrading/topics/keycloak/changes.adoc:404
+msgid ""
+"This release contains a number of changes to the database.  Remember to "
+"backup your database prior to upgrading."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:405
 #, no-wrap
 msgid "`iss` in access and id tokens"
 msgstr ""
 
 #. type: Plain text
-msgid "The value of `iss` claim in access and id tokens have changed from `realm name` to `realm url`.  This is required by OpenID Connect specification.  If you're using our adapters there's no change required, other than if you've been using bearer-only without specifying `auth-server-url` you have to add it now.  If you're using another library (or RSATokenVerifier) you need to make the corresponding changes when verifying `iss`."
+#: source/upgrading/topics/keycloak/changes.adoc:411
+msgid ""
+"The value of `iss` claim in access and id tokens have changed from `realm "
+"name` to `realm url`.  This is required by OpenID Connect specification.  If"
+" you're using our adapters there's no change required, other than if you've "
+"been using bearer-only without specifying `auth-server-url` you have to add "
+"it now.  If you're using another library (or RSATokenVerifier) you need to "
+"make the corresponding changes when verifying `iss`."
 msgstr ""
 
 #. type: Title ====
-#, fuzzy, no-wrap
+#: source/upgrading/topics/keycloak/changes.adoc:412
+#, no-wrap
 msgid "OpenID Connect endpoints"
 msgstr ""
-"#-#-#-#-#  securing_apps__topics__oidc__oidc-overview.ja_JP.po (keycloak-documentation-i18n)  #-#-#-#-#\n"
-"OpenID Connect\n"
-"#-#-#-#-#  securing_apps__topics__overview__supported-platforms.ja_JP.po (keycloak-documentation-i18n)  #-#-#-#-#\n"
-"OpenId Connect\n"
-"#-#-#-#-#  securing_apps__topics__overview__supported-protocols.ja_JP.po (keycloak-documentation-i18n)  #-#-#-#-#\n"
-"OpenID Connect"
 
 #. type: Plain text
-msgid "To comply with OpenID Connect specification the authentication and token endpoints have been changed to having a single authentication endpoint and a single token endpoint.  As per-spec `response_type` and `grant_type` parameters are used to select the required flow.  The old endpoints (`/realms/{realm-name}/protocols/openid-connect/login`, `/realms/{realm-name}/protocols/openid-connect/grants/access`, `/realms/{realm-name}/protocols/openid-connect/refresh`, `/realms/{realm-name}/protocols/openid-connect/access/codes)` are now deprecated and will be removed in a future version."
+#: source/upgrading/topics/keycloak/changes.adoc:417
+msgid ""
+"To comply with OpenID Connect specification the authentication and token "
+"endpoints have been changed to having a single authentication endpoint and a"
+" single token endpoint.  As per-spec `response_type` and `grant_type` "
+"parameters are used to select the required flow.  The old endpoints "
+"(`/realms/{realm-name}/protocols/openid-connect/login`, `/realms/{realm-"
+"name}/protocols/openid-connect/grants/access`, `/realms/{realm-"
+"name}/protocols/openid-connect/refresh`, `/realms/{realm-name}/protocols"
+"/openid-connect/access/codes)` are now deprecated and will be removed in a "
+"future version."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:418
 #, no-wrap
 msgid "Theme changes"
 msgstr ""
 
 #. type: Plain text
-msgid "The layout of themes have changed.  The directory hierarchy used to be `type/name` this is now changed to `name/type`.  For example a login theme named `sunrise` used to be deployed to `standalone/configuration/themes/login/sunrise`, which is now moved to `standalone/configuration/themes/sunrise/login`.  This change was done to make it easier to have group the different types for the same theme into one folder."
+#: source/upgrading/topics/keycloak/changes.adoc:424
+msgid ""
+"The layout of themes have changed.  The directory hierarchy used to be "
+"`type/name` this is now changed to `name/type`.  For example a login theme "
+"named `sunrise` used to be deployed to "
+"`standalone/configuration/themes/login/sunrise`, which is now moved to "
+"`standalone/configuration/themes/sunrise/login`.  This change was done to "
+"make it easier to have group the different types for the same theme into one"
+" folder."
 msgstr ""
 
 #. type: Plain text
-msgid "If you deployed themes as a JAR in the past you had to create a custom theme loader which required Java code.  This has been simplified to only requiring a plain text file (`META-INF/keycloak-themes.json`) to describe the themes included in a JAR."
+#: source/upgrading/topics/keycloak/changes.adoc:427
+msgid ""
+"If you deployed themes as a JAR in the past you had to create a custom theme"
+" loader which required Java code.  This has been simplified to only "
+"requiring a plain text file (`META-INF/keycloak-themes.json`) to describe "
+"the themes included in a JAR."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:428
 #, no-wrap
 msgid "Claims changes"
 msgstr ""
 
 #. type: Plain text
-msgid "Previously there was `Claims` tab in admin console for application and OAuth clients.  This was used to configure which attributes should go into access token for particular application/client.  This was removed and replaced with protocol mappers which are more flexible."
+#: source/upgrading/topics/keycloak/changes.adoc:433
+msgid ""
+"Previously there was `Claims` tab in admin console for application and OAuth"
+" clients.  This was used to configure which attributes should go into access"
+" token for particular application/client.  This was removed and replaced "
+"with protocol mappers which are more flexible."
 msgstr ""
 
 #. type: Plain text
-msgid "You don't need to care about migration of database from previous version.  We did migration scripts for both RDBMS and Mongo, which should ensure that claims configured for particular application/client will be converted into corresponding protocol mappers (Still it's safer to backup DB before migrating to newer version though). Same applies for exported JSON representation from previous version."
+#: source/upgrading/topics/keycloak/changes.adoc:436
+msgid ""
+"You don't need to care about migration of database from previous version.  "
+"We did migration scripts for both RDBMS and Mongo, which should ensure that "
+"claims configured for particular application/client will be converted into "
+"corresponding protocol mappers (Still it's safer to backup DB before "
+"migrating to newer version though). Same applies for exported JSON "
+"representation from previous version."
 msgstr ""
 
 #. type: Title ====
+#: source/upgrading/topics/keycloak/changes.adoc:437
 #, no-wrap
 msgid "Social migration to identity brokering"
 msgstr ""
 
 #. type: Plain text
-msgid "We refactored social providers SPI and replaced it with Identity Brokering SPI, which is more flexible.  The `Social` tab in admin console is renamed to `Identity Provider` tab."
+#: source/upgrading/topics/keycloak/changes.adoc:441
+msgid ""
+"We refactored social providers SPI and replaced it with Identity Brokering "
+"SPI, which is more flexible.  The `Social` tab in admin console is renamed "
+"to `Identity Provider` tab."
 msgstr ""
 
 #. type: Plain text
-msgid "Again you don't need to care about migration of database from previous version similarly like for Claims/protocol mappers.  Both configuration of social providers and \"social links\" to your users will be converted to corresponding Identity providers."
+#: source/upgrading/topics/keycloak/changes.adoc:444
+msgid ""
+"Again you don't need to care about migration of database from previous "
+"version similarly like for Claims/protocol mappers.  Both configuration of "
+"social providers and \"social links\" to your users will be converted to "
+"corresponding Identity providers."
 msgstr ""
 
 #. type: Plain text
-msgid "Only required action from you would be to change allowed `Redirect URI` in the admin console of particular 3rd party social providers.  You can first go to the Keycloak admin console and copy Redirect URI from the page where you configure the identity provider.  Then you can simply paste this as allowed Redirect URI to the admin console of 3rd party provider (IE.  Facebook admin console)."
+#: source/upgrading/topics/keycloak/changes.adoc:449
+msgid ""
+"Only required action from you would be to change allowed `Redirect URI` in "
+"the admin console of particular 3rd party social providers.  You can first "
+"go to the Keycloak admin console and copy Redirect URI from the page where "
+"you configure the identity provider.  Then you can simply paste this as "
+"allowed Redirect URI to the admin console of 3rd party provider (IE.  "
+"Facebook admin console)."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:450
 #, no-wrap
 msgid "Migrating from 1.1.0.Beta1 to 1.1.0.Beta2"
 msgstr ""
 
 #. type: Plain text
-msgid "Adapters are now a separate download.  They are not included in appliance and war distribution.  We have too many now and the distro is getting bloated."
+#: source/upgrading/topics/keycloak/changes.adoc:454
+msgid ""
+"Adapters are now a separate download.  They are not included in appliance "
+"and war distribution.  We have too many now and the distro is getting "
+"bloated."
 msgstr ""
 
 #. type: Plain text
-#, fuzzy
-#| msgid "import org.keycloak.adapters.OIDCAuthenticationError; import org.keycloak.adapters.OIDCAuthenticationError.Reason; ..."
-msgid "org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve +`org.keycloak.adapters.tomcat.KeycloakAuthenticatorValve`"
-msgstr "import org.keycloak.adapters.OIDCAuthenticationError; import org.keycloak.adapters.OIDCAuthenticationError.Reason; ..."
-
-#. type: Plain text
-msgid "JavaScript adapter now has idToken and idTokenParsed properties. If you use idToken to retrieve first name, email, etc. you need to change this to idTokenParsed."
+#: source/upgrading/topics/keycloak/changes.adoc:456
+msgid ""
+"org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve "
+"+`org.keycloak.adapters.tomcat.KeycloakAuthenticatorValve`"
 msgstr ""
 
 #. type: Plain text
-msgid "The as7-eap-subsystem and keycloak-wildfly-subsystem have been merged into one keycloak-subsystem.  If you have an existing standalone.xml or domain.xml, you will need edit near the top of the file and change the extension module name to org.keycloak.keycloak-subsystem.  For AS7 only, the extension module name is org.keycloak.keycloak-as7-subsystem."
+#: source/upgrading/topics/keycloak/changes.adoc:458
+msgid ""
+"JavaScript adapter now has idToken and idTokenParsed properties. If you use "
+"idToken to retrieve first name, email, etc. you need to change this to "
+"idTokenParsed."
 msgstr ""
 
 #. type: Plain text
-msgid "Server installation is no longer supported on AS7.  You can still use AS7 as an application client."
+#: source/upgrading/topics/keycloak/changes.adoc:461
+msgid ""
+"The as7-eap-subsystem and keycloak-wildfly-subsystem have been merged into "
+"one keycloak-subsystem.  If you have an existing standalone.xml or "
+"domain.xml, you will need edit near the top of the file and change the "
+"extension module name to org.keycloak.keycloak-subsystem.  For AS7 only, the"
+" extension module name is org.keycloak.keycloak-as7-subsystem."
+msgstr ""
+
+#. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:462
+msgid ""
+"Server installation is no longer supported on AS7.  You can still use AS7 as"
+" an application client."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:463
 #, no-wrap
 msgid "Migrating from 1.0.x.Final to 1.1.0.Beta1"
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:466
 msgid "RealmModel JPA and Mongo storage schema has changed"
 msgstr ""
 
 #. type: Plain text
-msgid "UserSessionModel JPA and Mongo storage schema has changed as these interfaces have been refactored"
+#: source/upgrading/topics/keycloak/changes.adoc:467
+msgid ""
+"UserSessionModel JPA and Mongo storage schema has changed as these "
+"interfaces have been refactored"
 msgstr ""
 
 #. type: Plain text
-msgid "Upgrade your adapters, old adapters are not compatible with Keycloak 1.1.  We interpreted JSON Web Token and OIDC ID Token specification incorrectly.  'aud' claim must be the client id, we were storing the realm name in there and validating it."
+#: source/upgrading/topics/keycloak/changes.adoc:469
+msgid ""
+"Upgrade your adapters, old adapters are not compatible with Keycloak 1.1.  "
+"We interpreted JSON Web Token and OIDC ID Token specification incorrectly.  "
+"'aud' claim must be the client id, we were storing the realm name in there "
+"and validating it."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:470
 #, no-wrap
 msgid "Migrating from 1.0 RC-1 to RC-2"
 msgstr ""
 
 #. type: Plain text
-msgid "A lot of info level logging has been changed to debug. Also, a realm no longer has the jboss-logging audit listener by default.  If you want log output when users login, logout, change passwords, etc. enable the jboss-logging audit listener through the admin console."
+#: source/upgrading/topics/keycloak/changes.adoc:474
+msgid ""
+"A lot of info level logging has been changed to debug. Also, a realm no "
+"longer has the jboss-logging audit listener by default.  If you want log "
+"output when users login, logout, change passwords, etc. enable the jboss-"
+"logging audit listener through the admin console."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:475
 #, no-wrap
 msgid "Migrating from 1.0 Beta 4 to RC-1"
 msgstr ""
 
 #. type: Plain text
-msgid "logout REST API has been refactored.  The GET request on the logout URI does not take a session_state parameter anymore.  You must be logged in in order to log out the session.  You can also POST to the logout REST URI.  This action requires a valid refresh token to perform the logout.  The signature is the same as refresh token minus the grant type form parameter.  See documentation for details."
+#: source/upgrading/topics/keycloak/changes.adoc:481
+msgid ""
+"logout REST API has been refactored.  The GET request on the logout URI does"
+" not take a session_state parameter anymore.  You must be logged in in order"
+" to log out the session.  You can also POST to the logout REST URI.  This "
+"action requires a valid refresh token to perform the logout.  The signature "
+"is the same as refresh token minus the grant type form parameter.  See "
+"documentation for details."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:482
 #, no-wrap
 msgid "Migrating from 1.0 Beta 1 to Beta 4"
 msgstr ""
 
 #. type: Plain text
-msgid "LDAP/AD configuration is changed.  It is no longer under the \"Settings\" page.  It is now under Users->Federation.  Add Provider will show you an \"ldap\" option."
+#: source/upgrading/topics/keycloak/changes.adoc:486
+msgid ""
+"LDAP/AD configuration is changed.  It is no longer under the \"Settings\" "
+"page.  It is now under Users->Federation.  Add Provider will show you an "
+"\"ldap\" option."
 msgstr ""
 
 #. type: Plain text
-msgid "Authentication SPI has been removed and rewritten.  The new SPI is UserFederationProvider and is more flexible."
+#: source/upgrading/topics/keycloak/changes.adoc:488
+msgid ""
+"Authentication SPI has been removed and rewritten.  The new SPI is "
+"UserFederationProvider and is more flexible."
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:493
 msgid "ssl-not-required +`ssl-required` +`all` +`external` +`none`"
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:495
 msgid "DB Schema has changed again."
 msgstr ""
 
 #. type: Plain text
-msgid "Created applications now have a full scope by default.  This means that you don't have to configure the scope of an application if you don't want to."
+#: source/upgrading/topics/keycloak/changes.adoc:497
+msgid ""
+"Created applications now have a full scope by default.  This means that you "
+"don't have to configure the scope of an application if you don't want to."
 msgstr ""
 
 #. type: Plain text
-msgid "Format of JSON file for importing realm data was changed. Now role mappings is available under the JSON record of particular user."
+#: source/upgrading/topics/keycloak/changes.adoc:499
+msgid ""
+"Format of JSON file for importing realm data was changed. Now role mappings "
+"is available under the JSON record of particular user."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:500
 #, no-wrap
 msgid "Migrating from 1.0 Alpha 4 to Beta 1"
 msgstr ""
 
 #. type: Plain text
-msgid "DB Schema has changed.  We have added export of the database to Beta 1, but not the ability to import the database from older versions. This will be supported in future releases."
+#: source/upgrading/topics/keycloak/changes.adoc:504
+msgid ""
+"DB Schema has changed.  We have added export of the database to Beta 1, but "
+"not the ability to import the database from older versions. This will be "
+"supported in future releases."
 msgstr ""
 
 #. type: Plain text
-msgid "For all clients except bearer-only applications, you must specify at least one redirect URI.  Keycloak will not allow you to log in unless you have specified a valid redirect URI for that application."
+#: source/upgrading/topics/keycloak/changes.adoc:506
+msgid ""
+"For all clients except bearer-only applications, you must specify at least "
+"one redirect URI.  Keycloak will not allow you to log in unless you have "
+"specified a valid redirect URI for that application."
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:508
 msgid "Direct Grant API +`ON`"
 msgstr ""
 
 #. type: Plain text
-#, fuzzy
-#| msgid "Standalone Configuration"
+#: source/upgrading/topics/keycloak/changes.adoc:510
 msgid "standalone/configuration/keycloak-server.json"
-msgstr "スタンドアロン設定"
+msgstr ""
 
 #. type: Plain text
-#, fuzzy
-#| msgid "JavaScript"
+#: source/upgrading/topics/keycloak/changes.adoc:511
 msgid "JavaScript adapter"
-msgstr "JavaScript"
+msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:512
 msgid "Session Timeout"
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:513
 #, no-wrap
 msgid "Migrating from 1.0 Alpha 2 to Alpha 3"
 msgstr ""
 
 #. type: Plain text
-msgid "SkeletonKeyToken, SkeletonKeyScope, SkeletonKeyPrincipal, and SkeletonKeySession have been renamed to: AccessToken, AccessScope, KeycloakPrincipal, and KeycloakAuthenticatedSession respectively."
+#: source/upgrading/topics/keycloak/changes.adoc:517
+msgid ""
+"SkeletonKeyToken, SkeletonKeyScope, SkeletonKeyPrincipal, and "
+"SkeletonKeySession have been renamed to: AccessToken, AccessScope, "
+"KeycloakPrincipal, and KeycloakAuthenticatedSession respectively."
 msgstr ""
 
 #. type: Plain text
-msgid "ServleOAuthClient.getBearerToken() method signature has changed.  It now returns an AccessTokenResponse so that you can obtain a refresh token too."
+#: source/upgrading/topics/keycloak/changes.adoc:519
+msgid ""
+"ServleOAuthClient.getBearerToken() method signature has changed.  It now "
+"returns an AccessTokenResponse so that you can obtain a refresh token too."
 msgstr ""
 
 #. type: Plain text
-msgid "Adapters now check the access token expiration with every request.  If the token is expired, they will attempt to invoke a refresh on the auth server using a saved refresh token."
+#: source/upgrading/topics/keycloak/changes.adoc:521
+msgid ""
+"Adapters now check the access token expiration with every request.  If the "
+"token is expired, they will attempt to invoke a refresh on the auth server "
+"using a saved refresh token."
 msgstr ""
 
 #. type: Plain text
+#: source/upgrading/topics/keycloak/changes.adoc:522
 msgid "Subject in AccessToken has been changed to the User ID."
 msgstr ""
 
 #. type: Title ===
+#: source/upgrading/topics/keycloak/changes.adoc:523
 #, no-wrap
 msgid "Migrating from 1.0 Alpha 1 to Alpha 2"
 msgstr ""
 
 #. type: Plain text
-msgid "DB Schema has changed.  We don't have any data migration utilities yet as of Alpha 2."
+#: source/upgrading/topics/keycloak/changes.adoc:526
+msgid ""
+"DB Schema has changed.  We don't have any data migration utilities yet as of"
+" Alpha 2."
 msgstr ""
 
 #. type: Plain text
-msgid "JBoss and Wildfly adapters are now installed via a JBoss/Wildfly subsystem.  Please review the adapter installation documentation.  Edits to standalone.xml are now required."
+#: source/upgrading/topics/keycloak/changes.adoc:528
+msgid ""
+"JBoss and Wildfly adapters are now installed via a JBoss/Wildfly subsystem."
+"  Please review the adapter installation documentation.  Edits to "
+"standalone.xml are now required."
 msgstr ""
 
 #. type: Plain text
-msgid "There is a new credential type \"secret\".  Unlike other credential types, it is stored in plain text in the database and can be viewed in the admin console."
+#: source/upgrading/topics/keycloak/changes.adoc:530
+msgid ""
+"There is a new credential type \"secret\".  Unlike other credential types, "
+"it is stored in plain text in the database and can be viewed in the admin "
+"console."
 msgstr ""
 
 #. type: Plain text
-msgid "There is no longer required Application or OAuth Client credentials.  These client types are now hard coded to use the \"secret\" credential type."
+#: source/upgrading/topics/keycloak/changes.adoc:532
+msgid ""
+"There is no longer required Application or OAuth Client credentials.  These "
+"client types are now hard coded to use the \"secret\" credential type."
 msgstr ""
 
 #. type: Plain text
-msgid "Because of the \"secret\" credential change to Application and OAuth Client, you'll have to update your keycloak.json configuration files and regenarate a secret within the Application or OAuth Client credentials tab in the administration console."
+#: source/upgrading/topics/keycloak/changes.adoc:534
+msgid ""
+"Because of the \"secret\" credential change to Application and OAuth Client,"
+" you'll have to update your keycloak.json configuration files and regenarate"
+" a secret within the Application or OAuth Client credentials tab in the "
+"administration console."
 msgstr ""

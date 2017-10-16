@@ -1,28 +1,40 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
-"Language-Team: Japanese\n"
-"Language: ja\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
-"X-Crowdin-Project: keycloak-documentation-i18n\n"
-"X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/i18n/po/ja_JP/securing_apps__topics__oidc__java__adapter_error_handling.ja_JP.po\n"
 
 #. type: Title ====
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:3
+#: source/securing_apps/topics/saml/java/error_handling.adoc:2
 #, no-wrap
 msgid "Error Handling"
 msgstr "エラー処理"
 
 #. type: Plain text
-msgid "{project_name} has some error handling facilities for servlet based client adapters.  When an error is encountered in authentication, {project_name} will call `HttpServletResponse.sendError()`.  You can set up an error-page within your `web.xml` file to handle the error however you want.  {project_name} can throw 400, 401, 403, and 500 errors."
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:9
+msgid ""
+"{project_name} has some error handling facilities for servlet based client "
+"adapters.  When an error is encountered in authentication, {project_name} "
+"will call `HttpServletResponse.sendError()`.  You can set up an error-page "
+"within your `web.xml` file to handle the error however you want.  "
+"{project_name} can throw 400, 401, 403, and 500 errors."
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:17
+#: source/securing_apps/topics/saml/java/error_handling.adoc:17
 #, no-wrap
 msgid ""
 "<error-page>\n"
@@ -38,6 +50,7 @@ msgstr ""
 "----    \n"
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:20
 #, no-wrap
 msgid ""
 "{project_name} also sets a `HttpServletRequest` attribute that you can retrieve.\n"
@@ -45,20 +58,35 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:22
+#: source/securing_apps/topics/oidc/javascript-adapter.adoc:321
 #, no-wrap
 msgid "For example:\n"
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:24
+#: source/server_development/topics/auth-spi.adoc:186
+#: source/server_development/topics/auth-spi.adoc:231
+#: source/server_development/topics/auth-spi.adoc:327
+#: source/server_development/topics/auth-spi.adoc:585
+#: source/server_development/topics/auth-spi.adoc:681
+#: source/server_development/topics/providers.adoc:323
 #, no-wrap
 msgid "[source,java]\n"
 msgstr "[source,java]\n"
 
 #. type: Plain text
-msgid "import org.keycloak.adapters.OIDCAuthenticationError; import org.keycloak.adapters.OIDCAuthenticationError.Reason; ..."
-msgstr "import org.keycloak.adapters.OIDCAuthenticationError; import org.keycloak.adapters.OIDCAuthenticationError.Reason; ..."
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:28
+msgid ""
+"import org.keycloak.adapters.OIDCAuthenticationError; import "
+"org.keycloak.adapters.OIDCAuthenticationError.Reason; ..."
+msgstr ""
+"import org.keycloak.adapters.OIDCAuthenticationError; import "
+"org.keycloak.adapters.OIDCAuthenticationError.Reason; ..."
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:31
 #, no-wrap
 msgid ""
 "OIDCAuthenticationError error = (OIDCAuthenticationError) httpServletRequest\n"
@@ -68,5 +96,6 @@ msgstr ""
 "    .getAttribute('org.keycloak.adapters.spi.AuthenticationError');\n"
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:34
 msgid "Reason reason = error.getReason(); System.out.println(reason.name());"
 msgstr "Reason reason = error.getReason(); System.out.println(reason.name());"

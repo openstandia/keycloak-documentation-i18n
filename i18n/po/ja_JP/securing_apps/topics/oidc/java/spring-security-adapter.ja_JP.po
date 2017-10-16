@@ -1,46 +1,69 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
-"Language-Team: Japanese\n"
-"Language: ja_JP\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
-"X-Crowdin-Project: keycloak-documentation-i18n\n"
-"X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/i18n/po/ja_JP/securing_apps__topics__oidc__java__spring-security-adapter.ja_JP.po\n"
 
 #. type: Title =====
+#: source/securing_apps/topics/oidc/java/jetty8-adapter.adoc:10
+#: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:10
+#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:8
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:10
+#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:10
+#: source/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_installation.adoc:3
+#: source/securing_apps/topics/saml/java/jboss-adapter/jboss_adapter_installation.adoc:3
 #, no-wrap
 msgid "Adapter Installation"
 msgstr ""
 
 #. type: Title =====
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:2
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:152
 #, no-wrap
 msgid "Multi Tenancy"
 msgstr ""
 
 #. type: Title ====
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:2
 #, no-wrap
 msgid "Spring Security Adapter"
 msgstr ""
 
 #. type: Plain text
-msgid "To secure an application with Spring Security and Keycloak, add this adapter as a dependency to your project.  You then have to provide some extra beans in your Spring Security configuration file and add the Keycloak security filter to your pipeline."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:6
+msgid ""
+"To secure an application with Spring Security and Keycloak, add this adapter"
+" as a dependency to your project.  You then have to provide some extra beans"
+" in your Spring Security configuration file and add the Keycloak security "
+"filter to your pipeline."
 msgstr ""
 
 #. type: Plain text
-msgid "Unlike the other Keycloak Adapters, you should not configure your security in web.xml.  However, keycloak.json is still required."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:9
+msgid ""
+"Unlike the other Keycloak Adapters, you should not configure your security "
+"in web.xml.  However, keycloak.json is still required."
 msgstr ""
 
 #. type: Plain text
-msgid "Add Keycloak Spring Security adapter as a dependency to your Maven POM or Gradle build."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:13
+msgid ""
+"Add Keycloak Spring Security adapter as a dependency to your Maven POM or "
+"Gradle build."
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:22
 #, no-wrap
 msgid ""
 "<dependency>\n"
@@ -51,19 +74,25 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:24
 #, no-wrap
 msgid "Spring Security Configuration"
 msgstr ""
 
 #. type: Plain text
-msgid "The Keycloak Spring Security adapter takes advantage of Spring Security's flexible security configuration syntax."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:27
+msgid ""
+"The Keycloak Spring Security adapter takes advantage of Spring Security's "
+"flexible security configuration syntax."
 msgstr ""
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:29
 msgid "====== Java Configuration"
 msgstr ""
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:33
 #, no-wrap
 msgid ""
 "Keycloak provides a KeycloakWebSecurityConfigurerAdapter as a convenient base class for creating a https://docs.spring.io/spring-security/site/docs/4.0.x/apidocs/org/springframework/security/config/annotation/web/WebSecurityConfigurer.html[WebSecurityConfigurer]                instance.\n"
@@ -72,6 +101,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:49
 #, no-wrap
 msgid ""
 "@KeycloakConfiguration\n"
@@ -87,6 +117,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:58
 #, no-wrap
 msgid ""
 "    /**\n"
@@ -100,6 +131,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:70
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -116,26 +148,48 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "You must provide a session authentication strategy bean which should be of type `RegisterSessionAuthenticationStrategy` for public or confidential applications and `NullAuthenticatedSessionStrategy` for bearer-only applications."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:73
+msgid ""
+"You must provide a session authentication strategy bean which should be of "
+"type `RegisterSessionAuthenticationStrategy` for public or confidential "
+"applications and `NullAuthenticatedSessionStrategy` for bearer-only "
+"applications."
 msgstr ""
 
 #. type: Plain text
-msgid "Spring Security's `SessionFixationProtectionStrategy` is currently not supported because it changes the session identifier after login via Keycloak.  If the session identifier changes, universal log out will not work because Keycloak is unaware of the new session identifier."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:76
+msgid ""
+"Spring Security's `SessionFixationProtectionStrategy` is currently not "
+"supported because it changes the session identifier after login via "
+"Keycloak.  If the session identifier changes, universal log out will not "
+"work because Keycloak is unaware of the new session identifier."
 msgstr ""
 
 #. type: Plain text
-msgid "The `@KeycloakConfiguration` annotation is a metadata annotion that defines all annotations that are needed to integrate KeyCloak in Spring security. If you have a complexe Spring security setup you can simply have a look ath the annotations of the `@KeycloakConfiguration` annotation and create your own custom meta annotation or just use specific Spring annotations for the KeyCloak adapter."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:81
+msgid ""
+"The `@KeycloakConfiguration` annotation is a metadata annotion that defines "
+"all annotations that are needed to integrate KeyCloak in Spring security. If"
+" you have a complexe Spring security setup you can simply have a look ath "
+"the annotations of the `@KeycloakConfiguration` annotation and create your "
+"own custom meta annotation or just use specific Spring annotations for the "
+"KeyCloak adapter."
 msgstr ""
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:83
 msgid "====== XML Configuration"
 msgstr ""
 
 #. type: Plain text
-msgid "While Spring Security's XML namespace simplifies configuration, customizing the configuration can be a bit verbose."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:85
+msgid ""
+"While Spring Security's XML namespace simplifies configuration, customizing "
+"the configuration can be a bit verbose."
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:103
 #, no-wrap
 msgid ""
 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -153,11 +207,15 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:105
 #, no-wrap
-msgid "    <context:component-scan base-package=\"org.keycloak.adapters.springsecurity\" />\n"
+msgid ""
+"    <context:component-scan base-"
+"package=\"org.keycloak.adapters.springsecurity\" />\n"
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:109
 #, no-wrap
 msgid ""
 "    <security:authentication-manager alias=\"authenticationManager\">\n"
@@ -166,6 +224,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:113
 #, no-wrap
 msgid ""
 "    <bean id=\"adapterDeploymentContext\" class=\"org.keycloak.adapters.springsecurity.AdapterDeploymentContextFactoryBean\">\n"
@@ -174,6 +233,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:120
 #, no-wrap
 msgid ""
 "    <bean id=\"keycloakAuthenticationEntryPoint\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationEntryPoint\" />\n"
@@ -185,6 +245,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:124
 #, no-wrap
 msgid ""
 "    <bean id=\"keycloakLogoutHandler\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakLogoutHandler\">\n"
@@ -193,6 +254,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:140
 #, no-wrap
 msgid ""
 "    <bean id=\"logoutFilter\" class=\"org.springframework.security.web.authentication.logout.LogoutFilter\">\n"
@@ -213,6 +275,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:148
 #, no-wrap
 msgid ""
 "    <security:http auto-config=\"false\" entry-point-ref=\"keycloakAuthenticationEntryPoint\">\n"
@@ -225,24 +288,38 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:150
+#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:80
 #, no-wrap
 msgid "</beans>\n"
 msgstr ""
 
 #. type: Plain text
-msgid "The Keycloak Spring Security adapter also supports multi tenancy.  Instead of injecting `AdapterDeploymentContextFactoryBean` with the path to `keycloak.json` you can inject an implementation of the `KeycloakConfigResolver` interface.  More details on how to implement the `KeycloakConfigResolver` can be found in <<_multi_tenancy,Multi Tenancy>>."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:157
+msgid ""
+"The Keycloak Spring Security adapter also supports multi tenancy.  Instead "
+"of injecting `AdapterDeploymentContextFactoryBean` with the path to "
+"`keycloak.json` you can inject an implementation of the "
+"`KeycloakConfigResolver` interface.  More details on how to implement the "
+"`KeycloakConfigResolver` can be found in <<_multi_tenancy,Multi Tenancy>>."
 msgstr ""
 
 #. type: Title =====
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:158
 #, no-wrap
 msgid "Naming Security Roles"
 msgstr ""
 
 #. type: Plain text
-msgid "Spring Security, when using role-based authentication, requires that role names start with `ROLE_`.  For example, an administrator role must be declared in Keycloak as `ROLE_ADMIN` or similar, not simply `ADMIN`."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:162
+msgid ""
+"Spring Security, when using role-based authentication, requires that role "
+"names start with `ROLE_`.  For example, an administrator role must be "
+"declared in Keycloak as `ROLE_ADMIN` or similar, not simply `ADMIN`."
 msgstr ""
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:166
 #, no-wrap
 msgid ""
 "The class `org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider`            supports an optional `org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper`            which can be used to map roles coming from Keycloak to roles recognized by Spring Security.\n"
@@ -251,19 +328,28 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:167
 #, no-wrap
 msgid "Client to Client Support"
 msgstr ""
 
 #. type: Plain text
-msgid "To simplify communication between clients, Keycloak provides an extension of Spring's `RestTemplate` that handles bearer token authentication for you.  To enable this feature your security configuration must add the `KeycloakRestTemplate` bean.  Note that it must be scoped as a prototype to function correctly."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:172
+msgid ""
+"To simplify communication between clients, Keycloak provides an extension of"
+" Spring's `RestTemplate` that handles bearer token authentication for you.  "
+"To enable this feature your security configuration must add the "
+"`KeycloakRestTemplate` bean.  Note that it must be scoped as a prototype to "
+"function correctly."
 msgstr ""
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:174
 msgid "For Java configuration:"
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:182
 #, no-wrap
 msgid ""
 "@Configuration\n"
@@ -273,11 +359,14 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:184
+#: source/server_development/topics/providers.adoc:141
 #, no-wrap
 msgid "    ...\n"
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:187
 #, no-wrap
 msgid ""
 "    @Autowired\n"
@@ -285,6 +374,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:193
 #, no-wrap
 msgid ""
 "    @Bean\n"
@@ -295,6 +385,10 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:196
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:295
+#: source/server_development/topics/user-storage/simple-example.adoc:236
+#: source/server_development/topics/extensions.adoc:123
 #, no-wrap
 msgid ""
 "    ...\n"
@@ -302,10 +396,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:199
 msgid "For XML configuration:"
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:206
 #, no-wrap
 msgid ""
 "<bean id=\"keycloakRestTemplate\" class=\"org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate\" scope=\"prototype\">\n"
@@ -314,10 +410,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "Your application code can then use `KeycloakRestTemplate` any time it needs to make a call to another client.  For example:"
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:210
+msgid ""
+"Your application code can then use `KeycloakRestTemplate` any time it needs "
+"to make a call to another client.  For example:"
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:217
 #, no-wrap
 msgid ""
 "@Service\n"
@@ -325,6 +425,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:220
 #, no-wrap
 msgid ""
 "    @Autowired\n"
@@ -332,11 +433,13 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:222
 #, no-wrap
 msgid "    private String endpoint;\n"
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:229
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -348,19 +451,25 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:231
 #, no-wrap
 msgid "Spring Boot Integration"
 msgstr ""
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:234
 msgid "The Spring Boot and the Spring Security adapters can be combined."
 msgstr ""
 
 #. type: Plain text
-msgid "If you are using the Keycloak Spring Boot Starter to make use of the Spring Security adapter you just need to add the Spring Security starter :"
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:236
+msgid ""
+"If you are using the Keycloak Spring Boot Starter to make use of the Spring "
+"Security adapter you just need to add the Spring Security starter :"
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:244
 #, no-wrap
 msgid ""
 "<dependency>\n"
@@ -370,14 +479,20 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:248
 msgid "====== Using Spring Boot Configuration"
 msgstr ""
 
 #. type: Plain text
-msgid "By Default, the Spring Security Adapter looks for a `keycloak.json` configuration file. You can make sure it looks at the configuration provided by the Spring Boot Adapter by adding this bean :"
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:250
+msgid ""
+"By Default, the Spring Security Adapter looks for a `keycloak.json` "
+"configuration file. You can make sure it looks at the configuration provided"
+" by the Spring Boot Adapter by adding this bean :"
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:258
 #, no-wrap
 msgid ""
 "@Bean\n"
@@ -387,14 +502,22 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:262
 msgid "====== Avoid double Filter bean registration"
 msgstr ""
 
 #. type: Plain text
-msgid "Spring Boot attempts to eagerly register filter beans with the web application context.  Therefore, when running the Keycloak Spring Security adapter in a Spring Boot environment, it may be necessary to add two ``FilterRegistrationBean``s to your security configuration to prevent the Keycloak filters from being registered twice."
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:265
+msgid ""
+"Spring Boot attempts to eagerly register filter beans with the web "
+"application context.  Therefore, when running the Keycloak Spring Security "
+"adapter in a Spring Boot environment, it may be necessary to add two "
+"``FilterRegistrationBean``s to your security configuration to prevent the "
+"Keycloak filters from being registered twice."
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:276
 #, no-wrap
 msgid ""
 "@Configuration\n"
@@ -405,6 +528,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:284
 #, no-wrap
 msgid ""
 "    @Bean\n"
@@ -417,6 +541,7 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:292
 #, no-wrap
 msgid ""
 "    @Bean\n"

@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#: source/server_admin/topics/authentication/otp-policies.adoc:2
+#, no-wrap
+msgid "OTP Policies"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:6
+msgid ""
+"{project_name} has a number of policies you can set up for your FreeOTP or "
+"Google Authenticator One-Time Password generator.  Click on the "
+"`Authentication` left menu item and go to the `OTP Policy` tab."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/authentication/otp-policies.adoc:7
+#, no-wrap
+msgid "OTP Policy"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:9
+msgid "image:{project_images}/otp-policy.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:13
+msgid ""
+"Any policies you set here will be used to validate one-time passwords.  When"
+" configuring OTP, FreeOTP and Google Authenticator can scan a QR code that "
+"is generated on the OTP set up page that {project_name} has.  The bar code "
+"is also generated from information configured on the `OTP Policy` tab."
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/authentication/otp-policies.adoc:14
+#, no-wrap
+msgid "TOTP vs. HOTP"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:21
+msgid ""
+"There are two different algorithms to choose from for your OTP generators.  "
+"Time Based (TOTP) and Counter Based (HOTP).  For TOTP, your token generator "
+"will hash the current time and a shared secret.  The server validates the "
+"OTP by comparing the all hashes within a certain window of time to the "
+"submitted value.  So, TOTPs are valid only for a short window of time "
+"(usually 30 seconds).  For HOTP a shared counter is used instead of the "
+"current time.  The server increments the counter with each successful OTP "
+"login.  So, valid OTPs only change after a successful login."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:29
+msgid ""
+"TOTP is considered a little more secure because the matchable OTP is only "
+"valid for a short window of time while the OTP for HOTP can be valid for an "
+"indeterminate amount of time.  HOTP is much more user friendly as the user "
+"won't have to hurry to enter in their OTP before the time interval is up.  "
+"With the way {project_name} has implemented TOTP this distinction becomes a "
+"little more blurry.  HOTP requires a database update every time the server "
+"wants to increment the counter.  This can be a performance drain on the "
+"authentication server when there is heavy load.  So, to provide a more "
+"efficient alternative, TOTP does not remember passwords used.  This bypasses"
+" the need to do any DB updates, but the downside is that TOTPs can be re-"
+"used in the valid time interval.  For future versions of {project_name} it "
+"is planned that you will be able to configure whether TOTP checks older OTPs"
+" in the time interval."
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/authentication/otp-policies.adoc:30
+#, no-wrap
+msgid "TOTP Configuration Options"
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/otp-policies.adoc:32
+#: source/server_admin/topics/authentication/otp-policies.adoc:46
+#, no-wrap
+msgid "OTP Hash Algorithm"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:34
+#: source/server_admin/topics/authentication/otp-policies.adoc:48
+msgid "Default is SHA1, more secure options are SHA256 and SHA512."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/otp-policies.adoc:34
+#: source/server_admin/topics/authentication/otp-policies.adoc:48
+#, no-wrap
+msgid "Number of Digits"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:36
+#: source/server_admin/topics/authentication/otp-policies.adoc:50
+msgid ""
+"How many characters is the OTP? Short means more user friendly as it is less"
+" the user has to type.  More means more security."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/otp-policies.adoc:36
+#: source/server_admin/topics/authentication/otp-policies.adoc:50
+#, no-wrap
+msgid "Look Ahead Window"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:41
+msgid ""
+"How many intervals ahead should the server try and match the hash? This "
+"exists so just in case the clock of the TOTP generator or authentication "
+"server get out of sync.  The default value of 1 is usually good enough.  For"
+" example, if the time interval for a new token is every 30 seconds, the "
+"default value of 1 means that it will only accept valid tokens in that 30 "
+"second window.  Each increment of this config value will increase the valid "
+"window by 30 seconds."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/otp-policies.adoc:41
+#, no-wrap
+msgid "OTP Token Period"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:43
+msgid ""
+"Time interval in seconds a new TOTP will be generated by the token "
+"generator.  And, the time window the server is matching a hash."
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/authentication/otp-policies.adoc:44
+#, no-wrap
+msgid "HOTP Configuration Options"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:54
+msgid ""
+"How many counters ahead should the server try and match the hash? The "
+"default value is 1.  This exists to cover the case where the user's counter "
+"gets ahead of the server's.  This can often happen as users often increment "
+"the counter manually too many times by accident.  This value really should "
+"be increased to a value of 10 or so."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/authentication/otp-policies.adoc:54
+#, no-wrap
+msgid "Initial Counter"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/otp-policies.adoc:55
+msgid "What is the value of the initial counter?"
+msgstr ""

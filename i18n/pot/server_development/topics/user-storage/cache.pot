@@ -1,0 +1,210 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ===
+#: source/server_development/topics/user-storage/cache.adoc:2
+#, no-wrap
+msgid "User Caches"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/cache.adoc:8
+msgid ""
+"When a user is loaded by ID, username, or email queries it is cached. When a "
+"user is cached, it iterates through the entire `UserModel` interface and "
+"pulls this information to a local in-memory-only cache. In a cluster, this "
+"cache is still local, but it becomes an invalidation cache. When a user is "
+"modified, it is evicted. This eviction event is propagated to the entire "
+"cluster so that the other nodes' user cache is also invalidated."
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/cache.adoc:9
+#, no-wrap
+msgid "Managing the user cache"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/cache.adoc:12
+msgid "You can access the user cache by calling `KeycloakSession.userCache()`."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/cache.adoc:28
+#, no-wrap
+msgid ""
+"/**\n"
+" * All these methods effect an entire cluster of Keycloak instances.\n"
+" *\n"
+" * @author <a href=\"mailto:bill@burkecentral.com\">Bill Burke</a>\n"
+" * @version $Revision: 1 $\n"
+" */\n"
+"public interface UserCache extends UserProvider {\n"
+"    /**\n"
+"     * Evict user from cache.\n"
+"     *\n"
+"     * @param user\n"
+"     */\n"
+"    void evict(RealmModel realm, UserModel user);\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/cache.adoc:35
+#, no-wrap
+msgid ""
+"    /**\n"
+"     * Evict users of a specific realm\n"
+"     *\n"
+"     * @param realm\n"
+"     */\n"
+"    void evict(RealmModel realm);\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/cache.adoc:42
+#, no-wrap
+msgid ""
+"    /**\n"
+"     * Clear cache entirely.\n"
+"     *\n"
+"     */\n"
+"    void clear();\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/cache.adoc:45
+msgid ""
+"There are methods for evicting specific users, users contained in a specific "
+"realm, or the entire cache."
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/cache.adoc:46
+#, no-wrap
+msgid "OnUserCache Callback Interface"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/cache.adoc:50
+msgid ""
+"You might want to cache additional information that is specific to your "
+"provider implementation. The User Storage SPI has a callback whenever a user "
+"is cached: `org.keycloak.models.cache.OnUserCache`."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/cache.adoc:56
+#, no-wrap
+msgid ""
+"public interface OnUserCache {\n"
+"    void onCache(RealmModel realm, CachedUserModel user, UserModel delegate);\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/cache.adoc:61
+msgid ""
+"Your provider class should implement this interface if it wants this "
+"callback. The `UserModel` delegate parameter is the `UserModel` instance "
+"returned by your provider. The `CachedUserModel` is an expanded `UserModel` "
+"interface.  This is the instance that is cached locally in local storage."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/cache.adoc:65
+#, no-wrap
+msgid "public interface CachedUserModel extends UserModel {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/cache.adoc:72
+#, no-wrap
+msgid ""
+"    /**\n"
+"     * Invalidates the cache for this user and returns a delegate that represents the actual data provider\n"
+"     *\n"
+"     * @return\n"
+"     */\n"
+"    UserModel getDelegateForUpdate();\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/cache.adoc:74
+#, no-wrap
+msgid "    boolean isMarkedForEviction();\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/cache.adoc:80
+#, no-wrap
+msgid ""
+"    /**\n"
+"     * Invalidate the cache for this model\n"
+"     *\n"
+"     */\n"
+"    void invalidate();\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/cache.adoc:87
+#, no-wrap
+msgid ""
+"    /**\n"
+"     * When was the model was loaded from database.\n"
+"     *\n"
+"     * @return\n"
+"     */\n"
+"    long getCacheTimestamp();\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/cache.adoc:95
+#, no-wrap
+msgid ""
+"    /**\n"
+"     * Returns a map that contains custom things that are cached along with this model.  You can write to this map.\n"
+"     *\n"
+"     * @return\n"
+"     */\n"
+"    ConcurrentHashMap getCachedWith();\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/cache.adoc:99
+msgid ""
+"This `CachedUserModel` interface allows you to evict the user from the cache "
+"and get the provider `UserModel` instance.  The `getCachedWith()` method "
+"returns a map that allows you to cache additional information pertaining to "
+"the user. For example, credentials are not part of the `UserModel` "
+"interface. If you wanted to cache credentials in memory, you would implement "
+"`OnUserCache` and cache your user's credentials using the `getCachedWith()` "
+"method."
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/cache.adoc:100
+#, no-wrap
+msgid "Cache Policies"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/cache.adoc:103
+msgid ""
+"On the administration console management page for your user storage "
+"provider, you can specify a unique cache policy."
+msgstr ""

@@ -1,0 +1,425 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: delimited block -
+#: source/securing_apps/topics/saml/java/assertion-api.adoc:57
+#: source/server_development/topics/user-storage/configuration.adoc:18
+#: source/server_development/topics/user-storage/configuration.adoc:23
+#: source/server_development/topics/user-storage/configuration.adoc:28
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:26
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:38
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:50
+#: source/server_development/topics/user-storage/registration-query.adoc:109
+#: source/server_development/topics/user-storage/simple-example.adoc:146
+#: source/server_development/topics/providers.adoc:75
+#, no-wrap
+msgid "    }\n"
+msgstr "    }\n"
+
+#. type: Block title
+#: source/server_development/topics/user-storage/augmenting.adoc:45
+#: source/server_development/topics/user-storage/import.adoc:29
+#: source/server_development/topics/user-storage/registration-query.adoc:13
+#: source/server_development/topics/user-storage/registration-query.adoc:31
+#: source/server_development/topics/user-storage/registration-query.adoc:63
+#: source/server_development/topics/user-storage/registration-query.adoc:79
+#: source/server_development/topics/user-storage/registration-query.adoc:97
+#: source/server_development/topics/user-storage/registration-query.adoc:130
+#: source/server_development/topics/user-storage/registration-query.adoc:161
+#: source/server_development/topics/user-storage/registration-query.adoc:189
+#: source/server_development/topics/user-storage/registration-query.adoc:210
+#, no-wrap
+msgid "PropertyFileUserStorageProvider"
+msgstr ""
+
+#. type: Title ===
+#: source/server_development/topics/user-storage/registration-query.adoc:2
+#, no-wrap
+msgid "Add/Remove User and Query Capability interfaces"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:7
+msgid ""
+"One thing we have not done with our example is allow it to add and remove "
+"users or change passwords. Users defined in our example are also not "
+"queryable or viewable in the administration console. To add these "
+"enhancements, our example provider must implement the `UserQueryProvider` "
+"and `UserRegistrationProvider` interfaces."
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/registration-query.adoc:8
+#, no-wrap
+msgid "Implementing UserRegistrationProvider"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:12
+msgid ""
+"To implement adding and removing users from this particular store, we first "
+"have to be able to save our properties file to disk."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:27
+#, no-wrap
+msgid ""
+"    public void save() {\n"
+"        String path = model.getConfig().getFirst(\"path\");\n"
+"        path = EnvUtil.replace(path);\n"
+"        try {\n"
+"            FileOutputStream fos = new FileOutputStream(path);\n"
+"            properties.store(fos, \"\");\n"
+"            fos.close();\n"
+"        } catch (IOException e) {\n"
+"            throw new RuntimeException(e);\n"
+"        }\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:30
+msgid ""
+"Then, the implementation of the `addUser()` and `removeUser()` methods "
+"becomes simple."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:35
+#, no-wrap
+msgid "    public static final String UNSET_PASSWORD=\"#$!-UNSET-PASSWORD\";\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:44
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public UserModel addUser(RealmModel realm, String username) {\n"
+"        synchronized (properties) {\n"
+"            properties.setProperty(username, UNSET_PASSWORD);\n"
+"            save();\n"
+"        }\n"
+"        return createAdapter(realm, username);\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:53
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public boolean removeUser(RealmModel realm, UserModel user) {\n"
+"        synchronized (properties) {\n"
+"            if (properties.remove(user.getUsername()) == null) return false;\n"
+"            save();\n"
+"            return true;\n"
+"        }\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:58
+msgid ""
+"Notice that when adding a user we set the password value of the property map"
+" to be `UNSET_PASSWORD`.  We do this as we can't have null values for a "
+"property in the property value. We also have to modify the "
+"`CredentialInputValidator` methods to reflect this."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:62
+msgid ""
+"`addUser()` will be called if the provider implements the "
+"`UserRegistrationProvider` interface. If your provider has a configuration "
+"switch to turn of adding a user, returning `null` from this method will skip"
+" the provider and call the next one."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:69
+#: source/server_development/topics/user-storage/simple-example.adoc:115
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {\n"
+"        if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel)) return false;\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:75
+#, no-wrap
+msgid ""
+"        UserCredentialModel cred = (UserCredentialModel)input;\n"
+"        String password = properties.getProperty(user.getUsername());\n"
+"        if (password == null || UNSET_PASSWORD.equals(password)) return false;\n"
+"        return password.equals(cred.getValue());\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:78
+msgid ""
+"Since we can now save our property file, it also makes sense to allow "
+"password updates."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:93
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public boolean updateCredential(RealmModel realm, UserModel user, CredentialInput input) {\n"
+"        if (!(input instanceof UserCredentialModel)) return false;\n"
+"        if (!input.getType().equals(CredentialModel.PASSWORD)) return false;\n"
+"        UserCredentialModel cred = (UserCredentialModel)input;\n"
+"        synchronized (properties) {\n"
+"            properties.setProperty(user.getUsername(), cred.getValue());\n"
+"            save();\n"
+"        }\n"
+"        return true;\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:96
+msgid "We can now also implement disabling a password too."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:107
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public void disableCredentialType(RealmModel realm, UserModel user, String credentialType) {\n"
+"        if (!credentialType.equals(CredentialModel.PASSWORD)) return;\n"
+"        synchronized (properties) {\n"
+"            properties.setProperty(user.getUsername(), UNSET_PASSWORD);\n"
+"            save();\n"
+"        }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:111
+#, no-wrap
+msgid ""
+"    private static final Set<String> disableableTypes = new HashSet<>();\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:115
+#, no-wrap
+msgid ""
+"    static {\n"
+"        disableableTypes.add(CredentialModel.PASSWORD);\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:118
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public Set<String> getDisableableCredentialTypes(RealmModel realm, UserModel user) {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:121
+#, no-wrap
+msgid ""
+"        return disableableTypes;\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:124
+msgid ""
+"With these methods implemented, you'll now be able to change and disable the"
+" password for the user in the administration console."
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/registration-query.adoc:125
+#, no-wrap
+msgid "Implementing UserQueryProvider"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:129
+msgid ""
+"Without implementing `UserQueryProvider` the administration console would "
+"not be able to view and manage users that were loaded by our example "
+"provider. Let's look at implementing this interface."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:137
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public int getUsersCount(RealmModel realm) {\n"
+"        return properties.size();\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:142
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public List<UserModel> getUsers(RealmModel realm) {\n"
+"        return getUsers(realm, 0, Integer.MAX_VALUE);\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:156
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public List<UserModel> getUsers(RealmModel realm, int firstResult, int maxResults) {\n"
+"        List<UserModel> users = new LinkedList<>();\n"
+"        int i = 0;\n"
+"        for (Object obj : properties.keySet()) {\n"
+"            if (i++ < firstResult) continue;\n"
+"            String username = (String)obj;\n"
+"            UserModel user = getUserByUsername(username, realm);\n"
+"            users.add(user);\n"
+"            if (users.size() >= maxResults) break;\n"
+"        }\n"
+"        return users;\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:160
+msgid ""
+"The `getUser()` method iterates over the key set of the property file, "
+"delegating to `getUserByUsername()` to load a user.  Notice that we are "
+"indexing this call based on the `firstResult` and `maxResults` parameter. If"
+" your external store does not support pagination, you will have to do "
+"similar logic."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:168
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public List<UserModel> searchForUser(String search, RealmModel realm) {\n"
+"        return searchForUser(search, realm, 0, Integer.MAX_VALUE);\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:183
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public List<UserModel> searchForUser(String search, RealmModel realm, int firstResult, int maxResults) {\n"
+"        List<UserModel> users = new LinkedList<>();\n"
+"        int i = 0;\n"
+"        for (Object obj : properties.keySet()) {\n"
+"            String username = (String)obj;\n"
+"            if (!username.contains(search)) continue;\n"
+"            if (i++ < firstResult) continue;\n"
+"            UserModel user = getUserByUsername(username, realm);\n"
+"            users.add(user);\n"
+"            if (users.size() >= maxResults) break;\n"
+"        }\n"
+"        return users;\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:188
+msgid ""
+"The first declaration of `searchForUser()` takes a string parameter. This is"
+" supposed to be a string that you use to search username and email "
+"attributes to find the user. This string can be a substring, which is why we"
+" use the `String.contains()` method when doing our search."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:196
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public List<UserModel> searchForUser(Map<String, String> params, RealmModel realm) {\n"
+"        return searchForUser(params, realm, 0, Integer.MAX_VALUE);\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:204
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public List<UserModel> searchForUser(Map<String, String> params, RealmModel realm, int firstResult, int maxResults) {\n"
+"        // only support searching by username\n"
+"        String usernameSearchString = params.get(\"username\");\n"
+"        if (usernameSearchString == null) return Collections.EMPTY_LIST;\n"
+"        return searchForUser(usernameSearchString, realm, firstResult, maxResults);\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:208
+msgid ""
+"The `searchForUser()` method that takes a `Map` parameter can search for a "
+"user based on first, last name, username, and email.  We only store "
+"usernames, so we only search based on usernames. We delegate to "
+"`searchForUser()` for this."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:217
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public List<UserModel> getGroupMembers(RealmModel realm, GroupModel group, int firstResult, int maxResults) {\n"
+"        return Collections.EMPTY_LIST;\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:222
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public List<UserModel> getGroupMembers(RealmModel realm, GroupModel group) {\n"
+"        return Collections.EMPTY_LIST;\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/registration-query.adoc:227
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public List<UserModel> searchForUserByUserAttribute(String attrName, String attrValue, RealmModel realm) {\n"
+"        return Collections.EMPTY_LIST;\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/registration-query.adoc:230
+msgid ""
+"We do not store groups or attributes, so the other methods return an empty "
+"list."
+msgstr ""

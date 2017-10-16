@@ -1,0 +1,101 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ====
+#: source/server_admin/topics/authentication/password-policies.adoc:3
+#: source/server_admin/topics/threat/brute-force.adoc:29
+#, no-wrap
+msgid "Password Policies"
+msgstr ""
+
+#. type: Title ===
+#: source/server_admin/topics/threat/brute-force.adoc:2
+#, no-wrap
+msgid "Password guess: brute force attacks"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/brute-force.adoc:9
+msgid ""
+"A brute force attack happens when an attacker is trying to guess a user's "
+"password.  {project_name} has some limited brute force detection "
+"capabilities.  If turned on, a user account will be temporarily disabled if "
+"a threshold of login failures is reached.  To enable this feature go to the "
+"`Realm Settings` left menu item, click on the `Security Defenses` tab, then "
+"additional go to the `Brute Force Detection` sub-tab."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/threat/brute-force.adoc:10
+#, no-wrap
+msgid "Brute Force Detection"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/brute-force.adoc:12
+msgid "image:{project_images}/brute-force.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/brute-force.adoc:20
+msgid ""
+"The way this works is that if there are `Max Login Failures` during a period"
+" of `Failure Reset Time`, the account is temporarily disabled for the `Wait "
+"Increment` multiplied by the number of failures over the max.  After "
+"`Failure Reset Time` is reached all failures are wiped clean.  The `Max "
+"Wait` is the maximum amount of time an account can be disabled.  Another "
+"preventive measure is that if there are subsequent login failures for one "
+"account that are too quick for a human to initiate the account will be "
+"disabled.  This is controlled by the `Quick Login Check Milli Seconds` "
+"value.  So, if there are two login failures for the same account within that"
+" value, the account will be disabled for `Minimum Quick Login Wait`."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/brute-force.adoc:24
+msgid ""
+"The downside of {project_name} brute force detection is that the server "
+"becomes vulnerable to denial of service attacks.  An attacker can simply try"
+" to guess passwords for any accounts it knows and these account will be "
+"disabled.  Eventually we will expand this functionality to take client IP "
+"address into account when deciding whether to block a user."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/brute-force.adoc:28
+msgid ""
+"A better option might be a tool like "
+"http://www.fail2ban.org/wiki/index.php/Main_Page[Fail2Ban].  You can point "
+"this service at the {project_name} server's log file.  {project_name} logs "
+"every login failure and client IP address that had the failure.  Fail2Ban "
+"can be used to modify firewalls after it detects an attack to block "
+"connections from specific IP addresses."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/brute-force.adoc:33
+msgid ""
+"Another thing you should do to prevent password guess is to have a complex "
+"enough password policy to ensure that users pick hard to guess passwords.  "
+"See the <<_password-policies, Password Policies>> chapter for more details."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/brute-force.adoc:35
+msgid ""
+"The best way to prevent password guessing though is to set up the server to "
+"use a one-time-password (OTP)."
+msgstr ""

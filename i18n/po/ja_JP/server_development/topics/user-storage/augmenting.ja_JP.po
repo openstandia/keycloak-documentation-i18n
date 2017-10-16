@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#: source/server_development/topics/user-storage/augmenting.adoc:2
+#, no-wrap
+msgid "Augmenting External Storage"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/augmenting.adoc:8
+msgid ""
+"The `PropertyProfileUserStorageProvider` example is really limited.  While "
+"we will be able to login with users stored in a property file, we won't be "
+"able to do much else.  If users loaded by this provider need special role or"
+" group mappings to fully access particular applications there is no way for "
+"us to add additional role mappings to these users.  You also can't modify or"
+" add additional important attributes like email, first and last name."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/augmenting.adoc:12
+msgid ""
+"For these types of situations, {project_name} allows you to augment your "
+"external store by storing extra information in {project_name}'s database.  "
+"This is called federated user storage and is encapsulated within the "
+"`org.keycloak.storage.federated.UserFederatedStorageProvider` class."
+msgstr ""
+
+#. type: Block title
+#: source/server_development/topics/user-storage/augmenting.adoc:13
+#, no-wrap
+msgid "UserFederatedStorageProvider"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/augmenting.adoc:17
+#, no-wrap
+msgid "package org.keycloak.storage.federated;\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/augmenting.adoc:19
+#, no-wrap
+msgid "public interface UserFederatedStorageProvider extends Provider {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/augmenting.adoc:24
+#, no-wrap
+msgid ""
+"    Set<GroupModel> getGroups(RealmModel realm, String userId);\n"
+"    void joinGroup(RealmModel realm, String userId, GroupModel group);\n"
+"    void leaveGroup(RealmModel realm, String userId, GroupModel group);\n"
+"    List<String> getMembership(RealmModel realm, GroupModel group, int firstResult, int max);\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/augmenting.adoc:26
+#, no-wrap
+msgid "...\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/augmenting.adoc:33
+msgid ""
+"The `UserFederatedStorageProvider` instance is available on the "
+"`KeycloakSession.userFederatedStorage()` method.  It has all different kinds"
+" of methods for storing attributes, group and role mappings, different "
+"credential types, and required actions.  If your external store's datamodel "
+"cannot support the full {project_name} feature set, then this service can "
+"fill in the gaps."
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/augmenting.adoc:39
+msgid ""
+"{project_name} comes with a helper class "
+"`org.keycloak.storage.adapter.AbstractUserAdapterFederatedStorage` that will"
+" delegate every single `UserModel` method except get/set of username to user"
+" federated storage.  Override the methods you need to override to delegate "
+"to your external storage representations.  It is strongly suggested you read"
+" the javadoc of this class as it has smaller protected methods you may want "
+"to override.  Specifically surrounding group membership and role mappings."
+msgstr ""
+
+#. type: Title ====
+#: source/server_development/topics/user-storage/augmenting.adoc:40
+#, no-wrap
+msgid "Augmentation Example"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/augmenting.adoc:44
+msgid ""
+"In our `PropertyFileUserStorageProvider` example, we just need a simple "
+"change to our provider to use the `AbstractUserAdapterFederatedStorage`."
+msgstr ""
+
+#. type: Block title
+#: source/server_development/topics/user-storage/augmenting.adoc:45
+#: source/server_development/topics/user-storage/import.adoc:29
+#: source/server_development/topics/user-storage/registration-query.adoc:13
+#: source/server_development/topics/user-storage/registration-query.adoc:31
+#: source/server_development/topics/user-storage/registration-query.adoc:63
+#: source/server_development/topics/user-storage/registration-query.adoc:79
+#: source/server_development/topics/user-storage/registration-query.adoc:97
+#: source/server_development/topics/user-storage/registration-query.adoc:130
+#: source/server_development/topics/user-storage/registration-query.adoc:161
+#: source/server_development/topics/user-storage/registration-query.adoc:189
+#: source/server_development/topics/user-storage/registration-query.adoc:210
+#, no-wrap
+msgid "PropertyFileUserStorageProvider"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/augmenting.adoc:54
+#, no-wrap
+msgid ""
+"    protected UserModel createAdapter(RealmModel realm, String username) {\n"
+"        return new AbstractUserAdapterFederatedStorage(session, realm, model) {\n"
+"            @Override\n"
+"            public String getUsername() {\n"
+"                return username;\n"
+"            }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_development/topics/user-storage/augmenting.adoc:65
+#, no-wrap
+msgid ""
+"            @Override\n"
+"            public void setUsername(String username) {\n"
+"                String pw = (String)properties.remove(username);\n"
+"                if (pw != null) {\n"
+"                    properties.put(username, pw);\n"
+"                    save();\n"
+"                }\n"
+"            }\n"
+"        };\n"
+"    }\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_development/topics/user-storage/augmenting.adoc:69
+msgid ""
+"We instead define an anonymous class implementation of "
+"`AbstractUserAdapterFederatedStorage`.  The `setUsername()` method makes "
+"changes to the properties file and saves it."
+msgstr ""

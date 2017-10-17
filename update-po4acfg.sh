@@ -43,6 +43,14 @@ for doc in $DOCS; do
         fi
 
         PO4A_TYPE=myadoc
+        grep "^\`\`\`" $file > /dev/null
+        HAS_CODE=$?
+        grep "^|===" $file > /dev/null
+        HAS_TABLE=$?
+        if [[ "$HAS_CODE" -eq 0 ]] || [[ "$HAS_TABLE" -eq 0 ]]; then
+            echo "Handling as text: $file"
+            PO4A_TYPE=mytext
+        fi
         if [[ "$file" =~ ${FORCE_TEXT_FILE} ]]; then
             echo "Handling as text: $file"
             PO4A_TYPE=mytext

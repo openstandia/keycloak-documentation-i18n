@@ -35,7 +35,8 @@ msgstr ""
 #: source/authorization_services/topics/getting-started/hello-world/deploy.adoc:99
 #: source/authorization_services/topics/service/client-api.adoc:82
 #: source/authorization_services/topics/service/client-api.adoc:109
-msgid "```"
+#, no-wrap
+msgid "```\n"
 msgstr ""
 
 #. type: Title ===
@@ -46,19 +47,16 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:6
+#, no-wrap
 msgid ""
-"Depending on your requirements, a resource server should be able to manage "
-"resources remotely or even check for permissions programmatically.  If you "
-"are using Java, you can access the {project_name} Authorization Services "
-"using the Authorization Client API."
+"Depending on your requirements, a resource server should be able to manage resources remotely or even check for permissions programmatically.\n"
+"If you are using Java, you can access the {project_name} Authorization Services using the Authorization Client API.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:8
-msgid ""
-"It is targeted for resource servers that want to access the different APIs "
-"provided by the server such as the Protection, Authorization and Entitlement "
-"APIs."
+#, no-wrap
+msgid "It is targeted for resource servers that want to access the different APIs provided by the server such as the Protection, Authorization and Entitlement APIs.\n"
 msgstr ""
 
 #. type: Title ====
@@ -84,8 +82,8 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:24
-msgid ""
-"The client configuration is defined in a ``keycloak.json`` file as follows:"
+#, no-wrap
+msgid "The client configuration is defined in a ``keycloak.json`` file as follows:\n"
 msgstr ""
 
 #. type: Plain text
@@ -112,9 +110,10 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:39
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "JNDI name of the dataSource"
 msgid "The name of the realm.\n"
-msgstr ""
+msgstr "データソースのJNDI名"
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:41
@@ -150,10 +149,8 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:52
-msgid ""
-"The configuration file is usually located in your application's classpath, "
-"the default location from where the client is going to try to find a "
-"```keycloak.json``` file."
+#, no-wrap
+msgid "The configuration file is usually located in your application's classpath, the default location from where the client is going to try to find a ```keycloak.json``` file.\n"
 msgstr ""
 
 #. type: Title ====
@@ -164,9 +161,8 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:56
-msgid ""
-"Considering you have a ```keycloak.json``` file in your classpath, you can "
-"create a new ```AuthzClient``` instance as follows:"
+#, no-wrap
+msgid "Considering you have a ```keycloak.json``` file in your classpath, you can create a new ```AuthzClient``` instance as follows:\n"
 msgstr ""
 
 #. type: Plain text
@@ -187,7 +183,8 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:65
-msgid "Here is an example illustrating how to obtain user entitlements:"
+#, no-wrap
+msgid "Here is an example illustrating how to obtain user entitlements:\n"
 msgstr ""
 
 #.  create a new instance based on the configuration defined in keycloak-authz.json
@@ -195,7 +192,10 @@ msgstr ""
 #: source/authorization_services/topics/service/client-api.adoc:69
 #: source/authorization_services/topics/service/client-api.adoc:88
 #: source/authorization_services/topics/service/client-api.adoc:115
-msgid "```java AuthzClient authzClient = AuthzClient.create();"
+#, no-wrap
+msgid ""
+"```java\n"
+"AuthzClient authzClient = AuthzClient.create();\n"
 msgstr ""
 
 #.  obtain an Entitlement API Token to get access to the Entitlement API.
@@ -204,50 +204,55 @@ msgstr ""
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:74
 #: source/authorization_services/topics/service/client-api.adoc:93
-msgid "String eat = getEntitlementAPIToken(authzClient);"
+#, no-wrap
+msgid "String eat = getEntitlementAPIToken(authzClient);\n"
 msgstr ""
 
 #.  send the entitlement request to the server to
 #.  obtain an RPT with all permissions granted to the user
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:79
+#, no-wrap
 msgid ""
-"EntitlementResponse response = authzClient.entitlement(eat).getAll(\"hello-"
-"world-authz-service\"); String rpt = response.getRpt();"
+"EntitlementResponse response = authzClient.entitlement(eat).getAll(\"hello-world-authz-service\");\n"
+"String rpt = response.getRpt();\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:84
-msgid ""
-"Here is an example illustrating how to obtain user entitlements for a set of "
-"one or more resources:"
+#, no-wrap
+msgid "Here is an example illustrating how to obtain user entitlements for a set of one or more resources:\n"
 msgstr ""
 
 #.  create an entitlement request
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:97
+#, no-wrap
 msgid ""
-"EntitlementRequest request = new EntitlementRequest(); PermissionRequest "
-"permission = new PermissionRequest();"
+"EntitlementRequest request = new EntitlementRequest();\n"
+"PermissionRequest permission = new PermissionRequest();\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:99
-msgid "permission.setResourceSetName(\"Hello World Resource\");"
+#, no-wrap
+msgid "permission.setResourceSetName(\"Hello World Resource\");\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:101
-msgid "request.addPermission(permission);"
+#, no-wrap
+msgid "request.addPermission(permission);\n"
 msgstr ""
 
 #.  send the entitlement request to the server to obtain an RPT
 #.  with all permissions granted to the user
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:106
+#, no-wrap
 msgid ""
-"EntitlementResponse response = authzClient.entitlement(eat).get(\"hello-"
-"world-authz-service\", request); String rpt = response.getRpt();"
+"EntitlementResponse response = authzClient.entitlement(eat).get(\"hello-world-authz-service\", request);\n"
+"String rpt = response.getRpt();\n"
 msgstr ""
 
 #. type: Title ====
@@ -259,29 +264,30 @@ msgstr ""
 #.  create a new resource representation with the information we want
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:118
-msgid "ResourceRepresentation newResource = new ResourceRepresentation();"
+#, no-wrap
+msgid "ResourceRepresentation newResource = new ResourceRepresentation();\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:121
+#, no-wrap
 msgid ""
-"newResource.setName(\"New Resource\"); newResource.setType(\"urn:hello-world-"
-"authz:resources:example\");"
+"newResource.setName(\"New Resource\");\n"
+"newResource.setType(\"urn:hello-world-authz:resources:example\");\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:123
-msgid ""
-"newResource.addScope(new ScopeRepresentation(\"urn:hello-world-authz:scopes:"
-"view\"));"
+#, no-wrap
+msgid "newResource.addScope(new ScopeRepresentation(\"urn:hello-world-authz:scopes:view\"));\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:126
+#, no-wrap
 msgid ""
-"ProtectedResource resourceClient = authzClient.protection().resource(); "
-"Set<String> existingResource = resourceClient.findByFilter(\"name=\" + "
-"newResource.getName());"
+"ProtectedResource resourceClient = authzClient.protection().resource();\n"
+"Set<String> existingResource = resourceClient.findByFilter(\"name=\" + newResource.getName());\n"
 msgstr ""
 
 #. type: Plain text
@@ -296,17 +302,19 @@ msgstr ""
 #.  create the resource on the server
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:134
+#, no-wrap
 msgid ""
-"RegistrationResponse response = resourceClient.create(newResource); String "
-"resourceId = response.getId();"
+"RegistrationResponse response = resourceClient.create(newResource);\n"
+"String resourceId = response.getId();\n"
 msgstr ""
 
 #.  query the resource using its newly generated id
 #. type: Plain text
 #: source/authorization_services/topics/service/client-api.adoc:138
+#, no-wrap
 msgid ""
-"ResourceRepresentation resource = resourceClient.findById(resourceId)."
-"getResourceDescription(); ```"
+"ResourceRepresentation resource = resourceClient.findById(resourceId).getResourceDescription();\n"
+"```\n"
 msgstr ""
 
 #. type: Title ====

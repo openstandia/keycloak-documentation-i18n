@@ -22,44 +22,43 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:6
+#, no-wrap
 msgid ""
-"The {project_name} Server comes with a JavaScript library you can use to "
-"interact with a resource server protected by a policy enforcer.  This "
-"library is based on the {project_name} JavaScript adapter, which can be "
-"integrated to allow your client to obtain permissions from a {project_name} "
-"Server."
+"The {project_name} Server comes with a JavaScript library you can use to interact with a resource server protected by a policy enforcer.\n"
+"This library is based on the {project_name} JavaScript adapter, which can be integrated to allow your client to obtain permissions from a {project_name} Server.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:8
-msgid ""
-"You can obtain this library from a running a {project_name} Server instance "
-"by including the following `script` tag in your web page:"
+#, no-wrap
+msgid "You can obtain this library from a running a {project_name} Server instance by including the following `script` tag in your web page:\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:13
+#, no-wrap
 msgid ""
-"```html <script src=\"http://.../auth/js/keycloak-authz.js\"></script> ``` "
-"Once you do that, you can create a `KeycloakAuthorization` instance as "
-"follows:"
+"```html\n"
+"<script src=\"http://.../auth/js/keycloak-authz.js\"></script>\n"
+"```\n"
+"Once you do that, you can create a `KeycloakAuthorization` instance as follows:\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:19
+#, no-wrap
 msgid ""
-"```javascript var keycloak = ... // obtain a Keycloak instance from keycloak."
-"js library var authorization = new KeycloakAuthorization(keycloak); ``` The "
-"*keycloak-authz.js* library provides two main features:"
+"```javascript\n"
+"var keycloak = ... // obtain a Keycloak instance from keycloak.js library\n"
+"var authorization = new KeycloakAuthorization(keycloak);\n"
+"```\n"
+"The *keycloak-authz.js* library provides two main features:\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:21
-msgid ""
-"Handle responses from a resource server protected by a <<_enforcer_overview, "
-"{project_name} Policy Enforcer>> and obtain a requesting party token (RPT) "
-"with the necessary permissions to gain access to the protected resources on "
-"the resource server."
+#, no-wrap
+msgid "Handle responses from a resource server protected by a <<_enforcer_overview, {project_name} Policy Enforcer>> and obtain a requesting party token (RPT) with the necessary permissions to gain access to the protected resources on the resource server.\n"
 msgstr ""
 
 #. type: Plain text
@@ -70,18 +69,16 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:25
-msgid ""
-"Obtain permissions from a {project_name} Server using the "
-"<<_service_entitlement_api, Entitlement API>>."
+#, no-wrap
+msgid "Obtain permissions from a {project_name} Server using the <<_service_entitlement_api, Entitlement API>>.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:28
+#, no-wrap
 msgid ""
-"In both cases, the library allows you to easily interact with both resource "
-"server and {project_name} Authorization Services to obtain tokens with "
-"permissions your client can use as bearer tokens to access the protected "
-"resources on a resource server."
+"In both cases, the library allows you to easily interact with both resource server and {project_name} Authorization Services to obtain tokens with\n"
+"permissions your client can use as bearer tokens to access the protected resources on a resource server.\n"
 msgstr ""
 
 #. type: Title =====
@@ -92,21 +89,17 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:34
+#, no-wrap
 msgid ""
-"If a resource server is protected by a policy enforcer, it responds to "
-"client requests based on the permissions carried along with a "
-"<<_enforcer_bearer, bearer token>>.  Typically, when you try to access a "
-"resource server with a bearer token that is lacking permissions to access a "
-"protected resource, the resource server responds with a *401* status code "
-"and a `WWW-Authenticate` header."
+"If a resource server is protected by a policy enforcer, it responds to client requests based on the permissions carried along with a <<_enforcer_bearer, bearer token>>.\n"
+"Typically, when you try to access a resource server with a bearer token that is lacking permissions to access a protected resource, the resource server\n"
+"responds with a *401* status code and a `WWW-Authenticate` header.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:36
-msgid ""
-"The value of the `WWW-Authenticate` header depends on the authorization "
-"protocol in use by the resource server. Whatever protocol is in use, you can "
-"use a `KeycloakAuthorization` instance to handle responses as follows:"
+#, no-wrap
+msgid "The value of the `WWW-Authenticate` header depends on the authorization protocol in use by the resource server. Whatever protocol is in use, you can use a `KeycloakAuthorization` instance to handle responses as follows:\n"
 msgstr ""
 
 #. type: Plain text
@@ -130,42 +123,35 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:52
-msgid ""
-"The `authorize` function is completely asynchronous and supports a few "
-"callback functions to receive notifications from the server:"
+#, no-wrap
+msgid "The `authorize` function is completely asynchronous and supports a few callback functions to receive notifications from the server:\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:54
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:75
-msgid ""
-"`onGrant`: The first argument of the function. If authorization was "
-"successful and the server returned an RPT with the requested permissions, "
-"the callback receives the RPT."
+#, no-wrap
+msgid "`onGrant`: The first argument of the function. If authorization was successful and the server returned an RPT with the requested permissions, the callback receives the RPT.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:55
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:76
-msgid ""
-"`onDeny`: The second argument of the function. Only called if the server has "
-"denied the authorization request."
+#, no-wrap
+msgid "`onDeny`: The second argument of the function. Only called if the server has denied the authorization request.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:56
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:77
-msgid ""
-"`onError`: The third argument of the function. Only called if the server "
-"responds unexpectedly."
+#, no-wrap
+msgid "`onError`: The third argument of the function. Only called if the server responds unexpectedly.\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:58
-msgid ""
-"Most applications should use the `onGrant` callback to retry a request after "
-"a 401 response. Subsequent requests should include the RPT as a bearer token "
-"for retries."
+#, no-wrap
+msgid "Most applications should use the `onGrant` callback to retry a request after a 401 response. Subsequent requests should include the RPT as a bearer token for retries.\n"
 msgstr ""
 
 #. type: Title =====
@@ -177,9 +163,8 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:62
-msgid ""
-"The keycloak-authz.js library provides an `entitlement` function that you "
-"can use to obtain an RPT from the server using the Entitlement API."
+#, no-wrap
+msgid "The keycloak-authz.js library provides an `entitlement` function that you can use to obtain an RPT from the server using the Entitlement API.\n"
 msgstr ""
 
 #. type: Plain text
@@ -198,9 +183,8 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:73
-msgid ""
-"The `entitlement` function is completely asynchronous and supports a few "
-"callback functions to receive notifications from the server:"
+#, no-wrap
+msgid "The `entitlement` function is completely asynchronous and supports a few callback functions to receive notifications from the server:\n"
 msgstr ""
 
 #. type: Title =====
@@ -211,14 +195,15 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:81
-msgid ""
-"If you have already obtained an RPT using any of the authorization functions "
-"provided by the library, you can always obtain the RPT as follows from the "
-"authorization object (assuming that it has been initialized by one of the "
-"techniques shown earlier):"
+#, no-wrap
+msgid "If you have already obtained an RPT using any of the authorization functions provided by the library, you can always obtain the RPT as follows from the authorization object (assuming that it has been initialized by one of the techniques shown earlier):\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer/js-adapter.adoc:84
-msgid "```javascript var rpt = authorization.rpt; ```"
+#, no-wrap
+msgid ""
+"```javascript\n"
+"var rpt = authorization.rpt;\n"
+"```\n"
 msgstr ""

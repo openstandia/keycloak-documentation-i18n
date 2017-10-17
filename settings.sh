@@ -18,5 +18,5 @@ DOCS="\
 TARGET_EXT=adoc
 OUT_FILE=po4a.cfg
 IGNORE_FILE=topics.adoc
-FORCE_TEXT_FILE="x509.adoc|fuse-admin.adoc|authorization_services/.*|topics/templates/document-attributes-community.adoc|topics/templates/document-attributes-product.adoc"
+FORCE_TEXT_FILE="topics/templates/document-attributes-community.adoc|topics/templates/document-attributes-product.adoc"
 

@@ -26,40 +26,8 @@ cat << EOS > $OUT_FILE
 EOS
 
 # Generate config per document
-# For DOCS
 cd $REPO_DIR
 for doc in $DOCS; do
-    echo "# $doc" >> $OUT_FILE
-
-    for file in `\find $doc -name "*.$TARGET_EXT" -not -name "index.$TARGET_EXT"`; do
-        if [[ "$file" =~ /${IGNORE_FILE}$ ]]; then
-            echo "Ignore: $file"
-            continue
-        fi
-
-        # Checking the size because po4a can't handle 0 byte file
-        if [[ ! -s "$file" ]]; then
-            echo "Skipped (0 byte): $file"
-            continue
-        fi
-
-        PO4A_TYPE=myadoc
-        if [[ "$file" =~ ${FORCE_TEXT_FILE} ]]; then
-            echo "Handling as text: $file"
-            PO4A_TYPE=mytext
-        fi
-
-        MASTER_FILE=`echo $file | sed -e "s|^$DIR||"`
-        OUT_MASTER_FILE=`echo $MASTER_FILE | sed -e "s|/|__|g" | sed -e "s|\.$TARGET_EXT$||"`
-        echo "[type: $PO4A_TYPE] $SOURCE_DIR/$MASTER_FILE \$lang:$TRANSLATED_DIR/\$lang/$MASTER_FILE master:file=$OUT_MASTER_FILE" >> $OUT_FILE
-        echo "Add: $file"
-    done
-
-    echo "" >> $OUT_FILE
-done
-
-# For DOCS2
-for doc in $DOCS2; do
     echo "# $doc" >> $OUT_FILE
 
     for file in `\find $doc -name "*.$TARGET_EXT" -not -name "index.$TARGET_EXT"`; do

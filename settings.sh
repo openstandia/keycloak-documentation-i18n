@@ -6,10 +6,8 @@ SOURCE_DIR=source
 TRANSLATED_DIR=translated
 TARGET_LANG=ja_JP
 DOCS="\
-  server_installation"
-
-DOCS2="\
   getting_started \
+  server_installation \
   securing_apps \
   server_admin \
   server_development \

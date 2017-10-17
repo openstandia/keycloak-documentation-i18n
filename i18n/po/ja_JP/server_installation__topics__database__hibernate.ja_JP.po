@@ -1,6 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
+"PO-Revision-Date: 2017-10-16 23:30-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,16 +17,16 @@ msgstr ""
 #. type: Title ===
 #, no-wrap
 msgid "Database Configuration"
-msgstr ""
+msgstr "データベース設定"
 
 #. type: Plain text
 msgid "The configuration for this component is found in the `standalone.xml`, `standalone-ha.xml`, or `domain.xml` file in your distribution. The location of this file depends on your <<_operating-mode, operating mode>>."
-msgstr ""
+msgstr "配布物内の `standalone.xml` 、 `standalone-ha.xml` 、 `domain.xml` のいずれかの中にこのコンポーネント用の設定があります。このファイルの場所は<<_operating-mode, operating mode>>によって異なります。"
 
 #. type: Block title
 #, no-wrap
 msgid "Database Config"
-msgstr ""
+msgstr "データベース設定"
 
 #. type: delimited block -
 #, no-wrap
@@ -44,38 +45,51 @@ msgid ""
 "    </spi>\n"
 "    ...\n"
 "</subsystem>\n"
-msgstr ""
+msgstr "<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
+"    ...\n"
+"    <spi name=\"connectionsJpa\">\n"
+"     <provider name=\"default\" enabled=\"true\">\n"
+"         <properties>\n"
+"             <property name=\"dataSource\" value=\"java:jboss/datasources/KeycloakDS\"/>\n"
+"             <property name=\"initializeEmpty\" value=\"false\"/>\n"
+"             <property name=\"migrationStrategy\" value=\"manual\"/>\n"
+"             <property name=\"migrationExport\" value=\"${jboss.home.dir}/keycloak-database-update.sql\"/>\n"
+"         </properties>\n"
+"     </provider>\n"
+"    </spi>\n"
+"    ...\n"
+"</subsystem>\n"
 
 #. type: Plain text
 msgid "Possible configuration options are:"
-msgstr ""
+msgstr "設定可能なオプションは、以下のとおりです。"
 
 #. type: Labeled list
 #, no-wrap
 msgid "dataSource"
-msgstr ""
+msgstr "dataSource"
 
 #. type: Plain text
 msgid "JNDI name of the dataSource"
-msgstr ""
+msgstr "データソースのJNDI名"
 
 #. type: Labeled list
 #, no-wrap
 msgid "jta"
-msgstr ""
+msgstr "jta"
 
 #. type: Plain text
 msgid "boolean property to specify if datasource is JTA capable"
-msgstr ""
+msgstr "データソースがJTA対応かどうか指定するbooleanプロパティ"
 
 #. type: Labeled list
 #, no-wrap
 msgid "driverDialect"
-msgstr ""
+msgstr "driverDialect"
 
 #. type: Plain text
 msgid "Value of database dialect.  In most cases you don't need to specify this property as dialect will be autodetected by Hibernate."
-msgstr ""
+msgstr "データベース・ダイアレクトの値。ほとんどの場合、ダイアレクトはHibernateによって自動検出されるため、このプロパティを指定する必要はありません。"
 
 #. type: Labeled list
 #, no-wrap

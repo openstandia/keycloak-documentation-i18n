@@ -12,19 +12,25 @@ msgstr ""
 "X-Crowdin-Project: keycloak-documentation-i18n\n"
 "X-Crowdin-Language: ja\n"
 "X-Crowdin-File: /develop/i18n/po/ja_JP/server_installation__topics__config-subsystem__start-cli.ja_JP.po\n"
+"PO-Revision-Date: 2017-10-16 23:50-0400\n"
 
 #. type: Title ===
 #, no-wrap
 msgid "Start the {appserver_name} CLI"
-msgstr ""
+msgstr "{appserver_name}CLIの起動"
 
 #. type: Plain text
 msgid "Besides editing the configuration by hand, you also have the option of changing the configuration by issuing commands via the _jboss-cli_ tool.  CLI allows you to configure servers locally or remotely.  And it is especially useful when combined with scripting."
-msgstr ""
+msgstr "設定の変更は、手作業だけでなく、 _jboss-cli_ toolツールを使用しコマンドを発行しても行うことできます。CLIを使用すると、サーバーをローカルまたはリモートで設定することもできます。スクリプティングと組み合わせると特に便利です。"
 
 #. type: Plain text
 msgid "To start the {appserver_name} CLI, you need to run `jboss-cli`."
-msgstr ""
+msgstr "{appserver_name}CLIを起動するには、 `jboss-cli` を実行する必要があります。"
+
+#. type: Block title
+#, no-wrap
+msgid "Linux/Unix"
+msgstr "Linux/Unix"
 
 #. type: Block title
 #, no-wrap
@@ -34,7 +40,12 @@ msgstr "Linux/Unix"
 #. type: delimited block -
 #, no-wrap
 msgid "$ .../bin/jboss-cli.sh\n"
-msgstr ""
+msgstr "$ .../bin/jboss-cli.sh\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Windows"
+msgstr "Windows"
 
 #. type: Block title
 #, no-wrap
@@ -44,30 +55,30 @@ msgstr "Windows"
 #. type: delimited block -
 #, no-wrap
 msgid "> ...\\bin\\jboss-cli.bat\n"
-msgstr ""
+msgstr "> ...\\bin\\jboss-cli.bat\n"
 
 #. type: Plain text
 msgid "This will bring you to a prompt like this:"
-msgstr ""
+msgstr "これにより、以下のようなプロンプトが表示されます。\n"
 
 #. type: Block title
 #, no-wrap
 msgid "Prompt"
-msgstr ""
+msgstr "プロンプト"
 
 #. type: delimited block -
 #, no-wrap
 msgid "[disconnected /]\n"
-msgstr ""
+msgstr "[disconnected /]\n"
 
 #. type: Plain text
 msgid "If you wish to execute commands on a running server, you will first execute the `connect` command."
-msgstr ""
+msgstr "実行中のサーバーでコマンドを実行する場合、まず `connect` コマンドを実行します。\n"
 
 #. type: Block title
 #, no-wrap
 msgid "connect"
-msgstr ""
+msgstr "接続"
 
 #. type: delimited block -
 #, no-wrap
@@ -75,90 +86,95 @@ msgid ""
 "[disconnected /] connect\n"
 "connect\n"
 "[standalone@localhost:9990 /]\n"
-msgstr ""
+msgstr "[disconnected /] connect\n"
+"connect\n"
+"[standalone@localhost:9990 /]\n"
 
 #. type: Plain text
 msgid "You may be thinking to yourself, \"I didn't enter in any username or password!\".  If you run `jboss-cli` on the same machine as your running standalone server or domain controller and your account has appropriate file permissions, you do not have to setup or enter in a admin username and password.  See the link:{appserver_admindoc_link}[_{appserver_admindoc_name}_] for more details on how to make things more secure if you are uncomfortable with that setup."
-msgstr ""
+msgstr "ユーザー名もパスワードも入力していない！と思っているかもしれませんが、 `jboss-cli` を実行中のスタンドアロン・サーバーまたはドメイン・コントローラーと同じマシンで実行し、アカウントに適切なファイルの許可がある場合は、管理者のユーザー名とパスワードを設定または入力する必要はありません。この設定では心配でよりセキュアにしたい場合、詳しくはlink:{appserver_admindoc_link}[_{appserver_admindoc_name}_]をご覧ください。\n"
 
 #. type: Title ===
 #, no-wrap
 msgid "CLI Embedded Mode"
-msgstr ""
+msgstr "CLI組み込みモード"
 
 #. type: Plain text
 msgid "If you do happen to be on the same machine as your standalone server and you want to issue commands while the server is not active, you can embed the server into CLI and make changes in a special mode that disallows incoming requests.  To do this, first execute the `embed` command with the config file you wish to change."
-msgstr ""
+msgstr "サーバーがアクティブではない間にスタンドアロンサーバと同じマシン上にコマンドが発行された場合は、サーバーをCLIに組み込み、着信要求を許可しない特殊モードに変更することができます。これを行うには、まず、変更したい設定ファイルで `embed` コマンドを実行します。"
 
 #. type: Block title
 #, no-wrap
 msgid "embed"
-msgstr ""
+msgstr "embed"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
 "[disconnected /] embed-server --server-config=standalone.xml\n"
 "[standalone@embedded /]\n"
-msgstr ""
+msgstr "[disconnected /] embed-server --server-config=standalone.xml\n"
+"[standalone@embedded /]\n"
 
 #. type: Title ===
 #, no-wrap
 msgid "CLI GUI Mode"
-msgstr ""
+msgstr "CLI GUIモード "
 
 #. type: Plain text
 msgid "The CLI can also run in GUI mode.  GUI mode launches a Swing application that allows you to graphically view and edit the entire management model of a _running_ server.  GUI mode is especially useful when you need help formatting your CLI commands and learning about the options available.  The GUI can also retrieve server logs from a local or remote server."
-msgstr ""
+msgstr "CLIはGUIモードでも実行できます。GUIモードでは、実行中のサーバーの管理モデル全体をグラフィカルに表示および編集できるSwingアプリケーションを起動します。GUIモードは、CLIコマンドの書式を設定したりオプションを調べる際のヘルプとして特に便利です。GUIは、ローカルまたはリモートサーバーからサーバーログを取得することもできます。"
 
 #. type: Block title
 #, no-wrap
 msgid "Start in GUI mode"
-msgstr ""
+msgstr "GUIモードの起動"
 
 #. type: delimited block -
 #, no-wrap
 msgid "$ .../bin/jboss-cli.sh --gui\n"
-msgstr ""
+msgstr "$ .../bin/jboss-cli.sh --gui\n"
 
 #. type: Plain text
 msgid "_Note: to connect to a remote server, you pass the `--connect` option as well.  Use the --help option for more details._"
-msgstr ""
+msgstr "_Note: リモートサーバーに接続するには `--connect` オプションも渡します。詳しくは、 --helpオプションをご覧ください。_\n"
 
 #. type: Plain text
 msgid "After launching GUI mode, you will probably want to scroll down to find the node, `subsystem=keycloak-server`.  If you right-click on the node and click `Explore subsystem=keycloak-server`, you will get a new tab that shows only the keycloak-server subsystem."
-msgstr ""
+msgstr "GUIモードを起動したら、スクロールダウンすると `subsystem=keycloak-server` ノードが見つかります。ノードを右クリックして `Explore subsystem=keycloak-server` をクリックすると、keycloak-serverサブシステムのみを表示する新しいタブが表示されます。"
 
 #. type: Plain text
 msgid "image:images/cli-gui.png[]"
-msgstr ""
+msgstr "image:images/cli-gui.png[]"
 
 #. type: Title ===
 #, no-wrap
 msgid "CLI Scripting"
-msgstr ""
+msgstr "CLIスクリプト"
 
 #. type: Plain text
 msgid "The CLI has extensive scripting capabilities.  A script is just a text file with CLI commands in it.  Consider a simple script that turns off theme and template caching."
-msgstr ""
+msgstr "CLIには、さまざまなスクリプト機能があります。スクリプトはCLIコマンドを含む単なるテキストファイルです。テーマとテンプレートのキャッシュをオフにする簡単なスクリプトをみていきましょう。"
 
 #. type: Block title
 #, no-wrap
 msgid "turn-off-caching.cli"
-msgstr ""
+msgstr "turn-off-caching.cli"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
 "/subsystem=keycloak-server/theme=defaults/:write-attribute(name=cacheThemes,value=false)\n"
 "/subsystem=keycloak-server/theme=defaults/:write-attribute(name=cacheTemplates,value=false)\n"
-msgstr ""
+msgstr "/subsystem=keycloak-server/theme=defaults/:write-attribute(name=cacheThemes,value=false)\n"
+"/subsystem=keycloak-server/theme=defaults/:write-attribute(name=cacheTemplates,value=false)\n"
 
 #. type: Plain text
 msgid "To execute the script, I can follow the `Scripts` menu in CLI GUI, or execute the script from the command line as follows:"
-msgstr ""
+msgstr "スクリプトを実行するには、CLI GUI の `Scripts` メニューに従う、または以下のようにコマンドラインからスクリプトを実行します。"
 
 #. type: delimited block -
 #, no-wrap
 msgid "$ .../bin/jboss-cli.sh --file=turn-off-caching.cli\n"
-msgstr ""
+msgstr "$ cd bin\n"
+"$ ./jboss-cli.sh --file=adapter-install-offline.cli\n"

@@ -1,6 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
+"PO-Revision-Date: 2017-10-16 23:40-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,22 +17,22 @@ msgstr ""
 #. type: Title ===
 #, no-wrap
 msgid "Configure SPI Providers"
-msgstr ""
+msgstr "SPIプロバイダーの設定"
 
 #. type: Plain text
 msgid "The specifics of each configuration setting is discussed elsewhere in context with that setting.  However, it is useful to understand the format used to declare settings on SPI providers."
-msgstr ""
+msgstr "各設定の詳細については、その設定と関連する別の箇所でご説明します。ただし、SPIプロバイダー設定の宣言に使用される形式について学ぶことをおすすめします。"
 
 #. type: Plain text
 msgid "{project_name} is a highly modular system that allows great flexibility.  There are more than 50 service provider interfaces (SPIs), and you are allowed to swap out implementations of each SPI.  An implementation of an SPI is known as a _provider_."
-msgstr ""
+msgstr "{project_name}は、柔軟性に優れた、高度なモジュールシステムです。50以上のサービス・プロバイダー・インターフェイス、いわゆるSPIs、があり、各SPIの実装をスワップアウトすることができます。SPIの実装は _provider_ によって行われます。"
 
 #. type: Plain text
 #, no-wrap
 msgid ""
 "All elements in an SPI declaration are optional, but a full SPI declaration\n"
 " looks like this:\n"
-msgstr ""
+msgstr "SPI宣言のすべての要素は任意で選択できるものですが、完全なSPI宣言は以下のようになります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -49,19 +50,31 @@ msgid ""
 "        </properties>\n"
 "    </provider>\n"
 "</spi>\n"
-msgstr ""
+msgstr "<spi name=\"myspi\">\n"
+"    <default-provider>myprovider</default-provider>\n"
+"    <provider name=\"myprovider\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"foo\" value=\"bar\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"    <provider name=\"mysecondprovider\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"foo\" value=\"foo\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
 
 #. type: Plain text
 msgid "Here we have two providers defined for the SPI `myspi`.  The `default-provider` is listed as `myprovider`.  However it is up to the SPI to decide how it will treat this setting.  Some SPIs allow more than one provider and some do not.  So `default-provider` can help the SPI to choose."
-msgstr ""
+msgstr "ここでは、SPI `myspi` に2つのプロバイダーが定義されています。 `default-provider` は `myprovider` と表示されています。しかし、この設定をどのように処理するかは、SPIが決定します。SPIによって複数のプロバイダーを許可するものもあれば、そうでないものもあります。だからこそ `default-provider` によりSPIは決定しやすくなります。"
 
 #. type: Plain text
 msgid "Also notice that each provider defines its own set of configuration properties.  The fact that both providers above have a property called `foo` is just a coincidence."
-msgstr ""
+msgstr "また、各プロバイダーが独自の設定プロパティを定義することについてもご注意ください。上記の両方のプロバイダーが `foo` というプロパティをもっている点は単なる偶然です。"
 
 #. type: Plain text
 msgid "The type of each property value is interpreted by the provider.  However, there is one exception.  Consider the `jpa` provider for the `eventStore` API:"
-msgstr ""
+msgstr "プロパティ値のタイプはそれぞれプロバイダーによって解釈されます。ただし、1つ例外があります。 `eventStore` アプリケーションプログラミング・インタフェース、いわゆるAPI、の `jpa` プロバイダーについて確認してみましょう。"
 
 #. type: delimited block -
 #, no-wrap
@@ -74,8 +87,15 @@ msgid ""
 "        </properties>\n"
 "    </provider>\n"
 "</spi>\n"
-msgstr ""
+msgstr "<spi name=\"eventsStore\">\n"
+"    <provider name=\"jpa\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"exclude-events\" value=\"[&quot;EVENT1&quot;,\n"
+"                                                    &quot;EVENT2&quot;]\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
 
 #. type: Plain text
 msgid "We see that the value begins and ends with square brackets.  That means that the value will be passed to the provider as a list.  In this example, the system will pass the provider a list with two element values _EVENT1_ and _EVENT2_. To add more values to the list, just separate each list element with a comma. Unfortunately, you do need to escape the quotes surrounding each list element with `\\&quot;`."
-msgstr ""
+msgstr "この値は角括弧で始まり、角括弧で終わることがわかります。これは、値がリストとしてプロバイダーに渡されることを意味します。このサンプルでは、2つの要素値 _EVENT1_ と _EVENT2_ のリストはシステムからプロバイダーに渡されます。リストに値を追加するには、各リスト要素をコンマで区切ります。残念ながら、各リスト要素を囲む引用符を `\\&quot;` にエスケープする必要があります。"

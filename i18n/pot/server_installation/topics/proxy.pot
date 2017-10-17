@@ -1,0 +1,509 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ==
+#: source/server_installation/topics/proxy.adoc:3
+#, no-wrap
+msgid "{project_name} Security Proxy"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/proxy.adoc:8
+msgid ""
+"{project_name} has an HTTP(S) proxy that you can put in front of web "
+"applications and services where it is not possible to install the "
+"{project_name} adapter.  You can set up URL filters so that certain URLs are "
+"secured either by browser login and/or bearer token authentication.  You can "
+"also define role constraints for URL patterns within your applications."
+msgstr ""
+
+#. type: Title ===
+#: source/server_installation/topics/proxy.adoc:9
+#, no-wrap
+msgid "Proxy Install and Run"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/proxy.adoc:12
+msgid ""
+"Download the {project_name} proxy distribution from the {project_name} "
+"download pages and unzip it."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:17
+#, no-wrap
+msgid ""
+"$ unzip keycloak-proxy-dist.zip\n"
+"----        \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:20
+#, no-wrap
+msgid ""
+"To run it you must have a proxy config file (which we'll discuss in a moment). \n"
+"[source]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/proxy.adoc:24
+#, no-wrap
+msgid ""
+"$ java -jar bin/launcher.jar [your-config.json]\n"
+"----        \n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/proxy.adoc:26
+#, no-wrap
+msgid "If you do not specify a path to the proxy config file, the launcher will look in the current working directory for the file named `proxy.json`        \n"
+msgstr ""
+
+#. type: Title ===
+#: source/server_installation/topics/proxy.adoc:27
+#, no-wrap
+msgid "Proxy Configuration"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/proxy.adoc:30
+msgid "Here's an example configuration file."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:84
+#, no-wrap
+msgid ""
+"{\n"
+"    \"target-url\": \"http://localhost:8082\",\n"
+"    \"send-access-token\": true,\n"
+"    \"bind-address\": \"localhost\",\n"
+"    \"http-port\": \"8080\",\n"
+"    \"https-port\": \"8443\",\n"
+"    \"keystore\": \"classpath:ssl.jks\",\n"
+"    \"keystore-password\": \"password\",\n"
+"    \"key-password\": \"password\",\n"
+"    \"applications\": [\n"
+"        {\n"
+"            \"base-path\": \"/customer-portal\",\n"
+"            \"error-page\": \"/error.html\",\n"
+"            \"adapter-config\": {\n"
+"                \"realm\": \"demo\",\n"
+"                \"resource\": \"customer-portal\",\n"
+"                \"realm-public-key\": \"MIGfMA0GCSqGSIb\",\n"
+"                \"auth-server-url\": \"http://localhost:8081/auth\",\n"
+"                \"ssl-required\" : \"external\",\n"
+"                \"principal-attribute\": \"name\",\n"
+"                \"credentials\": {\n"
+"                    \"secret\": \"password\"\n"
+"                }\n"
+"            }\n"
+"            ,\n"
+"            \"constraints\": [\n"
+"                {\n"
+"                    \"pattern\": \"/users/*\",\n"
+"                    \"roles-allowed\": [\n"
+"                        \"user\"\n"
+"                    ]\n"
+"                },\n"
+"                {\n"
+"                    \"pattern\": \"/admins/*\",\n"
+"                    \"roles-allowed\": [\n"
+"                        \"admin\"\n"
+"                    ]\n"
+"                },\n"
+"                {\n"
+"                    \"pattern\": \"/users/permit\",\n"
+"                    \"permit\": true\n"
+"                },\n"
+"                {\n"
+"                    \"pattern\": \"/users/deny\",\n"
+"                    \"deny\": true\n"
+"                }\n"
+"            ]\n"
+"        }\n"
+"    ]\n"
+"}\n"
+"----        \n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_installation/topics/proxy.adoc:85
+#, no-wrap
+msgid "Basic Config"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:88
+msgid "The basic configuration options for the server are as follows:"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:91
+#, no-wrap
+msgid ""
+"target-url::\n"
+"  The URL this server is proxying _REQUIRED._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:96
+#, no-wrap
+msgid ""
+"send-access-token::\n"
+"  Boolean flag.\n"
+"  If true, this will send the access token via the KEYCLOAK_ACCESS_TOKEN header to the proxied server. _OPTIONAL._.\n"
+"  Default is false. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:100
+#, no-wrap
+msgid ""
+"bind-address::\n"
+"  DNS name or IP address to bind the proxy server's sockets to. _OPTIONAL._.\n"
+"  The default value is _localhost_                        \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:104
+#, no-wrap
+msgid ""
+"http-port::\n"
+"  Port to listen for HTTP requests.\n"
+"  If you do not specify this value, then the proxy will not listen for regular HTTP requests. _OPTIONAL._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:108
+#, no-wrap
+msgid ""
+"https-port::\n"
+"  Port to listen for HTTPS requests.\n"
+"  If you do not specify this value, then the proxy will not listen for HTTPS requests. _OPTIONAL._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:113
+#, no-wrap
+msgid ""
+"keystore::\n"
+"  Path to a Java keystore file that contains private key and certificate for the server to be able to handle HTTPS requests.\n"
+"  Can be a file path, or, if you prefix it with `classpath:`                            it will look for this file in the classpath. _OPTIONAL._.\n"
+"  If you have enabled HTTPS, but have not defined a keystore, the proxy will auto-generate a self-signed certificate and use that. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:117
+#, no-wrap
+msgid ""
+"buffer-size::\n"
+"  HTTP server socket buffer size.\n"
+"  Usually the default is good enough. _OPTIONAL._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:121
+#, no-wrap
+msgid ""
+"buffers-per-region::\n"
+"  HTTP server socket buffers per region.\n"
+"  Usually the default is good enough. _OPTIONAL._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:127
+#, no-wrap
+msgid ""
+"io-threads::\n"
+"  Number of threads to handle IO.\n"
+"  Usually default is good enough.\n"
+"   _OPTIONAL._.\n"
+"  The default is the number of available processors * 2. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:132
+#, no-wrap
+msgid ""
+"worker-threads::\n"
+"  Number of threads to handle requests.\n"
+"  Usually the default is good enough. _OPTIONAL._.\n"
+"  The default is the number of available processors * 16.         \n"
+msgstr ""
+
+#. type: Title ===
+#: source/server_installation/topics/proxy.adoc:133
+#, no-wrap
+msgid "Application Config"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:136
+msgid ""
+"Next under the `applications` array attribute, you can define one or more "
+"applications per host you are proxying."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:140
+#, no-wrap
+msgid ""
+"base-path::\n"
+"  The base context root for the application.\n"
+"  Must start with '/' _REQUIRED._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:145
+#, no-wrap
+msgid ""
+"error-page::\n"
+"  If the proxy has an error, it will display the target application's error page relative URL _OPTIONAL._.\n"
+"  This is a relative path to the base-path.\n"
+"  In the example above it would be `/customer-portal/error.html`. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:150
+#, no-wrap
+msgid ""
+"adapter-config::\n"
+"  _REQUIRED._.\n"
+"  Same configuration as any other {project_name} adapter.\n"
+"// See <<_adapter_config,Adapter Config>>                                        \n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_installation/topics/proxy.adoc:151
+#, no-wrap
+msgid "Constraint Config"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:158
+msgid ""
+"Next under each application you can define one or more constraints in the "
+"`constraints` array attribute.  A constraint defines a URL pattern relative "
+"to the base-path.  You can deny, permit, or require authentication for a "
+"specific URL pattern.  You can specify roles allowed for that path as well.  "
+"More specific constraints will take precedence over more general ones."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:163
+#, no-wrap
+msgid ""
+"pattern::\n"
+"  URL pattern to match relative to the base-path of the application.\n"
+"  Must start with '/' _REQUIRED._\n"
+"  You may only have one wildcard and it must come at the end of the pattern.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:166
+#, no-wrap
+msgid ""
+"  * Valid: [x-]`/foo/bar/*` and  [x-]`/foo/*.txt`\n"
+"  * Not valid: [x-]`/*/foo/*`. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:169
+#, no-wrap
+msgid ""
+"roles-allowed::\n"
+"  Array of strings of roles allowed to access this url pattern. _OPTIONAL._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:172
+#, no-wrap
+msgid ""
+"methods::\n"
+"  Array of strings of HTTP methods that will exclusively match this pattern and HTTP request. _OPTIONAL._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:175
+#, no-wrap
+msgid ""
+"excluded-methods::\n"
+"  Array of strings of HTTP methods that will be ignored when match this pattern. _OPTIONAL._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:178
+#, no-wrap
+msgid ""
+"deny::\n"
+"  Deny all access to this URL pattern. _OPTIONAL._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:181
+#, no-wrap
+msgid ""
+"permit::\n"
+"  Permit all access without requiring authentication or a role mapping. _OPTIONAL._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:184
+#, no-wrap
+msgid ""
+"permit-and-inject::\n"
+"  Permit all access, but inject the headers, if user is already authenticated._OPTIONAL._. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:187
+#, no-wrap
+msgid ""
+"authenticate::\n"
+"  Require authentication for this pattern, but no role mapping. _OPTIONAL._.                 \n"
+msgstr ""
+
+#. type: Title ====
+#: source/server_installation/topics/proxy.adoc:188
+#, no-wrap
+msgid "Header Names Config"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:191
+msgid ""
+"Next under the list of applications you can override the defaults for the "
+"names of the header fields injected by the proxy (see {project_name} "
+"Identity Headers). This mapping is optional."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:195
+#, no-wrap
+msgid ""
+"keycloak-subject::\n"
+"  e.g.\n"
+"  MYAPP_USER_ID \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:199
+#, no-wrap
+msgid ""
+"keycloak-username::\n"
+"  e.g.\n"
+"  MYAPP_USER_NAME \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:203
+#, no-wrap
+msgid ""
+"keycloak-email::\n"
+"  e.g.\n"
+"  MYAPP_USER_EMAIL \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:207
+#, no-wrap
+msgid ""
+"keycloak-name::\n"
+"  e.g.\n"
+"  MYAPP_USER_ID \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:211
+#, no-wrap
+msgid ""
+"keycloak-access-token::\n"
+"  e.g.\n"
+"  MYAPP_ACCESS_TOKEN             \n"
+msgstr ""
+
+#. type: Title ===
+#: source/server_installation/topics/proxy.adoc:212
+#, no-wrap
+msgid "{project_name} Identity Headers"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:215
+msgid ""
+"When forwarding requests to the proxied server, {project_name} Proxy will "
+"set some additional headers with values from the OIDC identity token it "
+"received for authentication."
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:219
+#, no-wrap
+msgid ""
+"KEYCLOAK_SUBJECT::\n"
+"  User id.\n"
+"  Corresponds to JWT `sub` and will be the user id {project_name} uses to store this user.\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:223
+#, no-wrap
+msgid ""
+"KEYCLOAK_USERNAME::\n"
+"  Username.\n"
+"  Corresponds to JWT `preferred_username`                        \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:226
+#, no-wrap
+msgid ""
+"KEYCLOAK_EMAIL::\n"
+"  Email address of user if set. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:229
+#, no-wrap
+msgid ""
+"KEYCLOAK_NAME::\n"
+"  Full name of user if set. \n"
+msgstr ""
+
+#. type: delimited block -
+#: source/server_installation/topics/proxy.adoc:235
+#, no-wrap
+msgid ""
+"KEYCLOAK_ACCESS_TOKEN::\n"
+"  Send the access token in this header if the proxy was configured to send it.\n"
+"  This token can be used to make bearer token requests.             Header field names can be configured using a map of `header-names` in configuration file: \n"
+"+\n"
+"[source]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/server_installation/topics/proxy.adoc:242
+#, no-wrap
+msgid ""
+"{\n"
+"    \"header-names\" {\n"
+"        \"keycloak-subject\": \"MY_SUBJECT\"\n"
+"    }\n"
+"}\n"
+"----        \n"
+msgstr ""

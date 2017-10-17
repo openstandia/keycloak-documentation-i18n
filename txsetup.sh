@@ -4,7 +4,7 @@ DIR=$(cd $(dirname $0); pwd)
 . $DIR/settings.sh
 cd $DIR
 
-for doc in $DOCS2; do
+for doc in $DOCS; do
     for file in `find $DIR/i18n/pot/$doc/ -type f -name "*.pot"`; do
         SOURCE_FILE=`echo $file | sed "s|${DIR}/||"`
         SOURCE_FILE_BASE=`echo $file | sed "s|^$DIR/i18n/pot/||"`

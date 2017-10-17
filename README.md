@@ -5,9 +5,13 @@ Keycloak Documentation translation project
 
 Support Languages
 -------------------------------
-Support languages are as follows. If you can help to translate to other language, [please create a issue](https://github.com/openstandia/keycloak-documentation-i18n/issues/new).
+Support languages are as follows.
 
 * Japanese (ja_JP)
+
+Contributing
+-------------------------------
+Please see [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 Building Translated Keycloak Documentation
 -------------------------------

@@ -2,17 +2,18 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
 "Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
+"teams/79437/ja_JP/)\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
@@ -83,11 +84,11 @@ msgstr ""
 #: source/server_development/topics/user-storage/simple-example.adoc:4
 msgid ""
 "To illustrate the basics of implementing the User Storage SPI let's walk "
-"through a simple example. In this chapter you'll see the implementation of a"
-" simple `UserStorageProvider` that looks up users in a simple property file."
-" The property file contains username and password definitions and is "
-"hardcoded to a specific location on the classpath. The provider will be able"
-" to look up the user by ID and username and also be able to validate "
+"through a simple example. In this chapter you'll see the implementation of a "
+"simple `UserStorageProvider` that looks up users in a simple property file. "
+"The property file contains username and password definitions and is "
+"hardcoded to a specific location on the classpath. The provider will be able "
+"to look up the user by ID and username and also be able to validate "
 "passwords. Users that originate from this provider will be read-only."
 msgstr ""
 
@@ -126,8 +127,8 @@ msgid ""
 "because we want to be able to log in with users stored by this provider. It "
 "implements the `CredentialInputValidator` interface because we want to be "
 "able to validate passwords entered in using the login screen. Our property "
-"file is read-only. We implement the `CredentialInputUpdater` because we want"
-" to post an error condition when the user attempts to update his password."
+"file is read-only. We implement the `CredentialInputUpdater` because we want "
+"to post an error condition when the user attempts to update his password."
 msgstr ""
 
 #. type: delimited block -
@@ -156,11 +157,11 @@ msgstr ""
 #: source/server_development/topics/user-storage/simple-example.adoc:39
 msgid ""
 "The constructor for this provider class is going to store the reference to "
-"the `KeycloakSession`, `ComponentModel`, and property file. We'll use all of"
-" these later. Also notice that there is a map of loaded users. Whenever we "
+"the `KeycloakSession`, `ComponentModel`, and property file. We'll use all of "
+"these later. Also notice that there is a map of loaded users. Whenever we "
 "find a user we will store it in this map so that we avoid re-creating it "
-"again within the same transaction. This is a good practice to follow as many"
-" providers will need to do this (that is, any provider that integrates with "
+"again within the same transaction. This is a good practice to follow as many "
+"providers will need to do this (that is, any provider that integrates with "
 "JPA). Remember also that provider class instances are created once per "
 "transaction and are closed after the transaction completes."
 msgstr ""
@@ -228,22 +229,21 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:82
 msgid ""
-"The `getUserByUsername()` method is invoked by the {project_name} login page"
-" when a user logs in. In our implementation we first check the `loadedUsers`"
-" map to see if the user has already been loaded within this transaction. If "
+"The `getUserByUsername()` method is invoked by the {project_name} login page "
+"when a user logs in. In our implementation we first check the `loadedUsers` "
+"map to see if the user has already been loaded within this transaction. If "
 "it hasn't been loaded we look in the property file for the username. If it "
-"exists we create an implementation of `UserModel`, store it in `loadedUsers`"
-" for future reference, and return this instance."
+"exists we create an implementation of `UserModel`, store it in `loadedUsers` "
+"for future reference, and return this instance."
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:84
 msgid ""
-"The `createAdapter()` method uses the helper class "
-"`org.keycloak.storage.adapter.AbstractUserAdapter`. This provides a base "
-"implementation for `UserModel`. It automatically generates a user id based "
-"on the required storage id format using the username of the user as the "
-"external id."
+"The `createAdapter()` method uses the helper class `org.keycloak.storage."
+"adapter.AbstractUserAdapter`. This provides a base implementation for "
+"`UserModel`. It automatically generates a user id based on the required "
+"storage id format using the username of the user as the external id."
 msgstr ""
 
 #. type: delimited block -
@@ -257,19 +257,19 @@ msgstr ""
 msgid ""
 "Every get method of `AbstractUserAdapter` either returns null or empty "
 "collections. However, methods that return role and group mappings will "
-"return the default roles and groups configured for the realm for every user."
-"  Every set method of `AbstractUserAdapter` will throw a "
-"`org.keycloak.storage.ReadOnlyException`. So if you attempt to modify the "
-"user in the admininstration console, you will get an error."
+"return the default roles and groups configured for the realm for every "
+"user.  Every set method of `AbstractUserAdapter` will throw a `org.keycloak."
+"storage.ReadOnlyException`. So if you attempt to modify the user in the "
+"admininstration console, you will get an error."
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:92
 msgid ""
-"The `getUserById()` method parses the `id` parameter using the "
-"`org.keycloak.storage.StorageId' helper class. The "
-"`StorageId.getExternalId()` method is invoked to obtain the username embeded"
-" in the `id` parameter. The method then delegates to `getUserByUsername()`."
+"The `getUserById()` method parses the `id` parameter using the `org.keycloak."
+"storage.StorageId' helper class. The `StorageId.getExternalId()` method is "
+"invoked to obtain the username embeded in the `id` parameter. The method "
+"then delegates to `getUserByUsername()`."
 msgstr ""
 
 #. type: Plain text
@@ -286,8 +286,7 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:98
 msgid ""
-"Next let's look at the method implementations for "
-"`CredentialInputValidator`."
+"Next let's look at the method implementations for `CredentialInputValidator`."
 msgstr ""
 
 #. type: delimited block -
@@ -333,8 +332,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:126
 msgid ""
-"The `suportsCredentialType()` method returns whether validation is supported"
-" for a specific credential type. We check to see if the credential type is "
+"The `suportsCredentialType()` method returns whether validation is supported "
+"for a specific credential type. We check to see if the credential type is "
 "`password`."
 msgstr ""
 
@@ -344,11 +343,11 @@ msgid ""
 "The `isValid()` method is responsible for validating passwords. The "
 "`CredentialInput` parameter is really just an abstract interface for all "
 "credential types. We make sure that we support the credential type and also "
-"that it is an instance of `UserCredentialModel`. When a user logs in through"
-" the login page, the plain text of the password input is put into an "
-"instance of `UserCredentialModel`. The `isValid()` method checks this value "
-"against the plain text password stored in the properties file. A return "
-"value of `true` means the password is valid."
+"that it is an instance of `UserCredentialModel`. When a user logs in through "
+"the login page, the plain text of the password input is put into an instance "
+"of `UserCredentialModel`. The `isValid()` method checks this value against "
+"the plain text password stored in the properties file. A return value of "
+"`true` means the password is valid."
 msgstr ""
 
 #. type: Title =====
@@ -405,8 +404,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:154
 msgid ""
-"The `updateCredential()` method just checks to see if the credential type is"
-" password.  If it is, a `ReadOnlyException` is thrown."
+"The `updateCredential()` method just checks to see if the credential type is "
+"password.  If it is, a `ReadOnlyException` is thrown."
 msgstr ""
 
 #. type: Title ====
@@ -467,8 +466,8 @@ msgstr ""
 #: source/server_development/topics/user-storage/simple-example.adoc:178
 msgid ""
 "The `getId()` method identifies the factory in the runtime and will also be "
-"the string shown in the admin console when you want to enable a user storage"
-" provider for the realm."
+"the string shown in the admin console when you want to enable a user storage "
+"provider for the realm."
 msgstr ""
 
 #. type: Title =====
@@ -545,9 +544,8 @@ msgstr ""
 msgid ""
 "The `Config.Scope` parameter is factory configuration that can be set up "
 "within `standalone.xml`, `standalone-ha.xml`, or `domain.xml`. For more "
-"information on where the `standalone.xml`, `standalone-ha.xml`, or "
-"`domain.xml` file resides see the "
-"link:{installguide_link}[{installguide_name}]."
+"information on where the `standalone.xml`, `standalone-ha.xml`, or `domain."
+"xml` file resides see the link:{installguide_link}[{installguide_name}]."
 msgstr ""
 
 #. type: Plain text
@@ -571,8 +569,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:227
 msgid ""
-"We can specify the classpath of the user property file instead of hardcoding"
-" it. Then you can retrieve the configuration in the "
+"We can specify the classpath of the user property file instead of hardcoding "
+"it. Then you can retrieve the configuration in the "
 "`PropertyFileUserStorageProviderFactory.init()`:"
 msgstr ""
 
@@ -600,30 +598,29 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:251
 msgid ""
-"We simply allocate the `PropertyFileUserStorageProvider` class.  This create"
-" method will be called once per transaction."
+"We simply allocate the `PropertyFileUserStorageProvider` class.  This create "
+"method will be called once per transaction."
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:255
 msgid ""
 "The class files for our provider implementation should be placed in a jar.  "
-"You also have to declare the provider factory class within the `META-"
-"INF/services/org.keycloak.storage.UserStorageProviderFactory` file."
+"You also have to declare the provider factory class within the `META-INF/"
+"services/org.keycloak.storage.UserStorageProviderFactory` file."
 msgstr ""
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/simple-example.adoc:258
 #, no-wrap
-msgid ""
-"org.keycloak.examples.federation.properties.FilePropertiesStorageFactory\n"
+msgid "org.keycloak.examples.federation.properties.FilePropertiesStorageFactory\n"
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:261
 msgid ""
-"Once you create the jar you can deploy it using regular JBoss/Wildfly means:"
-" copy the jar into the `deploy/` directory or using the JBoss CLI."
+"Once you create the jar you can deploy it using regular JBoss/Wildfly means: "
+"copy the jar into the `deploy/` directory or using the JBoss CLI."
 msgstr ""
 
 #. type: Title ====
@@ -647,8 +644,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:272
 msgid ""
-"Select the provider we just created from the list: `readonly-property-file`."
-" It brings you to the configuration page for our provider.  We do not have "
+"Select the provider we just created from the list: `readonly-property-file`. "
+"It brings you to the configuration page for our provider.  We do not have "
 "anything to configure, so click *Save*."
 msgstr ""
 
@@ -672,7 +669,7 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/user-storage/simple-example.adoc:285
 msgid ""
-"You will now be able to log in with a user declared in the "
-"`users.properties` file. This user will only be able to view the account "
-"page after logging in."
+"You will now be able to log in with a user declared in the `users."
+"properties` file. This user will only be able to view the account page after "
+"logging in."
 msgstr ""

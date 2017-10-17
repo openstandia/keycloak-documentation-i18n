@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"PO-Revision-Date: 2017-10-11 01:52-0400\n"
+"PO-Revision-Date: 2017-10-16 23:40-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -17,51 +17,54 @@ msgstr ""
 #. type: Block title
 #, no-wrap
 msgid "Declare Your JDBC Drivers"
-msgstr ""
+msgstr "JDBCドライバの宣言"
 
 #. type: Title ===
 #, no-wrap
 msgid "Package the JDBC Driver"
-msgstr ""
+msgstr "JDBCドライバのパッケージ化"
 
 #. type: Plain text
 msgid "Find and download the JDBC driver JAR for your RDBMS. Before you can use this driver, you must package it up into a module and install it into the server. Modules define JARs that are loaded into the {project_name} classpath and the dependencies those JARs have on other modules. They are pretty simple to set up."
-msgstr ""
+msgstr "RDBMS用のJDBCドライバJARを検索してダウンロードします。ただし、このドライバを使用する前に、このドライバをモジュールにパッケージし、サーバーにインストールする必要があります。モジュールによって、{project_name}クラスパスにロードされるJAR、およびこれらのJARが他のモジュール上に持つ依存関係が定義されます。これらの設定は簡単です。"
 
 #. type: Plain text
 msgid "Within the _.../modules/_ directory of your {project_name} distribution, you need to create a directory structure to hold your module definition.  The convention is use the Java package name of the JDBC driver for the name of the directory structure. For PostgreSQL, create the directory _org/postgresql/main_. Copy your database driver JAR into this directory and create an empty _module.xml_ file within it too."
-msgstr ""
+msgstr " {project_name}の配布物の _.../modules/_ ディレクトリ内で、モジュール定義を保持するディレクトリ構造を作成する必要があります。規約では、ディレクトリ構造の名前にJDBCドライバのJavaパッケージ名を使用します。PostgreSQLの場合、 _org/postgresql/main_  ディレクトリを作成します。このディレクトリにデータベースドライバJARをコピーし、その中に空の _module.xml_ ファイルも作成します。"
 
 #. type: Block title
 #, no-wrap
 msgid "Module Directory"
-msgstr ""
+msgstr "モジュールディレクトリ"
 
 #. type: Plain text
 msgid "image:{project_images}/db-module.png[]"
-msgstr ""
+msgstr "image:{project_images}/db-module.png[]"
 
 #. type: Plain text
 msgid "After you have done this, open up the _module.xml_ file and create the following XML:"
-msgstr ""
+msgstr "これを行った後、 _module.xml_ ファイルを開き、以下のXMLを作成します。"
 
 #. type: Block title
 #, no-wrap
 msgid "Module XML"
-msgstr ""
+msgstr "モジュールXML"
 
 #. type: delimited block -
 #, no-wrap
 msgid "<?xml version=\"1.0\" ?>\n"
 "<module xmlns=\"urn:jboss:module:1.3\" name=\"org.postgresql\">\n"
-msgstr ""
+msgstr "<?xml version=\"1.0\" ?>\n"
+"<module xmlns=\"urn:jboss:module:1.3\" name=\"org.postgresql\">\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "    <resources>\n"
 "        <resource-root path=\"postgresql-9.4.1212.jar\"/>\n"
 "    </resources>\n"
-msgstr ""
+msgstr "    <resources>\n"
+"        <resource-root path=\"postgresql-9.4.1212.jar\"/>\n"
+"    </resources>\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -70,29 +73,33 @@ msgid "    <dependencies>\n"
 "        <module name=\"javax.transaction.api\"/>\n"
 "    </dependencies>\n"
 "</module>\n"
-msgstr ""
+msgstr "    <dependencies>\n"
+"        <module name=\"javax.api\"/>\n"
+"        <module name=\"javax.transaction.api\"/>\n"
+"    </dependencies>\n"
+"</module>\n"
 
 #. type: Plain text
 msgid "The module name should match the directory structure of your module. So, _org/postgresql_ maps to `org.postgresql`. The `resource-root path` attribute should specify the JAR filename of the driver.  The rest are just the normal dependencies that any JDBC driver JAR would have."
-msgstr ""
+msgstr "モジュール名は、モジュールのディレクトリ構造と一致する必要があります。したがって、 _org/postgresql_ は `org.postgresql` にマッピングされます。ドライバのJARファイル名は、 `resource-root path` の属性によって指定される必要があります。残りの部分は、JDBCドライバのJARが持つ通常の依存関係になります。"
 
 #. type: Title ===
 #, no-wrap
 msgid "Declare and Load JDBC Driver"
-msgstr ""
+msgstr "JDBCドライバの宣言とロード"
 
 #. type: Plain text
 msgid "The next thing you have to do is declare your newly packaged JDBC driver into your deployment profile so that it loads and becomes available when the server boots up. Where you perform this action depends on your <<_operating-mode, operating mode>>. If you're deploying in standard mode, edit _.../standalone/configuration/standalone.xml_.  If you're deploying in standard clustering mode, edit _.../standalone/configuration/standalone-ha.xml_.  If you're deploying in domain mode, edit _.../domain/configuration/domain.xml_. In domain mode, you'll need to make sure you edit the profile you are using: either `auth-server-standalone` or `auth-server-clustered`"
-msgstr ""
+msgstr "次に、新しくパッケージ化されたJDBCドライバをデプロイメント・プロファイルに宣言して、ロードし、サーバーの起動時に使用できるようにする必要があります。この操作を行う場所は、<<_operating-mode, operating mode>>によって異なります。標準モードでデプロイしている場合は、 _.../standalone/configuration/standalone.xml_ を編集します。ドメイン・モードでデプロイしている場合は、 _.../domain/configuration/domain.xml_ を編集します。ドメイン・モードでは、 `auth-server-standalone` または `auth-server-clustered` のどちらか使用している方のプロファイルを必ず編集する必要があります。"
 
 #. type: Plain text
 msgid "Within the profile, search for the `drivers` XML block within the `datasources` subsystem. You should see a pre-defined driver declared for the H2 JDBC driver. This is where you'll declare the JDBC driver for your external database."
-msgstr ""
+msgstr "プロファイル内で、 `datasources` サブシステム内の `drivers` XMLブロックを検索すると、H2JDBCドライバ用に宣言された定義済みのドライバが見つかります。ここで、外部データベース用のJDBCドライバを宣言します。"
 
 #. type: Block title
 #, no-wrap
 msgid "JDBC Drivers"
-msgstr ""
+msgstr "JDBCドライバ"
 
 #. type: delimited block -
 #, no-wrap
@@ -106,11 +113,20 @@ msgid "  <subsystem xmlns=\"urn:jboss:domain:datasources:4.0\">\n"
 "       </drivers>\n"
 "     </datasources>\n"
 "  </subsystem>\n"
-msgstr ""
+msgstr "  <subsystem xmlns=\"urn:jboss:domain:datasources:4.0\">\n"
+"     <datasources>\n"
+"       ...\n"
+"       <drivers>\n"
+"          <driver name=\"h2\" module=\"com.h2database.h2\">\n"
+"              <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>\n"
+"          </driver>\n"
+"       </drivers>\n"
+"     </datasources>\n"
+"  </subsystem>\n"
 
 #. type: Plain text
 msgid "Within the `drivers` XML block you'll need to declare an additional JDBC driver.  It needs to have a `name` which you can choose to be anything you want.  You specify the `module` attribute which points to the `module` package you created earlier for the driver JAR.  Finally you have to specify the driver's Java class.  Here's an example of installing PostgreSQL driver that lives in the module example defined earlier in this chapter."
-msgstr ""
+msgstr " `drivers` XMLブロック内で、追加のJDBCドライバを宣言する必要があります。それに `name` を付けて、必要時に選択できるようにします。ドライバJAR用に以前作成した `module` パッケージを指す、 `module` 属性を指定します。最後に、ドライバのJavaクラスを指定します。サンプルとして、この章で以前定義したモジュールのサンプル内にある、PostgreSQLドライバをインストールすると下記のとおりになります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -127,5 +143,17 @@ msgid "  <subsystem xmlns=\"urn:jboss:domain:datasources:4.0\">\n"
 "       </drivers>\n"
 "     </datasources>\n"
 "  </subsystem>\n"
-msgstr ""
+msgstr "  <subsystem xmlns=\"urn:jboss:domain:datasources:4.0\">\n"
+"     <datasources>\n"
+"       ...\n"
+"       <drivers>\n"
+"          <driver name=\"postgresql\" module=\"org.postgresql\">\n"
+"              <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>\n"
+"          </driver>\n"
+"          <driver name=\"h2\" module=\"com.h2database.h2\">\n"
+"              <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>\n"
+"          </driver>\n"
+"       </drivers>\n"
+"     </datasources>\n"
+"  </subsystem>\n"
 

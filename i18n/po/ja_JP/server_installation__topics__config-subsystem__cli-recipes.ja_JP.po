@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"PO-Revision-Date: 2017-10-11 01:52-0400\n"
+"PO-Revision-Date: 2017-10-16 23:40-0400\n"
 "Last-Translator: wadahiro <wadahiro@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -17,117 +17,119 @@ msgstr ""
 #. type: Title ===
 #, no-wrap
 msgid "CLI Recipes"
-msgstr ""
+msgstr "CLIレシピ"
 
 #. type: Plain text
 msgid "Here are some configuration tasks and how to perform them with CLI commands.  Note that in all but the first example, we use the wildcard path `**` to mean you should substitute or the path to the keycloak-server subsystem."
-msgstr ""
+msgstr "ここでは、設定タスクおよびそれらをCLIコマンドで実行する方法についてご説明します。最初の例以外はすべて、代入すべきという意味で、またはkeycloakサーバー・サブシステムという意味でパス名にワイルドカード `**` を使用します。その点はご注意ください。"
 
 #. type: Plain text
 msgid "For standalone, this just means:"
-msgstr ""
+msgstr "スタンドアロンの場合、これは単に以下の意味になります。"
 
 #. type: Plain text
 msgid "`**` = `/subsystem=keycloak-server`"
-msgstr ""
+msgstr "`**` = `/subsystem=keycloak-server`"
 
 #. type: Plain text
 msgid "For domain mode, this would mean something like:"
-msgstr ""
+msgstr "ドメイン・モードの場合、これは以下のような意味になります。"
 
 #. type: Plain text
 msgid "`**` = `/profile=auth-server-clustered/subsystem=keycloak-server`"
-msgstr ""
+msgstr "`**` = `/profile=auth-server-clustered/subsystem=keycloak-server`"
 
 #. type: Title ====
 #, no-wrap
 msgid "Change the web context of the server"
-msgstr ""
+msgstr "サーバーのwebコンテキストの変更"
 
 #. type: delimited block -
 #, no-wrap
 msgid "/subsystem=keycloak-server/:write-attribute(name=web-context,value=myContext)\n"
-msgstr ""
+msgstr "/subsystem=keycloak-server/:write-attribute(name=web-context,value=myContext)\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Set the global default theme"
-msgstr ""
+msgstr "グローバルなデフォルトテーマの設定"
 
 #. type: delimited block -
 #, no-wrap
 msgid "**/theme=defaults/:write-attribute(name=default,value=myTheme)\n"
-msgstr ""
+msgstr "**/theme=defaults/:write-attribute(name=default,value=myTheme)\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Add a new SPI and a provider"
-msgstr ""
+msgstr "新しいSPIとプロバイダの追加"
 
 #. type: delimited block -
 #, no-wrap
 msgid "**/spi=mySPI/:add\n"
 "**/spi=mySPI/provider=myProvider/:add(enabled=true)\n"
-msgstr ""
+msgstr "**/spi=mySPI/:add\n"
+"**/spi=mySPI/provider=myProvider/:add(enabled=true)\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Disable a provider"
-msgstr ""
+msgstr "プロバイダーの無効化"
 
 #. type: delimited block -
 #, no-wrap
 msgid "**/spi=mySPI/provider=myProvider/:write-attribute(name=enabled,value=false)\n"
-msgstr ""
+msgstr "**/spi=mySPI/provider=myProvider/:write-attribute(name=enabled,value=false)\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Change the default provider for an SPI"
-msgstr ""
+msgstr "SPIのデフォルトプロバイダーの変更"
 
 #. type: delimited block -
 #, no-wrap
 msgid "**/spi=mySPI/:write-attribute(name=default-provider,value=myProvider)\n"
-msgstr ""
+msgstr "**/spi=mySPI/:write-attribute(name=default-provider,value=myProvider)\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Configure the dblock SPI"
-msgstr ""
+msgstr "dblock SPIの設定"
 
 #. type: delimited block -
 #, no-wrap
 msgid "**/spi=dblock/:add(default-provider=jpa)\n"
 "**/spi=dblock/provider=jpa/:add(properties={lockWaitTimeout => \"900\"},enabled=true)\n"
-msgstr ""
+msgstr "**/spi=dblock/:add(default-provider=jpa)\n"
+"**/spi=dblock/provider=jpa/:add(properties={lockWaitTimeout => \"900\"},enabled=true)\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Add or change a single property value for a provider"
-msgstr ""
+msgstr "プロバイダーのシングル・プロパティ値の追加または変更"
 
 #. type: delimited block -
 #, no-wrap
 msgid "**/spi=dblock/provider=jpa/:map-put(name=properties,key=lockWaitTimeout,value=3)\n"
-msgstr ""
+msgstr "**/spi=dblock/provider=jpa/:map-put(name=properties,key=lockWaitTimeout,value=3)\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Remove a single property from a provider"
-msgstr ""
+msgstr "プロバイダーからのシングル・プロパティの削除"
 
 #. type: delimited block -
 #, no-wrap
 msgid "**/spi=dblock/provider=jpa/:map-remove(name=properties,key=lockRecheckTime)\n"
-msgstr ""
+msgstr "**/spi=dblock/provider=jpa/:map-remove(name=properties,key=lockRecheckTime)\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Set values on a provider property of type `List`"
-msgstr ""
+msgstr " `List` 型のプロバイダー・プロパティ値の設定"
 
 #. type: delimited block -
 #, no-wrap
 msgid "**/spi=eventsStore/provider=jpa/:map-put(name=properties,key=exclude-events,value=[EVENT1,EVENT2])\n"
-msgstr ""
+msgstr "**/spi=eventsStore/provider=jpa/:map-put(name=properties,key=exclude-events,value=[EVENT1,EVENT2])\n"
 

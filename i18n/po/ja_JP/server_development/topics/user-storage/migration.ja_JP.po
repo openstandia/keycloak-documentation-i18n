@@ -2,16 +2,17 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
+"teams/79437/ja_JP/)\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Plain text
@@ -139,8 +140,8 @@ msgid ""
 "Also note that in the earlier SPI, this method was called every time the "
 "user was accessed, even if the local user is in the cache.  In the later "
 "SPI, this method is only called when the local user is loaded from local "
-"storage. If the local user is cached, then the "
-"`ImportedUserValidation.validate()` method is not called at all."
+"storage. If the local user is cached, then the `ImportedUserValidation."
+"validate()` method is not called at all."
 msgstr ""
 
 #. type: Plain text
@@ -157,17 +158,17 @@ msgid ""
 "`registerUser()`, and `removeUser()` have been moved to the "
 "`UserRegistrationProvider` capability interface. This new interface is "
 "optional to implement so if your provider does not support creating and "
-"removing users, you don't have to implement it. If your earlier provider had"
-" switch to toggle support for registering new users, this is supported in "
-"the new SPI, returning `null` from `UserRegistrationProvider.addUser()` if "
-"the provider doesn't support adding users."
+"removing users, you don't have to implement it. If your earlier provider had "
+"switch to toggle support for registering new users, this is supported in the "
+"new SPI, returning `null` from `UserRegistrationProvider.addUser()` if the "
+"provider doesn't support adding users."
 msgstr ""
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/migration.adoc:63
 msgid ""
-"The earlier `UserFederationProvider` methods centered around credentials are"
-" now encapsulated in the `CredentialInputValidator` and "
+"The earlier `UserFederationProvider` methods centered around credentials are "
+"now encapsulated in the `CredentialInputValidator` and "
 "`CredentialInputUpdater` interfaces, which are also optional to implement "
 "depending on if you support validating or updating credentials.  Credential "
 "management used to exist in `UserModel` methods. These also have been moved "
@@ -184,9 +185,8 @@ msgstr ""
 msgid ""
 "The `UserFederationProvider` query methods such as `searchByAttributes()` "
 "and `getGroupMembers()` are now encapsulated in an optional interface "
-"`UserQueryProvider`. If you do not implement this interface, then users will"
-" not be viewable in the admin console.  You'll still be able to login "
-"though."
+"`UserQueryProvider`. If you do not implement this interface, then users will "
+"not be viewable in the admin console.  You'll still be able to login though."
 msgstr ""
 
 #. type: Title ====
@@ -214,8 +214,8 @@ msgstr ""
 #: source/server_development/topics/user-storage/migration.adoc:80
 msgid ""
 "The User Storage SPI instances are stored in a different set of relational "
-"tables. {project_name} automatically runs a migration script. If any earlier"
-" User Federation providers are deployed for a realm, they are converted to "
+"tables. {project_name} automatically runs a migration script. If any earlier "
+"User Federation providers are deployed for a realm, they are converted to "
 "the later storage model as is, including the `id` of the data. This "
 "migration will only happen if a User Storage provider exists with the same "
 "provider ID (i.e., \"ldap\", \"kerberos\") as the earlier User Federation "

@@ -2,17 +2,18 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
 "Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
+"teams/79437/ja_JP/)\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ====
@@ -97,8 +98,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_admin/topics/authentication/kerberos.adoc:21
 msgid ""
-"{project_name} validates token from the browser and authenticates the user."
-"  It provisions user data from LDAP (in case of LDAPFederationProvider with "
+"{project_name} validates token from the browser and authenticates the user.  "
+"It provisions user data from LDAP (in case of LDAPFederationProvider with "
 "Kerberos authentication support) or let user to update his profile and "
 "prefill data (in case of KerberosFederationProvider)."
 msgstr ""
@@ -170,15 +171,15 @@ msgstr ""
 msgid ""
 "Add service principal for \"HTTP\" service.  For example if your "
 "{project_name} server will be running on `www.mydomain.org` you may need to "
-"add principal `HTTP/www.mydomain.org@MYDOMAIN.ORG` assuming that "
-"MYDOMAIN.ORG will be your Kerberos realm."
+"add principal `HTTP/www.mydomain.org@MYDOMAIN.ORG` assuming that MYDOMAIN."
+"ORG will be your Kerberos realm."
 msgstr ""
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/kerberos.adoc:48
 msgid ""
-"For example on MIT Kerberos you can run a \"kadmin\" session.  If you are on"
-" the same machine where is MIT Kerberos, you can simply use the command:"
+"For example on MIT Kerberos you can run a \"kadmin\" session.  If you are on "
+"the same machine where is MIT Kerberos, you can simply use the command:"
 msgstr ""
 
 #. type: delimited block -
@@ -215,10 +216,10 @@ msgid ""
 "You need to install a kerberos client on your machine.  This is also "
 "platform dependent.  If you are on Fedora, Ubuntu or RHEL, you can install "
 "the package `freeipa-client`, which contains a Kerberos client and several "
-"other utilities.  Configure the kerberos client (on linux it's in file "
-"`/etc/krb5.conf` ). You need to put your Kerberos realm and at least "
-"configure the HTTP domains your server will be running on.  For the example "
-"realm MYDOMAIN.ORG you may configure the `domain_realm` section like this:"
+"other utilities.  Configure the kerberos client (on linux it's in file `/etc/"
+"krb5.conf` ). You need to put your Kerberos realm and at least configure the "
+"HTTP domains your server will be running on.  For the example realm MYDOMAIN."
+"ORG you may configure the `domain_realm` section like this:"
 msgstr ""
 
 #. type: delimited block -
@@ -234,8 +235,8 @@ msgstr ""
 #: source/server_admin/topics/authentication/kerberos.adoc:82
 msgid ""
 "Next you need to export the keytab file with the HTTP principal and make "
-"sure the file is accessible to the process under which {project_name} server"
-" is running.  For production, it's ideal if it's readable just by this "
+"sure the file is accessible to the process under which {project_name} server "
+"is running.  For production, it's ideal if it's readable just by this "
 "process and not by someone else.  For the MIT Kerberos example above, we "
 "already exported keytab to `/tmp/http.keytab` . If your KDC and "
 "{project_name} are running on same host, you have that file already "
@@ -259,11 +260,11 @@ msgstr ""
 #. type: Plain text
 #: source/server_admin/topics/authentication/kerberos.adoc:94
 msgid ""
-"Switch the `Kerberos` requirement from _disabled_ to either _alternative_ or"
-" _required_.  _Alternative_ basically means that Kerberos is optional.  If "
-"the user's browser hasn't been configured to work with SPNEGO/Kerberos, then"
-" {project_name} will fall back to the regular login screens.  If you set the"
-" requirement to _required_ then all users must have Kerberos enabled for "
+"Switch the `Kerberos` requirement from _disabled_ to either _alternative_ or "
+"_required_.  _Alternative_ basically means that Kerberos is optional.  If "
+"the user's browser hasn't been configured to work with SPNEGO/Kerberos, then "
+"{project_name} will fall back to the regular login screens.  If you set the "
+"requirement to _required_ then all users must have Kerberos enabled for "
 "their browser."
 msgstr ""
 
@@ -277,18 +278,18 @@ msgstr ""
 #: source/server_admin/topics/authentication/kerberos.adoc:99
 msgid ""
 "Now that the SPNEGO protocol is turned on at the authentication server, "
-"you'll need to configure how {project_name} interprets the Kerberos ticket."
-"  This is done through <<_user-storage-federation,User Storage Federation>>."
-" We have 2 different federation providers with Kerberos authentication "
+"you'll need to configure how {project_name} interprets the Kerberos ticket.  "
+"This is done through <<_user-storage-federation,User Storage Federation>>. "
+"We have 2 different federation providers with Kerberos authentication "
 "support."
 msgstr ""
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/kerberos.adoc:102
 msgid ""
-"If you want to authenticate with Kerberos backed by an LDAP server, you have"
-" to first configure the <<_ldap, LDAP Federation Provider>>.  If you look at"
-" the configuration page for your LDAP provider you'll see a `Kerberos "
+"If you want to authenticate with Kerberos backed by an LDAP server, you have "
+"to first configure the <<_ldap, LDAP Federation Provider>>.  If you look at "
+"the configuration page for your LDAP provider you'll see a `Kerberos "
 "Integration` section."
 msgstr ""
 
@@ -345,9 +346,9 @@ msgstr ""
 msgid ""
 "Clients need to install kerberos client and setup krb5.conf as described "
 "above.  Additionally they need to enable SPNEGO login support in their "
-"browser.  See "
-"link:http://www.microhowto.info/howto/configure_firefox_to_authenticate_using_spnego_and_kerberos.html[configuring"
-" Firefox for Kerberos] if you are using that browser.  URI `.mydomain.org` "
+"browser.  See link:http://www.microhowto.info/howto/"
+"configure_firefox_to_authenticate_using_spnego_and_kerberos.html[configuring "
+"Firefox for Kerberos] if you are using that browser.  URI `.mydomain.org` "
 "must be allowed in the `network.negotiate-auth.trusted-uris` config option."
 msgstr ""
 
@@ -396,12 +397,11 @@ msgstr ""
 #. type: Plain text
 #: source/server_admin/topics/authentication/kerberos.adoc:144
 msgid ""
-"For quick testing and unit tests, we use a very simple "
-"http://directory.apache.org/apacheds/[ApacheDS] Kerberos server.  You need "
-"to build {project_name} from sources and then run the Kerberos server with "
-"maven-exec-plugin from our testsuite.  See details "
-"https://github.com/keycloak/keycloak/blob/master/misc/Testsuite.md#user-"
-"content-kerberos-server[here] ."
+"For quick testing and unit tests, we use a very simple http://directory."
+"apache.org/apacheds/[ApacheDS] Kerberos server.  You need to build "
+"{project_name} from sources and then run the Kerberos server with maven-exec-"
+"plugin from our testsuite.  See details https://github.com/keycloak/keycloak/"
+"blob/master/misc/Testsuite.md#user-content-kerberos-server[here] ."
 msgstr ""
 
 #. type: Title ====
@@ -413,9 +413,9 @@ msgstr ""
 #. type: Plain text
 #: source/server_admin/topics/authentication/kerberos.adoc:155
 msgid ""
-"Kerberos 5 supports the concept of credential delegation.  In this scenario,"
-" your applications may want access to the Kerberos ticket so that they can "
-"re-use it to interact with other services secured by Kerberos.  Since the "
+"Kerberos 5 supports the concept of credential delegation.  In this scenario, "
+"your applications may want access to the Kerberos ticket so that they can re-"
+"use it to interact with other services secured by Kerberos.  Since the "
 "SPNEGO protocol is processed in the {project_name} server, you have to "
 "propagate the GSS credential to your application within the OpenID Connect "
 "token claim or a SAML assertion attribute that is transmitted to your "
@@ -477,15 +477,15 @@ msgstr ""
 msgid ""
 "We have an example, that shows this in detail.  It's in `examples/kerberos` "
 "in the {project_name} example distribution or demo distribution download.  "
-"You can also check the example sources directly "
-"https://github.com/keycloak/keycloak/tree/master/examples/kerberos[here] ."
+"You can also check the example sources directly https://github.com/keycloak/"
+"keycloak/tree/master/examples/kerberos[here] ."
 msgstr ""
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/kerberos.adoc:186
 msgid ""
-"Note that you also need to configure `forwardable` kerberos tickets in "
-"`krb5.conf` file and add support for delegated credentials to your browser."
+"Note that you also need to configure `forwardable` kerberos tickets in `krb5."
+"conf` file and add support for delegated credentials to your browser."
 msgstr ""
 
 #. type: Plain text
@@ -500,8 +500,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_admin/topics/authentication/kerberos.adoc:194
 msgid ""
-"If you have issues, we recommend that you enable additional logging to debug"
-" the problem:"
+"If you have issues, we recommend that you enable additional logging to debug "
+"the problem:"
 msgstr ""
 
 #. type: Plain text
@@ -515,13 +515,13 @@ msgstr ""
 #: source/server_admin/topics/authentication/kerberos.adoc:197
 msgid ""
 "Enable TRACE logging for category `org.keycloak` in logging section of "
-"`standalone/configuration/standalone.xml` to receive more info "
-"`standalone/log/server.log`"
+"`standalone/configuration/standalone.xml` to receive more info `standalone/"
+"log/server.log`"
 msgstr ""
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/kerberos.adoc:197
 msgid ""
-"Add system properties `-Dsun.security.krb5.debug=true` and "
-"`-Dsun.security.spnego.debug=true`"
+"Add system properties `-Dsun.security.krb5.debug=true` and `-Dsun.security."
+"spnego.debug=true`"
 msgstr ""

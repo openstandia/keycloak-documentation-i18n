@@ -2,17 +2,18 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
 "Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
+"teams/79437/ja_JP/)\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
@@ -72,10 +73,10 @@ msgstr ""
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:20
 msgid ""
-"Dealing with clustering is not quite as simple as for a regular application."
-" Mainly due to the fact that both the browser and the server-side "
-"application sends requests to {project_name}, so it's not as simple as "
-"enabling sticky sessions on your load balancer."
+"Dealing with clustering is not quite as simple as for a regular application. "
+"Mainly due to the fact that both the browser and the server-side application "
+"sends requests to {project_name}, so it's not as simple as enabling sticky "
+"sessions on your load balancer."
 msgstr ""
 
 #. type: Title =====
@@ -88,8 +89,8 @@ msgstr ""
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:25
 msgid ""
 "By default, the web application secured by {project_name} uses the HTTP "
-"session to store security context. This means that you either have to enable"
-" sticky sessions or replicate the HTTP session."
+"session to store security context. This means that you either have to enable "
+"sticky sessions or replicate the HTTP session."
 msgstr ""
 
 #. type: Plain text
@@ -97,8 +98,8 @@ msgstr ""
 msgid ""
 "As an alternative to storing the security context in the HTTP session the "
 "adapter can be configured to store this in a cookie instead. This is useful "
-"if you want to make your application stateless or if you don't want to store"
-" the security context in the HTTP session."
+"if you want to make your application stateless or if you don't want to store "
+"the security context in the HTTP session."
 msgstr ""
 
 #. type: Plain text
@@ -119,18 +120,13 @@ msgstr ""
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:36
 #, no-wrap
-msgid ""
-"NOTE: The default value for `token-store` is `session`, which stores the "
-"security context in the HTTP session.\n"
+msgid "NOTE: The default value for `token-store` is `session`, which stores the security context in the HTTP session.\n"
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:38
 #, no-wrap
-msgid ""
-"One limitation of using the cookie store is that the whole security context "
-"is passed in the cookie for every HTTP request. This may impact "
-"performance.\n"
+msgid "One limitation of using the cookie store is that the whole security context is passed in the cookie for every HTTP request. This may impact performance.\n"
 msgstr ""
 
 #. type: delimited block -
@@ -195,18 +191,18 @@ msgstr ""
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:65
 msgid ""
 ". User sends logout request from one application . The application sends "
-"logout request to {project_name} . The {project_name} server invalidates the"
-" user session . The {project_name} server then sends a backchannel request "
-"to application with an admin url that are associated with the session . When"
-" an application receives the logout request it invalidates the corresponding"
-" HTTP session"
+"logout request to {project_name} . The {project_name} server invalidates the "
+"user session . The {project_name} server then sends a backchannel request to "
+"application with an admin url that are associated with the session . When an "
+"application receives the logout request it invalidates the corresponding "
+"HTTP session"
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:67
 msgid ""
-"If admin URL contains `${application.session.host}` it will be replaced with"
-" the URL to the node associated with the HTTP session."
+"If admin URL contains `${application.session.host}` it will be replaced with "
+"the URL to the node associated with the HTTP session."
 msgstr ""
 
 #. type: delimited block -
@@ -223,19 +219,19 @@ msgstr ""
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:74
 msgid ""
-"The previous section describes how {project_name} can send logout request to"
-" node associated with a specific HTTP session.  However, in some cases admin"
-" may want to propagate admin tasks to all registered cluster nodes, not just"
-" one of them.  For example to push a new not before policy to the "
-"application or to logout all users from the application."
+"The previous section describes how {project_name} can send logout request to "
+"node associated with a specific HTTP session.  However, in some cases admin "
+"may want to propagate admin tasks to all registered cluster nodes, not just "
+"one of them.  For example to push a new not before policy to the application "
+"or to logout all users from the application."
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:77
 msgid ""
 "In this case {project_name} needs to be aware of all application cluster "
-"nodes, so it can send the event to all of them.  To achieve this, we support"
-" auto-discovery mechanism:"
+"nodes, so it can send the event to all of them.  To achieve this, we support "
+"auto-discovery mechanism:"
 msgstr ""
 
 #. type: delimited block -
@@ -252,17 +248,13 @@ msgstr ""
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:85
 #, no-wrap
-msgid ""
-"Sending startup registrations and periodic re-registration is disabled by "
-"default as it's only required for some clustered applications.\n"
+msgid "Sending startup registrations and periodic re-registration is disabled by default as it's only required for some clustered applications.\n"
 msgstr ""
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:87
 #, no-wrap
-msgid ""
-"To enable the feature edit the `WEB-INF/keycloak.json` file for your "
-"application and add:\n"
+msgid "To enable the feature edit the `WEB-INF/keycloak.json` file for your application and add:\n"
 msgstr ""
 
 #. type: delimited block -
@@ -286,9 +278,7 @@ msgstr ""
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/application-clustering.adoc:95
 #, no-wrap
-msgid ""
-"This means the adapter will send the registration request on startup and re-"
-"register every 10 minutes.\n"
+msgid "This means the adapter will send the registration request on startup and re-register every 10 minutes.\n"
 msgstr ""
 
 #. type: delimited block -

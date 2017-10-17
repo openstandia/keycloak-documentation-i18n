@@ -1,0 +1,140 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: keycloak-documentation-i18n\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /develop/i18n/po/ja_JP/"
+"server_installation__topics__database__datasource.ja_JP.po\n"
+
+#. type: Title ===
+#: source/server_installation/topics/database/datasource.adoc:2
+#, no-wrap
+msgid "Modify the {project_name} Datasource"
+msgstr "{project_name}データソースの変更"
+
+#. type: Plain text
+#: source/server_installation/topics/database/datasource.adoc:8
+msgid ""
+"After declaring your JDBC driver, you have to modify the existing datasource "
+"configuration that {project_name} uses to connect it to your new external "
+"database.  You'll do this within the same configuration file and XML block "
+"that you registered your JDBC driver in.  Here's an example that sets up the "
+"connection to your new database:"
+msgstr ""
+"JDBCドライバを宣言したら、{project_name}が新しい外部データベースに接続するた"
+"めに使用する既存のデータソース設定を変更する必要があります。これは、JDBCドラ"
+"イバを登録したのと同じ設定ファイルとXMLブロック内で行います。サンプルとして、"
+"新しいデータベースへの接続を設定すると以下のとおりになります。"
+
+#. type: Block title
+#: source/server_installation/topics/database/datasource.adoc:9
+#: source/server_installation/topics/database/jdbc.adoc:56
+#, no-wrap
+msgid "Declare Your JDBC Drivers"
+msgstr "JDBCドライバの宣言"
+
+#. type: delimited block -
+#: source/server_installation/topics/database/datasource.adoc:29
+#, no-wrap
+msgid ""
+"  <subsystem xmlns=\"urn:jboss:domain:datasources:4.0\">\n"
+"     <datasources>\n"
+"       ...\n"
+"       <datasource jndi-name=\"java:jboss/datasources/KeycloakDS\" pool-name=\"KeycloakDS\" enabled=\"true\" use-java-context=\"true\">\n"
+"           <connection-url>jdbc:postgresql://localhost/keycloak</connection-url>\n"
+"           <driver>postgresql</driver>\n"
+"           <pool>\n"
+"               <max-pool-size>20</max-pool-size>\n"
+"           </pool>\n"
+"           <security>\n"
+"               <user-name>William</user-name>\n"
+"               <password>password</password>\n"
+"           </security>\n"
+"       </datasource>\n"
+"        ...\n"
+"     </datasources>\n"
+"  </subsystem>\n"
+msgstr ""
+"  <subsystem xmlns=\"urn:jboss:domain:datasources:4.0\">\n"
+"     <datasources>\n"
+"       ...\n"
+"       <datasource jndi-name=\"java:jboss/datasources/KeycloakDS\" pool-name=\"KeycloakDS\" enabled=\"true\" use-java-context=\"true\">\n"
+"           <connection-url>jdbc:postgresql://localhost/keycloak</connection-url>\n"
+"           <driver>postgresql</driver>\n"
+"           <pool>\n"
+"               <max-pool-size>20</max-pool-size>\n"
+"           </pool>\n"
+"           <security>\n"
+"               <user-name>William</user-name>\n"
+"               <password>password</password>\n"
+"           </security>\n"
+"       </datasource>\n"
+"        ...\n"
+"     </datasources>\n"
+"  </subsystem>\n"
+
+#. type: Plain text
+#: source/server_installation/topics/database/datasource.adoc:33
+msgid ""
+"Search for the `datasource` definition for `KeycloakDS`.  You'll first need "
+"to modify the `connection-url`.  The documentation for your vendor's JDBC "
+"implementation should specify the format for this connection URL value."
+msgstr ""
+" `KeycloakDS` 用の `datasource` 定義を検索します。まず `connection-url` を変"
+"更する必要があります。この接続URL値の形式は、ベンダーのJDBC実装のドキュメント"
+"によって指定されます。"
+
+#. type: Plain text
+#: source/server_installation/topics/database/datasource.adoc:36
+msgid ""
+"Next define the `driver` you will use.  This is the logical name of the JDBC "
+"driver you declared in the previous section of this chapter."
+msgstr ""
+"次に、使用する `driver` を定義します。これは、この章の前のセクションで宣言し"
+"たJDBCドライバの論理名になります。"
+
+#. type: Plain text
+#: source/server_installation/topics/database/datasource.adoc:40
+msgid ""
+"It is expensive to open a new connection to a database every time you want "
+"to perform a transaction.  To compensate, the datasource implementation "
+"maintains a pool of open connections.  The `max-pool-size` specifies the "
+"maximum number of connections it will pool.  You may want to change the "
+"value of this depending on the load of your system."
+msgstr ""
+"トランザクションを実行するたびにデータベースへの新しい接続を開くのは処理コス"
+"トがかかります。これを補うために、データソース実装はオープンな接続のプールを"
+"維持します。 `max-pool-size` によって、プールする接続の最大数が指定されます。"
+"システムの負荷に応じて、この値を変更することができます。"
+
+#. type: Plain text
+#: source/server_installation/topics/database/datasource.adoc:44
+msgid ""
+"Finally, with PostgreSQL at least, you need to define the database username "
+"and password that is needed to connect to the database.  You may be worried "
+"that this is in clear text in the example.  There are methods to obfuscate "
+"this, but this is beyond the scope of this guide."
+msgstr ""
+"最後に、少なくともPostgreSQLでは、データベースへの接続に必要なデータベースの"
+"ユーザー名とパスワードを定義する必要があります。このサンプルでは、これが簡単"
+"なテキストであることを心配されるかもしれませんが、難読化する方法は複数ありま"
+"す。しかし、それはこのガイドの範囲外となります。"
+
+#. type: Plain text
+#: source/server_installation/topics/database/datasource.adoc:45
+msgid ""
+"For more information about datasource features, see link:"
+"{appserver_datasource_link}[the datasource configuration chapter] in the "
+"_{appserver_admindoc_name}_."
+msgstr ""
+"データソース機能について、詳しくは _{appserver_admindoc_name}_ 内のlink:"
+"{appserver_datasource_link}[the datasource configuration chapter]をご覧くださ"
+"い。"

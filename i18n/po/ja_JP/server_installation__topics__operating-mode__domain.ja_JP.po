@@ -12,7 +12,7 @@ msgstr ""
 "X-Crowdin-Project: keycloak-documentation-i18n\n"
 "X-Crowdin-Language: ja\n"
 "X-Crowdin-File: /develop/i18n/po/ja_JP/server_installation__topics__operating-mode__domain.ja_JP.po\n"
-"PO-Revision-Date: 2017-10-16 00:11-0400\n"
+"PO-Revision-Date: 2017-10-16 23:20-0400\n"
 
 #. type: Block title
 #, no-wrap
@@ -35,7 +35,7 @@ msgstr "ドメイン・モードとは、サーバーの設定を一元管理し
 
 #. type: Plain text
 msgid "Running a cluster in standard mode can quickly become aggravating as the cluster grows in size.  Every time you need to make a configuration change, you have perform it on each node in the cluster.  Domain mode solves this problem by providing a central place to store and publish configuration.  It can be quite complex to set up, but it is worth it in the end.  This capability is built into the {appserver_name} Application Server which {project_name} derives from."
-msgstr ""
+msgstr "標準モードでクラスターを実行すると、クラスターが大きくなり、煩雑化する可能性があります。クラスター内の各ノードにおいて、都度設定を変更する必要がでてきてしまいます。一方、ドメイン・モードの場合は、設定を保存しパブリッシュするために一元管理する場所を提供することで、この問題を解決できます。セットアップにはかなり手間がかかりますが、最終的にはその工数は見合うことになります。この機能は{project_name}が構成される{appserver_name}アプリケーション・サーバーに組み込まれています。\n"
 
 #. type: Plain text
 #, no-wrap
@@ -45,21 +45,21 @@ msgstr "このガイドでは、ドメイン・モードの初歩的なところ
 
 #. type: Plain text
 msgid "Here are some of the basic concepts of running in domain mode."
-msgstr ""
+msgstr "ドメイン・モードを実行する基本的なコンセプトは、以下のとおりです。"
 
 #. type: Labeled list
 #, no-wrap
 msgid "domain controller"
-msgstr ""
+msgstr "ドメイン・コントローラー"
 
 #. type: Plain text
 msgid "The domain controller is a process that is responsible for storing, managing, and publishing the general configuration for each node in the cluster.  This process is the central point from which nodes in a cluster obtain their configuration."
-msgstr ""
+msgstr "ドメイン・コントローラーとは、クラスター内の各ノードの一般的な設定を保存、管理、パブリッシュする役割をもつ、プロセスのことです。また、クラスター内の各ノードが取得する設定を一元管理するデータベースでもあります。"
 
 #. type: Labeled list
 #, no-wrap
 msgid "host controller"
-msgstr ""
+msgstr "ホスト・コントローラー"
 
 #. type: Plain text
 msgid "The host controller is responsible for managing server instances on a specific machine.  You configure it to run one or more server instances.  The domain controller can also interact with the host controllers on each machine to manage the cluster.  To reduce the number of running process, a domain controller also acts as a host controller on the machine it runs on."
@@ -68,11 +68,11 @@ msgstr "ホスト・コントローラーの役割は、特定のマシン内の
 #. type: Labeled list
 #, no-wrap
 msgid "domain profile"
-msgstr ""
+msgstr "ドメイン・プロファイル"
 
 #. type: Plain text
 msgid "A domain profile is a named set of configuration that can be used by a server to boot from.  A domain controller can define multiple domain profiles that are consumed by different servers."
-msgstr ""
+msgstr "ドメイン・プロファイルとは、サーバーを起動するために使用する、倫理名付きの設定セットです。ドメイン・コントローラで、複数のドメイン・プロファイルを定義することができます。そして、さまざまなサーバーがこのドメイン・プロファイルを消費することになります。"
 
 #. type: Block title
 #, no-wrap
@@ -81,45 +81,45 @@ msgstr "サーバーグループ"
 
 #. type: Plain text
 msgid "A server group is a collection of servers.  They are managed and configured as one.  You can assign a domain profile to a server group and every service in that group will use that domain profile as their configuration."
-msgstr ""
+msgstr "サーバーグループとは、サーバーの集合体です。ひとつの集合体として管理、設定されます。サーバーグループに、ドメイン・プロファイルを割り当てることができます。そして、そのドメイン・プロファイルはサーバーグループ内のサービスの設定として使用されます。"
 
 #. type: Plain text
 msgid "In domain mode, a domain controller is started on a master node.  The configuration for the cluster resides in the domain controller.  Next a host controller is started on each machine in the cluster.  Each host controller deployment configuration specifies how many {project_name} server instances will be started on that machine.  When the host controller boots up, it starts as many {project_name} server instances as it was configured to do.  These server instances pull their configuration from the domain controller."
-msgstr ""
+msgstr "ドメイン・モードでは、マスタ・ノード上でドメイン・コントローラが起動されます。クラスタの設定は、ドメイン・コントローラ内にあります。次に、ホスト・コントローラがクラスタ内の各マシンで起動されます。各ホスト・コントローラーのデプロイ設定では、そのマシンで起動する{project_name}サーバー・インスタンスの数を指定します。ホスト・コントローラが起動すると、指定された数の{project_name}サーバー・インスタンスが起動します。これらのサーバー・インスタンスは、ドメイン・コントローラから設定を取得します。\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Domain Configuration"
-msgstr ""
+msgstr "ドメイン設定"
 
 #. type: Plain text
 msgid "Various other chapters in this guide walk you through configuring various aspects like databases, HTTP network connections, caches, and other infrastructure related things.  While standalone mode uses the _standalone.xml_ file to configure these things, domain mode uses the _.../domain/configuration/domain.xml_ configuration file.  This is where the domain profile and server group for the {project_name} server are defined."
-msgstr ""
+msgstr "このガイドの各章では、データベース、HTTPネットワーク接続、キャッシュ、およびその他の基盤関連のさまざまな設定について、ご説明します。これらを設定するために、スタンドアロン・モードでは  _standalone.xml_ ファイルを使用するのに対して、ドメイン・モードでは _.../domain/configuration/domain.xml_ を使用します。Keycloakサーバーのドメイン・プロファイルとサーバーグループは、以下で定義されます。"
 
 #. type: Block title
 #, no-wrap
 msgid "domain.xml"
-msgstr ""
+msgstr "domain.xml"
 
 #. type: Plain text
 msgid "image:{project_images}/domain-file.png[]"
-msgstr ""
+msgstr "image:{project_images}/domain-file.png[]"
 
 #. type: Plain text
 #, no-wrap
 msgid "Any changes you make to this file while the domain controller is running will not take effect and may even be overwritten\n"
 "      by the server.  Instead use the the command line scripting or the web console of {appserver_name}.  See\n"
 "      the link:{appserver_admindoc_link}[_{appserver_admindoc_name}_] for more information.\n"
-msgstr ""
+msgstr "ドメイン・コントローラの実行中にこのファイルに変更を加えても、変更されず、サーバーに上書きされる可能性があります。その場合は、代わりに{appserver_name}のwebコンソールまたはコマンドライン・スクリプトを使用します。詳しくは、link:{appserver_admindoc_link}[_{appserver_admindoc_name}_]をご覧ください。\n"
 
 #. type: Plain text
 msgid "Let's look at some aspects of this _domain.xml_ file.  The `auth-server-standalone` and `auth-server-clustered` `profile` XML blocks are where you are going to make the bulk of your configuration decisions.  You'll be configuring things here like network connections, caches, and database connections."
-msgstr ""
+msgstr "この _domain.xml_ ファイルの特徴を確認していきましょう。 `auth-server-standalone` と `auth-server-clustered` `profile` XMLブロックでは、どのような設定にするかの大半を定義します。そして、ネットワーク接続、キャッシュ、データベース接続などを設定します。"
 
 #. type: Block title
 #, no-wrap
 msgid "auth-server profile"
-msgstr ""
+msgstr "認証サーバー・プロファイル"
 
 #. type: delimited block -
 #, no-wrap
@@ -130,20 +130,26 @@ msgid "    <profiles>\n"
 "       <profile name=\"auth-server-clustered\">\n"
 "           ...\n"
 "        </profile>\n"
-msgstr ""
+msgstr "    <profiles>\n"
+"        <profile name=\"auth-server-standalone\">\n"
+"            ...\n"
+"         </profile>\n"
+"       <profile name=\"auth-server-clustered\">\n"
+"           ...\n"
+"        </profile>\n"
 
 #. type: Plain text
 msgid "The `auth-server-standalone` profile is a non-clustered setup.  The `auth-server-clustered` profile is the clustered setup."
-msgstr ""
+msgstr " `auth-server-standalone` プロファイルは、非クラスタ構成のセットアップです。一方 `auth-server-clustered` プロファイルは、クラスタ構成されたセットアップです。"
 
 #. type: Plain text
 msgid "If you scroll down further, you'll see various `socket-binding-groups` defined."
-msgstr ""
+msgstr "スクロールダウンしていくと、定義済みの `socket-binding-groups` が表示されます。"
 
 #. type: Block title
 #, no-wrap
 msgid "socket-binding-groups"
-msgstr ""
+msgstr "ソケット接続グループ"
 
 #. type: delimited block -
 #, no-wrap

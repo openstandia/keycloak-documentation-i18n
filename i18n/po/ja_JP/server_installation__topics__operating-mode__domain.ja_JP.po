@@ -12,7 +12,7 @@ msgstr ""
 "X-Crowdin-Project: keycloak-documentation-i18n\n"
 "X-Crowdin-Language: ja\n"
 "X-Crowdin-File: /develop/i18n/po/ja_JP/server_installation__topics__operating-mode__domain.ja_JP.po\n"
-"PO-Revision-Date: 2017-10-16 23:20-0400\n"
+"PO-Revision-Date: 2017-10-16 23:30-0400\n"
 
 #. type: Block title
 #, no-wrap
@@ -165,20 +165,31 @@ msgid "    <socket-binding-groups>\n"
 "           ...\n"
 "        </socket-binding-group>\n"
 "    </socket-binding-groups>\n"
-msgstr ""
+msgstr "    <socket-binding-groups>\n"
+"        <socket-binding-group name=\"standard-sockets\" default-interface=\"public\">\n"
+"           ...\n"
+"        </socket-binding-group>\n"
+"        <socket-binding-group name=\"ha-sockets\" default-interface=\"public\">\n"
+"           ...\n"
+"        </socket-binding-group>\n"
+"        <!-- load-balancer-socketsはプロダクション環境では取り除かれ、高度なソフトウェアまたはハードウェアに取り換えられます -->\n"
+"        <socket-binding-group name=\"load-balancer-sockets\" default-interface=\"public\">\n"
+"           ...\n"
+"        </socket-binding-group>\n"
+"    </socket-binding-groups>\n"
 
 #. type: Plain text
 msgid "This config defines the default port mappings for various connectors that are opened with each {project_name} server instance.  Any value that contains `${...}` is a value that can be overriden on the command line with the `-D` switch, i.e."
-msgstr ""
+msgstr "この設定により、各{project_name}サーバー・インスタンスによって開かれる、さまざまなコネクタのデフォルトのポート・マッピング機能が実行されます。つまり、${…​}を含む値はコマンドラインの `-D` スイッチで上書きできる数値です。\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "$ domain.sh -Djboss.http.port=80\n"
-msgstr ""
+msgstr "$ domain.sh -Djboss.http.port=80\n"
 
 #. type: Plain text
 msgid "The definition of the server group for {project_name} resides in the `server-groups` XML block.  It specifies the domain profile that is used (`default`) and also some default boot arguments for the Java VM when the host controller boots an instance.  It also binds a `socket-binding-group` to the server group."
-msgstr ""
+msgstr "{project_name}のサーバーグループの定義は、 `server-groups` XMLブロックにあります。ホスト・コントローラがインスタンスを起動する場合、この定義により、 `default` で使用されているドメイン・プロファイル、およびJava VMのデフォルト起動引数が指定されます。また、 `socket-binding-group` をサーバーグループにバインドします。"
 
 #. type: delimited block -
 #, no-wrap
@@ -197,36 +208,50 @@ msgid "    <server-groups>\n"
 "            <socket-binding-group ref=\"ha-sockets\"/>\n"
 "        </server-group>\n"
 "    </server-groups>\n"
-msgstr ""
+msgstr "    <server-groups>\n"
+"        <!-- load-balancer-groupはプロダクション環境では取り除かれ、高度なソフトウェアまたはハードウェアに取り換えられます -->\n"
+"        <server-group name=\"load-balancer-group\" profile=\"load-balancer\">\n"
+"            <jvm name=\"default\">\n"
+"                <heap size=\"64m\" max-size=\"512m\"/>\n"
+"            </jvm>\n"
+"            <socket-binding-group ref=\"load-balancer-sockets\"/>\n"
+"        </server-group>\n"
+"        <server-group name=\"auth-server-group\" profile=\"auth-server-clustered\">\n"
+"            <jvm name=\"default\">\n"
+"                <heap size=\"64m\" max-size=\"512m\"/>\n"
+"            </jvm>\n"
+"            <socket-binding-group ref=\"ha-sockets\"/>\n"
+"        </server-group>\n"
+"    </server-groups>\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Host Controller Configuration"
-msgstr ""
+msgstr "ホスト・コントローラ設定"
 
 #. type: Plain text
 msgid "{project_name} comes with two host controller configuration files that reside in the _.../domain/configuration/_ directory: _host-master.xml_ and _host-slave.xml_.  _host-master.xml_ is configured to boot up a domain controller, a load balancer, and one {project_name} server instance.  _host-slave.xml_ is configured to talk to the domain controller and boot up one {project_name} server instance."
-msgstr ""
+msgstr "{project_name}には、 _.../domain/configuration/_ ディレクトリにある、 _host-master.xml_ と _host-slave.xml_ の2つのホスト・コントローラ設定ファイルが付属しています。 _host-master.xml_ はドメイン・コントローラ、ロード・バランサ、および1つの{project_name}サーバー・インスタンスを起動するように設定されています。一方、 _host-slave.xml_ はドメイン・コントローラと通信し、1つの{project_name}サーバー・インスタンスを起動するように設定されています。"
 
 #. type: Plain text
 #, no-wrap
 msgid "The load balancer is not a required service.  It exists so that you can easily test drive clustering on your development\n"
 "       machine.  While usable in production, you have the option of replacing it if you have a different hardware or software\n"
 "       based load balancer you want to use.\n"
-msgstr ""
+msgstr "ロード・バランサは必須サービスではありません。これは、開発マシン上でクラスタリングを簡単にテストできるようにするものです。プロダクション環境では有効ですが、使用するハードウェアまたはソフトウェアベースのロードバランサが異なる場合は、置き換えるかどうかを選択できます。"
 
 #. type: Block title
 #, no-wrap
 msgid "Host Controller Config"
-msgstr ""
+msgstr "ホスト・コントローラ設定"
 
 #. type: Plain text
 msgid "image:{project_images}/host-files.png[]"
-msgstr ""
+msgstr "image:{project_images}/host-files.png[]"
 
 #. type: Plain text
 msgid "To disable the load balancer server instance, edit _host-master.xml_ and comment out or remove the `\"load-balancer\"` entry."
-msgstr ""
+msgstr "ロード・バランサ・サーバー・インスタンスを無効にするには、 _host-master.xml_ を編集し、 \"load-balancer\" エントリをコメント化または削除します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -235,11 +260,15 @@ msgid "    <servers>\n"
 "        <server name=\"load-balancer\" group=\"loadbalancer-group\"/>\n"
 "        ...\n"
 "    </servers>\n"
-msgstr ""
+msgstr "    <servers>\n"
+"        <!-- 次の行を削除またはコメントアウト -->\n"
+"        <server name=\"load-balancer\" group=\"loadbalancer-group\"/>\n"
+"        ...\n"
+"    </servers>\n"
 
 #. type: Plain text
 msgid "Another interesting thing to note about this file is the declaration of the authentication server instance.  It has a `port-offset` setting.  Any network port defined in the _domain.xml_ `socket-binding-group` or the server group will have the value of `port-offset` added to it.  For this example domain setup we do this so that ports opened by the load balancer server don't conflict with the authentication server instance that is started."
-msgstr ""
+msgstr "このファイルに関してもう１つ興味深い点は、認証サーバーインスタンスによる宣言です。これには `port-offset` の番号が設定されています。 _domain.xml_ `socket-binding-group` またはサーバー・グループで定義されたネットワークポートには、port-offsetの値が追加されます。このサンプルでは、ロード・バランサ・サーバーによって開かれたポートが、起動中の認証サーバー・インスタンスと競合しないように、ドメイン設定を行います。"
 
 #. type: delimited block -
 #, no-wrap
@@ -249,38 +278,43 @@ msgid "    <servers>\n"
 "             <socket-bindings port-offset=\"150\"/>\n"
 "        </server>\n"
 "    </servers>\n"
-msgstr ""
+msgstr "    <servers>\n"
+"        ...\n"
+"        <server name=\"server-one\" group=\"auth-server-group\" auto-start=\"true\">\n"
+"             <socket-bindings port-offset=\"150\"/>\n"
+"        </server>\n"
+"    </servers>\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Server Instance Working Directories"
-msgstr ""
+msgstr "サーバー・インスタンス・ワーキング・ディレクトリ"
 
 #. type: Plain text
 msgid "Each {project_name} server instance defined in your host files creates a working directory under _.../domain/servers/{SERVER NAME}_.  Additional configuration can be put there, and any temporary, log, or data files the server instance needs or creates go there too.  The structure of these per server directories ends up looking like any other {appserver_name} booted server."
-msgstr ""
+msgstr "ホスト・ファイルに定義されている各{project_name}サーバー・インスタンスにより、 _.../domain/servers/{SERVER NAME}_ の下に作業ディレクトリが作成されます。そこに追加の設定を保存でき、サーバー・インスタンスが必要とする、または作成する一時ファイル、ログファイル、データファイルも保存することができます。これらのサーバー・ディレクトリごとの構造は、他の{appserver_name}ブートサーバーと同じようなものになります。"
 
 #. type: Block title
 #, no-wrap
 msgid "Working Directories"
-msgstr ""
+msgstr "ワーキング・ディレクトリ"
 
 #. type: Plain text
 msgid "image:{project_images}/domain-server-dir.png[]"
-msgstr ""
+msgstr "image:{project_images}/domain-server-dir.png[]"
 
 #. type: Block title
 #, no-wrap
 msgid "Domain Boot Script"
-msgstr ""
+msgstr "ドメイン起動スクリプト"
 
 #. type: Plain text
 msgid "When running the server in domain mode, there is a specific script you need to run to boot the server depending on your operating system.  These scripts live in the _bin/_ directory of the server distribution."
-msgstr ""
+msgstr "ドメイン・モードでサーバーを実行する場合、オペレーティングシステム固有の起動スクリプトを実行する必要があります。これらのスクリプトは、サーバー配布物の _bin/_ ディレクトリにあります。"
 
 #. type: Plain text
 msgid "image:{project_images}/domain-boot-files.png[]"
-msgstr ""
+msgstr "image:{project_images}/domain-boot-files.png[]"
 
 #. type: Plain text
 msgid "To boot the server:"
@@ -289,59 +323,59 @@ msgstr "サーバーを起動するには下記を実行します。"
 #. type: delimited block -
 #, no-wrap
 msgid "$ .../bin/domain.sh --host-config=host-master.xml\n"
-msgstr ""
+msgstr "$ .../bin/domain.sh --host-config=host-master.xml\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "> ...\\bin\\domain.bat --host-config=host-slave.xml\n"
-msgstr ""
+msgstr "> ...\\bin\\domain.bat --host-config=host-slave.xml\n"
 
 #. type: Plain text
 msgid "When running the boot script you will need pass in the host controlling configuration file you are going to use via the `--host-config` switch."
-msgstr ""
+msgstr "ブート・スクリプトを実行する場合、 `--host-config` スイッチ経由で使用するホスト制御設定ファイルを渡す必要があります 。"
 
 #. type: Title ====
 #, no-wrap
 msgid "Clustered Domain Example"
-msgstr ""
+msgstr "クラスタ構成ドメインのサンプル"
 
 #. type: Plain text
 msgid "You can test drive clustering using the out-of-the-box _domain.xml_ configuration.  This example domain is meant to run on one machine and boots up:"
-msgstr ""
+msgstr "そのまま利用可能な _domain.xml_ 設定を使用してクラスタリングをテストできます。このサンプルドメインは、1台のマシンで実行され、以下を起動します。"
 
 #. type: Plain text
 msgid "a domain controller"
-msgstr ""
+msgstr "ドメイン・コントローラー"
 
 #. type: Plain text
 msgid "an HTTP load balancer"
-msgstr ""
+msgstr "HTTPロード・バランサ"
 
 #. type: Plain text
 msgid "2 {project_name} server instances"
-msgstr ""
+msgstr "2{project_name}サーバー・インスタンス"
 
 #. type: Plain text
 msgid "To simulate running a cluster on two machines, you'll run the `domain.sh` script twice to start two separate host controllers.  The first will be the master host controller which will start a domain controller, an HTTP load balancer, and one {project_name} authentication server instance.  The second will be a slave host controller that only starts up an authentication server instance."
-msgstr ""
+msgstr "2台のマシンでのクラスターの実行をシミュレートするには、 `domain.sh` スクリプトを2回実行して2つの別々のホスト・コントローラを起動させます。はじめに、ドメイン・コントローラー、HTTPロード・バランサー、および1つの{project_name}認証サーバー・インスタンスを起動するマスター・ホスト・コントローラーを起動させます。つぎに、認証サーバー・インスタンスを起動するだけのスレーブ・ホスト・コントローラを起動させます。"
 
 #. type: Title =====
 #, no-wrap
 msgid "Setup Slave Connection to Domain Controller"
-msgstr ""
+msgstr "ドメイン・コントローラーへのスレーブ接続セットアップ"
 
 #. type: Plain text
 msgid "Before you can boot things up though, you have to configure the slave host controller so that it can talk securely to the domain controller.  If you do not do this, then the slave host will not be able to obtain the centralized configuration from the domain controller.  To set up a secure connection, you have to create a server admin user and a secret that will be shared between the master and the slave.  You do this by running the `.../bin/add-user.sh` script."
-msgstr ""
+msgstr "ホスト・コントローラーを起動する前に、スレーブ・ホスト・コントローラをドメイン・コントローラと安全に通信できるように設定する必要があります。これを設定しなかった場合、スレーブ・ホストはドメイン・コントローラから一元管理された設定を取得できなくなります。安全な接続をセットアップするには、マスターとスレーブの間で共有されるサーバー管理ユーザーとシークレットを作成する必要があります。これを作成するには、 `.../bin/add-user.sh` スクリプトを実行します。"
 
 #. type: Plain text
 msgid "When you run the script select `Management User` and answer `yes` when it asks you if the new user is going to be used for one AS process to connect to another.  This will generate a secret that you'll need to cut and paste into the _.../domain/configuration/host-slave.xml_ file."
-msgstr ""
+msgstr "スクリプトを実行する場合は `Management User` を選び、新規ユーザーがASプロセスを別のプロセスに接続するかどうかを尋ねるメッセージが表示された場合はyes `yes` と回答します。これにより、 _.../domain/configuration/host-slave.xml_ ファイルをカットアンドペーストする必要があるシークレットが生成されます。"
 
 #. type: Block title
 #, no-wrap
 msgid "Add App Server Admin"
-msgstr ""
+msgstr "アプリケーション・サーバー管理者の追加"
 
 #. type: delimited block -
 #, no-wrap
@@ -370,15 +404,39 @@ msgid "$ add-user.sh\n"
 " e.g. for a slave host controller connecting to the master or for a Remoting connection for server to server EJB calls.\n"
 " yes/no? yes\n"
 " To represent the user add the following to the server-identities definition <secret value=\"bWdtdDEyMyE=\" />\n"
-msgstr ""
+msgstr "$ add-user.sh\n"
+" What type of user do you wish to add?\n"
+"  a) Management User (mgmt-users.properties)\n"
+"  b) Application User (application-users.properties)\n"
+" (a): a\n"
+" Enter the details of the new user to add.\n"
+" Using realm 'ManagementRealm' as discovered from the existing property files.\n"
+" Username : admin\n"
+" Password recommendations are listed below. To modify these restrictions edit the add-user.properties configuration file.\n"
+"  - The password should not be one of the following restricted values {root, admin, administrator}\n"
+"  - The password should contain at least 8 characters, 1 alphabetic character(s), 1 digit(s), 1 non-alphanumeric symbol(s)\n"
+"  - The password should be different from the username\n"
+" Password :\n"
+" Re-enter Password :\n"
+" What groups do you want this user to belong to? (Please enter a comma separated list, or leave blank for none)[ ]:\n"
+" About to add user 'admin' for realm 'ManagementRealm'\n"
+" Is this correct yes/no? yes\n"
+" Added user 'admin' to file '/.../standalone/configuration/mgmt-users.properties'\n"
+" Added user 'admin' to file '/.../domain/configuration/mgmt-users.properties'\n"
+" Added user 'admin' with groups to file '/.../standalone/configuration/mgmt-groups.properties'\n"
+" Added user 'admin' with groups to file '/.../domain/configuration/mgmt-groups.properties'\n"
+" Is this new user going to be used for one AS process to connect to another AS process?\n"
+" e.g. for a slave host controller connecting to the master or for a Remoting connection for server to server EJB calls.\n"
+" yes/no? yes\n"
+" To represent the user add the following to the server-identities definition <secret value=\"bWdtdDEyMyE=\" />\n"
 
 #. type: Plain text
 msgid "The add-user.sh does not add user to {project_name} server but to the underlying JBoss Enterprise Application Platform. The credentials used and generated in the above script are only for example purpose. Please use the ones generated on your system."
-msgstr ""
+msgstr "add-user.shにより、{project_name}サーバーにではなく、基盤となるJBoss Enterpriseアプリケーション・プラットホームにユーザーが追加されます。上記のスクリプトで使用、生成された証明書は、あくまでサンプルです。実際お使いのシステムで生成されたものをご使用ください。"
 
 #. type: Plain text
 msgid "Now cut and paste the secret value into the _.../domain/configuration/host-slave.xml_ file as follows:"
-msgstr ""
+msgstr " _.../domain/configuration/host-slave.xml_ ファイルにシークレットの値をカットアンドペーストすると、以下のようになります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -388,38 +446,43 @@ msgid "     <management>\n"
 "                 <server-identities>\n"
 "                     <secret value=\"bWdtdDEyMyE=\"/>\n"
 "                 </server-identities>\n"
-msgstr ""
+msgstr "     <management>\n"
+"         <security-realms>\n"
+"             <security-realm name=\"ManagementRealm\">\n"
+"                 <server-identities>\n"
+"                     <secret value=\"bWdtdDEyMyE=\"/>\n"
+"                 </server-identities>\n"
 
 #. type: Title =====
 #, no-wrap
 msgid "Run the Boot Scripts"
-msgstr ""
+msgstr "起動スクリプトの実行"
 
 #. type: Plain text
 msgid "Since we're simulating a two node cluster on one development machine, you'll run the boot script twice:"
-msgstr ""
+msgstr "1つの開発マシンで2つのノード・クラスタをシミュレートしますので、以下の通り、ブート・スクリプトを2回実行します。"
 
 #. type: Block title
 #, no-wrap
 msgid "Boot up master"
-msgstr ""
+msgstr "マスターの起動"
 
 #. type: delimited block -
 #, no-wrap
 msgid "$ domain.sh --host-config=host-master.xml\n"
-msgstr ""
+msgstr "$ domain.sh --host-config=host-master.xml\n"
 
 #. type: Block title
 #, no-wrap
 msgid "Boot up slave"
-msgstr ""
+msgstr "スレーブの起動"
 
 #. type: delimited block -
 #, no-wrap
 msgid "$ domain.sh --host-config=host-slave.xml\n"
-msgstr ""
+msgstr "$ domain.sh --host-config=host-slave.xml\n"
 
 #. type: Plain text
 msgid "To try it out, open your browser and go to http://localhost:8080/auth"
-msgstr ""
+msgstr "これを試すには、ブラウザーを開いてhttp://localhost:8080/authに移動してください。"
 

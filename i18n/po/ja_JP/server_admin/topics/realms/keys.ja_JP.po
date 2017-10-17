@@ -2,16 +2,17 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
+"teams/79437/ja_JP/)\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
@@ -51,9 +52,9 @@ msgstr ""
 msgid ""
 "To view the active keys for a realm select the realm in the admin console "
 "click on `Realm settings` then `Keys`. This will show the currently active "
-"keys for the realm. {project_name} currently only supports RSA signatures so"
-" there is only one active keypair. In the future as more signature "
-"algorithms are added there will be more active keypairs."
+"keys for the realm. {project_name} currently only supports RSA signatures so "
+"there is only one active keypair. In the future as more signature algorithms "
+"are added there will be more active keypairs."
 msgstr ""
 
 #. type: Plain text
@@ -85,8 +86,8 @@ msgstr ""
 msgid ""
 "Once new keys are available all new tokens and cookies will be signed with "
 "the new keys. When a user authenticates to an application the SSO cookie is "
-"updated with the new signature. When OpenID Connect tokens are refreshed new"
-" tokens are signed with the new keys. This means that over time all cookies "
+"updated with the new signature. When OpenID Connect tokens are refreshed new "
+"tokens are signed with the new keys. This means that over time all cookies "
 "and tokens will use the new keys and after a while the old keys can be "
 "removed."
 msgstr ""
@@ -111,8 +112,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:41
 msgid ""
-"As a guideline it may be a good idea to create new keys every 3-6 months and"
-" delete old keys 1-2 months after the new keys where created."
+"As a guideline it may be a good idea to create new keys every 3-6 months and "
+"delete old keys 1-2 months after the new keys where created."
 msgstr ""
 
 #. type: Title ====
@@ -124,11 +125,11 @@ msgstr ""
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:47
 msgid ""
-"To add a new generated keypair select `Providers` and choose `rsa-generated`"
-" from the dropdown. You can change the priority to make sure the new keypair"
-" becomes the active keypair. You can also change the `keysize` if you want "
-"smaller or larger keys (default is 2048, supported values are 1024, 2048 and"
-" 4096)."
+"To add a new generated keypair select `Providers` and choose `rsa-generated` "
+"from the dropdown. You can change the priority to make sure the new keypair "
+"becomes the active keypair. You can also change the `keysize` if you want "
+"smaller or larger keys (default is 2048, supported values are 1024, 2048 and "
+"4096)."
 msgstr ""
 
 #. type: Plain text
@@ -156,15 +157,15 @@ msgstr ""
 #: source/server_admin/topics/realms/keys.adoc:57
 msgid ""
 "To add a keypair and certificate obtained elsewhere select `Providers` and "
-"choose `rsa` from the dropdown. You can change the priority to make sure the"
-" new keypair becomes the active keypair."
+"choose `rsa` from the dropdown. You can change the priority to make sure the "
+"new keypair becomes the active keypair."
 msgstr ""
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:60
 msgid ""
-"Click on `Select file` for `Private RSA Key` to upload your private key. The"
-" file should be encoded in PEM format. You don't need to upload the public "
+"Click on `Select file` for `Private RSA Key` to upload your private key. The "
+"file should be encoded in PEM format. You don't need to upload the public "
 "key as it is automatically extracted from the private key."
 msgstr ""
 
@@ -193,8 +194,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:70
 msgid ""
-"Fill in the values for `Keystore`, `Keystore Password`, `Key Alias` and `Key"
-" Password` and click on `Save`."
+"Fill in the values for `Keystore`, `Keystore Password`, `Key Alias` and `Key "
+"Password` and click on `Save`."
 msgstr ""
 
 #. type: Title ====
@@ -208,9 +209,9 @@ msgstr ""
 msgid ""
 "Locate the keypair in `Active` or `All` then click on the provider in the "
 "`Provider` column. This will take you to the configuration screen for the "
-"key provider for the keys. Click on `Active` to turn it `OFF`, then click on"
-" `Save`. The keys will no longer be active and can only be used for "
-"verifying signatures."
+"key provider for the keys. Click on `Active` to turn it `OFF`, then click on "
+"`Save`. The keys will no longer be active and can only be used for verifying "
+"signatures."
 msgstr ""
 
 #. type: Title ====
@@ -243,10 +244,10 @@ msgstr ""
 #: source/server_admin/topics/realms/keys.adoc:90
 msgid ""
 "{project_name} has the signing keys stored just locally and they are never "
-"shared with the client applications, users or other entities. However if you"
-" think that your realm signing key was compromised, you should first "
-"generate new keypair as described above and then immediatelly remove the "
-"compromised keypair."
+"shared with the client applications, users or other entities. However if you "
+"think that your realm signing key was compromised, you should first generate "
+"new keypair as described above and then immediatelly remove the compromised "
+"keypair."
 msgstr ""
 
 #. type: Plain text
@@ -257,8 +258,8 @@ msgid ""
 "realm, which is doable from the admin console. Pushing new policy will "
 "ensure that client applications won't accept the existing tokens signed by "
 "the compromised key, but also the client application will be forced to "
-"download new keypair from the {project_name}, hence the tokens signed by the"
-" compromised key won't be valid anymore. Note that your REST and "
-"confidential clients must have set `Admin URL`, so that {project_name} is "
-"able to send them the request about pushed not-before policy."
+"download new keypair from the {project_name}, hence the tokens signed by the "
+"compromised key won't be valid anymore. Note that your REST and confidential "
+"clients must have set `Admin URL`, so that {project_name} is able to send "
+"them the request about pushed not-before policy."
 msgstr ""

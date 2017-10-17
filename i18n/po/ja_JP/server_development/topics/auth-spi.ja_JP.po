@@ -2,17 +2,18 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
 "Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
+"teams/79437/ja_JP/)\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
@@ -81,8 +82,8 @@ msgstr ""
 msgid ""
 "A required action in Keycloak is an action that a user has to perform after "
 "he authenticates.  After the action is performed successfully, the user "
-"doesn't have to perform the action again.  Keycloak comes with some built in"
-" required actions like \"reset password\".  This action forces the user to "
+"doesn't have to perform the action again.  Keycloak comes with some built in "
+"required actions like \"reset password\".  This action forces the user to "
 "change their password after they have logged in.  You can write and plug in "
 "your own required actions."
 msgstr ""
@@ -96,8 +97,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/auth-spi.adoc:23
 msgid ""
-"To first learn about the Authentication SPI, let's go over some of the terms"
-" used to describe it."
+"To first learn about the Authentication SPI, let's go over some of the terms "
+"used to describe it."
 msgstr ""
 
 #. type: Labeled list
@@ -125,8 +126,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/auth-spi.adoc:33
 msgid ""
-"An authenticator is a pluggable component that hold the logic for performing"
-" the authentication or action within a flow.  It is usually a singleton."
+"An authenticator is a pluggable component that hold the logic for performing "
+"the authentication or action within a flow.  It is usually a singleton."
 msgstr ""
 
 #. type: Labeled list
@@ -155,8 +156,8 @@ msgid ""
 "Each execution defines how an authenticator behaves in a flow.  The "
 "requirement defines whether the authenticator is enabled, disabled, "
 "optional, required, or an alternative.  An alternative requirement means "
-"that the authentiactor is optional unless no other alternative authenticator"
-" is successful in the flow.  For example, cookie authentication, kerberos, "
+"that the authentiactor is optional unless no other alternative authenticator "
+"is successful in the flow.  For example, cookie authentication, kerberos, "
 "and the set of all login forms are all alternative.  If one of those is "
 "successful, none of the others are executed."
 msgstr ""
@@ -303,21 +304,20 @@ msgstr ""
 msgid ""
 "In this section, we'll take a look at the Authenticator interface.  For "
 "this, we are going to implement an authenticator that requires that a user "
-"enter in the answer to a secret question like \"What is your mother's maiden"
-" name?\".  This example is fully implemented and contained in the "
-"examples/providers/authenticator directory of the demo distribution of "
-"Keycloak."
+"enter in the answer to a secret question like \"What is your mother's maiden "
+"name?\".  This example is fully implemented and contained in the examples/"
+"providers/authenticator directory of the demo distribution of Keycloak."
 msgstr ""
 
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:139
 msgid ""
-"The classes you must implement are the "
-"org.keycloak.authentication.AuthenticatorFactory and Authenticator "
-"interfaces.  The Authenticator interface defines the logic.  The "
-"AuthenticatorFactory is responsible for creating instances of an "
-"Authenticator.  They both extend a more generic Provider and ProviderFactory"
-" set of interfaces that other Keycloak components like User Federation do."
+"The classes you must implement are the org.keycloak.authentication."
+"AuthenticatorFactory and Authenticator interfaces.  The Authenticator "
+"interface defines the logic.  The AuthenticatorFactory is responsible for "
+"creating instances of an Authenticator.  They both extend a more generic "
+"Provider and ProviderFactory set of interfaces that other Keycloak "
+"components like User Federation do."
 msgstr ""
 
 #. type: delimited block -
@@ -342,8 +342,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/auth-spi.adoc:154
 msgid ""
-"This services/ file is used by Keycloak to scan the providers it has to load"
-" into the system."
+"This services/ file is used by Keycloak to scan the providers it has to load "
+"into the system."
 msgstr ""
 
 #. type: Plain text
@@ -394,9 +394,7 @@ msgstr ""
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:178
 #, no-wrap
-msgid ""
-"The configuredForCredentialType() call queries the user to see if it "
-"supports that credential type. \n"
+msgid "The configuredForCredentialType() call queries the user to see if it supports that credential type. \n"
 msgstr ""
 
 #. type: delimited block -
@@ -426,12 +424,12 @@ msgstr ""
 msgid ""
 "Now we are getting into the meat of the Authenticator implementation.  The "
 "next method to implement is authenticate().  This is the initial method the "
-"flow invokes when the execution is first visited.  What we want is that if a"
-" user has answered the secret question already on their browser's machine, "
-"then the user doesn't have to answer the question again, making that machine"
-" \"trusted\".  The authenticate() method isn't responsible for processing "
-"the secret question form.  Its sole purpose is to render the page or to "
-"continue the flow."
+"flow invokes when the execution is first visited.  What we want is that if a "
+"user has answered the secret question already on their browser's machine, "
+"then the user doesn't have to answer the question again, making that machine "
+"\"trusted\".  The authenticate() method isn't responsible for processing the "
+"secret question form.  Its sole purpose is to render the page or to continue "
+"the flow."
 msgstr ""
 
 #. type: delimited block -
@@ -522,8 +520,8 @@ msgstr ""
 #: source/server_development/topics/auth-spi.adoc:253
 msgid ""
 "If validation is successful, then we set a cookie to remember that the "
-"secret question has been answered and we call "
-"AuthenticationFlowContext.success()."
+"secret question has been answered and we call AuthenticationFlowContext."
+"success()."
 msgstr ""
 
 #. type: Plain text
@@ -574,9 +572,9 @@ msgstr ""
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:282
 msgid ""
-"The next step in this process is to implement an AuthenticatorFactory.  This"
-" factory is responsible for instantiating an Authenticator.  It also "
-"provides deployment and configuration metadata about the Authenticator."
+"The next step in this process is to implement an AuthenticatorFactory.  This "
+"factory is responsible for instantiating an Authenticator.  It also provides "
+"deployment and configuration metadata about the Authenticator."
 msgstr ""
 
 #. type: delimited block -
@@ -700,9 +698,7 @@ msgstr ""
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:349
 #, no-wrap
-msgid ""
-"    private static final List<ProviderConfigProperty> configProperties = new"
-" ArrayList<ProviderConfigProperty>();\n"
+msgid "    private static final List<ProviderConfigProperty> configProperties = new ArrayList<ProviderConfigProperty>();\n"
 msgstr ""
 
 #. type: delimited block -
@@ -753,8 +749,8 @@ msgstr ""
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:379
 msgid ""
-"Keycloak comes with a Freemarker <<_themes,theme and template engine>>.  The"
-" createForm() method you called within authenticate() of your Authenticator "
+"Keycloak comes with a Freemarker <<_themes,theme and template engine>>.  The "
+"createForm() method you called within authenticate() of your Authenticator "
 "class, builds an HTML page from a file within your login theme: secret-"
 "question.ftl.  This file should be placed in the login theme with all the "
 "other .ftl files you see for login."
@@ -792,11 +788,10 @@ msgstr ""
 #: source/server_development/topics/auth-spi.adoc:401
 msgid ""
 "Any piece of text enclosed in `${}` corresponds to an attribute or template "
-"funtion.  If you see the form's action, you see it points to "
-"`${url.loginAction}`.  This value is automatically generated when you invoke"
-" the AuthenticationFlowContext.form() method.  You can also obtain this "
-"value by calling the AuthenticationFlowContext.getActionURL() method in Java"
-" code."
+"funtion.  If you see the form's action, you see it points to `${url."
+"loginAction}`.  This value is automatically generated when you invoke the "
+"AuthenticationFlowContext.form() method.  You can also obtain this value by "
+"calling the AuthenticationFlowContext.getActionURL() method in Java code."
 msgstr ""
 
 #. type: Plain text
@@ -814,10 +809,10 @@ msgstr ""
 #: source/server_development/topics/auth-spi.adoc:411
 msgid ""
 "When you call AuthenticationFlowContext.form() this gives you a "
-"LoginFormsProvider instance.  If you called, "
-"`LoginFormsProvider.setAttribute(\"foo\", \"bar\")`, the value of \"foo\" "
-"would be available for reference in your form as `${foo}`.  The value of an "
-"attribute can be any Java bean as well."
+"LoginFormsProvider instance.  If you called, `LoginFormsProvider."
+"setAttribute(\"foo\", \"bar\")`, the value of \"foo\" would be available for "
+"reference in your form as `${foo}`.  The value of an attribute can be any "
+"Java bean as well."
 msgstr ""
 
 #. type: Title ====
@@ -829,11 +824,11 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/auth-spi.adoc:419
 msgid ""
-"Adding an Authenticator to a flow must be done in the admin console.  If you"
-" go to the Authentication menu item and go to the Flow tab, you will be able"
-" to view the currently defined flows.  You cannot modify an built in flows, "
-"so, to add the Authenticator we've created you have to copy an existing flow"
-" or create your own.  I'm hoping the UI is intuitive enough so that you can "
+"Adding an Authenticator to a flow must be done in the admin console.  If you "
+"go to the Authentication menu item and go to the Flow tab, you will be able "
+"to view the currently defined flows.  You cannot modify an built in flows, "
+"so, to add the Authenticator we've created you have to copy an existing flow "
+"or create your own.  I'm hoping the UI is intuitive enough so that you can "
 "figure out for yourself how to create a flow and add the Authenticator."
 msgstr ""
 
@@ -885,9 +880,7 @@ msgstr ""
 #: source/server_development/topics/auth-spi.adoc:442
 #: source/server_development/topics/auth-spi.adoc:715
 #, no-wrap
-msgid ""
-"This services/ file is used by Keycloak to scan the providers it has to load"
-" into the system. \n"
+msgid "This services/ file is used by Keycloak to scan the providers it has to load into the system. \n"
 msgstr ""
 
 #. type: delimited block -
@@ -906,10 +899,10 @@ msgstr ""
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:450
 msgid ""
-"Required actions must first implement the RequiredActionProvider interface."
-"  The RequiredActionProvider.requiredActionChallenge() is the initial call "
-"by the flow manager into the required action.  This method is responsible "
-"for rendering the HTML form that will drive the required action."
+"Required actions must first implement the RequiredActionProvider interface.  "
+"The RequiredActionProvider.requiredActionChallenge() is the initial call by "
+"the flow manager into the required action.  This method is responsible for "
+"rendering the HTML form that will drive the required action."
 msgstr ""
 
 #. type: Plain text
@@ -943,8 +936,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/auth-spi.adoc:469
 msgid ""
-"The challenge() method notifies the flow manager that a required action must"
-" be executed."
+"The challenge() method notifies the flow manager that a required action must "
+"be executed."
 msgstr ""
 
 #. type: Plain text
@@ -1004,9 +997,7 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/auth-spi.adoc:503
 #, no-wrap
-msgid ""
-"    private static final SecretQuestionRequiredAction SINGLETON = new "
-"SecretQuestionRequiredAction();\n"
+msgid "    private static final SecretQuestionRequiredAction SINGLETON = new SecretQuestionRequiredAction();\n"
 msgstr ""
 
 #. type: Plain text
@@ -1073,13 +1064,13 @@ msgstr ""
 msgid ""
 "It is entirely possible for you to implement your own flow with a set of "
 "Authenticators to totally change how regisration is done in Keycloak.  But "
-"what you'll usually want to do is just add a little bit of validation to the"
-" out of the box registration page.  An additional SPI was created to be able"
-" to do this.  It basically allows you to add validation of form elements on "
+"what you'll usually want to do is just add a little bit of validation to the "
+"out of the box registration page.  An additional SPI was created to be able "
+"to do this.  It basically allows you to add validation of form elements on "
 "the page as well as to initialize UserModel attributes and data after the "
-"user has been registered.  We'll look at both the implementation of the user"
-" profile registration processing as well as the registration Google "
-"Recaptcha plugin."
+"user has been registered.  We'll look at both the implementation of the user "
+"profile registration processing as well as the registration Google Recaptcha "
+"plugin."
 msgstr ""
 
 #. type: Title ====
@@ -1151,9 +1142,7 @@ msgstr ""
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:579
 #, no-wrap
-msgid ""
-"For user profile processing, there is no additional information that it "
-"needs to add to the form, so its buildPage() method is empty. \n"
+msgid "For user profile processing, there is no additional information that it needs to add to the form, so its buildPage() method is empty. \n"
 msgstr ""
 
 #. type: delimited block -
@@ -1213,14 +1202,14 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/auth-spi.adoc:621
 msgid ""
-"Here we obtain the form data that the Recaptcha widget adds to the form.  We"
-" obtain the Recaptcha secret key from configuration.  We then validate the "
+"Here we obtain the form data that the Recaptcha widget adds to the form.  We "
+"obtain the Recaptcha secret key from configuration.  We then validate the "
 "recaptcha.  If successful, ValidationContext.success() is called.  If not, "
 "we invoke ValidationContext.validationError() passing in the formData (so "
-"the user doesn't have to re-enter data), we also specify an error message we"
-" want displayed.  The error message must point to a message bundle property "
-"in the internationalized message bundles.  For other registration extensions"
-" validate() might be validating the format of a form element, i.e.  an "
+"the user doesn't have to re-enter data), we also specify an error message we "
+"want displayed.  The error message must point to a message bundle property "
+"in the internationalized message bundles.  For other registration extensions "
+"validate() might be validating the format of a form element, i.e.  an "
 "alternative email attribute."
 msgstr ""
 
@@ -1351,8 +1340,8 @@ msgstr ""
 #. type: Plain text
 #: source/server_development/topics/auth-spi.adoc:696
 msgid ""
-"Pretty simple implementation.  The UserModel of the newly registered user is"
-" obtained from the FormContext.  The appropriate methods are called to "
+"Pretty simple implementation.  The UserModel of the newly registered user is "
+"obtained from the FormContext.  The appropriate methods are called to "
 "initialize UserModel data."
 msgstr ""
 
@@ -1423,8 +1412,8 @@ msgstr ""
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:732
 msgid ""
-"After you've created your flow, you have to bind it to registration.  If you"
-" go to the Authentication menu and go to the Bindings tab you will see "
+"After you've created your flow, you have to bind it to registration.  If you "
+"go to the Authentication menu and go to the Bindings tab you will see "
 "options to bind a flow to the browser, registration, or direct grant flow."
 msgstr ""
 
@@ -1438,12 +1427,12 @@ msgstr ""
 #: source/server_development/topics/auth-spi.adoc:739
 msgid ""
 "Keycloak also has a specific authentication flow for forgot password, or "
-"rather credential reset initiated by a user.  If you go to the admin console"
-" flows page, there is a \"reset credentials\" flow.  By default, Keycloak "
+"rather credential reset initiated by a user.  If you go to the admin console "
+"flows page, there is a \"reset credentials\" flow.  By default, Keycloak "
 "asks for the email or username of the user and sends an email to them.  If "
-"the user clicks on the link, then they are able to reset both their password"
-" and OTP (if an OTP has been set up).  You can disable automatic OTP reset "
-"by disabling the \"Reset OTP\" authenticator in the flow."
+"the user clicks on the link, then they are able to reset both their password "
+"and OTP (if an OTP has been set up).  You can disable automatic OTP reset by "
+"disabling the \"Reset OTP\" authenticator in the flow."
 msgstr ""
 
 #. type: delimited block -
@@ -1452,8 +1441,8 @@ msgid ""
 "You can add additional functionality to this flow as well.  For example, "
 "many deployments would like for the user to answer one or more secret "
 "questions in additional to sending an email with a link.  You could expand "
-"on the secret question example that comes with the distro and incorporate it"
-" into the reset credential flow."
+"on the secret question example that comes with the distro and incorporate it "
+"into the reset credential flow."
 msgstr ""
 
 #. type: delimited block -
@@ -1462,14 +1451,14 @@ msgid ""
 "One thing to note if you are extending the reset credentials flow.  The "
 "first \"authenticator\" is just a page to obtain the username or email.  If "
 "the username or email exists, then the AuthenticationFlowContext.getUser() "
-"will return the located user.  Otherwise this will be null.  This form *WILL"
-" NOT* re-ask the user to enter in an email or username if the previous email"
-" or username did not exist.  You need to prevent attackers from being able "
-"to guess valid users.  So, if AuthenticationFlowContext.getUser() returns "
-"null, you should proceed with the flow to make it look like a valid user was"
-" selected.  I suggest that if you want to add secret questions to this flow,"
-" you should ask these questions after the email is sent.  In other words, "
-"add your custom authenticator after the \"Send Reset Email\" authenticator."
+"will return the located user.  Otherwise this will be null.  This form *WILL "
+"NOT* re-ask the user to enter in an email or username if the previous email "
+"or username did not exist.  You need to prevent attackers from being able to "
+"guess valid users.  So, if AuthenticationFlowContext.getUser() returns null, "
+"you should proceed with the flow to make it look like a valid user was "
+"selected.  I suggest that if you want to add secret questions to this flow, "
+"you should ask these questions after the email is sent.  In other words, add "
+"your custom authenticator after the \"Send Reset Email\" authenticator."
 msgstr ""
 
 #. type: Title ===
@@ -1502,23 +1491,23 @@ msgstr ""
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:768
 msgid ""
-"{project_name} actually supports pluggable authentication for "
-"http://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect] client "
-"applications.  Authentication of client (application) is used under the hood"
-" by the {project_name} adapter during sending any backchannel requests to "
-"the {project_name} server (like the request for exchange code to access "
-"token after successful authentication or request to refresh token).  But the"
-" client authentication can be also used directly by you during `Direct "
-"Access grants` (represented by OAuth2 `Resource Owner Password Credentials "
-"Flow`)  or during `Service account` authentication (represented by OAuth2 "
-"`Client Credentials Flow`)."
+"{project_name} actually supports pluggable authentication for http://openid."
+"net/specs/openid-connect-core-1_0.html[OpenID Connect] client applications.  "
+"Authentication of client (application) is used under the hood by the "
+"{project_name} adapter during sending any backchannel requests to the "
+"{project_name} server (like the request for exchange code to access token "
+"after successful authentication or request to refresh token).  But the "
+"client authentication can be also used directly by you during `Direct Access "
+"grants` (represented by OAuth2 `Resource Owner Password Credentials Flow`)  "
+"or during `Service account` authentication (represented by OAuth2 `Client "
+"Credentials Flow`)."
 msgstr ""
 
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:770
 msgid ""
-"For more details about {project_name} adapter and OAuth2 flows see "
-"link:{adapterguide_link}[{adapterguide_name}]."
+"For more details about {project_name} adapter and OAuth2 flows see link:"
+"{adapterguide_link}[{adapterguide_name}]."
 msgstr ""
 
 #. type: Title ====
@@ -1569,16 +1558,16 @@ msgstr ""
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:790
 msgid ""
-"For plug your own client authenticator, you need to implement few interfaces"
-" on both client (adapter) and server side."
+"For plug your own client authenticator, you need to implement few interfaces "
+"on both client (adapter) and server side."
 msgstr ""
 
 #. type: delimited block -
 #: source/server_development/topics/auth-spi.adoc:793
 msgid ""
-"Client side:: Here you need to implement "
-"`org.keycloak.adapters.authentication.ClientCredentialsProvider` and put the"
-" implementation either to:"
+"Client side:: Here you need to implement `org.keycloak.adapters."
+"authentication.ClientCredentialsProvider` and put the implementation either "
+"to:"
 msgstr ""
 
 #. type: delimited block -

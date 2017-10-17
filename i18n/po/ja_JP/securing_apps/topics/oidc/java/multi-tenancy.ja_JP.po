@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
+"teams/79437/ja_JP/)\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:2
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:152
+#, no-wrap
+msgid "Multi Tenancy"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:6
+msgid ""
+"Multi Tenancy, in our context, means that a single target application (WAR) "
+"can be secured with multiple {project_name} realms. The realms can be "
+"located one the same {project_name} instance or on different instances."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:8
+msgid ""
+"In practice, this means that the application needs to have multiple "
+"`keycloak.json` adapter configuration files."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:11
+msgid ""
+"You could have multiple instances of your WAR with different adapter "
+"configuration files deployed to different context-paths. However, this may "
+"be inconvenient and you may also want to select the realm based on something "
+"else than context-path."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:13
+msgid ""
+"{project_name} makes it possible to have a custom config resolver so you can "
+"choose what adapter config is used for each request."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:15
+msgid ""
+"To achieve this first you need to create an implementation of `org.keycloak."
+"adapters.KeycloakConfigResolver`. For example:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:19
+#, no-wrap
+msgid "package example;\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:23
+#, no-wrap
+msgid ""
+"import org.keycloak.adapters.KeycloakConfigResolver;\n"
+"import org.keycloak.adapters.KeycloakDeployment;\n"
+"import org.keycloak.adapters.KeycloakDeploymentBuilder;\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:25
+#, no-wrap
+msgid "public class PathBasedKeycloakConfigResolver implements KeycloakConfigResolver {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:39
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public KeycloakDeployment resolve(OIDCHttpFacade.Request request) {\n"
+"        if (path.startsWith(\"alternative\")) {\n"
+"            KeycloakDeployment deployment = cache.get(realm);\n"
+"            if (null == deployment) {\n"
+"                InputStream is = getClass().getResourceAsStream(\"/tenant1-keycloak.json\");\n"
+"                return KeycloakDeploymentBuilder.build(is);\n"
+"            }\n"
+"        } else {\n"
+"            InputStream is = getClass().getResourceAsStream(\"/default-keycloak.json\");\n"
+"            return KeycloakDeploymentBuilder.build(is);\n"
+"        }\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:41
+#: source/server_development/topics/user-storage/provider-interfaces.adoc:52
+#: source/server_development/topics/extensions.adoc:70
+#: source/server_development/topics/providers.adoc:143
+#, no-wrap
+msgid "}\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:44
+msgid ""
+"You also need to configure which `KeycloakConfigResolver` implementation to "
+"use with the `keycloak.config.resolver` context-param in your `web.xml`:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:54
+#, no-wrap
+msgid ""
+"<web-app>\n"
+"    ...\n"
+"    <context-param>\n"
+"        <param-name>keycloak.config.resolver</param-name>\n"
+"        <param-value>example.PathBasedKeycloakConfigResolver</param-value>\n"
+"    </context-param>\n"
+"</web-app>\n"
+msgstr ""

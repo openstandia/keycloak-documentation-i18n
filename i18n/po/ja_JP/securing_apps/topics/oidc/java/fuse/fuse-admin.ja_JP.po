@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
+"teams/79437/ja_JP/)\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:3
+#, no-wrap
+msgid "Securing Fuse Administration Services"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:6
+#, fuzzy, no-wrap
+#| msgid "Authentication"
+msgid "====== Using SSH Authentication to Fuse Terminal\n"
+msgstr "認証"
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:10
+#, no-wrap
+msgid ""
+"{project_name} mainly addresses use cases for authentication of web applications; however, if your other web services and applications are protected\n"
+"with {project_name}, protecting non-web administration services such as SSH with {project_name} credentials is a best pracrice. You can do this using the JAAS login module, which allows remote connection to {project_name} and verifies credentials based on\n"
+"<<_resource_owner_password_credentials_flow,Resource Owner Password Credentials>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:12
+#, fuzzy, no-wrap
+#| msgid "To create a new realm, complete the following steps:"
+msgid "To enable SSH authentication, complete the following steps:\n"
+msgstr "新規レルムを作成するには、以下の手順に従います。"
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:15
+#, no-wrap
+msgid ""
+"In  {project_name} create a client (for example, `ssh-jmx-admin-client`), which will be used for SSH authentication.\n"
+"This client needs to have `Direct Access Grants Enabled` selected to `On`.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:17
+#, no-wrap
+msgid "In the `$FUSE_HOME/etc/org.apache.karaf.shell.cfg` file, update or specify this property:\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:21
+#, no-wrap
+msgid "sshRealm=keycloak\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:24
+#, no-wrap
+msgid "Add the `$FUSE_HOME/etc/keycloak-direct-access.json` file with content similar to the following (based on your environment and {project_name} client settings):\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:26
+#, fuzzy, no-wrap
+#| msgid "[source]"
+msgid "[source,json]\n"
+msgstr "[source]"
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:36
+#, no-wrap
+msgid ""
+"{\n"
+"    \"realm\": \"demo\",\n"
+"    \"resource\": \"ssh-jmx-admin-client\",\n"
+"    \"ssl-required\" : \"external\",\n"
+"    \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"    \"credentials\": {\n"
+"        \"secret\": \"password\"\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:38
+#, no-wrap
+msgid "This file specifies the client application configuration, which is used by JAAS DirectAccessGrantsLoginModule from the `keycloak` JAAS realm for SSH authentication.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:40
+#, no-wrap
+msgid "Start Fuse and install the `keycloak` JAAS realm. The easiest way is to install the `keycloak-jaas` feature, which has the JAAS realm predefined. You can override the feature's predefined realm by using your own `keycloak` JAAS realm with higher ranking. For details see the https:access.redhat.com/documentation/en-us/red_hat_jboss_fuse/6.3/html-single/security_guide/#ESBSecureContainer[JBoss Fuse documentation]. \n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:42
+#, no-wrap
+msgid "Use these commands in the Fuse terminal:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:44
+#, no-wrap
+msgid "[source, subs=\"attributes\"]\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:47
+#, no-wrap
+msgid ""
+"features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"features:install keycloak-jaas\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:50
+#, no-wrap
+msgid "Log in using SSH as `admin` user by typing the following in the terminal:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:54
+#, no-wrap
+msgid ""
+"```\n"
+"ssh -o PubkeyAuthentication=no -p 8101 admin@localhost\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:56
+#, no-wrap
+msgid "Log in with password `password`.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:58
+#, no-wrap
+msgid "On some later operating systems, you might also need to use the SSH command's -o option `-o HostKeyAlgorithms=+ssh-dss` because later SSH clients do not allow use of the `ssh-dss` algorithm, by default. However, by default, it is currently used in {fuseVersion}.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:60
+#, no-wrap
+msgid "Note that the user needs to have realm role `admin` to perform all operations or another role to perform a subset of operations (for example, the *viewer* role that restricts the user to run only read-only Karaf commands). The available roles are configured in `$FUSE_HOME/etc/org.apache.karaf.shell.cfg` or `$FUSE_HOME/etc/system.properties`.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:62
+#, fuzzy, no-wrap
+#| msgid "Authentication"
+msgid "====== Using JMX Authentication\n"
+msgstr "認証"
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:64
+#, no-wrap
+msgid "JMX authentication might be necessary if you want to use jconsole or another external tool to remotely connect to JMX through RMI. Otherwise it might be better to use hawt.io/jolokia, since the jolokia agent is installed in hawt.io by default. For more details see <<_hawtio,Hawtio Admin Console>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:66
+#, fuzzy, no-wrap
+#| msgid "To create a new realm, complete the following steps:"
+msgid "To use JMX authentication, complete the following steps:\n"
+msgstr "新規レルムを作成するには、以下の手順に従います。"
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:68
+#, no-wrap
+msgid "In the `$FUSE_HOME/etc/org.apache.karaf.management.cfg` file, change the jmxRealm property to:\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:72
+#, no-wrap
+msgid "jmxRealm=keycloak\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:75
+#, no-wrap
+msgid "Install the `keycloak-jaas` feature and configure the `$FUSE_HOME/etc/keycloak-direct-access.json` file as described in the SSH section above.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:77
+#, no-wrap
+msgid "In jconsole you can use a URL such as:\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:81
+#, no-wrap
+msgid "service:jmx:rmi://localhost:44444/jndi/rmi://localhost:1099/karaf-root\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:83
+#, no-wrap
+msgid "and credentials: admin/password (based on the user with admin privileges according to your environment).\n"
+msgstr ""

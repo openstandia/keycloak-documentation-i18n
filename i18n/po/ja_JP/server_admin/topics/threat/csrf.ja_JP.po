@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
+"teams/79437/ja_JP/)\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#: source/server_admin/topics/threat/csrf.adoc:2
+#, no-wrap
+msgid "CSRF Attacks"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/csrf.adoc:7
+msgid ""
+"Cross-site request forgery (CSRF) is a web-based attack whereby HTTP "
+"requests are transmitted from a user that the web site trusts or has "
+"authenticated with(e.g. via HTTP redirects or HTML forms).  Any site that "
+"uses cookie based authentication is vulnerable to these types of attacks.  "
+"These attacks are mitigated by matching a state cookie against a posted form "
+"or query parameter."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/csrf.adoc:10
+msgid ""
+"The OAuth 2.0 login specification requires that a state cookie be used and "
+"matched against a transmitted state parameter.  {project_name} fully "
+"implements this part of the specification so all logins are protected."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/csrf.adoc:15
+msgid ""
+"The {project_name} Admin Console is a pure JavaScript/HTML5 application that "
+"makes REST calls to the backend {project_name} admin REST API.  These calls "
+"all require bearer token authentication and are made via JavaScript Ajax "
+"calls.  CSRF does not apply here.  The admin REST API can also be configured "
+"to validate the CORS origins as well."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/threat/csrf.adoc:18
+msgid ""
+"The only part of {project_name} that really falls into CSRF is the user "
+"account management pages.  To mitigate this {project_name} sets a state "
+"cookie and also embeds the value of this state cookie within hidden form "
+"fields or query parameters in action links.  This query or form parameter is "
+"checked against the state cookie to verify that the call was made by the "
+"user."
+msgstr ""

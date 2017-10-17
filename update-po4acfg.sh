@@ -21,7 +21,7 @@ cat << EOS > $OUT_FILE
 [po4a_alias:mytext] text opt:"-k 0 -M utf-8 -L utf-8 -o asciidoc -o neverwrap"
 
 # aggregation
-[type: myadoc] source/aggregation/navbar.html \$lang:translated/\$lang/aggregation/navbar.html master:file=aggregation__navbar add_\$lang:i18n/po/\$lang/aggregation__navbar.\$lang.add
+[type: myadoc] source/aggregation/navbar.html \$lang:translated/\$lang/aggregation/navbar.html master:file=aggregation/navbar add_\$lang:i18n/po/\$lang/aggregation/navbar.\$lang.add
 
 EOS
 
@@ -43,15 +43,29 @@ for doc in $DOCS; do
         fi
 
         PO4A_TYPE=myadoc
+        grep "^\`\`\`" $file > /dev/null
+        HAS_CODE=$?
+        grep "^|===" $file > /dev/null
+        HAS_TABLE=$?
+        if [[ "$HAS_CODE" -eq 0 ]] || [[ "$HAS_TABLE" -eq 0 ]]; then
+            echo "Handling as text: $file"
+            PO4A_TYPE=mytext
+        fi
         if [[ "$file" =~ ${FORCE_TEXT_FILE} ]]; then
             echo "Handling as text: $file"
             PO4A_TYPE=mytext
         fi
 
         MASTER_FILE=`echo $file | sed -e "s|^$DIR||"`
-        OUT_MASTER_FILE=`echo $MASTER_FILE | sed -e "s|/|__|g" | sed -e "s|\.$TARGET_EXT$||"`
+        OUT_MASTER_FILE=`echo $MASTER_FILE | sed -e "s|\.$TARGET_EXT$||"`
         echo "[type: $PO4A_TYPE] $SOURCE_DIR/$MASTER_FILE \$lang:$TRANSLATED_DIR/\$lang/$MASTER_FILE master:file=$OUT_MASTER_FILE" >> $OUT_FILE
         echo "Add: $file"
+
+        MASTER_DIR=`echo $MASTER_FILE | sed -s "s|\(.*\)/.*|\1|"`
+        mkdir -p $DIR/i18n/pot/$MASTER_DIR
+        for tl in $TARGET_LANG; do
+            mkdir -p $DIR/i18n/po/$tl/$MASTER_DIR
+        done
     done
 
     echo "" >> $OUT_FILE

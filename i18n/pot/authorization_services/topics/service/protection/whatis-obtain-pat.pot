@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ====
+#: source/authorization_services/topics/service/protection/whatis-obtain-pat.adoc:2
+#, no-wrap
+msgid "What is a PAT and How to Obtain It"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/protection/whatis-obtain-pat.adoc:6
+#, no-wrap
+msgid ""
+"A *protection API token* (PAT) is a special OAuth2 access token with a scope defined as  *uma_protection*. When you create a resource server, {project_name} automatically\n"
+"creates a role, _uma_protection_, for the corresponding client application and associates it with the client's service account.\n"
+msgstr ""
+
+#. type: Block title
+#: source/authorization_services/topics/service/protection/whatis-obtain-pat.adoc:7
+#, no-wrap
+msgid "Service Account granted with *uma_protection* role"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/protection/whatis-obtain-pat.adoc:9
+#, no-wrap
+msgid "image:{project_images}/service/rs-uma-protection-role.png[alt=\"Service Account granted with uma_protection role\"]\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/protection/whatis-obtain-pat.adoc:11
+#, no-wrap
+msgid "Resource servers can obtain a PAT from {project_name} like any other OAuth2 access token. For example, using curl:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/protection/whatis-obtain-pat.adoc:19
+#, no-wrap
+msgid ""
+"```bash\n"
+"curl -X POST \\\n"
+"    -H \"Authorization: Basic aGVsbG8td29ybGQtYXV0aHotc2VydmljZTpwYXNzd29yZA==\" \\\n"
+"    -H \"Content-Type: application/x-www-form-urlencoded\" \\\n"
+"    -d 'grant_type=client_credentials' \\\n"
+"    \"http://localhost:8080/auth/realms/${realm_name}/protocol/openid-connect/token\"\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/protection/whatis-obtain-pat.adoc:21
+#, no-wrap
+msgid "The example above is using the *client_credentials* grant type to obtain a PAT from the server. As a result, the server returns a response similar to the following:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/protection/whatis-obtain-pat.adoc:34
+#, no-wrap
+msgid ""
+"```bash\n"
+"{\n"
+"  \"access_token\": ${PAT},\n"
+"  \"expires_in\": 300,\n"
+"  \"refresh_expires_in\": 1800,\n"
+"  \"refresh_token\": ${refresh_token},\n"
+"  \"token_type\": \"bearer\",\n"
+"  \"id_token\": ${id_token},\n"
+"  \"not-before-policy\": 0,\n"
+"  \"session_state\": \"ccea4a55-9aec-4024-b11c-44f6f168439e\"\n"
+"}\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/protection/whatis-obtain-pat.adoc:37
+#, no-wrap
+msgid ""
+"{project_name} can authenticate your client application in different ways. For simplicity, the *client_credentials* grant type is used here,\n"
+"which requires a _client_id_ and a _client_secret_. You can choose to use any supported authentication method.\n"
+msgstr ""

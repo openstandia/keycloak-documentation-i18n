@@ -1,0 +1,871 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =====
+#: source/getting_started/topics/first-realm/user.adoc:9
+#: source/server_admin/topics/users/attributes.adoc:7
+#: source/server_admin/topics/users/create-user.adoc:7
+#: source/server_admin/topics/users/impersonation.adoc:8
+#: source/server_admin/topics/users/viewing.adoc:6
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:250
+#, no-wrap
+msgid "Users"
+msgstr "ユーザー"
+
+#. type: Title =====
+#: source/server_admin/topics/groups.adoc:20
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:283
+#, no-wrap
+msgid "Group"
+msgstr ""
+
+#. type: Title ===
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:3
+#, no-wrap
+msgid "Fine Grain Admin Permissions"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:8
+msgid ""
+"Sometimes roles like `manage-realm` or `manage-users` are too coarse grain "
+"and you want to create restricted admin accounts that have more fine grain "
+"permissions.  {project_name} allows you to define and assign restricted "
+"access policies for managing a realm.  Things like:"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:10
+msgid "Managing one specific client"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:11
+msgid "Managing users that belong to a specific group"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:12
+msgid "Managing membership of a group"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:13
+msgid "Limited user management."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:14
+msgid "Fine grain impersonization control"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:15
+msgid "Being able to assign a specific restricted set of roles to users."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:16
+msgid ""
+"Being able to assign a specific restricted set of roles to a composite role."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:17
+msgid ""
+"Being able to assign a specific restricted set of roles to a client's scope."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:18
+msgid ""
+"New general policies for viewing and managing users, groups, roles, and "
+"clients."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:20
+msgid ""
+"There's some important things to note about fine grain admin permissions:"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:22
+msgid ""
+"Fine grain admin permissions were implemented on top of "
+"link:{authorizationguide_link}[Authorization Services].  It is highly "
+"recommended that you read up on those features before diving into fine grain"
+" permissions."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:23
+msgid ""
+"Fine grain permissions are only available within "
+"<<_per_realm_admin_permissions, dedicated admin consoles>> and admins "
+"defined within those realms.  You cannot define cross-realm fine grain "
+"permissions."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:25
+msgid ""
+"Fine grain permissions are used to grant additional permissions.  You cannot"
+" override the default behavior of the built in admin roles."
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:26
+#, no-wrap
+msgid "Managing One Specific Client"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:32
+msgid ""
+"Let's look first at allowing an admin to manage one client and one client "
+"only.  In our example we have a realm called `test` and a client called "
+"`sales-application`.  In realm `test` we will give a user in that realm "
+"permission to only manage that application."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:34
+msgid ""
+"You cannot do cross realm fine grain permissions.  Admins in the `master` "
+"realm are limited to the predefined admin roles defined in previous "
+"chapters."
+msgstr ""
+
+#. type: Title =====
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:35
+#, no-wrap
+msgid "Permission Setup"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:39
+msgid ""
+"The first thing we must do is login to the Admin Console so we can set up "
+"permissions for that client.  We navigate to the management section of the "
+"client we want to define fine-grain permissions for."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:40
+#, no-wrap
+msgid "Client Management"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:42
+msgid "image:{project_images}/fine-grain-client.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:44
+msgid ""
+"You should see a tab menu item called `Permissions`.  Click on that tab."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:45
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:53
+#, no-wrap
+msgid "Client Permissions Tab"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:47
+msgid "image:{project_images}/fine-grain-client-permissions-tab-off.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:50
+msgid ""
+"By default, each client is not enabled to do fine grain permissions.  So "
+"turn the `Permissions Enabled` switch to on to initialize permissions."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:52
+msgid ""
+"If you turn the `Permissions Enabled` switch to off, it will delete any and "
+"all permissions you have defined for this client."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:55
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:185
+msgid "image:{project_images}/fine-grain-client-permissions-tab-on.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:61
+msgid ""
+"When you witch `Permissions Enabled` to on, it initializes various "
+"permission objects behind the scenes using "
+"link:{authorizationguide_link}[Authorization Services].  For this example, "
+"we're interested in the `manage` permission for the client.  Clicking on "
+"that will redirect you to the permission that handles the `manage` "
+"permission for the client.  All authorization objects are contained in the "
+"`realm-management` client's `Authorization` tab."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:62
+#, no-wrap
+msgid "Client Manage Permission"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:64
+msgid "image:{project_images}/fine-grain-client-manage-permissions.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:68
+msgid ""
+"When first initialized the `manage` permission does not have any policies "
+"associated with it.  You will need to create one by going to the policy tab."
+"  To get there fast, click on the `Authorization` link shown in the above "
+"image. Then click on the policies tab."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:72
+msgid ""
+"There's a pull down menu on this page called `Create policy`.  There's a "
+"multitude of policies you can define.  You can define a policy that is "
+"associated with a role or a group or even define rules in Javascript.  For "
+"this simple example, we're going to create a `User Policy`."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:73
+#, no-wrap
+msgid "User Policy"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:75
+msgid "image:{project_images}/fine-grain-client-user-policy.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:78
+msgid ""
+"This policy will match a hard-coded user in the user database.  In this case"
+" it is the `sales-admin` user.  We must then go back to the `sales-"
+"application` client's `manage` permission page and assign the policy to the "
+"permission object."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:79
+#, no-wrap
+msgid "Assign User Policy"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:81
+msgid "image:{project_images}/fine-grain-client-assign-user-policy.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:83
+msgid ""
+"The `sales-admin` user can now has permission to manage the `sales-"
+"application` client."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:86
+msgid ""
+"There's one more thing we have to do.  Go to the `Role Mappings` tab and "
+"assign the `query-clients` role to the `sales-admin`."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:87
+#, no-wrap
+msgid "Assign query-clients"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:89
+msgid "image:{project_images}/fine-grain-assign-query-clients.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:94
+msgid ""
+"Why do you have to do this? This role tells the Admin Console what menu "
+"items to render when the `sales-admin` visits the Admin Console.  The "
+"`query-clients` role tells the Admin Console that it should render client "
+"menus for the `sales-admin` user."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:96
+msgid ""
+"IMPORTANT If you do not set the `query-clients` role, restricted admins like"
+" `sales-admin` will not see any menu options when they log into the Admin "
+"Console"
+msgstr ""
+
+#. type: Title =====
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:97
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:161
+#, no-wrap
+msgid "Testing It Out."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:101
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:165
+msgid ""
+"Next we log out of the master realm and and re-login to the "
+"<<_per_realm_admin_permissions, dedicated admin console>> for the `test` "
+"realm using the `sales-admin` as a username.  This is located under "
+"`/auth/admin/test/console`."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:102
+#, no-wrap
+msgid "Sales Admin Login"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:104
+msgid "image:{project_images}/fine-grain-sales-admin-login.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:106
+msgid "This admin is now able to manage this one client."
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:107
+#, no-wrap
+msgid "Restrict User Role Mapping"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:115
+msgid ""
+"Another thing you might want to do is to restrict the set a roles an admin "
+"is allowed to assign to a user.  Continuing our last example, let's expand "
+"the permission set of the 'sales-admin' user so that he can also control "
+"which users are allowed to access this application.  Through fine grain "
+"permissions we can enable it so that the `sales-admin` can only assign roles"
+" that grant specific access to the `sales-application`.  We can also "
+"restrict it so that the admin can only map roles and not perform any other "
+"types of user administration."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:117
+msgid "The `sales-application` has defined three different client roles."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:118
+#, no-wrap
+msgid "Sales Application Roles"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:120
+msgid "image:{project_images}/fine-grain-sales-application-roles.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:124
+msgid ""
+"We want the `sales-admin` user to be able to map these roles to any user in "
+"the system.  The first step to do this is to allow the role to be mapped by "
+"the admin.  If we click on the `viewLeads` role, you'll see that there is a "
+"`Permissions` tab for this role."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:125
+#, no-wrap
+msgid "View Leads Role Permission Tab"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:127
+msgid "image:{project_images}/fine-grain-view-leads-role-tab.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:130
+msgid ""
+"If we click on that tab and turn the `Permissions Enabled` on, you'll see "
+"that there are a number of actions we can apply policies to."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:131
+#, no-wrap
+msgid "View Leads Permissions"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:133
+msgid "image:{project_images}/fine-grain-view-leads-permissions.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:136
+msgid ""
+"The one we are interested in is `map-role`.  Click on this permission and "
+"add the same User Policy that was created in the earlier example."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:137
+#, no-wrap
+msgid "Map-roles Permission"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:139
+msgid "image:{project_images}/fine-grain-map-roles-permission.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:145
+msgid ""
+"What we've done is say that the `sales-admin` can map the `viewLeads` role."
+"  What we have not done is specify which users the admin is allowed to map "
+"this role too.  To do that we must go to the `Users` section of the admin "
+"console for this realm.  Clicking on the `Users` left menu item brings us to"
+" the users interface of the realm.  You should see a `Permissions` tab.  "
+"Click on that and enable it."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:146
+#, no-wrap
+msgid "Users Permissions"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:148
+msgid "image:{project_images}/fine-grain-users-permissions.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:153
+msgid ""
+"The permission we are interested in is `map-roles`.  This is a restrictive "
+"policy in that it only allows admins the ability to map roles to a user.  If"
+" we click on the `map-roles` permission and again add the User Policy we "
+"created for this, our `sales-admin` will be able to map roles to any user."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:156
+msgid ""
+"The last thing we have to do is add the `view-users` role to the `sales-"
+"admin`.  This will allow the admin to view users in the realm he wants to "
+"add the `sales-application` roles to."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:157
+#, no-wrap
+msgid "Add view-users"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:159
+msgid "image:{project_images}/fine-grain-add-view-users.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:170
+msgid ""
+"You will see that now the `sales-admin` can view users in the system.  If "
+"you select one of the users you'll see that each user detail page is read "
+"only, except for the `Role Mappings` tab.  Going to these tab you'll find "
+"that there are no `Available` roles for the admin to map to the user except "
+"when we browse the `sales-application` roles."
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:171
+#, no-wrap
+msgid "Add viewLeads"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:173
+msgid "image:{project_images}/fine-grain-add-view-leads.png[]"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:175
+msgid ""
+"We've only specified that the `sales-admin` can map the `viewLeads` role."
+msgstr ""
+
+#. type: Title =====
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:176
+#, no-wrap
+msgid "Per Client map-roles Shortcut"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:182
+#, no-wrap
+msgid ""
+"It would be tedious if we had to do this for every client role that the `sales-application` published.\n"
+"to make things easier, there's a way to specify that an admin can map any role defined\n"
+"by a client.  If we log back into the admin console to our master realm admin and go back\n"
+"  to the `sales-application` permissions page, you'll see the `map-roles` permission.\n"
+msgstr ""
+
+#. type: Block title
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:183
+#, no-wrap
+msgid "Client map-roles Permission"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:188
+msgid ""
+"If you grant access to this particular parmission to an admin, that admin "
+"will be able map any role defined by the client."
+msgstr ""
+
+#. type: Title ====
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:189
+#, no-wrap
+msgid "Full List of Permissions"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:194
+msgid ""
+"You can do a lot more with fine grain permissions beyond managing a specific"
+" client or the specific roles of a client.  This chapter defines the whole "
+"list of permission types that can be described for a realm."
+msgstr ""
+
+#. type: Title =====
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:195
+#, no-wrap
+msgid "Role"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:199
+msgid ""
+"When going to the `Permissions` tab for a specific role, you will see these "
+"permission types listed."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:200
+#, no-wrap
+msgid "map-role"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:205
+msgid ""
+"Policies that decide if an admin can map this role to a user.  These "
+"policies only specify that the role can be mapped to a user, not that the "
+"admin is allowed to perform user role mapping tasks.  The admin will also "
+"have to have manage or role mapping permissions.  See <<_users-permissions, "
+"Users Permissions>> for more information."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:205
+#, no-wrap
+msgid "map-role-composite"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:210
+msgid ""
+"Policies that decide if an admin can map this role as a composite to another"
+" role.  An admin can define roles for a client if he has manage permissions "
+"for that client but he will not be able to add composites to those roles "
+"unless he has the `map-role-composite` privileges for the role he wants to "
+"add as a composite."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:210
+#, no-wrap
+msgid "map-role-client-scope"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:215
+msgid ""
+"Policies that decide if an admin can apply this role to the scope of a "
+"client.  Even if the admin can manage the client, he will not have "
+"permission to create tokens for that client that contain this role unless "
+"this privilege is granted."
+msgstr ""
+
+#. type: Title =====
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:216
+#, no-wrap
+msgid "Client"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:220
+msgid ""
+"When going to the `Permissions` tab for a specific client, you will see "
+"these permission types listed."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:221
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:255
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:288
+#, no-wrap
+msgid "view"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:223
+msgid "Policies that decide if an admin can view the client's configuration."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:223
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:257
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:290
+#, no-wrap
+msgid "manage"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:230
+msgid ""
+"Policies that decide if an admin can view and manage the client's "
+"configuration.  There is some issues with this in that privileges could be "
+"leaked unintentionally.  For example, the admin could define a protocol "
+"mapper that hardcoded a role even if the admin does not have privileges to "
+"map the role to the client's scope.  This is currently the limitation of "
+"protocol mappers as they don't have a way to assign individual permissions "
+"to them like roles do."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:230
+#, no-wrap
+msgid "configure"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:234
+msgid ""
+"Reduced set of prileges to manage the client.  Its like the `manage` scope "
+"except the admin is not allowed to define protocol mappers, change the "
+"client template, or the client's scope."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:234
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:262
+#, no-wrap
+msgid "map-roles"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:238
+msgid ""
+"Policies that decide if an admin can map any role defined by the client to a"
+" user.  This is a shortcut, easy-of-use feature to avoid having to defin "
+"policies for each and every role defined by the client."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:238
+#, no-wrap
+msgid "map-roles-composite"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:243
+msgid ""
+"Policies that decide if an admin can map any role defined by the client as a"
+" composite to another role.  This is a shortcut, easy-of-use feature to "
+"avoid having to define policies for each and every role defined by the "
+"client."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:243
+#, no-wrap
+msgid "map-roles-client-scope"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:248
+msgid ""
+"Policies that decide if an admin can map any role defined by the client to "
+"the scope of another client.  This is a shortcut, easy-of-use feature to "
+"avoid having to define policies for each and every role defined by the "
+"client."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:254
+msgid ""
+"When going to the `Permissions` tab for all users, you will see these "
+"permission types listed."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:257
+msgid "Policies that decide if an admin can view all users in the realm."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:262
+msgid ""
+"Policies that decide if an admin can manage all users in the realm.  This "
+"permission grants the admin the privilege to perfor user role mappings, but "
+"it does not specify which roles the admin is allowed to map.  You'll need to"
+" define the privilege for each role you want the admin to be able to map."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:268
+msgid ""
+"This is a subset of the privileges granted by the `manage` scope.  In this "
+"case the admin is only allowed to map roles.  The admin is not allowed to "
+"perform any other user management operation.  Also, like `manage`, the roles"
+" that the admin is allowed to apply must be specified per role or per set of"
+" roles if dealing with client roles."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:268
+#, no-wrap
+msgid "manage-group-membership"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:274
+msgid ""
+"Similar to `map-roles` except that it pertains to group membership: which "
+"groups a user can be added or removed from.  These policies just grant the "
+"admin permission to manage group membership, not which groups the admin is "
+"allowed to manage membership for.  You'll have to specify policies for each "
+"group's `manage-members` permission."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:274
+#, no-wrap
+msgid "impersonate"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:277
+msgid ""
+"Policies that decide if the admin is allowed to impersonate other users.  "
+"These policies are applied to the admin's attributes and role mappings."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:277
+#, no-wrap
+msgid "user-impersonated"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:282
+msgid ""
+"Policies that decide which users can be impersonated.  These policies will "
+"be applied to the user being impersonated.  For example, you might want to "
+"define a policy that will forbid anybody from impersonating a user that has "
+"admin privileges."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:287
+msgid ""
+"When going to the `Permissions` tab for a specific group, you will see these"
+" permission types listed."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:290
+msgid ""
+"Policies that decide if the admin can view information about the group."
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:292
+msgid ""
+"Policies that decide if the admin can manage the configuration of the group."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:292
+#, no-wrap
+msgid "view-members"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:294
+msgid ""
+"Policies that decide if the admin can view the user details of members of "
+"the group."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:294
+#, no-wrap
+msgid "manage-members"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:296
+msgid ""
+"Policies that decide if the admin can manage the users that belong to this "
+"group."
+msgstr ""
+
+#. type: Labeled list
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:296
+#, no-wrap
+msgid "manage-membership"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/admin-console-permissions/fine-grain.adoc:299
+msgid ""
+"Policies that decide if an admin can change the membership of the group.  "
+"Add or remove members from the group."
+msgstr ""

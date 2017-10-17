@@ -1,0 +1,233 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Plain text
+#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:46
+#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:81
+#: source/authorization_services/topics/service/entitlement/whatis-obtain-eat.adoc:20
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:43
+#: source/authorization_services/topics/service/authorization/authorization-api-aapi.adoc:29
+#: source/authorization_services/topics/service/authorization/whatis-obtain-aat.adoc:26
+#, no-wrap
+msgid "As a result, the server response is:\n"
+msgstr ""
+
+#. type: Title ===
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:2
+#, no-wrap
+msgid "Introspecting a Requesting Party Token"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:5
+#, no-wrap
+msgid ""
+"Sometimes you might want to introspect a requesting party token (RPT) to "
+"check its validity or obtain the permissions within the token to enforce "
+"authorization decisions on the resource server side.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:7
+#, no-wrap
+msgid "There are two main use cases where token introspection can help you:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:9
+#, no-wrap
+msgid ""
+"When client applications need to query the token validity to obtain a new "
+"one with the same or additional permissions\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:10
+#, no-wrap
+msgid ""
+"When enforcing authorization decisions at the resource server side, "
+"especially when none of the built-in <<_enforcer_overview, policy "
+"enforcers>> fits your application\n"
+msgstr ""
+
+#. type: Title ====
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:11
+#, no-wrap
+msgid "Obtaining Information about an RPT"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:14
+#, no-wrap
+msgid ""
+"The token introspection is essentially a "
+"https://tools.ietf.org/html/rfc7662[OAuth2 token introspection]-compliant "
+"endpoint from which you can obtain information about an RPT.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:18
+#, no-wrap
+msgid ""
+"```bash\n"
+"http://${host}:${port}/auth/realms/${realm_name}/protocol/openid-connect/token/introspect\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:20
+#, no-wrap
+msgid ""
+"To introspect an RPT using this endpoint, you can send a request to the "
+"server as follows:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:28
+#, no-wrap
+msgid ""
+"```bash\n"
+"curl -X POST \\\n"
+"    -H \"Authorization: Basic aGVsbG8td29ybGQtYXV0aHotc2VydmljZTpzZWNyZXQ=\" \\\n"
+"    -H \"Content-Type: application/x-www-form-urlencoded\" \\\n"
+"    -d 'token_type_hint=requesting_party_token&token=${RPT}' \\\n"
+"    \"http://localhost:8080/auth/realms/hello-world-authz/protocol/openid-connect/token/introspect\"\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:31
+#, no-wrap
+msgid ""
+"The request above is using HTTP BASIC and passing the client's credentials "
+"(client ID and secret) to authenticate the client attempting to introspect "
+"the token, but you can use any other client authentication method supported "
+"by {project_name}.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:33
+#, no-wrap
+msgid "The introspection endpoint expects two parameters:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:35
+#, no-wrap
+msgid "*token_type_hint*\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:37
+#, no-wrap
+msgid ""
+"Use *requesting_party_token* as the value for this parameter, which "
+"indicates that you want to introspect an RPT.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:39
+#, no-wrap
+msgid "*token*\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:41
+#, no-wrap
+msgid ""
+"Use the token string as it was returned by the server during the "
+"authorization process as the value for this parameter.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:59
+#, no-wrap
+msgid ""
+"```json\n"
+"{\n"
+"  \"permissions\": [\n"
+"    {\n"
+"      \"resource_set_id\": \"90ccc6fc-b296-4cd1-881e-089e1ee15957\",\n"
+"      \"resource_set_name\": \"Hello World Resource\"\n"
+"    }\n"
+"  ],\n"
+"  \"exp\": 1465314139,\n"
+"  \"nbf\": 0,\n"
+"  \"iat\": 1465313839,\n"
+"  \"aud\": \"hello-world-authz-service\",\n"
+"  \"active\": true\n"
+"}\n"
+"```\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:61
+#, no-wrap
+msgid "If the RPT is not active, this response is returned instead:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:67
+#, no-wrap
+msgid ""
+"```json\n"
+"{\n"
+"  \"active\": false\n"
+"}\n"
+"```\n"
+msgstr ""
+
+#. type: Title ====
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:68
+#, no-wrap
+msgid "Do I Need to Invoke the Server Every Time I Want to Introspect an RPT?"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:72
+#, no-wrap
+msgid ""
+"No. Both <<_service_entitlement_api, Entitlement>> APIs use the\n"
+" https://tools.ietf.org/html/rfc7519[JSON web token (JWT)] specification as the default format for RPTs.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:75
+#, no-wrap
+msgid ""
+"If you want to validate these tokens without a call to the remote introspection endpoint, you can decode the RPT and query for its validity locally. Once you decode the token,\n"
+"you can also use the permissions within the token to enforce authorization decisions.\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:77
+#, no-wrap
+msgid ""
+"This is essentially what the <<_enforcer_overview, policy enforcers>> do. Be"
+" sure to:\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:79
+#, no-wrap
+msgid "Validate the signature of the RPT (based on the realm's public key)\n"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service/rpt/token-introspection.adoc:79
+#, no-wrap
+msgid "Query for token validity based on its _exp_, _iat_, and _aud_ claims\n"
+msgstr ""

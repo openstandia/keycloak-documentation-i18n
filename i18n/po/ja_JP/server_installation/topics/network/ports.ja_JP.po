@@ -1,34 +1,40 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
-"Language-Team: Japanese\n"
-"Language: ja\n"
+"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
-"X-Crowdin-Project: keycloak-documentation-i18n\n"
-"X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/i18n/po/ja_JP/"
-"server_installation__topics__network__ports.ja_JP.po\n"
 
 #. type: Title ===
 #: source/server_installation/topics/network/ports.adoc:4
 #, no-wrap
 msgid "Socket Port Bindings"
-msgstr ""
+msgstr "ソケットポート・バインディング"
 
 #. type: Plain text
 #: source/server_installation/topics/network/ports.adoc:9
 msgid ""
 "The ports opened for each socket have a pre-defined default that can be "
 "overriden at the command line or within configuration.  To illustrate this "
-"configuration, let's pretend you are running in <<_standalone-mode,"
-"standalone mode>> and open up the _.../standalone/configuration/standalone."
-"xml_.  Search for `socket-binding-group`."
+"configuration, let's pretend you are running in <<_standalone-"
+"mode,standalone mode>> and open up the "
+"_.../standalone/configuration/standalone.xml_.  Search for `socket-binding-"
+"group`."
 msgstr ""
+"各ソケット用に開けられたポートには、コマンドラインまたは設定内で上書きできるデフォルト値があらかじめ定義されています。この設定方法を学ぶために"
+"、<<_standalone-mode,standalone mode>>で実行して "
+"_.../standalone/configuration/standalone.xml_ を開いてみましょう。そして `socket-binding-"
+"group` を検索します。"
 
 #. type: delimited block -
 #: source/server_installation/topics/network/ports.adoc:24
@@ -47,6 +53,18 @@ msgid ""
 "        </outbound-socket-binding>\n"
 "    </socket-binding-group>\n"
 msgstr ""
+"<socket-binding-group name=\"standard-sockets\" default-interface=\"public\" port-offset=\"${jboss.socket.binding.port-offset:0}\">\n"
+" <socket-binding name=\"management-http\" interface=\"management\" port=\"${jboss.management.http.port:9990}\"/>\n"
+" <socket-binding name=\"management-https\" interface=\"management\" port=\"${jboss.management.https.port:9993}\"/>\n"
+" <socket-binding name=\"ajp\" port=\"${jboss.ajp.port:8009}\"/>\n"
+" <socket-binding name=\"http\" port=\"${jboss.http.port:8080}\"/>\n"
+" <socket-binding name=\"https\" port=\"${jboss.https.port:8443}\"/>\n"
+" <socket-binding name=\"txn-recovery-environment\" port=\"4712\"/>\n"
+" <socket-binding name=\"txn-status-manager\" port=\"4713\"/>\n"
+" <outbound-socket-binding name=\"mail-smtp\">\n"
+" <remote-destination host=\"localhost\" port=\"25\"/>\n"
+" </outbound-socket-binding>\n"
+" </socket-binding-group>\n"
 
 #. type: Plain text
 #: source/server_installation/topics/network/ports.adoc:28
@@ -55,34 +73,36 @@ msgid ""
 "`socket-bindings` define socket connections that will be opened by the server.  These bindings specify the\n"
 "`interface` (bind address) they use as well as what port number they will open.   The ones you will be most interested in are:\n"
 msgstr ""
+"`socket-bindings` によってソケット接続が定義され、サーバーで開かれます。これらのバインディングは、 `interface` "
+"のバインドアドレスとポート番号を指定します。最も重要な項目は、以下のとおりです。\n"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/ports.adoc:29
 #, no-wrap
 msgid "http"
-msgstr ""
+msgstr "http"
 
 #. type: Plain text
 #: source/server_installation/topics/network/ports.adoc:31
 msgid "Defines the port used for {project_name} HTTP connections"
-msgstr ""
+msgstr "{project_name}HTTP接続に使用されるポートの定義"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/ports.adoc:31
 #, no-wrap
 msgid "https"
-msgstr ""
+msgstr "https"
 
 #. type: Plain text
 #: source/server_installation/topics/network/ports.adoc:33
 msgid "Defines the port used for {project_name} HTTPS connections"
-msgstr ""
+msgstr "{project_name}HTTPS接続に使用されるポートの定義"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/ports.adoc:33
 #, no-wrap
 msgid "ajp"
-msgstr ""
+msgstr "ajp"
 
 #. type: Plain text
 #: source/server_installation/topics/network/ports.adoc:36
@@ -91,34 +111,40 @@ msgid ""
 "protocol is used by Apache HTTPD server in conjunction `mod-cluster` when "
 "you are using Apache HTTPD as a load balancer."
 msgstr ""
+"このソケット・バインディングは、AJPプロトコルに使用されるポートを定義します。このプロトコルは、ApacheHTTPDをロードバランサーとして使用している場合、ApacheHTTPDサーバーによって"
+" `mod-cluster` と共に使用されます。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/ports.adoc:36
 #, no-wrap
 msgid "management-http"
-msgstr ""
+msgstr "management-http"
 
 #. type: Plain text
 #: source/server_installation/topics/network/ports.adoc:38
 msgid ""
 "Defines the HTTP connection used by {appserver_name} CLI and web console."
-msgstr ""
+msgstr "{appserver_name}CLIとウェブ・コンソールで使用されるHTTP接続を定義します。"
 
 #. type: Plain text
 #: source/server_installation/topics/network/ports.adoc:42
 msgid ""
 "When running in <<_domain-mode,domain mode>> setting the socket "
 "configurations is a bit trickier as the example _domain.xml_ file has "
-"multiple `socket-binding-groups` defined.  If you scroll down to the `server-"
-"group` definitions you can see what `socket-binding-group` is used for each "
-"`server-group`."
+"multiple `socket-binding-groups` defined.  If you scroll down to the "
+"`server-group` definitions you can see what `socket-binding-group` is used "
+"for each `server-group`."
 msgstr ""
+"<<_domain-mode,domain mode>>の設定を実行する場合、 _domain.xml_ ファイルに複数の `socket-"
+"binding-groups` が定義されているサンプルと同様に、ソケット設定は少し難しくなります。 `server-group` "
+"の定義までスクロールダウンすると、各 `server-group` にどの `socket-binding-group` "
+"が使用されているのか確認することができます。"
 
 #. type: Block title
 #: source/server_installation/topics/network/ports.adoc:43
 #, no-wrap
 msgid "domain socket bindings"
-msgstr ""
+msgstr "domain socket bindings"
 
 #. type: delimited block -
 #: source/server_installation/topics/network/ports.adoc:56
@@ -135,11 +161,24 @@ msgid ""
 "        </server-group>\n"
 "    </server-groups>\n"
 msgstr ""
+"<server-groups>\n"
+" <server-group name=\"load-balancer-group\" profile=\"load-balancer\">\n"
+" ...\n"
+" <socket-binding-group ref=\"load-balancer-sockets\"/>\n"
+" </server-group>\n"
+" <server-group name=\"auth-server-group\" profile=\"auth-server-clustered\">\n"
+" ...\n"
+" <socket-binding-group ref=\"ha-sockets\"/>\n"
+" </server-group>\n"
+" </server-groups>\n"
 
 #. type: Plain text
 #: source/server_installation/topics/network/ports.adoc:58
 msgid ""
-"There are many more options available when setting up `socket-binding-group` "
-"definitions.  For more information, see link:{appserver_socket_link}[the "
+"There are many more options available when setting up `socket-binding-group`"
+" definitions.  For more information, see link:{appserver_socket_link}[the "
 "socket binding group] in the _{appserver_socket_name}_."
 msgstr ""
+" `socket-binding-group` を定義すると、さらに多くのオプションを使用できるようになります。詳しくは、 "
+"_{appserver_socket_name}_ 内のlink:{appserver_socket_link}[the socket binding "
+"group]をご覧ください。"

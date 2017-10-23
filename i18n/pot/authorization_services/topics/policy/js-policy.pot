@@ -81,10 +81,25 @@ msgid "*Logic*\n"
 msgstr ""
 
 #. type: Plain text
+#: source/authorization_services/topics/policy/aggregated-policy.adoc:41
+#: source/authorization_services/topics/policy/client-policy.adoc:28
 #: source/authorization_services/topics/policy/drools-policy.adoc:55
 #: source/authorization_services/topics/policy/js-policy.adoc:30
-#, no-wrap
-msgid "The <<_policy_logic, Logic>> of this policy to apply after the other conditions have been evaluated.\n"
+#: source/authorization_services/topics/policy/role-policy.adoc:36
+#: source/authorization_services/topics/policy/time-policy.adoc:54
+#: source/authorization_services/topics/policy/user-policy.adoc:28
+msgid ""
+"The <<_policy_logic, Logic>> of this policy to apply after the other "
+"conditions have been evaluated."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/policy/client-policy.adoc:21
+#: source/authorization_services/topics/policy/js-policy.adoc:22
+#: source/authorization_services/topics/policy/role-policy.adoc:25
+#: source/authorization_services/topics/policy/time-policy.adoc:21
+#: source/authorization_services/topics/policy/user-policy.adoc:21
+msgid "A string containing details about this policy."
 msgstr ""
 
 #. type: Title ===
@@ -95,16 +110,18 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/policy/js-policy.adoc:6
-#, no-wrap
 msgid ""
-"You can use this type of policy to define conditions for your permissions using JavaScript. It is one of the rule-based policy types\n"
-"supported by {project_name}, and provides flexibility to write any policy based on the <<_policy_evaluation_api, Evaluation API>>.\n"
+"You can use this type of policy to define conditions for your permissions "
+"using JavaScript. It is one of the rule-based policy types supported by "
+"{project_name}, and provides flexibility to write any policy based on the "
+"<<_policy_evaluation_api, Evaluation API>>."
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/policy/js-policy.adoc:8
-#, no-wrap
-msgid "To create a new JavaScript-based policy, select *JavaScript* in the dropdown list in the upper right corner of the policy listing.\n"
+msgid ""
+"To create a new JavaScript-based policy, select *JavaScript* in the dropdown "
+"list in the upper right corner of the policy listing."
 msgstr ""
 
 #. type: Block title
@@ -115,22 +132,18 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/policy/js-policy.adoc:11
-#, no-wrap
-msgid "image:{project_images}/policy/create-js.png[alt=\"Add JavaScript Policy\"]\n"
+msgid ""
+"image:{project_images}/policy/create-js.png[alt=\"Add JavaScript Policy\"]"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/policy/js-policy.adoc:18
-#, no-wrap
+#: source/authorization_services/topics/policy/role-policy.adoc:21
+#: source/authorization_services/topics/policy/time-policy.adoc:17
 msgid ""
-"A human-readable and unique string describing the policy. A best practice is to use names that are closely related to your business and security requirements, so you\n"
-"can identify them more easily.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/policy/js-policy.adoc:22
-#, no-wrap
-msgid "A string containing details about this policy.\n"
+"A human-readable and unique string describing the policy. A best practice is "
+"to use names that are closely related to your business and security "
+"requirements, so you can identify them more easily."
 msgstr ""
 
 #. type: Plain text
@@ -141,91 +154,70 @@ msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/policy/js-policy.adoc:26
-#, no-wrap
-msgid "The JavaScript code providing the conditions for this policy.\n"
+msgid "The JavaScript code providing the conditions for this policy."
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/policy/js-policy.adoc:35
-#, no-wrap
 msgid ""
-"Here is a simple example of a JavaScript-based policy that uses attribute-based access control (ABAC) to define a condition based on an attribute\n"
-"obtained from the execution context:\n"
+"Here is a simple example of a JavaScript-based policy that uses attribute-"
+"based access control (ABAC) to define a condition based on an attribute "
+"obtained from the execution context:"
 msgstr ""
 
-#. type: Plain text
-#: source/authorization_services/topics/policy/js-policy.adoc:39
+#. type: Code block
+#: source/authorization_services/topics/policy/js-policy.adoc:43
 #, no-wrap
 msgid ""
-"```javascript\n"
 "var context = $evaluation.getContext();\n"
 "var contextAttributes = context.getAttributes();\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/policy/js-policy.adoc:44
-#, no-wrap
-msgid ""
+"\n"
 "if (contextAttributes.containsValue('kc.client.network.ip_address', '127.0.0.1')) {\n"
 "    $evaluation.grant();\n"
 "}\n"
-"```\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/policy/js-policy.adoc:46
-#, no-wrap
-msgid "You can also use role-based access control (RBAC):\n"
+msgid "You can also use role-based access control (RBAC):"
 msgstr ""
 
-#. type: Plain text
-#: source/authorization_services/topics/policy/js-policy.adoc:50
+#. type: Code block
+#: source/authorization_services/topics/policy/js-policy.adoc:54
 #, no-wrap
 msgid ""
-"```javascript\n"
 "var context = $evaluation.getContext();\n"
 "var identity = context.getIdentity();\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/policy/js-policy.adoc:55
-#, no-wrap
-msgid ""
+"\n"
 "if (identity.hasRole('keycloak_user')) {\n"
 "    $evaluation.grant();\n"
 "}\n"
-"```\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/policy/js-policy.adoc:57
-#, no-wrap
-msgid "Or a combination of several access control mechanisms:\n"
+msgid "Or a combination of several access control mechanisms:"
 msgstr ""
 
-#. type: Plain text
-#: source/authorization_services/topics/policy/js-policy.adoc:63
+#. type: Code block
+#: source/authorization_services/topics/policy/js-policy.adoc:67
 #, no-wrap
 msgid ""
-"```javascript\n"
 "var context = $evaluation.getContext();\n"
 "var identity = context.getIdentity();\n"
 "var attributes = identity.getAttributes();\n"
 "var email = attributes.getValue('email').asString(0);\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/policy/js-policy.adoc:68
-#, no-wrap
-msgid ""
+"\n"
 "if (identity.hasRole('admin') || email.endsWith('@keycloak.org')) {\n"
 "    $evaluation.grant();\n"
 "}\n"
-"```\n"
 msgstr ""
 
 #. type: Plain text
 #: source/authorization_services/topics/policy/js-policy.adoc:69
-#, no-wrap
-msgid "When writing your own rules, keep in mind that the *$evaluation* object is an object implementing *org.keycloak.authorization.policy.evaluation.Evaluation*. For more information about what you can access from this interface, see the <<_policy_evaluation_api, Evaluation API>>.\n"
+msgid ""
+"When writing your own rules, keep in mind that the *$evaluation* object is "
+"an object implementing *org.keycloak.authorization.policy.evaluation."
+"Evaluation*. For more information about what you can access from this "
+"interface, see the <<_policy_evaluation_api, Evaluation API>>."
 msgstr ""

@@ -33,3 +33,5 @@ COPY --from=0 /root/rpmbuild/RPMS/noarch/po4a-${VERSION}-1.fc28.noarch.rpm /tmp/
 
 RUN yum install -y /tmp/*.rpm perl-Unicode-LineBreak
 
+COPY AsciiDoc.pm /usr/share/perl5/vendor_perl/Locale/Po4a/
+

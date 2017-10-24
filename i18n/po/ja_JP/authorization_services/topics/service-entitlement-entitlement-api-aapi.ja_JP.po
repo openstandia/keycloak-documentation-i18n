@@ -1,176 +1,182 @@
-# SOME DESCRIPTIVE TITLE
-# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# Japanese translations for keycloak-documentation-i18n package
+# Copyright (C) 2017 Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Automatically generated, 2017.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Title =====
-#: source/authorization_services/topics/enforcer/js-adapter.adoc:59
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:35
-#, no-wrap
+#. type: Title ==
+#: source/authorization_services/topics/enforcer-js-adapter.adoc:59
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:35
+#, fuzzy, no-wrap
+#| msgid "Obtaining Assertion Attributes"
 msgid "Obtaining Entitlements"
+msgstr "アサーション属性の取得"
+
+#. type: Plain text
+#: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:29
+#: source/authorization_services/topics/service-authorization-whatis-obtain-aat.adoc:26
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:46
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:81
+#: source/authorization_services/topics/service-entitlement-whatis-obtain-eat.adoc:20
+#: source/authorization_services/topics/service-rpt-token-introspection.adoc:43
+msgid "As a result, the server response is:"
 msgstr ""
 
-#. type: Title ====
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:2
+#. type: Title =
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:2
 #, no-wrap
 msgid "Requesting Entitlements"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:7
-#, no-wrap
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:7
 msgid ""
-"Client applications can use a specific endpoint to obtain a special security token called a <<_service_rpt_overview, Requesting Party Token (RPT)>>.\n"
-"This token consists of all the entitlements (or permissions) for a user as a result of the evaluation of the permissions and authorization policies associated with the resources being requested.\n"
-"With an RPT, client applications can gain access to protected resources at the resource server.\n"
+"Client applications can use a specific endpoint to obtain a special security "
+"token called a <<_service_rpt_overview, Requesting Party Token (RPT)>>.  "
+"This token consists of all the entitlements (or permissions) for a user as a "
+"result of the evaluation of the permissions and authorization policies "
+"associated with the resources being requested.  With an RPT, client "
+"applications can gain access to protected resources at the resource server."
 msgstr ""
 
 #. type: Block title
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:8
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:8
 #, no-wrap
 msgid "Entitlement API Endpoint"
 msgstr ""
 
+#. type: Code block
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:11
+#, fuzzy
+#| msgid "http://localhost:8080/auth/realms/demo/account"
+msgid ""
+"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/"
+"{client_id}"
+msgstr "http://localhost:8080/auth/realms/demo/account"
+
 #. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:12
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:16
+msgid ""
+"The **client_id** parameter above must be provided in order to identify the "
+"client application acting as a <<_overview_terminology_resource_server, "
+"resource server>> in {project_name}. You must provide the client identifier "
+"in order to restrict the scope of the evaluation to the resources, scopes "
+"and permissions managed by a specific resource server."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:18
+msgid "The Entitlement API comes in two flavors:"
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:21
+msgid ""
+"Using HTTP **GET** in order to obtain all entitlements based on the "
+"resources owned by a specific user or/and general resources owned and "
+"managed by the resource server itself."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:23
+msgid ""
+"Using HTTP **POST** in order to obtain entitlements based on a a set of one "
+"or more resources and scopes sent along with an entitlement request."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:28
+msgid ""
+"Using one or another depends on your use case and how much resources you "
+"have registered in {project_name}. Although the **GET** variant provides an "
+"easy way to obtain entitlements from the server, it might not be appropriate "
+"in case you have too much resources associated with an user. In this case, "
+"the **POST** method is recommended."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:31
+msgid ""
+"Regardless of the HTTP method you decide to use, the Entitlement API "
+"endpoint expects an access token in the request representing a user's "
+"identity and his consent to access authorization data on his behalf. The "
+"access token must be sent as a bearer token using an HTTP "
+"```Authorization``` header."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:34
+msgid ""
+"After successfully invoking the Entitlement API endpoint, you will get a "
+"<<_service_rpt_overview, RPT>> with all permissions granted by the server."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:38
+msgid ""
+"The easiest way to obtain entitlements for a specific user is using an HTTP "
+"GET request. For example, using curl:"
+msgstr ""
+
+#. type: Code block
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:43
 #, no-wrap
 msgid ""
-"```bash\n"
-"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\n"
-"```\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:16
-#, no-wrap
-msgid ""
-"The **client_id** parameter above must be provided in order to identify the client application acting as a <<_overview_terminology_resource_server, resource server>>\n"
-"in {project_name}. You must provide the client identifier in order to restrict the scope of the evaluation to the resources, scopes and permissions\n"
-"managed by a specific resource server.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:18
-#, no-wrap
-msgid "The Entitlement API comes in two flavors:\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:21
-#, no-wrap
-msgid ""
-"Using HTTP **GET** in order to obtain all entitlements based on the resources owned by a specific user or/and general resources\n"
-"owned and managed by the resource server itself.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:23
-#, no-wrap
-msgid "Using HTTP **POST** in order to obtain entitlements based on a a set of one or more resources and scopes sent along with an entitlement request.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:28
-#, no-wrap
-msgid ""
-"Using one or another depends on your use case and how much resources you have registered in {project_name}. Although the **GET** variant\n"
-"provides an easy way to obtain entitlements from the server, it might not be appropriate in case you have too much resources associated\n"
-"with an user. In this case, the **POST** method is recommended.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:31
-#, no-wrap
-msgid ""
-"Regardless of the HTTP method you decide to use, the Entitlement API endpoint expects an access token in the request representing a user's identity\n"
-"and his consent to access authorization data on his behalf. The access token must be sent as a bearer token using a HTTP ```Authorization``` header.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:34
-#, no-wrap
-msgid ""
-"After successfully invoking the Entitlement API endpoint, you will get a <<_service_rpt_overview, RPT>> with all permissions\n"
-"granted by the server.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:38
-#, no-wrap
-msgid "The easiest way to obtain entitlements for a specific user is using an HTTP GET request. For example, using curl:\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:44
-#, no-wrap
-msgid ""
-"```bash\n"
 "curl -X GET \\\n"
 "    -H \"Authorization: Bearer ${access_token}\" \\\n"
 "    \"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\"\n"
-"```\n"
 msgstr ""
 
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:46
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:81
-#, no-wrap
-msgid "As a result, the server response is:\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:52
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:87
+#. type: Code block
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:51
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:86
 #, no-wrap
 msgid ""
-"```json\n"
 "{\n"
 "  \"rpt\": ${RPT}\n"
 "}\n"
-"```\n"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:55
-#, no-wrap
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:55
 msgid ""
-"Using this method to obtain entitlements, the server responds to the requesting client with *all* entitlements for a user, based on the evaluation of the permissions and\n"
-"authorization policies associated with the resources owned by the user or the resource server itself. For instance, suppose you have permissions defined in {project_name} for the following resources:\n"
+"Using this method to obtain entitlements, the server responds to the "
+"requesting client with *all* entitlements for a user, based on the "
+"evaluation of the permissions and authorization policies associated with the "
+"resources owned by the user or the resource server itself. For instance, "
+"suppose you have permissions defined in {project_name} for the following "
+"resources:"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:57
-#, fuzzy, no-wrap
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:57
+#, fuzzy
 #| msgid "Login Page"
-msgid "Main Page\n"
+msgid "Main Page"
 msgstr "ログインページ"
 
 #. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:58
-#, no-wrap
-msgid "Alice Bank Account\n"
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:58
+msgid "Alice Bank Account"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:59
-#, no-wrap
-msgid "Bob Bank Account\n"
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:59
+msgid "Bob Bank Account"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:62
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:62
 #, no-wrap
 msgid ""
 "*Main Page* is a common resource in your application and owned by the resource server itself, it represents a landing or main page in your application. On the\n"
@@ -178,30 +184,31 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:65
-#, no-wrap
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:65
 msgid ""
-"When obtaining entitlements for user *alice*, the server is going to evaluate all permissions associated with resources *Main Page* and *Alice Bank Account*. Giving you\n"
-"back a RPT (if permissions were actually granted) with a set of permissions representing these resources.\n"
+"When obtaining entitlements for user *alice*, the server is going to "
+"evaluate all permissions associated with resources *Main Page* and *Alice "
+"Bank Account*. Giving you back a RPT (if permissions were actually granted) "
+"with a set of permissions representing these resources."
 msgstr ""
 
-#. type: Title =====
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:66
+#. type: Title ==
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:66
 #, no-wrap
 msgid "Obtaining Entitlements for a Specific Set of Resources"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:69
-#, no-wrap
-msgid "You can also use the entitlements endpoint to obtain a user's entitlements for a set of one or more resources. For example, using curl:\n"
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:69
+msgid ""
+"You can also use the entitlements endpoint to obtain a user's entitlements "
+"for a set of one or more resources. For example, using curl:"
 msgstr ""
 
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:79
+#. type: Code block
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:78
 #, no-wrap
 msgid ""
-"```bash\n"
 "curl -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer ${access_token}\" -d '{\n"
 "    \"permissions\" : [\n"
 "        {\n"
@@ -209,28 +216,26 @@ msgid ""
 "        }\n"
 "    ]\n"
 "}' \"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\"\n"
-"```\n"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:90
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:90
+msgid ""
+"Unlike the GET version, the server responds with an RPT holding the "
+"permissions granted during the evaluation of the permissions and "
+"authorization policies associated with the resources being requested."
+msgstr ""
+
+#. type: Plain text
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:92
+msgid ""
+"You can also specify the scopes you want to access. For example, using curl:"
+msgstr ""
+
+#. type: Code block
+#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:104
 #, no-wrap
 msgid ""
-"Unlike the GET version, the server responds with an RPT holding the permissions granted during the evaluation of the permissions and authorization policies\n"
-"associated with the resources being requested.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:92
-#, no-wrap
-msgid "You can also specify the scopes you want to access. For example, using curl:\n"
-msgstr ""
-
-#. type: Plain text
-#: source/authorization_services/topics/service/entitlement/entitlement-api-aapi.adoc:105
-#, no-wrap
-msgid ""
-"```bash\n"
 "curl -X POST -H \"Authorization: Bearer ${access_token}\" -d '{\n"
 "    \"permissions\" : [\n"
 "        {\n"
@@ -241,5 +246,4 @@ msgid ""
 "        }\n"
 "    ]\n"
 "}' \"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\"\n"
-"```\n"
 msgstr ""

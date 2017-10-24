@@ -1,18 +1,19 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
-"Language-Team: Japanese\n"
-"Language: ja_JP\n"
+"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
-"X-Crowdin-Project: keycloak-documentation-i18n\n"
-"X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/i18n/po/ja_JP/"
-"server_installation__topics__network__outgoing.ja_JP.po\n"
 
 #. type: Plain text
 #: source/server_installation/topics/database/hibernate.adoc:26
@@ -24,7 +25,7 @@ msgstr "設定可能なオプションは、以下のとおりです。"
 #: source/server_installation/topics/network/outgoing.adoc:2
 #, no-wrap
 msgid "Outgoing HTTP Requests"
-msgstr ""
+msgstr "HTTPリクエストの発信"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:8
@@ -32,16 +33,19 @@ msgid ""
 "The {project_name} server often needs to make non-browser HTTP requests to "
 "the applications and services it secures.  The auth server manages these "
 "outgoing connections by maintaining an HTTP client connection pool.  There "
-"are some things you'll need to configure in `standalone.xml`, `standalone-ha."
-"xml`, or `domain.xml`.  The location of this file depends on your "
+"are some things you'll need to configure in `standalone.xml`, `standalone-"
+"ha.xml`, or `domain.xml`.  The location of this file depends on your "
 "<<_operating-mode, operating mode>>."
 msgstr ""
+"{project_name}サーバーは多くの場合、セキュリティ保護されたアプリケーションとサービスに対してブラウザ以外のHTTPをリクエストする必要があります。認証サーバーは、HTTPクライアント接続プールを維持することによって、これらの発信接続を管理します。"
+" `standalone.xml` 、 `standalone-ha.xml` または `domain.xml` "
+"内で少し設定する必要があります。このファイルの場所は、<<_operating-mode, operating mode>>によって異なります。"
 
 #. type: Block title
 #: source/server_installation/topics/network/outgoing.adoc:9
 #, no-wrap
 msgid "HTTP client Config example"
-msgstr ""
+msgstr "HTTPクライアント設定のサンプル"
 
 #. type: delimited block -
 #: source/server_installation/topics/network/outgoing.adoc:19
@@ -55,30 +59,37 @@ msgid ""
 "    </provider>\n"
 "</spi>\n"
 msgstr ""
+"<spi name=\"connectionsHttpClient\">\n"
+" <provider name=\"default\" enabled=\"true\">\n"
+" <properties>\n"
+" <property name=\"connection-pool-size\" value=\"256\"/>\n"
+" </properties>\n"
+" </provider>\n"
+"</spi>\n"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:22
 #, no-wrap
 msgid "establish-connection-timeout-millis"
-msgstr ""
+msgstr "establish-connection-timeout-millis"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:24
 msgid "Timeout for establishing a socket connection."
-msgstr ""
+msgstr "ソケット接続を確立するためのタイムアウト"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:25
 #, no-wrap
 msgid "socket-timeout-millis"
-msgstr ""
+msgstr "socket-timeout-millis"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:27
 msgid ""
 "If an outgoing request does not receive data for this amount of time, "
 "timeout the connection."
-msgstr ""
+msgstr "発信リクエストがこの時間分のデータを受信しない場合、接続をタイムアウトしてください。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:28
@@ -90,35 +101,35 @@ msgstr "connection-pool-size"
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:30
 msgid "How many connections can be in the pool (128 by default)."
-msgstr ""
+msgstr "プールへの接続数（デフォルトでは128）。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:31
 #, no-wrap
 msgid "max-pooled-per-route"
-msgstr ""
+msgstr "max-pooled-per-route"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:33
 msgid "How many connections can be pooled per host (64 by default)."
-msgstr ""
+msgstr "ホストごとのプールへの接続数（デフォルトでは64）。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:34
 #, no-wrap
 msgid "connection-ttl-millis"
-msgstr ""
+msgstr "connection-ttl-millis"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:37
 msgid "Maximum connection time to live in milliseconds.  Not set by default."
-msgstr ""
+msgstr "ミリ秒単位での最大接続時間。デフォルトでは設定されていません。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:38
 #, no-wrap
 msgid "max-connection-idle-time-millis"
-msgstr ""
+msgstr "max-connection-idle-time-millis"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:41
@@ -127,18 +138,20 @@ msgid ""
 "seconds by default). Will start background cleaner thread of Apache HTTP "
 "client.  Set to -`1` to disable this checking and the background thread."
 msgstr ""
+"接続が接続プール内でアイドリング状態になる最大時間（デフォルトでは900秒）。ApacheHTTPクライアントのバックグラウンドクリーナースレッドを開始します。"
+" `1` にセットし、このチェックとバックグラウンドスレッドを無効にします。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:42
 #, no-wrap
 msgid "disable-cookies"
-msgstr ""
+msgstr "disable-cookies"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:45
 msgid ""
 "`true` by default.  When set to true, this will disable any cookie caching."
-msgstr ""
+msgstr "デフォルトでは `true` です。trueの設定の場合、Cookieキャッシュは無効になります。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:46
@@ -152,7 +165,7 @@ msgstr "client-keystore"
 msgid ""
 "This is the file path to a Java keystore file.  This keystore contains "
 "client certificate for two-way SSL."
-msgstr ""
+msgstr "これはJavaキーストア・ファイルへのファイル・パスです。このキーストアには、双方向SSL用のクライアント証明書が含まれています。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:50
@@ -167,7 +180,7 @@ msgstr "client-keystore-password"
 msgid ""
 "Password for the client keystore.  This is _REQUIRED_ if `client-keystore` "
 "is set."
-msgstr ""
+msgstr "クライアント・キーストア用のパスワード。 `client-keystore` が設定されている場合、これは _REQUIRED_ です。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:54
@@ -182,13 +195,13 @@ msgstr "client-key-password"
 msgid ""
 "Password for the client's key.  This is _REQUIRED_ if `client-keystore` is "
 "set."
-msgstr ""
+msgstr "クライアントキー用のパスワード。 `client-keystore` が設定されている場合、これは _REQUIRED_ です。"
 
 #. type: Title ====
 #: source/server_installation/topics/network/outgoing.adoc:59
 #, no-wrap
 msgid "Outgoing HTTPS Request Truststore"
-msgstr ""
+msgstr "HTTPSリクエスト・トラストストアの発信"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:64
@@ -200,6 +213,7 @@ msgid ""
 "these certificates must be put in a truststore.  This truststore is managed "
 "by the {project_name} server."
 msgstr ""
+"{project_name}によってリモートでHTTPSエンドポイントが呼び出された場合、リモートサーバーの証明書が信頼できるサーバーに接続されているか確認する必要があります。これは、中間者攻撃を防ぐために必要です。これらのリモートサーバーの証明書またはこれらの証明書に署名したCAは、トラストストアに保存する必要があります。このトラストストアは、{project_name}サーバーによって管理されます。"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:66
@@ -208,6 +222,7 @@ msgid ""
 "identity providers, when sending emails, and for backchannel communication "
 "with client applications."
 msgstr ""
+"トラストストアは、IDブローカーやLDAPIDプロバイダーに安全に接続する場合、電子メールを送信する場合、およびクライアントアプリケーションとのバックチャネル通信をする場合に使用されます。"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:70
@@ -217,6 +232,10 @@ msgid ""
 "          https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html[Java's JSSE Reference Guide].  If there is no trust\n"
 "          establised, then these outgoing HTTPS requests will fail.\n"
 msgstr ""
+"デフォルトでは、トラストストア・プロバイダーは設定されていません。 "
+"https接続は、https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html[Java's"
+" JSSE Reference "
+"Guide]の説明のとおり、標準javaトラストストア設定になっています。認証されていない場合は、これらのHTTPSリクエスト発信はエラーになります。\n"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:72
@@ -224,21 +243,30 @@ msgid ""
 "You can use _keytool_ to create a new truststore file or add trusted host "
 "certificates to an existing one:"
 msgstr ""
+"_keytool_ "
+"を使用し、新しいトラストストア・ファイルを作成、または信頼できるホスト証明書を既存のトラストストア・ファイルに追加することができます。"
 
 #. type: delimited block -
 #: source/server_installation/topics/network/outgoing.adoc:77
 #, no-wrap
-msgid "$ keytool -import -alias HOSTDOMAIN -keystore truststore.jks -file host-certificate.cer\n"
+msgid ""
+"$ keytool -import -alias HOSTDOMAIN -keystore truststore.jks -file host-"
+"certificate.cer\n"
 msgstr ""
+"$ keytool -import -alias HOSTDOMAIN -keystore truststore.jks -file host-"
+"certificate.cer\n"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:83
 msgid ""
-"The truststore is configured within the `standalone.xml`, `standalone-ha."
-"xml`, or `domain.xml` file in your distribution.  The location of this file "
-"depends on your <<_operating-mode, operating mode>>.  You can add your "
+"The truststore is configured within the `standalone.xml`, `standalone-"
+"ha.xml`, or `domain.xml` file in your distribution.  The location of this "
+"file depends on your <<_operating-mode, operating mode>>.  You can add your "
 "truststore configuration by using the following template:"
 msgstr ""
+"トラストストアは、配布物内の `standalone.xml` 、 `standalone-ha.xml` または `domain.xml` "
+"で設定されます。このファイルの場所は、<<_operating-mode, operating "
+"mode>>によって異なります。以下のテンプレートを使用して、トラストストア設定を追加することができます。"
 
 #. type: delimited block -
 #: source/server_installation/topics/network/outgoing.adoc:96
@@ -255,11 +283,21 @@ msgid ""
 "    </provider>\n"
 "</spi>\n"
 msgstr ""
+"<spi name=\"truststore\">\n"
+" <provider name=\"file\" enabled=\"true\">\n"
+" <properties>\n"
+" <property name=\"file\" value=\"path to your .jks file containing public certificates\"/>\n"
+" <property name=\"password\" value=\"password\"/>\n"
+" <property name=\"hostname-verification-policy\" value=\"WILDCARD\"/>\n"
+" <property name=\"disabled\" value=\"false\"/>\n"
+" </properties>\n"
+" </provider>\n"
+"</spi>\n"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:100
 msgid "Possible configuration options for this setting are:"
-msgstr ""
+msgstr "この設定で可能な設定オプションは以下のとおりです。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:101
@@ -277,6 +315,8 @@ msgid ""
 "authorities.  This truststore file should only contain public certificates "
 "of your secured hosts.  This is _REQUIRED_ if `disabled` is not true."
 msgstr ""
+"Javaキーストア・ファイルへのパス。HTTPSリクエストには、通信中のサーバーのホストを確認する方法が必要です。これはトラストストアの役割です。キーストアには、1つ以上の信頼できるホスト証明書またはＣＡが含まれています。このトラストストア・ファイルには、セキュリティ保護されたホストのパブリック証明書以外は含まれておりません。"
+" `disabled` がtrueでない場合、これは _REQUIRED_ です。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:109
@@ -289,38 +329,42 @@ msgstr "password"
 #: source/server_installation/topics/network/outgoing.adoc:112
 msgid ""
 "Password for the truststore.  This is _REQUIRED_ if `disabled` is not true."
-msgstr ""
+msgstr "トラストストア用のパスワード。 `disabled` がtrueでない場合、これは _REQUIRED_ です。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:113
 #, no-wrap
 msgid "hostname-verification-policy"
-msgstr ""
+msgstr "hostname-verification-policy"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:116
 msgid ""
 "`WILDCARD` by default.  For HTTPS requests, this verifies the hostname of "
 "the server's certificate."
-msgstr ""
+msgstr "デフォルトでは `WILDCARD` です。これによって、HTTPSリクエスト用のサーバー証明書のホスト名が確認されます。"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:117
 #, no-wrap
-msgid "`ANY` means that the hostname is not verified. `WILDCARD` Allows wildcards in subdomain names i.e.\n"
+msgid ""
+"`ANY` means that the hostname is not verified. `WILDCARD` Allows wildcards "
+"in subdomain names i.e.\n"
 msgstr ""
+"`ANY` はホスト名が確認されていないことを意味します。 `WILDCARD` "
+"によって、サブドメイン名としてwildcardsが使用できるようになります。サンプルとしては、\n"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:118
 #, no-wrap
 msgid "*.foo.com. `STRICT` CN must match hostname exactly.\n"
-msgstr ""
+msgstr "*.foo.comです。 `STRICT` CNはホスト名と正確に一致する必要があります。\n"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/outgoing.adoc:119
 #, no-wrap
 msgid "disabled"
-msgstr ""
+msgstr "disabled"
 
 #. type: Plain text
 #: source/server_installation/topics/network/outgoing.adoc:122
@@ -329,3 +373,5 @@ msgid ""
 "certificate checking will fall back to JSSE configuration as described.  If "
 "set to false, you must configure `file`, and `password` for the truststore."
 msgstr ""
+"true（デフォルト値）の場合、トラストストアの設定は無視され、証明書チェックは前述のJSSE設定に戻ります。falseに設定されている場合は、トラストストア用に"
+" `file` と `password` を設定する必要があります。"

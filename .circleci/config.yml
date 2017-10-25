@@ -1,8 +1,38 @@
 version: 2
 jobs:
+  clean:
+    docker:
+      - image: openstandia/keycloak-documentation-i18n:po4a-patch
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run:
+          name: clean s3 for deleted branches
+          command: |
+            S3_BRANCHES=`aws s3 ls s3://keycloak-documentation/ | grep PRE | sed -e "s|.*PRE \(.*\)/.*|\1|"`
+            GIT_BRANCHES=`git branch -r | sed -e "s|.* origin/||"` 
+
+            echo "--- S3 Folders ---"
+            echo "$S3_BRANCHES"
+            echo "--- GIT Branches ---"
+            echo "$GIT_BRANCHES"
+            echo "--------------------"
+
+            set +e
+
+            for sb in ${S3_BRANCHES}; do
+              echo "$GIT_BRANCHES" | grep "^${sb}$" > /dev/null
+              if [ $? -ne 0 ] && [ -n "${sb}" ]; then
+                echo "'${sb}' branch has already deleted, let's clean the s3 folder..."
+                aws s3 rm s3://keycloak-documentation/${sb} --recursive
+              fi
+            done
+
   build:
     docker:
-      - image: openstandia/keycloak-documentation-i18n:po4a-1e6c31274c4c49a6dbefa33293de692b67970d68
+      - image: openstandia/keycloak-documentation-i18n:po4a-patch
 
     working_directory: ~/repo
 
@@ -42,7 +72,7 @@ jobs:
 
   deploy:
     docker:
-      - image: openstandia/keycloak-documentation-i18n:po4a-1e6c31274c4c49a6dbefa33293de692b67970d68
+      - image: openstandia/keycloak-documentation-i18n:po4a-patch
 
     working_directory: ~/repo
 
@@ -53,22 +83,17 @@ jobs:
       - run:
           name: deply to s3
           command: |
-              aws s3 sync ~/repo/site/ s3://keycloak-documentation/
-              aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_BRANCH/ --delete
+            aws s3 sync ~/repo/site/ s3://keycloak-documentation/
+            aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_BRANCH/ --delete
 
 
 workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build:
-          filters:
-            branches:
-              ignore: /crowdin/
+      - clean
+      - build
       - deploy:
           requires:
             - build
-          filters:
-            branches:
-              ignore: /crowdin/
 

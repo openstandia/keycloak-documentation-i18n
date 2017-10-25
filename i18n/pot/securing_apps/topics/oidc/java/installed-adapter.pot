@@ -1,0 +1,336 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/java/jetty8-adapter.adoc:10
+#: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:10
+#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:8
+#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:10
+#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:10
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:40
+#: source/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_installation.adoc:3
+#: source/securing_apps/topics/saml/java/jboss-adapter/jboss_adapter_installation.adoc:3
+#, no-wrap
+msgid "Adapter Installation"
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:2
+#, no-wrap
+msgid "CLI / Desktop Applications"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:7
+msgid ""
+"{project_name} supports securing desktop (e.g. Swing, JavaFX) or CLI "
+"applications via the `KeycloakInstalled` adapter by performing the "
+"authentication step via the system browser."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:12
+msgid ""
+"The `KeycloakInstalled` adapter supports a `desktop` and a `manual` variant. "
+"The desktop variant uses the system browser to gather the user credentials. "
+"The manual variant reads the user credentials from `STDIN`."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:15
+msgid ""
+"Tip: Google provides some more information about this approach on at https://"
+"developers.google.com/identity/protocols/"
+"OAuth2InstalledApp[OAuth2InstalledApp]."
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:16
+#, no-wrap
+msgid "How it works"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:21
+msgid ""
+"To authenticate a user with the `desktop` variant the `KeycloakInstalled` "
+"adapter opens a desktop browser window where a user uses the regular "
+"{project_name} login pages to login when the `loginDesktop()` method is "
+"called on the `KeycloakInstalled` object."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:25
+msgid ""
+"The login page URL is opened with redirect parameter that points to a local "
+"`ServerSocket` listening on a free ephemeral port on `localhost` which is "
+"started by the adapter."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:29
+msgid ""
+"After a succesful login the `KeycloakInstalled` receives the authorization "
+"code from the incoming HTTP request and performs the authorization code "
+"flow.  Once the code to token exchange is completed the `ServerSocket` is "
+"shutdown."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:33
+msgid ""
+"If the user already has an active {project_name} session then the login form "
+"is not shown but the code to token exchange is continued, which enables a "
+"smooth Web based SSO experience."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:36
+msgid ""
+"The client eventually receives the tokens (access_token, refresh_token, "
+"id_token) which can then be used to call backend services."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:38
+msgid ""
+"The `KeycloakInstalled` adapter provides support for reneval of stale tokens."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:51
+#, no-wrap
+msgid ""
+"<dependency>\n"
+"\t<groupId>org.keycloak</groupId>\n"
+"\t<artifactId>keycloak-installed-adapter</artifactId>\n"
+"\t<version>{project_versionMvn}</version>\n"
+"</dependency>\n"
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:55
+#, no-wrap
+msgid "Client Configuration"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:59
+msgid ""
+"The application needs to be configured as a `public` openid connect client "
+"with `Standard Flow Enabled` and pass:[http://localhost:*] as an allowed "
+"`Valid Redirect URI`."
+msgstr ""
+
+#. type: Title ====
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:60
+#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:45
+#, no-wrap
+msgid "Usage"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:66
+msgid ""
+"The `KeycloakInstalled` adapter reads it's configuration from `META-INF/"
+"keycloak.json` on the classpath. Custom configurations can be supplied with "
+"an `InputStream` or a `KeycloakDeployment` through the `KeycloakInstalled` "
+"constructor."
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:69
+msgid ""
+"In the example below, the client configuration for `desktop-app` uses the "
+"following `keycloak.json`:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:81
+#, no-wrap
+msgid ""
+"{\n"
+"  \"realm\": \"desktop-app-auth\",\n"
+"  \"auth-server-url\": \"http://localhost:8081/auth\",\n"
+"  \"ssl-required\": \"external\",\n"
+"  \"resource\": \"desktop-app\",\n"
+"  \"public-client\": true,\n"
+"  \"use-resource-role-mappings\": true\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:85
+msgid ""
+"the following sketch demonstrates working with the `KeycloakInstalled` "
+"adapter:"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:90
+#, no-wrap
+msgid ""
+"// reads the configuration from classpath: META-INF/keycloak.json\n"
+"KeycloakInstalled keycloak = new KeycloakInstalled();\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:93
+#, no-wrap
+msgid ""
+"// opens desktop browser\n"
+"keycloak.loginDesktop();\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:96
+#, no-wrap
+msgid ""
+"AccessToken token = keycloak.getToken();\n"
+"// use token to send backend request\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:100
+#, no-wrap
+msgid ""
+"// ensure token is valid for at least 30 seconds\n"
+"long minValidity = 30L;\n"
+"String tokenString = keycloak.getTokenString(minValidity, TimeUnit.SECONDS);\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:104
+#, no-wrap
+msgid ""
+" // when you want to logout the user.\n"
+"keycloak.logout();\n"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:109
+msgid ""
+"The `KeycloakInstalled` class supports customization of the http responses "
+"returned by login / logout requests via the `loginResponseWriter` and "
+"`logoutResponseWriter` attributes."
+msgstr ""
+
+#. type: Title =====
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:110
+#, no-wrap
+msgid "Example"
+msgstr ""
+
+#. type: Plain text
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:113
+msgid ""
+"The following provides an example for the configuration mentioned above."
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:119
+#, no-wrap
+msgid ""
+"import java.util.Locale;\n"
+"import java.util.concurrent.Executors;\n"
+"import java.util.concurrent.TimeUnit;\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:122
+#, no-wrap
+msgid ""
+"import org.keycloak.adapters.installed.KeycloakInstalled;\n"
+"import org.keycloak.representations.AccessToken;\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:124
+#, no-wrap
+msgid "public class DesktopApp {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:126
+#, no-wrap
+msgid "\tpublic static void main(String[] args) throws Exception {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:130
+#, no-wrap
+msgid ""
+"\t\tKeycloakInstalled keycloak = new KeycloakInstalled();\n"
+"\t\tkeycloak.setLocale(Locale.ENGLISH);\n"
+"\t\tkeycloak.loginDesktop();\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:133
+#, no-wrap
+msgid ""
+"\t\tAccessToken token = keycloak.getToken();\n"
+"\t\tExecutors.newSingleThreadExecutor().submit(() -> {\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:142
+#, no-wrap
+msgid ""
+"\t\t\tSystem.out.println(\"Logged in...\");\n"
+"\t\t\tSystem.out.println(\"Token: \" + token.getSubject());\n"
+"\t\t\tSystem.out.println(\"Username: \" + token.getPreferredUsername());\n"
+"\t\t\ttry {\n"
+"\t\t\t\tSystem.out.println(\"AccessToken: \" + keycloak.getTokenString());\n"
+"\t\t\t} catch (Exception ex) {\n"
+"\t\t\t\tex.printStackTrace();\n"
+"\t\t\t}\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:150
+#, no-wrap
+msgid ""
+"\t\t\tint timeoutSeconds = 20;\n"
+"\t\t\tSystem.out.printf(\"Logging out in...%d Seconds%n\", timeoutSeconds);\n"
+"\t\t\ttry {\n"
+"\t\t\t\tTimeUnit.SECONDS.sleep(timeoutSeconds);\n"
+"\t\t\t} catch (Exception e) {\n"
+"\t\t\t\te.printStackTrace();\n"
+"\t\t\t}\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:156
+#, no-wrap
+msgid ""
+"\t\t\ttry {\n"
+"\t\t\t\tkeycloak.logout();\n"
+"\t\t\t} catch (Exception e) {\n"
+"\t\t\t\te.printStackTrace();\n"
+"\t\t\t}\n"
+msgstr ""
+
+#. type: delimited block -
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:162
+#, no-wrap
+msgid ""
+"\t\t\tSystem.out.println(\"Exiting...\");\n"
+"\t\t\tSystem.exit(0);\n"
+"\t\t});\n"
+"\t}\n"
+"}\n"
+msgstr ""

@@ -1,61 +1,62 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
-"Language-Team: Japanese\n"
-"Language: ja\n"
+"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
-"X-Crowdin-Project: keycloak-documentation-i18n\n"
-"X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/i18n/po/ja_JP/"
-"server_installation__topics__database__unicode-considerations.ja_JP.po\n"
 
 #. type: Title ===
 #: source/server_installation/topics/database/unicode-considerations.adoc:2
 #, no-wrap
 msgid "Unicode Considerations for Databases"
-msgstr ""
+msgstr "データベースのユニコードに関する考慮事項"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:5
 msgid ""
 "Database schema in {project_name} only accounts for Unicode strings in the "
 "following special fields:"
-msgstr ""
+msgstr "{project_name}のデータベース・スキーマは、以下の特別なフィールドにユニコード文字列を記述します。"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:7
 msgid "Realms: display name, HTML display name"
-msgstr ""
+msgstr "Realms：表示名、HTML表示名"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:8
 msgid "Federation Providers: display name"
-msgstr ""
+msgstr "Federation Providers：表示名"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:9
 msgid "Users: username, given name, last name, attribute names and values"
-msgstr ""
+msgstr "Users：ユーザー名、氏名、属性名、値"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:10
 msgid "Groups: name, attribute names and values"
-msgstr ""
+msgstr "Groups：名前、属性名、値"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:11
 msgid "Roles: name"
-msgstr ""
+msgstr "Roles：名前"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:12
 msgid "Descriptions of objects"
-msgstr ""
+msgstr "オブジェクトの説明"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:16
@@ -66,6 +67,9 @@ msgid ""
 "set in all text fields. Often, this is counterbalanced by shorter maximum "
 "length of the strings than in case of 8-bit encodings."
 msgstr ""
+"上記以外の場合は、8ビットのデータベース・エンコーディングに含まれる文字に制限されます。ただし、データベース・システムによっては"
+"、ユニコード文字のUTF-"
+"8エンコーディングを有効にし、すべてのテキストフィールド内で完全なユニコード文字セットを使用することができます。これは8ビットエンコーディングの場合よりも文字列の最大長を短くすることによって相殺されます。"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:20
@@ -76,66 +80,80 @@ msgid ""
 "still work properly provided it handles UTF-8 encoding properly both on the "
 "level of database and JDBC driver."
 msgstr ""
+"データベースによっては、ユニコード文字を処理できるようにデータベースとJDBCドライバーの両方、またはいずれかに特別な設定をする必要があります。以下のデータベースの設定をご確認ください。データベースがここにリストされている場合"
+"、データベースとJDBCドライバーの両方のレベルでUTF-8エンコーディングが適切に処理されていれば、正常に動きます。この点にはご注意ください。"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:25
 msgid ""
-"Technically, the key criterion for Unicode support for all fields is whether "
-"the database allows setting of Unicode character set for `VARCHAR` and "
+"Technically, the key criterion for Unicode support for all fields is whether"
+" the database allows setting of Unicode character set for `VARCHAR` and "
 "`CHAR` fields. If yes, there is a high chance that Unicode will be "
 "plausible, usually at the expense of field length. If it only supports "
 "Unicode in `NVARCHAR` and `NCHAR` fields, Unicode support for all text "
 "fields is unlikely as Keycloak schema uses `VARCHAR` and `CHAR` fields "
 "extensively."
 msgstr ""
+"技術的には、すべてのフィールド内のユニコード・サポートの重要な基準は、データベースによって `VARCHAR` と `CHAR` "
+"フィールドにユニコード文字セットが設定できるかどうかになります。設定できる場合は、通常はフィールド長を犠牲にすることで、ユニコードは妥当となります。 "
+"`NVARCHAR` と `NCHAR` フィールド内のユニコードしかサポートされていない場合は、Keycloakスキーマは `VARCHAR` と "
+"`CHAR` フィールドを広範囲にわたって使用するため、すべてのテキストフィールドのユニコード・サポートはほとんどありません。"
 
 #. type: Title ====
 #: source/server_installation/topics/database/unicode-considerations.adoc:26
 #, no-wrap
 msgid "Oracle Database"
-msgstr ""
+msgstr "Oracle Database"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:31
 msgid ""
 "Unicode characters are properly handled provided the database was created "
 "with Unicode support in `VARCHAR` and `CHAR` fields (e.g. by using "
-"`AL32UTF8` character set as the database character set). No special settings "
-"is needed for JDBC driver."
+"`AL32UTF8` character set as the database character set). No special settings"
+" is needed for JDBC driver."
 msgstr ""
+"`VARCHAR` と `CHAR` フィールド内でユニコード・サポートを使用してデータベースを作成した場合は、ユニコード文字は適切に処理されます（例："
+" `AL32UTF8` 文字セットがデータベース文字セットとして使用さした場合）。JDBCドライバーに特別な設定は必要ありません。"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:37
 msgid ""
-"If the database character set is not Unicode, then to use Unicode characters "
-"in the special fields, the JDBC driver needs to be configured with the "
+"If the database character set is not Unicode, then to use Unicode characters"
+" in the special fields, the JDBC driver needs to be configured with the "
 "connection property `oracle.jdbc.defaultNChar` set to `true`. It might be "
-"wise, though not strictly necessary, to also set the `oracle.jdbc."
-"convertNcharLiterals` connection property to `true`. These properties can be "
-"set either as system properties or as connection properties. Please note "
-"that setting `oracle.jdbc.defaultNChar` may have negative impact on "
-"performance. For details, please refer to Oracle JDBC driver configuration "
-"documentation."
+"wise, though not strictly necessary, to also set the "
+"`oracle.jdbc.convertNcharLiterals` connection property to `true`. These "
+"properties can be set either as system properties or as connection "
+"properties. Please note that setting `oracle.jdbc.defaultNChar` may have "
+"negative impact on performance. For details, please refer to Oracle JDBC "
+"driver configuration documentation."
 msgstr ""
+"データベース文字セットがユニコードではない場合、ユニコード文字を特別なフィールド内で使用するために、JDBCドライバーを設定して接続プロパティ "
+"`oracle.jdbc.defaultNChar` を `true` に設定する必要があります。厳密には必須ではないのですが、 "
+"`oracle.jdbc.convertNcharLiterals` 接続プロパティーも `true` "
+"にしておいた方が賢明です。これらのプロパティは、システムプロパティまたは接続プロパティとして設定することができます。しかし "
+"`oracle.jdbc.defaultNChar` "
+"の設定はパフォーマンスに悪影響を与える可能性がありますので、この点はご注意ください。詳しくは、OracleJDBCドライバーの設定ドキュメントをご覧ください。"
 
 #. type: Title ====
 #: source/server_installation/topics/database/unicode-considerations.adoc:38
 #, no-wrap
 msgid "Microsoft SQL Server Database"
-msgstr ""
+msgstr "Microsoft SQL Server Database"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:42
 msgid ""
 "Unicode characters are properly handled only for the special fields. No "
 "special settings of JDBC driver or database is necessary."
-msgstr ""
+msgstr "ユニコード文字は、特別なフィールドに対してのみ適切に処理されます。JDBCドライバーやデータベースの特別な設定は必要ありません。"
 
 #. type: Title ====
 #: source/server_installation/topics/database/unicode-considerations.adoc:43
 #, no-wrap
 msgid "IBM DB2 Database"
-msgstr ""
+msgstr "IBM DB2 Database"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:47
@@ -144,27 +162,34 @@ msgid ""
 "applies to non-special fields. No special settings of JDBC driver or "
 "database is necessary."
 msgstr ""
+"ユニコード文字はすべてのフィールドで正しく処理され、フィールド長の短縮は特別なフィールド以外に適用されます。JDBCドライバーやデータベースの特別な設定は必要ありません。"
 
 #. type: Title ====
 #: source/server_installation/topics/database/unicode-considerations.adoc:48
 #, no-wrap
 msgid "MySQL Database"
-msgstr ""
+msgstr "MySQL Database"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:57
 msgid ""
 "Unicode characters are properly handled provided the database was created "
-"with Unicode support in `VARCHAR` and `CHAR` fields in the `CREATE DATABASE` "
-"command (e.g. by using `utf8` character set as the default database "
+"with Unicode support in `VARCHAR` and `CHAR` fields in the `CREATE DATABASE`"
+" command (e.g. by using `utf8` character set as the default database "
 "character set in MySQL 5.5. Please note that `utf8mb4` character set does "
 "not work due to different storage requirements to `utf8` character set "
 "footnote:[Tracked as https://issues.jboss.org/browse/KEYCLOAK-3873]). Note "
 "that in this case, length restriction to non-special fields does not apply "
 "because columns are created to accomodate given amount of characters, not "
-"bytes. If the database default character set does not allow storing Unicode, "
-"only the special fields allow storing Unicode values."
+"bytes. If the database default character set does not allow storing Unicode,"
+" only the special fields allow storing Unicode values."
 msgstr ""
+"`CREATE DATABASE` コマンドで、 `VARCHAR` と `CHAR` "
+"のフィールド内のユニコード・サポートを使用してデータベースが作成される場合は、ユニコード文字は適切に処理されます（例：MySQL5.5でデフォルトのデータベース文字セットとして"
+" `utf8` 文字セットを使用する場合。 `utf8` 文字セットfootnote:[Tracked as "
+"https://issues.jboss.org/browse/KEYCLOAK-3873]に求められるさまざまなストレージ要件により、 "
+"`utf8mb4` "
+"文字セットは動作しませんのでご注意ください）。この場合、バイト数ではなく文字数に合わせて列が作成されるため、通常のフィールドには長さ制限は適用されませんので注意が必要となります。データベースのデフォルト文字セットでユニコードの格納が許可されていない場合、特別なフィールドでのみユニコード値の格納を許可されることになります。"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:60
@@ -172,12 +197,13 @@ msgid ""
 "At the side of JDBC driver settings, it is necessary to add a connection "
 "property `characterEncoding=UTF-8` to the JDBC connection settings."
 msgstr ""
+"JDBCドライバー設定については、JDBC接続設定に接続プロパティ `characterEncoding=UTF-8` を追加する必要があります。"
 
 #. type: Title ====
 #: source/server_installation/topics/database/unicode-considerations.adoc:61
 #, no-wrap
 msgid "PostgreSQL Database"
-msgstr ""
+msgstr "PostgreSQL Database"
 
 #. type: Plain text
 #: source/server_installation/topics/database/unicode-considerations.adoc:64
@@ -187,3 +213,5 @@ msgid ""
 "field length for non-special fields. No special settings of JDBC driver is "
 "necessary."
 msgstr ""
+"データベース文字セットが `UTF8` "
+"である場合、ユニコードはサポートされます。この場合、ユニコード文字はどのフィールドでも使用することができますが、通常フィールドではフィールド長は短縮されません。JDBCドライバーの特別な設定は必要ありません。"

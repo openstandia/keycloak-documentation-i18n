@@ -182,14 +182,24 @@ msgid "Regular Expressions"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:38
+#: source/server_admin/topics/authentication/x509.adoc:34
 msgid ""
 "The certificate identity can be extracted from either Subject DN or Issuer "
 "DN using a regular expression as a filter. For example, the regular "
-"expression below will match the e-mail attribute: ``` emailAddress=(.*?)(?:,|"
-"$)  ``` The regular expression filtering is applicable only if the `Identity "
-"Source` is set to either `Match SubjectDN using regular expression` or "
-"`Match IssuerDN using regular expression`."
+"expression below will match the e-mail attribute:"
+msgstr ""
+
+#. type: Code block
+#: source/server_admin/topics/authentication/x509.adoc:36
+msgid "emailAddress=(.*?)(?:,|$)"
+msgstr ""
+
+#. type: Plain text
+#: source/server_admin/topics/authentication/x509.adoc:38
+msgid ""
+"The regular expression filtering is applicable only if the `Identity Source` "
+"is set to either `Match SubjectDN using regular expression` or `Match "
+"IssuerDN using regular expression`."
 msgstr ""
 
 #. type: Title ####
@@ -270,84 +280,32 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:60
+#: source/server_admin/topics/authentication/x509.adoc:58
 msgid ""
 "Open $KEYCLOAK_HOME/standalone/configuration/standalone.xml and add a new "
-"realm: ``` <security-realms>"
+"realm:"
 msgstr ""
 
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:61
-msgid "<security-realm name=\"ssl-realm\">"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:62
-#, no-wrap
-msgid "<server-identities>\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:63
-#, no-wrap
-msgid "<ssl>\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:64
-#, no-wrap
-msgid "<keystore path=\"servercert.jks\" \n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:66
+#. type: Code block
+#: source/server_admin/topics/authentication/x509.adoc:75
 #, no-wrap
 msgid ""
-"relative-to=\"jboss.server.config.dir\" \n"
-"keystore-password=\"servercert password\"/>\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:67
-#, no-wrap
-msgid "</ssl>\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:69
-#, no-wrap
-msgid ""
-"</server-identities>\n"
-"<authentication>\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:70
-#, no-wrap
-msgid "<truststore path=\"truststore.jks\" \n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:72
-#, no-wrap
-msgid ""
-"relative-to=\"jboss.server.config.dir\" \n"
-"keystore-password=\"truststore password\"/>\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:73
-#, no-wrap
-msgid "</authentication>\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:76
-#, no-wrap
-msgid ""
-"</security-realm>\n"
+"<security-realms>\n"
+"    <security-realm name=\"ssl-realm\">\n"
+"        <server-identities>\n"
+"            <ssl>\n"
+"                <keystore path=\"servercert.jks\" \n"
+"                          relative-to=\"jboss.server.config.dir\" \n"
+"                          keystore-password=\"servercert password\"/>\n"
+"            </ssl>\n"
+"        </server-identities>\n"
+"        <authentication>\n"
+"            <truststore path=\"truststore.jks\" \n"
+"                        relative-to=\"jboss.server.config.dir\" \n"
+"                        keystore-password=\"truststore password\"/>\n"
+"        </authentication>\n"
+"    </security-realm>\n"
 "</security-realms>\n"
-"```\n"
 msgstr ""
 
 #. type: Labeled list

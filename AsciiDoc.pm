@@ -363,7 +363,7 @@ sub parse {
             $self->pushline($titlelevel1.$titlespaces.$t.$titlelevel2."\n");
             @comments=();
             $wrapped_mode = 1;
-        } elsif (($line =~ /^`{3}.*$/ and $paragraph eq "") or
+        } elsif (($line =~ /^`{3}.*$/ and not defined $self->{verbatim}) or
                  (defined $self->{verbatim} and $self->{verbatim} == 5)) {
             # Found asciidotor markdown-style code block
             if ($line =~ m/^(`{3})(.*)$/) {
@@ -372,6 +372,11 @@ sub parse {
                 my $lang = $2;
                 if (not defined $self->{verbatim}) {
                     print STDERR "Begining $t code block\n" if $debug{parse};
+
+                    if ($paragraph ne "") {
+                        do_paragraph($self,$paragraph,$wrapped_mode);
+                        $paragraph = "";
+                    }
 
                     $self->{verbatim} = 5;
                     $self->{type} = "Code block";

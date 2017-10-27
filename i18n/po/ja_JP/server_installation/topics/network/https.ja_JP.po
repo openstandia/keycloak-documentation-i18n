@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgid ""
 "{project_name} is not set up by default to handle SSL/HTTPS.\n"
 "          It is highly recommended that you either enable SSL on the {project_name} server itself or on a reverse proxy in front of the {project_name} server.\n"
 msgstr ""
-"{project_name}は、デフォルトではSSL/HTTPSを処理するように設定されていません。{project_name}サーバー上、または{project_name}サーバーの代わりにリバースプロキシ上、このいずれかでSSLを有効にすることを強くおすすめします。\n"
+"{project_name}は、デフォルトではSSL/HTTPSを処理するように設定されていません。{project_name}サーバー上、または{project_name}サーバーのフロントにあるリバースプロキシ上のいずれかでSSLを有効にすることを強くおすすめします。\n"
 
 #. type: Plain text
 #: source/server_installation/topics/network/https.adoc:9
@@ -39,8 +39,7 @@ msgid ""
 "link:{adminguide_link}[{adminguide_name}], but let's give some context and a"
 " brief overview of these modes."
 msgstr ""
-"このデフォルトの動作は、各{project_name}レルムのSSL/HTTPSモードによって定義されています。これについて詳しくはlink:{adminguide_link}[{adminguide_name}]でご"
-" 説明しますが、これらのモードの関連事項と簡単な概要についてはここに示します。"
+"このデフォルトの動作は、各{project_name}レルムのSSL/HTTPSモードによって定義されています。これについて詳しくはlink:{adminguide_link}[{adminguide_name}]でご説明しますが、これらのモードの関連事項と簡単な概要についてはここで示します。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/https.adoc:10
@@ -74,7 +73,7 @@ msgstr "none"
 msgid ""
 "{project_name} does not require SSL.  This should really only be used in "
 "development when you are playing around with things."
-msgstr "{project_name}はSSLが必要なわけではありません。開発段階でいろいろといじっている時にのみ使用されるものです。"
+msgstr "{project_name}はSSLを要求しません。この設定は、開発段階でいろいろといじっている時にのみ使用すべきです。"
 
 #. type: Labeled list
 #: source/server_installation/topics/network/https.adoc:17
@@ -87,7 +86,7 @@ msgstr "all requests"
 #: source/server_installation/topics/network/https.adoc:19
 #: source/server_admin/topics/realms/ssl.adoc:28
 msgid "{project_name} requires SSL for all IP addresses."
-msgstr "{project_name}では、すべてのIPアドレス用のSSLが必要です。"
+msgstr "{project_name}はすべてのIPアドレスに対してSSLを要求します。"
 
 #. type: Plain text
 #: source/server_installation/topics/network/https.adoc:21
@@ -109,7 +108,7 @@ msgid ""
 "traffic for you, you'll need to enable HTTPS for the {project_name} server."
 "  This involves"
 msgstr ""
-"HTTPSトラフィックを処理するためにリバースプロキシまたはロードバランサーを使用していない場合、{project_name}サーバ用にHTTPSを有効にする必要があります。これには下記が含まれます。"
+"HTTPSトラフィックを処理するためにリバースプロキシまたはロードバランサーを使用していない場合、{project_name}サーバー用にHTTPSを有効にする必要があります。これには下記が含まれます。"
 
 #. type: Plain text
 #: source/server_installation/topics/network/https.adoc:28
@@ -144,7 +143,7 @@ msgstr ""
 #: source/server_installation/topics/network/https.adoc:34
 #, no-wrap
 msgid "Self Signed Certificate"
-msgstr "Self Signed Certificate"
+msgstr "自己署名証明書"
 
 #. type: Plain text
 #: source/server_installation/topics/network/https.adoc:38
@@ -153,7 +152,7 @@ msgid ""
 "available to test a {project_name} deployment so you'll need to generate a "
 "self-signed one using the `keytool` utility that comes with the Java JDK."
 msgstr ""
-"開発段階で、{project_name}の構成をテストするための第三者署名証明書を用意していない場合、JavaJDKに付属する `keytool` "
+"開発段階で、{project_name}の構成をテストするための第三者署名証明書を用意していない場合、Java JDKに付属する `keytool` "
 "ユーティリティーを使用して自己署名証明書を生成する必要があります。"
 
 #. type: delimited block -
@@ -179,22 +178,22 @@ msgid ""
 "    [no]:  yes\n"
 msgstr ""
 "$ keytool -genkey -alias localhost -keyalg RSA -keystore keycloak.jks -validity 10950\n"
-" Enter keystore password: secret\n"
-" Re-enter new password: secret\n"
-" What is your first and last name?\n"
-" [Unknown]: localhost\n"
-" What is the name of your organizational unit?\n"
-" [Unknown]: Keycloak\n"
-" What is the name of your organization?\n"
-" [Unknown]: Red Hat\n"
-" What is the name of your City or Locality?\n"
-" [Unknown]: Westford\n"
-" What is the name of your State or Province?\n"
-" [Unknown]: MA\n"
-" What is the two-letter country code for this unit?\n"
-" [Unknown]: US\n"
-" Is CN=localhost, OU=Keycloak, O=Test, L=Westford, ST=MA, C=US correct?\n"
-" [no]: yes\n"
+"    Enter keystore password: secret\n"
+"    Re-enter new password: secret\n"
+"    What is your first and last name?\n"
+"    [Unknown]:  localhost\n"
+"    What is the name of your organizational unit?\n"
+"    [Unknown]:  Keycloak\n"
+"    What is the name of your organization?\n"
+"    [Unknown]:  Red Hat\n"
+"    What is the name of your City or Locality?\n"
+"    [Unknown]:  Westford\n"
+"    What is the name of your State or Province?\n"
+"    [Unknown]:  MA\n"
+"    What is the two-letter country code for this unit?\n"
+"    [Unknown]:  US\n"
+"    Is CN=localhost, OU=Keycloak, O=Test, L=Westford, ST=MA, C=US correct?\n"
+"    [no]:  yes\n"
 
 #. type: Plain text
 #: source/server_installation/topics/network/https.adoc:65
@@ -205,9 +204,9 @@ msgid ""
 "`keycloak.jks` file will be generated in the same directory as you executed "
 "the `keytool` command in."
 msgstr ""
-"サーバーをインストールしたマシンのDNS名で、 `What is your first and last name ?` "
-"という質問に答える必要があります。 テストが目的なので、 `localhost` を使用する必要があります。このコマンドを実行すると、 "
-"`keytool` コマンドが実行されたのと同じディレクトリ内で `keycloak.jks` ファイルが生成されます。"
+"`What is your first and last name ?` という質問にはサーバーをインストールしたマシンのDNS名を答えてください。 "
+"テスト目的なので、 `localhost` を使用します。このコマンドを実行すると、 `keytool` コマンドが実行されたのと同じディレクトリ内で "
+"`keycloak.jks` ファイルが生成されます。"
 
 #. type: Plain text
 #: source/server_installation/topics/network/https.adoc:68
@@ -222,7 +221,7 @@ msgstr ""
 #. type: Plain text
 #: source/server_installation/topics/network/https.adoc:70
 msgid "The first thing to do is generate a Certificate Request:"
-msgstr "まず、証明書リクエストを生成します。"
+msgstr "まず、証明書署名要求を生成します。"
 
 #. type: delimited block -
 #: source/server_installation/topics/network/https.adoc:75
@@ -239,7 +238,7 @@ msgstr ""
 msgid ""
 "Where `yourdomain` is a DNS name for which this certificate is generated "
 "for.  Keytool generates the request:"
-msgstr "`yourdomain` はこの証明書が生成されるDNS名になります。Keytoolによってリクエストが生成されます。"
+msgstr "`yourdomain` はこの証明書が生成されるDNS名になります。Keytoolにより以下のように生成されます。"
 
 #. type: delimited block -
 #: source/server_installation/topics/network/https.adoc:98
@@ -285,7 +284,7 @@ msgid ""
 "import the root certificate of the CA.  You can download the cert from CA "
 "(ie.: root.crt) and import as follows:"
 msgstr ""
-"このcaリクエストをCAに送信します。CAは署名された証明書を発行し、送信します。ただし、新しい証明書をインポートする前に、まずCAのルート証明書を取得してインポートする必要があります。CAからルート証明書と署名証明書をダウンロードし、以下の通りインポートします。"
+"この証明書署名要求を認証局に送信します。認証局は署名された証明書を発行し、送り返します。ただし、新しい証明書をインポートする前に、まず認証局のルート証明書を取得してインポートする必要があります。認証局からルート証明書（例：root.crt）をダウンロードし、以下のとおりインポートします。"
 
 #. type: delimited block -
 #: source/server_installation/topics/network/https.adoc:109
@@ -297,7 +296,7 @@ msgstr "$ keytool -import -keystore keycloak.jks -file root.crt -alias root\n"
 #: source/server_installation/topics/network/https.adoc:112
 msgid ""
 "Last step is to import your new CA generated certificate to your keystore:"
-msgstr "最後に、新しいCA生成証明書をキーストアにインポートします。"
+msgstr "最後に、以下のように新しい認証局の生成した証明書をキーストアにインポートします。"
 
 #. type: delimited block -
 #: source/server_installation/topics/network/https.adoc:117
@@ -313,7 +312,7 @@ msgstr ""
 #: source/server_installation/topics/network/https.adoc:119
 #, no-wrap
 msgid "Configure {project_name} to Use the Keystore"
-msgstr "キーストアを使用できるように{project_name}を設定します。"
+msgstr "キーストアを使用するための{project_name}設定"
 
 #. type: Plain text
 #: source/server_installation/topics/network/https.adoc:124
@@ -325,10 +324,10 @@ msgid ""
 "_domain.xml_ file to use the keystore and enable HTTPS.  (See <<_operating-"
 "mode, operating mode>>)."
 msgstr ""
-"適切な証明書を持つJavaキーストアが用意できたので、このキーストアを使用できるように{project_name}インストールを設定する必要があります。まず、キーストアファイルを"
-" _configuration/_ ディレクトリ構成に移動し、 _standalone.xml_ 、 _standalone-ha.xml_ または "
-"_domain.xml_ ファイルを編集し、キーストアを使用してHTTPSを有効にします。<<_operating-mode, operating "
-"mode>>をご参照ください。"
+"適切な証明書を持つJavaキーストアが用意できたので、このキーストアを使用できるように{project_name}を設定する必要があります。まず、キーストアファイルを"
+" _configuration/_ ディレクトリ構成に移動し、キーストアを使用するように _standalone.xml_ 、 _standalone-"
+"ha.xml_ または _domain.xml_ ファイルを編集し、HTTPSを有効にします（<<_operating-mode, "
+"動作モード>>をご参照ください）。"
 
 #. type: Plain text
 #: source/server_installation/topics/network/https.adoc:126
@@ -350,11 +349,11 @@ msgid ""
 "</security-realm>\n"
 msgstr ""
 "<security-realm name=\"UndertowRealm\">\n"
-" <server-identities>\n"
-" <ssl>\n"
-" <keystore path=\"keycloak.jks\" relative-to=\"jboss.server.config.dir\" keystore-password=\"secret\" />\n"
-" </ssl>\n"
-" </server-identities>\n"
+"    <server-identities>\n"
+"        <ssl>\n"
+"            <keystore path=\"keycloak.jks\" relative-to=\"jboss.server.config.dir\" keystore-password=\"secret\" />\n"
+"        </ssl>\n"
+"    </server-identities>\n"
 "</security-realm>\n"
 
 #. type: Plain text
@@ -363,8 +362,8 @@ msgid ""
 "Find the element `server name=\"default-server\"` (it's a child element of "
 "`subsystem xmlns=\"{subsystem_undertow_xml_urn}\"`) and add:"
 msgstr ""
-"`server name=\"default-server\"` 要素、 `subsystem "
-"xmlns=\"{subsystem_undertow_xml_urn}\"` の子要素のことですが、を検索して以下を追加します。"
+"`server name=\"default-server\"` 要素（ `subsystem "
+"xmlns=\"{subsystem_undertow_xml_urn}\"` の子要素）を検索して以下を追加します。"
 
 #. type: delimited block -
 #: source/server_installation/topics/network/https.adoc:149
@@ -378,8 +377,8 @@ msgid ""
 "</subsystem>\n"
 msgstr ""
 "<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
-" <buffer-cache name=\"default\"/>\n"
-" <server name=\"default-server\">\n"
-" <https-listener name=\"https\" socket-binding=\"https\" security-realm=\"UndertowRealm\"/>\n"
-" ...\n"
+"   <buffer-cache name=\"default\"/>\n"
+"   <server name=\"default-server\">\n"
+"      <https-listener name=\"https\" socket-binding=\"https\" security-realm=\"UndertowRealm\"/>\n"
+"   ...\n"
 "</subsystem>\n"

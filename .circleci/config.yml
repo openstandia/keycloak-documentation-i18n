@@ -68,7 +68,7 @@ jobs:
           paths:
             - ~/repo/translated/dist
             - ~/repo/site
-          key: dist-{{ epoch }}
+          key: dist-{{ .Branch }}-{{ epoch }}
 
   deploy:
     docker:
@@ -79,7 +79,7 @@ jobs:
     steps:
       - restore_cache:
           keys:
-            - dist-
+            - dist-{{ .Branch }}-
       - run:
           name: deply to s3
           command: |

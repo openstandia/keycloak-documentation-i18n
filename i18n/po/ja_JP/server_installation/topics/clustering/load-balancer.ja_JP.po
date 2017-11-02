@@ -1,24 +1,25 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
-"Language-Team: Japanese\n"
-"Language: ja\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
-"X-Crowdin-Project: keycloak-documentation-i18n\n"
-"X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/i18n/po/ja_JP/"
-"server_installation__topics__clustering__load-balancer.ja_JP.po\n"
 
 #. type: Title ===
 #: source/server_installation/topics/clustering/load-balancer.adoc:2
 #, no-wrap
 msgid "Setting Up a Load Balancer or Proxy"
-msgstr ""
+msgstr "ロードバランサーまたはプロキシの設定"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:7
@@ -28,58 +29,62 @@ msgid ""
 "{project_name} deployment.  It also covers configuring the built in load "
 "balancer that was <<_clustered-domain-example, Clustered Domain Example>>."
 msgstr ""
+"このセクションでは、クラスター構成の{project_name}の前にリバースプロキシまたはロードバランサーを配置するにあたって、設定が必要な項目についてご説明します。また、組み込みのロードバランサーの設定についてもご説明します。これは"
+"<<_clustered-domain-example, クラスター構成ドメインのサンプル>>でもご確認いただけます。"
 
 #. type: Title ====
 #: source/server_installation/topics/clustering/load-balancer.adoc:9
 #, no-wrap
 msgid "Identifying Client IP Addresses"
-msgstr ""
+msgstr "クライアントIPアドレスの特定"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:13
 msgid ""
-"A few features in {project_name} rely on the fact that the remote address of "
-"the HTTP client connecting to the authentication server is the real IP "
+"A few features in {project_name} rely on the fact that the remote address of"
+" the HTTP client connecting to the authentication server is the real IP "
 "address of the client machine. Examples include:"
 msgstr ""
+"{project_name}のいくつかの機能は、認証サーバーに接続するHTTPクライアントのリモート・アドレスがクライアント・マシンの実際のIPアドレスであることを前提としています。サンプルとしては、以下の通りです。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:15
 msgid ""
-"Event logs - a failed login attempt would be logged with the wrong source IP "
-"address"
-msgstr ""
+"Event logs - a failed login attempt would be logged with the wrong source IP"
+" address"
+msgstr "イベントログ - 間違ったソースIPアドレスでログインエラーが記録されます"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:16
 msgid ""
 "SSL required - if the SSL required is set to external (the default) it "
 "should require SSL for all external requests"
-msgstr ""
+msgstr "SSLの要求 - SSLの要求がexternal（デフォルト）に設定されている場合、すべての外部リクエストに対してSSLを要求します"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:17
 msgid ""
-"Authentication flows - a custom authentication flow that uses the IP address "
-"to for example show OTP only for external requests"
-msgstr ""
+"Authentication flows - a custom authentication flow that uses the IP address"
+" to for example show OTP only for external requests"
+msgstr "認証フロー - IPアドレスを使用して、例えば外部リクエストに対してのみOTPを表示するようなカスタム認証フロー"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:18
 msgid "Dynamic Client Registration"
-msgstr ""
+msgstr "動的クライアント登録"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:23
 msgid ""
 "This can be problematic when you have a reverse proxy or loadbalancer in "
-"front of your {project_name} authentication server.  The usual setup is that "
-"you have a frontend proxy sitting on a public network that load balances and "
-"forwards requests to backend {project_name} server instances located in a "
-"private network.  There is some extra configuration you have to do in this "
-"scenario so that the actual client IP address is forwarded to and processed "
-"by the {project_name} server instances.  Specifically:"
+"front of your {project_name} authentication server.  The usual setup is that"
+" you have a frontend proxy sitting on a public network that load balances "
+"and forwards requests to backend {project_name} server instances located in "
+"a private network.  There is some extra configuration you have to do in this"
+" scenario so that the actual client IP address is forwarded to and processed"
+" by the {project_name} server instances.  Specifically:"
 msgstr ""
+"{project_name}認証サーバーの前にリバースプロキシまたはロードバランサーが置いてある場合、問題になる可能性があります。通常の設定では、パブリック・ネットワーク上にフロントエンドのプロキシを置いています。このプロキシはプライベート・ネットワーク内のバックエンドの{project_name}サーバー・インスタンスに負荷を分散して要求を転送するものです。実際のクライアントIPアドレスが転送され、{project_name}サーバー・インスタンスによって処理されるように、追加設定する必要があります。具体的には以下の通りです。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:25
@@ -87,20 +92,22 @@ msgid ""
 "Configure your reverse proxy or loadbalancer to properly set `X-Forwarded-"
 "For` and `X-Forwarded-Proto` HTTP headers."
 msgstr ""
+"`X-Forwarded-For` 、 `X-Forwarded-Proto` "
+"HTTPヘッダーを適切にセットするように、リバースプロキシまたはロードバランサーを設定します。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:26
 msgid ""
-"Configure your reverse proxy or loadbalancer to preserve the original 'Host' "
-"HTTP header."
-msgstr ""
+"Configure your reverse proxy or loadbalancer to preserve the original 'Host'"
+" HTTP header."
+msgstr "オリジナルの 'Host' HTTPヘッダーを保持するように、リバースプロキシまたはロードバランサーを設定します。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:27
 msgid ""
-"Configure the authentication server to read the client's IP address from `X-"
-"Forwarded-For header`."
-msgstr ""
+"Configure the authentication server to read the client's IP address from `X"
+"-Forwarded-For header`."
+msgstr "`X-Forwarded-For header` からのクライアントのIPアドレスを読み取るように、認証サーバーを設定します。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:33
@@ -112,25 +119,34 @@ msgid ""
 "into thinking the client is connecting from a different IP address than it actually is.  This becomes really important if you are doing\n"
 "any black or white listing of IP addresses.\n"
 msgstr ""
+"`X-Forwarded-For` 、 `X-Forwarded-Proto` HTTPヘッダーを生成するためにプロキシを設定し、オリジナルの "
+"`Host` HTTPヘッダーを保持する方法については、このガイドの説明範囲を超えています。 `X-Forwared-For` "
+"ヘッダーがプロキシによって設定されているか、特に注意して確認してください。プロキシが正しく設定されていない場合、_不正な_ "
+"クライアントがこのヘッダーを自身で設定して、クライアントが実際とは異なるIPアドレスから接続していると{project_name}に認識させることができてしまいます。IPアドレスのブラックまたはホワイトリストを作成している場合、この設定は非常に重要です。\n"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:39
 msgid ""
-"Beyond the proxy itself, there are a few things you need to configure on the "
-"{project_name} side of things.  If your proxy is forwarding requests via the "
-"HTTP protocol, then you need to configure {project_name} to pull the "
+"Beyond the proxy itself, there are a few things you need to configure on the"
+" {project_name} side of things.  If your proxy is forwarding requests via "
+"the HTTP protocol, then you need to configure {project_name} to pull the "
 "client's IP address from the `X-Forwarded-For` header rather than from the "
 "network packet.  To do this, open up the profile configuration file "
 "(_standalone.xml_, _standalone-ha.xml_, or _domain.xml_ depending on your "
 "<<_operating-mode, operating mode>>) and look for the "
 "`{subsystem_undertow_xml_urn}` XML block."
 msgstr ""
+"プロキシの他、いくつか{project_name}側で設定する必要があります。プロキシがHTTPプロトコル経由でリクエストを転送している場合、クライアントのIPアドレスをネットワーク・パケットからではなく"
+" `X-Forwarded-For` "
+"ヘッダーから取得するように、{project_name}を設定する必要があります。これを行うには、プロファイル設定ファイル（<<_operating-"
+"mode, 動作モード>>に応じて _standalone.xml_ 、 _standalone-ha.xml_ または _domain.xml_ "
+"）を開き、 `{subsystem_undertow_xml_urn}` XMLブロックを検索します。"
 
 #. type: Block title
 #: source/server_installation/topics/clustering/load-balancer.adoc:40
 #, no-wrap
 msgid "`X-Forwarded-For` HTTP Config"
-msgstr ""
+msgstr "`X-Forwarded-For` HTTP設定"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/load-balancer.adoc:53
@@ -147,13 +163,24 @@ msgid ""
 "   ...\n"
 "</subsystem>\n"
 msgstr ""
+"<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
+"   <buffer-cache name=\"default\"/>\n"
+"   <server name=\"default-server\">\n"
+"      <ajp-listener name=\"ajp\" socket-binding=\"ajp\"/>\n"
+"      <http-listener name=\"default\" socket-binding=\"http\" redirect-socket=\"https\"\n"
+"          proxy-address-forwarding=\"true\"/>\n"
+"      ...\n"
+"   </server>\n"
+"   ...\n"
+"</subsystem>\n"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:56
 msgid ""
-"Add the `proxy-address-forwarding` attribute to the `http-listener` "
-"element.  Set the value to `true`."
+"Add the `proxy-address-forwarding` attribute to the `http-listener` element."
+"  Set the value to `true`."
 msgstr ""
+"`http-listener` 要素に `proxy-address-forwarding` 属性を追加します。値を `true` に設定します。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:60
@@ -163,12 +190,15 @@ msgid ""
 "little differently.  Instead of modifying the `http-listener`, you need to "
 "add a filter to pull this information from the AJP packets."
 msgstr ""
+"プロキシがリクエストを転送するためにHTTPの代わりにAJPプロトコルを使用している場合（サンプルとしては、Apache HTTPD + mod-"
+"clusterなど）、少し異なる設定が必要になります。 `http-listener` "
+"を変更する代わりに、AJPパケットからこの情報を取得するフィルタを追加する必要があります。"
 
 #. type: Block title
 #: source/server_installation/topics/clustering/load-balancer.adoc:62
 #, no-wrap
 msgid "`X-Forwarded-For` AJP Config"
-msgstr ""
+msgstr "`X-Forwarded-For` AJP設定"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/load-balancer.adoc:83
@@ -193,19 +223,37 @@ msgid ""
 "     </filters>\n"
 " </subsystem>\n"
 msgstr ""
+"<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
+"     <buffer-cache name=\"default\"/>\n"
+"     <server name=\"default-server\">\n"
+"         <ajp-listener name=\"ajp\" socket-binding=\"ajp\"/>\n"
+"         <http-listener name=\"default\" socket-binding=\"http\" redirect-socket=\"https\"/>\n"
+"         <host name=\"default-host\" alias=\"localhost\">\n"
+"             ...\n"
+"             <filter-ref name=\"proxy-peer\"/>\n"
+"         </host>\n"
+"     </server>\n"
+"        ...\n"
+"     <filters>\n"
+"         ...\n"
+"         <filter name=\"proxy-peer\"\n"
+"                 class-name=\"io.undertow.server.handlers.ProxyPeerAddressHandler\"\n"
+"                 module=\"io.undertow.core\" />\n"
+"     </filters>\n"
+" </subsystem>\n"
 
 #. type: Title ====
 #: source/server_installation/topics/clustering/load-balancer.adoc:85
 #, no-wrap
 msgid "Enable HTTPS/SSL with a Reverse Proxy"
-msgstr ""
+msgstr "リバースプロキシでのHTTPS/SSLの有効化"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:88
 msgid ""
-"Assuming that your reverse proxy doesn't use port 8443 for SSL you also need "
-"to configure what port HTTPS traffic is redirected to."
-msgstr ""
+"Assuming that your reverse proxy doesn't use port 8443 for SSL you also need"
+" to configure what port HTTPS traffic is redirected to."
+msgstr "リバースプロキシがSSL用にポート8443を使用しない場合、HTTPSトラフィックのどのポートをリダイレクトするか設定する必要があります。"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/load-balancer.adoc:96
@@ -218,14 +266,22 @@ msgid ""
 "    ...\n"
 "</subsystem>\n"
 msgstr ""
+"<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
+"    ...\n"
+"    <http-listener name=\"default\" socket-binding=\"http\"\n"
+"        proxy-address-forwarding=\"true\" redirect-socket=\"proxy-https\"/>\n"
+"    ...\n"
+"</subsystem>\n"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:100
 msgid ""
 "Add the `redirect-socket` attribute to the `http-listener` element.  The "
-"value should be `proxy-https` which points to a socket binding you also need "
-"to define."
+"value should be `proxy-https` which points to a socket binding you also need"
+" to define."
 msgstr ""
+"`http-listener` 要素に `redirect-socket` 属性を追加します。値には `proxy-https` "
+"を設定しますが、これは定義が必要なソケット・バインディングを指しています。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:102
@@ -233,6 +289,7 @@ msgid ""
 "Then add a new `socket-binding` element to the `socket-binding-group` "
 "element:"
 msgstr ""
+"次に、新しい `socket-binding` 要素を `socket-binding-group` 要素に追加します。以下のようになります。"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/load-balancer.adoc:112
@@ -245,40 +302,67 @@ msgid ""
 "    ...\n"
 "</socket-binding-group>\n"
 msgstr ""
+"<socket-binding-group name=\"standard-sockets\" default-interface=\"public\"\n"
+"    port-offset=\"${jboss.socket.binding.port-offset:0}\">\n"
+"    ...\n"
+"    <socket-binding name=\"proxy-https\" port=\"443\"/>\n"
+"    ...\n"
+"</socket-binding-group>\n"
 
 #. type: Title ====
 #: source/server_installation/topics/clustering/load-balancer.adoc:114
 #, no-wrap
 msgid "Verify Configuration"
-msgstr ""
+msgstr "設定の確認"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:121
 msgid ""
 "You can verify the reverse proxy or load balancer configuration by opening "
 "the path `/auth/realms/master/.well-known/openid-configuration` through the "
-"reverse proxy. For example if the reverse proxy address is `\\https://acme."
-"com/` then open the URL `\\https://acme.com/auth/realms/master/.well-known/"
-"openid-configuration`. This will show a JSON document listing a number of "
-"endpoints for {project_name}. Make sure the endpoints starts with the "
-"address (scheme, domain and port) of your reverse proxy or load balancer. By "
-"doing this you make sure that {project_name} is using the correct endpoint."
+"reverse proxy. For example if the reverse proxy address is "
+"`\\https://acme.com/` then open the URL "
+"`\\https://acme.com/auth/realms/master/.well-known/openid-configuration`. "
+"This will show a JSON document listing a number of endpoints for "
+"{project_name}. Make sure the endpoints starts with the address (scheme, "
+"domain and port) of your reverse proxy or load balancer. By doing this you "
+"make sure that {project_name} is using the correct endpoint."
 msgstr ""
+"リバースプロキシ経由で `/auth/realms/master/.well-known/openid-configuration` "
+"のパスを開き、リバースプロキシまたはロードバランサーの設定を確認することができます。サンプルとして、リバースプロキシ・アドレスが "
+"`\\https://acme.com/` の場合、 `\\https://acme.com/auth/realms/master/.well-"
+"known/openid-configuration` "
+"URLを開きます。そうすると、{project_name}用のエンドポイントの数を示すJSONドキュメントが表示されます。エンドポイントが、リバースプロキシまたはロードバランサーのアドレス（スキーム、ドメイン、ポート）で始まることを確認します。このようにして、{project_name}が正しいエンドポイントを使用しているか確認します。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:125
 msgid ""
 "You should also verify that {project_name} sees the correct source IP "
 "address for requests. Do check this you can try to login to the admin "
-"console with an invalid username and/or password. This should show a warning "
-"in the server log something like this:"
+"console with an invalid username and/or password. This should show a warning"
+" in the server log something like this:"
 msgstr ""
+"また、{project_name}がリクエストのソースIPアドレスを正しく認識しているか確認する必要があります。無効なユーザー名とパスワードの両方またはいずれかで管理コンソールにログインしてみて、ご確認ください。これを行うと、サーバーログに以下のような警告が表示されます。"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/load-balancer.adoc:129
 #, no-wrap
-msgid "08:14:21,287 WARN  XNIO-1 task-45 [org.keycloak.events] type=LOGIN_ERROR, realmId=master, clientId=security-admin-console, userId=8f20d7ba-4974-4811-a695-242c8fbd1bf8, ipAddress=X.X.X.X, error=invalid_user_credentials, auth_method=openid-connect, auth_type=code, redirect_uri=http://localhost:8080/auth/admin/master/console/?redirect_fragment=%2Frealms%2Fmaster%2Fevents-settings, code_id=a3d48b67-a439-4546-b992-e93311d6493e, username=admin\n"
+msgid ""
+"08:14:21,287 WARN  XNIO-1 task-45 [org.keycloak.events] type=LOGIN_ERROR, "
+"realmId=master, clientId=security-admin-console, "
+"userId=8f20d7ba-4974-4811-a695-242c8fbd1bf8, ipAddress=X.X.X.X, "
+"error=invalid_user_credentials, auth_method=openid-connect, auth_type=code, "
+"redirect_uri=http://localhost:8080/auth/admin/master/console/?redirect_fragment=%2Frealms%2Fmaster"
+"%2Fevents-settings, code_id=a3d48b67-a439-4546-b992-e93311d6493e, "
+"username=admin\n"
 msgstr ""
+"08:14:21,287 WARN  XNIO-1 task-45 [org.keycloak.events] type=LOGIN_ERROR, "
+"realmId=master, clientId=security-admin-console, "
+"userId=8f20d7ba-4974-4811-a695-242c8fbd1bf8, ipAddress=X.X.X.X, "
+"error=invalid_user_credentials, auth_method=openid-connect, auth_type=code, "
+"redirect_uri=http://localhost:8080/auth/admin/master/console/?redirect_fragment=%2Frealms%2Fmaster"
+"%2Fevents-settings, code_id=a3d48b67-a439-4546-b992-e93311d6493e, "
+"username=admin\n"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:133
@@ -287,31 +371,37 @@ msgid ""
 "Check that the value of `ipAddress` is the IP address of the machine you tried to login with and not the IP address\n"
 " of the reverse proxy or load balancer.\n"
 msgstr ""
+"`ipAddress` "
+"の値はログインしようとしているマシンのIPアドレスで、リバースプロキシまたはロードバランサーのIPアドレスではないということをご確認ください。\n"
 
 #. type: Title ====
 #: source/server_installation/topics/clustering/load-balancer.adoc:134
 #, no-wrap
 msgid "Using the Built-In Load Balancer"
-msgstr ""
+msgstr "組み込みロードバランサーの使用"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:138
 msgid ""
-"This section covers configuring the built in load balancer that is discussed "
-"in the <<_clustered-domain-example, Clustered Domain Example>>."
+"This section covers configuring the built in load balancer that is discussed"
+" in the <<_clustered-domain-example, Clustered Domain Example>>."
 msgstr ""
+"このセクションでは、<<_clustered-domain-example, "
+"クラスター構成ドメインのサンプル>>でご説明する組み込みロードバランサーの設定方法についてご説明します。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:141
 msgid ""
-"The <<_clustered-domain-example, Clustered Domain Example>> is only designed "
-"to run on one machine.  To bring up a slave on another host, you'll need to"
+"The <<_clustered-domain-example, Clustered Domain Example>> is only designed"
+" to run on one machine.  To bring up a slave on another host, you'll need to"
 msgstr ""
+"<<_clustered-domain-example, "
+"クラスター構成ドメインのサンプル>>は1台のマシンで実行するためにのみ作られています。他のホストでスレーブを起動するには、次の操作が必要です。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:143
 msgid "Edit the _domain.xml_ file to point to your new host slave"
-msgstr ""
+msgstr "新しいホスト・スレーブを指し示すように、 _domain.xml_ ファイルを編集します。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:145
@@ -319,19 +409,22 @@ msgid ""
 "Copy the server distribution.  You don't need the _domain.xml_, _host.xml_, "
 "or _host-master.xml_ files.  Nor do you need the _standalone/_ directory."
 msgstr ""
+"サーバー配布物をコピーします。 _domain.xml_ 、 _host.xml_ または _host-master.xml_ は必要ありません。 "
+"_standalone/_ ディレクトリも必要ありません。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:146
 msgid ""
-"Edit the _host-slave.xml_ file to change the bind addresses used or override "
-"them on the command line"
+"Edit the _host-slave.xml_ file to change the bind addresses used or override"
+" them on the command line"
 msgstr ""
+"使用しているバインド・アドレスを変更、またはコマンドラインでそのアドレスを上書きするように、 _host-slave.xml_ ファイルを編集します。"
 
 #. type: Title =====
 #: source/server_installation/topics/clustering/load-balancer.adoc:149
 #, no-wrap
 msgid "Register a New Host With Load Balancer"
-msgstr ""
+msgstr "ロードバランサーでの新しいホスト登録"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:154
@@ -341,12 +434,15 @@ msgid ""
 "configuration in the `load-balancer` profile.  Add a new `host` definition "
 "called `remote-host3` within the `reverse-proxy` XML block."
 msgstr ""
+"まず、 _domain.xml_ 内のロードバランサーを設定して、新しいホスト・スレーブを登録する方法について学んでいきましょう。このファイルを開き、 "
+"`load-balancer` プロファイル内のundertow設定に移動します。 `reverse-proxy` XMLブロック内で、 "
+"`remote-host3` と呼ばれる `host` の新しい定義を追加します。"
 
 #. type: Block title
 #: source/server_installation/topics/clustering/load-balancer.adoc:155
 #, no-wrap
 msgid "domain.xml reverse-proxy config"
-msgstr ""
+msgstr "domain.xmlのreverse-proxy設定 "
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/load-balancer.adoc:169
@@ -364,29 +460,46 @@ msgid ""
 "  ...\n"
 "</subsystem>\n"
 msgstr ""
+"<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
+"  ...\n"
+"  <handlers>\n"
+"      <reverse-proxy name=\"lb-handler\">\n"
+"         <host name=\"host1\" outbound-socket-binding=\"remote-host1\" scheme=\"ajp\" path=\"/\" instance-id=\"myroute1\"/>\n"
+"         <host name=\"host2\" outbound-socket-binding=\"remote-host2\" scheme=\"ajp\" path=\"/\" instance-id=\"myroute2\"/>\n"
+"         <host name=\"remote-host3\" outbound-socket-binding=\"remote-host3\" scheme=\"ajp\" path=\"/\" instance-id=\"myroute3\"/>\n"
+"      </reverse-proxy>\n"
+"  </handlers>\n"
+"  ...\n"
+"</subsystem>\n"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:174
 msgid ""
-"The `output-socket-binding` is a logical name pointing to a `socket-binding` "
-"configured later in the _domain.xml_ file.  the `instance-id` attribute must "
-"also be unique to the new host as this value is used by a cookie to enable "
-"sticky sessions when load balancing."
+"The `output-socket-binding` is a logical name pointing to a `socket-binding`"
+" configured later in the _domain.xml_ file.  the `instance-id` attribute "
+"must also be unique to the new host as this value is used by a cookie to "
+"enable sticky sessions when load balancing."
 msgstr ""
+"`output-socket-binding` は _domain.xml_ 内で後ほど設定する `socket-binding` を指す論理名です"
+"。`instance-id` 属性は、負荷を分散する時にスティッキー・セッションを有効にできるようにこの値がCookieによって使用されるため、 "
+"新しいホスト固有のものでなければなりません。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:177
 msgid ""
 "Next go down to the `load-balancer-sockets` `socket-binding-group` and add "
-"the `outbound-socket-binding` for `remote-host3`.  This new binding needs to "
-"point to the host and port of the new host."
+"the `outbound-socket-binding` for `remote-host3`.  This new binding needs to"
+" point to the host and port of the new host."
 msgstr ""
+"次に、 `load-balancer-sockets` と `socket-binding-group` へとスクロールダウンし、 `remote-"
+"host3` 用の `outbound-socket-binding` "
+"を追加します。この新しいバインディングは、新しいホストのホスト名とポートを指し示す必要があります。"
 
 #. type: Block title
 #: source/server_installation/topics/clustering/load-balancer.adoc:178
 #, no-wrap
 msgid "domain.xml outbound-socket-binding"
-msgstr ""
+msgstr "domain.xmlのoutbound-socket-binding"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/load-balancer.adoc:193
@@ -405,41 +518,63 @@ msgid ""
 "    </outbound-socket-binding>\n"
 "</socket-binding-group>\n"
 msgstr ""
+"<socket-binding-group name=\"load-balancer-sockets\" default-interface=\"public\">\n"
+"    ...\n"
+"    <outbound-socket-binding name=\"remote-host1\">\n"
+"        <remote-destination host=\"localhost\" port=\"8159\"/>\n"
+"    </outbound-socket-binding>\n"
+"    <outbound-socket-binding name=\"remote-host2\">\n"
+"        <remote-destination host=\"localhost\" port=\"8259\"/>\n"
+"    </outbound-socket-binding>\n"
+"    <outbound-socket-binding name=\"remote-host3\">\n"
+"        <remote-destination host=\"192.168.0.5\" port=\"8259\"/>\n"
+"    </outbound-socket-binding>\n"
+"</socket-binding-group>\n"
 
 #. type: Title =====
 #: source/server_installation/topics/clustering/load-balancer.adoc:195
 #, no-wrap
 msgid "Master Bind Addresses"
-msgstr ""
+msgstr "マスター・バインド・アドレス"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:200
 msgid ""
-"Next thing you'll have to do is to change the `public` and `management` bind "
-"addresses for the master host.  Either edit the _domain.xml_ file as "
+"Next thing you'll have to do is to change the `public` and `management` bind"
+" addresses for the master host.  Either edit the _domain.xml_ file as "
 "discussed in the <<_bind-address, Bind Addresses>> chapter or specify these "
 "bind addresses on the command line as follows:"
 msgstr ""
+"次に、マスター・ホスト用の `public` と `management` バインド・アドレスを変更する必要があります。<<_bind-address,"
+" バインド・アドレス>>内でご説明した _domain.xml_ "
+"ファイルを編集するか、以下のとおりコマンドライン上でこれらのバインド・アドレスを指定します。"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/load-balancer.adoc:204
 #, no-wrap
-msgid "$ domain.sh --host-config=host-master.xml -Djboss.bind.address=192.168.0.2 -Djboss.bind.address.management=192.168.0.2\n"
+msgid ""
+"$ domain.sh --host-config=host-master.xml -Djboss.bind.address=192.168.0.2 "
+"-Djboss.bind.address.management=192.168.0.2\n"
 msgstr ""
+"$ domain.sh --host-config=host-master.xml -Djboss.bind.address=192.168.0.2 "
+"-Djboss.bind.address.management=192.168.0.2\n"
 
 #. type: Title =====
 #: source/server_installation/topics/clustering/load-balancer.adoc:206
 #, no-wrap
 msgid "Host Slave Bind Addresses"
-msgstr ""
+msgstr "ホスト・スレーブ・バインド・アドレス"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:210
 msgid ""
-"Next you'll have to change the `public`, `management`, and domain controller "
-"bind addresses (`jboss.domain.master-address`).  Either edit the _host-slave."
-"xml_ file or specify them on the command line as follows:"
+"Next you'll have to change the `public`, `management`, and domain controller"
+" bind addresses (`jboss.domain.master-address`).  Either edit the _host-"
+"slave.xml_ file or specify them on the command line as follows:"
 msgstr ""
+"次は、 `public` 、 `management` 、ドメイン・コントローラー・バインド・アドレス（ `jboss.domain.master-"
+"address` ）を変更する必要があります 。 _host-slave.xml_ "
+"ファイルを編集するか、以下のとおりコマンドラインでこれらを指定します。"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/load-balancer.adoc:217
@@ -450,21 +585,28 @@ msgid ""
 "      -Djboss.bind.address.management=192.168.0.5\n"
 "       -Djboss.domain.master.address=192.168.0.2\n"
 msgstr ""
+"$ domain.sh --host-config=host-slave.xml\n"
+"     -Djboss.bind.address=192.168.0.5\n"
+"      -Djboss.bind.address.management=192.168.0.5\n"
+"       -Djboss.domain.master.address=192.168.0.2\n"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:222
 msgid ""
 "The values of `jboss.bind.address` and `jboss.bind.addres.management` "
-"pertain to the host slave's IP address.  The value of `jboss.domain.master."
-"address` need to be the IP address of the domain controller which is the "
-"management address of the master host."
+"pertain to the host slave's IP address.  The value of "
+"`jboss.domain.master.address` need to be the IP address of the domain "
+"controller which is the management address of the master host."
 msgstr ""
+"`jboss.bind.address` と `jboss.bind.addres.management` "
+"の値はホスト・スレーブのIPアドレスに付随します。 `jboss.domain.master.address` "
+"はマスタ・ホストの管理アドレスであるドメイン・コントローラーのIPアドレスである必要があります。"
 
 #. type: Title ====
 #: source/server_installation/topics/clustering/load-balancer.adoc:223
 #, no-wrap
 msgid "Configuring Other Load Balancers"
-msgstr ""
+msgstr "その他のロードバランサ設定"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/load-balancer.adoc:225
@@ -473,3 +615,5 @@ msgid ""
 "_{appserver_loadbalancer_name}_ for information how to use other software-"
 "based load balancers."
 msgstr ""
+"その他のソフトウェア・ベースのロードバランサーの使用方法については、 _{appserver_loadbalancer_name}_ "
+"内のlink:{appserver_loadbalancer_link}[the load balancing]セクションをご覧ください。"

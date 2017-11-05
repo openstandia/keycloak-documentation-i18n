@@ -2,17 +2,17 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title =====
@@ -21,17 +21,18 @@ msgstr ""
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:8
 #: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:10
 #: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:10
+#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:40
 #: source/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_installation.adoc:3
 #: source/securing_apps/topics/saml/java/jboss-adapter/jboss_adapter_installation.adoc:3
 #, no-wrap
 msgid "Adapter Installation"
-msgstr ""
+msgstr "アダプターのインストール"
 
 #. type: Title ====
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:2
 #, no-wrap
 msgid "Spring Boot Adapter"
-msgstr ""
+msgstr "Spring Bootアダプター"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:6
@@ -41,16 +42,24 @@ msgid ""
 "via normal Spring Boot configuration (`application.properties`).  Let's go "
 "over these steps."
 msgstr ""
+"Spring Bootアプリケーションを保護するには、Keycloak Spring "
+"BootアダプターJARをアプリケーションに追加する必要があります。 通常のSpringブート設定( `application.properties` "
+")でいくつかの設定を追加する必要があります。 これらの手順について説明します。 "
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:13
 msgid ""
 "The Keycloak Spring Boot adapter takes advantage of Spring Boot's "
 "autoconfiguration so all you need to do is add the Keycloak Spring Boot "
-"starter to your project.  They Keycloak Spring Boot Starter is also directly "
-"available from the http://start.spring.io/[Spring Start Page].  To add it "
-"manually and if you are using Maven, add the following to your dependencies :"
+"starter to your project.  They Keycloak Spring Boot Starter is also directly"
+" available from the http://start.spring.io/[Spring Start Page].  To add it "
+"manually and if you are using Maven, add the following to your dependencies "
+":"
 msgstr ""
+"Keycloak Spring Bootアダプターは、Spring Bootの自動設定を利用するので、Keycloak Spring Boot "
+"Starterをプロジェクトに追加するだけです。 Keycloak Spring Boot "
+"Starterもhttp://start.spring.io/[Spring Start Page]から直接入手できます。 "
+"Mavenを使用している場合は手動で追加し、依存関係には以下を追加します。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:23
@@ -61,11 +70,15 @@ msgid ""
 "    <artifactId>keycloak-spring-boot-starter</artifactId>\n"
 "</dependency>\n"
 msgstr ""
+"<dependency>\n"
+"    <groupId>org.keycloak</groupId>\n"
+"    <artifactId>keycloak-spring-boot-starter</artifactId>\n"
+"</dependency>\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:27
 msgid "Make also sure to add the Adapter BOM dependency :"
-msgstr ""
+msgstr "アダプターのPOM依存関係も追加して下さい。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:43
@@ -83,47 +96,62 @@ msgid ""
 "  </dependencies>\n"
 "</dependencyManagement>\n"
 msgstr ""
+"<dependencyManagement>\n"
+"  <dependencies>\n"
+"    <dependency>\n"
+"      <groupId>org.keycloak.bom</groupId>\n"
+"      <artifactId>keycloak-adapter-bom</artifactId>\n"
+"      <version>{project_versionMvn}</version>\n"
+"      <type>pom</type>\n"
+"      <scope>import</scope>\n"
+"    </dependency>\n"
+"  </dependencies>\n"
+"</dependencyManagement>\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:48
 msgid ""
-"Currently the following embedded containers are supported and do not require "
-"any extra dependencies if using the Starter:"
-msgstr ""
+"Currently the following embedded containers are supported and do not require"
+" any extra dependencies if using the Starter:"
+msgstr "現在、次の組み込みコンテナーがサポートされており、Starterを使用する場合は余分な依存関係は必要ありません。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:50
 msgid "Tomcat"
-msgstr ""
+msgstr "Tomcat"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:51
 msgid "Undertow"
-msgstr ""
+msgstr "Undertow"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:52
 msgid "Jetty"
-msgstr ""
+msgstr "Jetty"
 
 #. type: Title =====
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:54
 #, no-wrap
 msgid "Required Spring Boot Adapter Configuration"
-msgstr ""
+msgstr "必要なSpring Bootアダプターの設定"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:57
 msgid ""
-"This section describes how to configure your Spring Boot app to use Keycloak."
-msgstr ""
+"This section describes how to configure your Spring Boot app to use "
+"Keycloak."
+msgstr "このセクションでは、Keycloakを使用するようにSpring Bootアプリケーションを設定する方法について説明します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:60
 msgid ""
 "Instead of a `keycloak.json` file, you configure the realm for the Spring "
-"Boot Keycloak adapter via the normal Spring Boot configuration.  For example:"
+"Boot Keycloak adapter via the normal Spring Boot configuration.  For "
+"example:"
 msgstr ""
+"`keycloak.json` ファイルの代わりに、通常のSpring Bootの設定を使って、Spring Boot "
+"Keycloakアダプターに対するレルムを設定します。 例えば："
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:71
@@ -136,6 +164,12 @@ msgid ""
 "keycloak.credentials.secret = 11111111-1111-1111-1111-111111111111\n"
 "keycloak.use-resource-role-mappings = true\n"
 msgstr ""
+"keycloak.realm = demorealm\n"
+"keycloak.auth-server-url = http://127.0.0.1:8080/auth\n"
+"keycloak.ssl-required = external\n"
+"keycloak.resource = demoapp\n"
+"keycloak.credentials.secret = 11111111-1111-1111-1111-111111111111\n"
+"keycloak.use-resource-role-mappings = true\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:74
@@ -143,6 +177,8 @@ msgid ""
 "You can disable the Keycloak Spring Boot Adapter (for example in tests) by "
 "setting `keycloak.enabled = false`."
 msgstr ""
+"`keycloak.enabled = false` を設定することで、Keycloak Spring "
+"Bootアダプターを無効にすることができます(テストなどで)。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:76
@@ -150,15 +186,20 @@ msgid ""
 "To configure a Policy Enforcer, unlike keycloak.json, `policy-enforcer-"
 "config` must be used instead of just `policy-enforcer`."
 msgstr ""
+"Policy Enforcerを設定するには、keycloak.jsonとは異なり、 `policy-enforcer` の代わりに `policy-"
+"enforcer-config` を使用する必要があります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:80
 msgid ""
 "You also need to specify the Java EE security config that would normally go "
 "in the `web.xml`.  The Spring Boot Adapter will set the `login-method` to "
-"`KEYCLOAK` and configure the `security-constraints` at startup time.  Here's "
-"an example configuration:"
+"`KEYCLOAK` and configure the `security-constraints` at startup time.  Here's"
+" an example configuration:"
 msgstr ""
+"また、通常は `web.xml` に記述するJava EEのセキュリティー設定を指定する必要があります。 Spring Bootアダプターは "
+"`login-method` を `KEYCLOAK` に設定し、起動時に `security-constraints` を設定します。 "
+"次に設定例を示します。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:89
@@ -169,6 +210,10 @@ msgid ""
 "keycloak.securityConstraints[0].securityCollections[0].name = insecure stuff\n"
 "keycloak.securityConstraints[0].securityCollections[0].patterns[0] = /insecure\n"
 msgstr ""
+"keycloak.securityConstraints[0].authRoles[0] = admin\n"
+"keycloak.securityConstraints[0].authRoles[1] = user\n"
+"keycloak.securityConstraints[0].securityCollections[0].name = insecure stuff\n"
+"keycloak.securityConstraints[0].securityCollections[0].patterns[0] = /insecure\n"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:93
@@ -178,3 +223,6 @@ msgid ""
 "keycloak.securityConstraints[1].securityCollections[0].name = admin stuff\n"
 "keycloak.securityConstraints[1].securityCollections[0].patterns[0] = /admin\n"
 msgstr ""
+"keycloak.securityConstraints[1].authRoles[0] = admin\n"
+"keycloak.securityConstraints[1].securityCollections[0].name = admin stuff\n"
+"keycloak.securityConstraints[1].securityCollections[0].patterns[0] = /admin\n"

@@ -2,17 +2,17 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
@@ -31,24 +31,32 @@ msgid ""
 "      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
 "      version=\"3.0\">\n"
 msgstr ""
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"      version=\"3.0\">\n"
 
 #. type: Title ====
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:2
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:2
 #, no-wrap
 msgid "Java Servlet Filter Adapter"
-msgstr ""
+msgstr "Java サーブレット・フィルター・アダプター"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:7
 msgid ""
-"If you are deploying your Java Servlet application on a platform where there "
-"is no {project_name} adapter you opt to use the servlet filter adapter.  "
+"If you are deploying your Java Servlet application on a platform where there"
+" is no {project_name} adapter you opt to use the servlet filter adapter.  "
 "This adapter works a bit differently than the other adapters. You do not "
-"define security constraints in web.xml.  Instead you define a filter mapping "
-"using the {project_name} servlet filter adapter to secure the url patterns "
+"define security constraints in web.xml.  Instead you define a filter mapping"
+" using the {project_name} servlet filter adapter to secure the url patterns "
 "you want to secure."
 msgstr ""
+"{project_name} "
+"アダプターがないプラットフォームにJavaサーブレット・アプリケーションをデプロイする場合は、サーブレット・フィルター・アダプターを使用することを選択します。"
+" このアダプターは、他のアダプターとは多少動作が異なります。 web.xmlにはセキュリティ制約を定義しません。 代わりに {project_name}"
+" サーブレット・フィルター・アダプターを使用してフィルター・マッピングを定義して、URLパターンをセキュリティ保護します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:11
@@ -58,12 +66,14 @@ msgid ""
 "out.  There's no standard way to invalidate an HTTP session based on a "
 "session id."
 msgstr ""
+"バックチャネルのログアウトは、標準のアダプターとは少し異なります。HTTPセッションを無効にする代わりに、セッションIDをログアウトしたものとしてマークします。"
+" セッションIDに基づいてHTTPセッションを無効にする標準的な方法はありません。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:20
 #, no-wrap
 msgid "\t<module-name>application</module-name>\n"
-msgstr ""
+msgstr "\t<module-name>application</module-name>\n"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:31
@@ -80,6 +90,16 @@ msgid ""
 "    </filter-mapping>\n"
 "</web-app>\n"
 msgstr ""
+"    <filter>\n"
+"        <filter-name>Keycloak Filter</filter-name>\n"
+"        <filter-class>org.keycloak.adapters.servlet.KeycloakOIDCFilter</filter-class>\n"
+"    </filter>\n"
+"    <filter-mapping>\n"
+"        <filter-name>Keycloak Filter</filter-name>\n"
+"        <url-pattern>/keycloak/*</url-pattern>\n"
+"        <url-pattern>/protected/*</url-pattern>\n"
+"    </filter-mapping>\n"
+"</web-app>\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:35
@@ -88,6 +108,8 @@ msgid ""
 "In the snippet above there are two url-patterns.\n"
 " _/protected/*_ are the files we want protected, while the _/keycloak/*_ url-pattern handles callbacks from the {project_name} server.\n"
 msgstr ""
+"上のスニペットには2つのURLパターンがあります。\n"
+" _/protected/*_ は保護したいファイルで、_/keycloak/*_ のurl-patternは {project_name} サーバーからのコールバックを処理します。\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:39
@@ -98,6 +120,10 @@ msgid ""
 "filter should immediately delegate to the filter-chain.  By default no "
 "skipPattern is configured."
 msgstr ""
+"設定された `url-patterns` "
+"の下にあるいくつかのパスを除外する必要がある場合は、、keycloakフィルターが直ちにフィルター・チェーンに委譲すべきパス・パターンを記述する正規表現を設定するために"
+"、Filterのinit-param `keycloak.config.skipPattern` を使用できます。 デフォルトでは、 "
+"`skipPattern@ は設定されていません。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:41
@@ -106,6 +132,8 @@ msgid ""
 "Given the context-path `/myapp` a request for `/myapp/index.html` will be "
 "matched with `/index.html` against the skip pattern."
 msgstr ""
+"パターンは `context-path` なしで `requestURI` と照合されます。 コンテキストパス `/myapp` が与えられると、 "
+"`/myapp/index.html` のリクエストは、スキップ・パターンに対して `/index.html` とマッチします。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:48
@@ -116,6 +144,10 @@ msgid ""
 "    <param-value>^/(path1|path2|path3).*</param-value>\n"
 "</init-param>\n"
 msgstr ""
+"<init-param>\n"
+"    <param-name>keycloak.config.skipPattern</param-name>\n"
+"    <param-value>^/(path1|path2|path3).*</param-value>\n"
+"</init-param>\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:51
@@ -124,28 +156,34 @@ msgid ""
 "Console with an Admin URL that points to a secured section covered by the "
 "filter's url-pattern."
 msgstr ""
+"{project_name} "
+"管理コンソールでクライアントのURLを設定する必要があります。管理URLは、フィルタのURLパターンで保護されたセクションを指します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:54
 msgid ""
 "The Admin URL will make callbacks to the Admin URL to do things like "
-"backchannel logout.  So, the Admin URL in this example should be `http[s]://"
-"hostname/{context-root}/keycloak`."
+"backchannel logout.  So, the Admin URL in this example should be "
+"`http[s]://hostname/{context-root}/keycloak`."
 msgstr ""
+"管理URLは、バックチャネル・ログアウトなどの操作を行うために、管理者URLへのコールバックを行います。 したがって、この例のAdmin URLは "
+"`http[s]://hostname/{context-root}/keycloak` でなければなりません。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:56
 msgid ""
-"The {project_name} filter has the same configuration parameters as the other "
-"adapters except you must define them as filter init params instead of "
+"The {project_name} filter has the same configuration parameters as the other"
+" adapters except you must define them as filter init params instead of "
 "context params."
 msgstr ""
+"{project_name} "
+"フィルターは、コンテキスト・パラメーターの代わりにフィルタ初期化パラメーターとして定義する必要がある以外は、他のアダプターと同じ設定パラメーターを持ちます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:58
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:49
 msgid "To use this filter, include this maven artifact in your WAR poms:"
-msgstr ""
+msgstr "このフィルタを使用するには、WARのpomに次のmavenアーティファクトを含めます:"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:66
@@ -157,3 +195,8 @@ msgid ""
 "    <version>{project_versionMvn}</version>\n"
 "</dependency>\n"
 msgstr ""
+"<dependency>\n"
+"    <groupId>org.keycloak</groupId>\n"
+"    <artifactId>keycloak-servlet-filter-adapter</artifactId>\n"
+"    <version>{project_versionMvn}</version>\n"
+"</dependency>\n"

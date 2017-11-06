@@ -1,30 +1,31 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
-"Language-Team: Japanese\n"
-"Language: ja\n"
+"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
-"X-Crowdin-Project: keycloak-documentation-i18n\n"
-"X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/i18n/po/ja_JP/"
-"server_installation__topics__cache__eviction.ja_JP.po\n"
 
 #. type: Title ===
 #: source/server_installation/topics/cache/eviction.adoc:2
 #, no-wrap
 msgid "Eviction and Expiration"
-msgstr ""
+msgstr "退避と失効"
 
 #. type: Plain text
 #: source/server_installation/topics/cache/eviction.adoc:10
 msgid ""
-"There are multiple different caches configured for {project_name}.  There is "
-"a realm cache that holds information about secured applications, general "
+"There are multiple different caches configured for {project_name}.  There is"
+" a realm cache that holds information about secured applications, general "
 "security data, and configuration options.  There is also a user cache that "
 "contains user metadata.  Both caches default to a maximum of 10000 entries "
 "and use a least recently used eviction strategy.  Each of them is also tied "
@@ -33,20 +34,23 @@ msgid ""
 "are also separate caches for user sessions, offline tokens, and login "
 "failures.  These caches are unbounded in size as well."
 msgstr ""
+"{project_name}には、さまざまなキャッシュの設定があります。まず、レルム・キャッシュというものがあり、セキュリティ保護されたアプリケーション、一般的なセキュリティ・データおよび設定オプションに関する情報を保持しています。また、ユーザー・メタデータを含むユーザー・キャッシュがあります。この両方のキャッシュのデフォルトでの最大値は10000エントリで、最近使用された最小限の退避戦略が使用されます。また、これらのキャッシュはそれぞれ、クラスター構成内での退避を制御するオブジェクト・リビジョン・キャッシュにも関連付けられています。このキャッシュは暗黙的に作成され、値は設定値の2倍あります。また、ユーザー・セッション、オフライン・トークン、ログイン・エラー用のキャッシュも別途あります。これらのキャッシュの値も同様に制限はありません。"
 
 #. type: Plain text
 #: source/server_installation/topics/cache/eviction.adoc:13
 msgid ""
 "The eviction policy and max entries for these caches can be configured in "
-"the _standalone.xml_, _standalone-ha.xml_, or _domain.xml_ depending on your "
-"<<_operating-mode, operating mode>>."
+"the _standalone.xml_, _standalone-ha.xml_, or _domain.xml_ depending on your"
+" <<_operating-mode, operating mode>>."
 msgstr ""
+"これらのキャッシュのための退避ポリシーと最大エントリは、<<_operating-mode, operating mode>>に応じて "
+"_standalone.xml_ 、 _standalone-ha.xml_ または _domain.xml_ 内で設定することができます。 "
 
 #. type: Block title
 #: source/server_installation/topics/cache/eviction.adoc:14
 #, no-wrap
 msgid "non-clustered"
-msgstr ""
+msgstr "非クラスター構造"
 
 #. type: delimited block -
 #: source/server_installation/topics/cache/eviction.adoc:37
@@ -73,12 +77,32 @@ msgid ""
 "        </local-cache>\n"
 "    </cache-container>\n"
 msgstr ""
+"<subsystem xmlns=\"urn:jboss:domain:infinispan:4.0\">\n"
+" <cache-container name=\"keycloak\" jndi-name=\"infinispan/Keycloak\">\n"
+" <local-cache name=\"realms\">\n"
+" <eviction max-entries=\"10000\" strategy=\"LRU\"/>\n"
+" </local-cache>\n"
+" <local-cache name=\"users\">\n"
+" <eviction max-entries=\"10000\" strategy=\"LRU\"/>\n"
+" </local-cache>\n"
+" <local-cache name=\"sessions\"/>\n"
+" <local-cache name=\"offlineSessions\"/>\n"
+" <local-cache name=\"loginFailures\"/>\n"
+" <local-cache name=\"work\"/>\n"
+" <local-cache name=\"authorization\">\n"
+" <eviction strategy=\"LRU\" max-entries=\"100\"/>\n"
+" </local-cache>\n"
+" <local-cache name=\"keys\">\n"
+" <eviction strategy=\"LRU\" max-entries=\"1000\"/>\n"
+" <expiration max-idle=\"3600000\"/>\n"
+" </local-cache>\n"
+" </cache-container>\n"
 
 #. type: Block title
 #: source/server_installation/topics/cache/eviction.adoc:40
 #, no-wrap
 msgid "clustered"
-msgstr ""
+msgstr "クラスター構造"
 
 #. type: delimited block -
 #: source/server_installation/topics/cache/eviction.adoc:62
@@ -104,6 +128,25 @@ msgid ""
 "        </local-cache>\n"
 "    </cache-container>\n"
 msgstr ""
+"<subsystem xmlns=\"urn:jboss:domain:infinispan:4.0\">\n"
+" <cache-container name=\"keycloak\" jndi-name=\"infinispan/Keycloak\">\n"
+" <transport lock-timeout=\"60000\"/>\n"
+" <local-cache name=\"realms\">\n"
+" <eviction max-entries=\"10000\" strategy=\"LRU\"/>\n"
+" </local-cache>\n"
+" <local-cache name=\"users\">\n"
+" <eviction max-entries=\"10000\" strategy=\"LRU\"/>\n"
+" </local-cache>\n"
+" <distributed-cache name=\"sessions\" mode=\"SYNC\" owners=\"1\"/>\n"
+" <distributed-cache name=\"offlineSessions\" mode=\"SYNC\" owners=\"1\"/>\n"
+" <distributed-cache name=\"loginFailures\" mode=\"SYNC\" owners=\"1\"/>\n"
+" <distributed-cache name=\"authorization\" mode=\"SYNC\" owners=\"1\"/>\n"
+" <replicated-cache name=\"work\" mode=\"SYNC\"/>\n"
+" <local-cache name=\"keys\">\n"
+" <eviction max-entries=\"1000\" strategy=\"LRU\"/>\n"
+" <expiration max-idle=\"3600000\"/>\n"
+" </local-cache>\n"
+" </cache-container>\n"
 
 #. type: Plain text
 #: source/server_installation/topics/cache/eviction.adoc:65
@@ -112,3 +155,5 @@ msgid ""
 "`eviction` element or the `expiration` element of particular cache "
 "configuration."
 msgstr ""
+"許可されたエントリの数を制限したり拡張したりするには、特定のキャッシュ設定の `eviction` 要素または `expiration` "
+"要素を追加または編集するだけで可能です。"

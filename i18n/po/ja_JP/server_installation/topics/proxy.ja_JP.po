@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgid ""
 " secured either by browser login and/or bearer token authentication.  You "
 "can also define role constraints for URL patterns within your applications."
 msgstr ""
-"{project_name}には、{project_name}アダプターをインストールすることができないwebアプリケーションとサービスの前に置くことができる、HTTP(S)プロキシがあります。ブラウザーのログインとベアラー・トークン認証の両方、またはそのいずれかによって特定のURLが保護されるように、URLフィルターを設定することができます。また、アプリケーション内のURLパターンのためのロール制約を定義することもできます。"
+"{project_name}には、{project_name}アダプターをインストールすることができないwebアプリケーションとサービスのフロントに置くことができる、HTTP(S)プロキシがあります。ブラウザー・ログインとベアラー・トークン認証の両方、またはそのいずれかによって特定のURLが保護されるように、URLフィルターを設定することができます。また、アプリケーション内のURLパターンのためのロール制約を定義することもできます。"
 
 #. type: Title ===
 #: source/server_installation/topics/proxy.adoc:9
@@ -72,8 +72,7 @@ msgid ""
 "look in the current working directory for the file named `proxy.json`"
 "        \n"
 msgstr ""
-"プロキシ設定ファイルへのパスを指定しない場合、ランチャーは `proxy.json` "
-"という名前のファイルの現在の作業ディレクトリ内に探しに行くことになります。\n"
+"プロキシ設定ファイルへのパスを指定しない場合、ランチャーは `proxy.json` という名前のファイルを現在の作業ディレクトリ内で探します。\n"
 
 #. type: Title ===
 #: source/server_installation/topics/proxy.adoc:27
@@ -84,7 +83,7 @@ msgstr "プロキシ設定"
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:30
 msgid "Here's an example configuration file."
-msgstr "設定ファイルのサンプルは以下の通りです。"
+msgstr "設定ファイルのサンプルは以下のとおりです。"
 
 #. type: delimited block -
 #: source/server_installation/topics/proxy.adoc:83
@@ -142,54 +141,54 @@ msgid ""
 "}\n"
 msgstr ""
 "{\n"
-" \"target-url\": \"http://localhost:8082\",\n"
-" \"send-access-token\": true,\n"
-" \"bind-address\": \"localhost\",\n"
-" \"http-port\": \"8080\",\n"
-" \"https-port\": \"8443\",\n"
-" \"keystore\": \"classpath:ssl.jks\",\n"
-" \"keystore-password\": \"password\",\n"
-" \"key-password\": \"password\",\n"
-" \"applications\": [\n"
-" {\n"
-" \"base-path\": \"/customer-portal\",\n"
-" \"error-page\": \"/error.html\",\n"
-" \"adapter-config\": {\n"
-" \"realm\": \"demo\",\n"
-" \"resource\": \"customer-portal\",\n"
-" \"realm-public-key\": \"MIGfMA0GCSqGSIb\",\n"
-" \"auth-server-url\": \"http://localhost:8081/auth\",\n"
-" \"ssl-required\" : \"external\",\n"
-" \"principal-attribute\": \"name\",\n"
-" \"credentials\": {\n"
-" \"secret\": \"password\"\n"
-" }\n"
-" }\n"
-" ,\n"
-" \"constraints\": [\n"
-" {\n"
-" \"pattern\": \"/users/*\",\n"
-" \"roles-allowed\": [\n"
-" \"user\"\n"
-" ]\n"
-" },\n"
-" {\n"
-" \"pattern\": \"/admins/*\",\n"
-" \"roles-allowed\": [\n"
-" \"admin\"\n"
-" ]\n"
-" },\n"
-" {\n"
-" \"pattern\": \"/users/permit\",\n"
-" \"permit\": true\n"
-" },\n"
-" {\n"
-" \"pattern\": \"/users/deny\",\n"
-" \"deny\": true\n"
-" }\n"
-" ]\n"
-" }\n"
-" ]\n"
+"    \"target-url\": \"http://localhost:8082\",\n"
+"    \"send-access-token\": true,\n"
+"    \"bind-address\": \"localhost\",\n"
+"    \"http-port\": \"8080\",\n"
+"    \"https-port\": \"8443\",\n"
+"    \"keystore\": \"classpath:ssl.jks\",\n"
+"    \"keystore-password\": \"password\",\n"
+"    \"key-password\": \"password\",\n"
+"    \"applications\": [\n"
+"        {\n"
+"            \"base-path\": \"/customer-portal\",\n"
+"            \"error-page\": \"/error.html\",\n"
+"            \"adapter-config\": {\n"
+"                \"realm\": \"demo\",\n"
+"                \"resource\": \"customer-portal\",\n"
+"                \"realm-public-key\": \"MIGfMA0GCSqGSIb\",\n"
+"                \"auth-server-url\": \"http://localhost:8081/auth\",\n"
+"                \"ssl-required\" : \"external\",\n"
+"                \"principal-attribute\": \"name\",\n"
+"                \"credentials\": {\n"
+"                    \"secret\": \"password\"\n"
+"                }\n"
+"            }\n"
+"            ,\n"
+"            \"constraints\": [\n"
+"                {\n"
+"                    \"pattern\": \"/users/*\",\n"
+"                    \"roles-allowed\": [\n"
+"                        \"user\"\n"
+"                    ]\n"
+"                },\n"
+"                {\n"
+"                    \"pattern\": \"/admins/*\",\n"
+"                    \"roles-allowed\": [\n"
+"                        \"admin\"\n"
+"                    ]\n"
+"                },\n"
+"                {\n"
+"                    \"pattern\": \"/users/permit\",\n"
+"                    \"permit\": true\n"
+"                },\n"
+"                {\n"
+"                    \"pattern\": \"/users/deny\",\n"
+"                    \"deny\": true\n"
+"                }\n"
+"            ]\n"
+"        }\n"
+"    ]\n"
 "}\n"
 
 #. type: Title ====
@@ -201,7 +200,7 @@ msgstr "基本設定"
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:88
 msgid "The basic configuration options for the server are as follows:"
-msgstr "サーバー用の基本的な設定オプションは以下の通りです。"
+msgstr "サーバー用の基本的な設定オプションは以下のとおりです。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:89
@@ -212,7 +211,7 @@ msgstr "target-url"
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:91
 msgid "The URL this server is proxying _REQUIRED._."
-msgstr "このサーバーがプロキシ構成したURL _REQUIRED._ "
+msgstr "このサーバーがプロキシするURL。 _必須_ 。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:92
@@ -227,8 +226,8 @@ msgid ""
 "KEYCLOAK_ACCESS_TOKEN header to the proxied server. _OPTIONAL._.  Default is"
 " false."
 msgstr ""
-"Booleanフラグです。trueの場合、プロキシ・サーバーにKEYCLOAK_ACCESS_TOKENヘッダーを介してアクセス・トークンが送信されます。"
-" _OPTIONAL._ デフォルトはfalseです。"
+"Booleanフラグ。trueの場合、プロキシされるサーバーにKEYCLOAK_ACCESS_TOKENヘッダーを介してアクセス・トークンが送信されます。"
+" _任意_。 デフォルトはfalseです。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:97
@@ -242,8 +241,7 @@ msgstr "bind-address"
 msgid ""
 "DNS name or IP address to bind the proxy server's sockets to. _OPTIONAL._.\n"
 "The default value is _localhost_                        \n"
-msgstr ""
-"プロキシ・サーバーのソケットをバインドするDNS名またはIPアドレス。 _OPTIONAL._ デフォルト値は _localhost_ です。\n"
+msgstr "プロキシサーバーのソケットをバインドするDNS名またはIPアドレス。 _任意_。デフォルト値は _localhost_ です。\n"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:101
@@ -256,7 +254,7 @@ msgstr "http-port"
 msgid ""
 "Port to listen for HTTP requests.  If you do not specify this value, then "
 "the proxy will not listen for regular HTTP requests. _OPTIONAL._."
-msgstr "HTTPの要求をリッスンするポート。この値を指定しないと、プロキシは通常のHTTPの要求をリッスンしません。 _OPTIONAL._ "
+msgstr "HTTPリクエストをリスンするポート。この値を指定しないと、プロキシは通常のHTTPリクエストをリスンしません。 _任意_ 。 "
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:105
@@ -269,7 +267,7 @@ msgstr "https-port"
 msgid ""
 "Port to listen for HTTPS requests.  If you do not specify this value, then "
 "the proxy will not listen for HTTPS requests. _OPTIONAL._."
-msgstr "HTTPSの要求をリッスンするポート。この値を指定しないと、プロキシは通常のHTTPSの要求をリッスンしません。 _OPTIONAL._ "
+msgstr "HTTPSリクエストをリスンするポート。この値を指定しないと、プロキシは通常のHTTPSリクエストをリスンしません。 _任意_ 。 "
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:109
@@ -285,9 +283,9 @@ msgid ""
 "Can be a file path, or, if you prefix it with `classpath:`                            it will look for this file in the classpath. _OPTIONAL._.\n"
 "If you have enabled HTTPS, but have not defined a keystore, the proxy will auto-generate a self-signed certificate and use that. \n"
 msgstr ""
-"サーバーがHTTPSの要求を処理できるようにする、プライベート鍵と証明書を含むJavaキーストア・ファイルへのパス。ファイルパスにすることは可能ですが、"
-" `classpath:` を付けると、クラスパス内でこのファイルを検索することができます。 _OPTIONAL._ "
-"キーストアを定義していない状態で、HTTPSを有効にした場合、プロキシは自己署名証明書を自動生成して使用します。\n"
+"サーバーがHTTPSリクエストを処理できるようにする、秘密鍵と証明書を含むJavaキーストア・ファイルのパス。ファイルパスにすることは可能ですが、 "
+"`classpath:` を付けると、クラスパス内でこのファイルを検索することができます。 _任意_ "
+"。キーストアを定義していない状態で、HTTPSを有効にした場合、プロキシは自己署名証明書を自動生成して使用します。\n"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:114
@@ -300,7 +298,7 @@ msgstr "buffer-size"
 msgid ""
 "HTTP server socket buffer size.  Usually the default is good enough. "
 "_OPTIONAL._."
-msgstr "HTTPサーバー・ソケットのバッファーサイズ。通常、デフォルトのままで十分です。 _OPTIONAL._"
+msgstr "HTTPサーバー・ソケットのバッファーサイズ。通常、デフォルトのままで十分です。 _任意_ 。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:118
@@ -313,7 +311,7 @@ msgstr "buffers-per-region"
 msgid ""
 "HTTP server socket buffers per region.  Usually the default is good enough. "
 "_OPTIONAL._."
-msgstr "領域毎のHTTPサーバー・ソケットのバッファーサイズ。通常、デフォルトのままで十分です。 _OPTIONAL._"
+msgstr "リージョン毎のHTTPサーバー・ソケット・バッファ。通常、デフォルトのままで十分です。 _任意_ 。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:122
@@ -324,13 +322,13 @@ msgstr "io-threads"
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:125
 msgid "Number of threads to handle IO.  Usually default is good enough."
-msgstr "IOを処理するスレッドの数。通常、デフォルトのままで十分です。"
+msgstr "IOを処理するスレッド数。通常、デフォルトのままで十分です。"
 
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:126
 #, no-wrap
 msgid "_OPTIONAL._.\n"
-msgstr "_OPTIONAL._ \n"
+msgstr "_任意_ 。\n"
 
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:127
@@ -351,10 +349,7 @@ msgid ""
 "Number of threads to handle requests.\n"
 "Usually the default is good enough. _OPTIONAL._.\n"
 "The default is the number of available processors * 16.         \n"
-msgstr ""
-"要求を処理するスレッドの数。通常、デフォルトのままで十分です。 _OPTIONAL._ デフォルトは使用できるプロセッサの数* 16です。\n"
-"\n"
-"\n"
+msgstr "要求を処理するスレッド数。通常、デフォルトのままで十分です。 _任意_ 。デフォルトは使用できるプロセッサーの数 * 16です。\n"
 
 #. type: Title ===
 #: source/server_installation/topics/proxy.adoc:133
@@ -379,7 +374,7 @@ msgstr "base-path"
 #: source/server_installation/topics/proxy.adoc:140
 msgid ""
 "The base context root for the application.  Must start with '/' _REQUIRED._."
-msgstr "アプリケーションの基本コンテキスト・ルート。これは '/' で始まる必要があります。 _REQUIRED._ "
+msgstr "アプリケーションのベース・コンテキスト・ルート。これは '/' で始まる必要があります。 _必須_ 。 "
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:141
@@ -394,8 +389,8 @@ msgid ""
 "page relative URL _OPTIONAL._.  This is a relative path to the base-path.  "
 "In the example above it would be `/customer-portal/error.html`."
 msgstr ""
-"プロキシにエラーがあると、ターゲット・アプリケーションのエラーページの相対URLが表示されます。これは、基底パスへの相対パスです。上記のサンプルでは、 "
-"`/customer-portal/error.html` になります。"
+"プロキシにエラーがあると、ターゲット・アプリケーションのエラーページの相対URLが表示されます。 _任意_ 。これは、base-"
+"pathへの相対パスです。上記のサンプルでは、 `/customer-portal/error.html` になります。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:146
@@ -407,13 +402,13 @@ msgstr "adapter-config"
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:150
 msgid "_REQUIRED._.  Same configuration as any other {project_name} adapter."
-msgstr "_REQUIRED._ 他の{project_name}アダプターと同じ設定です。"
+msgstr "_必須_ 。他の{project_name}アダプターと同じ設定です。"
 
 #. type: Title ====
 #: source/server_installation/topics/proxy.adoc:151
 #, no-wrap
 msgid "Constraint Config"
-msgstr "制御設定"
+msgstr "制約の設定"
 
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:158
@@ -424,8 +419,8 @@ msgid ""
 "specific URL pattern.  You can specify roles allowed for that path as well."
 "  More specific constraints will take precedence over more general ones."
 msgstr ""
-"次に、それぞれのアプリケーションの下に、 `constraints` "
-"配列の属性内で1つ以上の制約を定義することができます。制約によって、基底パスに関するURLパターンが定義されます。特定のURLパターン用の認証を拒否、許可または要求することができます。また、そのパス用に許可される特定のロールも同様に指定することができます。具体的な制約は、一般的な制約より優先されます。"
+"次に、各アプリケーションの下に、 `constraints` 配列の属性内で1つ以上の制約を定義することができます。制約ではbase-"
+"pathを基準にしてURLパターンを定義します。特定のURLパターンに対しての拒否、許可または認証を要求することができます。また、そのパス用に許可される特定のロールも同様に指定することができます。具体的な制約は、一般的な制約より優先されます。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:159
@@ -440,18 +435,18 @@ msgid ""
 "start with '/' _REQUIRED._ You may only have one wildcard and it must come "
 "at the end of the pattern."
 msgstr ""
-"アプリケーションの基底パスと比較して、一致するURLパターン。これは '/' で始まる必要があります。 _REQUIRED._ "
-"ワイルドカードは1つだけあり、そのパターンの末尾に入らなければなりません。"
+"アプリケーションのbase-pathを基準にして一致させるURLパターン。これは '/' で始まる必要があります。 _必須_ "
+"。ワイルドカードは1つだけ利用でき、パターンの末尾に入れなければなりません。"
 
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:165
 msgid "Valid: [x-]`/foo/bar/*` and [x-]`/foo/*.txt`"
-msgstr "Valid: [x-]`/foo/bar/*` and [x-]`/foo/*.txt`"
+msgstr "有効: [x-]`/foo/bar/*` と [x-]`/foo/*.txt`"
 
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:166
 msgid "Not valid: [x-]`/*/foo/*`."
-msgstr "Not valid: [x-]`/*/foo/*`."
+msgstr "無効: [x-]`/*/foo/*`."
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:167
@@ -463,7 +458,7 @@ msgstr "roles-allowed"
 #: source/server_installation/topics/proxy.adoc:169
 msgid ""
 "Array of strings of roles allowed to access this url pattern. _OPTIONAL._."
-msgstr "このURLパターンへのアクセスが許可された、ロールの文字列の配列。 _OPTIONAL._ "
+msgstr "このURLパターンへのアクセスが許可されたロールの文字列配列。 _任意_ 。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:170
@@ -476,7 +471,7 @@ msgstr "methods"
 msgid ""
 "Array of strings of HTTP methods that will exclusively match this pattern "
 "and HTTP request. _OPTIONAL._."
-msgstr "このパターンとHTTPの要求に対して完全に一致する、HTTPメソッドの文字列の配列。 _OPTIONAL._ "
+msgstr "このパターンとHTTPリクエストに対して完全に一致する、HTTPメソッドの文字列配列。 _任意_ 。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:173
@@ -489,7 +484,7 @@ msgstr "excluded-methods"
 msgid ""
 "Array of strings of HTTP methods that will be ignored when match this "
 "pattern. _OPTIONAL._."
-msgstr "このパターンと一致すると無視される、HTTPメソッドの文字列の配列。 _OPTIONAL._ "
+msgstr "このパターンと一致すると無視されるHTTPメソッドの文字列配列。 _任意_ 。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:176
@@ -500,7 +495,7 @@ msgstr "deny"
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:178
 msgid "Deny all access to this URL pattern. _OPTIONAL._."
-msgstr "このURLパターンへのすべてのアクセスを拒否します。 _OPTIONAL._ "
+msgstr "このURLパターンへのすべてのアクセスを拒否します。 _任意_ 。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:179
@@ -513,7 +508,7 @@ msgstr "permit"
 msgid ""
 "Permit all access without requiring authentication or a role mapping. "
 "_OPTIONAL._."
-msgstr "認証またはロール・マッピングを要求せずに、すべてのアクセスを許可します。 _OPTIONAL._ "
+msgstr "認証またはロール・マッピングを要求せずに、すべてのアクセスを許可します。 _任意_ 。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:182
@@ -526,7 +521,7 @@ msgstr "permit-and-inject"
 msgid ""
 "Permit all access, but inject the headers, if user is already "
 "authenticated._OPTIONAL._."
-msgstr "すべてのアクセスを許可しますが、ユーザーがすでに認証されているとヘッダーを挿入します。 _OPTIONAL._ "
+msgstr "すべてのアクセスを許可しますが、ユーザーがすでに認証されている場合はヘッダーを挿入します。 _任意_ 。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:185
@@ -540,7 +535,7 @@ msgstr "authenticate"
 msgid ""
 "Require authentication for this pattern, but no role mapping. _OPTIONAL._."
 "                 \n"
-msgstr "このパターンの認証は要求しますが、ロールマッピングは要求しません。 _OPTIONAL._ \n"
+msgstr "このパターンに対して認証は要求しますが、ロールマッピングは要求しません。 _任意_ 。\n"
 
 #. type: Title ====
 #: source/server_installation/topics/proxy.adoc:188
@@ -555,7 +550,7 @@ msgid ""
 "names of the header fields injected by the proxy (see {project_name} "
 "Identity Headers). This mapping is optional."
 msgstr ""
-"次に、アプリケーションのリストの下に、プロキシ（{project_name}アイデンティティ・ヘッダーをご覧ください）によって挿入された、デフォルトのヘッダー・フィールド名を上書きすることができます。このマッピングはオプションです。"
+"次に、アプリケーションのリストの下で、プロキシによって挿入されたデフォルトのヘッダー・フィールド名を上書きすることができます（{project_name}アイデンティティー・ヘッダーをご覧ください）。このマッピングはオプションです。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:192
@@ -567,7 +562,7 @@ msgstr "keycloak-subject"
 #: source/server_installation/topics/proxy.adoc:195
 #: source/server_installation/topics/proxy.adoc:207
 msgid "e.g.  MYAPP_USER_ID"
-msgstr "サンプル　MYAPP_USER_ID"
+msgstr "例：MYAPP_USER_ID"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:196
@@ -578,7 +573,7 @@ msgstr "keycloak-username"
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:199
 msgid "e.g.  MYAPP_USER_NAME"
-msgstr "サンプル　MYAPP_USER_NAME"
+msgstr "例：MYAPP_USER_NAME"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:200
@@ -589,7 +584,7 @@ msgstr "keycloak-email"
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:203
 msgid "e.g.  MYAPP_USER_EMAIL"
-msgstr "サンプル　MYAPP_USER_EMAIL"
+msgstr "例：MYAPP_USER_EMAIL"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:204
@@ -610,14 +605,14 @@ msgid ""
 "e.g.\n"
 "MYAPP_ACCESS_TOKEN             \n"
 msgstr ""
-"サンプル　\n"
-"MYAPP_ACCESS_TOKEN \n"
+"例：\n"
+"MYAPP_ACCESS_TOKEN\n"
 
 #. type: Title ===
 #: source/server_installation/topics/proxy.adoc:212
 #, no-wrap
 msgid "{project_name} Identity Headers"
-msgstr "{project_name}アイデンティティ・ヘッダー"
+msgstr "{project_name}アイデンティティー・ヘッダー"
 
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:215
@@ -626,7 +621,7 @@ msgid ""
 "set some additional headers with values from the OIDC identity token it "
 "received for authentication."
 msgstr ""
-"プロキシ・サーバーにリクエストを転送する場合、{project_name}プロキシは、認証のために受け取ったOIDCアイデンティティー・トークンからの値で、追加のヘッダをいくつか設定します。"
+"プロキシサーバーにリクエストを転送する場合、{project_name}プロキシは、認証のために受け取ったOIDCアイデンティティー・トークンからの値で、追加のヘッダーをいくつか設定します。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:216
@@ -639,7 +634,7 @@ msgstr "KEYCLOAK_SUBJECT"
 msgid ""
 "User id.  Corresponds to JWT `sub` and will be the user id {project_name} "
 "uses to store this user."
-msgstr "ユーザーID。JWT `sub` に対応し、Keycloakがこのユーザーを保存するために使用するユーザーIDになります。"
+msgstr "ユーザーID。JWT `sub` に対応し、{project_name}がこのユーザーを保存するために使用するユーザーIDになります。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:220
@@ -666,7 +661,7 @@ msgstr "KEYCLOAK_EMAIL"
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:226
 msgid "Email address of user if set."
-msgstr "ユーザーを設定した場合、そのユーザーのEメールアドレス。"
+msgstr "設定されている場合、ユーザーの電子メールアドレス。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:227
@@ -677,7 +672,7 @@ msgstr "KEYCLOAK_NAME"
 #. type: Plain text
 #: source/server_installation/topics/proxy.adoc:229
 msgid "Full name of user if set."
-msgstr "ユーザーを設定した場合、そのユーザーのフルネーム。"
+msgstr "設定されている場合、ユーザーのフルネーム。"
 
 #. type: Labeled list
 #: source/server_installation/topics/proxy.adoc:230
@@ -692,7 +687,7 @@ msgid ""
 "Send the access token in this header if the proxy was configured to send it.\n"
 "This token can be used to make bearer token requests.             Header field names can be configured using a map of `header-names` in configuration file: \n"
 msgstr ""
-"アクセストークンを送信するようにプロキシが設定されている場合、このヘッダーに送信します。このトークンを使用して、ベアラー・トークンのリクエストを作成します。ヘッダー・フィールド名は、設定ファイル内の"
+"アクセス・トークンを送信するようにプロキシが設定されている場合、このヘッダーで送信します。このトークンを使用して、ベアラー・トークンのリクエストを行うことができます。ヘッダー・フィールド名は、以下のように設定ファイル内で"
 " `header-names` のマップを使用して設定することができます。\n"
 
 #. type: delimited block -
@@ -706,7 +701,7 @@ msgid ""
 "}\n"
 msgstr ""
 "{\n"
-" \"header-names\" {\n"
-" \"keycloak-subject\": \"MY_SUBJECT\"\n"
-" }\n"
+"    \"header-names\" {\n"
+"        \"keycloak-subject\": \"MY_SUBJECT\"\n"
+"    }\n"
 "}\n"

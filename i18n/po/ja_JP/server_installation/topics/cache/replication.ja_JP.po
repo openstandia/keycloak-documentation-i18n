@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgid ""
 msgstr ""
 "`sessions` 、 `authenticationSessions` 、 `offlineSessions` および "
 "`loginFailures` "
-"キャッシュは、レプリケーションを実行するだけのキャッシュです。エントリはすべてのノードにひとつひとつレプリケートされるわけではありませんが、1つ以上のノードがそのデータの所有者として選ばれます。ノードが特定のキャッシュ・エントリの所有者ではない場合は、そのキャッシュ・エントリを取得するためにクラスターに問い合わせをします。これがフェイルオーバーに対して何を意味するかというと、データを保持しているノードがすべて壊れた場合そのデータは永遠に失われてしまうということです。デフォルトでは、{project_name}が指定するデータの所有者は1つだけです。そのため、その1つのノードが壊れた場合そのデータは失われることになります。このことは通常、ユーザーはログアウトされ、再度ログインし直さなければならないということを意味します。"
+"キャッシュは、レプリケーションを実行するだけのキャッシュです。エントリはすべてのノードにひとつひとつレプリケートされるわけではありませんが、1つ以上のノードがそのデータの所有者として選ばれます。ノードが特定のキャッシュ・エントリの所有者ではない場合は、そのキャッシュ・エントリを取得するためにクラスターに問い合わせをします。これがフェイルオーバーに対して何を意味するかというと、データを保持しているノードがすべてダウンした場合は、そのデータは永遠に失われてしまうということです。デフォルトでは、{project_name}が指定するデータの所有者は1つだけです。そのため、その1つのノードがダウンした場合は、そのデータは失われることになります。このことは通常、ユーザーはログアウトされ、再度ログインし直さなければならないということを意味します。"
 
 #. type: Plain text
 #: source/server_installation/topics/cache/replication.adoc:11
@@ -62,8 +62,8 @@ msgid ""
 "...\n"
 msgstr ""
 "<subsystem xmlns=\"urn:jboss:domain:infinispan:4.0\">\n"
-" <cache-container name=\"keycloak\" jndi-name=\"infinispan/Keycloak\">\n"
-" <distributed-cache name=\"sessions\" mode=\"SYNC\" owners=\"2\"/>\n"
+"   <cache-container name=\"keycloak\" jndi-name=\"infinispan/Keycloak\">\n"
+"       <distributed-cache name=\"sessions\" mode=\"SYNC\" owners=\"2\"/>\n"
 "...\n"
 
 #. type: Plain text
@@ -71,7 +71,7 @@ msgstr ""
 msgid ""
 "Here we've changed it so at least two nodes will replicate one specific user"
 " login session."
-msgstr "ここで上記の通り変更すると、少なくとも2つのノードが1つの特定のユーザー・ログイン・セッションをレプリケートします。"
+msgstr "ここで上記のとおりに変更すると、少なくとも2つのノードが1つの特定のユーザー・ログイン・セッションをレプリケートします。"
 
 #. type: Plain text
 #: source/server_installation/topics/cache/replication.adoc:25
@@ -80,4 +80,4 @@ msgid ""
 "The number of owners recommended is really dependent on your deployment.  If you do not care if users are logged\n"
 "      out when a node goes down, then one owner is good enough and you will avoid replication.\n"
 msgstr ""
-"推奨される所有者数は、構成によって異なります。ノードがダウンした時ユーザーがログアウトされてもされなくても良い場合は、所有者は1人で十分であり、レプリケーションを避けることができます。\n"
+"推奨される所有者数は、構成によって異なります。ノードがダウンした時にユーザーがログアウトされてもされなくても良い場合は、所有者は1つで十分であり、レプリケーションを避けることができます。\n"

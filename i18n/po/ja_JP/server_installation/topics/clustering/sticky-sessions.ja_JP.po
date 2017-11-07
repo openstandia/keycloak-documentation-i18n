@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgid ""
 "purposes, it may be useful if load balancer forwards all requests related to"
 " particular browser session to the same {project_name} backend node."
 msgstr ""
-"典型的なクラスタ構成は、ロードバランサー（リバースプロキシ）とプライベート・ネットワーク上の2つ以上のKeycloakサーバーで構成されています。パフォーマンスをあげるために、ロードバランサーが特定のブラウザー・セッションに関する要求をすべて同じ{project_name}バックエンド・ノードに転送すると便利です。"
+"典型的なクラスター構成は、ロードバランサー（リバースプロキシ）とプライベート・ネットワーク上の2つ以上の{project_name}サーバーで構成されています。パフォーマンスのために、ロードバランサーが特定のブラウザー・セッションに関するリクエストをすべて同じ{project_name}バックエンド・ノードに転送すると有用かもしれません。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:10
@@ -41,7 +41,7 @@ msgid ""
 "cluster node and the other nodes need to lookup the session remotely if they"
 " want to access it."
 msgstr ""
-"なぜなら、{project_name}が現在の認証セッションとユーザーセッションに関するデータを保存するために、infinispan分散キャッシュを使用しているからです。Infinispan分散キャッシュは、デフォルトで所有者は1つと設定されています。つまり、特定のセッションは1つのクラスタノードに保存され、他のノードはこのセッションにアクセスする場合リモートで検索する必要があります。"
+"なぜなら、{project_name}が現在の認証セッションとユーザー・セッションに関するデータを保存するために、infinispanの分散キャッシュを使用しているためです。Infinispanの分散キャッシュは、デフォルトで所有者は1つと設定されています。つまり、特定のセッションは1つのクラスター・ノードに保存され、他のノードがこのセッションにアクセスする場合は、リモートで検索する必要があります。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:13
@@ -51,8 +51,9 @@ msgid ""
 "it needs to send the request to `node1` over the network to return the "
 "particular session entity."
 msgstr ""
-"例えば、ID `123` を持つ認証セッションが `node1` 上のinfinispanキャッシュに保存されていて `node2` "
-"はこのセッションを検索する必要がある場合、特定のセッション・エンティティに返すためにネットワーク経由で `node1` へ要求を送信する必要があります。"
+"例えば、ID `123` を持つ認証セッションが `node1` 上のinfinispanキャッシュに保存されていて、 `node2` "
+"はこのセッションを検索する必要がある場合は、特定のセッション・エンティティを返すためにネットワーク経由で `node1` "
+"へリクエストを送信する必要があります。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:16
@@ -62,12 +63,12 @@ msgid ""
 "cluster environment with the public frontend load balancer and two backend "
 "{project_name} nodes can be like this:"
 msgstr ""
-"特定のセッション・エンティティが常にローカルで使用できる場合は、スティッキー・セッションに助けてもらうと便利です。パブリック・フロントエンド・ロードバランサーと2つのバックエンド{project_name}ノードを持つクラスタ環境内のワークフローは、以下のようになります。"
+"特定のセッション・エンティティが常にローカルで使用できる場合は、スティッキー・セッションに助けを借りることができます。パブリック・フロントエンド・ロードバランサーと2つのバックエンド{project_name}ノードを持つクラスター環境内のワークフローは、以下のようになります。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:18
 msgid "User sends initial request to see the {project_name} login screen"
-msgstr "ユーザーは{project_name}のログイン画面を表示するための最初の要求を送信します"
+msgstr "ユーザーは{project_name}のログイン画面を表示するため初回リクエストを送信します。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:20
@@ -78,7 +79,7 @@ msgid ""
 "address etc). It all depends on the implementation and configuration of "
 "underlying load balancer (reverse proxy)."
 msgstr ""
-"このリクエストは、フロントエンド・ロードバランサーによって処理され、このフロントエンド・ロードバランサーが任意のノード（例えばnode1）に転送します。厳密には、ノードは任意である必要はなく、他のいくつかの基準（クライアントIPアドレスなど）によって選択することができます。それはすべて、基にあるロードバランサー（リバースプロキシ）の実装と設定を前提としています。"
+"このリクエストは、フロントエンド・ロードバランサーによって処理され、このフロントエンド・ロードバランサーがランダムにノード（例えばnode1）に転送します。厳密には、ノードはランダムである必要はなく、他のいくつかの基準（クライアントIPアドレスなど）によって選択することができます。それらはすべて、基にあるロードバランサー（リバースプロキシ）の実装と設定に依存します。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:21
@@ -96,7 +97,7 @@ msgid ""
 " documentation] for more details around this.  Let's assume that infinispan "
 "assigned `node2` to be the owner of this session."
 msgstr ""
-"Infinispan分散キャッシュは、セッションIDのハッシュに基づいてセッションの主な所有者を割り当てます。これに関する詳細は、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#distribution_mode[Infinispan"
+"Infinispanの分散キャッシュは、セッションIDのハッシュに基づいてセッションの主な所有者を割り当てます。これに関する詳細は、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#distribution_mode[Infinispan"
 " documentation]をご覧ください。infinispanがこのセッションの所有者として `node2` を割り当てたとしましょう。"
 
 #. type: Plain text
@@ -129,8 +130,8 @@ msgid ""
 msgstr ""
 "以上の点から、ID `123` "
 "を持つ認証セッションの所有者はこのノードであり、それゆえにInfinispanはローカルでこのセッションを検索できるため、ロードバランサーが "
-"`node2` に対して次の要求すべてを転送する場合は便利なのです。認証セッションは、認証されるとユーザー・セッションに変換され、同じID `123` "
-"を持っているため `node2` に保存されます。"
+"`node2` に対して以降のリクエストすべてを転送するなら有益なのです。認証セッションは、認証されるとユーザー・セッションに変換され、同じID "
+"`123` を持っているため `node2` に保存されます。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:33
@@ -141,8 +142,7 @@ msgid ""
 "do this is dependent on your loadbalancer."
 msgstr ""
 "スティッキー・セッションはクラスターの設定のために必須ではありませんが、上記の理由からパフォーマンスをあげるのに有効です。 "
-"`AUTH_SESSION_ID` "
-"cookieに固定するようロードバランサーを設定する必要があります。これをどの程度行うかはロードバランサーによります。"
+"`AUTH_SESSION_ID` cookieで固定するようロードバランサーを設定する必要があります。どのように行うかはロードバランサーによります。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:38
@@ -156,15 +156,14 @@ msgid ""
 "{project_name} server, but instead by the load balancer. However adding the "
 "cookie by {project_name} would be still the preferred option."
 msgstr ""
-"バックエンド{project_name}ノードに頼らずに、ルート情報を追加するよう設定できるロードバランサーもあります。しかし、{project_name}によるルート追加の方がより賢明な選択です。なぜなら、{project_name}は特定のセッション・エンティティの所有者が誰か知っており、必ずしもローカル・ノードではないノードにルーティングできるからです。{project_name}サーバーではなく、その代わりにロードバランサーによって、ルート情報をAUTH_SESSION_ID"
-" "
-"cookieに追加する設定をする場合はサポート対象になります。しかし、それでも{project_name}によるCookie追加の方がより良い選択です。"
+"バックエンド{project_name}ノードに頼らずに、ルート情報を追加するよう設定できるロードバランサーもあります。しかし、{project_name}によるルート追加の方がより賢明な選択です。なぜなら、{project_name}は特定のセッション・エンティティの所有者が誰か知っているためです。必ずしもローカル・ノードである必要はありません。{project_name}サーバーではなく、その代わりにロードバランサーによって、ルート情報をAUTH_SESSION_ID"
+" Cookieに追加する設定をサポートする予定があります。しかし、それでも{project_name}によるCookie追加の方がより良い選択です。"
 
 #. type: Title ====
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:39
 #, no-wrap
 msgid "Example cluster setup with mod_cluster"
-msgstr "modクラスターでのクラスター設定のサンプル"
+msgstr "mod_clusterでのクラスター設定のサンプル"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:44
@@ -177,8 +176,9 @@ msgid ""
 "loadbalancer about various events (eg. node joined or left cluster, new "
 "application was deployed etc)."
 msgstr ""
-"サンプルとして、link:http://mod-cluster.jboss.org/[Mod "
-"Cluster]をロードバランサーとして使用します。modクラスターの重要な特徴の1つは、ロードバランサー側の設定が少ないことです。その代わりに、バックエンド・ノード側でのサポートが必要です。バックエンド・ノードは、MCMPと呼ばれる専用プロトコルを通じてロードバランサーと通信し、さまざまなイベント（例えばノードの参加、またはクラスターの置換、新しいアプリケーションの導入など）についてロードバランサーに通知します。"
+"サンプルとして、link:http://mod-cluster.jboss.org/[Mod Cluster]をロードバランサーとして使用します。mod"
+" "
+"clusterの重要な特徴の1つは、ロードバランサー側の設定が少ないことです。その代わりに、バックエンド・ノード側でのサポートが必要です。バックエンド・ノードは、MCMPと呼ばれる専用プロトコルを通じてロードバランサーと通信し、さまざまなイベント（例えばノードの参加、またはクラスターの置換、新しいアプリケーションのデプロイなど）についてロードバランサーに通知します。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:46
@@ -196,7 +196,7 @@ msgid ""
 "network interface. This can be done by running the following commands under "
 "root privileges (on linux):"
 msgstr ""
-"クラスタリングのサンプルでは、MULTICASTをマシンのループバック・ネットワーク・インターフェイスで有効にすることを要求されます。これは、root特権（linux上）に基づき以下のコマンドを実行して行うことができます。"
+"クラスタリングのサンプルでは、MULTICASTをマシンのループバック・ネットワーク・インターフェイスで有効にすることを要求されます。これは、root特権（linux上）で以下のコマンドを実行して行うことができます。"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:53
@@ -229,7 +229,7 @@ msgid ""
 "subsystem add the mod_cluster configuration under filters like this:"
 msgstr ""
 "`EAP_LB/standalone/configuration/standalone.xml` "
-"ファイルを編集します。undertowサブシステム内で以下のように、filtersの下にmodクラスター設定を追加します。"
+"ファイルを編集します。undertowサブシステム内で以下のように、filtersの下にmod_cluster設定を追加します。"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:72
@@ -247,10 +247,10 @@ msgstr ""
 "<subsystem xmlns=\"urn:jboss:domain:undertow:4.0\">\n"
 " ...\n"
 " <filters>\n"
-" ...\n"
-" <mod-cluster name=\"modcluster\" advertise-socket-binding=\"modcluster\"\n"
-" advertise-frequency=\"${modcluster.advertise-frequency:2000}\"\n"
-" management-socket-binding=\"http\" enable-http2=\"true\"/>\n"
+"  ...\n"
+"  <mod-cluster name=\"modcluster\" advertise-socket-binding=\"modcluster\"\n"
+"      advertise-frequency=\"${modcluster.advertise-frequency:2000}\"\n"
+"      management-socket-binding=\"http\" enable-http2=\"true\"/>\n"
 " </filters>\n"
 
 #. type: Plain text
@@ -268,8 +268,8 @@ msgid ""
 "</host>\n"
 msgstr ""
 "<host name=\"default-host\" alias=\"localhost\">\n"
-" ...\n"
-" <filter-ref name=\"modcluster\"/>\n"
+"    ...\n"
+"    <filter-ref name=\"modcluster\"/>\n"
 "</host>\n"
 
 #. type: Plain text
@@ -286,13 +286,13 @@ msgid ""
 "    multicast-port=\"23364\"/>\n"
 msgstr ""
 "<socket-binding name=\"modcluster\" port=\"0\"\n"
-" multicast-address=\"${jboss.modcluster.multicast.address:224.0.1.105}\"\n"
-" multicast-port=\"23364\"/>\n"
+"    multicast-address=\"${jboss.modcluster.multicast.address:224.0.1.105}\"\n"
+"    multicast-port=\"23364\"/>\n"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:94
 msgid "Save the file and run the server:"
-msgstr "ファイルを保存してサーバーを実行します。"
+msgstr "ファイルを保存して以下のようにサーバーを実行します。"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:99
@@ -308,7 +308,7 @@ msgstr ""
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:102
 #, no-wrap
 msgid "Backend node configuration"
-msgstr "バックエンド・ノード設定"
+msgstr "バックエンド・ノードの設定"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:105
@@ -325,7 +325,7 @@ msgid ""
 "Database chapter >> for more details."
 msgstr ""
 "共有データベースに対して `RHSSO_NODE1/standalone/configuration/standalone-ha.xml` "
-"を編集してデータソースを設定します。詳しくは、<<_rdbms-setup-checklist, Database chapter >>をご覧ください。"
+"を編集してデータソースを設定します。詳しくは、<<_rdbms-setup-checklist, データベースの章>>をご覧ください。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:110
@@ -344,8 +344,8 @@ msgid ""
 "</servlet-container>\n"
 msgstr ""
 "<servlet-container name=\"default\">\n"
-" <session-cookie name=\"AUTH_SESSION_ID\" http-only=\"true\" />\n"
-" ...\n"
+"    <session-cookie name=\"AUTH_SESSION_ID\" http-only=\"true\" />\n"
+"    ...\n"
 "</servlet-container>\n"
 
 #. type: Plain text
@@ -356,14 +356,14 @@ msgid ""
 "that mod_cluster uses AJP connector by default, so you need to configure "
 "that one."
 msgstr ""
-"これで次に、<<_setting-up-a-load-balancer-or-proxy, Load Balancer >>の章でご説明したとおり、 "
-"`proxy-address-forwarding` "
-"を設定することができます。この設定は、modクラスターがデフォルトでAJP接続を使用するため必要だということにご注意ください。"
+"これで次に、<<_setting-up-a-load-balancer-or-proxy, ロードバランサー>>の章でご説明したとおり、 `proxy-"
+"address-forwarding` "
+"を設定することができます。この設定は、mod_clusterがデフォルトでAJP接続を使用するため必要だということにご注意ください。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:123
 msgid "That's all as mod_cluster is already configured."
-msgstr "modクラスターは既に設定済みなので、以上です。"
+msgstr "mod_clusterは既に設定済みなので、以上です。"
 
 #. type: Plain text
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:127
@@ -377,7 +377,7 @@ msgid ""
 msgstr ""
 "{project_name}のノード名は、現在のサーバーのホスト名に基づき自動的に検出されます。しかし、より細かく制御するには、システムプロパティ "
 "`jboss.node.name` "
-"を使用してノード名を直接指定することをおすすめします。これは、同じ物理サーバなどの2つのバックエンド・ノードでテストする場合に特に便利です。したがって、以下のようにstartupコマンドを実行することができます。"
+"を使用してノード名を直接指定することをおすすめします。これは、同じ物理サーバー上で2つのバックエンド・ノードをテストする場合などに特に便利です。以下のようにstartupコマンドを実行することができます。"
 
 #. type: delimited block -
 #: source/server_installation/topics/clustering/sticky-sessions.adoc:132
@@ -415,5 +415,5 @@ msgid ""
 "`http://localhost:8180/auth` to create admin user."
 msgstr ""
 "`http://localhost:8080/auth` "
-"でサーバーにアクセスします。管理者ユーザーの作成は、ロードバランサー（プロキシ）へアクセスせずに、ローカルアドレスのみから可能です。そのため、最初に "
-"`http://localhost:8180/auth` 上でバックエンド・ノードに直接アクセスし、管理ユーザーを作成する必要があります。"
+"でサーバーにアクセスします。管理者ユーザーの作成は、ロードバランサー（プロキシ）へアクセスせずに、ローカルアドレスからのみ可能です。そのため、最初に "
+"`http://localhost:8180/auth` のバックエンド・ノードに直接アクセスし、管理ユーザーを作成する必要があります。"

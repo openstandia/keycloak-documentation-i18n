@@ -2,25 +2,24 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ====
 #: source/securing_apps/topics/oidc/java/jaas.adoc:2
 #, no-wrap
 msgid "JAAS plugin"
-msgstr ""
+msgstr "JAASプラグイン"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jaas.adoc:7
@@ -31,11 +30,13 @@ msgid ""
 "on pure legacy JAAS solution.  {project_name} provides two login modules to "
 "help in these situations."
 msgstr ""
+"ほとんどのアプリケーションでJAASを使用する必要はありません。特にHTTPベースのアプリケーションの場合は、JAASを使用する必要はありません。 "
+"しかし、一部のアプリケーションやシステムは、依然として純粋なレガシーJAASソリューションに依存している場合があります。{project_name}は、このような状況に役立つ2つのログイン・モジュールを提供します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jaas.adoc:9
 msgid "The provided login modules are:"
-msgstr ""
+msgstr "提供されるログイン・モジュールは次のとおりです。"
 
 #. type: Labeled list
 #: source/securing_apps/topics/oidc/java/jaas.adoc:10
@@ -47,13 +48,15 @@ msgstr "org.keycloak.adapters.jaas.DirectAccessGrantsLoginModule"
 #: source/securing_apps/topics/oidc/java/jaas.adoc:15
 msgid ""
 "This login module allows to authenticate with username/password from "
-"{project_name}.  It's using <<_resource_owner_password_credentials_flow,"
-"Resource Owner Password Credentials>> flow to validate if the provided "
-"username/password is valid. It's useful for non-web based systems, which "
-"need to rely on JAAS and want to use {project_name}, but can't use the "
-"standard browser based flows due to their non-web nature. Example of such "
-"application could be messaging or SSH."
+"{project_name}.  It's using "
+"<<_resource_owner_password_credentials_flow,Resource Owner Password "
+"Credentials>> flow to validate if the provided username/password is valid. "
+"It's useful for non-web based systems, which need to rely on JAAS and want "
+"to use {project_name}, but can't use the standard browser based flows due to"
+" their non-web nature. Example of such application could be messaging or "
+"SSH."
 msgstr ""
+"このログイン・モジュールは、{project_name}のユーザー名/パスワードで認証することができます。<<_resource_owner_password_credentials_flow,リソース・オーナー・パスワード・クレデンシャル>>のフローを使用して、提供されたユーザ名/パスワードが有効かどうかを検証します。JAASに依存する必要があり、{project_name}を使用したい非Webベースのシステムにとっては有益ですが、Web以外の性質のため、標準のブラウザー・ベースのフローを使用することはできません。このようなアプリケーションとして挙げられるのは、メッセージングやSSHです。"
 
 #. type: Labeled list
 #: source/securing_apps/topics/oidc/java/jaas.adoc:16
@@ -71,11 +74,13 @@ msgid ""
 "external non-web based system, which rely on JAAS. For example a messaging "
 "system."
 msgstr ""
+"このログイン・モジュールでは、パスワードとして `CallbackHandler` "
+"を介して渡された{project_name}のアクセス・トークンで認証できます。たとえば、標準ベースの認証フローから{project_name}のアクセス・トークンを取得し、WebアプリケーションがJAASに依存する外部の非Webベースのシステムと対話する必要がある場合などに便利です。例えば、メッセージング・システムです。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/jaas.adoc:22
 msgid "Both modules use the following configuration properties:"
-msgstr ""
+msgstr "どちらのモジュールも次の設定プロパティを使用します。"
 
 #. type: Labeled list
 #: source/securing_apps/topics/oidc/java/jaas.adoc:23
@@ -91,6 +96,9 @@ msgid ""
 "located on the classpath you need to prefix the location with `classpath:` "
 "(for example `classpath:/path/keycloak.json`).  This is _REQUIRED._"
 msgstr ""
+"`keycloak.json` "
+"設定ファイルの場所。設定ファイルは、ファイルシステム上またはクラスパス上に置くことができます。クラスパス上にある場合は、その場所の前に "
+"`classpath:` を付ける必要があります（例えば `classpath:/path/keycloak.json` ）。これは _必須_ です。"
 
 #. type: Labeled list
 #: source/securing_apps/topics/oidc/java/jaas.adoc:28
@@ -102,6 +110,9 @@ msgstr "`role-principal-class`"
 #: source/securing_apps/topics/oidc/java/jaas.adoc:31
 msgid ""
 "Configure alternative class for Role principals attached to JAAS Subject.  "
-"Default value is `org.keycloak.adapters.jaas.RolePrincipal`. Note: The class "
-"is required to have a constructor with a single `String` argument."
+"Default value is `org.keycloak.adapters.jaas.RolePrincipal`. Note: The class"
+" is required to have a constructor with a single `String` argument."
 msgstr ""
+"JAAS Subjectに添付されているロール・プリンシパルの代替クラスを設定します。デフォルト値は "
+"`org.keycloak.adapters.jaas.RolePrincipal` です。注意：クラスには、単一の `String` "
+"引数を持つコンストラクタが必要です。"

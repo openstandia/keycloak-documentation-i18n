@@ -1,24 +1,25 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: wadahiro <wadahiro@gmail.com>\n"
-"Language-Team: Japanese\n"
-"Language: ja\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
-"X-Crowdin-Project: keycloak-documentation-i18n\n"
-"X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/i18n/po/ja_JP/"
-"server_installation__topics__cache__replication.ja_JP.po\n"
 
 #. type: Title ===
 #: source/server_installation/topics/cache/replication.adoc:2
 #, no-wrap
 msgid "Replication and Failover"
-msgstr ""
+msgstr "レプリケーションとフェイルオーバー"
 
 #. type: Plain text
 #: source/server_installation/topics/cache/replication.adoc:9
@@ -28,11 +29,14 @@ msgid ""
 "Entries are not replicated to every single node, but instead one or more "
 "nodes is chosen as an owner of that data.  If a node is not the owner of a "
 "specific cache entry it queries the cluster to obtain it.  What this means "
-"for failover is that if all the nodes that own a piece of data go down, that "
-"data is lost forever.  By default, {project_name} only specifies one owner "
+"for failover is that if all the nodes that own a piece of data go down, that"
+" data is lost forever.  By default, {project_name} only specifies one owner "
 "for data.  So if that one node goes down that data is lost.  This usually "
 "means that users will be logged out and will have to login again."
 msgstr ""
+"`sessions` 、 `authenticationSessions` 、 `offlineSessions` および "
+"`loginFailures` "
+"キャッシュは、レプリケーションを実行するだけのキャッシュです。エントリはすべてのノードにひとつひとつレプリケートされるわけではありませんが、1つ以上のノードがそのデータの所有者として選ばれます。ノードが特定のキャッシュ・エントリの所有者ではない場合は、そのキャッシュ・エントリを取得するためにクラスターに問い合わせをします。これがフェイルオーバーに対して何を意味するかというと、データを保持しているノードがすべてダウンした場合は、そのデータは永遠に失われてしまうということです。デフォルトでは、{project_name}が指定するデータの所有者は1つだけです。そのため、その1つのノードがダウンした場合は、そのデータは失われることになります。このことは通常、ユーザーはログアウトされ、再度ログインし直さなければならないということを意味します。"
 
 #. type: Plain text
 #: source/server_installation/topics/cache/replication.adoc:11
@@ -40,12 +44,13 @@ msgid ""
 "You can change the number of nodes that replicate a piece of data by change "
 "the `owners` attribute in the `distributed-cache` declaration."
 msgstr ""
+"`distributed-cache` の宣言で `owners` 属性を変更すると、データをレプリケートするノードの数を変更することができます。"
 
 #. type: Block title
 #: source/server_installation/topics/cache/replication.adoc:12
 #, no-wrap
 msgid "owners"
-msgstr ""
+msgstr "owners"
 
 #. type: delimited block -
 #: source/server_installation/topics/cache/replication.adoc:19
@@ -56,13 +61,17 @@ msgid ""
 "       <distributed-cache name=\"sessions\" mode=\"SYNC\" owners=\"2\"/>\n"
 "...\n"
 msgstr ""
+"<subsystem xmlns=\"urn:jboss:domain:infinispan:4.0\">\n"
+"   <cache-container name=\"keycloak\" jndi-name=\"infinispan/Keycloak\">\n"
+"       <distributed-cache name=\"sessions\" mode=\"SYNC\" owners=\"2\"/>\n"
+"...\n"
 
 #. type: Plain text
 #: source/server_installation/topics/cache/replication.adoc:22
 msgid ""
-"Here we've changed it so at least two nodes will replicate one specific user "
-"login session."
-msgstr ""
+"Here we've changed it so at least two nodes will replicate one specific user"
+" login session."
+msgstr "ここで上記のとおりに変更すると、少なくとも2つのノードが1つの特定のユーザー・ログイン・セッションをレプリケートします。"
 
 #. type: Plain text
 #: source/server_installation/topics/cache/replication.adoc:25
@@ -71,3 +80,4 @@ msgid ""
 "The number of owners recommended is really dependent on your deployment.  If you do not care if users are logged\n"
 "      out when a node goes down, then one owner is good enough and you will avoid replication.\n"
 msgstr ""
+"推奨される所有者数は、構成によって異なります。ノードがダウンした時にユーザーがログアウトされてもされなくても良い場合は、所有者は1つで十分であり、レプリケーションを避けることができます。\n"

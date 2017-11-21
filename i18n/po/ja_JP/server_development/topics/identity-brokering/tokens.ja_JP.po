@@ -2,17 +2,17 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
@@ -20,7 +20,7 @@ msgstr ""
 #: source/server_development/topics/identity-brokering/tokens.adoc:2
 #, no-wrap
 msgid "Retrieving External IDP Tokens"
-msgstr ""
+msgstr "外部IDPトークンの取得"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/tokens.adoc:6
@@ -30,6 +30,8 @@ msgid ""
 "authentication process with the external IDP.  For that, you can use the "
 "`Store Token` configuration option on the IDP's settings page."
 msgstr ""
+"{project_name}では、外部IDPを使用して認証プロセスからのトークンとレスポンスを保存できます。そのために、IDPの設定ページで "
+"`トークンの保存` の設定オプションを使用できます。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/tokens.adoc:10
@@ -41,6 +43,8 @@ msgid ""
 "other Google services and REST APIs.  To retrieve a token for a particular "
 "identity provider you need to send a request as follows:"
 msgstr ""
+"アプリケーション・コードで、追加のユーザー情報を取得するためにこれらのトークンとレエスポンスを検索したり、外部IDPにリクエストを送信することができます。たとえば、アプリケーションは、Googleトークンを使用して、他のGoogleサービスやREST"
+" APIを呼び出すことができます。特定のアイデンティティー・プロバイダーのトークンを取得するには、次のようにリクエストを送信する必要があります。"
 
 #. type: delimited block -
 #: source/server_admin/topics/identity-broker/tokens.adoc:16
@@ -51,13 +55,16 @@ msgid ""
 "Host: localhost:8080\n"
 "Authorization: Bearer <KEYCLOAK ACCESS TOKEN>\n"
 msgstr ""
+"GET /auth/realms/{realm}/broker/{provider_alias}/token HTTP/1.1\n"
+"Host: localhost:8080\n"
+"Authorization: Bearer <KEYCLOAK ACCESS TOKEN>\n"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/tokens.adoc:23
 #: source/server_development/topics/identity-brokering/tokens.adoc:23
 msgid ""
-"An application must have authenticated with {project_name} and have received "
-"an access token.  This access token will need to have the `broker` client-"
+"An application must have authenticated with {project_name} and have received"
+" an access token.  This access token will need to have the `broker` client-"
 "level role `read-token` set.  This means that the user must have a role "
 "mapping for this role and the client application must have that role within "
 "its scope.  In this case, given that you are accessing a protected service "
@@ -66,6 +73,10 @@ msgid ""
 "page you can automatically assign this role to newly imported users by "
 "turning on the `Stored Tokens Readable` switch."
 msgstr ""
+"アプリケーションは{project_name}で認証され、アクセス・トークンを受け取っている必要があります。このアクセス・トークンは、 `broker`"
+" クライアント・レベル・ロール `read-token` "
+"が設定されている必要があります。つまり、ユーザーはこのロールのロール・マッピングを持っていなければならず、クライアント・アプリケーションのスコープ内でそのロールが必要です。この場合({project_name}内のセキュリティ保護されたサービスにアクセスしている場合)は、ユーザー認証時に{project_name}が発行したアクセス・トークンを送信する必要があります。ブローカー設定ページでは、"
+" `保存されたトークンを読み込み可能` のスイッチをオンにすることで、新しくインポートされたユーザーにこのロールを自動的に割り当てることができます。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/tokens.adoc:25
@@ -74,3 +85,4 @@ msgid ""
 "These external tokens can be re-established by either logging in again "
 "through the provider, or using the client initiated account linking API."
 msgstr ""
+"これらの外部トークンは、プロバイダーを介して再度ログインするか、またはクライアントが開始したアカウントリンクAPIを使用して再確立できます。"

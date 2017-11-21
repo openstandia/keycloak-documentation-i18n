@@ -2,24 +2,24 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Shinsuke UEDA <ueda.shinsuke.f2@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
 #: source/server_admin/topics/threat/compromised-tokens.adoc:2
 #, no-wrap
 msgid "Compromised Access and Refresh Tokens"
-msgstr ""
+msgstr "セキュリティ侵害されたアクセスとリフレッシュ・トークン"
 
 #. type: Plain text
 #: source/server_admin/topics/threat/compromised-tokens.adoc:5
@@ -30,6 +30,7 @@ msgid ""
 "might seem obvious, but since {project_name} does not have SSL enabled by "
 "default, an administrator might not realize that it is necessary."
 msgstr ""
+"アクセス・トークンとリフレッシュ・トークンが盗まれることを軽減するためにできることがいくつかあります。最も重要なことは、{project_name}とそのクライアントとアプリケーションの間でSSL/HTTPS通信を強制することです。明らかなことだと思われるかもしれませんが、{project_name}はデフォルトでSSLが有効になっていないため、管理者はそれが必要であると認識していない可能性があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/threat/compromised-tokens.adoc:8
@@ -37,24 +38,30 @@ msgid ""
 "Another thing you can do to mitigate leaked access tokens is to shorten "
 "their lifespans.  You can specify this within the <<_timeouts, timeouts "
 "page>>.  Short lifespans (minutes) for access tokens for clients and "
-"applications to refresh their access tokens after a short amount of time. If "
-"an admin detects a leak, they can logout all user sessions to invalidate "
+"applications to refresh their access tokens after a short amount of time. If"
+" an admin detects a leak, they can logout all user sessions to invalidate "
 "these refresh tokens or set up a revocation policy. Making sure refresh "
 "tokens always stay private to the client and are never transmitted ever is "
 "very important as well."
 msgstr ""
+"アクセス・トークンのリークを軽減するために実行できるもう1つの方法は、寿命を短くすることです。これは<<_timeouts, "
+"タイムアウト・ページ>>内で指定できます。短時間でクライアントとアプリケーションがアクセス・トークンをリフレッシュするように、アクセス・トークンは短い寿命（数分）とします。管理者がリークを検出した場合には、すべてのユーザー・セッションをログアウトしてこれらのリフレッシュ・トークンを無効にするか、失効ポリシーを設定することができます。リフレッシュ・トークンが常にクライアント専用にとどまり、決して伝播されないことを確認することは非常に重要です。"
 
 #. type: Plain text
 #: source/server_admin/topics/threat/compromised-tokens.adoc:11
 msgid ""
 "If an access token or refresh token is compromised, the first thing you "
-"should do is go to the admin console and push a not-before revocation policy "
-"to all applications. This will enforce that any tokens issued prior to that "
-"date are now invalid. Pushing new not-before policy will also ensure that "
+"should do is go to the admin console and push a not-before revocation policy"
+" to all applications. This will enforce that any tokens issued prior to that"
+" date are now invalid. Pushing new not-before policy will also ensure that "
 "application will be forced to download new public keys from {project_name}, "
 "hence it is also useful for the case, when you think that realm signing key "
 "was compromised.  More info in the <<realm_keys, keys chapter>>."
 msgstr ""
+"アクセス・トークンまたはリフレッシュ・トークンが侵害された場合、最初に行うべきことは管理コンソールに行き、not-"
+"before失効ポリシーをすべてのアプリケーションにプッシュすることです。これにより、その日付以前に発行されたトークンは無効になります。新しいnot-"
+"beforeポリシーを適用することで、アプリケーションが{project_name}から新しい公開鍵をダウンロードするように強制されるので、レルムの署名鍵が侵害されたと思われる場合にも有用です。より詳しい情報は<<realm_keys,"
+" 鍵の章>>にあります。"
 
 #. type: Plain text
 #: source/server_admin/topics/threat/compromised-tokens.adoc:13
@@ -62,3 +69,4 @@ msgid ""
 "You can also disable specific applications, clients, and users if you feel "
 "that any one of those entities is completely compromised."
 msgstr ""
+"特定のアプリケーション、クライアント、およびユーザーのいずれかが完全に侵害されたと思われる場合は、そのエンティティを無効にすることもできます。"

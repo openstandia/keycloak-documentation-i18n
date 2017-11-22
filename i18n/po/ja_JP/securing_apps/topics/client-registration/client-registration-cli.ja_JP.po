@@ -39,9 +39,9 @@ msgid ""
 "with {project_name}. It is specifically designed to interact with "
 "{project_name} Client Registration REST endpoints."
 msgstr ""
-"`Client Registration CLI` は、アプリケーション開発者が {project_name} "
-"と統合する際にセルフ・サービスで新しいクライアントを設定するためのコマンドライン・インタフェース・ツールです。 これは、 {project_name} "
-"クライアント登録RESTエンドポイントと対話するように特別に設計されています。"
+"`Client Registration CLI` "
+"は、アプリケーション開発者が{project_name}と統合する際にセルフ・サービスで新しいクライアントを設定するためのコマンドライン・インターフェイス・ツールです。"
+" これは、{project_name}クライアント登録RESTエンドポイントと対話するように特別に設計されています。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:10
@@ -98,11 +98,14 @@ msgid ""
 "the use of <<_initial_access_token,Initial Access Token>> or "
 "<<_registration_access_token,Registration Access Token>>."
 msgstr ""
-"管理コンソールにログインしてください(例：`http://localhost:8080/auth/admin`)。管理するレルムを選択します。既存のユーザーを使用する場合は、編集するユーザーを選択し、そうでない場合は新しいユーザーを作成します。`ロールマッピング`のタブに行きます。`クライアントロール`の下で、`レルム管理`を選択します(マスター・レルムの場合、NAMEは対象のレルムの名前で、マスター・レルムのユーザーは他のレルムにアクセスできます)。`利用可能なロール`で、クライアント管理権限のフルセットに対して`クライアント管理`を選択します。あるいは、読み取り専用の場合は"
-" `クライアント参照`を、新しいクライアントを作成する場合は` "
-"クライアント作成`を選択できます。これらのアクセス権は、ユーザーに<<_initial_access_token,Initial Access "
-"Token>>または<<_registration_access_token,Registration Access "
-"Token>>を使用せずに操作を実行できるようにします。"
+"`管理コンソール` （例： `http://localhost:8080/auth/admin` ）に `admin` "
+"としてログインしてください。管理するレルムを選択します。既存のユーザーを使用する場合は、編集するユーザーを選択し、そうでない場合は新しいユーザーを作成します。"
+" `Role Mappings` のタブに行きます。 `Client Roles` の下で、 `realm-management` "
+"を選択します（masterレルムの場合、 `NAME-realm` "
+"を選択します。NAMEは対象のレルムの名前で、masterレルムのユーザーは他のレルムにアクセスできます）。 `Available Roles` "
+"で、クライアント管理権限のフルセットである `manage-client` を選択します。あるいは、読み取り専用の場合は `view-clients` "
+"を、新しいクライアントを作成する場合は ` create-client` "
+"を選択できます。これらの権限により、ユーザーは<<_initial_access_token,初期アクセス・トークン>>または<<_registration_access_token,登録アクセス・トークン>>を使用せずに操作を実行できるようになります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:31
@@ -113,10 +116,9 @@ msgid ""
 "Trying to perform any operations without it will result in `403 Forbidden` "
 "error."
 msgstr ""
-"ユーザーに `レルム管理`ロールを割り当てないことも可能です。その場合、ユーザーは`Registration Client "
-"CLI`でまだログインすることができますが、`Initial Access "
-"Token`を所有していなければそれを使用することはできません。それなしで何らかの操作を実行しようとすると`403 "
-"Forbidden`エラーが発生します。"
+"ユーザーに `realm-management` ロールを割り当てないことも可能です。その場合、ユーザーは `Registration Client "
+"CLI` でまだログインすることができますが、 `初期アクセス・トークン` "
+"を所有していなければ使用することはできません。それなしで何らかの操作を実行しようとすると `403 Forbidden` エラーが発生します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:33
@@ -125,8 +127,8 @@ msgid ""
 "selecting `Client Registration` tab under `Realm Settings`, then `Initial "
 "Access Token` sub-tab."
 msgstr ""
-"管理者は、`レルム設定`の下の`クライアント登録`タブを選択し、 "
-"`初期アクセストークン`サブ・タブを選択することによって管理者コンソールから`初期アクセストークン`を発行することができます。"
+"管理者は、 `Realm Settings` の下の `Client Registration` タブを選択し、 `Initial Access "
+"Token` サブ・タブを選択することによって、管理コンソールから `初期アクセストークン` を発行することができます。"
 
 #. type: Title ===
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:35
@@ -145,9 +147,11 @@ msgid ""
 " When running `kcreg config credentials` you would then also have to provide"
 " a secret by using `--secret` option."
 msgstr ""
-"デフォルトでは、`Client Registration CLI`はサーバーに`admin-"
-"cli`クライアントとして指定します。これは新しいレルムごとに自動的に設定されます。ユーザー名でログインする場合、追加のクライアント設定は不要です。クライアントの`アクセス・タイプ`を`コンフィデンシャル`に設定してセキュリティを強化し、`クレデンシャル`タブで`クライアントIDとシークレット`を選択することができます。`kcreg"
-" config credentials`を実行するときには` --secret`オプションを使ってシークレットを提供する必要があります。"
+"デフォルトでは、 `クライアント登録CLI` はサーバーに `admin-cli` "
+"クライアントとして識別されます。これは新しいレルムごとに自動的に設定されます。ユーザー名でログインする場合、追加のクライアント設定は不要です。セキュリティを強化したい場合は、クライアントの"
+" `Access Type` を `Confidential` に設定し、 `Credentials` タブで `ClientId and "
+"Secret` を選択します。 `kcreg config credentials` を実行する際に、 ` --secret` "
+"オプションを使用してシークレットを提供する必要があります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:44
@@ -157,10 +161,9 @@ msgid ""
 "example. When running `kcreg config credentials` you then need to specify "
 "which `clientId` to use e.g. `--client reg-cli`."
 msgstr ""
-"`Registration Client "
-"CLI`に対して別のクライアント設定を使いたい場合は、新しいクライアントを作成することができます。例えば、それを`reg-"
-"cli`と呼ぶことができます。`kcreg config credentials`を実行するときは、`--client reg-"
-"cli`のように、どの`clientId`を使用するかを指定する必要があります。"
+"`クライアント登録CLI` に対して別のクライアント設定を使いたい場合は、新しいクライアントを作成することができます。例えば、それを `reg-cli`"
+" と呼びます。 `kcreg config credentials` を実行する際は、 `--client reg-cli` のように、どの "
+"`clientId` を使用するかを指定する必要があります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:48
@@ -171,9 +174,10 @@ msgid ""
 "Type` to `Confidential`, and toggle `Service Accounts Enabled` setting to "
 "`On`. Make sure to `Save` the configuration."
 msgstr ""
-"クライアントに関連付けられたサービス・アカウントを使用する場合は、まずサービス・アカウントを有効にする必要があります。管理者コンソールで`クライアント`のセクションに行き、編集するクライアントを選択します。"
-" "
-"次に、`設定`の下で、`アクセスタイプ`を`コンフィデンシャル`に変更し、`サービス・アカウントの有効化`を`オン`に切り替えます。設定を`保存`することを忘れないでください。"
+"クライアントに関連付けられたサービス・アカウントを使用する場合は、まずサービス・アカウントを有効にする必要があります。 `管理者コンソール` で "
+"`Clients` のセクションに行き、編集するクライアントを選択します。 次に、`Settings` の下で、 `Access Type` を "
+"`Confidential` に変更し、 `Service Accounts Enabled` を `On` に切り替えます。設定を `Save` "
+"することを忘れないでください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:50
@@ -188,8 +192,8 @@ msgid ""
 "Having done that you can then omit specifying user during `kcreg config "
 "credentials`, and only provide client secret or keystore info."
 msgstr ""
-"これを行うと、`kcreg config "
-"credentials`の実行中にユーザーを指定することを省略し、クライアント・シークレットやキーストア情報のみを提供することができます。"
+"これを行うと、 `kcreg config credentials` "
+"の実行中にユーザーを指定することを省略し、クライアント・シークレットやキーストア情報のみを提供することができます。"
 
 #. type: Title ===
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:54
@@ -219,7 +223,7 @@ msgid ""
 "In order to setup the client for use from any location on the filesystem you"
 " may want to add Keycloak server directory to your PATH."
 msgstr ""
-"ファイル・システム上の任意の場所からクライアントを使用できるように設定するには、PATHにKeycloakサーバーのディレクトリを追加します。"
+"ファイルシステム上の任意の場所からクライアントを使用できるように設定するには、PATHにKeycloakサーバーのディレクトリを追加します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:63
@@ -272,7 +276,7 @@ msgstr ""
 msgid ""
 "Where KEYCLOAK_HOME refers to a directory where Keycloak Server distribution"
 " was unpacked."
-msgstr "KEYCLOAK_HOMEは、Keycloakサーバーのディストリビューションが解凍されたディレクトリを示します。"
+msgstr "KEYCLOAK_HOMEは、Keycloakサーバーの配布物が解凍されたディレクトリを示します。"
 
 #. type: Title ===
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:80
@@ -287,8 +291,7 @@ msgid ""
 "providing credentials. Then you perform operations on Client Registration "
 "REST endpoint."
 msgstr ""
-"まず、クレデンシャルを提供して認証されたセッション(つまりログイン)を開始する必要があります。 "
-"次に、クライアント登録RESTエンドポイントで操作を実行します。"
+"まず、クレデンシャルを提供して認証されたセッション（つまりログイン）を開始する必要があります。次に、クライアント登録RESTエンドポイントで操作を実行します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:85
@@ -352,7 +355,9 @@ msgid ""
 "certificate truststore, you will need to prepare a truststore.jks file, and "
 "instruct `Client Registration CLI` to use it."
 msgstr ""
-"実稼働環境では、ネットワーク・スニファーへのトークンの公開を避けるため、Keycloakには`https:`でアクセスする必要があります。サーバー証明書が、Javaのデフォルトの証明書トラスト・ストアに含まれている信頼されたCAのいずれかによって発行されていない場合は、`truststore.jks`ファイルを準備し、それを使用するように、`クライアント登録CLI`に指示する必要があります。"
+"プロダクション環境では、ネットワーク・スニファーでトークンの解読を避けるため、Keycloakには `https:` "
+"でアクセスする必要があります。サーバー証明書が、Javaのデフォルトの証明書トラスト・ストアに含まれている信頼されたCAのいずれかによって発行されていない場合は、"
+" `truststore.jks` ファイルを準備し、それを使用するように、 `クライアント登録CLI` に指示する必要があります。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:111
@@ -390,7 +395,9 @@ msgid ""
 "latter case there is no user password - only client secret or a `Signed JWT`"
 " is used."
 msgstr ""
-"`クライアント登録CLI`でログインするときに、サーバーのエンドポイントURLとレルムを指定します。次に、ユーザー名、またはクライアントIDを指定します。これにより、特別なサービス・アカウントが使用されます。最初のケースでは、ログイン時に指定されたユーザーのパスワードを使用する必要があります。後者の場合、ユーザー・パスワードはありません。クライアント・シークレットまたは`署名済みJWT`のみが使用されます。"
+"`クライアント登録CLI` "
+"でログインするときに、サーバーのエンドポイントURLとレルムを指定します。次に、ユーザー名、またはクライアントIDを指定します。これにより、特別なサービス・アカウントが使用されます。前者の場合、ログイン時に指定されたユーザーのパスワードを使用する必要があります。後者の場合、ユーザーのパスワードは使いません。クライアント・シークレットまたは"
+" `署名済みJWT` のみが使用されます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:133
@@ -403,7 +410,8 @@ msgid ""
 "single user in `master` realm and add it roles for managing clients in "
 "different realms."
 msgstr ""
-"方法に関係なく、ログインするアカウントには、クライアント登録操作を実行できる適切な権限が必要です。非マスター・レルムのアカウントは、同じレルム内のクライアントを管理する権限しか持てません。異なるレルムを管理する必要がある場合は、複数のユーザーを異なるレルムで設定するか、「マスター」レルムで1人のユーザーを作成して、異なるレルムのクライアントを管理するロールを追加できます。"
+"方法に関係なく、ログインするアカウントには、クライアント登録操作を実行できる適切な権限が必要です。非マスター・レルムのアカウントは、同じレルム内のクライアントを管理する権限しか持てません。異なるレルムを管理する必要がある場合は、複数のユーザーを異なるレルムで設定するか、"
+" `master` レルムで1人のユーザーを作成して、異なるレルムのクライアントを管理するロールを追加します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:136
@@ -413,8 +421,9 @@ msgid ""
 " command line tool (see link:{adminguide_link}[{adminguide_name}] for more "
 "details)."
 msgstr ""
-"`クライアント登録CLI`自体はユーザーの設定をサポートしていません。そのためには、管理者コンソールのウェブ・インターフェースまたは管理者クライアントCLIコマンドライン・ツール(詳細はlink"
-" {adminguide_link} [{adminguide_name}]を使う必要があります)。"
+"インターフェイス`クライアント登録CLI` "
+"自体はユーザーの設定をサポートしていません。そのためには、管理者コンソールのWebインターフェイスまたは管理者クライアントCLIコマンドライン・ツール（詳細はlink:{adminguide_link}"
+" [{adminguide_name}]）を使う必要があります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:139
@@ -424,8 +433,9 @@ msgid ""
 "invocations. See <<_working_with_alternative_configurations, next chapter>> "
 "for more info on configuration file."
 msgstr ""
-"`kcreg`が正常にログインすると、認可トークンを受け取り、それらをプライベート設定ファイルに保存して、後続の呼び出しに使用できるようにします。設定ファイルの詳細については、<<_working_with_alternative_configurations,"
-" next chapter>>を参照してください。"
+"`kcreg` "
+"が正常にログインすると、認可トークンを受け取り、それらをプライベート設定ファイルに保存して、後続の呼び出しに使用できるようにします。設定ファイルの詳細については、<<_working_with_alternative_configurations,"
+" 次の章>>を参照してください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:141
@@ -466,7 +476,8 @@ msgid ""
 "configuration file at a default location - `./.keycloak/kcreg.config` under "
 "user's home directory."
 msgstr ""
-"デフォルトで`クライアント登録CLI`は、ユーザーのホーム・ディレクトリの下にあるデフォルトの場所(`./.keycloak/kcreg.config`)に設定ファイルを自動的に保持します。"
+"デフォルトで `クライアント登録CLI` は、ユーザーのホーム・ディレクトリの下にあるデフォルトの場所（ "
+"`./.keycloak/kcreg.config` ）に設定ファイルを自動的に保持します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:168
@@ -476,7 +487,8 @@ msgid ""
 "parallel. It is safest to perform operations tied to a single config file "
 "from a single thread."
 msgstr ""
-"`--config`オプションを使うと、いつでも別のファイル/場所を指すことができます。これにより、複数の認証済みセッションを並行して処理できます。1つのスレッドから1つの設定ファイルに結び付けられた操作を実行するのが最も安全です。"
+"`--config` "
+"オプションを使うと、いつでも別のファイル/場所を指すことができます。これにより、複数の認証済みセッションを並行して処理できます。1つのスレッドから1つの設定ファイルに結び付けられた操作を実行するのが最も安全です。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:170
@@ -484,7 +496,7 @@ msgid ""
 "Make sure to not make the config file visible to other users on the system "
 "as it contains access tokens, and secrets that should be kept private."
 msgstr ""
-"システム上の他のユーザーには、アクセス・トークンとプライベートにしておかなければならないシークレットが含まれているため、設定ファイルを参照できないようにしてください。"
+"アクセス・トークンとプライベートにしておかなければならないシークレットが含まれているため、設定ファイルをシステム上の他のユーザーには参照できないようにしてください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:174
@@ -515,9 +527,9 @@ msgid ""
 "can be created, and it's up to realm administrator to distribute them to "
 "application developers."
 msgstr ""
-"`クライアント登録CLI`は、使用したいKeycloakサーバーでアカウントを設定していない開発者が使うことができます。これは、レルム管理者が開発者に`初期アクセストークン`を発行するときに可能です。これらのトークンを発行して配布する方法を決定するのは、レルム管理者次第です。"
-" 管理者は、初期アクセス・トークンの最大経過時間とそれで作成できるクライアントの総数を制限できます。 "
-"レルム管理者は、たくさんの初期アクセス・トークンを作成することができ、アプリケーション開発者に配布することができます。"
+"`クライアント登録CLI` は、使用したいKeycloakサーバーで設定されたアカウントを持っていない開発者が使用できます。レルム管理者が開発者に "
+"`初期アクセストークン` "
+"を発行することにより、開発者は使用することができます。トークンを発行して配布する方法を決定するのは、レルム管理者次第です。管理者は、初期アクセス・トークンの最大有効期間と作成できるクライアントの総数を制限できます。レルム管理者は、たくさんの初期アクセス・トークンを作成することができますが、それをアプリケーション開発者に配布するのはレルム管理者次第となります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:189
@@ -528,7 +540,7 @@ msgid ""
 " part of `kcreg create` command."
 msgstr ""
 "開発者が初期アクセス・トークンを所有すると、 `kcreg config credentials` "
-"で認証せずに新しいクライアントを作成できます。むしろ、初期アクセス・トークンは設定に保存することも、  `kcreg create` "
+"で認証せずに新しいクライアントを作成できます。それどころか、初期アクセス・トークンは設定に保存することも、 `kcreg create` "
 "コマンドの一部として指定することもできます。"
 
 #. type: delimited block -
@@ -577,7 +589,7 @@ msgid ""
 "needs to be performed by authenticating with that token which is only valid "
 "for that client."
 msgstr ""
-"初期アクセス・トークンが使用されると、サーバー・レスポンスに新たに発行された登録アクセス・トークンを含まれることになります。そのクライアントの後続の操作は、そのクライアントに対してのみ有効なトークンで、認証することによって実行する必要があります。"
+"初期アクセス・トークンが使用されると、サーバー・レスポンスに新たに発行された登録アクセス・トークンを含まれます。そのクライアントの後続の操作は、そのクライアントに対してのみ有効な登録アクセス・トークンで認証し、実行する必要があります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:226
@@ -588,7 +600,8 @@ msgid ""
 "not need to authenticate in order to read, update, or delete a client that "
 "was created this way."
 msgstr ""
-"クライアント登録CLIは自動的にプライベート設定ファイルを使用して保存し、このトークンを関連するクライアントと共に使用します。同じ設定ファイルがすべてのクライアント操作に使用されている限り、このように作成されたクライアントの読み取り、更新、削除を行うために、開発者は認証する必要はありません。"
+"`クライアント登録CLI` "
+"は、自動的にプライベート設定ファイルを使用して保存し、このトークンを関連するクライアントと共に使用します。同じ設定ファイルがすべてのクライアント操作に使用されている限り、このように作成されたクライアントの読み取り、更新、削除を行うために、開発者は認証する必要はありません。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:229
@@ -630,7 +643,8 @@ msgid ""
 "may contain, set any other attributes as well, and after successful creation"
 " print the configuration to standard output."
 msgstr ""
-"最もシンプルなcreateコマンドをすでに見てきました。準備されたJSONファイルをテンプレートとして使用し、いくつかの属性を設定/上書きすることはよくあります。たとえば、JSONファイルを読み込み、含まれる可能性のある`clientId`をオーバーライドし、他の属性も設定し、正常に作成した後に設定を標準出力に出力する方法があります。"
+"最もシンプルなcreateコマンドをすでに見てきました。準備されたJSONファイルをテンプレートとして使用し、いくつかの属性を設定/上書きすることはよくあります。たとえば、JSONファイルを読み込み、含まれている"
+" `clientId` をオーバーライドし、他の属性も設定し、正常に作成した後に設定を標準出力に出力する方法があります。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:247
@@ -666,9 +680,9 @@ msgid ""
 " any `id` fields in your template and should not specify them as arguments "
 "to `kcreg create`."
 msgstr ""
-"`kcreg attrs`を使って利用可能な属性をリストすることができます。多くの設定属性の妥当性や一貫性はチェックされません。 "
-"適切な値を指定するかどうかに依存します。また、テンプレートには `id`フィールドを入れてはいけません。`kcreg "
-"create`の引数として指定すべきではありません。"
+"`kcreg attrs` "
+"を使って、利用可能な属性の一覧を取得できます。多くの設定属性の妥当性や一貫性はチェックされません。適切な値を指定する必要があります。また、テンプレートには"
+" `id` フィールドを持たせず、 `kcreg create` の引数としても指定しないように注意してください。"
 
 #. type: Title ====
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:264
@@ -679,7 +693,7 @@ msgstr "クライアント設定の取得"
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:267
 msgid "You can retrieve an existing client by using `kcreg get`."
-msgstr "既存のクライアントは、`kcreg get`を使用することで取得できます。"
+msgstr "既に存在するクライアントについては、 `kcreg get` を使用することで取得できます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:269
@@ -705,7 +719,7 @@ msgstr "C:\\> kcreg get myclient\n"
 msgid ""
 "You can also get client configuration as adapter configuration file which "
 "you can package with your web application."
-msgstr "また、Webアプリケーションでパッケージ化できるアダプター設定ファイルとしてクライアント設定を取得することもできます。"
+msgstr "また、Webアプリケーションとパッケージ化できるアダプター設定ファイルとして、クライアント設定を取得することもできます。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:287
@@ -740,7 +754,7 @@ msgstr "クライアント設定の更新には2つのモードがあります�
 msgid ""
 "One is to submit a complete new state to the server after getting current "
 "configuration, saving it into a file, editing it, and posting it back."
-msgstr "1つは、現在の設定を取得してファイルに保存し、編集してから、新しい状態をサーバーにPOSTで送信することです。"
+msgstr "1つは、現在の設定を取得してファイルに保存し、編集してから、新しい状態をサーバーにPOSTで送信する方法です。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:309
@@ -771,7 +785,7 @@ msgstr ""
 msgid ""
 "Another way is to fetch current client, set or delete fields on it, and post"
 " it back all in one single step."
-msgstr "別の方法は、現在のクライアントをフェッチし、そのフィールドを設定または削除し、全てを1つのステップでポストすることです。"
+msgstr "別の方法は、現在のクライアントをフェッチし、そのフィールドを設定または削除し、POST送信するという全てを1つのステップで行う方法です。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:326
@@ -794,7 +808,9 @@ msgid ""
 "file as full new configuration, it should treat it as a set of attributes to"
 " be applied over existing configuration."
 msgstr ""
-"適用される変更のみを含むファイルを使用することもできるので、引数として多すぎる値を指定する必要はありません。この場合、`--merge`を`クライアント登録CLI`に指定すると、JSONファイルは完全な新しい設定として扱われるのではなく、既存の設定に適用される属性のセットとして扱われます。"
+"適用される変更のみを含むファイルを使用することもできるので、引数として多すぎる値を指定する必要はありません。この場合、 `--merge` を "
+"`クライアント登録CLI` "
+"に指定すると、JSONファイルは完全な新しい設定として扱われるのではなく、既存の設定に適用される属性のセットとして扱われます。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:344
@@ -857,9 +873,9 @@ msgid ""
 " any further CRUD operations on that client without authenticating with "
 "account that has 'manage-clients' permissions."
 msgstr ""
-"`--no-"
-"config`モードを使用してCRUD操作を実行すると、`クライアント登録CLI`は登録アクセス・トークンを処理できなくなります。その場合、クライアントのために最も最近発行された登録アクセス・トークンの追跡を失う可能性があり、"
-" 'クライアントの管理'権限を持つアカウントで認証せずに、そのクライアント上でそれ以上のCRUD操作を実行することは不可能になります。"
+"`--no-config` モードを使用してCRUD操作を実行すると、 `クライアント登録CLI` "
+"は登録アクセス・トークンを処理できなくなります。その場合、クライアントのために最も最近発行された登録アクセス・トークンの追跡を失う可能性があり"
+"、'manage-clients'権限を持つアカウントで認証なしでは、そのクライアントでそれ以上のCRUD操作を実行することは不可能になります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:385
@@ -873,11 +889,9 @@ msgid ""
 "file, and have `Client Registration CLI` automatically handle it for you "
 "from that point on."
 msgstr ""
-"アクセス権を持っている場合は、クライアント用に新しい登録アクセス・トークンを発行し、標準出力に印刷するか、選択した設定ファイルに保存することができます。"
-" "
-"それ以外の場合は、レルム管理者にクライアントの新しい登録アクセス・トークンを発行して、それを送信するよう依頼する必要があります。`--token`オプションを使ってCRUDコマンドに渡すことができます。また、`kcreg"
-" config registration-"
-"token`コマンドを使って新しいトークンを設定ファイルに保存し、`クライアント登録CLI`が自動的にそれを処理するようにすることもできます。"
+"アクセス権を持っている場合は、クライアント用に新しい登録アクセス・トークンを発行し、標準出力に出力するか、選択した設定ファイルに保存することができます。それ以外の場合は、レルム管理者にクライアントの新しい登録アクセス・トークンを発行して、それを送信するよう依頼する必要があります。その際は、"
+" `--token` オプションを使ってCRUDコマンドに渡すことができます。また、 `kcreg config registration-token`"
+" コマンドを使って新しいトークンを設定ファイルに保存し、 `クライアント登録CLI` が自動的にそれを処理するようにすることもできます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/client-registration/client-registration-cli.adoc:387

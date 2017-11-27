@@ -2,150 +2,201 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Shinsuke UEDA <ueda.shinsuke.f2@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
 #: source/server_admin/topics/sessions/timeouts.adoc:3
 #, no-wrap
 msgid "Session and Token Timeouts"
-msgstr ""
+msgstr "セッションとトークンのタイムアウト"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:7
-#, no-wrap
 msgid ""
-"{project_name} gives you fine grain control of session, cookie, and token timeouts.  This is all done on the\n"
-"`Tokens` tab in the `Realm Settings` left menu item.\n"
+"{project_name} gives you fine grain control of session, cookie, and token "
+"timeouts.  This is all done on the `Tokens` tab in the `Realm Settings` left"
+" menu item."
 msgstr ""
+"{project_name}はセッション、Cookie、トークンのタイムアウトのきめ細かい制御ができます。これは、すべて左のメニュー項目の `Realm"
+" Settings` の `Tokens` タブで行います。"
 
 #. type: Block title
 #: source/server_admin/topics/sessions/timeouts.adoc:8
 #, no-wrap
 msgid "Tokens Tab"
-msgstr ""
+msgstr "Tokensタブ"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:10
-#, fuzzy, no-wrap
-#| msgid "image:{project_images}/clients.png[]"
-msgid "image:{project_images}/tokens-tab.png[]\n"
-msgstr "image:{project_images}/clients.png[]"
+msgid "image:{project_images}/tokens-tab.png[]"
+msgstr "image:{project_images}/tokens-tab.png[]"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:12
-#, no-wrap
-msgid "Let's walk through each of the items on this page.\n"
-msgstr ""
+msgid "Let's walk through each of the items on this page."
+msgstr "このページの各項目を見てみましょう。"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:15
+#: source/server_admin/topics/identity-broker/configuration.adoc:45
 #: source/server_admin/topics/identity-broker/oidc.adoc:19
 #: source/server_admin/topics/identity-broker/saml.adoc:18
-#, fuzzy, no-wrap
-msgid ""
-"|===\n"
-"|Configuration|Description\n"
-msgstr "|=== |名前|説明 |デフォルトで有効"
+msgid "Configuration|Description"
+msgstr "設定|説明"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:17
+msgid "Revoke Refresh Token"
+msgstr "Revoke Refresh Token"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:19
 #, no-wrap
 msgid ""
-"|Revoke Refresh Token\n"
-"|For OIDC clients that are doing the refresh token flow, this flag, if on, will revoke that refresh token and issue another with the request that the client has to use.\n"
+"For OIDC clients that are doing the refresh token flow, this flag, if on, will revoke that refresh token and issue another with the request that the client has to use.\n"
 " This basically means that refresh tokens have a one time use.\n"
 msgstr ""
+"リフレッシュ・トークン・フローを実行しているOIDCクライアントの場合、このフラグをオンにすると、クライアントの使用要求でそのリフレッシュ・トークンを取り消し、別のトークンを発行します。\n"
+"これは、基本的にリフレッシュトークンが1回使用されることを意味します。\n"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:21
+msgid "SSO Session Idle"
+msgstr "SSO Session Idle"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:23
 #, no-wrap
 msgid ""
-"|SSO Session Idle\n"
-"|Also pertains to OIDC clients.  If the user is not active for longer than this timeout, the user session will be invalidated.  How is idle time checked?\n"
+"Also pertains to OIDC clients.  If the user is not active for longer than this timeout, the user session will be invalidated.  How is idle time checked?\n"
 " A client requesting authentication will bump the idle timeout.  Refresh token requests will also bump the idle timeout.\n"
 msgstr ""
+"OIDCクライアントにも関係します。ユーザーがこのタイムアウトよりも長くアクティブでない場合、ユーザーセッションは無効になります。どのようにアイドル時間はチェックされるか：\n"
+"クライアントの認証要求は、アイドル・タイムアウトがあります。リフレッシュ・トークン要求もアイドル・タイムアウトがあります。\n"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:25
+msgid "SSO Session Max"
+msgstr "SSO Session Max"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:27
 #, no-wrap
 msgid ""
-"|SSO Session Max\n"
-"|Maximum time before a user session is expired and invalidated.  This is a hard number and time.  It controls the maximum time\n"
+"Maximum time before a user session is expired and invalidated.  This is a hard number and time.  It controls the maximum time\n"
 " a user session can remain active, regardless of activity.\n"
 msgstr ""
+"ユーザー・セッションが期限切れで無効になるまでの最大時間。これは具体的な数字と時間です。最大時間を制御します。アクティビティに関係なく、ユーザー・セッションがアクティブのままにできる最大時間を制御します。\n"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:29
+msgid "Offline Session Idle"
+msgstr "Offline Session Idle"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:30
-#, no-wrap
 msgid ""
-"|Offline Session Idle\n"
-"|For <<_offline-access, offline access>>, this is the time the session is allowed to remain idle before the offline token is revoked.\n"
+"For <<_offline-access, offline access>>, this is the time the session is "
+"allowed to remain idle before the offline token is revoked."
 msgstr ""
+"<<_offline-access, "
+"オフライン・アクセス>>の場合、これはオフライン・トークンが取り消される前にセッションがアイドル状態を維持できる時間です。"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:32
+msgid "Access Token Lifespan"
+msgstr "Access Token Lifespan"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:33
-#, no-wrap
 msgid ""
-"|Access Token Lifespan\n"
-"|When an OIDC access token is created, this value affects the expiration.\n"
-msgstr ""
+"When an OIDC access token is created, this value affects the expiration."
+msgstr "OIDCアクセス・トークンが作成される時、この値が有効期限に反映されます。"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:35
+msgid "Access Token Lifespan For Implicit Flow"
+msgstr "Access Token Lifespan For Implicit Flow"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:36
-#, no-wrap
 msgid ""
-"|Access Token Lifespan For Implicit Flow\n"
-"|With the Implicit Flow no refresh token is provided. For this reason there's a separate timeout for access tokens created with the Implicit Flow.\n"
+"With the Implicit Flow no refresh token is provided. For this reason there's"
+" a separate timeout for access tokens created with the Implicit Flow."
 msgstr ""
+"インプリシット・フローでは、リフレッシュ・トークンは提供されません。このため、インプリシット・フローで作成されたアクセス・トークンには別のタイムアウトがあります。"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:38
+msgid "Client login timeout"
+msgstr "Client login timeout"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:39
-#, no-wrap
 msgid ""
-"|Client login timeout\n"
-"|This is the maximum time that a client has to finish the Authorization Code Flow in OIDC.\n"
-msgstr ""
+"This is the maximum time that a client has to finish the Authorization Code "
+"Flow in OIDC."
+msgstr "これは、クライアントがOIDCで認可コード・フローを完了するまでの最大時間です。"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:41
+msgid "Login timeout"
+msgstr "Login timeout"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:42
-#, no-wrap
 msgid ""
-"|Login timeout\n"
-"|Total time a login must take.  If authentication takes longer than this time then the user will have to start the authentication process over.\n"
-msgstr ""
+"Total time a login must take.  If authentication takes longer than this time"
+" then the user will have to start the authentication process over."
+msgstr "ログインに必要な合計時間。認証がこの時間より長くかかる場合、ユーザーは認証プロセスをやり直す必要があります。"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:44
+msgid "Login action timeout"
+msgstr "Login action timeout"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:45
-#, no-wrap
 msgid ""
-"|Login action timeout\n"
-"|Maximum time a user can spend on any one page in the authentication process.\n"
-msgstr ""
+"Maximum time a user can spend on any one page in the authentication process."
+msgstr "ユーザーが認証プロセスで1ページに費やすことができる最大時間。"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:47
+msgid "User-Initiated Action Lifespan"
+msgstr "User-Initiated Action Lifespan"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:48
-#, no-wrap
 msgid ""
-"|User-Initiated Action Lifespan\n"
-"|Maximum time before an action permit sent by a user (e.g. forgot password e-mail) is expired. This value is recommended to be short because it is expected that the user would react to self-created action quickly.\n"
+"Maximum time before an action permit sent by a user (e.g. forgot password "
+"e-mail) is expired. This value is recommended to be short because it is "
+"expected that the user would react to self-created action quickly."
 msgstr ""
+"ユーザーが送信したアクション許可（パスワード忘れのメールなど）の有効期限が切れるまでの最大時間。ユーザーが自分で作成した操作にすばやく反応することが期待されるため、この値は短くすることをお勧めします。"
+
+#. type: Plain text
+#: source/server_admin/topics/sessions/timeouts.adoc:50
+msgid "Default Admin-Initiated Action Lifespan"
+msgstr "Default Admin-Initiated Action Lifespan"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/timeouts.adoc:51
-#, no-wrap
 msgid ""
-"|Default Admin-Initiated Action Lifespan\n"
-"|Maximum time before an action permit sent to a user by an admin is expired. This value is recommended to be long to allow admins send e-mails for users that are currently offline. The default timeout can be overridden right before issuing the token.\n"
-"|===\n"
+"Maximum time before an action permit sent to a user by an admin is expired. "
+"This value is recommended to be long to allow admins send e-mails for users "
+"that are currently offline. The default timeout can be overridden right "
+"before issuing the token."
 msgstr ""
+"管理者によってユーザーに送信されたアクション許可が失効するまでの最大時間。この値は、管理者が現在オフラインになっているユーザーに対して電子メールを送信できるようにするために長くすることをお勧めします。デフォルトのタイムアウトは、トークンを発行する直前にオーバーライドすることができます。"

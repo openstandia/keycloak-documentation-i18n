@@ -2,24 +2,24 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
 #: source/server_admin/topics/identity-broker/suggested.adoc:2
 #, no-wrap
 msgid "Client Suggested Identity Provider"
-msgstr ""
+msgstr "クライアント推奨のアイデンティティー・プロバイダー"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/suggested.adoc:6
@@ -27,13 +27,14 @@ msgid ""
 "OIDC applications can bypass the {project_name} login page by specifying a "
 "hint on which identity provider they want to use."
 msgstr ""
+"使用したいアイデンティティー・プロバイダーのヒントを指定することで、OIDCアプリケーションは、{project_name}ログイン・ページをバイパスすることができます。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/suggested.adoc:8
 msgid ""
 "This is done by setting the `kc_idp_hint` query parameter in the "
 "Authorization Code Flow authorization endpoint."
-msgstr ""
+msgstr "これは、認可コードフローの認可エンドポイントに `kc_idp_hint` クエリー・パラメーターを設定することによって行われます。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/suggested.adoc:11
@@ -41,11 +42,12 @@ msgid ""
 "{project_name} OIDC client adapters also allow you to specify this query "
 "parameter when you access a secured resource at the application."
 msgstr ""
+"{project_name}のOIDCクライアント・アダプターでは、アプリケーションで保護されたリソースにアクセスするときに、このクエリー・パラメーターを指定することもできます。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/suggested.adoc:13
 msgid "For example"
-msgstr ""
+msgstr "例えば"
 
 #. type: delimited block -
 #: source/server_admin/topics/identity-broker/suggested.adoc:18
@@ -54,6 +56,8 @@ msgid ""
 "GET /myapplication.com?kc_idp_hint=facebook HTTP/1.1\n"
 "Host: localhost:8080\n"
 msgstr ""
+"GET /myapplication.com?kc_idp_hint=facebook HTTP/1.1\n"
+"Host: localhost:8080\n"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/suggested.adoc:21
@@ -62,19 +66,21 @@ msgid ""
 "alias `facebook`. If this provider doesn't exist the login form will be "
 "displayed."
 msgstr ""
+"この場合、レルムにはエイリアス `facebook` "
+"を持つアイデンティー・ティプロバイダーが存在することが予想されます。このプロバイダーが存在しない場合、ログイン・フォームが表示されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/suggested.adoc:23
 msgid ""
 "If you are using `keycloak.js` adapter, you can also achieve the same "
 "behavior:"
-msgstr ""
+msgstr "`keycloak.js` アダプターを使用している場合、次のように同じ動作を実現することもできます：。"
 
 #. type: delimited block -
 #: source/server_admin/topics/identity-broker/suggested.adoc:27
 #, no-wrap
 msgid "var keycloak = new Keycloak('keycloak.json');\n"
-msgstr ""
+msgstr "var keycloak = new Keycloak('keycloak.json');\n"
 
 #. type: delimited block -
 #: source/server_admin/topics/identity-broker/suggested.adoc:31
@@ -84,6 +90,9 @@ msgid ""
 "\tidpHint: 'facebook'\n"
 "});\n"
 msgstr ""
+"keycloak.createLoginUrl({\n"
+"\tidpHint: 'facebook'\n"
+"});\n"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/suggested.adoc:34
@@ -93,3 +102,6 @@ msgid ""
 "Redirector` authenticator. The client can also disable the automatic "
 "redirecting by setting the `kc_idp_hint` query parameter to an empty value."
 msgstr ""
+"クライアントが `Identity Provider Redirector` オーセンティケーター用に設定されている場合に、 `kc_idp_hint`"
+" クエリー・パラメーターによって、デフォルトのアイデンティティー・プロバイダーをオーバーライドすることもできます。クライアントは、 "
+"`kc_idp_hint` クエリー・パラメーターを空の値に設定することによって自動リダイレクトを無効にすることもできます。"

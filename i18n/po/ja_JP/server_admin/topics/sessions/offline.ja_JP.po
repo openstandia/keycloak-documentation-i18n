@@ -2,24 +2,24 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Shinsuke UEDA <ueda.shinsuke.f2@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
 #: source/server_admin/topics/sessions/offline.adoc:3
 #, no-wrap
 msgid "Offline Access"
-msgstr ""
+msgstr "オフライン・アクセス"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/offline.adoc:10
@@ -29,10 +29,13 @@ msgid ""
 "idea is that during login, your client application will request an Offline "
 "token instead of a classic Refresh token.  The application can save this "
 "offline token in a database or on disk and can use it later even if user is "
-"logged out.  This is useful if your application needs to do some \"offline\" "
-"actions on behalf of user even when the user is not online.  An example is a "
-"periodic backup of some data every night."
+"logged out.  This is useful if your application needs to do some \"offline\""
+" actions on behalf of user even when the user is not online.  An example is "
+"a periodic backup of some data every night."
 msgstr ""
+"オフライン・アクセスは、 http://openid.net/specs/openid-connect-core-"
+"1_0.html#OfflineAccess[OpenID Connect仕様] "
+"で説明されている機能です。このアイデアは、ログイン中にクライアント・アプリケーションが古典的なリフレッシュ・トークンの代わりにオフライン・トークンを要求するというものです。アプリケーションはこのオフライン・トークンをデータベースまたはディスクに保存し、ユーザーがログアウトしても後で使用できます。これは、ユーザーがオンラインでなくても、アプリケーションがユーザーのために何らかの「オフライン」アクションを実行する必要がある場合に便利です。一例として、毎晩の何らかのデータの定期的なバックアップがあります。"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/offline.adoc:12
@@ -41,21 +44,27 @@ msgid ""
 "storage (usually a database) and then using it to manually retrieve new "
 "access token from {project_name} server."
 msgstr ""
+"アプリケーションは、一部のストレージ（通常はデータベース）にオフライン・トークンを永続化し、それを使用して{project_name}サーバーから新しいアクセス・トークンを手動で取得する役割を担います。"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/offline.adoc:17
 msgid ""
-"The difference between a classic Refresh token and an Offline token is, that "
-"an offline token will never expire and is not subject of `SSO Session Idle "
+"The difference between a classic Refresh token and an Offline token is, that"
+" an offline token will never expire and is not subject of `SSO Session Idle "
 "timeout` .  The offline token is valid even after a user logout or server "
 "restart.  However by default you do need to use the offline token for a "
-"refresh token action at least once per 30 days (this value, `Offline Session "
-"Idle timeout`, can be changed in the administration console in the `Tokens` "
-"tab under `Realm Settings`). Also if you enable the option `Revoke refresh "
+"refresh token action at least once per 30 days (this value, `Offline Session"
+" Idle timeout`, can be changed in the administration console in the `Tokens`"
+" tab under `Realm Settings`). Also if you enable the option `Revoke refresh "
 "tokens`, then each offline token can be used just once.  So after refresh, "
 "you always need to store the new offline token from refresh response into "
 "your DB instead of the previous one."
 msgstr ""
+"従来のリフレッシュ・トークンとオフライン・トークンの違いは、オフライン・トークンは期限切れせず、 `SSOセッション・アイドル・タイムアウト` "
+"の対象ではない、ということです。オフライン・トークンは、ユーザーログアウトまたはサーバーの再起動後も有効です。ただしデフォルトでは、オフライン・トークンをリフレッシュ・トークン・アクションに少なくとも30日に1回、使用する必要があります（この値は、管理コンソールの"
+" `Tokens` タブの `Realm Settings` の `Offline Session Idle timeout` "
+"で変更できます）。また、オプション `Revoke refresh tokens` "
+"を有効にした場合、各オフライン・トークンは1回だけ使用できるので、リフレッシュ後は前のオフライン・トークンに代えて、リフレッシュ・レスポンスからの新しいオフライン・トークンをDBに保存する必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/offline.adoc:22
@@ -63,10 +72,15 @@ msgid ""
 "Users can view and revoke offline tokens that have been granted by them in "
 "the <<_account-service, User Account Service>>.  The admin user can revoke "
 "offline tokens for individual users in admin console in the `Consents` tab "
-"of a particular user.  The admin can also view all the offline tokens issued "
-"in the `Offline Access` tab of each client.  Offline tokens can also be "
+"of a particular user.  The admin can also view all the offline tokens issued"
+" in the `Offline Access` tab of each client.  Offline tokens can also be "
 "revoked by setting a <<_revocation-policy, revocation policy>>."
 msgstr ""
+"ユーザーは<<_account-service, "
+"ユーザー・アカウント・サービス>>で、付与されたオフライン・トークンの表示と取り消しができます。管理ユーザーは、管理コンソールの特定ユーザーの "
+"`Consents` タブで、個々のユーザーのオフライン・トークンを取り消すことができます。管理者は各クライアントの `Offline Access` "
+"タブで、発行されたすべてのオフライン・トークンを表示することもできます。オフライン・トークンは、<<_revocation-policy, "
+"失効ポリシー>>を設定することによっても取り消すことができます。"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/offline.adoc:25
@@ -75,15 +89,23 @@ msgid ""
 "for the realm-level role `offline_access`.  Clients also need to have that "
 "role in their scope."
 msgstr ""
+"オフライン・トークンを発行できるようにするには、ユーザーにレルム・レベルのロール  `offline_access` "
+"のロール・マッピングが必要です。クライアントも、スコープにそのロールを持っている必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/sessions/offline.adoc:29
 msgid ""
 "The client can request an offline token by adding the parameter "
-"`scope=offline_access` when sending authorization request to "
-"{project_name}.  The {project_name} OIDC client adapter automatically adds "
-"this parameter when you use it to access secured URL of your application (i."
-"e.  $$http://localhost:8080/customer-portal/secured?scope=offline_access$$). "
-"The Direct Access Grant and Service Accounts also support offline tokens if "
-"you include `scope=offline_access` in the body of the authentication request."
+"`scope=offline_access` when sending authorization request to {project_name}."
+"  The {project_name} OIDC client adapter automatically adds this parameter "
+"when you use it to access secured URL of your application (i.e.  "
+"$$http://localhost:8080/customer-portal/secured?scope=offline_access$$). The"
+" Direct Access Grant and Service Accounts also support offline tokens if you"
+" include `scope=offline_access` in the body of the authentication request."
 msgstr ""
+"クライアントは、{project_name}に認証要求を送信するときに、パラメータ `scope=offline_access` "
+"を追加することにより、オフライン・トークンを要求できます。 {project_name} "
+"OIDCクライアント・アダプターは、アプリケーションのセキュリティ保護されたURLにアクセスするときに、このパラメータを自動的に追加します（つまり、$$http://localhost:8080"
+"/customer-"
+"portal/secured?scope=offline_access$$）。ダイレクト・アクセス許可とサービス・アカウントは、認証要求の本体に "
+"`scope=offline_access` を含めると、オフライン・トークンもサポートします。"

@@ -2,67 +2,76 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Labeled list
+#: source/securing_apps/topics/token-exchange/token-exchange.adoc:31
+#: source/server_development/topics/identity-brokering/account-linking.adoc:33
+#, no-wrap
+msgid "client_id"
+msgstr "client_id"
 
 #. type: Title ===
 #: source/server_development/topics/identity-brokering/account-linking.adoc:2
 #, no-wrap
 msgid "Client Initiated Account Linking"
-msgstr ""
+msgstr "クライアント初期化アカウント・リンキング"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:7
 msgid ""
-"Some applications want to integrate with social providers like Facebook, but "
-"do not want to provide an option to login via these social providers.  "
+"Some applications want to integrate with social providers like Facebook, but"
+" do not want to provide an option to login via these social providers.  "
 "{project_name} offers a browser-based API that applications can use to link "
 "an existing user account to a specific external IDP.  This is called client "
 "initiated account linking."
 msgstr ""
+"アプリケーションの中には、Facebookなどのソーシャル・プロバイダーと統合したいが、これらのソーシャル・プロバイダーを介してログインするオプションを提供したくないものもあります。{project_name}は、既存のユーザー・アカウントを特定の外部IDPにリンクするためにアプリケーションが使用できる、ブラウザー・ベースのAPIを提供しています。これは、クライアント初期化アカウント・リンキングと呼ばれます。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:12
 msgid ""
 "The way it works is that the application forward's the user's browser to a "
-"URL on the {project_name} server requesting that it wants to link the user's "
-"account to a specific external provider (i.e. Facebook).  The server "
+"URL on the {project_name} server requesting that it wants to link the user's"
+" account to a specific external provider (i.e. Facebook).  The server "
 "initiates a login with the external provider.  The browser logs in at the "
 "external provider and is redirected back to the auth server.  The auth "
 "server establishes the link and redirects back to the application with a "
 "confirmation."
 msgstr ""
+"これを動作させるには、アプリケーションがユーザーのブラウザーを{project_name}サーバー上のURLに転送して、ユーザーのアカウントを特定の外部プロバイダー（Facebookなど）にリンクすることを要求します。サーバーは、外部プロバイダーとのログインを開始します。ブラウザーは外部プロバイダーにログインし、認証サーバーにリダイレクトされます。認証サーバーはリンクを確立し、確認のためにアプリケーションにリダイレクトします。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:14
 msgid ""
 "There are some preconditions that must be met by the client application "
 "before it can initiate this protocol:"
-msgstr ""
+msgstr "このプロトコルを開始する上で、クライアント・アプリケーションが満たさなければならない、いくつかの前提条件があります。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:16
 msgid ""
 "The desired identity provider must be configured and enabled for the user's "
 "realm in the admin console."
-msgstr ""
+msgstr "管理コンソールで、必要なアイデンティティー・プロバイダーを設定し、ユーザーのレルムに対して有効にする必要がある。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:17
 msgid ""
 "The application must already be logged in as an existing user via the OIDC "
 "protocol"
-msgstr ""
+msgstr "アプリケーションは、OIDCプロトコルを介して既存のユーザーとしてログインしている必要がある。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:18
@@ -70,71 +79,73 @@ msgid ""
 "The user must have an `account.manage-account` or `account.manage-account-"
 "links` role mapping."
 msgstr ""
+"ユーザーには `account.manage-account` または `account.manage-account-links` "
+"のロール・マッピングがなければならない。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:19
 msgid ""
 "The application must be granted the scope for those roles within its access "
 "token"
-msgstr ""
+msgstr "アプリケーションは、アクセス・トークン内にあるそれらのロールのスコープを許可されている必要がある。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:20
 msgid ""
-"The application must have access to its access token as it needs information "
-"within it to generate the redirect URL."
-msgstr ""
+"The application must have access to its access token as it needs information"
+" within it to generate the redirect URL."
+msgstr "アプリケーションは、リダイレクトURLを生成するために情報が必要なので、アクセス・トークンにアクセスする必要がある"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:22
 msgid ""
-"To initiate the login, the application must fabricate a URL and redirect the "
-"user's browser to this URL.  The URL looks like this:"
+"To initiate the login, the application must fabricate a URL and redirect the"
+" user's browser to this URL.  The URL looks like this:"
 msgstr ""
+"ログインを開始するには、アプリケーションがURLを作成し、ユーザーのブラウザをこのURLにリダイレクトする必要があります。URLは次のようになります。"
 
 #. type: delimited block -
 #: source/server_development/topics/identity-brokering/account-linking.adoc:26
 #, no-wrap
-msgid "/{auth-server-root}/auth/realms/{realm}/broker/{provider}/link?client_id={id}&redirect_uri={uri}&nonce={nonce}&hash={hash}\n"
+msgid ""
+"/{auth-server-"
+"root}/auth/realms/{realm}/broker/{provider}/link?client_id={id}&redirect_uri={uri}&nonce={nonce}&hash={hash}\n"
 msgstr ""
+"/{auth-server-"
+"root}/auth/realms/{realm}/broker/{provider}/link?client_id={id}&redirect_uri={uri}&nonce={nonce}&hash={hash}\n"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:29
 msgid "Here's a description of each path and query param:"
-msgstr ""
+msgstr "各パスとクエリパラメータの説明は次のとおりです。"
 
 #. type: Labeled list
 #: source/server_development/topics/identity-brokering/account-linking.adoc:30
 #, no-wrap
 msgid "provider"
-msgstr ""
+msgstr "provider"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:32
 msgid ""
 "This is the provider alias of the external IDP that you defined in the "
 "`Identity Provider` section of the admin console."
-msgstr ""
-
-#. type: Labeled list
-#: source/server_development/topics/identity-brokering/account-linking.adoc:33
-#, no-wrap
-msgid "client_id"
-msgstr ""
+msgstr "これは、管理コンソールの `アイデンティティ・プロバイダー` のセクションで定義した外部IDPのプロバイダー・エイリアスです。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:36
 msgid ""
 "This is the OIDC client id of your application.  When you registered the "
-"application as a client in the admin console, you had to specify this client "
-"id."
+"application as a client in the admin console, you had to specify this client"
+" id."
 msgstr ""
+"これは、アプリケーションのOIDCクライアントIDです。管理コンソールでアプリケーションをクライアントとして登録したときに、このクライアントIDを指定する必要があります。"
 
 #. type: Labeled list
 #: source/server_development/topics/identity-brokering/account-linking.adoc:37
 #, no-wrap
 msgid "redirect_uri"
-msgstr ""
+msgstr "redirect_uri"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:41
@@ -144,40 +155,45 @@ msgid ""
 "pattern.  In other words, it must match one of the valid URL patterns you "
 "defined when you registered the client in the admin console."
 msgstr ""
+"これは、アカウントのリンクが確立された後にリダイレクトするアプリケーションのコールバックURLです。有効なクライアント・リダイレクトURIパターンでなければなりません。つまり、管理コンソールでクライアントを登録したときに定義した有効なURLパターンの1つと一致する必要があります。"
 
 #. type: Labeled list
 #: source/server_development/topics/identity-brokering/account-linking.adoc:42
 #, no-wrap
 msgid "nonce"
-msgstr ""
+msgstr "nonce"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:44
 msgid "This is a random string that your application must generate"
-msgstr ""
+msgstr "これはアプリケーションが生成しなければならないランダムな文字列です。"
 
 #. type: Labeled list
 #: source/server_development/topics/identity-brokering/account-linking.adoc:45
 #, no-wrap
 msgid "hash"
-msgstr ""
+msgstr "hash"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:49
 msgid ""
 "This is a Base64 URL encoded hash.  This hash is generated by Base64 URL "
-"encoding a SHA_256 hash of `nonce` + `token.getSessionState()` + `token."
-"getIssuedFor()` + `provider` The token variable are obtained from the OIDC "
-"access token.  Basically you are hashing the random nonce, the user session "
-"id, the client id, and the identity provider alias you want to access."
+"encoding a SHA_256 hash of `nonce` + `token.getSessionState()` + "
+"`token.getIssuedFor()` + `provider` The token variable are obtained from the"
+" OIDC access token.  Basically you are hashing the random nonce, the user "
+"session id, the client id, and the identity provider alias you want to "
+"access."
 msgstr ""
+"これはBase64 URLでエンコードされたハッシュです。このハッシュは、 `nonce` + `token.getSessionState()` + "
+"`token.getIssuedFor()` + `provider` のSHA_256ハッシュでエンコードされたBase64 "
+"URLによって生成されます。トークン変数はOIDCのアクセス・トークンから取得されます。基本的には、ランダムなnonce、ユーザーセッションID、クライアントID、およびアクセスするアイデンティティー・プロバイダーのエイリアスをハッシュしています。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:51
 msgid ""
 "Here's an example of Java Servlet code that generates the URL to establish "
 "the account link."
-msgstr ""
+msgstr "次に、アカウント・リンクを確立するためのURLを生成するJavaサーブレット・コードの例を示します。"
 
 #. type: delimited block -
 #: source/server_development/topics/identity-brokering/account-linking.adoc:76
@@ -205,30 +221,58 @@ msgid ""
 "                    .queryParam(\"client_id\", clientId)\n"
 "                    .queryParam(\"redirect_uri\", redirectUri).build(realm, provider).toString();\n"
 msgstr ""
+"   KeycloakSecurityContext session = (KeycloakSecurityContext) httpServletRequest.getAttribute(KeycloakSecurityContext.class.getName());\n"
+"   AccessToken token = session.getToken();\n"
+"   String clientId = token.getIssuedFor();\n"
+"   String nonce = UUID.randomUUID().toString();\n"
+"   MessageDigest md = null;\n"
+"   try {\n"
+"      md = MessageDigest.getInstance(\"SHA-256\");\n"
+"   } catch (NoSuchAlgorithmException e) {\n"
+"      throw new RuntimeException(e);\n"
+"   }\n"
+"   String input = nonce + token.getSessionState() + clientId + provider;\n"
+"   byte[] check = md.digest(input.getBytes(StandardCharsets.UTF_8));\n"
+"   String hash = Base64Url.encode(check);\n"
+"   request.getSession().setAttribute(\"hash\", hash);\n"
+"   String redirectUri = ...;\n"
+"   String accountLinkUrl = KeycloakUriBuilder.fromUri(authServerRootUrl)\n"
+"                    .path(\"/auth/realms/{realm}/broker/{provider}/link\")\n"
+"                    .queryParam(\"nonce\", nonce)\n"
+"                    .queryParam(\"hash\", hash)\n"
+"                    .queryParam(\"client_id\", clientId)\n"
+"                    .queryParam(\"redirect_uri\", redirectUri).build(realm, provider).toString();\n"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:81
 msgid ""
 "Why is this hash included? We do this so that the auth server is guaranteed "
-"to know that the client application initiated the request and no other rogue "
-"app just randomly asked for a user account to be linked to a specific "
+"to know that the client application initiated the request and no other rogue"
+" app just randomly asked for a user account to be linked to a specific "
 "provider.  The auth server will first check to see if the user is logged in "
-"by checking the SSO cookie set at login.  It will then try to regenerate the "
-"hash based on the current login and match it up to the hash sent by the "
+"by checking the SSO cookie set at login.  It will then try to regenerate the"
+" hash based on the current login and match it up to the hash sent by the "
 "application."
 msgstr ""
+"このハッシュはなぜ含まれるのでしょうか？これにより、認証サーバーはクライアント・アプリケーションがリクエストを初期化したことと、ユーザー・アカウントが特定のプロバイダーにリンクされることをランダムに要求する悪意のあるアプリケーションが無いことを保証します。認証サーバーはまず、ログイン時に設定されたSSO"
+" "
+"Cookieをチェックして、ユーザーがログインしているかどうかを確認します。次に、現在のログインに基づいてハッシュを再生成し、アプリケーションによって送信されたハッシュと一致するか確認します。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:86
 msgid ""
-"After the account has been linked, the auth server will redirect back to the "
-"`redirect_uri`.  If there is a problem servicing the link request, the auth "
-"server may or may not redirect back to the `redirect_uri`.  The browser may "
-"just end up at an error page instead of being redirected back to the "
+"After the account has been linked, the auth server will redirect back to the"
+" `redirect_uri`.  If there is a problem servicing the link request, the auth"
+" server may or may not redirect back to the `redirect_uri`.  The browser may"
+" just end up at an error page instead of being redirected back to the "
 "application.  If there is an error condition and the auth server deems it "
 "safe enough to redirect back to the client app, an additional `error` query "
 "parameter will be appended to the `redirect_uri`."
 msgstr ""
+"アカウントがリンクされると、認証サーバーは `redirect_uri` にリダイレクトします。リンク・リクエストの処理に問題がある場合、認証サーバーが"
+" `redirect_uri` "
+"にリダイレクトされる保障はありません。ブラウザーはアプリケーションにリダイレクトされるのではなく、エラーページにリダイレクトされることがあります。何らかのエラー状態があり、認証サーバーがクライアント・アプリケーションにリダイレクトするのに十分安全であると判断した場合、"
+" `error` クエリー・パラメーターが `redirect_uri` に追加されます。"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:90
@@ -237,12 +281,13 @@ msgid ""
 "   While this API guarantees that the application initiated the request, it does not completely prevent CSRF attacks for this operation.  The application\n"
 "   is still responsible for guarding against CSRF attacks target at itself.\n"
 msgstr ""
+"このAPIはアプリケーションが要求を開始したことを保証しますが、この操作に対するCSRF攻撃を完全に防止するわけではありません。このアプリケーションは、依然としてCSRFの攻撃のターゲットに対する防御の責任があります。\n"
 
 #. type: Title ====
 #: source/server_development/topics/identity-brokering/account-linking.adoc:91
 #, no-wrap
 msgid "Refreshing External Tokens"
-msgstr ""
+msgstr "外部トークンのリフレッシュ"
 
 #. type: Plain text
 #: source/server_development/topics/identity-brokering/account-linking.adoc:94
@@ -251,3 +296,4 @@ msgid ""
 "(i.e. a Facebook or Github token), you can refresh this token by re-"
 "initiating the account linking API."
 msgstr ""
+"プロバイダーにログインして生成した外部トークン（FacebookやGithubトークンなど）を使用している場合は、アカウント・リンキングAPIを再起動することで、このトークンを更新できます。"

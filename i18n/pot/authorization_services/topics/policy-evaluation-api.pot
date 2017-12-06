@@ -15,13 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title =
-#: source/authorization_services/topics/policy-evaluation-api.adoc:2
 #, no-wrap
 msgid "Policy Evaluation API"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:5
 msgid ""
 "When writing rule-based policies using JavaScript or JBoss Drools, "
 "{project_name} provides an Evaluation API that provides useful information "
@@ -29,40 +27,34 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:7
 msgid ""
 "This API consists of a few interfaces that provides you access to "
 "information such as:"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:9
 msgid "The permission being requested"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:10
 msgid ""
 "The identity that is requesting the permission, from which you can obtain "
 "claims/attributes"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:11
 msgid ""
 "Runtime environment and any other attribute associated with the execution "
 "context"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:13
 msgid ""
 "The main interface is *org.keycloak.authorization.policy.evaluation."
 "Evaluation*, which defines the following contract:"
 msgstr ""
 
 #. type: Code block
-#: source/authorization_services/topics/policy-evaluation-api.adoc:41
 #, no-wrap
 msgid ""
 "public interface Evaluation {\n"
@@ -94,7 +86,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:44
 msgid ""
 "When processing an authorization request, {project_name} creates an "
 "`Evaluation` instance before evaluating any policy. This instance is then "
@@ -102,7 +93,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:46
 msgid ""
 "Policies determine this by invoking the `grant()` or `deny()` methods on an "
 "`Evaluation` instance. By default, the state of the `Evaluation` instance is "
@@ -112,27 +102,23 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:48
 msgid ""
 "For more information about the Evaluation API see the {apidocs_link}"
 "[JavaDocs]."
 msgstr ""
 
 #. type: Title ==
-#: source/authorization_services/topics/policy-evaluation-api.adoc:49
 #, no-wrap
 msgid "The Evaluation Context"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:52
 msgid ""
 "The evaluation context provides useful information to policies during their "
 "evaluation."
 msgstr ""
 
 #. type: Code block
-#: source/authorization_services/topics/policy-evaluation-api.adoc:70
 #, no-wrap
 msgid ""
 "public interface EvaluationContext {\n"
@@ -154,22 +140,18 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:73
 msgid "From this interface, policies can obtain:"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:75
 msgid "The authenticated `Identity`"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:76
 msgid "Information about the execution context and runtime environment"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:80
 msgid ""
 "The `Identity` is built based on the OAuth2 Access Token that was sent along "
 "with the authorization request, and this construct has access to all claims "
@@ -179,7 +161,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:82
 msgid ""
 "The `EvaluationContext` also gives you access to attributes related to both "
 "the execution and runtime environments. For now, there only a few built-in "
@@ -187,90 +168,70 @@ msgid ""
 msgstr ""
 
 #. type: Block title
-#: source/authorization_services/topics/policy-evaluation-api.adoc:83
 #, no-wrap
 msgid "Execution and Runtime Attributes"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:86
 msgid "Name |Description | Type"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:88
 msgid "kc.time.date_time"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:89
 msgid "Current date and time"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:90
 msgid "String. Format `MM/dd/yyyy hh:mm:ss`"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:92
 msgid "kc.client.network.ip_address"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:93
 msgid "IPv4 address of the client"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:94
-#: source/authorization_services/topics/policy-evaluation-api.adoc:98
-#: source/authorization_services/topics/policy-evaluation-api.adoc:102
-#: source/authorization_services/topics/policy-evaluation-api.adoc:110
 msgid "String"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:96
 msgid "kc.client.network.host"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:97
 msgid "Client's host name"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:100
 msgid "kc.client.id"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:101
 msgid "The client id"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:104
 msgid "kc.client.user_agent"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:105
 msgid "The value of the 'User-Agent' HTTP header"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:106
 msgid "String[]"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:108
 msgid "kc.realm.name"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:109
 msgid "The name of the realm"
 msgstr ""

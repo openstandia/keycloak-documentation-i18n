@@ -15,23 +15,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:29
-#: source/authorization_services/topics/service-authorization-whatis-obtain-aat.adoc:26
-#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:46
-#: source/authorization_services/topics/service-entitlement-entitlement-api-aapi.adoc:81
-#: source/authorization_services/topics/service-entitlement-whatis-obtain-eat.adoc:20
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:43
 msgid "As a result, the server response is:"
 msgstr ""
 
 #. type: Title =
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:2
 #, no-wrap
 msgid "Introspecting a Requesting Party Token"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:5
 msgid ""
 "Sometimes you might want to introspect a requesting party token (RPT) to "
 "check its validity or obtain the permissions within the token to enforce "
@@ -39,19 +31,16 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:7
 msgid "There are two main use cases where token introspection can help you:"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:9
 msgid ""
 "When client applications need to query the token validity to obtain a new "
 "one with the same or additional permissions"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:10
 msgid ""
 "When enforcing authorization decisions at the resource server side, "
 "especially when none of the built-in <<_enforcer_overview, policy "
@@ -59,13 +48,11 @@ msgid ""
 msgstr ""
 
 #. type: Title =
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:11
 #, no-wrap
 msgid "Obtaining Information about an RPT"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:14
 msgid ""
 "The token introspection is essentially a https://tools.ietf.org/html/"
 "rfc7662[OAuth2 token introspection]-compliant endpoint from which you can "
@@ -73,21 +60,18 @@ msgid ""
 msgstr ""
 
 #. type: Code block
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:17
 msgid ""
 "http://${host}:${port}/auth/realms/${realm_name}/protocol/openid-connect/"
 "token/introspect"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:20
 msgid ""
 "To introspect an RPT using this endpoint, you can send a request to the "
 "server as follows:"
 msgstr ""
 
 #. type: Code block
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:27
 #, no-wrap
 msgid ""
 "curl -X POST \\\n"
@@ -98,7 +82,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:31
 msgid ""
 "The request above is using HTTP BASIC and passing the client's credentials "
 "(client ID and secret) to authenticate the client attempting to introspect "
@@ -107,38 +90,32 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:33
 msgid "The introspection endpoint expects two parameters:"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:35
 #, no-wrap
 msgid "*token_type_hint*\n"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:37
 msgid ""
 "Use *requesting_party_token* as the value for this parameter, which "
 "indicates that you want to introspect an RPT."
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:39
 #, no-wrap
 msgid "*token*\n"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:41
 msgid ""
 "Use the token string as it was returned by the server during the "
 "authorization process as the value for this parameter."
 msgstr ""
 
 #. type: Code block
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:58
 #, no-wrap
 msgid ""
 "{\n"
@@ -157,12 +134,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:61
 msgid "If the RPT is not active, this response is returned instead:"
 msgstr ""
 
 #. type: Code block
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:66
 #, no-wrap
 msgid ""
 "{\n"
@@ -171,13 +146,11 @@ msgid ""
 msgstr ""
 
 #. type: Title =
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:68
 #, no-wrap
 msgid "Do I Need to Invoke the Server Every Time I Want to Introspect an RPT?"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:72
 #, no-wrap
 msgid ""
 "No. Both <<_service_entitlement_api, Entitlement>> APIs use the\n"
@@ -185,7 +158,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:75
 msgid ""
 "If you want to validate these tokens without a call to the remote "
 "introspection endpoint, you can decode the RPT and query for its validity "
@@ -194,18 +166,15 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:77
 msgid ""
 "This is essentially what the <<_enforcer_overview, policy enforcers>> do. Be "
 "sure to:"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:79
 msgid "Validate the signature of the RPT (based on the realm's public key)"
 msgstr ""
 
 #. type: Plain text
-#: source/authorization_services/topics/service-rpt-token-introspection.adoc:79
 msgid "Query for token validity based on its _exp_, _iat_, and _aud_ claims"
 msgstr ""

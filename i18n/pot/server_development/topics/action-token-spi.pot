@@ -15,21 +15,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:140
-#: source/server_development/topics/auth-spi.adoc:429
-#: source/server_development/topics/action-token-spi.adoc:72
 #, no-wrap
 msgid "Packaging Classes and Deployment"
 msgstr ""
 
 #. type: Title ==
-#: source/server_development/topics/action-token-spi.adoc:2
 #, no-wrap
 msgid "Action Token SPI"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:7
 msgid ""
 "An action token is a special instance of Json Web Token (JWT) that permits "
 "its bearer to perform some actions, e. g. to reset a password or validate e-"
@@ -38,33 +33,27 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:9
 msgid "{project_name} offers four basic token types allowing the bearer to:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:11
 msgid "Reset credentials"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:12
 msgid "Confirm e-mail address"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:13
 msgid "Execute required action(s)"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:14
 msgid ""
 "Confirm linking of an account with account in external identity provider"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:17
 msgid ""
 "In addition to that, it is possible to implement any functionality that "
 "initiates or modifies authentication session using action token SPI, details "
@@ -72,75 +61,62 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/action-token-spi.adoc:19
 #, no-wrap
 msgid "Anatomy of Action Token"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:22
 msgid ""
 "Action token is a standard Json Web Token signed with active realm key where "
 "the payload contains several fields:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:24
 msgid "`typ` - Identification of the action (e.g. `verify-email`)"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:25
 msgid "`iat` and `exp` - Times of token validity"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:26
 msgid "`sub` - ID of the user"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:27
 msgid "`azp` - Client name"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:28
 msgid "`iss` - Issuer - URL of the issuing realm"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:29
 msgid "`aud` - Audience - list containing URL of the issuing realm"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:30
 msgid "`asid` - ID of the authentication session (_optional_)"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:31
 msgid ""
 "`nonce` - Random nonce to guarantee uniqueness of use if the operation can "
 "only be executed once (_optional_)"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:33
 msgid ""
 "In addition, an action token can contain any number of custom fields "
 "serializable into JSON."
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/action-token-spi.adoc:34
 #, no-wrap
 msgid "Action Token Processing"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:42
 msgid ""
 "When an action token is passed to a {project_name} endpoint `_KEYCLOAK_ROOT_/"
 "auth/realms/master/login-actions/action-token` via `key` parameter, it is "
@@ -154,7 +130,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:45
 #, no-wrap
 msgid ""
 "*Basic action token validation.* Signature and time validity is checked, and action token handler is determined based\n"
@@ -162,7 +137,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:51
 msgid ""
 "[[determining-auth-sess]]*Determining authentication session.* If the action "
 "token URL was opened in browser with existing authentication session, and "
@@ -174,7 +148,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:56
 #, no-wrap
 msgid ""
 "*Token validations specific for token type.* Action token endpoint logic validates that the user (`sub` field) and\n"
@@ -184,7 +157,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:59
 #, no-wrap
 msgid ""
 "*Performing the action.* After all these validations, action token handler code is called that performs the actual\n"
@@ -192,7 +164,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:62
 #, no-wrap
 msgid ""
 "*Invalidation of single-Use tokens.* If the token is set to single-use, once the authentication flow finishes, the\n"
@@ -200,19 +171,16 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/action-token-spi.adoc:63
 #, no-wrap
 msgid "Implement Your Own Action Token and its Handler"
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/action-token-spi.adoc:65
 #, no-wrap
 msgid "How to Create an Action Token"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:71
 msgid ""
 "As action token is just a signed JWT with few mandatory fields (see "
 "<<_action_token_anatomy,Anatomy of action token>> above), it can be "
@@ -224,14 +192,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:75
 msgid ""
 "To plug your own action token and its handler, you need to implement few "
 "interfaces on server side:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:78
 #, no-wrap
 msgid ""
 "`org.keycloak.authentication.actiontoken.ActionTokenHandler` - actual handler of action token for a particular\n"
@@ -239,7 +205,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:83
 msgid ""
 "The central method in that interface is `handleToken(token, context)` which "
 "defines actual operation executed upon receiving the action token. Usually "
@@ -250,7 +215,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:90
 msgid ""
 "To be able to determine whether the action token was issued for the current "
 "authentication session as described in <<determining-auth-sess,Item 2 "
@@ -264,7 +228,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:94
 msgid ""
 "If the authentication session from the token does not match the current one, "
 "the action token handler would be asked to start a fresh one by calling "
@@ -274,7 +237,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:99
 msgid ""
 "The token handler also determines via method `canUseTokenRepeatedly(token, "
 "context)` whether the token would be invalidated after it is used and "
@@ -285,7 +247,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:103
 msgid ""
 "Default implementation of most of the `ActionTokenHandler` methods is the "
 "`org.keycloak.authentication.actiontoken.AbstractActionTokenHander` abstract "
@@ -294,7 +255,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:107
 msgid ""
 "`org.keycloak.authentication.actiontoken.ActionTokenHandlerFactory` - "
 "factory that instantiates action token handler. Implementations have to "
@@ -303,7 +263,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:110
 msgid ""
 "Note that you have to register the custom `ActionTokenHandlerFactory` "
 "implementation as explained in the <<_providers,Service Provider "
@@ -311,7 +270,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:117
 msgid ""
 "If the action token you are implementing contains any custom fields that "
 "should be serializabled to JSON fields, you should consider implementing a "

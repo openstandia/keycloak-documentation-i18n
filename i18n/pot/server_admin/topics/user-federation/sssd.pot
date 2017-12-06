@@ -15,19 +15,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/mod-auth-mellon.adoc:174
-#: source/server_admin/topics/user-federation/sssd.adoc:151
 msgid "Click *Save*."
 msgstr ""
 
 #. type: Title ===
-#: source/server_admin/topics/user-federation/sssd.adoc:3
 #, no-wrap
 msgid "SSSD and FreeIPA Identity Management Integration"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:6
 msgid ""
 "{project_name} also comes with a built-in https://fedoraproject.org/wiki/"
 "Features/SSSD[SSSD] (System Security Services Daemon) plugin. SSSD is part "
@@ -40,7 +36,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:8
 msgid ""
 "SSSD also integrates with the http://www.freeipa.org/page/Main_Page[FreeIPA "
 "identity management (IdM)] server, providing authentication and access "
@@ -54,12 +49,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:10
 msgid "image:{project_images}/keycloak-sssd-freeipa-integration-overview.png[]"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:12
 msgid ""
 "Most of the communication between {project_name} and SSSD occurs through "
 "read-only D-Bus interfaces. For this reason, the only way to provision and "
@@ -69,7 +62,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:15
 msgid ""
 "Groups and roles are automatically registered, but not synchronized, so any "
 "changes made by the {project_name} administrator directly in {project_name} "
@@ -77,18 +69,15 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:17
 msgid "Information on how to configure the FreeIPA/IdM server follows."
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/user-federation/sssd.adoc:18
 #, no-wrap
 msgid "FreeIPA/IdM Server"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:21
 msgid ""
 "As a matter of simplicity, a https://www.freeipa.org/page/Docker[FreeIPA "
 "Docker image] already available is used. To set up a server, see the https://"
@@ -96,12 +85,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:23
 msgid "Running a FreeIPA server with Docker requires this command:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:28
 #, no-wrap
 msgid ""
 " docker run --name freeipa-server-container -it \\\n"
@@ -111,7 +98,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:30
 msgid ""
 "The parameter `-h` with `server.freeipa.local` represents the FreeIPA/IdM "
 "server hostname. Be sure to change `YOUR_PASSWORD` to a password of your "
@@ -119,67 +105,56 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:32
 msgid "After the container starts, change `/etc/hosts` to:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:34
 #, no-wrap
 msgid "  x.x.x.x     server.freeipa.local\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:36
 msgid "If you do not make this change, you must set up a DNS server."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:38
 msgid ""
 "So that the SSSD federation provider is started and running on "
 "{project_name} you must enroll your Linux machine in the IPA domain:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:40
 #, no-wrap
 msgid " ipa-client-install --mkhomedir -p admin -w password\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:42
 msgid ""
 "To ensure that everything is working as expected, on the client machine, run:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:44
 #, no-wrap
 msgid " kinit admin\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:46
 msgid ""
 "You should be prompted for the password. After that, you can add users to "
 "the IPA server using this command:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:48
 #, no-wrap
 msgid " $ ipa user-add john --first=John --last=Smith --email=john@smith.com --phone=042424242 --street=\"Testing street\" \\      --city=\"Testing city\" --state=\"Testing State\" --postalcode=0000000000\n"
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/user-federation/sssd.adoc:49
 #, no-wrap
 msgid "SSSD and D-Bus"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:52
 msgid ""
 "As mentioned previously, the federation provider obtains the data from SSSD "
 "using D-BUS and authentication occurs using http://tldp.org/HOWTO/User-"
@@ -187,49 +162,41 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:54
 msgid ""
 "First, you have to install the sssd-dbus RPM, which allows information from "
 "SSSD to be transmitted over the system bus."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:56
 #, no-wrap
 msgid "  $ sudo yum install sssd-dbus\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:60
 msgid ""
 "You must run the provisioning script available from the Keycloak "
 "distribution:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:62
 #, no-wrap
 msgid "  $ bin/federation-sssd-setup.sh\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:68
 msgid "You must run this provisioning script:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/user-federation/sssd.adoc:72
 #, no-wrap
 msgid "$ .../bin/federation-sssd-setup.sh\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:77
 msgid "This script makes the necessary changes to `/etc/sssd/sssd.conf`:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:88
 #, no-wrap
 msgid ""
 "  [domain/your-hostname.local]\n"
@@ -245,12 +212,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:90
 msgid "Also, a `keycloak` file is included under `/etc/pam.d/`:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:93
 #, no-wrap
 msgid ""
 "  auth    required   pam_sss.so\n"
@@ -258,18 +223,15 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:95
 msgid "Ensure everything is working as expected by running `dbus-send`:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:97
 #, no-wrap
 msgid "  sudo dbus-send --print-reply --system --dest=org.freedesktop.sssd.infopipe /org/freedesktop/sssd/infopipe org.freedesktop.sssd.infopipe.GetUserGroups string:john\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:99
 msgid ""
 "You should be able to see the user's group. If this command returns a "
 "timeout or an error, it means that the federation provider will also not be "
@@ -277,21 +239,18 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:101
 msgid ""
 "Most of the time this occurs because the machine was not enrolled in the "
 "FreeIPA IdM server or you do not have permission to access the SSSD service."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:103
 msgid ""
 "If you do not have permission, ensure that the user running {project_name} "
 "is included in the `/etc/sssd/sssd.conf` file in the following section:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:106
 #, no-wrap
 msgid ""
 "  [ifp]\n"
@@ -299,13 +258,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/user-federation/sssd.adoc:107
 #, no-wrap
 msgid "Enabling the SSSD Federation Provider"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:110
 msgid ""
 "{project_name} uses DBus-Java to communicate at a low level with D-Bus, "
 "which depends on the http://www.matthew.ath.cx/projects/java/[Unix Sockets "
@@ -313,7 +270,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:114
 msgid ""
 "An RPM for this library can be found in https://github.com/keycloak/libunix-"
 "dbus-java/releases[this repository]. Before installing it, be sure to check "
@@ -321,7 +277,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:122
 #, no-wrap
 msgid ""
 "  $ rpm -K libunix-dbus-java-0.8.0-1.fc24.x86_64.rpm\n"
@@ -334,77 +289,64 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:128
 msgid ""
 "Before enabling the SSSD Federation provider, you must install the RPM for "
 "this library:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:130
 #, no-wrap
 msgid "  $ sudo yum install rh-sso7-libunix-dbus-java\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:134
 msgid ""
 "For authentication with PAM {project_name} uses JNA. Be sure you have this "
 "package installed:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:136
 #, no-wrap
 msgid "  $ sudo yum install jna\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:138
 msgid "Use `sssctl user-checks` command to validate your setup:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:140
 #, no-wrap
 msgid "  $ sudo sssctl user-checks admin -s keycloak\n"
 msgstr ""
 
 #. type: Title ===
-#: source/server_admin/topics/user-federation/sssd.adoc:141
 #, no-wrap
 msgid "Configuring a Federated SSSD Store"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:144
 msgid "After installation, you need to configure a federated SSSD store."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:146
 msgid "To configure a federated SSSD store, complete the following steps:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:148
 msgid "Navigate to the Administration Console."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:149
 msgid "From the left menu, select *User Federation.*"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:150
 msgid ""
 "From the *Add Provider* dropdown list, select *sssd.* The sssd configuration "
 "page opens."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation/sssd.adoc:153
 msgid ""
 "Now you can authenticate against {project_name} using FreeIPA/IdM "
 "credentials."

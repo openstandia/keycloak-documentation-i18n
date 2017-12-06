@@ -23,9 +23,10 @@ else
     docker run --rm -it -v $(pwd):/build -w /build -u $UID:$GID openstandia/keycloak-documentation-i18n:po4a-patch po4a --no-translations --package-name="keycloak-documentation-i18n" --package-version=" " --copyright-holder="Nomura Research Institute, Ltd." --msgmerge-opt '--previous' $@ po4a.cfg
 fi
 
-# Remove 'POT-Creation-Date'
+# Remove 'POT-Creation-Date', 'PO-Revision-Date' and source position
 find i18n/po/ -type f -name "*.po" | xargs sed -i -e "/^\"POT-Creation-Date/d"
 find i18n/po/ -type f -name "*.po" | xargs sed -i -e "/^\"PO-Revision-Date/d"
 find i18n/pot/ -type f -name "*.pot" | xargs sed -i -e "/^\"POT-Creation-Date/d"
 find i18n/pot/ -type f -name "*.pot" | xargs sed -i -e "/^\"PO-Revision-Date/d"
+find i18n/pot/ -type f -name "*.pot" | xargs sed -i -e "/^#: source\//d"
 

@@ -15,36 +15,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ###
-#: source/server_installation/topics/clustering/troubleshooting.adoc:2
-#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:391
-#: source/securing_apps/topics/saml/java/debugging.adoc:2
-#: source/server_admin/topics/authentication/kerberos.adoc:191
-#: source/server_admin/topics/authentication/x509.adoc:201
 #, no-wrap
 msgid "Troubleshooting"
 msgstr ""
 
 #. type: Block title
-#: source/server_admin/topics/authentication/flows.adoc:11
-#: source/server_admin/topics/authentication/kerberos.adoc:88
 #, no-wrap
 msgid "Browser Flow"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:13
-#: source/server_admin/topics/authentication/kerberos.adoc:90
 msgid "image:{project_images}/browser-flow.png[]"
 msgstr ""
 
 #. type: Title ===
-#: source/server_admin/topics/authentication/kerberos.adoc:3
 #, no-wrap
 msgid "Kerberos"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:9
 msgid ""
 "{project_name} supports login with a Kerberos ticket through the SPNEGO "
 "protocol.  SPNEGO (Simple and Protected GSSAPI Negotiation Mechanism) is "
@@ -55,38 +44,32 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:11
 msgid "A typical use case for web authentication is the following:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:13
 msgid ""
 "User logs into his desktop (Such as a Windows machine in Active Directory "
 "domain or Linux machine with Kerberos integration enabled)."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:14
 msgid ""
 "User then uses his browser (IE/Firefox/Chrome) to access a web application "
 "secured by {project_name}."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:15
 msgid "Application redirects to {project_name} login."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:16
 msgid ""
 "{project_name} renders HTML login screen together with status 401 and HTTP "
 "header `WWW-Authenticate: Negotiate`"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:18
 msgid ""
 "In case that the browser has Kerberos ticket from desktop login, it "
 "transfers the desktop sign on information to the {project_name} in header "
@@ -95,7 +78,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:21
 msgid ""
 "{project_name} validates token from the browser and authenticates the user.  "
 "It provisions user data from LDAP (in case of LDAPFederationProvider with "
@@ -104,7 +86,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:25
 msgid ""
 "{project_name} returns back to the application.  Communication between "
 "{project_name} and application happens through OpenID Connect or SAML "
@@ -114,37 +95,29 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:27
 msgid "For setup there are 3 main parts:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:29
 msgid "Setup and configuration of Kerberos server (KDC)"
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/authentication/kerberos.adoc:30
-#: source/server_admin/topics/authentication/kerberos.adoc:64
 #, no-wrap
 msgid "Setup and configuration of {project_name} server"
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/authentication/kerberos.adoc:31
-#: source/server_admin/topics/authentication/kerberos.adoc:118
 #, no-wrap
 msgid "Setup and configuration of client machines"
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/authentication/kerberos.adoc:32
 #, no-wrap
 msgid "Setup of Kerberos server"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:37
 msgid ""
 "This is platform dependent.  Exact steps depend on your OS and the Kerberos "
 "vendor you're going to use.  Consult Windows Active Directory, MIT Kerberos "
@@ -153,12 +126,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:39
 msgid "At least you will need to:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:42
 msgid ""
 "Add some user principals to your Kerberos database.  You can also integrate "
 "your Kerberos with LDAP, which means that user accounts will be provisioned "
@@ -166,7 +137,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:45
 msgid ""
 "Add service principal for \"HTTP\" service.  For example if your "
 "{project_name} server will be running on `www.mydomain.org` you may need to "
@@ -175,27 +145,23 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:48
 msgid ""
 "For example on MIT Kerberos you can run a \"kadmin\" session.  If you are on "
 "the same machine where is MIT Kerberos, you can simply use the command:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:52
 #, no-wrap
 msgid "sudo kadmin.local\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:54
 msgid ""
 "Then add HTTP principal and export his key to a keytab file with the "
 "commands like:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:60
 #, no-wrap
 msgid ""
 "addprinc -randkey HTTP/www.mydomain.org@MYDOMAIN.ORG\n"
@@ -203,14 +169,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:63
 msgid ""
 "The Keytab file `/tmp/http.keytab` will need to be accessible on the host "
 "where {project_name} server will be running."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:70
 msgid ""
 "You need to install a kerberos client on your machine.  This is also "
 "platform dependent.  If you are on Fedora, Ubuntu or RHEL, you can install "
@@ -222,7 +186,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:76
 #, no-wrap
 msgid ""
 "[domain_realm]\n"
@@ -231,7 +194,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:82
 msgid ""
 "Next you need to export the keytab file with the HTTP principal and make "
 "sure the file is accessible to the process under which {project_name} server "
@@ -243,13 +205,11 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/server_admin/topics/authentication/kerberos.adoc:83
 #, no-wrap
 msgid "Enable SPNEGO Processing"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:87
 msgid ""
 "{project_name} does not have the SPNEGO protocol support turned on by "
 "default.  So, you have to go to the <<_authentication-flows, browser flow>> "
@@ -257,7 +217,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:94
 msgid ""
 "Switch the `Kerberos` requirement from _disabled_ to either _alternative_ or "
 "_required_.  _Alternative_ basically means that Kerberos is optional.  If "
@@ -268,13 +227,11 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/server_admin/topics/authentication/kerberos.adoc:95
 #, no-wrap
 msgid "Configure Kerberos User Storage Federation Provider"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:99
 msgid ""
 "Now that the SPNEGO protocol is turned on at the authentication server, "
 "you'll need to configure how {project_name} interprets the Kerberos ticket.  "
@@ -284,7 +241,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:102
 msgid ""
 "If you want to authenticate with Kerberos backed by an LDAP server, you have "
 "to first configure the <<_ldap, LDAP Federation Provider>>.  If you look at "
@@ -293,18 +249,15 @@ msgid ""
 msgstr ""
 
 #. type: Block title
-#: source/server_admin/topics/authentication/kerberos.adoc:103
 #, no-wrap
 msgid "LDAP Kerberos Integration"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:105
 msgid "image:{project_images}/ldap-kerberos.png[]"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:108
 msgid ""
 "Turning on the switch `Allow Kerberos authentication` will make "
 "{project_name} use the Kerberos principal to lookup information about the "
@@ -312,7 +265,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:111
 msgid ""
 "If your Kerberos solution is not backed by an LDAP server, you have to use "
 "the `Kerberos` User Storage Federation Provider.  Go to the `User "
@@ -321,18 +273,15 @@ msgid ""
 msgstr ""
 
 #. type: Block title
-#: source/server_admin/topics/authentication/kerberos.adoc:112
 #, no-wrap
 msgid "Kerberos User Storage Provider"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:114
 msgid "image:{project_images}/kerberos-provider.png[]"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:117
 msgid ""
 "This provider parses the Kerberos ticket for simple principal information "
 "and does a small import into the local {project_name} database.  User "
@@ -341,7 +290,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:124
 msgid ""
 "Clients need to install kerberos client and setup krb5.conf as described "
 "above.  Additionally they need to enable SPNEGO login support in their "
@@ -352,7 +300,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:126
 msgid ""
 "In a Windows domain, clients usually don't need to configure anything "
 "special as IE is already able to participate in SPNEGO authentication for "
@@ -360,25 +307,21 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/authentication/kerberos.adoc:128
 #, no-wrap
 msgid "Example setups"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:131
 msgid ""
 "For easier testing with Kerberos, we provided some example setups to test."
 msgstr ""
 
 #. type: Title =====
-#: source/server_admin/topics/authentication/kerberos.adoc:132
 #, no-wrap
 msgid "{project_name} and FreeIPA docker image"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:138
 #, no-wrap
 msgid ""
 "Once you install https://www.docker.com/[docker], you can run docker image with http://www.freeipa.org/page/Main_Page[FreeIPA]         server installed.\n"
@@ -388,13 +331,11 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/server_admin/topics/authentication/kerberos.adoc:139
 #, no-wrap
 msgid "ApacheDS testing Kerberos server"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:144
 msgid ""
 "For quick testing and unit tests, we use a very simple http://directory."
 "apache.org/apacheds/[ApacheDS] Kerberos server.  You need to build "
@@ -404,13 +345,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/authentication/kerberos.adoc:146
 #, no-wrap
 msgid "Credential Delegation"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:155
 msgid ""
 "Kerberos 5 supports the concept of credential delegation.  In this scenario, "
 "your applications may want access to the Kerberos ticket so that they can re-"
@@ -426,7 +365,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:159
 msgid ""
 "Applications will need to deserialize the claim it receives from "
 "{project_name} before it can use it to make GSS calls against other "
@@ -437,7 +375,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:165
 #, no-wrap
 msgid ""
 "// Obtain accessToken in your application.\n"
@@ -446,7 +383,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:169
 #, no-wrap
 msgid ""
 "// Retrieve kerberos credential from accessToken and deserialize it\n"
@@ -455,7 +391,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:172
 #, no-wrap
 msgid ""
 "GSSCredential deserializedGssCredential = org.keycloak.common.util.KerberosSerializationUtils.\n"
@@ -463,7 +398,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:176
 #, no-wrap
 msgid ""
 "// Create GSSContext to call other kerberos-secured services\n"
@@ -472,7 +406,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:182
 msgid ""
 "We have an example, that shows this in detail.  It's in `examples/kerberos` "
 "in the {project_name} example distribution or demo distribution download.  "
@@ -481,14 +414,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:186
 msgid ""
 "Note that you also need to configure `forwardable` kerberos tickets in `krb5."
 "conf` file and add support for delegated credentials to your browser."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:190
 #, no-wrap
 msgid ""
 "Credential delegation has some security implications so only use it if you really need it.\n"
@@ -497,21 +428,18 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:194
 msgid ""
 "If you have issues, we recommend that you enable additional logging to debug "
 "the problem:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:196
 msgid ""
 "Enable `Debug` flag in admin console for Kerberos or LDAP federation "
 "providers"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:197
 msgid ""
 "Enable TRACE logging for category `org.keycloak` in logging section of "
 "`standalone/configuration/standalone.xml` to receive more info `standalone/"
@@ -519,7 +447,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:197
 msgid ""
 "Add system properties `-Dsun.security.krb5.debug=true` and `-Dsun.security."
 "spnego.debug=true`"

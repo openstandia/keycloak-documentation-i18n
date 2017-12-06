@@ -15,21 +15,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:76
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:71
-#: source/securing_apps/topics/oidc/java/fuse/servlet-whiteboard.adoc:60
 #, no-wrap
 msgid "</blueprint>\n"
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:3
 #, no-wrap
 msgid "Securing an Apache CXF Endpoint on the Default Jetty Engine"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:6
 msgid ""
 "Some services automatically come with deployed servlets on startup. One such "
 "service is the CXF servlet running in the $$http://localhost:8181/cxf$$ "
@@ -40,7 +35,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:8
 msgid ""
 "The configuration file `OSGI-INF/blueprint/blueprint.xml` inside your "
 "application might resemble the one below. Note that it adds the JAX-RS "
@@ -49,7 +43,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:18
 #, no-wrap
 msgid ""
 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -62,19 +55,16 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:20
 #, no-wrap
 msgid "    <!-- JAXRS Application -->\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:22
 #, no-wrap
 msgid "    <bean id=\"customerBean\" class=\"org.keycloak.example.rs.CxfCustomerService\" />\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:31
 #, no-wrap
 msgid ""
 "    <jaxrs:server id=\"cxfJaxrsServer\" address=\"/customerservice\">\n"
@@ -88,13 +78,11 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:34
 #, no-wrap
 msgid "    <!-- Securing of whole /cxf context by unregister default cxf servlet from paxweb and re-register with applied security constraints -->\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:50
 #, no-wrap
 msgid ""
 "    <bean id=\"cxfConstraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
@@ -115,7 +103,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:61
 #, no-wrap
 msgid ""
 "    <bean id=\"cxfKeycloakPaxWebIntegration\" class=\"org.keycloak.adapters.osgi.PaxWebIntegrationService\"\n"
@@ -131,7 +118,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:69
 #, no-wrap
 msgid ""
 "    <bean id=\"defaultCxfReregistration\" class=\"org.keycloak.adapters.osgi.ServletReregistrationService\" depends-on=\"cxfKeycloakPaxWebIntegration\"\n"
@@ -144,7 +130,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:75
 msgid ""
 "As a result, all other CXF services running on the default CXF HTTP "
 "destination are also secured. Similarly, when the application is undeployed, "
@@ -156,7 +141,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:78
 msgid ""
 "The `WEB-INF` directory might need to be inside your project (even if your "
 "project is not a web application). You might also need to edit the `/WEB-INF/"
@@ -167,13 +151,11 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:80
 msgid ""
 "The `Import-Package` in `META-INF/MANIFEST.MF` must contain these imports:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:93
 #, no-wrap
 msgid ""
 "META-INF.cxf;version=\"[2.7,3.2)\",\n"

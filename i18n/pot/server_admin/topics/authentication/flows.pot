@@ -15,13 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ===
-#: source/server_admin/topics/authentication/flows.adoc:3
 #, no-wrap
 msgid "Authentication Flows"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:10
 msgid ""
 "An _authentication flow_ is a container for all authentications, screens, "
 "and actions that must happen during login, registration, and other "
@@ -33,27 +31,21 @@ msgid ""
 msgstr ""
 
 #. type: Block title
-#: source/server_admin/topics/authentication/flows.adoc:11
-#: source/server_admin/topics/authentication/kerberos.adoc:88
 #, no-wrap
 msgid "Browser Flow"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:13
-#: source/server_admin/topics/authentication/kerberos.adoc:90
 msgid "image:{project_images}/browser-flow.png[]"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:16
 msgid ""
 "If you hover over the tooltip (the tiny question mark) to the right of the "
 "flow selection list, this will describe what the flow is and does."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:21
 msgid ""
 "The `Auth Type` column is the name of authentication or action that will be "
 "executed.  If an authentication is indented this means it is in a sub-flow "
@@ -63,13 +55,11 @@ msgid ""
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:22
 #, no-wrap
 msgid "Required"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:27
 msgid ""
 "This authentication execution must execute successfully.  If the user "
 "doesn't have that type of authentication mechanism configured and there is a "
@@ -80,51 +70,43 @@ msgid ""
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:27
 #, no-wrap
 msgid "Optional"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:29
 msgid ""
 "If the user has the authentication type configured, it will be executed.  "
 "Otherwise, it will be ignored."
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:29
 #, no-wrap
 msgid "Disabled"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:31
 msgid "If disabled, the authentication type is not executed."
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:31
 #, no-wrap
 msgid "Alternative"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:33
 msgid ""
 "This means that at least one alternative authentication type must execute "
 "successfully at that level of the flow."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:35
 msgid ""
 "This is better described in an example.  Let's walk through the `browser` "
 "authentication flow."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:39
 msgid ""
 "The first authentication type is `Cookie`.  When a user successfully logs in "
 "for the first time, a session cookie is set.  If this cookie has already "
@@ -135,14 +117,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:40
 msgid ""
 "Next the flow looks at the Kerberos execution.  This authenticator is "
 "disabled by default and will be skipped."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:43
 msgid ""
 "The next execution is a subflow called Forms.  Since this subflow is marked "
 "as _alternative_ it will not be executed if the `Cookie` authentication type "
@@ -152,7 +132,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:45
 msgid ""
 "The first execution in the Forms subflow is the Username Password Form.  "
 "This authentication type renders the username and password page.  It is "
@@ -160,7 +139,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:48
 msgid ""
 "The next execution is the OTP Form.  This is marked as _optional_.  If the "
 "user has OTP set up, then this authentication type must run and be "
@@ -169,24 +147,20 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_admin/topics/authentication/flows.adoc:50
 #, no-wrap
 msgid "Executions"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:53
 msgid "Executions can be used"
 msgstr ""
 
 #. type: Block title
-#: source/server_admin/topics/authentication/flows.adoc:54
 #, no-wrap
 msgid "Script Authenticator"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:59
 msgid ""
 "A _script_ authenticator allows to define custom authentication logic via "
 "JavaScript.  Custom authenticators. Authentication scripts must at least "
@@ -196,7 +170,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:62
 msgid ""
 "Custom `Authenticator`'s should at least provide the `authenticate(..)` "
 "function.  The following script `javax.script.Bindings` are available for "
@@ -204,109 +177,90 @@ msgid ""
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:63
 #, no-wrap
 msgid "`script`"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:65
 msgid "the `ScriptModel` to access script metadata"
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:65
 #, no-wrap
 msgid "`realm`"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:67
 msgid "the `RealmModel`"
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:67
 #, no-wrap
 msgid "`user`"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:69
 msgid "the current `UserModel`"
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:69
 #, no-wrap
 msgid "`session`"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:71
 msgid "the active `KeycloakSession`"
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:71
 #, no-wrap
 msgid "`authenticationSession`"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:73
 msgid "the current `AuthenticationSessionModel`"
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:73
 #, no-wrap
 msgid "`httpRequest`"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:75
 msgid "the current `org.jboss.resteasy.spi.HttpRequest`"
 msgstr ""
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/flows.adoc:75
 #, no-wrap
 msgid "`LOG`"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:77
 msgid "a `org.jboss.logging.Logger` scoped to `ScriptBasedAuthenticator`"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:80
 msgid ""
 "Note that additional context information can be extracted from the `context` "
 "argument passed to the `authenticate(context)` `action(context)` function."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/flows.adoc:84
 #, no-wrap
 msgid "AuthenticationFlowError = Java.type(\"org.keycloak.authentication.AuthenticationFlowError\");\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/flows.adoc:86
 #, no-wrap
 msgid "function authenticate(context) {\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/flows.adoc:88
 #, no-wrap
 msgid "  LOG.info(script.name + \" --> trace auth for: \" + user.username);\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/flows.adoc:92
 #, no-wrap
 msgid ""
 "  if (   user.username === \"tester\"\n"
@@ -315,7 +269,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/flows.adoc:96
 #, no-wrap
 msgid ""
 "      context.failure(AuthenticationFlowError.INVALID_USER);\n"
@@ -324,7 +277,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/flows.adoc:99
 #, no-wrap
 msgid ""
 "  context.success();\n"

@@ -15,14 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/java/logout.adoc:1
-#: source/securing_apps/topics/saml/java/logout.adoc:1
 #, no-wrap
 msgid "Logout"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:7
 msgid ""
 "There are multiple ways you can logout from a web application.  For Java EE "
 "servlet containers, you can call `HttpServletRequest.logout()`. For any "
@@ -33,13 +30,11 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/saml/java/logout.adoc:9
 #, no-wrap
 msgid "Logout in Clustered Environment"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:15
 msgid ""
 "Internally, the SAML adapter stores a mapping between the SAML session "
 "index, principal name (when known), and HTTP session ID.  This mapping can "
@@ -50,19 +45,16 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:17
 msgid ""
 "To enable the functionality, add the following section to your `/WEB_INF/web."
 "xml` file:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:19
 msgid "For EAP 7, Wildfly 10/11:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/saml/java/logout.adoc:26
 #, no-wrap
 msgid ""
 "<context-param>\n"
@@ -72,12 +64,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:29
 msgid "For EAP 6:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/saml/java/logout.adoc:36
 #, no-wrap
 msgid ""
 "<context-param>\n"
@@ -87,7 +77,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:43
 msgid ""
 "If the session cache of the deployment is named `_deployment-cache_`, the "
 "cache used for SAML mapping will be named as `_deployment-cache_.ssoCache`. "
@@ -99,7 +88,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:46
 msgid ""
 "By default, the configuration of the SAML mapping cache will be derived from "
 "session cache. The configuration can be manually overridden in cache "
@@ -107,7 +95,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:50
 msgid ""
 "Currently, to provide reliable service, it is recommended to use replicated "
 "cache for the SAML session cache.  Using distributed cache may lead to "
@@ -117,46 +104,39 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/saml/java/logout.adoc:52
 #, no-wrap
 msgid "Logout in Cross DC Scenario"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:55
 msgid ""
 "The cross DC scenario only applies to Wildfly 10 and higher, and EAP 7 and "
 "higher."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:57
 msgid ""
 "Special handling is needed for handling sessions that span multiple data "
 "centers. Imagine the following scenario:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:59
 msgid "Login requests are handled within cluster in data center 1."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:61
 msgid ""
 "Admin issues logout request for a particular SAML session, the request lands "
 "in data center 2."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:64
 msgid ""
 "The data center 2 has to log out all sessions that are present in data "
 "center 1 (and all other data centers that share HTTP sessions)."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:68
 msgid ""
 "To cover this case, the SAML session cache described "
 "<<_saml_logout_in_cluster,above>> needs to be replicated not only within "
@@ -168,19 +148,16 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:70
 msgid "A cache has to be added to the standalone Infinispan/JDG server."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:72
 msgid ""
 "The cache from previous item has to be added as a remote store for the "
 "respective SAML session cache."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/logout.adoc:74
 msgid ""
 "Once remote store is found to be present on SAML session cache during "
 "deployment, it is watched for changes and the local SAML session cache is "

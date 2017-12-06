@@ -15,29 +15,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Block title
-#: source/server_development/topics/user-storage/augmenting.adoc:45
-#: source/server_development/topics/user-storage/import.adoc:29
-#: source/server_development/topics/user-storage/registration-query.adoc:13
-#: source/server_development/topics/user-storage/registration-query.adoc:31
-#: source/server_development/topics/user-storage/registration-query.adoc:63
-#: source/server_development/topics/user-storage/registration-query.adoc:79
-#: source/server_development/topics/user-storage/registration-query.adoc:97
-#: source/server_development/topics/user-storage/registration-query.adoc:130
-#: source/server_development/topics/user-storage/registration-query.adoc:161
-#: source/server_development/topics/user-storage/registration-query.adoc:189
-#: source/server_development/topics/user-storage/registration-query.adoc:210
 #, no-wrap
 msgid "PropertyFileUserStorageProvider"
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/user-storage/import.adoc:2
 #, no-wrap
 msgid "Import Implementation Strategy"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:7
 msgid ""
 "When implementing a user storage provider, there's another strategy you can "
 "take. Instead of using user federated storage, you can create a user locally "
@@ -47,7 +34,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:10
 msgid ""
 "{project_name} basically becomes a persistence user cache for your external "
 "store. Once the user is imported you'll no longer hit the external store "
@@ -55,7 +41,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:13
 msgid ""
 "If you are moving to {project_name} as your official user store and "
 "deprecating the old external store, you can slowly migrate applications to "
@@ -64,14 +49,11 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:15
-#: source/server_development/topics/user-storage/migration.adoc:27
 msgid ""
 "There are some obvious disadvantages though to using an import strategy:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:19
 msgid ""
 "Looking up a user for the first time will require multiple updates to "
 "{project_name} database. This can be a big performance loss under load and "
@@ -81,8 +63,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:21
-#: source/server_development/topics/user-storage/migration.adoc:33
 msgid ""
 "With the import approach, you have to keep local keycloak storage and "
 "external storage in sync. The User Storage SPI has capability interfaces "
@@ -91,7 +71,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:25
 msgid ""
 "To implement the import strategy you simply check to see first if the user "
 "has been imported locally. If so return the local user, if not create the "
@@ -100,7 +79,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:28
 msgid ""
 "This will be a bit contrived, but we can extend our "
 "`PropertyFileUserStorageProvider` to take this approach. We begin first by "
@@ -108,7 +86,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/import.adoc:50
 #, no-wrap
 msgid ""
 "    protected UserModel createAdapter(RealmModel realm, String username) {\n"
@@ -132,7 +109,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:56
 msgid ""
 "In this method we call the `KeycloakSession.userLocalStorage()` method to "
 "obtain a reference to local {project_name} user storage. We see if the user "
@@ -142,7 +118,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:59
 #, no-wrap
 msgid ""
 "When a user storage provider is removed, any user imported by it will also be removed.  This is one of the\n"
@@ -150,7 +125,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:64
 msgid ""
 "Another thing to note is that if a local user is linked, your storage "
 "provider will still be delegated to for methods that it implements from the "
@@ -160,7 +134,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:71
 msgid ""
 "Also notice that we are proxying the local user using the `org.keycloak."
 "models.utils.UserModelDelegate' class.  This class is an implementation of "
@@ -174,7 +147,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:75
 #, no-wrap
 msgid ""
 "If your provider is implementing the `UserRegistrationProvider` interface, your `removeUser()` method does not\n"
@@ -183,13 +155,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/import.adoc:77
 #, no-wrap
 msgid "ImportedUserValidation Interface"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:83
 msgid ""
 "If you remember earlier in this chapter, we discussed how querying for a "
 "user worked.  Local storage is queried first, if the user is found there, "
@@ -200,7 +170,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/import.adoc:97
 #, no-wrap
 msgid ""
 "package org.keycloak.storage.user;\n"
@@ -217,7 +186,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:103
 msgid ""
 "Whenever a linked local user is loaded, if the user storage provider class "
 "implements this interface, then the `validate()` method is called. Here you "
@@ -228,13 +196,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/import.adoc:104
 #, no-wrap
 msgid "ImportSynchronization Interface"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:109
 msgid ""
 "With the import strategy you can see that it is possible for the local user "
 "copy to get out of sync with external storage. For example, maybe a user has "
@@ -244,13 +210,11 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/import.adoc:113
 #, no-wrap
 msgid "package org.keycloak.storage.user;\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/import.adoc:118
 #, no-wrap
 msgid ""
 "public interface ImportSynchronization {\n"
@@ -260,7 +224,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:121
 msgid ""
 "This interface is implemented by the provider factory. Once this interface "
 "is implemented by the provider factory, the administration console "

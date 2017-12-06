@@ -14,22 +14,50 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Plain text
+msgid ""
+"With Red Hat Enterprise Linux 7, the term channel was replaced with the term "
+"repository. In these instructions only the term repository is used."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Prerequisites"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Ensure that your Red Hat Enterprise Linux system is registered to your "
+"account using Red Hat Subscription Manager. For more information see the "
+"link:https://access.redhat.com/documentation/en-us/"
+"red_hat_subscription_management/1/html-single/quick_registration_for_rhel/"
+"index[Red Hat Subscription Management documentation]."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If you are already subscribed to another JBoss EAP repository, you must "
+"unsubscribe from that repository first."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Using Red Hat Subscription Manager, subscribe to the JBoss EAP 7.0 "
+"repository using the following command. Replace <RHEL_VERSION> with either 6 "
+"or 7 depending on your Red Hat Enterprise Linux version."
+msgstr ""
+
 #. type: Title ====
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:4
-#: source/securing_apps/topics/saml/java/saml-jboss-adapter.adoc:4
 #, no-wrap
 msgid "JBoss EAP/Wildfly Adapter"
 msgstr ""
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:7
-#: source/securing_apps/topics/saml/java/saml-jboss-adapter.adoc:7
 #, no-wrap
 msgid "JBoss EAP Adapter"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:13
 msgid ""
 "To be able to secure WAR apps deployed on JBoss EAP, WildFly or JBoss AS, "
 "you must install and configure the {project_name} adapter subsystem. You "
@@ -37,7 +65,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:17
 msgid ""
 "To be able to secure WAR apps deployed on JBoss EAP, you must install and "
 "configure the {project_name} adapter subsystem. You then have two options to "
@@ -45,14 +72,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:20
 msgid ""
 "You can provide an adapter config file in your WAR and change the auth-"
 "method to KEYCLOAK within web.xml."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:23
 msgid ""
 "Alternatively, you don't have to modify your WAR at all and you can secure "
 "it via the {project_name} adapter subsystem configuration in `standalone."
@@ -60,25 +85,21 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:25
 #, no-wrap
 msgid "Installing the adapter"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:28
 msgid ""
 "Adapters are available as a separate archive depending on what server "
 "version you are using."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:31
 msgid "Install on Wildfly 9, 10 or 11:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:36
 #, no-wrap
 msgid ""
 "$ cd $WILDFLY_HOME\n"
@@ -86,12 +107,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:39
 msgid "Install on Wildfly 8:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:44
 #, no-wrap
 msgid ""
 "$ cd $WILDFLY_HOME\n"
@@ -99,13 +118,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:47
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:73
 msgid "Install on JBoss EAP 7:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:52
 #, no-wrap
 msgid ""
 "$ cd $EAP_HOME\n"
@@ -113,13 +129,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:55
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:81
 msgid "Install on JBoss EAP 6:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:60
 #, no-wrap
 msgid ""
 "$ cd $EAP_HOME\n"
@@ -127,28 +140,109 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:63
 msgid "Install on JBoss AS 7.1:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:68
 #, no-wrap
 msgid ""
 "$ cd $JBOSS_HOME\n"
 "$ unzip keycloak-as7-adapter-dist-{project_version}.zip\n"
 msgstr ""
 
+#. type: Plain text
+msgid ""
+"You can install the EAP 7 adapters either by unzipping a ZIP file, or by "
+"using an RPM."
+msgstr ""
+
+#. type: Plain text
+msgid "Install the EAP 7 Adapters from a ZIP File:"
+msgstr ""
+
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:78
 #, no-wrap
 msgid ""
 "$ cd $EAP_HOME\n"
 "$ unzip rh-sso-{project_version}-eap7-adapter.zip\n"
 msgstr ""
 
+#. type: Plain text
+msgid "Install the EAP 7 Adapters from an RPM:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You must subscribe to the JBoss EAP 7.0 repository before you can install "
+"the EAP 7 adapters from an RPM."
+msgstr ""
+
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:86
+#, no-wrap
+msgid "$ sudo subscription-manager repos --enable=jb-eap-7-for-rhel-<RHEL_VERSION>-server-rpms\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Install the EAP 7 adapters for OIDC using the following command:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ sudo yum install eap7-keycloak-adapter\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Install the EAP 7 adapters for SAML using the following command:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ sudo yum install eap7-keycloak-saml-adapter\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The default EAP_HOME path for the RPM installation is /opt/rh/eap7/root/usr/"
+"share/wildfly."
+msgstr ""
+
+#. type: Plain text
+msgid "Run the appropriate module installation script."
+msgstr ""
+
+#. type: Plain text
+msgid "For the OIDC module, enter the following command:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ {EAP_HOME}/bin/jboss-cli.sh -c --file=${EAP_HOME}/bin/adapter-install.cli\n"
+msgstr ""
+
+#. type: Plain text
+msgid "For the SAML module, enter the following command:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ {EAP_HOME}/bin/jboss-cli.sh -c --file=${EAP_HOME}/bin/adapter-install-saml.cli\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Your installation is complete."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You can install the EAP 6 adapters either by unzipping a ZIP file, or by "
+"using an RPM."
+msgstr ""
+
+#. type: Plain text
+msgid "Install the EAP 6 Adapters from a ZIP File:"
+msgstr ""
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
 "$ cd $EAP_HOME\n"
@@ -156,7 +250,52 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:91
+msgid "Install the EAP 6 Adapters from an RPM:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You must subscribe to the JBoss EAP 6.0 repository before you can install "
+"the EAP 6 adapters from an RPM."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Using Red Hat Subscription Manager, subscribe to the JBoss EAP 6.0 "
+"repository using the following command. Replace <RHEL_VERSION> with either 6 "
+"or 7 depending on your Red Hat Enterprise Linux version."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ sudo subscription-manager repos --enable=jb-eap-6-for-rhel-<RHEL_VERSION>-server-rpms\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Install the EAP 6 adapters for OIDC using the following command:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ sudo yum install eap6-keycloak-adapter\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Install the EAP 6 adapters for SAML using the following command:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ sudo yum install eap6-keycloak-saml-adapter\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The default EAP_HOME path for the RPM installation is /opt/rh/eap6/root/usr/"
+"share/wildfly."
+msgstr ""
+
+#. type: Plain text
 msgid ""
 "This ZIP archive contains JBoss Modules specific to the {project_name} "
 "adapter. It also contains JBoss CLI scripts to configure the adapter "
@@ -164,93 +303,72 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:93
 msgid ""
 "To configure the adapter subsystem if the server is not running execute:"
 msgstr ""
 
 #. type: Block title
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:95
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:113
-#: source/securing_apps/topics/saml/java/jboss-adapter/jboss_adapter_installation.adoc:56
 #, no-wrap
 msgid "Wildfly 11"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:99
 #, no-wrap
 msgid "$ ./bin/jboss-cli.sh --file=adapter-elytron-install-offline.cli\n"
 msgstr ""
 
 #. type: Block title
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:102
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:120
-#: source/securing_apps/topics/saml/java/jboss-adapter/jboss_adapter_installation.adoc:63
 #, no-wrap
 msgid "Any other server but Wildfly 11"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:106
 #, no-wrap
 msgid "$ ./bin/jboss-cli.sh --file=adapter-install-offline.cli\n"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:109
 msgid "The offline script is not available for JBoss EAP 6"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:111
 msgid "Alternatively, if the server is running execute:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:117
 #, no-wrap
 msgid "$ ./bin/jboss-cli.sh --file=adapter-elytron-install.cli\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:124
 #, no-wrap
 msgid "$ ./bin/jboss-cli.sh --file=adapter-install.cli\n"
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:126
-#: source/securing_apps/topics/oidc/java/jetty8-adapter.adoc:43
-#: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:35
-#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:31
 #, no-wrap
 msgid "Required Per WAR Configuration"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:129
 msgid ""
 "This section describes how to secure a WAR directly by adding configuration "
 "and editing files within your WAR package."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:131
 msgid ""
 "The first thing you must do is create a `keycloak.json` adapter "
 "configuration file within the `WEB-INF` directory of your WAR."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:133
 msgid ""
 "The format of this configuration file is described in the "
 "<<_java_adapter_config,Java adapter configuration>> section."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:136
 msgid ""
 "Next you must set the `auth-method` to `KEYCLOAK` in `web.xml`.  You also "
 "have to use standard servlet security to specify role-base constraints on "
@@ -258,19 +376,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:138
 msgid "Here's an example:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:146
-#: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:118
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:18
-#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:63
-#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_per_war_config.adoc:36
-#: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:24
-#: source/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_per_war_config.adoc:28
-#: source/securing_apps/topics/saml/java/jboss-adapter/required_per_war_configuration.adoc:20
 #, no-wrap
 msgid ""
 "<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
@@ -280,14 +389,11 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:148
 #, no-wrap
 msgid "    <module-name>application</module-name>\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:173
-#: source/securing_apps/topics/saml/java/jboss-adapter/required_per_war_configuration.adoc:47
 #, no-wrap
 msgid ""
 "    <security-constraint>\n"
@@ -317,7 +423,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:178
 #, no-wrap
 msgid ""
 "    <login-config>\n"
@@ -327,13 +432,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:186
-#: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:146
-#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:88
-#: source/securing_apps/topics/oidc/java/fuse/classic-war.adoc:50
-#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_per_war_config.adoc:64
-#: source/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_per_war_config.adoc:53
-#: source/securing_apps/topics/saml/java/jboss-adapter/required_per_war_configuration.adoc:60
 #, no-wrap
 msgid ""
 "    <security-role>\n"
@@ -346,13 +444,11 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:188
 #, no-wrap
 msgid "Securing WARs via Adapter Subsystem"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:194
 msgid ""
 "You do not have to modify your WAR to secure it with {project_name}. Instead "
 "you can externally secure it via the {project_name} Adapter Subsystem.  "
@@ -364,7 +460,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:200
 #, no-wrap
 msgid ""
 "<extensions>\n"
@@ -373,7 +468,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:212
 #, no-wrap
 msgid ""
 "<profile>\n"
@@ -390,7 +484,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:216
 msgid ""
 "The `secure-deployment` `name` attribute identifies the WAR you want to "
 "secure.  Its value is the `module-name` defined in `web.xml` with `.war` "
@@ -400,12 +493,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:218
 msgid "The exception is the `credential` element."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:221
 msgid ""
 "To make it easier for you, you can go to the {project_name} Administration "
 "Console and go to the Client/Installation tab of the application this WAR is "
@@ -413,14 +504,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:223
 msgid ""
 "If you have multiple deployments secured by the same realm you can share the "
 "realm configuration in a separate element. For example:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:247
 #, no-wrap
 msgid ""
 "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\">\n"
@@ -447,13 +536,11 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:250
 #, no-wrap
 msgid "Security Domain"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:254
 msgid ""
 "To propagate the security context to the EJB tier you need to configure it "
 "to use the \"keycloak\" security domain. This can be achieved with the "
@@ -461,7 +548,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:260
 #, no-wrap
 msgid ""
 "import org.jboss.ejb3.annotation.SecurityDomain;\n"
@@ -469,7 +555,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:264
 #, no-wrap
 msgid ""
 "@Stateless\n"
@@ -478,7 +563,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:270
 #, no-wrap
 msgid ""
 "    @RolesAllowed(\"user\")\n"

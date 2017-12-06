@@ -15,50 +15,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ==
-#: source/upgrading/topics/install_new_version.adoc:3
 #, no-wrap
 msgid "Upgrading {project_name} server"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:6
 msgid ""
 "It is important that you upgrade {project_name} server before upgrading the "
 "adapters."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:8
 msgid "To upgrade {project_name} server, complete the following steps:"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:10
-#: source/upgrading/topics/prep_migration.adoc:10
 msgid ""
 "Prior to applying the upgrade, handle any open transactions and delete the "
 "data/tx-object-store/ transaction directory."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:11
 msgid "Download the new server archive"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:12
 msgid "Move the downloaded archive to the desired location."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:13
 msgid ""
 "Extract the archive. This step installs a clean instance of the latest "
 "{project_name} release."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:15
 msgid ""
 "For standalone installations, copy the {project_dirref}/standalone/ "
 "directory from the previous installation over the directory in the new "
@@ -66,174 +57,140 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:18
 msgid ""
 "For domain installations, copy the {project_dirref}/domain/ directory from "
 "the previous installation over the directory in the new installation."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:20
 msgid ""
 "For domain installations, create the empty directory {project_dirref}/domain/"
 "deployments."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:23
 msgid ""
 "  Files in the bin directory should not be overwritten by the files from "
 "previous versions. Changes should be made manually."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:25
 msgid "Copy any custom modules that have been added to the modules directory."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:26
 msgid "Run the applicable upgrade script below."
 msgstr ""
 
 #. type: Title ===
-#: source/upgrading/topics/install_new_version.adoc:27
 #, no-wrap
 msgid "Running the Standalone Mode Upgrade Script"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:29
 msgid ""
 "To run the upgrade script for standalone mode, complete the following steps:"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:31
-#: source/upgrading/topics/install_new_version.adoc:42
 msgid ""
 "If you are using a different configuration file than the default one, edit "
 "the migration script to specify the new file name."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:32
-#: source/upgrading/topics/install_new_version.adoc:43
-#: source/upgrading/topics/install_new_version.adoc:55
-#: source/upgrading/topics/install_new_version.adoc:67
 msgid "Stop the server."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:33
-#: source/upgrading/topics/install_new_version.adoc:44
 msgid "Run the upgrade script:"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:35
 #, no-wrap
 msgid "bin/jboss-cli.sh --file=bin/migrate-standalone.cli\n"
 msgstr ""
 
 #. type: Title ===
-#: source/upgrading/topics/install_new_version.adoc:36
 #, no-wrap
 msgid "Running the Standalone-High Availability Mode Upgrade Script"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:38
 msgid ""
 "For standalone-high availability (HA) mode, all instances must be upgraded "
 "at the same time."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:40
 msgid ""
 "To run the upgrade script for standalone-HA mode, complete the following "
 "steps:"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:46
 #, no-wrap
 msgid "bin/jboss-cli.sh --file=bin/migrate-standalone-ha.cli\n"
 msgstr ""
 
 #. type: Title ===
-#: source/upgrading/topics/install_new_version.adoc:47
 #, no-wrap
 msgid "Running the Domain Mode Upgrade Script"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:49
 msgid "For domain mode, all instances must be upgraded at the same time."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:51
 msgid ""
 "To run the upgrade script for domain mode, complete the following steps:"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:53
-#: source/upgrading/topics/install_new_version.adoc:65
 msgid ""
 "If you have changed the profile name, you must edit the upgrade script to "
 "change a variable near the beginning of the script."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:54
 msgid ""
 "Edit the domain script to include the location of the keycloak-server.json "
 "file."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:56
-#: source/upgrading/topics/install_new_version.adoc:68
 msgid "Run the upgrade script on the domain controller only:"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:58
 #, no-wrap
 msgid "bin/jboss-cli.sh --file=bin/migrate-domain.cli\n"
 msgstr ""
 
 #. type: Title ===
-#: source/upgrading/topics/install_new_version.adoc:59
 #, no-wrap
 msgid "Running the Domain-clustered Mode Upgrade Script"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:61
 msgid ""
 "For domain-clustered mode, all instances must be upgraded at the same time."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:63
 msgid ""
 "To run the upgrade script for domain-clustered mode, complete the following "
 "steps:"
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:66
 msgid ""
 "Edit the domain-clustered script to include the location of the keycloak-"
 "server.json file."
 msgstr ""
 
 #. type: Plain text
-#: source/upgrading/topics/install_new_version.adoc:70
 #, no-wrap
 msgid "bin/jboss-cli.sh --file=bin/migrate-domain-clustered.cli\n"
 msgstr ""

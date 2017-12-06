@@ -15,13 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ===
-#: source/server_development/topics/user-storage/rest.adoc:2
 #, no-wrap
 msgid "REST Management API"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/rest.adoc:6
 msgid ""
 "You can create, remove, and update your user storage provider deployments "
 "through the administrator REST API. The User Storage SPI is built on top of "
@@ -30,25 +28,21 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/rest.adoc:8
 msgid "The REST Component API lives under your realm admin resource."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:11
 #, no-wrap
 msgid "/admin/realms/{realm-name}/components\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/rest.adoc:14
 msgid ""
 "We will only show this REST API interaction with the Java client. Hopefully "
 "you can extract how to do this from `curl` from this API."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:21
 #, no-wrap
 msgid ""
 "public interface ComponentsResource {\n"
@@ -58,7 +52,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:25
 #, no-wrap
 msgid ""
 "    @GET\n"
@@ -67,7 +60,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:29
 #, no-wrap
 msgid ""
 "    @GET\n"
@@ -76,7 +68,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:35
 #, no-wrap
 msgid ""
 "    @GET\n"
@@ -87,7 +78,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:39
 #, no-wrap
 msgid ""
 "    @POST\n"
@@ -96,7 +86,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:43
 #, no-wrap
 msgid ""
 "    @Path(\"{id}\")\n"
@@ -105,7 +94,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:47
 #, no-wrap
 msgid ""
 "public interface ComponentResource {\n"
@@ -114,7 +102,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:51
 #, no-wrap
 msgid ""
 "    @PUT\n"
@@ -123,7 +110,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:55
 #, no-wrap
 msgid ""
 "    @DELETE\n"
@@ -132,7 +118,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/rest.adoc:60
 msgid ""
 "To create a user storage provider, you must specify the provider id, a "
 "provider type of the string `org.keycloak.storage.UserStorageProvider`, as "
@@ -140,8 +125,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:66
-#: source/server_development/topics/admin-rest-api.adoc:53
 #, no-wrap
 msgid ""
 "import org.keycloak.admin.client.Keycloak;\n"
@@ -150,7 +133,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:75
 #, no-wrap
 msgid ""
 "Keycloak keycloak = Keycloak.getInstance(\n"
@@ -164,7 +146,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:83
 #, no-wrap
 msgid ""
 "ComponentRepresentation component = new ComponentRepresentation();\n"
@@ -177,19 +158,16 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:85
 #, no-wrap
 msgid "realmResource.components().add(component);\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:87
 #, no-wrap
 msgid "// retrieve a component\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:92
 #, no-wrap
 msgid ""
 "List<ComponentRepresentation> components = realmResource.components().query(realm.getId(),\n"
@@ -199,13 +177,11 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:94
 #, no-wrap
 msgid "// Update a component\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:97
 #, no-wrap
 msgid ""
 "component.getConfig().putSingle(\"path\", \"~/my-users.properties\");\n"
@@ -213,13 +189,11 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:99
 #, no-wrap
 msgid "// Remove a component\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:101
 #, no-wrap
 msgid "realmREsource.components().component(component.getId()).remove();\n"
 msgstr ""

@@ -10,7 +10,7 @@ REPO_DIR=$DIR/$SOURCE_DIR
 mkdir -p $REPO_DIR
 
 # Clone
-git clone --depth=1 $SOURCE_REPO $REPO_DIR
+git clone $SOURCE_REPO $REPO_DIR
 cd $REPO_DIR && git checkout $SOURCE_REVISION
 git reset --hard HEAD && git clean -f
 

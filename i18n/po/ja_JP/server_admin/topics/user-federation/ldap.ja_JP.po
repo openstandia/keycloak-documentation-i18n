@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Shinsuke UEDA <ueda.shinsuke.f2@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,10 +32,7 @@ msgid ""
 "provider also supports password validation via LDAP/AD protocols and "
 "different storage, edit, and synchronization modes."
 msgstr ""
-"{project_name}には、LDAP／ADプロバイダーが組み込まれています。これにより、同じ{project_name}レルムに複数の異なるLDAPサーバーを統合することが可能です。"
-" "
-"LDAPユーザー属性を{project_name}共通ユーザー・モデルにマップできます。デフォルトでは、ユーザー名、電子メール、名、姓をマッピングしますが、追加の<<_ldap_mappers,マッピング>>を自由に設定することができます。"
-" LDAPプロバイダーは、異なるストレージとLDAP／ADプロトコルによるパスワード検証、編集および同期モードもサポートしています。"
+"{project_name}には、LDAP／ADプロバイダーが組み込まれています。これにより、同じ{project_name}レルムに複数の異なるLDAPサーバーを統合することが可能です。LDAPユーザー属性を{project_name}共通ユーザー・モデルにマップできます。デフォルトでは、ユーザー名、電子メール、名、姓をマッピングしますが、追加の<<_ldap_mappers,マッピング>>を自由に設定することができます。LDAPプロバイダーは、異なるストレージとLDAP／ADプロトコルによるパスワード検証、編集および同期モードもサポートしています。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:15
@@ -46,8 +43,8 @@ msgid ""
 "Selecting _ldap_ will bring you to the ldap configuration page."
 msgstr ""
 "フェデレーテッドLDAPストアを設定するには、管理コンソールを開きます。 `User Federation` "
-"左メニューオプションをクリックしてください。このページに行くと、 `Add Provider` 選択ボックスがあります。このリストの中に _ldap_ "
-"があるはずです。 _ldap_ を選択すると、LDAP構成ページが表示されます。"
+"左メニューオプションをクリックしてください。このページに移動すると、 `Add Provider` 選択ボックスがあります。このリストの中に "
+"_ldap_ があるはずです。 _ldap_ を選択すると、LDAP設定ページが表示されます。"
 
 #. type: Title ====
 #: source/server_admin/topics/user-federation/ldap.adoc:16
@@ -71,9 +68,7 @@ msgid ""
 "queried, this will require a {project_name} database insert.  The import "
 "will also have to be synchronized with your LDAP server as needed."
 msgstr ""
-"デフォルトでは、{project_name}はLDAPからローカル{project_name}ユーザー・データベースにユーザーをインポートします。このユーザーのコピーは、オンデマンドで同期されるか、または定期的なバックグラウンド・タスクによって同期されます。1つの例外はパスワードです。パスワードはインポートされず、パスワードの検証はLDAPサーバーに委任されます。このアプローチの利点は、{project_name}のすべての機能が、必要な追加のユーザ単位のデータをローカルに格納することができることです。この方法はまた、LDAPサーバーの負荷を軽減します。非キャッシュ・ユーザーは、2回目のアクセス時に{project_name}データベースからロードされます。"
-"  "
-"LDAPサーバーが持つ唯一の負荷はパスワードの検証です。このアプローチの欠点は、ユーザーが最初に問い合わされるときに、{project_name}データベースの挿入が必要になることです。インポートも、必要に応じてLDAPサーバーと同期する必要があります。"
+"デフォルトでは、{project_name}はLDAPからローカル{project_name}ユーザー・データベースにユーザーをインポートします。このユーザーのコピーは、オンデマンドで同期されるか、または定期的なバックグラウンド・タスクによって同期されます。1つの例外はパスワードです。パスワードはインポートされず、パスワードの検証はLDAPサーバーに委任されます。このアプローチの利点は、必要とされる追加のユーザーごとのデータをローカルに保存できるため、すべての{project_name}機能が動作することです。この方法はまた、LDAPサーバーの負荷を軽減します。非キャッシュ・ユーザーは、2回目のアクセス時に{project_name}データベースからロードされます。LDAPサーバーが持つ唯一の負荷はパスワードの検証です。このアプローチの欠点は、ユーザーが最初に問い合わされるときに、{project_name}データベースの挿入が必要になることです。インポートも、必要に応じてLDAPサーバーと同期する必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:32
@@ -160,8 +155,7 @@ msgid ""
 "only applies when you are importing users from LDAP into the local "
 "{project_name} user database."
 msgstr ""
-"ユーザー名、メールアドレス、名字、パスワードの変更は{project_name}ローカル・ストレージに保存されます。 "
-"LDAPに同期する方法は、あなた次第です。これにより、{project_name}デプロイメントは、読み取り専用LDAPサーバー上のユーザー・メタデータの更新をサポートできます。このオプションは、LDAPからローカル{project_name}ユーザー・データベースにユーザをインポートする場合にのみ適用されます。"
+"ユーザー名、メールアドレス、姓、パスワードの変更は{project_name}ローカル・ストレージに保存されます。LDAPに同期する方法は、あなた次第です。これにより、{project_name}デプロイメントは、読み取り専用LDAPサーバー上のユーザー・メタデータの更新をサポートできます。このオプションは、LDAPからローカル{project_name}ユーザー・データベースにユーザーをインポートする場合にのみ適用されます。"
 
 #. type: Title ====
 #: source/server_admin/topics/user-federation/ldap.adoc:54
@@ -220,7 +214,7 @@ msgid ""
 "Enable Kerberos/SPNEGO authentication in realm with users data provisioned "
 "from LDAP.  More info in <<_kerberos,Kerberos section>>."
 msgstr ""
-"LDAPからプロビジョニングされたユーザー・データで、レルム内のKerberos/SPNEGO認証を有効にします。詳細は<<_kerberos,Kerberos"
+"LDAPからプロビジョニングされたユーザー・データでの、レルム内のKerberos/SPNEGO認証を有効にします。詳細は<<_kerberos,Kerberos"
 " section>>。"
 
 #. type: Labeled list
@@ -281,7 +275,7 @@ msgid ""
 msgstr ""
 "LDAPフェデレーション・プロバイダーの設定には、設定プロパティ `Use Truststore SPI` "
 "があり、トラストストアSPIを使用するかどうかを選択できます。デフォルト値は `Only for ldaps` "
-"です。ほとんどのデプロイメントで問題ありません。 トラストストアSPIは、LDAPへの接続が `ldaps` で始まる場合にのみ使用されます。"
+"です。ほとんどのデプロイメントで問題ありません。トラストストアSPIは、LDAPへの接続が `ldaps` で始まる場合にのみ使用されます。"
 
 #. type: Title ====
 #: source/server_admin/topics/user-federation/ldap.adoc:88
@@ -330,9 +324,9 @@ msgid ""
 "directly will be updated in {project_name} DB (For example if user `Mary "
 "Kelly` was changed in LDAP to `Mary Smith`)."
 msgstr ""
-"これにより、すべてのLDAPユーザーが{project_name} DBに同期されます。 "
-"{project_name}に既に存在し、LDAPで直接変更されたLDAPユーザーは{project_name} DBで更新されます（たとえば、ユーザー"
-" `Mary Kelly` がLDAPで `Mary Smith` に変更された場合）。"
+"これにより、すべてのLDAPユーザーが{project_name} "
+"DBに同期されます。{project_name}に既に存在し、LDAPで直接変更されたLDAPユーザーは、{project_name} "
+"DBで更新されます（たとえば、ユーザー `Mary Kelly` がLDAPで `Mary Smith` に変更された場合）。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:104
@@ -377,9 +371,8 @@ msgid ""
 "existing ones."
 msgstr ""
 "LDAPマッパーは `リスナー` "
-"であり、さまざまな時点でLDAPプロバイダーによってトリガーされ、LDAP統合の別の拡張ポイントを提供します。これらは、ユーザーがLDAP経由でログインしてインポートが要求されたときと{project_name}の登録が開始されたとき、または、ユーザーが管理コンソールから問い合わせを受けたときにトリガーされます。"
-" LDAPフェデレーション・プロバイダーを作成すると、{project_name}は自動的にこのプロバイダー用の組込み `マッパー` "
-"セットを提供します。このセットを変更して新しいマッパーを作成したり、既存のマッパーを更新／削除することが自由にできます。"
+"であり、さまざまな時点でLDAPプロバイダーによってトリガーされ、LDAP統合の別の拡張ポイントを提供します。これらは、ユーザーがLDAP経由でログインしてインポートが要求されたとき、{project_name}の登録が開始されたとき、または、ユーザーが管理コンソールから問い合わせを受けたときにトリガーされます。LDAPフェデレーション・プロバイダーを作成すると、{project_name}は自動的にこのプロバイダー用の組込み"
+" `マッパー` セットを提供します。このセットを変更して新しいマッパーを作成したり、既存のマッパーを更新／削除することが自由にできます。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:119
@@ -493,10 +486,10 @@ msgid ""
 msgstr ""
 "このマッパーは、Microsoft Active Directory（MSAD）に固有です。 "
 "MSADユーザー・アカウントの状態を{project_name}アカウントの状態（アカウントが有効、パスワードが期限切れなど）に緊密に統合できます。 "
-"`userAccountControl` と ` pwdLastSet` LDAP属性を使っています。 "
-"（どちらもMSADに固有であり、LDAP標準ではありません）。たとえば `pwdLastSet` が `0` "
+"`userAccountControl` と ` pwdLastSet` "
+"LDAP属性を使っています（どちらもMSADに固有であり、LDAP標準ではありません）。たとえば `pwdLastSet` が `0` "
 "の場合、{project_name}ユーザーはパスワードを更新する必要があり、UPDATE_PASSWORD必須アクションがユーザーに追加されます。 "
-"`userAccountControl` が ` 514` （無効なアカウント）の場合、{project_name}ユーザーも無効になります。"
+"`userAccountControl` が `514` （無効なアカウント）の場合、{project_name}ユーザーも無効になります。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:154

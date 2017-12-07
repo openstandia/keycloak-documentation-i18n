@@ -14,14 +14,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: Title ===
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:2
+#. type: Attribute :installguide_stickysessions_name:
 #, no-wrap
 msgid "Sticky sessions"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:6
 msgid ""
 "Typical cluster deployment consists of the load balancer (reverse proxy) and "
 "2 or more {project_name} servers on private network. For performance "
@@ -30,7 +28,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:10
 msgid ""
 "The reason is, that {project_name} is using infinispan distributed cache "
 "under the covers for save data related to current authentication session and "
@@ -41,7 +38,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:13
 msgid ""
 "For example if authentication session with ID `123` is saved in the "
 "infinispan cache on `node1`, and then `node2` needs to lookup this session, "
@@ -50,7 +46,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:16
 msgid ""
 "It is beneficial if particular session entity is always available locally, "
 "which can be done with the help of sticky sessions.  The workflow in the "
@@ -59,12 +54,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:18
 msgid "User sends initial request to see the {project_name} login screen"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:20
 msgid ""
 "This request is served by the frontend load balancer, which forwards it to "
 "some random node (eg. node1). Strictly said, the node doesn't need to be "
@@ -74,14 +67,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:21
 msgid ""
 "{project_name} creates authentication session with random ID (eg. 123) and "
 "saves it to the Infinispan cache."
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:24
 msgid ""
 "Infinispan distributed cache assigns the primary owner of the session based "
 "on the hash of session ID.  See link:http://infinispan.org/docs/8.2.x/"
@@ -91,7 +82,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:25
 msgid ""
 "{project_name} creates the cookie `AUTH_SESSION_ID` with the format like "
 "`<session-id>.<owner-node-id>` . In our example case, it will be `123."
@@ -99,14 +89,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:26
 msgid ""
 "Response is returned to the user with the {project_name} login screen and "
 "the AUTH_SESSION_ID cookie in the browser"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:30
 msgid ""
 "From this point, it is beneficial if load balancer forwards all the next "
 "requests to the `node2` as this is the node, who is owner of the "
@@ -117,7 +105,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:33
 msgid ""
 "The sticky session is not mandatory for the cluster setup, however it is "
 "good for performance for the reasons mentioned above. You need to configure "
@@ -126,7 +113,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:38
 msgid ""
 "Some loadbalancers can be configured to add the route information by "
 "themselves instead of rely on the backend {project_name} node. However "
@@ -139,13 +125,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:39
 #, no-wrap
 msgid "Example cluster setup with mod_cluster"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:44
 msgid ""
 "In the example, we will use link:http://mod-cluster.jboss.org/[Mod Cluster] "
 "as load balancer. One of the key features of mod cluster is, that there is "
@@ -157,14 +141,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:46
 msgid ""
 "Example setup will consist of the one {appserver_name} {appserver_version} "
 "load balancer node and two {project_name} nodes."
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:48
 msgid ""
 "Clustering example require MULTICAST to be enabled on machine's loopback "
 "network interface. This can be done by running the following commands under "
@@ -172,7 +154,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:53
 #, no-wrap
 msgid ""
 "route add -net 224.0.0.0 netmask 240.0.0.0 dev lo\n"
@@ -180,27 +161,23 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:56
 #, no-wrap
 msgid "Load Balancer Configuration"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:59
 msgid ""
 "Unzip the {appserver_name} {appserver_version} server somewhere. Assumption "
 "is location `EAP_LB`"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:61
 msgid ""
 "Edit `EAP_LB/standalone/configuration/standalone.xml` file. In the undertow "
 "subsystem add the mod_cluster configuration under filters like this:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:72
 #, no-wrap
 msgid ""
 "<subsystem xmlns=\"urn:jboss:domain:undertow:4.0\">\n"
@@ -214,12 +191,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:75
 msgid "and `filter-ref` under `default-host` like this:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:82
 #, no-wrap
 msgid ""
 "<host name=\"default-host\" alias=\"localhost\">\n"
@@ -229,12 +204,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:85
 msgid "Then under `socket-binding-group` add this group:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:91
 #, no-wrap
 msgid ""
 "<socket-binding name=\"modcluster\" port=\"0\"\n"
@@ -243,12 +216,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:94
 msgid "Save the file and run the server:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:99
 #, no-wrap
 msgid ""
 "cd $WILDFLY_LB/bin\n"
@@ -256,20 +227,17 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:102
 #, no-wrap
 msgid "Backend node configuration"
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:105
 msgid ""
 "Unzip the {project_name} server distribution to some location. Assuming "
 "location is `RHSSO_NODE1` ."
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:108
 msgid ""
 "Edit `RHSSO_NODE1/standalone/configuration/standalone-ha.xml` and configure "
 "datasource against the shared database.  See <<_rdbms-setup-checklist, "
@@ -277,14 +245,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:110
 msgid ""
 "In the undertow subsystem, add the `session-config` under the `servlet-"
 "container` element:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:117
 #, no-wrap
 msgid ""
 "<servlet-container name=\"default\">\n"
@@ -294,7 +260,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:121
 msgid ""
 "Then you can configure `proxy-address-forwarding` as described in the "
 "chapter <<_setting-up-a-load-balancer-or-proxy, Load Balancer >> .  Note "
@@ -303,12 +268,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:123
 msgid "That's all as mod_cluster is already configured."
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:127
 msgid ""
 "The node name of the {project_name} can be detected automatically based on "
 "the hostname of current server. However for more fine grained control, it is "
@@ -319,7 +282,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:132
 #, no-wrap
 msgid ""
 "cd $RHSSO_NODE1\n"
@@ -327,14 +289,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:135
 msgid ""
 "Configure the second backend server in same way and run with different port "
 "offset and node name."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:140
 #, no-wrap
 msgid ""
 "cd $RHSSO_NODE2\n"
@@ -342,7 +302,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:143
 msgid ""
 "Access the server on `http://localhost:8080/auth` . Creation of admin user "
 "is possible just from local address and without load balancer (proxy) "

@@ -2,17 +2,17 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
@@ -31,6 +31,10 @@ msgid ""
 "      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
 "      version=\"3.0\">\n"
 msgstr ""
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"      version=\"3.0\">\n"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:120
@@ -41,26 +45,26 @@ msgstr ""
 #: source/securing_apps/topics/saml/java/jboss-adapter/required_per_war_configuration.adoc:22
 #, no-wrap
 msgid "\t<module-name>customer-portal</module-name>\n"
-msgstr ""
+msgstr "\t<module-name>customer-portal</module-name>\n"
 
 #. type: Title ====
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:2
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:2
 #, no-wrap
 msgid "Java Servlet Filter Adapter"
-msgstr ""
+msgstr "Javaサーブレット・フィルター・アダプター"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:58
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:49
 msgid "To use this filter, include this maven artifact in your WAR poms:"
-msgstr ""
+msgstr "このフィルタを使用するには、WARのpomに次のmavenアーティファクトを含めます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:11
 msgid ""
-"If you want to use SAML with a Java servlet application that doesn't have an "
-"adapter for that servlet platform, you can opt to use the servlet filter "
+"If you want to use SAML with a Java servlet application that doesn't have an"
+" adapter for that servlet platform, you can opt to use the servlet filter "
 "adapter that {project_name} has.  This adapter works a little differently "
 "than the other adapters.  You still have to specify a `/WEB-INF/keycloak-"
 "saml.xml` file as defined in the <<_saml-general-config,General Adapter "
@@ -68,6 +72,10 @@ msgid ""
 "Instead you define a filter mapping using the {project_name} servlet filter "
 "adapter to secure the url patterns you want to secure."
 msgstr ""
+"サーブレット・プラットフォーム用のアダプタを持たないJavaサーブレット・アプリケーションでSAMLを使用する場合は、{project_name}にあるサーブレット・フィルター・アダプターを使用することができます。このアダプターは、他のアダプターとは少し異なります"
+"。<<_saml-general-config,共通アダプター設定>>セクションで定義されているように `/WEB-INF/keycloak-"
+"saml.xml` ファイルを指定する必要がありますが、 _web.xml_ "
+"にセキュリティ制約を定義しません。代わりに{project_name}サーブレット・フィルター・アダプターを使用してフィルター・マッピングを定義して、URLパターンでセキュリティ保護します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:15
@@ -77,13 +85,16 @@ msgid ""
 "      Instead of invalidating the http session it instead marks the session ID as logged out.\n"
 "      There's just no way of arbitrarily invalidating an http session based on a session ID.\n"
 msgstr ""
+"バックチャネルのログアウトは、標準のアダプターとは少し異なります。\n"
+"HTTPセッションを無効にするのではなく、セッションIDをログアウトしたものとしてマークします。\n"
+"セッションIDに基づいてHTTPセッションを任意に無効にする方法はありません。\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:17
 msgid ""
 "Backchannel logout does not currently work when you have a clustered "
 "application that uses the SAML filter."
-msgstr ""
+msgstr "現時点では、SAMLフィルターを使用するクラスター化されたアプリケーションでは、バックチャネル・ログアウトは機能しません。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:36
@@ -99,21 +110,31 @@ msgid ""
 "    </filter-mapping>\n"
 "</web-app>\n"
 msgstr ""
+"    <filter>\n"
+"        <filter-name>Keycloak Filter</filter-name>\n"
+"        <filter-class>org.keycloak.adapters.saml.servlet.SamlFilter</filter-class>\n"
+"    </filter>\n"
+"    <filter-mapping>\n"
+"        <filter-name>Keycloak Filter</filter-name>\n"
+"        <url-pattern>/*</url-pattern>\n"
+"    </filter-mapping>\n"
+"</web-app>\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:40
 msgid ""
-"The {project_name} filter has the same configuration parameters available as "
-"the other adapters except you must define them as filter init params instead "
-"of context params."
+"The {project_name} filter has the same configuration parameters available as"
+" the other adapters except you must define them as filter init params "
+"instead of context params."
 msgstr ""
+"{project_name}フィルターは、コンテキスト・パラメータの代わりにフィルター初期化パラメータとして定義する必要がある以外は、他のアダプターと同じ設定パラメータを使用できます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:42
 msgid ""
-"You can define multiple filter mappings if you have various different secure "
-"and unsecure url patterns."
-msgstr ""
+"You can define multiple filter mappings if you have various different secure"
+" and unsecure url patterns."
+msgstr "さまざまな異なる安全なURLパターンと安全でないURLパターンが存在する場合は、複数のフィルター・マッピングを定義できます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:45
@@ -122,14 +143,18 @@ msgid ""
 "You must have a filter mapping that covers `/saml`.\n"
 "         This mapping covers all server callbacks.\n"
 msgstr ""
+"`/saml` をカバーするフィルター・マッピングが必要です。\n"
+"このマッピングは、すべてのサーバー・コールバックを対象としています。\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:47
 msgid ""
-"When registering SPs with an IdP, you must register `http[s]://hostname/"
-"{context-root}/saml` as your Assert Consumer Service URL and Single Logout "
+"When registering SPs with an IdP, you must register `http[s]://hostname"
+"/{context-root}/saml` as your Assert Consumer Service URL and Single Logout "
 "Service URL."
 msgstr ""
+"IdPとともにSPを登録するときは、Assert Consumer Service URLとSingle Logout Service URLとして "
+"`http[s]://hostname/{context-root}/saml` を登録する必要があります。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:57
@@ -141,3 +166,8 @@ msgid ""
 "   <version>{project_versionMvn}</version>\n"
 "</dependency>\n"
 msgstr ""
+"<dependency>\n"
+"   <groupId>org.keycloak</groupId>\n"
+"   <artifactId>keycloak-saml-servlet-filter-adapter</artifactId>\n"
+"   <version>{project_versionMvn}</version>\n"
+"</dependency>\n"

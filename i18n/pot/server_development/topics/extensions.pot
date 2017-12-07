@@ -15,19 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:41
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:52
-#: source/server_development/topics/extensions.adoc:70
-#: source/server_development/topics/providers.adoc:143
 #, no-wrap
 msgid "}\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:196
-#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:295
-#: source/server_development/topics/user-storage/simple-example.adoc:236
-#: source/server_development/topics/extensions.adoc:123
 #, no-wrap
 msgid ""
 "    ...\n"
@@ -35,13 +27,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ==
-#: source/server_development/topics/extensions.adoc:3
 #, no-wrap
 msgid "Extending the Server"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:7
 msgid ""
 "The {project_name} SPI framework offers the possibility to implement or "
 "override particular built-in providers. However {project_name} also provides "
@@ -50,32 +40,25 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:9
 msgid "Add custom REST endpoints to the {project_name} server"
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/extensions.adoc:10
-#: source/server_development/topics/extensions.adoc:35
 #, no-wrap
 msgid "Add your own custom SPI"
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/extensions.adoc:11
-#: source/server_development/topics/extensions.adoc:89
 #, no-wrap
 msgid "Add custom JPA entities to the {project_name} data model"
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/extensions.adoc:13
 #, no-wrap
 msgid "Add custom REST endpoints"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:17
 msgid ""
 "This is a very powerful extension, which allows you to deploy your own REST "
 "endpoints to the {project_name} server. It enables all kinds of extensions, "
@@ -85,7 +68,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:19
 msgid ""
 "To add a custom REST endpoint, you need to implement the "
 "`RealmResourceProviderFactory` and `RealmResourceProvider` interfaces. "
@@ -93,13 +75,11 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:24
 #, no-wrap
 msgid "Object getResource();\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:31
 msgid ""
 "which allows you to return an object, which acts as a https://github.com/jax-"
 "rs[JAX-RS Resource]. For more details, see the Javadoc and our examples.  "
@@ -112,14 +92,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:33
 msgid ""
 "For details on how to package and deploy a custom provider, refer to the "
 "<<providers.adoc#_providers,Service Provider Interfaces>> chapter."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:39
 msgid ""
 "This is useful especially with the <<extensions.adoc#_extensions_rest,Custom "
 "REST endpoints>>. To add your own kind of SPI, you need to implement the "
@@ -128,28 +106,21 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:43
 #, no-wrap
 msgid "package org.keycloak.examples.domainextension.spi;\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:45
-#: source/server_development/topics/providers.adoc:22
-#: source/server_development/topics/providers.adoc:57
-#: source/server_development/topics/providers.adoc:161
 #, no-wrap
 msgid "import ...\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:47
 #, no-wrap
 msgid "public class ExampleSpi implements Spi {\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:52
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -159,7 +130,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:57
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -169,7 +139,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:62
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -179,7 +148,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:68
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -190,20 +158,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:74
 msgid ""
 "Then you need to create the file `META-INF/services/org.keycloak.provider."
 "Spi` and add the class of your SPI to it. For example:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:78
 #, no-wrap
 msgid "org.keycloak.examples.domainextension.spi.ExampleSpi\n"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:83
 msgid ""
 "The next step is to create the interfaces `ExampleServiceProviderFactory`, "
 "which extends from `ProviderFactory` and `ExampleService`, which extends "
@@ -215,21 +180,18 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:85
 msgid ""
 "Finally you need to implement your providers in the same manner as described "
 "in the <<providers.adoc#_providers,Service Provider Interfaces>> chapter."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:87
 msgid ""
 "For more details, take a look at the example distribution at `providers/"
 "domain-extension`, which shows an Example SPI similar to the one above."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:94
 msgid ""
 "If the {project_name} data model does not exactly match your desired "
 "solution, or if you want to add some core functionality to {project_name}, "
@@ -239,7 +201,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:97
 msgid ""
 "To add your own JPA entities, you need to implement "
 "`JpaEntityProviderFactory` and `JpaEntityProvider`. The `JpaEntityProvider` "
@@ -249,13 +210,11 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:101
 #, no-wrap
 msgid "public class ExampleJpaEntityProvider implements JpaEntityProvider {\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:107
 #, no-wrap
 msgid ""
 "    // List of your JPA entities.\n"
@@ -266,7 +225,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:114
 #, no-wrap
 msgid ""
 "    // This is used to return the location of the Liquibase changelog file.\n"
@@ -278,7 +236,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:120
 #, no-wrap
 msgid ""
 "    // Helper method, which will be used internally by Liquibase.\n"
@@ -289,7 +246,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:127
 msgid ""
 "In the example above, we added a single JPA entity represented by class "
 "`Company`. In the code of your REST endpoint, you can then use something "
@@ -297,7 +253,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:133
 #, no-wrap
 msgid ""
 "EntityManager em = session.getProvider(JpaConnectionProvider.class).getEntityManager();\n"
@@ -305,7 +260,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:143
 msgid ""
 "The methods `getChangelogLocation` and `getFactoryId` are important to "
 "support automatic updating of your entities by Liquibase. http://www."
@@ -326,7 +280,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:145
 msgid ""
 "For more details, take a look at the example distribution at example "
 "`providers/domain-extension`, which shows the `ExampleJpaEntityProvider` and "
@@ -334,7 +287,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:147
 msgid ""
 "Don't forget to always backup your database before doing any changes in the "
 "Liquibase changelog and triggering a DB update."

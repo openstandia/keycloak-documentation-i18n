@@ -15,45 +15,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/saml/java/assertion-api.adoc:57
-#: source/server_development/topics/user-storage/configuration.adoc:18
-#: source/server_development/topics/user-storage/configuration.adoc:23
-#: source/server_development/topics/user-storage/configuration.adoc:28
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:26
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:38
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:50
-#: source/server_development/topics/user-storage/registration-query.adoc:109
-#: source/server_development/topics/user-storage/simple-example.adoc:146
-#: source/server_development/topics/auth-spi.adoc:460
-#: source/server_development/topics/providers.adoc:75
 #, no-wrap
 msgid "    }\n"
 msgstr ""
 
 #. type: Block title
-#: source/server_development/topics/user-storage/augmenting.adoc:45
-#: source/server_development/topics/user-storage/import.adoc:29
-#: source/server_development/topics/user-storage/registration-query.adoc:13
-#: source/server_development/topics/user-storage/registration-query.adoc:31
-#: source/server_development/topics/user-storage/registration-query.adoc:63
-#: source/server_development/topics/user-storage/registration-query.adoc:79
-#: source/server_development/topics/user-storage/registration-query.adoc:97
-#: source/server_development/topics/user-storage/registration-query.adoc:130
-#: source/server_development/topics/user-storage/registration-query.adoc:161
-#: source/server_development/topics/user-storage/registration-query.adoc:189
-#: source/server_development/topics/user-storage/registration-query.adoc:210
 #, no-wrap
 msgid "PropertyFileUserStorageProvider"
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/user-storage/registration-query.adoc:2
 #, no-wrap
 msgid "Add/Remove User and Query Capability interfaces"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:7
 msgid ""
 "One thing we have not done with our example is allow it to add and remove "
 "users or change passwords. Users defined in our example are also not "
@@ -63,20 +39,17 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/registration-query.adoc:8
 #, no-wrap
 msgid "Implementing UserRegistrationProvider"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:12
 msgid ""
 "To implement adding and removing users from this particular store, we first "
 "have to be able to save our properties file to disk."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:27
 #, no-wrap
 msgid ""
 "    public void save() {\n"
@@ -93,20 +66,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:30
 msgid ""
 "Then, the implementation of the `addUser()` and `removeUser()` methods "
 "becomes simple."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:35
 #, no-wrap
 msgid "    public static final String UNSET_PASSWORD=\"#$!-UNSET-PASSWORD\";\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:44
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -120,7 +90,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:53
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -134,7 +103,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:58
 msgid ""
 "Notice that when adding a user we set the password value of the property map "
 "to be `UNSET_PASSWORD`.  We do this as we can't have null values for a "
@@ -143,7 +111,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:62
 msgid ""
 "`addUser()` will be called if the provider implements the "
 "`UserRegistrationProvider` interface. If your provider has a configuration "
@@ -152,8 +119,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:69
-#: source/server_development/topics/user-storage/simple-example.adoc:115
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -162,7 +127,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:75
 #, no-wrap
 msgid ""
 "        UserCredentialModel cred = (UserCredentialModel)input;\n"
@@ -173,14 +137,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:78
 msgid ""
 "Since we can now save our property file, it also makes sense to allow "
 "password updates."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:93
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -197,12 +159,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:96
 msgid "We can now also implement disabling a password too."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:107
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -215,13 +175,11 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:111
 #, no-wrap
 msgid "    private static final Set<String> disableableTypes = new HashSet<>();\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:115
 #, no-wrap
 msgid ""
 "    static {\n"
@@ -230,7 +188,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:118
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -238,7 +195,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:121
 #, no-wrap
 msgid ""
 "        return disableableTypes;\n"
@@ -246,20 +202,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:124
 msgid ""
 "With these methods implemented, you'll now be able to change and disable the "
 "password for the user in the administration console."
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/registration-query.adoc:125
 #, no-wrap
 msgid "Implementing UserQueryProvider"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:129
 msgid ""
 "Without implementing `UserQueryProvider` the administration console would "
 "not be able to view and manage users that were loaded by our example "
@@ -267,7 +220,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:137
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -277,7 +229,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:142
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -287,7 +238,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:156
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -306,7 +256,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:160
 msgid ""
 "The `getUser()` method iterates over the key set of the property file, "
 "delegating to `getUserByUsername()` to load a user.  Notice that we are "
@@ -316,7 +265,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:168
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -326,7 +274,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:183
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -346,7 +293,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:188
 msgid ""
 "The first declaration of `searchForUser()` takes a string parameter. This is "
 "supposed to be a string that you use to search username and email attributes "
@@ -355,7 +301,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:196
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -365,7 +310,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:204
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -378,7 +322,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:208
 msgid ""
 "The `searchForUser()` method that takes a `Map` parameter can search for a "
 "user based on first, last name, username, and email.  We only store "
@@ -387,7 +330,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:217
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -397,7 +339,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:222
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -407,7 +348,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/registration-query.adoc:227
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -417,7 +357,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/registration-query.adoc:230
 msgid ""
 "We do not store groups or attributes, so the other methods return an empty "
 "list."

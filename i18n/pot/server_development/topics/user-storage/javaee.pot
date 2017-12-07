@@ -15,14 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ===
-#: source/server_development/topics/user-storage/javaee.adoc:2
-#: source/server_development/topics/providers.adoc:266
 #, no-wrap
 msgid "Leveraging Java EE"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:10
 msgid ""
 "The user storage providers can be packaged within any Java EE component if "
 "you set up the `META-INF/services` file correctly to point to your "
@@ -36,7 +33,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:14
 msgid ""
 "Implementations of `UserStorageProviderFactory` are required to be plain "
 "java objects. But we also currently support implementing "
@@ -46,8 +42,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/javaee.adoc:29
-#: source/server_development/topics/providers.adoc:292
 #, no-wrap
 msgid ""
 "@Stateful\n"
@@ -65,8 +59,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/javaee.adoc:32
-#: source/server_development/topics/providers.adoc:295
 #, no-wrap
 msgid ""
 "    protected ComponentModel model;\n"
@@ -74,8 +66,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/javaee.adoc:36
-#: source/server_development/topics/providers.adoc:299
 #, no-wrap
 msgid ""
 "    public void setModel(ComponentModel model) {\n"
@@ -84,8 +74,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/javaee.adoc:40
-#: source/server_development/topics/providers.adoc:303
 #, no-wrap
 msgid ""
 "    public void setSession(KeycloakSession session) {\n"
@@ -94,8 +82,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/javaee.adoc:48
-#: source/server_development/topics/providers.adoc:311
 #, no-wrap
 msgid ""
 "    @Remove\n"
@@ -107,7 +93,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:52
 msgid ""
 "You have to define the `@Local` annotation and specify your provider class "
 "there. If you do not do this, EJB will not proxy the user correctly and your "
@@ -115,7 +100,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:55
 msgid ""
 "You must put the `@Remove` annotation on the `close()` method of your "
 "provider. If you do not, the stateful bean will never be cleaned up and you "
@@ -123,7 +107,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:58
 msgid ""
 "Implementations of `UserStorageProviderFactory` are required to be plain "
 "java objects. Your factory class would perform a JNDI lookup of the Stateful "
@@ -131,8 +114,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/javaee.adoc:63
-#: source/server_development/topics/providers.adoc:326
 #, no-wrap
 msgid ""
 "public class EjbExampleUserStorageProviderFactory\n"
@@ -140,8 +121,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/javaee.adoc:77
-#: source/server_development/topics/providers.adoc:340
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -160,7 +139,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:81
 msgid ""
 "This example also assumes that you have defined a JPA deployment in the same "
 "JAR as the provider. This means a `persistence.xml` file as well as any JPA "
@@ -168,7 +146,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:85
 #, no-wrap
 msgid ""
 "When using JPA any additional datasource must be an XA datasource. The {project_name} datasource\n"
@@ -177,7 +154,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:87
 msgid ""
 "See the JBoss/Wildfly manual for more details on deploying an XA datasource."
+msgstr ""
+
+#. type: Plain text
+msgid "CDI is not supported."
 msgstr ""

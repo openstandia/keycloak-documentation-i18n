@@ -15,29 +15,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/saml/java/assertion-api.adoc:57
-#: source/server_development/topics/user-storage/configuration.adoc:18
-#: source/server_development/topics/user-storage/configuration.adoc:23
-#: source/server_development/topics/user-storage/configuration.adoc:28
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:26
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:38
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:50
-#: source/server_development/topics/user-storage/registration-query.adoc:109
-#: source/server_development/topics/user-storage/simple-example.adoc:146
-#: source/server_development/topics/auth-spi.adoc:460
-#: source/server_development/topics/providers.adoc:75
 #, no-wrap
 msgid "    }\n"
 msgstr ""
 
 #. type: Title ==
-#: source/server_development/topics/auth-spi.adoc:2
 #, no-wrap
 msgid "Authentication SPI"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:8
 msgid ""
 "Keycloak comes out of the box with a bunch of different authentication "
 "mechanisms: kerberos, password, and otp.  These mechanisms may not meet all "
@@ -48,7 +35,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:14
 msgid ""
 "Keycloak also supports a simple registration form.  Different aspects of "
 "this form can be enabled and disabled i.e.  Recaptcha support can be turned "
@@ -59,7 +45,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:19
 msgid ""
 "A required action in Keycloak is an action that a user has to perform after "
 "he authenticates.  After the action is performed successfully, the user "
@@ -70,26 +55,22 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/auth-spi.adoc:20
 #, no-wrap
 msgid "Terms"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:23
 msgid ""
 "To first learn about the Authentication SPI, let's go over some of the terms "
 "used to describe it."
 msgstr ""
 
 #. type: Labeled list
-#: source/server_development/topics/auth-spi.adoc:24
 #, no-wrap
 msgid "Authentication Flow"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:29
 msgid ""
 "A flow is a container for all authentications that must happen during login "
 "or registration.  If you go to the admin console authentication page, you "
@@ -99,26 +80,22 @@ msgid ""
 msgstr ""
 
 #. type: Labeled list
-#: source/server_development/topics/auth-spi.adoc:30
 #, no-wrap
 msgid "Authenticator"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:33
 msgid ""
 "An authenticator is a pluggable component that hold the logic for performing "
 "the authentication or action within a flow.  It is usually a singleton."
 msgstr ""
 
 #. type: Labeled list
-#: source/server_development/topics/auth-spi.adoc:34
 #, no-wrap
 msgid "Execution"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:37
 msgid ""
 "An execution is an object that binds the authenticator to the flow and the "
 "authenticator to the configuration of the authenticator.  Flows contain "
@@ -126,13 +103,11 @@ msgid ""
 msgstr ""
 
 #. type: Labeled list
-#: source/server_development/topics/auth-spi.adoc:38
 #, no-wrap
 msgid "Execution Requirement"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:44
 msgid ""
 "Each execution defines how an authenticator behaves in a flow.  The "
 "requirement defines whether the authenticator is enabled, disabled, "
@@ -144,13 +119,11 @@ msgid ""
 msgstr ""
 
 #. type: Labeled list
-#: source/server_development/topics/auth-spi.adoc:45
 #, no-wrap
 msgid "Authenticator Config"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:48
 msgid ""
 "This object defines the configuration for the Authenticator for a specific "
 "execution within an authentication flow.  Each execution can have a "
@@ -158,13 +131,11 @@ msgid ""
 msgstr ""
 
 #. type: Labeled list
-#: source/server_development/topics/auth-spi.adoc:49
 #, no-wrap
 msgid "Required Action"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:52
 #, no-wrap
 msgid ""
 "After authentication completes, the user might have one or more one-time actions he must complete before he is allowed to login.\n"
@@ -172,20 +143,17 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/auth-spi.adoc:53
 #, no-wrap
 msgid "Algorithm Overview"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:57
 msgid ""
 "Let's talk about how this all works for browser login.  Let's assume the "
 "following flows, executions and sub flows."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:65
 #, no-wrap
 msgid ""
 "Cookie - ALTERNATIVE\n"
@@ -196,7 +164,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:71
 msgid ""
 "In the top level of the form we have 3 executions of which all are "
 "alternatively required.  This means that if any of these are successful, "
@@ -207,7 +174,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:75
 msgid ""
 "The OpenID Connect or SAML protocol provider unpacks relevent data, verifies "
 "the client and any signatures.  It creates a AuthenticationSessionModel.  It "
@@ -215,7 +181,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:87
 msgid ""
 "The flow looks at the cookie execution and sees that it is an alternative.  "
 "It loads the cookie provider.  It checks to see if the cookie provider "
@@ -235,7 +200,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:99
 msgid ""
 "Next the flow looks at the Kerberos execution.  This is also an "
 "alternative.  The kerberos provider also does not require a user to be "
@@ -259,14 +223,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:101
 msgid ""
 "The next execution is a subflow called Forms.  The executions for this "
 "subflow are loaded and the same processing logic occurs"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:111
 msgid ""
 "The first execution in the Forms subflow is the UsernamePassword provider.  "
 "This provider also does not require for a user to already be associated with "
@@ -286,7 +248,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:118
 msgid ""
 "The next execution is the OTP Form.  This provider requires that a user has "
 "been associated with the flow.  This requirement is satisfied because the "
@@ -300,7 +261,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:120
 msgid ""
 "After the flow is complete, the authentication processor creates a "
 "UserSessionModel and associates it with the AuthenticationSessionModel.  It "
@@ -309,7 +269,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:123
 msgid ""
 "First, each required action's evaluateTriggers() method is called.  This "
 "allows the required action provider to figure out if there is some state "
@@ -318,7 +277,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:126
 msgid ""
 "Each required action associated with the user that has its "
 "requiredActionChallenge() method called.  Here the provider sets up an HTTP "
@@ -327,26 +285,22 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:127
 msgid ""
 "If the required action is ultimately successful, then the required action is "
 "removed from the user's require actions list."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:128
 #, no-wrap
 msgid "After all required actions have been resolved, the user is finally logged in.         \n"
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/auth-spi.adoc:130
 #, no-wrap
 msgid "Authenticator SPI Walk Through"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:134
 msgid ""
 "In this section, we'll take a look at the Authenticator interface.  For "
 "this, we are going to implement an authenticator that requires that a user "
@@ -356,7 +310,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:139
 msgid ""
 "The classes you must implement are the org.keycloak.authentication."
 "AuthenticatorFactory and Authenticator interfaces.  The Authenticator "
@@ -367,15 +320,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:140
-#: source/server_development/topics/auth-spi.adoc:429
-#: source/server_development/topics/action-token-spi.adoc:72
 #, no-wrap
 msgid "Packaging Classes and Deployment"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:146
 #, no-wrap
 msgid ""
 "You will package your classes within a single jar.\n"
@@ -385,7 +334,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:151
 #, no-wrap
 msgid ""
 "org.keycloak.examples.authenticator.SecretQuestionAuthenticatorFactory\n"
@@ -393,29 +341,21 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:154
-#: source/server_development/topics/auth-spi.adoc:442
-#: source/server_development/topics/auth-spi.adoc:715
 msgid ""
 "This services/ file is used by Keycloak to scan the providers it has to load "
 "into the system."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:156
-#: source/server_development/topics/auth-spi.adoc:444
-#: source/server_development/topics/auth-spi.adoc:717
 msgid "To deploy this jar, just copy it to the providers directory."
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:157
 #, no-wrap
 msgid "Implementing an Authenticator"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:163
 msgid ""
 "When implementing the Authenticator interface, the first method that needs "
 "to be implemented is the requiresUser() method.  For our example, this "
@@ -426,7 +366,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:168
 msgid ""
 "The next method to implement is the configuredFor() method.  This method is "
 "responsible for determining if the user is configured for this particular "
@@ -438,7 +377,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:175
 #, no-wrap
 msgid ""
 "@Override\n"
@@ -448,14 +386,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:178
 msgid ""
 "The configuredForCredentialType() call queries the user to see if it "
 "supports that credential type."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:184
 msgid ""
 "The next method to implement on the Authenticator is setRequiredActions().  "
 "If configuredFor() returns false and our example authenticator is required "
@@ -468,7 +404,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:191
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -478,7 +413,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:197
 msgid ""
 "Now we are getting into the meat of the Authenticator implementation.  The "
 "next method to implement is authenticate().  This is the initial method the "
@@ -491,7 +425,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:210
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -506,7 +439,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:214
 msgid ""
 "The hasCookie() method checks to see if there is already a cookie set on the "
 "browser which indicates that the secret question has already been answered.  "
@@ -516,7 +448,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:221
 msgid ""
 "If the hasCookie() method returns false, we must return a response that "
 "renders the secret question HTML form.  AuthenticationFlowContext has a "
@@ -530,7 +461,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:225
 msgid ""
 "Calling LoginFormsProvider.createForm() returns a JAX-RS Response object.  "
 "We then call AuthenticationFlowContext.challenge() passing in this "
@@ -540,7 +470,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:229
 msgid ""
 "So, the HTML page asking for the answer to a secret question is displayed to "
 "the user and the user enteres in the answer and clicks submit.  The action "
@@ -549,7 +478,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:246
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -568,7 +496,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:251
 msgid ""
 "If the answer is not valid, we rebuild the HTML Form with an additional "
 "error message.  We then call AuthenticationFlowContext.failureChallenge() "
@@ -578,7 +505,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:253
 msgid ""
 "If validation is successful, then we set a cookie to remember that the "
 "secret question has been answered and we call AuthenticationFlowContext."
@@ -586,7 +512,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:257
 msgid ""
 "The last thing I want to go over is the setCookie() method.  This is an "
 "example of providing configuration for the Authenticator.  In this case we "
@@ -594,7 +519,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:266
 #, no-wrap
 msgid ""
 "    protected void setCookie(AuthenticationFlowContext context) {\n"
@@ -605,7 +529,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:270
 #, no-wrap
 msgid ""
 "        }\n"
@@ -614,7 +537,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:276
 msgid ""
 "We obtain an AuthenticatorConfigModel from the AuthenticationFlowContext."
 "getAuthenticatorConfig() method.  If configuration exists we pull the max "
@@ -625,13 +547,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:277
 #, no-wrap
 msgid "Implementing an AuthenticatorFactory"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:282
 msgid ""
 "The next step in this process is to implement an AuthenticatorFactory.  This "
 "factory is responsible for instantiating an Authenticator.  It also provides "
@@ -639,20 +559,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:285
 msgid ""
 "The getId() method is just the unique name of the component.  The create() "
 "method is called by the runtime to allocate and process the Authenticator."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:290
 #, no-wrap
 msgid "public class SecretQuestionAuthenticatorFactory implements AuthenticatorFactory, ConfigurableAuthenticatorFactory {\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:293
 #, no-wrap
 msgid ""
 "    public static final String PROVIDER_ID = \"secret-question-authenticator\";\n"
@@ -660,7 +577,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:298
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -670,7 +586,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:303
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -680,7 +595,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:308
 msgid ""
 "The next thing the factory is responsible for is specify the allowed "
 "requirement switches.  While there are four different requirement types: "
@@ -691,7 +605,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:320
 #, no-wrap
 msgid ""
 "    private static AuthenticationExecutionModel.Requirement[] REQUIREMENT_CHOICES = {\n"
@@ -705,7 +618,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:325
 msgid ""
 "The AuthenticatorFactory.isUserSetupAllowed() is a flag that tells the flow "
 "manager whether or not Authenticator.setRequiredActions() method will be "
@@ -716,7 +628,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:333
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -726,7 +637,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:339
 msgid ""
 "The next few methods define how the Authenticator can be configured.  The "
 "isConfigurable() method is a flag which specifies to the admin console on "
@@ -736,7 +646,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:347
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -746,13 +655,11 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:349
 #, no-wrap
 msgid "    private static final List<ProviderConfigProperty> configProperties = new ArrayList<ProviderConfigProperty>();\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:359
 #, no-wrap
 msgid ""
 "    static {\n"
@@ -767,7 +674,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:368
 msgid ""
 "Each ProviderConfigProperty defines the name of the config property.  This "
 "is the key used in the config map stored in AuthenticatorConfigModel.  The "
@@ -779,7 +685,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:373
 msgid ""
 "The rest of the methods are for the admin console.  getHelpText() is the "
 "tooltip text that will be shown when you are picking the Authenticator you "
@@ -789,13 +694,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:374
 #, no-wrap
 msgid "Adding Authenticator Form"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:379
 msgid ""
 "Keycloak comes with a Freemarker <<_themes,theme and template engine>>.  The "
 "createForm() method you called within authenticate() of your Authenticator "
@@ -805,13 +708,11 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:381
 msgid ""
 "Let's take a bigger look at secret-question.ftl Here's a small code snippet:"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:390
 #, no-wrap
 msgid ""
 "        <form id=\"kc-totp-login-form\" class=\"${properties.kcFormClass!}\" action=\"${url.loginAction}\" method=\"post\">\n"
@@ -822,7 +723,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:395
 #, no-wrap
 msgid ""
 "                <div class=\"${properties.kcInputWrapperClass!}\">\n"
@@ -832,7 +732,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:401
 msgid ""
 "Any piece of text enclosed in `${}` corresponds to an attribute or template "
 "funtion.  If you see the form's action, you see it points to `${url."
@@ -842,7 +741,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:407
 #, no-wrap
 msgid ""
 "You'll also see `${properties.someValue}`.\n"
@@ -853,7 +751,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:411
 msgid ""
 "When you call AuthenticationFlowContext.form() this gives you a "
 "LoginFormsProvider instance.  If you called, `LoginFormsProvider."
@@ -863,13 +760,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:413
 #, no-wrap
 msgid "Adding Authenticator to a Flow"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:419
 msgid ""
 "Adding an Authenticator to a flow must be done in the admin console.  If you "
 "go to the Authentication menu item and go to the Flow tab, you will be able "
@@ -880,7 +775,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:422
 msgid ""
 "After you've created your flow, you have to bind it to the login action you "
 "want to bind it to.  If you go to the Authentication menu and go to the "
@@ -889,13 +783,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/auth-spi.adoc:423
 #, no-wrap
 msgid "Required Action Walkthrough"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:428
 msgid ""
 "In this section we will discuss how to define a required action.  In the "
 "Authenticator section you may have wondered, \"How will we get the user's "
@@ -906,7 +798,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:435
 #, no-wrap
 msgid ""
 "You will package your classes within a single jar.\n"
@@ -916,19 +807,16 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:439
 #, no-wrap
 msgid "org.keycloak.examples.authenticator.SecretQuestionRequiredActionFactory\n"
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:445
 #, no-wrap
 msgid "Implement the RequiredActionProvider"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:450
 msgid ""
 "Required actions must first implement the RequiredActionProvider interface.  "
 "The RequiredActionProvider.requiredActionChallenge() is the initial call by "
@@ -937,7 +825,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:458
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -947,7 +834,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:467
 msgid ""
 "You see that RequiredActionContext has similar methods to "
 "AuthenticationFlowContext.  The form() method allows you to render the page "
@@ -957,14 +843,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:469
 msgid ""
 "The challenge() method notifies the flow manager that a required action must "
 "be executed."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:472
 msgid ""
 "The next method is responsible for processing input from the HTML form of "
 "the required action.  The action URL of the form will be routed to the "
@@ -972,7 +856,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:485
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -987,7 +870,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:491
 msgid ""
 "The answer is pulled out of the form post.  A UserCredentialValueModel is "
 "created and the type and value of the credential are set.  Then UserModel."
@@ -996,32 +878,27 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:492
 #, no-wrap
 msgid "Implement the RequiredActionFactory"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:496
 msgid ""
 "This class is really simple.  It is just responsible for creating the "
 "required actin provider instance."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:501
 #, no-wrap
 msgid "public class SecretQuestionRequiredActionFactory implements RequiredActionFactory {\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:503
 #, no-wrap
 msgid "    private static final SecretQuestionRequiredAction SINGLETON = new SecretQuestionRequiredAction();\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:508
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -1031,7 +908,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:514
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -1041,7 +917,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:519
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -1051,20 +926,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:522
 msgid ""
 "The getDisplayText() method is just for the admin console when it wants to "
 "display a friendly name for the required action."
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:523
 #, no-wrap
 msgid "Enable Required Action"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:530
 msgid ""
 "The final thing you have to do is go into the admin console.  Click on the "
 "Authentication left menu.  Click on the Required Actions tab.  Click on the "
@@ -1073,16 +945,14 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/auth-spi.adoc:531
 #, no-wrap
 msgid "Modifying/Extending the Registration Form"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:538
 msgid ""
 "It is entirely possible for you to implement your own flow with a set of "
-"Authenticators to totally change how regisration is done in Keycloak.  But "
+"Authenticators to totally change how registration is done in Keycloak.  But "
 "what you'll usually want to do is just add a little bit of validation to the "
 "out of the box registration page.  An additional SPI was created to be able "
 "to do this.  It basically allows you to add validation of form elements on "
@@ -1093,13 +963,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:539
 #, no-wrap
 msgid "Implementation FormAction Interface"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:544
 msgid ""
 "The core interface you have to implement is the FormAction interface.  A "
 "FormAction is responsible for rendering and processing a portion of the "
@@ -1109,7 +977,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:563
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -1130,7 +997,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:568
 msgid ""
 "The Recaptcha buildPage() method is a callback by the form flow to help "
 "render the page.  It receives a form parameter which is a "
@@ -1140,7 +1006,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:574
 msgid ""
 "The code above is from the registration recaptcha plugin.  Recaptcha "
 "requires some specific settings that must be obtained from configuration.  "
@@ -1151,21 +1016,18 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:577
 msgid ""
 "Recaptcha also has the requirement of loading a javascript script.  You can "
 "do this by calling LoginFormsProvider.addScript() passing in the URL."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:579
 msgid ""
 "For user profile processing, there is no additional information that it "
 "needs to add to the form, so its buildPage() method is empty."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:583
 msgid ""
 "The next meaty part of this interface is the validate() method.  This is "
 "called immediately upon receiving a form post.  Let's look at the "
@@ -1173,7 +1035,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:592
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -1184,7 +1045,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:597
 #, no-wrap
 msgid ""
 "        String captcha = formData.getFirst(G_RECAPTCHA_RESPONSE);\n"
@@ -1194,7 +1054,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:607
 #, no-wrap
 msgid ""
 "            success = validateRecaptcha(context, success, captcha, secret);\n"
@@ -1209,7 +1068,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:611
 #, no-wrap
 msgid ""
 "        }\n"
@@ -1217,7 +1075,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:621
 msgid ""
 "Here we obtain the form data that the Recaptcha widget adds to the form.  We "
 "obtain the Recaptcha secret key from configuration.  We then validate the "
@@ -1231,14 +1088,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:623
 msgid ""
 "Let's also look at the user profile plugin that is used to validate email "
 "address and other user information when registering."
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:631
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -1248,13 +1103,11 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:633
 #, no-wrap
 msgid "        String eventError = Errors.INVALID_REGISTRATION;\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:637
 #, no-wrap
 msgid ""
 "        if (Validation.isBlank(formData.getFirst((RegistrationPage.FIELD_FIRST_NAME)))) {\n"
@@ -1263,7 +1116,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:641
 #, no-wrap
 msgid ""
 "        if (Validation.isBlank(formData.getFirst((RegistrationPage.FIELD_LAST_NAME)))) {\n"
@@ -1272,7 +1124,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:649
 #, no-wrap
 msgid ""
 "        String email = formData.getFirst(Validation.FIELD_EMAIL);\n"
@@ -1285,7 +1136,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:654
 #, no-wrap
 msgid ""
 "        if (context.getSession().users().getUserByEmail(email, context.getRealm()) != null) {\n"
@@ -1295,7 +1145,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:658
 #, no-wrap
 msgid ""
 "        if (errors.size() > 0) {\n"
@@ -1304,7 +1153,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:663
 #, no-wrap
 msgid ""
 "        } else {\n"
@@ -1314,7 +1162,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:675
 msgid ""
 "As you can see, this validate() method of user profile processing makes sure "
 "that the email, first, and last name are filled in in the form.  It also "
@@ -1329,7 +1176,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:679
 msgid ""
 "After all validations have been processed then, the form flow then invokes "
 "the FormAction.success() method.  For recaptcha this is a no-op, so we won't "
@@ -1338,7 +1184,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:691
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -1352,7 +1197,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:696
 msgid ""
 "Pretty simple implementation.  The UserModel of the newly registered user is "
 "obtained from the FormContext.  The appropriate methods are called to "
@@ -1360,7 +1204,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:699
 msgid ""
 "Finally, you are also required to define a FormActionFactory class.  This "
 "class is implemented similarly to AuthenticatorFactory, so we won't go over "
@@ -1368,13 +1211,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:700
 #, no-wrap
 msgid "Packaging the Action"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:706
 #, no-wrap
 msgid ""
 "You will package your classes within a single jar.\n"
@@ -1384,7 +1225,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/server_development/topics/auth-spi.adoc:712
 #, no-wrap
 msgid ""
 "org.keycloak.authentication.forms.RegistrationProfile\n"
@@ -1392,13 +1232,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:718
 #, no-wrap
 msgid "Adding FormAction to the Registration Flow"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:724
 msgid ""
 "Adding an FormAction to a registration page flow must be done in the admin "
 "console.  If you go to the Authentication menu item and go to the Flow tab, "
@@ -1410,7 +1248,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:729
 msgid ""
 "Basically you'll have to copy the registration flow.  Then click Actions "
 "menu to the right of the Registration Form, and pick \"Add Execution\" to "
@@ -1423,7 +1260,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:732
 msgid ""
 "After you've created your flow, you have to bind it to registration.  If you "
 "go to the Authentication menu and go to the Bindings tab you will see "
@@ -1431,13 +1267,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/auth-spi.adoc:733
 #, no-wrap
 msgid "Modifying Forgot Password/Credential Flow"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:739
 msgid ""
 "Keycloak also has a specific authentication flow for forgot password, or "
 "rather credential reset initiated by a user.  If you go to the admin console "
@@ -1449,7 +1283,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:743
 msgid ""
 "You can add additional functionality to this flow as well.  For example, "
 "many deployments would like for the user to answer one or more secret "
@@ -1459,7 +1292,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:753
 msgid ""
 "One thing to note if you are extending the reset credentials flow.  The "
 "first \"authenticator\" is just a page to obtain the username or email.  If "
@@ -1475,13 +1307,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/auth-spi.adoc:754
 #, no-wrap
 msgid "Modifying First Broker Login Flow"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:759
 msgid ""
 "First Broker Login flow is used during first login with some identity "
 "provider.  Term `First Login` means that there is not yet existing "
@@ -1491,13 +1321,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/auth-spi.adoc:761
 #, no-wrap
 msgid "Authentication of clients"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:768
 msgid ""
 "{project_name} actually supports pluggable authentication for http://openid."
 "net/specs/openid-connect-core-1_0.html[OpenID Connect] client applications.  "
@@ -1512,32 +1340,27 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:770
 msgid ""
 "For more details about {project_name} adapter and OAuth2 flows see link:"
 "{adapterguide_link}[{adapterguide_name}]."
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:771
 #, no-wrap
 msgid "Default implementations"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:774
 msgid ""
 "Actually Keycloak has 2 builtin implementations of client authentication:"
 msgstr ""
 
 #. type: Labeled list
-#: source/server_development/topics/auth-spi.adoc:775
 #, no-wrap
 msgid "Traditional authentication with client_id and client_secret"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:778
 #, no-wrap
 msgid ""
 "This is default mechanism mentioned in the http://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect]                                or https://tools.ietf.org/html/rfc6749[OAuth2] specification and Keycloak supports it since it's early days.\n"
@@ -1545,13 +1368,11 @@ msgid ""
 msgstr ""
 
 #. type: Labeled list
-#: source/server_development/topics/auth-spi.adoc:779
 #, no-wrap
 msgid "Authentication with signed JWT"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:783
 #, no-wrap
 msgid ""
 "This is based on the https://tools.ietf.org/html/rfc7523[JWT Bearer Token Profiles for OAuth 2.0] specification.\n"
@@ -1560,7 +1381,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:786
 msgid ""
 "See the demo example and especially the `examples/preconfigured-demo/product-"
 "app` for the example application showing the application using client "
@@ -1568,57 +1388,48 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/auth-spi.adoc:787
 #, no-wrap
 msgid "Implement your own client authenticator"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:790
 msgid ""
 "For plug your own client authenticator, you need to implement few interfaces "
 "on both client (adapter) and server side."
 msgstr ""
 
 #. type: Labeled list
-#: source/server_development/topics/auth-spi.adoc:791
 #, no-wrap
 msgid "Client side"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:793
 msgid ""
 "Here you need to implement `org.keycloak.adapters.authentication."
 "ClientCredentialsProvider` and put the implementation either to:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:795
 msgid ""
 "your WAR file into WEB-INF/classes . But in this case, the implementation "
 "can be used just for this single WAR application"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:796
 msgid "Some JAR file, which will be added into WEB-INF/lib of your WAR"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:797
 #, no-wrap
 msgid "Some JAR file, which will be used as jboss module and configured in jboss-deployment-structure.xml of your WAR.                                In all cases, you also need to create the file `META-INF/services/org.keycloak.adapters.authentication.ClientCredentialsProvider`                                either in the WAR or in your JAR. \n"
 msgstr ""
 
 #. type: Labeled list
-#: source/server_development/topics/auth-spi.adoc:798
 #, no-wrap
 msgid "Server side"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/auth-spi.adoc:800
 #, no-wrap
 msgid ""
 "Here you need to implement `org.keycloak.authentication.ClientAuthenticatorFactory` and `org.keycloak.authentication.ClientAuthenticator` . You also need to add the file `META-INF/services/org.keycloak.authentication.ClientAuthenticatorFactory` with the name of the implementation classes.\n"

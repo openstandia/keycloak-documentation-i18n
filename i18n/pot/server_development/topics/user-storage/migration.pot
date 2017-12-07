@@ -15,15 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:15
-#: source/server_development/topics/user-storage/migration.adoc:27
 msgid ""
 "There are some obvious disadvantages though to using an import strategy:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:21
-#: source/server_development/topics/user-storage/migration.adoc:33
 msgid ""
 "With the import approach, you have to keep local keycloak storage and "
 "external storage in sync. The User Storage SPI has capability interfaces "
@@ -32,13 +28,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ===
-#: source/server_development/topics/user-storage/migration.adoc:2
 #, no-wrap
 msgid "Migrating from an Earlier User Federation SPI"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:6
 #, no-wrap
 msgid ""
 "This chapter is only applicable if you have implemented a provider using the earlier (and now removed)\n"
@@ -46,7 +40,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:10
 msgid ""
 "In Keycloak version 2.4.0 and earlier there was a User Federation SPI. Red "
 "Hat Single Sign-On version 7.0, although unsupported, also had this earlier "
@@ -57,13 +50,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/migration.adoc:12
 #, no-wrap
 msgid "Import vs. Non-Import"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:17
 msgid ""
 "The earlier User Federation SPI required you to create a local copy of a "
 "user in the {project_name}'s database and import information from your "
@@ -73,12 +64,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:19
 msgid "Advantages of the import strategy:"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:22
 msgid ""
 "{project_name} basically becomes a persistence user cache for your external "
 "store. Once the user is imported you'll no longer hit the external store, "
@@ -86,7 +75,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:25
 msgid ""
 "If you are moving to {project_name} as your official user store and "
 "deprecating the earlier external store, you can slowly migrate applications "
@@ -95,7 +83,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:31
 msgid ""
 "Looking up a user for the first time will require multiple updates to "
 "{project_name} database. This can be a big performance loss under load and "
@@ -105,13 +92,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/migration.adoc:34
 #, no-wrap
 msgid "UserFederationProvider vs. UserStorageProvider"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:37
 msgid ""
 "The first thing to notice is that `UserFederationProvider` was a complete "
 "interface. You implemented every method in this interface. However, "
@@ -120,7 +105,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:40
 msgid ""
 "`UserFederationProvider.getUserByUsername()` and `getUserByEmail()` have "
 "exact equivalents in the new SPI. The difference between the two is how you "
@@ -131,7 +115,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:46
 msgid ""
 "The `UserFederationProvider.validateAndProxy()` method has been moved to an "
 "optional capability interface, `ImportedUserValidation`.  You want to "
@@ -144,14 +127,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:48
 msgid ""
 "The `UserFederationProvider.isValid()` method no longer exists in the later "
 "model."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:54
 msgid ""
 "The `UserFederationProvider` methods `synchronizeRegistrations()`, "
 "`registerUser()`, and `removeUser()` have been moved to the "
@@ -164,7 +145,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:63
 msgid ""
 "The earlier `UserFederationProvider` methods centered around credentials are "
 "now encapsulated in the `CredentialInputValidator` and "
@@ -180,7 +160,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:67
 msgid ""
 "The `UserFederationProvider` query methods such as `searchByAttributes()` "
 "and `getGroupMembers()` are now encapsulated in an optional interface "
@@ -189,13 +168,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/migration.adoc:68
 #, no-wrap
 msgid "UserFederationProviderFactory vs. UserStorageProviderFactory"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:73
 msgid ""
 "The synchronization methods in the earlier SPI are now encapsulated within "
 "an optional `ImportSynchronization` interface.  If you have implemented "
@@ -204,13 +181,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/migration.adoc:74
 #, no-wrap
 msgid "Upgrading to a New Model"
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:80
 msgid ""
 "The User Storage SPI instances are stored in a different set of relational "
 "tables. {project_name} automatically runs a migration script. If any earlier "
@@ -222,12 +197,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:82
 msgid "So, knowing this there are different approaches you can take."
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:85
 msgid ""
 "You can remove the earlier provider in your earlier {project_name} "
 "deployment. This will remove all local linked copies of imported users.  "
@@ -236,7 +209,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:89
 msgid ""
 "The second option is to write your new provider making sure it has the same "
 "provider ID: `UserStorageProviderFactory.getId()`.  Make sure this provider "
@@ -247,7 +219,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:91
 msgid ""
 "If you have decided to get rid of the import strategy and rewrite your User "
 "Storage provider, we suggest that you remove the earlier provider before "

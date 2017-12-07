@@ -15,27 +15,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ====
-#: source/server_installation/topics/installation.adoc:2
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:15
 #, no-wrap
 msgid "Installation"
 msgstr ""
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:60
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:45
 #, no-wrap
 msgid "Usage"
 msgstr ""
 
 #. type: Title ===
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:2
 #, no-wrap
 msgid "Node.js Adapter"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:5
 msgid ""
 "{project_name} provides a Node.js adapter built on top of https://github.com/"
 "senchalabs/connect[Connect] to protect server-side JavaScript apps — the "
@@ -44,7 +38,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:9
 msgid ""
 "The library can be downloaded directly from https://www.npmjs.com/package/"
 "keycloak-connect[ {project_name} organization] and the source is available "
@@ -52,7 +45,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:12
 msgid ""
 "To use the Node.js adapter, first you must create a client for your "
 "application in the {project_name} Administration Console. The adapter "
@@ -61,7 +53,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:14
 msgid ""
 "Once the client is created click the `Installation` tab, select "
 "`{project_name} OIDC JSON` for `Format Option`, and then click `Download`. "
@@ -70,27 +61,23 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:18
 msgid ""
 "Assuming you've already installed https://nodejs.org[Node.js], create a "
 "folder for your application:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:20
 #, no-wrap
 msgid "    mkdir myapp && cd myapp\n"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:22
 msgid ""
 "Use `npm init` command to create a `package.json` for your application. Now "
 "add the {project_name} connect adapter in the dependencies list:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:30
 #, no-wrap
 msgid ""
 "    \"dependencies\": {\n"
@@ -99,7 +86,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:41
 #, no-wrap
 msgid ""
 "    \"dependencies\": {\n"
@@ -108,13 +94,11 @@ msgid ""
 msgstr ""
 
 #. type: Labeled list
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:46
 #, no-wrap
 msgid "Instantiate a Keycloak class"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:51
 msgid ""
 "The `Keycloak` class provides a central point for configuration and "
 "integration with your application.  The simplest creation involves no "
@@ -122,7 +106,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:56
 #, no-wrap
 msgid ""
 "    var session = require('express-session');\n"
@@ -130,7 +113,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:59
 #, no-wrap
 msgid ""
 "    var memoryStore = new session.MemoryStore();\n"
@@ -138,7 +120,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:65
 msgid ""
 "By default, this will locate a file named `keycloak.json` alongside the main "
 "executable of your application to initialize keycloak-specific settings "
@@ -147,7 +128,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:69
 msgid ""
 "Instantiation with this method results in all of the reasonable defaults "
 "being used. As alternative, it's also possible to provide a configuration "
@@ -155,7 +135,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:79
 #, no-wrap
 msgid ""
 "    let kcConfig = {\n"
@@ -168,19 +147,16 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:81
 #, no-wrap
 msgid "let keycloak = new Keycloak({ store: memoryStore }, kcConfig);\n"
 msgstr ""
 
 #. type: Labeled list
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:84
 #, no-wrap
 msgid "Configuring a web session store"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:90
 msgid ""
 "If you want to use web sessions to manage server-side state for "
 "authentication, you need to initialize the `Keycloak(...)` with at least a "
@@ -189,7 +165,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:94
 #, no-wrap
 msgid ""
 "    var session = require('express-session');\n"
@@ -197,133 +172,111 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:96
 #, no-wrap
 msgid "    var keycloak = new Keycloak({ store: memoryStore });\n"
 msgstr ""
 
 #. type: Labeled list
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:97
 #, no-wrap
 msgid "Passing a custom scope value"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:100
 msgid ""
 "By default, the scope value `openid` is passed as a query parameter to "
 "{project_name}'s login URL, but you can add an additional custom value:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:102
 #, no-wrap
 msgid "    var keycloak = new Keycloak({ scope: 'offline_access' });\n"
 msgstr ""
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:103
 #, no-wrap
 msgid "Installing Middleware"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:106
 msgid ""
 "Once instantiated, install the middleware into your connect-capable app:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:110
 #, no-wrap
 msgid "    var app = express();\n"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:112
 #, no-wrap
 msgid "    app.use( keycloak.middleware() );\n"
 msgstr ""
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:114
 #, no-wrap
 msgid "Protecting Resources"
 msgstr ""
 
 #. type: Labeled list
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:116
 #, no-wrap
 msgid "Simple authentication"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:120
 msgid ""
 "To enforce that an user must be authenticated before accessing a resource, "
 "simply use a no-argument version of `keycloak.protect()`:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:124
 #, no-wrap
 msgid "    app.get( '/complain', keycloak.protect(), complaintHandler );\n"
 msgstr ""
 
 #. type: Labeled list
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:126
 #, no-wrap
 msgid "Role-based authorization"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:129
 msgid "To secure a resource with an application role for the current app:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:133
 #, no-wrap
 msgid "    app.get( '/special', keycloak.protect('special'), specialHandler );\n"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:136
 msgid "To secure a resource with an application role for a *different* app:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:139
 #, no-wrap
 msgid "    app.get( '/extra-special', keycloak.protect('other-app:special', extraSpecialHandler );\n"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:141
 msgid "To secure a resource with a realm role:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:144
 #, no-wrap
 msgid "    app.get( '/admin', keycloak.protect( 'realm:admin' ), adminHandler );\n"
 msgstr ""
 
 #. type: Labeled list
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:145
 #, no-wrap
 msgid "Advanced authorization"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:149
 msgid ""
 "To secure resources based on parts of the URL itself, assuming a role exists "
 "for each section:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:155
 #, no-wrap
 msgid ""
 "    function protectBySection(token, request) {\n"
@@ -332,25 +285,21 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:157
 #, no-wrap
 msgid "    app.get( '/:section/:page', keycloak.protect( protectBySection ), sectionHandler );\n"
 msgstr ""
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:159
 #, no-wrap
 msgid "Additional URLs"
 msgstr ""
 
 #. type: Labeled list
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:161
 #, no-wrap
 msgid "Explicit user-triggered logout"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:166
 msgid ""
 "By default, the middleware catches calls to `/logout` to send the user "
 "through a {project_name}-centric logout workflow. This can be changed by "
@@ -358,18 +307,15 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:168
 #, no-wrap
 msgid "    app.use( keycloak.middleware( { logout: '/logoff' } ));\n"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:170
 msgid "{project_name} Admin Callbacks::"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:175
 msgid ""
 "Also, the middleware supports callbacks from the {project_name} console to "
 "log out a single session or all sessions.  By default, these type of admin "
@@ -378,7 +324,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/nodejs-adapter.adoc:176
 #, no-wrap
 msgid "    app.use( keycloak.middleware( { admin: '/callbacks' } );\n"
 msgstr ""

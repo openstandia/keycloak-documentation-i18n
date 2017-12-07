@@ -15,26 +15,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/jetty8-adapter.adoc:10
-#: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:10
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:8
-#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:10
-#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:10
-#: source/securing_apps/topics/oidc/java/installed-adapter.adoc:40
-#: source/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_installation.adoc:3
-#: source/securing_apps/topics/saml/java/jboss-adapter/jboss_adapter_installation.adoc:3
 #, no-wrap
 msgid "Adapter Installation"
 msgstr ""
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:2
 #, no-wrap
 msgid "Spring Boot Adapter"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:6
 msgid ""
 "To be able to secure Spring Boot apps you must add the Keycloak Spring Boot "
 "adapter JAR to your app.  You then have to provide some extra configuration "
@@ -43,7 +33,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:13
 msgid ""
 "The Keycloak Spring Boot adapter takes advantage of Spring Boot's "
 "autoconfiguration so all you need to do is add the Keycloak Spring Boot "
@@ -53,7 +42,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:23
 #, no-wrap
 msgid ""
 "<dependency>\n"
@@ -63,12 +51,10 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:27
-msgid "Make also sure to add the Adapter BOM dependency :"
+msgid "Make also sure to add the Adapter POM dependency :"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:43
 #, no-wrap
 msgid ""
 "<dependencyManagement>\n"
@@ -85,48 +71,40 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:48
 msgid ""
 "Currently the following embedded containers are supported and do not require "
 "any extra dependencies if using the Starter:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:50
 msgid "Tomcat"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:51
 msgid "Undertow"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:52
 msgid "Jetty"
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:54
 #, no-wrap
 msgid "Required Spring Boot Adapter Configuration"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:57
 msgid ""
 "This section describes how to configure your Spring Boot app to use Keycloak."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:60
 msgid ""
 "Instead of a `keycloak.json` file, you configure the realm for the Spring "
 "Boot Keycloak adapter via the normal Spring Boot configuration.  For example:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:71
 #, no-wrap
 msgid ""
 "keycloak.realm = demorealm\n"
@@ -138,21 +116,18 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:74
 msgid ""
 "You can disable the Keycloak Spring Boot Adapter (for example in tests) by "
 "setting `keycloak.enabled = false`."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:76
 msgid ""
 "To configure a Policy Enforcer, unlike keycloak.json, `policy-enforcer-"
 "config` must be used instead of just `policy-enforcer`."
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:80
 msgid ""
 "You also need to specify the Java EE security config that would normally go "
 "in the `web.xml`.  The Spring Boot Adapter will set the `login-method` to "
@@ -161,7 +136,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:89
 #, no-wrap
 msgid ""
 "keycloak.securityConstraints[0].authRoles[0] = admin\n"
@@ -171,10 +145,17 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/spring-boot-adapter.adoc:93
 #, no-wrap
 msgid ""
 "keycloak.securityConstraints[1].authRoles[0] = admin\n"
 "keycloak.securityConstraints[1].securityCollections[0].name = admin stuff\n"
 "keycloak.securityConstraints[1].securityCollections[0].patterns[0] = /admin\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If you plan to deploy your Spring Application as a WAR then you should not "
+"use the Spring Boot Adapter and use the dedicated adapter for the "
+"application server or servlet container you are using. Your Spring Boot "
+"should also contain a `web.xml` file."
 msgstr ""

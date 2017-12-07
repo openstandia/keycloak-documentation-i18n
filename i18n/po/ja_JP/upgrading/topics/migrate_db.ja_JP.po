@@ -2,31 +2,35 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:148
 #: source/upgrading/topics/migrate_db.adoc:27
 #, no-wrap
-msgid "/subsystem=keycloak-server/spi=connectionsJpa/provider=default/:map-put(name=properties,key=migrationStrategy,value=update)\n"
+msgid ""
+"/subsystem=keycloak-server/spi=connectionsJpa/provider=default/:map-"
+"put(name=properties,key=migrationStrategy,value=update)\n"
 msgstr ""
+"/subsystem=keycloak-server/spi=connectionsJpa/provider=default/:map-"
+"put(name=properties,key=migrationStrategy,value=update)\n"
 
 #. type: Title ==
 #: source/upgrading/topics/migrate_db.adoc:3
 #, no-wrap
 msgid "Migrating the Database"
-msgstr ""
+msgstr "データベース移行"
 
 #. type: Plain text
 #: source/upgrading/topics/migrate_db.adoc:7
@@ -35,12 +39,13 @@ msgid ""
 "choose to do it manually. By default the database is automatically migrated "
 "when you start the new installation for the first time."
 msgstr ""
+"{project_name}では、データベース・スキーマの移行は自動的にできますが、手動でも行うことができます。デフォルトでは、初めての新規インストール時に、データベースは自動的に移行されます。"
 
 #. type: Title ===
 #: source/upgrading/topics/migrate_db.adoc:8
 #, no-wrap
 msgid "Automatic Relational Database Migration"
-msgstr ""
+msgstr "自動リレーショナル・データベース移行"
 
 #. type: Plain text
 #: source/upgrading/topics/migrate_db.adoc:12
@@ -49,6 +54,7 @@ msgid ""
 "migrationStrategy property value to \"update\" for the default "
 "connectionsJpa provider:"
 msgstr ""
+"データベース・スキーマの自動アップグレードを有効にするには、デフォルトのconnectionsJpaプロバイダーのmigrationStrategyプロパティ値を\"update\"に設定します。"
 
 #. type: Plain text
 #: source/upgrading/topics/migrate_db.adoc:21
@@ -63,32 +69,41 @@ msgid ""
 "    </provider>\n"
 "</spi>\n"
 msgstr ""
+" <spi name=\"connectionsJpa\">\n"
+"    <provider name=\"default\" enabled=\"true\">\n"
+"        <properties>\n"
+"            ...\n"
+"            <property name=\"migrationStrategy\" value=\"update\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
 
 #. type: Plain text
 #: source/upgrading/topics/migrate_db.adoc:23
 #: source/upgrading/topics/migrate_db.adoc:47
 msgid "Or run this CLI command:"
-msgstr ""
+msgstr "または、このCLIコマンドを実行します。"
 
 #. type: Plain text
 #: source/upgrading/topics/migrate_db.adoc:31
 msgid ""
 "When you start the server with this setting your database is automatically "
 "migrated if the database schema has changed in the new version."
-msgstr ""
+msgstr "データベース・スキーマが新バージョンに変更されていた場合、この設定でサーバーを起動すると、データベースは自動的に移行されます。"
 
 #. type: Title ===
 #: source/upgrading/topics/migrate_db.adoc:32
 #, no-wrap
 msgid "Manual Relational Database Migration"
-msgstr ""
+msgstr "手動リレーショナル・データベース移行"
 
 #. type: Plain text
 #: source/upgrading/topics/migrate_db.adoc:36
 msgid ""
-"To enable manual upgrading of the database schema, set the migrationStrategy "
-"property value to \"manual\" for the default connectionsJpa provider:"
+"To enable manual upgrading of the database schema, set the migrationStrategy"
+" property value to \"manual\" for the default connectionsJpa provider:"
 msgstr ""
+"データベース・スキーマの手動アップグレードを有効にするには、デフォルトのconnectionsJpaプロバイダーのmigrationStrategyプロパティ値を\"manual\"に設定します。"
 
 #. type: Plain text
 #: source/upgrading/topics/migrate_db.adoc:45
@@ -103,20 +118,33 @@ msgid ""
 "    </provider>\n"
 "</spi>\n"
 msgstr ""
+" <spi name=\"connectionsJpa\">\n"
+"    <provider name=\"default\" enabled=\"true\">\n"
+"        <properties>\n"
+"            ...\n"
+"            <property name=\"migrationStrategy\" value=\"manual\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
 
 #. type: delimited block -
 #: source/upgrading/topics/migrate_db.adoc:51
 #, no-wrap
-msgid "/subsystem=keycloak-server/spi=connectionsJpa/provider=default/:map-put(name=properties,key=migrationStrategy,value=manual)\n"
+msgid ""
+"/subsystem=keycloak-server/spi=connectionsJpa/provider=default/:map-"
+"put(name=properties,key=migrationStrategy,value=manual)\n"
 msgstr ""
+"/subsystem=keycloak-server/spi=connectionsJpa/provider=default/:map-"
+"put(name=properties,key=migrationStrategy,value=manual)\n"
 
 #. type: Plain text
 #: source/upgrading/topics/migrate_db.adoc:56
 msgid ""
 "When you start the server with this configuration it checks if the database "
 "needs to be migrated. The required changes are written to an SQL file that "
-"you can review and manually run against the database. For further details on "
-"how to apply this file to the database, see the documentation for the "
-"relational database you’re using. After the changes have been written to the "
-"file, the server exits."
+"you can review and manually run against the database. For further details on"
+" how to apply this file to the database, see the documentation for the "
+"relational database you’re using. After the changes have been written to the"
+" file, the server exits."
 msgstr ""
+"この設定でサーバーを起動すると、データベースを移行する必要があるかどうか確認されます。必要な変更はSQLファイルに書き込まれ、確認およびデータベースに対する手動実行が可能です。このファイルをデータベースに適用する方法についての詳細は、利用しているリレーショナル・データベース用のドキュメントを参照ください。ファイルに変更が書き込まれると、サーバーは終了します。"

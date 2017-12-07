@@ -2,32 +2,33 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ==
 #: source/securing_apps/topics/docker/docker-overview.adoc:2
 #, no-wrap
 msgid "Docker Registry Configuration"
-msgstr ""
+msgstr "Dockerレジストリーの設定"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:5
 #: source/server_admin/topics/sso-protocols/docker.adoc:6
 msgid ""
-"Docker authentication is disabled by default. To enable see link:"
-"{installguide_profile_link}[{installguide_profile_name}]."
+"Docker authentication is disabled by default. To enable see "
+"link:{installguide_profile_link}[{installguide_profile_name}]."
 msgstr ""
+"Docker認証はデフォルトで無効です。有効にするには、link:{installguide_profile_link}[{installguide_profile_name}]を参照してください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:7
@@ -35,6 +36,7 @@ msgid ""
 "This section describes how you can configure a Docker registry to use "
 "{project_name} as its authentication server."
 msgstr ""
+"このセクションでは、{project_name}を認証サーバーとして使用するようにDockerレジストリーを設定する方法について説明します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:9
@@ -43,22 +45,27 @@ msgid ""
 "the link:https://docs.docker.com/registry/configuration/[Docker Registry "
 "Configuration Guide]."
 msgstr ""
+"Dockerレジストリーを設定および設定する方法の詳細については、link:https://docs.docker.com/registry/configuration/[Docker"
+" Registry Configuration Guide]を参照してください。"
 
 #. type: Title ===
 #: source/securing_apps/topics/docker/docker-overview.adoc:12
 #, no-wrap
 msgid "Docker Registry Configuration File Installation"
-msgstr ""
+msgstr "Dockerレジストリーの設定ファイルのインストール"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:15
 msgid ""
-"For users with more advanced docker registry configurations, it is generally "
-"recommended to provide your own registry configuration file.  The "
+"For users with more advanced docker registry configurations, it is generally"
+" recommended to provide your own registry configuration file.  The "
 "{project_name} docker provider supports this mechanism via the _Registry "
 "Config File_ Format Option.  Choosing this option will generate output "
 "similar to the following:"
 msgstr ""
+"より高度なDockerレジストリー設定を持つユーザーの場合は、通常、独自のレジストリー設定ファイルを提供することをお勧めします。{project_name}"
+" Dockerプロバイダーは、 _Registry Config File_ Format "
+"Optionを使用してこのメカニズムをサポートしています。このオプションを選択すると、次のような出力が生成されます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:21
@@ -70,6 +77,11 @@ msgid ""
 "\t    service: docker-test\n"
 "\t    issuer: http://localhost:8080/auth/auth/realms/master\n"
 msgstr ""
+"\tauth:\n"
+"\t  token:\n"
+"\t    realm: http://localhost:8080/auth/auth/realms/master/protocol/docker-v2/auth\n"
+"\t    service: docker-test\n"
+"\t    issuer: http://localhost:8080/auth/auth/realms/master\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:23
@@ -77,9 +89,12 @@ msgid ""
 "This output can then be copied into any existing registry config file.  See "
 "the link:https://docs.docker.com/registry/configuration/[registry config "
 "file specification] for more information on how the file should be set up, "
-"or start with href:https://github.com/docker/distribution/blob/master/cmd/"
-"registry/config-example.yml[a basic example]."
+"or start with "
+"href:https://github.com/docker/distribution/blob/master/cmd/registry/config-"
+"example.yml[a basic example]."
 msgstr ""
+"この出力は、既存のレジストリー設定ファイルにコピーできます。ファイルの設定方法の詳細については、link:https://docs.docker.com/registry/configuration/[レジストリー設定ファイルの仕様]を参照してください。または、href:https://github.com/docker/distribution/blob/master/cmd/registry"
+"/config-example.yml[基本的な例]から始めてください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:25
@@ -88,12 +103,14 @@ msgid ""
 "the {project_name} realm's pulic certificate.  The auth configuration will "
 "not work without this argument."
 msgstr ""
+"`rootcertbundle` "
+"フィールドに{project_name}のレルムの公開証明書の場所を設定するのを忘れないでください。auth設定は、この引数なしでは動作しません。"
 
 #. type: Title ===
 #: source/securing_apps/topics/docker/docker-overview.adoc:27
 #, no-wrap
 msgid "Docker Registry Environment Variable Override Installation"
-msgstr ""
+msgstr "Dockerレジストリー環境変数のオーバーライド・インストール"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:30
@@ -105,6 +122,8 @@ msgid ""
 "Format Option from the client installation tab, and an output should appear "
 "like the one below:"
 msgstr ""
+"開発やPOC用のDockerレジストリーに単純な環境変数のオーバーライドを使用することが適切な場合がよくあります。このアプローチは、通常プロダクション環境での使用では推奨されていませんが、レジストリーを立ち上げるための安上がりな方法が必要な場合に役立ちます。クライアント・インストール・タブから"
+" _Variable Override_ Format Optionを使用するだけで、出力は次のようになります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:34
@@ -114,37 +133,45 @@ msgid ""
 "    REGISTRY_AUTH_TOKEN_SERVICE: docker-test\n"
 "    REGISTRY_AUTH_TOKEN_ISSUER: http://localhost:8080/auth/auth/realms/master\n"
 msgstr ""
+"    REGISTRY_AUTH_TOKEN_REALM: http://localhost:8080/auth/auth/realms/master/protocol/docker-v2/auth\n"
+"    REGISTRY_AUTH_TOKEN_SERVICE: docker-test\n"
+"    REGISTRY_AUTH_TOKEN_ISSUER: http://localhost:8080/auth/auth/realms/master\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:36
 msgid ""
 "Don't forget to configure the `REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE` override "
-"with the location of the {project_name} realm's pulic certificate.  The auth "
-"configuration will not work without this argument."
+"with the location of the {project_name} realm's pulic certificate.  The auth"
+" configuration will not work without this argument."
 msgstr ""
+"`REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE` "
+"オーバーライドを{project_name}レルムの公開証明書の場所で設定するのを忘れないでください。auth設定は、この引数なしでは動作しません。"
 
 #. type: Title ===
 #: source/securing_apps/topics/docker/docker-overview.adoc:38
 #, no-wrap
 msgid "Docker Compose YAML File"
-msgstr ""
+msgstr "Docker Compose YAMLファイル"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:41
 msgid ""
-"This installation method is meant to be an easy way to get a docker registry "
-"authenticating against a keycloak server.  It is intended for development "
+"This installation method is meant to be an easy way to get a docker registry"
+" authenticating against a keycloak server.  It is intended for development "
 "purposes only and should never be used in a production or production-like "
 "environment."
 msgstr ""
+"このインストール方法は、Keycloakサーバーで認証するDockerレジストリーを構築する簡易的な方法です。これは開発目的のみを対象としており、本番環境やそれと同等の環境には使用しないでください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:43
 msgid ""
-"The zip file installation mechanism provides a quickstart for developers who "
-"want to understand how the keycloak server can interact with the docker "
+"The zip file installation mechanism provides a quickstart for developers who"
+" want to understand how the keycloak server can interact with the docker "
 "registry.  In order to configure:"
 msgstr ""
+"zipファイルのインストール・メカニズムは、KeycloakサーバーがDockerレジストリーとどのようにやりとりができるかを理解したい開発者のために、クイック・スタートを提供します。"
+" 下記のとおりに設定します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:45
@@ -152,23 +179,24 @@ msgid ""
 "From the desired realm, create a client configuration.  At this point you "
 "won't have a docker registry - the quickstart will take care of that part."
 msgstr ""
+"目的のレルムから、クライアント設定を作成します。この時点で、Dockerレジストリーはありません。クイック・スタートがその部分を担当します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:46
 msgid ""
 "Choose the \"Docker Compose YAML\" option from the installation tab and "
 "download the .zip file"
-msgstr ""
+msgstr "インストール・タブから\"Docker Compose YAML\"オプションを選択し、.zipファイルをダウンロードします。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:47
 msgid "Unzip the archive to the desired location, and open the directory."
-msgstr ""
+msgstr "アーカイブを目的の場所に解凍し、ディレクトリーを開きます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:48
 msgid "Start the docker registry with `docker-compose up`"
-msgstr ""
+msgstr "Dockerレジストリーを `docker-compose up` で起動します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:50
@@ -177,13 +205,15 @@ msgid ""
 "realm other than 'master', since the HTTP Basic auth flow will not present "
 "forms."
 msgstr ""
+"情報：HTTP "
+"BASIC認証のフローはフォームを提示しないので、Dockerレジストリー・クライアントを'master'以外のレルムに設定することをお勧めします。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:52
 msgid ""
 "Once the above configuration has taken place, and the keycloak server and "
 "docker registry are running, docker authentication should be successful:"
-msgstr ""
+msgstr "上記の設定が完了し、KeycloakサーバーとDockerレジストリーが実行されたら、Docker認証が成功するはずです。"
 
 #. type: Plain text
 #: source/securing_apps/topics/docker/docker-overview.adoc:55
@@ -193,3 +223,6 @@ msgid ""
 "\tPassword: *******\n"
 "\tLogin Succeeded\n"
 msgstr ""
+"\t[user ~]# docker login localhost:5000 -u $username\n"
+"\tPassword: *******\n"
+"\tLogin Succeeded\n"

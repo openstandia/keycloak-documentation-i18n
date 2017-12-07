@@ -15,14 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ===
-#: source/server_admin/topics/realms/keys.adoc:2
-#: source/upgrading/topics/rhsso/changes.adoc:5
 #, no-wrap
 msgid "Realm Keys"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:6
 msgid ""
 "The authentication protocols that are used by {project_name} require "
 "cryptographic signatures and sometimes encryption.  {project_name} uses "
@@ -30,7 +27,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:10
 msgid ""
 "{project_name} has a single active keypair at a time, but can have several "
 "passive keys as well. The active keypair is used to create new signatures, "
@@ -40,14 +36,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:12
 msgid ""
 "When a realm is created a key pair and a self-signed certificate is "
 "automatically generated."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:16
 msgid ""
 "To view the active keys for a realm select the realm in the admin console "
 "click on `Realm settings` then `Keys`. This will show the currently active "
@@ -57,7 +51,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:21
 #, no-wrap
 msgid ""
 "To view all available keys select `All`. This will show all active, passive and disabled keys. A keypair can have the\n"
@@ -67,13 +60,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:22
 #, no-wrap
 msgid "Rotating keys"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:26
 msgid ""
 "It's recommended to regularly rotate keys. To do so you should start by "
 "creating new keys with a higher priority than the existing active keys. Or "
@@ -81,7 +72,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:31
 msgid ""
 "Once new keys are available all new tokens and cookies will be signed with "
 "the new keys. When a user authenticates to an application the SSO cookie is "
@@ -92,7 +82,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:35
 msgid ""
 "How long you wait to delete old keys is a tradeoff between security and "
 "making sure all cookies and tokens are updated.  In general it should be "
@@ -102,27 +91,23 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:38
 msgid ""
 "This also applies to offline tokens. To make sure they are updated the "
 "applications need to refresh the tokens before the old keys are removed."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:41
 msgid ""
 "As a guideline it may be a good idea to create new keys every 3-6 months and "
 "delete old keys 1-2 months after the new keys where created."
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:42
 #, no-wrap
 msgid "Adding a generated keypair"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:47
 msgid ""
 "To add a new generated keypair select `Providers` and choose `rsa-generated` "
 "from the dropdown. You can change the priority to make sure the new keypair "
@@ -132,14 +117,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:49
 msgid ""
 "Click `Save` to add the new keys. This will generated a new keypair "
 "including a self-signed certificate."
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:52
 msgid ""
 "Changing the priority for a provider will not cause the keys to be re-"
 "generated, but if you want to change the keysize you can edit the provider "
@@ -147,13 +130,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:53
 #, no-wrap
 msgid "Adding an existing keypair and certificate"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:57
 msgid ""
 "To add a keypair and certificate obtained elsewhere select `Providers` and "
 "choose `rsa` from the dropdown. You can change the priority to make sure the "
@@ -161,7 +142,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:60
 msgid ""
 "Click on `Select file` for `Private RSA Key` to upload your private key. The "
 "file should be encoded in PEM format. You don't need to upload the public "
@@ -169,7 +149,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:63
 #, no-wrap
 msgid ""
 "If you have a signed certificate for the keys click on `Select file` next to `X509 Certificate`. If you don't have one\n"
@@ -177,13 +156,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:64
 #, no-wrap
 msgid "Loading keys from a Java Keystore"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:68
 msgid ""
 "To add a keypair and certificate stored in a Java Keystore file on the host "
 "select `Providers` and choose `java-keystore` from the dropdown. You can "
@@ -191,20 +168,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:70
 msgid ""
 "Fill in the values for `Keystore`, `Keystore Password`, `Key Alias` and `Key "
 "Password` and click on `Save`."
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:71
 #, no-wrap
 msgid "Making keys passive"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:76
 msgid ""
 "Locate the keypair in `Active` or `All` then click on the provider in the "
 "`Provider` column. This will take you to the configuration screen for the "
@@ -214,13 +188,11 @@ msgid ""
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:77
 #, no-wrap
 msgid "Disabling keys"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:82
 msgid ""
 "Locate the keypair in `Active` or `All` then click on the provider in the "
 "`Provider` column. This will take you to the configuration screen for the "
@@ -229,18 +201,15 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:84
 msgid "Alternatively, you can delete the provider from the `Providers` table."
 msgstr ""
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:85
 #, no-wrap
 msgid "Compromised keys"
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:90
 msgid ""
 "{project_name} has the signing keys stored just locally and they are never "
 "shared with the client applications, users or other entities. However if you "
@@ -250,7 +219,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:95
 msgid ""
 "Then to ensure that client applications won't accept the tokens signed by "
 "the compromised key, you should update and push not-before policy for the "

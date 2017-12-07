@@ -15,13 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:2
 #, no-wrap
 msgid "Client Authentication"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:5
 msgid ""
 "When a confidential OIDC client needs to send a backchannel request (for "
 "example, to exchange code for the token, or to refresh the token) it needs "
@@ -31,13 +29,11 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:6
 #, no-wrap
 msgid "Client ID and Client Secret"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:10
 msgid ""
 "This is the traditional method described in the OAuth2 specification. The "
 "client has a secret, which needs to be known to both the adapter "
@@ -47,7 +43,6 @@ msgid ""
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:17
 #, no-wrap
 msgid ""
 "\"credentials\": {\n"
@@ -56,20 +51,17 @@ msgid ""
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:19
 #, no-wrap
 msgid "Client Authentication with Signed JWT"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:22
 msgid ""
 "This is based on the https://tools.ietf.org/html/rfc7523[RFC7523] "
 "specification. It works this way:"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:24
 msgid ""
 "The client must have the private key and certificate. For {project_name} "
 "this is available through the traditional `keystore` file, which is either "
@@ -78,7 +70,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:26
 msgid ""
 "Once the client application is started, it allows to download its public key "
 "in https://self-issued.info/docs/draft-ietf-jose-json-web-key.html[JWKS] "
@@ -88,7 +79,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:29
 msgid ""
 "During authentication, the client generates a JWT token and signs it with "
 "its private key and sends it to {project_name} in the particular backchannel "
@@ -97,7 +87,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:36
 msgid ""
 "{project_name} must have the public key or certificate of the client so that "
 "it can verify the signature on JWT. In {project_name} you need to configure "
@@ -120,14 +109,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:38
 msgid ""
 "For set up on the adapter side you need to have something like this in your "
 "`keycloak.json` file:"
 msgstr ""
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:51
 #, no-wrap
 msgid ""
 "\"credentials\": {\n"
@@ -143,7 +130,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:55
 msgid ""
 "With this configuration, the keystore file `keystore-client.jks` must be "
 "available on classpath in your WAR. If you do not use the prefix `classpath:"
@@ -152,20 +138,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:58
 msgid ""
 "For inspiration, you can take a look at the examples distribution into the "
 "main demo example into the `product-portal` application."
 msgstr ""
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:60
 #, no-wrap
 msgid "Add Your Own Client Authentication Method"
 msgstr ""
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/client-authentication.adoc:63
 msgid ""
 "You can add your own client authentication method as well. You will need to "
 "implement both client-side and server-side providers. For more details see "

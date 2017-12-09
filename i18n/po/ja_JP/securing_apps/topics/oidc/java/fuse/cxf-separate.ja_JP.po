@@ -16,22 +16,16 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:150
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:80
 #, no-wrap
 msgid "</beans>\n"
 msgstr "</beans>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:12
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:12
 #, no-wrap
 msgid "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 msgstr "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:47
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:54
 #, no-wrap
 msgid ""
 "    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
@@ -45,32 +39,28 @@ msgstr ""
 "    </bean>\n"
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:3
 #, no-wrap
 msgid "Securing an Apache CXF Endpoint on a Separate Jetty Engine"
 msgstr "独立したJettyエンジンでのApache CXFエンドポイントの保護"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:6
 msgid ""
 "To run your CXF endpoints secured by {project_name} on separate Jetty "
 "engines, complete the following steps:"
 msgstr "別のJettyエンジンで{project_name}によって保護されたCXFエンドポイントを実行するには、以下の手順に沿って行います。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:8
 msgid ""
 "Add `META-INF/spring/beans.xml` to your application, and in it, declare "
 "`httpj:engine-factory` with Jetty SecurityHandler with injected "
-"`KeycloakJettyAuthenticator`. The configuration for a CFX JAX-wS application"
+"`KeycloakJettyAuthenticator`. The configuration for a CFX JAX-WS application"
 " might resemble this one:"
 msgstr ""
-"アプリケーションに`META-"
-"INF/spring/beans.xml`を追加し、`KeycloakJettyAuthenticator`を注入したJettyの`SecurityHandler`で`httpj"
-":engine-factory`を宣言してください。 CFXのJAX-WSアプリケーションの設定は、次のようになります。"
+"アプリケーションに `META-INF/spring/beans.xml` を追加し、 `KeycloakJettyAuthenticator` "
+"を注入したJettyの `SecurityHandler` で `httpj:engine-factory` を宣言してください。 CFXのJAX-"
+"WSアプリケーションの設定は、次のようになります。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:22
 #, no-wrap
 msgid ""
 "<beans xmlns=\"http://www.springframework.org/schema/beans\"\n"
@@ -94,13 +84,11 @@ msgstr ""
 "        http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd\">\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:24
 #, no-wrap
 msgid "    <import resource=\"classpath:META-INF/cxf/cxf.xml\" />\n"
 msgstr "    <import resource=\"classpath:META-INF/cxf/cxf.xml\" />\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:32
 #, no-wrap
 msgid ""
 "    <bean id=\"kcAdapterConfig\" class=\"org.keycloak.representations.adapters.config.AdapterConfig\">\n"
@@ -120,7 +108,6 @@ msgstr ""
 "    </bean>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:38
 #, no-wrap
 msgid ""
 "    <bean id=\"keycloakAuthenticator\" class=\"org.keycloak.adapters.jetty.KeycloakJettyAuthenticator\">\n"
@@ -136,7 +123,6 @@ msgstr ""
 "    </bean>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:49
 #, no-wrap
 msgid ""
 "    <bean id=\"constraint\" class=\"org.eclipse.jetty.util.security.Constraint\">\n"
@@ -162,7 +148,6 @@ msgstr ""
 "    </bean>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:65
 #, no-wrap
 msgid ""
 "    <bean id=\"securityHandler\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
@@ -188,7 +173,6 @@ msgstr ""
 "    </bean>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:74
 #, no-wrap
 msgid ""
 "    <httpj:engine-factory bus=\"cxf\" id=\"kc-cxf-endpoint\">\n"
@@ -210,7 +194,6 @@ msgstr ""
 "    </httpj:engine-factory>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:78
 #, no-wrap
 msgid ""
 "    <jaxws:endpoint\n"
@@ -222,14 +205,12 @@ msgstr ""
 "                    address=\"http://localhost:8282/ProductServiceCF\" depends-on=\"kc-cxf-endpoint\" />\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:83
 msgid ""
 "For the CXF JAX-RS application, the only difference might be in the "
 "configuration of the endpoint dependent on engine-factory:"
 msgstr "CXFのJAX-RSアプリケーションの場合、エンジン・ファクトリーに依存するエンドポイントの設定にのみ違いがあります。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:92
 #, no-wrap
 msgid ""
 "<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
@@ -247,13 +228,11 @@ msgstr ""
 "</jaxrs:server>\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:96
 msgid ""
 "The `Import-Package` in `META-INF/MANIFEST.MF` must contain those imports:"
-msgstr "`META-INF/MANIFEST.MF`の`Import-Package`はそれらのインポートを含んでいなければなりません："
+msgstr "`META-INF/MANIFEST.MF` の `Import-Package` はそれらのインポートを含んでいなければなりません："
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:110
 #, no-wrap
 msgid ""
 "META-INF.cxf;version=\"[2.7,3.2)\",\n"

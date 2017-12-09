@@ -16,82 +16,69 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:2
 #, no-wrap
 msgid "mod_auth_openidc Apache HTTPD Module"
 msgstr "mod_auth_openidc Apache HTTPDモジュール"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:7
 msgid ""
-"The https://github.com/pingidentity/mod_auth_openidc[mod_auth_openidc] is an"
-" Apache HTTP plugin for OpenID Connect. If your language/environment "
-"supports using Apache HTTPD as a proxy, then you can use _mod_auth_openidc_ "
-"to secure your web application with OpenID Connect.  Configuration of this "
+"The https://github.com/zmartzone/mod_auth_openidc[mod_auth_openidc] is an "
+"Apache HTTP plugin for OpenID Connect. If your language/environment supports"
+" using Apache HTTPD as a proxy, then you can use _mod_auth_openidc_ to "
+"secure your web application with OpenID Connect.  Configuration of this "
 "module is beyond the scope of this document.  Please see the "
 "_mod_auth_openidc_ Github repo for more details on configuration."
 msgstr ""
-"https://github.com/pingidentity/mod_auth_openidc[mod_auth_openidc] は、OpenID "
-"Connect用のApache HTTPプラグインです。現在利用している言語/環境でApache "
-"HTTPDをプロキシとして使用できる場合は、_mod_auth_openidc_ を使用してOpenID "
-"ConnectでWebアプリケーションを保護することができます。このモジュールの設定は、このドキュメントの範囲を超えています。設定の詳細については、_mod_auth_openidc_"
-" のGithubリポジトリーを参照ください。"
+"The https://github.com/zmartzone/mod_auth_openidc[mod_auth_openidc]は、OpenID "
+"Connect用のApache HTTPプラグインです。現在利用している言語/環境でApache HTTPDをプロキシとして使用できる場合は、 "
+"_mod_auth_openidc_ を使用してOpenID "
+"ConnectでWebアプリケーションを保護することができます。このモジュールの設定は、このドキュメントの範囲を超えています。設定の詳細については、 "
+"_mod_auth_openidc_ のGithubリポジトリーを参照ください。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:9
 msgid "To configure _mod_auth_openidc_ you'll need"
 msgstr "_mod_auth_openidc_ を設定するには、以下が必要です"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:11
 msgid "The client_id."
 msgstr "client_id。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:12
 msgid "The client_secret."
 msgstr "client_secret。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:13
 msgid "The redirect_uri to your application."
 msgstr "アプリケーションへのredirect_uri。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:14
 msgid "The Keycloak openid-configuration url"
 msgstr "Keycloak openid-configuration URL"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:15
 msgid "_mod_auth_openidc_ specific Apache HTTPD module config."
 msgstr "_mod_auth_openidc_ 固有のApache HTTPDモジュールの設定。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:17
 msgid "An example configuration would look like the following."
 msgstr "設定例は次のようになります。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:21
 #, no-wrap
 msgid "LoadModule auth_openidc_module modules/mod_auth_openidc.so\n"
 msgstr "LoadModule auth_openidc_module modules/mod_auth_openidc.so\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:23
 #, no-wrap
 msgid "ServerName ${HOSTIP}\n"
 msgstr "ServerName ${HOSTIP}\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:25
 #, no-wrap
 msgid "<VirtualHost *:80>\n"
 msgstr "<VirtualHost *:80>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:28
 #, no-wrap
 msgid ""
 "    ServerAdmin webmaster@localhost\n"
@@ -101,7 +88,6 @@ msgstr ""
 "    DocumentRoot /var/www/html\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:31
 #, no-wrap
 msgid ""
 "    #this is required by mod_auth_openidc\n"
@@ -111,7 +97,6 @@ msgstr ""
 "    OIDCCryptoPassphrase a-random-secret-used-by-apache-oidc-and-balancer\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:33
 #, no-wrap
 msgid ""
 "    OIDCProviderMetadataURL ${KC_ADDR}/auth/realms/${KC_REALM}/.well-known"
@@ -121,7 +106,6 @@ msgstr ""
 "/openid-configuration\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:37
 #, no-wrap
 msgid ""
 "    OIDCClientID ${CLIENT_ID}\n"
@@ -133,7 +117,6 @@ msgstr ""
 "    OIDCRedirectURI http://${HOSTIP}/${CLIENT_APP_NAME}/redirect_uri\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:40
 #, no-wrap
 msgid ""
 "    # maps the prefered_username claim to the REMOTE_USER environment variable \n"
@@ -143,7 +126,6 @@ msgstr ""
 "    OIDCRemoteUserClaim preferred_username\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:46
 #, no-wrap
 msgid ""
 "    <Location /${CLIENT_APP_NAME}/>\n"
@@ -159,12 +141,9 @@ msgstr ""
 "</VirtualHost>\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/mod-auth-openidc.adoc:49
 msgid ""
 "Further information on how to configure mod_auth_openidc can be found on the"
-" https://github.com/pingidentity/mod_auth_openidc[mod_auth_openidc] project "
+" https://github.com/zmartzone/mod_auth_openidc[mod_auth_openidc] project "
 "page."
 msgstr ""
-"mod_auth_openidcの設定方法の詳細については、 "
-"https://github.com/pingidentity/mod_auth_openidc[mod_auth_openidc] "
-"プロジェクトページを参照してください。"
+"mod_auth_openidcの設定方法の詳細については、https://github.com/zmartzone/mod_auth_openidc[mod_auth_openidc]プロジェクトページを参照してください。"

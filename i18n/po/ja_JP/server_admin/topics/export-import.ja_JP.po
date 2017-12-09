@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Shinsuke UEDA <ueda.shinsuke.f2@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,13 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ==
-#: source/server_admin/topics/export-import.adoc:3
 #, no-wrap
 msgid "Export and Import"
 msgstr "エクスポートとインポート"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:8
 msgid ""
 "{project_name} has the ability to export and import the entire database.  "
 "This can be especially useful if you want to migrate your whole "
@@ -36,22 +34,18 @@ msgstr ""
 "{project_name}には、データベース全体をエクスポートおよびインポートする機能があります。これは、{project_name}データベース全体をある環境から別の環境に移行する場合や、別のデータベース（MySQLからOracleなど）に移行する場合に特に便利です。エクスポートとインポートはサーバーの起動時にトリガーされ、そのパラメーターはJavaのシステム・プロパティーを介して渡されます。インポートとエクスポートはサーバーの起動時に行われるため、この間にサーバーまたはデータベースに対して、他には何もしないように注意することが重要です。"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:10
 msgid "You can export/import your database either to:"
 msgstr "次のどちらかでデータベースをエクスポート／インポートすることができます。"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:12
 msgid "Directory on local filesystem"
 msgstr "ローカル・ファイルシステム上のディレクトリ"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:13
 msgid "Single JSON file on your filesystem"
 msgstr "ファイルシステム上の単一のJSONファイル"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:16
 msgid ""
 "When importing using the directory strategy, note that the files need to "
 "follow the naming convention specified below.  If you are importing files "
@@ -60,7 +54,6 @@ msgstr ""
 "ディレクトリ方式を使用してインポートする場合、ファイルは以下で指定された命名規則に従う必要があることに注意してください。以前にエクスポートしたファイルをインポートする場合、ファイルはすでにこの規則に従っています。"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:18
 msgid ""
 "<REALM_NAME>-realm.json, such as \"acme-roadrunner-affairs-realm.json\" for "
 "the realm named \"acme-roadrunner-affairs\""
@@ -69,7 +62,6 @@ msgstr ""
 "realm.json\"のような<REALM_NAME>-realm.json"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:19
 msgid ""
 "<REALM_NAME>-users-<INDEX>.json, such as \"acme-roadrunner-affairs-"
 "users-0.json\" for the first users file of the realm named \"acme-"
@@ -79,14 +71,12 @@ msgstr ""
 "affairs-users-0.json\"のような<REALM_NAME>-users-<INDEX>.json"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:21
 msgid ""
 "If you export to a directory, you can also specify the number of users that "
 "will be stored in each JSON file."
 msgstr "ディレクトリにエクスポートする場合は、各JSONファイルに格納されるユーザー数を指定することもできます。"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:27
 #, no-wrap
 msgid ""
 "If you have bigger amount of users in your database (500 or more), it's highly recommended to export into directory rather\n"
@@ -100,12 +90,10 @@ msgstr ""
 "1つのファイルにエクスポートすると、エクスポート全体で1つのトランザクションが使用され、インポート全体においても1つのトランザクションが使用されることになります。その結果、大量のユーザーだとパフォーマンスが低下します。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:29
 msgid "To export into unencrypted directory you can use:"
 msgstr "暗号化されていないディレクトリにエクスポートするには、次のようにします。"
 
 #. type: delimited block -
-#: source/server_admin/topics/export-import.adoc:35
 #, no-wrap
 msgid ""
 "bin/standalone.sh -Dkeycloak.migration.action=export\n"
@@ -115,7 +103,6 @@ msgstr ""
 "-Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=<DIR TO EXPORT TO>\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:38
 msgid ""
 "And similarly for import just use `-Dkeycloak.migration.action=import` "
 "instead of `export` .  To export into single JSON file you can use:"
@@ -124,7 +111,6 @@ msgstr ""
 "を使います。単一のJSONファイルにエクスポートするには、以下を使用できます。"
 
 #. type: delimited block -
-#: source/server_admin/topics/export-import.adoc:43
 #, no-wrap
 msgid ""
 "bin/standalone.sh -Dkeycloak.migration.action=export\n"
@@ -134,12 +120,10 @@ msgstr ""
 "-Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=<FILE TO EXPORT TO>\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:45
 msgid "Here's an example of importing:"
 msgstr "インポートの例を次に示します。"
 
 #. type: delimited block -
-#: source/server_admin/topics/export-import.adoc:51
 #, no-wrap
 msgid ""
 "bin/standalone.sh -Dkeycloak.migration.action=import\n"
@@ -151,12 +135,10 @@ msgstr ""
 "-Dkeycloak.migration.strategy=OVERWRITE_EXISTING\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:54
 msgid "Other available options are:"
 msgstr "その他の利用可能なオプションは次のとおりです。"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:58
 #, no-wrap
 msgid ""
 "-Dkeycloak.migration.realmName::\n"
@@ -168,7 +150,6 @@ msgstr ""
 "  指定しないと、すべてのレルムがエクスポートされます。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:62
 #, no-wrap
 msgid ""
 "-Dkeycloak.migration.usersExportStrategy::\n"
@@ -180,7 +161,6 @@ msgstr ""
 "  可能な値は次のとおりです。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:63
 #, no-wrap
 msgid ""
 "DIFFERENT_FILES - Users will be exported into different files according to "
@@ -189,13 +169,11 @@ msgstr ""
 "DIFFERENT_FILES - ユーザーはファイルごとの最大ユーザー数に応じて異なるファイルにエクスポートされます。これはデフォルト値です。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:64
 #, no-wrap
 msgid "SKIP - Exporting of users will be skipped completely.\n"
 msgstr "SKIP - ユーザーのエクスポートは完全にスキップされます。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:65
 #, no-wrap
 msgid ""
 "REALM_FILE - All users will be exported to same file with the realm "
@@ -206,7 +184,6 @@ msgstr ""
 "\"foo-realm.json\" のようなファイルになります。）\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:66
 #, no-wrap
 msgid ""
 "SAME_FILE - All users will be exported to same file but different from the "
@@ -217,7 +194,6 @@ msgstr ""
 "realm.json\" とユーザーを含む \"foo-users.json\" のようなファイルになります。）\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:70
 #, no-wrap
 msgid ""
 "-Dkeycloak.migration.usersPerFile::\n"
@@ -229,7 +205,6 @@ msgstr ""
 "  DIFFERENT_FILESの場合にのみ使用されます。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:75
 #, no-wrap
 msgid ""
 "-Dkeycloak.migration.strategy::\n"
@@ -243,14 +218,12 @@ msgstr ""
 "  可能な値は次のとおりです。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:76
 #, no-wrap
 msgid ""
 "IGNORE_EXISTING - Ignore importing if a realm of this name already exists.\n"
 msgstr "IGNORE_EXISTING - この名前のレルムがすでに存在する場合は、インポートを無視します。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:77
 #, no-wrap
 msgid ""
 "OVERWRITE_EXISTING - Remove existing realm and import it again with new data"
@@ -258,7 +231,6 @@ msgid ""
 msgstr "OVERWRITE_EXISTING - 既存のレルムを削除し、新しいデータをJSONファイルから再度インポートします。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:79
 #, no-wrap
 msgid ""
 "If you want to fully migrate one environment to another and ensure that the new environment will contain the same data\n"
@@ -266,7 +238,6 @@ msgid ""
 msgstr "ある環境を別の環境に完全に移行し、新しい環境に古い環境と同じデータが含まれていることを保障したい場合には、これを指定します。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:84
 msgid ""
 "When importing realm files that weren't exported before, the option "
 "`keycloak.import` can be used.  If more than one realm file needs to be "
@@ -278,23 +249,19 @@ msgstr ""
 "オプションを使用することができます。複数のレルム・ファイルをインポートする必要がある場合は、ファイル名のカンマ区切りリストを指定できます。これは、マスター・レルムが初期化された後にのみ行われるため、前の場合よりも適切です。例："
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:86
 msgid "-Dkeycloak.import=/tmp/realm1.json"
 msgstr "-Dkeycloak.import=/tmp/realm1.json"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:87
 msgid "-Dkeycloak.import=/tmp/realm1.json,/tmp/realm2.json"
 msgstr "-Dkeycloak.import=/tmp/realm1.json,/tmp/realm2.json"
 
 #. type: Title ===
-#: source/server_admin/topics/export-import.adoc:88
 #, no-wrap
 msgid "Admin console export/import"
 msgstr "管理コンソールのエクスポート／インポート"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:92
 msgid ""
 "Import of most resources can be performed from the admin console as well as "
 "export of most resources.  Export of users is not supported."
@@ -302,14 +269,15 @@ msgstr ""
 "ほとんどのリソースのインポートは、ほとんどのリソースのエクスポートと同様に、管理コンソールから実行することができます。ユーザーのエクスポートはサポートされていません。"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:94
 msgid ""
 "Note: Attributes containing secrets or private information will be masked in"
-" export file."
-msgstr "注：秘密情報または個人情報を含む属性は、エクスポート・ファイルにおいてマスクされます。"
+" export file. Export files obtained via Admin Console are thus not "
+"appropriate for backups or data transfer between servers. Only boot-time "
+"exports are appropriate for that."
+msgstr ""
+"注意：機密情報または個人情報を含む属性は、エクスポート・ファイルでマスクされます。管理コンソールから取得したエクスポート・ファイルは、バックアップやサーバー間のデータ転送には適切ではありません。ブート時のエクスポートだけが、それらに対して適切です。"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:98
 msgid ""
 "The files created during a \"startup\" export can also be used to import "
 "from the admin UI.  This way, you can export from one realm and import to "
@@ -319,15 +287,15 @@ msgstr ""
 "「スタートアップ」エクスポート中に作成されたファイルは、管理UIからインポートするために使用することもできます。これにより、あるレルムからエクスポートして別のレルムにインポートすることができます。また、あるサーバーからエクスポートして別のサーバーにインポートすることもできます。注：管理コンソールのエクスポート／インポートでは、ファイルごとに1つのレルムしか使用できません。"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:102
 msgid ""
 "The admin console import allows you to \"overwrite\" resources if you "
-"choose.  Use this feature with caution, especially on a production system."
+"choose.  Use this feature with caution, especially on a production system. "
+"Export .json files from Admin Console Export operation are generally not "
+"appropriate for data import since they contain invalid values for secrets."
 msgstr ""
-"管理コンソールのインポートによって、選択するならばリソースを「上書き」することができます。この機能は、特にプロダクション・システムでは注意して使用してください。"
+"管理コンソールのインポートによって、選択した場合にリソースを上書きすることができます。この機能は、特に実動システムでは注意して使用してください。管理コンソールのエクスポート操作からのエクスポートした.jsonファイルは、シークレットに対して無効な値が含まれているため、データのインポートには一般的に適切ではありません。"
 
 #. type: Plain text
-#: source/server_admin/topics/export-import.adoc:106
 msgid ""
 "The admin console export allows you to export clients, groups, and roles. If"
 " there is a great number of any of these assets in your realm, the operation"

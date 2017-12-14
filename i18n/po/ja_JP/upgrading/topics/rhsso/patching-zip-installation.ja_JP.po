@@ -343,7 +343,7 @@ msgstr "以前に適用されたパッチ"
 msgid ""
 "When following either procedure, use caution when specifying the value of "
 "the `Reset Configuration` option:"
-msgstr "下記のどちらかの手順に沿っていく際、 `Reset Configuration` オプションの値の指定に注意してください。"
+msgstr "下記のどちらかの手順に従う際、 `Reset Configuration` オプションの値の指定に注意してください。"
 
 #. type: delimited block =
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:94
@@ -353,8 +353,8 @@ msgid ""
 "made to the RH-SSO server configuration files after the patch was applied "
 "will be lost."
 msgstr ""
-"`TRUE` に設定した場合、パッチ・ロールバック・プロセスによって、RH-SSOサーバー設定ファイルもパッチ前の状態にロールバックされます。 "
-"パッチ適用後にRH-SSOサーバー設定ファイルに加えられた変更はすべて削除されます。"
+"`TRUE` に設定した場合、パッチ・ロールバック・プロセスが、RH-SSOサーバー設定ファイルもパッチ前の状態にロールバックします"
+"。パッチ適用後にRH-SSOサーバー設定ファイルに加えられた変更はすべて削除されます。"
 
 #. type: delimited block =
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:96
@@ -365,13 +365,13 @@ msgid ""
 "which may no longer be valid and will have to be fixed manually."
 msgstr ""
 "`FALSE` "
-"に設定した場合、サーバー設定ファイルはロールバックされません。この状態では、サーバーはロールバック後に起動しない可能性があります。なぜなら、パッチは、現在有効ではなくなっており手動で修正する必要がある、名前欄などの変更済みの設定がある可能性があるからです。"
+"に設定した場合、サーバー設定ファイルはロールバックされません。この状態では、サーバーはロールバック後に起動しない可能性があります。これは、パッチが設定（ネームスペースなど）を変更する可能性があるためです。設定は、有効ではなくなり、手動で修正しなければなりません。"
 
 #. type: Block title
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:99
 #, no-wrap
 msgid "Rolling Back a Patch Using the Management CLI"
-msgstr "管理CLIを使用するパッチのロールバック"
+msgstr "管理CLIを使用したパッチのロールバック"
 
 #. type: Plain text
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:101
@@ -408,8 +408,8 @@ msgid ""
 "available arguments to re-run the command with an argument specifying how to"
 " resolve the conflicts."
 msgstr ""
-"パッチをロールバックする際に競合がある場合、パッチツールによって警告が表示されます。競合がある場合は、使用可能な引数に `patch --help` "
-"を入力し、競合を解決する方法を指定する引数を使用してコマンドを再実行します。"
+"パッチをロールバックする際に競合がある場合、パッチツールは警告を出します。競合がある場合は、使用可能な引数を知るために `patch --help` "
+"を入力し、競合を解決する方法を指定する引数とともに、コマンドを再実行します。"
 
 #. type: Plain text
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:116
@@ -457,7 +457,7 @@ msgstr ""
 #. type: Plain text
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:135
 msgid "Choose your options for the rollback process, then click *Next*."
-msgstr "ロールバックのプロセス用のオプションを選択して *Next* をクリックします。"
+msgstr "ロールバック・プロセスのオプションを選択して *Next* をクリックします。"
 
 #. type: Block title
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:136
@@ -489,21 +489,22 @@ msgid ""
 msgstr ""
 "パッチをロールバックする際に競合があリ、 *Override all* オプションが選択されていない場合、警告が表示されます。競合の詳細を確認するには "
 "*View error details* をクリックします。競合がある場合、その操作をキャンセルするか、 *Choose Options* "
-"をクリックして *Override all* "
-"のチェックボックスを選択して再実行することができます。上書きの競合によって、ユーザーの修正を上書きするロールバックを実行することになります。"
+"をクリックし、 *Override all* "
+"のチェックボックスを選択して再実行することができます。上書きの競合によって、ユーザーの修正を上書きするロールバック操作が行われることになります。"
 
 #. type: Plain text
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:143
 msgid ""
 "After the patch has been successfully rolled back, select whether to restart"
 " the RH-SSO server now for the changes to take effect, and click *Finish*."
-msgstr "パッチがロールバックされてから、RH-SSOサーバーを再起動するか否かを選択して変更を有効にし、 *Finish* をクリックします。"
+msgstr ""
+"パッチがロールバックされてから、変更を有効にするためRH-SSOサーバーを再起動するか否かを選択して、 *Finish* をクリックします。"
 
 #. type: Title ==
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:144
 #, no-wrap
 msgid "Clearing Patch History"
-msgstr "パッチ履歴のクリーニング"
+msgstr "パッチ履歴のクリア"
 
 #. type: Plain text
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:147
@@ -514,7 +515,7 @@ msgid ""
 " space."
 msgstr ""
 "パッチがRH-"
-"SSOサーバーへ適用された際に、パッチのコンテンツと履歴はロールバックの操作で使用できるよう保存されます。複数の累積パッチが適用される場合、パッチの履歴はかなりのディスク容量を使用する可能性があります。"
+"SSOサーバーへ適用されると、ロールバック操作で使用できるように、パッチの内容と履歴が保存されます。複数の累積パッチが適用される場合、パッチの履歴はかなりのディスク容量を使用する可能性があります。"
 
 #. type: Plain text
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:149
@@ -525,7 +526,7 @@ msgid ""
 " for freeing space if multiple cumulative patches have previously been "
 "applied."
 msgstr ""
-"以下の管理CLIコマンドを使用して、現在は使用できない古いパッチをすべて削除することができます。このコマンドを使用する場合、最新の累積パッチのみがGAリリースに伴って保存されます。これは、複数の累積パッチが以前適用されていた場合にのみ、スペースを解放するのに便利です。"
+"以下の管理CLIコマンドを使用して、現在使用されていない古いパッチをすべて削除できます。このコマンドを使用する場合、最新の累積パッチのみがGAリリースとともに保存されます。これは、複数の累積パッチが以前適用されていた場合にのみ、スペースを解放するのに便利です。"
 
 #. type: delimited block -
 #: source/upgrading/topics/rhsso/patching-zip-installation.adoc:153
@@ -538,4 +539,4 @@ msgstr "/core-service=patching:ageout-history\n"
 msgid ""
 "If you clear the patch history, you will not be able to roll back a "
 "previously applied patch."
-msgstr "パッチの履歴をクリアにする場合、以前に適用したパッチをロールバックすることはできません。"
+msgstr "パッチの履歴をクリアすると、以前に適用したパッチをロールバックすることはできません。"

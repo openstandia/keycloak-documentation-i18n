@@ -2,40 +2,41 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ====
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:2
 #, no-wrap
 msgid "Client Authentication"
-msgstr ""
+msgstr "クライアント認証"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:5
 msgid ""
 "When a confidential OIDC client needs to send a backchannel request (for "
 "example, to exchange code for the token, or to refresh the token) it needs "
-"to authenticate against the {project_name} server. By default, there are two "
-"ways to authenticate the client: client ID and client secret, or client "
+"to authenticate against the {project_name} server. By default, there are two"
+" ways to authenticate the client: client ID and client secret, or client "
 "authentication with signed JWT."
 msgstr ""
+"コンフィデンシャルOIDCクライアントがバックチャネル・リクエストを送信する必要がある場合（トークンのコードを交換したり、トークンをリフレッシュするような場合）、{project_name}サーバーに対して認証する必要があります。デフォルトでは、クライアントIDとクライアント・シークレット、または署名付きJWTによるクライアント認証の2つの方法でクライアントを認証します。"
 
 #. type: Title =====
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:6
 #, no-wrap
 msgid "Client ID and Client Secret"
-msgstr ""
+msgstr "クライアントIDとクライアント・シークレット"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:10
@@ -44,8 +45,11 @@ msgid ""
 "client has a secret, which needs to be known to both the adapter "
 "(application) and the {project_name} server.  You can generate the secret "
 "for a particular client in the {project_name} administration console, and "
-"then paste this secret into the `keycloak.json` file on the application side:"
+"then paste this secret into the `keycloak.json` file on the application "
+"side:"
 msgstr ""
+"これは、OAuth2の仕様で説明されている伝統的な方法です。クライアントにはシークレットがあり、アダプター（アプリケーション）と{project_name}サーバーの両方に知られている必要があります。{project_name}管理コンソールで特定のクライアントのシークレットを生成し、このシークレットをアプリケーション側の"
+" `keycloak.json` ファイルに以下のように貼り付けます。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:17
@@ -55,12 +59,15 @@ msgid ""
 "    \"secret\": \"19666a4f-32dd-4049-b082-684c74115f28\"\n"
 "}\n"
 msgstr ""
+"\"credentials\": {\n"
+"    \"secret\": \"19666a4f-32dd-4049-b082-684c74115f28\"\n"
+"}\n"
 
 #. type: Title =====
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:19
 #, no-wrap
 msgid "Client Authentication with Signed JWT"
-msgstr ""
+msgstr "署名付きJWTによるクライアント認証"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:22
@@ -68,6 +75,7 @@ msgid ""
 "This is based on the https://tools.ietf.org/html/rfc7523[RFC7523] "
 "specification. It works this way:"
 msgstr ""
+"これは https://tools.ietf.org/html/rfc7523[RFC7523] の仕様に基づいています。以下の方法で動作します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:24
@@ -77,40 +85,47 @@ msgid ""
 "available on the client application's classpath or somewhere on the file "
 "system."
 msgstr ""
+"クライアントには秘密鍵と証明書が必要です。{project_name}の場合、これは伝統的な  `keystore` "
+"ファイルから利用できます。これはクライアント・アプリケーションのクラスパスかファイル・システムのどこかで利用できます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:26
 msgid ""
-"Once the client application is started, it allows to download its public key "
-"in https://self-issued.info/docs/draft-ietf-jose-json-web-key.html[JWKS] "
+"Once the client application is started, it allows to download its public key"
+" in https://self-issued.info/docs/draft-ietf-jose-json-web-key.html[JWKS] "
 "format using a URL such as \\http://myhost.com/myapp/k_jwks, assuming that "
 "\\http://myhost.com/myapp is the base URL of your client application. This "
 "URL can be used by {project_name} (see below)."
 msgstr ""
+"クライアント・アプリケーションが開始されると、\\http://myhost.com/myapp/k_jwksのようなURLを使った https"
+"://self-issued.info/docs/draft-ietf-jose-json-web-"
+"key.html[JWKS]形式の公開鍵のダウンロードが許可されます。\\http://myhost.com/myappはクライアント・アプリケーションのベースURLであることを前提としています。このURLは{project_name}により使用されます（下記参照）。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:29
 msgid ""
 "During authentication, the client generates a JWT token and signs it with "
-"its private key and sends it to {project_name} in the particular backchannel "
-"request (for example, code-to-token request) in the `client_assertion` "
+"its private key and sends it to {project_name} in the particular backchannel"
+" request (for example, code-to-token request) in the `client_assertion` "
 "parameter."
 msgstr ""
+"認証中に、クライアントはJWTトークンを生成し、その秘密鍵で署名し、 `client_assertion` "
+"パラメーターとともに特定のバックチャネル・リクエスト（例えば、コードからトークンへの交換リクエスト）を{project_name}に送信します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:36
 msgid ""
-"{project_name} must have the public key or certificate of the client so that "
-"it can verify the signature on JWT. In {project_name} you need to configure "
-"client credentials for your client. First you need to choose `Signed JWT` as "
-"the method of authenticating your client in the tab `Credentials` in "
+"{project_name} must have the public key or certificate of the client so that"
+" it can verify the signature on JWT. In {project_name} you need to configure"
+" client credentials for your client. First you need to choose `Signed JWT` "
+"as the method of authenticating your client in the tab `Credentials` in "
 "administration console.  Then you can choose to either: ** Configure the "
 "JWKS URL where {project_name} can download the client's public keys. This "
 "can be a URL such as \\http://myhost.com/myapp/k_jwks (see details above). "
 "This option is the most flexible, since the client can rotate its keys "
 "anytime and {project_name} then always downloads new keys when needed "
-"without needing to change the configuration. More accurately, {project_name} "
-"downloads new keys when it sees the token signed by an unknown `kid` (Key "
+"without needing to change the configuration. More accurately, {project_name}"
+" downloads new keys when it sees the token signed by an unknown `kid` (Key "
 "ID).  ** Upload the client's public key or certificate, either in PEM "
 "format, in JWK format, or from the keystore. With this option, the public "
 "key is hardcoded and must be changed when the client generates a new key "
@@ -119,13 +134,21 @@ msgid ""
 "details on how to set up the {project_name} administration console see "
 "{adminguide_link}[{adminguide_name}]."
 msgstr ""
+"{project_name}は、JWTの署名を検証できるように、クライアントの公開鍵または証明書を持っていなければなりません。{project_name}では、クライアントのクライアント・クレデンシャルを設定する必要があります。まず、管理コンソールの"
+" `Credentials` タブでクライアントを認証する方法として、 `Signed JWT` "
+"を選択する必要があります。そして、次のどちらかを選択することができます。 ** "
+"{project_name}がクライアントの公開鍵をダウンロードできるJWKS URLを設定します。これは "
+"\\http://myhost.com/myapp/k_jwks "
+"のようなURLです（詳細は上記を参照）。クライアントはいつでもキーをローテーションさせることができるので、このオプションは最も柔軟です。{project_name}は、設定を変更することなく、必要なときに常に新しいキーをダウンロードします。より正確には、{project_name}は、未知の"
+" `kid`  （Key ID）で署名されたトークンを見ると、新しい鍵をダウンロードします。 ** "
+"クライアントの公開鍵または証明書を、PEM形式、JWK形式、またはキーストアからアップロードします。このオプションを使用すると、公開鍵はハードコードされるので、クライアントが新しい鍵ペアを生成するときに変更する必要があります。独自のキーストアがない場合は、{project_name}管理コンソールから独自のキーストアを生成することもできます。{project_name}管理コンソールの設定方法の詳細については、{adminguide_link}[{adminguide_name}]を参照してください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:38
 msgid ""
 "For set up on the adapter side you need to have something like this in your "
 "`keycloak.json` file:"
-msgstr ""
+msgstr "アダプター側でセットアップするには、 `keycloak.json` ファイルに次のようなものが必要です。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:51
@@ -142,34 +165,49 @@ msgid ""
 "  }\n"
 "}\n"
 msgstr ""
+"\"credentials\": {\n"
+"  \"jwt\": {\n"
+"    \"client-keystore-file\": \"classpath:keystore-client.jks\",\n"
+"    \"client-keystore-type\": \"JKS\",\n"
+"    \"client-keystore-password\": \"storepass\",\n"
+"    \"client-key-password\": \"keypass\",\n"
+"    \"client-key-alias\": \"clientkey\",\n"
+"    \"token-expiration\": 10\n"
+"  }\n"
+"}\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:55
 msgid ""
 "With this configuration, the keystore file `keystore-client.jks` must be "
-"available on classpath in your WAR. If you do not use the prefix `classpath:"
-"` you can point to any file on the file system where the client application "
-"is running."
+"available on classpath in your WAR. If you do not use the prefix "
+"`classpath:` you can point to any file on the file system where the client "
+"application is running."
 msgstr ""
+"この設定では、キーストア・ファイル `keystore-client.jks` がWARのクラスパス上で利用可能でなければなりません。 "
+"`classpath:` "
+"というプレフィックスを使用しない場合は、クライアント・アプリケーションが実行されているファイル・システム上のファイルを指すことができます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:58
 msgid ""
 "For inspiration, you can take a look at the examples distribution into the "
 "main demo example into the `product-portal` application."
-msgstr ""
+msgstr "インスピレーションのために、 `product-portal` アプリケーションのデモのサンプル配布物を見てみることができます。"
 
 #. type: Title =====
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:60
 #, no-wrap
 msgid "Add Your Own Client Authentication Method"
-msgstr ""
+msgstr "独自のクライアント認証方式の追加"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/client-authentication.adoc:63
 msgid ""
 "You can add your own client authentication method as well. You will need to "
 "implement both client-side and server-side providers. For more details see "
-"the `Authentication SPI` section in link:{developerguide_link}"
-"[{developerguide_name}]."
+"the `Authentication SPI` section in "
+"link:{developerguide_link}[{developerguide_name}]."
 msgstr ""
+"独自のクライアント認証方式を追加することもできます。クライアント・サイドとサーバー・サイドの両方のプロバイダーを実装する必要があります。詳細はlink:{developerguide_link}[{developerguide_name}]の"
+" `Authentication SPI` のセクションを参照してください。"

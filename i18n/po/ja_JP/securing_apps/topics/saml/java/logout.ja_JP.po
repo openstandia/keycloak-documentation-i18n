@@ -2,17 +2,17 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ====
@@ -20,7 +20,7 @@ msgstr ""
 #: source/securing_apps/topics/saml/java/logout.adoc:1
 #, no-wrap
 msgid "Logout"
-msgstr ""
+msgstr "ログアウト"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:7
@@ -29,15 +29,20 @@ msgid ""
 "servlet containers, you can call `HttpServletRequest.logout()`. For any "
 "other browser application, you can point the browser at any url of your web "
 "application that has a security constraint and pass in a query parameter "
-"GLO, i.e. `$$http://myapp?GLO=true$$`.  This will log you out if you have an "
-"SSO session with your browser."
+"GLO, i.e. `$$http://myapp?GLO=true$$`.  This will log you out if you have an"
+" SSO session with your browser."
 msgstr ""
+"Webアプリケーションからログアウトするには、複数の方法があります。Java EEサーブレット・コンテナの場合は、 "
+"`HttpServletRequest.logout()` "
+"を呼び出すことができます。他のブラウザーアプリケーションでは、ブラウザにセキュリティ制約のあるWebアプリケーションのURLを指定し、クエリー・パラメーターGLO、つまり、"
+" `$$http://myapp?GLO=true$$` "
+"を渡すことができます。これにより、ブラウザとのSSOセッションがある場合は、ログアウトされます。"
 
 #. type: Title =====
 #: source/securing_apps/topics/saml/java/logout.adoc:9
 #, no-wrap
 msgid "Logout in Clustered Environment"
-msgstr ""
+msgstr "クラスター環境でのログアウト"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:15
@@ -49,18 +54,22 @@ msgid ""
 "sessions need to be distributed across cluster (i.e. application is marked "
 "with `<distributable/>` tag in application's `web.xml`)."
 msgstr ""
+"内部的には、SAMLアダプターは、SAMLセッション・インデックス、プリンシパル名（既知の場合）、およびHTTPセッションIDの間のマッピングを保存します。このマッピングは、分散アプリケーション用にJBossアプリケーション・サーバー・ファミリー（Wildfly"
+" 10/11、EAP "
+"6/7）のクラスター全体で維持されます。前提条件として、HTTPセッションをクラスター全体に分散する必要があります（つまり、アプリケーションの "
+"`web.xml` に `<distributable/>` タグが設定されています）。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:17
 msgid ""
-"To enable the functionality, add the following section to your `/WEB_INF/web."
-"xml` file:"
-msgstr ""
+"To enable the functionality, add the following section to your "
+"`/WEB_INF/web.xml` file:"
+msgstr "この機能を有効にするには、 `/WEB_INF/web.xml` ファイルに次のセクションを追加してください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:19
 msgid "For EAP 7, Wildfly 10/11:"
-msgstr ""
+msgstr "EAP 7、Wildfly 10/11の場合："
 
 #. type: delimited block -
 #: source/securing_apps/topics/saml/java/logout.adoc:26
@@ -71,11 +80,15 @@ msgid ""
 "    <param-value>org.keycloak.adapters.saml.wildfly.infinispan.InfinispanSessionCacheIdMapperUpdater</param-value>\n"
 "</context-param>\n"
 msgstr ""
+"<context-param>\n"
+"    <param-name>keycloak.sessionIdMapperUpdater.classes</param-name>\n"
+"    <param-value>org.keycloak.adapters.saml.wildfly.infinispan.InfinispanSessionCacheIdMapperUpdater</param-value>\n"
+"</context-param>\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:29
 msgid "For EAP 6:"
-msgstr ""
+msgstr "EAP 6の場合："
 
 #. type: delimited block -
 #: source/securing_apps/topics/saml/java/logout.adoc:36
@@ -86,68 +99,79 @@ msgid ""
 "    <param-value>org.keycloak.adapters.saml.jbossweb.infinispan.InfinispanSessionCacheIdMapperUpdater</param-value>\n"
 "</context-param>\n"
 msgstr ""
+"<context-param>\n"
+"    <param-name>keycloak.sessionIdMapperUpdater.classes</param-name>\n"
+"    <param-value>org.keycloak.adapters.saml.jbossweb.infinispan.InfinispanSessionCacheIdMapperUpdater</param-value>\n"
+"</context-param>\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:43
 msgid ""
 "If the session cache of the deployment is named `_deployment-cache_`, the "
 "cache used for SAML mapping will be named as `_deployment-cache_.ssoCache`. "
-"The name of the cache can be overridden by a context parameter `keycloak."
-"sessionIdMapperUpdater.infinispan.cacheName`. The cache container containing "
-"the cache will be the same as the one containing the deployment session "
-"cache, but can be overridden by a context parameter `keycloak."
-"sessionIdMapperUpdater.infinispan.containerName`."
+"The name of the cache can be overridden by a context parameter "
+"`keycloak.sessionIdMapperUpdater.infinispan.cacheName`. The cache container "
+"containing the cache will be the same as the one containing the deployment "
+"session cache, but can be overridden by a context parameter "
+"`keycloak.sessionIdMapperUpdater.infinispan.containerName`."
 msgstr ""
+"デプロイメントのセッション・キャッシュの名前が `_deployment-cache_` である場合、SAMLマッピングに使用されるキャッシュは "
+"`_deployment-cache_.ssoCache` という名前になります。キャッシュの名前は、コンテキスト・パラメーター "
+"`keycloak.sessionIdMapperUpdater.infinispan.cacheName` "
+"によってオーバーライドできます。キャッシュを含むキャッシュ・コンテナは、デプロイメント・セッション・キャッシュを含むキャッシュ・コンテナと同じですが、コンテキスト・パラメーター"
+" `keycloak.sessionIdMapperUpdater.infinispan.containerName` によってオーバーライドできます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:46
 msgid ""
-"By default, the configuration of the SAML mapping cache will be derived from "
-"session cache. The configuration can be manually overridden in cache "
+"By default, the configuration of the SAML mapping cache will be derived from"
+" session cache. The configuration can be manually overridden in cache "
 "configuration section of the server just the same as other caches."
 msgstr ""
+"デフォルトでは、SAMLマッピング・キャッシュの設定はセッション・キャッシュから取得されます。この設定は、他のキャッシュとまったく同じサーバーのキャッシュ設定セクションで手動でオーバーライドできます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:50
 msgid ""
 "Currently, to provide reliable service, it is recommended to use replicated "
 "cache for the SAML session cache.  Using distributed cache may lead to "
-"results where the SAML logout request would land to a node with no access to "
-"SAML session index to HTTP session mapping which would lead to unsuccessful "
-"logout."
+"results where the SAML logout request would land to a node with no access to"
+" SAML session index to HTTP session mapping which would lead to unsuccessful"
+" logout."
 msgstr ""
+"現在、信頼性の高いサービスを提供するために、SAMLセッション・キャッシュにレプリケート・キャッシュを使用することをお勧めします。分散キャッシュを使用すると、SAMLログアウト・リクエストがSAMLセッション・インデックスからHTTPセッション・マッピングへのアクセスがないノードに到達し、ログアウトに失敗する結果につながる可能性があります。"
 
 #. type: Title =====
 #: source/securing_apps/topics/saml/java/logout.adoc:52
 #, no-wrap
 msgid "Logout in Cross DC Scenario"
-msgstr ""
+msgstr "クロスDCシナリオでのログアウト"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:55
 msgid ""
 "The cross DC scenario only applies to Wildfly 10 and higher, and EAP 7 and "
 "higher."
-msgstr ""
+msgstr "クロスDCシナリオは、Wildfly 10以上、EAP 7以上にのみ適用されます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:57
 msgid ""
 "Special handling is needed for handling sessions that span multiple data "
 "centers. Imagine the following scenario:"
-msgstr ""
+msgstr "複数のデータセンターにまたがるセッションを処理するには、特別な処理が必要です。以下のシナリオを想像してみてください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:59
 msgid "Login requests are handled within cluster in data center 1."
-msgstr ""
+msgstr "ログイン・リクエストは、データセンター1のクラスター内で処理されます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:61
 msgid ""
-"Admin issues logout request for a particular SAML session, the request lands "
-"in data center 2."
-msgstr ""
+"Admin issues logout request for a particular SAML session, the request lands"
+" in data center 2."
+msgstr "管理者が特定のSAMLセッションのログアウト・リクエストを発行すると、そのリクエストはデータセンター2に送信されます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:64
@@ -155,30 +179,37 @@ msgid ""
 "The data center 2 has to log out all sessions that are present in data "
 "center 1 (and all other data centers that share HTTP sessions)."
 msgstr ""
+"データセンター2は、データセンター1（およびHTTPセッションを共有する他のすべてのデータセンター）に存在するすべてのセッションをログアウトする必要があります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:68
 msgid ""
 "To cover this case, the SAML session cache described "
 "<<_saml_logout_in_cluster,above>> needs to be replicated not only within "
-"individual clusters but across all the data centers e.g.  https://access."
-"redhat.com/documentation/en-US/Red_Hat_JBoss_Data_Grid/6.6/html/"
-"Administration_and_Configuration_Guide/chap-Externalize_Sessions."
-"html#Externalize_HTTP_Session_from_JBoss_EAP_6.x_to_JBoss_Data_Grid[via "
-"standalone Infinispan/JDG server]:"
+"individual clusters but across all the data centers e.g.  "
+"https://access.redhat.com/documentation/en-"
+"us/red_hat_jboss_data_grid/6.6/html/administration_and_configuration_guide"
+"/chap-"
+"externalize_sessions#Externalize_HTTP_Session_from_JBoss_EAP_6.x_to_JBoss_Data_Grid[via"
+" standalone Infinispan/JDG server]:"
 msgstr ""
+"このケースをカバーするために、<<_saml_logout_in_cluster,上記>>で記述されたSAMLセッション・キャッシュは、個々のクラスター内だけでなく、すべてのデータセンターにわたってレプリケーションする必要があります。例："
+" https://access.redhat.com/documentation/en-"
+"us/red_hat_jboss_data_grid/6.6/html/administration_and_configuration_guide"
+"/chap-"
+"externalize_sessions#Externalize_HTTP_Session_from_JBoss_EAP_6.x_to_JBoss_Data_Grid[スタンド・アロンInfinispan/JDGサーバー経由]："
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:70
 msgid "A cache has to be added to the standalone Infinispan/JDG server."
-msgstr ""
+msgstr "スタンドアロンのInfinispan/JDGサーバーにキャッシュを追加する必要があります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:72
 msgid ""
 "The cache from previous item has to be added as a remote store for the "
 "respective SAML session cache."
-msgstr ""
+msgstr "前の項目のキャッシュは、それぞれのSAMLセッション・キャッシュ用にリモート・ストアとして追加する必要があります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/saml/java/logout.adoc:74
@@ -187,3 +218,4 @@ msgid ""
 "deployment, it is watched for changes and the local SAML session cache is "
 "updated accordingly."
 msgstr ""
+"デプロイ中にリモート・ストアがSAMLセッション・キャッシュに存在すると、変更が監視され、ローカルSAMLセッション・キャッシュがそれに応じて更新されます。"

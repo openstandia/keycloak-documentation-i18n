@@ -29,91 +29,6 @@ msgstr ""
 msgid "    }\n"
 msgstr ""
 
-#. type: Title ===
-#, no-wrap
-msgid "Leveraging Java EE"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"@Stateful\n"
-"@Local(EjbExampleUserStorageProvider.class)\n"
-"public class EjbExampleUserStorageProvider implements UserStorageProvider,\n"
-"        UserLookupProvider,\n"
-"        UserRegistrationProvider,\n"
-"        UserQueryProvider,\n"
-"        CredentialInputUpdater,\n"
-"        CredentialInputValidator,\n"
-"        OnUserCache\n"
-"{\n"
-"    @PersistenceContext\n"
-"    protected EntityManager em;\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    protected ComponentModel model;\n"
-"    protected KeycloakSession session;\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    public void setModel(ComponentModel model) {\n"
-"        this.model = model;\n"
-"    }\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    public void setSession(KeycloakSession session) {\n"
-"        this.session = session;\n"
-"    }\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    @Remove\n"
-"    @Override\n"
-"    public void close() {\n"
-"    }\n"
-"...\n"
-"}\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"public class EjbExampleUserStorageProviderFactory\n"
-"        implements UserStorageProviderFactory<EjbExampleUserStorageProvider> {\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    @Override\n"
-"    public EjbExampleUserStorageProvider create(KeycloakSession session, ComponentModel model) {\n"
-"        try {\n"
-"            InitialContext ctx = new InitialContext();\n"
-"            EjbExampleUserStorageProvider provider = (EjbExampleUserStorageProvider)ctx.lookup(\n"
-"                     \"java:global/user-storage-jpa-example/\" + EjbExampleUserStorageProvider.class.getSimpleName());\n"
-"            provider.setModel(model);\n"
-"            provider.setSession(session);\n"
-"            return provider;\n"
-"        } catch (Exception e) {\n"
-"            throw new RuntimeException(e);\n"
-"        }\n"
-"    }\n"
-msgstr ""
-
-#. type: Plain text
-msgid "SPI|Description"
-msgstr ""
-
 #. type: delimited block -
 #, no-wrap
 msgid "import ...\n"
@@ -543,6 +458,11 @@ msgid ""
 "</spi>\n"
 msgstr ""
 
+#. type: Title ===
+#, no-wrap
+msgid "Leveraging Java EE"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "The can be packaged within any Java EE component so long as you set up the "
@@ -561,6 +481,57 @@ msgid ""
 "`ProviderFactory` implementations are required to be plain java objects.  "
 "But, we also currently support implementing provider classes as Stateful "
 "EJBs.  TThis is how you would do it:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"@Stateful\n"
+"@Local(EjbExampleUserStorageProvider.class)\n"
+"public class EjbExampleUserStorageProvider implements UserStorageProvider,\n"
+"        UserLookupProvider,\n"
+"        UserRegistrationProvider,\n"
+"        UserQueryProvider,\n"
+"        CredentialInputUpdater,\n"
+"        CredentialInputValidator,\n"
+"        OnUserCache\n"
+"{\n"
+"    @PersistenceContext\n"
+"    protected EntityManager em;\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    protected ComponentModel model;\n"
+"    protected KeycloakSession session;\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public void setModel(ComponentModel model) {\n"
+"        this.model = model;\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public void setSession(KeycloakSession session) {\n"
+"        this.session = session;\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Remove\n"
+"    @Override\n"
+"    public void close() {\n"
+"    }\n"
+"...\n"
+"}\n"
 msgstr ""
 
 #. type: Plain text
@@ -584,6 +555,31 @@ msgid ""
 "create() method."
 msgstr ""
 
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"public class EjbExampleUserStorageProviderFactory\n"
+"        implements UserStorageProviderFactory<EjbExampleUserStorageProvider> {\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public EjbExampleUserStorageProvider create(KeycloakSession session, ComponentModel model) {\n"
+"        try {\n"
+"            InitialContext ctx = new InitialContext();\n"
+"            EjbExampleUserStorageProvider provider = (EjbExampleUserStorageProvider)ctx.lookup(\n"
+"                     \"java:global/user-storage-jpa-example/\" + EjbExampleUserStorageProvider.class.getSimpleName());\n"
+"            provider.setModel(model);\n"
+"            provider.setSession(session);\n"
+"            return provider;\n"
+"        } catch (Exception e) {\n"
+"            throw new RuntimeException(e);\n"
+"        }\n"
+"    }\n"
+msgstr ""
+
 #. type: Title ===
 #, no-wrap
 msgid "Available SPIs"
@@ -596,6 +592,10 @@ msgid ""
 "see list of all available SPIs at runtime, you can check `Server Info` page "
 "in admin console as described in <<_providers_admin_console,Admin Console>> "
 "section."
+msgstr ""
+
+#. type: Plain text
+msgid "SPI|Description"
 msgstr ""
 
 #. type: Plain text

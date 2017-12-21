@@ -2,36 +2,30 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:150
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:80
 #, no-wrap
 msgid "</beans>\n"
-msgstr ""
+msgstr "</beans>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:12
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:12
 #, no-wrap
 msgid "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-msgstr ""
+msgstr "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/camel.adoc:47
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:54
 #, no-wrap
 msgid ""
 "    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
@@ -39,31 +33,34 @@ msgid ""
 "        <property name=\"pathSpec\" value=\"/*\"/>\n"
 "    </bean>\n"
 msgstr ""
+"    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
+"        <property name=\"constraint\" ref=\"constraint\"/>\n"
+"        <property name=\"pathSpec\" value=\"/*\"/>\n"
+"    </bean>\n"
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:3
 #, no-wrap
 msgid "Securing an Apache CXF Endpoint on a Separate Jetty Engine"
-msgstr ""
+msgstr "独立したJettyエンジンでのApache CXFエンドポイントの保護"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:6
 msgid ""
 "To run your CXF endpoints secured by {project_name} on separate Jetty "
 "engines, complete the following steps:"
-msgstr ""
+msgstr "別のJettyエンジンで{project_name}によって保護されたCXFエンドポイントを実行するには、以下の手順に沿って行います。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:8
 msgid ""
 "Add `META-INF/spring/beans.xml` to your application, and in it, declare "
 "`httpj:engine-factory` with Jetty SecurityHandler with injected "
-"`KeycloakJettyAuthenticator`. The configuration for a CFX JAX-wS application "
-"might resemble this one:"
+"`KeycloakJettyAuthenticator`. The configuration for a CFX JAX-WS application"
+" might resemble this one:"
 msgstr ""
+"アプリケーションに `META-INF/spring/beans.xml` を追加し、 `KeycloakJettyAuthenticator` "
+"を注入したJettyの `SecurityHandler` で `httpj:engine-factory` を宣言してください。CFXのJAX-"
+"WSアプリケーションの設定は、次のようになります。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:22
 #, no-wrap
 msgid ""
 "<beans xmlns=\"http://www.springframework.org/schema/beans\"\n"
@@ -76,15 +73,22 @@ msgid ""
 "        http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd\n"
 "        http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd\">\n"
 msgstr ""
+"<beans xmlns=\"http://www.springframework.org/schema/beans\"\n"
+"       xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"       xmlns:jaxws=\"http://cxf.apache.org/jaxws\"\n"
+"       xmlns:httpj=\"http://cxf.apache.org/transports/http-jetty/configuration\"\n"
+"       xsi:schemaLocation=\"\n"
+"        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd\n"
+"        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd\n"
+"        http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd\n"
+"        http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd\">\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:24
 #, no-wrap
 msgid "    <import resource=\"classpath:META-INF/cxf/cxf.xml\" />\n"
-msgstr ""
+msgstr "    <import resource=\"classpath:META-INF/cxf/cxf.xml\" />\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:32
 #, no-wrap
 msgid ""
 "    <bean id=\"kcAdapterConfig\" class=\"org.keycloak.representations.adapters.config.AdapterConfig\">\n"
@@ -95,9 +99,15 @@ msgid ""
 "        <property name=\"sslRequired\" value=\"EXTERNAL\"/>\n"
 "    </bean>\n"
 msgstr ""
+"    <bean id=\"kcAdapterConfig\" class=\"org.keycloak.representations.adapters.config.AdapterConfig\">\n"
+"        <property name=\"realm\" value=\"demo\"/>\n"
+"        <property name=\"resource\" value=\"custom-cxf-endpoint\"/>\n"
+"        <property name=\"bearerOnly\" value=\"true\"/>\n"
+"        <property name=\"authServerUrl\" value=\"http://localhost:8080/auth\" />\n"
+"        <property name=\"sslRequired\" value=\"EXTERNAL\"/>\n"
+"    </bean>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:38
 #, no-wrap
 msgid ""
 "    <bean id=\"keycloakAuthenticator\" class=\"org.keycloak.adapters.jetty.KeycloakJettyAuthenticator\">\n"
@@ -106,9 +116,13 @@ msgid ""
 "        </property>\n"
 "    </bean>\n"
 msgstr ""
+"    <bean id=\"keycloakAuthenticator\" class=\"org.keycloak.adapters.jetty.KeycloakJettyAuthenticator\">\n"
+"        <property name=\"adapterConfig\">\n"
+"            <ref local=\"kcAdapterConfig\" />\n"
+"        </property>\n"
+"    </bean>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:49
 #, no-wrap
 msgid ""
 "    <bean id=\"constraint\" class=\"org.eclipse.jetty.util.security.Constraint\">\n"
@@ -122,9 +136,18 @@ msgid ""
 "        <property name=\"dataConstraint\" value=\"0\"/>\n"
 "    </bean>\n"
 msgstr ""
+"    <bean id=\"constraint\" class=\"org.eclipse.jetty.util.security.Constraint\">\n"
+"        <property name=\"name\" value=\"Customers\"/>\n"
+"        <property name=\"roles\">\n"
+"            <list>\n"
+"                <value>user</value>\n"
+"            </list>\n"
+"        </property>\n"
+"        <property name=\"authenticate\" value=\"true\"/>\n"
+"        <property name=\"dataConstraint\" value=\"0\"/>\n"
+"    </bean>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:65
 #, no-wrap
 msgid ""
 "    <bean id=\"securityHandler\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
@@ -138,9 +161,18 @@ msgid ""
 "        <property name=\"realmName\" value=\"does-not-matter\"/>\n"
 "    </bean>\n"
 msgstr ""
+"    <bean id=\"securityHandler\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
+"        <property name=\"authenticator\" ref=\"keycloakAuthenticator\" />\n"
+"        <property name=\"constraintMappings\">\n"
+"            <list>\n"
+"                <ref local=\"constraintMapping\" />\n"
+"            </list>\n"
+"        </property>\n"
+"        <property name=\"authMethod\" value=\"BASIC\"/>\n"
+"        <property name=\"realmName\" value=\"does-not-matter\"/>\n"
+"    </bean>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:74
 #, no-wrap
 msgid ""
 "    <httpj:engine-factory bus=\"cxf\" id=\"kc-cxf-endpoint\">\n"
@@ -152,25 +184,33 @@ msgid ""
 "        </httpj:engine>\n"
 "    </httpj:engine-factory>\n"
 msgstr ""
+"    <httpj:engine-factory bus=\"cxf\" id=\"kc-cxf-endpoint\">\n"
+"        <httpj:engine port=\"8282\">\n"
+"            <httpj:handlers>\n"
+"                <ref local=\"securityHandler\" />\n"
+"            </httpj:handlers>\n"
+"            <httpj:sessionSupport>true</httpj:sessionSupport>\n"
+"        </httpj:engine>\n"
+"    </httpj:engine-factory>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:78
 #, no-wrap
 msgid ""
 "    <jaxws:endpoint\n"
 "                    implementor=\"org.keycloak.example.ws.ProductImpl\"\n"
 "                    address=\"http://localhost:8282/ProductServiceCF\" depends-on=\"kc-cxf-endpoint\" />\n"
 msgstr ""
+"    <jaxws:endpoint\n"
+"                    implementor=\"org.keycloak.example.ws.ProductImpl\"\n"
+"                    address=\"http://localhost:8282/ProductServiceCF\" depends-on=\"kc-cxf-endpoint\" />\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:83
 msgid ""
 "For the CXF JAX-RS application, the only difference might be in the "
 "configuration of the endpoint dependent on engine-factory:"
-msgstr ""
+msgstr "CXFのJAX-RSアプリケーションの場合、engine-factortyに依存するエンドポイントの設定にのみ違いがあります。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:92
 #, no-wrap
 msgid ""
 "<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
@@ -180,15 +220,19 @@ msgid ""
 "    </jaxrs:providers>\n"
 "</jaxrs:server>\n"
 msgstr ""
+"<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
+"    depends-on=\"kc-cxf-endpoint\">\n"
+"    <jaxrs:providers>\n"
+"        <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
+"    </jaxrs:providers>\n"
+"</jaxrs:server>\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:96
 msgid ""
 "The `Import-Package` in `META-INF/MANIFEST.MF` must contain those imports:"
-msgstr ""
+msgstr "`META-INF/MANIFEST.MF` の `Import-Package` は以下のインポートを含まなければなりません。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/cxf-separate.adoc:110
 #, no-wrap
 msgid ""
 "META-INF.cxf;version=\"[2.7,3.2)\",\n"
@@ -203,3 +247,14 @@ msgid ""
 "org.eclipse.jetty.util.security;version=\"[8,10)\",\n"
 "org.keycloak.*;version=\"{project_versionMvn}\"\n"
 msgstr ""
+"META-INF.cxf;version=\"[2.7,3.2)\",\n"
+"META-INF.cxf.osgi;version=\"[2.7,3.2)\";resolution:=optional,\n"
+"org.apache.cxf.bus;version=\"[2.7,3.2)\",\n"
+"org.apache.cxf.bus.spring;version=\"[2.7,3.2)\",\n"
+"org.apache.cxf.bus.resource;version=\"[2.7,3.2)\",\n"
+"org.apache.cxf.transport.http;version=\"[2.7,3.2)\",\n"
+"org.apache.cxf.*;version=\"[2.7,3.2)\",\n"
+"org.springframework.beans.factory.config,\n"
+"org.eclipse.jetty.security;version=\"[8,10)\",\n"
+"org.eclipse.jetty.util.security;version=\"[8,10)\",\n"
+"org.keycloak.*;version=\"{project_versionMvn}\"\n"

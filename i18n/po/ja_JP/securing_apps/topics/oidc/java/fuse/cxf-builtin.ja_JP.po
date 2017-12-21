@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,7 +39,11 @@ msgid ""
 "undeploys a built-in servlet at startup, enabling you to redeploy it on a "
 "context secured by {project_name}."
 msgstr ""
-"いくつかのサービスは、起動時にデプロイされたサーブレットを自動的に提供します。そのようなサービスの1つは、$$http://localhost:8181/cxf$$コンテキストで実行されているCXFサーブレットです。そのようなエンドポイントを確保することで、複雑になる可能性があります。{project_name}が現在使用しているアプローチの1つは`ServletReregistrationService`で、これは組み込みのサーブレットを起動時にアンデプロイし、{project_name}によって保護されたコンテキストに再デプロイできるようにします。"
+"いくつかのサービスは、起動時にデプロイされたサーブレットを自動的に提供します。そのようなサービスの1つは、$$http://localhost:8181/cxf$$"
+" "
+"コンテキストで実行されているCXFサーブレットです。そのようなエンドポイントを保護することは複雑になる可能性があります。{project_name}が現在使用しているアプローチの1つは"
+" `ServletReregistrationService` "
+"で、これは組み込みのサーブレットを起動時にアンデプロイし、{project_name}によって保護されたコンテキストに再デプロイできるようにします。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:8
@@ -49,8 +53,9 @@ msgid ""
 "`customerservice` endpoint, which is endpoint-specific to your application, "
 "but more importantly, secures the entire `/cxf` context."
 msgstr ""
-"アプリケーション内の設定ファイル`OSGI-INF/blueprint/blueprint.xml`は、以下のようになります。JAX-"
-"RSの`customerservice`エンドポイント(アプリケーションにエンドポイント固有)を追加しますが、もっと重要なのは、`/cxf`コンテキスト全体をセキュリティ保護することです。"
+"アプリケーション内の設定ファイル `OSGI-INF/blueprint/blueprint.xml` は、以下のようになります。JAX-RSの "
+"`customerservice` エンドポイント（アプリケーション固有のエンドポイント）を追加しますが、もっと重要なのは、 `/cxf` "
+"コンテキスト全体をセキュリティ保護することです。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:18
@@ -214,9 +219,10 @@ msgid ""
 "application."
 msgstr ""
 "その結果、デフォルトのCXF HTTPの宛先で実行されている他のすべてのCXFサービスも保護されます。同様に、アプリケーションがアンデプロイされると、 "
-"`/cxf`コンテキスト全体がセキュリティ保護されなくなります。このため、<<_fuse_adapter_cxf_separate,Secure CXF"
-" Application on separate Jetty "
-"Engine>>で説明されているように、独自のJettyエンジンをアプリケーションに使用すると、個々のアプリケーションのセキュリティをより詳細に制御できます。"
+"`/cxf` "
+"コンテキスト全体がセキュリティ保護されなくなります。このため、<<_fuse_adapter_cxf_separate,独立したJettyエンジンでのApache"
+" "
+"CXFエンドポイントの保護>>で説明されているように、独自のJettyエンジンをアプリケーションに使用すると、個々のアプリケーションのセキュリティをより詳細に制御できます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:78
@@ -228,16 +234,17 @@ msgid ""
 " need the `web.xml` file as the security constraints are declared in the "
 "blueprint configuration file."
 msgstr ""
-"`WEB-INF`ディレクトリはプロジェクト内にある必要があります（プロジェクトがWebアプリケーションでない場合でも）。 "
-"また、<<_fuse_adapter_classic_war,Classic WAR application>>と同様に、`/WEB-INF"
-"/jetty-web.xml`および`/WEB-INF/keycloak.json`ファイルを編集する必要があります。 "
-"セキュリティ制約がブループリント設定ファイルで宣言されているので、 `web.xml`ファイルは必要ないことに注意してください。"
+"`WEB-INF` ディレクトリはプロジェクト内にある必要があります（プロジェクトがWebアプリケーションでない場合でも）。 "
+"また、<<_fuse_adapter_classic_war,クラシックWARアプリケーション>>と同様に、 `/WEB-INF/jetty-"
+"web.xml` および `/WEB-INF/keycloak.json` "
+"ファイルを編集する必要があります。セキュリティ制約がblueprint設定ファイルで宣言されているので、 `web.xml` "
+"ファイルは必要ないことに注意してください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:80
 msgid ""
 "The `Import-Package` in `META-INF/MANIFEST.MF` must contain these imports:"
-msgstr "`META-INF/MANIFEST.MF`の`Import-Packageは以下のインポートを含まなければなりません："
+msgstr "`META-INF/MANIFEST.MF` の `Import-Package` は以下のインポートを含まなければなりません。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/cxf-builtin.adoc:93

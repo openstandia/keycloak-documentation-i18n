@@ -19,28 +19,6 @@ msgstr ""
 msgid "Leveraging Java EE"
 msgstr ""
 
-#. type: Plain text
-msgid ""
-"The user storage providers can be packaged within any Java EE component if "
-"you set up the `META-INF/services` file correctly to point to your "
-"providers. For example, if your provider needs to use third-party libraries, "
-"you can package up your provider within an EAR and store these third-party "
-"libraries in the `lib/` directory of the EAR.  Also note that provider JARs "
-"can make use of the `jboss-deployment-structure.xml` file that EJBs, WARS, "
-"and EARs can use in a JBoss/Wildfly environment. For more details on this "
-"file, see the JBoss/Wildfly documentation. It allows you to pull in external "
-"dependencies among other fine-grained actions."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Implementations of `UserStorageProviderFactory` are required to be plain "
-"java objects. But we also currently support implementing "
-"`UserStorageProvider` classes as Stateful EJBs. This is especially useful if "
-"you want to use JPA to connect to a relational store. This is how you would "
-"do it:"
-msgstr ""
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -92,27 +70,6 @@ msgid ""
 "}\n"
 msgstr ""
 
-#. type: Plain text
-msgid ""
-"You have to define the `@Local` annotation and specify your provider class "
-"there. If you do not do this, EJB will not proxy the user correctly and your "
-"provider won't work."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You must put the `@Remove` annotation on the `close()` method of your "
-"provider. If you do not, the stateful bean will never be cleaned up and you "
-"might eventually see error messages."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Implementations of `UserStorageProviderFactory` are required to be plain "
-"java objects. Your factory class would perform a JNDI lookup of the Stateful "
-"EJB in its create() method."
-msgstr ""
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -136,6 +93,49 @@ msgid ""
 "            throw new RuntimeException(e);\n"
 "        }\n"
 "    }\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The user storage providers can be packaged within any Java EE component if "
+"you set up the `META-INF/services` file correctly to point to your "
+"providers. For example, if your provider needs to use third-party libraries, "
+"you can package up your provider within an EAR and store these third-party "
+"libraries in the `lib/` directory of the EAR.  Also note that provider JARs "
+"can make use of the `jboss-deployment-structure.xml` file that EJBs, WARS, "
+"and EARs can use in a JBoss/Wildfly environment. For more details on this "
+"file, see the JBoss/Wildfly documentation. It allows you to pull in external "
+"dependencies among other fine-grained actions."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Implementations of `UserStorageProviderFactory` are required to be plain "
+"java objects. But we also currently support implementing "
+"`UserStorageProvider` classes as Stateful EJBs. This is especially useful if "
+"you want to use JPA to connect to a relational store. This is how you would "
+"do it:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You have to define the `@Local` annotation and specify your provider class "
+"there. If you do not do this, EJB will not proxy the user correctly and your "
+"provider won't work."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You must put the `@Remove` annotation on the `close()` method of your "
+"provider. If you do not, the stateful bean will never be cleaned up and you "
+"might eventually see error messages."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Implementations of `UserStorageProviderFactory` are required to be plain "
+"java objects. Your factory class would perform a JNDI lookup of the Stateful "
+"EJB in its create() method."
 msgstr ""
 
 #. type: Plain text

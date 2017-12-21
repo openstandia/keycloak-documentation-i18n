@@ -114,63 +114,14 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"It is recommended on the {project_name} side to use the system property "
-"`jboss.node.name` during startup, with the value corresponding to the name "
-"of your route. For example, `-Djboss.node.name=node1` will use `node1` to "
-"identify the route. This route will be used by Infinispan caches and will be "
-"attached to the AUTH_SESSION_ID cookie when the node is the owner of the "
-"particular key. An example of the start up command with this system property "
-"can be seen in <<_example-setup-with-mod-cluster,Mod Cluster Example>>."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Typically, the route name be the same name as your backend host, but it is "
-"not necessary. You can use a different route name, for example if you want "
-"to hide the host name of your {project_name} server inside your private "
-"network."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Disable adding the route"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Some load balancers can be configured to add the route information by "
-"themselves instead of relying on the back end {project_name} node.  However, "
-"as described above, adding the route by the {project_name} is recommended. "
-"This is because when done this way performance improves, since "
-"{project_name} is aware of the entity that is the owner of particular "
-"session and can route to that node, which is not necessarily the local node."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You are permitted to disable adding route information to the AUTH_SESSION_ID "
-"cookie by {project_name}, if you prefer, by adding the following into your "
-"`RHSSO_HOME/standalone/configuration/standalone-ha.xml` file in the "
-"{project_name} subsystem configuration:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
-"  ...\n"
-"    <spi name=\"stickySessionEncoder\">\n"
-"        <provider name=\"infinispan\" enabled=\"true\">\n"
-"            <properties>\n"
-"                <property name=\"shouldAttachRoute\" value=\"false\"/>\n"
-"            </properties>\n"
-"        </provider>\n"
-"    </spi>\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "</subsystem>\n"
+"Some loadbalancers can be configured to add the route information by "
+"themselves instead of rely on the backend {project_name} node. However "
+"adding the route by the {project_name} is more clever as {project_name} "
+"knows, who is the owner of particular session entity and can route it to "
+"that node, which is not necessarily the local node.  We plan to support the "
+"setup where the route info won't be added to AUTH_SESSION_ID cookie by the "
+"{project_name} server, but instead by the load balancer. However adding the "
+"cookie by {project_name} would be still the preferred option."
 msgstr ""
 
 #. type: Title ====

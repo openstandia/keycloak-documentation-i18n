@@ -113,10 +113,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"You can also use Role-Based Access Control (RBAC) in your policies. In the "
-"example below, we check if an user is granted with a `keycloak_user` *realm* "
-"role:"
+msgid "You can also use role-based access control (RBAC):"
 msgstr ""
 
 #. type: Code block
@@ -125,34 +122,13 @@ msgid ""
 "var context = $evaluation.getContext();\n"
 "var identity = context.getIdentity();\n"
 "\n"
-"if (identity.hasRealmRole('keycloak_user')) {\n"
+"if (identity.hasRole('keycloak_user')) {\n"
 "    $evaluation.grant();\n"
 "}\n"
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"Or you can check if an user is granted with a `my-client-role` *client* "
-"role, where `my-client` is the client id of the client application:"
-msgstr ""
-
-#. type: Code block
-#, no-wrap
-msgid ""
-"var context = $evaluation.getContext();\n"
-"var identity = context.getIdentity();\n"
-"\n"
-"if (identity.hasClientRole('my-client', 'my-client-role')) {\n"
-"    $evaluation.grant();\n"
-"}\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You can also use a combination of several access control mechanisms. The "
-"example below shows how roles(RBAC) and claims/attributes(ABAC) checks can "
-"be used within the same policy. In this case we check if user is granted "
-"with `admin` role or has an e-mail from `keycloak.org` domain:"
+msgid "Or a combination of several access control mechanisms:"
 msgstr ""
 
 #. type: Code block
@@ -163,7 +139,7 @@ msgid ""
 "var attributes = identity.getAttributes();\n"
 "var email = attributes.getValue('email').asString(0);\n"
 "\n"
-"if (identity.hasRealmRole('admin') || email.endsWith('@keycloak.org')) {\n"
+"if (identity.hasRole('admin') || email.endsWith('@keycloak.org')) {\n"
 "    $evaluation.grant();\n"
 "}\n"
 msgstr ""

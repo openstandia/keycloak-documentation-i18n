@@ -91,7 +91,7 @@ msgid ""
 "applications `WEB-INF/keycloak.json` and add:"
 msgstr ""
 "セキュリティ・コンテキストを保存するためにCookieストアを使用するには、アプリケーションの `WEB-INF/keycloak.json` "
-"を編集して次の行を追加します:"
+"を編集して次の行を追加します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -122,10 +122,10 @@ msgid ""
 "store. Hence it's recommended to use a short value for the access token "
 "timeout (for example 1 minute)."
 msgstr ""
-"もう一つの小さな制限は、シングル・サイン・アウトのサポートが限られていることです。 アダプターが `KEYCLOAK_ADAPTER_STATE` "
-"クッキーを削除するので、アプリケーション自体からサーブレット・ログアウト( `HttpServletRequest.logout` "
-")を開始すると、問題なく動作します。 "
-"ただし、別のアプリケーションからの初期化されたバックチャネル・ログアウトは、{project_name}によってCookieストアを使用するアプリケーションに伝播されません。したがって、アクセス・トークンのタイムアウトに短い値(例えば1分)を使用することをお勧めします。"
+"もう一つの小さな制限は、シングル・サイン・アウトのサポートが限られていることです。アダプターが `KEYCLOAK_ADAPTER_STATE` "
+"クッキーを削除するので、アプリケーション自体からサーブレット・ログアウト（ `HttpServletRequest.logout` "
+"）を開始すると、問題なく動作します。 "
+"ただし、別のアプリケーションからの初期化されたバックチャネル・ログアウトは、{project_name}によってCookieストアを使用するアプリケーションに伝播されません。したがって、アクセス・トークンのタイムアウトに短い値（例えば1分）を使用することをお勧めします。"
 
 #. type: Title =====
 #, no-wrap
@@ -138,7 +138,7 @@ msgid ""
 "on the same domain (through a reverse proxy or load balancer) it can be "
 "convenient to use relative URI options in your client configuration."
 msgstr ""
-"{project_name}とアプリケーションが同じドメイン(リバース・プロキシーまたはロード・バランサーを介して)でホストされている配備のシナリオでは、クライアント設定で相対URIオプションを使用すると便利です。"
+"{project_name}とアプリケーションが同じドメイン（リバースプロキシーまたはロードバランサーを介して）でホストされているデプロイメントのシナリオでは、クライアント設定で相対URIオプションを使用すると便利です。"
 
 #. type: Plain text
 msgid ""
@@ -168,7 +168,7 @@ msgid ""
 "backend requests to the application for various tasks, like logout users or "
 "push revocation policies."
 msgstr ""
-"特定のクライアント用の管理者URLは、{project_name}管理コンソールで設定できます。これは、{project_name}サーバーによって、ログアウト・ユーザーやプッシュ取消しポリシーなどの様々なタスクのバックエンド・リクエストをアプリケーションに送信するために使用されます。"
+"特定のクライアント用の管理者URLは、{project_name}管理コンソールで設定できます。これは、{project_name}サーバーによって、ユーザーのログアウトや取消しポリシーのプッシュなどの様々なタスクのバックエンド・リクエストをアプリケーションに送信するために使用されます。"
 
 #. type: Plain text
 msgid "For example the way backchannel logout works is:"
@@ -219,7 +219,7 @@ msgid ""
 " one of them.  For example to push a new not before policy to the "
 "application or to logout all users from the application."
 msgstr ""
-"前のセクションでは、{project_name}が特定のHTTPセッションに関連付けられたノードにログアウト・リクエストを送信する方法について説明しました。しかし、管理者のタスクを、登録されている全てのクラスター・ノードに伝播させたい場合があります。例えば、新しいnot"
+"前のセクションでは、{project_name}が特定のHTTPセッションに関連付けられたノードにログアウト・リクエストを送信する方法について説明しました。しかし、管理者が管理タスクを登録されている全てのクラスター・ノードに伝播させたい場合があります。例えば、新しいnot"
 " beforeポリシーをアプリケーションにプッシュする、またはアプリケーションからすべてのユーザーをログアウトするなどです。"
 
 #. type: Plain text
@@ -228,7 +228,7 @@ msgid ""
 "nodes, so it can send the event to all of them.  To achieve this, we support"
 " auto-discovery mechanism:"
 msgstr ""
-"この場合、{project_name}はすべてのアプリケーション・クラスター・ノードを認識する必要があるため、全てのノードにイベントを送信できます。これを達成するために、私たちはオート・ディスカバリーのメカニズムをサポートしています。"
+"この場合、{project_name}はすべてのアプリケーション・クラスター・ノードを認識する必要があります。これにより、全てのノードにイベントを送信できます。これを達成するために、私たちはオート・ディスカバリーのメカニズムをサポートしています。"
 
 #. type: Plain text
 msgid ""
@@ -297,8 +297,9 @@ msgid ""
 "remove stale application nodes in the event your not using the automatic "
 "unregistration feature."
 msgstr ""
-"{project_name}管理コンソールでは、最大ノード再登録タイムアウトを指定できます(アダプター設定から_register-node-"
-"period_より大きい値にする必要があります)。管理コンソールから、クラスター・ノードを手動で追加したり、削除することもできます。自動登録機能を使用したくない場合や、自動登録解除機能を使用しない場合、失効したアプリケーション・ノードを削除する場合に便利です"
+"{project_name}管理コンソールでは、最大ノード再登録タイムアウトを指定できます（アダプター設定から _register-node-"
+"period_ "
+"より大きい値にする必要があります）。管理コンソールから、クラスター・ノードを手動で追加したり、削除することもできます。自動登録機能を使用したくない場合や、自動登録解除機能を使用しない場合、失効したアプリケーション・ノードを削除する場合に便利です"
 " 。"
 
 #. type: Title =====
@@ -313,9 +314,7 @@ msgid ""
 "token on every request. This may have a performance impact as your "
 "application will send more requests to the {project_name} server."
 msgstr ""
-"デフォルトでは、アプリケーション・アダプターは期限切れになったときにのみ、アクセス・トークンを更新します。 "
-"ただし、リクエストごとにトークンをリフレッシュするようにアダプターを設定することもできます。 "
-"これは、アプリケーションが{project_name}サーバーにさらに多くのリクエストを送信するため、パフォーマンスに影響を与える可能性があります。"
+"デフォルトでは、アプリケーション・アダプターは期限切れになったときにのみ、アクセス・トークンを更新します。ただし、リクエストごとにトークンをリフレッシュするようにアダプターを設定することもできます。これは、アプリケーションが{project_name}サーバーにさらに多くのリクエストを送信するため、パフォーマンスに影響を与える可能性があります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -330,4 +329,4 @@ msgid ""
 "    minutes of the logout.\n"
 msgstr ""
 "これはパフォーマンスに重大な影響を与える可能性があります。ログアウトとnot "
-"beforeポリシーを伝播するために、バックチャネル・メッセージに頼ることができない場合にのみ、この機能を有効にしてください。考慮すべきもう一つは、デフォルトではアクセス・トークンの有効期限が短く、ログアウトが伝播されなくてもログアウトから数分以内にトークンが期限切れになることです。\n"
+"beforeポリシーを伝播するために、バックチャネル・メッセージに頼ることができない場合にのみ、この機能を有効にしてください。考慮すべきこととして、デフォルトではアクセス・トークンの有効期限が短く、ログアウトが伝播されなくてもログアウトから数分以内にトークンが期限切れになります。\n"

@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "New Password Hashing algorithms"
+msgstr "新しいパスワード・ハッシュ・アルゴリズム"
+
+#. type: Title ===
+#, no-wrap
+msgid "ID Token requires scope=openid"
+msgstr "IDトークンにはscope=openidが必要"
+
+#. type: Title ==
+#, no-wrap
+msgid "RH-SSO 7.2"
+msgstr "RH-SSO 7.2"
+
+#. type: Plain text
+msgid "The following changes have occurred from RH-SSO 7.1 to RH-SSO 7.2."
+msgstr "RH-SSO 7.1からRH-SSO 7.2.へのアップグレードで、以下の変更が加えられました。"
+
+#. type: Plain text
+msgid ""
+"We have added two new password hashing algorithms (pbkdf2-sha256 and "
+"pbkdf2-sha512). New realms will use the pbkdf2-sha256 hashing algorithm with"
+" 27500 hashing iterations. Since pbkdf2-sha256 is slightly faster than "
+"pbkdf2 the iterations was increased to 27500 from 20000."
+msgstr ""
+"新しいパスワード・ハッシュ・アルゴリズムが2つ（pbkdf2-sha256とpbkdf2-sha512）追加されました。新しいレルムは、27500ハッシュ・イテレーションを用いて、pbkdf2-sha256ハッシュ・アルゴリズムを使用します。pbkdf2-sha256はpbkdf2よりもわずかに速いので、イテレーションは20000から27500に増加しました。"
+
+#. type: Plain text
+msgid ""
+"Existing realms are upgraded if the password policy contains the default "
+"value for the hashing algorithm (not specified) and iteration (20000). If "
+"you have changed the hashing iterations, you need to manually change to "
+"pbkdf2-sha256 if you'd like to use the more secure hashing algorithm."
+msgstr ""
+"既存のレルムは、パスワード・ポリシーにハッシュ・アルゴリズム（指定なし）のデフォルト値とイテレーション（20000）が含まれている場合、アップグレードされます。ハッシュ・イテレーションを変更した場合、セキュリティ上より安全なハッシュ・アルゴリズムを使用したいならば、手動でpbkdf2-sha256に変更する必要があります。"
+
+#. type: Plain text
+msgid ""
+"In RH-SSO 7.0, the ID Token was returned regardless if `scope=openid` query "
+"parameter was present or not in authorization request. This is incorrect "
+"according to the OpenID Connect specification."
+msgstr ""
+"RH-SSO 7.0では、 `scope=openid` "
+"クエリー・パラメーターが認証リクエストにあるかないかに関わらず、IDトークンは返されました。これは、OpenID "
+"Connect仕様においては正しくありません。"
+
+#. type: Plain text
+msgid ""
+"In RH-SSO 7.1, we added this query parameter to adapters, but left the old "
+"behavior to accommodate migration."
+msgstr "RH-SSO 7.1では、このクエリー・パラメーターをアダプターに追加しました。ただし、移行に対応するために古い動作を残しました。"
+
+#. type: Plain text
+msgid ""
+"In RH-SSO 7.2, this behavior has changed and the `scope=openid` query "
+"parameter is now required to mark the request as an OpenID Connect request. "
+"If this query parameter is omitted the ID Token will not be generated."
+msgstr ""
+"RH-SSO 7.2では、この動作は変更され、 `scope=openid` クエリー・パラメーターは現在、OpenID "
+"Connectリクエストとしてリクエストをマークするために必要となります。このクエリー・パラメーターが省かれると、IDトークンは生成されません。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Microsoft SQL Server requires extra dependency"
+msgstr "Microsoft SQLサーバーに追加の依存関係が必要"
+
+#. type: Plain text
+msgid ""
+"Microsoft JDBC Driver 6.0 requires additional dependency added to the JDBC "
+"driver module. If you observe an `NoClassDefFoundError` error when using "
+"Microsoft SQL Server please add the following dependency to your JDBC driver"
+" `module.xml` file:"
+msgstr ""
+"Microsoft JDBCドライバー6.0には、追加の依存関係をJDBCドライバー・モジュールに加える必要があります。Microsoft "
+"SQLサーバーの使用時に `NoClassDefFoundError` エラーを見つけた場合、JDBCドライバー `module.xml` "
+"ファイルに、以下の依存関係を追加してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "<module name=\"javax.xml.bind.api\"/>\n"
+msgstr "<module name=\"javax.xml.bind.api\"/>\n"

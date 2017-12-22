@@ -7,13 +7,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "</beans>\n"
+msgstr "</beans>\n"
 
 #. type: Title =====
 #, no-wrap
@@ -23,7 +28,7 @@ msgstr "アダプターのインストール"
 #. type: Title =====
 #, no-wrap
 msgid "Multi Tenancy"
-msgstr "マルチ・テナント"
+msgstr "マルチテナンシー"
 
 #. type: Title ====
 #, no-wrap
@@ -93,7 +98,7 @@ msgid ""
 "The implementation allows customization by overriding methods.\n"
 "While its use is not required, it greatly simplifies your security context configuration.\n"
 msgstr ""
-"Keycloakは、 `KeycloakWebSecurityConfigurerAdapter` を、https://docs.spring.io/spring-security/site/docs/4.0.x/apidocs/org/springframework/security/config/annotation/web/WebSecurityConfigurer.html[WebSecurityConfigurer]を作成するための便利な基本クラスとして提供します。\n"
+"Keycloakは、 `KeycloakWebSecurityConfigurerAdapter` を、 https://docs.spring.io/spring-security/site/docs/4.0.x/apidocs/org/springframework/security/config/annotation/web/WebSecurityConfigurer.html[WebSecurityConfigurer]を作成するための便利な基本クラスとして提供します。\n"
 "この実装では、メソッドのオーバーライドによるカスタマイズが可能です。\n"
 "その使用は必須ではありませんが、セキュリティ・コンテキストの設定が大幅に簡素化されます。\n"
 
@@ -177,8 +182,8 @@ msgid ""
 "applications and `NullAuthenticatedSessionStrategy` for bearer-only "
 "applications."
 msgstr ""
-"パブリックまたはコンフィデンシャルなアプリケーションの場合は `RegisterSessionAuthenticationStrategy` "
-"の、ベアラー専用アプリケーションの場合は `NullAuthenticatedSessionStrategy` "
+"パブリックまたはコンフィデンシャルなアプリケーションの場合は `RegisterSessionAuthenticationStrategy` の"
+"、bearer-onlyアプリケーションの場合は `NullAuthenticatedSessionStrategy` "
 "のタイプのセッション認証ストラテジーBeanを提供する必要があります。"
 
 #. type: Plain text
@@ -203,8 +208,8 @@ msgid ""
 msgstr ""
 "`@KeycloakConfiguration` アノテーションは、Spring "
 "Securityで{project_name}を統合するために必要なすべてのアノテーションを定義するメタ・データ・アノテーションです。複雑なSpring"
-" Securityの設定をしている場合は、 `@KeycloakConfiguration` "
-"アノテーションを見て、独自のカスタム・メタ・アノテーションを作成するか、{project_name}アダプター用の特定のSpringアノテーションを使用するだけです。"
+" Securityの設定をする場合は、 `@KeycloakConfiguration` "
+"アノテーションを見て、独自のカスタム・メタ・アノテーションを作成してください。もしくは、{project_name}アダプター用の特定のSpringアノテーションを使用してください。"
 
 #. type: Title ======
 #, no-wrap
@@ -359,11 +364,6 @@ msgstr ""
 "        <security:custom-filter ref=\"logoutFilter\" position=\"LOGOUT_FILTER\" />\n"
 "    </security:http>\n"
 
-#. type: delimited block -
-#, no-wrap
-msgid "</beans>\n"
-msgstr "</beans>\n"
-
 #. type: Plain text
 msgid ""
 "The Keycloak Spring Security adapter also supports multi tenancy.  Instead "
@@ -372,10 +372,10 @@ msgid ""
 "`KeycloakConfigResolver` interface.  More details on how to implement the "
 "`KeycloakConfigResolver` can be found in <<_multi_tenancy,Multi Tenancy>>."
 msgstr ""
-"Keycloak Spring Securityアダプターはマルチ・テナントをサポートしています。 "
+"Keycloak Spring Securityアダプターはマルチテナンシーをサポートしています。 "
 "`AdapterDeploymentContextFactoryBean` に `keycloak.json` "
 "へのパスを注入する代わりに、`KeycloakConfigResolver` インターフェースの実装を注入することができます。 "
-"`KeycloakConfigResolver` の実装方法の詳細は<<_multi_tenancy,Multi Tenancy>>にあります。"
+"`KeycloakConfigResolver` の実装方法の詳細は<<_multi_tenancy,マルチテナンシー>>にあります。"
 
 #. type: Title =====
 #, no-wrap
@@ -398,7 +398,7 @@ msgid ""
 "Use, for example, `org.springframework.security.core.authority.mapping.SimpleAuthorityMapper` to insert the `ROLE_` prefix and convert the role name to upper case.\n"
 "The class is part of Spring Security Core module.\n"
 msgstr ""
-"クラス `org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider` はSpring Securityによって認識されるロールにKeycloakから来るロールをマップするために使用することができ、オプションの `org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper` をサポートしています。\n"
+"`org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider` クラスはオプションで `org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper` をサポートしており、Spring Securityによって認識されるロールにKeycloakから来るロールをマップするために使用することができます。\n"
 "たとえば、 `org.springframework.security.core.authority.mapping.SimpleAuthorityMapper` を使用して、接頭辞 `ROLE_` を挿入し、ロール名を大文字に変換します。\n"
 "クラスはSpring Security Coreモジュールの一部です。\n"
 
@@ -421,7 +421,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "For Java configuration:"
-msgstr "Java設定では"
+msgstr "Javaによる設定："
 
 #. type: delimited block -
 #, no-wrap
@@ -476,7 +476,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "For XML configuration:"
-msgstr "XML設定では"
+msgstr "XMLによる設定："
 
 #. type: delimited block -
 #, no-wrap
@@ -495,7 +495,7 @@ msgid ""
 "to make a call to another client.  For example:"
 msgstr ""
 "アプリケーション・コードは、別のクライアントを呼び出す必要があるときはいつでも、 `KeycloakRestTemplate` を使うことができます。 "
-"例えば："
+"次に例を示します。"
 
 #. type: delimited block -
 #, no-wrap

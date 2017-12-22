@@ -2,37 +2,36 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title =====
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:3
 #, no-wrap
 msgid "Securing the Hawtio Administration Console"
-msgstr ""
+msgstr "Hawtio管理コンソールのセキュリティ保護"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:6
 msgid ""
 "To secure the Hawtio Administration Console with {project_name}, complete "
 "the following steps:"
-msgstr ""
+msgstr "{project_name}を使用して、Hawtio管理コンソールをセキュリティ保護するには、以下の手順を実行します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:8
 msgid "Add these properties to the `$FUSE_HOME/etc/system.properties` file:"
-msgstr ""
+msgstr "これらのプロパティを `$FUSE_HOME/etc/system.properties` ファイルに追加します。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:15
@@ -43,6 +42,10 @@ msgid ""
 "hawtio.keycloakClientConfig=file://${karaf.base}/etc/keycloak-hawtio-client.json\n"
 "hawtio.rolePrincipalClasses=org.keycloak.adapters.jaas.RolePrincipal,org.apache.karaf.jaas.boot.principal.RolePrincipal\n"
 msgstr ""
+"hawtio.keycloakEnabled=true\n"
+"hawtio.realm=keycloak\n"
+"hawtio.keycloakClientConfig=file://${karaf.base}/etc/keycloak-hawtio-client.json\n"
+"hawtio.rolePrincipalClasses=org.keycloak.adapters.jaas.RolePrincipal,org.apache.karaf.jaas.boot.principal.RolePrincipal\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:18
@@ -53,6 +56,10 @@ msgid ""
 "pointing to Hawtio: \\http://localhost:8181/hawtio/*. You must also have a "
 "corresponding Web Origin configured (in this case, \\http://localhost:8181)."
 msgstr ""
+"利用レルムの{project_name}管理コンソールにクライアントを作成します。たとえば、{project_name}の `demo` "
+"レルムでクライアント `hawtio-client` を作成し、アクセス・タイプとして `public` を指定し、Hawtio: "
+"\\http://localhost:8181/hawtio/*を指すリダイレクトURIを指定します。また、対応するWeb "
+"Origin（この場合は、\\http://localhost:8181)）も設定する必要があります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:20
@@ -60,10 +67,15 @@ msgid ""
 "Create the `keycloak-hawtio-client.json` file in the `$FUSE_HOME/etc` "
 "directory using content similar to that shown in the example below. Change "
 "the `realm`, `resource`, and `auth-server-url` properties according to your "
-"{project_name} environment. The `resource` property must point to the client "
-"created in the previous step. This file is used by the client (Hawtio "
+"{project_name} environment. The `resource` property must point to the client"
+" created in the previous step. This file is used by the client (Hawtio "
 "Javascript application) side."
 msgstr ""
+"`$FUSE_HOME/etc` ディレクトリに `keycloak-hawtio-client.json` "
+"ファイルを作成します。このファイルは、以下の例のような内容で作成します。{project_name}環境に応じて、 `realm` 、 "
+"`resource` 、 `auth-server-url` の各プロパティを変更してください。 `resource` "
+"プロパティは前のステップで作成されたクライアントを指し示さなければなりません。このファイルは、クライアント（Hawtio "
+"Javascriptアプリケーション）側で使用されます。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:30
@@ -77,16 +89,26 @@ msgid ""
 "  \"public-client\" : true\n"
 "}\n"
 msgstr ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"resource\" : \"hawtio-client\",\n"
+"  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"public-client\" : true\n"
+"}\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:33
 msgid ""
 "Create the `keycloak-hawtio.json` file in the `$FUSE_HOME/etc` dicrectory "
-"using content similar to that shown in the example below. Change the `realm` "
-"and `auth-server-url` properties according to your {project_name} "
+"using content similar to that shown in the example below. Change the `realm`"
+" and `auth-server-url` properties according to your {project_name} "
 "environment. This file is used by the adapters on the server (JAAS Login "
 "module) side."
 msgstr ""
+"`$FUSE_HOME/etc` ディレクトリに `keycloak-hawtio.json` "
+"ファイルを作成します。このファイルは、以下の例のような内容です。{project_name}の環境に応じて `realm` と `auth-"
+"server-url` プロパティを変更してください。このファイルは、サーバー（JAASログイン・モジュール）側のアダプターによって使用されます。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:45
@@ -102,13 +124,23 @@ msgid ""
 "  \"principal-attribute\": \"preferred_username\"\n"
 "}\n"
 msgstr ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"resource\" : \"jaas\",\n"
+"  \"bearer-only\" : true,\n"
+"  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"use-resource-role-mappings\": false,\n"
+"  \"principal-attribute\": \"preferred_username\"\n"
+"}\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:48
 msgid ""
-"Start {fuseVersion} and install the keycloak feature if you have not already "
-"done so. The commands in Karaf terminal are similar to this example:"
+"Start {fuseVersion} and install the keycloak feature if you have not already"
+" done so. The commands in Karaf terminal are similar to this example:"
 msgstr ""
+"Keycloakフィーチャーをまだインストールしていない場合は、{fuseVersion}を起動し、インストールしてください。Karafターミナルのコマンドはこの例に似ています。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:53
@@ -119,33 +151,38 @@ msgid ""
 "features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
 "features:install keycloak\n"
 msgstr ""
+"features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"features:install keycloak\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:56
 msgid ""
 "Go to http://localhost:8181/hawtio and log in as a user from your "
 "{project_name} realm."
-msgstr ""
+msgstr "http://localhost:8181/hawtioに移動し、{project_name}のレルムからユーザーとしてログインします。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:58
 msgid ""
 "Note that the user needs to have the proper realm role to successfully "
-"authenticate to Hawtio. The available roles are configured in the `"
-"$FUSE_HOME/etc/system.properties` file in `hawtio.roles`."
+"authenticate to Hawtio. The available roles are configured in the "
+"`$FUSE_HOME/etc/system.properties` file in `hawtio.roles`."
 msgstr ""
+"Hawtioに対して正常に認証するには、ユーザーが適切なレルムのロールを持っている必要があることに注意してください。利用可能なロールは、 "
+"`hawtio.roles` の `$FUSE_HOME/etc/system.properties` ファイルで設定されます。"
 
-#. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:60
-msgid "====== Securing Hawtio on {fuseHawtioEAPVersion}"
-msgstr ""
+#. type: Title ======
+#: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:59
+#, no-wrap
+msgid "Securing Hawtio on {fuseHawtioEAPVersion}"
+msgstr "{fuseHawtioEAPVersion}上のHawtioのセキュリティ保護"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:62
 msgid ""
 "To run Hawtio on the {fuseHawtioEAPVersion} server, complete the following "
 "steps:"
-msgstr ""
+msgstr "{fuseHawtioEAPVersion}サーバーでHawtioを実行するには、以下の手順を実行します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:64
@@ -153,16 +190,17 @@ msgid ""
 "Set up {project_name} as described in the previous section, Securing the "
 "Hawtio Administration Console. It is assumed that:"
 msgstr ""
+"前のセクション（Hawtio管理コンソールをセキュリティ保護する）で説明したように、{project_name}を設定します。次のように仮定します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:65
 msgid "you have a {project_name} realm `demo` and client `hawtio-client`"
-msgstr ""
+msgstr "{project_name}のレルムのデモとクライアント `hawtio-client` を持っている"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:66
 msgid "your {project_name} is running on `localhost:8080`"
-msgstr ""
+msgstr "{project_name}が `localhost:8080` で動作している"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:67
@@ -171,22 +209,31 @@ msgid ""
 "`localhost:8181`. The directory with this server is referred in next steps "
 "as `$EAP_HOME`."
 msgstr ""
+"展開されたHawtioがある{fuseHawtioEAPVersion}サーバーは `localhost:8181` "
+"で動作します。このサーバーのディレクトリーは、次のステップでは、 `$EAP_HOME` と呼ばれます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:69
 msgid ""
-"Copy the `{fuseHawtioWARVersion}` archive to the `$EAP_HOME/standalone/"
-"configuration` directory. For more details about deploying Hawtio see the "
-"https://access.redhat.com/documentation/en-us/red_hat_jboss_fuse/6.3/html-"
-"single/deploying_into_a_web_server/[Fuse Hawtio documentation]."
+"Copy the `{fuseHawtioWARVersion}` archive to the "
+"`$EAP_HOME/standalone/configuration` directory. For more details about "
+"deploying Hawtio see the https://access.redhat.com/documentation/en-"
+"us/red_hat_jboss_fuse/6.3/html-single/deploying_into_a_web_server/[Fuse "
+"Hawtio documentation]."
 msgstr ""
+"`{fuseHawtioWARVersion}` アーカイブを `$EAP_HOME/standalone/configuration` "
+"ディレクトリーにコピーします。Hawtioの導入の詳細については、 https://access.redhat.com/documentation"
+"/en-us/red_hat_jboss_fuse/6.3/html-single/deploying_into_a_web_server/[Fuse "
+"Hawtio documentation]を参照してください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:71
 msgid ""
-"Copy the `keycloak-hawtio.json` and `keycloak-hawtio-client.json` files with "
-"the above content to the `$EAP_HOME/standalone/configuration` directory."
+"Copy the `keycloak-hawtio.json` and `keycloak-hawtio-client.json` files with"
+" the above content to the `$EAP_HOME/standalone/configuration` directory."
 msgstr ""
+"上記内容の `keycloak-hawtio.json` ファイルと `keycloak-hawtio-client.json` ファイルを "
+"`$EAP_HOME/standalone/configuration` ディレクトリーにコピーします。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:73
@@ -194,6 +241,7 @@ msgid ""
 "Install the {project_name} adapter subsystem to your {fuseHawtioEAPVersion} "
 "server as described in the <<_jboss_adapter,JBoss adapter documentation>>."
 msgstr ""
+"<<_jboss_adapter,JBossアダプターのドキュメント>>の説明に従って、{project_name}アダプター・サブシステムを{fuseHawtioEAPVersion}サーバーにインストールします。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:75
@@ -201,6 +249,8 @@ msgid ""
 "In the `$EAP_HOME/standalone/configuration/standalone.xml` file configure "
 "the system properties as in this example:"
 msgstr ""
+"`$EAP_HOME/standalone/configuration/standalone.xml` "
+"ファイルで、次の例のようにシステムのプロパティを設定します。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:81
@@ -210,6 +260,9 @@ msgid ""
 "...\n"
 "</extensions>\n"
 msgstr ""
+"<extensions>\n"
+"...\n"
+"</extensions>\n"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:91
@@ -225,12 +278,21 @@ msgid ""
 "    <property name=\"hawtio.keycloakServerConfig\" value=\"${jboss.server.config.dir}/keycloak-hawtio.json\" />\n"
 "</system-properties>\n"
 msgstr ""
+"<system-properties>\n"
+"    <property name=\"hawtio.authenticationEnabled\" value=\"true\" />\n"
+"    <property name=\"hawtio.realm\" value=\"hawtio\" />\n"
+"    <property name=\"hawtio.roles\" value=\"admin,viewer\" />\n"
+"    <property name=\"hawtio.rolePrincipalClasses\" value=\"org.keycloak.adapters.jaas.RolePrincipal\" />\n"
+"    <property name=\"hawtio.keycloakEnabled\" value=\"true\" />\n"
+"    <property name=\"hawtio.keycloakClientConfig\" value=\"${jboss.server.config.dir}/keycloak-hawtio-client.json\" />\n"
+"    <property name=\"hawtio.keycloakServerConfig\" value=\"${jboss.server.config.dir}/keycloak-hawtio.json\" />\n"
+"</system-properties>\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:94
 msgid ""
 "Add the Hawtio realm to the same file in the `security-domains` section:"
-msgstr ""
+msgstr "Hawtioレルムを同じファイルの `security-domains` セクションに追加します。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:104
@@ -244,6 +306,13 @@ msgid ""
 "    </authentication>\n"
 "</security-domain>\n"
 msgstr ""
+"<security-domain name=\"hawtio\" cache-type=\"default\">\n"
+"    <authentication>\n"
+"        <login-module code=\"org.keycloak.adapters.jaas.BearerTokenLoginModule\" flag=\"required\">\n"
+"            <module-option name=\"keycloak-config-file\" value=\"${hawtio.keycloakServerConfig}\"/>\n"
+"        </login-module>\n"
+"    </authentication>\n"
+"</security-domain>\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:107
@@ -251,6 +320,8 @@ msgid ""
 "Add the `secure-deployment` section `hawtio` to the adapter subsystem. This "
 "ensures that the Hawtio WAR is able to find the JAAS login module classes."
 msgstr ""
+"`hawtio` の `secure-deployment` セクションをアダプター・サブシステムに追加してください。これにより、Hawtio "
+"WARがJAASログイン・モジュール・クラスを見つけることができます。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:114
@@ -267,7 +338,7 @@ msgstr ""
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:117
 msgid "Restart the {fuseHawtioEAPVersion} server with Hawtio:"
-msgstr ""
+msgstr "Hawtioと{fuseHawtioEAPVersion}サーバーを再起動します。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:122
@@ -276,6 +347,8 @@ msgid ""
 "cd $EAP_HOME/bin\n"
 "./standalone.sh -Djboss.socket.binding.port-offset=101\n"
 msgstr ""
+"cd $EAP_HOME/bin\n"
+"./standalone.sh -Djboss.socket.binding.port-offset=101\n"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/hawtio.adoc:125
@@ -283,3 +356,4 @@ msgid ""
 "Access Hawtio at http://localhost:8181/hawtio. It is secured by "
 "{project_name}."
 msgstr ""
+"Hawtio（http://localhost:8181/hawtio）へアクセスして下さい。 {project_name}によって保護されています。"

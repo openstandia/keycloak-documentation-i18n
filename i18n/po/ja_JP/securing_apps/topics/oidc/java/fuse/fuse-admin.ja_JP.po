@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,10 +39,7 @@ msgid ""
 "<<_resource_owner_password_credentials_flow,Resource Owner Password "
 "Credentials>>."
 msgstr ""
-"{project_name}は、主にWebアプリケーションの認証のユースケースを扱います。ただし、他のWebサービスやアプリケーションが{project_name}で保護されている場合は、{project_name}のクレデンシャルでSSHなどのWeb以外の管理サービスを保護するのが最善の方法です。"
-" "
-"これは、{project_name}へのリモート接続を許可し、<<_resource_owner_password_credentials_flow,Resource"
-" Owner Password Credentials>>に基づいてクレデンシャルを検証するJAASログイン・モジュールを使用して実行できます。"
+"{project_name}は、主にWebアプリケーションの認証のユースケースを扱います。ただし、他のWebサービスやアプリケーションが{project_name}で保護されている場合は、{project_name}のクレデンシャルでSSHなどのWeb以外の管理サービスを保護するのが最善の方法です。これは、{project_name}へのリモート接続を許可し、<<_resource_owner_password_credentials_flow,リソース・オーナー・パスワード・クレデンシャル>>に基づいてクレデンシャルを検証するJAASログイン・モジュールを使用して実行できます。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:12
@@ -56,16 +53,16 @@ msgid ""
 "which will be used for SSH authentication.  This client needs to have "
 "`Direct Access Grants Enabled` selected to `On`."
 msgstr ""
-"{project_name}では、SSH認証に使用されるクライアント(例えば、 `ssh-jmx-admin-"
-"client`)を作成します。このクライアントでは、 `Direct Access Grants "
-"Enabled`が`On`に選択されている必要があります。"
+"{project_name}では、SSH認証に使用されるクライアント（例えば、 `ssh-jmx-admin-client` "
+"）を作成します。このクライアントでは、 `Direct Access Grants Enabled` が `On` に選択されている必要があります。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:17
 msgid ""
 "In the `$FUSE_HOME/etc/org.apache.karaf.shell.cfg` file, update or specify "
 "this property:"
-msgstr "`$FUSE_HOME/etc/org.apache.karaf.shell.cfg`ファイルで、このプロパティを更新または指定します："
+msgstr ""
+"`$FUSE_HOME/etc/org.apache.karaf.shell.cfg` ファイルで、次のとおりにこのプロパティを更新または指定します。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:21
@@ -80,8 +77,8 @@ msgid ""
 "similar to the following (based on your environment and {project_name} "
 "client settings):"
 msgstr ""
-"`$FUSE_HOME/etc/keycloak-direct-"
-"access.json`ファイルを（環境と{project_name}クライアントの設定に基づいて）次のような内容で追加してください："
+"`$FUSE_HOME/etc/keycloak-direct-access.json` "
+"ファイルを（環境と{project_name}のクライアント設定に基づいて）次のような内容を追加してください。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:36
@@ -114,7 +111,8 @@ msgid ""
 "JAAS DirectAccessGrantsLoginModule from the `keycloak` JAAS realm for SSH "
 "authentication."
 msgstr ""
-"このファイルは、JAASの`DirectAccessGrantsLoginModule`がSSH認証のために`keycloak`のJAASレルムから使用するクライアント・アプリケーションの設定を指定します。"
+"このファイルでは、JAASの `DirectAccessGrantsLoginModule` がSSH認証のために `keycloak` "
+"JAASレルムから使用するクライアント・アプリケーションの設定を指定します。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:40
@@ -126,12 +124,12 @@ msgid ""
 "https:access.redhat.com/documentation/en-us/red_hat_jboss_fuse/6.3/html-"
 "single/security_guide/#ESBSecureContainer[JBoss Fuse documentation]."
 msgstr ""
-"Fuseを起動し、 `keycloak`のJAASレルムをインストールしてください。最も簡単な方法は、JAASレルムがあらかじめ定義された "
-"`keycloak-jaas`機能をインストールすることです。独自の "
-"`keycloak`のJAASレルムを使用して、より高いランクで機能の定義済みレルムを上書きすることができます。詳細については、https:access.redhat.com/documentation"
-"/en-us/red_hat_jboss_fuse/6.3/html-"
+"Fuseを起動し、 `keycloak` JAASレルムをインストールしてください。最も簡単な方法は、JAASレルムがあらかじめ定義された "
+"`keycloak-jaas` フィーチャーをインストールすることです。より高いランクの独自 `keycloak` "
+"JAASレルムを使用して、フィーチャーに定義済みのレルムをオーバーライドすることができます。詳細については、 "
+"https://access.redhat.com/documentation/en-us/red_hat_jboss_fuse/6.3/html-"
 "single/security_guide/#ESBSecureContainer[JBoss Fuse "
-"documentation].を参照してください。"
+"documentation]を参照してください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:42
@@ -152,7 +150,7 @@ msgstr ""
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:50
 msgid ""
 "Log in using SSH as `admin` user by typing the following in the terminal:"
-msgstr "SSHで`admin`ユーザーとしてログインするには、端末に次のように入力します。"
+msgstr "SSHで `admin` ユーザーとしてログインするには、ターミナルで次のように入力します。"
 
 #. type: Code block
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:53
@@ -162,7 +160,7 @@ msgstr "ssh -o PubkeyAuthentication=no -p 8101 admin@localhost"
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:56
 msgid "Log in with password `password`."
-msgstr "パスワード`password`でログインしてください。"
+msgstr "パスワードは `password` でログインしてください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:58
@@ -172,9 +170,9 @@ msgid ""
 "clients do not allow use of the `ssh-dss` algorithm, by default. However, by"
 " default, it is currently used in {fuseVersion}."
 msgstr ""
-"最近のオペレーティング・システムでは、SSHコマンドの-oオプション`-o HostKeyAlgorithms=+ssh-"
-"dss`を使用する必要があります。これは、最近のSSHクライアントではデフォルトで`ssh-"
-"dss`アルゴリズムを使用できないためです。しかし、現在{fuseVersion}では、デフォルトで使用されています。"
+"最近のオペレーティング・システムでは、SSHコマンドの-oオプションを `-o HostKeyAlgorithms=+ssh-dss` "
+"として使用する必要があるかもしれません。これは、最近のSSHクライアントではデフォルトで `ssh-dss` "
+"アルゴリズムを使用できないためです。しかし、現在{fuseVersion}ではデフォルトで使用されています。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:60
@@ -186,9 +184,10 @@ msgid ""
 "`$FUSE_HOME/etc/org.apache.karaf.shell.cfg` or "
 "`$FUSE_HOME/etc/system.properties`."
 msgstr ""
-"ユーザーはすべての操作を実行するために、レエルムのロール`admin`を、操作のサブセットを実行する別のロールを必要とすることに注意してください（例えば、読み取り専用のKarafコマンドのみを実行するようにユーザーを制限する*viewer*ロール）。"
-" "
-"利用可能なロールは、`$FUSE_HOME/etc/org.apache.karaf.shell.cfg`または`$FUSE_HOME/etc/system.properties`で設定されます。"
+"ユーザーはすべての操作を実行するために、レルム・ロール `admin` "
+"を持つ必要があることに注意してください。また、操作のサブセットを実行するためには別のロールが必要となります（例えば、読み取り専用のKarafコマンドのみを実行するようにユーザーを制限する"
+" *viewer* ロール）。利用可能なロールは、 `$FUSE_HOME/etc/org.apache.karaf.shell.cfg` または "
+"`$FUSE_HOME/etc/system.properties` で設定されます。"
 
 #. type: Title ======
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:61
@@ -204,9 +203,8 @@ msgid ""
 " better to use hawt.io/jolokia, since the jolokia agent is installed in "
 "hawt.io by default. For more details see <<_hawtio,Hawtio Admin Console>>."
 msgstr ""
-"jconsoleまたは別の外部ツールを使用してRMI経由でJMXにリモート接続する場合は、JMX認証が必要になることがあります。 "
-"それ以外の場合は、デフォルトでhaolt.ioにjolokiaエージェントがインストールされているので、hawt.io/jolokiaを使用する方がよいでしょう。"
-" 詳細については、<<_hawtio,Hawtio Admin Console>>を参照してください。"
+"jconsoleまたは別の外部ツールを使用してRMI経由でJMXにリモート接続する場合は、JMX認証が必要になることがあります。それ以外の場合は、デフォルトでhaolt.ioにjolokiaエージェントがインストールされているので、hawt.io/jolokiaを使用する方がよいでしょう。詳細については、<<_hawtio,Hawtio"
+" Admin Console>>を参照してください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:66
@@ -219,7 +217,8 @@ msgid ""
 "In the `$FUSE_HOME/etc/org.apache.karaf.management.cfg` file, change the "
 "jmxRealm property to:"
 msgstr ""
-"`$FUSE_HOME/etc/org.apache.karaf.management.cfg`ファイルで、`jmxRealm`プロパティを次のように変更します。"
+"`$FUSE_HOME/etc/org.apache.karaf.management.cfg` ファイルで、 `jmxRealm` "
+"プロパティを次のように変更します。"
 
 #. type: delimited block -
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:72
@@ -233,8 +232,8 @@ msgid ""
 "Install the `keycloak-jaas` feature and configure the `$FUSE_HOME/etc"
 "/keycloak-direct-access.json` file as described in the SSH section above."
 msgstr ""
-"上記のSSHのセクションで説明したように、`keycloak-jaas`機能をインストールし、`$FUSE_HOME/etc/keycloak-"
-"direct-access.json`ファイルを設定してください。"
+"上記のSSHのセクションで説明したように、 `keycloak-jaas` フィーチャーをインストールし、 `$FUSE_HOME/etc"
+"/keycloak-direct-access.json` ファイルを設定してください。"
 
 #. type: Plain text
 #: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:77
@@ -253,4 +252,4 @@ msgstr ""
 msgid ""
 "and credentials: admin/password (based on the user with admin privileges "
 "according to your environment)."
-msgstr "およびクレデンシャル：管理者/パスワード（環境に応じて管理者権限を持つユーザーに基づく）"
+msgstr "クレデンシャルはadmin/password（利用環境の管理者権限を持つユーザー次第）です。"

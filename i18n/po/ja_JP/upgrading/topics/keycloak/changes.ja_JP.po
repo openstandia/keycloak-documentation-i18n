@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -580,7 +580,7 @@ msgid ""
 msgstr ""
 "以前は、SAMLまたはOIDCのKeycloakサブシステム・アダプターを、WildFlyまたはJBoss "
 "EAPに既にインストールしていた場合に、Keycloakを使用していたか否かに関わらず、全てのアプリケーションにKeycloakクライアントのjarを自動的に含めていました。現在は、そのアダプターのためにKeycloak認証を（サブシステムまたはweb"
-".xml内のauth-methodを通じて）有効にしている場合にのみ、これらのライブラリは配備に追加されることになります。"
+".xml内のauth-methodを通じて）有効にしている場合にのみ、これらのライブラリはデプロイメントに追加されることになります。"
 
 #. type: Title ====
 #, no-wrap
@@ -667,7 +667,7 @@ msgid ""
 "config switches."
 msgstr ""
 "セッションIDをサポートするプラットフォーム（Tomcat "
-"8、Undertow/Wildfly、Jetty9）では、セキュリティ上の攻撃ベクトルを阻止するために、ログイン後にKeycloakのOIDCとSAMLアダプターによってセッションIDが変更されます。この動作チェックアダプターの設定スイッチをオフにすることができます。"
+"8、Undertow/Wildfly、Jetty9）では、セキュリティ攻撃口をふさぐために、ログイン後にKeycloakのOIDCとSAMLアダプターによってセッションIDが変更されます。この動作をアダプターの設定スイッチをチェックすることでオフにすることができます。"
 
 #. type: Plain text
 msgid ""
@@ -707,8 +707,8 @@ msgid ""
 "based on `RFC-7662.`"
 msgstr ""
 "OAuth2の仕様により合わせるために、トークン・イントロスペクション用の新しいエンドポイントを追加しました。新しいエンドポイントは `/realms"
-"/{realm-name}/protocols/openid-connect/token/introspect` で取得することができ、 "
-"`RFC-7662` にのみ基づいています。"
+"/{realm-name}/protocols/openid-connect/token/introspect` で利用することができ、 "
+"`RFC-7662` に基づいています。"
 
 #. type: Plain text
 msgid ""
@@ -755,11 +755,11 @@ msgid ""
 "have `Direct Access Grants` (corresponds to OAuth2 `Resource Owner Password "
 "Credentials Grant`) disabled by default for new clients."
 msgstr ""
-"OpenID Connect仕様により合わせるために、管理コンソールのClient "
-"Settingsのページにフラグを追加しました。そのページでは、さまざまな種類のOpenID "
-"ConnectまたはOAuth2のフロー（スタンダード・フロー、インプリシット・フロー、ダイレクト・アクセス・グラント、サービス・アカウント）を有効または無効にすることができます。この一環として、新規クライアント用にはデフォルトで無効となっている"
-" `Direct Access Grants` （OAuth2 `Resource Owner Password Credentials Grant` "
-"に対応）があります。"
+"OpenID Connectの仕様により合わせるために、管理コンソールのClient "
+"Settingsのページにフラグを追加しました。そのページでは、さまざまな種類のOpenID ConnectまたはOAuth2のフロー（Standard"
+" flow、Implicit flow、Direct Access Grants、Service "
+"Accounts）を有効または無効にすることができます。この一環として、新規クライアント用にはデフォルトで無効となっている `Direct Access"
+" Grants` （OAuth2 `Resource Owner Password Credentials Grant` に対応）があります。"
 
 #. type: Plain text
 msgid ""
@@ -770,7 +770,7 @@ msgid ""
 msgstr ""
 "以前のバージョンから移行されたクライアントは、 `Direct Grants Only` フラグがオンである場合のみ、 `Direct Access "
 "Grants` が有効になります。ダイレクト・アクセス・グラントを有効にし、スタンダード + "
-"インプリシットの両方のフローを無効にした場合と同等の、`Direct Grants Only`フラグは削除されました(同じ効果となるため)。"
+"インプリシットの両方のフローを無効にした場合と同等の、`Direct Grants Only`フラグは削除されました（同じ効果となるため）。"
 
 #. type: Plain text
 msgid ""
@@ -1185,10 +1185,10 @@ msgid ""
 "make the corresponding changes when verifying `iss`."
 msgstr ""
 "アクセス・トークンとIDトークン内の `iss` クレームの値は、 `realm name` から `realm url` "
-"へ変更されました。これはOpenID Connect仕様の要求によるものです。アダプターを使用している場合は変更の必要はありませんが、 `auth-"
-"server-url` "
-"を指定せずにベアラーだけを使用してきた場合は変更する必要があります。別のライブラリ（またはRSATokenVerifier）を使用している場合は、 "
-"`iss` の検証時に対応できるよう変更を加える必要があります。"
+"へ変更されました。これはOpenID Connectの仕様の要求によるものです。アダプターを使用している場合は変更の必要はありませんが、 `auth-"
+"server-url` を指定せずにbearer-"
+"onlyだけを使用していた場合は変更する必要があります。別のライブラリ（またはRSATokenVerifier）を使用している場合は、 `iss` "
+"の検証時に対応できるよう変更を加える必要があります。"
 
 #. type: Title ====
 #, no-wrap
@@ -1208,12 +1208,12 @@ msgid ""
 "future version."
 msgstr ""
 "OpenID "
-"Connect仕様に合わせるために、認証とトークンのエンドポイントは、単一の認証エンドポイントと単一のトークン・エンドポイントを持つように変更されました。仕様通りに"
-" `response_type` と `grant_type` パラメーターが使用され、必要なフローを選択できるようになります。古いエンドポイント( "
-"`/realms/{realm-name}/protocols/openid-connect/login` , `/realms/{realm-"
-"name}/protocols/openid-connect/grants/access` , `/realms/{realm-"
-"name}/protocols/openid-connect/refresh` , `/realms/{realm-name}/protocols"
-"/openid-connect/access/codes` )は現在廃止されており、今後の新しいバージョンでは削除されます。"
+"Connectの仕様に合わせるために、認証とトークンのエンドポイントは、単一の認証エンドポイントと単一のトークン・エンドポイントを持つように変更されました。仕様通りに"
+" `response_type` と `grant_type` パラメーターが使用され、必要なフローを選択できるようになります。古いエンドポイント（ "
+"`/realms/{realm-name}/protocols/openid-connect/login` 、 `/realms/{realm-"
+"name}/protocols/openid-connect/grants/access` 、 `/realms/{realm-"
+"name}/protocols/openid-connect/refresh` 、 `/realms/{realm-name}/protocols"
+"/openid-connect/access/codes` ）は現在廃止されており、今後の新しいバージョンでは削除されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -1419,7 +1419,7 @@ msgstr ""
 "ログアウトREST "
 "APIはリファクタリングされました。ログアウトURIのGETリクエストはsession_stateパラメーターを取得しなくなりました。セッションをログアウトするには、ログインする必要があります。また、ログアウトREST"
 " "
-"URIにPOSTすることもできます。このアクションでは、ログアウトするために有効なリフレッシュ・トークンが必要です。署名は、パラメーター許可されたタイプを差し引いたリフレッシュ・トークンと同じものです。詳しくは、ドキュメントを参照ください。"
+"URIにPOSTすることもできます。このアクションでは、ログアウトするために有効なリフレッシュ・トークンが必要です。シグネチャーは、パラメーターからグラント・タイプを差し引いたリフレッシュ・トークンと同じものです。詳しくは、ドキュメントを参照ください。"
 
 #. type: Title ===
 #, no-wrap

@@ -15,14 +15,12 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Title ===
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:2
+#. type: Attribute :installguide_stickysessions_name:
 #, no-wrap
 msgid "Sticky sessions"
 msgstr "スティッキー・セッション"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:6
 msgid ""
 "Typical cluster deployment consists of the load balancer (reverse proxy) and"
 " 2 or more {project_name} servers on private network. For performance "
@@ -32,7 +30,6 @@ msgstr ""
 "典型的なクラスター構成は、ロードバランサー（リバースプロキシ）とプライベート・ネットワーク上の2つ以上の{project_name}サーバーで構成されています。パフォーマンスのために、ロードバランサーが特定のブラウザー・セッションに関するリクエストをすべて同じ{project_name}バックエンド・ノードに転送すると有用かもしれません。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:10
 msgid ""
 "The reason is, that {project_name} is using infinispan distributed cache "
 "under the covers for save data related to current authentication session and"
@@ -44,7 +41,6 @@ msgstr ""
 "なぜなら、{project_name}が現在の認証セッションとユーザー・セッションに関するデータを保存するために、infinispanの分散キャッシュを使用しているためです。Infinispanの分散キャッシュは、デフォルトで所有者は1つと設定されています。つまり、特定のセッションは1つのクラスター・ノードに保存され、他のノードがこのセッションにアクセスする場合は、リモートで検索する必要があります。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:13
 msgid ""
 "For example if authentication session with ID `123` is saved in the "
 "infinispan cache on `node1`, and then `node2` needs to lookup this session, "
@@ -56,7 +52,6 @@ msgstr ""
 "へリクエストを送信する必要があります。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:16
 msgid ""
 "It is beneficial if particular session entity is always available locally, "
 "which can be done with the help of sticky sessions.  The workflow in the "
@@ -66,12 +61,10 @@ msgstr ""
 "特定のセッション・エンティティが常にローカルで使用できる場合は、スティッキー・セッションに助けを借りることができます。パブリック・フロントエンド・ロードバランサーと2つのバックエンド{project_name}ノードを持つクラスター環境内のワークフローは、以下のようになります。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:18
 msgid "User sends initial request to see the {project_name} login screen"
 msgstr "ユーザーは{project_name}のログイン画面を表示するため初回リクエストを送信します。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:20
 msgid ""
 "This request is served by the frontend load balancer, which forwards it to "
 "some random node (eg. node1). Strictly said, the node doesn't need to be "
@@ -82,14 +75,12 @@ msgstr ""
 "このリクエストは、フロントエンド・ロードバランサーによって処理され、このフロントエンド・ロードバランサーがランダムにノード（例えばnode1）に転送します。厳密には、ノードはランダムである必要はなく、他のいくつかの基準（クライアントIPアドレスなど）によって選択することができます。それらはすべて、基にあるロードバランサー（リバースプロキシ）の実装と設定に依存します。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:21
 msgid ""
 "{project_name} creates authentication session with random ID (eg. 123) and "
 "saves it to the Infinispan cache."
 msgstr "{project_name}は認証セッションを任意のID（例えば123）で作成し、Infinispanキャッシュに保存します。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:24
 msgid ""
 "Infinispan distributed cache assigns the primary owner of the session based "
 "on the hash of session ID.  See "
@@ -101,7 +92,6 @@ msgstr ""
 " documentation]をご覧ください。infinispanがこのセッションの所有者として `node2` を割り当てたとしましょう。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:25
 msgid ""
 "{project_name} creates the cookie `AUTH_SESSION_ID` with the format like "
 "`<session-id>.<owner-node-id>` . In our example case, it will be `123.node2`"
@@ -111,7 +101,6 @@ msgstr ""
 "`AUTH_SESSION_ID` を作成します．サンプルとしては、 `123.node2` となります。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:26
 msgid ""
 "Response is returned to the user with the {project_name} login screen and "
 "the AUTH_SESSION_ID cookie in the browser"
@@ -119,7 +108,6 @@ msgstr ""
 "レスポンスは、{project_name}のログイン・スクリーンとブラウザーのAUTH_SESSION_ID cookieでユーザーに返されます。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:30
 msgid ""
 "From this point, it is beneficial if load balancer forwards all the next "
 "requests to the `node2` as this is the node, who is owner of the "
@@ -134,7 +122,6 @@ msgstr ""
 "`123` を持っているため `node2` に保存されます。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:33
 msgid ""
 "The sticky session is not mandatory for the cluster setup, however it is "
 "good for performance for the reasons mentioned above. You need to configure "
@@ -145,7 +132,6 @@ msgstr ""
 "`AUTH_SESSION_ID` cookieで固定するようロードバランサーを設定する必要があります。どのように行うかはロードバランサーによります。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:38
 msgid ""
 "Some loadbalancers can be configured to add the route information by "
 "themselves instead of rely on the backend {project_name} node. However "
@@ -160,13 +146,11 @@ msgstr ""
 " Cookieに追加する設定をサポートする予定があります。しかし、それでも{project_name}によるCookie追加の方がより良い選択です。"
 
 #. type: Title ====
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:39
 #, no-wrap
 msgid "Example cluster setup with mod_cluster"
 msgstr "mod_clusterでのクラスター設定のサンプル"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:44
 msgid ""
 "In the example, we will use link:http://mod-cluster.jboss.org/[Mod Cluster] "
 "as load balancer. One of the key features of mod cluster is, that there is "
@@ -181,7 +165,6 @@ msgstr ""
 "clusterの重要な特徴の1つは、ロードバランサー側の設定が少ないことです。その代わりに、バックエンド・ノード側でのサポートが必要です。バックエンド・ノードは、MCMPと呼ばれる専用プロトコルを通じてロードバランサーと通信し、さまざまなイベント（例えばノードの参加、またはクラスターの置換、新しいアプリケーションのデプロイなど）についてロードバランサーに通知します。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:46
 msgid ""
 "Example setup will consist of the one {appserver_name} {appserver_version} "
 "load balancer node and two {project_name} nodes."
@@ -190,7 +173,6 @@ msgstr ""
 "{appserver_version}ロードバランサー・ノードと2つの{project_name}ノードで構成されます。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:48
 msgid ""
 "Clustering example require MULTICAST to be enabled on machine's loopback "
 "network interface. This can be done by running the following commands under "
@@ -199,7 +181,6 @@ msgstr ""
 "クラスタリングのサンプルでは、MULTICASTをマシンのループバック・ネットワーク・インターフェイスで有効にすることを要求されます。これは、root特権（linux上）で以下のコマンドを実行して行うことができます。"
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:53
 #, no-wrap
 msgid ""
 "route add -net 224.0.0.0 netmask 240.0.0.0 dev lo\n"
@@ -209,13 +190,11 @@ msgstr ""
 "ifconfig lo multicast\n"
 
 #. type: Title =====
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:56
 #, no-wrap
 msgid "Load Balancer Configuration"
 msgstr "ロードバランサー設定"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:59
 msgid ""
 "Unzip the {appserver_name} {appserver_version} server somewhere. Assumption "
 "is location `EAP_LB`"
@@ -223,7 +202,6 @@ msgstr ""
 "{appserver_name} {appserver_version}サーバーをどこかに解凍します。サンプルの場所は `EAP_LB` です。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:61
 msgid ""
 "Edit `EAP_LB/standalone/configuration/standalone.xml` file. In the undertow "
 "subsystem add the mod_cluster configuration under filters like this:"
@@ -232,7 +210,6 @@ msgstr ""
 "ファイルを編集します。undertowサブシステム内で以下のように、filtersの下にmod_cluster設定を追加します。"
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:72
 #, no-wrap
 msgid ""
 "<subsystem xmlns=\"urn:jboss:domain:undertow:4.0\">\n"
@@ -254,12 +231,10 @@ msgstr ""
 " </filters>\n"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:75
 msgid "and `filter-ref` under `default-host` like this:"
 msgstr "次に、以下のように `default-host` の下に `filter-ref` を追加します。"
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:82
 #, no-wrap
 msgid ""
 "<host name=\"default-host\" alias=\"localhost\">\n"
@@ -273,12 +248,10 @@ msgstr ""
 "</host>\n"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:85
 msgid "Then under `socket-binding-group` add this group:"
 msgstr "`socket-binding-group` の下に以下のグループを追加します。"
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:91
 #, no-wrap
 msgid ""
 "<socket-binding name=\"modcluster\" port=\"0\"\n"
@@ -290,12 +263,10 @@ msgstr ""
 "    multicast-port=\"23364\"/>\n"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:94
 msgid "Save the file and run the server:"
 msgstr "ファイルを保存して以下のようにサーバーを実行します。"
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:99
 #, no-wrap
 msgid ""
 "cd $WILDFLY_LB/bin\n"
@@ -305,20 +276,17 @@ msgstr ""
 "./standalone.sh\n"
 
 #. type: Title =====
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:102
 #, no-wrap
 msgid "Backend node configuration"
 msgstr "バックエンド・ノードの設定"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:105
 msgid ""
 "Unzip the {project_name} server distribution to some location. Assuming "
 "location is `RHSSO_NODE1` ."
 msgstr "{project_name}サーバー配布物をどこかに解凍します。サンプルの場所は `RHSSO_NODE1` です。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:108
 msgid ""
 "Edit `RHSSO_NODE1/standalone/configuration/standalone-ha.xml` and configure "
 "datasource against the shared database.  See <<_rdbms-setup-checklist, "
@@ -328,14 +296,12 @@ msgstr ""
 "を編集してデータソースを設定します。詳しくは、<<_rdbms-setup-checklist, データベースの章>>をご覧ください。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:110
 msgid ""
 "In the undertow subsystem, add the `session-config` under the `servlet-"
 "container` element:"
 msgstr "undertowサブシステム内で、 `servlet-container` 要素の下に `session-config` を追加します。"
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:117
 #, no-wrap
 msgid ""
 "<servlet-container name=\"default\">\n"
@@ -349,7 +315,6 @@ msgstr ""
 "</servlet-container>\n"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:121
 msgid ""
 "Then you can configure `proxy-address-forwarding` as described in the "
 "chapter <<_setting-up-a-load-balancer-or-proxy, Load Balancer >> .  Note "
@@ -361,12 +326,10 @@ msgstr ""
 "を設定することができます。この設定は、mod_clusterがデフォルトでAJP接続を使用するため必要だということにご注意ください。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:123
 msgid "That's all as mod_cluster is already configured."
 msgstr "mod_clusterは既に設定済みなので、以上です。"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:127
 msgid ""
 "The node name of the {project_name} can be detected automatically based on "
 "the hostname of current server. However for more fine grained control, it is"
@@ -380,7 +343,6 @@ msgstr ""
 "を使用してノード名を直接指定することをおすすめします。これは、同じ物理サーバー上で2つのバックエンド・ノードをテストする場合などに特に便利です。以下のようにstartupコマンドを実行することができます。"
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:132
 #, no-wrap
 msgid ""
 "cd $RHSSO_NODE1\n"
@@ -390,14 +352,12 @@ msgstr ""
 "./standalone.sh -c standalone-ha.xml -Djboss.socket.binding.port-offset=100 -Djboss.node.name=node1\n"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:135
 msgid ""
 "Configure the second backend server in same way and run with different port "
 "offset and node name."
 msgstr "2番目のバックエンド・サーバーを同じ方法で設定し、異なるポート・オフセットとノード名で実行します。"
 
 #. type: delimited block -
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:140
 #, no-wrap
 msgid ""
 "cd $RHSSO_NODE2\n"
@@ -407,7 +367,6 @@ msgstr ""
 "./standalone.sh -c standalone-ha.xml -Djboss.socket.binding.port-offset=200 -Djboss.node.name=node2\n"
 
 #. type: Plain text
-#: source/server_installation/topics/clustering/sticky-sessions.adoc:143
 msgid ""
 "Access the server on `http://localhost:8080/auth` . Creation of admin user "
 "is possible just from local address and without load balancer (proxy) "

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Shinsuke UEDA <ueda.shinsuke.f2@gmail.com>, 2017\n"
+"Last-Translator: Hiroshi Katakura <h.katakura@pro-japan.co.jp>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,20 +16,16 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Plain text
-msgid "On Linux:"
-msgstr "Linuxの場合："
+msgid "For example, on:"
+msgstr "例えば"
 
 #. type: Plain text
-msgid "On Windows:"
-msgstr "Windowsの場合："
+msgid "Linux:"
+msgstr "Linuxの場合"
 
 #. type: Plain text
-msgid "For example on Linux:"
-msgstr "例えば、Linux の場合："
-
-#. type: Plain text
-msgid "Or on Windows:"
-msgstr "または、Windowsの場合："
+msgid "Windows:"
+msgstr "Windowsの場合"
 
 #. type: Title ===
 #, no-wrap
@@ -42,150 +38,161 @@ msgstr "例："
 
 #. type: Title ==
 #, no-wrap
-msgid "Admin CLI"
+msgid "The Admin CLI"
 msgstr "管理CLI"
 
 #. type: Plain text
 msgid ""
-"In previous chapters we have described how to use {project_name} Admin "
-"Console to perform administrative tasks.  All those tasks can also be "
-"performed from command line by using Admin CLI command line tool."
+"In previous chapters, we described how to use the {project_name} Admin "
+"Console to perform administrative tasks. You can also perform those tasks "
+"from the command-line interface (CLI) by using the Admin CLI command-line "
+"tool."
 msgstr ""
-"前の章では、{project_name}管理コンソールを使用して管理タスクを実行する方法について説明しました。これらのタスクはすべて、管理CLIコマンドライン・ツールを使用してコマンドラインから実行することもできます。"
+"前の章では、{project_name}管理コンソールを使用して管理タスクを実行する方法について説明しました。管理CLIツールを使用して、コマンドライン・インターフェイス（CLI）からこれらの管理タスクを実行することもできます。"
 
 #. type: Title ===
 #, no-wrap
-msgid "Installing Admin CLI"
+msgid "Installing the Admin CLI"
 msgstr "管理CLIのインストール"
 
 #. type: Plain text
 msgid ""
-"Admin CLI is packaged inside {project_name} Server distribution. You can "
-"find execution scripts inside `bin` directory."
-msgstr "管理CLIは、{project_name}サーバーの配布物に含まれています。 `bin` ディレクトリに実行スクリプトがあります。"
+"The Admin CLI is packaged inside {project_name} Server distribution. You can"
+" find execution scripts inside the [filename]`bin` directory."
+msgstr ""
+"管理CLIは、{project_name}サーバーの配布物に含まれています。実行スクリプトは [filename]`bin` ディレクトリにあります。"
 
 #. type: Plain text
 msgid ""
-"The Linux script is called `kcadm.sh`, and the one for Windows is called "
-"`kcadm.bat`."
-msgstr "Linuxの実行スクリプトは `kcadm.sh` 、Windowsの実行スクリプトは `kcadm.bat` です。"
+"The Linux script is called [filename]`kcadm.sh`, and the script for Windows "
+"is called [filename]`kcadm.bat`."
+msgstr ""
+"Linuxのスクリプトは [filename]`kcadm.sh` と呼ばれ、Windowsのスクリプトは [filename]`kcadm.bat` "
+"と呼ばれます。"
 
 #. type: Plain text
 msgid ""
-"In order to use the client from any location on your filesystem you may want"
-" to add {project_name} server directory to your PATH."
-msgstr "ファイルシステム上の任意の場所からクライアントを使用するには、{project_name}サーバー・ディレクトリをPATHに追加します。"
+"You can add the {project_name} server directory to your [filename]`PATH` to "
+"use the client from any location on your file system."
+msgstr ""
+"{project_name}サーバディレクトリを[filename] `PATH` "
+"に追加することで、ファイルシステム上の任意の場所からクライアントを使用することができます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ export PATH=$PATH:$KEYCLOAK_HOME/bin\n"
-"    $ kcadm.sh\n"
+"$ export PATH=$PATH:$KEYCLOAK_HOME/bin\n"
+"$ kcadm.sh\n"
 msgstr ""
 "$ export PATH=$PATH:$KEYCLOAK_HOME/bin\n"
-" $ kcadm.sh\n"
+"$ kcadm.sh\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> set PATH=%PATH%;%KEYCLOAK_HOME%\\bin\n"
-"    c:\\> kcadm\n"
+"c:\\> set PATH=%PATH%;%KEYCLOAK_HOME%\\bin\n"
+"c:\\> kcadm\n"
 msgstr ""
 "c:\\> set PATH=%PATH%;%KEYCLOAK_HOME%\\bin\n"
-" c:\\> kcadm\n"
+"c:\\> kcadm\n"
 
 #. type: Plain text
 msgid ""
-"We assume KEYCLOAK_HOME env variable is set to the path where you extracted "
-"{project_name} Server distribution."
-msgstr "環境変数KEYCLOAK_HOMEは、{project_name}サーバーの配布物を展開したパスに設定されているものとします。"
+"We assume the `KEYCLOAK_HOME` environment (env) variable is set to the path "
+"where you extracted the {project_name} Server distribution."
+msgstr "`KEYCLOAK_HOME` 環境変数は、{project_name}サーバの配布物を解凍したパスに設定されているものとします。"
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"To avoid unnecessary repetition the rest of this document will only give "
-"Windows examples in places where difference in command line is more than "
-"just in `kcadm` command name."
+"To avoid repetition, the rest of this document only gives Windows examples "
+"in places where the difference in the CLI is more than just in the "
+"[command]`kcadm` command name."
 msgstr ""
-"不必要な繰り返しを避けるため、この文書の残りの部分でのWindowsの例は、コマンドラインの違いが `kcadm` "
-"コマンド名以外にもある場所でのみ示します。"
+"これ以降、繰り返しの説明を避けるため、CLIの違いが [command]`kcadm` コマンド名だけである場合は、Windowsの例を示しています。"
 
 #. type: Title ===
 #, no-wrap
-msgid "Using Admin CLI"
+msgid "Using the Admin CLI"
 msgstr "管理CLIの利用"
 
 #. type: Plain text
 msgid ""
-"Admin CLI works by making HTTP requests to Admin REST endpoints. Access to "
-"them is protected and requires authentication."
+"The Admin CLI works by making HTTP requests to Admin REST endpoints. Access "
+"to them is protected and requires authentication."
 msgstr ""
-"管理CLIは、管理RESTエンドポイントへのHTTPリクエストを作成することによって機能します。管理RESTエンドポイントへのアクセスは保護されており、認証が必要です。"
+"管理CLIは、管理RESTエンドポイントへのHTTP要求を作成することによって動作します。エンドポイントへのアクセスは保護されており、認証が必要です。"
+
+#. type: delimited block =
+msgid ""
+"Consult the Admin REST API documentation for details about JSON attributes "
+"for specific endpoints."
+msgstr "特定のエンドポイントのJSON属性の詳細については、Admin REST APIのドキュメントを参照してください。"
 
 #. type: Plain text
 msgid ""
-"Consult Admin REST API documentation for details about JSON attributes for "
-"specific endpoints."
-msgstr "エンドポイントのJSON属性の詳細については、Admin REST APIのドキュメントを参照してください。"
+"Start an authenticated session by providing credentials, that is, logging "
+"in. You are ready to perform create, read, update, and delete (CRUD) "
+"operations."
+msgstr ""
+"クレデンシャルを提供すること、つまりログインすることで、認証セッションを開始します。作成、読み取り、更新、および削除（CRUD）操作を実行する準備をします。"
 
 #. type: Plain text
-msgid ""
-"You start an authenticated session by providing credentials (i.e. logging "
-"in), then you are ready to perform some CRUD operations."
-msgstr "クレデンシャルを入力（例えばログイン）することで認証セッションを開始すると、CRUD操作を実行する準備が整います。"
+msgid "For example, on"
+msgstr "例えば"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh config credentials --server http://localhost:8080/auth --realm demo --user admin --client admin\n"
-"    $ kcadm.sh create realms -s realm=demorealm -s enabled=true -o\n"
-"    $ CID=$(kcadm.sh create clients -r demorealm -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]' -i)\n"
-"    $ kcadm.sh get clients/$CID/installation/providers/keycloak-oidc-keycloak-json\n"
+"$ kcadm.sh config credentials --server http://localhost:8080/auth --realm demo --user admin --client admin\n"
+"$ kcadm.sh create realms -s realm=demorealm -s enabled=true -o\n"
+"$ C=$(kcadm.sh create clients -r demorealm -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]' -i)\n"
+"$ kcadm.sh get clients/$CID/installation/providers/keycloak-oidc-keycloak-json\n"
 msgstr ""
 "$ kcadm.sh config credentials --server http://localhost:8080/auth --realm demo --user admin --client admin\n"
-" $ kcadm.sh create realms -s realm=demorealm -s enabled=true -o\n"
-" $ CID=$(kcadm.sh create clients -r demorealm -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]' -i)\n"
-" $ kcadm.sh get clients/$CID/installation/providers/keycloak-oidc-keycloak-json\n"
+"$ kcadm.sh create realms -s realm=demorealm -s enabled=true -o\n"
+"$ C=$(kcadm.sh create clients -r demorealm -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]' -i)\n"
+"$ kcadm.sh get clients/$CID/installation/providers/keycloak-oidc-keycloak-json\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> kcadm config credentials --server http://localhost:8080/auth --realm demo --user admin --client admin\n"
-"    c:\\> kcadm create realms -s realm=demorealm -s enabled=true -o\n"
-"    c:\\> kcadm create clients -r demorealm -s clientId=my_client -s \"redirectUris=[\\\"http://localhost:8980/myapp/*\\\"]\" -i > clientid.txt\n"
-"    c:\\> set /p CID=<clientid.txt\n"
-"    c:\\> kcadm get clients/%CID%/installation/providers/keycloak-oidc-keycloak-json\n"
+"c:\\> kcadm config credentials --server http://localhost:8080/auth --realm demo --user admin --client admin\n"
+"c:\\> kcadm create realms -s realm=demorealm -s enabled=true -o\n"
+"c:\\> kcadm create clients -r demorealm -s clientId=my_client -s \"redirectUris=[\\\"http://localhost:8980/myapp/*\\\"]\" -i > clientid.txt\n"
+"c:\\> set /p CID=<clientid.txt\n"
+"c:\\> kcadm get clients/%CID%/installation/providers/keycloak-oidc-keycloak-json\n"
 msgstr ""
 "c:\\> kcadm config credentials --server http://localhost:8080/auth --realm demo --user admin --client admin\n"
-" c:\\> kcadm create realms -s realm=demorealm -s enabled=true -o\n"
-" c:\\> kcadm create clients -r demorealm -s clientId=my_client -s \"redirectUris=[\\\"http://localhost:8980/myapp/*\\\"]\" -i > clientid.txt\n"
-" c:\\> set /p CID=<clientid.txt\n"
-" c:\\> kcadm get clients/%CID%/installation/providers/keycloak-oidc-keycloak-json\n"
+"c:\\> kcadm create realms -s realm=demorealm -s enabled=true -o\n"
+"c:\\> kcadm create clients -r demorealm -s clientId=my_client -s \"redirectUris=[\\\"http://localhost:8980/myapp/*\\\"]\" -i > clientid.txt\n"
+"c:\\> set /p CID=<clientid.txt\n"
+"c:\\> kcadm get clients/%CID%/installation/providers/keycloak-oidc-keycloak-json\n"
 
 #. type: Plain text
 msgid ""
-"In a production environment {project_name} has to be accessed with `https:` "
-"to avoid exposing tokens to network sniffers. If server's certificate is not"
-" issued by one of the trusted CAs that are included in Java's default "
-"certificate truststore, then you will need to prepare a truststore.jks file,"
-" and instruct `Admin CLI` to use it."
+"In a production environment, you must access {project_name} with `https:` to"
+" avoid exposing tokens to network sniffers. If a server's certificate is not"
+" issued by one of the trusted certificate authorities (CAs) that are "
+"included in Java's default certificate truststore, prepare a "
+"[filename]`truststore.jks` file and instruct the Admin CLI to use it."
 msgstr ""
-"実稼働環境では、ネットワーク・スニファへのトークンの公開を避けるため、{project_name}には `https：` "
-"でアクセスする必要があります。サーバーの証明書が、Javaのデフォルトの証明書トラスト・ストアに含まれている信頼されたCAの1つによって発行されていない場合は、"
-" `truststore.jks` ファイルを準備し、それを使用するように `管理CLI` に指示する必要があります。"
+"プロダクション環境では、ネットワーク解析によりトークンが漏洩しないように、{project_name}に `https：` "
+"でアクセスする必要があります。サーバーの証明書が、Javaのデフォルトの証明書トラストストアに含まれる信頼できる認証局（CA）のいずれかによって発行されていない場合は、"
+" [filename]`truststore.jks` ファイルを準備し、管理CLIに使用するよう指示します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh config truststore --trustpass $PASSWORD "
+"$ kcadm.sh config truststore --trustpass $PASSWORD "
 "~/.keycloak/truststore.jks\n"
 msgstr ""
 "$ kcadm.sh config truststore --trustpass $PASSWORD "
 "~/.keycloak/truststore.jks\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> kcadm config truststore --trustpass %PASSWORD% "
+"c:\\> kcadm config truststore --trustpass %PASSWORD% "
 "%HOMEPATH%\\.keycloak\\truststore.jks\n"
 msgstr ""
 "c:\\> kcadm config truststore --trustpass %PASSWORD% "
@@ -198,493 +205,499 @@ msgstr "認証"
 
 #. type: Plain text
 msgid ""
-"When logging in with `Admin CLI` you specify a server endpoint url, and a "
-"realm. Then you specify a username, or alternatively you can specify only a "
-"client id, which will result in special, so called 'service account' being "
-"used. In the first case, a password for the specified user has to be used at"
-" login. In the latter case there is no user password - only client secret.  "
-"Alternatively, `Signed JWT` can be used."
+"When you log in with the Admin CLI, you specify a server endpoint URL and a "
+"realm, and then you specify a user name. Another option is to specify only a"
+" clientId, which results in using a special \"service account.\" When you "
+"log in using a user name, you must use a password for the specified user. "
+"When you log in using a clientId, you only need the client secret, not the "
+"user password. You could also use [command]`Signed JWT` instead of the "
+"client secret."
 msgstr ""
-"`管理CLI` "
-"でログインするときに、サーバーのエンドポイントのURLとレルムを指定します。その後、ユーザー名かクライアントIDを指定します。クライアントIDを指定することで、特別な、いわゆる「サービスアカウント」が使用されます。ユーザー名を指定する場合、ログイン時に指定されたユーザーのパスワードを使用する必要があります。クライアントIDを指定する場合、ユーザー・パスワードはなく、クライアント・シークレットのみです。"
-" `署名付きJWT` を使用することもできます。"
+"管理CLIでログインするときは、サーバーのエンドポイントURLとレルムを指定してから、ユーザー名を指定します。別の方法としては、特別な「サービスアカウント」を使用するclientIdのみを指定することです。ユーザー名を使用してログインするときは、指定したユーザーのパスワードを使用する必要があります。clientIdを使用してログインする場合、ユーザーのパスワードではなくクライアント・シークレットのみが必要です。また、クライアント・シークレットの代わりに"
+" [command]`Signed JWT` を使用することもできます。"
 
 #. type: Plain text
 msgid ""
-"The account used for the session needs to have proper permissions in order "
-"to be able to invoke Admin REST API operations.  For example, `realm-admin` "
-"role of `realm-management` client allows user to administer the realm within"
-" which the user is defined."
+"Make sure the account used for the session has the proper permissions to "
+"invoke Admin REST API operations. For example, the `realm-admin` role of the"
+" `realm-management` client allows the user to administer the realm within "
+"which the user is defined."
 msgstr ""
-"セッションに使用されるアカウントには、管理REST API操作を呼び出すための適切な権限が必要です。例えば、 `realm-management` "
-"クライアントの `realm-admin` ロールは、ユーザが定義されているレルムを管理することを許可します。"
+"セッションに使用されるアカウントに、管理REST API操作を呼び出すための適切な権限があることを確認します。例えば、 `realm-"
+"management` クライアントの `realm-admin` ロールは、ユーザが定義されているレルムを管理することを許可します。"
 
 #. type: Plain text
 msgid ""
-"There are two primary mechanisms for authentication. One is using `kcadm "
-"config credentials` to start an authenticated session:"
+"There are two primary mechanisms for authentication. One mechanism uses "
+"[command]`kcadm config credentials` to start an authenticated session."
 msgstr ""
-"認証には主に2つのメカニズムがあります。1つは認証されたセッションを開始するために `kcadm config credentials` を使用します。"
+"認証には主に2つの方法があります。 1つ目の方法は、[command]`kcadm config credentials` "
+"を使用して認証セッションを開始します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh config credentials --server http://localhost:8080/auth "
-"--realm master --user admin --password admin\n"
+"$ kcadm.sh config credentials --server http://localhost:8080/auth --realm "
+"master --user admin --password admin\n"
 msgstr ""
 "$ kcadm.sh config credentials --server http://localhost:8080/auth --realm "
 "master --user admin --password admin\n"
 
 #. type: Plain text
 msgid ""
-"This approach maintains an authenticated session between `kcadm` command "
-"invocations by saving the obtained access token, and associated refresh "
-"token, possibly other secrets as well in a private configuration file. See "
-"<<_working_with_alternative_configurations, next chapter>> for more info on "
-"configuration file."
+"This approach maintains an authenticated session between the "
+"[command]`kcadm` command invocations by saving the obtained access token and"
+" the associated refresh token. It may also maintain other secrets in a "
+"private configuration file. See <<_working_with_alternative_configurations, "
+"next chapter>> for more information on the configuration file."
 msgstr ""
-"取得されたアクセストークン、関連付けられたリフレッシュトークン、そしておそらく他のシークレットもプライベートな設定ファイルに保存することで、このアプローチは一連の"
-" `kcadm` "
-"コマンド呼び出しの間の認証されたセッションを維持します。設定ファイルの詳細については<<_working_with_alternative_configurations,"
+"この方法は、取得したアクセストークンと関連するリフレッシュトークンを保存することによって、 [command]`kcadm` "
+"コマンドの呼び出し間で認証されたセッションを維持します。また、プライベート設定ファイルに他のシークレットを保持することもできます。設定ファイルの詳細については、<<_working_with_alternative_configurations,"
 " 次の章>>を参照してください。"
 
 #. type: Plain text
 msgid ""
-"Another approach is to authenticate with each command invocation for the "
-"duration of that invocation only. This approach results in more load on the "
-"server, and more time spent with round-trips obtaining tokens, but has a "
-"benefit of not needing to save any tokens between invocations, thus nothing "
-"is saved to disk. This mode is used when `--no-config` argument is "
-"specified."
+"The second approach only authenticates each command invocation for the "
+"duration of that invocation. This approach increases the load on the server "
+"and the time spent with roundtrips obtaining tokens. The benefit of this "
+"approach is not needing to save any tokens between invocations, which means "
+"nothing is saved to disk. This mode is used when the [command]`--no-config` "
+"argument is specified."
 msgstr ""
-"もう1つの方法は、各コマンドの呼び出しをその呼び出しの間だけ認証することです。この方法では、サーバーに負荷がかかり、トークンを取得する往復時間が長くなりますが、呼び出し間にトークンを保存する必要がないため、ディスクには何も保存されません。このモードは"
-" `--no-config` 引数が指定されている場合に使用されます。"
+"2番目の方法は、各コマンド呼び出しごとに認証する方法です。この方法は、サーバーへの負荷とトークンを取得するやり取りに費やされる時間を増加させます。利点としては、呼び出しの間にトークンを保存する必要がないため、何もディスクに保存されないことです。このモードは、"
+" [command]`--no-config` 引数が指定されている場合に使用されます。"
 
 #. type: Plain text
 msgid ""
-"For example, when performing an operation we specify all the information "
-"required for authentication:"
-msgstr "たとえば、操作を実行するときには、認証に必要なすべての情報を指定します。"
+"For example, when performing an operation, we specify all the information "
+"required for authentication."
+msgstr "操作を実行するときに、認証に必要なすべての情報を指定する例。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get realms --no-config --server http://localhost:8080/auth "
+"$ kcadm.sh get realms --no-config --server http://localhost:8080/auth "
 "--realm master --user admin --password admin\n"
 msgstr ""
 "$ kcadm.sh get realms --no-config --server http://localhost:8080/auth "
 "--realm master --user admin --password admin\n"
 
 #. type: Plain text
-msgid "See built-in help for more information on using `Admin CLI`."
-msgstr "`管理CLI` の使用方法の詳細については、組み込みヘルプを参照してください。"
-
-#. type: Plain text
-#, no-wrap
-msgid "    $ kcadm.sh help\n"
-msgstr "$ kcadm.sh help\n"
+msgid ""
+"Run the [command]`kcadm.sh help` command for more information on using the "
+"Admin CLI."
+msgstr "Admin CLIの使用方法の詳細については、 [command]`kcadm.sh help` コマンドを実行してください。"
 
 #. type: Plain text
 msgid ""
-"See `kcadm.sh config credentials --help` for more information about starting"
-" an authenticated session."
+"Run the [command]`kcadm.sh config credentials --help` command for more "
+"information about starting an authenticated session."
 msgstr ""
-"認証されたセッションの開始の詳細については、 `kcadm.sh config credentials --help` を参照してください。"
+"認証セッションの開始については、[command]`kcadm.sh config credentials --help` コマンドを実行してください。"
 
 #. type: Plain text
 msgid ""
-"By default, `Admin CLI` automatically maintains a configuration file called "
-"`kcadm.config` located under user's home directory - it's full pathname is "
-"`$HOME/.keycloak/kcadm.config` (on Windows it's "
-"`%HOMEPATH%\\.keycloak\\kcadm.config`)."
+"By default, the Admin CLI automatically maintains a configuration file "
+"called [filename]kcadm.config located under the user's home directory. In "
+"Linux-based systems, the full path name is "
+"[filename]$HOME/.keycloak/kcadm.config. On Windows, the full path name is "
+"[filename]%HOMEPATH%\\.keycloak\\kcadm.config. You can use the "
+"[command]`--config` option to point to a different file or location so you "
+"can maintain multiple authenticated sessions in parallel."
 msgstr ""
-"デフォルトで `管理CLI` は、ユーザのホームディレクトリの下にある `kcadm.config` "
-"という設定ファイルを自動的に保持します。フルパス名は `$HOME/.keycloak/kcadm.config` です（Windowsでは "
-"`%HOMEPATH%\\.keycloak\\kcadm.config` ）。"
+"デフォルトでは、管理CLIはユーザーのホームディレクトリにある [filename]kcadm.config "
+"という設定ファイルを自動的に維持します。Linuxベースのシステムでは、フルパス名は[filename]$HOME/.keycloak/kcadm.config"
+" です。 Windowsでは、フルパス名は [filename]%HOMEPATH%\\.keycloak\\kcadm.config です。 "
+"[command]`--config` "
+"オプションを使うと、別のファイルや場所を指し示すことができるので、複数の認証セッションを並行して維持することができます。"
+
+#. type: delimited block =
+msgid ""
+"It is best to perform operations tied to a single configuration file from a "
+"single thread."
+msgstr "単一のスレッドから単一の設定ファイルに結び付けられた操作を実行することが最善の方法です。"
 
 #. type: Plain text
 msgid ""
-"You can use `--config` option to point to a different file / location. This "
-"way you can maintain multiple authenticated sessions in parallel."
+"Make sure you do not make the configuration file visible to other users on "
+"the system. It contains access tokens and secrets that should be kept "
+"private. By default, the [filename]`~/.keycloak` directory and its content "
+"are created automatically with proper access limits. If the directory "
+"already exists, its permissions are not updated."
 msgstr ""
-"`--config` オプションを使うと、別のファイル／場所を指すことができます。これにより、複数の認証済みセッションを並行して維持できます。"
+"システム上の他のユーザーが設定ファイルを参照できないようにしてください。プライベートにしておくべきアクセス・トークンとシークレットが含まれています。デフォルトでは、[filename]`~/.keycloak`"
+" ディレクトリとその内容は適切なアクセス制限で自動的に作成されます。ディレクトリが既に存在する場合、そのアクセス許可は更新されません。"
 
 #. type: Plain text
 msgid ""
-"It's best to perform operations tied to a single config file from a single "
-"thread."
-msgstr "単一のスレッドから単一の設定ファイルに結び付けられた操作を実行するのが最善です。"
-
-#. type: Plain text
-msgid ""
-"Make sure to not make config file visible to other users on the system as it"
-" contains access tokens, and secrets that should be kept private.  By "
-"default the ~/.keycloak directory and its content will be automatically "
-"created with proper access limits. However if directory will exist already "
-"with non-default permissions, those will not be updated."
+"If your unique circumstances require you to avoid storing secrets inside a "
+"configuration file, you can do so. It will be less convenient and you will "
+"have to make more token requests. To not store secrets, use the [command"
+"]`--no-config` option with all your commands and specify all the "
+"authentication information needed by the [command]`config credentials` "
+"command with each [command]`kcadm` invocation."
 msgstr ""
-"非公開とすべきアクセス・トークンとシークレットを含んでいるため、設定ファイルは他のユーザーに見えないようにしてください。デフォルトでは~/.keycloakディレクトリとその内容は、適切なアクセス制限で自動的に作成されます。ただし、デフォルト以外のアクセス権を持つディレクトリがすでに存在する場合、そのアクセス権は更新されません。"
-
-#. type: Plain text
-msgid ""
-"You may want to avoid storing any secrets at all inside a config file for "
-"the price of less convenience and having to do more token requests.  In that"
-" case you can use `--no-config` option with all your commands. In that case "
-"you will have to specify all the authentication info needed by `config "
-"credentials` command with each `kcadm` invocation."
-msgstr ""
-"利便性が低くなり、より多くのトークン要求が必要になることと引き換えに、設定ファイルの中にどんなシークレットも保存することは避けたいかもしれません。その場合、すべてのコマンドで"
-" `--no-config` オプションを使うことができます。その場合、`kcadm` 呼び出しごとに、 `config credentials` "
-"コマンドが必要とするすべての認証情報を指定する必要があります。"
+"固有の要件により、シークレットを設定ファイルに保管しないようにする必要がある場合は、そうすることが可能です。この方法はあまり便利ではなく、トークン要求が多くなります。シークレットを保存しないためには、すべてのコマンドで"
+" [command]`--no-config` オプションを使用し、 [command]`config credentials` "
+"コマンドで必要とされるすべての認証情報を [command]`kcadm` 呼び出しごとに指定します。"
 
 #. type: Title ===
 #, no-wrap
-msgid "Basic operations, and resource URIs"
-msgstr "基本操作、およびリソースURI"
+msgid "Basic operations and resource URIs"
+msgstr "基本操作とリソースURI"
 
 #. type: Plain text
 msgid ""
-"Admin CLI allows you to perform CRUD operations against Admin REST API "
-"endpoints in quite a generic way, with additional commands that simplify "
-"performing certain tasks."
+"The Admin CLI allows you to generically perform CRUD operations against "
+"Admin REST API endpoints with additional commands that simplify performing "
+"certain tasks."
 msgstr ""
-"管理CLIを使用すると、特定のタスクの実行を簡略化する追加のコマンドにより、とても一般的な方法でAdmin REST "
-"APIエンドポイントに対してCRUD操作を実行できます。"
+"管理CLIでは、特定のタスクの実行を簡略化するために追加されたコマンドを使用して、管理REST APIエンドポイントに対してCRUD操作を実行できます。"
 
 #. type: Plain text
-msgid "Main usage pattern is the following:"
-msgstr "主な使用パターンは次のとおりです。"
+msgid ""
+"The main usage pattern is listed below, where the [command]`create`, "
+"[command]`get`, [command]`update`, and [command]`delete` commands are mapped"
+" to the HTTP verbs `POST`, `GET`, `PUT`, and `DELETE`, respectively."
+msgstr ""
+"主な使用パターンを以下に示します。 [command]`create` 、 [command]`get` 、 [command]`update` 、 "
+"[command]`delete` コマンドは、それぞれHTTP動詞の `POST` 、 `GET` 、 `PUT` 、 `DELETE` "
+"に該当します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create ENDPOINT [ARGUMENTS]\n"
-"    $ kcadm.sh get ENDPOINT [ARGUMENTS]\n"
-"    $ kcadm.sh update ENDPOINT [ARGUMENTS]\n"
-"    $ kcadm.sh delete ENDPOINT [ARGUMENTS]\n"
+"$ kcadm.sh create ENDPOINT [ARGUMENTS]\n"
+"$ kcadm.sh get ENDPOINT [ARGUMENTS]\n"
+"$ kcadm.sh update ENDPOINT [ARGUMENTS]\n"
+"$ kcadm.sh delete ENDPOINT [ARGUMENTS]\n"
 msgstr ""
 "$ kcadm.sh create ENDPOINT [ARGUMENTS]\n"
-" $ kcadm.sh get ENDPOINT [ARGUMENTS]\n"
-" $ kcadm.sh update ENDPOINT [ARGUMENTS]\n"
-" $ kcadm.sh delete ENDPOINT [ARGUMENTS]\n"
+"$ kcadm.sh get ENDPOINT [ARGUMENTS]\n"
+"$ kcadm.sh update ENDPOINT [ARGUMENTS]\n"
+"$ kcadm.sh delete ENDPOINT [ARGUMENTS]\n"
 
 #. type: Plain text
 msgid ""
-"Where operations `create`, `get`, `update`, and `delete` are mapped to HTTP "
-"verbs POST, GET, PUT, and DELETE, respectively.  ENDPOINT is a target "
-"resource URI, and can either be absolute - starting with 'http:' or "
-"'https:', or relative - used to compose an absolute URL of the following "
-"format:"
+"ENDPOINT is a target resource URI and can either be absolute (starting with "
+"`http:` or `https:`) or relative, used to compose an absolute URL of the "
+"following format:"
 msgstr ""
-"`create` 、 ` get` 、 `update` 、および ` delete` "
-"操作はHTTPメソッドのPOST、GET、PUT、DELETEにそれぞれマッピングされます。 ENDPOINTはターゲット・リソースURIであり、 "
-"'http:' または 'https:' で始まる、絶対パスか相対パスです。相対パスは次の形式の絶対URLを作成するために使用されます。"
+"ENDPOINTはターゲット・リソースURIであり、 `http:` または `https:` "
+"で始まる絶対URL、もしくは相対URLで、次の形式の絶対URLを構成するために使用されます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    SERVER_URI/admin/realms/REALM/ENDPOINT\n"
+msgid "SERVER_URI/admin/realms/REALM/ENDPOINT\n"
 msgstr "SERVER_URI/admin/realms/REALM/ENDPOINT\n"
 
 #. type: Plain text
 msgid ""
-"For example, if the server we authenticate against is "
-"`http://localhost:8080/auth`, and realm is `master`, then using `users` as "
-"ENDPOINT will result in the following resource URL: "
-"`http://localhost:8080/auth/admin/realms/master/users`."
+"For example, if you authenticate against the server "
+"http://localhost:8080/auth and realm is [filename]`master`, then using "
+"[filename]`users` as ENDPOINT results in the resource URL "
+"http://localhost:8080/auth/admin/realms/master/users."
 msgstr ""
-"たとえば、認証するサーバが `http://localhost:8080/auth` で、レルムが `master` の場合、 `users` "
-"をENDPOINTとして使用すると、次のようなリソースURLになります。 "
-"`http://localhost:8080/auth/admin/realms/master/users`"
+"たとえば、http://localhost:8080/auth、のサーバーに対してrealmが [filename]`master` 、 "
+"[filename]`users` "
+"をエンドポイントとして認証する場合、リソースURLは、http://localhost:8080/auth/admin/realms/master/usersとなります。"
 
 #. type: Plain text
 msgid ""
-"If we set ENDPOINT to `clients` the effective resource URI would be: "
-"`http://localhost:8080/auth/admin/realms/master/clients`."
+"If you set ENDPOINT to [filename]`clients`, the effective resource URI would"
+" be http://localhost:8080/auth/admin/realms/master/clients."
 msgstr ""
-"ENDPOINTを `clients` に設定すると、有効なリソースURIは次のようになります。 "
-"`http://localhost:8080/auth/admin/realms/master/clients`"
+"エンドポイントに [filename]`clients` "
+"を設定すると、有効なリソースURIはhttp://localhost:8080/auth/admin/realms/master/clientsになります。"
 
 #. type: Plain text
 msgid ""
-"There is `realms` endpoint which is treated slightly differently since it is"
-" the container for realms. It resolves simply to:"
-msgstr "レルムのコンテナであるため、わずかに異なって扱われる `realms` エンドポイントがあり、単純に次のように解決されます。"
+"There is a [filename]`realms` endpoint that is treated slightly differently "
+"because it is the container for realms. It resolves to:"
+msgstr " [filename]`realms` エンドポイントは、レルムのコンテナであるため、少し異なります。それは以下のとおりです。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    SERVER_URI/admin/realms\n"
+msgid "SERVER_URI/admin/realms\n"
 msgstr "SERVER_URI/admin/realms\n"
 
 #. type: Plain text
 msgid ""
-"There is also `serverinfo` which is treated the same way since it is "
-"independent of realms."
-msgstr "レルムから独立している`serverinfo` も同様に扱われます。"
+"There is also a [filename]`serverinfo` endpoint, which is treated the same "
+"way because it is independent of realms."
+msgstr "同様のエンドポイントとして、[filename]`serverinfo` エンドポイントも存在します。"
 
 #. type: Plain text
 msgid ""
-"When authenticating as a user with realm-admin powers you may need to "
-"perform operations on multiple different realms. In that case you can "
-"specify `-r` option to tell explicitly which realm the operation should be "
-"executed against.  Instead of using REALM as specified via `--realm` option "
-"of `kcadm.sh config credentials`, the TARGET_REALM will be used:"
+"When you authenticate as a user with realm-admin powers, you might need to "
+"perform commands on multiple realms. In that case, specify the [command]`-r`"
+" option to tell explicitly which realm the command should be executed "
+"against. Instead of using [filename]`REALM` as specified via the "
+"[command]`--realm` option of [command]`kcadm.sh config credentials`, the "
+"[filename]`TARGET_REALM` is used."
 msgstr ""
-"レルム管理者権限を持つユーザーとして認証する場合、複数の異なるレルムで操作を実行する必要があります。その場合、 `-r` "
-"オプションを指定することで、どのレルムに対して操作が実行されるべきかを明示することができます。 `kcadm.sh config "
-"credentials` の `--realm` オプションで指定されたREALMを使用する代わりに、TARGET_REALMが使用されます。"
+"レルムの管理者権限を持つユーザーとして認証する場合は、複数のレルムでコマンドを実行する必要があります。その場合、 [command]`-r` "
+"オプションを指定して、どのレルムに対してコマンドを実行するかを明示的に指示します。 [command]`kcadm.sh config "
+"credentials` の [command]`--realm` オプションで指定した [filename]`REALM` を使う代わりに "
+"[filename]`TARGET_REALM` が使われます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    SERVER_URI/admin/realms/TARGET_REALM/ENDPOINT\n"
+msgid "SERVER_URI/admin/realms/TARGET_REALM/ENDPOINT\n"
 msgstr "SERVER_URI/admin/realms/TARGET_REALM/ENDPOINT\n"
 
 #. type: Plain text
+msgid "For example,"
+msgstr "例えば"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user admin --password admin\n"
-"    $ kcadm.sh create users -s username=testuser -s enabled=true -r demorealm\n"
+"$ kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user admin --password admin\n"
+"$ kcadm.sh create users -s username=testuser -s enabled=true -r demorealm\n"
 msgstr ""
 "$ kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user admin --password admin\n"
-" $ kcadm.sh create users -s username=testuser -s enabled=true -r demorealm\n"
+"$ kcadm.sh create users -s username=testuser -s enabled=true -r demorealm\n"
 
 #. type: Plain text
 msgid ""
-"In this example we first start a session authenticated as `admin` user in "
-"`master` realm. Then we perform a POST call against the following resource "
-"URL:"
+"In this example, you start a session authenticated as the [filename]`admin` "
+"user in the [filename]`master` realm. You then perform a POST call against "
+"the resource URL "
+"[filename]`http://localhost:8080/auth/admin/realms/demorealm/users`."
 msgstr ""
-"この例では、最初に `master` レルムで `admin` "
-"ユーザーとして認証されたセッションを開始してから、次のリソースURLに対してPOST呼び出しを実行します。"
+"この例では、 [filename]`master` レルムの [filename]`admin` "
+"ユーザーとして認証されたセッションを開始します。その後、リソースURL "
+"[filename]`http://localhost:8080/auth/admin/realms/demorealm/users` "
+"に対してPOST呼び出しを実行します。"
 
 #. type: Plain text
+msgid ""
+"The [command]`create` and [command]`update` commands send a JSON body to the"
+" server by default. You can use [filename]`-f FILENAME` to read a premade "
+"document from a file. When you can use [command]`-f -` option, the message "
+"body is read from standard input. You can also specify individual attributes"
+" and their values as seen in the previous [command]`create users` example. "
+"They are composed into a JSON body and sent to the server."
+msgstr ""
+"[command]`create` と [command]`update` コマンドは、デフォルトでJSONをサーバーに送信します。 "
+"[filename]`-f FILENAME` を使うと、ファイルから作成しておいたJSONを読みこむことができます。 [command]`-f -` "
+"オプションを使うことができる場合、メッセージ本文は標準入力から読み込まれます。前の [command]`create users` "
+"の例に見られるように、個々の属性とその値を指定することもできます。 それらはJSONで構成され、サーバーに送信されます。"
+
+#. type: Plain text
+msgid ""
+"There are several ways to update a resource using the [command]`update` "
+"command. You can first determine the current state of a resource and save it"
+" to a file, and then edit that file and send it to the server for updating."
+msgstr ""
+"[command]`update` "
+"コマンドを使ってリソースを更新する方法はいくつかあります。リソースの現在の状態をファイルに保存し、そのファイルを編集してサーバーに送信することで更新できます。"
+
+#. type: delimited block -
 #, no-wrap
-msgid "    http://localhost:8080/auth/admin/realms/demorealm/users\n"
-msgstr "http://localhost:8080/auth/admin/realms/demorealm/users\n"
-
-#. type: Plain text
 msgid ""
-"Commands `create` and `update` by default send JSON body to the server. You "
-"can use `-f FILENAME` to read a pre-made document from a file.  You can use "
-"`-f -`, and message body will be read from standard input.  But you can also"
-" specify individual attributes and their values as seen in the previous "
-"`create users` example, and they will be composed into a JSON body and sent "
-"to the server."
-msgstr ""
-"コマンド `create` と `update` は、デフォルトでJSONボディをサーバーに送ります。 `-f FILENAME` "
-"を使って、ファイルからあらかじめ作られた文書を読むことができます。 `-f -` を使うと、メッセージ・ボディは標準入力から読み込まれます。前出の "
-"`create users` の例に見られるように、個々の属性とその値を指定することもでき、それらはJSON本体に合成されてサーバーに送られます。"
-
-#. type: Plain text
-msgid ""
-"When using `update` there are several ways to update a resource. You can "
-"first get current state of a resource, and save it into a file, then edit "
-"that file and send it to the server for update. For example:"
-msgstr ""
-"`update` "
-"を使うときは、リソースを更新するいくつかの方法があります。まず、最初にリソースの現在の状態を取得してファイルに保存してから、そのファイルを編集してサーバーに送信して更新する方法があります。例えば："
-
-#. type: Plain text
-#, no-wrap
-msgid ""
-"    $ kcadm.sh get realms/demorealm > demorealm.json\n"
-"    $ vi demorealm.json\n"
-"    $ kcadm.sh update realms/demorealm -f demorealm.json\n"
+"$ kcadm.sh get realms/demorealm > demorealm.json\n"
+"$ vi demorealm.json\n"
+"$ kcadm.sh update realms/demorealm -f demorealm.json\n"
 msgstr ""
 "$ kcadm.sh get realms/demorealm > demorealm.json\n"
-" $ vi demorealm.json\n"
-" $ kcadm.sh update realms/demorealm -f demorealm.json\n"
+"$ vi demorealm.json\n"
+"$ kcadm.sh update realms/demorealm -f demorealm.json\n"
 
 #. type: Plain text
 msgid ""
-"This way the resource on the server will be updated with all the attributes "
-"in the sent JSON document."
-msgstr "この方法では、サーバー上のリソースは、送信されたJSONドキュメントのすべての属性で更新されます。"
+"This method updates the resource on the server with all the attributes in "
+"the sent JSON document."
+msgstr "この方法は、送信されたJSONドキュメントのすべての属性を使用してサーバー上のリソースを更新します。"
 
 #. type: Plain text
 msgid ""
-"Another option is to perform an update on-the-fly using `-s, --set` options "
-"to set new values. For example:"
-msgstr "別の選択肢としては `-s、--set` オプションを使ってその場でアップデートを実行して新しい値を設定することです。例えば："
+"Another option is to perform an on-the-fly update using the [command]`-s, "
+"--set` options to set new values."
+msgstr "もう1つの方法は、 [command]`-s, --set` オプションにより、新しい値を設定して更新することです。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh update realms/demorealm -s enabled=false\n"
+msgid "$ kcadm.sh update realms/demorealm -s enabled=false\n"
 msgstr "$ kcadm.sh update realms/demorealm -s enabled=false\n"
 
 #. type: Plain text
-msgid "That would only update `enabled` attribute to `false`."
-msgstr "とすると `enabled` 属性を ` false` に更新するだけです。"
+msgid "That method only updates the [command]`enabled` attribute to `false`."
+msgstr "これは [command]`enabled` 属性を `false` に更新するだけです。"
 
 #. type: Plain text
 msgid ""
-"By default `update` operation first performs a `get`, and then merges new "
-"attribute values with existing.  Mostly this is a preferred behaviour. In "
-"some cases the endpoint may support `PUT` but not `GET`.  You can use `-n` "
-"option to perform a so called 'no-merge' update which performs a PUT, "
-"without first doing a GET."
+"By default, the [commamd]`update` command first performs a [command]`get` "
+"and then merges the new attribute values with existing values. This is the "
+"preferred behavior. In some cases, the endpoint may support the "
+"[command]`PUT` command but not the [command]`GET` command. You can use the "
+"[command]`-n` option to perform a \"no-merge\" update, which performs a "
+"[command]`PUT` command without first running a [command]`GET` command."
 msgstr ""
-"デフォルトでは、 `update` オペレーションはまず `get` "
-"を実行し、新しい属性値を既存のものとマージします。たいていはこれが好ましい動作です。場合によってエンドポイントは `PUT` をサポートしても "
-"`GET` はサポートしないかもしれません。 `-n` オプションを使うと、最初にGETを実行しないでPUTを実行する、いわゆる 'no-merge' "
-"アップデートを実行できます。"
+"デフォルトでは、 [commamd]`update` コマンドは最初に [command]`get` "
+"を実行し、新しい属性値を既存の値とマージします。これが推奨動作です。場合によっては、エンドポイントは [command]`PUT` "
+"コマンドをサポートすることができますが、 [command]`GET` コマンドはサポートしない場合があります。 [command]`-n` "
+"オプションを使用して、 [command]`GET` コマンドを最初に実行することなく [command]`PUT` "
+"コマンドを実行する\"マージしない\"更新を実行することができます。"
 
 #. type: Title ===
 #, no-wrap
 msgid "Realm operations"
 msgstr "レルム操作"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Creating a new realm"
 msgstr "新しいレルムを作成する"
 
 #. type: Plain text
 msgid ""
-"To create a new enabled realm use `create` operation on `realms` endpoint, "
-"and set attributes `realm` and `enabled`:"
+"Use the [command]`create` command on the `realms` endpoint to create a new "
+"enabled realm, and set the attributes to `realm` and `enabled`."
 msgstr ""
-"新しい有効なレルムを作成するには、 `realms` エンドポイントで `create` 操作を行い、 `realm` 属性と `enabled` "
-"属性を設定してください。"
+"`realms` エンドポイントで [command]`create` コマンドを使用して新しいレルムを作成し、 `realm` と `enabled`"
+" に属性を設定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh create realms -s realm=demorealm -s enabled=true\n"
-msgstr "    $ kcadm.sh create realms -s realm=demorealm -s enabled=true\n"
+msgid "$ kcadm.sh create realms -s realm=demorealm -s enabled=true\n"
+msgstr "$ kcadm.sh create realms -s realm=demorealm -s enabled=true\n"
 
 #. type: Plain text
 msgid ""
-"Realm is not enabled by default. By enabling it, it can be used for "
-"authentication immediately."
-msgstr "レルムはデフォルトでは有効になっていません。有効にすると、すぐに認証に使用できます。"
+"A realm is not enabled by default. By enabling it, you can use a realm "
+"immediately for authentication."
+msgstr "レルムはデフォルトで有効になっていません。有効にすることで、認証用のレルムを使用することができます。"
 
 #. type: Plain text
-msgid "A description for a new object can be in JSON format as well:"
-msgstr "新しいオブジェクトはJSON形式で記述することもできます。"
+msgid "A description for a new object can also be in a JSON format."
+msgstr "新しいオブジェクトの説明は、JSON形式で記述することもできます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh create realms -f demorealm.json\n"
+msgid "$ kcadm.sh create realms -f demorealm.json\n"
 msgstr "$ kcadm.sh create realms -f demorealm.json\n"
 
 #. type: Plain text
 msgid ""
-"JSON document with realm attributes can be sent directly from file or piped "
-"to standard input."
-msgstr "レルム属性を持つJSONドキュメントは、ファイルから直接、またはパイプで標準入力に送信できます。"
+"You can send a JSON document with realm attributes directly from a file or "
+"piped to a standard input."
+msgstr "レルム属性を持つJSONドキュメントをファイルや標準入力のパイプから直接送信することもできます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create realms -f - << EOF\n"
-"    { \"realm\": \"demorealm\", \"enabled\": true }\n"
-"    EOF\n"
+"$ kcadm.sh create realms -f - << EOF\n"
+"{ \"realm\": \"demorealm\", \"enabled\": true }\n"
+"EOF\n"
 msgstr ""
 "$ kcadm.sh create realms -f - << EOF\n"
-" { \"realm\": \"demorealm\", \"enabled\": true }\n"
-" EOF\n"
+"{ \"realm\": \"demorealm\", \"enabled\": true }\n"
+"EOF\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> echo { \"realm\": \"demorealm\", \"enabled\": true } | kcadm "
-"create realms -f -\n"
+"c:\\> echo { \"realm\": \"demorealm\", \"enabled\": true } | kcadm create "
+"realms -f -\n"
 msgstr ""
 "c:\\> echo { \"realm\": \"demorealm\", \"enabled\": true } | kcadm create "
 "realms -f -\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing existing realms"
 msgstr "既存レルムの一覧表示"
 
 #. type: Plain text
-msgid "The following will return a list of all realms:"
-msgstr "次の例は、すべてのレルムのリストを返します。"
+msgid "The following command returns a list of all realms."
+msgstr "次のコマンドは、すべてのレルムの一覧を返します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get realms\n"
-msgstr "    $ kcadm.sh get realms\n"
+msgid "$ kcadm.sh get realms\n"
+msgstr "$ kcadm.sh get realms\n"
+
+#. type: delimited block =
+msgid ""
+"A list of realms is additionally filtered on the server to return only "
+"realms a user can see."
+msgstr "レルムの一覧は、サーバー上でフィルターされ、ユーザーが見ることができるレルムだけを返します。"
 
 #. type: Plain text
 msgid ""
-"Note that a list of realms is additionally filtered on the server to only "
-"return realms user is allowed to see."
-msgstr "レルムのリストは、ユーザーが参照できるレルムだけを返すように、サーバー上でさらにフィルタリングされることに注意してください。"
-
-#. type: Plain text
-msgid ""
-"Returning the whole realm description is often too much information as we "
-"are often only interested in a subset of attributes like realm name, and if "
-"realm is enabled or not.  You can specify which attributes to return by "
-"using `--fields` option:"
+"Returning the entire realm description often provides too much information. "
+"Most users are interested only in a subset of attributes, such as realm name"
+" and whether the realm is enabled. You can specify which attributes to "
+"return by using the [command]`--fields` option."
 msgstr ""
-"レルム名や、レルムが有効か否かのように、属性のサブセットだけに興味がある場合がよくありますが、レルムの説明全体を返すと情報が多すぎることがしばしばです。"
-" `fields` オプションを使って返す属性を指定することができます。"
+"レルムの詳細全体を取得することができますが、レルム名やレルムが有効かどうかなど、一部の属性のみ取得したい場合があります。 "
+"[command]`--fields` オプションを使用すると、返す属性を指定することができます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get realms --fields realm,enabled\n"
-msgstr "    $ kcadm.sh get realms --fields realm,enabled\n"
+msgid "$ kcadm.sh get realms --fields realm,enabled\n"
+msgstr "$ kcadm.sh get realms --fields realm,enabled\n"
 
 #. type: Plain text
-msgid "You can even display the result as comma separated values:"
+msgid "You can also display the result as comma separated values."
 msgstr "結果をカンマ区切りの値として表示することもできます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get realms --fields realm --format csv --noquotes\n"
-msgstr "    $ kcadm.sh get realms --fields realm --format csv --noquotes\n"
+msgid "$ kcadm.sh get realms --fields realm --format csv --noquotes\n"
+msgstr "$ kcadm.sh get realms --fields realm --format csv --noquotes\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Getting a specific realm"
 msgstr "特定のレルムを取得する"
 
 #. type: Plain text
 msgid ""
-"As is common for REST web services, in order to get an individual item of a "
-"collection, append an id to collection URI:"
-msgstr "REST Webサービスに共通するように、コレクションの個々の項目を取得するには、コレクションURIにIDを追加します。"
+"You append a realm name to a collection URI to get an individual realm."
+msgstr "コレクションURIにレルム名を指定し、個々のレルムを取得することができます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get realms/master\n"
-msgstr "    $ kcadm.sh get realms/master\n"
+msgid "$ kcadm.sh get realms/master\n"
+msgstr "$ kcadm.sh get realms/master\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Updating a realm"
 msgstr "レルムの更新"
 
 #. type: Plain text
 msgid ""
-"In order to only change some attributes of the realm use `-s` to set new "
-"values for the attributes. For example:"
-msgstr "レルムの一部の属性のみを変更するには、 `-s` を使って属性の新しい値を設定します。例えば："
+"Use the [command]`-s` option to set new values for the attributes when you "
+"want to change only some of the realm's attributes."
+msgstr "レルムの属性の一部だけを変更したい場合は、 [command]`-s` オプションを使用して属性の新しい値を設定します。"
 
 #. type: Plain text
 msgid ""
-"If you want to set all writable attributes with new values, perform a `get` "
-"first, edit current values in JSON file, and resubmit. For example:"
+"If you want to set all writable attributes with new values, run a "
+"[command]`get` command, edit the current values in the JSON file, and "
+"resubmit."
 msgstr ""
-"書き込み可能なすべての属性を新しい値に設定する場合は、最初に `get` を実行し、JSONファイルの現在の値を編集して再送信してください。例えば："
+"書き込み可能なすべての属性を新しい値に設定するには、 [command]`get` コマンドを実行し、JSONファイルの現在の値を編集して送信します。"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Deleting a realm"
 msgstr "レルムの削除"
 
 #. type: Plain text
-msgid "Here is how to delete a realm:"
-msgstr "レルムを削除する方法は次のとおりです。"
+msgid "Run the following command to delete a realm."
+msgstr "レルムを削除するには、次のコマンドを実行します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh delete realms/demorealm\n"
-msgstr "    $ kcadm.sh delete realms/demorealm\n"
+msgid "$ kcadm.sh delete realms/demorealm\n"
+msgstr "$ kcadm.sh delete realms/demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Turning on all login page options for the realm"
 msgstr "レルムのすべてのログイン・ページ・オプションを有効にする"
@@ -693,10 +706,10 @@ msgstr "レルムのすべてのログイン・ページ・オプションを有
 msgid "Set the attributes controlling specific capabilities to `true`."
 msgstr "特定の機能を制御する属性を `true` に設定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update realms/demorealm -s registrationAllowed=true -s "
+"$ kcadm.sh update realms/demorealm -s registrationAllowed=true -s "
 "registrationEmailAsUsername=true -s rememberMe=true -s verifyEmail=true -s "
 "resetPasswordAllowed=true -s editUsernameAllowed=true\n"
 msgstr ""
@@ -704,49 +717,49 @@ msgstr ""
 "registrationEmailAsUsername=true -s rememberMe=true -s verifyEmail=true -s "
 "resetPasswordAllowed=true -s editUsernameAllowed=true\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing the realm keys"
 msgstr "レルム鍵の一覧表示"
 
 #. type: Plain text
-msgid "Use `get` operation on `keys` endpoint of the target realm:"
-msgstr "対象レルムの `keys` エンドポイントで `get` 操作を使用してください。"
+msgid ""
+"Use the [command]`get` operation on the [filename]`keys` endpoint of the "
+"target realm."
+msgstr "対象レルムの [filename]`keys` エンドポイントで [command]`get` 操作を使用してください。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get keys -r demorealm\n"
+msgid "$ kcadm.sh get keys -r demorealm\n"
 msgstr "$ kcadm.sh get keys -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Generating new realm keys"
 msgstr "新しいレルム鍵の生成"
 
 #. type: Plain text
 msgid ""
-"To add a new RSA generated keypair, first get `id` of the target realm. For "
-"example:"
-msgstr "新たにRSAで生成されたキーペアを追加するには、まず対象レルムの `id` を取得します。例えば："
+"Get the ID of the target realm before adding a new RSA-generated key pair."
+msgstr "新しいRSA生成キーペアを追加する前に、対象レルムのIDを取得します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid ""
-"    $ kcadm.sh get realms/demorealm --fields id --format csv --noquotes\n"
+msgid "$ kcadm.sh get realms/demorealm --fields id --format csv --noquotes\n"
 msgstr "$ kcadm.sh get realms/demorealm --fields id --format csv --noquotes\n"
 
 #. type: Plain text
 msgid ""
-"Then add a new key provider with higher priority than any of the existing "
-"providers as revealed by `kcadm.sh get keys -r demorealm`:"
+"Add a new key provider with a higher priority than the existing providers as"
+" revealed by [command]`kcadm.sh get keys -r demorealm`."
 msgstr ""
-"次に、 `kcadm.sh get keys -r demorealm` "
-"で判明したどの既存のプロバイダーよりも高い優先順位で、新しいキー・プロバイダーを追加します。"
+"[command]`kcadm.sh get keys -r demorealm` "
+"で取得した既存のプロバイダよりも優先度の高い、新しい鍵プロバイダを追加してください。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create components -r demorealm -s name=rsa-generated -s "
+"$ kcadm.sh create components -r demorealm -s name=rsa-generated -s "
 "providerId=rsa-generated -s providerType=org.keycloak.keys.KeyProvider -s "
 "parentId=959844c1-d149-41d7-8359-6aa527fca0b0 -s 'config.priority=[\"101\"]'"
 " -s 'config.enabled=[\"true\"]' -s 'config.active=[\"true\"]' -s "
@@ -758,10 +771,10 @@ msgstr ""
 " -s 'config.enabled=[\"true\"]' -s 'config.active=[\"true\"]' -s "
 "'config.keySize=[\"2048\"]'\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> kcadm create components -r demorealm -s name=rsa-generated -s "
+"c:\\> kcadm create components -r demorealm -s name=rsa-generated -s "
 "providerId=rsa-generated -s providerType=org.keycloak.keys.KeyProvider -s "
 "parentId=959844c1-d149-41d7-8359-6aa527fca0b0 -s "
 "\"config.priority=[\\\"101\\\"]\" -s \"config.enabled=[\\\"true\\\"]\" -s "
@@ -774,35 +787,32 @@ msgstr ""
 "\"config.active=[\\\"true\\\"]\" -s \"config.keySize=[\\\"2048\\\"]\"\n"
 
 #. type: Plain text
-msgid ""
-"Attribute `parentId` should be set to the value of target realm's `id`."
-msgstr "`parentId` 属性は対象レルムの `id` の値に設定されなければなりません。"
+msgid "Set the `parentId` attribute to the value of the target realm's ID."
+msgstr "`parentId` 属性を対象レルムのIDの値に設定します。"
 
 #. type: Plain text
 msgid ""
 "The newly added key should now become the active key as revealed by "
-"`kcadm.sh get keys -r demorealm`."
-msgstr "`kcadm.sh get keys -r demorealm` で確認すると、新しく追加した鍵がアクティブな鍵になっているはずです。"
+"[command]`kcadm.sh get keys -r demorealm`."
+msgstr ""
+"新しく追加された鍵は、 [command]`kcadm.sh get keys -r demorealm` "
+"によって取得したとおり、アクティブな鍵になります。"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Adding new realm keys from Java Key Store file"
+msgid "Adding new realm keys from a Java Key Store file"
 msgstr "Javaキーストア・ファイルから新しいレルム鍵を追加する"
 
 #. type: Plain text
 msgid ""
-"To add a new keypair already prepared as a JKS file on the server, add a new"
-" key provider as follows:"
-msgstr "すでにサーバー上にJKSファイルとして準備されている新しい鍵ペアを追加するには、次のように新しい鍵プロバイダーを追加します。"
+"Add a new key provider to add a new key pair already prepared as a JKS file "
+"on the server."
+msgstr "新しい鍵プロバイダを追加して、すでにサーバー上にJKSファイルとして用意されている新しい鍵ペアを追加します。"
 
-#. type: Plain text
-msgid "For exmple on Linux:"
-msgstr "例えば、Linux の場合："
-
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create components -r demorealm -s name=java-keystore -s "
+"$ kcadm.sh create components -r demorealm -s name=java-keystore -s "
 "providerId=java-keystore -s providerType=org.keycloak.keys.KeyProvider -s "
 "parentId=959844c1-d149-41d7-8359-6aa527fca0b0 -s 'config.priority=[\"101\"]'"
 " -s 'config.enabled=[\"true\"]' -s 'config.active=[\"true\"]' -s "
@@ -818,10 +828,10 @@ msgstr ""
 "'config.keystorePassword=[\"secret\"]' -s 'config.keyPassword=[\"secret\"]' "
 "-s 'config.alias=[\"localhost\"]'\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> kcadm create components -r demorealm -s name=java-keystore -s "
+"c:\\> kcadm create components -r demorealm -s name=java-keystore -s "
 "providerId=java-keystore -s providerType=org.keycloak.keys.KeyProvider -s "
 "parentId=959844c1-d149-41d7-8359-6aa527fca0b0 -s "
 "\"config.priority=[\\\"101\\\"]\" -s \"config.enabled=[\\\"true\\\"]\" -s "
@@ -843,137 +853,146 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Make sure to change attribute values for `keystore`, `keystorePassword`, "
-"`keyPassword`, and `alias` to match your specific keystore."
+"Make sure to change the attribute values for `keystore`, `keystorePassword`,"
+" `keyPassword`, and `alias` to match your specific keystore."
 msgstr ""
-"特定のキーストアに一致するように、 `keystore` 、 `keystorePassword` 、 `keyPassword` 、および "
-"`alias` の属性値を必ず変更してください。"
+"特定のキーストアに一致するように、 `keystore` 、 ` keystorePassword` 、  `keyPassword` 、および "
+"`alias` の属性値を変更してください。"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Making key passive or disabling it"
-msgstr "鍵をパッシブにするか無効にする"
+msgid "Making the key passive or disabling the key"
+msgstr "鍵をパッシブにする、または無効にする"
 
 #. type: Plain text
-msgid "Identify the key you wish to make passive:"
-msgstr "パッシブにする鍵を特定します。"
+msgid "Identify the key you want to make passive"
+msgstr "パッシブにしたい鍵を特定する"
 
 #. type: Plain text
 msgid ""
-"Use `providerId` attribute of the key to construct an endpoint uri - "
-"`components/PROVIDER_ID`."
+"Use the key's `providerId` attribute to construct an endpoint URI, such as "
+"[filename]`components/PROVIDER_ID`."
 msgstr ""
-"エンドポイントURI `components/PROVIDER_ID` を構築するのに鍵の `providerId` 属性を使用してください。"
+"鍵の `providerId` 属性を使用して、 [filename]`components/PROVIDER_ID` "
+"のようなエンドポイントURIを構築します。"
 
 #. type: Plain text
-msgid "Then perform an `update`. For example on Linux:"
-msgstr "次に、 `update` を実行します。たとえばLinuxの場合："
+msgid "Perform an [command]`update`."
+msgstr "[command]`update` を実行します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update components/PROVIDER_ID -r demorealm -s "
+"$ kcadm.sh update components/PROVIDER_ID -r demorealm -s "
 "'config.active=[\"false\"]'\n"
 msgstr ""
 "$ kcadm.sh update components/PROVIDER_ID -r demorealm -s "
 "'config.active=[\"false\"]'\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> kcadm update components/PROVIDER_ID -r demorealm -s "
+"c:\\> kcadm update components/PROVIDER_ID -r demorealm -s "
 "\"config.active=[\\\"false\\\"]\"\n"
 msgstr ""
 "c:\\> kcadm update components/PROVIDER_ID -r demorealm -s "
 "\"config.active=[\\\"false\\\"]\"\n"
 
 #. type: Plain text
-msgid "Analogously, other key attributes can be updated."
-msgstr "同様に、他の鍵属性も更新できます。"
+msgid "You can update other key attributes."
+msgstr "他のキー属性を更新することができます。"
 
 #. type: Plain text
 msgid ""
-"To disable the key set new `enabled` value, for example: "
-"`'config.enabled=[\"false\"]'`"
-msgstr "鍵を無効にするには、新しい `enabled` 値を設定します。たとえば： `'config.enabled=[\"false\"]'`"
+"Set a new `enabled` value to disable the key, for example, "
+"`config.enabled=[\"false\"]`."
+msgstr "例えば、 `config.enabled=[\"false\"]` のように、鍵を無効にするために `enabled` の値を設定してください。"
 
 #. type: Plain text
 msgid ""
-"To change key's priority set new `priority` value, for example: "
-"`'config.priority=[\"110\"]'`"
-msgstr "鍵の優先度を変更するには、新しい `priority` 値を設定します。たとえば： `'config.priority=[\"110\"]'`"
+"Set a new `priority` value to change the key's priority, for example, "
+"`config.priority=[\"110\"]`."
+msgstr "鍵の優先度を変更するために新しい `priority` 値を設定します。たとえば、 `config.priority=[\"110\"]` です。"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Deleting an old key"
 msgstr "古い鍵を削除する"
 
 #. type: Plain text
 msgid ""
-"Make sure that the key you are deleting has been passive for some time, and "
-"then disabled for some time in order to prevent any existing tokens held by "
-"applications and users from abruptly failing to work."
-msgstr ""
-"必ず、削除する鍵がしばらくの間パッシブであることを確認してから、さらにしばらくの間無効にして、アプリケーションやユーザーが保持している既存のトークンが突然動作しなくなることを防止してください。"
+"Make sure the key you are deleting has been passive and disabled to prevent "
+"any existing tokens held by applications and users from abruptly failing to "
+"work."
+msgstr "削除している鍵がパッシブで無効になっていることを確認して、アプリケーションやユーザーが保持している既存のトークンを無効にします。"
 
 #. type: Plain text
-msgid "Use the `providerId` of that key to perform a delete. For example:"
-msgstr "その鍵の `providerId` を使って削除を行います。例えば："
+msgid "Identify the key you want to make passive."
+msgstr "パッシブにする鍵を特定します。"
 
 #. type: Plain text
+msgid "Use the `providerId` of that key to perform a delete."
+msgstr "その鍵の `providerId` を使用して削除を行います。"
+
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh delete components/PROVIDER_ID -r demorealm\n"
+msgid "$ kcadm.sh delete components/PROVIDER_ID -r demorealm\n"
 msgstr "$ kcadm.sh delete components/PROVIDER_ID -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring event logging for a realm"
 msgstr "レルムのイベントログの設定"
 
 #. type: Plain text
-msgid "Use `update` on `events/config` endpoint."
-msgstr "`events/config` エンドポイントで `update` を使います。"
+msgid ""
+"Use the [command]`update` command on the [filename]`events/config` endpoint."
+msgstr "[filename]`events/config` エンドポイントで [command]`update` コマンドを使用してください。"
 
 #. type: Plain text
 msgid ""
-"Attribute `eventsListeners` contains a list of EventListenerProviderFactory "
-"ids, specifying all event listeners receiving events.  Separately, there are"
-" attributes that control a built-in event storage which allows querying past"
-" events via Admin REST API.  There is separate control over logging of "
-"service calls - 'eventsEnabled', and auditing events triggered during Admin "
-"Console or Admin REST API - 'adminEventsEnabled'.  You may want to setup "
-"expiry of old events so that your database doesn't get filled up - "
-"'eventsExpiration' is set to time-to-live expressed in seconds."
+"The `eventsListeners` attribute contains a list of "
+"EventListenerProviderFactory IDs that specify all event listeners receiving "
+"events. Separately, there are attributes that control a built-in event "
+"storage, which allows querying past events via the Admin REST API. There is "
+"separate control over logging of service calls (`eventsEnabled`) and "
+"auditing events triggered during Admin Console or Admin REST API "
+"(`adminEventsEnabled`). You may want to set up expiry of old events so that "
+"your database does not fill up; `eventsExpiration` is set to time-to-live "
+"expressed in seconds."
 msgstr ""
 "`eventsListeners` "
-"属性には、イベントを受け取るすべてのイベント・リスナーを指定するEventListenerProviderFactoryのIDリストが含まれています。これとは別に、Admin"
-" REST APIを介して過去のイベントを照会できる組み込みイベント・ストレージを制御する属性があります。 サービスコール "
-"`eventsEnabled` のログ記録と、管理コンソールの間またはAdmin REST API 'adminEventsEnabled' "
-"にトリガーされた監査イベントについて、個別の制御があります。古いイベントの有効期限を設定してデータベースが満杯にならないようにすることができます。 "
-"'eventsExpiration' は有効期限（秒単位）に設定されています。"
+"属性には、イベントを受け取るすべてのイベントリスナーを指定するEventListenerProviderFactory "
+"IDのリストが含まれています。これとは別に、組み込みイベント記憶域を制御する属性があり、管理REST "
+"APIを介して過去のイベントを照会することができます。`eventsEnabled`と呼ばれるサービス呼び出しログと、`adminEventsEnabled`"
+" と呼ばれるAdmin ConsoleまたはAdmin REST "
+"APIをトリガーとするイベント監査という独立した制御があります。古いイベントの有効期限を設定してデータベースがいっぱいにならないようにすることができます。"
+" `eventsExpiration` は秒で有効期限を表します。"
 
 #. type: Plain text
 msgid ""
-"Here is an example of setting up a built-in event listener that will receive"
-" all the events and log them through jboss-logging (error events are logged "
-"as `WARN`, others as `DEBUG`, using a logger called `org.keycloak.events`):"
+"Here is an example of setting up a built-in event listener that receives all"
+" the events and logs them through jboss-logging. (Using a logger called "
+"`org.keycloak.events`, error events are logged as `WARN`, and others are "
+"logged as `DEBUG`.)"
 msgstr ""
-"次に、すべてのイベントを受け取り、jboss-loggingを通じてそれらを記録するビルトイン・イベントリスナーを設定する例を示します（エラーイベントは"
-" `WARN` として、他は `DEBUG` として `org.keycloak.events` というロガーを使って記録されます）。"
+"ここでは、すべてのイベントを受け取り、jboss-loggingを通じてそれらを記録する組み込みのイベント・リスナーを設定する例を示します。 "
+"`org.keycloak.events` というロガーを使うと、エラー・イベントは `WARN` として記録され、他は  `DEBUG` "
+"として記録されます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update events/config -r demorealm -s 'eventsListeners"
-"=[\"jboss-logging\"]'\n"
+"$ kcadm.sh update events/config -r demorealm -s 'eventsListeners=[\"jboss-"
+"logging\"]'\n"
 msgstr ""
 "$ kcadm.sh update events/config -r demorealm -s 'eventsListeners=[\"jboss-"
 "logging\"]'\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> kcadm update events/config -r demorealm -s \"eventsListeners"
+"c:\\> kcadm update events/config -r demorealm -s \"eventsListeners"
 "=[\\\"jboss-logging\\\"]\"\n"
 msgstr ""
 "c:\\> kcadm update events/config -r demorealm -s \"eventsListeners"
@@ -981,15 +1000,16 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Here is an example of turning on storage of all available ERROR events - not"
-" including auditing events - for 2 days so they can be retrieved via Admin "
-"REST:"
-msgstr "次に、利用可能なすべてのERRORイベント（監査イベントを除く）の保管を2日間有効にする例を示します。"
+"Here is an example of turning on storage of all available ERROR "
+"events&#8212;not including auditing events&#8212;for 2 days so they can be "
+"retrieved via Admin REST."
+msgstr ""
+"イベントの監査を除く、利用可能なすべてのERRORイベントのストレージを2日間有効にして、管理REST経由で取得できるようにする例を次に示します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update events/config -r demorealm -s eventsEnabled=true -s "
+"$ kcadm.sh update events/config -r demorealm -s eventsEnabled=true -s "
 "'enabledEventTypes=[\"LOGIN_ERROR\",\"REGISTER_ERROR\",\"LOGOUT_ERROR\",\"CODE_TO_TOKEN_ERROR\",\"CLIENT_LOGIN_ERROR\",\"FEDERATED_IDENTITY_LINK_ERROR\",\"REMOVE_FEDERATED_IDENTITY_ERROR\",\"UPDATE_EMAIL_ERROR\",\"UPDATE_PROFILE_ERROR\",\"UPDATE_PASSWORD_ERROR\",\"UPDATE_TOTP_ERROR\",\"VERIFY_EMAIL_ERROR\",\"REMOVE_TOTP_ERROR\",\"SEND_VERIFY_EMAIL_ERROR\",\"SEND_RESET_PASSWORD_ERROR\",\"SEND_IDENTITY_PROVIDER_LINK_ERROR\",\"RESET_PASSWORD_ERROR\",\"IDENTITY_PROVIDER_FIRST_LOGIN_ERROR\",\"IDENTITY_PROVIDER_POST_LOGIN_ERROR\",\"CUSTOM_REQUIRED_ACTION_ERROR\",\"EXECUTE_ACTIONS_ERROR\",\"CLIENT_REGISTER_ERROR\",\"CLIENT_UPDATE_ERROR\",\"CLIENT_DELETE_ERROR\"]'"
 " -s eventsExpiration=172800\n"
 msgstr ""
@@ -997,147 +1017,142 @@ msgstr ""
 "'enabledEventTypes=[\"LOGIN_ERROR\",\"REGISTER_ERROR\",\"LOGOUT_ERROR\",\"CODE_TO_TOKEN_ERROR\",\"CLIENT_LOGIN_ERROR\",\"FEDERATED_IDENTITY_LINK_ERROR\",\"REMOVE_FEDERATED_IDENTITY_ERROR\",\"UPDATE_EMAIL_ERROR\",\"UPDATE_PROFILE_ERROR\",\"UPDATE_PASSWORD_ERROR\",\"UPDATE_TOTP_ERROR\",\"VERIFY_EMAIL_ERROR\",\"REMOVE_TOTP_ERROR\",\"SEND_VERIFY_EMAIL_ERROR\",\"SEND_RESET_PASSWORD_ERROR\",\"SEND_IDENTITY_PROVIDER_LINK_ERROR\",\"RESET_PASSWORD_ERROR\",\"IDENTITY_PROVIDER_FIRST_LOGIN_ERROR\",\"IDENTITY_PROVIDER_POST_LOGIN_ERROR\",\"CUSTOM_REQUIRED_ACTION_ERROR\",\"EXECUTE_ACTIONS_ERROR\",\"CLIENT_REGISTER_ERROR\",\"CLIENT_UPDATE_ERROR\",\"CLIENT_DELETE_ERROR\"]'"
 " -s eventsExpiration=172800\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> kcadm update events/config -r demorealm -s eventsEnabled=true -s "
-"\"enabledEventTypes=[\\\"LOGIN_ERROR\\\",\\\"REGISTER_ERROR\\\",\\\"LOGOUT_ERROR\\\",\\\"CODE_TO_TOKEN_ERROR\\\",\\\"CLIENT_LOGIN_ERROR\\\",\\\"FEDERATED_IDENTITY_LINK_ERROR\\\",\\\"REMOVE_FEDERATED_IDENTITY_ERROR\\\",\\\"UPDATE_EMAIL_ERROR\\\",\\\"UPDATE_PROFILE_ERROR\\\",\\\"UPDATE_PASSWORD_ERROR\\\",\\\"UPDATE_TOTP_ERROR\\\",\\\"VERIFY_EMAIL_ERROR\\\",\\\"REMOVE_TOTP_ERROR\\\",\\\"SEND_VERIFY_EMAIL_ERROR\\\",\\\"SEND_RESET_PASSWORD_ERROR\\\",\\\"SEND_IDENTITY_PROVIDER_LINK_ERROR\\\",\\\"RESET_PASSWORD_ERROR\\\",\\\"IDENTITY_PROVIDER_FIRST_LOGIN_ERROR\\\",\\\"IDENTITY_PROVIDER_POST_LOGIN_ERROR\\\",\\\"CUSTOM_REQUIRED_ACTION_ERROR\\\",\\\"EXECUTE_ACTIONS_ERROR\\\",\\\"CLIENT_REGISTER_ERROR\\\",\\\"CLIENT_UPDATE_ERROR\\\",\\\"CLIENT_DELETE_ERROR\\\"]\""
-" -s eventsExpiration=172800\n"
-msgstr ""
 "c:\\> kcadm update events/config -r demorealm -s eventsEnabled=true -s "
 "\"enabledEventTypes=[\\\"LOGIN_ERROR\\\",\\\"REGISTER_ERROR\\\",\\\"LOGOUT_ERROR\\\",\\\"CODE_TO_TOKEN_ERROR\\\",\\\"CLIENT_LOGIN_ERROR\\\",\\\"FEDERATED_IDENTITY_LINK_ERROR\\\",\\\"REMOVE_FEDERATED_IDENTITY_ERROR\\\",\\\"UPDATE_EMAIL_ERROR\\\",\\\"UPDATE_PROFILE_ERROR\\\",\\\"UPDATE_PASSWORD_ERROR\\\",\\\"UPDATE_TOTP_ERROR\\\",\\\"VERIFY_EMAIL_ERROR\\\",\\\"REMOVE_TOTP_ERROR\\\",\\\"SEND_VERIFY_EMAIL_ERROR\\\",\\\"SEND_RESET_PASSWORD_ERROR\\\",\\\"SEND_IDENTITY_PROVIDER_LINK_ERROR\\\",\\\"RESET_PASSWORD_ERROR\\\",\\\"IDENTITY_PROVIDER_FIRST_LOGIN_ERROR\\\",\\\"IDENTITY_PROVIDER_POST_LOGIN_ERROR\\\",\\\"CUSTOM_REQUIRED_ACTION_ERROR\\\",\\\"EXECUTE_ACTIONS_ERROR\\\",\\\"CLIENT_REGISTER_ERROR\\\",\\\"CLIENT_UPDATE_ERROR\\\",\\\"CLIENT_DELETE_ERROR\\\"]\""
 " -s eventsExpiration=172800\n"
-
-#. type: Plain text
-msgid ""
-"Here is how you reset stored event types to *all available event types* - "
-"setting to empty list is the same as enumerating all:"
 msgstr ""
-"ここでは、保存されたイベントタイプを *すべての利用可能なイベントタイプ* "
-"にリセットする方法を示します。空のリストに設定することは、すべてを列挙することと同じです。"
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"    $ kcadm.sh update events/config -r demorealm -s enabledEventTypes=[]\n"
+"Here is an example of how to reset stored event types to *all available "
+"event types*; setting to empty list is the same as enumerating all."
+msgstr ""
+" *all available event types* "
+"にリセットする方法の例を次に示します。空のリストに設定することはすべてを列挙することを意味します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm.sh update events/config -r demorealm -s enabledEventTypes=[]\n"
 msgstr "$ kcadm.sh update events/config -r demorealm -s enabledEventTypes=[]\n"
 
 #. type: Plain text
-msgid "And here is how you enable storage of auditing events:"
-msgstr "監査イベントの保管を有効にする方法は次のとおりです。"
+msgid "Here is an example of how to enable storage of auditing events."
+msgstr "次に、監査イベントの格納を有効にする方法の例を示します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update events/config -r demorealm -s adminEventsEnabled=true "
-"-s adminEventsDetailsEnabled=true\n"
+"$ kcadm.sh update events/config -r demorealm -s adminEventsEnabled=true -s "
+"adminEventsDetailsEnabled=true\n"
 msgstr ""
 "$ kcadm.sh update events/config -r demorealm -s adminEventsEnabled=true -s "
 "adminEventsDetailsEnabled=true\n"
 
 #. type: Plain text
 msgid ""
-"Here is how you get the last 100 events - they are ordered from newest to "
-"oldest:"
-msgstr "最後の100イベントを取得する方法は次のとおりです。最新のものから古いものまで順番に並べ替えられています。"
+"Here is an example of how to get the last 100 events; they are ordered from "
+"newest to oldest."
+msgstr "最新の100イベントを取得する方法を次に示します。新しいイベントから順番に並んでいます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get events --offset 0 --limit 100\n"
+msgid "$ kcadm.sh get events --offset 0 --limit 100\n"
 msgstr "$ kcadm.sh get events --offset 0 --limit 100\n"
 
 #. type: Plain text
-msgid "Here is how you delete all saved events:"
-msgstr "保存されたすべてのイベントを削除する方法は次のとおりです。"
+msgid "Here is an example of how to delete all saved events."
+msgstr "保存されたすべてのイベントを削除する方法の例を次に示します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm delete events\n"
+msgid "$ kcadm delete events\n"
 msgstr "$ kcadm delete events\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Flushing the caches"
 msgstr "キャッシュのフラッシュ"
 
 #. type: Plain text
 msgid ""
-"Use `create` operation, and one of the following endpoints: `clear-realm-"
-"cache`, `clear-user-cache`, `clear-keys-cache`."
+"Use the [command]`create` command and one of the following endpoints: "
+"[filename]`clear-realm-cache`, [filename]`clear-user-cache`, or [filename"
+"]`clear-keys-cache`."
 msgstr ""
-"`create` 操作と 、 `clear-realm-cache` 、 `clear-user-cache` 、 `clear-keys-cache`"
-" エンドポイントのいずれかを使います。"
+"[command]`create` コマンドと、[filename]`clear-realm-cache` 、 [filename]`clear-"
+"user-cache` 、[filename]`clear-keys-cache` のいずれかのエンドポイントを使用します。"
 
 #. type: Plain text
-msgid "Set `realm` to the same value as target realm."
-msgstr "`realm` の値を対象のレルムに設定してください。"
+msgid "Set `realm` to the same value as the target realm."
+msgstr "`realm` を対象レルムと同じ値に設定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create clear-realm-cache -r demorealm -s realm=demorealm\n"
-msgstr "$ kcadm.sh create clear-realm-cache -r demorealm -s realm=demorealm\n"
-
-#. type: Plain text
-#, no-wrap
-msgid "    $ kcadm.sh create clear-user-cache -r demorealm -s realm=demorealm\n"
-msgstr "$ kcadm.sh create clear-user-cache -r demorealm -s realm=demorealm\n"
-
-#. type: Plain text
-#, no-wrap
-msgid "    $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm\n"
-msgstr "$ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm\n"
+"$ kcadm.sh create clear-realm-cache -r demorealm -s realm=demorealm\n"
+"$ kcadm.sh create clear-user-cache -r demorealm -s realm=demorealm\n"
+"$ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm\n"
+msgstr ""
+"$ kcadm.sh create clear-realm-cache -r demorealm -s realm=demorealm\n"
+"$ kcadm.sh create clear-user-cache -r demorealm -s realm=demorealm\n"
+"$ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm\n"
 
 #. type: Title ===
 #, no-wrap
 msgid "Role operations"
 msgstr "ロール操作"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Creating a realm role"
 msgstr "レルム・ロールの作成"
 
 #. type: Plain text
-msgid "To create a realm role use `roles` endpoint:"
-msgstr "レルム・ロールを作成するには `roles` エンドポイントを使います。"
+msgid "Use the [filename]`roles` endpoint to create a realm role."
+msgstr "レルム・ロールを作成するには、 [filename]`roles` エンドポイントを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create roles -r demorealm -s name=user -s "
-"'description=Regular user with limited set of permissions'\n"
+"$ kcadm.sh create roles -r demorealm -s name=user -s 'description=Regular "
+"user with limited set of permissions'\n"
 msgstr ""
 "$ kcadm.sh create roles -r demorealm -s name=user -s 'description=Regular "
 "user with limited set of permissions'\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Creating a client role"
 msgstr "クライアント・ロールの作成"
 
 #. type: Plain text
 msgid ""
-"To create a client role identify the client first - use `get` to list "
-"available clients:"
-msgstr "クライアント・ロールを作成するには、まずクライアントを確認します。利用可能なクライアントを一覧表示するには `get` を使います。"
+"Identify the client first and then use the [command]`get` command to list "
+"available clients when creating a client role."
+msgstr ""
+"最初にクライアントを特定し、 [command]`get` "
+"コマンドを使用して、クライアント・ロールを作成するときに使用可能なクライアントを一覧表示します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get clients -r demorealm --fields id,clientId\n"
+msgid "$ kcadm.sh get clients -r demorealm --fields id,clientId\n"
 msgstr "$ kcadm.sh get clients -r demorealm --fields id,clientId\n"
 
 #. type: Plain text
 msgid ""
-"Then, create a new role by using client's `id` attribute to construct an "
-"endpoint uri - `clients/ID/roles`."
+"Create a new role by using the [command]`clientId` attribute to construct an"
+" endpoint URI, such as [filename]`clients/ID/roles`."
 msgstr ""
-"次に、クライアントの `id` 属性を使用して構築したエンドポイントuri `clients/ID/roles` によって新しいロールを作成します。"
+"[command]`clientId` 属性を使用して、 [filename]`clients/ID/roles` "
+"のようにエンドポイントURIを作成して、新しいロールを作成します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create clients/a95b6af3-0bdc-4878-ae2e-6d61a4eca9a0/roles -r "
+"$ kcadm.sh create clients/a95b6af3-0bdc-4878-ae2e-6d61a4eca9a0/roles -r "
 "demorealm -s name=editor -s 'description=Editor can edit, and publish any "
 "article'\n"
 msgstr ""
@@ -1145,238 +1160,251 @@ msgstr ""
 "demorealm -s name=editor -s 'description=Editor can edit, and publish any "
 "article'\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing realm roles"
 msgstr "レルム・ロールの一覧表示"
 
 #. type: Plain text
-msgid "To list existing realm roles use `get` command on `roles` endpoint:"
-msgstr "既存のレルム・ロールを一覧表示するには、 `roles` エンドポイントで `get` コマンドを使います。"
+msgid ""
+"Use the [command]`get` command on the [filename]`roles` endpoint to list "
+"existing realm roles."
+msgstr ""
+"[filename]`roles` エンドポイントで [command]`get` コマンドを使用して、既存のレルム・ロール一覧を取得します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get roles -r demorealm\n"
+msgid "$ kcadm.sh get roles -r demorealm\n"
 msgstr "$ kcadm.sh get roles -r demorealm\n"
 
 #. type: Plain text
-msgid "You can also use `get-roles` command:"
-msgstr "`get-roles` コマンドを使うこともできます。"
+msgid "You can also use the [command]`get-roles` command."
+msgstr "[command]`get-roles` コマンドを使用することもできます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm\n"
+msgid "$ kcadm.sh get-roles -r demorealm\n"
 msgstr "$ kcadm.sh get-roles -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing client roles"
 msgstr "クライアント・ロールの一覧表示"
 
 #. type: Plain text
 msgid ""
-"There is a dedicated `get-roles` command to simplify listing of both realm "
-"and client roles. It is an extension of `get` command and so it behaves the "
-"same with additional semantics for listing roles."
+"There is a dedicated [command]`get-roles` command to simplify listing realm "
+"and client roles. It is an extension of the [command]`get` command and "
+"behaves the same with additional semantics for listing roles."
 msgstr ""
-"レルムとクライアント・ロールの両方の一覧表示を単純化するための専用の `get-roles` コマンドがあります。 `get` "
-"コマンドの拡張であるため、ロールを一覧表示するための追加のセマンティクスで同じように動作します。"
+"レルム・ロールとクライアント・ロールを一覧表示するための専用の [command]`get-roles` コマンドがあります。これは[command] "
+"`get`コマンドの拡張です。"
 
 #. type: Plain text
 msgid ""
-"To list client roles use `get-roles` command, passing it either `clientId` "
-"(via `--cclientid` option) or `id` (via `--cid` option) to identify the "
-"client."
+"Use the [command]`get-roles` command, passing it either the clientId "
+"attribute (via the [command]`--cclientid` option) or [command]`id` (via the "
+"[command]`--cid` option) to identify the client to list client roles."
 msgstr ""
-"クライアント・ロールを一覧表示するには `get-roles` コマンドを使い、 `clientId` （ `--cclientid` "
-"オプションで）または `id` （ `--cid` オプションで）を渡してクライアントを識別します。"
+"[command]`get-roles` コマンドは、 [command]`--cclientid` オプションを利用してclientId属性、または "
+"[command]`--cid` オプションを利用して [command] `id` "
+"を渡すことでクライアント・ロールを一覧表示するクライアントを指定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm --cclientid realm-management\n"
+msgid "$ kcadm.sh get-roles -r demorealm --cclientid realm-management\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --cclientid realm-management\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Getting a specific realm role"
 msgstr "特定のレルム・ロールを取得する"
 
 #. type: Plain text
 msgid ""
-"Use `get` command, and role `name` to construct an endpoint uri for a "
-"specific realm role - `roles/ROLE_NAME`"
+"Use the [command]`get` command and the role [filename]`name` to construct an"
+" endpoint URI for a specific realm role: [filename]`roles/ROLE_NAME`, where "
+"[filename]`user` is the name of the existing role."
 msgstr ""
-"`get` コマンドとロール ` name` を使用して特定のレルム・ロールのエンドポイントuri `roles/ROLE_NAME` を構築します"
+"特定のレルム・ロールのエンドポイントURIを構築するには、 [command]`get` コマンドと "
+"[filename]`roles/ROLE_NAME` のように、ロール [filename]`name` を使用します。 [filename]` "
+"user`は 既存のロールです。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get roles/user -r demorealm\n"
+msgid "$ kcadm.sh get roles/user -r demorealm\n"
 msgstr "$ kcadm.sh get roles/user -r demorealm\n"
 
 #. type: Plain text
-msgid "Where `user` is the name of existing role."
-msgstr "`user` は既存のロール名です。"
-
-#. type: Plain text
 msgid ""
-"Alternatively, use special `get-roles` command, passing it role `name` (via "
-"`--rolename` option) or `id` (via `--roleid` option)."
+"You can also use the special [command]`get-roles` command, passing it a role"
+" name (via the [command]`--rolename` option) or ID (via the "
+"[command]`--roleid` option)."
 msgstr ""
-"または、特別な `get-roles` コマンドを使用して `name` （ `--rolename` オプションで）または `id` （ "
-"`--roleid` オプションで）を渡してください。"
+"[command]`get-roles` コマンドを使用して、[command]`--rolename` オプションを使用してロール名を渡すか、 "
+"[command]`--roleid` オプションを使用してIDを渡すこともできます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "   $ kcadm.sh get-roles -r demorealm --rolename user\n"
+msgid "$ kcadm.sh get-roles -r demorealm --rolename user\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --rolename user\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Getting a specific client role"
 msgstr "特定のクライアント・ロールを取得する"
 
 #. type: Plain text
 msgid ""
-"Use a dedicated `get-roles` command, passing it either `clientId` (via "
-"`--cclientid` option) or `id` (via `--cid` option) to identify the client, "
-"and passing it either role `name` (via `--rolename` option) or 'id' (via "
-"`--roleid`) to identify a specific client role:"
+"Use a dedicated [command]`get-roles` command, passing it either the clientId"
+" attribute (via the [command]`--cclientid` option) or ID (via the "
+"[command]`--cid` option) to identify the client, and passing it either the "
+"role name (via the [command]`--rolename` option) or ID (via the "
+"[command]`--roleid`) to identify a specific client role."
 msgstr ""
-"専用の `get-roles` コマンドを使って `clientId` （ `--cclientid`オプションで）または `id` （ `--cid`"
-" オプションで）を渡してクライアントを識別し、 `name` （ `--rolename` オプションで）または 'id' （ `--roleid` "
-"オプションで）を使用して特定のクライアント・ロールを識別します。"
+"[command]`get-roles` コマンドでは、[command]`--cclientid` オプションでclientId属性、または "
+"[command]`--cid` オプションでIDを渡して、クライアントを特定します。クライアント・ロールを特定するためには、 [command] "
+"`--rolename` オプションでロール名または [command]`--roleid` オプションでIDを渡します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --cclientid realm-management "
-"--rolename manage-clients\n"
+"$ kcadm.sh get-roles -r demorealm --cclientid realm-management --rolename "
+"manage-clients\n"
 msgstr ""
 "$ kcadm.sh get-roles -r demorealm --cclientid realm-management --rolename "
 "manage-clients\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Updating a realm role"
 msgstr "レルム・ロールの更新"
 
 #. type: Plain text
 msgid ""
-"Use `update` operation with the same endpoint uri as for getting a specific "
-"realm role. For example:"
-msgstr "特定のレルム・ロールを取得する場合と同じエンドポイントuriで `update` オペレーションを使用してください。例えば："
+"Use the [command]`update` command with the same endpoint URI that you used "
+"to get a specific realm role."
+msgstr ""
+"特定のレルム・ロールを取得するために使用したものと同じエンドポイントURIを指定して [command]`update` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update roles/user -r demorealm -s 'description=Role "
-"representing a regular user'\n"
+"$ kcadm.sh update roles/user -r demorealm -s 'description=Role representing "
+"a regular user'\n"
 msgstr ""
 "$ kcadm.sh update roles/user -r demorealm -s 'description=Role representing "
 "a regular user'\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Updating a client role"
 msgstr "クライアント・ロールの更新"
 
 #. type: Plain text
 msgid ""
-"Use `update` operation with the same endpoint uri as for getting a specific "
-"client role. For example:"
-msgstr "特定のクライアント・ロールを取得する場合と同じエンドポイントuriで `update` オペレーションを使用してください。例えば："
+"Use the [command]`update` command with the same endpoint URI that you used "
+"to get a specific client role."
+msgstr ""
+"特定のクライアント・ロールを取得するために使用したものと同じエンドポイントURIを指定して [command]`update` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update clients/a95b6af3-0bdc-4878-ae2e-"
-"6d61a4eca9a0/roles/editor -r demorealm -s 'description=User that can edit, "
-"and publish articles'\n"
+"$ kcadm.sh update clients/a95b6af3-0bdc-4878-ae2e-6d61a4eca9a0/roles/editor "
+"-r demorealm -s 'description=User that can edit, and publish articles'\n"
 msgstr ""
 "$ kcadm.sh update clients/a95b6af3-0bdc-4878-ae2e-6d61a4eca9a0/roles/editor "
 "-r demorealm -s 'description=User that can edit, and publish articles'\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Deleting a realm role"
 msgstr "レルム・ロールの削除"
 
 #. type: Plain text
 msgid ""
-"Use `delete` operation with the same endpoint uri as for getting a specific "
-"realm role. For example:"
-msgstr "特定のレルム・ロールを取得する場合と同じエンドポイントuriで `delete` オペレーションを使用してください。例えば："
+"Use the [command]`delete` command with the same endpoint URI that you used "
+"to get a specific realm role."
+msgstr ""
+"特定のレルム・ロールを取得するために使用したのと同じエンドポイントURIを指定して [command]`delete` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh delete roles/user -r demorealm\n"
+msgid "$ kcadm.sh delete roles/user -r demorealm\n"
 msgstr "$ kcadm.sh delete roles/user -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Deleting a client role"
 msgstr "クライアント・ロールの削除"
 
 #. type: Plain text
 msgid ""
-"Use `delete` operation with the same endpoint uri as for getting a specific "
-"client role. For example:"
-msgstr "特定のクライアント・ロールを取得する場合と同じエンドポイントuriで `delete` オペレーションを使用してください。例えば："
+"Use the [command]`delete` command with the same endpoint URI that you used "
+"to get a specific client role."
+msgstr ""
+"特定のクライアントロールを取得するために使用したものと同じエンドポイントURIを持つ [command]`delete` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh delete clients/a95b6af3-0bdc-4878-ae2e-"
-"6d61a4eca9a0/roles/editor -r demorealm\n"
+"$ kcadm.sh delete clients/a95b6af3-0bdc-4878-ae2e-6d61a4eca9a0/roles/editor "
+"-r demorealm\n"
 msgstr ""
 "$ kcadm.sh delete clients/a95b6af3-0bdc-4878-ae2e-6d61a4eca9a0/roles/editor "
 "-r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid ""
-"Listing assigned, available and effective realm roles for a composite role"
-msgstr "複合ロールに割り当てられた、利用可能な、有効なレルム・ロールの一覧表示"
-
-#. type: Plain text
-msgid "Use a dedicated `get-roles` command."
-msgstr "専用の `get-roles` コマンドを使用してください"
+"Listing assigned, available, and effective realm roles for a composite role"
+msgstr "複合ロールに割り当てられた、使用可能な、有効なレルム・ロールの一覧"
 
 #. type: Plain text
 msgid ""
-"To list *assigned* realm roles for the composite role you can specify the "
-"target composite role by either `name` (via --rname option) or `id` (via "
-"--rid option)."
+"Use a dedicated [command]`get-roles` command to list assigned, available, "
+"and effective realm roles for a composite role."
 msgstr ""
-"複合ロールのために *割り当てられた* レルム・ロールを一覧表示するには、 `name` （ `--rname` オプションで）または `id` （ "
-"`--rid` オプションで）のいずれかで対象の複合ロールを指定できます。"
+"専用の [command]`get-roles` コマンドを使用して、複合ロールに割り当てられた、使用可能な、有効なレルムロールを一覧表示します。"
 
 #. type: Plain text
+msgid ""
+"To list *assigned* realm roles for the composite role, you can specify the "
+"target composite role by either name (via the [command]`--rname` option) or "
+"ID (via the [command]`--rid` option)."
+msgstr ""
+"複合ロールの *assigned* レルム・ロールを一覧表示するには、[command]`--rname` オプションを使用して名前を指定するか、 "
+"[command]`--rid` オプションを使用してIDを指定します。"
+
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm --rname testrole\n"
+msgid "$ kcadm.sh get-roles -r demorealm --rname testrole\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --rname testrole\n"
 
 #. type: Plain text
-msgid "To list *effective* realm roles, use additional `--effective` option."
-msgstr "*有効な* レルム・ロールを一覧表示するには、 `--effective` オプションを追加してください。"
+msgid ""
+"Use the additional [command]`--effective` option to list *effective* realm "
+"roles."
+msgstr "*有効な* レルム・ロールをリストするには、 [command]`--effective` オプションを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm --rname testrole --effective\n"
+msgid "$ kcadm.sh get-roles -r demorealm --rname testrole --effective\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --rname testrole --effective\n"
 
 #. type: Plain text
 msgid ""
-"To list realm roles that can still be added to the composite role, use "
-"`--available` option instead."
-msgstr "複合ロールにまだ追加できるレルム・ロールを一覧表示するには、代わりに `--available` オプションを使用してください。"
+"Use the [command]`--available` option to list realm roles that can still be "
+"added to the composite role."
+msgstr "複合ロールにまだ利用可能なレルム・ロールを一覧表示するには、 [command]`--available` オプションを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm --rname testrole --available\n"
+msgid "$ kcadm.sh get-roles -r demorealm --rname testrole --available\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --rname testrole --available\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid ""
 "Listing assigned, available, and effective client roles for a composite role"
@@ -1384,28 +1412,37 @@ msgstr "複合ロールに割り当てられた、利用可能な、有効なク
 
 #. type: Plain text
 msgid ""
-"To list *assigned* client roles for the composite role you can specify the "
-"target composite role by either `name` (via --rname option)  or `id` (via "
-"--rid option), and client by either `clientId` (via --cclientid option) or "
-"`id` (via --cid option)."
+"Use a dedicated [command]`get-roles` command to list assigned, available, "
+"and effective client roles for a composite role."
 msgstr ""
-"複合ロールの *割り当てられた* クライアント・ロールを一覧表示するには、 `name` （ `--rname` オプションで）または `id` （ "
-"`--rid` オプションで）のいずれかで対象の複合ロールを指定できます。 `clientId` （ `--cclientid` オプションで）または "
-"`id` （ `--cid` オプションで）のどちらかでクライアントを指定できます。"
+"専用の [command]`get-roles` "
+"コマンドを使用して、複合ロールに割り当てられた、利用可能な、有効なクライアント・ロールを一覧表示します。"
 
 #. type: Plain text
+msgid ""
+"To list *assigned* client roles for the composite role, you can specify the "
+"target composite role by either name (via the [command]`--rname` option) or "
+"ID (via the [command]`--rid` option) and client by either the clientId "
+"attribute (via the [command]`--cclientid` option) or ID (via the "
+"[command]`--cid` option)."
+msgstr ""
+"複合ロールの *割り当てられた* クライアント・ロールを一覧表示するには、[command]`--rname` オプションでロール名を指定するか、または"
+" [command]`--rid` オプションでIDを指定します。また、クライアントを特定するために、 [command] `--cclientid` "
+"オプションでclientId属性、または[command]` --cid`オプションでIDのいずれかを使用します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --rname testrole --cclientid realm-"
+"$ kcadm.sh get-roles -r demorealm --rname testrole --cclientid realm-"
 "management\n"
 msgstr ""
 "$ kcadm.sh get-roles -r demorealm --rname testrole --cclientid realm-"
 "management\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --rname testrole --cclientid realm-"
+"$ kcadm.sh get-roles -r demorealm --rname testrole --cclientid realm-"
 "management --effective\n"
 msgstr ""
 "$ kcadm.sh get-roles -r demorealm --rname testrole --cclientid realm-"
@@ -1413,112 +1450,107 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"To list realm roles that can still be added to the target composite role, "
-"use `--available` option instead."
-msgstr "対象の複合ロールにまだ追加できるレルム・ロールを一覧表示するには、代わりに `--available` オプションを使用してください。"
+"Use the [command]`--available` option to list realm roles that can still be "
+"added to the target composite role."
+msgstr "対象の複合ロールに利用可能なレルム・ロールを一覧表示するには、 [command]`--available` オプションを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --rname testrole --cclientid realm-"
+"$ kcadm.sh get-roles -r demorealm --rname testrole --cclientid realm-"
 "management --available\n"
 msgstr ""
 "$ kcadm.sh get-roles -r demorealm --rname testrole --cclientid realm-"
 "management --available\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Adding realm roles to a composite role"
 msgstr "レルム・ロールを複合ロールに追加する"
 
 #. type: Plain text
 msgid ""
-"There is a dedicated `add-roles` command that can be used for adding both "
-"realm roles and client roles."
-msgstr "レルム・ロールとクライアント・ロールの両方を追加するために使用できる専用の `add-roles` コマンドがあります。"
+"There is a dedicated [command]`add-roles` command that can be used for "
+"adding realm roles and client roles."
+msgstr "レルム・ロールとクライアント・ロールを追加するために使用できる専用の [command]`add-roles` コマンドがあります。"
 
 #. type: Plain text
-msgid "For example, to add 'user' role to composite role 'testrole' :"
-msgstr "たとえば、 'user' ロールを複合ロール 'testrole' に追加するには、次のようにします。"
+msgid ""
+"The following example adds the [command]`user` role to the composite role "
+"[command]`testrole`."
+msgstr "[command]`user` ロールを複合ロール [command]`testrole` に追加する例を示します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh add-roles --rname testrole --rolename user -r demorealm\n"
+msgid "$ kcadm.sh add-roles --rname testrole --rolename user -r demorealm\n"
 msgstr "$ kcadm.sh add-roles --rname testrole --rolename user -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Removing realm roles from a composite role"
 msgstr "複合ロールからレルム・ロールを削除する"
 
 #. type: Plain text
 msgid ""
-"There is a dedicated `remove-roles` command that can be used to remove both "
-"realm roles and client roles."
-msgstr "レルム・ロールとクライアント・ロールの両方を削除するために使用できる専用の `remove-roles` コマンドがあります。"
+"There is a dedicated [command]`remove-roles` command that can be used to "
+"remove realm roles and client roles."
+msgstr "レルム・ロールとクライアント・ロールを削除するための専用の [command]`remove-roles` コマンドがあります。"
 
 #. type: Plain text
 msgid ""
-"For example, to remove 'user' role from target composite role 'testrole':"
-msgstr "たとえば、対象の複合ロール 'testrole' から 'user' ロールを削除するには、次のようにします。"
+"The following example removes the [command]`user` role from the target "
+"composite role [command]`testrole`."
+msgstr "次の例では、ターゲットの複合ロール [command]`testrole` から [command]`user` ロールを削除します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid ""
-"    $ kcadm.sh remove-roles --rname testrole --rolename user -r demorealm\n"
+msgid "$ kcadm.sh remove-roles --rname testrole --rolename user -r demorealm\n"
 msgstr "$ kcadm.sh remove-roles --rname testrole --rolename user -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Adding client roles to a realm role"
 msgstr "レルム・ロールへのクライアント・ロールの追加"
 
 #. type: Plain text
-msgid "This is how you create or modify a composite realm role."
-msgstr "これは、複合レルムロールを作成または変更する方法です。"
+msgid ""
+"Use a dedicated [command]`add-roles` command that can be used for adding "
+"realm roles and client roles."
+msgstr "レルム・ロールとクライアン・トロールを追加するために使用できる専用の [command]`add-roles` コマンドを使用します。"
 
 #. type: Plain text
 msgid ""
-"Use a dedicated `add-roles` command that can be used for adding both realm "
-"roles and client roles."
-msgstr "レルム・ロールとクライアント・ロールの両方を追加するために使用できる専用の `add-roles` コマンドを使用してください。"
-
-#. type: Plain text
-msgid ""
-"For example, to add to `testrole` composite role two roles defined on client"
-" `realm-management` - `create-client` role and `view-users` role:"
+"The following example adds the roles defined on the client [command]`realm-"
+"management` - `create-client` role and the [command]`view-users` role to the"
+" [command]`testrole` composite role."
 msgstr ""
-"たとえば、 `testrole` 複合ロールにクライアント `realm-management` で定義された2つのロール（ `create-"
-"client` ロールと `view-users` ロール）を追加するには："
+"次の例では、 [command]`realm-management` - `create-client` クライアントに定義されたロールと "
+"[command]`view-users` ロールを複合ロール [command]`testrole` に追加します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh add-roles -r demorealm --rname testrole --cclientid realm-"
+"$ kcadm.sh add-roles -r demorealm --rname testrole --cclientid realm-"
 "management --rolename create-client --rolename view-users\n"
 msgstr ""
 "$ kcadm.sh add-roles -r demorealm --rname testrole --cclientid realm-"
 "management --rolename create-client --rolename view-users\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Adding client roles to a client role"
 msgstr "クライアント・ロールへのクライアント・ロールの追加"
 
 #. type: Plain text
-msgid "This is how you create or modify a composite client role."
-msgstr "これは、複合クライアントロールを作成または変更する方法です。"
-
-#. type: Plain text
 msgid ""
-"First, find out an `id` of the composite client role - by using `get-roles` "
-"command for example:"
-msgstr "まず、 `get-roles` コマンドを使って複合クライアントロールの `id` を見つけます。例えば："
+"Determine the ID of the composite client role by using the [command]`get-"
+"roles` command."
+msgstr "[command]`get-roles` コマンドを使用して複合クライアント・ロールのIDを特定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --cclientid test-client --rolename "
+"$ kcadm.sh get-roles -r demorealm --cclientid test-client --rolename "
 "operations\n"
 msgstr ""
 "$ kcadm.sh get-roles -r demorealm --cclientid test-client --rolename "
@@ -1526,29 +1558,23 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Let's assume that there exists a client with \"clientId\": 'test-client', a "
-"client role called 'support', and another client role - that will become "
-"composite role - that has an \"id\": \"fc400897-ef6a-4e8c-872b-"
-"1581b7fa8a71\", \"name\":\"operations\"."
+"Assume that there is a client with a clientId attribute of [filename]`test-"
+"client`, a client role called [filename]`support`, and another client role "
+"called [filename]`operations`, which becomes a composite role, that has an "
+"ID of \"fc400897-ef6a-4e8c-872b-1581b7fa8a71\"."
 msgstr ""
-"\"clientId\": 'test-client' "
-"であるクライアント、'support'というクライアント・ロール、複合ロールになるもう1つのクライアント・ロール（\"id\": \"fc400897"
-"-ef6a-4e8c-872b-1581b7fa8a71\", \"name\":\"operations\"）が存在するとします。"
+"[filename]`test-client` のclientId属性、 [filename]`support` というクライアント・ロール、および "
+"[filename]`operations` という別のクライアント・ロールがあり、IDは\"fc400897-ef6a-4e8c-872b-"
+"1581b7fa8a71\"という複合ロールがあると仮定します。"
 
 #. type: Plain text
-msgid ""
-"In this example 'operations' is our target composite role, and we just got "
-"its `id`."
-msgstr "この例では、 'operations' は対象とする複合ロールで、その `id` も取得しています。"
+msgid "Use the following example to add another role to the composite role."
+msgstr "次の例を使用して、複合ロールに別のロールを追加します。"
 
-#. type: Plain text
-msgid "We can now add another role to it:"
-msgstr "これで別のロールを追加できます。"
-
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh add-roles -r demorealm --cclientid test-client --rid fc400897"
+"$ kcadm.sh add-roles -r demorealm --cclientid test-client --rid fc400897"
 "-ef6a-4e8c-872b-1581b7fa8a71 --rolename support\n"
 msgstr ""
 "$ kcadm.sh add-roles -r demorealm --cclientid test-client --rid fc400897"
@@ -1556,37 +1582,39 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Afterwards all the roles of a composite role can be listed by using `get-"
-"roles --all`. For example:"
-msgstr "その後、 `get-roles --all` を使用して複合ロールのすべてのロールを一覧表示することができます。例えば："
+"List the roles of a composite role by using the [command]`get-roles --all` "
+"command."
+msgstr "[command]`get-roles --all` コマンドを使用して、複合ロールのロールを一覧表示します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid ""
-"    $ kcadm.sh get-roles --rid fc400897-ef6a-4e8c-872b-1581b7fa8a71 --all\n"
+msgid "$ kcadm.sh get-roles --rid fc400897-ef6a-4e8c-872b-1581b7fa8a71 --all\n"
 msgstr "$ kcadm.sh get-roles --rid fc400897-ef6a-4e8c-872b-1581b7fa8a71 --all\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Removing client roles from a composite role"
 msgstr "複合ロールからのクライアント・ロールの削除"
 
 #. type: Plain text
-msgid "Use a dedicated `remove-roles` command."
-msgstr "専用の `remove-roles` コマンドを使用してください。"
+msgid ""
+"Use a dedicated [command]`remove-roles` command to remove client roles from "
+"a composite role."
+msgstr "複合ロールからクライアント・ロールを削除するには、専用の [command]`remove-roles` コマンドを使用します。"
 
 #. type: Plain text
 msgid ""
-"For example, to remove from `testrole` composite role two roles defined on "
-"client `realm management` - `create-client` role and `view-users` role:"
+"Use the following example to remove two roles defined on the client "
+"[command]`realm management` - `create-client` role and the [command]`view-"
+"users` role from the [command]`testrole` composite role."
 msgstr ""
-"たとえば、 `testrole`  複合ロールからクライアント `realm management`  で定義された2つのロール（ `create-"
-"client` ロールと ` view-users` ロール）を削除するには："
+"次の例を使用して、 [command]`realm management` - `create-client` ロールと [command]`view-"
+"users` ロールで定義された2つのクライアント・ロールを複合ロール [command]`testrole` から削除します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh remove-roles -r demorealm --rname testrole --cclientid realm-"
+"$ kcadm.sh remove-roles -r demorealm --rname testrole --cclientid realm-"
 "management --rolename create-client --rolename view-users\n"
 msgstr ""
 "$ kcadm.sh remove-roles -r demorealm --rname testrole --cclientid realm-"
@@ -1597,155 +1625,165 @@ msgstr ""
 msgid "Client operations"
 msgstr "クライアント操作"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Creating a client"
 msgstr "クライアントの作成"
 
 #. type: Plain text
 msgid ""
-"To create a new client perform `create` command on `clients` endpoint. For "
-"example:"
-msgstr "新しいクライアントを作成するには、 `clients` エンドポイントで `create` コマンドを実行します。例えば："
+"Run the [command]`create` command on a [filename]`clients` endpoint to "
+"create a new client."
+msgstr ""
+"[filename]`clients` エンドポイントで [command]`create` コマンドを実行して、新しいクライアントを作成します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create clients -r demorealm -s clientId=myapp -s "
-"enabled=true\n"
+"$ kcadm.sh create clients -r demorealm -s clientId=myapp -s enabled=true\n"
 msgstr ""
 "$ kcadm.sh create clients -r demorealm -s clientId=myapp -s enabled=true\n"
 
 #. type: Plain text
 msgid ""
-"If you want to set a secret for adapters to authenticate specify a `secret`."
-" For example:"
-msgstr "認証するためのアダプターのシークレットを設定する場合は、 `secret` を指定します。例えば："
+"Specify a secret if you want to set a secret for adapters to authenticate."
+msgstr "認証するアダプターのシークレットを設定する場合は、シークレットを指定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create clients -r demorealm -s clientId=myapp -s enabled=true"
-" -s clientAuthenticatorType=client-secret -s secret=d0b8122f-8dfb-46b7-b68a-"
+"$ kcadm.sh create clients -r demorealm -s clientId=myapp -s enabled=true -s "
+"clientAuthenticatorType=client-secret -s secret=d0b8122f-8dfb-46b7-b68a-"
 "f5cc4e25d000\n"
 msgstr ""
 "$ kcadm.sh create clients -r demorealm -s clientId=myapp -s enabled=true -s "
 "clientAuthenticatorType=client-secret -s secret=d0b8122f-8dfb-46b7-b68a-"
 "f5cc4e25d000\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing clients"
 msgstr "クライアントの一覧表示"
 
 #. type: Plain text
-msgid "Use `get` operation on `clients` endpoint. For example:"
-msgstr "`clients` エンドポイントで `get` 操作を使います。例えば："
+msgid ""
+"Use the [command]`get` command on the [filename]`clients` endpoint to list "
+"clients."
+msgstr ""
+"クライアントの一覧を表示するには、 [filename]`clients` エンドポイントで [command]`get` コマンドを使用します。"
 
 #. type: Plain text
 msgid ""
-"Here we filter the output to only list `id`, and `clientId` attributes."
-msgstr "ここでは、出力を `id` と `clientId` 属性だけにフィルタリングします。"
+"This example filters the output to list only the [filename]`id` and "
+"[filename]`clientId` attributes."
+msgstr ""
+"この例では、 [filename]`id` および [filename]`clientId` 属性のみを一覧出力するようにフィルタリングしています。"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Getting a specific client"
 msgstr "特定のクライアントを取得する"
 
 #. type: Plain text
 msgid ""
-"Use client's `id` to construct an endpoint uri targeting specific client - "
-"`clients/ID`. For example:"
-msgstr "クライアントの `id` を使用して、特定のクライアントを対象とするエンドポイントuri `clients/ID` を構築します。例えば："
+"Use a client's ID to construct an endpoint URI that targets a specific "
+"client, such as [filename]`clients/ID`."
+msgstr ""
+"クライアントのIDを使用して、 [filename]`clients/ID` のような特定のクライアントを対象とするエンドポイントURIを構築します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r "
-"demorealm\n"
+"$ kcadm.sh get clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r demorealm\n"
 msgstr ""
 "$ kcadm.sh get clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Getting current secret for specific client"
-msgstr "特定のクライアントの現在のシークレットを取得する"
+msgid "Getting the current secret for a specific client"
+msgstr "特定のクライアントの現在のシークレットの取得"
 
 #. type: Plain text
 msgid ""
-"Use client's `id` to construct an endpoint uri - `clients/ID/client-secret`."
-" For example"
-msgstr "クライアントの `id` を使ってエンドポイントuri 'clients/ID/client-secret` を構築します。例えば"
+"Use a client's ID to construct an endpoint URI, such as "
+"[filename]`clients/ID/client-secret`."
+msgstr ""
+"クライアントのIDを使用して、 [filename]`clients/ID/client-secret` のようなエンドポイントURIを構築します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get clients/$CID/client-secret\n"
+msgid "$ kcadm.sh get clients/$CID/client-secret\n"
 msgstr "$ kcadm.sh get clients/$CID/client-secret\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Getting adapter configuration file (keycloak.json) for specific client"
-msgstr "特定のクライアント用のアダプター構成ファイル（keycloak.json）の取得"
+msgid ""
+"Getting an adapter configuration file (keycloak.json) for a specific client"
+msgstr "特定のクライアントのアダプター設定ファイル（keycloak.json）の取得"
 
 #. type: Plain text
 msgid ""
-"Use client's `id` to construct an endpoint uri targeting specific client - "
-"`clients/ID/installation/providers/keycloak-oidc-keycloak-json`."
+"Use a client's ID to construct an endpoint URI that targets a specific "
+"client, such as [filename]`clients/ID/installation/providers/keycloak-oidc-"
+"keycloak-json`."
 msgstr ""
-"クライアントの `id` を使用して、特定のクライアントを対象にしたエンドポイントuri "
-"`clients/ID/installation/providers/keycloak-oidc-keycloak-json` を構築します。"
+"クライアントIDを使用して、 [filename]`clients/ID/installation/providers/keycloak-oidc-"
+"keycloak-json` などの特定のクライアントを対象とするエンドポイントURIを構築します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get "
+"$ kcadm.sh get "
 "clients/c7b8547f-e748-4333-95d0-410b76b3f4a3/installation/providers"
 "/keycloak-oidc-keycloak-json -r demorealm\n"
 msgstr ""
-"    $ kcadm.sh get "
+"$ kcadm.sh get "
 "clients/c7b8547f-e748-4333-95d0-410b76b3f4a3/installation/providers"
 "/keycloak-oidc-keycloak-json -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Getting Wildfly subsystem adapter configuration for specific client"
+msgid ""
+"Getting a Wildfly subsystem adapter configuration for a specific client"
 msgstr "特定のクライアントのためのWildflyサブシステム・アダプタ設定の取得"
 
 #. type: Plain text
 msgid ""
-"Use client's `id` to construct an endpoint uri targeting specific client - "
-"`clients/ID/installation/providers/keycloak-oidc-jboss-subsystem`."
+"Use a client's ID to construct an endpoint URI that targets a specific "
+"client, such as [filename]`clients/ID/installation/providers/keycloak-oidc-"
+"jboss-subsystem`."
 msgstr ""
-"クライアントの` id` を使用して特定のクライアントを対象とするエンドポイントuri "
-"`clients/ID/installation/providers/keycloak-oidc-jboss-subsystem` を構築します。"
+"クライアントIDを使用して、 [filename]`clients/ID/installation/providers/keycloak-oidc-"
+"jboss-subsystem` などの特定のクライアントを対象とするエンドポイントURIを構築します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get "
+"$ kcadm.sh get "
 "clients/c7b8547f-e748-4333-95d0-410b76b3f4a3/installation/providers"
 "/keycloak-oidc-jboss-subsystem -r demorealm\n"
 msgstr ""
-"    $ kcadm.sh get "
+"$ kcadm.sh get "
 "clients/c7b8547f-e748-4333-95d0-410b76b3f4a3/installation/providers"
 "/keycloak-oidc-jboss-subsystem -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Updating a client"
 msgstr "クライアントの更新"
 
 #. type: Plain text
 msgid ""
-"Use `update` operation with the same endpoint uri as for getting a specific "
-"client. For example on Linux:"
-msgstr "特定のクライアントを取得する場合と同じエンドポイントuriで `update` 操作を使用してください。たとえばLinuxの場合："
+"Use the [command]`update` command with the same endpoint URI that you used "
+"to get a specific client."
+msgstr ""
+"特定のクライアントを取得するために使用したのと同じエンドポイントURIを指定して [command]`update` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r "
-"demorealm -s enabled=false -s publicClient=true -s "
+"$ kcadm.sh update clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r demorealm "
+"-s enabled=false -s publicClient=true -s "
 "'redirectUris=[\"http://localhost:8080/myapp/*\"]' -s "
 "baseUrl=http://localhost:8080/myapp -s "
 "adminUrl=http://localhost:8080/myapp\n"
@@ -1756,11 +1794,11 @@ msgstr ""
 "baseUrl=http://localhost:8080/myapp -s "
 "adminUrl=http://localhost:8080/myapp\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> kcadm update clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r "
-"demorealm -s enabled=false -s publicClient=true -s "
+"c:\\> kcadm update clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r demorealm"
+" -s enabled=false -s publicClient=true -s "
 "\"redirectUris=[\\\"http://localhost:8080/myapp/*\\\"]\" -s "
 "baseUrl=http://localhost:8080/myapp -s "
 "adminUrl=http://localhost:8080/myapp\n"
@@ -1771,21 +1809,21 @@ msgstr ""
 "baseUrl=http://localhost:8080/myapp -s "
 "adminUrl=http://localhost:8080/myapp\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Deleting a client"
 msgstr "クライアントの削除"
 
 #. type: Plain text
 msgid ""
-"Use `delete` operation with the same endpoint uri as for getting a specific "
-"client. For example:"
-msgstr "特定のクライアントを取得する場合と同じエンドポイントuriで `delete` 操作を使用してください。例えば："
+"Use the [command]`delete` command with the same endpoint URI that you used "
+"to get a specific client."
+msgstr "特定のクライアントを取得するのに使用したのと同じエンドポイントURIで [command]`delete` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh delete clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r "
+"$ kcadm.sh delete clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r "
 "demorealm\n"
 msgstr ""
 "$ kcadm.sh delete clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r "
@@ -1796,158 +1834,160 @@ msgstr ""
 msgid "User operations"
 msgstr "ユーザー操作"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Creating a user"
 msgstr "ユーザーの作成"
 
 #. type: Plain text
 msgid ""
-"To create a new user perform `create` operation on `users` endpoint. For "
-"example:"
-msgstr "新しいユーザーを作成するには、 `users` エンドポイントで `create` 操作を実行します。例えば："
+"Run the [command]`create` command on the [filename]`users` endpoint to "
+"create a new user."
+msgstr "[filename]`users` エンドポイントで [command]`create` コマンドを実行して、新しいユーザーを作成します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create users -r demorealm -s username=testuser -s "
-"enabled=true\n"
+"$ kcadm.sh create users -r demorealm -s username=testuser -s enabled=true\n"
 msgstr ""
 "$ kcadm.sh create users -r demorealm -s username=testuser -s enabled=true\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing users"
 msgstr "ユーザーの一覧表示"
 
 #. type: Plain text
 msgid ""
-"Use `users` endpoint to list users. Number of users may be large, and you "
-"may want to limit how many are returned:"
-msgstr "ユーザーを一覧表示するには `users` エンドポイントを使います。ユーザー数が多く、返される数を制限したい場合は："
+"Use the [filename]`users` endpoint to list users. The target user will have "
+"to change the password the next time they log in."
+msgstr ""
+"[filename]`users` "
+"エンドポイントを使用してユーザーをリストします。対象ユーザーは、次回のログイン時にパスワードを変更する必要があります。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get users -r demorealm --offset 0 --limit 1000\n"
+msgid "$ kcadm.sh get users -r demorealm --offset 0 --limit 1000\n"
 msgstr "$ kcadm.sh get users -r demorealm --offset 0 --limit 1000\n"
 
 #. type: Plain text
 msgid ""
-"It's also possible to filter users by `username`, `firstName`, `lastName`, "
-"or `email`. For example:"
+"You can filter users by [filename]`username`, [filename]`firstName`, "
+"[filename]`lastName`, or [filename]`email`."
 msgstr ""
-"`username` 、 `firstName` 、 `lastName` 、または `email` "
-"によってユーザをフィルタすることも可能です。例えば："
+"[filename]`username` 、 [filename]`firstName` 、 [filename]`lastName` 、 "
+"[filename]`email` でユーザーをフィルタリングできます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get users -r demorealm -q email=google.com\n"
-"    $ kcadm.sh get users -r demorealm -q username=testuser\n"
+"$ kcadm.sh get users -r demorealm -q email=google.com\n"
+"$ kcadm.sh get users -r demorealm -q username=testuser\n"
 msgstr ""
 "$ kcadm.sh get users -r demorealm -q email=google.com\n"
-" $ kcadm.sh get users -r demorealm -q username=testuser\n"
+"$ kcadm.sh get users -r demorealm -q username=testuser\n"
+
+#. type: delimited block =
+msgid ""
+"Filtering does not use exact matching. For example, the above example would "
+"match the value of the [filename]`username` attribute against the "
+"[filename]`\\*testuser*`` pattern."
+msgstr ""
+"フィルタリングでは完全一致は使用されません。例えば、上記の例では、[filename]`\\*testuser*`` のパターンと "
+"[filename]`username` 属性の値が一致します。"
 
 #. type: Plain text
 msgid ""
-"Note that filtering doesn't use exact matching. For example, the above would"
-" match the value of `username` attribute against '\\*testuser*' pattern."
+"You can also filter across multiple attributes by specifying multiple "
+"[command]`-q` options, which return only users that match the condition for "
+"all the attributes."
 msgstr ""
-"フィルタリングは完全一致を使用しないことに注意してください。例えば、上記は `username` 属性の値と '\\*testuser*' "
-"パターンを一致させます。"
+"複数の [command]`-q` "
+"オプションを指定することで、複数の属性をフィルタリングすることもできます。このオプションは、すべての属性の条件に一致するユーザーのみを返します。"
 
-#. type: Plain text
-msgid ""
-"You can also filter across multiple attributes by specifying multiple `-q` "
-"options, which would return only users that match condition for all the "
-"attributes."
-msgstr ""
-"`-q` "
-"オプションを複数指定することで、複数の属性をフィルタリングをすることもできます。このオプションは、すべての属性の条件に一致するユーザのみを返します。"
-
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Getting a specific user"
 msgstr "特定のユーザーを取得する"
 
 #. type: Plain text
-msgid "Use user's `id` to compose an endpoint uri - `users/USER_ID`."
-msgstr "ユーザーの `id` を使用してエンドポイントuri `users/USER_ID` を作成します。"
-
-#. type: Plain text
-#, no-wrap
 msgid ""
-"    $ kcadm.sh get users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm\n"
+"Use a user's ID to compose an endpoint URI, such as "
+"[filename]`users/USER_ID`."
+msgstr "[filename]`users/USER_ID` などのエンドポイントURIを作成するには、ユーザーのIDを使用します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm.sh get users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm\n"
 msgstr ""
 "$ kcadm.sh get users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Updating a user"
 msgstr "ユーザーの更新"
 
 #. type: Plain text
 msgid ""
-"Use `update` operation with the same endpoint uri as for getting a specific "
-"user. For example on Linux:"
-msgstr "特定のユーザーを取得する場合と同じエンドポイントuriで `update` 操作を使用します。たとえばLinuxの場合："
+"Use the [command]`update` command with the same endpoint URI that you used "
+"to get a specific user."
+msgstr "特定のユーザーを取得するために使用したのと同じエンドポイントURIを指定して [command]`update` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r "
-"demorealm -s "
+"$ kcadm.sh update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm -s"
+" "
 "'requiredActions=[\"VERIFY_EMAIL\",\"UPDATE_PROFILE\",\"CONFIGURE_TOTP\",\"UPDATE_PASSWORD\"]'\n"
 msgstr ""
 "$ kcadm.sh update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm -s"
 " "
 "'requiredActions=[\"VERIFY_EMAIL\",\"UPDATE_PROFILE\",\"CONFIGURE_TOTP\",\"UPDATE_PASSWORD\"]'\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    c:\\> kcadm update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r "
-"demorealm -s "
+"c:\\> kcadm update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm "
+"-s "
 "\"requiredActions=[\\\"VERIFY_EMAIL\\\",\\\"UPDATE_PROFILE\\\",\\\"CONFIGURE_TOTP\\\",\\\"UPDATE_PASSWORD\\\"]\"\n"
 msgstr ""
 "c:\\> kcadm update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm "
 "-s "
 "\"requiredActions=[\\\"VERIFY_EMAIL\\\",\\\"UPDATE_PROFILE\\\",\\\"CONFIGURE_TOTP\\\",\\\"UPDATE_PASSWORD\\\"]\"\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Deleting a user"
 msgstr "ユーザーの削除"
 
 #. type: Plain text
 msgid ""
-"Use `delete` operation with the same endpoint uri as for getting a specific "
-"user. For example:"
-msgstr "特定のユーザーを取得する場合と同じエンドポイントuriで `delete` 操作を使用してください。例えば："
+"Use the [command]`delete` command with the same endpoint URI that you used "
+"to get a specific user."
+msgstr "特定のユーザーを取得するために使用したのと同じエンドポイントURIで [command]`delete` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh delete users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r "
-"demorealm\n"
+"$ kcadm.sh delete users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm\n"
 msgstr ""
 "$ kcadm.sh delete users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Resetting user's password"
-msgstr "ユーザーのパスワードをリセットする"
+msgid "Resetting a user's password"
+msgstr "ユーザー・パスワードのリセット"
 
 #. type: Plain text
 msgid ""
-"There is a dedicated `set-password` command specifically to reset user's "
-"password. For example:"
-msgstr "ユーザーのパスワードをリセットするための専用コマンド `set-password` があります。例えば："
+"Use the dedicated [command]`set-password` command to reset a user's "
+"password."
+msgstr "専用の [command]`set-password` コマンドを使用して、ユーザーのパスワードをリセットします。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh set-password -r demorealm --username testuser --new-password "
+"$ kcadm.sh set-password -r demorealm --username testuser --new-password "
 "NEWPASSWORD --temporary\n"
 msgstr ""
 "$ kcadm.sh set-password -r demorealm --username testuser --new-password "
@@ -1955,259 +1995,304 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"That will set a temporary password for the user, which they will have to "
-"change the next time they login."
-msgstr "これにより、ユーザーが次回ログイン時に変更を求められる仮パスワードが設定されます。"
+"That command sets a temporary password for the user. The target user will "
+"have to change the password the next time they log in."
+msgstr "このコマンドは、ユーザーの一時パスワードを設定します。対象ユーザーは、次回のログイン時にパスワードを変更する必要があります。"
 
 #. type: Plain text
 msgid ""
-"You can use `--userid` if you want to specify the user by using `id` "
-"attribute."
-msgstr "`id` 属性を使ってユーザを指定したい場合、 `--userid` を使うことができます。"
+"You can use [command]`--userid` if you want to specify the user by using the"
+" [filename]`id` attribute."
+msgstr "[filename]`id` 属性を使用してユーザーを指定する場合は、 [command]`--userid` を使用できます。"
 
 #. type: Plain text
 msgid ""
-"The same can be achieved using `update` operation on an endpoint constructed"
-" from one for getting a specific user - `users/USER_ID/reset-password`."
+"You can achieve the same result using the [command]`update` command on an "
+"endpoint constructed from the one you used to get a specific user, such as "
+"[filename]`users/USER_ID/reset-password`."
 msgstr ""
-"特定のユーザを取得するために構築されたエンドポイント `users/USER_ID/reset-password` に対して `update` "
-"操作を行うことで、同じことができます。"
+"[filename]`users/USER_ID/reset-password` のように、特定のユーザーを取得するために使用したエンドポイントで "
+"[command]`update` コマンドを使用しても同じ結果が得ることができます。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2/reset-"
-"password -r demorealm -s type=password -s value=NEWPASSWORD -s "
-"temporary=true -n\n"
+"$ kcadm.sh update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2/reset-password "
+"-r demorealm -s type=password -s value=NEWPASSWORD -s temporary=true -n\n"
 msgstr ""
 "$ kcadm.sh update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2/reset-password "
 "-r demorealm -s type=password -s value=NEWPASSWORD -s temporary=true -n\n"
 
 #. type: Plain text
 msgid ""
-"The last parameter (`-n`) ensures that only PUT is performed without a prior"
-" GET. In this case it is necessary since `reset-password` endpoint doesn't "
-"support GET."
+"The last parameter ([command]`-n`) ensures that only the [command]`PUT` "
+"command is performed without a prior [command]`GET` command. It is necessary"
+" in this instance because the [command]`reset-password` endpoint does not "
+"support [command]`GET`."
 msgstr ""
-"最後のパラメータ（ `-n` ）は、更新前のGETなしでPUTだけが実行されることを保証します。このケースでは、 `reset-password` "
-"エンドポイントがGETをサポートしていないので必要です。"
+"最後のパラメータ [command]`-n` は、 [command]`GET` コマンドなしで [command]`PUT` "
+"コマンドだけが実行されるようにします。この場合、 [command]`reset-password` エンドポイントは [command]`GET` "
+"をサポートしていないので指定が必要です。"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing assigned, available, and effective realm roles for a user"
 msgstr "ユーザーに割り当てられた、使用可能な、有効なレルム・ロールの一覧表示"
 
 #. type: Plain text
 msgid ""
-"To list *assigned* realm roles for the user you can specify the target user "
-"by either `username` or `id`."
+"You can use a dedicated [command]`get-roles` command to list assigned, "
+"available, and effective realm roles for a user."
 msgstr ""
-"ユーザーの *割り当てられた* レルム・ロールを一覧表示するには、 `username` か `id` のどちらかで対象ユーザーを指定します。"
+"専用の [command]`get-roles` "
+"コマンドを使用して、ユーザーに割り当てられた、利用可能な、有効なレルム・ロールを一覧表示することができます。"
 
 #. type: Plain text
+msgid ""
+"Specify the target user by either user name or ID to list *assigned* realm "
+"roles for the user."
+msgstr "ユーザーの *割り当てられた* レルム・ロールを一覧表示するには、ユーザー名またはIDのどちらかを使用して対象ユーザーを指定します。"
+
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm --uusername testuser\n"
+msgid "$ kcadm.sh get-roles -r demorealm --uusername testuser\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --uusername testuser\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm --uusername testuser --effective\n"
+msgid "$ kcadm.sh get-roles -r demorealm --uusername testuser --effective\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --uusername testuser --effective\n"
 
 #. type: Plain text
 msgid ""
-"To list realm roles that can still be added to the user, use `--available` "
-"option instead."
-msgstr "ユーザーにまだ追加できるレルム・ロールを一覧表示するには、代わりに `--available` オプションを使用してください。"
+"Use the [command]`--available` option to list realm roles that can still be "
+"added to the user."
+msgstr "ユーザーに利用可能なレルム・ロールを一覧表示するには、 [command]`--available` オプションを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm --uusername testuser --available\n"
+msgid "$ kcadm.sh get-roles -r demorealm --uusername testuser --available\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --uusername testuser --available\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing assigned, available, and effective client roles for a user"
 msgstr "ユーザーに割り当てられた、利用可能な、有効なクライアント・ロールの一覧表示"
 
 #. type: Plain text
 msgid ""
-"To list *assigned* client roles for the user you can specify the target user"
-" by either `username` (via --uusername option) or `id` (via --uid option), "
-"and client by either `clientId` (via --cclientid option) or `id` (via --cid "
-"option)."
+"Use a dedicated [command]`get-roles` command to list assigned, available, "
+"and effective client roles for a user."
 msgstr ""
-"ユーザーに *割り当てられた* クライアント・ロールを一覧表示するには、 `username` （--uusernameオプションで）または ` id`"
-" （--uidオプションで）のいずれかで対象ユーザーを指定できます。 `clientId` （--cclientidオプションで）または `id` "
-"（--cidオプションで）のどちらかでクライアントを指定できます。"
+"専用の [command]`get-roles` コマンドを使用して、ユーザに割り当てられた、利用可能な、有効なクライアント・ロールを一覧表示します。"
 
 #. type: Plain text
+msgid ""
+"Specify the target user by either a user name (via the "
+"[command]`--uusername` option) or an ID (via the [command]`--uid` option) "
+"and client by either a clientId attribute (via the [command]`--cclientid` "
+"option) or an ID (via the [command]`--cid` option) to list *assigned* client"
+" roles for the user."
+msgstr ""
+"[command]`--uusername` オプションを使用してユーザー名を指定する、または [command]`--uid` "
+"オプションを使用してIDを指定することで対象ユーザー特定します。また、 [command]`--cclientid` "
+"オプションでclientId属性を指定する、または [command]`--cid` オプションでIDを指定してクライアントを指定して、ユーザーの "
+"*割り当てられた* クライアント・ロールを一覧表示します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid "
-"realm-management\n"
+"$ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid realm-"
+"management\n"
 msgstr ""
-"    $ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid "
-"realm-management\n"
+"$ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid realm-"
+"management\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid "
-"realm-management --effective\n"
+"$ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid realm-"
+"management --effective\n"
 msgstr ""
-"    $ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid "
-"realm-management --effective\n"
+"$ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid realm-"
+"management --effective\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid "
-"realm-management --available\n"
+"$ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid realm-"
+"management --available\n"
 msgstr ""
-"    $ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid "
-"realm-management --available\n"
+"$ kcadm.sh get-roles -r demorealm --uusername testuser --cclientid realm-"
+"management --available\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Adding realm roles to a user"
 msgstr "ユーザーにレルム・ロールを追加する"
 
 #. type: Plain text
-msgid "Use a dedicated `add-roles` command."
-msgstr "専用の `add-roles` コマンドを使用してください。"
-
-#. type: Plain text
-msgid "For example, to add 'user' role to user 'testuser' :"
-msgstr "たとえば、ユーザー 'testuser' に 'user' ロールを追加するには、次のようにします。"
-
-#. type: Plain text
-#, no-wrap
 msgid ""
-"    $ kcadm.sh add-roles --username testuser --rolename user -r demorealm\n"
+"Use a dedicated [command]`add-roles` command to add realm roles to a user."
+msgstr "レルム・ロールをユーザーに追加するには、専用の [command]`add-roles` コマンドを使用します。"
+
+#. type: Plain text
+msgid ""
+"Use the following example to add the [command]`user` role to user "
+"[command]`testuser`."
+msgstr "次の例を使用して、 [command]`user` ロールをユーザー [command]`testuser` に追加します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm.sh add-roles --username testuser --rolename user -r demorealm\n"
 msgstr "$ kcadm.sh add-roles --username testuser --rolename user -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Removing realm roles from a user"
 msgstr "ユーザーからレルム・ロールを削除する"
 
 #. type: Plain text
-msgid "For example, to remove 'user' role from user 'testuser':"
-msgstr "たとえば、ユーザー 'testuser' から 'user' ロールを削除するには、次のようにします。"
+msgid ""
+"Use a dedicated [command]`remove-roles` command to remove realm roles from a"
+" user."
+msgstr "ユーザーからレルム・ロールを削除するには、専用の [command]`remove-roles` コマンドを使用します。"
 
 #. type: Plain text
+msgid ""
+"Use the following example to remove the [command]`user` role from the user "
+"[command]`testuser`."
+msgstr "以下の例を使用して、 ユーザー[command]`testuser` から [command]`user` ロールを削除します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh remove-roles --username testuser --rolename user -r "
-"demorealm\n"
+"$ kcadm.sh remove-roles --username testuser --rolename user -r demorealm\n"
 msgstr ""
 "$ kcadm.sh remove-roles --username testuser --rolename user -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Adding client roles to a user"
 msgstr "ユーザーにクライアント・ロールを追加する"
 
 #. type: Plain text
 msgid ""
-"For example, to add to user `testuser` two roles defined on client `realm "
-"management` - `create-client` role and `view-users` role:"
-msgstr ""
-"たとえば、ユーザー `testuser` にクライアント `realm management` で定義された2つのロール（ `create-"
-"client` ロールと `view-users` ロール）を追加するには："
+"Use a dedicated [command]`add-roles` command to add client roles to a user."
+msgstr "クライアント・ロールをユーザーに追加するには、専用の [command]`add-roles` コマンドを使用します。"
 
 #. type: Plain text
+msgid ""
+"Use the following example to add two roles defined on the client "
+"[command]`realm management` - `create-client` role and the [command]`view-"
+"users` role to the user `testuser`."
+msgstr ""
+"次の例を使用して、 [command]`realm management` - `create-client` ロールと [command]`view-"
+"users` ロールのクライアントに定義された2つのロールを `testuser` ユーザーに追加します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh add-roles -r demorealm --uusername testuser --cclientid "
-"realm-management --rolename create-client --rolename view-users\n"
+"$ kcadm.sh add-roles -r demorealm --uusername testuser --cclientid realm-"
+"management --rolename create-client --rolename view-users\n"
 msgstr ""
 "$ kcadm.sh add-roles -r demorealm --uusername testuser --cclientid realm-"
 "management --rolename create-client --rolename view-users\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Removing client roles from a user"
 msgstr "ユーザーからのクライアント・ロールの削除"
 
 #. type: Plain text
 msgid ""
-"For example, to remove from user `testuser` two roles defined on client "
-"`realm management` - `create-client` role and `view-users` role:"
-msgstr ""
-"例えば、ユーザー `testuser` からクライアントの `realm management`  で定義された二つのロール（ `create-"
-"client` ロールと `view-users` ロール）を削除するには："
+"Use a dedicated [command]`remove-roles` command to remove client roles from "
+"a user."
+msgstr "専用の [command]`remove-roles` コマンドを使用して、クライアント・ロールをユーザーから削除します。"
 
 #. type: Plain text
+msgid ""
+"Use the following example to remove two roles defined on the realm "
+"management client."
+msgstr "次の例を使用して、レルム管理クライアントで定義されている2つのロールを削除します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh remove-roles -r demorealm --uusername testuser --cclientid "
-"realm-management --rolename create-client --rolename view-users\n"
+"$ kcadm.sh remove-roles -r demorealm --uusername testuser --cclientid realm-"
+"management --rolename create-client --rolename view-users\n"
 msgstr ""
 "$ kcadm.sh remove-roles -r demorealm --uusername testuser --cclientid realm-"
 "management --rolename create-client --rolename view-users\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Listing user's sessions"
-msgstr "ユーザーのセッションを一覧表示する"
+msgid "Listing a user's sessions"
+msgstr "ユーザー・セッションの一覧表示"
 
 #. type: Plain text
 msgid ""
-"First identify user's `id` then use it to compose an endpoint uri - "
-"`users/ID/sessions`."
-msgstr "最初にユーザーの `id` を識別し、エンドポイントuri `users/ID/sessions` を作成するためにそれを使います。"
+"Identify the user's ID, and then use it to compose an endpoint URI, such as "
+"[filename]`users/ID/sessions`."
+msgstr ""
+"ユーザーのIDを特定し、それを利用して [filename]`users/ID/sessions` などのエンドポイントURIを作成します。"
 
 #. type: Plain text
-msgid "Now use `get` to retrieve a list of user's sessions."
-msgstr "次に、ユーザーのセッションの一覧を取得するために `get` を使います。"
+msgid ""
+"Use the [command]`get` command to retrieve a list of the user's sessions."
+msgstr "ユーザーのセッションの一覧を取得するには、 [command]`get` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $kcadm get users/6da5ab89-3397-4205-afaa-e201ff638f9e/sessions\n"
+msgid "$kcadm get users/6da5ab89-3397-4205-afaa-e201ff638f9e/sessions\n"
 msgstr "$kcadm get users/6da5ab89-3397-4205-afaa-e201ff638f9e/sessions\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Logging out user from specific session"
+msgid "Logging out a user from a specific session"
 msgstr "特定のセッションからユーザーをログアウトする"
 
 #. type: Plain text
+msgid "Determine the session's ID as described above."
+msgstr "上記のようにセッションのIDを決定します。"
+
+#. type: Plain text
 msgid ""
-"To logout the user's session first get session's `id` as described above."
-msgstr "最初にユーザーのセッションをログアウトするには、先に説明したように、セッションの `id` を取得します。"
+"Use the session's ID to compose an endpoint URI, such as "
+"[filename]`sessions/ID`."
+msgstr "セッションIDを使用して、 [filename]`sessions/ID` のようなエンドポイントURIを作成します。"
 
 #. type: Plain text
-msgid "Use session's `id` to compose an endpoint uri - `sessions/ID`."
-msgstr "ユーザーの `id` を使用してエンドポイントuri `sessions/ID` を作成します。 "
+msgid "Use the [command]`delete` command to invalidate the session."
+msgstr "セッションを無効にするには、 [command]`delete` コマンドを使用します。"
 
-#. type: Plain text
-msgid "Then use `delete` to invalidate it. For example:"
-msgstr "次に、それを無効にするために `delete` を使います。例えば："
-
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh delete sessions/d0eaa7cc-8c5d-489d-811a-69d3c4ec84d1\n"
+msgid "$ kcadm.sh delete sessions/d0eaa7cc-8c5d-489d-811a-69d3c4ec84d1\n"
 msgstr "$ kcadm.sh delete sessions/d0eaa7cc-8c5d-489d-811a-69d3c4ec84d1\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Logging out user from all sessions"
+msgid "Logging out a user from all sessions"
 msgstr "すべてのセッションからユーザーをログアウトする"
 
 #. type: Plain text
-msgid "You need user's `id` to construct an endpoint uri - `users/ID/logout`."
-msgstr "エンドポイントuri `users/ID/logout` を作成するのにユーザーの `id` が必要です。"
+msgid ""
+"You need a user's ID to construct an endpoint URI, such as "
+"[filename]`users/ID/logout`."
+msgstr "[filename]`users/ID/logout` のようなエンドポイントURIを構築するには、ユーザーのIDが必要です。"
 
 #. type: Plain text
-msgid "Use 'create' to perform POST on that endpoint uri:"
-msgstr "そのエンドポイントuriでPOSTを実行するには、  'create' を使用します。"
+msgid ""
+"Use the [command]`create` command to perform [command]`POST` on that "
+"endpoint URI."
+msgstr ""
+"その [command]`create` コマンドを使って、そのエンドポイントURIに対して [command]`POST` を実行します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create users/6da5ab89-3397-4205-afaa-e201ff638f9e/logout -r "
+"$ kcadm.sh create users/6da5ab89-3397-4205-afaa-e201ff638f9e/logout -r "
 "demorealm -s realm=demorealm -s user=6da5ab89-3397-4205-afaa-e201ff638f9e\n"
 msgstr ""
 "$ kcadm.sh create users/6da5ab89-3397-4205-afaa-e201ff638f9e/logout -r "
@@ -2218,180 +2303,189 @@ msgstr ""
 msgid "Group operations"
 msgstr "グループの操作"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Creating a group"
 msgstr "グループの作成"
 
 #. type: Plain text
-msgid "Use `create` operation on `groups` endpoint to create a new group:"
-msgstr "`group` エンドポイントで `create` 操作を使って新しいグループを作成します。"
+msgid ""
+"Use the [command]`create` command on the [filename]`groups` endpoint to "
+"create a new group."
+msgstr ""
+"新しいグループを作成するには、 [filename]`groups` エンドポイントで [command]`create` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh create groups -r demorealm -s name=Group\n"
+msgid "$ kcadm.sh create groups -r demorealm -s name=Group\n"
 msgstr "$ kcadm.sh create groups -r demorealm -s name=Group\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing groups"
 msgstr "グループの一覧表示"
 
 #. type: Plain text
-msgid "Use `get` operation on `groups` endpoint to list groups:"
-msgstr "グループを一覧表示するには `groups` エンドポイントで `get` 操作を使います。"
+msgid ""
+"Use the [command]`get` command on the [filename]`groups` endpoint to list "
+"groups."
+msgstr "グループを一覧表示するには、 [filename]`groups` エンドポイントで [command]`get` コマンドを使います。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get groups -r demorealm\n"
+msgid "$ kcadm.sh get groups -r demorealm\n"
 msgstr "$ kcadm.sh get groups -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Getting a specific group"
 msgstr "特定のグループを取得する"
 
 #. type: Plain text
-msgid "Use group's `id` to construct an endpoint uri - groups/GROUP_ID:"
-msgstr "グループの `id` を使用してエンドポイントuri `groups/GROUP_ID` を作成します。"
+msgid ""
+"Use the group's ID to construct an endpoint URI, such as `groups/GROUP_ID`."
+msgstr "グループのIDを使用して、 `groups/GROUP_ID` のようなのエンドポイントURIを作成します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get groups/51204821-0580-46db-8f2d-27106c6b5ded -r "
-"demorealm\n"
+"$ kcadm.sh get groups/51204821-0580-46db-8f2d-27106c6b5ded -r demorealm\n"
 msgstr ""
 "$ kcadm.sh get groups/51204821-0580-46db-8f2d-27106c6b5ded -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Updating a group"
 msgstr "グループの更新"
 
 #. type: Plain text
 msgid ""
-"Use `update` operation with the same endpoint uri as for getting a specific "
-"group. For example:"
-msgstr "特定のグループを取得する場合と同じエンドポイントuriで `update` 操作を使用してください。例えば："
+"Use the [command]`update` command with the same endpoint URI that you used "
+"to get a specific group."
+msgstr "特定のグループを取得するために使用したものと同じエンドポイントURIを指定して [command]`update` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update groups/51204821-0580-46db-8f2d-27106c6b5ded -s "
+"$ kcadm.sh update groups/51204821-0580-46db-8f2d-27106c6b5ded -s "
 "'attributes.email=[\"group@example.com\"]' -r demorealm\n"
 msgstr ""
 "$ kcadm.sh update groups/51204821-0580-46db-8f2d-27106c6b5ded -s "
 "'attributes.email=[\"group@example.com\"]' -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Deleting a group"
 msgstr "グループの削除"
 
 #. type: Plain text
 msgid ""
-"Use `delete` operation with the same endpoint uri as for getting a specific "
-"group. For example:"
-msgstr "特定のグループを取得する場合と同じエンドポイントuriで `delete` 操作を使用してください。例えば："
+"Use the [command]`delete` command with the same endpoint URI that you used "
+"to get a specific group."
+msgstr "特定のグループを取得するために使用したものと同じエンドポイントURIを持つ [command]`delete` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh delete groups/51204821-0580-46db-8f2d-27106c6b5ded -r "
-"demorealm\n"
+"$ kcadm.sh delete groups/51204821-0580-46db-8f2d-27106c6b5ded -r demorealm\n"
 msgstr ""
 "$ kcadm.sh delete groups/51204821-0580-46db-8f2d-27106c6b5ded -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Creating a sub-group"
-msgstr "サブ・グループの作成"
+msgid "Creating a subgroup"
+msgstr "サブグループの作成"
 
 #. type: Plain text
 msgid ""
-"Find 'id' of the parent group - by listing groups for example. Use that `id`"
-" to construct an endpoint uri - groups/GROUP_ID/children:"
+"Find the ID of the parent group by listing groups, and then use that ID to "
+"construct an endpoint URI, such as [filename]`groups/GROUP_ID/children`."
 msgstr ""
-"グループを一覧表示するなどして、親グループの 'id' を検索します。その `id`を私用してエンドポイントuri "
-"`groups/GROUP_ID/children` を作成します。"
+"グループを一覧表示して親グループのIDを探し、そのIDを使用して [filename]`groups/GROUP_ID/children` "
+"のようなエンドポイントURIを構築します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create groups/51204821-0580-46db-8f2d-27106c6b5ded/children "
-"-r demorealm -s name=SubGroup\n"
+"$ kcadm.sh create groups/51204821-0580-46db-8f2d-27106c6b5ded/children -r "
+"demorealm -s name=SubGroup\n"
 msgstr ""
-"    $ kcadm.sh create groups/51204821-0580-46db-8f2d-27106c6b5ded/children "
-"-r demorealm -s name=SubGroup\n"
+"$ kcadm.sh create groups/51204821-0580-46db-8f2d-27106c6b5ded/children -r "
+"demorealm -s name=SubGroup\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Moving a group under another group"
 msgstr "グループを別のグループの下に移動する"
 
 #. type: Plain text
 msgid ""
-"Find 'id' of existing parent group, and of existing child group. Use parent "
-"group's `id` to construct and endpoint uri - "
-"groups/PARENT_GROUP_ID/children."
-msgstr ""
-"既存の親グループと既存の子グループの 'id' を検索します。 親グループの `id` を使用してエンドポイントuri "
-"`groups/PARENT_GROUP_ID/children` を作成します。"
+"Find the ID of an existing parent group and of an existing child group."
+msgstr "既存の親グループと既存の子グループのIDを検索します。"
 
 #. type: Plain text
 msgid ""
-"Perform 'create' operation on this endpoint, and pass child group `id` as "
-"JSON body. For example:"
-msgstr "このエンドポイントで 'create' 操作を実行し、子グループ `id` をJSON本体として渡します。例えば："
+"Use the parent group's ID to construct an endpoint URI, such as "
+"[filename]`groups/PARENT_GROUP_ID/children`."
+msgstr ""
+"親グループのIDを使用して、 [filename]`groups/PARENT_GROUP_ID/children` "
+"のようなエンドポイントURIを作成します。"
 
 #. type: Plain text
+msgid ""
+"Run the [command]`create` command on this endpoint and pass the child "
+"group's ID as a JSON body."
+msgstr "このエンドポイントで [command]`create` コマンドを実行し、子グループのIDをJSONとして渡します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create groups/51204821-0580-46db-8f2d-27106c6b5ded/children "
-"-r demorealm -s id=08d410c6-d585-4059-bb07-54dcb92c5094\n"
+"$ kcadm.sh create groups/51204821-0580-46db-8f2d-27106c6b5ded/children -r "
+"demorealm -s id=08d410c6-d585-4059-bb07-54dcb92c5094\n"
 msgstr ""
-"    $ kcadm.sh create groups/51204821-0580-46db-8f2d-27106c6b5ded/children "
-"-r demorealm -s id=08d410c6-d585-4059-bb07-54dcb92c5094\n"
+"$ kcadm.sh create groups/51204821-0580-46db-8f2d-27106c6b5ded/children -r "
+"demorealm -s id=08d410c6-d585-4059-bb07-54dcb92c5094\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Get groups for specific user"
+msgid "Get groups for a specific user"
 msgstr "特定のユーザーのグループを取得する"
 
 #. type: Plain text
 msgid ""
-"To get user's membership in groups, use user's `id` to compose an endpoint "
-"URI - `users/USER_ID/groups`"
+"Use a user's ID to determine a user's membership in groups to compose an "
+"endpoint URI, such as [filename]`users/USER_ID/groups`."
 msgstr ""
-"ユーザーが構成員となっているグループを取得するには、ユーザーの `id` を使用してエンドポイントURI `users/USER_ID/groups` "
-"を作成します。"
+"グループ内のユーザーのメンバーシップを判断するため、ユーザーのIDを使用して、 [filename]`users/USER_ID/groups` "
+"のようなエンドポイントURIを構成します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get users/b544f379-5fc4-49e5-8a8d-5cfb71f46f53/groups -r "
+"$ kcadm.sh get users/b544f379-5fc4-49e5-8a8d-5cfb71f46f53/groups -r "
 "demorealm\n"
 msgstr ""
 "$ kcadm.sh get users/b544f379-5fc4-49e5-8a8d-5cfb71f46f53/groups -r "
 "demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Adding user to a group"
-msgstr "ユーザーをグループに追加する"
+msgid "Adding a user to a group"
+msgstr "グループにユーザーを追加する"
 
 #. type: Plain text
 msgid ""
-"To join user to a group use `update` operation with an endpoint uri composed"
-" from user's `id`, and group's `id` - users/USER_ID/groups/GROUP_ID."
+"Use the [command]`update` command with an endpoint URI composed from user's "
+"ID and a group's ID, such as [filename]`users/USER_ID/groups/GROUP_ID`, to "
+"add a user to a group."
 msgstr ""
-"ユーザーをグループに参加させるには、ユーザーの `id` とグループの `id` から構成されたエンドポイントuri "
-"`users/USER_ID/groups/GROUP_ID` で `update` 操作を使います。"
+"グループにユーザーを追加するには、ユーザのIDと、[filename]`users/USER_ID/groups/GROUP_ID` "
+"から構成されるエンドポイントURIを利用して[command]`update` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update users/b544f379-5fc4-49e5-8a8d-"
+"$ kcadm.sh update users/b544f379-5fc4-49e5-8a8d-"
 "5cfb71f46f53/groups/ce01117a-7426-4670-a29a-5c118056fe20 -r demorealm -s "
 "realm=demorealm -s userId=b544f379-5fc4-49e5-8a8d-5cfb71f46f53 -s "
 "groupId=ce01117a-7426-4670-a29a-5c118056fe20 -n\n"
@@ -2401,218 +2495,236 @@ msgstr ""
 "realm=demorealm -s userId=b544f379-5fc4-49e5-8a8d-5cfb71f46f53 -s "
 "groupId=ce01117a-7426-4670-a29a-5c118056fe20 -n\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Removing user from a group"
-msgstr "グループからのユーザーの削除"
+msgid "Removing a user from a group"
+msgstr "グループからユーザーを削除する"
 
 #. type: Plain text
 msgid ""
-"To remove user from a group use `delete` operation on the same endpoint uri "
-"as used for adding user to a group - users/USER_ID/groups/GROUP_ID."
+"Use the [command]`delete` command on the same endpoint URI as used for "
+"adding a user to a group, such as [filename]`users/USER_ID/groups/GROUP_ID`,"
+" to remove a user from a group."
 msgstr ""
-"ユーザーをグループから削除するには、ユーザーをグループに追加するのと同じエンドポイントuri "
-"`users/USER_ID/groups/GROUP_ID` で `delete` 操作を使用します。"
+"グループからユーザーを削除するには、 [filename]`users/USER_ID/groups/GROUP_ID` "
+"のように、ユーザーをグループに追加するときに使用したのと同じエンドポイントURIで [command]`delete` コマンドを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh delete users/b544f379-5fc4-49e5-8a8d-"
+"$ kcadm.sh delete users/b544f379-5fc4-49e5-8a8d-"
 "5cfb71f46f53/groups/ce01117a-7426-4670-a29a-5c118056fe20 -r demorealm\n"
 msgstr ""
 "$ kcadm.sh delete users/b544f379-5fc4-49e5-8a8d-"
 "5cfb71f46f53/groups/ce01117a-7426-4670-a29a-5c118056fe20 -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing assigned, available, and effective realm roles for a group"
 msgstr "グループに割り当てられた、使用可能な、有効なレルム・ロールの一覧表示"
 
 #. type: Plain text
-msgid "Use a dedicated 'get-roles' command."
-msgstr "専用の `get-roles` コマンドを使用します。"
+msgid ""
+"Use a dedicated [command]`get-roles` command to list assigned, available, "
+"and effective realm roles for a group."
+msgstr ""
+"グループに割り当てられた、使用可能な、有効なレルム・ロールを一覧表示するには、専用の [command]`get-roles` コマンドを使用します。"
 
 #. type: Plain text
 msgid ""
-"To list *assigned* realm roles for the group you can specify the target "
-"group by `name` (via `--gname` option), `path` (via `--gpath` option), or "
-"`id` (via `--gid` option)."
+"Specify the target group by name (via the [command]`--gname` option), path "
+"(via the [command] `--gpath` option), or ID (via the [command]`--gid` "
+"option) to list *assigned* realm roles for the group."
 msgstr ""
-"グループの *割り当てられた* レルム・ロールを一覧表示するには、対象のグループを `name` （ ` --gname` オプションで）、 "
-"`path` （ `--gpath` オプションで）、 `id` （ `--gid` オプションで）のいずれかで指定できます。"
+"対象グループを、 [command]`--gname` オプションで名前を指定するか、 [command] `--gpath` "
+"オプションでパスをを指定する、または [command]`--gid` オプションでIDを指定することにとり、そのグループの *割り当てられた* "
+"レルム・ロールを一覧表示します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm --gname Group\n"
+msgid "$ kcadm.sh get-roles -r demorealm --gname Group\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --gname Group\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm --gname Group --effective\n"
+msgid "$ kcadm.sh get-roles -r demorealm --gname Group --effective\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --gname Group --effective\n"
 
 #. type: Plain text
 msgid ""
-"To list realm roles that can still be added to the group, use `--available` "
-"option instead."
-msgstr "グループに追加できるレルム・ロールを一覧表示するには、代わりに `--available` オプションを使用してください。"
+"Use the [command]`--available` option to list realm roles that can still be "
+"added to the group."
+msgstr "グループに追加できるレルム・ロールを表示するには、 [command]`--available` オプションを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get-roles -r demorealm --gname Group --available\n"
+msgid "$ kcadm.sh get-roles -r demorealm --gname Group --available\n"
 msgstr "$ kcadm.sh get-roles -r demorealm --gname Group --available\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing assigned, available, and effective client roles for a group"
 msgstr "グループに割り当てられた、利用可能な、有効なクライアントロールの一覧表示"
 
 #. type: Plain text
 msgid ""
-"To list *assigned* client roles for the user you can specify the target "
-"group by either `name` (via --gname option) or `id` (via `--gid` option), "
-"and client by either `clientId` (via `--cclientid` option) or `id` (via "
-"`--id` option)."
+"Use a dedicated [command]`get-roles` command to list assigned, available, "
+"and effective client roles for a group."
 msgstr ""
-"ユーザに *割り当てられた* クライアント・ロールを一覧表示するには、 `name` （ `--gname` オプションで）または `id` （ "
-"`--gid` オプションで）のいずれかで対象のグループを指定できます。 `clientId` （ `--cclientid`オプションで）または "
-"`id` （ `--id` オプションで）のどちらかでクライアントを指定できます。"
+"グループに割り当てられた、利用可能な、有効なクライアント・ロールを一覧表示するには、専用の [command]`get-roles` "
+"コマンドを使用します。"
 
 #. type: Plain text
+msgid ""
+"Specify the target group by either name (via the [command]`--gname` option) "
+"or ID (via the [command]`--gid` option), and client by either the clientId "
+"attribute (via the [command] `--cclientid` option) or ID (via the "
+"[command]`--id` option) to list *assigned* client roles for the user."
+msgstr ""
+"[command]`--gname` オプションで名前指定する、 [command]`--gid` "
+"オプションでIDを指定することでグループを指定します。また、 [command] `--cclientid` オプションでclientId属性を指定、 "
+"[command]`--id` オプションでIDを指定することでクライアントを特定し、ユーザーの *割り当てられた* "
+"クライアント・ロールを一覧表示します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-"
+"$ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-"
 "management\n"
 msgstr ""
-"    $ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-"
+"$ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-"
 "management\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-"
-"management --effective\n"
+"$ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-management"
+" --effective\n"
 msgstr ""
-"    $ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-"
-"management --effective\n"
+"$ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-management"
+" --effective\n"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-"
-"management --available\n"
+"$ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-management"
+" --available\n"
 msgstr ""
-"    $ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-"
-"management --available\n"
+"$ kcadm.sh get-roles -r demorealm --gname Group --cclientid realm-management"
+" --available\n"
 
 #. type: Title ===
 #, no-wrap
-msgid "Identity Providers operations"
-msgstr "アイデンティティー・プロバイダーの操作"
+msgid "Identity provider operations"
+msgstr " アイデンティティー・プロバイダーの操作"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing available identity providers"
 msgstr "使用可能なアイデンティティー・プロバイダー の一覧表示"
 
 #. type: Plain text
 msgid ""
-"Use `serverinfo` endpoint to list available identity providers. For example:"
-msgstr "使用可能なアイデンティティー・プロバイダーをリストするには、 `serverinfo` エンドポイントを使用します。例えば："
+"Use the [filename]`serverinfo` endpoint to list available identity "
+"providers."
+msgstr "使用可能なアイデンティティー・プロバイダーを一覧表示するには、 [filename]`serverinfo` エンドポイントを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid ""
-"    $ kcadm.sh get serverinfo -r demorealm --fields 'identityProviders(*)'\n"
+msgid "$ kcadm.sh get serverinfo -r demorealm --fields 'identityProviders(*)'\n"
 msgstr ""
-"    $ kcadm.sh get serverinfo -r demorealm --fields 'identityProviders(*)'\n"
+"$ kcadm.sh get serverinfo -r demorealm --fields 'identityProviders(*)'\n"
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"Note that `serverinfo` endpoint is handled similarly to `realms` endpoint in"
-" that it is not resolved relative to target realm, because it exists outside"
-" any specific realm."
+"The [filename]`serverinfo` endpoint is handled similarly to the "
+"[filename]`realms` endpoint in that it is not resolved relative to a target "
+"realm because it exists outside any specific realm."
 msgstr ""
-"`serverinfo`エンドポイントは` "
-"realms`エンドポイントと同様に扱われる点に注意してください。特定のレルムの外に存在するため、レルムに対して解決されません。"
+" [filename]`serverinfo` エンドポイントは、特定のレルムの外に存在するため、対象レルムに対して関連がないという点において "
+"[filename]`realms` エンドポイントと同様に扱われます。"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing configured identity providers"
-msgstr "構成済みアイデンティティー・プロバイダー の一覧表示"
+msgstr "設定済みアイデンティティー・プロバイダー の一覧表示"
 
 #. type: Plain text
-msgid "Use `identity-provider/instances` endpoint. For example:"
-msgstr "`identity-provider/instances` エンドポイントを使用してください。例えば："
+msgid "Use the [filename]`identity-provider/instances` endpoint."
+msgstr "[filename]`identity-provider/instances` エンドポイントを使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get identity-provider/instances -r demorealm --fields "
+"$ kcadm.sh get identity-provider/instances -r demorealm --fields "
 "alias,providerId,enabled\n"
 msgstr ""
 "$ kcadm.sh get identity-provider/instances -r demorealm --fields "
 "alias,providerId,enabled\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Getting a specific configured identity provider"
-msgstr "特定の構成済みアイデンティティー・プロバイダーの取得"
+msgstr "特定の設定済みアイデンティティー・プロバイダーの取得"
 
 #. type: Plain text
 msgid ""
-"To get a specific identity provider use `alias` attribute of identity "
-"provider to construct an endpoint uri - `identity-provider/instances/ALIAS`."
+"Use the [command]`alias` attribute of the identity provider to construct an "
+"endpoint URI, such as [filename]`identity-provider/instances/ALIAS`, to get "
+"a specific identity provider."
 msgstr ""
-"特定のアイデンティティー・プロバイダーを取得するには、アイデンティティー・プロバイダーの `alias` 属性を使用して、エンドポイントuri  "
-"`identity-provider/instances/ALIAS` を作成します。"
+"アイデンティティー・プロバイダーの [command]`alias` 属性を使用して、  [filename]`identity-"
+"provider/instances/ALIAS` などのエンドポイントURIを構築し、特定のアイデンティティー・プロバイダーを取得します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get identity-provider/instances/facebook -r demorealm\n"
-msgstr "    $ kcadm.sh get identity-provider/instances/facebook -r demorealm\n"
+msgid "$ kcadm.sh get identity-provider/instances/facebook -r demorealm\n"
+msgstr "$ kcadm.sh get identity-provider/instances/facebook -r demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Removing a specific configured identity provider"
-msgstr "特定の構成済みアイデンティティー・プロバイダーの削除"
+msgstr "特定の設定済みアイデンティティー・プロバイダーの削除"
 
 #. type: Plain text
 msgid ""
-"Use `delete` operation with the same endpoint uri as for getting a specific "
-"configured identity provider. For example:"
-msgstr "特定の構成済みアイデンティティ・プロバイダーを取得する場合と同じエンドポイントuriで `delete` 操作を使用します。例えば："
-
-#. type: Plain text
-#, no-wrap
-msgid ""
-"    $ kcadm.sh delete identity-provider/instances/facebook -r demorealm\n"
+"Use the [command]`delete` command with the same endpoint URI that you used "
+"to get a specific configured identity provider to remove a specific "
+"configured identity provider."
 msgstr ""
-"    $ kcadm.sh delete identity-provider/instances/facebook -r demorealm\n"
+"特定の設定済みのアイデンティティー・プロバイダーを取得して、特定の設定済みのアイデンティティー・プロバイダーを取得するために使用したものと同じエンドポイントURIで"
+" [command]`delete` コマンドを使用します。"
 
-#. type: Labeled list
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm.sh delete identity-provider/instances/facebook -r demorealm\n"
+msgstr "$ kcadm.sh delete identity-provider/instances/facebook -r demorealm\n"
+
+#. type: Title ====
 #, no-wrap
 msgid "Configuring a Keycloak OpenID Connect identity provider"
 msgstr "Keycloak OpenID Connect アイデンティティー・プロバイダーの設定"
 
 #. type: Plain text
 msgid ""
-"Use `keycloak-oidc` as `providerId` when creating a new identity provider "
-"instance."
+"Use [command]`keycloak-oidc` as the [command]`providerId` when creating a "
+"new identity provider instance."
 msgstr ""
-"新しいアイデンティティー・プロバイダー・インスタンスを作成するときは、 `keyIdoc` を `providerId` として使用してください。"
+"新しいアイデンティティー・プロバイダー・インスタンスを作成するときは、 [command]`providerId` として [command"
+"]`keycloak-oidc` を使用してください。"
 
 #. type: Plain text
 msgid ""
-"Provide config attributes `authorizationUrl`, `tokenUrl`, `clientId`, and "
-"`clientSecret`."
+"Provide the [command]`config` attributes: [command]`authorizationUrl`, "
+"[command]`tokenUrl`, [command]`clientId`, and [command]`clientSecret`."
 msgstr ""
-"設定属性 `authorizationUrl` 、 `tokenUrl` 、 `clientId` 、 `clientSecret` を提供します。"
+"[command]`authorizationUrl` 、 [command]`tokenUrl` 、 [command]`clientId` 、  "
+"[command]`clientSecret` の [command]`config` 属性として指定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s alias"
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias"
 "=keycloak-oidc -s providerId=keycloak-oidc -s enabled=true -s "
 "'config.useJwksUrl=\"true\"' -s "
 "config.authorizationUrl=http://localhost:8180/auth/realms/demorealm/protocol"
@@ -2621,7 +2733,7 @@ msgid ""
 "connect/token -s config.clientId=demo-oidc-provider -s "
 "config.clientSecret=secret\n"
 msgstr ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s alias"
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias"
 "=keycloak-oidc -s providerId=keycloak-oidc -s enabled=true -s "
 "'config.useJwksUrl=\"true\"' -s "
 "config.authorizationUrl=http://localhost:8180/auth/realms/demorealm/protocol"
@@ -2630,38 +2742,42 @@ msgstr ""
 "connect/token -s config.clientId=demo-oidc-provider -s "
 "config.clientSecret=secret\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring an OpenID Connect identity provider"
 msgstr "OpenID Connect アイデンティティー・プロバイダーの設定"
 
 #. type: Plain text
 msgid ""
-"You configure the generic OpenID Connect provider the same way as Keycloak "
-"OpenID Connect provider, except that you set `providerId` attribute value to"
-" `oidc`."
+"Configure the generic OpenID Connect provider the same way you configure the"
+" Keycloak OpenID Connect provider, except that you set the "
+"[command]`providerId` attribute value to [command]`oidc`."
 msgstr ""
-"一般的なOpenID Connect プロバイダーは、 `providerId` 属性値を `oidc` に設定する点を除いて、Keycloak "
-"OpenID Connect プロバイダーと同じ方法で設定します。"
+"[command]`providerId` 属性値を [command]`oidc` に設定することを除いて、Keycloak OpenID "
+"Connectプロバイダーを設定するのと同じ方法で、汎用OpenID Connectプロバイダーを設定します。"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring a SAML 2 identity provider"
 msgstr "SAML 2 アイデンティティー・プロバイダーの設定"
 
 #. type: Plain text
-msgid ""
-"Use `saml` as `providerId`. Provide `config` attributes - "
-"`singleSignOnServiceUrl`, `nameIDPolicyFormat`, and `signatureAlgorithm`."
-msgstr ""
-"`saml` を `providerId` として使用してください。 `config` 属性（ ` singleSignOnServiceUrl` 、 "
-"`nameIDPolicyFormat` 、および `signatureAlgorithm` ）を提供します。"
+msgid "Use [command]`saml` as the [command]`providerId`."
+msgstr "[command]`providerId` として [command]`saml` を使います。"
 
 #. type: Plain text
+msgid ""
+"Provide the [command]`config` attributes: [command]`singleSignOnServiceUrl`,"
+" [command]`nameIDPolicyFormat`, and [command]`signatureAlgorithm`."
+msgstr ""
+"[command]`singleSignOnServiceUrl` 、 [command]`nameIDPolicyFormat` 、  "
+"[command]`signatureAlgorithm` を [command]`config` 属性として指定します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s alias=saml"
-" -s providerId=saml -s enabled=true -s 'config.useJwksUrl=\"true\"' -s "
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias=saml -s "
+"providerId=saml -s enabled=true -s 'config.useJwksUrl=\"true\"' -s "
 "config.singleSignOnServiceUrl=http://localhost:8180/auth/realms/saml-broker-"
 "realm/protocol/saml -s config.nameIDPolicyFormat=urn:oasis:names:tc:SAML:2.0"
 ":nameid-format:persistent -s config.signatureAlgorithm=RSA_SHA256\n"
@@ -2672,221 +2788,249 @@ msgstr ""
 "realm/protocol/saml -s config.nameIDPolicyFormat=urn:oasis:names:tc:SAML:2.0"
 ":nameid-format:persistent -s config.signatureAlgorithm=RSA_SHA256\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring a Facebook identity provider"
 msgstr "Facebookアイデンティティー・プロバイダーの設定"
 
 #. type: Plain text
-msgid ""
-"Use `facebook` as `providerId`. Provide `config` attributes - `clientId` and"
-" `clientSecret` as obtained from Facebook Developers application "
-"configuration page for your application."
-msgstr ""
-"`facebook` を `providerId` として使います。アプリケーションのFacebook "
-"Developersアプリケーション設定ページから取得した `config` 属性（ `clientId` と `clientSecret` "
-"）を提供します。"
+msgid "Use [command]`facebook` as the [command]`providerId`."
+msgstr "[command]`providerId` として [command]`facebook` を使用します。"
 
 #. type: Plain text
+msgid ""
+"Provide the [command]`config` attributes: [command]`clientId` and "
+"[command]`clientSecret`. You can find these attributes in the Facebook "
+"Developers application configuration page for your application."
+msgstr ""
+"[command]`clientId` と [command]`clientSecret` の[command]`config` "
+"属性をして指定します。これらの属性は、アプリケーションのFacebook Developersアプリケーション設定ページで確認できます。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s "
-"alias=facebook -s providerId=facebook -s enabled=true  -s "
-"'config.useJwksUrl=\"true\"' -s config.clientId=FACEBOOK_CLIENT_ID -s "
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias=facebook"
+" -s providerId=facebook -s enabled=true  -s 'config.useJwksUrl=\"true\"' -s "
+"config.clientId=FACEBOOK_CLIENT_ID -s "
 "config.clientSecret=FACEBOOK_CLIENT_SECRET\n"
 msgstr ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s "
-"alias=facebook -s providerId=facebook -s enabled=true  -s "
-"'config.useJwksUrl=\"true\"' -s config.clientId=FACEBOOK_CLIENT_ID -s "
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias=facebook"
+" -s providerId=facebook -s enabled=true  -s 'config.useJwksUrl=\"true\"' -s "
+"config.clientId=FACEBOOK_CLIENT_ID -s "
 "config.clientSecret=FACEBOOK_CLIENT_SECRET\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring a Google identity provider"
 msgstr "Googleアイデンティティー・プロバイダーの設定"
 
 #. type: Plain text
-msgid ""
-"Use `google` as `providerId`. Provide `config` attributes - `clientId` and "
-"`clientSecret` as obtained from Google Developers application configuration "
-"page for your application."
-msgstr ""
-"`google` を `providerId` として使います。アプリケーションのGoogle "
-"Developersアプリケーション設定ページから取得した `config` 属性（ `clientId` と `clientSecret` "
-"）を提供します。"
+msgid "Use [command]`google` as the [command]`providerId`."
+msgstr "[command]`providerId` として [command]`google` を使用します。"
 
 #. type: Plain text
+msgid ""
+"Provide the [command]`config` attributes: [command]`clientId` and "
+"[command]`clientSecret`. You can find these attributes in the Google "
+"Developers application configuration page for your application."
+msgstr ""
+"[command]`clientId` と [command]`clientSecret` を [command]`config` "
+"属性として指定します。これらの属性は、アプリケーションのGoogle Developersアプリケーション設定ページで確認できます。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s "
-"alias=google -s providerId=google -s enabled=true  -s "
-"'config.useJwksUrl=\"true\"' -s config.clientId=GOOGLE_CLIENT_ID -s "
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias=google "
+"-s providerId=google -s enabled=true  -s 'config.useJwksUrl=\"true\"' -s "
+"config.clientId=GOOGLE_CLIENT_ID -s "
 "config.clientSecret=GOOGLE_CLIENT_SECRET\n"
 msgstr ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s "
-"alias=google -s providerId=google -s enabled=true  -s "
-"'config.useJwksUrl=\"true\"' -s config.clientId=GOOGLE_CLIENT_ID -s "
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias=google "
+"-s providerId=google -s enabled=true  -s 'config.useJwksUrl=\"true\"' -s "
+"config.clientId=GOOGLE_CLIENT_ID -s "
 "config.clientSecret=GOOGLE_CLIENT_SECRET\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring a Twitter identity provider"
 msgstr "Twitterアイデンティティー・プロバイダーの設定"
 
 #. type: Plain text
-msgid ""
-"Use `twitter` as `providerId`. Provide `config` attributes - `clientId` and "
-"`clientSecret` as obtained from Twitter Application Management application "
-"configuration page for your application."
-msgstr ""
-"`twitter` を `providerId` "
-"として使います。アプリケーションのTwitterアプリケーション管理アプリケーション設定ページから取得した `config` 属性（ "
-"`clientId` と `clientSecret` ）を提供します。"
+msgid "Use [command]`twitter` as the [command]`providerId`."
+msgstr "[command]`providerId` として [command]`twitter` を使用します。"
 
 #. type: Plain text
+msgid ""
+"Provide the [command]`config` attributes [command]`clientId` and "
+"[command]`clientSecret`. You can find these attributes in the Twitter "
+"Application Management application configuration page for your application."
+msgstr ""
+"[command]`clientId` と [command]`clientSecret` を [command]`config` "
+"属性として指定します。これらの属性は、アプリケーションのTwitterアプリケーション管理アプリケーション設定ページで確認できます。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s "
-"alias=google -s providerId=google -s enabled=true  -s "
-"'config.useJwksUrl=\"true\"' -s config.clientId=TWITTER_API_KEY -s "
-"config.clientSecret=TWITTER_API_SECRET\n"
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias=google "
+"-s providerId=google -s enabled=true  -s 'config.useJwksUrl=\"true\"' -s "
+"config.clientId=TWITTER_API_KEY -s config.clientSecret=TWITTER_API_SECRET\n"
 msgstr ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s "
-"alias=google -s providerId=google -s enabled=true  -s "
-"'config.useJwksUrl=\"true\"' -s config.clientId=TWITTER_API_KEY -s "
-"config.clientSecret=TWITTER_API_SECRET\n"
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias=google "
+"-s providerId=google -s enabled=true  -s 'config.useJwksUrl=\"true\"' -s "
+"config.clientId=TWITTER_API_KEY -s config.clientSecret=TWITTER_API_SECRET\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring a GitHub identity provider"
 msgstr "GitHubアイデンティティー・プロバイダーの設定"
 
 #. type: Plain text
-msgid ""
-"Use `github` as `providerId`. Provide `config` attributes - `clientId` and "
-"`clientSecret` as obtained from GitHub Developer Application Settings page "
-"for your application."
-msgstr ""
-"`github` を `providerId` として使います。アプリケーションのGitHub開発者アプリケーション設定ページから取得した "
-"`config` 属性（ ` clientId` と `clientSecret` ）を提供します。"
+msgid "Use [command]`github` as the [command]`providerId`."
+msgstr "[command]`providerId` として [command]`github` を使用します。"
 
 #. type: Plain text
+msgid ""
+"Provide the [command]`config` attributes [command]`clientId` and "
+"[command]`clientSecret`. You can find these attributes in the GitHub "
+"Developer Application Settings page for your application."
+msgstr ""
+"[command]`clientId` と [command]`clientSecret` を [command]`config` "
+"属性として指定します。これらの属性は、アプリケーションのGitHub開発者アプリケーション設定ページで確認できます。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s "
-"alias=github -s providerId=github -s enabled=true  -s "
-"'config.useJwksUrl=\"true\"' -s config.clientId=GITHUB_CLIENT_ID -s "
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias=github "
+"-s providerId=github -s enabled=true  -s 'config.useJwksUrl=\"true\"' -s "
+"config.clientId=GITHUB_CLIENT_ID -s "
 "config.clientSecret=GITHUB_CLIENT_SECRET\n"
 msgstr ""
 "$ kcadm.sh create identity-provider/instances -r demorealm -s alias=github "
-"-s providerId=github -s enabled=true -s 'config.useJwksUrl=\"true\"' -s "
+"-s providerId=github -s enabled=true  -s 'config.useJwksUrl=\"true\"' -s "
 "config.clientId=GITHUB_CLIENT_ID -s "
 "config.clientSecret=GITHUB_CLIENT_SECRET\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring a LinkedIn identity provider"
 msgstr "LinkedInアイデンティティー・プロバイダーの設定"
 
 #. type: Plain text
-msgid ""
-"Use `linkedin` as `providerId`. Provide `config` attributes - `clientId` and"
-" `clientSecret` as obtained from LinkedIn Developer Console application page"
-" for your application."
-msgstr ""
-"`linkedin` を `providerId` "
-"として使用してください。アプリケーションのLinkedIn開発者コンソール・アプリケーション・ページから取得した `config` 属性（ "
-"`clientId` と `clientSecret` ）を提供します。"
+msgid "Use [command]`linkedin` as the [command]`providerId`."
+msgstr "[command]`providerId` として [command]`linkedin` を使用します。"
 
 #. type: Plain text
+msgid ""
+"Provide the [command]`config` attributes [command]`clientId` and "
+"[command]`clientSecret`. You can find these attributes in the LinkedIn "
+"Developer Console application page for your application."
+msgstr ""
+"[command]`clientId` と [command]`clientSecret` を [command]`config` "
+"属性として指定します。これらの属性は、アプリケーションのLinkedInデベロッパーコンソールアプリケーションページで確認できます。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s "
-"alias=linkedin -s providerId=linkedin -s enabled=true  -s "
-"'config.useJwksUrl=\"true\"' -s config.clientId=LINKEDIN_CLIENT_ID -s "
+"$ kcadm.sh create identity-provider/instances -r demorealm -s alias=linkedin"
+" -s providerId=linkedin -s enabled=true  -s 'config.useJwksUrl=\"true\"' -s "
+"config.clientId=LINKEDIN_CLIENT_ID -s "
 "config.clientSecret=LINKEDIN_CLIENT_SECRET\n"
 msgstr ""
 "$ kcadm.sh create identity-provider/instances -r demorealm -s alias=linkedin"
-" -s providerId=linkedin -s enabled=true -s 'config.useJwksUrl=\"true\"' -s "
+" -s providerId=linkedin -s enabled=true  -s 'config.useJwksUrl=\"true\"' -s "
 "config.clientId=LINKEDIN_CLIENT_ID -s "
 "config.clientSecret=LINKEDIN_CLIENT_SECRET\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring a Microsoft Live identity provider"
 msgstr "Microsoft Live アイデンティティー・プロバイダーの設定"
 
 #. type: Plain text
-msgid ""
-"Use `microsoft` as `providerId`. Provide `config` attributes - `clientId` "
-"and `clientSecret` as obtained from Microsoft Application Registration "
-"Portal page for your application."
-msgstr ""
-"`microsoft` を `providerId` として使います。アプリケーションのMicrosoftアプリケーション登録ポータルページから取得した"
-" `config` 属性（ `clientId` と `clientSecret` ）を提供します。"
+msgid "Use [command]`microsoft` as the [command]`providerId`."
+msgstr "[command]`providerId` として [command]`microsoft` を使用します。"
 
 #. type: Plain text
+msgid ""
+"Provide the [command]`config` attributes `clientId` and `clientSecret`. You "
+"can find these attributes in the Microsoft Application Registration Portal "
+"page for your application."
+msgstr ""
+"`clientId` and `clientSecret` を [command]`config` "
+"属性として指定します。これらの属性は、アプリケーションのMicrosoftアプリケーション登録ポータルページで確認できます。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s "
+"$ kcadm.sh create identity-provider/instances -r demorealm -s "
 "alias=microsoft -s providerId=microsoft -s enabled=true  -s "
 "'config.useJwksUrl=\"true\"' -s config.clientId=MICROSOFT_APP_ID -s "
 "config.clientSecret=MICROSOFT_PASSWORD\n"
 msgstr ""
 "$ kcadm.sh create identity-provider/instances -r demorealm -s "
-"alias=microsoft -s providerId=microsoft -s enabled=true -s "
+"alias=microsoft -s providerId=microsoft -s enabled=true  -s "
 "'config.useJwksUrl=\"true\"' -s config.clientId=MICROSOFT_APP_ID -s "
 "config.clientSecret=MICROSOFT_PASSWORD\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring a StackOverflow identity provider"
 msgstr "StackOverflowアイデンティティー・プロバイダーの設定"
 
 #. type: Plain text
-msgid ""
-"Use `stackoverflow` as `providerId`. Provide `config` attributes - "
-"`clientId`, `clientSecret` and `key` as obtained from Stack Apps OAuth page "
-"for your application."
-msgstr ""
-"`stackoverflow` を `providerId` として使用してください。アプリケーションのStack Apps "
-"OAuthページから取得した `config` 属性（ `--clientId` 、 `clientSecret` 、 `key` ）を提供します。"
+msgid "Use `stackoverflow` command as the [command]`providerId`."
+msgstr "[command]`providerId` として `stackoverflow` を使用します。"
 
 #. type: Plain text
+msgid ""
+"Provide the [command]`config` attributes [command]`clientId`, "
+"[command]`clientSecret`, and [command]`key`. You can find these attributes "
+"in the Stack Apps OAuth page for your application."
+msgstr ""
+"[command]`clientId` 、 [command]`clientSecret` 、 [command]`key` を "
+"[command]`config` として提供します。これらの属性は、アプリケーションのStack Apps OAuthページで確認できます。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create identity-provider/instances -r demorealm -s "
+"$ kcadm.sh create identity-provider/instances -r demorealm -s "
 "alias=stackoverflow -s providerId=stackoverflow -s enabled=true  -s "
 "'config.useJwksUrl=\"true\"' -s config.clientId=STACKAPPS_CLIENT_ID -s "
 "config.clientSecret=STACKAPPS_CLIENT_SECRET -s config.key=STACKAPPS_KEY\n"
 msgstr ""
 "$ kcadm.sh create identity-provider/instances -r demorealm -s "
-"alias=stackoverflow -s providerId=stackoverflow -s enabled=true -s "
+"alias=stackoverflow -s providerId=stackoverflow -s enabled=true  -s "
 "'config.useJwksUrl=\"true\"' -s config.clientId=STACKAPPS_CLIENT_ID -s "
 "config.clientSecret=STACKAPPS_CLIENT_SECRET -s config.key=STACKAPPS_KEY\n"
 
 #. type: Title ===
 #, no-wrap
-msgid "Storage Providers operations"
+msgid "Storage provider operations"
 msgstr "ストレージ・プロバイダーの操作"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring a Kerberos storage provider"
 msgstr "Kerberosストレージ・プロバイダーの設定"
 
 #. type: Plain text
 msgid ""
-"Use `create` against `user-federation/instances` endpoint. Specify "
-"`kerberos` as a value of `providerName` attribute."
+"Use the [command]`create` command against the [filename]`user-"
+"federation/instances` endpoint."
 msgstr ""
-"`user-federation/instances` エンドポイントに対して `create` を使います。 `kerberos` を "
-"`providerName` 属性の値として指定してください。"
+"[filename]`user-federation/instances` エンドポイントに対して [command]`create` "
+"コマンドを使用します。"
 
 #. type: Plain text
+msgid ""
+"Specify [command]`kerberos` as a value of the [command]`providerName` "
+"attribute."
+msgstr "[command]`providerName` 属性の値として [command]`kerberos` を指定します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create user-federation/instances -r demorealm -s "
+"$ kcadm.sh create user-federation/instances -r demorealm -s "
 "providerName=kerberos -s priority=0 -s config.debug=false -s "
 "config.allowPasswordAuthentication=true -s 'config.editMode=\"UNSYNCED\"' -s"
 " config.updateProfileFirstLogin=true -s "
@@ -2902,39 +3046,49 @@ msgstr ""
 "'config.kerberosRealm=\"KEYCLOAK.ORG\"' -s 'config.keyTab=\"http.keytab\"' "
 "-s 'config.serverPrincipal=\"HTTP/localhost@KEYCLOAK.ORG\"'\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuring an LDAP user storage provider"
 msgstr "LDAPユーザー・ストレージ・プロバイダーの設定"
 
 #. type: Plain text
 msgid ""
-"Use `create` against `components` endpoint. Specify `ldap` as a value of "
-"`providerId` attribute, and `org.keycloak.storage.UserStorageProvider` as "
-"value of `providerType` attribute. Provide realm `id` as value of `parentId`"
-" attribute."
+"Use the [command]`create` command against the [filename]`components` "
+"endpoint."
+msgstr "[filename]`components` エンドポイントに対して [command]`create` コマンドを使用します。"
+
+#. type: Plain text
+msgid ""
+"Specify [command]`ldap` as a value of the [command]`providerId` attribute, "
+"and [command]`org.keycloak.storage.UserStorageProvider` as the value of the "
+"[command]`providerType` attribute."
 msgstr ""
-"`components` エンドポイントに対して `create` を使います。 `providerId` 属性の値として `ldap` を指定し、 "
-"`providerType` 属性の値として `org.keycloak.storage.UserStorageProvider` を指定します。 "
-"`parentId` 属性の値としてレルム `id` を与えます。"
+"[command]`providerId` 属性の値として [command]`ldap` を指定し、 [command]`providerType` "
+"属性の値として [command]`org.keycloak.storage.UserStorageProvider` を指定します。"
 
 #. type: Plain text
-msgid "For example, to create a Kerberos integrated LDAP provider:"
-msgstr "たとえば、Kerberos統合LDAPプロバイダーを作成するには、次のようにします。"
+msgid ""
+"Provide the realm ID as the value of the [command]`parentId` attribute."
+msgstr "レルムIDを [command]`parentId` 属性の値として指定します。"
 
 #. type: Plain text
+msgid ""
+"Use the following example to create a Kerberos-integrated LDAP provider."
+msgstr "次の例を使用して、Kerberos統合LDAPプロバイダーを作成します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create components -r demorealm -s name=kerberos-ldap-provider"
-" -s providerId=ldap -s providerType=org.keycloak.storage.UserStorageProvider"
-" -s parentId=3d9c572b-8f33-483f-98a6-8bb421667867  -s "
-"'config.priority=[\"1\"]' -s 'config.fullSyncPeriod=[\"-1\"]' -s "
-"'config.changedSyncPeriod=[\"-1\"]' -s 'config.cachePolicy=[\"DEFAULT\"]' -s"
-" config.evictionDay=[] -s config.evictionHour=[] -s config.evictionMinute=[]"
-" -s config.maxLifespan=[] -s 'config.batchSizeForSync=[\"1000\"]' -s "
-"'config.editMode=[\"WRITABLE\"]' -s 'config.syncRegistrations=[\"false\"]' "
-"-s 'config.vendor=[\"other\"]' -s 'config.usernameLDAPAttribute=[\"uid\"]' "
-"-s 'config.rdnLDAPAttribute=[\"uid\"]' -s "
+"$ kcadm.sh create components -r demorealm -s name=kerberos-ldap-provider -s "
+"providerId=ldap -s providerType=org.keycloak.storage.UserStorageProvider -s "
+"parentId=3d9c572b-8f33-483f-98a6-8bb421667867  -s 'config.priority=[\"1\"]' "
+"-s 'config.fullSyncPeriod=[\"-1\"]' -s 'config.changedSyncPeriod=[\"-1\"]' "
+"-s 'config.cachePolicy=[\"DEFAULT\"]' -s config.evictionDay=[] -s "
+"config.evictionHour=[] -s config.evictionMinute=[] -s config.maxLifespan=[] "
+"-s 'config.batchSizeForSync=[\"1000\"]' -s 'config.editMode=[\"WRITABLE\"]' "
+"-s 'config.syncRegistrations=[\"false\"]' -s 'config.vendor=[\"other\"]' -s "
+"'config.usernameLDAPAttribute=[\"uid\"]' -s "
+"'config.rdnLDAPAttribute=[\"uid\"]' -s "
 "'config.uuidLDAPAttribute=[\"entryUUID\"]' -s "
 "'config.userObjectClasses=[\"inetOrgPerson, organizationalPerson\"]' -s "
 "'config.connectionUrl=[\"ldap://localhost:10389\"]'  -s "
@@ -2951,7 +3105,7 @@ msgid ""
 msgstr ""
 "$ kcadm.sh create components -r demorealm -s name=kerberos-ldap-provider -s "
 "providerId=ldap -s providerType=org.keycloak.storage.UserStorageProvider -s "
-"parentId=3d9c572b-8f33-483f-98a6-8bb421667867 -s 'config.priority=[\"1\"]' "
+"parentId=3d9c572b-8f33-483f-98a6-8bb421667867  -s 'config.priority=[\"1\"]' "
 "-s 'config.fullSyncPeriod=[\"-1\"]' -s 'config.changedSyncPeriod=[\"-1\"]' "
 "-s 'config.cachePolicy=[\"DEFAULT\"]' -s config.evictionDay=[] -s "
 "config.evictionHour=[] -s config.evictionMinute=[] -s config.maxLifespan=[] "
@@ -2961,7 +3115,7 @@ msgstr ""
 "'config.rdnLDAPAttribute=[\"uid\"]' -s "
 "'config.uuidLDAPAttribute=[\"entryUUID\"]' -s "
 "'config.userObjectClasses=[\"inetOrgPerson, organizationalPerson\"]' -s "
-"'config.connectionUrl=[\"ldap://localhost:10389\"]' -s "
+"'config.connectionUrl=[\"ldap://localhost:10389\"]'  -s "
 "'config.usersDn=[\"ou=People,dc=keycloak,dc=org\"]' -s "
 "'config.authType=[\"simple\"]' -s 'config.bindDn=[\"uid=admin,ou=system\"]' "
 "-s 'config.bindCredential=[\"secret\"]' -s 'config.searchScope=[\"1\"]' -s "
@@ -2973,100 +3127,112 @@ msgstr ""
 "'config.kerberosRealm=[\"KEYCLOAK.ORG\"]' -s 'config.debug=[\"true\"]' -s "
 "'config.useKerberosForPasswordAuthentication=[\"true\"]'\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Removing a user storage provider instance"
 msgstr "ユーザー・ストレージ・プロバイダー・インスタンスの削除"
 
 #. type: Plain text
 msgid ""
-"Use storage provider instance's `id` attribute to compose an endpoint uri - "
-"`components/ID`."
-msgstr "ストレージ・プロバイダー・インスタンスの `id` 属性を使用して、エンドポイントuri  `components/ID` を作成します。"
+"Use the storage provider instance's [command]`id` attribute to compose an "
+"endpoint URI, such as [filename]`components/ID`."
+msgstr ""
+"ストレージ・プロバイダー・インスタンスの [command]`id` 属性を使用して、 [filename]`components/ID` "
+"のようなエンドポイントURIを作成します。"
 
 #. type: Plain text
-msgid "Perform `delete` operation against this endpoint. For example:"
-msgstr "このエンドポイントに対して `delete` 操作を実行します。例えば："
+msgid "Run the [command]`delete` command against this endpoint."
+msgstr "このエンドポイントに対して [command]`delete` コマンドを実行します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh delete components/3d9c572b-8f33-483f-98a6-8bb421667867 -r "
+"$ kcadm.sh delete components/3d9c572b-8f33-483f-98a6-8bb421667867 -r "
 "demorealm\n"
 msgstr ""
 "$ kcadm.sh delete components/3d9c572b-8f33-483f-98a6-8bb421667867 -r "
 "demorealm\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid ""
-"Triggering synchronization of all users for specific user storage provider"
-msgstr "特定のユーザー・ストレージ・プロバイダーに対してすべてのユーザーの同期をトリガーする"
+"Triggering synchronization of all users for a specific user storage provider"
+msgstr "特定のユーザー・ストレージ・プロバイダーのすべてのユーザーの同期をトリガーする"
 
 #. type: Plain text
 msgid ""
-"Use storage provider's `id` attribute to compose an endpoint uri - user-"
-"storage/ID_OF_USER_STORAGE_INSTANCE/sync Add `action=triggerFullSync` query "
-"parameter and perform `create` command."
+"Use the storage provider's [command]`id` attribute to compose an endpoint "
+"URI, such as [filename]`user-storage/ID_OF_USER_STORAGE_INSTANCE/sync`."
 msgstr ""
-"ストレージ・プロバイダーの `id` 属性を使用してエンドポイントuri `user-"
-"storage/ID_OF_USER_STORAGE_INSTANCE/sync` を作成します。 `action=triggerFullSync` "
-"クエリ・パラメーターを追加し、 `create` コマンドを実行します。"
+"ストレージ・プロバイダーの [command]`id` 属性を使用して、 [filename]`user-"
+"storage/ID_OF_USER_STORAGE_INSTANCE/sync` のようなエンドポイントURIを作成します。"
 
 #. type: Plain text
+msgid ""
+"Add the [command]`action=triggerFullSync` query parameter and run the "
+"[command]`create` command."
+msgstr ""
+"[command]`action=triggerFullSync` クエリパラメータを追加し、 [command]`create` "
+"コマンドを実行します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create user-storage/b7c63d02-b62a-4fc1-977c-"
+"$ kcadm.sh create user-storage/b7c63d02-b62a-4fc1-977c-"
 "947d6a09e1ea/sync?action=triggerFullSync\n"
 msgstr ""
 "$ kcadm.sh create user-storage/b7c63d02-b62a-4fc1-977c-"
 "947d6a09e1ea/sync?action=triggerFullSync\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid ""
-"Triggering synchronization of changed users for specific user storage "
+"Triggering synchronization of changed users for a specific user storage "
 "provider"
 msgstr "特定のユーザー・ストレージ・プロバイダーの変更されたユーザーの同期をトリガーする"
 
 #. type: Plain text
 msgid ""
-"Use storage provider's `id` attribute to compose an endpoint uri - user-"
-"storage/ID_OF_USER_STORAGE_INSTANCE/sync Add "
-"`action=triggerChangedUsersSync` query parameter and use `create`."
+"Add the [command]`action=triggerChangedUsersSync` query parameter and run "
+"the [command]`create` command."
 msgstr ""
-"ストレージ・プロバイダーの `id` 属性を使用してエンドポイントuri `user-"
-"storage/ID_OF_USER_STORAGE_INSTANCE/sync` を作成します。 "
-"`action=triggerChangedUsersSync` クエリー・パラメーターを追加し、 `create` コマンドを実行します。 "
+"[command]`action=triggerChangedUsersSync` クエリパラメータを追加し、 [command]`create` "
+"コマンドを実行します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create user-storage/b7c63d02-b62a-4fc1-977c-"
+"$ kcadm.sh create user-storage/b7c63d02-b62a-4fc1-977c-"
 "947d6a09e1ea/sync?action=triggerChangedUsersSync\n"
 msgstr ""
 "$ kcadm.sh create user-storage/b7c63d02-b62a-4fc1-977c-"
 "947d6a09e1ea/sync?action=triggerChangedUsersSync\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Test LDAP user storage connectivity"
 msgstr "LDAPユーザー・ストレージの接続をテストする"
 
 #. type: Plain text
 msgid ""
-"Perform `get` operation on `testLDAPConnection` endpoint. Provide query "
-"parameters `bindCredential`, `bindDn`, `connectionUrl`, and "
-"`useTruststoreSpi`, and set `action` query parameter to `testConnection`."
-msgstr ""
-"`testLDAPConnection` エンドポイントで `get` 操作を行います。クエリー・パラメータ ー `bindCredential` 、 "
-"`bindDn` 、 `connectionUrl` 、 `useTruststoreSpi` を指定し、 `action` クエリー・パラメーターを "
-"`testConnection` に設定します。"
+"Run the [command]`get` command on the [filename]`testLDAPConnection` "
+"endpoint."
+msgstr "[filename]`testLDAPConnection` エンドポイントで [command]`get` コマンドを実行します。"
 
 #. type: Plain text
+msgid ""
+"Provide query parameters [command]`bindCredential`, [command]`bindDn`, "
+"[command]`connectionUrl`, and [command]`useTruststoreSpi`, and then set the "
+"[command]`action` query parameter to [command]`testConnection`."
+msgstr ""
+"[command]`bindCredential`, [command]`bindDn`, [command]`connectionUrl`, and "
+"[command]`useTruststoreSpi` をクエリ・パラメーターとして指定します。[command]`action` "
+"クエリ・パラメーターに [command]`testConnection` を設定します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get testLDAPConnection -q action=testConnection -q "
+"$ kcadm.sh get testLDAPConnection -q action=testConnection -q "
 "bindCredential=secret -q bindDn=uid=admin,ou=system -q "
 "connectionUrl=ldap://localhost:10389 -q useTruststoreSpi=ldapsOnly\n"
 msgstr ""
@@ -3074,30 +3240,29 @@ msgstr ""
 "bindCredential=secret -q bindDn=uid=admin,ou=system -q "
 "connectionUrl=ldap://localhost:10389 -q useTruststoreSpi=ldapsOnly\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Test LDAP user storage authentication"
 msgstr "LDAPユーザー・ストレージ認証をテストする"
 
 #. type: Plain text
 msgid ""
-"Perform `get` operation on `testLDAPConnection` endpoint. Provide query "
-"parameters `bindCredential`, `bindDn`, `connectionUrl`, and "
-"`useTruststoreSpi`, and set `action` query parameter to "
-"`testAuthentication`."
+"Provide the query parameters [command]`bindCredential`, [command]`bindDn`, "
+"[command]`connectionUrl`, and [command]`useTruststoreSpi`, and then set the "
+"[command]`action` query parameter to [command]`testAuthentication`."
 msgstr ""
-"`testLDAPConnection` エンドポイントで `get` 操作を行います。クエリー・パラメーター `bindCredential` 、 "
-"`bindDn` 、 `connectionUrl` 、 `useTruststoreSpi` を指定し、 `action` クエリー・パラメーターを "
-"`testAuthentication` に設定します。"
+"[command]`bindCredential` 、 [command]`bindDn` 、  [command]`connectionUrl` 、 "
+"[command]`useTruststoreSpi` をクエリ・パラメーターに指定します。[command]`action` クエリ・パラメーターに "
+"[command]`testAuthentication` を指定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh get testLDAPConnection -q action=testAuthentication -q "
+"$ kcadm.sh get testLDAPConnection -q action=testAuthentication -q "
 "bindCredential=secret -q bindDn=uid=admin,ou=system -q "
 "connectionUrl=ldap://localhost:10389 -q useTruststoreSpi=ldapsOnly\n"
 msgstr ""
-"    $ kcadm.sh get testLDAPConnection -q action=testAuthentication -q "
+"$ kcadm.sh get testLDAPConnection -q action=testAuthentication -q "
 "bindCredential=secret -q bindDn=uid=admin,ou=system -q "
 "connectionUrl=ldap://localhost:10389 -q useTruststoreSpi=ldapsOnly\n"
 
@@ -3106,29 +3271,44 @@ msgstr ""
 msgid "Adding mappers"
 msgstr "マッパーの追加"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Adding a hardcoded role LDAP mapper"
 msgstr "ハードコードされたロールLDAPマッパーの追加"
 
 #. type: Plain text
 msgid ""
-"Use `create` on `components` endpoint. Set `providerType` attribute to "
-"`org.keycloak.storage.ldap.mappers.LDAPStorageMapper`. Set `parentId` "
-"attribute to `id` of LDAP provider instance.  Set `providerId` attribute to "
-"`hardcoded-ldap-role-mapper`. Make sure to provide a value of `role` config "
-"parameter."
-msgstr ""
-"`components` エンドポイントで `create` を使います。 `providerType` 属性に "
-"`org.keycloak.storage.ldap.mappers.LDAPStorageMapper` を設定してください。 `parentId` "
-"属性にLDAPプロバイダー・インスタンスの `id` を設定してください。 `providerId` 属性に `hardcoded-ldap-role-"
-"mapper` を設定してください。必ず `role` 設定パラメーターの値を指定してください。"
+"Run the [command]`create` command on the [filename]`components` endpoint."
+msgstr "[filename]`components` エンドポイントで [command]`create` コマンドを実行します。"
 
 #. type: Plain text
+msgid ""
+"Set the [command]`providerType` attribute to "
+"[filename]`org.keycloak.storage.ldap.mappers.LDAPStorageMapper`."
+msgstr ""
+"[command]`providerType` 属性を "
+"[filename]`org.keycloak.storage.ldap.mappers.LDAPStorageMapper` に設定します。"
+
+#. type: Plain text
+msgid ""
+"Set the [command]`parentId` attribute to the ID of the LDAP provider "
+"instance."
+msgstr "[command]`parentId` 属性にLDAPプロバイダー・インスタンスのIDを設定します。"
+
+#. type: Plain text
+msgid ""
+"Set the [command]`providerId` attribute to [command]`hardcoded-ldap-role-"
+"mapper`. Make sure to provide a value of [command]`role` configuration "
+"parameter."
+msgstr ""
+"[command]`providerId` 属性に [command]`hardcoded-ldap-role-mapper` を設定します。 "
+"[command]`role` 設定パラメータの値を指定します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create components -r demorealm -s name=hardcoded-ldap-role-"
-"mapper -s providerId=hardcoded-ldap-role-mapper -s "
+"$ kcadm.sh create components -r demorealm -s name=hardcoded-ldap-role-mapper"
+" -s providerId=hardcoded-ldap-role-mapper -s "
 "providerType=org.keycloak.storage.ldap.mappers.LDAPStorageMapper -s "
 "parentId=b7c63d02-b62a-4fc1-977c-947d6a09e1ea -s 'config.role=[\"realm-"
 "management.create-client\"]'\n"
@@ -3139,28 +3319,24 @@ msgstr ""
 "parentId=b7c63d02-b62a-4fc1-977c-947d6a09e1ea -s 'config.role=[\"realm-"
 "management.create-client\"]'\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
-msgid "Adding a MS Active Directory mapper"
+msgid "Adding an MS Active Directory mapper"
 msgstr "MS Active Directoryマッパーの追加"
 
 #. type: Plain text
 msgid ""
-"Use `create` on `components` endpoint. Set `providerType` attribute to "
-"`org.keycloak.storage.ldap.mappers.LDAPStorageMapper`. Set `parentId` "
-"attribute to `id` of LDAP provider instance.  Set `providerId` attribute to "
-"`msad-user-account-control-mapper`."
+"Set the [command]`providerId` attribute to [filename]`msad-user-account-"
+"control-mapper`."
 msgstr ""
-"`components` エンドポイントで `create` を使います。 `providerType` 属性に "
-"`org.keycloak.storage.ldap.mappers.LDAPStorageMapper` を設定してください。 `parentId` "
-"属性にLDAPプロバイダー・インスタンスの `id` を設定してください。 `providerId` 属性に `msad-user-account-"
-"control-mapper` を設定してください。"
+"[command]`providerId` 属性を [filename]`msad-user-account-control-mapper` "
+"に設定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create components -r demorealm -s name=msad-user-account-"
-"control-mapper -s providerId=msad-user-account-control-mapper -s "
+"$ kcadm.sh create components -r demorealm -s name=msad-user-account-control-"
+"mapper -s providerId=msad-user-account-control-mapper -s "
 "providerType=org.keycloak.storage.ldap.mappers.LDAPStorageMapper -s "
 "parentId=b7c63d02-b62a-4fc1-977c-947d6a09e1ea\n"
 msgstr ""
@@ -3169,28 +3345,23 @@ msgstr ""
 "providerType=org.keycloak.storage.ldap.mappers.LDAPStorageMapper -s "
 "parentId=b7c63d02-b62a-4fc1-977c-947d6a09e1ea\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Adding an user attribute LDAP mapper"
 msgstr "ユーザー属性LDAPマッパーの追加"
 
 #. type: Plain text
 msgid ""
-"Use `create` on `components` endpoint. Set `providerType` attribute to "
-"`org.keycloak.storage.ldap.mappers.LDAPStorageMapper`. Set `parentId` "
-"attribute to `id` of LDAP provider instance.  Set `providerId` attribute to "
-"`user-attribute-ldap-mapper`."
+"Set the [command]`providerId` attribute to [filename]`user-attribute-ldap-"
+"mapper`."
 msgstr ""
-"`components` エンドポイントで `create` を使います。 `providerType` 属性に "
-"`org.keycloak.storage.ldap.mappers.LDAPStorageMapper` を設定してください。 `parentId` "
-"属性にLDAPプロバイダー・インスタンスの `id` を設定してください。 `providerId` 属性に `user-attribute-ldap-"
-"mapper` を設定してください。"
+"[command]`providerId` 属性を [filename]`user-attribute-ldap-mapper`に設定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create components -r demorealm -s name=user-attribute-ldap-"
-"mapper -s providerId=user-attribute-ldap-mapper -s "
+"$ kcadm.sh create components -r demorealm -s name=user-attribute-ldap-mapper"
+" -s providerId=user-attribute-ldap-mapper -s "
 "providerType=org.keycloak.storage.ldap.mappers.LDAPStorageMapper -s "
 "parentId=b7c63d02-b62a-4fc1-977c-947d6a09e1ea -s "
 "'config.\"user.model.attribute\"=[\"email\"]' -s "
@@ -3198,8 +3369,8 @@ msgid ""
 " -s 'config.\"always.read.value.from.ldap\"=[\"false\"]' -s "
 "'config.\"is.mandatory.in.ldap\"=[\"false\"]'\n"
 msgstr ""
-"    $ kcadm.sh create components -r demorealm -s name=user-attribute-ldap-"
-"mapper -s providerId=user-attribute-ldap-mapper -s "
+"$ kcadm.sh create components -r demorealm -s name=user-attribute-ldap-mapper"
+" -s providerId=user-attribute-ldap-mapper -s "
 "providerType=org.keycloak.storage.ldap.mappers.LDAPStorageMapper -s "
 "parentId=b7c63d02-b62a-4fc1-977c-947d6a09e1ea -s "
 "'config.\"user.model.attribute\"=[\"email\"]' -s "
@@ -3207,27 +3378,20 @@ msgstr ""
 " -s 'config.\"always.read.value.from.ldap\"=[\"false\"]' -s "
 "'config.\"is.mandatory.in.ldap\"=[\"false\"]'\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Adding a group LDAP mapper"
 msgstr "グループLDAPマッパーの追加"
 
 #. type: Plain text
 msgid ""
-"Use `create` on `components` endpoint. Set `providerType` attribute to "
-"`org.keycloak.storage.ldap.mappers.LDAPStorageMapper`. Set `parentId` "
-"attribute to `id` of LDAP provider instance.  Set `providerId` attribute to "
-"`group-ldap-mapper`."
-msgstr ""
-"`components` エンドポイントで `create` を使います。 `providerType` 属性に "
-"`org.keycloak.storage.ldap.mappers.LDAPStorageMapper` を設定してください。 `parentId` "
-"属性にLDAPプロバイダー・インスタンスの `id` を設定してください。 `providerId` 属性を `group-ldap-mapper` "
-"に設定してください。"
+"Set the [command]`providerId` attribute to [filename]`group-ldap-mapper`."
+msgstr "[command]`providerId` 属性を [filename]`group-ldap-mapper` に設定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create components -r demorealm -s name=group-ldap-mapper -s "
+"$ kcadm.sh create components -r demorealm -s name=group-ldap-mapper -s "
 "providerId=group-ldap-mapper -s "
 "providerType=org.keycloak.storage.ldap.mappers.LDAPStorageMapper -s "
 "parentId=b7c63d02-b62a-4fc1-977c-947d6a09e1ea -s 'config.\"groups.dn\"=[]' "
@@ -3244,7 +3408,7 @@ msgid ""
 "'config.group=[]' -s 'config.preserve=[\"true\"]' -s "
 "'config.membership=[\"member\"]'\n"
 msgstr ""
-"    $ kcadm.sh create components -r demorealm -s name=group-ldap-mapper -s "
+"$ kcadm.sh create components -r demorealm -s name=group-ldap-mapper -s "
 "providerId=group-ldap-mapper -s "
 "providerType=org.keycloak.storage.ldap.mappers.LDAPStorageMapper -s "
 "parentId=b7c63d02-b62a-4fc1-977c-947d6a09e1ea -s 'config.\"groups.dn\"=[]' "
@@ -3261,35 +3425,29 @@ msgstr ""
 "'config.group=[]' -s 'config.preserve=[\"true\"]' -s "
 "'config.membership=[\"member\"]'\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Adding a full name LDAP mapper"
 msgstr "フルネームLDAPマッパーの追加"
 
 #. type: Plain text
 msgid ""
-"Use `create` on `components` endpoint. Set `providerType` attribute to "
-"`org.keycloak.storage.ldap.mappers.LDAPStorageMapper`. Set `parentId` "
-"attribute to `id` of LDAP provider instance.  Set `providerId` attribute to "
-"`full-name-ldap-mapper`."
-msgstr ""
-"`components` エンドポイントで `create` を使います。 `providerType` 属性に "
-"`org.keycloak.storage.ldap.mappers.LDAPStorageMapper` を設定してください。 `parentId` "
-"属性にLDAPプロバイダー・インスタンスの `id` を設定してください。 `providerId` 属性に `full-name-ldap-"
-"mapper` を設定してください。"
+"Set the [command]`providerId` attribute to [filename]`full-name-ldap-"
+"mapper`."
+msgstr "[command]`providerId` 属性を [filename]`full-name-ldap-mapper` に設定します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh create components -r demorealm -s name=full-name-ldap-mapper "
-"-s providerId=full-name-ldap-mapper -s "
+"$ kcadm.sh create components -r demorealm -s name=full-name-ldap-mapper -s "
+"providerId=full-name-ldap-mapper -s "
 "providerType=org.keycloak.storage.ldap.mappers.LDAPStorageMapper -s "
 "parentId=b7c63d02-b62a-4fc1-977c-947d6a09e1ea -s "
 "'config.\"ldap.full.name.attribute\"=[\"cn\"]' -s "
 "'config.\"read.only\"=[\"false\"]' -s 'config.\"write.only\"=[\"true\"]'\n"
 msgstr ""
-"    $ kcadm.sh create components -r demorealm -s name=full-name-ldap-mapper "
-"-s providerId=full-name-ldap-mapper -s "
+"$ kcadm.sh create components -r demorealm -s name=full-name-ldap-mapper -s "
+"providerId=full-name-ldap-mapper -s "
 "providerType=org.keycloak.storage.ldap.mappers.LDAPStorageMapper -s "
 "parentId=b7c63d02-b62a-4fc1-977c-947d6a09e1ea -s "
 "'config.\"ldap.full.name.attribute\"=[\"cn\"]' -s "
@@ -3300,95 +3458,144 @@ msgstr ""
 msgid "Authentication operations"
 msgstr "認証の操作"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Setting a password policy"
 msgstr "パスワード・ポリシーの設定"
 
 #. type: Plain text
 msgid ""
-"Set realm's `passwordPolicy` attribute to enumeration expression that "
-"includes the specific policy provider id, and optional configuration."
-msgstr "レルムの `passwordPolicy` 属性を、特定のポリシー・プロバイダー・IDとオプションの設定を含む列挙式に設定します。"
+"Set the realm's [command]`passwordPolicy` attribute to an enumeration "
+"expression that includes the specific policy provider ID and optional "
+"configuration."
+msgstr ""
+"レルムの [command]`passwordPolicy` 属性を、特定のポリシー・プロバイダーIDとオプション設定を含む列挙表現で設定します。"
 
 #. type: Plain text
 msgid ""
-"For example, to set password policy to default values - i.e.: 27500 hashing "
-"iterations, requiring at least one special character, at least one uppercase"
-" character, at least one digit character, not be equal to user's `username`,"
-" and be at least 8 characters long you would use the following:"
-msgstr ""
-"たとえば、パスワード・ポリシーをデフォルト値（27500ハッシュ反復、少なくとも1つの特殊文字、少なくとも1つの大文字、少なくとも1つの数字文字、ユーザーの"
-" `username` と等しくなく、少なくとも8文字の長さ）に設定するには、次のようにします。"
+"Use the following example to set a password policy to default values. The "
+"default values include:"
+msgstr "次の例を使用して、パスワード・ポリシーをデフォルト値に設定します。デフォルト値は次のとおりです。"
 
 #. type: Plain text
+msgid "27,500 hashing iterations"
+msgstr "27,500ハッシュ反復"
+
+#. type: Plain text
+msgid "at least one special character"
+msgstr "少なくとも1つの特殊文字"
+
+#. type: Plain text
+msgid "at least one uppercase character"
+msgstr "少なくとも1つの大文字"
+
+#. type: Plain text
+msgid "at least one digit character"
+msgstr "少なくとも1つの数字"
+
+#. type: Plain text
+msgid "not be equal to a user's [filename]`username`"
+msgstr "ユーザーの [filename]`username` と等しくないこと"
+
+#. type: Plain text
+msgid "be at least eight characters long"
+msgstr "8文字以上の長さ"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update realms/demorealm -s 'passwordPolicy=\"hashIterations "
-"and specialChars and upperCase and digits and notUsername and length\"'\n"
+"$ kcadm.sh update realms/demorealm -s 'passwordPolicy=\"hashIterations and "
+"specialChars and upperCase and digits and notUsername and length\"'\n"
 msgstr ""
-"    $ kcadm.sh update realms/demorealm -s 'passwordPolicy=\"hashIterations "
-"and specialChars and upperCase and digits and notUsername and length\"'\n"
+"$ kcadm.sh update realms/demorealm -s 'passwordPolicy=\"hashIterations and "
+"specialChars and upperCase and digits and notUsername and length\"'\n"
 
 #. type: Plain text
 msgid ""
-"If you want want to use values different from defaults, pass configuration "
-"in brackets."
-msgstr "デフォルトと異なる値を使用する場合は、括弧で設定を渡します。"
+"If you want to use values different from defaults, pass the configuration in"
+" brackets."
+msgstr "デフォルトと異なる値を使用する場合は、設定を大括弧で囲みます。"
 
 #. type: Plain text
-msgid ""
-"For example, to set password policy to 25000 hash iterations, requiring at "
-"least two special characters, at least two uppercase characters, at least "
-"two lowercase characters, at least two digits, be at least nine characters "
-"long, not be equal to user's username, and not repeat for at least four "
-"changes back:"
-msgstr ""
-"たとえば、パスワードポリシーを25000ハッシュ反復、少なくとも2つの特殊文字、少なくとも2つ以上の大文字、少なくとも2つ以上の小文字、少なくとも2つ以上の数字、少なくとも9文字の長さ、ユーザー名と等しくなく、過去4回の変更と一致しない、に設定するには、次のようにします。"
+msgid "Use the following example to set a password policy to:"
+msgstr "パスワードポリシーを次のように設定するには、以下の例を使用します。"
 
 #. type: Plain text
+msgid "25,000 hash iterations"
+msgstr "25,000ハッシュ反復"
+
+#. type: Plain text
+msgid "at least two special characters"
+msgstr "少なくとも2つの特殊文字"
+
+#. type: Plain text
+msgid "at least two uppercase characters"
+msgstr "少なくとも2つの大文字"
+
+#. type: Plain text
+msgid "at least two lowercase characters"
+msgstr "少なくとも2つの小文字"
+
+#. type: Plain text
+msgid "at least two digits"
+msgstr "少なくとも2つの数字"
+
+#. type: Plain text
+msgid "be at least nine characters long"
+msgstr "9文字以上の長さ"
+
+#. type: Plain text
+msgid "not repeat for at least four changes back"
+msgstr "過去4回の変更履歴の重複を許可しない"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"    $ kcadm.sh update realms/demorealm -s "
+"$ kcadm.sh update realms/demorealm -s "
 "'passwordPolicy=\"hashIterations(25000) and specialChars(2) and upperCase(2)"
 " and lowerCase(2) and digits(2) and length(9) and notUsername and "
 "passwordHistory(4)\"'\n"
 msgstr ""
-"    $ kcadm.sh update realms/demorealm -s "
+"$ kcadm.sh update realms/demorealm -s "
 "'passwordPolicy=\"hashIterations(25000) and specialChars(2) and upperCase(2)"
 " and lowerCase(2) and digits(2) and length(9) and notUsername and "
 "passwordHistory(4)\"'\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Getting the current password policy"
 msgstr "現在のパスワード・ポリシーの取得"
 
 #. type: Plain text
 msgid ""
-"Get current realm configuration and filter out everything but "
-"`passwordPolicy` attribute."
-msgstr "現在のレルムの設定を取得し、 `passwordPolicy` 属性以外のすべてをフィルタリングします。"
+"Get the current realm configuration and filter everything but the "
+"[command]`passwordPolicy` attribute."
+msgstr "現在のレルム設定を取得し、 [command]`passwordPolicy` 属性以外のすべてをフィルタリングします。"
 
 #. type: Plain text
-msgid "For example, to display `passwordPolicy` for demorealm:"
-msgstr "例えば、demorealmの `passwordPolicy` を表示するには："
+msgid ""
+"Use the following example to display [command]`passwordPolicy` for "
+"[filename]`demorealm`."
+msgstr ""
+"[filename]`demorealm` に対して [command]`passwordPolicy` を表示するには、次の例を使用します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get realms/demorealm --fields passwordPolicy\n"
-msgstr "    $ kcadm.sh get realms/demorealm --fields passwordPolicy\n"
+msgid "$ kcadm.sh get realms/demorealm --fields passwordPolicy\n"
+msgstr "$ kcadm.sh get realms/demorealm --fields passwordPolicy\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Listing authentication flows"
 msgstr "認証フローの一覧表示"
 
 #. type: Plain text
-msgid "Use `get` operation on `authentication/flows` endpoint. For example:"
-msgstr "`authentication/flows` エンドポイントで `get` 操作を使います。例えば："
+msgid ""
+"Run the [command]`get` command on the [filename]`authentication/flows` "
+"endpoint."
+msgstr "[filename]`authentication/flows` エンドポイントで [command]`get` コマンドを実行します。"
 
-#. type: Plain text
+#. type: delimited block -
 #, no-wrap
-msgid "    $ kcadm.sh get authentication/flows -r demorealm\n"
-msgstr "$ kcadm.sh get authentication/flows -r demorealm\n"
+msgid "$ kcadm.sh get authentication/flows -r demorealm\n"
+msgstr ""

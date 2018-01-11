@@ -1,60 +1,61 @@
-# Japanese translations for keycloak-documentation-i18n package
-# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
-# Automatically generated, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: keycloak-documentation-i18n  \n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ja\n"
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title =
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:2
 #, no-wrap
 msgid "Requesting Authorization Data and Token"
-msgstr ""
+msgstr "認可データとトークンの要求"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:7
 msgid ""
 "Client applications using the UMA protocol can use a specific endpoint to "
-"obtain a special security token called a <<_service_rpt_overview, Requesting "
-"Party Token (RPT)>>.  This token consists of all the permissions granted to "
-"a user as a result of the evaluation of the permissions and authorization "
-"policies associated with the resources being requested.  With an RPT, client "
-"applications can gain access to protected resources at the resource server."
+"obtain a special security token called a <<_service_rpt_overview, Requesting"
+" Party Token (RPT)>>.  This token consists of all the permissions granted to"
+" a user as a result of the evaluation of the permissions and authorization "
+"policies associated with the resources being requested.  With an RPT, client"
+" applications can gain access to protected resources at the resource server."
 msgstr ""
+"UMAプロトコルを使用するクライアント・アプリケーションは、特定のエンドポイントを使用して、<<_service_rpt_overview, "
+"リクエスティング・パーティー・トークン（RPT）>>と呼ばれる特別なセキュリティトークンを取得できます。このトークンは、要求されているリソースに関連する権限および認可ポリシーの評価の結果として、ユーザーに付与されたすべての権限で構成されます。RPTを使用すると、クライアント・アプリケーションはリソース・サーバーで保護されたリソースにアクセスできます。"
 
 #. type: Block title
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:8
 #, no-wrap
 msgid "UMA compliant Authorization API Endpoint"
-msgstr ""
+msgstr "UMA準拠の認可APIエンドポイント"
 
 #. type: Code block
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:11
-#, fuzzy
-#| msgid "http://localhost:8080/auth/realms/demo/account"
 msgid "http://${host}:${port}/auth/realms/${realm_name}/authz/authorize"
-msgstr "http://localhost:8080/auth/realms/demo/account"
+msgstr "http://${host}:${port}/auth/realms/${realm_name}/authz/authorize"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:14
 msgid "When requesting an RPT, you need to provide two things:"
-msgstr ""
+msgstr "RPTをリクエストするときは、次の2つのことを指定する必要があります。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:16
 msgid ""
 "A <<_service_protection_permission_api_papi, permission ticket>> "
 "representing the resources you want to access"
-msgstr ""
+msgstr "アクセスしたいリソースを表す<<_service_protection_permission_api_papi, アクセス許可チケット>>"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:17
@@ -63,14 +64,18 @@ msgid ""
 "bearer token) representing a user's identity and his consent to access "
 "authorization data on his behalf."
 msgstr ""
+"ユーザーの身元を表す<<_service_authorization_aat, "
+"認可APIトークン（AAT）>>（ベアラートークンとして）、および認可データにアクセスするための同意。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:20
 msgid ""
-"The permission ticket is added to an HTTP request as a parameter whether the "
-"AAT is included in a ```Authorization``` header in order to authenticate the "
-"request using the AAT as a bearer token."
+"The permission ticket is added to an HTTP request as a parameter whether the"
+" AAT is included in a ```Authorization``` header in order to authenticate "
+"the request using the AAT as a bearer token."
 msgstr ""
+"アクセス許可チケットは、ベアラートークンとしてAATを使用してリクエストを認証するために、AATが ```Authorization``` "
+"ヘッダーに含まれているかどうかをパラメータとしてHTTPリクエストに追加されます。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:26
@@ -81,6 +86,10 @@ msgid ""
 "    \"ticket\" : ${PERMISSION_TICKET}\n"
 "}' \"http://localhost:8080/auth/realms/hello-world-authz/authz/authorize\"\n"
 msgstr ""
+"curl -X POST\n"
+" -H \"Authorization: Bearer ${AAT}\" -d '{\n"
+" \"ticket\" : ${PERMISSION_TICKET}\n"
+"}' \"http://localhost:8080/auth/realms/hello-world-authz/authz/authorize\"\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:29
@@ -90,9 +99,9 @@ msgstr ""
 #: source/authorization_services/topics/service-entitlement-whatis-obtain-eat.adoc:20
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:43
 msgid "As a result, the server response is:"
-msgstr ""
+msgstr "その結果、サーバーの応答は次のようになります。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-authorization-authorization-api-aapi.adoc:32
 msgid "{\"rpt\":\"${RPT}\"}"
-msgstr ""
+msgstr "{\"rpt\":\"${RPT}\"}"

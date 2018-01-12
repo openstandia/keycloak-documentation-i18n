@@ -2,172 +2,161 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Title ==
-#: source/server_development/topics/action-token-spi.adoc:2
+#. type: Attribute :developerguide_actiontoken_name:
 #, no-wrap
 msgid "Action Token SPI"
-msgstr ""
+msgstr "アクション・トークンSPI"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:7
 msgid ""
 "An action token is a special instance of Json Web Token (JWT) that permits "
-"its bearer to perform some actions, e. g. to reset a password or validate e-"
-"mail address. They are usually sent to users in form of a link that points "
-"to an endpoint processing action tokens for a particular realm."
+"its bearer to perform some actions, e. g. to reset a password or validate "
+"e-mail address. They are usually sent to users in form of a link that points"
+" to an endpoint processing action tokens for a particular realm."
 msgstr ""
+"アクション・トークンとは、Json Web Token "
+"(JWT)の特別なインスタンスで、ベアラがいくつかの動作を実行できるようにするものです。例えば、パスワードをリセットしたり、電子メールアドレスを検証したりすることができます。それらは通常、特定のレルムの動作トークンを処理するエンドポイントを指し示すリンクのフォームでユーザーに送信されます。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:9
 msgid "{project_name} offers four basic token types allowing the bearer to:"
-msgstr ""
+msgstr "{project_name}は、4つの基本のトークンタイプを提供して、ベアラが以下を実行できるようにします。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:11
 msgid "Reset credentials"
-msgstr ""
+msgstr "クレデンシャルのリセット"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:12
 msgid "Confirm e-mail address"
-msgstr ""
+msgstr "電子メールアドレスの確認"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:13
 msgid "Execute required action(s)"
-msgstr ""
+msgstr "必須アクションの実行"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:14
 msgid ""
 "Confirm linking of an account with account in external identity provider"
-msgstr ""
+msgstr "外部のアイデンティティー・プロバイダーのアカウントを使用した、アカウントのリンク付けの確認"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:17
 msgid ""
 "In addition to that, it is possible to implement any functionality that "
-"initiates or modifies authentication session using action token SPI, details "
-"of which are described in the text below."
+"initiates or modifies authentication session using action token SPI, details"
+" of which are described in the text below."
 msgstr ""
+"これに加えて、アクショントークンSPIを使用して認証セッションを開始したり、変更したりする機能を実装することができます。これについて、詳しくは、以下で説明していきます。"
 
 #. type: Title ===
-#: source/server_development/topics/action-token-spi.adoc:19
 #, no-wrap
 msgid "Anatomy of Action Token"
-msgstr ""
+msgstr "アクション・トークンの分析"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:22
 msgid ""
-"Action token is a standard Json Web Token signed with active realm key where "
-"the payload contains several fields:"
-msgstr ""
+"Action token is a standard Json Web Token signed with active realm key where"
+" the payload contains several fields:"
+msgstr "アクション・トークンは、ペイロードに複数のフィールドが含まれている、アクティブなレルム鍵で署名された標準のJson Webトークンです。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:24
 msgid "`typ` - Identification of the action (e.g. `verify-email`)"
-msgstr ""
+msgstr "`typ` - Identification of the action (e.g. `verify-email`)"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:25
 msgid "`iat` and `exp` - Times of token validity"
-msgstr ""
+msgstr "`iat` and `exp` - Times of token validity"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:26
 msgid "`sub` - ID of the user"
-msgstr ""
+msgstr "`sub` - ID of the user"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:27
 msgid "`azp` - Client name"
-msgstr ""
+msgstr "`azp` - Client name"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:28
 msgid "`iss` - Issuer - URL of the issuing realm"
-msgstr ""
+msgstr "`iss` - Issuer - URL of the issuing realm"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:29
 msgid "`aud` - Audience - list containing URL of the issuing realm"
-msgstr ""
+msgstr "`aud` - Audience - list containing URL of the issuing realm"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:30
 msgid "`asid` - ID of the authentication session (_optional_)"
-msgstr ""
+msgstr "`asid` - ID of the authentication session (_optional_)"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:31
 msgid ""
 "`nonce` - Random nonce to guarantee uniqueness of use if the operation can "
 "only be executed once (_optional_)"
 msgstr ""
+"`nonce` - Random nonce to guarantee uniqueness of use if the operation can "
+"only be executed once (_optional_)"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:33
 msgid ""
 "In addition, an action token can contain any number of custom fields "
 "serializable into JSON."
-msgstr ""
+msgstr "さらに、アクション・トークンには、JSON内にシリアライズできるカスタム・フィールドをいくつか含めることができます。"
 
 #. type: Title ===
-#: source/server_development/topics/action-token-spi.adoc:34
 #, no-wrap
 msgid "Action Token Processing"
-msgstr ""
+msgstr "アクション・トークン処理"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:42
 msgid ""
-"When an action token is passed to a {project_name} endpoint `_KEYCLOAK_ROOT_/"
-"auth/realms/master/login-actions/action-token` via `key` parameter, it is "
-"validated and a proper action token handler is executed. The processing "
-"always takes place in a context of an authentication session, either a fresh "
-"one or the action token service joins an existing authentication session "
-"(details are described below). The action token handler can perform actions "
-"prescribed by the token (often it alters the authentication session) and "
-"results into a HTTP response (e.g. it can continue in authentication or "
-"display an information/error page). These steps are detailed below."
+"When an action token is passed to a {project_name} endpoint "
+"`_KEYCLOAK_ROOT_/auth/realms/master/login-actions/action-token` via `key` "
+"parameter, it is validated and a proper action token handler is executed. "
+"The processing always takes place in a context of an authentication session,"
+" either a fresh one or the action token service joins an existing "
+"authentication session (details are described below). The action token "
+"handler can perform actions prescribed by the token (often it alters the "
+"authentication session) and results into an HTTP response (e.g. it can "
+"continue in authentication or display an information/error page). These "
+"steps are detailed below."
 msgstr ""
+"アクション・トークンが{project_name}エンドポイント `_KEYCLOAK_ROOT_/auth/realms/master/login-"
+"actions/action-token` に `key` "
+"パラメーターを介して渡されると、それが検証され、適切なアクション・トークン・ハンドラーが実行されます。この処理は常に認証セッションのコンテキストに沿って行われ、新しいものかアクション・トークン・サービスが既存の認証セッションに参加します（詳しくは、後で説明します）。アクション・トークン・ハンドラーは、トークン（これで認証セッションを変更することが多い）によって規定されたアクションを実行し、HTTPレスポンスへつなげることができます（例えば、認証を続けるか、情報またはエラーページを表示することができます）。これらの手順について、詳しくは以下の通りです。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:45
 #, no-wrap
 msgid ""
 "*Basic action token validation.* Signature and time validity is checked, and action token handler is determined based\n"
 "on `typ` field.\n"
 msgstr ""
+"*Basic action token validation.* シグネチャーと時間の検証が確認され、アクション・トークン・ハンドラーが `typ` "
+"フィールドに基づいて定義されます。\n"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:51
 msgid ""
-"[[determining-auth-sess]]*Determining authentication session.* If the action "
-"token URL was opened in browser with existing authentication session, and "
+"[[determining-auth-sess]]*Determining authentication session.* If the action"
+" token URL was opened in browser with existing authentication session, and "
 "the token contains authentication session ID matching the authentication "
 "session from the browser, action token validation and handling will attach "
-"this ongoing authentication session. Otherwise, action token handler creates "
-"a fresh authentication session that replaces any other authentication "
+"this ongoing authentication session. Otherwise, action token handler creates"
+" a fresh authentication session that replaces any other authentication "
 "session present at that time in the browser."
 msgstr ""
+"[[determining-auth-sess]] *Determining authentication session.* "
+"アクション・トークンURLがブラウザーで既存の認証セッションを使用して開かれ、トークンにブラウザからの認証セッションと一致する認証セッションIDが含まれている場合、アクション・トークンの検証と処理はこの進行中の認証セッションについてきます。そうでない場合は、アクション・トークン・ハンドラーは新しい認証セッションを作成し、その時点で他の認証セッションをブラウザー内で置き換えます。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:56
 #, no-wrap
 msgid ""
 "*Token validations specific for token type.* Action token endpoint logic validates that the user (`sub` field) and\n"
@@ -175,37 +164,39 @@ msgid ""
 "action token handler. Furthermore, token handler can request this token be single-use. Already used tokens would then be\n"
 "rejected by action token endpoint logic.\n"
 msgstr ""
+"*Token validations specific for token type.* "
+"アクション・トークン・エンドポイント・ロジックによって、既存のトークンからのユーザー（ `sub` フィールド）とクライアント（ `azp` "
+"）が有効で、使用できない状態ではないということが検証されます。次に、アクション・トークン・ハンドラー内で定義されたカスタム・バリデーションがすべて検証されます。さらに、トークン・ハンドラーで、トークンが単一で使用されるようにリクエストすることができます。これで、既に使用済みのトークンは、アクション・トークン・エンドポイント・ロジックによって拒否されます。\n"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:59
 #, no-wrap
 msgid ""
 "*Performing the action.* After all these validations, action token handler code is called that performs the actual\n"
 "action according to parameters in the token.\n"
 msgstr ""
+"*Performing the action.* "
+"これらの検証がすべて行われた後、トークン内のパラメーターに応じて実際の動作を実行する、アクション・トークン・ハンドラー・コードが呼び出されます。\n"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:62
 #, no-wrap
 msgid ""
 "*Invalidation of single-Use tokens.* If the token is set to single-use, once the authentication flow finishes, the\n"
 "action token is invalidated.\n"
 msgstr ""
+"*Invalidation of single-Use tokens.* "
+"トークンが単一で使用されるように設定されている場合、認証フローが完了次第、アクション・トークンは無効になります。\n"
 
 #. type: Title ===
-#: source/server_development/topics/action-token-spi.adoc:63
 #, no-wrap
 msgid "Implement Your Own Action Token and its Handler"
-msgstr ""
+msgstr "独自のアクション・トークンとそのハンドラーの実装"
 
 #. type: Title ====
-#: source/server_development/topics/action-token-spi.adoc:65
 #, no-wrap
 msgid "How to Create an Action Token"
-msgstr ""
+msgstr "アクション・トークンの作成方法"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:71
 msgid ""
 "As action token is just a signed JWT with few mandatory fields (see "
 "<<_action_token_anatomy,Anatomy of action token>> above), it can be "
@@ -215,32 +206,34 @@ msgid ""
 "leveraged by implementors by using that class for tokens instead of plain "
 "`JsonWebToken`."
 msgstr ""
+"アクション・トークンは必須のフィールド（<<_action_token_anatomy,Anatomy of action token>> "
+"を参照ください）をいくつか持つ単なる署名済みのJWTなので、シリアライズされてKeycloakの `JWSBuilder` "
+"クラスを使用するようなものとして署名されることができます。この方法は既に "
+"`org.keycloak.authentication.actiontoken.DefaultActionToken` の "
+"`serialize(session, realm, uriInfo)` メソッド内で既に実装されており、単一の `JsonWebToken` "
+"の代わりに、実装者はトークン用のそのクラスを使用してこの方法を利用することができます。"
 
 #. type: Title ====
-#: source/server_development/topics/action-token-spi.adoc:72
-#: source/server_development/topics/auth-spi.adoc:140
-#: source/server_development/topics/auth-spi.adoc:429
 #, no-wrap
 msgid "Packaging Classes and Deployment"
-msgstr ""
+msgstr "クラスとデプロイのパッケージ"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:75
 msgid ""
 "To plug your own action token and its handler, you need to implement few "
 "interfaces on server side:"
-msgstr ""
+msgstr "独自のアクション・トークンとそのハンドラーをプラグインするには、サーバー側のインタフェースを少し実装する必要があります。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:78
 #, no-wrap
 msgid ""
 "`org.keycloak.authentication.actiontoken.ActionTokenHandler` - actual handler of action token for a particular\n"
 "action (i.e. for a given value of `typ` token field).   \n"
 msgstr ""
+"`org.keycloak.authentication.actiontoken.ActionTokenHandler` - "
+"特定の動作のための（つまり、 `typ` トークン・フィールドの既定値のための）アクション・トークンの実際のハンドラー。\n"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:83
 msgid ""
 "The central method in that interface is `handleToken(token, context)` which "
 "defines actual operation executed upon receiving the action token. Usually "
@@ -249,9 +242,12 @@ msgid ""
 "defined in `getVerifiers(context)`) have succeeded, and it is guaranteed "
 "that the `token` would be of the class returned by `getTokenClass()` method."
 msgstr ""
+"そのインターフェイス内の中心的なメソッドは、アクション・トークンを受け取る際に実行される実際の操作を定義する `handleToken(token, "
+"context)` です。通常、それは認証セッション記録の変更ですが、一般的には任意です。このメソッドは、ベリファイア（ "
+"`getVerifiers(context)` で定義されたものを含む）がすべて成功した場合にのみ呼び出され、` token` が "
+"`getTokenClass()` メソッドによって返されるクラスであることが保証されている場合にのみ呼び出されます。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:90
 msgid ""
 "To be able to determine whether the action token was issued for the current "
 "authentication session as described in <<determining-auth-sess,Item 2 "
@@ -263,19 +259,27 @@ msgid ""
 "you can create tokens that would step into the ongoing authentication flow "
 "before any authentication flow would be started."
 msgstr ""
+"<<determining-auth-sess,Item 2 "
+"above>>の説明通り、現在の認証セッションのためにアクション・トークンが発行されたのか否かを定義するには "
+"、既存の認証セッションIDのためのメソッドが `getAuthenticationSessionIdFromToken(token, context)`"
+" メソッド内で宣言される必要があります。定義されると、 `DefaultActionToken` 内の実装によりトークンから `asid` "
+"フィールドの値が返されます。このメソッドをオーバーライドして、トークンに関係なく、現在の認証セッションIDを返すことができるという点に注意してください。こうして、トークンを作成し、認証フローが開始される前に進行中の認証フローに入ることができます。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:94
 msgid ""
-"If the authentication session from the token does not match the current one, "
-"the action token handler would be asked to start a fresh one by calling "
+"If the authentication session from the token does not match the current one,"
+" the action token handler would be asked to start a fresh one by calling "
 "`startFreshAuthenticationSession(token, context)`. It can throw a "
 "`VerificationException` (or better its more descriptive variant "
 "`ExplainedTokenVerificationException`) to signal that would be forbidden."
 msgstr ""
+"トークンからの認証セッションが現在のものと一致しない場合、アクション・トークン・ハンドラーは、 "
+"`startFreshAuthenticationSession(token, context)` "
+"を呼び出すことにより新しいものを開始するよう要求されます。これにより、禁止されるシグナルに `VerificationException` "
+"（または、より好ましいものとしては、記述的なバリアント型の `ExplainedTokenVerificationException` "
+"）をスローすることができます。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:99
 msgid ""
 "The token handler also determines via method `canUseTokenRepeatedly(token, "
 "context)` whether the token would be invalidated after it is used and "
@@ -284,43 +288,60 @@ msgid ""
 "case, you should use `org.keycloak.models.ActionTokenStoreProvider` in "
 "action token handler to invalidate the used tokens manually."
 msgstr ""
+"また、トークン・ハンドラーにより、 `canUseTokenRepeatedly(token, context)` "
+"メソッドを介して、トークンが使用されて認証が完了した後に、トークンが無効になるかどうかが決定されます。複数のアクション・トークンを利用するフローがある場合、最後のトークンだけが無効になることに注意してください。この場合、アクション・トークン・ハンドラー内で"
+" `org.keycloak.models.ActionTokenStoreProvider` "
+"を使用し、使用されたトークンを手動で無効にする必要があります。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:103
 msgid ""
 "Default implementation of most of the `ActionTokenHandler` methods is the "
-"`org.keycloak.authentication.actiontoken.AbstractActionTokenHander` abstract "
-"class in `keycloak-services` module. The only method that needs to be "
-"implemented is `handleToken(token, context)` that performs the actual action."
+"`org.keycloak.authentication.actiontoken.AbstractActionTokenHander` abstract"
+" class in `keycloak-services` module. The only method that needs to be "
+"implemented is `handleToken(token, context)` that performs the actual "
+"action."
 msgstr ""
+"ほとんどの `ActionTokenHandler` メソッドのデフォルト実装は、 `keycloak-services` モジュール内の "
+"`org.keycloak.authentication.actiontoken.AbstractActionTokenHander` "
+"抽象クラスです。実装する必要のある唯一のメソッドは、実際の動作を実行する `handleToken(token, context)` です。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:107
 msgid ""
 "`org.keycloak.authentication.actiontoken.ActionTokenHandlerFactory` - "
 "factory that instantiates action token handler. Implementations have to "
 "override `getId()` to return value that must match precisely the value of "
 "`typ` field in the action token."
 msgstr ""
+" `org.keycloak.authentication.actiontoken.ActionTokenHandlerFactory` - "
+"アクション・トークン・ハンドラーを開始するファクトリー。実装により、 `getId()` をオーバーライドし、アクション・トークン内の `typ` "
+"フィールドの値に正確に一致する必要がある値を返す必要があります。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:110
 msgid ""
 "Note that you have to register the custom `ActionTokenHandlerFactory` "
 "implementation as explained in the <<_providers,Service Provider "
 "Interfaces>> section of this guide."
 msgstr ""
+"カスタムの `ActionTokenHandlerFactory` 実装を、このガイドの<<_providers,Service Provider "
+"Interfaces>>セクション内での説明の通り、登録する必要があることに注意してください。"
 
 #. type: Plain text
-#: source/server_development/topics/action-token-spi.adoc:117
 msgid ""
 "If the action token you are implementing contains any custom fields that "
 "should be serializabled to JSON fields, you should consider implementing a "
 "descendant of `org.keycloak.representations.JsonWebToken` class that would "
-"implement `org.keycloak.models.ActionTokenKeyModel` interface. In that case, "
-"you can take advantage of the existing `org.keycloak.authentication."
-"actiontoken.DefaultActionToken` class as it already satisfies both these "
-"conditions, and either use it directly or implement its child, the fields of "
-"which can be annotated with appropriate Jackson annotations, e.g. `com."
-"fasterxml.jackson.annotation.JsonProperty` to serialize them to JSON."
+"implement `org.keycloak.models.ActionTokenKeyModel` interface. In that case,"
+" you can take advantage of the existing "
+"`org.keycloak.authentication.actiontoken.DefaultActionToken` class as it "
+"already satisfies both these conditions, and either use it directly or "
+"implement its child, the fields of which can be annotated with appropriate "
+"Jackson annotations, e.g. `com.fasterxml.jackson.annotation.JsonProperty` to"
+" serialize them to JSON."
 msgstr ""
+"実装しているアクション・トークンに、JSONフィールドにシリアライズする必要があるカスタム・フィールドが含まれている場合、 "
+"`org.keycloak.models.ActionTokenKeyModel` のインタフェースを実装する "
+"`org.keycloak.representations.JsonWebToken` "
+"クラスの子孫を実装することを検討する必要があります。この場合、既存の  "
+"`org.keycloak.authentication.actiontoken.DefaultActionToken` "
+"クラスを利用することができます。なぜなら、そのクラスはすでにこれら両方の条件を満たしており、いずれかによりそのクラスを直接使用するか、そのクラスの子を実装するからです。そのクラスの子のフィールドには適切なJackson注釈、例えばJSONにそれらをシリアライズするには"
+" `com.fasterxml.jackson.annotation.JsonProperty` など、を付けることができます。"

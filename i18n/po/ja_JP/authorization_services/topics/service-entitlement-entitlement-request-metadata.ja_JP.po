@@ -1,32 +1,34 @@
-# Japanese translations for keycloak-documentation-i18n package
-# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
-# Automatically generated, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: keycloak-documentation-i18n  \n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ja\n"
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title =
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:2
 #, no-wrap
 msgid "Entitlement Request Metadata"
-msgstr ""
+msgstr "エンタイトルメント・リクエスト・メタデータ"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:6
 msgid ""
 "When requesting entitlements client applications are allowed to associate "
-"metadata information to the request and define how they expect to obtain the "
-"permissions."
+"metadata information to the request and define how they expect to obtain the"
+" permissions."
 msgstr ""
+"エンタイトルメントを要求するとき、クライアント・アプリケーションは、メタデータ情報をリクエストに関連付けさせて、権限の取得方法を定義することができます。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:16
@@ -42,6 +44,14 @@ msgid ""
 "    ]\n"
 "}' \"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\"\n"
 msgstr ""
+"curl -X POST -H \"Authorization: Bearer ${access_token}\" -d '{\n"
+"    \"metadata\" : {\n"
+"        \"include_resource_name\" : false\n"
+"    },\n"
+"    \"permissions\" : [\n"
+"        ...\n"
+"    ]\n"
+"}' \"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\"\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:20
@@ -49,6 +59,8 @@ msgid ""
 "The Entitlement API endpoint only allows passing metadata along an "
 "entitlement request when using HTTP POST."
 msgstr ""
+"エンタイトルメントAPIエンドポイントでは、HTTP "
+"POSTを使用しているときにエンタイトルメント･リクエストに沿ってメタデータを渡すことしかできません。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:22
@@ -56,27 +68,30 @@ msgid ""
 "The following sections will explain how and when you can use the different "
 "information you can include in an entitlement request as a metadata."
 msgstr ""
+"次のセクションでは、エンタイトルメント・リクエストに含めることができるさまざまな情報を、メタデータとして使用する方法とタイミングについて説明します。"
 
 #. type: Title =
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:23
 #, no-wrap
 msgid "Decide whether or not resource's name should be included the response"
-msgstr ""
+msgstr "リソースの名前をレスポンスに含めるかどうかを決定する"
 
 #. type: Block title
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:25
 #, no-wrap
 msgid "include_resource_name"
-msgstr ""
+msgstr "include_resource_name"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:38
 msgid ""
 "Clients can use ```include_resource_name``` to decide whether or not "
-"resource`s name should be included on each permission granted by the server. "
-"This option can be used to reduce the size of RPTs and optimize client-"
+"resource`s name should be included on each permission granted by the server."
+" This option can be used to reduce the size of RPTs and optimize client-"
 "server communication."
 msgstr ""
+"クライアントは、 ```include_resource_name``` "
+"を使用して、サーバーによって付与された各パーミッションにリソースの名前を含めるかどうかを決定できます。このオプションを使用すると、RPTのサイズを縮小し、クライアントとサーバー間の通信を最適化できます。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:41
@@ -86,18 +101,19 @@ msgid ""
 "specially useful when the resource server is capable of map their resources "
 "only based on the resource`s id."
 msgstr ""
+"デフォルトでは、RPT内の権限には、単一のパーミッションごとに付与されたリソースのIDと名前の両方が含まれています。このオプションは、リソース・サーバーがリソースのIDに基づいてのみリソースをマップできる場合に特に便利です。"
 
 #. type: Title =
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:42
 #, no-wrap
 msgid "Limiting the number of permissions within a RPT"
-msgstr ""
+msgstr "RPT内の権限の数を制限する"
 
 #. type: Block title
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:44
 #, no-wrap
 msgid "limit"
-msgstr ""
+msgstr "limit"
 
 #. type: Code block
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:54
@@ -112,6 +128,14 @@ msgid ""
 "    ]\n"
 "}' \"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\"\n"
 msgstr ""
+"curl -X POST -H \"Authorization: Bearer ${access_token}\" -d '{\n"
+"    \"metadata\" : {\n"
+"        \"limit\" : 10\n"
+"    },\n"
+"    \"permissions\" : [\n"
+"        ...\n"
+"    ]\n"
+"}' \"http://${host}:${port}/auth/realms/${realm_name}/authz/entitlement/{client_id}\"\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:56
@@ -119,6 +143,8 @@ msgid ""
 "Clients can use ```limit``` to specify how many permissions they expected "
 "within a RPT returned by the server. The limit option works as follows:"
 msgstr ""
+"クライアントは、 ```limit``` "
+"を使用して、サーバーから返されるRPT内で予想される権限の数を指定できます。制限オプションは次のように動作します。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:58
@@ -127,6 +153,8 @@ msgid ""
 "permissions will be returned based on the resources/scopes from the "
 "```permissions``` claim."
 msgstr ""
+"以前に発行されたRPTを *使用せず* にリクエストが送信された場合、 ```permissions``` クレームのリソース/スコープに基づいて、 "
+"```limit``` 権限のみが返されます。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:61
@@ -138,12 +166,16 @@ msgid ""
 "permissions from a previously issued RPT, the server will include the first "
 "permissions defined there."
 msgstr ""
+"以前に発行されたRPTを *使用して* リクエストが送信された場合、以前に発行されたRPTの権限が ```limit``` に達していない場合にのみ、 "
+"```permissions``` "
+"クレームのリソース/スコープに関連付けられた権限が優先されます。以前に発行されたRPTからの権限に対して十分なゆとりがある場合、サーバーはそこに定義されている最初の権限を含めます。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-entitlement-entitlement-request-metadata.adoc:63
 msgid ""
 "This option allows clients to control the size of RPTs and keep only last "
-"permissions granted by the server. It usually makes sense only in cases your "
-"client is capable of sending previously issued RPTs while asking for new "
+"permissions granted by the server. It usually makes sense only in cases your"
+" client is capable of sending previously issued RPTs while asking for new "
 "permissions (a.k.a.: incremental authorization)."
 msgstr ""
+"このオプションを使用すると、クライアントはRPTのサイズを制御し、サーバーによって付与された最後の権限のみを保持できます。クライアントが以前に発行されたRPTを送信することができ、新しい権限（別名:段階的承認）を求めている場合にのみ意味があります。"

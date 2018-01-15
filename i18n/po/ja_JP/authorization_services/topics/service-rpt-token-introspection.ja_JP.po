@@ -1,17 +1,18 @@
-# Japanese translations for keycloak-documentation-i18n package
-# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
-# Automatically generated, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: keycloak-documentation-i18n  \n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ja\n"
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Plain text
@@ -22,13 +23,13 @@ msgstr ""
 #: source/authorization_services/topics/service-entitlement-whatis-obtain-eat.adoc:20
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:43
 msgid "As a result, the server response is:"
-msgstr ""
+msgstr "その結果、サーバーの応答は次のようになります。"
 
 #. type: Title =
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:2
 #, no-wrap
 msgid "Introspecting a Requesting Party Token"
-msgstr ""
+msgstr "リクエスティング・パーティー・トークンのイントロスペクション"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:5
@@ -37,18 +38,19 @@ msgid ""
 "check its validity or obtain the permissions within the token to enforce "
 "authorization decisions on the resource server side."
 msgstr ""
+"場合によっては、リクエスティング・パーティー・トークン（RPT）をイントロスペクトして、その有効性をチェックしたり、トークン内の権限を取得して、リソース・サーバー側で認可の決定を行うことがあります。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:7
 msgid "There are two main use cases where token introspection can help you:"
-msgstr ""
+msgstr "トークンのイントロスペクションが役立つ2つの主な使用例があります。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:9
 msgid ""
 "When client applications need to query the token validity to obtain a new "
 "one with the same or additional permissions"
-msgstr ""
+msgstr "クライアント・アプリケーションがトークンの有効性を問い合わせて、同じまたは追加の権限を持つ新しいトークンを取得する必要がある場合"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:10
@@ -57,36 +59,40 @@ msgid ""
 "especially when none of the built-in <<_enforcer_overview, policy "
 "enforcers>> fits your application"
 msgstr ""
+"リソース・サーバー側で認可の決定を実施する場合、特に組み込みの<<_enforcer_overview, "
+"ポリシー・エンフォーサー>>がアプリケーションに適合しない場合"
 
 #. type: Title =
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:11
 #, no-wrap
 msgid "Obtaining Information about an RPT"
-msgstr ""
+msgstr "RPTに関する情報の取得"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:14
 msgid ""
-"The token introspection is essentially a https://tools.ietf.org/html/"
-"rfc7662[OAuth2 token introspection]-compliant endpoint from which you can "
-"obtain information about an RPT."
+"The token introspection is essentially a "
+"https://tools.ietf.org/html/rfc7662[OAuth2 token introspection]-compliant "
+"endpoint from which you can obtain information about an RPT."
 msgstr ""
+"トークン・イントロスペクションは基本的に、RPTに関する情報を取得するための "
+"https://tools.ietf.org/html/rfc7662[OAuth2トークン・イントロスペクション] 準拠のエンドポイントです。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:17
-#, fuzzy
-#| msgid "http://localhost:8080/auth/realms/demo/account"
 msgid ""
-"http://${host}:${port}/auth/realms/${realm_name}/protocol/openid-connect/"
-"token/introspect"
-msgstr "http://localhost:8080/auth/realms/demo/account"
+"http://${host}:${port}/auth/realms/${realm_name}/protocol/openid-"
+"connect/token/introspect"
+msgstr ""
+"http://${host}:${port}/auth/realms/${realm_name}/protocol/openid-"
+"connect/token/introspect"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:20
 msgid ""
 "To introspect an RPT using this endpoint, you can send a request to the "
 "server as follows:"
-msgstr ""
+msgstr "このエンドポイントを使用してRPTをイントロスペクトするには、次のようにしてサーバーにリクエストを送信します。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:27
@@ -98,6 +104,11 @@ msgid ""
 "    -d 'token_type_hint=requesting_party_token&token=${RPT}' \\\n"
 "    \"http://localhost:8080/auth/realms/hello-world-authz/protocol/openid-connect/token/introspect\"\n"
 msgstr ""
+"curl -X POST \\\n"
+"    -H \"Authorization: Basic aGVsbG8td29ybGQtYXV0aHotc2VydmljZTpzZWNyZXQ=\" \\\n"
+"    -H \"Content-Type: application/x-www-form-urlencoded\" \\\n"
+"    -d 'token_type_hint=requesting_party_token&token=${RPT}' \\\n"
+"    \"http://localhost:8080/auth/realms/hello-world-authz/protocol/openid-connect/token/introspect\"\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:31
@@ -107,17 +118,19 @@ msgid ""
 "the token, but you can use any other client authentication method supported "
 "by {project_name}."
 msgstr ""
+"上記のリクエストは、HTTP "
+"BASICを使用し、クライアントのクレデンシャル（クライアントIDとシークレット）を渡してトークンのイントロスペクションを試みるクライアントを認証しますが、{project_name}でサポートされている他のクライアント認証方式を使用することもできます。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:33
 msgid "The introspection endpoint expects two parameters:"
-msgstr ""
+msgstr "イントロスペクション・エンドポイントには2つのパラメータが必要です。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:35
 #, no-wrap
 msgid "*token_type_hint*\n"
-msgstr ""
+msgstr "*token_type_hint*\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:37
@@ -125,19 +138,20 @@ msgid ""
 "Use *requesting_party_token* as the value for this parameter, which "
 "indicates that you want to introspect an RPT."
 msgstr ""
+"このパラメータの値として *requesting_party_token* を使用します。これは、RPTをイントロスペクトすることを示します。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:39
 #, no-wrap
 msgid "*token*\n"
-msgstr ""
+msgstr "*token*\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:41
 msgid ""
 "Use the token string as it was returned by the server during the "
 "authorization process as the value for this parameter."
-msgstr ""
+msgstr "このパラメータの値として、認可処理中にサーバーから返されたトークン文字列を使用します。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:58
@@ -157,11 +171,24 @@ msgid ""
 "  \"active\": true\n"
 "}\n"
 msgstr ""
+"{\n"
+"  \"permissions\": [\n"
+"    {\n"
+"      \"resource_set_id\": \"90ccc6fc-b296-4cd1-881e-089e1ee15957\",\n"
+"      \"resource_set_name\": \"Hello World Resource\"\n"
+"    }\n"
+"  ],\n"
+"  \"exp\": 1465314139,\n"
+"  \"nbf\": 0,\n"
+"  \"iat\": 1465313839,\n"
+"  \"aud\": \"hello-world-authz-service\",\n"
+"  \"active\": true\n"
+"}\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:61
 msgid "If the RPT is not active, this response is returned instead:"
-msgstr ""
+msgstr "RPTがアクティブでない場合、代わりにこの応答が返されます。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:66
@@ -171,12 +198,15 @@ msgid ""
 "  \"active\": false\n"
 "}\n"
 msgstr ""
+"{\n"
+"  \"active\": false\n"
+"}\n"
 
 #. type: Title =
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:68
 #, no-wrap
 msgid "Do I Need to Invoke the Server Every Time I Want to Introspect an RPT?"
-msgstr ""
+msgstr "RPTを監視するたびにサーバーを呼び出す必要がありますか？"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:72
@@ -185,6 +215,8 @@ msgid ""
 "No. Both <<_service_entitlement_api, Entitlement>> APIs use the\n"
 " https://tools.ietf.org/html/rfc7519[JSON web token (JWT)] specification as the default format for RPTs.\n"
 msgstr ""
+"両方の<<_service_entitlement_api, エンタイトルメント>>APIは、RPTのデフォルトの形式として "
+"https://tools.ietf.org/html/rfc7519[JSON web トークン（JWT）] 仕様を使用します。\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:75
@@ -194,20 +226,21 @@ msgid ""
 "locally. Once you decode the token, you can also use the permissions within "
 "the token to enforce authorization decisions."
 msgstr ""
+"リモート・イントロスペクション・エンドポイントを呼び出さずにこれらのトークンを検証する場合は、RPTをデコードしてローカルでその有効性を問い合わせることができます。トークンをデコードすると、トークン内の権限を使用して認可の決定を行うこともできます。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:77
 msgid ""
-"This is essentially what the <<_enforcer_overview, policy enforcers>> do. Be "
-"sure to:"
-msgstr ""
+"This is essentially what the <<_enforcer_overview, policy enforcers>> do. Be"
+" sure to:"
+msgstr "これは本来、<<_enforcer_overview, ポリシー・エンフォーサー>>が行うことです。次のことを確認してください。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:79
 msgid "Validate the signature of the RPT (based on the realm's public key)"
-msgstr ""
+msgstr "RPTのシグネチャーを検証する（レルムの公開鍵に基づいて）"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-rpt-token-introspection.adoc:79
 msgid "Query for token validity based on its _exp_, _iat_, and _aud_ claims"
-msgstr ""
+msgstr "_exp_ 、_iat_ 、および_aud_のクレームに基づいてトークンの有効性を問い合わせる"

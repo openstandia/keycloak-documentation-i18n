@@ -2,40 +2,43 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
 #: source/server_development/topics/user-storage/model-interfaces.adoc:2
 #, no-wrap
 msgid "Model Interfaces"
-msgstr ""
+msgstr "モデル・インターフェイス"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/model-interfaces.adoc:5
 msgid ""
 "Most of the methods defined in the _capability_ _interfaces_ either return "
 "or are passed in representations of a user. These representations are "
-"defined by the `org.keycloak.models.UserModel` interface. App developers are "
-"required to implement this interface. It provides a mapping between the "
+"defined by the `org.keycloak.models.UserModel` interface. App developers are"
+" required to implement this interface. It provides a mapping between the "
 "external user store and the user metamodel that {project_name} uses."
 msgstr ""
+"_capability_ _interfaces_ で定義されたメソッドのほとんどは、またはユーザーの表現が返されるか、渡されます。これらの表現は "
+"`org.keycloak.models.UserModel` "
+"インタフェースによって定義されます。アプリ開発者はこのインターフェースを実装する必要があります。これは、外部ユーザー・ストアーと{project_name}が使用するユーザー・メタモデルとの間のマッピングを提供します。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/model-interfaces.adoc:9
 #, no-wrap
 msgid "package org.keycloak.models;\n"
-msgstr ""
+msgstr "package org.keycloak.models;\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/model-interfaces.adoc:12
@@ -44,6 +47,8 @@ msgid ""
 "public interface UserModel extends RoleMapperModel {\n"
 "    String getId();\n"
 msgstr ""
+"public interface UserModel extends RoleMapperModel {\n"
+"    String getId();\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/model-interfaces.adoc:15
@@ -52,6 +57,8 @@ msgid ""
 "    String getUsername();\n"
 "    void setUsername(String username);\n"
 msgstr ""
+"    String getUsername();\n"
+"    void setUsername(String username);\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/model-interfaces.adoc:18
@@ -60,6 +67,8 @@ msgid ""
 "    String getFirstName();\n"
 "    void setFirstName(String firstName);\n"
 msgstr ""
+"    String getFirstName();\n"
+"    void setFirstName(String firstName);\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/model-interfaces.adoc:21
@@ -68,6 +77,8 @@ msgid ""
 "    String getLastName();\n"
 "    void setLastName(String lastName);\n"
 msgstr ""
+"    String getLastName();\n"
+"    void setLastName(String lastName);\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/model-interfaces.adoc:26
@@ -78,14 +89,20 @@ msgid ""
 "...\n"
 "}\n"
 msgstr ""
+"    String getEmail();\n"
+"    void setEmail(String email);\n"
+"...\n"
+"}\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/model-interfaces.adoc:29
 msgid ""
-"`UserModel` implementations provide access to read and update metadata about "
-"the user including things like username, name, email, role and group "
+"`UserModel` implementations provide access to read and update metadata about"
+" the user including things like username, name, email, role and group "
 "mappings, as well as other arbitrary attributes."
 msgstr ""
+"`UserModel` "
+"の実装は、ユーザー名、名前、電子メール、ロール、グループ・マッピング、その他の任意の属性などの、ユーザーに関するメタデータの読み取りと更新のためのアクセスを提供します。"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/model-interfaces.adoc:31
@@ -94,26 +111,30 @@ msgid ""
 "represent other parts of the {project_name} metamodel: `RealmModel`, "
 "`RoleModel`, `GroupModel`, and `ClientModel`."
 msgstr ""
+"`org.keycloak.models` パッケージには、{project_name}メタモデルの他の部分を表す他のモデルクラス、 "
+"`RealmModel` 、 `RoleModel` 、` GroupModel` 、および `ClientModel` があります。"
 
 #. type: Title ====
 #: source/server_development/topics/user-storage/model-interfaces.adoc:32
 #, no-wrap
 msgid "Storage Ids"
-msgstr ""
+msgstr "ストレージID"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/model-interfaces.adoc:35
 msgid ""
 "One important method of `UserModel` is the `getId()` method. When "
-"implementing `UserModel` developers must be aware of the user id format. The "
-"format must be:"
+"implementing `UserModel` developers must be aware of the user id format. The"
+" format must be:"
 msgstr ""
+"`UserModel` の重要なメソッドの1つは `getId()` メソッドです。 `UserModel` "
+"を実装する場合、開発者はユーザーIDの形式を意識していなければなりません。フォーマットは以下の通りでなければなりません："
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/model-interfaces.adoc:38
 #, no-wrap
 msgid "\"f:\" + component id + \":\" + external id\n"
-msgstr ""
+msgstr "\"f:\" + component id + \":\" + external id\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/model-interfaces.adoc:41
@@ -122,6 +143,8 @@ msgid ""
 "user id contains enough information so that the runtime does not have to "
 "query every single `UserStorageProvider` in the system to find the user."
 msgstr ""
+"{project_name}ランタイムは、多くの場合、ユーザーIDでユーザーを検索する必要があります。ユーザーIDには十分な情報が含まれているため、ランタイムはユーザーを検索する際にシステム内のすべての"
+" `UserStorageProvider` にクエリを発行する必要がありません。"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/model-interfaces.adoc:43
@@ -129,15 +152,17 @@ msgid ""
 "The component id is the id returned from `ComponentModel.getId()`. The "
 "`ComponentModel` is passed in as a parameter when creating the provider "
 "class so you can get it from there. The external id is information your "
-"provider class needs to find the user in the external store. This is often a "
-"username or a uid. For example, it might look something like this:"
+"provider class needs to find the user in the external store. This is often a"
+" username or a uid. For example, it might look something like this:"
 msgstr ""
+"コンポーネントIDは、 `ComponentModel.getId()` から返されたIDです。 `ComponentModel` "
+"は、プロバイダー・クラスを作成するときにパラメーターとして渡されるので、そこから取得できます。外部IDは、プロバイダー・クラスが外部ストアーでユーザーを見つけるために必要な情報です。これは、多くの場合ユーザー名かUIDです。たとえば、次のようになります。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/model-interfaces.adoc:46
 #, no-wrap
 msgid "f:332a234e31234:wburke\n"
-msgstr ""
+msgstr "f:332a234e31234:wburke\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/model-interfaces.adoc:49
@@ -148,3 +173,6 @@ msgid ""
 "id. The provider again parses the id to obtain the external id it will use "
 "to locate the user in external user storage."
 msgstr ""
+"ランタイムがIDによるルックアップを実行すると、コンポーネントIDを取得するために、IDが解析されます。コンポーネントIDは、もともとユーザーをロードするために使用された"
+" `UserStorageProvider` "
+"の場所を特定するために使用されます。そのプロバイダーにはIDが渡されます。プロバイダーは、外部IDを取得するためにIDを再度解析し、それを外部ユーザー・ストレージにユーザーを配置するために使用します。"

@@ -1,53 +1,68 @@
-# Japanese translations for keycloak-documentation-i18n package
-# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
-# Automatically generated, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: keycloak-documentation-i18n  \n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ja\n"
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title =
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:2
 #, no-wrap
 msgid "Protecting a Stateless Service Using a Bearer Token"
-msgstr ""
+msgstr "ベアラー・トークンを使用したステートレスサービスの保護"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:6
 msgid ""
 "If the adapter is configured with the `bearer-only` configuration option, "
-"the policy enforcer decides whether a request to access a protected resource "
-"is allowed or denied based on the permissions of the bearer token."
+"the policy enforcer decides whether a request to access a protected resource"
+" is allowed or denied based on the permissions of the bearer token."
 msgstr ""
+"アダプターが `bearer-only` "
+"の設定オプションで構成されている場合、ポリシー・エンフォーサーは、ベアラー・トークンのパーミッションに基づいて、保護されたリソースへのアクセス要求が許可または拒否されるかどうかを決定します。"
 
 #. type: Plain text
-#: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:14
+#: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:8
+msgid "HTTP GET example passing an RPT as a bearer token"
+msgstr "ベアラー・トークンとしてRPTを渡すHTTP GETの例"
+
+#. type: Code block
+#: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:13
+#, no-wrap
 msgid ""
-"HTTP GET example passing an RPT as a bearer token ```bash GET /my-resource-"
-"server/my-protected-resource HTTP/1.1 Host: host.com Authorization: Bearer "
-"${RPT} ...  ```"
+"GET /my-resource-server/my-protected-resource HTTP/1.1\n"
+"Host: host.com\n"
+"Authorization: Bearer ${RPT}\n"
+"...\n"
 msgstr ""
+"GET /my-resource-server/my-protected-resource HTTP/1.1\n"
+"Host: host.com\n"
+"Authorization: Bearer ${RPT}\n"
+"...\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:16
 msgid ""
 "In this example, a *keycloak.json* file in your application is similar to "
 "the following:"
-msgstr ""
+msgstr "この例では、アプリケーションの *keycloak.json* ファイルは次のようになります。"
 
 #. type: Block title
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:17
 #, no-wrap
-msgid "Example of WEB-INF/keycloak.json with the bearer-only configuration option"
-msgstr ""
+msgid ""
+"Example of WEB-INF/keycloak.json with the bearer-only configuration option"
+msgstr "ベアラーのみの設定オプションでのWEB-INF/keycloak.jsonの例"
 
 #. type: Code block
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:22
@@ -57,30 +72,35 @@ msgid ""
 "\"bearer-only\" : true,\n"
 "...\n"
 msgstr ""
+"...\n"
+"\"bearer-only\" : true,\n"
+"...\n"
 
 #. type: Title ==
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:24
-#, fuzzy, no-wrap
-#| msgid "Authentication"
+#, no-wrap
 msgid "Authorization Response"
-msgstr "認証"
+msgstr "認可レスポンス"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:29
 msgid ""
 "When a client tries to access a resource server with a bearer token that is "
 "lacking permissions to access a protected resource, the resource server "
-"responds with a *401* status code and a `WWW-Authenticate` header. The value "
-"of the `WWW-Authenticate` header depends on the authorization protocol in "
+"responds with a *401* status code and a `WWW-Authenticate` header. The value"
+" of the `WWW-Authenticate` header depends on the authorization protocol in "
 "use by the resource server."
 msgstr ""
+"クライアントが、保護されたリソースにアクセスするための権限がないベアラー・トークンを持つリソース・サーバーにアクセスしようとすると、リソース・サーバーは"
+" *401* ステータスコードと `WWW-Authenticate` ヘッダーで応答します。 `WWW-Authenticate` "
+"ヘッダーの値は、リソース・サーバーで使用されている認可プロトコルによって異なります。"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:31
 msgid ""
-"Here is an example of a response from a resource server that is using UMA as "
-"the authorization protocol:"
-msgstr ""
+"Here is an example of a response from a resource server that is using UMA as"
+" the authorization protocol:"
+msgstr "次に、認可プロトコルとしてUMAを使用しているリソース・サーバーからの応答の例を示します。"
 
 #. type: Code block
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:35
@@ -89,13 +109,15 @@ msgid ""
 "HTTP/1.1 401 Unauthorized\n"
 "WWW-Authenticate: UMA realm=\"photoz-restful-api\",as_uri=\"http://localhost:8080/auth/realms/photoz/authz/authorize\",ticket=\"${PERMISSION_TICKET}\"\n"
 msgstr ""
+"HTTP/1.1 401 Unauthorized\n"
+"WWW-Authenticate: UMA realm=\"photoz-restful-api\",as_uri=\"http://localhost:8080/auth/realms/photoz/authz/authorize\",ticket=\"${PERMISSION_TICKET}\"\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:38
 msgid ""
 "And another example when the resource server is using the Entitlement "
 "protocol:"
-msgstr ""
+msgstr "また、リソース・サーバーがエンタイトルメント・プロトコルを使用している場合の別の例を以下に示します。"
 
 #. type: Code block
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:42
@@ -104,6 +126,8 @@ msgid ""
 "HTTP/1.1 401 Unauthorized\n"
 "WWW-Authenticate: KC_ETT realm=\"photoz-restful-api\",as_uri=\"http://localhost:8080/auth/realms/photoz/authz/entitlement\"\n"
 msgstr ""
+"HTTP/1.1 401 Unauthorized\n"
+"WWW-Authenticate: KC_ETT realm=\"photoz-restful-api\",as_uri=\"http://localhost:8080/auth/realms/photoz/authz/entitlement\"\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-keycloak-enforcement-bearer.adoc:44
@@ -112,3 +136,5 @@ msgid ""
 "code and `WWW-Authenticate` header to obtain an RPT from the {project_name} "
 "Server."
 msgstr ""
+"クライアントがサーバーから応答を受け取ると、ステータスコードと `WWW-Authenticate` "
+"ヘッダーを調べて、{project_name}サーバーからRPTを取得します。"

@@ -2,54 +2,62 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"import org.keycloak.admin.client.Keycloak;\n"
+"import org.keycloak.representations.idm.RealmRepresentation;\n"
+"...\n"
+msgstr ""
+"import org.keycloak.admin.client.Keycloak;\n"
+"import org.keycloak.representations.idm.RealmRepresentation;\n"
+"...\n"
+
 #. type: Title ===
-#: source/server_development/topics/user-storage/rest.adoc:2
 #, no-wrap
 msgid "REST Management API"
-msgstr ""
+msgstr "REST管理API"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/rest.adoc:6
 msgid ""
 "You can create, remove, and update your user storage provider deployments "
 "through the administrator REST API. The User Storage SPI is built on top of "
 "a generic component interface so you will be using that generic API to "
 "manage your providers."
 msgstr ""
+"管理者のREST "
+"APIを使用して、ユーザー・ストレージ・プロバイダーの配備を作成、削除、更新できます。ユーザー・ストレージSPIは汎用コンポーネント・インターフェイスの上に構築されているため、汎用APIを使用してプロバイダーを管理します。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/rest.adoc:8
 msgid "The REST Component API lives under your realm admin resource."
-msgstr ""
+msgstr "RESTコンポーネントAPIは、レルム管理リソースの下にあります。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:11
 #, no-wrap
 msgid "/admin/realms/{realm-name}/components\n"
-msgstr ""
+msgstr "/admin/realms/{realm-name}/components\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/rest.adoc:14
 msgid ""
 "We will only show this REST API interaction with the Java client. Hopefully "
 "you can extract how to do this from `curl` from this API."
 msgstr ""
+"このREST APIのJavaクライアントとの対話のみを示します。うまくいけば、このAPIから `curl` を使ってこれを行う方法を抽出できます。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:21
 #, no-wrap
 msgid ""
 "public interface ComponentsResource {\n"
@@ -57,27 +65,34 @@ msgid ""
 "    @Produces(MediaType.APPLICATION_JSON)\n"
 "    public List<ComponentRepresentation> query();\n"
 msgstr ""
+"public interface ComponentsResource {\n"
+"    @GET\n"
+"    @Produces(MediaType.APPLICATION_JSON)\n"
+"    public List<ComponentRepresentation> query();\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:25
 #, no-wrap
 msgid ""
 "    @GET\n"
 "    @Produces(MediaType.APPLICATION_JSON)\n"
 "    public List<ComponentRepresentation> query(@QueryParam(\"parent\") String parent);\n"
 msgstr ""
+"    @GET\n"
+"    @Produces(MediaType.APPLICATION_JSON)\n"
+"    public List<ComponentRepresentation> query(@QueryParam(\"parent\") String parent);\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:29
 #, no-wrap
 msgid ""
 "    @GET\n"
 "    @Produces(MediaType.APPLICATION_JSON)\n"
 "    public List<ComponentRepresentation> query(@QueryParam(\"parent\") String parent, @QueryParam(\"type\") String type);\n"
 msgstr ""
+"    @GET\n"
+"    @Produces(MediaType.APPLICATION_JSON)\n"
+"    public List<ComponentRepresentation> query(@QueryParam(\"parent\") String parent, @QueryParam(\"type\") String type);\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:35
 #, no-wrap
 msgid ""
 "    @GET\n"
@@ -86,72 +101,77 @@ msgid ""
 "                                               @QueryParam(\"type\") String type,\n"
 "                                               @QueryParam(\"name\") String name);\n"
 msgstr ""
+"    @GET\n"
+"    @Produces(MediaType.APPLICATION_JSON)\n"
+"    public List<ComponentRepresentation> query(@QueryParam(\"parent\") String parent,\n"
+"                                               @QueryParam(\"type\") String type,\n"
+"                                               @QueryParam(\"name\") String name);\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:39
 #, no-wrap
 msgid ""
 "    @POST\n"
 "    @Consumes(MediaType.APPLICATION_JSON)\n"
 "    Response add(ComponentRepresentation rep);\n"
 msgstr ""
+"    @POST\n"
+"    @Consumes(MediaType.APPLICATION_JSON)\n"
+"    Response add(ComponentRepresentation rep);\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:43
 #, no-wrap
 msgid ""
 "    @Path(\"{id}\")\n"
 "    ComponentResource component(@PathParam(\"id\") String id);\n"
 "}\n"
 msgstr ""
+"    @Path(\"{id}\")\n"
+"    ComponentResource component(@PathParam(\"id\") String id);\n"
+"}\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:47
 #, no-wrap
 msgid ""
 "public interface ComponentResource {\n"
 "    @GET\n"
 "    public ComponentRepresentation toRepresentation();\n"
 msgstr ""
+"public interface ComponentResource {\n"
+"    @GET\n"
+"    public ComponentRepresentation toRepresentation();\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:51
 #, no-wrap
 msgid ""
 "    @PUT\n"
 "    @Consumes(MediaType.APPLICATION_JSON)\n"
 "    public void update(ComponentRepresentation rep);\n"
 msgstr ""
+"    @PUT\n"
+"    @Consumes(MediaType.APPLICATION_JSON)\n"
+"    public void update(ComponentRepresentation rep);\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:55
 #, no-wrap
 msgid ""
 "    @DELETE\n"
 "    public void remove();\n"
 "}\n"
 msgstr ""
+"    @DELETE\n"
+"    public void remove();\n"
+"}\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/rest.adoc:60
 msgid ""
 "To create a user storage provider, you must specify the provider id, a "
 "provider type of the string `org.keycloak.storage.UserStorageProvider`, as "
 "well as the configuration."
 msgstr ""
+"ユーザー・ストレージ・プロバイダーを作成するには、プロバイダID、文字列 "
+"`org.keycloak.storage.UserStorageProvider`のプロバイダー・タイプ、および設定を指定する必要があります。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:66
-#: source/server_development/topics/admin-rest-api.adoc:53
-#, no-wrap
-msgid ""
-"import org.keycloak.admin.client.Keycloak;\n"
-"import org.keycloak.representations.idm.RealmRepresentation;\n"
-"...\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:75
 #, no-wrap
 msgid ""
 "Keycloak keycloak = Keycloak.getInstance(\n"
@@ -163,9 +183,16 @@ msgid ""
 "RealmResource realmResource = keycloak.realm(\"master\");\n"
 "RealmRepresentation realm = realmResource.toRepresentation();\n"
 msgstr ""
+"Keycloak keycloak = Keycloak.getInstance(\n"
+"    \"http://localhost:8080/auth\",\n"
+"    \"master\",\n"
+"    \"admin\",\n"
+"    \"password\",\n"
+"    \"admin-cli\");\n"
+"RealmResource realmResource = keycloak.realm(\"master\");\n"
+"RealmRepresentation realm = realmResource.toRepresentation();\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:83
 #, no-wrap
 msgid ""
 "ComponentRepresentation component = new ComponentRepresentation();\n"
@@ -176,21 +203,25 @@ msgid ""
 "component.setConfig(new MultivaluedHashMap());\n"
 "component.getConfig().putSingle(\"path\", \"~/users.properties\");\n"
 msgstr ""
+"ComponentRepresentation component = new ComponentRepresentation();\n"
+"component.setName(\"home\");\n"
+"component.setProviderId(\"readonly-property-file\");\n"
+"component.setProviderType(\"org.keycloak.storage.UserStorageProvider\");\n"
+"component.setParentId(realm.getId());\n"
+"component.setConfig(new MultivaluedHashMap());\n"
+"component.getConfig().putSingle(\"path\", \"~/users.properties\");\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:85
 #, no-wrap
 msgid "realmResource.components().add(component);\n"
-msgstr ""
+msgstr "realmResource.components().add(component);\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:87
 #, no-wrap
 msgid "// retrieve a component\n"
-msgstr ""
+msgstr "// retrieve a component\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:92
 #, no-wrap
 msgid ""
 "List<ComponentRepresentation> components = realmResource.components().query(realm.getId(),\n"
@@ -198,29 +229,31 @@ msgid ""
 "                                                                    \"home\");\n"
 "component = components.get(0);\n"
 msgstr ""
+"List<ComponentRepresentation> components = realmResource.components().query(realm.getId(),\n"
+"                                                                    \"org.keycloak.storage.UserStorageProvider\",\n"
+"                                                                    \"home\");\n"
+"component = components.get(0);\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:94
 #, no-wrap
 msgid "// Update a component\n"
-msgstr ""
+msgstr "// Update a component\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:97
 #, no-wrap
 msgid ""
 "component.getConfig().putSingle(\"path\", \"~/my-users.properties\");\n"
 "realmResource.components().component(component.getId()).update(component);\n"
 msgstr ""
+"component.getConfig().putSingle(\"path\", \"~/my-users.properties\");\n"
+"realmResource.components().component(component.getId()).update(component);\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:99
 #, no-wrap
 msgid "// Remove a component\n"
-msgstr ""
+msgstr "// Remove a component\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/rest.adoc:101
 #, no-wrap
 msgid "realmREsource.components().component(component.getId()).remove();\n"
-msgstr ""
+msgstr "realmREsource.components().component(component.getId()).remove();\n"

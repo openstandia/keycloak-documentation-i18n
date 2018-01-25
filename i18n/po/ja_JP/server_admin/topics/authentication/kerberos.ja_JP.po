@@ -2,50 +2,39 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Title ====
-#: source/server_installation/topics/clustering/troubleshooting.adoc:2
-#: source/securing_apps/topics/client-registration/client-registration-cli.adoc:386
-#: source/securing_apps/topics/saml/java/debugging.adoc:2
-#: source/server_admin/topics/authentication/kerberos.adoc:191
+#. type: Attribute :installguide_troubleshooting_name:
 #, no-wrap
 msgid "Troubleshooting"
 msgstr "トラブルシューティング"
 
 #. type: Block title
-#: source/server_admin/topics/authentication/flows.adoc:11
-#: source/server_admin/topics/authentication/kerberos.adoc:88
 #, no-wrap
 msgid "Browser Flow"
-msgstr ""
+msgstr "ブラウザー・フロー"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/flows.adoc:13
-#: source/server_admin/topics/authentication/kerberos.adoc:90
 msgid "image:{project_images}/browser-flow.png[]"
-msgstr ""
+msgstr "image:{project_images}/browser-flow.png[]"
 
 #. type: Title ===
-#: source/server_admin/topics/authentication/kerberos.adoc:3
 #, no-wrap
 msgid "Kerberos"
-msgstr ""
+msgstr "Kerberos"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:9
 msgid ""
 "{project_name} supports login with a Kerberos ticket through the SPNEGO "
 "protocol.  SPNEGO (Simple and Protected GSSAPI Negotiation Mechanism) is "
@@ -54,58 +43,60 @@ msgid ""
 "when ticket is not available during login, {project_name} also supports "
 "login with Kerberos username/password."
 msgstr ""
+"{project_name}は、SPNEGOプロトコルを通してKerberosチケットによるログインをサポートしています。セッションにログインするときにユーザーが認証された後、Webブラウザーを介して透過的に認証するために、SPNEGO（単一および保護されたGSSAPIネゴシエーション・メカニズム）が使用されます。Web以外の場合やログイン中にチケットが利用できない場合、{project_name}はKerberosのユーザー名/パスワードによるログインもサポートしています。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:11
 msgid "A typical use case for web authentication is the following:"
-msgstr ""
+msgstr "Web認証の一般的なユースケースは次のとおりです。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:13
 msgid ""
 "User logs into his desktop (Such as a Windows machine in Active Directory "
 "domain or Linux machine with Kerberos integration enabled)."
 msgstr ""
+"ユーザーは自分のデスクトップにログインします（Kerberosの統合が有効なActive "
+"DirectoryドメインまたはLinuxマシンのWindowsマシンなど）。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:14
 msgid ""
 "User then uses his browser (IE/Firefox/Chrome) to access a web application "
 "secured by {project_name}."
 msgstr ""
+"ユーザーはブラウザー（IE / Firefox / "
+"Chrome）を使用して、{project_name}によって保護されたWebアプリケーションにアクセスします。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:15
 msgid "Application redirects to {project_name} login."
-msgstr ""
+msgstr "アプリケーションは{project_name}ログインにリダイレクトされます。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:16
 msgid ""
 "{project_name} renders HTML login screen together with status 401 and HTTP "
 "header `WWW-Authenticate: Negotiate`"
 msgstr ""
+"{project_name}は、HTMLログイン画面をステータス401とHTTPヘッダー `WWW-"
+"Authenticate：Negotiate`とともにレンダリングします"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:18
 msgid ""
 "In case that the browser has Kerberos ticket from desktop login, it "
 "transfers the desktop sign on information to the {project_name} in header "
 "`Authorization: Negotiate 'spnego-token'` . Otherwise it just displays the "
 "login screen."
 msgstr ""
+"ブラウザーがデスクトップ・ログインからのKerberosチケットがある場合、デスクトップ・サインオン情報をヘッダー `Authorization: "
+"Negotiate 'spnego-token'` の{project_name}に転送します。 それ以外の場合は、ログイン画面が表示されます。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:21
 msgid ""
-"{project_name} validates token from the browser and authenticates the user.  "
-"It provisions user data from LDAP (in case of LDAPFederationProvider with "
+"{project_name} validates token from the browser and authenticates the user."
+"  It provisions user data from LDAP (in case of LDAPFederationProvider with "
 "Kerberos authentication support) or let user to update his profile and "
 "prefill data (in case of KerberosFederationProvider)."
 msgstr ""
+"{project_name}は、ブラウザーからトークンを検証し、ユーザーを認証します。LDAP（Kerberos認証をサポートするLDAPフェデレーション・プロバイダーの場合）からユーザー・データをプロビジョニングするか、ユーザーにプロファイルを更新し、データを事前に入力させることができます（Kerberosフェデレーション・プロバイダーの場合）。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:25
 msgid ""
 "{project_name} returns back to the application.  Communication between "
 "{project_name} and application happens through OpenID Connect or SAML "
@@ -113,309 +104,328 @@ msgid ""
 "is hidden from the application.  So {project_name} acts as broker to "
 "Kerberos/SPNEGO login."
 msgstr ""
+"{project_name}はアプリケーションに戻ります。{project_name}とアプリケーションの間の通信は、OpenID "
+"ConnectまたはSAMLメッセージを介して行われます。{project_name}がKerberosを通じて認証されたという事実は、アプリケーションから隠されています。したがって、{project_name}はKerberos/SPNEGOログインのブローカーとして機能します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:27
 msgid "For setup there are 3 main parts:"
-msgstr ""
+msgstr "セットアップには3つの主要な部分があります。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:29
 msgid "Setup and configuration of Kerberos server (KDC)"
-msgstr ""
+msgstr "Kerberosサーバー（KDC）のセットアップと構成"
 
 #. type: Title ====
-#: source/server_admin/topics/authentication/kerberos.adoc:30
-#: source/server_admin/topics/authentication/kerberos.adoc:64
 #, no-wrap
 msgid "Setup and configuration of {project_name} server"
-msgstr ""
+msgstr "{project_name}サーバーの設定と構成"
 
 #. type: Title ====
-#: source/server_admin/topics/authentication/kerberos.adoc:31
-#: source/server_admin/topics/authentication/kerberos.adoc:118
 #, no-wrap
 msgid "Setup and configuration of client machines"
-msgstr ""
+msgstr "クライアントマシンのセットアップと構成"
 
 #. type: Title ====
-#: source/server_admin/topics/authentication/kerberos.adoc:32
 #, no-wrap
 msgid "Setup of Kerberos server"
-msgstr ""
+msgstr "Kerberosサーバーのセットアップ"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:37
 msgid ""
 "This is platform dependent.  Exact steps depend on your OS and the Kerberos "
 "vendor you're going to use.  Consult Windows Active Directory, MIT Kerberos "
 "and your OS documentation for how exactly to setup and configure Kerberos "
 "server."
 msgstr ""
+"これはプラットフォームに依存します。正確な手順は、お使いのOSと使用するKerberosベンダーによって異なります。Kerberosサーバーの設定と構成の正確な方法については、Windowsアクティブディレクトリ、MIT"
+" Kerberos、およびOSのマニュアルを参照してください。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:39
 msgid "At least you will need to:"
-msgstr ""
+msgstr "少なくとも次のことが必要です。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:42
 msgid ""
 "Add some user principals to your Kerberos database.  You can also integrate "
 "your Kerberos with LDAP, which means that user accounts will be provisioned "
 "from LDAP server."
 msgstr ""
+"一部のユーザー・プリンシパルをKerberosデータベースに追加します。KerberosとLDAPを統合することもできます。つまり、ユーザー・アカウントはLDAPサーバーからプロビジョニングされます。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:45
 msgid ""
 "Add service principal for \"HTTP\" service.  For example if your "
 "{project_name} server will be running on `www.mydomain.org` you may need to "
-"add principal `HTTP/www.mydomain.org@MYDOMAIN.ORG` assuming that MYDOMAIN."
-"ORG will be your Kerberos realm."
+"add principal `HTTP/www.mydomain.org@MYDOMAIN.ORG` assuming that "
+"MYDOMAIN.ORG will be your Kerberos realm."
 msgstr ""
+"\"HTTP\"サービスのサービス・プリンシパルを追加します。例えば、{project_name}サーバーが `www.mydomain.org` "
+"で動作している場合、MYDOMAIN.ORGがKerberosレルムになると仮定して、プリンシパル "
+"`HTTP/www.mydomain.org@MYDOMAIN.ORG` を追加する必要があります。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:48
 msgid ""
-"For example on MIT Kerberos you can run a \"kadmin\" session.  If you are on "
-"the same machine where is MIT Kerberos, you can simply use the command:"
+"For example on MIT Kerberos you can run a \"kadmin\" session.  If you are on"
+" the same machine where is MIT Kerberos, you can simply use the command:"
 msgstr ""
+"例えば、MIT Kerberosでは、\"kadmin\"セッションを実行できます。MIT "
+"Kerberosと同じマシン上にいる場合は、単純に次のコマンドを使用します。"
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:52
 #, no-wrap
 msgid "sudo kadmin.local\n"
-msgstr ""
+msgstr "sudo kadmin.local\n"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:54
 msgid ""
 "Then add HTTP principal and export his key to a keytab file with the "
 "commands like:"
-msgstr ""
+msgstr "次に、HTTPプリンシパルを追加し、キーをkeytabファイルにエクスポートするには、次のようなコマンドを入力します。"
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:60
 #, no-wrap
 msgid ""
 "addprinc -randkey HTTP/www.mydomain.org@MYDOMAIN.ORG\n"
 "ktadd -k /tmp/http.keytab HTTP/www.mydomain.org@MYDOMAIN.ORG\n"
 msgstr ""
+"addprinc -randkey HTTP/www.mydomain.org@MYDOMAIN.ORG\n"
+"ktadd -k /tmp/http.keytab HTTP/www.mydomain.org@MYDOMAIN.ORG\n"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:63
 msgid ""
 "The Keytab file `/tmp/http.keytab` will need to be accessible on the host "
 "where {project_name} server will be running."
 msgstr ""
+"keytabファイル `/tmp/http.keytab` "
+"は、{project_name}サーバーが実行されるホスト上でアクセス可能である必要があります。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:70
 msgid ""
 "You need to install a kerberos client on your machine.  This is also "
 "platform dependent.  If you are on Fedora, Ubuntu or RHEL, you can install "
 "the package `freeipa-client`, which contains a Kerberos client and several "
-"other utilities.  Configure the kerberos client (on linux it's in file `/etc/"
-"krb5.conf` ). You need to put your Kerberos realm and at least configure the "
-"HTTP domains your server will be running on.  For the example realm MYDOMAIN."
-"ORG you may configure the `domain_realm` section like this:"
+"other utilities.  Configure the kerberos client (on linux it's in file "
+"`/etc/krb5.conf` ). You need to put your Kerberos realm and at least "
+"configure the HTTP domains your server will be running on.  For the example "
+"realm MYDOMAIN.ORG you may configure the `domain_realm` section like this:"
 msgstr ""
+"マシンにKerberosクライアントをインストールする必要があります。こちらもプラットフォームに依存します。Fedora、Ubuntu、またはRHELを使用している場合は、Kerberosクライアントとその他のいくつかのユーティリティを含む"
+" `freeipa-client` パッケージをインストールできます。ケルベロス・クライアントを設定します（Linuxの場合は "
+"`/etc/krb5.conf` "
+"にあります）。Kerberosレルムを配置し、少なくともサーバーが稼働するHTTPドメインを設定する必要があります。レルムMYDOMAIN.ORGの例では、"
+" `domain_realm` セクションを次のように設定することができます。"
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:76
 #, no-wrap
 msgid ""
 "[domain_realm]\n"
 "  .mydomain.org = MYDOMAIN.ORG\n"
 "  mydomain.org = MYDOMAIN.ORG\n"
 msgstr ""
+"[domain_realm]\n"
+"  .mydomain.org = MYDOMAIN.ORG\n"
+"  mydomain.org = MYDOMAIN.ORG\n"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:82
 msgid ""
 "Next you need to export the keytab file with the HTTP principal and make "
-"sure the file is accessible to the process under which {project_name} server "
-"is running.  For production, it's ideal if it's readable just by this "
+"sure the file is accessible to the process under which {project_name} server"
+" is running.  For production, it's ideal if it's readable just by this "
 "process and not by someone else.  For the MIT Kerberos example above, we "
 "already exported keytab to `/tmp/http.keytab` . If your KDC and "
 "{project_name} are running on same host, you have that file already "
 "available."
 msgstr ""
+"次に、HTTPプリンシパルを使用してkeytabファイルをエクスポートし、そのファイルが{project_name}サーバーが実行されているプロセスにアクセス可能であることを確認する必要があります。プロダクションでは、このプロセスだけで読み込めるのであれば理想的ですが、他のファイルも読み込めるわけではありません。上記のMIT"
+" Kerberosの例では、すでにkeytabを `/tmp/http.keytab` "
+"にエクスポートしています。KDCと{project_name}が同じホスト上で実行されている場合、そのファイルはすでに使用可能です。"
 
 #. type: Title =====
-#: source/server_admin/topics/authentication/kerberos.adoc:83
 #, no-wrap
 msgid "Enable SPNEGO Processing"
-msgstr ""
+msgstr "SPNEGO処理を有効にする"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:87
 msgid ""
 "{project_name} does not have the SPNEGO protocol support turned on by "
 "default.  So, you have to go to the <<_authentication-flows, browser flow>> "
 "and enable `Kerberos`."
 msgstr ""
+"{project_name}にはデフォルトでSPNEGOプロトコルのサポートが有効になっていません。 したがって、<<_authentication-"
+"flows, ブラウザー・フロー>>に移動して `Kerberos` を有効にする必要があります。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:94
 msgid ""
-"Switch the `Kerberos` requirement from _disabled_ to either _alternative_ or "
-"_required_.  _Alternative_ basically means that Kerberos is optional.  If "
-"the user's browser hasn't been configured to work with SPNEGO/Kerberos, then "
-"{project_name} will fall back to the regular login screens.  If you set the "
-"requirement to _required_ then all users must have Kerberos enabled for "
+"Switch the `Kerberos` requirement from _disabled_ to either _alternative_ or"
+" _required_.  _Alternative_ basically means that Kerberos is optional.  If "
+"the user's browser hasn't been configured to work with SPNEGO/Kerberos, then"
+" {project_name} will fall back to the regular login screens.  If you set the"
+" requirement to _required_ then all users must have Kerberos enabled for "
 "their browser."
 msgstr ""
+"`Kerberos`のrequirementを _disabled_ から _alternative_ または _required_ に切り替えます。 "
+"_Alternative_ "
+"は、基本的にKerberosがオプショナルであることを意味します。ユーザーのブラウザーがSPNEGO/Kerberosで動作するように設定されていない場合、{project_name}は通常のログイン画面に戻ります。requirementを"
+" _required_ に設定した場合、すべてのユーザーはブラウザーでKerberosを有効にする必要があります。"
 
 #. type: Title =====
-#: source/server_admin/topics/authentication/kerberos.adoc:95
 #, no-wrap
 msgid "Configure Kerberos User Storage Federation Provider"
-msgstr ""
+msgstr "Kerberosユーザー・ストレージ・フェデレーション・プロバイダーを設定する"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:99
 msgid ""
 "Now that the SPNEGO protocol is turned on at the authentication server, "
-"you'll need to configure how {project_name} interprets the Kerberos ticket.  "
-"This is done through <<_user-storage-federation,User Storage Federation>>. "
-"We have 2 different federation providers with Kerberos authentication "
+"you'll need to configure how {project_name} interprets the Kerberos ticket."
+"  This is done through <<_user-storage-federation,User Storage Federation>>."
+" We have 2 different federation providers with Kerberos authentication "
 "support."
 msgstr ""
+"認証サーバでSPNEGOプロトコルが有効になったので、{project_name}がKerberosチケットをどのように解釈するかを設定する必要があります。これは"
+"、<<_user-storage-federation, "
+"ユーザー・ストレージ・フェデレーション>>を介して行われます。Kerberos認証をサポートする2つの異なるフェデレーション・プロバイダーがあります。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:102
 msgid ""
-"If you want to authenticate with Kerberos backed by an LDAP server, you have "
-"to first configure the <<_ldap, LDAP Federation Provider>>.  If you look at "
-"the configuration page for your LDAP provider you'll see a `Kerberos "
+"If you want to authenticate with Kerberos backed by an LDAP server, you have"
+" to first configure the <<_ldap, LDAP Federation Provider>>.  If you look at"
+" the configuration page for your LDAP provider you'll see a `Kerberos "
 "Integration` section."
 msgstr ""
+"LDAPサーバーを背後にしてKerberosで認証する場合は、最初に<<_ldap, "
+"LDAPフェデレーション・プロバイダー>>を設定する必要があります。LDAPプロバイダーの設定ページを見ると、 `Kerberos "
+"Integration` セクションが表示されます。"
 
 #. type: Block title
-#: source/server_admin/topics/authentication/kerberos.adoc:103
 #, no-wrap
 msgid "LDAP Kerberos Integration"
-msgstr ""
+msgstr "LDAP Kerberos Integration"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:105
 msgid "image:{project_images}/ldap-kerberos.png[]"
-msgstr ""
+msgstr "image:{project_images}/ldap-kerberos.png[]"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:108
 msgid ""
 "Turning on the switch `Allow Kerberos authentication` will make "
 "{project_name} use the Kerberos principal to lookup information about the "
 "user so that it can be imported into the {project_name} environment."
 msgstr ""
+"`Allow Kerberos authentication` "
+"スイッチをオンにすると、{project_name}はKerberosプリンシパルを使用してユーザーに関する情報を検索し、{project_name}環境にインポートすることができます。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:111
 msgid ""
 "If your Kerberos solution is not backed by an LDAP server, you have to use "
 "the `Kerberos` User Storage Federation Provider.  Go to the `User "
 "Federation` left menu item and select `Kerberos` from the `Add provider` "
 "select box."
 msgstr ""
+"KerberosソリューションがLDAPサーバーの背後にない場合は、 `Kerberos` "
+"ユーザー・ストレージ・フェデレーション・プロバイダーを使用する必要があります。 `User Federation` の左メニュー項目に移動し、 `Add"
+" provider` 選択ボックスから `Kerberos` を選択します。"
 
 #. type: Block title
-#: source/server_admin/topics/authentication/kerberos.adoc:112
 #, no-wrap
 msgid "Kerberos User Storage Provider"
-msgstr ""
+msgstr "Kerberosユーザーストレージプロバイダー"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:114
 msgid "image:{project_images}/kerberos-provider.png[]"
-msgstr ""
+msgstr "image:{project_images}/kerberos-provider.png[]"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:117
 msgid ""
 "This provider parses the Kerberos ticket for simple principal information "
 "and does a small import into the local {project_name} database.  User "
 "profile information like first name, last name, and email are not "
 "provisioned."
 msgstr ""
+"このプロバイダーは、単純なプリンシパル情報のためにKerberosチケットを解析し、ローカルの{project_name}データベースへの細かいインポートを行います。"
+" 名、姓、電子メールなどのユーザー・プロファイル情報はプロビジョニングされません。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:124
 msgid ""
 "Clients need to install kerberos client and setup krb5.conf as described "
 "above.  Additionally they need to enable SPNEGO login support in their "
-"browser.  See link:http://www.microhowto.info/howto/"
-"configure_firefox_to_authenticate_using_spnego_and_kerberos.html[configuring "
-"Firefox for Kerberos] if you are using that browser.  URI `.mydomain.org` "
+"browser.  See "
+"link:http://www.microhowto.info/howto/configure_firefox_to_authenticate_using_spnego_and_kerberos.html[configuring"
+" Firefox for Kerberos] if you are using that browser.  URI `.mydomain.org` "
 "must be allowed in the `network.negotiate-auth.trusted-uris` config option."
 msgstr ""
+"クライアントはKerberosクライアントをインストールし、上記のようにkrb5.confを設定する必要があります。さらに、ブラウザーでSPNEGOログインを有効にする必要があります。そのブラウザを使用している場合は、link:http://www.microhowto.info/howto/configure_firefox_to_authenticate_using_spnego_and_kerberos.html[KerberosのためのFirefoxの設定]を参照してください。URI"
+" `.mydomain.org` は、 `network.negotiate-auth.trusted-uris` "
+"設定オプションで許可する必要があります。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:126
 msgid ""
 "In a Windows domain, clients usually don't need to configure anything "
 "special as IE is already able to participate in SPNEGO authentication for "
 "the Windows domain."
 msgstr ""
+"Windowsドメインでは、通常、WindowsドメインのSPNEGO認証にIEがすでに参加できるため、クライアントは特別な設定を行う必要はありません。"
 
 #. type: Title ====
-#: source/server_admin/topics/authentication/kerberos.adoc:128
 #, no-wrap
 msgid "Example setups"
-msgstr ""
+msgstr "設定例"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:131
 msgid ""
 "For easier testing with Kerberos, we provided some example setups to test."
-msgstr ""
+msgstr "Kerberosで簡単にテストできるように、テスト用の設定例をいくつか用意しました。"
 
 #. type: Title =====
-#: source/server_admin/topics/authentication/kerberos.adoc:132
 #, no-wrap
 msgid "{project_name} and FreeIPA docker image"
-msgstr ""
+msgstr "{project_name}とFreeIPA Dockerイメージ"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:138
-#, no-wrap
 msgid ""
-"Once you install https://www.docker.com/[docker], you can run docker image with http://www.freeipa.org/page/Main_Page[FreeIPA]         server installed.\n"
-"FreeIPA provides integrated security solution with MIT Kerberos and 389 LDAP server among other things . The image provides also {project_name}\n"
-"server configured with LDAP Federation provider and enabled SPNEGO/Kerberos authentication against the FreeIPA server.\n"
-"See details https://github.com/mposolda/keycloak-freeipa-docker/blob/master/README.md[here] .\n"
+"Once you install https://www.docker.com/[docker], you can run docker image "
+"with FreeIPA server installed.  FreeIPA provides integrated security "
+"solution with MIT Kerberos and 389 LDAP server among other things . The "
+"image provides also {project_name} server configured with LDAP Federation "
+"provider and enabled SPNEGO/Kerberos authentication against the FreeIPA "
+"server.  See details https://github.com/mposolda/keycloak-freeipa-"
+"docker/blob/master/README.md[here] ."
 msgstr ""
+"https://www.docker.com/[Docker] "
+"をインストールすると、FreeIPAサーバーがインストールされたDockerイメージを実行できます。FreeIPAは、とりわけMIT "
+"Kerberosと389LDAPサーバーを統合したセキュリティ・ソリューションを提供します。このイメージは、LDAPフェデレーション・プロバイダーで構成された{project_name}サーバーも提供し、FreeIPAサーバーに対してSPNEGO/Kerberos認証を有効にします。詳細は"
+" https://github.com/mposolda/keycloak-freeipa-"
+"docker/blob/master/README.md[こちら] をご覧ください。"
 
 #. type: Title =====
-#: source/server_admin/topics/authentication/kerberos.adoc:139
 #, no-wrap
 msgid "ApacheDS testing Kerberos server"
-msgstr ""
+msgstr "KerberosサーバーのApacheDSテスト"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:144
 msgid ""
-"For quick testing and unit tests, we use a very simple http://directory."
-"apache.org/apacheds/[ApacheDS] Kerberos server.  You need to build "
-"{project_name} from sources and then run the Kerberos server with maven-exec-"
-"plugin from our testsuite.  See details https://github.com/keycloak/keycloak/"
-"blob/master/misc/Testsuite.md#user-content-kerberos-server[here] ."
+"For quick testing and unit tests, we use a very simple "
+"http://directory.apache.org/apacheds/[ApacheDS] Kerberos server.  You need "
+"to build {project_name} from sources and then run the Kerberos server with "
+"maven-exec-plugin from our testsuite.  See details "
+"https://github.com/keycloak/keycloak/blob/master/misc/Testsuite.md#user-"
+"content-kerberos-server[here] ."
 msgstr ""
+"迅速なテストとユニットテストのために、非常に単純な http://directory.apache.org/apacheds/[ApacheDS] "
+"Kerberosサーバーを使用します。ソースから{project_name}をビルドし、テストスイートからmaven-exec-"
+"pluginを使ってKerberosサーバーを実行する必要があります。詳細は "
+"https://github.com/keycloak/keycloak/blob/master/misc/Testsuite.md#user-"
+"content-kerberos-server[こちら] をご覧ください。"
 
 #. type: Title ====
-#: source/server_admin/topics/authentication/kerberos.adoc:146
 #, no-wrap
 msgid "Credential Delegation"
-msgstr ""
+msgstr "クレデンシャルの委任"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:155
 msgid ""
-"Kerberos 5 supports the concept of credential delegation.  In this scenario, "
-"your applications may want access to the Kerberos ticket so that they can re-"
-"use it to interact with other services secured by Kerberos.  Since the "
+"Kerberos 5 supports the concept of credential delegation.  In this scenario,"
+" your applications may want access to the Kerberos ticket so that they can "
+"re-use it to interact with other services secured by Kerberos.  Since the "
 "SPNEGO protocol is processed in the {project_name} server, you have to "
 "propagate the GSS credential to your application within the OpenID Connect "
 "token claim or a SAML assertion attribute that is transmitted to your "
@@ -425,9 +435,15 @@ msgid ""
 "the `Mappers` tab of the application's client page.  See <<_protocol-"
 "mappers, Protocol Mappers>> chapter for more details."
 msgstr ""
+"Kerberos "
+"5は、クレデンシャルの委任の概念をサポートしています。このシナリオでは、アプリケーションがKerberosチケットにアクセスして、Kerberosでセキュリティ保護されている他のサービスとやりとりすることができます。{project_name}サーバーでSPNEGOプロトコルが処理されるため、OpenID"
+" "
+"Connectトークンクレーム内のアプリケーションにGSSクレデンシャルを伝播するか、{project_name}サーバーからアプリケーションに送信されるSAMLアサーション属性を伝播する必要があります。このクレームをトークンまたはアサーションに挿入するには、各アプリケーションで"
+" `gss delegation credential` "
+"と呼ばれるビルトイン・プロトコル・マッパーを有効にする必要があります。これは、アプリケーションのクライアントページの `Mappers` "
+"タブで有効になります。詳細については、<<_protocol-mappers, プロトコル・マッパー>>の章を参照してください。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:159
 msgid ""
 "Applications will need to deserialize the claim it receives from "
 "{project_name} before it can use it to make GSS calls against other "
@@ -436,92 +452,108 @@ msgid ""
 "credential passed to the method `GSSManager.createContext` for example like "
 "this:"
 msgstr ""
+"アプリケーションは、他のサービスに対してGSSコールを使用する前に、{project_name}から受け取ったクレームをデシリアライズする必要があります。クレデンシャルをアクセストークンからGSSクレデンシャル・オブジェクトにデシリアライズしたら、このクレデンシャルを"
+" `GSSManager.createContext` メソッドに渡して、例えば次のようにGSSContextを作成する必要があります。"
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:165
 #, no-wrap
 msgid ""
 "// Obtain accessToken in your application.\n"
 "KeycloakPrincipal keycloakPrincipal = (KeycloakPrincipal) servletReq.getUserPrincipal();\n"
 "AccessToken accessToken = keycloakPrincipal.getKeycloakSecurityContext().getToken();\n"
 msgstr ""
+"// Obtain accessToken in your application.\n"
+"KeycloakPrincipal keycloakPrincipal = (KeycloakPrincipal) servletReq.getUserPrincipal();\n"
+"AccessToken accessToken = keycloakPrincipal.getKeycloakSecurityContext().getToken();\n"
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:169
 #, no-wrap
 msgid ""
 "// Retrieve kerberos credential from accessToken and deserialize it\n"
 "String serializedGssCredential = (String) accessToken.getOtherClaims().\n"
 "    get(org.keycloak.common.constants.KerberosConstants.GSS_DELEGATION_CREDENTIAL);\n"
 msgstr ""
+"// Retrieve kerberos credential from accessToken and deserialize it\n"
+"String serializedGssCredential = (String) accessToken.getOtherClaims().\n"
+"    get(org.keycloak.common.constants.KerberosConstants.GSS_DELEGATION_CREDENTIAL);\n"
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:172
 #, no-wrap
 msgid ""
 "GSSCredential deserializedGssCredential = org.keycloak.common.util.KerberosSerializationUtils.\n"
 "    deserializeCredential(serializedGssCredential);\n"
 msgstr ""
+"GSSCredential deserializedGssCredential = org.keycloak.common.util.KerberosSerializationUtils.\n"
+"    deserializeCredential(serializedGssCredential);\n"
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/kerberos.adoc:176
 #, no-wrap
 msgid ""
 "// Create GSSContext to call other kerberos-secured services\n"
 "GSSContext context = gssManager.createContext(serviceName, krb5Oid,\n"
 "    deserializedGssCredential, GSSContext.DEFAULT_LIFETIME);\n"
 msgstr ""
+"// Create GSSContext to call other kerberos-secured services\n"
+"GSSContext context = gssManager.createContext(serviceName, krb5Oid,\n"
+"    deserializedGssCredential, GSSContext.DEFAULT_LIFETIME);\n"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:182
 msgid ""
 "We have an example, that shows this in detail.  It's in `examples/kerberos` "
 "in the {project_name} example distribution or demo distribution download.  "
-"You can also check the example sources directly https://github.com/keycloak/"
-"keycloak/tree/master/examples/kerberos[here] ."
+"You can also check the example sources directly "
+"https://github.com/keycloak/keycloak/tree/master/examples/kerberos[here] ."
 msgstr ""
+"これを詳細に示した例があります。{project_name}のサンプル配布物またはデモ配布ダウンロードの `examples/kerberos` "
+"にあります。サンプルソースを "
+"https://github.com/keycloak/keycloak/tree/master/examples/kerberos[ここ] "
+"で直接チェックすることもできます。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:186
 msgid ""
-"Note that you also need to configure `forwardable` kerberos tickets in `krb5."
-"conf` file and add support for delegated credentials to your browser."
+"Note that you also need to configure `forwardable` kerberos tickets in "
+"`krb5.conf` file and add support for delegated credentials to your browser."
 msgstr ""
+"`krb5.conf` ファイルで `転送可能な` "
+"Kerberosチケットを設定し、ブラウザーに委任されたクレデンシャルのサポートを追加する必要があることに注意してください。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:190
 #, no-wrap
 msgid ""
 "Credential delegation has some security implications so only use it if you really need it.\n"
 "         It's highly recommended to use it together with HTTPS.\n"
 "         See for example http://www.microhowto.info/howto/configure_firefox_to_authenticate_using_spnego_and_kerberos.html[this article] for more details.\n"
 msgstr ""
+"クレデンシャルの委任にはいくつかのセキュリティ上の影響があります。本当に必要な場合にのみ使用してください。HTTPSと一緒に使用することを強くお勧めします。詳細については、"
+" "
+"http://www.microhowto.info/howto/configure_firefox_to_authenticate_using_spnego_and_kerberos.html[この記事]"
+" の例を参照してください。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:194
 msgid ""
-"If you have issues, we recommend that you enable additional logging to debug "
-"the problem:"
-msgstr ""
+"If you have issues, we recommend that you enable additional logging to debug"
+" the problem:"
+msgstr "課題がある場合は、追加のログを有効にして問題をデバッグすることをお勧めします。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:196
 msgid ""
 "Enable `Debug` flag in admin console for Kerberos or LDAP federation "
 "providers"
-msgstr ""
+msgstr "KerberosまたはLDAPフェデレーション・プロバイダーの管理コンソールで `Debug` フラグを有効にする"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:197
 msgid ""
 "Enable TRACE logging for category `org.keycloak` in logging section of "
-"`standalone/configuration/standalone.xml` to receive more info `standalone/"
-"log/server.log`"
+"`standalone/configuration/standalone.xml` to receive more info "
+"`standalone/log/server.log`"
 msgstr ""
+"`standalone/configuration/standalone.xml` のロギング・セクションに `org.keycloak` "
+"カテゴリのTRACEロギングを有効にして、詳細な情報 `standalone/log/server.log` を受け取ります。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/kerberos.adoc:197
 msgid ""
-"Add system properties `-Dsun.security.krb5.debug=true` and `-Dsun.security."
-"spnego.debug=true`"
+"Add system properties `-Dsun.security.krb5.debug=true` and "
+"`-Dsun.security.spnego.debug=true`"
 msgstr ""
+"システムプロパティ `-Dsun.security.krb5.debug=true` と "
+"`-Dsun.security.spnego.debug=true` を追加します"

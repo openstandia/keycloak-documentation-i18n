@@ -2,18 +2,17 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: n.watanabe <nwatanabe.ase@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
@@ -26,6 +25,7 @@ msgstr ""
 #: source/server_development/topics/user-storage/provider-interfaces.adoc:50
 #: source/server_development/topics/user-storage/registration-query.adoc:109
 #: source/server_development/topics/user-storage/simple-example.adoc:146
+#: source/server_development/topics/auth-spi.adoc:460
 #: source/server_development/topics/providers.adoc:75
 #, no-wrap
 msgid "    }\n"
@@ -45,13 +45,13 @@ msgstr "    }\n"
 #: source/server_development/topics/user-storage/registration-query.adoc:210
 #, no-wrap
 msgid "PropertyFileUserStorageProvider"
-msgstr ""
+msgstr "PropertyFileUserStorageProvider"
 
 #. type: Title ===
 #: source/server_development/topics/user-storage/registration-query.adoc:2
 #, no-wrap
 msgid "Add/Remove User and Query Capability interfaces"
-msgstr ""
+msgstr "ユーザーおよびクエリ機能の追加/削除インターフェイス"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:7
@@ -62,19 +62,21 @@ msgid ""
 "enhancements, our example provider must implement the `UserQueryProvider` "
 "and `UserRegistrationProvider` interfaces."
 msgstr ""
+"これまでの例で行っていないことの1つは、ユーザーの追加と削除やパスワードの変更を許可することです。これまでの例で定義されたユーザーは、管理コンソールで照会することも表示することもできません。これらの拡張機能を追加するには、サンプル・プロバイダーで"
+" `UserQueryProvider` と `UserRegistrationProvider` インタフェースを実装する必要があります。"
 
 #. type: Title ====
 #: source/server_development/topics/user-storage/registration-query.adoc:8
 #, no-wrap
 msgid "Implementing UserRegistrationProvider"
-msgstr ""
+msgstr "UserRegistrationProviderの実装"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:12
 msgid ""
 "To implement adding and removing users from this particular store, we first "
 "have to be able to save our properties file to disk."
-msgstr ""
+msgstr "特定のストアにユーザーを追加したり削除したりするために、プロパティファイルをディスクに保存する必要があります。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:27
@@ -92,19 +94,30 @@ msgid ""
 "        }\n"
 "    }\n"
 msgstr ""
+"    public void save() {\n"
+"        String path = model.getConfig().getFirst(\"path\");\n"
+"        path = EnvUtil.replace(path);\n"
+"        try {\n"
+"            FileOutputStream fos = new FileOutputStream(path);\n"
+"            properties.store(fos, \"\");\n"
+"            fos.close();\n"
+"        } catch (IOException e) {\n"
+"            throw new RuntimeException(e);\n"
+"        }\n"
+"    }\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:30
 msgid ""
 "Then, the implementation of the `addUser()` and `removeUser()` methods "
 "becomes simple."
-msgstr ""
+msgstr "このとき、 `addUser()` メソッドと `removeUser()` メソッドの実装は単純になります。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:35
 #, no-wrap
 msgid "    public static final String UNSET_PASSWORD=\"#$!-UNSET-PASSWORD\";\n"
-msgstr ""
+msgstr "    public static final String UNSET_PASSWORD=\"#$!-UNSET-PASSWORD\";\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:44
@@ -119,6 +132,14 @@ msgid ""
 "        return createAdapter(realm, username);\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public UserModel addUser(RealmModel realm, String username) {\n"
+"        synchronized (properties) {\n"
+"            properties.setProperty(username, UNSET_PASSWORD);\n"
+"            save();\n"
+"        }\n"
+"        return createAdapter(realm, username);\n"
+"    }\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:53
@@ -133,24 +154,38 @@ msgid ""
 "        }\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public boolean removeUser(RealmModel realm, UserModel user) {\n"
+"        synchronized (properties) {\n"
+"            if (properties.remove(user.getUsername()) == null) return false;\n"
+"            save();\n"
+"            return true;\n"
+"        }\n"
+"    }\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:58
 msgid ""
-"Notice that when adding a user we set the password value of the property map "
-"to be `UNSET_PASSWORD`.  We do this as we can't have null values for a "
+"Notice that when adding a user we set the password value of the property map"
+" to be `UNSET_PASSWORD`.  We do this as we can't have null values for a "
 "property in the property value. We also have to modify the "
 "`CredentialInputValidator` methods to reflect this."
 msgstr ""
+"ユーザーを追加するとき、プロパティー・マップのパスワード値を `UNSET_PASSWORD` "
+"に設定することに注意してください。これは、プロパティー値に対してnull値を持つことができないためです。これを反映するために、 "
+"`CredentialInputValidator` メソッドを変更する必要もあります。"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:62
 msgid ""
 "`addUser()` will be called if the provider implements the "
 "`UserRegistrationProvider` interface. If your provider has a configuration "
-"switch to turn of adding a user, returning `null` from this method will skip "
-"the provider and call the next one."
+"switch to turn of adding a user, returning `null` from this method will skip"
+" the provider and call the next one."
 msgstr ""
+"プロバイダーが `UserRegistrationProvider` インターフェイスを実装している場合、 `addUser()` "
+"が呼び出されます。プロバイダーがユーザーを追加するための設定スイッチを持っている場合、このメソッドから  `null` "
+"を返すとプロバイダーをスキップして、次のメソッドを呼び出します。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:69
@@ -161,6 +196,9 @@ msgid ""
 "    public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {\n"
 "        if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel)) return false;\n"
 msgstr ""
+"@Override\n"
+" public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {\n"
+" if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel)) return false;\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:75
@@ -172,13 +210,18 @@ msgid ""
 "        return password.equals(cred.getValue());\n"
 "    }\n"
 msgstr ""
+"        UserCredentialModel cred = (UserCredentialModel)input;\n"
+"        String password = properties.getProperty(user.getUsername());\n"
+"        if (password == null || UNSET_PASSWORD.equals(password)) return false;\n"
+"        return password.equals(cred.getValue());\n"
+"    }\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:78
 msgid ""
 "Since we can now save our property file, it also makes sense to allow "
 "password updates."
-msgstr ""
+msgstr "プロパティー・ファイルを保存できるようになったので、パスワードの更新を許可するのも理にかなっています。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:93
@@ -196,11 +239,22 @@ msgid ""
 "        return true;\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public boolean updateCredential(RealmModel realm, UserModel user, CredentialInput input) {\n"
+"        if (!(input instanceof UserCredentialModel)) return false;\n"
+"        if (!input.getType().equals(CredentialModel.PASSWORD)) return false;\n"
+"        UserCredentialModel cred = (UserCredentialModel)input;\n"
+"        synchronized (properties) {\n"
+"            properties.setProperty(user.getUsername(), cred.getValue());\n"
+"            save();\n"
+"        }\n"
+"        return true;\n"
+"    }\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:96
 msgid "We can now also implement disabling a password too."
-msgstr ""
+msgstr "また、パスワードを無効にすることもできます。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:107
@@ -214,12 +268,21 @@ msgid ""
 "            save();\n"
 "        }\n"
 msgstr ""
+"    @Override\n"
+"    public void disableCredentialType(RealmModel realm, UserModel user, String credentialType) {\n"
+"        if (!credentialType.equals(CredentialModel.PASSWORD)) return;\n"
+"        synchronized (properties) {\n"
+"            properties.setProperty(user.getUsername(), UNSET_PASSWORD);\n"
+"            save();\n"
+"        }\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:111
 #, no-wrap
-msgid "    private static final Set<String> disableableTypes = new HashSet<>();\n"
+msgid ""
+"    private static final Set<String> disableableTypes = new HashSet<>();\n"
 msgstr ""
+"    private static final Set<String> disableableTypes = new HashSet<>();\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:115
@@ -229,6 +292,9 @@ msgid ""
 "        disableableTypes.add(CredentialModel.PASSWORD);\n"
 "    }\n"
 msgstr ""
+"    static {\n"
+"        disableableTypes.add(CredentialModel.PASSWORD);\n"
+"    }\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:118
@@ -237,6 +303,8 @@ msgid ""
 "    @Override\n"
 "    public Set<String> getDisableableCredentialTypes(RealmModel realm, UserModel user) {\n"
 msgstr ""
+"    @Override\n"
+"    public Set<String> getDisableableCredentialTypes(RealmModel realm, UserModel user) {\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:121
@@ -245,19 +313,21 @@ msgid ""
 "        return disableableTypes;\n"
 "    }\n"
 msgstr ""
+"        return disableableTypes;\n"
+"    }\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:124
 msgid ""
-"With these methods implemented, you'll now be able to change and disable the "
-"password for the user in the administration console."
-msgstr ""
+"With these methods implemented, you'll now be able to change and disable the"
+" password for the user in the administration console."
+msgstr "これらの方法を実装すると、管理コンソールでユーザーのパスワードを変更および無効にできるようになります。"
 
 #. type: Title ====
 #: source/server_development/topics/user-storage/registration-query.adoc:125
 #, no-wrap
 msgid "Implementing UserQueryProvider"
-msgstr ""
+msgstr "UserQueryProviderの実装"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:129
@@ -266,6 +336,9 @@ msgid ""
 "not be able to view and manage users that were loaded by our example "
 "provider. Let's look at implementing this interface."
 msgstr ""
+"`UserQueryProvider` "
+"を実装しなければ、管理コンソールはサンプル・プロバイダーによってロードされたユーザーを表示および管理できません。この "
+"インターフェイスの実装を見てみましょう。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:137
@@ -276,6 +349,10 @@ msgid ""
 "        return properties.size();\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public int getUsersCount(RealmModel realm) {\n"
+"        return properties.size();\n"
+"    }\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:142
@@ -286,6 +363,10 @@ msgid ""
 "        return getUsers(realm, 0, Integer.MAX_VALUE);\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public List<UserModel> getUsers(RealmModel realm) {\n"
+"        return getUsers(realm, 0, Integer.MAX_VALUE);\n"
+"    }\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:156
@@ -305,16 +386,32 @@ msgid ""
 "        return users;\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public List<UserModel> getUsers(RealmModel realm, int firstResult, int maxResults) {\n"
+"        List<UserModel> users = new LinkedList<>();\n"
+"        int i = 0;\n"
+"        for (Object obj : properties.keySet()) {\n"
+"            if (i++ < firstResult) continue;\n"
+"            String username = (String)obj;\n"
+"            UserModel user = getUserByUsername(username, realm);\n"
+"            users.add(user);\n"
+"            if (users.size() >= maxResults) break;\n"
+"        }\n"
+"        return users;\n"
+"    }\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:160
 msgid ""
 "The `getUser()` method iterates over the key set of the property file, "
 "delegating to `getUserByUsername()` to load a user.  Notice that we are "
-"indexing this call based on the `firstResult` and `maxResults` parameter. If "
-"your external store does not support pagination, you will have to do similar "
-"logic."
+"indexing this call based on the `firstResult` and `maxResults` parameter. If"
+" your external store does not support pagination, you will have to do "
+"similar logic."
 msgstr ""
+"`getUser()` メソッドはプロパティー・ファイルのキー・セットを反復し、 `getUserByUsername()` "
+"に委譲してユーザーをロードします。 `firstResult` と `maxResults` "
+"パラメーターに基づいてこの呼び出しにインデックスを付けることに注目してください。外部ストアーがページネーションをサポートしていない場合は、同様のロジックを実行する必要があります。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:168
@@ -325,6 +422,10 @@ msgid ""
 "        return searchForUser(search, realm, 0, Integer.MAX_VALUE);\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public List<UserModel> searchForUser(String search, RealmModel realm) {\n"
+"        return searchForUser(search, realm, 0, Integer.MAX_VALUE);\n"
+"    }\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:183
@@ -345,15 +446,32 @@ msgid ""
 "        return users;\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public List<UserModel> searchForUser(String search, RealmModel realm, int firstResult, int maxResults) {\n"
+"        List<UserModel> users = new LinkedList<>();\n"
+"        int i = 0;\n"
+"        for (Object obj : properties.keySet()) {\n"
+"            String username = (String)obj;\n"
+"            if (!username.contains(search)) continue;\n"
+"            if (i++ < firstResult) continue;\n"
+"            UserModel user = getUserByUsername(username, realm);\n"
+"            users.add(user);\n"
+"            if (users.size() >= maxResults) break;\n"
+"        }\n"
+"        return users;\n"
+"    }\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:188
 msgid ""
-"The first declaration of `searchForUser()` takes a string parameter. This is "
-"supposed to be a string that you use to search username and email attributes "
-"to find the user. This string can be a substring, which is why we use the "
-"`String.contains()` method when doing our search."
+"The first declaration of `searchForUser()` takes a string parameter. This is"
+" supposed to be a string that you use to search username and email "
+"attributes to find the user. This string can be a substring, which is why we"
+" use the `String.contains()` method when doing our search."
 msgstr ""
+"`searchForUser()` "
+"の最初の宣言は文字列パラメーターを受け取ります。これは、ユーザー名と電子メールの属性を検索してユーザーを見つけるために使用する文字列です。この文字列は部分文字列にすることができるので、検索を行うときに"
+" `String.contains()` メソッドを使用しています。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:196
@@ -364,6 +482,10 @@ msgid ""
 "        return searchForUser(params, realm, 0, Integer.MAX_VALUE);\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public List<UserModel> searchForUser(Map<String, String> params, RealmModel realm) {\n"
+"        return searchForUser(params, realm, 0, Integer.MAX_VALUE);\n"
+"    }\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:204
@@ -377,6 +499,13 @@ msgid ""
 "        return searchForUser(usernameSearchString, realm, firstResult, maxResults);\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public List<UserModel> searchForUser(Map<String, String> params, RealmModel realm, int firstResult, int maxResults) {\n"
+"        // only support searching by username\n"
+"        String usernameSearchString = params.get(\"username\");\n"
+"        if (usernameSearchString == null) return Collections.EMPTY_LIST;\n"
+"        return searchForUser(usernameSearchString, realm, firstResult, maxResults);\n"
+"    }\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:208
@@ -386,6 +515,9 @@ msgid ""
 "usernames, so we only search based on usernames. We delegate to "
 "`searchForUser()` for this."
 msgstr ""
+"`Map` パラメーターを受け取る `searchForUser()` "
+"メソッドは、姓、名、電子メールに基づいてユーザーを検索できます。ユーザー名のみを保存するので、ユーザー名に基づいて検索します。このため、`searchForUser()`"
+" に処理を委譲しています。"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:217
@@ -396,6 +528,10 @@ msgid ""
 "        return Collections.EMPTY_LIST;\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public List<UserModel> getGroupMembers(RealmModel realm, GroupModel group, int firstResult, int maxResults) {\n"
+"        return Collections.EMPTY_LIST;\n"
+"    }\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:222
@@ -406,6 +542,10 @@ msgid ""
 "        return Collections.EMPTY_LIST;\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public List<UserModel> getGroupMembers(RealmModel realm, GroupModel group) {\n"
+"        return Collections.EMPTY_LIST;\n"
+"    }\n"
 
 #. type: delimited block -
 #: source/server_development/topics/user-storage/registration-query.adoc:227
@@ -416,10 +556,14 @@ msgid ""
 "        return Collections.EMPTY_LIST;\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public List<UserModel> searchForUserByUserAttribute(String attrName, String attrValue, RealmModel realm) {\n"
+"        return Collections.EMPTY_LIST;\n"
+"    }\n"
 
 #. type: Plain text
 #: source/server_development/topics/user-storage/registration-query.adoc:230
 msgid ""
 "We do not store groups or attributes, so the other methods return an empty "
 "list."
-msgstr ""
+msgstr "グループや属性は保存しないので、他のメソッドは空のリストを返します。"

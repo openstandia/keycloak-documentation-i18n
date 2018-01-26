@@ -35,9 +35,9 @@ msgid ""
 "responses."
 msgstr ""
 "link:http://saml.xml.org/saml-specifications[SAML "
-"2.0]はOIDCと同質的な仕様ですが、より古くて成熟しています。SOAPをルーツとしていて、WS- "
+"2.0]はOIDCと似た仕様ですが、より古くて成熟しています。SOAPをルーツとしていて、WS- "
 "*の仕様も多すぎるため、OIDCよりも冗長な傾向があります。SAML "
-"2.0は主に、認証サーバーとアプリケーションの間でXMLドキュメントを交換することによって機能する認証プロトコルです。XML署名と暗号化は、要求と応答を検証するために使用されます。"
+"2.0は主に、認証サーバーとアプリケーションの間でXMLドキュメントを交換することによって機能する認証プロトコルです。XML署名と暗号化は、リクエストとレスポンスを検証するために使用されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/sso-protocols/saml.adoc:15
@@ -51,7 +51,10 @@ msgid ""
 "the application can use to determine what resources the user is allowed to "
 "access on the application."
 msgstr ""
-"SAMLを使用する場合、2つのタイプのユースケースがあります。最初のものは{project_name}サーバーにユーザーの認証を求めるアプリケーションです。ログインに成功すると、アプリケーションは、ユーザーに関するさまざまな属性を指定するSAMLアサーションと呼ばれるものを含むXMLドキュメントを受け取ります。このXMLドキュメントは、レルムによってデジタル署名され、ユーザーがアプリケーションでアクセスできるリソースを決定するためにアプリケーションが使用できるアクセス情報（ユーザー・ロール・マッピングなど）を含んでいます。"
+"SAMLを使用するユースケースは、実際には2つの種類があります。1つ目は、{project_name}サーバーにユーザーの認証を要求するアプリケーションのユースケースです。ログインが成功すると、アプリケーションは"
+" "
+"ユーザーに関する様々な属性を指定するSAMLアサーションと呼ばれるものが含まれるXMLドキュメントを受け取ります。このXMLドキュメントはレルムによってデジタル署名されており、アプリケーションがユーザーのアクセス可能なリソースを決定するために使用できるアクセス情報(ユーザー・ロール・マッピングのような)が含まれています。"
+" "
 
 #. type: Plain text
 #: source/server_admin/topics/sso-protocols/saml.adoc:18
@@ -77,22 +80,22 @@ msgid ""
 "browser based applications.  The _ECP_ binding covers REST invocations.  "
 "There are other binding types but {project_name} only supports those three."
 msgstr ""
-"SAMLは、認証プロトコルを実行する際にXMLドキュメントを交換するためのいくつかの異なる方法を定義しています。 _Redirect_ と _Post_"
-" バインディングは、ブラウザー・ベースのアプリケーションをカバーします。 _ECP_ "
+"SAMLは、認証プロトコルを実行する際にXMLドキュメントを交換するためのいくつかの異なる方法を定義しています。 _リダイレクト_ バインディングと "
+"_POST_ バインディングは、ブラウザー・ベースのアプリケーションをカバーします。 _ECP_ "
 "バインディングは、REST呼び出しを扱います。他のバインディング種別もありますが、{project_name}はこれらの3つしかサポートしていません。"
 
 #. type: Title =====
 #: source/server_admin/topics/sso-protocols/saml.adoc:25
 #, no-wrap
 msgid "Redirect Binding"
-msgstr "Redirectバインディング"
+msgstr "リダイレクト・バインディング"
 
 #. type: Plain text
 #: source/server_admin/topics/sso-protocols/saml.adoc:29
 msgid ""
 "The _Redirect_ Binding uses a series of browser redirect URIs to exchange "
 "information.  This is a rough overview of how it works."
-msgstr "_Redirect_ Bindingは、一連のブラウザー・リダイレクトURIを使用して情報を交換します。その動作の概要を示します。"
+msgstr "_リダイレクト_ バインディングは、一連のブラウザー・リダイレクトURIを使用して情報を交換します。その動作の概要を示します。"
 
 #. type: Plain text
 #: source/server_admin/topics/sso-protocols/saml.adoc:35
@@ -105,7 +108,7 @@ msgid ""
 "param in the redirect URI to {project_name}.  This signature is used to "
 "validate the client that sent this request."
 msgstr ""
-"ユーザーがアプリケーションへアクセスすると、認証されていないことがアプリケーションによって検出されます。XML認証要求ドキュメントを生成し、それを{project_name}サーバーにリダイレクトするために使用されるURIのクエリ・パラメーターとしてエンコードします。設定に応じて、アプリケーションはこのXMLドキュメントにデジタル署名し、この署名を{project_name}へのリダイレクトURIのクエリ・パラメーターとして埋め込むこともできます。この署名は、この要求を送信したクライアントを検証するために使用されます。"
+"ユーザーがアプリケーションへアクセスすると、認証されていないことがアプリケーションによって検出されます。XML認証リクエスト・ドキュメントを生成し、それを{project_name}サーバーにリダイレクトするために使用されるURIのクエリー・パラメーターとしてエンコードします。設定に応じて、アプリケーションはこのXMLドキュメントにデジタル署名し、この署名を{project_name}へのリダイレクトURIのクエリー・パラメーターとして埋め込むこともできます。この署名は、このリクエストを送信したクライアントを検証するために使用されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/sso-protocols/saml.adoc:37
@@ -114,7 +117,7 @@ msgid ""
 "auth request document and verifies the digital signature if required.  The "
 "user then has to enter in their credentials to be authenticated."
 msgstr ""
-"ブラウザーは{project_name}にリダイレクトされます。サーバーは、XML認証要求ドキュメントを抽出し、必要に応じてデジタル署名を検証します。ユーザーは認証されるためにクレデンシャルを入力する必要があります。"
+"ブラウザーは{project_name}にリダイレクトされます。サーバーは、XML認証リクエスト・ドキュメントを抽出し、必要に応じてデジタル署名を検証します。ユーザーは認証されるためにクレデンシャルを入力する必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/sso-protocols/saml.adoc:40
@@ -125,7 +128,7 @@ msgid ""
 "have.  This document is almost always digitally signed using XML signatures,"
 " and may also be encrypted."
 msgstr ""
-"認証後、サーバーはXML認証応答ドキュメントを生成します。このドキュメントには、ユーザーの名前、住所、電子メール、およびユーザーが持つロール・マッピングなどのユーザーに関するメタデータを保持するSAMLアサーションが含まれています。このドキュメントは、ほとんどの場合、XML署名を使用してデジタル署名されており、暗号化されている場合もあります。"
+"認証後、サーバーはXML認証レスポンス・ドキュメントを生成します。このドキュメントには、ユーザーの名前、住所、電子メール、およびユーザーが持つロール・マッピングなどのユーザーに関するメタデータを保持するSAMLアサーションが含まれています。このドキュメントは、ほとんどの場合、XML署名を使用してデジタル署名されており、暗号化されている場合もあります。"
 
 #. type: Plain text
 #: source/server_admin/topics/sso-protocols/saml.adoc:42
@@ -134,7 +137,7 @@ msgid ""
 "redirect URI that brings the browser back to the application.  The digital "
 "signature is also included as a query param."
 msgstr ""
-"次に、XML認証応答ドキュメントは、ブラウザーをアプリケーションへ戻すためのリダイレクトURIのクエリ・パラメーターとしてエンコードされます。デジタル署名はクエリ・パラメーターとしても含まれています。"
+"次に、XML認証レスポンス・ドキュメントは、ブラウザーをアプリケーションへ戻すためのリダイレクトURIのクエリー・パラメーターとしてエンコードされます。デジタル署名はクエリー・パラメーターとしても含まれています。"
 
 #. type: Plain text
 #: source/server_admin/topics/sso-protocols/saml.adoc:45
@@ -144,7 +147,7 @@ msgid ""
 "response.  The information inside the SAML assertion is then used to make "
 "access decisions or display user data."
 msgstr ""
-"アプリケーションは、リダイレクトURIを受け取った後、XMLドキュメントを抽出し、レルムの署名を検証して正しい認証応答かどうかを検証します。SAMLアサーション内の情報は、アクセスの決定やユーザー・データの表示に使用されます。"
+"アプリケーションは、リダイレクトURIを受け取った後、XMLドキュメントを抽出し、レルムの署名を検証して正しい認証レスポンスかどうかを検証します。SAMLアサーション内の情報は、アクセスの決定やユーザー・データの表示に使用されます。"
 
 #. type: Title =====
 #: source/server_admin/topics/sso-protocols/saml.adoc:46
@@ -164,9 +167,9 @@ msgid ""
 "loaded, the JavaScript automatically invokes the form.  You really don't "
 "need to know about this stuff, but it is a pretty clever trick."
 msgstr ""
-"SAML _POST_ バインディングは、_Redirect_ "
+"SAML _POST_ バインディングは、_リダイレクト_ "
 "バインディングとほぼ同じ方法で動作しますが、GETリクエストではなく、POSTリクエストによってXMLドキュメントが交換されます。 _POST_ "
-"バインディングは、JavaScriptを使用して、ドキュメントを交換するときに{project_name}サーバーまたはアプリケーションに対してPOSTリクエストを行うようにブラウザを操作します。基本的にHTTPレスポンスには、JavaScriptが埋め込まれたフォームを含むHTMLが含まれています。ページが読み込まれると、JavaScriptはフォームを自動的に呼び出します。"
+"バインディングは、JavaScriptを使用して、ドキュメントを交換するときに{project_name}サーバーまたはアプリケーションに対してPOSTリクエストを行うようにブラウザを操作します。基本的にHTTPレスポンスには、JavaScriptが埋め込まれたフォームを含むHTMLが含まれています。ページが読み込まれると、JavaScriptはフォームを自動的に呼び出します。このことについて実際に知る必要はありませんが、これはかなり巧妙なトリックです。"
 
 #. type: Title =====
 #: source/server_admin/topics/sso-protocols/saml.adoc:54
@@ -181,8 +184,8 @@ msgid ""
 "allows for the exchange of SAML attributes outside the context of a web "
 "browser.  This is used most often for REST or SOAP-based clients."
 msgstr ""
-"ECPは、Webブラウザーのコンテキスト外でSAML属性を交換できるようにするSAML "
-"v.2.0プロファイルの\"拡張クライアントまたはプロキシ\"の略です。これは、RESTまたはSOAPベースのクライアントで最も頻繁に使用されます。"
+"ECPは、Webブラウザーのコンテキスト外でSAML属性を交換できるようにするSAML v.2.0プロファイルの\"Enhanced Client or"
+" Proxy\"の略です。これは、RESTまたはSOAPベースのクライアントで最も頻繁に使用されます。"
 
 #. type: Title ====
 #: source/server_admin/topics/sso-protocols/saml.adoc:59
@@ -193,7 +196,7 @@ msgstr "{project_name}サーバーSAML URIエンドポイント"
 #. type: Plain text
 #: source/server_admin/topics/sso-protocols/saml.adoc:62
 msgid "{project_name} really only has one endpoint for all SAML requests."
-msgstr "{project_name}ではすべてのSAML要求に対して1つのエンドポイントしかありません。"
+msgstr "{project_name}ではすべてのSAMLリクエストに対して1つのエンドポイントしかありません。"
 
 #. type: Plain text
 #: source/server_admin/topics/sso-protocols/saml.adoc:64

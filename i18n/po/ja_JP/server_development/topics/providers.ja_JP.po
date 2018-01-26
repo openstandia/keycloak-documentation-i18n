@@ -2,103 +2,646 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: n.watanabe <nwatanabe.ase@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/adapter_error_handling.adoc:24
-#: source/server_development/topics/auth-spi.adoc:186
-#: source/server_development/topics/auth-spi.adoc:231
-#: source/server_development/topics/auth-spi.adoc:327
-#: source/server_development/topics/auth-spi.adoc:585
-#: source/server_development/topics/auth-spi.adoc:681
-#: source/server_development/topics/providers.adoc:18
-#: source/server_development/topics/providers.adoc:53
-#: source/server_development/topics/providers.adoc:111
-#: source/server_development/topics/providers.adoc:121
-#: source/server_development/topics/providers.adoc:157
-#: source/server_development/topics/providers.adoc:279
-#: source/server_development/topics/providers.adoc:323
-#, no-wrap
-msgid "[source,java]\n"
-msgstr "[source,java]\n"
-
-#. type: delimited block -
-#: source/securing_apps/topics/oidc/java/application-clustering.adoc:89
-#: source/securing_apps/topics/oidc/java/jetty8-adapter.adoc:31
-#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:56
-#: source/securing_apps/topics/oidc/javascript-adapter.adoc:66
-#: source/securing_apps/topics/saml/java/jetty-adapter/jetty8-installation.adoc:23
-#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_installation.adoc:23
-#: source/server_development/topics/auth-spi.adoc:148
-#: source/server_development/topics/preface.adoc:16
-#: source/server_development/topics/providers.adoc:202
-#, no-wrap
-msgid "[source]\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:41
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:52
-#: source/server_development/topics/extensions.adoc:70
-#: source/server_development/topics/providers.adoc:143
 #, no-wrap
 msgid "}\n"
-msgstr ""
+msgstr "}\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:184
-#: source/server_development/topics/providers.adoc:141
 #, no-wrap
 msgid "    ...\n"
-msgstr ""
+msgstr "    ...\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/saml/java/assertion-api.adoc:57
-#: source/server_development/topics/user-storage/configuration.adoc:18
-#: source/server_development/topics/user-storage/configuration.adoc:23
-#: source/server_development/topics/user-storage/configuration.adoc:28
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:26
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:38
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:50
-#: source/server_development/topics/user-storage/registration-query.adoc:109
-#: source/server_development/topics/user-storage/simple-example.adoc:146
-#: source/server_development/topics/providers.adoc:75
 #, no-wrap
 msgid "    }\n"
 msgstr "    }\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/saml/java/jboss-adapter/jboss_adapter_installation.adoc:73
-#: source/securing_apps/topics/saml/java/jboss-adapter/securing_wars.adoc:35
-#: source/server_development/topics/providers.adoc:97
-#: source/server_development/topics/providers.adoc:228
-#: source/server_development/topics/providers.adoc:260
 #, no-wrap
-msgid "[source,xml]\n"
-msgstr "[source,xml]\n"
+msgid "import ...\n"
+msgstr "import ...\n"
 
-#. type: Title ===
-#: source/server_development/topics/user-storage/javaee.adoc:2
-#: source/server_development/topics/providers.adoc:266
+#. type: Title ==
 #, no-wrap
-msgid "Leveraging Java EE"
-msgstr ""
+msgid "Service Provider Interfaces (SPI)"
+msgstr "サービス・プロバイダー・インターフェイス（SPI）"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:29
-#: source/server_development/topics/providers.adoc:292
+msgid ""
+"Keycloak is designed to cover most use-cases without requiring custom code, "
+"but we also want it to be customizable.  To achieve this Keycloak has a "
+"number of Service Provider Interfaces (SPI) for which you can implement your"
+" own providers."
+msgstr ""
+"Keycloakは、必要なカスタム・コードが無くても、ほとんどのユースケースをカバーできるように作られていますが、カスタマイズもできるようにする必要があります。これを実現するためにKeycloakにはサービス・プロバイダー・インターフェイス（SPI）が多数あり、独自のプロバイダーを実装することができます。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Implementing a SPI"
+msgstr "SPIの実装"
+
+#. type: Plain text
+msgid ""
+"To implement an SPI you need to implement its ProviderFactory and Provider "
+"interfaces. You also need to create a service configuration file."
+msgstr ""
+"SPIを実装するには、そのProviderFactoryとプロバイダー・インターフェイスを実装する必要があります。また、サービス設定ファイルを作成する必要があります。"
+
+#. type: Plain text
+msgid ""
+"For example, to implement the Event Listener SPI you need to implement "
+"EventListenerProviderFactory and EventListenerProvider and also provide the "
+"file `META-INF/services/org.keycloak.events.EventListenerProviderFactory`."
+msgstr ""
+"たとえば、Event Listener "
+"SPIを実装するには、EventListenerProviderFactoryとEventListenerProviderを実装して、 `META-"
+"INF/services/org.keycloak.events.EventListenerProviderFactory` "
+"のファイルを提供する必要があります。"
+
+#. type: Plain text
+msgid "Example EventListenerProviderFactory:"
+msgstr "サンプル EventListenerProviderFactory:"
+
+#. type: delimited block -
+#, no-wrap
+msgid "package org.acme.provider;\n"
+msgstr "パッケージ org.acme.provider;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"public class MyEventListenerProviderFactory implements "
+"EventListenerProviderFactory {\n"
+msgstr ""
+"public class MyEventListenerProviderFactory implements "
+"EventListenerProviderFactory {\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "    private List<Event> events;\n"
+msgstr "    private List<Event> events;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public String getId() {\n"
+"        return \"my-event-listener\";\n"
+"    }\n"
+msgstr ""
+"    public String getId() {\n"
+"        return \"my-event-listener\";\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public void init(Config.Scope config) {\n"
+"        events = new LinkedList();\n"
+"    }\n"
+msgstr ""
+"    public void init(Config.Scope config) {\n"
+"        events = new LinkedList();\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public void postInit(KeycloakSessionFactory factory) {\n"
+"    }\n"
+msgstr ""
+"    public void postInit(KeycloakSessionFactory factory) {\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public EventListenerProvider create(KeycloakSession session) {\n"
+"        return new MyEventListenerProvider(events);\n"
+"    }\n"
+msgstr ""
+"    public EventListenerProvider create(KeycloakSession session) {\n"
+"        return new MyEventListenerProvider(events);\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public void close() {\n"
+"    }\n"
+"}\n"
+msgstr ""
+"    public void close() {\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"Keycloak creates a single instance of `EventListenerProviderFactory` which "
+"makes it possible to store state for multiple requests.  "
+"`EventListenerProvider` instances are created by calling create on the "
+"factory for each requests so these should be light-weight object."
+msgstr ""
+"Keycloakは `EventListenerProviderFactory` "
+"の単一のインスタンスを作成し、リクエストに応じて何度でもステートを格納することができます。 `EventListenerProvider` "
+"インスタンスは、それぞれのリクエストに応じてファクトリー上でcreateを呼び出すことにより作成され、軽量オブジェクトである必要があります。"
+
+#. type: Plain text
+msgid "Example EventListenerProvider:"
+msgstr "サンプル EventListenerProvider:"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"public class MyEventListenerProvider implements EventListenerProvider {\n"
+msgstr ""
+"public class MyEventListenerProvider implements EventListenerProvider {\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public MyEventListenerProvider(List<Event> events) {\n"
+"        this.events = events;\n"
+"    }\n"
+msgstr ""
+"    public MyEventListenerProvider(List<Event> events) {\n"
+"        this.events = events;\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public void onEvent(Event event) {\n"
+"        events.add(event);\n"
+"    }\n"
+msgstr ""
+"    @Override\n"
+"    public void onEvent(Event event) {\n"
+"        events.add(event);\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public void close() {\n"
+msgstr ""
+"    @Override\n"
+"    public void close() {\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public void onEvent(AdminEvent event, boolean includeRepresentation) {\n"
+"        // Assume this implementation just ignores admin events\n"
+"    }\n"
+"}\n"
+msgstr ""
+"    @Override\n"
+"    public void onEvent(AdminEvent event, boolean includeRepresentation) {\n"
+"        // Assume this implementation just ignores admin events\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"Example service configuration file (`META-"
+"INF/services/org.keycloak.events.EventListenerProviderFactory`):"
+msgstr ""
+"サンプル サービス設定ファイル（ `META-"
+"INF/services/org.keycloak.events.EventListenerProviderFactory` ）:"
+
+#. type: delimited block -
+#, no-wrap
+msgid "org.acme.provider.MyEventListenerProviderFactory\n"
+msgstr "org.acme.provider.MyEventListenerProviderFactory\n"
+
+#. type: Plain text
+msgid ""
+"You can configure your provider through `standalone.xml`, `standalone-"
+"ha.xml`, or `domain.xml`.  See the "
+"link:{installguide_link}[{installguide_name}] for more details on where the "
+"`standalone.xml`, `standalone-ha.xml`, or `domain.xml` file lives."
+msgstr ""
+"`standalone.xml` 、 `standalone-ha.xml` 、または `domain.xml` "
+"を介してプロバイダーを設定することができます。 `standalone.xml` 、 `standalone-ha.xml` 、または "
+"`domain.xml` "
+"ファイルがある場所について、詳しくは、link:{installguide_link}[{installguide_name}]を参照ください。"
+
+#. type: Plain text
+msgid "For example by adding the following to `standalone.xml`:"
+msgstr "たとえば、下記を `standalone.xml` に追加します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"eventsListener\">\n"
+"    <provider name=\"my-event-listener\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"aNumber\" value=\"10\"/>\n"
+"            <property name=\"aString\" value=\"Foo\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"eventsListener\">\n"
+"    <provider name=\"my-event-listener\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"aNumber\" value=\"10\"/>\n"
+"            <property name=\"aString\" value=\"Foo\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid "Then you can retrieve the config in the `ProviderFactory` init method:"
+msgstr "そうすると、 `ProviderFactory` initメソッドで設定を取得することができます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"public void init(Config.Scope config) {\n"
+"    Integer aNumber = config.getInt(\"aNumber\");\n"
+"    String aString = config.get(\"aString\");\n"
+"}\n"
+msgstr ""
+"public void init(Config.Scope config) {\n"
+"    Integer aNumber = config.getInt(\"aNumber\");\n"
+"    String aString = config.get(\"aString\");\n"
+"}\n"
+
+#. type: Plain text
+msgid "Your provider can also lookup other providers if needed. For example:"
+msgstr "また、プロバイダーも必要に応じて他のプロバイダーを参照することができます。たとえば、"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    private KeycloakSession session;\n"
+"    private List<Event> events;\n"
+msgstr ""
+"    private KeycloakSession session;\n"
+"    private List<Event> events;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public MyEventListenerProvider(KeycloakSession session, List<Event> events) {\n"
+"        this.session = session;\n"
+"        this.events = events;\n"
+"    }\n"
+msgstr ""
+"    public MyEventListenerProvider(KeycloakSession session, List<Event> events) {\n"
+"        this.session = session;\n"
+"        this.events = events;\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public void onEvent(Event event) {\n"
+"        RealmModel realm = session.realms().getRealm(event.getRealmId());\n"
+"        UserModel user = session.users().getUserById(event.getUserId(), realm);\n"
+msgstr ""
+"    public void onEvent(Event event) {\n"
+"        RealmModel realm = session.realms().getRealm(event.getRealmId());\n"
+"        UserModel user = session.users().getUserById(event.getUserId(), realm);\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"        EmailSenderProvider emailSender = session.getProvider(EmailSenderProvider.class);\n"
+"        emailSender.send(realm, user, \"Hello\", \"Hello plain text\", \"<h1>Hello html</h1>\" );\n"
+"    }\n"
+msgstr ""
+"        EmailSenderProvider emailSender = session.getProvider(EmailSenderProvider.class);\n"
+"        emailSender.send(realm, user, \"Hello\", \"Hello plain text\", \"<h1>Hello html</h1>\" );\n"
+"    }\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Show info from you SPI implementation in Keycloak admin console"
+msgstr "Keycloakの管理コンソールでのSPI実装の情報表示"
+
+#. type: Plain text
+msgid ""
+"Sometimes it is useful to show additional info about your Provider to a "
+"Keycloak administrator. You can show provider build time informations (eg. "
+"version of custom provider currently installed), current configuration of "
+"the provider (eg. url of remote system your provider talks to) or some "
+"operational info (average time of response from remote system your provider "
+"talks to). Keycloak admin console provides Server Info page to show this "
+"kind of information."
+msgstr ""
+"Keycloak管理者にプロバイダーに関する追加情報を表示すると、便利なことがあります。 show "
+"プロバイダー・ビルド・タイム情報（たとえば、現在インストール済みのカスタム・プロバイダーのバージョン）、プロバイダーの現在の設定（たとえば、プロバイダーが通信するリモートシステムのURL）、または動作情報（たとえば、プロバイダーが通信するリモートシステムからの平均レスポンス・タイム）を表示することができます。Keycloak管理コンソールでは、サーバーの情報ページが提供され、この種の情報が表示されます。"
+
+#. type: Plain text
+msgid ""
+"To show info from your provider it is enough to implement "
+"`org.keycloak.provider.ServerInfoAwareProviderFactory` interface in your "
+"`ProviderFactory`."
+msgstr ""
+"プロバイダーからの情報を表示するには、 `ProviderFactory` 内で "
+"`org.keycloak.provider.ServerInfoAwareProviderFactory` インターフェイスを実装するだけです。"
+
+#. type: Plain text
+msgid ""
+"Example implementation for `MyEventListenerProviderFactory` from previous "
+"example:"
+msgstr "サンプル 前のサンプルの `MyEventListenerProviderFactory` の実装:"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"public class MyEventListenerProviderFactory implements EventListenerProviderFactory, ServerInfoAwareProviderFactory {\n"
+"    ...\n"
+msgstr ""
+"public class MyEventListenerProviderFactory implements EventListenerProviderFactory, ServerInfoAwareProviderFactory {\n"
+"    ...\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public Map<String, String> getOperationalInfo() {\n"
+"        Map<String, String> ret = new LinkedHashMap<>();\n"
+"        ret.put(\"version\", \"1.0\");\n"
+"        ret.put(\"listSizeMax\", max + \"\");\n"
+"        ret.put(\"listSizeCurrent\", events.size() + \"\");\n"
+"        return ret;\n"
+"    }\n"
+"}\n"
+msgstr ""
+"    @Override\n"
+"    public Map<String, String> getOperationalInfo() {\n"
+"        Map<String, String> ret = new LinkedHashMap<>();\n"
+"        ret.put(\"version\", \"1.0\");\n"
+"        ret.put(\"listSizeMax\", max + \"\");\n"
+"        ret.put(\"listSizeCurrent\", events.size() + \"\");\n"
+"        return ret;\n"
+"    }\n"
+"}\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Registering provider implementations"
+msgstr "プロバイダー実装の登録"
+
+#. type: Plain text
+msgid ""
+"There are two ways to register provider implementations. In most cases the "
+"simplest way is to use the Keyclopak Deployer approach as this handles a "
+"number of dependencies automatically for you. It also supports hot "
+"deployment as well as re-deployment."
+msgstr ""
+"プロバイダーの実装を登録するには2通りの方法があります。ほとんどの場合、最も簡単な方法は、Keyclopak "
+"Deployerのアプローチを使用することです。なぜなら、この方法だと自動的にたくさんの依存関係が処理されるからです。また、リデプロイだけでなくホットデプロイもサポートされます。"
+
+#. type: Plain text
+msgid "The alternative approach is to deploy as a module."
+msgstr "代替アプローチとしては、モジュールとしてデプロイするという方法があります。"
+
+#. type: Plain text
+msgid ""
+"If you are creating a custom SPI you will need to deploy it as a module, "
+"otherwise we recommend using the Keycloak Deployer approach."
+msgstr ""
+"カスタムSPIを作成する場合は、モジュールとして展開する必要があります。それ以外の場合は、Keycloak Deployer "
+"のアプローチを使用することをお勧めします。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Using the Keycloak Deployer"
+msgstr "Keycloak Deployer の使用"
+
+#. type: Plain text
+msgid ""
+"If you copy your provider jar to the Keycloak `deploy/` directory, your "
+"provider will automatically be deployed.  Hot deployment works too.  "
+"Additionally, your provider jar works similarly to other components deployed"
+" in a JBoss/Wildfly environment in that they can use facilities like the "
+"`jboss-deployment-structure.xml` file.  This file allows you to set up "
+"dependencies on other components and load third-party jars and modules."
+msgstr ""
+"プロバイダーjarをKeycloakの `deploy/` "
+"ディレクトリーにコピーすると、プロバイダーが自動的にデプロイされます。ホットデプロイについても同様です。さらにプロバイダーjarは、 "
+"JBoss/Wildfly環境でデプロイされた他のコンポーネントと同じように機能し、その環境下では `jboss-deployment-"
+"structure.xml` "
+"ファイルと同じようにファシリティを使用することができます。このファイルによって、他のコンポーネントへの依存関係を設定して第三者のjarとモジュールを読み込むことができます。"
+
+#. type: Plain text
+msgid ""
+"Provider jars can also be contained within other deployable units like EARs "
+"and WARs.  Deploying with a EAR actually makes it really easy to use third "
+"party jars as you can just put these libraries in the EAR's `lib/` "
+"directory."
+msgstr ""
+"また、プロバイダーjarを、EARおよびWARと同じように、デプロイ可能な他のユニット内に含めておくこともできます。EARでデプロイすると、実際、第三者のjarを非常に簡単に使用できるようになります。なぜなら、これらのライブラリをEARの"
+" `lib/` ディレクトリーに置くだけで済むからです。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Register a provider using Modules"
+msgstr "モジュールを使用してプロバイダーを登録する"
+
+#. type: Plain text
+msgid ""
+"To register a provider using Modules first create a module.  To do this you "
+"can either use the jboss-cli script or manually create a folder inside "
+"`KEYCLOAK_HOME/modules` and add your jar and a `module.xml`.  For example to"
+" add the event listener sysout example provider using the `jboss-cli` script"
+" execute:"
+msgstr ""
+"たとえばモジュールを使用するプロバイダーを登録すると、まずモジュールが作成されます。これを実行するには、jboss-cliスクリプトを使用するか、手動で"
+" `KEYCLOAK_HOME/modules` 内にフォルダーを作成して、jarと `module.xml` を追加します。たとえば、 `jboss-"
+"cli` スクリプトを使用してイベントリスナーのsysoutサンプルプロバイダーを追加するには、以下を実行します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"KEYCLOAK_HOME/bin/jboss-cli.sh --command=\"module add "
+"--name=org.keycloak.examples.event-sysout --resources=target/event-listener-"
+"sysout-example.jar --dependencies=org.keycloak.keycloak-core,org.keycloak"
+".keycloak-server-spi,org.keycloak.keycloak-events-api\"\n"
+msgstr ""
+"KEYCLOAK_HOME/bin/jboss-cli.sh --command=\"module add "
+"--name=org.keycloak.examples.event-sysout --resources=target/event-listener-"
+"sysout-example.jar --dependencies=org.keycloak.keycloak-core,org.keycloak"
+".keycloak-server-spi,org.keycloak.keycloak-events-api\"\n"
+
+#. type: Plain text
+msgid ""
+"Or to manually create it start by creating the folder "
+"`KEYCLOAK_HOME/modules/org/keycloak/examples/event-sysout/main`.  Then copy "
+"`event-listener-sysout-example.jar` to this folder and create `module.xml` "
+"with the following content:"
+msgstr ""
+"または、それを手動で作成するには、 `KEYCLOAK_HOME/modules/org/keycloak/examples/event-"
+"sysout/main` フォルダーを作成して起動します。次に `event-listener-sysout-example.jar` "
+"をこのフォルダーにコピーし、以下のコンテンツで `module.xml` を作成します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+"<module xmlns=\"urn:jboss:module:1.3\" name=\"org.keycloak.examples.event-sysout\">\n"
+"    <resources>\n"
+"        <resource-root path=\"event-listener-sysout-example.jar\"/>\n"
+"    </resources>\n"
+"    <dependencies>\n"
+"        <module name=\"org.keycloak.keycloak-core\"/>\n"
+"        <module name=\"org.keycloak.keycloak-server-spi\"/>\n"
+"    </dependencies>\n"
+"</module>\n"
+msgstr ""
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+"<module xmlns=\"urn:jboss:module:1.3\" name=\"org.keycloak.examples.event-sysout\">\n"
+"    <resources>\n"
+"        <resource-root path=\"event-listener-sysout-example.jar\"/>\n"
+"    </resources>\n"
+"    <dependencies>\n"
+"        <module name=\"org.keycloak.keycloak-core\"/>\n"
+"        <module name=\"org.keycloak.keycloak-server-spi\"/>\n"
+"    </dependencies>\n"
+"</module>\n"
+
+#. type: Plain text
+msgid ""
+"Once you've created the module you need to register this module with "
+"Keycloak.  This is done by editing the keycloak-server subsystem section of "
+"`standalone.xml`, `standalone-ha.xml`, or `domain.xml`, and adding it to the"
+" providers:"
+msgstr ""
+"モジュールを作成すると、Keycloakでこのモジュールを登録する必要があります。 これは `standalone.xml` 、 "
+"`standalone-ha.xml` 、または `domain.xml` のkeycloak-"
+"serverサブシステムセクションのを編集し、それをプロバイダーに追加することにより行われます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
+"    <web-context>auth</web-context>\n"
+"    <providers>\n"
+"        <provider>module:org.keycloak.examples.event-sysout</provider>\n"
+"    </providers>\n"
+"    ...\n"
+msgstr ""
+"<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
+"    <web-context>auth</web-context>\n"
+"    <providers>\n"
+"        <provider>module:org.keycloak.examples.event-sysout</provider>\n"
+"    </providers>\n"
+"    ...\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Configuring a provider"
+msgstr "プロバイダーの設定"
+
+#. type: Plain text
+msgid ""
+"You can pass configuration options to your provider by setting them in "
+"`standalone.xml`, `standalone-ha.xml`, or `domain.xml`.  For example to set "
+"the max value for `my-event-listener` add:"
+msgstr ""
+"`standalone.xml` 、 `standalone-ha.xml` 、または `domain.xml` "
+"内で設定することにより、設定オプションをプロバイダーに渡すことができます。たとえば、 `my-event-listener` "
+"に最大値を設定するには、以下を追加します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"eventsListener\">\n"
+"    <provider name=\"my-event-listener\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"max\" value=\"100\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"eventsListener\">\n"
+"    <provider name=\"my-event-listener\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"max\" value=\"100\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Disabling a provider"
+msgstr "プロバイダーの無効化"
+
+#. type: Plain text
+msgid ""
+"You can disable a provider by setting the enabled attribute for the provider"
+" to false in `standalone.xml`, `standalone-ha.xml`, or `domain.xml`.  For "
+"example to disable the Infinispan user cache provider add:"
+msgstr ""
+"`standalone.xml` 、 `standalone-ha.xml` 、または `domain.xml` "
+"内で、プロバイダーの有効な属性をfalseに設定することによって、プロバイダーを無効にすることができます。たとえば、Infinispanユーザー・キャッシュ・プロバイダーを無効にするには、以下を追加します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"userCache\">\n"
+"    <provider name=\"infinispan\" enabled=\"false\"/>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"userCache\">\n"
+"    <provider name=\"infinispan\" enabled=\"false\"/>\n"
+"</spi>\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Leveraging Java EE"
+msgstr "Java EEの活用"
+
+#. type: Plain text
+msgid ""
+"The can be packaged within any Java EE component so long as you set up the "
+"`META-INF/services` file correctly to point to your providers.  For example,"
+" if your provider needs to use third party libraries, you can package up "
+"your provider within an ear and store these third pary libraries in the "
+"ear's `lib/` directory.  Also note that provider jars can make use of the "
+"`jboss-deployment-structure.xml` file that EJBs, WARS, and EARs can use in a"
+" JBoss/Wildfly environment.  See the JBoss/Wildfly documentation for more "
+"details on this file.  It allows you to pull in external dependencies among "
+"other fine grain actions."
+msgstr ""
+"プロバイダーを指し示すように `META-INF/services` ファイルを正しく設定している限りは、 いかなるJava "
+"EEコンポーネント内でもこれをパッケージ化することができます。たとえば、プロバイダーが第三者のライブラリを使用する必要がある場合、プロバイダーをEAR内にパッケージ化し、これらの第三者のライブラリをEARの"
+" `lib/` ディレクトリーに格納します。また、プロバイダーjarは、JBossまたはWildfly環境でEJB、WAR、およびEARが使用可能な "
+"`jboss-deployment-structure.xml` "
+"ファイルを使用することができる点に注意してください。このファイルについて、詳しくは、JBossまたはWildflyのドキュメントを参照ください。これにより、他の細かい動作間で外部との依存関係を引き出すことができます。"
+
+#. type: Plain text
+msgid ""
+"`ProviderFactory` implementations are required to be plain java objects.  "
+"But, we also currently support implementing provider classes as Stateful "
+"EJBs.  TThis is how you would do it:"
+msgstr ""
+"`ProviderFactory` の実装は簡単なjavaオブジェクトである必要があります。しかし、現在、Stateful "
+"EJBとしてプロバイダークラスの実装のサポートもしています。`ProviderFactory`実装はプレーンなJavaオブジェクトである必要があります。"
+" しかし、現在、プロバイダクラスをステートフルEJBとして実装することもサポートしています。その方法は、以下の通りです。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
 "@Stateful\n"
@@ -114,39 +657,51 @@ msgid ""
 "    @PersistenceContext\n"
 "    protected EntityManager em;\n"
 msgstr ""
+"@Stateful\n"
+"@Local(EjbExampleUserStorageProvider.class)\n"
+"public class EjbExampleUserStorageProvider implements UserStorageProvider,\n"
+"        UserLookupProvider,\n"
+"        UserRegistrationProvider,\n"
+"        UserQueryProvider,\n"
+"        CredentialInputUpdater,\n"
+"        CredentialInputValidator,\n"
+"        OnUserCache\n"
+"{\n"
+"    @PersistenceContext\n"
+"    protected EntityManager em;\n"
 
-#. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:32
-#: source/server_development/topics/providers.adoc:295
+#. type: delimited block -
 #, no-wrap
 msgid ""
 "    protected ComponentModel model;\n"
 "    protected KeycloakSession session;\n"
 msgstr ""
+"    protected ComponentModel model;\n"
+"    protected KeycloakSession session;\n"
 
-#. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:36
-#: source/server_development/topics/providers.adoc:299
+#. type: delimited block -
 #, no-wrap
 msgid ""
 "    public void setModel(ComponentModel model) {\n"
 "        this.model = model;\n"
 "    }\n"
 msgstr ""
+"    public void setModel(ComponentModel model) {\n"
+"        this.model = model;\n"
+"    }\n"
 
-#. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:40
-#: source/server_development/topics/providers.adoc:303
+#. type: delimited block -
 #, no-wrap
 msgid ""
 "    public void setSession(KeycloakSession session) {\n"
 "        this.session = session;\n"
 "    }\n"
 msgstr ""
+"    public void setSession(KeycloakSession session) {\n"
+"        this.session = session;\n"
+"    }\n"
 
-#. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:48
-#: source/server_development/topics/providers.adoc:311
+#. type: delimited block -
 #, no-wrap
 msgid ""
 "    @Remove\n"
@@ -156,19 +711,50 @@ msgid ""
 "...\n"
 "}\n"
 msgstr ""
+"    @Remove\n"
+"    @Override\n"
+"    public void close() {\n"
+"    }\n"
+"...\n"
+"}\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:63
-#: source/server_development/topics/providers.adoc:326
+msgid ""
+"You have to define the `@Local` annotation and specify your provider class "
+"there.  If you don't do this, EJB will not proxy the provider instance "
+"correctly and your provider won't work."
+msgstr ""
+"ここで、 `@Local` "
+"アノテーションを定義し、プロバイダー・クラスを指定する必要があります。これを行わないと、EJBはプロバイダーインスタンスを正しくプロキシせず、プロバイダーは機能しません。"
+
+#. type: Plain text
+msgid ""
+"You must put the `@Remove` annotation on the `close()` method of your "
+"provider.  If you don't, the stateful bean will never be cleaned up and you "
+"may eventually see error messages."
+msgstr ""
+"`@Remove` アノテーションをプロバイダーの `close()` "
+"メソッドに置く必要があります。これを行わないと、ステートフルbeanは決してクリーンアップされず、結局エラーメッセージが表示されることになります。"
+
+#. type: Plain text
+msgid ""
+"Implementations of `ProviderFactory` are required to be plain java objects."
+"  Your factory class would perform a JNDI lookup of the Stateful EJB in its "
+"create() method."
+msgstr ""
+" `ProviderFactory` の実装は平易なjavaオブジェクトである必要があります。ファクトリー・クラスは、その create() "
+"メソッド内でステートフルEJBのJNDIルックアップを実行します。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
 "public class EjbExampleUserStorageProviderFactory\n"
 "        implements UserStorageProviderFactory<EjbExampleUserStorageProvider> {\n"
 msgstr ""
+"public class EjbExampleUserStorageProviderFactory\n"
+"        implements UserStorageProviderFactory<EjbExampleUserStorageProvider> {\n"
 
-#. type: Plain text
-#: source/server_development/topics/user-storage/javaee.adoc:77
-#: source/server_development/topics/providers.adoc:340
+#. type: delimited block -
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -185,587 +771,134 @@ msgid ""
 "        }\n"
 "    }\n"
 msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/user-storage/provider-capability-interfaces.adoc:9
-#: source/server_development/topics/providers.adoc:350
-#, fuzzy, no-wrap
-msgid ""
-"|===\n"
-"|SPI|Description\n"
-msgstr "|=== |名前|説明 |デフォルトで有効"
-
-#. type: delimited block -
-#: source/server_development/topics/extensions.adoc:45
-#: source/server_development/topics/providers.adoc:22
-#: source/server_development/topics/providers.adoc:57
-#: source/server_development/topics/providers.adoc:161
-#, no-wrap
-msgid "import ...\n"
-msgstr ""
-
-#. type: Title ==
-#: source/server_development/topics/providers.adoc:3
-#, no-wrap
-msgid "Service Provider Interfaces (SPI)"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:7
-#, no-wrap
-msgid ""
-"Keycloak is designed to cover most use-cases without requiring custom code, but we also want it to be customizable.\n"
-"To achieve this Keycloak has a number of Service Provider Interfaces (SPI) for which you can implement your own providers.\n"
-msgstr ""
+"    @Override\n"
+"    public EjbExampleUserStorageProvider create(KeycloakSession session, ComponentModel model) {\n"
+"        try {\n"
+"            InitialContext ctx = new InitialContext();\n"
+"            EjbExampleUserStorageProvider provider = (EjbExampleUserStorageProvider)ctx.lookup(\n"
+"                     \"java:global/user-storage-jpa-example/\" + EjbExampleUserStorageProvider.class.getSimpleName());\n"
+"            provider.setModel(model);\n"
+"            provider.setSession(session);\n"
+"            return provider;\n"
+"        } catch (Exception e) {\n"
+"            throw new RuntimeException(e);\n"
+"        }\n"
+"    }\n"
 
 #. type: Title ===
-#: source/server_development/topics/providers.adoc:8
-#, no-wrap
-msgid "Implementing a SPI"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:11
-#, no-wrap
-msgid "To implement an SPI you need to implement its ProviderFactory and Provider interfaces. You also need to create a service configuration file.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:14
-#, no-wrap
-msgid ""
-"For example, to implement the Event Listener SPI you need to implement EventListenerProviderFactory and EventListenerProvider and also provide the file\n"
-"`META-INF/services/org.keycloak.events.EventListenerProviderFactory`.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:16
-#, no-wrap
-msgid "Example EventListenerProviderFactory:\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:20
-#: source/server_development/topics/providers.adoc:55
-#: source/server_development/topics/providers.adoc:159
-#, no-wrap
-msgid "package org.acme.provider;\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:24
-#, no-wrap
-msgid "public class MyEventListenerProviderFactory implements EventListenerProviderFactory {\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:26
-#: source/server_development/topics/providers.adoc:61
-#, no-wrap
-msgid "    private List<Event> events;\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:30
-#, no-wrap
-msgid ""
-"    public String getId() {\n"
-"        return \"my-event-listener\";\n"
-"    }\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:34
-#, no-wrap
-msgid ""
-"    public void init(Config.Scope config) {\n"
-"        events = new LinkedList();\n"
-"    }\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:37
-#, no-wrap
-msgid ""
-"    public void postInit(KeycloakSessionFactory factory) {\n"
-"    }\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:41
-#, no-wrap
-msgid ""
-"    public EventListenerProvider create(KeycloakSession session) {\n"
-"        return new MyEventListenerProvider(events);\n"
-"    }\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:45
-#, no-wrap
-msgid ""
-"    public void close() {\n"
-"    }\n"
-"}\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:49
-#, no-wrap
-msgid ""
-"Keycloak creates a single instance of `EventListenerProviderFactory` which makes it possible to store state for multiple requests.\n"
-"`EventListenerProvider` instances are created by calling create on the factory for each requests so these should be light-weight object.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:51
-#, no-wrap
-msgid "Example EventListenerProvider:\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:59
-#: source/server_development/topics/providers.adoc:123
-#, no-wrap
-msgid "public class MyEventListenerProvider implements EventListenerProvider {\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:65
-#, no-wrap
-msgid ""
-"    public MyEventListenerProvider(List<Event> events) {\n"
-"        this.events = events;\n"
-"    }\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:70
-#, no-wrap
-msgid ""
-"    @Override\n"
-"    public void onEvent(Event event) {\n"
-"        events.add(event);\n"
-"    }\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:73
-#, no-wrap
-msgid ""
-"    @Override\n"
-"    public void close() {\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:81
-#, no-wrap
-msgid ""
-"    @Override\n"
-"    public void onEvent(AdminEvent event, boolean includeRepresentation) {\n"
-"        // Assume this implementation just ignores admin events\n"
-"    }\n"
-"}\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:84
-#, no-wrap
-msgid "Example service configuration file (`META-INF/services/org.keycloak.events.EventListenerProviderFactory`):\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:88
-#, no-wrap
-msgid "org.acme.provider.MyEventListenerProviderFactory\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:93
-#, no-wrap
-msgid ""
-"You can configure your provider through `standalone.xml`, `standalone-ha.xml`, or `domain.xml`.  \n"
-"See the link:{installguide_link}[{installguide_name}] for more details on\n"
-"where the `standalone.xml`, `standalone-ha.xml`, or `domain.xml` file lives.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:95
-#, no-wrap
-msgid "For example by adding the following to `standalone.xml`:\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:106
-#, no-wrap
-msgid ""
-"<spi name=\"eventsListener\">\n"
-"    <provider name=\"my-event-listener\" enabled=\"true\">\n"
-"        <properties>\n"
-"            <property name=\"aNumber\" value=\"10\"/>\n"
-"            <property name=\"aString\" value=\"Foo\"/>\n"
-"        </properties>\n"
-"    </provider>\n"
-"</spi>\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:109
-#, no-wrap
-msgid "Then you can retrieve the config in the `ProviderFactory` init method:\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:116
-#, no-wrap
-msgid ""
-"public void init(Config.Scope config) {\n"
-"    Integer aNumber = config.getInt(\"aNumber\");\n"
-"    String aString = config.get(\"aString\");\n"
-"}\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:119
-#, no-wrap
-msgid "Your provider can also lookup other providers if needed. For example:\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:126
-#, no-wrap
-msgid ""
-"    private KeycloakSession session;\n"
-"    private List<Event> events;\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:131
-#, no-wrap
-msgid ""
-"    public MyEventListenerProvider(KeycloakSession session, List<Event> events) {\n"
-"        this.session = session;\n"
-"        this.events = events;\n"
-"    }\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:135
-#, no-wrap
-msgid ""
-"    public void onEvent(Event event) {\n"
-"        RealmModel realm = session.realms().getRealm(event.getRealmId());\n"
-"        UserModel user = session.users().getUserById(event.getUserId(), realm);\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:139
-#, no-wrap
-msgid ""
-"        EmailSenderProvider emailSender = session.getProvider(EmailSenderProvider.class);\n"
-"        emailSender.send(realm, user, \"Hello\", \"Hello plain text\", \"<h1>Hello html</h1>\" );\n"
-"    }\n"
-msgstr ""
-
-#. type: Title ====
-#: source/server_development/topics/providers.adoc:146
-#, no-wrap
-msgid "Show info from you SPI implementation in Keycloak admin console"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:151
-#, no-wrap
-msgid ""
-"Sometimes it is useful to show additional info about your Provider to a Keycloak administrator. You can show provider build time informations (eg. version of\n"
-"custom provider currently installed), current configuration of the provider (eg. url of remote system your provider talks to) or some operational info\n"
-"(average time of response from remote system your provider talks to). Keycloak admin console provides Server Info page to show this kind of information.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:153
-#, no-wrap
-msgid "To show info from your provider it is enough to implement `org.keycloak.provider.ServerInfoAwareProviderFactory` interface in your `ProviderFactory`.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:155
-#, no-wrap
-msgid "Example implementation for `MyEventListenerProviderFactory` from previous example:\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:164
-#, no-wrap
-msgid ""
-"public class MyEventListenerProviderFactory implements EventListenerProviderFactory, ServerInfoAwareProviderFactory {\n"
-"    ...\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:175
-#, no-wrap
-msgid ""
-"    @Override\n"
-"    public Map<String, String> getOperationalInfo() {\n"
-"        Map<String, String> ret = new LinkedHashMap<>();\n"
-"        ret.put(\"version\", \"1.0\");\n"
-"        ret.put(\"listSizeMax\", max + \"\");\n"
-"        ret.put(\"listSizeCurrent\", events.size() + \"\");\n"
-"        return ret;\n"
-"    }\n"
-"}\n"
-"----            \n"
-msgstr ""
-
-#. type: Title ===
-#: source/server_development/topics/providers.adoc:176
-#, no-wrap
-msgid "Registering provider implementations"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:180
-#, no-wrap
-msgid ""
-"There are two ways to register provider implementations. In most cases the simplest way is to use the Keyclopak Deployer\n"
-"approach as this handles a number of dependencies automatically for you. It also supports hot deployment as well as re-deployment.\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:182
-#, no-wrap
-msgid "The alternative approach is to deploy as a module.\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:184
-#, no-wrap
-msgid "If you are creating a custom SPI you will need to deploy it as a module, otherwise we recommend using the Keycloak Deployer approach.\n"
-msgstr ""
-
-#. type: Title ====
-#: source/server_development/topics/providers.adoc:185
-#, no-wrap
-msgid "Using the Keycloak Deployer"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:191
-#, no-wrap
-msgid ""
-"If you copy your provider jar to the Keycloak `deploy/` directory, your provider will automatically be deployed.\n"
-"Hot deployment works too.  Additionally, your provider jar works similarly to other components deployed in a JBoss/Wildfly\n"
-"environment in that they can use facilities like the `jboss-deployment-structure.xml` file.  This file allows you to\n"
-"set up dependencies on other components and load third-party jars and modules.\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:194
-#, no-wrap
-msgid ""
-"Provider jars can also be contained within other deployable units like EARs and WARs.  Deploying with a EAR actually makes\n"
-"it really easy to use third party jars as you can just put these libraries in the EAR's `lib/` directory.\n"
-msgstr ""
-
-#. type: Title ====
-#: source/server_development/topics/providers.adoc:195
-#, no-wrap
-msgid "Register a provider using Modules"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:200
-#, no-wrap
-msgid ""
-"To register a provider using Modules first create a module.\n"
-"To do this you can either use the jboss-cli script or manually create a folder inside `KEYCLOAK_HOME/modules` and add your jar and a `module.xml`.\n"
-"For example to add the event listener sysout example provider using the `jboss-cli` script execute: \n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:207
-#, no-wrap
-msgid ""
-"KEYCLOAK_HOME/bin/jboss-cli.sh --command=\"module add --name=org.keycloak.examples.event-sysout --resources=target/event-listener-sysout-example.jar --dependencies=org.keycloak.keycloak-core,org.keycloak.keycloak-server-spi,org.keycloak.keycloak-events-api\"\n"
-"----                \n"
-"Or to manually create it start by creating the folder `KEYCLOAK_HOME/modules/org/keycloak/examples/event-sysout/main`.\n"
-"Then copy `event-listener-sysout-example.jar` to this folder and create `module.xml` with the following content: \n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:222
-#, no-wrap
-msgid ""
-"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-"<module xmlns=\"urn:jboss:module:1.3\" name=\"org.keycloak.examples.event-sysout\">\n"
-"    <resources>\n"
-"        <resource-root path=\"event-listener-sysout-example.jar\"/>\n"
-"    </resources>\n"
-"    <dependencies>\n"
-"        <module name=\"org.keycloak.keycloak-core\"/>\n"
-"        <module name=\"org.keycloak.keycloak-server-spi\"/>\n"
-"    </dependencies>\n"
-"</module>\n"
-"----            \n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:226
-#, no-wrap
-msgid ""
-"Once you've created the module you need to register this module with Keycloak.\n"
-"This is done by editing the keycloak-server subsystem section of \n"
-"`standalone.xml`, `standalone-ha.xml`, or `domain.xml`, and adding it to the providers: \n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:236
-#, no-wrap
-msgid ""
-"<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
-"    <web-context>auth</web-context>\n"
-"    <providers>\n"
-"        <provider>module:org.keycloak.examples.event-sysout</provider>\n"
-"    </providers>\n"
-"    ...\n"
-"----            \n"
-msgstr ""
-
-#. type: Title ====
-#: source/server_development/topics/providers.adoc:237
-#, no-wrap
-msgid "Configuring a provider"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:241
-#, no-wrap
-msgid ""
-"You can pass configuration options to your provider by setting them in `standalone.xml`, `standalone-ha.xml`, or `domain.xml`.\n"
-"For example to set the max value for `my-event-listener` add: \n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:243
-#, fuzzy, no-wrap
-#| msgid "[source,xml]\n"
-msgid "[source.xml]\n"
-msgstr "[source,xml]\n"
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:252
-#, no-wrap
-msgid ""
-"<spi name=\"eventsListener\">\n"
-"    <provider name=\"my-event-listener\" enabled=\"true\">\n"
-"        <properties>\n"
-"            <property name=\"max\" value=\"100\"/>\n"
-"        </properties>\n"
-"    </provider>\n"
-"</spi>\n"
-"----            \n"
-msgstr ""
-
-#. type: Title ====
-#: source/server_development/topics/providers.adoc:253
-#, no-wrap
-msgid "Disabling a provider"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:258
-#, no-wrap
-msgid ""
-"You can disable a provider by setting the enabled attribute for the provider to false \n"
-"in `standalone.xml`, `standalone-ha.xml`, or `domain.xml`.\n"
-"For example to disable the Infinispan user cache provider add: \n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/providers.adoc:264
-#, no-wrap
-msgid ""
-"<spi name=\"userCache\">\n"
-"    <provider name=\"infinispan\" enabled=\"false\"/>\n"
-"</spi>\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:274
-#, no-wrap
-msgid ""
-"The can be packaged within any Java EE component so long as you set up the `META-INF/services`\n"
-"file correctly to point to your providers.  For example, if your provider needs to use third party libraries, you\n"
-"can package up your provider within an ear and store these third pary libraries in the ear's `lib/` directory.\n"
-"Also note that provider jars can make use of the `jboss-deployment-structure.xml` file that EJBs, WARS, and EARs\n"
-"can use in a JBoss/Wildfly environment.  See the JBoss/Wildfly documentation for more details on this file.  It\n"
-"allows you to pull in external dependencies among other fine grain actions.\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:277
-#, no-wrap
-msgid ""
-"`ProviderFactory` implementations are required to be plain java objects.  But, we also currently support\n"
-"implementing provider classes as Stateful EJBs.  TThis is how you would do it:\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:315
-#, no-wrap
-msgid ""
-"You have to define the `@Local` annotation and specify your provider class there.  If you don't do this, EJB will\n"
-"not proxy the provider instance correctly and your provider won't work.\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:318
-#, no-wrap
-msgid ""
-"You must put the `@Remove` annotation on the `close()` method of your provider.  If you don't, the stateful bean\n"
-"will never be cleaned up and you may eventually see error messages.\n"
-msgstr ""
-
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:321
-#, no-wrap
-msgid ""
-"Implementations of `ProviderFactory` are required to be plain java objects.  Your factory class would\n"
-"perform a JNDI lookup of the Stateful EJB in its create() method.\n"
-msgstr ""
-
-#. type: Title ===
-#: source/server_development/topics/providers.adoc:342
 #, no-wrap
 msgid "Available SPIs"
-msgstr ""
+msgstr "利用可能なSPI"
 
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:346
-#, no-wrap
+#. type: Plain text
 msgid ""
-"Here's a list of the most important available SPIs and a brief description. For more details on each SPI refer to individual sections.\n"
-"If you want to see list of all available SPIs at runtime, you can check `Server Info` page in admin console as described in <<_providers_admin_console,Admin Console>> section.\n"
+"Here's a list of the most important available SPIs and a brief description. "
+"For more details on each SPI refer to individual sections.  If you want to "
+"see list of all available SPIs at runtime, you can check `Server Info` page "
+"in admin console as described in <<_providers_admin_console,Admin Console>> "
+"section."
 msgstr ""
+"最も重要で利用可能なSPIのリストと簡単な説明については、こちらになります。各SPIについて、詳しくは、個別のセクションを参照ください。利用可能なすべてのSPIのリストを実行時に確認する必要がある場合は、<<_providers_admin_console,Admin"
+" Console>>セクションでの説明通りに、管理コンソール内の `Server Info` ページを確認します。"
 
-#. type: delimited block -
-#: source/server_development/topics/providers.adoc:365
-#, no-wrap
+#. type: Plain text
+msgid "SPI|Description"
+msgstr "SPI|の説明"
+
+#. type: Plain text
 msgid ""
-"|Connections Infinispan|Loads and configures Infinispan connections. The default implementation can load connections from the Infinispan subsystem, or alternatively can be manually configured in standalone.xml\n"
-"|Connections Jpa|Loads and configures Jpa connections. The default implementation can load datasources from WildFly/EAP, or alternatively can be manually configured in standalone.xml\n"
-"|Connections Mongo|Loads and configures MongoDB connections. The default implementation is configured in standalone.xml\n"
-"|Email Sender|Sends email. The default implementation uses JavaMail\n"
-"|Email Template|Format email and uses Email Sender to send the email. The default implementation uses FreeMarker templates\n"
-"|Events Listener|Listen to user related events for example user login success and failures. Keycloak provides two implementations out of box. One that logs events to the server log and another that can send email notifications to users on certain events\n"
-"|Login Protocol|Provides protocols. Keycloak provides implementations of OpenID Connect and SAML 2.0\n"
-"|Realm|Provides realm and application meta-data. Keycloak provides implementations for Relational Databases and MongoDB\n"
-"|Realm Cache|Caches realm and application meta-data to improve performance. Default implementation uses Infinispan\n"
-"|Timer|Executes scheduled tasks. Keycloak provides a basic implementation based on java.util.Timer\n"
-"|User|Provides users and role-mappings. Keycloak provides implementations for Relational Databases and MongoDB\n"
-"|User Cache|Caches users to improve performance. Default implementation uses Infinispan\n"
-"|User Federation|Support syncing users from an external source. Keycloak provides implementations for LDAP and Active Directory\n"
-"|User Sessions|Provides users session information. Keycloak provides implementations for basic in-memory, Infinispan, Relational Databases and MongoDB\n"
-"|===\n"
+"Connections Infinispan|Loads and configures Infinispan connections. The "
+"default implementation can load connections from the Infinispan subsystem, "
+"or alternatively can be manually configured in standalone.xml"
 msgstr ""
+"Infinispanコネクション|Infinispanコネクションをロードして設定します。デフォルトの実装では、Infinispanサブシステムから接続をロードすることができますが、その代わりの方法としてstandalone.xmlで手動で設定することもできます"
+
+#. type: Plain text
+msgid ""
+"Connections Jpa|Loads and configures Jpa connections. The default "
+"implementation can load datasources from WildFly/EAP, or alternatively can "
+"be manually configured in standalone.xml"
+msgstr ""
+"Jpaコネクション|Jpaコネクションをロードして設定します。デフォルトの実装では、WildFlyまたはEAPからデータソースを読み込むことができますが、その代わりの方法としてstandalone.xmlで手動で設定することもできます"
+
+#. type: Plain text
+msgid ""
+"Connections Mongo|Loads and configures MongoDB connections. The default "
+"implementation is configured in standalone.xml"
+msgstr "Mongoコネクション|MongoDBコネクションをロードして設定します。デフォルトの実装は、standalone.xmlで設定します"
+
+#. type: Plain text
+msgid "Email Sender|Sends email. The default implementation uses JavaMail"
+msgstr "電子メールの送信者|電子メールを送ります。デフォルトの実装では、JavaMailを使用します"
+
+#. type: Plain text
+msgid ""
+"Email Template|Format email and uses Email Sender to send the email. The "
+"default implementation uses FreeMarker templates"
+msgstr ""
+"電子メールのTemplate|電子メールのフォーマットで、電子メールを送信するために電子メールの送信者が使用します。デフォルトの実装では、FreeMarkerテンプレートを使用します"
+
+#. type: Plain text
+msgid ""
+"Events Listener|Listen to user related events for example user login success"
+" and failures. Keycloak provides two implementations out of box. One that "
+"logs events to the server log and another that can send email notifications "
+"to users on certain events"
+msgstr ""
+"イベントリスナー|ユーザーログインの成功や失敗など、ユーザー関連のイベントについて聞きます。Keycloakでは、そのまますぐに使用できる2つの実装が提供されます。1つは、サーバーログにイベントの記録を残すもので、2つ目は特定のイベントでユーザーに電子メールで通知するものです"
+
+#. type: Plain text
+msgid ""
+"Login Protocol|Provides protocols. Keycloak provides implementations of "
+"OpenID Connect and SAML 2.0"
+msgstr "ログイン・プロトコル|プロトコルを提供します。Keycloakでは、OpenID ConnectとSAML2.0の実装が提供されます"
+
+#. type: Plain text
+msgid ""
+"Realm|Provides realm and application meta-data. Keycloak provides "
+"implementations for Relational Databases and MongoDB"
+msgstr ""
+"レルム|レルムとアプリケーション・メタデータを提供します。Keycloakでは、リレーショナル・データベースとMongoDBのための実装が提供されます"
+
+#. type: Plain text
+msgid ""
+"Realm Cache|Caches realm and application meta-data to improve performance. "
+"Default implementation uses Infinispan"
+msgstr ""
+"レルム・キャッシュ|レルムとアプリケーション・メタデータをキャッシュして、パフォーマンスを向上させます。デフォルトの実装には、Infinispanが使用されます"
+
+#. type: Plain text
+msgid ""
+"Timer|Executes scheduled tasks. Keycloak provides a basic implementation "
+"based on java.util.Timer"
+msgstr ""
+"タイマー|スケジューリングされているタスクを実行します。Keycloakでは、java.util.Timerに基づく基本的な実装が提供されます"
+
+#. type: Plain text
+msgid ""
+"User|Provides users and role-mappings. Keycloak provides implementations for"
+" Relational Databases and MongoDB"
+msgstr ""
+"ユーザー|ユーザーとロール・マッピングを提供します。Keycloakでは、リレーショナル・データベースとMongoDBのための実装が提供されます"
+
+#. type: Plain text
+msgid ""
+"User Cache|Caches users to improve performance. Default implementation uses "
+"Infinispan"
+msgstr "ユーザー・キャッシュ|ユーザーをキャッシュしてパフォーマンスを向上させます。デフォルトの実装には、Infinispanが使用されます"
+
+#. type: Plain text
+msgid ""
+"User Federation|Support syncing users from an external source. Keycloak "
+"provides implementations for LDAP and Active Directory"
+msgstr ""
+"ユーザー・フェデレーションユーザー・フェデレーション|外部ソースからのユーザーの同期をサポートします。Keycloakでは、LDAPとアクティブ・ディレクトリーのための実装が提供されます"
+
+#. type: Plain text
+msgid ""
+"User Sessions|Provides users session information. Keycloak provides "
+"implementations for basic in-memory, Infinispan, Relational Databases and "
+"MongoDB"
+msgstr ""
+"ユーザー・セッション|ユーザー・セッション情報を提供します。Keycloakでは、基本的なin-"
+"memory、Infinispan、リレーショナル・データベースおよびMongoDBのための実装が提供されます"

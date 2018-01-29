@@ -84,6 +84,7 @@ jobs:
           name: deply to s3
           command: |
             [ "$CIRCLE_BRANCH" = "master" ] && aws s3 sync ~/repo/site/ s3://keycloak-documentation/
+            sed -i -e "s|/master/|/|g" ~/repo/site/index.html
             cp -r ~/repo/site/* ~/repo/translated/dist/
             aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_BRANCH/ --delete
 

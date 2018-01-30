@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -88,7 +88,8 @@ msgid ""
 msgstr ""
 "このリソースは `Type` 、すなわち `urn:my-resource-server:resources:default` と `URI` `/*`"
 " "
-"を定義します。ここで、URIフィールドは、このリソースがアプリケーションのすべてのパスを表すことを{project_name}が示すワイルドカード・パターンで定義します。つまり、アプリケーションのポリシー適用を有効にすると、アクセス権を付与する前に、リソースに関連付けられているすべての権限が検査されます。"
+"を定義します。ここで、URIフィールドは、このリソースがアプリケーションのすべてのパスを表すことを{project_name}が示すワイルドカード・パターンで定義します。つまり、アプリケーションの<<_enforcer_overview,"
+" ポリシー適用>>を有効にすると、アクセス権を付与する前に、リソースに関連付けられているすべてのパーミッションが検査されます。"
 
 #. type: Plain text
 #: source/authorization_services/topics/resource-server-default-config.adoc:24
@@ -100,7 +101,7 @@ msgid ""
 msgstr ""
 "前述の `Type` "
 "は、デフォルトのリソースまたは同じタイプを使用して作成したリソースに適用させる<<_permission_typed_resource, "
-"型付きリソース権限>>を作成するために使用できる値を定義します。"
+"タイプ付きリソース・パーミッション>>を作成するために使用できる値を定義します。"
 
 #. type: Plain text
 #: source/authorization_services/topics/resource-server-default-config.adoc:26
@@ -134,7 +135,7 @@ msgid ""
 "follows:"
 msgstr ""
 "このポリシーは、ポリシーで保護されているリソースへのアクセスを常に許可する条件を定義した<<_policy_js, "
-"JavaScriptベースのポリシー>>です。このポリシーをクリックすると、次のようにルールが定義されていることがわかります。"
+"JavaScriptベースのポリシー>>です。このポリシーをクリックすると、次のようにルールが定義されていることが分かります。"
 
 #. type: Code block
 #: source/authorization_services/topics/resource-server-default-config.adoc:35
@@ -143,7 +144,7 @@ msgid ""
 "// by default, grants any permission associated with this policy\n"
 "$evaluation.grant();\n"
 msgstr ""
-"// デフォルトでは、このポリシーに関連する全てのアクセス許可を付与します。\n"
+"// デフォルトでは、このポリシーに関連する全てのパーミッションを付与します。\n"
 "$evaluation.grant();\n"
 
 #. type: Plain text
@@ -152,7 +153,7 @@ msgid ""
 "Lastly, the default permission is referred to as the *default permission* "
 "and you can view it if you navigate to the *Permissions* tab."
 msgstr ""
-"最後に、デフォルトのアクセス権は、 *default permission* と呼ばれ、 *Permissions* タブに移動すると表示できます。"
+"最後に、デフォルトのパーミッションは、 *default permission* と呼ばれ、 *Permissions* タブに移動すると表示できます。"
 
 #. type: Block title
 #: source/authorization_services/topics/resource-server-default-config.adoc:39
@@ -177,7 +178,7 @@ msgid ""
 " resources with a given type."
 msgstr ""
 "このパーミッションは<<_permission_create_resource, "
-"リソースベースのアクセス権>>で、特定のタイプのすべてのリソースに適用される1つ以上のポリシーのセットを定義します。"
+"リソースベースのパーミッション>>で、特定のタイプのすべてのリソースに適用される1つ以上のポリシーのセットを定義します。"
 
 #. type: Title ==
 #: source/authorization_services/topics/resource-server-default-config.adoc:44
@@ -190,7 +191,7 @@ msgstr "デフォルト設定の変更"
 msgid ""
 "You can change the default configuration by removing the default resource, "
 "policy, or permission definitions and creating your own."
-msgstr "デフォルトの設定を変更するには、デフォルトのリソース、ポリシー、またはパーミッションの定義を削除し、独自のポリシーを作成します。"
+msgstr "デフォルトの設定を変更するには、デフォルトのリソース、ポリシー、またはパーミッションの定義を削除し、独自の定義を作成します。"
 
 #. type: Plain text
 #: source/authorization_services/topics/resource-server-default-config.adoc:50
@@ -200,8 +201,8 @@ msgid ""
 "resources, permissions and policies, make sure the default configuration "
 "doesn't conflict with your own settings."
 msgstr ""
-"デフォルトのリソースは、 **/*** パターンを使用してアプリケーション内のリソースまたはパスにマップされる **URI** で作成されます。 "
-"独自のリソース、権限、ポリシーを作成する前に、デフォルト設定が自分の設定と矛盾しないことを確認してください。"
+"デフォルトのリソースは、 **/*** パターンを使用してアプリケーション内のリソースまたはパスにマップされる **URI** "
+"で作成されます。独自のリソース、権限、ポリシーを作成する前に、デフォルト設定が自分の設定と矛盾しないことを確認してください。"
 
 #. type: Plain text
 #: source/authorization_services/topics/resource-server-default-config.adoc:52
@@ -213,4 +214,6 @@ msgid ""
 "with the default resource (which by default always grants access) will allow"
 " {project_name} to grant access to any protected resource."
 msgstr ""
-"デフォルト設定では、アプリケーションのすべてのパスに対応するリソースを定義します。独自のリソースにアクセス許可を書き込もうとしている場合は、デフォルト・リソースを削除するか、URIフィールドをアプリケーション内の特定のパスに変更してください。それ以外の場合は、デフォルト・リソース（デフォルトでは常にアクセスを許可する）に関連付けられたポリシーにより、Keycloakは保護されたリソースへのアクセスを許可します。"
+"デフォルト設定では、アプリケーションのすべてのパスに対応するリソースを定義します。独自のリソースにパーミッションを書き込もうとしている場合は、 "
+"*Default Resource* を削除するか、 ```URI``` "
+"フィールドをアプリケーション内の特定のパスに変更してください。それ以外の場合は、デフォルト・リソース（デフォルトでは常にアクセスを許可する）に関連付けられたポリシーにより、{project_name}は保護されたリソースへのアクセスを許可します。"

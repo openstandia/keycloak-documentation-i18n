@@ -2,52 +2,35 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:15
-#: source/server_development/topics/user-storage/migration.adoc:27
-msgid ""
-"There are some obvious disadvantages though to using an import strategy:"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:21
-#: source/server_development/topics/user-storage/migration.adoc:33
-msgid ""
-"With the import approach, you have to keep local keycloak storage and "
-"external storage in sync. The User Storage SPI has capability interfaces "
-"that you can implement to support synchronization, but this can quickly "
-"become painful and messy."
-msgstr ""
-
 #. type: Title ===
-#: source/server_development/topics/user-storage/migration.adoc:2
 #, no-wrap
 msgid "Migrating from an Earlier User Federation SPI"
-msgstr ""
+msgstr "以前の ユーザー・フェデレーションSPIからの移行"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:6
 #, no-wrap
 msgid ""
 "This chapter is only applicable if you have implemented a provider using the earlier (and now removed)\n"
 "       User Federation SPI.\n"
 msgstr ""
+"この章は、以前の （現在削除された） バージョンを使用してプロバイダー\n"
+" を実装した場合にのみ適用されます\n"
+" ユーザー・フェデレーションSPI。\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:10
 msgid ""
 "In Keycloak version 2.4.0 and earlier there was a User Federation SPI. Red "
 "Hat Single Sign-On version 7.0, although unsupported, also had this earlier "
@@ -56,15 +39,17 @@ msgid ""
 "However, if you have written a provider with this earlier SPI, this chapter "
 "discusses some strategies you can use to port it."
 msgstr ""
+"Keycloakバージョン2.4.0以前では、 ユーザー・フェデレーション SPIがありました。 Red Hat  シングルサインオン "
+"バージョン7.0は、サポートされていませんが、以前のSPIも利用可能でした。 この以前のUser Federation "
+"SPIは、Keycloakバージョン2.5.0およびRed Hat Single Sign-Onバージョン7.1から削除されました。 "
+"ただし、このSPIを使用してプロバイダーを作成した場合、この章では、SPIを移植するためのいくつかの方法について説明します。"
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/migration.adoc:12
 #, no-wrap
 msgid "Import vs. Non-Import"
-msgstr ""
+msgstr "Import 対 Non-Import"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:17
 msgid ""
 "The earlier User Federation SPI required you to create a local copy of a "
 "user in the {project_name}'s database and import information from your "
@@ -72,31 +57,36 @@ msgid ""
 "You can still port your earlier provider as-is, but you should consider "
 "whether a non-import strategy might be a better approach."
 msgstr ""
+"以前のユーザー・フェデレーションSPIでは、{project_name}のデータベース内でユーザーのローカルコピーを作成し、外部ストアからの情報をローカルコピーにインポートする必要がありました。しかし、これはもう要件ではなくなりました。以前のプロバイダーをそのままポートすることもできますが、非インポート戦略の方がより良いアプローチかもしれないと検討してみることをおすすめします。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:19
 msgid "Advantages of the import strategy:"
-msgstr ""
+msgstr "インポート方法の利点："
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:22
 msgid ""
 "{project_name} basically becomes a persistence user cache for your external "
 "store. Once the user is imported you'll no longer hit the external store, "
 "thus taking load off of it."
 msgstr ""
+"{project_name}は、基本的に外部ストアの永続ユーザーキャッシュになります。 "
+"ユーザーがインポートされると、外部ストアにアクセスしなくなり、その負荷を取り除きます。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:25
 msgid ""
 "If you are moving to {project_name} as your official user store and "
 "deprecating the earlier external store, you can slowly migrate applications "
 "to use {project_name}. When all applications have been migrated, unlink the "
 "imported user, and retire the earlier legacy external store."
 msgstr ""
+"{project_name}に移行して公式ユーザー・ストアとし、従来の外部ストアを廃止する場合、アプリケーションを徐々に移行して{project_name}を使用することができます。すべてのアプリケーションが移行されると、インポートされたユーザーのリンクを解除し、従来のレガシー外部ストアを廃止します。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:31
+msgid ""
+"There are some obvious disadvantages though to using an import strategy:"
+msgstr "インポート戦略の使用には、いずれにせよ、明らかな欠点がいくつかあります。"
+
+#. type: Plain text
 msgid ""
 "Looking up a user for the first time will require multiple updates to "
 "{project_name} database. This can be a big performance loss under load and "
@@ -104,24 +94,35 @@ msgid ""
 "storage approach will only store extra data as needed and might never be "
 "used depending on the capabilities of your external store."
 msgstr ""
-
-#. type: Title ====
-#: source/server_development/topics/user-storage/migration.adoc:34
-#, no-wrap
-msgid "UserFederationProvider vs. UserStorageProvider"
-msgstr ""
+"初めてユーザーを検索するには、{project_name}データベースを何回も更新する必要があります。これは、負荷となり大きなパフォーマンスロスとなり、{project_name}データベースに多くの負担をかけることになります。ユーザー連携されたストレージ・アプローチでは、必要以上のデータを保持し、外部ストアの機能に応じて使用されるということがありません。"
+" "
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:37
+msgid ""
+"With the import approach, you have to keep local keycloak storage and "
+"external storage in sync. The User Storage SPI has capability interfaces "
+"that you can implement to support synchronization, but this can quickly "
+"become painful and messy."
+msgstr ""
+"インポートのアプローチでは、ローカルkeycloakストレージと外部ストレージを同期させておく必要があります。ユーザー・ストレージSPIには、実装させると同期をサポートできるようになる、インターフェイス機能がありますが、これはすぐにやっかいで面倒なものになります。"
+
+#. type: Title ====
+#, no-wrap
+msgid "UserFederationProvider vs. UserStorageProvider"
+msgstr "UserFederationProvider vs. UserStorageProvider"
+
+#. type: Plain text
 msgid ""
 "The first thing to notice is that `UserFederationProvider` was a complete "
 "interface. You implemented every method in this interface. However, "
 "`UserStorageProvider` has instead broken up this interface into multiple "
 "capability interfaces that you implement as needed."
 msgstr ""
+"まずは、 `UserFederationProvider` "
+"は完成されたインターフィスだったことがわかります。このインターフェイスにはすべてのメソッドが実装されました。しかし、その代わりに、 "
+"`UserStorageProvider` は必要に応じて実装可能な複数のインターフェイスに分割されました。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:40
 msgid ""
 "`UserFederationProvider.getUserByUsername()` and `getUserByEmail()` have "
 "exact equivalents in the new SPI. The difference between the two is how you "
@@ -130,9 +131,13 @@ msgid ""
 "Instead you call `KeycloakSession.userLocalStorage().addUser()`.  The "
 "`userStorage()` method no longer exists."
 msgstr ""
+"`UserFederationProvider.getUserByUsername()` と `getUserByEmail()` "
+"は、新しいSPI内ではまったく同じものです。この両者の違いはインポートの仕方にあります。インポート戦略を引き続き使用している場合、ユーザーをローカルで作成するために"
+" `KeycloakSession.userStorage().addUser()` を呼び出すことはもうなくなりました。その代わり、 "
+"`KeycloakSession.userLocalStorage().addUser()` を呼び出します。 `userStorage()` "
+"メソッドはもう存在しません。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:46
 msgid ""
 "The `UserFederationProvider.validateAndProxy()` method has been moved to an "
 "optional capability interface, `ImportedUserValidation`.  You want to "
@@ -140,35 +145,40 @@ msgid ""
 "Also note that in the earlier SPI, this method was called every time the "
 "user was accessed, even if the local user is in the cache.  In the later "
 "SPI, this method is only called when the local user is loaded from local "
-"storage. If the local user is cached, then the `ImportedUserValidation."
-"validate()` method is not called at all."
+"storage. If the local user is cached, then the "
+"`ImportedUserValidation.validate()` method is not called at all."
 msgstr ""
+" `UserFederationProvider.validateAndProxy()` メソッドは、オプションのケーパビリティー・インタフェイス、 "
+"`ImportedUserValidation` "
+"に移動されました。以前のプロバイダーをそのまま移植する場合は、このインターフェイスを実装します。また、以前のSPIでは、ローカル・ユーザーがキャッシュ内にあっても、ユーザーがアクセスされるたびにこのメソッドが呼び出されました。新しいSPIでは、このメソッドはローカルユーザーがローカル・ストレージからロードされたときにのみ呼び出されます。ローカル・ユーザーがキャッシュされている場合、"
+" `ImportedUserValidation.validate()` メソッドはまったく呼び出されません。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:48
 msgid ""
 "The `UserFederationProvider.isValid()` method no longer exists in the later "
 "model."
-msgstr ""
+msgstr "`UserFederationProvider.isValid()` メソッドは、後のモデルには存在しません。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:54
 msgid ""
 "The `UserFederationProvider` methods `synchronizeRegistrations()`, "
 "`registerUser()`, and `removeUser()` have been moved to the "
 "`UserRegistrationProvider` capability interface. This new interface is "
 "optional to implement so if your provider does not support creating and "
-"removing users, you don't have to implement it. If your earlier provider had "
-"switch to toggle support for registering new users, this is supported in the "
-"new SPI, returning `null` from `UserRegistrationProvider.addUser()` if the "
-"provider doesn't support adding users."
+"removing users, you don't have to implement it. If your earlier provider had"
+" switch to toggle support for registering new users, this is supported in "
+"the new SPI, returning `null` from `UserRegistrationProvider.addUser()` if "
+"the provider doesn't support adding users."
 msgstr ""
+" `UserFederationProvider` のメソッド `synchronizeRegistrations()` 、 "
+"`registerUser()` 、 `removeUser()` は `UserRegistrationProvider` "
+"ケーパビリティ・インターフェイスに移動されました。この新しいインターフェイスは実装するためにオプションです。プロバイダーがユーザーの作成と削除をサポートしていない場合は、実装する必要はありません。以前のプロバイダーが新しいユーザーの登録をサポートするように切り替えた場合、新しいSPIではこれがサポートされ、プロバイダーがユーザーの追加をサポートしていない場合は、"
+" `UserRegistrationProvider.addUser()` から `null` が返されます。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:63
 msgid ""
-"The earlier `UserFederationProvider` methods centered around credentials are "
-"now encapsulated in the `CredentialInputValidator` and "
+"The earlier `UserFederationProvider` methods centered around credentials are"
+" now encapsulated in the `CredentialInputValidator` and "
 "`CredentialInputUpdater` interfaces, which are also optional to implement "
 "depending on if you support validating or updating credentials.  Credential "
 "management used to exist in `UserModel` methods. These also have been moved "
@@ -179,65 +189,79 @@ msgid ""
 "read-only, implement the `CredentialInputUpdater.updateCredential()` method "
 "and return a `ReadOnlyException`."
 msgstr ""
+"クレデンシャルを中心とした以前の `UserFederationProvider` メソッドは `CredentialInputValidator` と"
+" `CredentialInputUpdater` "
+"インターフェイスにカプセル化されました。これはオプションで、クレデンシャルの検証や更新をサポートしているかどうかによって異なります。クレデンシャルは "
+"`UserModel` メソッドに存在しました。これらも `CredentialInputValidator` と "
+"`CredentialInputUpdater` インターフェイスに移行されました。 "
+"`CredentialInputUpdater`インターフェイスを実装しないと、プロバイダーが提供するクレデンシャルは{project_name}ストレージ内でローカルにオーバーライドできることに注意してください。したがって、クレデンシャルを読み取り専用にする場合は、"
+" `CredentialInputUpdater.updateCredential()` メソッドを実装し、 `ReadOnlyException` "
+"を返します。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:67
 msgid ""
 "The `UserFederationProvider` query methods such as `searchByAttributes()` "
 "and `getGroupMembers()` are now encapsulated in an optional interface "
-"`UserQueryProvider`. If you do not implement this interface, then users will "
-"not be viewable in the admin console.  You'll still be able to login though."
+"`UserQueryProvider`. If you do not implement this interface, then users will"
+" not be viewable in the admin console.  You'll still be able to login "
+"though."
 msgstr ""
+" `searchByAttributes()` や `getGroupMembers()` のような `UserFederationProvider` "
+"クエリーメソッドは、オプションのインターフェイス `UserQueryProvider` "
+"にカプセル化されました。このインターフェイスを実装しないと、管理コンソールでユーザーを表示できなくなります。なお、ログインすることはできます。"
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/migration.adoc:68
 #, no-wrap
 msgid "UserFederationProviderFactory vs. UserStorageProviderFactory"
-msgstr ""
+msgstr "UserFederationProviderFactory vs. UserStorageProviderFactory"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:73
 msgid ""
 "The synchronization methods in the earlier SPI are now encapsulated within "
 "an optional `ImportSynchronization` interface.  If you have implemented "
 "synchronization logic, then have your new `UserStorageProviderFactory` "
 "implement the `ImportSynchronization` interface."
 msgstr ""
+"以前のSPIの同期メソッドは、現在、オプションの `ImportSynchronization` "
+"インターフェイスにカプセル化されています。同期ロジックを実装している場合は、新しい `UserStorageProviderFactory` に "
+"`ImportSynchronization` インターフェイスを実装してください。"
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/migration.adoc:74
 #, no-wrap
 msgid "Upgrading to a New Model"
-msgstr ""
+msgstr "新しいモデルへのアップグレード"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:80
 msgid ""
 "The User Storage SPI instances are stored in a different set of relational "
-"tables. {project_name} automatically runs a migration script. If any earlier "
-"User Federation providers are deployed for a realm, they are converted to "
+"tables. {project_name} automatically runs a migration script. If any earlier"
+" User Federation providers are deployed for a realm, they are converted to "
 "the later storage model as is, including the `id` of the data. This "
 "migration will only happen if a User Storage provider exists with the same "
 "provider ID (i.e., \"ldap\", \"kerberos\") as the earlier User Federation "
 "provider."
 msgstr ""
+"ユーザーストレージSPIインスタンスは、異なる一連のリレーショナルテーブルに格納されます。 "
+"{project_name}は自動的に移行スクリプトを実行します。 レルムに対して以前のユーザーフェデレーション "
+"プロバイダーがデプロイされている場合、データの「ID」を含め、それ以降のストレージモデルにそのまま変換されます。 "
+"この移行は、以前のユーザー・フェデレーションプロバイダーと同じプロバイダID（「ldap」、「kerberos」）を持つユーザーストレージプロバイダーが存在する場合にのみ発生します。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:82
 msgid "So, knowing this there are different approaches you can take."
-msgstr ""
+msgstr "これを知ることにより、取ることができるさまざまなアプローチがあります。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:85
 msgid ""
 "You can remove the earlier provider in your earlier {project_name} "
 "deployment. This will remove all local linked copies of imported users.  "
 "Then, when you upgrade {project_name}, just deploy and configure your new "
 "provider for your realm."
 msgstr ""
+"以前の{project_name}配備で以前のプロバイダーを削除することができます。 "
+"インポートされたユーザーのローカルリンクされたコピーがすべて削除されます。 "
+"次に、{project_name}をアップグレードするときに、自分のレルム用に新しいプロバイダーをデプロイして設定するだけです。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:89
 msgid ""
 "The second option is to write your new provider making sure it has the same "
 "provider ID: `UserStorageProviderFactory.getId()`.  Make sure this provider "
@@ -246,12 +270,15 @@ msgid ""
 "data model to the later data model. In this case all your earlier linked "
 "imported users will work and be the same."
 msgstr ""
+"2つ目のオプションは、プロバイダーIDが同じであることを`UserStorageProviderFactory.getId()` "
+"で確認する新しいプロバイダーを実装することです。このプロバイダーは新しい{project_name}インストールの `deploy/` "
+"ディレクトリーにあることを確認してください。サーバーを起動し、組み込みの移行スクリプトで以前のデータモデルを新しいデータモデルに変換します。この場合、以前にリンクされたインポート済みユーザーは、正常に動作し、すべて同じになります。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/migration.adoc:91
 msgid ""
 "If you have decided to get rid of the import strategy and rewrite your User "
 "Storage provider, we suggest that you remove the earlier provider before "
 "upgrading {project_name}. This will remove linked local imported copies of "
 "any user you imported."
 msgstr ""
+"インポート戦略を廃止してユーザー・ストレージ・プロバイダーを実装し直すことに決めた場合は、{project_name}をアップグレードする前に以前のプロバイダーを削除することをお勧めします。これにより、インポーされたすべてのユーザーのリンクされたローカル・インポート済みのコピーが削除されます。"

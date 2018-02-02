@@ -12,6 +12,20 @@ rm -rf $TRANSLATED_DIR/*
 mkdir -p $REPO_DIR
 mkdir -p $TRANSLATED_DIR
 
+# Merge all translated branches if need
+if [[ "$CIRCLE_BRANCH" = translate-* ]]; then
+    echo "Mergeing all translate-* branches temporary"
+    BRANCHES=`git branch -r | tr -d ' ' | grep "^origin/translate\-*"` 
+    git config user.email "preview@example.com"
+    git config user.name "preview"
+    for branch in $BRANCHES; do
+        git merge -m "preview" $branch
+        if [ "$?" -ne 0 ]; then
+            git merge --abort
+        fi
+    done
+fi
+
 # Clone
 git clone $SOURCE_REPO $REPO_DIR
 cd $REPO_DIR && git checkout $SOURCE_REVISION

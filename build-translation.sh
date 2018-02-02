@@ -16,6 +16,8 @@ mkdir -p $TRANSLATED_DIR
 if [[ "$CIRCLE_BRANCH" = translate-* ]]; then
     echo "Mergeing all translate-* branches temporary"
     BRANCHES=`git branch -r | tr -d ' ' | grep "^origin/translate\-*"` 
+    git config user.email "preview@example.com"
+    git config user.name "preview"
     for branch in $BRANCHES; do
         git merge $branch
     done

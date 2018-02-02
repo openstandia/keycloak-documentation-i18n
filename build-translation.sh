@@ -16,11 +16,10 @@ mkdir -p $TRANSLATED_DIR
 if [[ "$CIRCLE_BRANCH" = translate-* ]]; then
     echo "Mergeing all translate-* branches temporary"
     BRANCHES=`git branch -r | tr -d ' ' | grep "^origin/translate\-*"` 
-    git config core.editor "/usr/bin/vi"
     git config user.email "preview@example.com"
     git config user.name "preview"
     for branch in $BRANCHES; do
-        git merge $branch
+        git merge -m "preview" $branch
         if [ "$?" -ne 0 ]; then
             git merge --abort
         fi

@@ -43,7 +43,7 @@ msgid ""
 "when ticket is not available during login, {project_name} also supports "
 "login with Kerberos username/password."
 msgstr ""
-"{project_name}は、SPNEGOプロトコルを通してKerberosチケットによるログインをサポートしています。セッションにログインするときにユーザーが認証された後、Webブラウザーを介して透過的に認証するために、SPNEGO（単一および保護されたGSSAPIネゴシエーション・メカニズム）が使用されます。Web以外の場合やログイン中にチケットが利用できない場合、{project_name}はKerberosのユーザー名/パスワードによるログインもサポートしています。"
+"{project_name}は、SPNEGOプロトコルを介したKerberosチケットによるログインをサポートしています。セッションにログインするときにユーザーが認証された後、Webブラウザーを介して透過的に認証するために、SPNEGO（単一および保護されたGSSAPIネゴシエーション・メカニズム）が使用されます。Web以外の場合やログイン中にチケットが利用できない場合、{project_name}はKerberosのユーザー名/パスワードによるログインもサポートしています。"
 
 #. type: Plain text
 msgid "A typical use case for web authentication is the following:"
@@ -54,8 +54,8 @@ msgid ""
 "User logs into his desktop (Such as a Windows machine in Active Directory "
 "domain or Linux machine with Kerberos integration enabled)."
 msgstr ""
-"ユーザーは自分のデスクトップにログインします（Kerberosの統合が有効なActive "
-"DirectoryドメインまたはLinuxマシンのWindowsマシンなど）。"
+"ユーザーは自分のデスクトップ（Kerberosの統合が有効なActive "
+"Directoryドメイン内のWindowsマシンまたはLinuxマシンなど）にログインします。"
 
 #. type: Plain text
 msgid ""
@@ -74,8 +74,8 @@ msgid ""
 "{project_name} renders HTML login screen together with status 401 and HTTP "
 "header `WWW-Authenticate: Negotiate`"
 msgstr ""
-"{project_name}は、HTMLログイン画面をステータス401とHTTPヘッダー `WWW-"
-"Authenticate：Negotiate`とともにレンダリングします"
+"{project_name}は、ステータス401とHTTPヘッダー `WWW-Authenticate：Negotiate` "
+"とともにHTMLログイン画面をレンダリングします"
 
 #. type: Plain text
 msgid ""
@@ -84,8 +84,9 @@ msgid ""
 "`Authorization: Negotiate 'spnego-token'` . Otherwise it just displays the "
 "login screen."
 msgstr ""
-"ブラウザーがデスクトップ・ログインからのKerberosチケットがある場合、デスクトップ・サインオン情報をヘッダー `Authorization: "
-"Negotiate 'spnego-token'` の{project_name}に転送します。 それ以外の場合は、ログイン画面が表示されます。"
+"ブラウザーは、デスクトップ・ログインからのKerberosチケットがある場合、ヘッダー `Authorization: Negotiate "
+"'spnego-token'` にデスクトップ・サインオン情報をセットして{project_name}に転送します。 "
+"それ以外の場合は、ログイン画面が表示されます。"
 
 #. type: Plain text
 msgid ""
@@ -94,7 +95,7 @@ msgid ""
 "Kerberos authentication support) or let user to update his profile and "
 "prefill data (in case of KerberosFederationProvider)."
 msgstr ""
-"{project_name}は、ブラウザーからトークンを検証し、ユーザーを認証します。LDAP（Kerberos認証をサポートするLDAPフェデレーション・プロバイダーの場合）からユーザー・データをプロビジョニングするか、ユーザーにプロファイルを更新し、データを事前に入力させることができます（Kerberosフェデレーション・プロバイダーの場合）。"
+"{project_name}は、ブラウザーから送信されたトークンを検証し、ユーザーを認証します。LDAP（Kerberos認証をサポートするLDAPFederationProviderの場合）からユーザー・データをプロビジョニングするか、ユーザーにプロファイルを更新し、データを事前に入力させることができます（KerberosFederationProviderの場合）。"
 
 #. type: Plain text
 msgid ""
@@ -104,7 +105,7 @@ msgid ""
 "is hidden from the application.  So {project_name} acts as broker to "
 "Kerberos/SPNEGO login."
 msgstr ""
-"{project_name}はアプリケーションに戻ります。{project_name}とアプリケーションの間の通信は、OpenID "
+"{project_name}はユーザーをアプリケーションに戻します。{project_name}とアプリケーションの間の通信は、OpenID "
 "ConnectまたはSAMLメッセージを介して行われます。{project_name}がKerberosを通じて認証されたという事実は、アプリケーションから隠されています。したがって、{project_name}はKerberos/SPNEGOログインのブローカーとして機能します。"
 
 #. type: Plain text
@@ -113,17 +114,17 @@ msgstr "セットアップには3つの主要な部分があります。"
 
 #. type: Plain text
 msgid "Setup and configuration of Kerberos server (KDC)"
-msgstr "Kerberosサーバー（KDC）のセットアップと構成"
+msgstr "Kerberosサーバー（KDC）のセットアップと設定"
 
 #. type: Title ====
 #, no-wrap
 msgid "Setup and configuration of {project_name} server"
-msgstr "{project_name}サーバーの設定と構成"
+msgstr "{project_name}サーバーのセットアップと設定"
 
 #. type: Title ====
 #, no-wrap
 msgid "Setup and configuration of client machines"
-msgstr "クライアントマシンのセットアップと構成"
+msgstr "クライアントマシンのセットアップと設定"
 
 #. type: Title ====
 #, no-wrap
@@ -137,8 +138,8 @@ msgid ""
 "and your OS documentation for how exactly to setup and configure Kerberos "
 "server."
 msgstr ""
-"これはプラットフォームに依存します。正確な手順は、お使いのOSと使用するKerberosベンダーによって異なります。Kerberosサーバーの設定と構成の正確な方法については、Windowsアクティブディレクトリ、MIT"
-" Kerberos、およびOSのマニュアルを参照してください。"
+"これはプラットフォームに依存します。正確な手順は、使用するOSとKerberosベンダーによって異なります。Kerberosサーバーのセットアップと設定の正確な方法については、Windows"
+" Active Directory、MIT Kerberos、およびOSのドキュメントを参照してください。"
 
 #. type: Plain text
 msgid "At least you will need to:"
@@ -159,7 +160,7 @@ msgid ""
 "add principal `HTTP/www.mydomain.org@MYDOMAIN.ORG` assuming that "
 "MYDOMAIN.ORG will be your Kerberos realm."
 msgstr ""
-"\"HTTP\"サービスのサービス・プリンシパルを追加します。例えば、{project_name}サーバーが `www.mydomain.org` "
+"\"HTTP\"サービスのサービス・プリンシパルを追加します。たとえば、{project_name}サーバーが `www.mydomain.org` "
 "で動作している場合、MYDOMAIN.ORGがKerberosレルムになると仮定して、プリンシパル "
 "`HTTP/www.mydomain.org@MYDOMAIN.ORG` を追加する必要があります。"
 
@@ -168,8 +169,8 @@ msgid ""
 "For example on MIT Kerberos you can run a \"kadmin\" session.  If you are on"
 " the same machine where is MIT Kerberos, you can simply use the command:"
 msgstr ""
-"例えば、MIT Kerberosでは、\"kadmin\"セッションを実行できます。MIT "
-"Kerberosと同じマシン上にいる場合は、単純に次のコマンドを使用します。"
+"たとえば、MIT Kerberosでは、\"kadmin\"セッションを実行できます。MIT "
+"Kerberosと同じマシン上にいる場合は、次の単純なコマンドを使用します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -180,7 +181,7 @@ msgstr "sudo kadmin.local\n"
 msgid ""
 "Then add HTTP principal and export his key to a keytab file with the "
 "commands like:"
-msgstr "次に、HTTPプリンシパルを追加し、キーをkeytabファイルにエクスポートするには、次のようなコマンドを入力します。"
+msgstr "次に、以下のコマンドで、HTTPプリンシパルを追加し、キーをkeytabファイルにエクスポートします。"
 
 #. type: delimited block -
 #, no-wrap
@@ -209,8 +210,8 @@ msgid ""
 "configure the HTTP domains your server will be running on.  For the example "
 "realm MYDOMAIN.ORG you may configure the `domain_realm` section like this:"
 msgstr ""
-"マシンにKerberosクライアントをインストールする必要があります。こちらもプラットフォームに依存します。Fedora、Ubuntu、またはRHELを使用している場合は、Kerberosクライアントとその他のいくつかのユーティリティを含む"
-" `freeipa-client` パッケージをインストールできます。ケルベロス・クライアントを設定します（Linuxの場合は "
+"Kerberosクライアントをマシンにインストールする必要があります。これもプラットフォームに依存します。Fedora、Ubuntu、またはRHELを使用している場合は、Kerberosクライアントとその他のいくつかのユーティリティーを含む"
+" `freeipa-client` パッケージをインストールできます。Kerberosクライアントを設定してください（Linuxの場合は "
 "`/etc/krb5.conf` "
 "にあります）。Kerberosレルムを配置し、少なくともサーバーが稼働するHTTPドメインを設定する必要があります。レルムMYDOMAIN.ORGの例では、"
 " `domain_realm` セクションを次のように設定することができます。"
@@ -251,7 +252,7 @@ msgid ""
 "default.  So, you have to go to the <<_authentication-flows, browser flow>> "
 "and enable `Kerberos`."
 msgstr ""
-"{project_name}にはデフォルトでSPNEGOプロトコルのサポートが有効になっていません。 したがって、<<_authentication-"
+"{project_name}では、デフォルトでSPNEGOプロトコルのサポートが有効になっていません。したがって、<<_authentication-"
 "flows, ブラウザー・フロー>>に移動して `Kerberos` を有効にする必要があります。"
 
 #. type: Plain text
@@ -264,7 +265,7 @@ msgid ""
 "their browser."
 msgstr ""
 "`Kerberos`のrequirementを _disabled_ から _alternative_ または _required_ に切り替えます。 "
-"_Alternative_ "
+"_alternative_ "
 "は、基本的にKerberosがオプショナルであることを意味します。ユーザーのブラウザーがSPNEGO/Kerberosで動作するように設定されていない場合、{project_name}は通常のログイン画面に戻ります。requirementを"
 " _required_ に設定した場合、すべてのユーザーはブラウザーでKerberosを有効にする必要があります。"
 
@@ -281,7 +282,7 @@ msgid ""
 " We have 2 different federation providers with Kerberos authentication "
 "support."
 msgstr ""
-"認証サーバでSPNEGOプロトコルが有効になったので、{project_name}がKerberosチケットをどのように解釈するかを設定する必要があります。これは"
+"認証サーバーでSPNEGOプロトコルが有効になったので、{project_name}がKerberosチケットをどのように解釈するかを設定する必要があります。これは"
 "、<<_user-storage-federation, "
 "ユーザー・ストレージ・フェデレーション>>を介して行われます。Kerberos認証をサポートする2つの異なるフェデレーション・プロバイダーがあります。"
 
@@ -299,7 +300,7 @@ msgstr ""
 #. type: Block title
 #, no-wrap
 msgid "LDAP Kerberos Integration"
-msgstr "LDAP Kerberos Integration"
+msgstr "LDAPとKerberosの統合"
 
 #. type: Plain text
 msgid "image:{project_images}/ldap-kerberos.png[]"
@@ -328,7 +329,7 @@ msgstr ""
 #. type: Block title
 #, no-wrap
 msgid "Kerberos User Storage Provider"
-msgstr "Kerberosユーザーストレージプロバイダー"
+msgstr "Kerberosユーザー・ストレージ・プロバイダー"
 
 #. type: Plain text
 msgid "image:{project_images}/kerberos-provider.png[]"
@@ -341,8 +342,7 @@ msgid ""
 "profile information like first name, last name, and email are not "
 "provisioned."
 msgstr ""
-"このプロバイダーは、単純なプリンシパル情報のためにKerberosチケットを解析し、ローカルの{project_name}データベースへの細かいインポートを行います。"
-" 名、姓、電子メールなどのユーザー・プロファイル情報はプロビジョニングされません。"
+"このプロバイダーは、単純なプリンシパル情報のためにKerberosチケットを解析し、ローカルの{project_name}データベースへの細かいインポートを行います。名、姓、電子メールなどのユーザー・プロファイル情報はプロビジョニングされません。"
 
 #. type: Plain text
 msgid ""
@@ -378,7 +378,7 @@ msgstr "Kerberosで簡単にテストできるように、テスト用の設定�
 #. type: Title =====
 #, no-wrap
 msgid "{project_name} and FreeIPA docker image"
-msgstr "{project_name}とFreeIPA Dockerイメージ"
+msgstr "{project_name}とFreeIPAのDockerイメージ"
 
 #. type: Plain text
 msgid ""
@@ -392,14 +392,14 @@ msgid ""
 msgstr ""
 "https://www.docker.com/[Docker] "
 "をインストールすると、FreeIPAサーバーがインストールされたDockerイメージを実行できます。FreeIPAは、とりわけMIT "
-"Kerberosと389LDAPサーバーを統合したセキュリティ・ソリューションを提供します。このイメージは、LDAPフェデレーション・プロバイダーで構成された{project_name}サーバーも提供し、FreeIPAサーバーに対してSPNEGO/Kerberos認証を有効にします。詳細は"
+"Kerberosと389LDAPサーバーを統合したセキュリティ・ソリューションを提供します。このイメージは、LDAPフェデレーション・プロバイダーと設定された{project_name}サーバーも提供し、FreeIPAサーバーに対してSPNEGO/Kerberos認証を有効にします。詳細は"
 " https://github.com/mposolda/keycloak-freeipa-"
 "docker/blob/master/README.md[こちら] をご覧ください。"
 
 #. type: Title =====
 #, no-wrap
 msgid "ApacheDS testing Kerberos server"
-msgstr "KerberosサーバーのApacheDSテスト"
+msgstr "ApacheDSテストKerberosサーバー"
 
 #. type: Plain text
 msgid ""
@@ -410,7 +410,7 @@ msgid ""
 "https://github.com/keycloak/keycloak/blob/master/misc/Testsuite.md#user-"
 "content-kerberos-server[here] ."
 msgstr ""
-"迅速なテストとユニットテストのために、非常に単純な http://directory.apache.org/apacheds/[ApacheDS] "
+"迅速なテストとユニットテストのために、非常にシンプルな http://directory.apache.org/apacheds/[ApacheDS] "
 "Kerberosサーバーを使用します。ソースから{project_name}をビルドし、テストスイートからmaven-exec-"
 "pluginを使ってKerberosサーバーを実行する必要があります。詳細は "
 "https://github.com/keycloak/keycloak/blob/master/misc/Testsuite.md#user-"
@@ -436,11 +436,11 @@ msgid ""
 "mappers, Protocol Mappers>> chapter for more details."
 msgstr ""
 "Kerberos "
-"5は、クレデンシャルの委任の概念をサポートしています。このシナリオでは、アプリケーションがKerberosチケットにアクセスして、Kerberosでセキュリティ保護されている他のサービスとやりとりすることができます。{project_name}サーバーでSPNEGOプロトコルが処理されるため、OpenID"
+"5は、クレデンシャルの委任の概念をサポートしています。このシナリオでは、アプリケーションがKerberosチケットにアクセスして、Kerberosでセキュリティー保護されている他のサービスとやりとりすることができます。{project_name}サーバーでSPNEGOプロトコルが処理されるため、{project_name}サーバーからアプリケーションに送信されるOpenID"
 " "
-"Connectトークンクレーム内のアプリケーションにGSSクレデンシャルを伝播するか、{project_name}サーバーからアプリケーションに送信されるSAMLアサーション属性を伝播する必要があります。このクレームをトークンまたはアサーションに挿入するには、各アプリケーションで"
+"Connectトークンクレーム内のGSSクレデンシャルか、SAMLアサーション属性を伝播する必要があります。このクレームをトークンまたはアサーションに挿入するには、各アプリケーションで"
 " `gss delegation credential` "
-"と呼ばれるビルトイン・プロトコル・マッパーを有効にする必要があります。これは、アプリケーションのクライアントページの `Mappers` "
+"と呼ばれるビルトイン・プロトコル・マッパーを有効にする必要があります。これは、アプリケーションのクライアント・ページの `Mappers` "
 "タブで有効になります。詳細については、<<_protocol-mappers, プロトコル・マッパー>>の章を参照してください。"
 
 #. type: Plain text
@@ -453,7 +453,7 @@ msgid ""
 "this:"
 msgstr ""
 "アプリケーションは、他のサービスに対してGSSコールを使用する前に、{project_name}から受け取ったクレームをデシリアライズする必要があります。クレデンシャルをアクセストークンからGSSクレデンシャル・オブジェクトにデシリアライズしたら、このクレデンシャルを"
-" `GSSManager.createContext` メソッドに渡して、例えば次のようにGSSContextを作成する必要があります。"
+" `GSSManager.createContext` メソッドに渡して、次の例のようにGSSContextを作成する必要があります。"
 
 #. type: delimited block -
 #, no-wrap

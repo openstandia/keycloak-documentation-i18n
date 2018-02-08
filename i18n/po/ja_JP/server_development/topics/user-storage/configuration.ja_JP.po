@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2018\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr "    }\n"
 #. type: Title ===
 #, no-wrap
 msgid "Configuration Techniques"
-msgstr "設定の技術"
+msgstr "設定のテクニック"
 
 #. type: Plain text
 msgid ""
@@ -36,7 +36,7 @@ msgid ""
 "configuration within the administration console UI."
 msgstr ""
 "`PropertyFileUserStorageProvider` "
-"のサンプルには少し工夫された点があります。これはプロバイダーのjarに組み込まれたプロパティ・ファイルにハードコードされています。これはあまり役に立ちません。プロバイダーのインスタンス毎にこのファイルのロケーションを設定できるようにする必要があります。つまり、複数の異なるレルムで複数回にわたりこのプロバイダーを利用して、完全に異なるユーザー・プロパティ・ファイルを指し示す必要があるということです。また、この設定は管理コンソールのUI内でも実行する必要があります。"
+"のサンプルには少し工夫された点があります。これはプロバイダーのjarに組み込まれたプロパティー・ファイルにハードコードされています。これはあまり役に立ちません。プロバイダーのインスタンス毎にこのファイルのロケーションを設定できるようにする必要があります。つまり、複数の異なるレルムで複数回にわたりこのプロバイダーを利用して、完全に異なるユーザー・プロパティー・ファイルを指し示す必要があるということです。また、この設定は管理コンソールのUI内でも実行する必要があります。"
 " "
 
 #. type: Plain text
@@ -53,7 +53,7 @@ msgstr ""
 "`UserStorageProviderFactory` "
 "には、プロバイダーの設定を処理する、実装可能な追加のメソッドがあります。プロバイダー毎に設定する必要がある変数を記述し、この設定を取り込むための一般的な入力ページを管理コンソールで自動的にレンダリングします。実装されると、それが保存される前、プロバイダーが初めて作成された時、および更新時に、callbackメソッドも設定を検証します。"
 " `UserStorageProviderFactory` は `org.keycloak.component.ComponentFactory` "
-"インターフェイスからこれらのメソッドを引き継ぎます。"
+"インターフェイスからこれらのメソッドを継承します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -98,9 +98,9 @@ msgid ""
 "declare metadata that is needed to render and store each configuration "
 "variable of the provider."
 msgstr ""
-" `ComponentFactory.getConfigProperties()` メソッドにより、 "
+" `ComponentFactory.getConfigProperties()` メソッドは、 "
 "`org.keycloak.provider.ProviderConfigProperty` "
-"インスタンスのリストが返されます。これらのインスタンスによって、プロバイダーの設定変数をそれぞれレンダリングして格納するのに必要なメタデータが宣言されます。"
+"インスタンスのリストを返します。これらのインスタンスは、プロバイダーの設定変数をそれぞれレンダリングして格納するのに必要なメタデータが宣言します。"
 
 #. type: Title ====
 #, no-wrap
@@ -112,8 +112,8 @@ msgid ""
 "Let's expand our `PropertyFileUserStorageProviderFactory` example to allow "
 "you to point a provider instance to a specific file on disk."
 msgstr ""
-"`PropertyFileUserStorageProviderFactory` "
-"のサンプルを拡張し、ディスク上の特定のファイルへプロバイダー・インスタンスを示してみましょう。"
+"ディスク上の特定のファイルへプロバイダー・インスタンスを参照するように、 "
+"`PropertyFileUserStorageProviderFactory` のサンプルを拡張してみましょう。"
 
 #. type: Block title
 #, no-wrap
@@ -182,9 +182,10 @@ msgid ""
 " you hover over the tooltip of this configuration option, it displays the "
 "help text, `File path to properties file`."
 msgstr ""
-"`ProviderConfigurationBuilder` クラスは、設定プロパティのリストを作成するのに非常に役立ちます。ここでは文字列の種類である"
-" `path` という名前の変数を指定します。このプロバイダーのための管理コンソール設定ページでは、この設定変数が `Path` "
-"としてラベル付けされ、デフォルト値は `${jboss.server.config.dir}/example-users.properties` "
+"`ProviderConfigurationBuilder` "
+"クラスは、設定プロパティーのリストを作成するのに非常に役立ちます。ここでは文字列の種類である `path` "
+"という名前の変数を指定します。このプロバイダーのための管理コンソール設定ページでは、この設定変数が `Path` としてラベル付けされ、デフォルト値は "
+"`${jboss.server.config.dir}/example-users.properties` "
 "になります。この設定オプションのツールチップにマウスポインターを置くと、ヘルプテキスト `File path to properties file` "
 "が表示されます。"
 
@@ -195,7 +196,7 @@ msgid ""
 "points to a valid user property file. To do this, we implement the "
 "`validateConfiguration()` method."
 msgstr ""
-"次にすべきことは、このファイルがディスク上に存在するということの検証です。有効なユーザー・プロパティ・ファイルを指し示していない限り、レルム内でこのプロバイダのインスタンスを有効にする必要はありません。これを行うには、"
+"次にすべきことは、このファイルがディスク上に存在することの検証です。有効なユーザー・プロパティ・ファイルを指し示していない限り、レルム内でこのプロバイダーのインスタンスを有効にしません。これを行うには、"
 " `validateConfiguration()` メソッドを実装します。"
 
 #. type: delimited block -
@@ -239,8 +240,8 @@ msgstr ""
 "から設定変数を取得し、そのファイルがディスク上に存在するかどうかを確認します。　"
 "`org.keycloak.common.util.EnvUtil.replace()` "
 "メソッドを使用していることに注意してください。このメソッドを使用すると、 `${}` "
-"が入っている文字列によりシステム・プロパティ値でそれは置き換えられます。 `${jboss.server.config.dir}` 文字列は、サーバの "
-"`configuration/` ディレクトリーに対応しており、このサンプルでは非常に便利です。"
+"が入っている文字列によりシステム・プロパティ値でそれは置き換えられます。 `${jboss.server.config.dir}` 文字列は、サーバーの"
+" `configuration/` ディレクトリーに対応しており、このサンプルでは非常に便利です。"
 
 #. type: Plain text
 msgid ""
@@ -249,7 +250,7 @@ msgid ""
 " move this logic to the `create()` method."
 msgstr ""
 "次にすべきことは、古い `init()` "
-"メソッドの削除です。これを行う理由は、ユーザー・プロパティ・ファイルがプロバイダー・インスタンス毎に独自のものになるからです。このロジックを "
+"メソッドの削除です。これを行う理由は、ユーザー・プロパティー・ファイルがプロバイダー・インスタンス毎に独自のものになるからです。このロジックを "
 "`create()` メソッドへ移します。"
 
 #. type: delimited block -

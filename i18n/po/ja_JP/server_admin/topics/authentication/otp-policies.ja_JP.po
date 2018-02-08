@@ -50,9 +50,8 @@ msgid ""
 "is generated on the OTP set up page that {project_name} has.  The bar code "
 "is also generated from information configured on the `OTP Policy` tab."
 msgstr ""
-"ここで設定したポリシーは、ワンタイムパスワードの検証に使用されます。 "
-"OTPを設定するとき、FreeOTPとGoogleオーセンティケーターは{project_name}が持つOTP設定ページで生成されたQRコードをスキャンすることができます。"
-" このバーコードは `OTP Policy` タブで設定された情報から生成されます。"
+"ここで設定したポリシーは、ワンタイムパスワードの検証に使用されます。OTPを設定するとき、FreeOTPとGoogleオーセンティケーターは{project_name}が持つOTP設定ページで生成されたQRコードをスキャンすることができます。このバーコードは"
+" `OTP Policy` タブで設定された情報から生成されます。"
 
 #. type: Title ====
 #: source/server_admin/topics/authentication/otp-policies.adoc:14
@@ -72,11 +71,8 @@ msgid ""
 "current time.  The server increments the counter with each successful OTP "
 "login.  So, valid OTPs only change after a successful login."
 msgstr ""
-"OTPジェネレーターには、 時間ベース（TOTP）およびカウンターベース（HOTP）の2つのアルゴリズムがあります。 "
-"TOTPの場合、トークン・ジェネレーターは現在の時刻と共有パスワードをハッシュします。 "
-"サーバーは、特定の時間枠内のすべてのハッシュをサブミットされた値と比較することによってOTPを検証します。 "
-"したがって、TOTPは短い時間枠（通常は30秒）でのみ有効です。 HOTPの場合、現在の時刻の代わりに共有カウンターが使用されます。 "
-"サーバーは、成功したOTPログインごとにカウンターをインクリメントします。 したがって、有効なOTPはログインが成功した後にのみ変更されます。"
+"OTPジェネレーターには、 "
+"時間ベース（TOTP）およびカウンターベース（HOTP）の2つのアルゴリズムがあります。TOTPの場合、トークン・ジェネレーターは現在の時刻と共有パスワードをハッシュします。サーバーは、特定の時間枠内のすべてのハッシュをサブミットされた値と比較することによってOTPを検証します。したがって、TOTPは短い時間枠（通常は30秒）でのみ有効です。HOTPの場合、現在の時刻の代わりに共有カウンターが使用されます。サーバーは、成功したOTPログインごとにカウンターをインクリメントします。したがって、有効なOTPはログインが成功した後にのみ変更されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:29
@@ -95,14 +91,7 @@ msgid ""
 "is planned that you will be able to configure whether TOTP checks older OTPs"
 " in the time interval."
 msgstr ""
-"TOTPは、短い時間枠でのみ有効であるため、HOTPより少し安全です。 "
-"HOTPは、ユーザーが急いでOTPを入力する必要がないため、ユーザーフレンドリーです。 "
-"{project_name}がTOTPを実装した方法では、この区別はもう少しぼやけてしまいます。 "
-"HOTPは、サーバーがカウンターをインクリメントするたびにデータベースを更新する必要があります。 "
-"これは、負荷が大きいときに認証サーバー上でパフォーマンスが低下する可能性があります。 "
-"より効率的な代替手段を提供するために、TOTPは使用されるパスワードを覚えていません。 "
-"これにより、DBの更新は不要ですが、有効な時間間隔でTOTPを再利用できるという欠点があります。 "
-"将来のバージョンの{project_name}では、TOTPが時間間隔内に古いOTPをチェックするかどうかを設定できるようになる予定です。"
+"TOTPは、短い時間枠でのみ有効であるため、HOTPより少し安全です。HOTPは、ユーザーが急いでOTPを入力する必要がないため、ユーザーフレンドリーです。{project_name}がTOTPを実装した方法では、この区別はもう少しぼやけてしまいます。HOTPは、サーバーがカウンターをインクリメントするたびにデータベースを更新する必要があります。これは、負荷が大きいときに認証サーバー上でパフォーマンスが低下する可能性があります。より効率的な代替手段を提供するために、TOTPは使用されるパスワードを覚えていません。これにより、DBの更新は不要ですが、有効な時間間隔でTOTPを再利用できるという欠点があります。将来のバージョンの{project_name}では、TOTPが時間間隔内に古いOTPをチェックするかどうかを設定できるようになる予定です。"
 
 #. type: Title ====
 #: source/server_admin/topics/authentication/otp-policies.adoc:30
@@ -136,7 +125,7 @@ msgstr "Number of Digits"
 msgid ""
 "How many characters is the OTP? Short means more user friendly as it is less"
 " the user has to type.  More means more security."
-msgstr "OTPの文字数。 短い場合、ユーザーが入力する文字数が少なくなるため、ユーザーフレンドリーです。長い場合、セキュリティの強度が高まります。"
+msgstr "OTPの文字数。短い場合、ユーザーが入力する文字数が少なくなるため、ユーザーフレンドリーです。長い場合、セキュリティの強度が高まります。"
 
 #. type: Labeled list
 #: source/server_admin/topics/authentication/otp-policies.adoc:36
@@ -156,10 +145,7 @@ msgid ""
 "second window.  Each increment of this config value will increase the valid "
 "window by 30 seconds."
 msgstr ""
-"サーバがハッシュの照合を試行する先行間隔。 この設定は、TOTPジェネレータまたは認証サーバの時計が同期しなくなった場合に備えて存在します。 "
-"通常は1というデフォルト値で十分です。 "
-"たとえば、新しいトークンの時間間隔が30秒ごとの場合、デフォルト値1は、その30秒の枠内の有効なトークンのみを受け入れることを意味します。 "
-"この設定値を増やすごとに有効な枠が30秒ずつ増加します。"
+"サーバーがハッシュの照合を先行して試行する間隔。この設定は、TOTPジェネレーターまたは認証サーバーの時計が同期しなくなった場合に備えて存在します。通常は1というデフォルト値で十分です。たとえば、新しいトークンの時間間隔が30秒ごとの場合、デフォルト値1は、その30秒の枠内の有効なトークンのみを受け入れることを意味します。この設定値を増やすごとに有効な枠が30秒ずつ増加します。"
 
 #. type: Labeled list
 #: source/server_admin/topics/authentication/otp-policies.adoc:41
@@ -189,10 +175,7 @@ msgid ""
 "the counter manually too many times by accident.  This value really should "
 "be increased to a value of 10 or so."
 msgstr ""
-"サーバーが、ハッシュの照合を試行する先行カウンターの数。 "
-"デフォルト値は1です。これは、ユーザーのカウンターがサーバーよりも先行することをカバーするために存在します。 "
-"ユーザーが頻繁にカウンターを手動で何回も増やすことが多いためにサーバーのカウンターと差分が発生します。 "
-"この値は、実際の利用においては10程度に増やす必要があります。"
+"サーバーが、ハッシュの照合を先行して試行するカウンターの数。デフォルト値は1です。これは、ユーザーのカウンターがサーバーよりも先行することをカバーするために存在します。ユーザーが頻繁にカウンターを手動で何回も増やすことが多いために、サーバーのカウンターと差分が発生します。この値は、実際の利用においては10程度に増やす必要があります。"
 
 #. type: Labeled list
 #: source/server_admin/topics/authentication/otp-policies.adoc:54

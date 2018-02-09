@@ -49,13 +49,13 @@ msgstr "SSL/TLSハンドシェイク中に、サーバーとクライアント�
 msgid ""
 "The container (wildfly) validates the certificate PKIX path and the "
 "certificate expiration"
-msgstr "コンテナ（wildfly）は、証明書のPKIXパスと有効期限を検証します。"
+msgstr "コンテナ（WildFly）は、証明書のPKIXパスと有効期限を検証します。"
 
 #. type: Plain text
 msgid ""
 "The x.509 client certificate authenticator validates the client certificate "
 "as follows:"
-msgstr "x.509クライアント証明書認証者は、次のようにクライアント証明書を検証します。"
+msgstr "x.509クライアント証明書オーセンティケーターは、次のようにクライアント証明書を検証します。"
 
 #. type: Plain text
 msgid ""
@@ -79,7 +79,7 @@ msgstr "必要に応じて、証明書内のキー使用が予想されるキー
 msgid ""
 "Optionally validates whether the extended key usage in the certificate "
 "matches the expected extended key usage"
-msgstr "必要に応じて、証明書内の拡張キー使用が予想される拡張キー使用と一致するかどうかを検証します。"
+msgstr "必要に応じて、証明書内の拡張キー使用法が予想される拡張キー使用法と一致するかどうかを検証します。"
 
 #. type: Plain text
 msgid "If any of the above checks fails, the x.509 authentication fails"
@@ -95,14 +95,14 @@ msgstr "それ以外の場合、オーセンティケーターは証明書アイ
 msgid ""
 "Once the certificate is mapped to an existing user, the behavior diverges "
 "depending on the authentication flow:"
-msgstr "証明書が既存のユーザーにマップされると、その動作は認証フローによって異なります。"
+msgstr "証明書が既存のユーザーにマップされると、その動作は次のように認証フローによって分岐します。"
 
 #. type: Plain text
 msgid ""
 "In the Browser Flow, the server prompts the user to confirm identity or to "
 "ignore it and instead sign in with username/password"
 msgstr ""
-"ブラウザー・フローでは、サーバーはアイデンティティーを確認するかそれを無視して代わりにユーザー名/パスワードでサインインすることをユーザーに促します。"
+"ブラウザー・フローでは、サーバーはアイデンティティーを確認するかそれを無視して、代わりにユーザー名/パスワードでサインインすることをユーザーに促します。"
 
 #. type: Plain text
 msgid "In the case of the Direct Grant Flow, the server signs in the user"
@@ -111,7 +111,7 @@ msgstr "ダイレクト・グラント・フローの場合、サーバーはユ
 #. type: Title ===
 #, no-wrap
 msgid "Features"
-msgstr "特徴"
+msgstr "機能"
 
 #. type: Labeled list
 #, no-wrap
@@ -120,7 +120,7 @@ msgstr "サポートされている証明書のアイデンティティー・ソ
 
 #. type: Plain text
 msgid "Match SubjectDN using regular expression"
-msgstr "Match SubjectDN using regular expression"
+msgstr "正規表現を使用したSubjectDN一致"
 
 #. type: Plain text
 msgid "X500 Subject's e-mail attribute"
@@ -132,7 +132,7 @@ msgstr "X500 Subject's Common Name属性"
 
 #. type: Plain text
 msgid "Match IssuerDN using regular expression"
-msgstr "Match IssuerDN using regular expression"
+msgstr "正規表現を使用したIssuerDN一致"
 
 #. type: Plain text
 msgid "X500 Issuer's e-mail attribute"
@@ -144,7 +144,7 @@ msgstr "X500 Issuer's Common Name属性"
 
 #. type: Plain text
 msgid "Certificate Serial Number"
-msgstr "Certificate Serial Number"
+msgstr "証明書のシリアル番号"
 
 #. type: Labeled list
 #, no-wrap
@@ -157,7 +157,7 @@ msgid ""
 "DN using a regular expression as a filter. For example, the regular "
 "expression below will match the e-mail attribute:"
 msgstr ""
-"証明書アイデンティティーは、正規表現をフィルタとして使用して、SubjectDNまたはIssuerDNのいずれかから抽出できます。たとえば"
+"証明書アイデンティティーは、正規表現をフィルターとして使用して、SubjectDNまたはIssuerDNのいずれかから抽出できます。たとえば"
 "、以下の正規表現はe-mail属性と一致します。"
 
 #. type: Code block
@@ -188,10 +188,10 @@ msgid ""
 " the e-mail attribute in the certificate's Subject DN as a search criteria "
 "to look up an existing user by username or by e-mail."
 msgstr ""
-"証明書アイデンティティー・マッピングは、抽出されたユーザー・アイデンティティーを既存のユーザーのユーザー名または電子メール、または証明書アイデンティティーと一致する値を持つカスタム属性にマップするように設定できます。たとえば、"
-" `Identity source` を _Subject's e-mail_ と `User mapping method` に _Username "
-"or email_ を設定すると、X.509クライアント証明書認証者はユーザー名または電子メールで既存のユーザーを調べるのに"
-"、証明書のSubjectDNのe-mail属性を検索基準として使用します。"
+"証明書アイデンティティー・マッピングは、抽出されたユーザー・アイデンティティーを既存のユーザーのユーザー名、電子メール、または証明書アイデンティティーと一致する値を持つカスタム属性にマップするように設定できます。たとえば、"
+" `Identity source` を _Subject's e-mail_ に、 `User mapping method` に _Username"
+" or email_ に設定すると、X.509クライアント証明書オーセンティケーターはユーザー名または電子メールで既存のユーザーをルックアップするために"
+"、検索基準として証明書のSubjectDNのe-mail属性を使用します。"
 
 #. type: Plain text
 msgid ""
@@ -205,7 +205,7 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "Other Features: Extended Certificate Validation"
-msgstr "その他の機能：証明書検証の拡張"
+msgstr "その他の機能：拡張された証明書検証"
 
 #. type: Plain text
 msgid "Revocation status checking using CRL"
@@ -346,7 +346,7 @@ msgstr "`ssl/keystore/alias` (optional)"
 msgid ""
 "The alias of the entry in the keystore. Set it if the keystore contains "
 "multiple entries"
-msgstr "キーストア内のエントリのエイリアス。キーストアに複数のエントリが含まれている場合に設定します。"
+msgstr "キーストア内のエントリーのエイリアス。キーストアに複数のエントリが含まれている場合に設定します。"
 
 #. type: Labeled list
 #, no-wrap
@@ -355,7 +355,7 @@ msgstr "`ssl/keystore/key-password` （オプション）"
 
 #. type: Plain text
 msgid "The private key password, if different from the keystore password."
-msgstr "秘密鍵のパスワード。キーストアのパスワードと異なる場合。"
+msgstr "秘密鍵のパスワード（キーストアのパスワードと異なる場合）。"
 
 #. type: Labeled list
 #, no-wrap
@@ -369,7 +369,7 @@ msgid ""
 " remote side of the inbound/outgoing connection. Typically, the truststore "
 "contains a collection of trusted CA certificates.   \n"
 msgstr ""
-"インバウンド/アウトバウンド接続のリモート側が提示する証明書を検証するためにトラストストアをロードする方法を定義します。通常、トラストストアには、信頼できる認証局の証明書のコレクションが含まれています。\n"
+"インバウンド/アウトゴーイング接続のリモート側が提示する証明書を検証するためにトラストストアをロードする方法を定義します。通常、トラストストアには、信頼できる認証局の証明書のコレクションが含まれています。\n"
 
 #. type: Labeled list
 #, no-wrap
@@ -389,7 +389,7 @@ msgstr "`authentication/truststore/relative-to`"
 
 #. type: Plain text
 msgid "Defines a path the truststore path is relative to"
-msgstr "トラストストアパスが相対的なパスを定義します。"
+msgstr "トラストストア・パスが相対的なパスを定義します。"
 
 #. type: Labeled list
 #, no-wrap
@@ -461,7 +461,7 @@ msgid ""
 "certificate. Setting the attribute to `REQUIRED` will have the server to "
 "refuse inbound connections if no client certificate has been provided."
 msgstr ""
-"`REQUESTED` にセットした場合、サーバーは任意でクライアント証明書を要求します。 `REQUIRED` "
+"`REQUESTED` に設定した場合、サーバーは任意でクライアント証明書を要求します。 `REQUIRED` "
 "に属性を設定すると、クライアント証明書が提供されていない場合、サーバーはインバウンド接続を拒否します。"
 
 #. type: Title ====
@@ -471,7 +471,7 @@ msgstr "ブラウザー・フローへのX.509クライアント証明書認証�
 
 #. type: Plain text
 msgid "Select a realm, click on Authentication link, select the \"Browser\" flow"
-msgstr "レルムを選択し、Authenticationリンクをクリックし、\"Browser\"フローを選択します。"
+msgstr "レルムを選択し、Authenticationのリンクをクリックし、\"Browser\"フローを選択します。"
 
 #. type: Plain text
 msgid ""
@@ -484,7 +484,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Using the drop down, select the copied flow, and click on \"Add Execution\""
-msgstr "ドロップダウンを使用して、コピーされたフローを選択し、\"Add Execution\"をクリックします。"
+msgstr "ドロップダウンを使用して、コピーされたフローを選択し、\"Add execution\"をクリックします。"
 
 #. type: Plain text
 msgid "Select \"X509/Validate User Form\" using the drop down and click on \"Save\""
@@ -547,7 +547,7 @@ msgstr "`A regular expression` （オプション）"
 msgid ""
 "Defines a regular expression to use as a filter to extract the certificate "
 "identity. The regular expression must contain a single group."
-msgstr "証明書アイデンティティーを抽出するフィルタとして使用する正規表現を定義します。正規表現には1つのグループが含まれている必要があります。"
+msgstr "証明書アイデンティティーを抽出するフィルターとして使用する正規表現を定義します。正規表現には1つのグループが含まれている必要があります。"
 
 #. type: Labeled list
 #, no-wrap
@@ -652,7 +652,9 @@ msgid ""
 "Section-4.2.1.3]. The server will raise an error only when flagged as "
 "critical by the issuing CA and there is a key usage extension mismatch."
 msgstr ""
-"証明書のKeyUsage拡張子のビットが設定されているかどうかを確認します。たとえば、\"digitalSignature、KeyEncipherment\"は、KeyUsage拡張子のビット0と2がアサートされているかどうかを検証します。キー使用の有効性を無効にするには、パラメータを空のままにします。link:https://tools.ietf.org/html/rfc5280#section-4.2.1.3[RFC5280、セクション4.2.1.3]を参照してください。サーバーは、発行認証局によってクリティカルのときにフラグが立てられ、キー使用の拡張の不一致がある場合にのみ、エラーを発生させます。"
+"証明書のKeyUsage拡張のビットが設定されているかどうかを確認します。たとえば、\"digitalSignature,KeyEncipherment\"は、KeyUsage拡張のビット0と2がアサートされているかどうかを検証します。Key"
+" "
+"Usageの有効性を無効にするには、パラメータを空のままにします。link:https://tools.ietf.org/html/rfc5280#section-4.2.1.3[RFC5280、セクション4.2.1.3]を参照してください。サーバーは、発行認証局によってクリティカルであるとフラグが立てられ、キー使用拡張の不一致がある場合にのみ、エラーを発生させます。"
 
 #. type: Labeled list
 #, no-wrap
@@ -689,7 +691,7 @@ msgstr ""
 #. type: Title ====
 #, no-wrap
 msgid "Adding X.509 Client Certificate Authentication to a Direct Grant Flow"
-msgstr "Direct GrantフローへのX.509クライアント証明書認証の追加"
+msgstr "ダイレクト・グラント・フローへのX.509クライアント証明書認証の追加"
 
 #. type: Plain text
 msgid ""
@@ -707,14 +709,14 @@ msgstr ""
 
 #. type: Plain text
 msgid "Delete \"Validate Username\" and \"Password\" authenticators,"
-msgstr "\"Validate Username\"と\"Password\"の認証者を削除します。"
+msgstr "\"Validate Username\"と\"Password\"のオーセンティケーターを削除します。"
 
 #. type: Plain text
 msgid ""
 "Click on \"Execution\" and add \"X509/Validate Username\" and click on "
 "\"Save\" to add the execution step to the parent flow."
 msgstr ""
-"\"Execution\"をクリックし、\"X509/Validate "
+"\"Add execution\"をクリックし、\"X509/Validate "
 "Username\"を追加し、\"Save\"をクリックして実行ステップを親フローに追加します。"
 
 #. type: Plain text
@@ -733,7 +735,7 @@ msgstr "image:images/x509-directgrant-flow.png[]"
 msgid ""
 "Set up the x509 authentication configuration by following the steps "
 "described earlier in the x.509 Browser Flow section."
-msgstr "前述のx.509 Browser Flowセクションの手順に従って、x509認証設定のセットアップを行います。"
+msgstr "前述のx.509ブラウザーフローのセクションの手順に従って、x509認証設定のセットアップを行います。"
 
 #. type: Plain text
 msgid ""
@@ -751,7 +753,7 @@ msgstr "image:images/x509-directgrant-flow-bindings.png[]"
 #. type: Labeled list
 #, no-wrap
 msgid "Direct Grant authentication with X.509"
-msgstr "X.509によるDirect Grant認証"
+msgstr "X.509によるダイレクト・グラント認証"
 
 #. type: Plain text
 msgid ""
@@ -785,8 +787,7 @@ msgid ""
 "configured to allow users authenticate with x.509 client certificates using "
 "the Direct Grant Flow."
 msgstr ""
-"Direct Grant "
-"Flowを使用してx.509クライアント証明書でユーザーを認証できるように設定されているリモートのKeycloakサーバーのホストとポート番号。"
+"ダイレクト・グラント・フローを使用してx.509クライアント証明書でユーザーを認証できるように設定されているリモートのKeycloakサーバーのホストとポート番号。"
 
 #. type: Labeled list
 #, no-wrap
@@ -804,7 +805,7 @@ msgstr "`CLIENT_SECRET`"
 
 #. type: Plain text
 msgid "For confidential clients, a client secret; otherwise, leave it empty."
-msgstr "機密クライアント、クライアント・シークレットの場合に示します。それ以外の場合は、空のままにします。"
+msgstr "コンフィデンシャル・クライアントの場合は、クライアント・シークレット。それ以外の場合は、空のままにします。"
 
 #. type: Labeled list
 #, no-wrap
@@ -825,4 +826,4 @@ msgstr "`client_cert.key`"
 
 #. type: Plain text
 msgid "A private key in the public key pair. Also expected in PEM format."
-msgstr "公開鍵ペアの秘密鍵。PEM形式でも期待されます。"
+msgstr "公開鍵ペアの秘密鍵。PEM形式であることも期待されます。"

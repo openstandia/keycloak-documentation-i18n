@@ -11,7 +11,7 @@ jobs:
       - run:
           name: clean s3 for deleted branches
           command: |
-            S3_BRANCHES=`aws s3 ls s3://keycloak-documentation/ | grep PRE | sed -e "s|.*PRE \(.*\)/.*|\1|"`
+            S3_BRANCHES=`aws s3 ls s3://keycloak-documentation/ | grep PRE | sed -e "s|.*PRE \(.*\)/.*|\1|" | grep -v "^review$"`
             GIT_BRANCHES=`git branch -r | sed -e "s|.* origin/||"` 
 
             echo "--- S3 Folders ---"
@@ -86,8 +86,9 @@ jobs:
             [ "$CIRCLE_BRANCH" = "master" ] && aws s3 sync ~/repo/site/ s3://keycloak-documentation/
             sed -i -e "s|/master/|/|g" ~/repo/site/index.html
             cp -r ~/repo/site/* ~/repo/translated/dist/
-            aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_BRANCH/ --delete
-
+            [[ "$CIRCLE_BRANCH" = translate-* ]] && aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/review/ --delete
+            [[ "$CIRCLE_BRANCH" != translate-* ]] && aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_BRANCH/ --delete
+            echo "end"
 
 workflows:
   version: 2

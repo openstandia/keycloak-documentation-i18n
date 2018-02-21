@@ -20,7 +20,7 @@ msgstr ""
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:3
 #, no-wrap
 msgid "First Login Flow"
-msgstr "初回ログイン・フロー"
+msgstr "初回ログインフロー"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:8
@@ -54,7 +54,7 @@ msgid ""
 msgstr ""
 "外部ユーザー用にインポートされてリンクされている既存の{project_name}ユーザー・アカウントがまだ無い場合、通常は、新しいアカウントを登録して{project_name}データベースにインポートするだけですが、既存の{project_name}アカウントに同じメールがある場合はどうなるでしょうか？"
 " "
-"既存のローカル・アカウントを外部アイデンティティー・プロバイダーに自動的にリンクすることは、外部アイデンティティー・プロバイダーから取得した情報を常に信頼できるとは限らないため、潜在的なセキュリティ・ホールにになります。"
+"既存のローカル・アカウントを外部アイデンティティー・プロバイダーに自動的にリンクすることは、外部アイデンティティー・プロバイダーから取得した情報を常に信頼できるとは限らないため、潜在的なセキュリティ・ホールになります。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:20
@@ -67,8 +67,9 @@ msgid ""
 "login` flow, but you can configure and use your own flow and use different "
 "flows for different identity providers."
 msgstr ""
-"何らかの競合や上記の状況に対処する際の要件は組織によって異なります。このため、IDPの設定には初回ログイン・フローのオプションがあります。このオプションを使用すると、初めて外部IDPからユーザーがログインした後に使用される"
-"<<_authentication-flows, ワークフロー>>が選択できます。デフォルトでは、 `初回ブローカー・ログイン` "
+"何らかの競合や上記の状況に対処する際の要件は組織によって異なります。このため、IDPの設定には `First Login Flow` "
+"オプションがあります。このオプションを使用すると、初めて外部IDPからユーザーがログインした後に使用される<<_authentication-"
+"flows, ワークフロー>>が選択できます。デフォルトでは、 `first broker login` "
 "フローが指定されていますが、独自のフローを設定して使用し、異なるアイデンティティー・プロバイダーに対して異なるフローを使用することができます。"
 
 #. type: Plain text
@@ -80,9 +81,9 @@ msgid ""
 "you can disable some authenticators, mark some of them as `required`, "
 "configure some authenticators, etc)."
 msgstr ""
-"フロー自体は、管理コンソールの `認証` タブで設定します。 `初回ブローカー・ログイン` "
-"フローを選択すると、デフォルトでどのオーセンティケーターが使用されているかが分かります。既存のフローを再設定することができます（例えば、いくつかのオーセンティケーターを無効にし、それらのうちのいくつかを"
-" `必須` とマークして、いくつかのオーセンティケータを設定する、など）。"
+"フロー自体は、管理コンソールの `Authentication` タブで設定します。 `First Broker Login` "
+"フローを選択すると、デフォルトでどのオーセンティケーターが使用されているかが分かります。既存のフローを再設定することができます（たとえば、いくつかのオーセンティケーターを無効にしたり、それらのうちのいくつかを"
+" `必須` としてマークしたり、いくつかのオーセンティケーターを設定する、など）。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:28
@@ -97,19 +98,19 @@ msgstr ""
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:30
 #, no-wrap
 msgid "Default First Login Flow"
-msgstr "デフォルト初回ログイン・フロー"
+msgstr "デフォルトの初回ログインフロー"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:33
 msgid ""
 "Let's describe the default behaviour provided by `First Broker Login` flow."
-msgstr "`初回ブローカー・ログイン` フローによって提供されるデフォルトの動作について説明します。"
+msgstr "`First Broker Login` フローによって提供されるデフォルトの動作について説明します。"
 
 #. type: Labeled list
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:34
 #, no-wrap
 msgid "Review Profile"
-msgstr "プロファイルの確認"
+msgstr "Review Profile"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:42
@@ -126,17 +127,17 @@ msgid ""
 "later phase by `Confirm Link Existing Account` authenticator)"
 msgstr ""
 "このオーセンティケーターは、プロファイル情報ページを表示することができ、ユーザーはアイデンティティー・プロバイダーから取得したプロファイルを確認できます。オーセンティケーターは設定可能です。"
-" `初回ログイン時にプロファイルを更新する` オプションを設定できます。 `On` "
+" `Update Profile On First Login` オプションを設定できます。 `On` "
 "にすると、ユーザーには自分のアイデンティティーを統合するために追加情報を求めるプロファイル・ページが常に提示されます。 `missing` "
 "の場合、アイデンティティー・プロバイダーによっていくつかの必須情報（電子メール、名、姓）が提供されない場合にのみ、プロファイル・ページがユーザーに提示されます。"
-" `Off` "
-"の場合、「プロファイル情報の確認」リンク（後のフェーズで「既存アカウントのリンクの確認」オーセンティケーターによって表示されるページ）を後のフェーズでユーザーがクリックしない限り、プロファイル・ページは表示されません。"
+" `Off` の場合、 `Review profile info` リンク（後のフェーズで `Confirm Link Existing "
+"Account` オーセンティケーターによって表示されるページ）を後のフェーズでユーザーがクリックしない限り、プロファイル・ページは表示されません。"
 
 #. type: Labeled list
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:43
 #, no-wrap
 msgid "Create User If Unique"
-msgstr "一意の場合に、ユーザーを作成"
+msgstr "Create User If Unique"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:49
@@ -151,15 +152,16 @@ msgid ""
 "see the error page if there is existing {project_name} account and the user "
 "will need to link his identity provider account through Account management."
 msgstr ""
-"このオーセンティケーターは、アイデンティティー・プロバイダーのアカウントの電子メールまたはユーザー名が同じ{project_name}アカウントが、既に存在するかどうかをチェックします。存在しない場合、オーセンティケーターは新しいローカル{project_name}アカウントを作成し、それをアイデンティティー・プロバイダーにリンクし、フロー全体が終了します。それ以外の場合は、次の"
-" `既存のアカウントを処理する` "
-"サブ・フローに進みます。重複したアカウントがないことを常に確認したい場合は、このオーセンティケーターを「必須」とマークすることができます。この場合、既存の{project_name}アカウントが存在する場合は、エラー・ページが表示され、ユーザーはアカウント管理を通じてオーセンティケーターのアカウントをリンクする必要があります。"
+"このオーセンティケーターは、アイデンティティー・プロバイダーのアカウントの電子メールまたはユーザー名が同じ{project_name}アカウントが、既に存在するかどうかをチェックします。存在しない場合、オーセンティケーターは新しいローカルの{project_name}アカウントを作成し、それをアイデンティティー・プロバイダーにリンクすることで、フロー全体が終了します。それ以外の場合は、次の"
+" `Handle Existing Account` "
+"サブフローに進みます。重複したアカウントがないことを常に確認したい場合は、このオーセンティケーターを `REQUIRED` "
+"にマークすることができます。この場合、既存の{project_name}アカウントが存在する場合は、エラーページが表示され、ユーザーはアカウント管理を通じてアイデンティティー・プロバイダーのアカウントをリンクする必要があります。"
 
 #. type: Labeled list
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:50
 #, no-wrap
 msgid "Confirm Link Existing Account"
-msgstr "既存のアカウントのリンクを確認"
+msgstr "Confirm Link Existing Account"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:55
@@ -173,13 +175,15 @@ msgid ""
 "straight to linking identity provider account by email verification or re-"
 "authentication."
 msgstr ""
-"情報ページに、同じ電子メールを持つ既存の{project_name}アカウントがあることが分かります。ユーザーは自身のプロファイルをもう一度見直し、別の電子メールまたはユーザー名を使用することができます（フローが再開され、「プロファイルの確認」オーセンティケーターに戻ります）。または、アイデンティティー・プロバイダーのアカウントと既存の{project_name}のアカウントをリンクさせたいかどうかをユーザーに確認できます。ユーザーにこの確認ページが表示されないようにする場合は、このオーセンティケーターを無効にしますが、電子メールの確認または再認証によってアイデンティティー・プロバイダーのアカウントを直接リンクするようにしてください。"
+"情報ページに、同じ電子メールを持つ既存の{project_name}アカウントがあることが分かります。ユーザーは自身のプロファイルをもう一度見直し、別の電子メールまたはユーザー名を使用することができます（フローが再開され、"
+" `Review Profile` "
+"オーセンティケーターに戻ります）。または、アイデンティティー・プロバイダーのアカウントと既存の{project_name}のアカウントをリンクさせたいかどうかをユーザーに確認できます。ユーザーにこの確認ページが表示されないようにする場合は、このオーセンティケーターを無効にしますが、電子メールの確認または再認証によって、アイデンティティー・プロバイダーのアカウントを直接リンクするようにしてください。"
 
 #. type: Labeled list
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:56
 #, no-wrap
 msgid "Verify Existing Account By Email"
-msgstr "Eメールによる既存アカウントの確認"
+msgstr "Verify Existing Account By Email"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:60
@@ -192,13 +196,13 @@ msgid ""
 "password (and alternatively OTP)."
 msgstr ""
 "このオーセンティケーターは、デフォルトでは `ALTERNATIVE` "
-"であるため、レルムにSMTPが設定されている場合にのみ使用されます。ユーザーにメールが送信され、アイデンティティー・プロバイダーと{project_name}アカウントをリンクさせたいかどうかをを確認できます。電子メールによるリンクを確認したくないが、代わりに、ユーザーに常にパスワード（またはOTP）で再認証させたい場合は、これを無効にしてください。"
+"であるため、レルムにSMTPが設定されている場合にのみ使用されます。ユーザーにメールが送信され、アイデンティティー・プロバイダーと{project_name}アカウントをリンクさせたいかどうかを確認できます。電子メールによるリンクを確認したくないが、代わりに、ユーザーに常にパスワード（またはOTP）で再認証させたい場合は、これを無効にしてください。"
 
 #. type: Labeled list
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:61
 #, no-wrap
 msgid "Verify Existing Account By Re-authentication"
-msgstr "再認証による既存アカウントの確認"
+msgstr "Verify Existing Account By Re-authentication"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/first-login-flow.adoc:66
@@ -212,4 +216,4 @@ msgid ""
 "Otherwise it's optional and used only if OTP is already set for the user "
 "account."
 msgstr ""
-"このオーセンティケーターは、電子メール・オーセンティケーターが無効であるか、または使用できない場合に使用されます（レルムに対してSMTPが設定されていない場合）。{project_name}アカウントとアイデンティティー・プロバイダーをリンクするために、パスワードで認証する必要があるログイン画面が表示されます。また、ユーザーは、自分の{project_name}アカウントに既にリンクされている別のアイデンティティー・プロバイダーで再認証することもできます。ユーザーに強制的にOTPを使用させることもできます。それ以外の場合はオプションで、既にOTPがユーザー・アカウントに設定されている場合にのみ使用されます。"
+"このオーセンティケーターは、電子メールのオーセンティケーターが無効であるか、または使用できない場合に使用されます（レルムに対してSMTPが設定されていない場合）。{project_name}アカウントとアイデンティティー・プロバイダーをリンクするために、パスワードで認証する必要があるログイン画面が表示されます。また、ユーザーは、自分の{project_name}アカウントに既にリンクされている別のアイデンティティー・プロバイダーで再認証することもできます。ユーザーに強制的にOTPを使用させることもできます。それ以外の場合はオプションで、既にOTPがユーザー・アカウントに設定されている場合にのみ使用されます。"

@@ -47,7 +47,7 @@ msgid ""
 "number of Service Provider Interfaces (SPI) for which you can implement your"
 " own providers."
 msgstr ""
-"Keycloakは、必要なカスタム・コードが無くても、ほとんどのユースケースをカバーできるように作られていますが、カスタマイズもできるようにする必要があります。これを実現するためにKeycloakにはサービス・プロバイダー・インターフェイス（SPI）が多数あり、独自のプロバイダーを実装することができます。"
+"Keycloakは、必要なカスタム・コードが無くても、ほとんどのユースケースをカバーできるように作られていますが、カスタマイズもできるようにする必要があります。これを実現するために、Keycloakには独自のプロバイダーを実装できる多数のサービス・プロバイダー・インタフェース（SPI）があります。"
 
 #. type: Title ===
 #, no-wrap
@@ -59,7 +59,7 @@ msgid ""
 "To implement an SPI you need to implement its ProviderFactory and Provider "
 "interfaces. You also need to create a service configuration file."
 msgstr ""
-"SPIを実装するには、そのProviderFactoryとプロバイダー・インターフェイスを実装する必要があります。また、サービス設定ファイルを作成する必要があります。"
+"SPIを実装するには、SPIのProviderFactoryとプロバイダー・インターフェイスを実装する必要があります。また、サービス設定ファイルを作成する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -74,7 +74,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "Example EventListenerProviderFactory:"
-msgstr "サンプル EventListenerProviderFactory:"
+msgstr "EventListenerProviderFactoryのサンプル:"
 
 #. type: delimited block -
 #, no-wrap
@@ -155,13 +155,13 @@ msgid ""
 "`EventListenerProvider` instances are created by calling create on the "
 "factory for each requests so these should be light-weight object."
 msgstr ""
-"Keycloakは `EventListenerProviderFactory` "
-"の単一のインスタンスを作成し、リクエストに応じて何度でもステートを格納することができます。 `EventListenerProvider` "
-"インスタンスは、それぞれのリクエストに応じてファクトリー上でcreateを呼び出すことにより作成され、軽量オブジェクトである必要があります。"
+"Keycloakは、複数のリクエストの状態を格納することを可能にする `EventListenerProviderFactory` "
+"の単一のインスタンスを作成します。 "
+"`EventListenerProvider`インスタンスは、それぞれのリクエストに対してファクトリーでcreateを呼び出すことによって作成されるため、軽量オブジェクトである必要があります。"
 
 #. type: Plain text
 msgid "Example EventListenerProvider:"
-msgstr "サンプル EventListenerProvider:"
+msgstr "EventListenerProviderのサンプル:"
 
 #. type: delimited block -
 #, no-wrap
@@ -241,7 +241,7 @@ msgstr ""
 "`standalone.xml` 、 `standalone-ha.xml` 、または `domain.xml` "
 "を介してプロバイダーを設定することができます。 `standalone.xml` 、 `standalone-ha.xml` 、または "
 "`domain.xml` "
-"ファイルがある場所について、詳しくは、link:{installguide_link}[{installguide_name}]を参照ください。"
+"ファイルがある場所についての詳細は、link:{installguide_link}[{installguide_name}]を参照ください。"
 
 #. type: Plain text
 msgid "For example by adding the following to `standalone.xml`:"
@@ -270,7 +270,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "Then you can retrieve the config in the `ProviderFactory` init method:"
-msgstr "そうすると、 `ProviderFactory` initメソッドで設定を取得することができます。"
+msgstr "そうすると、 `ProviderFactory` のinitメソッドで設定を取得することができます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -348,7 +348,7 @@ msgid ""
 "talks to). Keycloak admin console provides Server Info page to show this "
 "kind of information."
 msgstr ""
-"Keycloak管理者にプロバイダーに関する追加情報を表示すると、便利なことがあります。 show "
+"Keycloak管理者にプロバイダーに関する追加情報を表示すると、便利なことがあります。 "
 "プロバイダー・ビルド・タイム情報（たとえば、現在インストール済みのカスタム・プロバイダーのバージョン）、プロバイダーの現在の設定（たとえば、プロバイダーが通信するリモートシステムのURL）、または動作情報（たとえば、プロバイダーが通信するリモートシステムからの平均レスポンス・タイム）を表示することができます。Keycloak管理コンソールでは、サーバーの情報ページが提供され、この種の情報が表示されます。"
 
 #. type: Plain text
@@ -364,7 +364,7 @@ msgstr ""
 msgid ""
 "Example implementation for `MyEventListenerProviderFactory` from previous "
 "example:"
-msgstr "サンプル 前のサンプルの `MyEventListenerProviderFactory` の実装:"
+msgstr "前のサンプルの `MyEventListenerProviderFactory` のサンプル実装:"
 
 #. type: delimited block -
 #, no-wrap
@@ -415,7 +415,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "The alternative approach is to deploy as a module."
-msgstr "代替アプローチとしては、モジュールとしてデプロイするという方法があります。"
+msgstr "代替のアプローチとしては、モジュールとしてデプロイするという方法があります。"
 
 #. type: Plain text
 msgid ""
@@ -440,10 +440,10 @@ msgid ""
 "dependencies on other components and load third-party jars and modules."
 msgstr ""
 "プロバイダーjarをKeycloakの `deploy/` "
-"ディレクトリーにコピーすると、プロバイダーが自動的にデプロイされます。ホットデプロイについても同様です。さらにプロバイダーjarは、 "
+"ディレクトリーにコピーすると、プロバイダーが自動的にデプロイされます。ホットデプロイも機能します。さらにプロバイダーjarは、 "
 "JBoss/Wildfly環境でデプロイされた他のコンポーネントと同じように機能し、その環境下では `jboss-deployment-"
 "structure.xml` "
-"ファイルと同じようにファシリティを使用することができます。このファイルによって、他のコンポーネントへの依存関係を設定して第三者のjarとモジュールを読み込むことができます。"
+"ファイルと同じようにファシリティを使用することができます。このファイルによって、他のコンポーネントへの依存関係を設定してサードパーティのjarとモジュールを読み込むことができます。"
 
 #. type: Plain text
 msgid ""
@@ -452,13 +452,13 @@ msgid ""
 "party jars as you can just put these libraries in the EAR's `lib/` "
 "directory."
 msgstr ""
-"また、プロバイダーjarを、EARおよびWARと同じように、デプロイ可能な他のユニット内に含めておくこともできます。EARでデプロイすると、実際、第三者のjarを非常に簡単に使用できるようになります。なぜなら、これらのライブラリをEARの"
+"また、プロバイダーjarを、EARおよびWARと同じように、デプロイ可能な他のユニット内に含めておくこともできます。EARでデプロイすると、実際、第三者のjarを非常に簡単に使用できるようになります。なぜなら、これらのライブラリーをEARの"
 " `lib/` ディレクトリーに置くだけで済むからです。"
 
 #. type: Title ====
 #, no-wrap
 msgid "Register a provider using Modules"
-msgstr "モジュールを使用してプロバイダーを登録する"
+msgstr "モジュールを使用したプロバイダーの登録"
 
 #. type: Plain text
 msgid ""
@@ -470,7 +470,7 @@ msgid ""
 msgstr ""
 "たとえばモジュールを使用するプロバイダーを登録すると、まずモジュールが作成されます。これを実行するには、jboss-cliスクリプトを使用するか、手動で"
 " `KEYCLOAK_HOME/modules` 内にフォルダーを作成して、jarと `module.xml` を追加します。たとえば、 `jboss-"
-"cli` スクリプトを使用してイベントリスナーのsysoutサンプルプロバイダーを追加するには、以下を実行します。"
+"cli` スクリプトを使用してイベントリスナーのsysoutサンプル・プロバイダーを追加するには、以下を実行します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -530,7 +530,7 @@ msgid ""
 msgstr ""
 "モジュールを作成すると、Keycloakでこのモジュールを登録する必要があります。 これは `standalone.xml` 、 "
 "`standalone-ha.xml` 、または `domain.xml` のkeycloak-"
-"serverサブシステムセクションのを編集し、それをプロバイダーに追加することにより行われます。"
+"serverサブシステムセクションを編集し、それをプロバイダーに追加することにより行われます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -626,7 +626,7 @@ msgid ""
 "other fine grain actions."
 msgstr ""
 "プロバイダーを指し示すように `META-INF/services` ファイルを正しく設定している限りは、 いかなるJava "
-"EEコンポーネント内でもこれをパッケージ化することができます。たとえば、プロバイダーが第三者のライブラリを使用する必要がある場合、プロバイダーをEAR内にパッケージ化し、これらの第三者のライブラリをEARの"
+"EEコンポーネント内でもこれをパッケージ化することができます。たとえば、プロバイダーがサードパーティーのライブラリーを使用する必要がある場合、プロバイダーをEAR内にパッケージ化し、これらのサードパーティーのライブラリーをEARの"
 " `lib/` ディレクトリーに格納します。また、プロバイダーjarは、JBossまたはWildfly環境でEJB、WAR、およびEARが使用可能な "
 "`jboss-deployment-structure.xml` "
 "ファイルを使用することができる点に注意してください。このファイルについて、詳しくは、JBossまたはWildflyのドキュメントを参照ください。これにより、他の細かい動作間で外部との依存関係を引き出すことができます。"
@@ -637,9 +637,9 @@ msgid ""
 "But, we also currently support implementing provider classes as Stateful "
 "EJBs.  TThis is how you would do it:"
 msgstr ""
-"`ProviderFactory` の実装は簡単なjavaオブジェクトである必要があります。しかし、現在、Stateful "
-"EJBとしてプロバイダークラスの実装のサポートもしています。`ProviderFactory`実装はプレーンなJavaオブジェクトである必要があります。"
-" しかし、現在、プロバイダクラスをステートフルEJBとして実装することもサポートしています。その方法は、以下の通りです。"
+"`ProviderFactory` "
+"の実装はプレーンなJavaオブジェクトである必要があります。ただし、現在は、ステートフルEJBとしてプロバイダー・クラスとして実装することもサポートもしています。"
+" "
 
 #. type: delimited block -
 #, no-wrap
@@ -725,7 +725,7 @@ msgid ""
 "correctly and your provider won't work."
 msgstr ""
 "ここで、 `@Local` "
-"アノテーションを定義し、プロバイダー・クラスを指定する必要があります。これを行わないと、EJBはプロバイダーインスタンスを正しくプロキシせず、プロバイダーは機能しません。"
+"アノテーションを定義し、プロバイダー・クラスを指定する必要があります。これを行わないと、EJBはプロバイダー・インスタンスを正しくプロキシーせず、プロバイダーは機能しません。"
 
 #. type: Plain text
 msgid ""
@@ -734,7 +734,7 @@ msgid ""
 "may eventually see error messages."
 msgstr ""
 "`@Remove` アノテーションをプロバイダーの `close()` "
-"メソッドに置く必要があります。これを行わないと、ステートフルbeanは決してクリーンアップされず、結局エラーメッセージが表示されることになります。"
+"メソッドに付与する必要があります。これを行わないと、ステートフルbeanは決してクリーンアップされず、最終的にエラーメッセージが表示されることになります。"
 
 #. type: Plain text
 msgid ""
@@ -742,7 +742,7 @@ msgid ""
 "  Your factory class would perform a JNDI lookup of the Stateful EJB in its "
 "create() method."
 msgstr ""
-" `ProviderFactory` の実装は平易なjavaオブジェクトである必要があります。ファクトリー・クラスは、その create() "
+" `ProviderFactory` の実装はプレーンなJavaオブジェクトである必要があります。ファクトリー・クラスは、その create() "
 "メソッド内でステートフルEJBのJNDIルックアップを実行します。"
 
 #. type: delimited block -
@@ -798,8 +798,8 @@ msgid ""
 "in admin console as described in <<_providers_admin_console,Admin Console>> "
 "section."
 msgstr ""
-"最も重要で利用可能なSPIのリストと簡単な説明については、こちらになります。各SPIについて、詳しくは、個別のセクションを参照ください。利用可能なすべてのSPIのリストを実行時に確認する必要がある場合は、<<_providers_admin_console,Admin"
-" Console>>セクションでの説明通りに、管理コンソール内の `Server Info` ページを確認します。"
+"最も重要で利用可能なSPIのリストと簡単な説明については、こちらになります。各SPIについて、詳しくは、個別のセクションを参照ください。利用可能なすべてのSPIのリストを実行時に確認する必要がある場合は、<<_providers_admin_console,"
+" 管理コンソール>>セクションでの説明通りに、管理コンソール内の `Server Info` ページを確認します。"
 
 #. type: Plain text
 msgid "SPI|Description"
@@ -811,7 +811,7 @@ msgid ""
 "default implementation can load connections from the Infinispan subsystem, "
 "or alternatively can be manually configured in standalone.xml"
 msgstr ""
-"Infinispanコネクション|Infinispanコネクションをロードして設定します。デフォルトの実装では、Infinispanサブシステムから接続をロードすることができますが、その代わりの方法としてstandalone.xmlで手動で設定することもできます"
+"Infinispanコネクション|Infinispanコネクションをロードして設定します。デフォルトの実装では、Infinispanサブシステムからコネクションをロードすることができますが、その代わりの方法としてstandalone.xmlで手動で設定することもできます"
 
 #. type: Plain text
 msgid ""
@@ -829,14 +829,14 @@ msgstr "Mongoコネクション|MongoDBコネクションをロードして設�
 
 #. type: Plain text
 msgid "Email Sender|Sends email. The default implementation uses JavaMail"
-msgstr "電子メールの送信者|電子メールを送ります。デフォルトの実装では、JavaMailを使用します"
+msgstr "電子メールの送信者|デフォルトの実装では、JavaMailを使用します"
 
 #. type: Plain text
 msgid ""
 "Email Template|Format email and uses Email Sender to send the email. The "
 "default implementation uses FreeMarker templates"
 msgstr ""
-"電子メールのTemplate|電子メールのフォーマットで、電子メールを送信するために電子メールの送信者が使用します。デフォルトの実装では、FreeMarkerテンプレートを使用します"
+"電子メールをフォーマットし、電子メール送信者を使用して電子メールを送信します。デフォルトの実装では、FreeMarkerテンプレートを使用します"
 
 #. type: Plain text
 msgid ""
@@ -845,7 +845,7 @@ msgid ""
 "logs events to the server log and another that can send email notifications "
 "to users on certain events"
 msgstr ""
-"イベントリスナー|ユーザーログインの成功や失敗など、ユーザー関連のイベントについて聞きます。Keycloakでは、そのまますぐに使用できる2つの実装が提供されます。1つは、サーバーログにイベントの記録を残すもので、2つ目は特定のイベントでユーザーに電子メールで通知するものです"
+"イベントリスナー|ユーザーログインの成功や失敗など、ユーザー関連のイベントについてリッスンします。Keycloakでは、そのまますぐに使用できる2つの実装が提供されます。1つは、サーバーログにイベントの記録を残すもので、2つ目は特定のイベントでユーザーに電子メールで通知するものです"
 
 #. type: Plain text
 msgid ""
@@ -892,7 +892,8 @@ msgid ""
 "User Federation|Support syncing users from an external source. Keycloak "
 "provides implementations for LDAP and Active Directory"
 msgstr ""
-"ユーザー・フェデレーションユーザー・フェデレーション|外部ソースからのユーザーの同期をサポートします。Keycloakでは、LDAPとアクティブ・ディレクトリーのための実装が提供されます"
+"ユーザー・フェデレーション|外部ソースからのユーザーの同期をサポートします。Keycloakでは、LDAPとActive "
+"Directoryのための実装が提供されます"
 
 #. type: Plain text
 msgid ""
@@ -900,5 +901,4 @@ msgid ""
 "implementations for basic in-memory, Infinispan, Relational Databases and "
 "MongoDB"
 msgstr ""
-"ユーザー・セッション|ユーザー・セッション情報を提供します。Keycloakでは、基本的なin-"
-"memory、Infinispan、リレーショナル・データベースおよびMongoDBのための実装が提供されます"
+"ユーザー・セッション|ユーザー・セッション情報を提供します。Keycloakでは、基本的なインメモリー、Infinispan、リレーショナル・データベースおよびMongoDBのための実装が提供されます"

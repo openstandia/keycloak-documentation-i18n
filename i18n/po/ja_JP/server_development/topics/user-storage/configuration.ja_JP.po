@@ -2,55 +2,44 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/saml/java/assertion-api.adoc:57
-#: source/server_development/topics/user-storage/configuration.adoc:18
-#: source/server_development/topics/user-storage/configuration.adoc:23
-#: source/server_development/topics/user-storage/configuration.adoc:28
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:26
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:38
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:50
-#: source/server_development/topics/user-storage/registration-query.adoc:109
-#: source/server_development/topics/user-storage/simple-example.adoc:146
-#: source/server_development/topics/providers.adoc:75
 #, no-wrap
 msgid "    }\n"
 msgstr "    }\n"
 
 #. type: Title ===
-#: source/server_development/topics/user-storage/configuration.adoc:2
 #, no-wrap
 msgid "Configuration Techniques"
-msgstr ""
+msgstr "設定のテクニック"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:5
 msgid ""
 "Our `PropertyFileUserStorageProvider` example is bit contrived. It is "
 "hardcoded to a property file that is embedded in the jar of the provider. "
 "Not very useful at all. We might want to make the location of this file "
 "configurable per instance of the provider. In other words, we might want to "
-"reuse this provider mulitple times in multiple different realms and point to "
-"completely different user property files. We'll also want to perform this "
+"reuse this provider mulitple times in multiple different realms and point to"
+" completely different user property files. We'll also want to perform this "
 "configuration within the administration console UI."
 msgstr ""
+"`PropertyFileUserStorageProvider` "
+"のサンプルには少し工夫された点があります。これはプロバイダーのjarに組み込まれたプロパティー・ファイルにハードコードされています。これはあまり役に立ちません。プロバイダーのインスタンス毎にこのファイルのロケーションを設定できるようにする必要があります。つまり、複数の異なるレルムで複数回にわたりこのプロバイダーを利用して、完全に異なるユーザー・プロパティー・ファイルを指し示す必要があるということです。また、この設定は管理コンソールのUI内でも実行する必要があります。"
+" "
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:7
 msgid ""
 "The `UserStorageProviderFactory` has additional methods you can implement "
 "that handle provider configuration. You describe the variables you want to "
@@ -58,18 +47,20 @@ msgid ""
 "a generic input page to gather this configuration. When implemented, "
 "callback methods also validate the configuration before it is saved, when a "
 "provider is created for the first time, and when it is updated. "
-"`UserStorageProviderFactory` inherits these methods from the `org.keycloak."
-"component.ComponentFactory` interface."
+"`UserStorageProviderFactory` inherits these methods from the "
+"`org.keycloak.component.ComponentFactory` interface."
 msgstr ""
+"`UserStorageProviderFactory` "
+"には、プロバイダーの設定を処理する、実装可能な追加のメソッドがあります。プロバイダー毎に設定する必要がある変数を記述し、この設定を取り込むための一般的な入力ページを管理コンソールで自動的にレンダリングします。実装されると、それが保存される前、プロバイダーが初めて作成された時、および更新時に、callbackメソッドも設定を検証します。"
+" `UserStorageProviderFactory` は `org.keycloak.component.ComponentFactory` "
+"インターフェイスからこれらのメソッドを継承します。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:11
 #, no-wrap
 msgid "    List<ProviderConfigProperty> getConfigProperties();\n"
-msgstr ""
+msgstr "    List<ProviderConfigProperty> getConfigProperties();\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:16
 #, no-wrap
 msgid ""
 "    default\n"
@@ -77,67 +68,75 @@ msgid ""
 "            throws ComponentValidationException\n"
 "    {\n"
 msgstr ""
+"    default\n"
+"    void validateConfiguration(KeycloakSession session, RealmModel realm, ComponentModel model)\n"
+"            throws ComponentValidationException\n"
+"    {\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:21
 #, no-wrap
 msgid ""
 "    default\n"
 "    void onCreate(KeycloakSession session, RealmModel realm, ComponentModel model) {\n"
 msgstr ""
+"    default\n"
+"    void onCreate(KeycloakSession session, RealmModel realm, ComponentModel model) {\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:26
 #, no-wrap
 msgid ""
 "    default\n"
 "    void onUpdate(KeycloakSession session, RealmModel realm, ComponentModel model) {\n"
 msgstr ""
+"    default\n"
+"    void onUpdate(KeycloakSession session, RealmModel realm, ComponentModel model) {\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:31
 msgid ""
-"The `ComponentFactory.getConfigProperties()` method returns a list of `org."
-"keycloak.provider.ProviderConfigProperty` instances. These instances declare "
-"metadata that is needed to render and store each configuration variable of "
-"the provider."
+"The `ComponentFactory.getConfigProperties()` method returns a list of "
+"`org.keycloak.provider.ProviderConfigProperty` instances. These instances "
+"declare metadata that is needed to render and store each configuration "
+"variable of the provider."
 msgstr ""
+" `ComponentFactory.getConfigProperties()` メソッドは、 "
+"`org.keycloak.provider.ProviderConfigProperty` "
+"インスタンスのリストを返します。これらのインスタンスは、プロバイダーの設定変数をそれぞれレンダリングして格納するのに必要なメタデータを宣言します。"
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/configuration.adoc:32
 #, no-wrap
 msgid "Configuration Example"
-msgstr ""
+msgstr "設定のサンプル"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:35
 msgid ""
 "Let's expand our `PropertyFileUserStorageProviderFactory` example to allow "
 "you to point a provider instance to a specific file on disk."
 msgstr ""
+"ディスク上の特定のファイルへプロバイダー・インスタンスを参照するように、 "
+"`PropertyFileUserStorageProviderFactory` のサンプルを拡張してみましょう。"
 
 #. type: Block title
-#: source/server_development/topics/user-storage/configuration.adoc:36
 #, no-wrap
 msgid "PropertyFileUserStorageProviderFactory"
-msgstr ""
+msgstr "PropertyFileUserStorageProviderFactory"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:41
 #, no-wrap
 msgid ""
 "public class PropertyFileUserStorageProviderFactory\n"
 "                  implements UserStorageProviderFactory<PropertyFileUserStorageProvider> {\n"
 msgstr ""
+"public class PropertyFileUserStorageProviderFactory\n"
+"                  implements UserStorageProviderFactory<PropertyFileUserStorageProvider> {\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:43
 #, no-wrap
-msgid "    protected static final List<ProviderConfigProperty> configMetadata;\n"
+msgid ""
+"    protected static final List<ProviderConfigProperty> configMetadata;\n"
 msgstr ""
+"    protected static final List<ProviderConfigProperty> configMetadata;\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:54
 #, no-wrap
 msgid ""
 "    static {\n"
@@ -147,13 +146,20 @@ msgid ""
 "                .label(\"Path\")\n"
 "                .defaultValue(\"${jboss.server.config.dir}/example-users.properties\")\n"
 "                .helpText(\"File path to properties file\")\n"
-"                .default\n"
 "                .add().build();\n"
 "    }\n"
 msgstr ""
+"    static {\n"
+"        configMetadata = ProviderConfigurationBuilder.create()\n"
+"                .property().name(\"path\")\n"
+"                .type(ProviderConfigProperty.STRING_TYPE)\n"
+"                .label(\"Path\")\n"
+"                .defaultValue(\"${jboss.server.config.dir}/example-users.properties\")\n"
+"                .helpText(\"File path to properties file\")\n"
+"                .add().build();\n"
+"    }\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:59
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -161,30 +167,39 @@ msgid ""
 "        return configMetadata;\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public List<ProviderConfigProperty> getConfigProperties() {\n"
+"        return configMetadata;\n"
+"    }\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:62
 msgid ""
-"The `ProviderConfigurationBuilder` class is a great helper class to create a "
-"list of configuration properties. Here we specify a variable named `path` "
+"The `ProviderConfigurationBuilder` class is a great helper class to create a"
+" list of configuration properties. Here we specify a variable named `path` "
 "that is a String type. On the administration console configuration page for "
 "this provider, this configuration variable is labeled as `Path` and has a "
-"default value of `${jboss.server.config.dir}/example-users.properties`. When "
-"you hover over the tooltip of this configuration option, it displays the "
+"default value of `${jboss.server.config.dir}/example-users.properties`. When"
+" you hover over the tooltip of this configuration option, it displays the "
 "help text, `File path to properties file`."
 msgstr ""
+"`ProviderConfigurationBuilder` "
+"クラスは、設定プロパティーのリストを作成するのに非常に役立ちます。ここでは文字列の種類である `path` "
+"という名前の変数を指定します。このプロバイダーのための管理コンソール設定ページでは、この設定変数が `Path` としてラベル付けされ、デフォルト値は "
+"`${jboss.server.config.dir}/example-users.properties` "
+"になります。この設定オプションのツールチップにマウスポインターを置くと、ヘルプテキスト `File path to properties file` "
+"が表示されます。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:64
 msgid ""
 "The next thing we want to do is to verify that this file exists on disk. We "
 "do not want to enable an instance of this provider in the realm unless it "
 "points to a valid user property file. To do this, we implement the "
 "`validateConfiguration()` method."
 msgstr ""
+"次にすべきことは、このファイルがディスク上に存在することの検証です。有効なユーザー・プロパティー・ファイルを指し示していない限り、レルム内でこのプロバイダーのインスタンスを有効にしません。これを行うには、"
+" `validateConfiguration()` メソッドを実装します。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:78
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -199,38 +214,57 @@ msgid ""
 "        }\n"
 "    }\n"
 msgstr ""
+"    @Override\n"
+"    public void validateConfiguration(KeycloakSession session, RealmModel realm, ComponentModel config)\n"
+"                   throws ComponentValidationException {\n"
+"        String fp = config.getConfig().getFirst(\"path\");\n"
+"        if (fp == null) throw new ComponentValidationException(\"user property file does not exist\");\n"
+"        fp = EnvUtil.replace(fp);\n"
+"        File file = new File(fp);\n"
+"        if (!file.exists()) {\n"
+"            throw new ComponentValidationException(\"user property file does not exist\");\n"
+"        }\n"
+"    }\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:81
 msgid ""
 "In the `validateConfiguration()` method we get the configuration variable "
 "from the `ComponentModel` and we check to see if that file exists on disk. "
 "Notice that we use the `org.keycloak.common.util.EnvUtil.replace()` method. "
 "With this method any string that has `${}` within it will replace that with "
-"a system property value. The `${jboss.server.config.dir}` string corresponds "
-"to the `configuration/` directory of our server and is really useful for "
+"a system property value. The `${jboss.server.config.dir}` string corresponds"
+" to the `configuration/` directory of our server and is really useful for "
 "this example."
 msgstr ""
+"`validateConfiguration()` メソッド内では、 `ComponentModel` "
+"から設定変数を取得し、そのファイルがディスク上に存在するかどうかを確認します。　"
+"`org.keycloak.common.util.EnvUtil.replace()` "
+"メソッドを使用していることに注意してください。このメソッドを使用すると、 `${}` "
+"が入っている文字列によりシステム・プロパティー値でそれは置き換えられます。 `${jboss.server.config.dir}` "
+"文字列は、サーバーの `configuration/` ディレクトリーに対応しており、このサンプルでは非常に便利です。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:83
 msgid ""
 "Next thing we have to do is remove the old `init()` method. We do this "
-"because user property files are going to be unique per provider instance. We "
-"move this logic to the `create()` method."
+"because user property files are going to be unique per provider instance. We"
+" move this logic to the `create()` method."
 msgstr ""
+"次にすべきことは、古い `init()` "
+"メソッドの削除です。これを行う理由は、ユーザー・プロパティー・ファイルがプロバイダー・インスタンス毎に独自のものになるからです。このロジックを "
+"`create()` メソッドへ移します。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:89
 #, no-wrap
 msgid ""
 "    @Override\n"
 "    public PropertyFileUserStorageProvider create(KeycloakSession session, ComponentModel model) {\n"
 "        String path = model.getConfig().getFirst(\"path\");\n"
 msgstr ""
+"    @Override\n"
+"    public PropertyFileUserStorageProvider create(KeycloakSession session, ComponentModel model) {\n"
+"        String path = model.getConfig().getFirst(\"path\");\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:98
 #, no-wrap
 msgid ""
 "        Properties props = new Properties();\n"
@@ -242,44 +276,48 @@ msgid ""
 "            throw new RuntimeException(e);\n"
 "        }\n"
 msgstr ""
+"        Properties props = new Properties();\n"
+"        try {\n"
+"            InputStream is = new FileInputStream(path);\n"
+"            props.load(is);\n"
+"            is.close();\n"
+"        } catch (IOException e) {\n"
+"            throw new RuntimeException(e);\n"
+"        }\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/configuration.adoc:101
 #, no-wrap
 msgid ""
 "        return new PropertyFileUserStorageProvider(session, model, props);\n"
 "    }\n"
 msgstr ""
+"        return new PropertyFileUserStorageProvider(session, model, props);\n"
+"    }\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:104
 msgid ""
 "This logic is, of course, inefficient as every transaction reads the entire "
 "user property file from disk, but hopefully this illustrates, in a simple "
 "way, how to hook in configuration variables."
 msgstr ""
+"このロジックは、すべてのトランザクションがディスクからユーザー・プロパティー・ファイル全体を読み込むので、もちろん非効率ですが、これは設定変数にフックする方法を簡単な方法で示しているはずです。"
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/configuration.adoc:105
 #, no-wrap
 msgid "Configuring the Provider in the Administration Console"
-msgstr ""
+msgstr "管理コンソールでのプロバイダー設定"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:108
 msgid ""
 "Now that the configuration is enabled, you can set the `path` variable when "
 "you configure the provider in the administration console."
-msgstr ""
+msgstr "これで、設定ができるようになりました。管理コンソールでプロバイダーを設定すると、 `path` 変数を設定することができます。"
 
 #. type: Block title
-#: source/server_development/topics/user-storage/configuration.adoc:110
-#: source/server_development/topics/user-storage/simple-example.adoc:274
 #, no-wrap
 msgid "Configured Provider"
-msgstr ""
+msgstr "設定プロバイダー"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/configuration.adoc:112
 msgid "image:{project_images}/storage-provider-with-config.png[]"
-msgstr ""
+msgstr "image:{project_images}/storage-provider-with-config.png[]"

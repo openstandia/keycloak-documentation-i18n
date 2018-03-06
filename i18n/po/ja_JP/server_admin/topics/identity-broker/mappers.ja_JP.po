@@ -2,70 +2,78 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
 #: source/server_admin/topics/identity-broker/mappers.adoc:2
 #, no-wrap
 msgid "Mapping Claims and Assertions"
-msgstr ""
+msgstr "クレームとアサーションのマッピング"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/mappers.adoc:7
 msgid ""
-"You can import the SAML and OpenID Connect metadata provided by the external "
-"IDP you are authenticating with into the environment of the realm.  This "
+"You can import the SAML and OpenID Connect metadata provided by the external"
+" IDP you are authenticating with into the environment of the realm.  This "
 "allows you to extract user profile metadata and other information so that "
 "you can make it available to your applications."
 msgstr ""
+"認証している外部IDPによって提供されるSAMLおよびOpenID "
+"Connectのメタデータを、レルムの環境にインポートすることができます。これにより、ユーザー・プロファイルのメタデータおよびその他の情報を抽出して、アプリケーションで使用できるようにすることができます。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/mappers.adoc:11
 msgid ""
 "Each new user that logs into your realm via an external identity provider "
-"will have an entry for it created in the local {project_name} database.  The "
-"act of importing metadata from the SAML or OIDC assertions and claims will "
+"will have an entry for it created in the local {project_name} database.  The"
+" act of importing metadata from the SAML or OIDC assertions and claims will "
 "create this data with the local realm database."
 msgstr ""
+"外部アイデンティティー・プロバイダーを使用してレルムにログインする新規ユーザーは、ローカルの{project_name}データベースにエントリーが作成されます。SAMLまたはOIDCのアサーションおよびクレームからメタデータをインポートすると、ローカルのレルム・データベースにこのデータが作成されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/mappers.adoc:14
 msgid ""
-"If you click on an identity provider listed in the `Identity Providers` page "
-"for your realm, you will be brought to the IDPs `Settings` tab.  On this "
+"If you click on an identity provider listed in the `Identity Providers` page"
+" for your realm, you will be brought to the IDPs `Settings` tab.  On this "
 "page is also a `Mappers` tab.  Click on that tab to start mapping your "
 "incoming IDP metadata."
 msgstr ""
+"レルムの `Identity Providers` ページにリストされているアイデンティティー・プロバイダーをクリックすると、IDPの "
+"`Settings` タブが表示されます。このページには、 `Mappers` "
+"タブもあります。そのタブをクリックして、受信するIDPメタデータのマッピングを開始します。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/mappers.adoc:16
 msgid "image:{project_images}/identity-provider-mappers.png[]"
-msgstr ""
+msgstr "image:{project_images}/identity-provider-mappers.png[]"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/mappers.adoc:20
 msgid ""
 "There is a `Create` button on this page.  Clicking on this create button "
 "allows you to create a broker mapper.  Broker mappers can import SAML "
-"attributes or OIDC ID/Access token claims into user attributes and user role "
-"mappings."
+"attributes or OIDC ID/Access token claims into user attributes and user role"
+" mappings."
 msgstr ""
+"このページには `Create` ボタンがあります。このボタンをクリックすると、ブローカー・マッパーを作成できます。 "
+"ブローカー・マッパーは、SAML属性またはOIDCのID/アクセストークンのクレームをユーザー属性およびユーザーロールのマッピングにインポートできます。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/mappers.adoc:22
 msgid "image:{project_images}/identity-provider-mapper.png[]"
-msgstr ""
+msgstr "image:{project_images}/identity-provider-mapper.png[]"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/mappers.adoc:25
@@ -75,20 +83,27 @@ msgid ""
 "configuration information you need to enter. Click `Save` and your new "
 "mapper will be added."
 msgstr ""
+"`Mapper Type` "
+"のリストからマッパーを選択してください。ツールチップにカーソルを合わせると、マッパーの機能の説明が表示されます。ツールチップには、入力する必要がある設定情報も記載されています。"
+" `Save` ボタンをクリックすると、新しいマッパーが追加されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/mappers.adoc:28
 msgid ""
 "For JSON based claims, you can use dot notation for nesting and square "
-"brackets to access array fields by index.  For example 'contact.address[0]."
-"country'."
+"brackets to access array fields by index.  For example "
+"'contact.address[0].country'."
 msgstr ""
+"JSONベースのクレームでは、ネストと角括弧にドット表記を使用して、インデックスで配列フィールドにアクセスできます。たとえば、'contact.address[0].country'です。"
 
 #. type: Plain text
 #: source/server_admin/topics/identity-broker/mappers.adoc:30
 msgid ""
 "To investigate the structure of user profile JSON data provided by social "
-"providers you can enable the `DEBUG` level logger `org.keycloak.social."
-"user_profile_dump`.  This is done in the server's app-server configuration "
-"file (domain.xml or standalone.xml)."
+"providers you can enable the `DEBUG` level logger "
+"`org.keycloak.social.user_profile_dump`.  This is done in the server's app-"
+"server configuration file (domain.xml or standalone.xml)."
 msgstr ""
+"ソーシャル・プロバイダーが提供するユーザー・プロファイルJSONデータの構造を調べるために、 `DEBUG` レベルのロガー "
+"`org.keycloak.social.user_profile_dump` "
+"を有効にできます。これは、サーバーのアプリケーション・サーバー設定ファイル（domain.xmlまたはstandalone.xml）で行います。"

@@ -1,57 +1,70 @@
-# Japanese translations for keycloak-documentation-i18n package
-# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
-# Automatically generated, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: keycloak-documentation-i18n  \n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ja\n"
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title =
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:2
 #, no-wrap
 msgid "Obtaining the Authorization Context"
-msgstr ""
+msgstr "認可コンテキストの取得"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:6
 msgid ""
-"When policy enforcement is enabled, the permissions obtained from the server "
-"are available through `org.keycloak.AuthorizationContext`.  This class "
+"When policy enforcement is enabled, the permissions obtained from the server"
+" are available through `org.keycloak.AuthorizationContext`.  This class "
 "provides several methods you can use to obtain permissions and ascertain "
 "whether a permission was granted for a particular resource or scope."
 msgstr ""
+"ポリシーの施行が有効になっている場合、サーバーから取得したパーミッションは `org.keycloak.AuthorizationContext` "
+"で利用できます。このクラスは、パーミッションを取得し、特定のリソースまたはスコープに対してアクセス権が付与されているかどうかを確認するために使用できるいくつかのメソッドを提供します。"
 
 #. type: Plain text
-#: source/authorization_services/topics/enforcer-authorization-context.adoc:16
+#: source/authorization_services/topics/enforcer-authorization-context.adoc:8
+msgid "Obtaining the Authorization Context in a Servlet Container"
+msgstr "サーブレット・コンテナ－内の認可コンテキストの取得"
+
+#. type: Code block
+#: source/authorization_services/topics/enforcer-authorization-context.adoc:15
 #, no-wrap
 msgid ""
-"Obtaining the Authorization Context in a Servlet Container\n"
-"```java\n"
 "    HttpServletRequest request = ... // obtain javax.servlet.http.HttpServletRequest\n"
 "    KeycloakSecurityContext keycloakSecurityContext =\n"
 "        (KeycloakSecurityContext) request\n"
 "            .getAttribute(KeycloakSecurityContext.class.getName());\n"
 "    AuthorizationContext authzContext =\n"
 "        keycloakSecurityContext.getAuthorizationContext();\n"
-"```\n"
 msgstr ""
+"    HttpServletRequest request = ... // 取得javax.servlet.http.HttpServletRequest\n"
+"    KeycloakSecurityContext keycloakSecurityContext =\n"
+"        (KeycloakSecurityContext) request\n"
+"            .getAttribute(KeycloakSecurityContext.class.getName());\n"
+"    AuthorizationContext authzContext =\n"
+"        keycloakSecurityContext.getAuthorizationContext();\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:20
 msgid ""
 "For more details about how you can obtain a `KeycloakSecurityContext` "
-"consult the adapter configuration. The example above should be sufficient to "
-"obtain the context when running an application using any of the servlet "
+"consult the adapter configuration. The example above should be sufficient to"
+" obtain the context when running an application using any of the servlet "
 "containers supported by {project_name}."
 msgstr ""
+"`KeycloakSecurityContext` "
+"を得る方法の詳細については、アダプターの設定を参照してください。{project_name}でサポートされているサーブレット・コンテナーのいずれかを使用してアプリケーションを起動している場合は、上記の例でコンテキストを取得できます。"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:23
@@ -61,6 +74,7 @@ msgid ""
 "dynamic menu where items are hidden or shown depending on the permissions "
 "associated with a resource or scope."
 msgstr ""
+"認可コンテキストを使用すると、サーバーによって行われて返された決定を、より詳細に制御できます。たとえば、リソースまたはスコープに関連付けられたパーミッションに応じて、アイテムを表示または非表示にする動的なメニューを作成することができます。"
 
 #. type: Code block
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:36
@@ -78,6 +92,17 @@ msgid ""
 "    // user can create new projects\n"
 "}\n"
 msgstr ""
+"if (authzContext.hasResourcePermission(\"Project Resource\")) {\n"
+"    // user can access the Project Resource\n"
+"}\n"
+"\n"
+"if (authzContext.hasResourcePermission(\"Admin Resource\")) {\n"
+"    // user can access administration resources\n"
+"}\n"
+"\n"
+"if (authzContext.hasScopePermission(\"urn:project.com:project:create\")) {\n"
+"    // user can create new projects\n"
+"}\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:39
@@ -87,11 +112,13 @@ msgid ""
 "that the protected resource is not directly associated with the policies "
 "that govern them."
 msgstr ""
+"`AuthorizationContext` "
+"は、{project_name}認可サービスのメイン機能の1つです。上記の例から、保護されたリソースはそれらを管理するポリシーに直接関連付けられていないことが分かります。"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:41
 msgid "Consider some similar code using role-based access control (RBAC):"
-msgstr ""
+msgstr "次のような、ロールベースのアクセス制御（RBAC）を使用した同様のコードを考えてみましょう。"
 
 #. type: Code block
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:54
@@ -109,6 +136,17 @@ msgid ""
 "    // user can create new projects\n"
 "}\n"
 msgstr ""
+"if (User.hasRole('user')) {\n"
+"    // user can access the Project Resource\n"
+"}\n"
+"\n"
+"if (User.hasRole('admin')) {\n"
+"    // user can access administration resources\n"
+"}\n"
+"\n"
+"if (User.hasRole('project-manager')) {\n"
+"    // user can create new projects\n"
+"}\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:57
@@ -117,16 +155,18 @@ msgid ""
 "different ways. In RBAC, roles only _implicitly_ define access for their "
 "resources. With {project_name} you gain the capability to create more "
 "manageable code that focuses directly on your resources whether you are "
-"using RBAC, attribute-based access control (ABAC), or any other BAC variant. "
-"Either you have the permission for a given resource or scope, or you don't."
+"using RBAC, attribute-based access control (ABAC), or any other BAC variant."
+" Either you have the permission for a given resource or scope, or you don't."
 msgstr ""
+"どちらの例も同じ要件に対応していますが、異なる方法で対応しています。RBACでは、ロールはリソースに対するアクセスのみを _暗黙的に_ "
+"定義します。{project_name}を使用すると、RBAC、属性ベースのアクセス制御（ABAC）、その他のBACバリアントのいずれを使用していても、リソースに直接フォーカスした管理しやすいコードを作成できます。与えられたリソースまたはスコープに対するパーミッションを持っているかどうかです。"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:59
 msgid ""
 "Now, suppose your security requirements have changed and in addition to "
 "project managers, PMOs can also create new projects."
-msgstr ""
+msgstr "セキュリティ要件が変更され、プロジェクト・マネージャーに加えて、PMOが新しいプロジェクトを作成できるようになったとします。"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:61
@@ -139,20 +179,26 @@ msgid ""
 "permissions and policies associated with the `Project Resource` and/or the "
 "scope `urn:project.com:project:create` would be changed."
 msgstr ""
+"セキュリティ要件は変更されますが、{project_name}を使用すると、新しい要件を満たすためにアプリケーションコードを変更する必要はありません。アプリケーションがリソースとスコープの識別子に基づいていれば、認可サーバー内の特定のリソースに関連付けられているパーミッションまたはポリシーの設定を変更するだけで済みます。この場合、"
+" `Project Resource` および（または）スコープ `urn:project.com:project:create` "
+"に関連するパーミッションとポリシーが変更されます。"
 
 #. type: Title =
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:62
 #, no-wrap
-msgid "Using the AuthorizationContext to obtain an Authorization Client Instance"
-msgstr ""
+msgid ""
+"Using the AuthorizationContext to obtain an Authorization Client Instance"
+msgstr "認可クライアント・インスタンスを取得するためAuthorizationContextを使用する"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:65
 msgid ""
-"The ```AuthorizationContext``` can also be used to obtain a reference to the "
-"<<_service_client_api, Authorization Client API>> configured to your "
+"The ```AuthorizationContext``` can also be used to obtain a reference to the"
+" <<_service_client_api, Authorization Client API>> configured to your "
 "application:"
 msgstr ""
+"`AuthorizationContext` は、以下のようにアプリケーションに設定された<<_service_client_api, "
+"認可クライアントAPI >>への参照を取得するためにも使用できます。"
 
 #. type: Code block
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:69
@@ -161,6 +207,8 @@ msgid ""
 "    ClientAuthorizationContext clientContext = ClientAuthorizationContext.class.cast(authzContext);\n"
 "    AuthzClient authzClient = clientContext.getClient();\n"
 msgstr ""
+"    ClientAuthorizationContext clientContext = ClientAuthorizationContext.class.cast(authzContext);\n"
+"    AuthzClient authzClient = clientContext.getClient();\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/enforcer-authorization-context.adoc:71
@@ -171,3 +219,6 @@ msgid ""
 "server in order to create resources or check for specific permissions "
 "programmatically."
 msgstr ""
+"場合によっては、ポリシー・エンフォーサーによって保護されたリソース・サーバーが、認可サーバーによって提供されるAPIにアクセスする必要があります。取得した"
+" ```AuthzClient``` "
+"インスタンスで、リソース・サーバーはリソースを作成したり、プログラムで特定のパーミッションをチェックするためにサーバーとやりとりすることができます。"

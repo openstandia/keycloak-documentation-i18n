@@ -2,255 +2,269 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: n.watanabe <nwatanabe.ase@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:2
+#. type: Attribute :installguide_troubleshooting_name:
 #, no-wrap
-msgid "## X.509 Client Certificate User Authentication\n"
-msgstr ""
+msgid "Troubleshooting"
+msgstr "トラブルシューティング"
+
+#. type: Title ===
+#, no-wrap
+msgid "X.509 Client Certificate User Authentication"
+msgstr "X.509クライアント証明書ユーザー認証"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:4
-#, no-wrap
-msgid "Keycloak supports login with a X.509 client certificate if the server is configured for mutual SSL authentication.\t\n"
-msgstr ""
+msgid ""
+"Keycloak supports login with a X.509 client certificate if the server is "
+"configured for mutual SSL authentication.\t"
+msgstr "Keycloakは、サーバーが相互SSL認証用に設定されている場合、X.509クライアント証明書によるログインをサポートします。\t"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:6
-#, no-wrap
-msgid "A typical workflow is as follows:\n"
-msgstr ""
+msgid "A typical workflow is as follows:"
+msgstr "一般的なワークフローは次のとおりです。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:8
-#, no-wrap
-msgid "A client sends an authentication request over SSL/TLS channel\n"
-msgstr ""
+msgid "A client sends an authentication request over SSL/TLS channel"
+msgstr "クライアントがSSL/TLSチャネルを介して認証リクエストを送信します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:9
-#, no-wrap
-msgid "During SSL/TLS handshake, the server and the client exchange their x.509/v3 certificates\n"
-msgstr ""
+msgid ""
+"During SSL/TLS handshake, the server and the client exchange their x.509/v3 "
+"certificates"
+msgstr "SSL/TLSハンドシェイク中に、サーバーとクライアントはx.509/v3証明書を交換します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:10
-#, no-wrap
-msgid "The container (wildfly) validates the certificate PKIX path and the certificate expiration\n"
-msgstr ""
+msgid ""
+"The container (wildfly) validates the certificate PKIX path and the "
+"certificate expiration"
+msgstr "コンテナ（WildFly）は、証明書のPKIXパスと有効期限を検証します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:11
-#, no-wrap
-msgid "The x.509 client certificate authenticator validates the client certificate as follows:\n"
-msgstr ""
+msgid ""
+"The x.509 client certificate authenticator validates the client certificate "
+"as follows:"
+msgstr "x.509クライアント証明書オーセンティケーターは、次のようにクライアント証明書を検証します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:12
-#, no-wrap
-msgid "Optionally checks the certificate revocation status using CRL and/or CRL Distribution Points\n"
-msgstr ""
+msgid ""
+"Optionally checks the certificate revocation status using CRL and/or CRL "
+"Distribution Points"
+msgstr "必要に応じて、CRLおよび（または）CRL配布ポイントを使用して証明書失効ステータスをチェックします。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:13
-#, no-wrap
-msgid "Optionally checks the Certificate revocation status using OCSP (Online Certificate Status Protocol)\n"
-msgstr ""
+msgid ""
+"Optionally checks the Certificate revocation status using OCSP (Online "
+"Certificate Status Protocol)"
+msgstr "必要に応じて、OCSP（オンライン証明書ステータス・プロトコル）を使用して証明書失効ステータスをチェックします。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:14
-#, no-wrap
-msgid "Optinally validates whether the key usage in the certificate matches the expected key usage\n"
-msgstr ""
+msgid ""
+"Optionally validates whether the key usage in the certificate matches the "
+"expected key usage"
+msgstr "必要に応じて、証明書内のキー使用が予想されるキー使用と一致するかどうかを検証します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:15
-#, no-wrap
-msgid "Optionally validates whether the extended key usage in the certificate matches the expected extended key usage\n"
-msgstr ""
+msgid ""
+"Optionally validates whether the extended key usage in the certificate "
+"matches the expected extended key usage"
+msgstr "必要に応じて、証明書内の拡張キー使用法が予想される拡張キー使用法と一致するかどうかを検証します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:16
-#, no-wrap
-msgid "If any of the above checks fails, the x.509 authentication fails\n"
-msgstr ""
+msgid "If any of the above checks fails, the x.509 authentication fails"
+msgstr "上記のチェックのいずれかが失敗した場合、x.509認証は失敗します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:17
-#, no-wrap
-msgid "Otherwise, the authenticator extracts the certificate identity and maps it to an existing user\n"
-msgstr ""
+msgid ""
+"Otherwise, the authenticator extracts the certificate identity and maps it "
+"to an existing user"
+msgstr "それ以外の場合、オーセンティケーターは証明書アイデンティティーを抽出し、既存のユーザーにマッピングします。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:18
-#, no-wrap
-msgid "Once the certificate is mapped to an existing user, the behavior diverges depending on the authentication flow:\n"
-msgstr ""
+msgid ""
+"Once the certificate is mapped to an existing user, the behavior diverges "
+"depending on the authentication flow:"
+msgstr "証明書が既存のユーザーにマップされると、その動作は次のように認証フローによって分岐します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:19
-#, no-wrap
-msgid "In the Browser Flow, the server prompts the user to confirm identity or to ignore it and instead sign in with username/password \n"
+msgid ""
+"In the Browser Flow, the server prompts the user to confirm identity or to "
+"ignore it and instead sign in with username/password"
 msgstr ""
+"ブラウザーフローでは、サーバーはアイデンティティーを確認するかそれを無視して、代わりにユーザー名/パスワードでサインインすることをユーザーに促します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:20
+msgid "In the case of the Direct Grant Flow, the server signs in the user"
+msgstr "ダイレクト・グラント・フローの場合、サーバーはユーザーをサインインします。"
+
+#. type: Title ===
 #, no-wrap
-msgid "In the case of the Direct Grant Flow, the server signs in the user\n"
-msgstr ""
+msgid "Features"
+msgstr "機能"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Supported Certificate Identity Sources"
+msgstr "サポートされている証明書のアイデンティティー・ソース"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:22
-#, no-wrap
-msgid "### Features\n"
-msgstr ""
+msgid "Match SubjectDN using regular expression"
+msgstr "正規表現を使用したSubjectDN一致"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:24
-#, no-wrap
-msgid "#### Supported Certificate Identity Sources\n"
-msgstr ""
+msgid "X500 Subject's e-mail attribute"
+msgstr "X500 Subject's e-mail属性"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:25
-#, no-wrap
-msgid "Match SubjectDN using regular expression\n"
-msgstr ""
+msgid "X500 Subject's Common Name attribute"
+msgstr "X500 Subject's Common Name属性"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:26
-#, no-wrap
-msgid "X500 Subject's e-mail attribute\n"
-msgstr ""
+msgid "Match IssuerDN using regular expression"
+msgstr "正規表現を使用したIssuerDN一致"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:27
-#, no-wrap
-msgid "X500 Subject's Common Name attribute\n"
-msgstr ""
+msgid "X500 Issuer's e-mail attribute"
+msgstr "X500 Issuer's e-mail属性"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:28
-#, no-wrap
-msgid "Match IssuerDN using regular expression\n"
-msgstr ""
+msgid "X500 Issuer's Common Name attribute"
+msgstr "X500 Issuer's Common Name属性"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:29
+msgid "Certificate Serial Number"
+msgstr "証明書のシリアル番号"
+
+#. type: Labeled list
 #, no-wrap
-msgid "X500 Issuer's e-mail attribute\n"
-msgstr ""
+msgid "Regular Expressions"
+msgstr "正規表現"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:30
-#, no-wrap
-msgid "X500 Issuer's Common Name attribute\n"
+msgid ""
+"The certificate identity can be extracted from either Subject DN or Issuer "
+"DN using a regular expression as a filter. For example, the regular "
+"expression below will match the e-mail attribute:"
 msgstr ""
+"証明書アイデンティティーは、正規表現をフィルターとして使用して、SubjectDNまたはIssuerDNのいずれかから抽出できます。たとえば"
+"、以下の正規表現はe-mail属性と一致します。"
+
+#. type: Code block
+msgid "emailAddress=(.*?)(?:,|$)"
+msgstr "emailAddress=(.*?)(?:,|$)"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:31
-#, no-wrap
-msgid "Certificate Serial Number\n"
+msgid ""
+"The regular expression filtering is applicable only if the `Identity Source`"
+" is set to either `Match SubjectDN using regular expression` or `Match "
+"IssuerDN using regular expression`."
 msgstr ""
+"正規表現フィルタリングは、 `Identity Source` が `Match SubjectDN using regular expression`"
+" か、 `Match IssuerDN using regular expression` のどちらかにセットされている場合にのみ適用されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Mapping certificate identity to an existing user"
+msgstr "既存のユーザーに証明書のアイデンティティーをマッピングする"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:38
+msgid ""
+"The certificate identity mapping can be configured to map the extracted user"
+" identity to an existing user's username or e-mail or to a custom attribute "
+"which value matches the certificate identity. For example, setting the "
+"`Identity source` to _Subject's e-mail_ and `User mapping method` to "
+"_Username or email_ will have the X.509 client certificate authenticator use"
+" the e-mail attribute in the certificate's Subject DN as a search criteria "
+"to look up an existing user by username or by e-mail."
+msgstr ""
+"証明書アイデンティティー・マッピングは、抽出されたユーザー・アイデンティティーを既存のユーザーのユーザー名、電子メール、または証明書アイデンティティーと一致する値を持つカスタム属性にマップするように設定できます。たとえば、"
+" `Identity source` を _Subject's e-mail_ に、 `User mapping method` に _Username"
+" or email_ に設定すると、X.509クライアント証明書オーセンティケーターはユーザー名または電子メールで既存のユーザーをルックアップするために"
+"、検索基準として証明書のSubjectDNのe-mail属性を使用します。"
+
+#. type: Plain text
+msgid ""
+"Please notice that if we disable `Login with email` at realm settings, the "
+"same rules will be applied to certificate authentication. In other words, "
+"users won't be able to log in using e-mail attribute."
+msgstr ""
+"レルム設定で `電子メールによるログイン` を無効にすると、同じルールが証明書認証に適用されることに注意してください。つまり、ユーザーはe-"
+"mail属性を使用してログインすることはできません。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Other Features: Extended Certificate Validation"
+msgstr "その他の機能：拡張された証明書検証"
+
+#. type: Plain text
+msgid "Revocation status checking using CRL"
+msgstr "CRLを使用した失効ステータスの確認"
+
+#. type: Plain text
+msgid "Revocation status checking using CRL/Distribution Point"
+msgstr "CRL/Distributionポイントを使用した失効ステータスの確認"
+
+#. type: Plain text
+msgid "Revocation status checking using OCSP/Responder URI"
+msgstr "OCSP/Responder URIを使用した失効ステータスの確認"
+
+#. type: Plain text
+msgid "Certificate KeyUsage validation"
+msgstr "証明書のKeyUsage検証"
+
+#. type: Plain text
+msgid "Certificate ExtendedKeyUsage validation"
+msgstr "証明書のExtendedKeyUsage検証"
+
+#. type: Title ====
+#, no-wrap
+msgid "Enable X.509 Client Certificate User Authentication"
+msgstr "X.509クライアント証明書のユーザー認証を有効にする"
+
+#. type: Plain text
+msgid ""
+"The following sections describe how to configure Wildfly/Undertow and the "
+"Keycloak Server to enable X.509 client certificate authentication."
+msgstr ""
+"以下のセクションでは、X.509クライアント証明書認証を有効にするためにWildfly/UndertowとKeycloakサーバーを設定する方法について説明します。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Enable mutual SSL in WildFly"
+msgstr "WildFlyで相互SSLを有効にする"
+
+#. type: Plain text
+msgid ""
+"See link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide"
+"#AdminGuide-EnableSSL[Enable SSL] and "
+"link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide#AdminGuide-%7B%7B%3Cssl%2F%3E%7D%7D[SSL]"
+" for the instructions how to enable SSL in Wildfly."
+msgstr ""
+"WildflyでSSLを有効にする方法については、link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide"
+"#AdminGuide-EnableSSL[Enable "
+"SSL]とlink:https://docs.jboss.org/author/display/WFLY10/Admin+Guide#AdminGuide-%7B%7B%3Cssl%2F%3E%7D%7D[SSL]を参照してください。"
+
+#. type: Plain text
+msgid ""
+"Open $KEYCLOAK_HOME/standalone/configuration/standalone.xml and add a new "
+"realm:"
+msgstr ""
+"$KEYCLOAK_HOME/standalone/configuration/standalone.xmlを開き、新しいレルムを追加します。"
+
+#. type: Code block
 #, no-wrap
 msgid ""
-"#### Regular Expressions\n"
-"The certificate identity can be extracted from either Subject DN or Issuer DN using a regular expression as a filter. For example, the regular expression below will match the e-mail attribute:\n"
-"```\n"
-"emailAddress=(.*?)(?:,|$)\n"
-"```\n"
-"The regular expression filtering is applicable only if the `Identity Source` is set to either `Match SubjectDN using regular expression` or `Match IssuerDN using regular expression`. \n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:40
-#, no-wrap
-msgid "#### Mapping certificate identity to an existing user\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:42
-#, no-wrap
-msgid "The certificate identity mapping can be configured to map the extracted user identity to an existing user's username or e-mail or to a custom attribute which value matches the certificate identity. For example, setting the `Identity source` to _Subject's e-mail_ and `User mapping method` to _Username or email_ will have the X.509 client certificate authenticator use the e-mail attribute in the certificate's Subject DN  as a search criteria to look up an existing user by username or by e-mail.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:44
-#, no-wrap
-msgid "#### Other Features: Extended Certificate Validation\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:45
-#, no-wrap
-msgid "Revocation status checking using CRL\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:46
-#, no-wrap
-msgid "Revocation status checking using CRL/Distribution Point\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:47
-#, no-wrap
-msgid "Revocation status checking using OCSP/Responder URI\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:48
-#, no-wrap
-msgid "Certificate KeyUsage validation\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:49
-#, no-wrap
-msgid "Certificate ExtendedKeyUsage validation\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:51
-#, no-wrap
-msgid "### Enable X.509 Client Certificate User Authentication\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:53
-#, no-wrap
-msgid "The following sections describe how to configure Wildfly/Undertow and the Keycloak Server to enable X.509 client certificate authentication.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:56
-#, no-wrap
-msgid ""
-"#### Enable mutual SSL in WildFly\n"
-"See link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide#AdminGuide-EnableSSL[Enable SSL] and link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide#AdminGuide-%7B%7B%3Cssl%2F%3E%7D%7D[SSL] for the instructions how to enable SSL in Wildfly.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:76
-#, no-wrap
-msgid ""
-"Open $KEYCLOAK_HOME/standalone/configuration/standalone.xml and add a new realm:\n"
-"```\n"
 "<security-realms>\n"
 "    <security-realm name=\"ssl-realm\">\n"
 "        <server-identities>\n"
@@ -267,155 +281,144 @@ msgid ""
 "        </authentication>\n"
 "    </security-realm>\n"
 "</security-realms>\n"
-"```\n"
 msgstr ""
+"<security-realms>\n"
+"    <security-realm name=\"ssl-realm\">\n"
+"        <server-identities>\n"
+"            <ssl>\n"
+"                <keystore path=\"servercert.jks\" \n"
+"                          relative-to=\"jboss.server.config.dir\" \n"
+"                          keystore-password=\"servercert password\"/>\n"
+"            </ssl>\n"
+"        </server-identities>\n"
+"        <authentication>\n"
+"            <truststore path=\"truststore.jks\" \n"
+"                        relative-to=\"jboss.server.config.dir\" \n"
+"                        keystore-password=\"truststore password\"/>\n"
+"        </authentication>\n"
+"    </security-realm>\n"
+"</security-realms>\n"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:77
 #, no-wrap
 msgid "`ssl/keystore`"
-msgstr ""
+msgstr "`ssl/keystore`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:79
-#, no-wrap
-msgid "The `ssl` element contains the `keystore` element that defines how to load the server public key pair from a JKS keystore\n"
-msgstr ""
+msgid ""
+"The `ssl` element contains the `keystore` element that defines how to load "
+"the server public key pair from a JKS keystore"
+msgstr "`ssl` 要素には、JKSキーストアからサーバー公開鍵ペアをロードする方法を定義する `keystore` 要素が含まれています。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:80
 #, no-wrap
 msgid "`ssl/keystore/path`"
-msgstr ""
+msgstr "`ssl/keystore/path`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:82
-#, no-wrap
-msgid "A path to a JKS keystore \n"
-msgstr ""
+msgid "A path to a JKS keystore"
+msgstr "JKSキーストアへのパス。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:83
 #, no-wrap
 msgid "`ssl/keystore/relative-to`"
-msgstr ""
+msgstr "`ssl/keystore/relative-to`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:85
-#, no-wrap
-msgid "Defines a path the keystore path is relative to\n"
-msgstr ""
+msgid "Defines a path the keystore path is relative to"
+msgstr "キーストアパスが相対的なパスを定義します。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:86
 #, no-wrap
 msgid "`ssl/keystore/keystore-password`"
-msgstr ""
+msgstr "`ssl/keystore/keystore-password`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:88
-#, no-wrap
-msgid "The password to open the keystore\n"
-msgstr ""
+msgid "The password to open the keystore"
+msgstr "キーストアを開くためのパスワード。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:89
 #, no-wrap
 msgid "`ssl/keystore/alias` (optional)"
-msgstr ""
+msgstr "`ssl/keystore/alias` (optional)"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:91
-#, no-wrap
-msgid "The alias of the entry in the keystore. Set it if the keystore contains multiple entries\n"
-msgstr ""
+msgid ""
+"The alias of the entry in the keystore. Set it if the keystore contains "
+"multiple entries"
+msgstr "キーストア内のエントリーのエイリアス。キーストアに複数のエントリが含まれている場合に設定します。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:92
 #, no-wrap
 msgid "`ssl/keystore/key-password` (optional)"
-msgstr ""
+msgstr "`ssl/keystore/key-password` （オプション）"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:94
-#, no-wrap
-msgid "The private key password, if different from the keystore password.\n"
-msgstr ""
+msgid "The private key password, if different from the keystore password."
+msgstr "秘密鍵のパスワード（キーストアのパスワードと異なる場合）。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:95
 #, no-wrap
 msgid "`authentication/truststore`"
-msgstr ""
+msgstr "`authentication/truststore`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:97
 #, no-wrap
-msgid "Defines how to load a trust store to verify the certificate presented by the remote side of the inbound/outgoing connection. Typically, the truststore contains a collection of trusted CA certificates.   \n"
+msgid ""
+"Defines how to load a trust store to verify the certificate presented by the"
+" remote side of the inbound/outgoing connection. Typically, the truststore "
+"contains a collection of trusted CA certificates.   \n"
 msgstr ""
+"インバウンド/アウトゴーイング接続のリモート側が提示する証明書を検証するためにトラストストアをロードする方法を定義します。通常、トラストストアには、信頼できる認証局の証明書のコレクションが含まれています。\n"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:98
 #, no-wrap
 msgid "`authentication/truststore/path`"
-msgstr ""
+msgstr "`authentication/truststore/path`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:100
-#, no-wrap
-msgid "A path to a JKS keystore that contains the certificates of the trusted CAs (certificate authorities)\n"
-msgstr ""
+msgid ""
+"A path to a JKS keystore that contains the certificates of the trusted CAs "
+"(certificate authorities)"
+msgstr "信頼できるCA（認証局）の証明書を含むJKSキーストアへのパス。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:101
 #, no-wrap
 msgid "`authentication/truststore/relative-to`"
-msgstr ""
+msgstr "`authentication/truststore/relative-to`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:103
-#, no-wrap
-msgid "Defines a path the truststore path is relative to\n"
-msgstr ""
+msgid "Defines a path the truststore path is relative to"
+msgstr "トラストストア・パスが相対的なパスを定義します。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:104
 #, no-wrap
 msgid "`authentication/truststore/keystore-password`"
-msgstr ""
+msgstr "`authentication/truststore/keystore-password`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:106
+msgid "The password to open the truststore"
+msgstr "トラストストアを開くためのパスワード。"
+
+#. type: Labeled list
 #, no-wrap
-msgid "The password to open the truststore\n"
-msgstr ""
+msgid "Enable https listener"
+msgstr "httpsリスナーを有効にする"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:109
-#, no-wrap
-msgid "#### Enable https listener \n"
+msgid ""
+"See link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide"
+"#AdminGuide-HTTPSlistener[HTTPS Listener] for the instructions how to enable"
+" HTTPS in Wildfly."
 msgstr ""
+"WildflyでHTTPSを有効にする方法については、link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide"
+"#AdminGuide-HTTPSlistener[HTTPS Listener]を参照してください。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:111
-#, no-wrap
-msgid "See link:https://docs.jboss.org/author/display/WFLY10/Admin+Guide#AdminGuide-HTTPSlistener[HTTPS Listener] for the instructions how to enable HTTPS in Wildfly.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:113
-#, no-wrap
-msgid "Add the <https-listener> element as shown below:\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:115
-#, no-wrap
-msgid "[source,xml,subs=\"attributes+\"]\n"
-msgstr ""
+msgid "Add the <https-listener> element as shown below:"
+msgstr "<https-listener>要素を次のように追加します。"
 
 #. type: delimited block -
-#: source/server_admin/topics/authentication/x509.adoc:125
 #, no-wrap
 msgid ""
 "<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
@@ -428,379 +431,399 @@ msgid ""
 "    </server>\n"
 "</subsystem>\n"
 msgstr ""
+"<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
+"\t....\n"
+"    <server name=\"default-server\">\n"
+"\t    <https-listener name=\"default\"\n"
+"                        socket-binding=\"https\"\n"
+"                        security-realm=\"ssl-realm\"\n"
+"                        verify-client=\"REQUESTED\"/>\n"
+"    </server>\n"
+"</subsystem>\n"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:127
 #, no-wrap
 msgid "`https-listener/security-realm`"
-msgstr ""
+msgstr "`https-listener/security-realm`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:129
-#, no-wrap
-msgid "The value must match the name of the realm from the previous section\n"
-msgstr ""
+msgid "The value must match the name of the realm from the previous section"
+msgstr "値は、前のセクションのレルムの名前と一致する必要があります。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:130
 #, no-wrap
 msgid "`https-listener/verify-client`"
-msgstr ""
+msgstr "`https-listener/verify-client`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:132
+msgid ""
+"If set to `REQUESTED`, the server will optionally ask for a client "
+"certificate. Setting the attribute to `REQUIRED` will have the server to "
+"refuse inbound connections if no client certificate has been provided."
+msgstr ""
+"`REQUESTED` に設定した場合、サーバーは任意でクライアント証明書を要求します。 `REQUIRED` "
+"に属性を設定すると、クライアント証明書が提供されていない場合、サーバーはインバウンド接続を拒否します。"
+
+#. type: Title ====
 #, no-wrap
-msgid "If set to `REQUESTED`, the server will optionally ask for a client certificate. Setting the attribute to `REQUIRED` will have the server to refuse inbound connections if no client certificate has been provided.\n"
+msgid "Adding X.509 Client Certificate Authentication to a Browser Flow"
+msgstr "ブラウザーフローへのX.509クライアント証明書認証の追加"
+
+#. type: Plain text
+msgid "Select a realm, click on Authentication link, select the \"Browser\" flow"
+msgstr "レルムを選択し、Authenticationのリンクをクリックし、\"Browser\"フローを選択します。"
+
+#. type: Plain text
+msgid ""
+"Make a copy of the buit-in \"Browser\" flow. You may want to give the new "
+"flow a distinctive name, i.e. \"X.509 Browser\""
 msgstr ""
+"ビルトインの\"Browser\"フローのコピーを作成します。新しいフローに特有の名前、すなわち、\"X.509 "
+"Browser\"を付けることをお勧めします。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:134
-#, no-wrap
-msgid "### Adding X.509 Client Certificate Authentication to a Browser Flow\n"
+msgid ""
+"Using the drop down, select the copied flow, and click on \"Add Execution\""
+msgstr "ドロップダウンを使用して、コピーされたフローを選択し、\"Add execution\"をクリックします。"
+
+#. type: Plain text
+msgid "Select \"X509/Validate User Form\" using the drop down and click on \"Save\""
+msgstr "ドロップダウンを使用して\"X509/Validate User Form\"を選択し、\"Save\"をクリックします。"
+
+#. type: Plain text
+msgid "image:images/x509-execution.png[]"
+msgstr "image:images/x509-execution.png[]"
+
+#. type: Plain text
+msgid ""
+"Using the up/down arrows, change the order of the \"X509/Validate Username "
+"Form\" by moving it above the \"Browser Forms\" execution, and set the "
+"requirement to \"ALTERNATIVE\""
 msgstr ""
+"上（下）の矢印を使用して、\"X509/Validate Username Form\"の順序を\"Browser "
+"Forms\"の上に移動させて、requirementを\"ALTERNATIVE\"に設定します。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:136
-#, no-wrap
-msgid "Select a realm, click on Authentication link, select the \"Browser\" flow \n"
+msgid "image:images/x509-browser-flow.png[]"
+msgstr "image:images/x509-browser-flow.png[]"
+
+#. type: Plain text
+msgid ""
+"Select the \"Bindings\" tab, find the drop down for \"Browser Flow\". Select"
+" the newly created X509 browser flow from the drop down and click on "
+"\"Save\"."
 msgstr ""
+"\"Bindings\"タブを選択し、\"Browser Flow\"のドロップダウンを見つけます。ドロップダウンから新しく作成したX509 "
+"browser flowを選択し、\"Save\"をクリックします。"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:137
-#, no-wrap
-msgid "Make a copy of the buit-in \"Browser\" flow. You may want to give the new flow a distinctive name, i.e. \"X.509 Browser\"\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:138
-#, no-wrap
-msgid "Using the drop down, select the copied flow, and click on \"Add Execution\"\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:139
-#, no-wrap
-msgid "Select \"X509/Validate User Form\" using the drop down and click on \"Save\"  \n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:141
-#, fuzzy, no-wrap
-#| msgid "image:images/cli-gui.png[]"
-msgid "image:images/x509-execution.png[]\n"
-msgstr "image:images/cli-gui.png[]"
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:143
-#, no-wrap
-msgid "Using the up/down arrows, change the order of the \"X509/Validate Username Form\" by moving it above the \"Browser Forms\" execution, and set the requirement to \"ALTERNATIVE\"\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:145
-#, fuzzy, no-wrap
-#| msgid "image:images/cli-gui.png[]"
-msgid "image:images/x509-browser-flow.png[]\n"
-msgstr "image:images/cli-gui.png[]"
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:147
-#, no-wrap
-msgid "#### Configuring X.509 Client Certificate Authentication\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:149
-#, fuzzy, no-wrap
-#| msgid "image:images/cli-gui.png[]"
-msgid "image:images/x509-configuration.png[]\n"
-msgstr "image:images/cli-gui.png[]"
+msgid "image:images/x509-browser-flow-bindings.png[]"
+msgstr "image:images/x509-browser-flow-bindings.png[]"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:150
+#, no-wrap
+msgid "Configuring X.509 Client Certificate Authentication"
+msgstr "X.509クライアント証明書認証の設定"
+
+#. type: Plain text
+msgid "image:images/x509-configuration.png[]"
+msgstr "image:images/x509-configuration.png[]"
+
+#. type: Labeled list
 #, no-wrap
 msgid "`User Identity Source`"
-msgstr ""
+msgstr "`User Identity Source`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:152
-#, no-wrap
-msgid "Defines how to extract the user identity from a client certificate.\n"
-msgstr ""
+msgid "Defines how to extract the user identity from a client certificate."
+msgstr "クライアント証明書からユーザー・アイデンティティーを抽出する方法を定義します。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:153
 #, no-wrap
 msgid "`A regular expression` (optional)"
-msgstr ""
+msgstr "`A regular expression` （オプション）"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:155
-#, no-wrap
-msgid "Defines a regular expression to use as a filter to extract the certificate identity. The regular expression must contain a single group.\n"
-msgstr ""
+msgid ""
+"Defines a regular expression to use as a filter to extract the certificate "
+"identity. The regular expression must contain a single group."
+msgstr "証明書アイデンティティーを抽出するフィルターとして使用する正規表現を定義します。正規表現には1つのグループが含まれている必要があります。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:156
 #, no-wrap
 msgid "`User Mapping Method`"
-msgstr ""
+msgstr "`User Mapping Method`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:158
-#, no-wrap
-msgid "Defines how to match the certificate identity to an existing user. _Username or e-mail_ will search for an existing user by username or e-mail. _Custom Attribute Mapper_ will  search for an existing user with a custom attribute which value matches the certificate identity. The name of the custom attribute is configurable.\n"
+msgid ""
+"Defines how to match the certificate identity to an existing user. _Username"
+" or e-mail_ will search for an existing user by username or e-mail. _Custom "
+"Attribute Mapper_ will search for an existing user with a custom attribute "
+"which value matches the certificate identity. The name of the custom "
+"attribute is configurable."
 msgstr ""
+"既存のユーザーに証明書アイデンティティーを一致させる方法を定義します。 _Username or e-mail_ "
+"は、ユーザー名または電子メールから既存のユーザーを検索します。 _Custom Attribute Mapper_ "
+"は、証明書アイデンティティーと一致するカスタム属性を持つ既存のユーザーを検索します。カスタム属性の名前は設定可能です。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:159
 #, no-wrap
 msgid "`A name of user attribute` (optional)"
-msgstr ""
+msgstr "`A name of user attribute` （オプション）"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:161
-#, no-wrap
-msgid "A custom attribute which value will be matched against the certificate identity.\n"
-msgstr ""
+msgid ""
+"A custom attribute which value will be matched against the certificate "
+"identity."
+msgstr "値が証明書アイデンティティーと照合されるカスタム属性。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:162
 #, no-wrap
 msgid "`CRL Checking Enabled` (optional)"
-msgstr ""
+msgstr "`CRL Checking Enabled` （オプション）"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:164
-#, no-wrap
-msgid "Defines whether to check the revocation status of the certificate using Certificate Revocation List.\n"
-msgstr ""
+msgid ""
+"Defines whether to check the revocation status of the certificate using "
+"Certificate Revocation List."
+msgstr "証明書失効リストを使用して証明書の失効ステータスをチェックするかどうかを定義します。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:165
 #, no-wrap
-msgid "`Enable CRL Distribution Point to check certificate revocation status` (optional)"
+msgid ""
+"`Enable CRL Distribution Point to check certificate revocation status` "
+"(optional)"
 msgstr ""
+"`Enable CRL Distribution Point to check certificate revocation status` "
+"（オプション）"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:167
-#, no-wrap
-msgid "Defines whether to use CDP to check the certificate revocation status. Most PKI authorities include CDP in their certificates.\n"
-msgstr ""
+msgid ""
+"Defines whether to use CDP to check the certificate revocation status. Most "
+"PKI authorities include CDP in their certificates."
+msgstr "CDPを使用して証明書失効ステータスをチェックするかどうかを定義します。ほとんどのPKI機関には証明書にCDPが含まれています。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:168
 #, no-wrap
 msgid "`CRL file path` (optional)"
-msgstr ""
+msgstr "`CRL file path` （オプション）"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:170
-#, no-wrap
-msgid "Defines a path to a file that contains a CRL list. The value must be a path to a valid file if `CRL Checking Enabled` option is turned on.\n"
+msgid ""
+"Defines a path to a file that contains a CRL list. The value must be a path "
+"to a valid file if `CRL Checking Enabled` option is turned on."
 msgstr ""
+"CRLリストを含むファイルへのパスを定義します。 `CRL Checking Enabled` "
+"オプションがオンの場合、この値は有効なファイルへのパスである必要があります。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:171
 #, no-wrap
 msgid "`OCSP Checking Enabled`(optional)"
-msgstr ""
+msgstr "`OCSP Checking Enabled` （オプション）"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:173
-#, no-wrap
-msgid "Defines whether to check the certificate revocation status using Online Certificate Status Protocol. \n"
-msgstr ""
+msgid ""
+"Defines whether to check the certificate revocation status using Online "
+"Certificate Status Protocol."
+msgstr "オンライン証明書ステータス・プロトコルを使用して証明書失効ステータスをチェックするかどうかを定義します。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:174
 #, no-wrap
 msgid "`OCSP Responder URI` (optional)"
-msgstr ""
+msgstr "`OCSP Responder URI` （オプション）"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:176
-#, no-wrap
-msgid "Allows to override a value of the OCSP responder URI in the certificate.\n"
-msgstr ""
+msgid ""
+"Allows to override a value of the OCSP responder URI in the certificate."
+msgstr "証明書内のOCSPレスポンダーURIの値を上書きすることを許可します。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:177
 #, no-wrap
 msgid "`Validate Key Usage` (optional)"
-msgstr ""
+msgstr "`Validate Key Usage` （オプション）"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:179
-#, no-wrap
-msgid "Verifies whether the certificate's KeyUsage extension bits are set. For example, \"digitalSignature,KeyEncipherment\" will verify if  bits 0 and 2 in the KeyUsage extension are asserted. Leave the parameter empty to disable the Key Usage validaion. See link:https://tools.ietf.org/html/rfc5280#section-4.2.1.3[RFC5280, Section-4.2.1.3]\n"
+msgid ""
+"Verifies whether the certificate's KeyUsage extension bits are set. For "
+"example, \"digitalSignature,KeyEncipherment\" will verify if bits 0 and 2 in"
+" the KeyUsage extension are asserted. Leave the parameter empty to disable "
+"the Key Usage validaion. See "
+"link:https://tools.ietf.org/html/rfc5280#section-4.2.1.3[RFC5280, "
+"Section-4.2.1.3]. The server will raise an error only when flagged as "
+"critical by the issuing CA and there is a key usage extension mismatch."
 msgstr ""
+"証明書のKeyUsage拡張のビットが設定されているかどうかを確認します。たとえば、\"digitalSignature,KeyEncipherment\"は、KeyUsage拡張のビット0と2がアサートされているかどうかを検証します。Key"
+" "
+"Usageの有効性を無効にするには、パラメータを空のままにします。link:https://tools.ietf.org/html/rfc5280#section-4.2.1.3[RFC5280、セクション4.2.1.3]を参照してください。サーバーは、発行認証局によってクリティカルであるとフラグが立てられ、キー使用拡張の不一致がある場合にのみ、エラーを発生させます。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:180
 #, no-wrap
 msgid "`Validate Extended Key Usage` (optional)"
-msgstr ""
+msgstr "`Validate Extended Key Usage` （オプション）"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:182
-#, no-wrap
-msgid "Verifies one or more purposes as defined in the Extended Key Usage extension. See link:https://tools.ietf.org/html/rfc5280#section-4.2.1.12[RFC5280, Section-4.2.1.12]. Leave the parameter empty to disable the Extended Key Usage validation.\n"
+msgid ""
+"Verifies one or more purposes as defined in the Extended Key Usage "
+"extension. See "
+"link:https://tools.ietf.org/html/rfc5280#section-4.2.1.12[RFC5280, "
+"Section-4.2.1.12]. Leave the parameter empty to disable the Extended Key "
+"Usage validation. The server will raise an error only when flagged as "
+"critical by the issuing CA and there is a key usage extension mismatch."
 msgstr ""
+"Extended Key "
+"Usage拡張で定義されている1つ以上の目的を検証します。link:https://tools.ietf.org/html/rfc5280#section-4.2.1.12[RFC5280、セクション4.2.1.12]を参照してください。Extended"
+" Key "
+"Usageの検証を無効にするには、パラメータを空のままにします。サーバーは、発行認証局によってクリティカルであるとフラグが立てられ、キー使用拡張の不一致がある場合にのみ、エラーを発生させます。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:183
 #, no-wrap
 msgid "`Bypass identity confirmation`"
-msgstr ""
+msgstr "`Bypass identity confirmation`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:185
+msgid ""
+"If set, X.509 client certificate authentication will not prompt the user to "
+"confirm the certificate identity and will automatiocally sign in the user "
+"upon successful authentication."
+msgstr ""
+"設定されている場合、X.509クライアント証明書認証は、ユーザーに証明書アイデンティティーの確認を促さず、ユーザーの認証に成功すると自動的にサインインします。"
+
+#. type: Title ====
 #, no-wrap
-msgid "If set, X.509 client certificate authentication will not prompt the user to confirm the certificate identity and will automatiocally sign in the user upon successful authentication.\n"
-msgstr ""
+msgid "Adding X.509 Client Certificate Authentication to a Direct Grant Flow"
+msgstr "ダイレクト・グラント・フローへのX.509クライアント証明書認証の追加"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:187
+msgid ""
+"Using keycloak admin console, click on \"Authentication\" and select the "
+"\"Direct Grant\" flow,"
+msgstr "Keycloak管理コンソールを使用して、\"Authentication\"をクリックし、\"Direct Grant\"フローを選択します。"
+
+#. type: Plain text
+msgid ""
+"Make a copy of the build-in \"Direct Grant\" flow. You may want to give the "
+"new flow a distinctive name, i.e. \"X509 Direct Grant\","
+msgstr ""
+"ビルドインの \"Direct Grant\"フローのコピーを作成します。新しいフローに特有の名前、すなわち、\"X509 Direct "
+"Grant\"を付けることをお勧めします。"
+
+#. type: Plain text
+msgid "Delete \"Validate Username\" and \"Password\" authenticators,"
+msgstr "\"Validate Username\"と\"Password\"のオーセンティケーターを削除します。"
+
+#. type: Plain text
+msgid ""
+"Click on \"Execution\" and add \"X509/Validate Username\" and click on "
+"\"Save\" to add the execution step to the parent flow."
+msgstr ""
+"\"Add execution\"をクリックし、\"X509/Validate "
+"Username\"を追加し、\"Save\"をクリックして実行ステップを親フローに追加します。"
+
+#. type: Plain text
+msgid "image:images/x509-directgrant-execution.png[]"
+msgstr "image:images/x509-directgrant-execution.png[]"
+
+#. type: Plain text
+msgid "Change the `Requirement` to _REQUIRED_."
+msgstr "`Requirement` を _REQUIRED_ に変更してください。"
+
+#. type: Plain text
+msgid "image:images/x509-directgrant-flow.png[]"
+msgstr "image:images/x509-directgrant-flow.png[]"
+
+#. type: Plain text
+msgid ""
+"Set up the x509 authentication configuration by following the steps "
+"described earlier in the x.509 Browser Flow section."
+msgstr "前述のx.509ブラウザーフローのセクションの手順に従って、x509認証設定のセットアップを行います。"
+
+#. type: Plain text
+msgid ""
+"Select the \"Bindings\" tab, find the drop down for \"Direct Grant Flow\". "
+"Select the newly created X509 direct grant flow from the drop down and click"
+" on \"Save\"."
+msgstr ""
+"\"Bindings\"タブを選択し、\"Direct Grant Flow\"のドロップダウンを見つけます。ドロップダウンから新しく作成したX509 "
+"direct grant flowを選択し、\"Save\"をクリックします。"
+
+#. type: Plain text
+msgid "image:images/x509-directgrant-flow-bindings.png[]"
+msgstr "image:images/x509-directgrant-flow-bindings.png[]"
+
+#. type: Labeled list
 #, no-wrap
-msgid "### Adding X.509 Client Certificate Authentication to a Direct Grant Flow\n"
-msgstr ""
+msgid "Direct Grant authentication with X.509"
+msgstr "X.509によるダイレクト・グラント認証"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:189
-#, no-wrap
-msgid "Using keycloak admin console, click on \"Authentication\" and select the \"Direct Grant\" flow,\n"
-msgstr ""
+msgid ""
+"The following template can be used to request a token using the Resource "
+"Owner Password Credentials Grant:"
+msgstr "次のテンプレートを使用して、リソース・オーナー・パスワード・クレデンシャル・グラントを使用してトークンをリクエストできます。"
 
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:190
-#, no-wrap
-msgid "Make a copy of the build-in \"Direct Grant\" flow. You may want to give the new flow a distinctive name, i.e. \"X509 Direct Grant\",\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:191
-#, no-wrap
-msgid "Delete \"Validate Username\" and \"Password\" authenticators,\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:192
-#, no-wrap
-msgid "Click on \"Execution\" and add \"X509/Validate Username\" and click on \"Save\" to add the execution step to the parent flow.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:194
-#, fuzzy, no-wrap
-#| msgid "image:images/cli-gui.png[]"
-msgid "image:images/x509-directgrant-execution.png[]\n"
-msgstr "image:images/cli-gui.png[]"
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:196
-#, no-wrap
-msgid "Change the `Requirement` to _REQUIRED_.\n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:198
-#, fuzzy, no-wrap
-#| msgid "image:images/cli-gui.png[]"
-msgid "image:images/x509-directgrant-flow.png[]\n"
-msgstr "image:images/cli-gui.png[]"
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:200
-#, no-wrap
-msgid "Set up the x509 authentication configuration by following the steps described earlier in the x.509 Browser Flow section. \n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:202
-#, fuzzy, no-wrap
-#| msgid "Troubleshooting"
-msgid "### Troubleshooting\n"
-msgstr "トラブルシューティング"
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:205
+#. type: Code block
 #, no-wrap
 msgid ""
-"#### Direct Grant authentication with X.509 \n"
-"The following template can be used to request a token using the Resource Owner Password Credentials Grant: \n"
-msgstr ""
-
-#. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:213
-#, no-wrap
-msgid ""
-"```\n"
 "$ curl https://[host][:port]/auth/realms/master/protocol/openid-connect/token \\\n"
 "       --insecure \\\n"
 "       --data \"grant_type=password&scope=openid profile&username=&password=&client_id=CLIENT_ID&client_secret=CLIENT_SECRET\" \\\n"
 "       -E /path/to/client_cert.crt \\\n"
 "       --key /path/to/client_cert.key\n"
-"```\n"
 msgstr ""
+"$ curl https://[host][:port]/auth/realms/master/protocol/openid-connect/token \\\n"
+"       --insecure \\\n"
+"       --data \"grant_type=password&scope=openid profile&username=&password=&client_id=CLIENT_ID&client_secret=CLIENT_SECRET\" \\\n"
+"       -E /path/to/client_cert.crt \\\n"
+"       --key /path/to/client_cert.key\n"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:214
 #, no-wrap
 msgid "`[host][:port]`"
-msgstr ""
+msgstr "`[host][:port]`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:216
-#, no-wrap
-msgid "The host and the port number of a remote Keycloak server that has been configured to allow users authenticate with x.509 client certificates using the Direct Grant Flow.\n"
+msgid ""
+"The host and the port number of a remote Keycloak server that has been "
+"configured to allow users authenticate with x.509 client certificates using "
+"the Direct Grant Flow."
 msgstr ""
+"ダイレクト・グラント・フローを使用してx.509クライアント証明書でユーザーを認証できるように設定されているリモートのKeycloakサーバーのホストとポート番号。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:217
 #, no-wrap
 msgid "`CLIENT_ID`"
-msgstr ""
+msgstr "`CLIENT_ID`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:219
-#, fuzzy, no-wrap
-#| msgid "Add Client"
-msgid "A client id.\n"
-msgstr "クライアントの追加"
+msgid "A client id."
+msgstr "クライアントID。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:220
 #, no-wrap
 msgid "`CLIENT_SECRET`"
-msgstr ""
+msgstr "`CLIENT_SECRET`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:222
-#, no-wrap
-msgid "For confidential clients, a client secret; otherwise, leave it empty.\n"
-msgstr ""
+msgid "For confidential clients, a client secret; otherwise, leave it empty."
+msgstr "コンフィデンシャル・クライアントの場合は、クライアント・シークレット。それ以外の場合は、空のままにします。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:223
 #, no-wrap
 msgid "`client_cert.crt`"
-msgstr ""
+msgstr "`client_cert.crt`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:225
-#, no-wrap
-msgid "A public key certificate that will be used to verify the identity of the client in mutual SSL authentication. The certificate should be in PEM format.\n"
-msgstr ""
+msgid ""
+"A public key certificate that will be used to verify the identity of the "
+"client in mutual SSL authentication. The certificate should be in PEM "
+"format."
+msgstr "相互SSL認証でクライアントのアイデンティティーを確認するために使用される公開鍵証明書。証明書はPEM形式である必要があります。"
 
 #. type: Labeled list
-#: source/server_admin/topics/authentication/x509.adoc:226
 #, no-wrap
 msgid "`client_cert.key`"
-msgstr ""
+msgstr "`client_cert.key`"
 
 #. type: Plain text
-#: source/server_admin/topics/authentication/x509.adoc:228
-#, no-wrap
-msgid "A private key in the public key pair. Also expected in PEM format.\n"
-msgstr ""
+msgid "A private key in the public key pair. Also expected in PEM format."
+msgstr "公開鍵ペアの秘密鍵。PEM形式であることも期待されます。"

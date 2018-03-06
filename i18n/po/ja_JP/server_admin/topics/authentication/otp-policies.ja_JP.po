@@ -2,24 +2,24 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
 #: source/server_admin/topics/authentication/otp-policies.adoc:2
 #, no-wrap
 msgid "OTP Policies"
-msgstr ""
+msgstr "OTPポリシー"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:6
@@ -28,32 +28,36 @@ msgid ""
 "Google Authenticator One-Time Password generator.  Click on the "
 "`Authentication` left menu item and go to the `OTP Policy` tab."
 msgstr ""
+"{project_name}には、FreeOTPまたは、Googleオーセンティケーターのワンタイム・パスワード・ジェネレーター用に設定できる、いくつかのポリシーがあります。"
+" 左メニュー項目の `Authentication` をクリックし、`OTP Policy` タブを表示します。"
 
 #. type: Block title
 #: source/server_admin/topics/authentication/otp-policies.adoc:7
 #, no-wrap
 msgid "OTP Policy"
-msgstr ""
+msgstr "OTP Policy"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:9
 msgid "image:{project_images}/otp-policy.png[]"
-msgstr ""
+msgstr "image:{project_images}/otp-policy.png[]"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:13
 msgid ""
-"Any policies you set here will be used to validate one-time passwords.  When "
-"configuring OTP, FreeOTP and Google Authenticator can scan a QR code that is "
-"generated on the OTP set up page that {project_name} has.  The bar code is "
-"also generated from information configured on the `OTP Policy` tab."
+"Any policies you set here will be used to validate one-time passwords.  When"
+" configuring OTP, FreeOTP and Google Authenticator can scan a QR code that "
+"is generated on the OTP set up page that {project_name} has.  The bar code "
+"is also generated from information configured on the `OTP Policy` tab."
 msgstr ""
+"ここで設定したポリシーは、ワンタイム・パスワードの検証に使用されます。OTPを設定するとき、FreeOTPとGoogleオーセンティケーターは{project_name}が持つOTP設定ページで生成されたQRコードをスキャンすることができます。このバーコードは"
+" `OTP Policy` タブで設定された情報から生成されます。"
 
 #. type: Title ====
 #: source/server_admin/topics/authentication/otp-policies.adoc:14
 #, no-wrap
 msgid "TOTP vs. HOTP"
-msgstr ""
+msgstr "TOTP vs. HOTP"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:21
@@ -67,6 +71,8 @@ msgid ""
 "current time.  The server increments the counter with each successful OTP "
 "login.  So, valid OTPs only change after a successful login."
 msgstr ""
+"OTPジェネレーターには、 "
+"時間ベース（TOTP）およびカウンターベース（HOTP）の2つのアルゴリズムがあります。TOTPの場合、トークン・ジェネレーターは現在の時刻と共有パスワードをハッシュします。サーバーは、特定の時間枠内のすべてのハッシュをサブミットされた値と比較することによってOTPを検証します。したがって、TOTPは短い時間枠（通常は30秒）でのみ有効です。HOTPの場合、現在の時刻の代わりに共有カウンターが使用されます。サーバーは、成功したOTPログインごとにカウンターをインクリメントします。したがって、有効なOTPはログインが成功した後にのみ変更されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:29
@@ -79,84 +85,86 @@ msgid ""
 "little more blurry.  HOTP requires a database update every time the server "
 "wants to increment the counter.  This can be a performance drain on the "
 "authentication server when there is heavy load.  So, to provide a more "
-"efficient alternative, TOTP does not remember passwords used.  This bypasses "
-"the need to do any DB updates, but the downside is that TOTPs can be re-used "
-"in the valid time interval.  For future versions of {project_name} it is "
-"planned that you will be able to configure whether TOTP checks older OTPs in "
-"the time interval."
+"efficient alternative, TOTP does not remember passwords used.  This bypasses"
+" the need to do any DB updates, but the downside is that TOTPs can be re-"
+"used in the valid time interval.  For future versions of {project_name} it "
+"is planned that you will be able to configure whether TOTP checks older OTPs"
+" in the time interval."
 msgstr ""
+"TOTPは、短い時間枠でのみ有効であるため、HOTPより少し安全です。HOTPは、ユーザーが急いでOTPを入力する必要がないため、ユーザー・フレンドリーです。{project_name}がTOTPを実装した方法では、この区別はもう少しぼやけてしまいます。HOTPは、サーバーがカウンターをインクリメントするたびにデータベースを更新する必要があります。これは、負荷が大きいときに認証サーバー上でパフォーマンスが低下する可能性があります。より効率的な代替手段を提供するために、TOTPは使用されるパスワードを覚えていません。これにより、DBの更新は不要ですが、有効な時間間隔でTOTPを再利用できるという欠点があります。将来のバージョンの{project_name}では、TOTPが時間間隔内に古いOTPをチェックするかどうかを設定できるようになる予定です。"
 
 #. type: Title ====
 #: source/server_admin/topics/authentication/otp-policies.adoc:30
 #, no-wrap
 msgid "TOTP Configuration Options"
-msgstr ""
+msgstr "TOTP設定オプション"
 
 #. type: Labeled list
 #: source/server_admin/topics/authentication/otp-policies.adoc:32
 #: source/server_admin/topics/authentication/otp-policies.adoc:46
 #, no-wrap
 msgid "OTP Hash Algorithm"
-msgstr ""
+msgstr "OTP Hash Algorithm"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:34
 #: source/server_admin/topics/authentication/otp-policies.adoc:48
 msgid "Default is SHA1, more secure options are SHA256 and SHA512."
-msgstr ""
+msgstr "デフォルトはSHA1です。より安全なオプションはSHA256とSHA512です。"
 
 #. type: Labeled list
 #: source/server_admin/topics/authentication/otp-policies.adoc:34
 #: source/server_admin/topics/authentication/otp-policies.adoc:48
 #, no-wrap
 msgid "Number of Digits"
-msgstr ""
+msgstr "Number of Digits"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:36
 #: source/server_admin/topics/authentication/otp-policies.adoc:50
 msgid ""
-"How many characters is the OTP? Short means more user friendly as it is less "
-"the user has to type.  More means more security."
-msgstr ""
+"How many characters is the OTP? Short means more user friendly as it is less"
+" the user has to type.  More means more security."
+msgstr "OTPの文字数。短い場合、ユーザーが入力する文字数が少なくなるため、ユーザー・フレンドリーです。長い場合、セキュリティの強度が高まります。"
 
 #. type: Labeled list
 #: source/server_admin/topics/authentication/otp-policies.adoc:36
 #: source/server_admin/topics/authentication/otp-policies.adoc:50
 #, no-wrap
 msgid "Look Ahead Window"
-msgstr ""
+msgstr "Look Ahead Window"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:41
 msgid ""
 "How many intervals ahead should the server try and match the hash? This "
 "exists so just in case the clock of the TOTP generator or authentication "
-"server get out of sync.  The default value of 1 is usually good enough.  For "
-"example, if the time interval for a new token is every 30 seconds, the "
+"server get out of sync.  The default value of 1 is usually good enough.  For"
+" example, if the time interval for a new token is every 30 seconds, the "
 "default value of 1 means that it will only accept valid tokens in that 30 "
 "second window.  Each increment of this config value will increase the valid "
 "window by 30 seconds."
 msgstr ""
+"サーバーがハッシュの照合を先行して試行する間隔。この設定は、TOTPジェネレーターまたは認証サーバーの時計が同期しなくなった場合に備えて存在します。通常は1というデフォルト値で十分です。たとえば、新しいトークンの時間間隔が30秒ごとの場合、デフォルト値1は、その30秒の枠内の有効なトークンのみを受け入れることを意味します。この設定値を増やすごとに有効な枠が30秒ずつ増加します。"
 
 #. type: Labeled list
 #: source/server_admin/topics/authentication/otp-policies.adoc:41
 #, no-wrap
 msgid "OTP Token Period"
-msgstr ""
+msgstr "OTP Token Period"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:43
 msgid ""
 "Time interval in seconds a new TOTP will be generated by the token "
 "generator.  And, the time window the server is matching a hash."
-msgstr ""
+msgstr "新しいTOTPがトークン・ジェネレーターによって生成される時間間隔（秒単位）。 ハッシュが一致する時間枠。"
 
 #. type: Title ====
 #: source/server_admin/topics/authentication/otp-policies.adoc:44
 #, no-wrap
 msgid "HOTP Configuration Options"
-msgstr ""
+msgstr "HOTP設定オプション"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:54
@@ -167,14 +175,15 @@ msgid ""
 "the counter manually too many times by accident.  This value really should "
 "be increased to a value of 10 or so."
 msgstr ""
+"サーバーが、ハッシュの照合を先行して試行するカウンターの数。デフォルト値は1です。これは、ユーザーのカウンターがサーバーよりも先行することをカバーするために存在します。ユーザーが頻繁にカウンターを手動で何回も増やすことが多いために、サーバーのカウンターと差分が発生します。この値は、実際の利用においては10程度に増やす必要があります。"
 
 #. type: Labeled list
 #: source/server_admin/topics/authentication/otp-policies.adoc:54
 #, no-wrap
 msgid "Initial Counter"
-msgstr ""
+msgstr "Initial Counter"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/otp-policies.adoc:55
 msgid "What is the value of the initial counter?"
-msgstr ""
+msgstr "最初のカウンターの値。"

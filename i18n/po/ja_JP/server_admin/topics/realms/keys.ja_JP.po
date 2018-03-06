@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: katakura__pro <h.katakura@pro-japan.co.jp>, 2017\n"
+"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,9 +41,8 @@ msgid ""
 "makes it possible to regularly rotate the keys without any downtime or "
 "interruption to users."
 msgstr ""
-"{project_name}には1つのアクティブな鍵ペアがありますが、複数のパッシブな鍵も持つことができます。 "
-"アクティブな鍵ペアを使用して新しい署名を作成し、パッシブな鍵ペアを使用して以前の署名を検証することができます。 "
-"これにより、ダウンタイムやユーザーの中断を招くことなく、鍵を定期的にローテーションさせることができます。"
+"{project_name}には一度に1つのアクティブな鍵ペアを持ちますが、複数のパッシブな鍵も持つことができます。 "
+"アクティブな鍵ペアを使用して新しい署名を作成し、パッシブな鍵ペアを使用して以前の署名を検証することができます。これにより、ダウンタイムやユーザーの中断を招くことなく、鍵を定期的にローテーションさせることができます。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:12
@@ -61,9 +60,8 @@ msgid ""
 " there is only one active keypair. In the future as more signature "
 "algorithms are added there will be more active keypairs."
 msgstr ""
-"レルムのアクティブな鍵を表示するには、管理コンソールでレルムを選択します。 `Realm settings` から `Keys` をクリックします。 "
-"レルムの現在有効な鍵が表示されます。 {project_name}は現在、RSA署名のみをサポートしているので、アクティブな鍵ペアは1つのみです。 "
-"将来、署名アルゴリズムが追加された場合、アクティブな鍵ペアが増えることになります。"
+"レルムのアクティブな鍵を表示するには、管理コンソールでレルムを選択し、 `Realm settings` から `Keys` "
+"をクリックします。これにより、レルムの現在有効な鍵が表示されます。{project_name}は現在、RSA署名のみをサポートしているので、アクティブな鍵ペアは1つのみです。将来、署名アルゴリズムが追加された場合、アクティブな鍵ペアが増えることになります。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:21
@@ -74,9 +72,9 @@ msgid ""
 "is used for signatures is selected based on the first key provider sorted by priority that is able to provide an\n"
 " active keypair.\n"
 msgstr ""
-"使用可能なすべてのキーを表示するには、 `All` を選択します。 アクティブ、パッシブ、無効すべての鍵が表示されます。 鍵ペアは `アクティブ` "
-"状態を有することができるが、レルムの現在アクティブな鍵ペアとして選択されていません。 "
-"署名のために使用される鍵ペアは、優先度によってソートされた最初の鍵プロバイダーによって選択されます。\n"
+"使用可能なすべてのキーを表示するには、 `All` を選択します。これにより、アクティブ、パッシブ、無効のすべての鍵が表示されます。鍵ペアのステータスは"
+" `Active` "
+"ですが、レルムの現在のアクティブな鍵ペアとして選択されていません。署名のために使用されるアクティブな鍵ペアは、優先度によってソートされた最初の鍵プロバイダーに基づいて選択されます。\n"
 
 #. type: Title ====
 #: source/server_admin/topics/realms/keys.adoc:22
@@ -91,9 +89,7 @@ msgid ""
 "creating new keys with a higher priority than the existing active keys. Or "
 "create new keys with the same priority and making the previous keys passive."
 msgstr ""
-"鍵を定期的にローテーションさせることをお勧めします。 "
-"ローテーションを行うには、既存のアクティブな鍵よりも優先度の高い新しい鍵を作成することから始めます。 "
-"または、同じ優先順位で新しい鍵を作成し、以前の鍵をパッシブにします。"
+"鍵を定期的にローテーションさせることをお勧めします。ローテーションを行うには、既存のアクティブな鍵よりも優先度の高い新しい鍵を作成することから始めます。または、同じ優先度で新しい鍵を作成し、以前の鍵をパッシブにします。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:31
@@ -105,9 +101,9 @@ msgid ""
 "and tokens will use the new keys and after a while the old keys can be "
 "removed."
 msgstr ""
-"新しい鍵が利用可能になると、新しいトークンとCookieはすべて新しい鍵で署名されます。 ユーザーがアプリケーションを認証すると、SSO "
-"Cookieは新しい署名で更新されます。 OpenID Connectトークンをリフレッシュすると、新しいトークンが新しい鍵で署名されます。 "
-"すべてのトークンとCookieが新しい鍵を使用するようになるため、しばらく経つと古い鍵を削除することができます。"
+"新しい鍵が利用可能になると、新しいトークンとCookieはすべて新しい鍵で署名されます。ユーザーがアプリケーションを認証すると、SSO "
+"Cookieは新しい署名で更新されます。OpenID "
+"Connectトークンをリフレッシュすると、新しいトークンが新しい鍵で署名されます。つまり、すべてのトークンとCookieが新しい鍵を使用するようになるため、しばらく経つと古い鍵を削除することができます。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:35
@@ -118,9 +114,7 @@ msgid ""
 "active in the period between the new keys where added and the old keys "
 "removed will have to re-authenticate."
 msgstr ""
-"古い鍵を削除するのにどれくらいかかるのかは、セキュリティと、すべてのCookieとトークンが確実に更新される時間とのトレードオフです。 "
-"一般的には、数週間後に古い鍵を削除することが可能となるべきでしょう。 "
-"追加された新しい鍵と古い鍵が削除されるまでの間にアクティブでなかったユーザーは、再認証する必要があります。"
+"古い鍵を削除するのにどれくらいかかるのかは、セキュリティと、すべてのCookieとトークンが確実に更新される時間とのトレードオフです。一般的には、数週間後に古い鍵を削除することが可能となるべきでしょう。追加された新しい鍵と古い鍵が削除されるまでの間にアクティブでなかったユーザーは、再認証する必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:38
@@ -128,8 +122,7 @@ msgid ""
 "This also applies to offline tokens. To make sure they are updated the "
 "applications need to refresh the tokens before the old keys are removed."
 msgstr ""
-"これは、オフライントークンにも適用されます。 "
-"トークンが更新されていることを確認するには、古い鍵が削除される前にアプリケーションでトークンをリフレッシュする必要があります。"
+"これは、オフライン・トークンにも適用されます。トークンが更新されていることを確認するには、古い鍵が削除される前にアプリケーションでトークンをリフレッシュする必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:41
@@ -153,16 +146,16 @@ msgid ""
 "smaller or larger keys (default is 2048, supported values are 1024, 2048 and"
 " 4096)."
 msgstr ""
-"新しい鍵ペアを追加するには、 `Providers` を選択し、ドロップダウンから `rsa-generated` を選択します。 "
-"優先順位を変更して、新しい鍵ペアがアクティブな鍵ペアになるようにすることができます。  `keysize` "
-"を変更することもできます。デフォルトは2048、サポートされている値は1024、2048、および4096です。"
+"新しい鍵ペアを追加するには、 `Providers` を選択し、ドロップダウンから `rsa-generated` "
+"を選択します。優先順位を変更して、新しい鍵ペアがアクティブな鍵ペアになるようにすることができます。より小さい、またはより大きい鍵を必要とする場合、 "
+"`鍵のサイズ` を変更することもできます（デフォルトは2048、サポートされている値は1024、2048、および4096）。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:49
 msgid ""
 "Click `Save` to add the new keys. This will generated a new keypair "
 "including a self-signed certificate."
-msgstr "新しい鍵を追加するには `Save` をクリックしてください。 これにより、自己署名証明書を含む新しい鍵ペアが生成されます。"
+msgstr "新しい鍵を追加するには `Save` をクリックしてください。これにより、自己署名証明書を含む新しい鍵ペアが生成されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:52
@@ -171,7 +164,7 @@ msgid ""
 "generated, but if you want to change the keysize you can edit the provider "
 "and new keys will be generated."
 msgstr ""
-"プロバイダーの優先度を変更しても鍵が再生成されることはありませんが、鍵のサイズを変更する場合は、プロバイダーを編集して新しい鍵が生成します。"
+"プロバイダーの優先順位を変更しても鍵は再生成されませんが、鍵のサイズを変更したい場合は、プロバイダーを編集して新しい鍵を生成することができます。"
 
 #. type: Title ====
 #: source/server_admin/topics/realms/keys.adoc:53
@@ -186,8 +179,8 @@ msgid ""
 "choose `rsa` from the dropdown. You can change the priority to make sure the"
 " new keypair becomes the active keypair."
 msgstr ""
-"他で取得した鍵ペアと証明書を追加するには、 `Providers` を選択し、ドロップダウンから `rsa` を選択します。 "
-"優先順位を変更することで、新しい鍵ペアをアクティブな鍵ペアにすることができます。"
+"他で取得した鍵ペアと証明書を追加するには、 `Providers` を選択し、ドロップダウンから `rsa` "
+"を選択します。優先順位を変更することで、新しい鍵ペアをアクティブな鍵ペアにすることができます。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:60
@@ -196,8 +189,8 @@ msgid ""
 " file should be encoded in PEM format. You don't need to upload the public "
 "key as it is automatically extracted from the private key."
 msgstr ""
-"秘密鍵をアップロードするには `Private RSA Key` の `Select file` をクリックしてください。 "
-"ファイルはPEM形式でエンコードする必要があります。 公開鍵は、秘密鍵から自動的に抽出されるため、アップロードする必要はありません。"
+"秘密鍵をアップロードするには、 `Private RSA Key` の `Select file` "
+"をクリックしてください。ファイルはPEM形式でエンコードする必要があります。公開鍵は、秘密鍵から自動的に抽出されるため、アップロードする必要はありません。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:63
@@ -206,8 +199,8 @@ msgid ""
 "If you have a signed certificate for the keys click on `Select file` next to `X509 Certificate`. If you don't have one\n"
 " you can skip this and a self-signed certificate will be generated.\n"
 msgstr ""
-"署名された証明書を持っている場合、 `X509 Certificate` の横の `Select file` をクリックしてください。 "
-"署名された証明書を持っていない場合、スキップすることが可能で、自己署名証明書が生成されます。\n"
+"鍵の署名付き証明書を持っている場合、 `X509 Certificate` の横の `Select file` をクリックしてください。 "
+"持っていない場合は、これをスキップすることができ、自己署名証明書が生成されます。\n"
 
 #. type: Title ====
 #: source/server_admin/topics/realms/keys.adoc:64
@@ -223,7 +216,7 @@ msgid ""
 "change the priority to make sure the new keypair becomes the active keypair."
 msgstr ""
 "ホスト上のJavaキーストアファイルに格納されている鍵ペアと証明書を追加するには、 `Providers` を選択し、ドロップダウンから `java-"
-"keystore` を選択します。 優先順位を変更して、新しい鍵ペアをアクティブすることができます。"
+"keystore` を選択します。優先順位を変更して、新しい鍵ペアをアクティブすることができます。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:70
@@ -231,7 +224,7 @@ msgid ""
 "Fill in the values for `Keystore`, `Keystore Password`, `Key Alias` and `Key"
 " Password` and click on `Save`."
 msgstr ""
-"`Keystore` 、 `Keystore Password` 、 `Key Alias` 、 ` Key Password` の値を入力し、 "
+"`Keystore` 、 `Keystore Password` 、 `Key Alias` 、 `Key Password` の値を入力し、 "
 "`Save` をクリックします。"
 
 #. type: Title ====
@@ -249,9 +242,9 @@ msgid ""
 " `Save`. The keys will no longer be active and can only be used for "
 "verifying signatures."
 msgstr ""
-"鍵ペアを `Active` または `All` に配置し、 `Provider` 列のプロバイダーをクリックします。 "
-"鍵のプロバイダーの設定画面が表示されます。  `Active` をクリックして `OFF` にしてから、 `Save` をクリックします。 "
-"鍵はアクティブでなくなり、署名の検証にのみ使用できます。"
+"`Active` または `All` で鍵ペアを見つけて、 `Provider` "
+"列のプロバイダーをクリックします。これにより、鍵のプロバイダーの設定画面が表示されます。 `Active` のスイッチをクリックして `OFF` にし、"
+" `Save` をクリックします。鍵はアクティブでなくなり、署名の検証にのみ使用できます。"
 
 #. type: Title ====
 #: source/server_admin/topics/realms/keys.adoc:77
@@ -267,14 +260,14 @@ msgid ""
 "key provider for the keys. Click on `Enabled` to turn it `OFF`, then click "
 "on `Save`. The keys will no longer be enabled."
 msgstr ""
-"鍵ペアを `Active` または `All` に配置し、 `Provider` 列のプロバイダーをクリックします。 "
-"鍵のプロバイダーの設定画面が表示されます。 `Enabled` をクリックして `OFF` に変更し、 `Save` をクリックします。 "
-"鍵は無効化されます。"
+"`Active` または `All` で鍵ペアを見つけて、 `Provider` 列のプロバイダーをクリックします。これにより、 "
+"鍵のプロバイダーの設定画面が表示されます。 `Enabled` のスイッチをクリックして `OFF` にし、 `Save` "
+"をクリックします。鍵は無効化されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:84
 msgid "Alternatively, you can delete the provider from the `Providers` table."
-msgstr "また、プロバイダーを `Providers` テーブルから削除することもできます。"
+msgstr "また、 `Providers` テーブルからプロバイダーを削除することもできます。"
 
 #. type: Title ====
 #: source/server_admin/topics/realms/keys.adoc:85
@@ -291,8 +284,7 @@ msgid ""
 "generate new keypair as described above and then immediatelly remove the "
 "compromised keypair."
 msgstr ""
-"{project_name}では署名鍵がローカルに格納されており、クライアントアプリケーション、ユーザーまたは他のエンティティと共有されることはありません。"
-" しかし、レルムの署名鍵が漏洩したと思われる場合は、先に説明したように新しい鍵ペアを生成してから、即座に漏洩した鍵ペアを削除する必要があります。"
+"{project_name}では署名鍵がローカルに格納されており、クライアント・アプリケーション、ユーザーまたは他のエンティティと共有されることはありません。しかし、レルムの署名鍵が漏洩したと思われる場合は、先に説明したように新しい鍵ペアを生成してから、即座に漏洩した鍵ペアを削除する必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/realms/keys.adoc:95
@@ -307,8 +299,7 @@ msgid ""
 "confidential clients must have set `Admin URL`, so that {project_name} is "
 "able to send them the request about pushed not-before policy."
 msgstr ""
-"次に、クライアントアプリケーションが漏洩した鍵で署名されたトークンを受け入れないようにするためには、管理コンソールから実行可能なレルムのnot-"
-"beforeポリシーを更新して適用する必要があります。 "
-"新しいポリシーを適用すると、クライアントアプリケーションは、漏洩した鍵で署名された既存のトークンを受け入れないようなり、クライアントアプリケーションは{project_name}から新しい鍵ペアをダウンロードすることになります。"
-" こうして漏洩した鍵で署名されたトークンは有効でなくなります。 また、RESTとコンフィデンシャル・クライアントは `Admin URL` "
-"を設定していなければならないので、{project_name}は適用されたnot-beforeポリシーに関するリクエストを送ることができます。"
+"次に、クライアント・アプリケーションが漏洩した鍵で署名されたトークンを受け入れないようにするためには、管理コンソールから実行可能なレルムのnot-"
+"beforeポリシーを更新して適用する必要があります。新しいポリシーを適用すると、クライアント・アプリケーションは、漏洩した鍵で署名された既存のトークンを受け入れなくなり、クライアント・アプリケーションは{project_name}から新しい鍵ペアをダウンロードすることになります。したがって、漏洩した鍵で署名されたトークンは有効でなくなります。RESTとコンフィデンシャル・クライアントは"
+" `Admin URL` を設定する必要があるので、{project_name}は適用されたnot-"
+"beforeポリシーに関するリクエストを送ることができます。"

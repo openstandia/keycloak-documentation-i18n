@@ -2,36 +2,37 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
 #: source/server_admin/topics/user-federation/ldap.adoc:3
 #, no-wrap
 msgid "LDAP and Active Directory"
-msgstr ""
+msgstr "LDAPとActive Directory"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:9
 msgid ""
 "{project_name} comes with a built-in LDAP/AD provider.  It is possible to "
 "federate multiple different LDAP servers in the same {project_name} realm.  "
-"You can map LDAP user attributes into the {project_name} common user model.  "
-"By default, it maps username, email, first name, and last name, but you are "
-"free to configure additional <<_ldap_mappers,mappings>>.  The LDAP provider "
-"also supports password validation via LDAP/AD protocols and different "
-"storage, edit, and synchronization modes."
+"You can map LDAP user attributes into the {project_name} common user model."
+"  By default, it maps username, email, first name, and last name, but you "
+"are free to configure additional <<_ldap_mappers,mappings>>.  The LDAP "
+"provider also supports password validation via LDAP/AD protocols and "
+"different storage, edit, and synchronization modes."
 msgstr ""
+"{project_name}には、LDAP/ADプロバイダーが組み込まれています。これにより、同じ{project_name}レルムに複数の異なるLDAPサーバーを統合することが可能です。LDAPユーザー属性を{project_name}共通ユーザーモデルにマップできます。デフォルトでは、ユーザー名、電子メール、名、姓をマッピングしますが、追加の<<_ldap_mappers,マッピング>>を自由に設定することができます。LDAPプロバイダーは、異なるストレージとLDAP/ADプロトコルによるパスワード検証、編集および同期モードもサポートしています。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:15
@@ -41,20 +42,23 @@ msgid ""
 "`Add Provider` select box.  You should see _ldap_ within this list.  "
 "Selecting _ldap_ will bring you to the ldap configuration page."
 msgstr ""
+"フェデレーテッドLDAPストアを設定するには、管理コンソールを開きます。左メニューのオプションから `User Federation` "
+"をクリックしてください。このページに移動すると、 `Add Provider` 選択ボックスがあります。このリストの中に _ldap_ があるはずです。"
+" _ldap_ を選択すると、LDAP設定ページが表示されます。"
 
 #. type: Title ====
 #: source/server_admin/topics/user-federation/ldap.adoc:16
 #, no-wrap
 msgid "Storage Mode"
-msgstr ""
+msgstr "ストレージモード"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:26
 msgid ""
 "By default, {project_name} will import users from LDAP into the local "
 "{project_name} user database. This copy of the user is either synchronized "
-"on demand, or through a periodic background task.  The one exception to this "
-"is passwords.  Passwords are not imported and password validation is "
+"on demand, or through a periodic background task.  The one exception to this"
+" is passwords.  Passwords are not imported and password validation is "
 "delegated to the LDAP server.  The benefits to this approach is that all "
 "{project_name} features will work as any extra per-user data that is needed "
 "can be stored locally.  This approach also reduces load on the LDAP server "
@@ -64,6 +68,7 @@ msgid ""
 "queried, this will require a {project_name} database insert.  The import "
 "will also have to be synchronized with your LDAP server as needed."
 msgstr ""
+"デフォルトでは、{project_name}はLDAPからローカル{project_name}ユーザー・データベースにユーザーをインポートします。このユーザーのコピーは、オンデマンドで同期されるか、または定期的なバックグラウンド・タスクによって同期されます。1つの例外はパスワードです。パスワードはインポートされず、パスワードの検証はLDAPサーバーに委任されます。このアプローチの利点は、必要とされる追加のユーザーごとのデータをローカルに保存できるため、すべての{project_name}機能が動作することです。この方法はまた、LDAPサーバーの負荷を軽減します。非キャッシュ・ユーザーは、2回目のアクセス時に{project_name}データベースからロードされます。LDAPサーバーが持つ唯一の負荷はパスワードの検証です。このアプローチの欠点は、ユーザーが最初に問い合わせされるときに、{project_name}データベースの挿入が必要になることです。インポートも、必要に応じてLDAPサーバーと同期する必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:32
@@ -72,10 +77,11 @@ msgid ""
 "user database.  In this case, the common user model that the {project_name} "
 "runtime uses is backed only by the LDAP server.  This means that if LDAP "
 "doesn't support a piece of data that a {project_name} feature needs that "
-"feature will not work.  The benefit to this approach is that you do not have "
-"the overhead of importing and synchronizing a copy of the LDAP user into the "
-"{project_name} user database."
+"feature will not work.  The benefit to this approach is that you do not have"
+" the overhead of importing and synchronizing a copy of the LDAP user into "
+"the {project_name} user database."
 msgstr ""
+"また、ユーザーを{project_name}ユーザー・データベースにインポートしないように選択することもできます。この場合、{project_name}ランタイムが使用する共通ユーザーモデルは、LDAPサーバーによってのみバックアップされます。つまり、LDAPが{project_name}機能に必要なデータをサポートしていない場合、その機能は動作しません。この方法の利点は、LDAPユーザーのコピーを{project_name}ユーザー・データベースにインポートして同期するオーバーヘッドがないことです。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:34
@@ -83,28 +89,32 @@ msgid ""
 "This storage mode is controled by the `Import Enabled` switch.  Set to `On` "
 "to import users."
 msgstr ""
+"このストレージモードは `Import Enabled` スイッチによって制御されます。ユーザーをインポートするには `On` に設定します。"
 
 #. type: Title ====
 #: source/server_admin/topics/user-federation/ldap.adoc:35
 #, no-wrap
 msgid "Edit Mode"
-msgstr ""
+msgstr "編集モード"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:40
 msgid ""
 "Users, through the <<_account-service, User Account Service>>, and admins "
 "through the Admin Console have the ability to modify user metadata.  "
-"Depending on your setup you may or may not have LDAP update privileges.  The "
-"`Edit Mode` configuration option defines the edit policy you have with your "
-"LDAP store."
+"Depending on your setup you may or may not have LDAP update privileges.  The"
+" `Edit Mode` configuration option defines the edit policy you have with your"
+" LDAP store."
 msgstr ""
+"ユーザーは<<_account-service, "
+"ユーザー・アカウント・サービス>>を介して、管理者は管理コンソールを介して、ユーザーのメタデータを変更できます。設定に応じて、LDAPの更新権限がある場合とない場合があります。"
+" `Edit Mode` 設定オプションは、LDAPストアの編集ポリシーを定義します。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:41
 #, no-wrap
 msgid "READONLY"
-msgstr ""
+msgstr "READONLY"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:45
@@ -113,12 +123,13 @@ msgid ""
 "unchangeable.  {project_name} will show an error anytime anybody tries to "
 "update these fields.  Also, password updates will not be supported."
 msgstr ""
+"ユーザー名、電子メール、姓、名、およびその他のマップされた属性は変更できません。いつでも誰でも、これらのフィールドを更新しようとすると、{project_name}はエラーを表示します。また、パスワードの更新はサポートされません。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:46
 #, no-wrap
 msgid "WRITABLE"
-msgstr ""
+msgstr "WRITABLE"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:48
@@ -126,60 +137,61 @@ msgid ""
 "Username, email, first name, last name, and other mapped attributes and "
 "passwords can all be updated and will be synchronized automatically with "
 "your LDAP store."
-msgstr ""
+msgstr "ユーザー名、電子メール、姓、名、およびその他のマップされた属性とパスワードはすべて更新でき、LDAPストアと自動的に同期されます。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:49
 #, no-wrap
 msgid "UNSYNCED"
-msgstr ""
+msgstr "UNSYNCED"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:53
 msgid ""
-"Any changes to username, email, first name, last name, and passwords will be "
-"stored in {project_name} local storage.  It is up to you to figure out how "
+"Any changes to username, email, first name, last name, and passwords will be"
+" stored in {project_name} local storage.  It is up to you to figure out how "
 "to synchronize back to LDAP. This allows {project_name} deployments to "
 "support updates of user metadata on a read-only LDAP server.  This option "
 "only applies when you are importing users from LDAP into the local "
 "{project_name} user database."
 msgstr ""
+"ユーザー名、メールアドレス、姓、パスワードの変更は{project_name}ローカル・ストレージに保存されます。LDAPに同期する方法は、あなた次第です。これにより、{project_name}デプロイメントは、読み取り専用LDAPサーバー上のユーザー・メタデータの更新をサポートできます。このオプションは、LDAPからローカル{project_name}ユーザー・データベースにユーザーをインポートする場合にのみ適用されます。"
 
 #. type: Title ====
 #: source/server_admin/topics/user-federation/ldap.adoc:54
 #, no-wrap
 msgid "Other config options"
-msgstr ""
+msgstr "その他の設定オプション"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:56
 #, no-wrap
 msgid "Console Display Name"
-msgstr ""
+msgstr "Console Display Name"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:58
 msgid "Name used when this provider is referenced in the admin console"
-msgstr ""
+msgstr "このプロバイダーが管理コンソールで参照されるときに使用される名前。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:59
 #, no-wrap
 msgid "Priority"
-msgstr ""
+msgstr "Priority"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:61
 msgid ""
 "The priority of this provider when looking up users or for adding "
 "registrations."
-msgstr ""
+msgstr "ユーザーを検索したり、登録を追加したりするときのこのプロバイダーの優先順位。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:62
 #, no-wrap
 msgid "Sync Registrations"
-msgstr ""
+msgstr "Sync Registrations"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:65
@@ -188,12 +200,13 @@ msgid ""
 "users created by {project_name} in the admin console or the registration "
 "page to be added to LDAP."
 msgstr ""
+"LDAPは新規ユーザーの追加をサポートするかどうか。管理コンソールの{project_name}によって作成された新しいユーザーまたは登録ページをLDAPに追加する場合は、このスイッチをクリックします。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:66
 #, no-wrap
 msgid "Allow Kerberos authentication"
-msgstr ""
+msgstr "Allow Kerberos authentication"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:69
@@ -201,25 +214,26 @@ msgid ""
 "Enable Kerberos/SPNEGO authentication in realm with users data provisioned "
 "from LDAP.  More info in <<_kerberos,Kerberos section>>."
 msgstr ""
+"LDAPからプロビジョニングされたユーザーデータでの、レルム内のKerberos/SPNEGO認証を有効にします。詳細は<<_kerberos,Kerberosのセクション>>にあります。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:70
 #, no-wrap
 msgid "Other options"
-msgstr ""
+msgstr "その他のオプション"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:73
 msgid ""
 "The rest of the configuration options should be self explanatory.  You can "
 "mouseover the tooltips in Admin Console to see some more details about them."
-msgstr ""
+msgstr "残りの設定オプションは自明のはずです。 管理コンソールでツールチップをマウスオーバーすると、それらの詳細が表示されます。"
 
 #. type: Title ====
 #: source/server_admin/topics/user-federation/ldap.adoc:74
 #, no-wrap
 msgid "Connect to LDAP over SSL"
-msgstr ""
+msgstr "SSL経由でLDAPに接続する"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:79
@@ -230,34 +244,43 @@ msgid ""
 "configure a truststore on the {project_name} server side, otherwise "
 "{project_name} can't trust the SSL connection to LDAP."
 msgstr ""
+"LDAPストアへのセキュリティで保護された接続URL（たとえば `ldaps://myhost.com:636` "
+"）を設定すると、{project_name}はLDAPサーバーとの通信にSSLを使用します。重要なことは、{project_name}サーバー側でトラストストアを適切に構成することです。そうしないと{project_name}はLDAPへのSSL接続を信頼できません。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:83
 msgid ""
 "The global truststore for the {project_name} can be configured with the "
-"Truststore SPI.  Please check out the link:{installguide_link}"
-"[{installguide_name}] for more detail.  If you don't configure the "
-"truststore SPI, the truststore will fallback to the default mechanism "
-"provided by Java (either the file provided by system property `javax.net.ssl."
-"trustStore` or the cacerts file from the JDK if the system property is not "
-"set)."
+"Truststore SPI.  Please check out the "
+"link:{installguide_link}[{installguide_name}] for more detail.  If you don't"
+" configure the truststore SPI, the truststore will fallback to the default "
+"mechanism provided by Java (either the file provided by system property "
+"`javax.net.ssl.trustStore` or the cacerts file from the JDK if the system "
+"property is not set)."
 msgstr ""
+"{project_name}のグローバル・トラストストアは、トラストストアSPIで設定できます。詳細については、{installguide_link} "
+"[{installguide_name}]のリンクをご覧ください。トラストストアSPIを設定しないと、トラストストアは、Javaによって提供されるデフォルトのメカニズム（システム・プロパティー"
+" `javax.net.ssl.trustStore` "
+"によって提供されるファイルか、システム・プロパティーが設定されていなければJDKのcacertsファイル）にフォールバックします。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:87
 msgid ""
 "There is a configuration property `Use Truststore SPI` in the LDAP "
 "federation provider configuration, where you can choose whether the "
-"Truststore SPI is used.  By default, the value is `Only for ldaps`, which is "
-"fine for most deployments.  The Truststore SPI will only be used if the "
+"Truststore SPI is used.  By default, the value is `Only for ldaps`, which is"
+" fine for most deployments.  The Truststore SPI will only be used if the "
 "connection to LDAP starts with `ldaps`."
 msgstr ""
+"LDAPフェデレーション・プロバイダーの設定には、設定プロパティー `Use Truststore SPI` "
+"があり、トラストストアSPIを使用するかどうかを選択できます。デフォルト値は `Only for ldaps` "
+"です。ほとんどのデプロイメントで問題ありません。トラストストアSPIは、LDAPへの接続が `ldaps` で始まる場合にのみ使用されます。"
 
 #. type: Title ====
 #: source/server_admin/topics/user-federation/ldap.adoc:88
 #, no-wrap
 msgid "Sync of LDAP users to {project_name}"
-msgstr ""
+msgstr "LDAPユーザーと{project_name}の同期"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:95
@@ -265,27 +288,32 @@ msgid ""
 "If you have import enabled, the LDAP Provider will automatically take care "
 "of synchronization (import) of needed LDAP users into the {project_name} "
 "local database.  As users log in, the LDAP provider will import the LDAP "
-"user into the {project_name} database and then authenticate against the LDAP "
-"password. This is the only time users will be imported.  If you go to the "
+"user into the {project_name} database and then authenticate against the LDAP"
+" password. This is the only time users will be imported.  If you go to the "
 "`Users` left menu item in the Admin Console and click the `View all users` "
 "button, you will only see those LDAP users that have been authenticated at "
 "least once by {project_name}.  It is implemented this way so that admins "
 "don't accidentally try to import a huge LDAP DB of users."
 msgstr ""
+"インポートが有効になっている場合、LDAPプロバイダーは必要なLDAPユーザーの同期（インポート）を{project_name}ローカル・データベースに自動的に行います。ユーザーがログインすると、LDAPプロバイダーはLDAPユーザーを{project_name}データベースにインポートし、LDAPパスワードに対して認証します。これは、ユーザーがインポートされる唯一のタイミングです。管理コンソールの左側の"
+" `Users` メニュー項目に移動し、 `View all users` "
+"ボタンをクリックすると、{project_name}によって少なくとも1回は認証されたLDAPユーザーのみが表示されます。管理者が誤って巨大なLDAPユーザーDBをインポートしようとしないように、この方法で実装されています。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:98
 msgid ""
-"If you want to sync all LDAP users into the {project_name} database, you may "
-"configure and enable the `Sync Settings` of the LDAP provider you "
+"If you want to sync all LDAP users into the {project_name} database, you may"
+" configure and enable the `Sync Settings` of the LDAP provider you "
 "configured.  There are 2 types of synchronization:"
 msgstr ""
+"すべてのLDAPユーザーを{project_name}データベースに同期させたい場合は、設定したLDAPプロバイダーの `Sync Settings` "
+"を設定して有効にすることができます。同期には2種類あります。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:99
 #, no-wrap
 msgid "Periodic Full sync"
-msgstr ""
+msgstr "定期的な完全同期"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:103
@@ -295,34 +323,39 @@ msgid ""
 "directly will be updated in {project_name} DB (For example if user `Mary "
 "Kelly` was changed in LDAP to `Mary Smith`)."
 msgstr ""
+"これにより、すべてのLDAPユーザーが{project_name} "
+"DBに同期されます。{project_name}に既に存在し、LDAPで直接変更されたLDAPユーザーは、{project_name} "
+"DBで更新されます（たとえば、ユーザー `Mary Kelly` がLDAPで `Mary Smith` に変更された場合）。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:104
 #, no-wrap
 msgid "Periodic Changed users sync"
-msgstr ""
+msgstr "定期的な変更ユーザーの同期"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:106
 msgid ""
-"When syncing occurs, only those users that were created or updated after the "
-"last sync will be updated and/or imported."
-msgstr ""
+"When syncing occurs, only those users that were created or updated after the"
+" last sync will be updated and/or imported."
+msgstr "同期が行われると、最後の同期後に作成または更新されたユーザーのみがインポートまたは更新されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:109
 msgid ""
 "The best way to handle syncing is to click the `Synchronize all users` "
 "button when you first create the LDAP provider, then set up a periodic sync "
-"of changed users.  The configuration page for your LDAP Provider has several "
-"options to support you."
+"of changed users.  The configuration page for your LDAP Provider has several"
+" options to support you."
 msgstr ""
+"同期を処理する最善の方法は、LDAPプロバイダーを最初に作成するときに `Synchronize all users` "
+"ボタンをクリックした後、変更されたユーザの定期的な同期を設定することです。 LDAPプロバイダーの設定ページには、いくつかのオプションがあります。"
 
 #. type: Title ====
 #: source/server_admin/topics/user-federation/ldap.adoc:112
 #, no-wrap
 msgid "LDAP Mappers"
-msgstr ""
+msgstr "LDAPマッパー"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:118
@@ -332,47 +365,56 @@ msgid ""
 "are triggered when a user logs in via LDAP and needs to be imported, during "
 "{project_name} initiated registration, or when a user is queried from the "
 "Admin Console.  When you create an LDAP Federation provider, {project_name} "
-"will automatically provide set of built-in `mappers` for this provider.  You "
-"are free to change this set and create a new mapper or update/delete "
+"will automatically provide set of built-in `mappers` for this provider.  You"
+" are free to change this set and create a new mapper or update/delete "
 "existing ones."
 msgstr ""
+"LDAPマッパーは `リスナー` "
+"であり、さまざまな時点でLDAPプロバイダーによってトリガーされ、LDAP統合の別の拡張ポイントを提供します。これらは、ユーザーがLDAP経由でログインしてインポートが要求されたとき、{project_name}の登録が開始されたとき、または、ユーザーが管理コンソールから問い合わせを受けたときにトリガーされます。LDAPフェデレーション・プロバイダーを作成すると、{project_name}は自動的にこのプロバイダー用の組込み"
+" `マッパー` セットを提供します。このセットを変更して新しいマッパーを作成したり、既存のマッパーを更新/削除することが自由にできます。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:119
 #, no-wrap
 msgid "User Attribute Mapper"
-msgstr ""
+msgstr "ユーザー属性マッパー"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:123
 msgid ""
-"This allows you to specify which LDAP attribute is mapped to which attribute "
-"of {project_name} user.  So, for example, you can configure that LDAP "
+"This allows you to specify which LDAP attribute is mapped to which attribute"
+" of {project_name} user.  So, for example, you can configure that LDAP "
 "attribute `mail` to the attribute `email` in the {project_name} database.  "
 "For this mapper implementation, there is always a one-to-one mapping (one "
 "LDAP attribute is mapped to one {project_name} attribute)"
 msgstr ""
+"これにより、{project_name}ユーザーの属性にマップされるLDAP属性を指定できます。たとえば、{project_name}データベースの属性"
+" `email` にLDAP属性 `mail` "
+"を設定することができます。このマッパー実装では、常に1対1のマッピングとなります（1つのLDAP属性が1つの{project_name}属性にマップされます）。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:124
 #, no-wrap
 msgid "FullName Mapper"
-msgstr ""
+msgstr "フルネーム・マッパー"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:127
 msgid ""
-"This allows you to specify that the full name of the user, which is saved in "
-"some LDAP attribute (usually `cn` ) will be mapped to `firstName` and "
+"This allows you to specify that the full name of the user, which is saved in"
+" some LDAP attribute (usually `cn` ) will be mapped to `firstName` and "
 "`lastname` attributes in the {project_name} database.  Having `cn` to "
 "contain full name of user is a common case for some LDAP deployments."
 msgstr ""
+"これにより、一部のLDAP属性（通常は `cn` ）に保存されているユーザーのフルネームが{project_name}データベースの "
+"`firstName` 属性と `lastname` 属性にマップされるように指定することができます。 `cn` "
+"にユーザーのフルネームを含めることは、いくつかのLDAPデプロイメントにおいて一般的なケースです。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:128
 #, no-wrap
 msgid "Role Mapper"
-msgstr ""
+msgstr "ロールマッパー"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:135
@@ -382,30 +424,34 @@ msgid ""
 "groups from a particular branch of LDAP tree) into roles corresponding to "
 "either realm roles or client roles of a specified client.  It's not a "
 "problem to configure more Role mappers for the same LDAP provider.  So for "
-"example you can specify that role mappings from groups under `ou=main,"
-"dc=example,dc=org` will be mapped to realm role mappings and role mappings "
-"from groups under `ou=finance,dc=example,dc=org` will be mapped to client "
-"role mappings of client `finance` ."
+"example you can specify that role mappings from groups under "
+"`ou=main,dc=example,dc=org` will be mapped to realm role mappings and role "
+"mappings from groups under `ou=finance,dc=example,dc=org` will be mapped to "
+"client role mappings of client `finance` ."
 msgstr ""
+"これにより、LDAPからのロールマッピングを{project_name}のロールマッピングに設定できます。1つのロールマッパーを使用して、LDAPロール（通常はLDAPツリーの特定のブランチからのグループ）を、レルムロールまたはクライアントロールのいずれかにマップできます。同じLDAPプロバイダーに対してさらにロールマッパーを設定することは問題ではありません。たとえば、"
+" `ou=main,dc=example,dc=org` のグループからのロールマッピングをレルムロール・マッピングにマップし、 "
+"`ou=finance,dc=example,dc=org` のグループからのロールマッピングをクライアント `finance` "
+"のクライアントロール・マッピングにマップするように指定できます。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:136
 #, no-wrap
 msgid "Hardcoded Role Mapper"
-msgstr ""
+msgstr "ハードコードされたロールマッパー"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:138
 msgid ""
 "This mapper will grant a specified {project_name} role to each "
 "{project_name} user linked with LDAP."
-msgstr ""
+msgstr "このマッパーは、LDAPにリンクされた各{project_name}ユーザーに特定の{project_name}ロールを付与します。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:139
 #, no-wrap
 msgid "Group Mapper"
-msgstr ""
+msgstr "グループマッパー"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:143
@@ -416,12 +462,13 @@ msgid ""
 "also propagate user-group mappings from LDAP into user-group mappings in "
 "{project_name}."
 msgstr ""
+"これにより、LDAPからのグループ・マッピングを{project_name}グループ・マッピングに設定できます。グループマッパーを使用すると、LDAPツリーの特定のブランチからのLDAPグループを{project_name}のグループにマップできます。また、LDAPからのユーザーグループ・マッピングを{project_name}のユーザーグループ・マッピングに伝播します。"
 
 #. type: Labeled list
 #: source/server_admin/topics/user-federation/ldap.adoc:144
 #, no-wrap
 msgid "MSAD User Account Mapper"
-msgstr ""
+msgstr "MSADユーザー・アカウント・マッパー"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:151
@@ -430,19 +477,26 @@ msgid ""
 "tightly integrate the MSAD user account state into the {project_name} "
 "account state (account enabled, password is expired etc).  It's using the "
 "`userAccountControl` and `pwdLastSet` LDAP attributes.  (both are specific "
-"to MSAD and are not LDAP standard).  For example if `pwdLastSet` is `0`, the "
-"{project_name} user is required to update their password and there will be "
+"to MSAD and are not LDAP standard).  For example if `pwdLastSet` is `0`, the"
+" {project_name} user is required to update their password and there will be "
 "an UPDATE_PASSWORD required action added to the user. If "
 "`userAccountControl` is `514` (disabled account) the {project_name} user is "
 "disabled as well."
 msgstr ""
+"このマッパーは、Microsoft Active Directory（MSAD）固有のものです。 "
+"MSADユーザー・アカウントの状態を{project_name}アカウントの状態（アカウントが有効、パスワードが期限切れなど）に緊密に統合できます。 "
+"`userAccountControl` と ` pwdLastSet` "
+"LDAP属性を使っています（どちらもMSAD固有のものであり、LDAP標準ではありません）。たとえば `pwdLastSet` が `0` "
+"の場合、{project_name}ユーザーはパスワードを更新する必要があり、UPDATE_PASSWORD必須アクションがユーザーに追加されます。 "
+"`userAccountControl` が `514` （無効なアカウント）の場合、{project_name}ユーザーも無効になります。"
 
 #. type: Plain text
 #: source/server_admin/topics/user-federation/ldap.adoc:154
 msgid ""
-"By default, there is set of User Attribute mappers that map basic "
-"{project_name} user attributes like username, first name, lastname, and "
-"email to corresponding LDAP attributes.  You are free to extend these and "
-"provide additional attribute mappings.  Admin console provides tooltips, "
-"which should help with configuring the corresponding mappers."
+"By default, there are User Attribute mappers that map basic {project_name} "
+"user attributes like username, firstname, lastname, and email to "
+"corresponding LDAP attributes.  You are free to extend these and provide "
+"additional attribute mappings.  Admin console provides tooltips, which "
+"should help with configuring the corresponding mappers."
 msgstr ""
+"デフォルトでは、ユーザー名、姓、名、電子メールなどの基本的な{project_name}ユーザー属性を対応するLDAP属性にマップする、ユーザー属性マッパーがあります。これらを拡張し、追加の属性マッピングを自由に与えることができます。管理コンソールにはツールチップが用意されており、対応するマッパーの設定に役立ちます。"

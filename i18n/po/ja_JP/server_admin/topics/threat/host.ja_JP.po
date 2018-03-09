@@ -1,0 +1,101 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Host"
+msgstr "ホスト"
+
+#. type: Plain text
+msgid ""
+"{project_name} uses the request URL for a number of things. For example, the"
+" URL sent in password reset emails."
+msgstr ""
+"{project_name}は、リクエストURLをさまざまな用途に使用します。たとえば、パスワード・リセット・メールで送信されるURLです。"
+
+#. type: Plain text
+msgid ""
+"By default, the request URL is based on the `Host` header and there is no "
+"check to make sure this URL is the valid and correct URL."
+msgstr ""
+"デフォルトでは、リクエストURLは `Host` ヘッダーに基づいており、このURLが有効で正しいURLであることを確認するチェックはありません。"
+
+#. type: Plain text
+msgid ""
+"If you are not using a load balancer or proxy in front of {project_name} "
+"that prevents invalid host headers, you must explicitly configure what URLs "
+"should be accepted."
+msgstr ""
+"無効なホストヘッダーを防ぐために、{project_name}の前にロードバランサーまたはプロキシを使用していない場合は、受け入れるURLを明示的に設定する必要があります。"
+
+#. type: Plain text
+msgid ""
+"The following example will only permit requests to `localhost.localdomain` "
+"or `localhost`:"
+msgstr "次の例では、 `localhost.localdomain` または `localhost` へのリクエストのみを許可します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
+"    <server name=\"default-server\" default-host=\"ignore\">\n"
+"        ...\n"
+"        <host name=\"default-host\" alias=\"localhost.localdomain, localhost\">\n"
+"            <location name=\"/\" handler=\"welcome-content\"/>\n"
+"            <http-invoker security-realm=\"ApplicationRealm\"/>\n"
+"        </host>\n"
+"    </server>\n"
+"</subsystem>\n"
+msgstr ""
+"<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
+"    <server name=\"default-server\" default-host=\"ignore\">\n"
+"        ...\n"
+"        <host name=\"default-host\" alias=\"localhost.localdomain, localhost\">\n"
+"            <location name=\"/\" handler=\"welcome-content\"/>\n"
+"            <http-invoker security-realm=\"ApplicationRealm\"/>\n"
+"        </host>\n"
+"    </server>\n"
+"</subsystem>\n"
+
+#. type: Plain text
+msgid ""
+"The changes that have been made from the default config is to add the "
+"attribute `default-host=\"ignore\"` and update the attribute `alias`. "
+"`default-host=\"ignore\"` prevents unknown hosts from being handled, while "
+"`alias` is used to list the accepted hosts."
+msgstr ""
+"デフォルトの設定から行われた変更は、属性 `default-host=\"ignore\"` の追加と、属性 `alias` の更新です。 "
+"`default-host=\"ignore\"` は不明なホストが処理されることを防ぎますが、 `alias` "
+"は受け入れられたホストの一覧化に使われます。"
+
+#. type: Plain text
+msgid "Here is the equivalent configuration using CLI commands:"
+msgstr "CLIコマンドを使用した同等の設定は以下になります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=undertow/server=default-server:write-attribute(name=default-host,value=ignore)\n"
+"/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=alias,value=[localhost.localdomain, localhost]\n"
+msgstr ""
+"/subsystem=undertow/server=default-server:write-attribute(name=default-host,value=ignore)\n"
+"/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=alias,value=[localhost.localdomain, localhost]\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ":reload\n"
+msgstr ":reload\n"

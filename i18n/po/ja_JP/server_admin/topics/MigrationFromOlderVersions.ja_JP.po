@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,9 +76,9 @@ msgid ""
 " the first thing to do as part of a migration is to copy those files to the "
 "new Keycloak server installation, replacing the default versions."
 msgstr ""
-"移行の一環として、古いバージョンの設定ファイル `standalone.xml` 、`standalone-ha.xml` 、 `domain.xml`"
-" "
-"を使うべきです。これらのファイルには、通常、環境に固有の設定が含まれています。したがって、移行の一環として最初に行うことは、デフォルトのバージョンを置き換えて、これらのファイルを新しいKeycloakサーバーにコピーすることです。"
+"移行の一環として、古いバージョンの設定ファイル `standalone.xml` 、 `standalone-ha.xml` 、 "
+"`domain.xml` "
+"を使うべきです。これらのファイルには、通常、環境に固有の設定が含まれています。したがって、移行の一環として最初に行うことは、これらのファイルを新しいKeycloakサーバーにコピーし、デフォルトのバージョンを置き換えることです。"
 
 #. type: Plain text
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:27
@@ -88,7 +88,7 @@ msgid ""
 "`domain/configuration`."
 msgstr ""
 "Keycloakバージョン2.1.0以前から移行する場合は、 `keycloak-server.json` を "
-"`standalone/configuration` および/または `domain/configuration` にコピーしてください。"
+"`standalone/configuration` および（または） `domain/configuration` にコピーしてください。"
 
 #. type: Plain text
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:31
@@ -99,7 +99,7 @@ msgid ""
 "`migrate-standalone-ha.cli`, `migrate-domain-standalone.cli` and `migrate-"
 "domain-clustered.cli`."
 msgstr ""
-"これらの設定ファイルには、Keycloakに関連する設定があり、アップグレードする必要があります。そのためには、1つ以上の適切なアップグレード・スクリプトを実行する必要があります。それらは"
+"これらの設定ファイルには、Keycloakに関連する設定があり、アップグレードする必要があります。そのためには、1つ以上の適切なアップグレード・スクリプトを実行する必要があります。それらは、"
 " `migrate-standalone.cli` 、 `migrate-standalone-ha.cli` 、 `migrate-domain-"
 "standalone.cli` 、 `migrate-domain-clustered.cli` です。"
 
@@ -131,8 +131,8 @@ msgid ""
 " change."
 msgstr ""
 "domain.xmlのアップグレードには、2つの移行スクリプト、 `migrate-domain-standalone.cli` と `migrate-"
-"domain-clustered.cli` があることに注意してください。 "
-"これらのスクリプトは、最初にKeycloakとともに配備されたdomain.xml内の別々のプロファイルを移行します。プロファイルの名前を変更した場合は、変更する必要のあるスクリプトの上部に変数があります。"
+"domain-clustered.cli` "
+"があることに注意してください。これらのスクリプトは、最初にKeycloakとともに配備されたdomain.xml内の別々のプロファイルを移行します。プロファイルの名前を変更している場合は、スクリプトの上部に変数がありますので、変更する必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:47
@@ -151,7 +151,7 @@ msgid ""
 "versions 1.8.1 forward.  If migrating an older version you will need to "
 "manually upgrade your config files to at least be 1.8.1 compliant."
 msgstr ""
-"注意すべき点の1つは、移行スクリプトがKeycloakのバージョン1.8.1でのみ機能することです。古いバージョンを移行する場合は、少なくとも1.8.1に準拠するように設定ファイルを手動でアップグレードする必要があります。"
+"注意すべき点の1つは、移行スクリプトがKeycloakのバージョン1.8.1以降でのみ機能することです。古いバージョンを移行する場合は、少なくとも1.8.1に準拠するように設定ファイルを手動でアップグレードする必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:54
@@ -190,7 +190,7 @@ msgid ""
 "another."
 msgstr ""
 "以前のバージョンから `standalone/configuration/keycloak-server.json` "
-"をコピーして、行った設定の変更が新しいインストールに追加されていることを確認してください。以下のバージョン固有のセクションには、あるバージョンから別のバージョンへのアップグレード時に行う必要がある、このファイルに対して行われた変更が一覧表示されます。"
+"をコピーして、行った設定の変更が新しいインストールに追加されていることを確認してください。下位のバージョン固有のセクションには、あるバージョンから別のバージョンへのアップグレード時に行う必要がある、このファイルに対して行われた変更が一覧表示されます。"
 
 #. type: Plain text
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:67
@@ -202,10 +202,10 @@ msgid ""
 "domain.xml for configuration. We may soon remove support for keycloak-"
 "server.json."
 msgstr ""
-"Keycloakはkeycloak-server.jsonの使用から遠ざかっています。このリリースでは、このファイルが "
+"Keycloakはkeycloak-server.jsonを使用しなくなる予定です。このリリースでは、このファイルが "
 "`standalone/configuration/keycloak-server.json` "
 "にある場合でもサーバーは動作しますが、設定のためにstandalone.xml、standalone-"
-"ha.xml、またはdomain.xmlを使用するように変換することを強くお勧めします。今後すぐに、keycloak-"
+"ha.xml、またはdomain.xmlを使用するように変換することを強くお勧めします。今後、すぐにkeycloak-"
 "server.jsonのサポートを削除するかもしれません。"
 
 #. type: Plain text
@@ -216,7 +216,7 @@ msgid ""
 "the server is not running."
 msgstr ""
 "keycloak-server.jsonを変換するには、 `migrate-json` というjboss-"
-"cli操作を使用します。サーバーが実行されていない間に、この操作を実行することをお勧めします。"
+"cli操作を使用します。サーバーが動作していない間に、この操作を実行することをお勧めします。"
 
 #. type: Plain text
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:74
@@ -229,7 +229,7 @@ msgid ""
 msgstr ""
 "`migrate-json` 操作は、古いバージョンのXML設定ファイルを使って移行することを前提としています。たとえば、keycloak-"
 "server.jsonを、keycloakサブシステムの下にすでに含まれている <spi> と <theme> "
-"タグを含むstandalone.xmlファイルに移行しないでください。 移行の前に、あなたのkeycloakサブシステムは以下のようになります。"
+"タグを含むstandalone.xmlファイルに移行しないでください。 移行の前のkeycloakサブシステムは以下のようになります。"
 
 #. type: Block title
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:75
@@ -261,20 +261,20 @@ msgstr ""
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:85
 #, no-wrap
 msgid "migrate-json in Standalone Mode"
-msgstr "スタンドアロン・モードでのmigrate-json"
+msgstr "スタンドアローン・モードでのmigrate-json"
 
 #. type: Plain text
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:89
 msgid ""
 "For standalone, you will issue the `migrate-json` operation in `embed` mode "
 "without the server running."
-msgstr "スタンドアロンの場合は、サーバーが動作していない状態で `embed` モードで `migrate-json` 操作を実行します。"
+msgstr "スタンドアローンの場合は、サーバーが動作していない状態で、 `embed` モードで `migrate-json` 操作を実行します。"
 
 #. type: Block title
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:90
 #, no-wrap
 msgid "Standalone keycloak-server.json migration"
-msgstr "スタンドアロンのkeycloak-server.jsonの移行"
+msgstr "スタンドアローンのkeycloak-server.jsonの移行"
 
 #. type: delimited block -
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:96
@@ -295,14 +295,14 @@ msgid ""
 " the `standalone/configuration` directory.  You also have the option of "
 "using the `file` argument as shown in the domain mode example below."
 msgstr ""
-"`migrate-json` 操作は `standalone/configuration` ディレクトリーのkeycloak-"
-"server.jsonファイルを探します。以下のドメイン・モードの例に示すように、 `file` 引数を使うこともできます。"
+"`migrate-json` 操作は、 `standalone/configuration` ディレクトリーのkeycloak-"
+"server.jsonファイルを探します。以下のドメインモードの例に示すように、 `file` 引数を使うこともできます。"
 
 #. type: Title ====
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:101
 #, no-wrap
 msgid "migrate-json in Domain Mode"
-msgstr "ドメイン・モードでのmigrate-json"
+msgstr "ドメインモードでのmigrate-json"
 
 #. type: Plain text
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:107
@@ -324,13 +324,13 @@ msgid ""
 "domain controller."
 msgstr ""
 "ドメインモードの移行では、ローカル・ディレクトリーからkeycloak-server.jsonをアップロードするために `file` "
-"パラメーターを使用する必要があります。以下の例は、localhostへの接続を示しています。ドメイン・コントローラーのアドレスを置き換える必要があります。"
+"パラメーターを使用する必要があります。以下の例は、localhostへの接続を示しており、ドメイン・コントローラーのアドレスを置き換える必要があります。"
 
 #. type: Block title
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:112
 #, no-wrap
 msgid "Domain mode keycloak-server.json migration"
-msgstr "ドメイン・モードのkeycloak-server.jsonの移行"
+msgstr "ドメインモードのkeycloak-server.jsonの移行"
 
 #. type: delimited block -
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:119
@@ -381,7 +381,7 @@ msgid ""
 "provider:"
 msgstr ""
 "データベース・スキーマの自動アップグレードを有効にするには、デフォルトの `connectionsJpa` プロバイダーの "
-"`migrationStrategy` プロパティ値を `update` に設定します。"
+"`migrationStrategy` プロパティー値を `update` に設定します。"
 
 #. type: Block title
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:131
@@ -475,7 +475,7 @@ msgid ""
 "`connectionsMongo` provider:"
 msgstr ""
 "Mongoにはスキーマはありませんが、新しいリリースに追加されているコレクションやインデックスのようなものが、まだあるかもしれません。これらのセットの自動作成を有効にするには、デフォルトの"
-" `connectionsMongo` プロバイダーの `migrationStrategy` プロパティ値を `update` に設定します。"
+" `connectionsMongo` プロバイダーの `migrationStrategy` プロパティー値を `update` に設定します。"
 
 #. type: delimited block -
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:177
@@ -529,7 +529,7 @@ msgid ""
 "server.  The version specific section below will mention if any of the SPI's"
 " have changed.  If they have you may have to update your code accordingly."
 msgstr ""
-"SPIプロバイダーを実装している場合は、それらを新しいサーバーにコピーする必要があります。以下のバージョン固有のセクションでは、SPIのいずれかが変更されたかどうかについて説明します。SPIがある場合は、それに応じてコードを更新する必要があるかもしれません。"
+"SPIプロバイダーを実装している場合は、それらを新しいサーバーにコピーする必要があります。下位のバージョン固有のセクションでは、SPIのいずれかが変更されたかどうかについて説明します。SPIの変更がある場合は、それに応じてコードを更新する必要があるかもしれません。"
 
 #. type: Title ===
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:196
@@ -544,7 +544,7 @@ msgid ""
 "  The version specific section below will mention if changes have been made "
 "to themes.  If there is you may have to update your themes accordingly."
 msgstr ""
-"カスタム・テーマを作成した場合は、それらを新しいサーバーにコピーする必要があります。以下のバージョン固有のセクションでは、テーマが変更されたかどうかについて説明します。もしあるなら、それに応じてあなたのテーマを更新しなければならないかもしれません。"
+"カスタムテーマを作成した場合は、それらを新しいサーバーにコピーする必要があります。下位のバージョン固有のセクションでは、テーマが変更されたかどうかについて説明します。テーマの変更がある場合は、それに応じてテーマを更新する必要があるかもしれません。"
 
 #. type: Title ===
 #: source/server_admin/topics/MigrationFromOlderVersions.adoc:202
@@ -561,4 +561,4 @@ msgid ""
 " specific section below will mention if any changes are required to "
 "applications."
 msgstr ""
-"アプリケーションをKeycloakサーバーに直接デプロイする場合は、それらを新しいサーバーにコピーする必要があります。Keycloakサーバーに直接配備されていないアプリケーションを含むアプリケーションの場合は、アダプターをアップグレードする必要があります。以下のバージョン固有のセクションでは、アプリケーションに変更が必要かどうかについて説明します。"
+"アプリケーションをKeycloakサーバーに直接デプロイする場合は、それらを新しいサーバーにコピーする必要があります。Keycloakサーバーに直接配備されていないアプリケーションを含むアプリケーションの場合は、アダプターをアップグレードする必要があります。下位のバージョン固有のセクションでは、アプリケーションに変更が必要かどうかについて説明します。"

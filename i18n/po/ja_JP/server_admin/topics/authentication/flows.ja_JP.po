@@ -35,7 +35,7 @@ msgstr ""
 "_認証フロー_ "
 "は、ログイン、登録、その他の{project_name}ワークフロー利用時に発生するすべての認証、画面、およびアクションのためのコンテナーです。管理コンソールの左メニュー項目"
 " `Authentication` から、 `Flows` "
-"タブを表示することで、システム内の定義されたすべてのフローと、各フローが必要とするアクションとチェックを見ることができます。このセクションでは、ブラウザのログイン・フローについて説明します。左側のドロップダウン・リストで"
+"タブを表示することで、システム内の定義されたすべてのフローと、各フローが必要とするアクションとチェックを見ることができます。このセクションでは、ブラウザーのログインフローについて説明します。左側のドロップダウン・リストで"
 " `browser` を選択すると、以下の画面が表示されます。"
 
 #. type: Block title
@@ -43,7 +43,7 @@ msgstr ""
 #: source/server_admin/topics/authentication/kerberos.adoc:88
 #, no-wrap
 msgid "Browser Flow"
-msgstr "ブラウザー・フロー"
+msgstr "ブラウザーフロー"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/flows.adoc:13
@@ -68,7 +68,7 @@ msgid ""
 "the action will execute.  Let's describe what each radio button means:"
 msgstr ""
 "`Auth Type` "
-"列は、実行される認証またはアクションの名前です。認証がインデントされている場合、これはサブ・フローにあり、親の動作に応じて実行される場合と実行されない場合があります。"
+"列は、実行される認証またはアクションの名前です。認証がインデントされている場合、これはサブフローにあり、親の動作に応じて実行される場合と実行されない場合があります。"
 " `Requirement` 列は、アクションが実行されるかどうかを定義するラジオボタンのセットです。各ラジオボタンの意味を説明します。"
 
 #. type: Labeled list
@@ -87,7 +87,7 @@ msgid ""
 "Form` to `Required`, users that don't have an OTP generator configured will "
 "be asked to do so."
 msgstr ""
-"この認証の実行は必ず成功しなければなりません。ユーザーにあるタイプの認証メカニズムが設定されておらず、その認証タイプに関連する必須アクションがある場合、必須アクションがそのアカウントにアタッチされます。例えば、"
+"この認証のエグゼキューションは正常に実行されなければなりません。ユーザーにそのタイプの認証メカニズムが設定されておらず、その認証タイプに関連する必須アクションがある場合、必須アクションがそのアカウントにアタッチされます。例えば、"
 " `OTP Form` を `Required` "
 "に切り替えると、OTPジェネレーターが設定されていないユーザーには、OTPジェネレーターの設定が要求されます。"
 
@@ -102,7 +102,7 @@ msgstr "Optional"
 msgid ""
 "If the user has the authentication type configured, it will be executed.  "
 "Otherwise, it will be ignored."
-msgstr "ユーザーに認証タイプが設定されている場合は、その認証タイプが実行されます。 それ以外の場合は無視されます。"
+msgstr "ユーザーに認証タイプが設定されている場合は、その認証タイプが実行されます。それ以外の場合は無視されます。"
 
 #. type: Labeled list
 #: source/server_admin/topics/authentication/flows.adoc:29
@@ -126,7 +126,7 @@ msgstr "Alternative"
 msgid ""
 "This means that at least one alternative authentication type must execute "
 "successfully at that level of the flow."
-msgstr "少なくとも1つの `alternative` 認証タイプが、そのフローのレベルで正常に実行されなければならないことを意味します。"
+msgstr "少なくとも1つの代替の認証タイプが、そのフローのレベルで正常に実行されなければならないことを意味します。"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/flows.adoc:35
@@ -146,15 +146,16 @@ msgid ""
 "successful login."
 msgstr ""
 "最初の認証タイプは `Cookie` "
-"です。ユーザーが最初に正常にログインすると、セッションCookieが設定されます。このCookieがすでに設定されている場合、この認証タイプは正常です。Cookieプロバイダーは成功を返し、このフローのレベルでの各実行は"
-" _alternative_ であるため、他の実行は実行されず、ログインに成功します。"
+"です。ユーザーが最初に正常にログインすると、セッションCookieが設定されます。このCookieがすでに設定されている場合、この認証タイプは正常です。Cookieプロバイダーは成功を返し、このフローのレベルでの各エグゼキューションは"
+" _alternative_ であるため、他のエグゼキューションは実行されず、ログインに成功します。"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/flows.adoc:40
 msgid ""
 "Next the flow looks at the Kerberos execution.  This authenticator is "
 "disabled by default and will be skipped."
-msgstr "フローの次の認証タイプは、Kerberos実行です。このオーセンティケーターはデフォルトで無効になっており、スキップされます。"
+msgstr ""
+"フローの次の認証タイプは、Kerberosエグゼキューションです。このオーセンティケーターはデフォルトで無効になっており、スキップされます。"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/flows.adoc:43
@@ -165,8 +166,8 @@ msgid ""
 " be executed.  The executions for this subflow are loaded and the same "
 "processing logic occurs"
 msgstr ""
-"次の実行はFormsと呼ばれるサブ・フローです。このサブ・フローは _alternative_ とマークされているので、 `Cookie` "
-"認証タイプが成功すると実行されません。このサブ・フローには、実行する必要のある追加の認証タイプが含まれています。サブ・フローの実行はロードされ、同じ処理ロジックが発生します。"
+"次のエグゼキューションはFormsと呼ばれるサブフローです。このサブフローは _alternative_ とマークされているので、 `Cookie` "
+"認証タイプが成功すると実行されません。このサブフローには、実行する必要のある追加の認証タイプが含まれています。サブフローのエグゼキューションはロードされ、同じ処理ロジックが発生します。"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/flows.adoc:45
@@ -176,8 +177,9 @@ msgid ""
 "marked as _required_ so the user must enter in a valid username and "
 "password."
 msgstr ""
-"Formsサブフローでの最初の実行は、Username Password Formです。この認証タイプは、ユーザー名とパスワードのページを表示します。 "
-"_required_ とされているため、ユーザーは有効なユーザー名とパスワードを入力する必要があります。"
+"Formsサブフローでの最初のエグゼキューションは、Username Password "
+"Formです。この認証タイプは、ユーザー名とパスワードのページを表示します。 _required_ "
+"とされているため、ユーザーは有効なユーザー名とパスワードを入力する必要があります。"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/flows.adoc:48
@@ -187,19 +189,19 @@ msgid ""
 "successful.  If the user doesn't have OTP set up, this authentication type "
 "is ignored."
 msgstr ""
-"次の実行はOTPフォームです。 これは _optional_ "
+"次のエグゼキューションはOTPフォームです。 これは _optional_ "
 "としてマークされています。ユーザーがOTPを設定している場合は、この認証タイプを実行して成功させる必要があります。ユーザーにOTPが設定されていない場合、この認証タイプは無視されます。"
 
 #. type: Title ===
 #: source/server_admin/topics/authentication/flows.adoc:50
 #, no-wrap
 msgid "Executions"
-msgstr "実行"
+msgstr "エグゼキューション"
 
 #. type: Plain text
 #: source/server_admin/topics/authentication/flows.adoc:53
 msgid "Executions can be used"
-msgstr "実行は利用可能です。"
+msgstr "以下のエグゼキューションが利用可能です。"
 
 #. type: Block title
 #: source/server_admin/topics/authentication/flows.adoc:54

@@ -18,17 +18,14 @@ msgstr ""
 #. type: Title ===
 #, no-wrap
 msgid "Migrating from an Earlier User Federation SPI"
-msgstr "以前の ユーザー・フェデレーションSPIからの移行"
+msgstr "以前のユーザー・フェデレーションSPIからの移行"
 
 #. type: Plain text
 #, no-wrap
 msgid ""
 "This chapter is only applicable if you have implemented a provider using the earlier (and now removed)\n"
 "       User Federation SPI.\n"
-msgstr ""
-"この章は、以前の （現在削除された） バージョンを使用してプロバイダー\n"
-" を実装した場合にのみ適用されます\n"
-" ユーザー・フェデレーションSPI。\n"
+msgstr "この章は、以前の（および今削除された）ユーザー・フェデレーションSPIを使用してプロバイダーを実装した場合にのみ適用されます。\n"
 
 #. type: Plain text
 msgid ""
@@ -39,15 +36,15 @@ msgid ""
 "However, if you have written a provider with this earlier SPI, this chapter "
 "discusses some strategies you can use to port it."
 msgstr ""
-"Keycloakバージョン2.4.0以前では、 ユーザー・フェデレーション SPIがありました。 Red Hat  シングルサインオン "
-"バージョン7.0は、サポートされていませんが、以前のSPIも利用可能でした。 この以前のUser Federation "
-"SPIは、Keycloakバージョン2.5.0およびRed Hat Single Sign-Onバージョン7.1から削除されました。 "
-"ただし、このSPIを使用してプロバイダーを作成した場合、この章では、SPIを移植するためのいくつかの方法について説明します。"
+"Keycloakバージョン2.4.0以前では、 ユーザー・フェデレーション SPIがありました。Red Hat Single Sign-"
+"Onバージョン7.0は、サポートされていませんが、以前のSPIも利用可能でした。 "
+"この以前のユーザー・フェデレーションSPIは、Keycloakバージョン2.5.0およびRed Hat Single Sign-"
+"Onバージョン7.1から削除されました。ただし、このSPIを使用してプロバイダーを作成した場合、この章では、SPIを移植するためのいくつかの方法について説明します。"
 
 #. type: Title ====
 #, no-wrap
 msgid "Import vs. Non-Import"
-msgstr "Import 対 Non-Import"
+msgstr "インポート vs. 非インポート"
 
 #. type: Plain text
 msgid ""
@@ -57,11 +54,11 @@ msgid ""
 "You can still port your earlier provider as-is, but you should consider "
 "whether a non-import strategy might be a better approach."
 msgstr ""
-"以前のユーザー・フェデレーションSPIでは、{project_name}のデータベース内でユーザーのローカルコピーを作成し、外部ストアからの情報をローカルコピーにインポートする必要がありました。しかし、これはもう要件ではなくなりました。以前のプロバイダーをそのままポートすることもできますが、非インポート戦略の方がより良いアプローチかもしれないと検討してみることをおすすめします。"
+"以前のユーザー・フェデレーションSPIでは、{project_name}のデータベース内でユーザーのローカルコピーを作成し、外部ストアからの情報をローカルコピーにインポートする必要がありました。しかし、これはもう要件ではなくなりました。以前のプロバイダーをそのまま移植することもできますが、非インポート戦略の方がより良いアプローチになるかを検討する必要があります。"
 
 #. type: Plain text
 msgid "Advantages of the import strategy:"
-msgstr "インポート方法の利点："
+msgstr "インポート方法の利点。"
 
 #. type: Plain text
 msgid ""
@@ -79,12 +76,12 @@ msgid ""
 "to use {project_name}. When all applications have been migrated, unlink the "
 "imported user, and retire the earlier legacy external store."
 msgstr ""
-"{project_name}に移行して公式ユーザー・ストアとし、従来の外部ストアを廃止する場合、アプリケーションを徐々に移行して{project_name}を使用することができます。すべてのアプリケーションが移行されると、インポートされたユーザーのリンクを解除し、従来のレガシー外部ストアを廃止します。"
+"{project_name}に移行して公式ユーザーストアとし、以前の外部ストアを廃止する場合、アプリケーションを徐々に移行して{project_name}を使用することができます。すべてのアプリケーションが移行されると、インポートされたユーザーのリンクを解除し、以前のレガシー外部ストアを廃止します。"
 
 #. type: Plain text
 msgid ""
 "There are some obvious disadvantages though to using an import strategy:"
-msgstr "インポート戦略の使用には、いずれにせよ、明らかな欠点がいくつかあります。"
+msgstr "インポート戦略の使用には明らかな欠点がいくつかあります。"
 
 #. type: Plain text
 msgid ""
@@ -94,7 +91,7 @@ msgid ""
 "storage approach will only store extra data as needed and might never be "
 "used depending on the capabilities of your external store."
 msgstr ""
-"初めてユーザーを検索するには、{project_name}データベースを何回も更新する必要があります。これは、負荷となり大きなパフォーマンスロスとなり、{project_name}データベースに多くの負担をかけることになります。ユーザー連携されたストレージ・アプローチでは、必要以上のデータを保持し、外部ストアの機能に応じて使用されるということがありません。"
+"初めてユーザーを検索するには、{project_name}データベースを複数回更新する必要があります。これは、負荷がかかった状態でパフォーマンスが大きく低下する可能性があり、{project_name}データベースに多くの負担をかけることになります。ユーザー・フェデレーション・ストレージ・アプローチでは、必要以上のデータを保持し、外部ストアの機能に応じて使用されるということがありません。"
 " "
 
 #. type: Plain text
@@ -104,7 +101,7 @@ msgid ""
 "that you can implement to support synchronization, but this can quickly "
 "become painful and messy."
 msgstr ""
-"インポートのアプローチでは、ローカルkeycloakストレージと外部ストレージを同期させておく必要があります。ユーザー・ストレージSPIには、実装させると同期をサポートできるようになる、インターフェイス機能がありますが、これはすぐにやっかいで面倒なものになります。"
+"インポートのアプローチでは、ローカルのkeycloakストレージと外部ストレージを同期させておく必要があります。ユーザー・ストレージSPIには、同期をサポートできるために実装できるケーパビリティー・インターフェイスがありますが、これはすぐにやっかいで面倒なものになります。"
 
 #. type: Title ====
 #, no-wrap
@@ -118,9 +115,10 @@ msgid ""
 "`UserStorageProvider` has instead broken up this interface into multiple "
 "capability interfaces that you implement as needed."
 msgstr ""
-"まずは、 `UserFederationProvider` "
-"は完成されたインターフィスだったことがわかります。このインターフェイスにはすべてのメソッドが実装されました。しかし、その代わりに、 "
-"`UserStorageProvider` は必要に応じて実装可能な複数のインターフェイスに分割されました。"
+"最初に気付くべきは、 `UserFederationProvider` "
+"が完成されたインターフェイスであったことです。このインターフェイスにはすべてのメソッドが実装されました。ただし、 "
+"`UserStorageProvider` "
+"では、代わりにこのインターフェイスを、必要に応じて実装可能な複数のケーパビリティー・インターフェイスに分割しています。"
 
 #. type: Plain text
 msgid ""
@@ -132,10 +130,10 @@ msgid ""
 "`userStorage()` method no longer exists."
 msgstr ""
 "`UserFederationProvider.getUserByUsername()` と `getUserByEmail()` "
-"は、新しいSPI内ではまったく同じものです。この両者の違いはインポートの仕方にあります。インポート戦略を引き続き使用している場合、ユーザーをローカルで作成するために"
-" `KeycloakSession.userStorage().addUser()` を呼び出すことはもうなくなりました。その代わり、 "
+"は、新しいSPIに完全に同等のものを持ちます。この両者の違いはインポート方法にあります。インポート戦略を引き続き使用している場合、ユーザーをローカルで作成するために"
+" `KeycloakSession.userStorage().addUser()` を呼び出す必要はありません。その代わりに、 "
 "`KeycloakSession.userLocalStorage().addUser()` を呼び出します。 `userStorage()` "
-"メソッドはもう存在しません。"
+"メソッドは存在しません。"
 
 #. type: Plain text
 msgid ""
@@ -148,16 +146,16 @@ msgid ""
 "storage. If the local user is cached, then the "
 "`ImportedUserValidation.validate()` method is not called at all."
 msgstr ""
-" `UserFederationProvider.validateAndProxy()` メソッドは、オプションのケーパビリティー・インタフェイス、 "
+"`UserFederationProvider.validateAndProxy()` メソッドは、オプションのケーパビリティー・インターフェイス、 "
 "`ImportedUserValidation` "
-"に移動されました。以前のプロバイダーをそのまま移植する場合は、このインターフェイスを実装します。また、以前のSPIでは、ローカル・ユーザーがキャッシュ内にあっても、ユーザーがアクセスされるたびにこのメソッドが呼び出されました。新しいSPIでは、このメソッドはローカルユーザーがローカル・ストレージからロードされたときにのみ呼び出されます。ローカル・ユーザーがキャッシュされている場合、"
+"に移動されました。以前のプロバイダーをそのまま移植する場合は、このインターフェイスを実装します。また、以前のSPIでは、ローカルユーザーがキャッシュ内にあっても、ユーザーがアクセスされるたびにこのメソッドが呼び出されました。新しいSPIでは、このメソッドはローカルユーザーがローカル・ストレージからロードされたときにのみ呼び出されます。ローカル・ユーザーがキャッシュされている場合、"
 " `ImportedUserValidation.validate()` メソッドはまったく呼び出されません。"
 
 #. type: Plain text
 msgid ""
 "The `UserFederationProvider.isValid()` method no longer exists in the later "
 "model."
-msgstr "`UserFederationProvider.isValid()` メソッドは、後のモデルには存在しません。"
+msgstr "`UserFederationProvider.isValid()` メソッドは、新しいモデルには存在しません。"
 
 #. type: Plain text
 msgid ""
@@ -170,9 +168,9 @@ msgid ""
 "the new SPI, returning `null` from `UserRegistrationProvider.addUser()` if "
 "the provider doesn't support adding users."
 msgstr ""
-" `UserFederationProvider` のメソッド `synchronizeRegistrations()` 、 "
+"`UserFederationProvider` のメソッド `synchronizeRegistrations()` 、 "
 "`registerUser()` 、 `removeUser()` は `UserRegistrationProvider` "
-"ケーパビリティ・インターフェイスに移動されました。この新しいインターフェイスは実装するためにオプションです。プロバイダーがユーザーの作成と削除をサポートしていない場合は、実装する必要はありません。以前のプロバイダーが新しいユーザーの登録をサポートするように切り替えた場合、新しいSPIではこれがサポートされ、プロバイダーがユーザーの追加をサポートしていない場合は、"
+"のケーパビリティー・インターフェイスに移動されました。この新しいインターフェイスは実装するためにオプションです。プロバイダーがユーザーの作成と削除をサポートしていない場合は、実装する必要はありません。以前のプロバイダーが新しいユーザーの登録をサポートするように切り替えた場合、新しいSPIではこれがサポートされ、プロバイダーがユーザーの追加をサポートしていない場合は、"
 " `UserRegistrationProvider.addUser()` から `null` が返されます。"
 
 #. type: Plain text
@@ -191,10 +189,10 @@ msgid ""
 msgstr ""
 "クレデンシャルを中心とした以前の `UserFederationProvider` メソッドは `CredentialInputValidator` と"
 " `CredentialInputUpdater` "
-"インターフェイスにカプセル化されました。これはオプションで、クレデンシャルの検証や更新をサポートしているかどうかによって異なります。クレデンシャルは "
-"`UserModel` メソッドに存在しました。これらも `CredentialInputValidator` と "
+"インターフェイスにカプセル化されました。この実装は任意で、クレデンシャルの検証や更新をサポートするかどうかによって異なります。クレデンシャル管理は "
+"`UserModel` メソッドに存在しましたが、これらも `CredentialInputValidator` と "
 "`CredentialInputUpdater` インターフェイスに移行されました。 "
-"`CredentialInputUpdater`インターフェイスを実装しないと、プロバイダーが提供するクレデンシャルは{project_name}ストレージ内でローカルにオーバーライドできることに注意してください。したがって、クレデンシャルを読み取り専用にする場合は、"
+"`CredentialInputUpdater`インターフェイスを実装しないと、プロバイダーが提供するクレデンシャルは{project_name}ストレージ内でローカルにオーバーライドされる可能性があることに注意してください。したがって、クレデンシャルを読み取り専用にする場合は、"
 " `CredentialInputUpdater.updateCredential()` メソッドを実装し、 `ReadOnlyException` "
 "を返します。"
 
@@ -206,7 +204,7 @@ msgid ""
 " not be viewable in the admin console.  You'll still be able to login "
 "though."
 msgstr ""
-" `searchByAttributes()` や `getGroupMembers()` のような `UserFederationProvider` "
+"`searchByAttributes()` や `getGroupMembers()` のような `UserFederationProvider` "
 "クエリーメソッドは、オプションのインターフェイス `UserQueryProvider` "
 "にカプセル化されました。このインターフェイスを実装しないと、管理コンソールでユーザーを表示できなくなります。なお、ログインすることはできます。"
 
@@ -241,10 +239,10 @@ msgid ""
 "provider ID (i.e., \"ldap\", \"kerberos\") as the earlier User Federation "
 "provider."
 msgstr ""
-"ユーザーストレージSPIインスタンスは、異なる一連のリレーショナルテーブルに格納されます。 "
-"{project_name}は自動的に移行スクリプトを実行します。 レルムに対して以前のユーザーフェデレーション "
-"プロバイダーがデプロイされている場合、データの「ID」を含め、それ以降のストレージモデルにそのまま変換されます。 "
-"この移行は、以前のユーザー・フェデレーションプロバイダーと同じプロバイダID（「ldap」、「kerberos」）を持つユーザーストレージプロバイダーが存在する場合にのみ発生します。"
+"ユーザーストレージSPIインスタンスは、異なる一連のリレーショナル・テーブルに格納されます。 "
+"{project_name}は自動的に移行スクリプトを実行します。レルムに対して以前のユーザー・フェデレーション・プロバイダーがデプロイされている場合、データの"
+" `ID` "
+"を含め、それ以降のストレージモデルにそのまま変換されます。この移行は、以前のユーザー・フェデレーション・プロバイダーと同じプロバイダーID（\"ldap\"、\"kerberos\"など）を持つユーザー・ストレージ・プロバイダーが存在する場合にのみ発生します。"
 
 #. type: Plain text
 msgid "So, knowing this there are different approaches you can take."
@@ -257,9 +255,7 @@ msgid ""
 "Then, when you upgrade {project_name}, just deploy and configure your new "
 "provider for your realm."
 msgstr ""
-"以前の{project_name}配備で以前のプロバイダーを削除することができます。 "
-"インポートされたユーザーのローカルリンクされたコピーがすべて削除されます。 "
-"次に、{project_name}をアップグレードするときに、自分のレルム用に新しいプロバイダーをデプロイして設定するだけです。"
+"以前の{project_name}配備で以前のプロバイダーを削除することができます。インポートされたユーザーのローカルリンクされたコピーがすべて削除されます。次に、{project_name}をアップグレードするときに、レルム用に新しいプロバイダーをデプロイして設定するだけです。"
 
 #. type: Plain text
 msgid ""
@@ -271,7 +267,7 @@ msgid ""
 "imported users will work and be the same."
 msgstr ""
 "2つ目のオプションは、プロバイダーIDが同じであることを`UserStorageProviderFactory.getId()` "
-"で確認する新しいプロバイダーを実装することです。このプロバイダーは新しい{project_name}インストールの `deploy/` "
+"で確認する新しいプロバイダーを実装することです。このプロバイダーが新しい{project_name}インストールの `deploy/` "
 "ディレクトリーにあることを確認してください。サーバーを起動し、組み込みの移行スクリプトで以前のデータモデルを新しいデータモデルに変換します。この場合、以前にリンクされたインポート済みユーザーは、正常に動作し、すべて同じになります。"
 
 #. type: Plain text
@@ -281,4 +277,4 @@ msgid ""
 "upgrading {project_name}. This will remove linked local imported copies of "
 "any user you imported."
 msgstr ""
-"インポート戦略を廃止してユーザー・ストレージ・プロバイダーを実装し直すことに決めた場合は、{project_name}をアップグレードする前に以前のプロバイダーを削除することをお勧めします。これにより、インポーされたすべてのユーザーのリンクされたローカル・インポート済みのコピーが削除されます。"
+"インポート戦略を廃止してユーザー・ストレージ・プロバイダーを実装し直すことに決めた場合は、{project_name}をアップグレードする前に以前のプロバイダーを削除することをお勧めします。これにより、インポートされたすべてのユーザーのリンクされたローカル・インポート済みのコピーが削除されます。"

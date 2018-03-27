@@ -23,7 +23,7 @@ msgstr "}\n"
 #. type: Title ====
 #, no-wrap
 msgid "Packaging Classes and Deployment"
-msgstr "クラスとデプロイのパッケージ"
+msgstr "クラスとデプロイのパッケージ化"
 
 #. type: Title ==
 #, no-wrap
@@ -39,7 +39,7 @@ msgid ""
 "plugins.  The admin console supports applying, ordering, and configuring "
 "these new mechanisms."
 msgstr ""
-"Keycloakには、ケルベロス、パスワード、ワンタイムパスワードなどのさまざまな認証機構が多数すぐ使用できるように用意されています。これらの機構は、要件をすべて満たしているわけではなく、独自のカスタムバージョンにプラグインする必要があるかもしれません。Keycloakによって、新しいプラグインを書き起こすのに使用できる認証SPIが提供されます。管理コンソールによって、これらの新しい機構の適用、発注、設定はサポートされます。"
+"Keycloakには、ケルベロス、パスワード、ワンタイムパスワードなどのさまざまな認証機構が用意されています。これらの機構は、要件をすべて満たしているわけではなく、独自のカスタムプラグインを必要とする場合もあります。Keycloakは、新しいプラグインの作成に使用できる認証SPIを提供します。管理コンソールは、これらの新しい機構の適用、発注、設定をサポートしています。"
 
 #. type: Plain text
 msgid ""
@@ -50,7 +50,7 @@ msgid ""
 "additional fine-grain SPI you can use to add specific validations and user "
 "extensions to the built in registration form."
 msgstr ""
-"また、Keycloakでは簡単な登録フォームもサポートされます。このフォームのさまざまな側面を有効にしたり無効にしたりすることができます。例えば、ecaptchaのサポートを有効にしたり無効にしたりすることができます。同じ認証SPIを使用して、他のページを登録フローに追加したり、それを完全に再実装することができます。また、追加の細かいSPIもあり、それを使用してビルトインの登録フォームに特定の修正とユーザー拡張機能を追加することもできます。"
+"Keycloakでは簡単な登録フォームもサポートされます。このフォームのさまざまな要素を有効、無効にすることができます。つまり、reCAPTCHAのサポートをオフにすることができます。同じ認証SPIを使用して、他のページを登録フローに追加したり、それを完全に再実装することができます。また、追加の細かいSPIを使用して、組み込みの登録フォームに特定のバリデーションやユーザー拡張機能を追加することもできます。"
 
 #. type: Plain text
 msgid ""
@@ -61,9 +61,7 @@ msgid ""
 "change their password after they have logged in.  You can write and plug in "
 "your own required actions."
 msgstr ""
-"Keycloakにおける必須アクションとは、認証後にユーザーが実行する必要があるアクションのことです。アクションが実行された後、ユーザーは再度そのアクションを実行する必要はありません。Keycloakには、ビルトインの"
-" \"reset password\" "
-"のようなビルトインの必須アクションがいくつかあります。このアクションでは、ユーザーはログイン後にパスワードを変更する必要があります。必須アクションを書き起こしてプラグインすることができます。"
+"Keycloakでの必須アクションとは、認証後にユーザーが実行する必要のあるアクションのことです。アクションが実行された後、ユーザーはそのアクションを再実行する必要はありません。Keycloakには、\"パスワードリセット\"などの必須アクションがいくつか組み込まれています。たとえば、パスワードリセットは、ユーザーがログインした後にパスワードを変更するよう強制します。必須アクションを作成してプラグインすることができます。"
 
 #. type: Title ===
 #, no-wrap
@@ -74,7 +72,7 @@ msgstr "用語"
 msgid ""
 "To first learn about the Authentication SPI, let's go over some of the terms"
 " used to describe it."
-msgstr "まず、認証SPIを学ぶために、それを説明するための用語をいくつか確認していきましょう。"
+msgstr "まず最初に、認証SPIについて学ぶには、それを説明するためのいくつかの用語を確認していきます。"
 
 #. type: Labeled list
 #, no-wrap
@@ -89,7 +87,7 @@ msgid ""
 "are made up of.  Flows can contain other flows.  You can also bind a new "
 "different flow for browser login, direct grant access, and registration."
 msgstr ""
-"フローは、ログインまたは登録中に発生する必要がある、すべての認証のためのコンテナです。管理コンソールの認証ページに移動すると、システム内で定義されたフローすべて、およびそれらがどんなオーセンティケーター・コードを作成したかが表示されます。フローには、他のフローを含めることができます。また、ブラウザー・ログイン、ダイレクト・グラント・アクセス、および登録用に、新しい異なるフローをバインドすることもできます。"
+"フローは、ログインまたは登録中に発生する必要のある、すべての認証のためのコンテナーです。管理コンソールの認証ページに移動すると、システム内で定義されたすべてのフローと、どのようなオーセンティケーターで構成されたかが表示されます。フローには、他のフローを含めることができます。また、ブラウザーのログイン、ダイレクト・グラント・アクセス、および登録用に、新しい異なるフローをバインドすることもできます。"
 
 #. type: Labeled list
 #, no-wrap
@@ -101,12 +99,12 @@ msgid ""
 "An authenticator is a pluggable component that hold the logic for performing"
 " the authentication or action within a flow.  It is usually a singleton."
 msgstr ""
-"オーセンティケーターとは、フロー内で認証またはアクションを実行するためのロジックを保持する、プラグインが可能なコンポーネントです。これは通常シングルトンです。"
+"オーセンティケーターは、フロー内で認証またはアクションを実行するためのロジックを保持する、プラグイン可能なコンポーネントです。通常は、シングルトンです。"
 
 #. type: Labeled list
 #, no-wrap
 msgid "Execution"
-msgstr "実行"
+msgstr "エグゼキューション"
 
 #. type: Plain text
 msgid ""
@@ -114,12 +112,12 @@ msgid ""
 "authenticator to the configuration of the authenticator.  Flows contain "
 "execution entries."
 msgstr ""
-"実行とは、オーセンティケーターを、フローにバインドしたり、オーセンティケーターの設定へバインドしたりするオブジェクトです。フローには、実行エントリが含まれます。"
+"エグゼキューションは、オーセンティケーターをフローにバインドしたり、オーセンティケーターの設定に対する認証を行うオブジェクトです。フローには、エグゼキューション・エントリが含まれます。"
 
 #. type: Labeled list
 #, no-wrap
 msgid "Execution Requirement"
-msgstr "実行の要件"
+msgstr "エグゼキューション要件"
 
 #. type: Plain text
 msgid ""
@@ -131,12 +129,12 @@ msgid ""
 "and the set of all login forms are all alternative.  If one of those is "
 "successful, none of the others are executed."
 msgstr ""
-"実行によって、それぞれフロー内でオーセンティケーターが行う方法が定義されます。要件によって、オーセンティケーターが有効か、無効か、任意か、必須か、または代替かが定義されます。代替としての要件は、フロー内で他の代替のオーセンティケーターも実行が成功しなければ、そのオーセンティケーターは任意であるということになります。例えば、Cookie認証、ケルベロス、およびログイン画面のセットは、すべて代替です。これらのうち1つが実行に成功した場合は、他はすべて実行されません。"
+"エグゼキューションごとに、オーセンティケーターがフロー内でどのように動作するかを定義します。要件には、オーセンティケーターがenabledか、disabledか、optionalか、requiredか、またはalternativeかを定義します。alternativeの要件では、フロー内で他のalternativeのオーセンティケーターが成功しない限り、そのオーセンティケーターはoptionalであることを意味します。たとえば、Cookie認証、ケルベロス、ログイン画面のセットは、すべてalternativeです。そのうちの1つが成功した場合、他は実行されません。"
 
 #. type: Labeled list
 #, no-wrap
 msgid "Authenticator Config"
-msgstr "オーセンティケーターの設定"
+msgstr "オーセンティケーター設定"
 
 #. type: Plain text
 msgid ""
@@ -144,7 +142,7 @@ msgid ""
 "execution within an authentication flow.  Each execution can have a "
 "different config."
 msgstr ""
-"このオブジェクトによって、認証フロー内で特定の実行が行われるように、オーセンティケーターの設定が定義されます。各実行は、それぞれ異なる設定を持つことができます。"
+"このオブジェクトは、認証フロー内の特定のエグゼキューションに対してのオーセンティケーターの設定を定義します。エグゼキューションごとに異なる設定を持つことができます。"
 
 #. type: Labeled list
 #, no-wrap
@@ -157,18 +155,18 @@ msgid ""
 "After authentication completes, the user might have one or more one-time actions he must complete before he is allowed to login.\n"
 "The user might be required to set up an OTP token generator or reset an expired password or even accept a Terms and Conditions document.         \n"
 msgstr ""
-"認証が完了した後、ログインが許可される前に、ユーザーが完了しなければならない1つまたは複数のワンタイム・アクションがあるかもしれません。ユーザーは、OTPトークン・ジェネレーターを設定するか、有効期限切れのパスワードをリセットするか、または諸条件に同意することが要求される可能性があります。\n"
+"認証が完了した後、ログインが許可される前に、ユーザーは、１つ以上のワンタイム・アクションを実行しなければならない場合があります。ユーザーは、OTPトークン・ジェネレーターを設定するか、有効期限切れのパスワードをリセットするか、または利用規約に同意する必要があります。\n"
 
 #. type: Title ===
 #, no-wrap
 msgid "Algorithm Overview"
-msgstr "アルゴニズムの概要"
+msgstr "アルゴリズムの概要"
 
 #. type: Plain text
 msgid ""
 "Let's talk about how this all works for browser login.  Let's assume the "
 "following flows, executions and sub flows."
-msgstr "これがブラウザーへのログインでどのように機能するか説明します。以下のフロー、実行、サブフローを想定してみましょう。"
+msgstr "これがブラウザーへのログインでどのように機能するか説明します。以下のフロー、エグゼキューション、サブフローを想定してみましょう。"
 
 #. type: delimited block -
 #, no-wrap
@@ -194,7 +192,9 @@ msgid ""
 "Let's walk through the steps from when a client first redirects to keycloak "
 "to authenticate the user."
 msgstr ""
-"この画面の上部には、必須の実行が3つあり、すべてお互い代替になることができます。このことは、これら3つのうちいずれかが実行できた場合、他は実行する必要がないということを意味します。SSOCookieセットがあるか、ケルベロスのログインが成功した場合は、ユーザー名またはパスワードの画面は実行されません。最初にクライアントがkeycloakにリダイレクトし、ユーザーを認証するまでの手順を説明します。"
+"フォームのトップレベルには、すべてが選択的に必要な3つのエグゼキューションがあります。これらのいずれかが成功した場合、ほかは実行する必要がないことを意味します。SSO"
+" "
+"Cookieセットまたはケルベロスのログインが成功した場合、Username/Passwordフォームは実行されません。クライアントが最初にKeycloakにリダイレクトし、ユーザーを認証するまでの手順を説明します。"
 
 #. type: Plain text
 msgid ""
@@ -203,7 +203,7 @@ msgid ""
 "It looks up what the browser flow should be, then starts executing the flow."
 msgstr ""
 "OpenID "
-"ConnectまたはSAMLプロトコル・プロバイダーによって、関連データがアンパックされ、クライアントと署名が検証されます。これで、AuthenticationSessionModelが作成されます。ブラウザーのフローが調べられてから、フローが実行されます。"
+"ConnectまたはSAMLプロトコル・プロバイダーは、関連するデータを展開し、クライアントと署名を検証します。AuthenticationSessionModelを作成します。ブラウザーフローを検索し、フローの実行を開始します。"
 " "
 
 #. type: Plain text
@@ -224,9 +224,12 @@ msgid ""
 "success either.  The provider tried, but the request just wasn't set up to "
 "handle this authenticator."
 msgstr ""
-"このフローによって、クッキーの実行が調べられ、それが代替であるということが確認されます。Cookieプロバイダーがロードされます。ユーザーが認証セッションに既に関連付けられているということを、Cookieプロバイダーが要求するかどうかを確認するために、このフローがチェックします。Cookieプロバイダーには、ユーザーは必要ありません。"
+"このフローは、Cookieのエグゼキューションから、それがALTERNATIVEであると見なします。Cookieプロバイダーがロードされ、ユーザーがすでに認証セッションに関連付けられているかをチェックします。Cookieプロバイダーには、ユーザーは必要ありません。必要とされる場合は、そのフローが中断され、ユーザーにはエラー画面が表示されます。その後、SSO"
+" Cookieセットがあるかどうかを確認することを目的として、Cookieプロバイダーが実行されます。1つのセットがある場合、そのSSO "
+"CookieとUserSessionModelが検証され、AuthenticationSessionModelに関連付けられます。SSO "
+"Cookieが存在し、検証が済むと、Cookieプロバイダーはsuccess()ステータスを返します。Cookieプロバイダーは成功を返すと、このフローのレベルでのそれぞれのエグゼキューションはALTERNATIVEであるため、他のエグゼキューションは実行されず、ログインに成功します。SSO"
 " "
-"必要とされる場合は、そのフローが中断され、ユーザーにはエラー画面が表示されます。その後、Cookieプロバイダーが実行されます。SSOCookieセットがあるかどうかを確認することが目的です。1セットあった場合、それは検証され、UserSessionModelが証明され、AuthenticationSessionModelに関連付けられます。SSOCookieが存在し検証が済むと、Cookieプロバイダーはsuccess()ステータスを返却します。成功ステータスを返却したCookieプロバイダーと、フローのこの段階における各実行はALTERNATIVEであり、他の実行は実行されずにログインは成功します。SSOCookieが存在しなかった場合は、Cookieプロバイダーはattempted()というステータスを返却します。このことは、エラー状態はありませんでしたが、成功もしませんでしたということを意味します。つまり、プロバイダーが実行はしてみましたが、このオーセンティケーターを処理できるように、リクエストがセットアップされるまでは至りませんでしたということです。"
+"Cookieが存在しない場合は、Cookieプロバイダーはattempted()のステータスを返します。この場合、エラー状態ではありませんが、成功でもないことを示します。プロバイダーを試してきましたが、リクエストはこのオーセンティケーターを処理するようには設定されていません。"
 
 #. type: Plain text
 msgid ""
@@ -249,13 +252,14 @@ msgid ""
 "on this level of the flow are all alternatives.  Otherwise, again, the "
 "kerberos provider sets an attempted() status and the flow continues."
 msgstr ""
-"次に、ケルベロス実行のフローを説明します。これはまた代替です。また、ケルベロス・プロバイダーでは、ユーザーがすでに設定されてAuthenticationSessionModelに関連付けられていることが必要とされません。そのため、このプロバイダーが実行されることになります。ケルベロスはSPNEGOブラウザー・プロトコルを使用します。これには、サーバーとクライアントがネゴシエーションのヘッダーを交換する、一連のチャレンジまたはレスポンスが必要です。ケルベロス・プロバイダーはネゴシエーションのヘッダーを確認しないので、これがサーバーとクライアントの間の最初のやりとりであるとみなします。したがって、クライアントへのHTTPチャレンジ・レスポンスを作成し、forceChallenge()ステータスを設定します。forceChallenge()は、このHTTPレスポンスはフローにとって無視することができないもので、クライアントに返さなければならないということを意味します。代わりに、プロバイダーがchallenge()ステータスを返却した場合、他のすべての代替の実行が試されるまで、このフローがチャレンジ・レスポンスを保持します。したがって、この初期フェーズでは、フローが停止し、チャレンジ・レスポンスがブラウザーに送り返されます。次に、成功したネゴシエーションのヘッダーでブラウザーが応答すると、プロバイダーはユーザーをAuthenticationSessionに関連付け、フローが終了します。なぜなら、フローのこの段階での残りの実行はすべて代替だからです。そうでない場合は、ケルベロスのプロバイダーによってattempted()ステータスが設定され、フローは続行されます。"
+"次に、ケルベロスのエグゼキューションのフローを見ていきます。これもまたALTERNATIVEです。ケルベロス・プロバイダーは、ユーザーがすでに設定されていて、AuthenticationSessionModelに関連付けられている必要はないので、このプロバイダーを実行できます。ケルベロスは、SPNEGOブラウザー・プロトコルを使用します。これには、サーバーとクライアントがネゴシエーション・ヘッダーを交換する一連のチャレンジまたはレスポンスが必要となります。ケルベロス・プロバイダーは、ネゴシエーション・ヘッダーを見ないため、サーバーとクライアント間の最初のやりとりであることを前提とします。したがって、クライアントへのHTTPチャレンジ・レスポンスを作成し、forceChallenge()ステータスを設定します。forceChallenge()は、フローによってHTTPレスポンスを無視できないことを意味し、クライアントに返さなければなりません。代わりにプロバイダーがchallenge()ステータスを返した場合、フローは他のすべてのALTERNATIVEが試行されるまでチャレンジ・レスポンスを保持します。したがって、この初期フェーズでは、フローが停止し、チャレンジ・レスポンスがブラウザーに返されます。ブラウザーが成功したネゴシエーション・ヘッダーで応答すると、プロバイダーはユーザーをAuthenticationSessionに関連付けし、このフローのレベルの残りのエグゼキューションはALTERNATIVEであるため、フローが終了します。それ以外の場合は、ケルベロス・プロバイダーは、attempted()を設定し、フローを続行します。"
 
 #. type: Plain text
 msgid ""
 "The next execution is a subflow called Forms.  The executions for this "
 "subflow are loaded and the same processing logic occurs"
-msgstr "次に実行するのは、フォームと呼ばれるサブフローです。このサブフローの実行がロードされて同じ処理ロジックが発生します。"
+msgstr ""
+"次のエグゼキューションは、Formsと呼ばれるサブフローです。このサブフローのエグゼキューションがロードされ、同じ処理ロジックが発生します。"
 
 #. type: Plain text
 msgid ""
@@ -275,9 +279,9 @@ msgid ""
 "valid, the provider associated the UserModel with the "
 "AuthenticationSessionModel and returns a status of success()"
 msgstr ""
-"フォーム・サブフローで最初に実行するのは、UsernamePasswordプロバイダーになります。また、このプロバイダーでは、ユーザが既にフローに関連付けられている必要はありません。このプロバイダーでは、チャレンジHTTPレスポンスが作成され、そのステータスはchallenge()に設定されます。この実行は必須なので、フローはこのチャレンジを優先し、ブラウザーにHTTPレスポンスを返します。このレスポンスは、Username/Password"
+"Formsサブフローでの最初のエグゼキューションはUsernamePasswordプロバイダーです。このプロバイダーは、ユーザがすでにフローに関連付けられている必要はありません。このプロバイダーは、チャレンジHTTPレスポンスを作成し、そのステータスをchallenge()に設定します。このエグゼキューションは必須なので、フローはこのチャレンジを優先し、ブラウザーにHTTPレスポンスを返します。このレスポンスは、Username/Password"
 " "
-"HTMLページのレンダリングです。ユーザーはユーザー名とパスワードを入力し、送信をクリックします。このHTTPリクエストは、UsernamePasswordプロバイダーに向けられています。ユーザーが無効なユーザー名またはパスワードを入力した場合、新しいチャレンジ・レスポンスが作成され、failureChallenge()のステータスがこの実行のために設定されます。failureChallenge()は、チャレンジがあることを意味しますが、これはフローによりエラーログ内のエラーとしてログが残される必要があります。このエラー・ログは、ログインにあまりに多く失敗したアカウントまたはIPアドレスをロックするために、使用することができます。ユーザー名とパスワードが有効な場合、プロバイダーはAuthenticationSessionModelにUserModelを関連付け、success()ステータスを返します。"
+"HTMLページのレンダリングです。ユーザーは、ユーザー名とパスワードを入力し、送信をクリックします。このHTTPリクエストは、UsernamePasswordプロバイダーに送信されます。ユーザーが無効なユーザー名またはパスワードを入力した場合、新しいチャレンジ・レスポンスが作成され、このエグゼキューションにfailureChallenge()のステータスが設定されます。failureChallenge()は、チャレンジがあることを表しますが、エラーログにerrorとして記録する必要があります。このエラーログは、ログイン失敗回数の多いアカウント、またはIPアドレスをロックするのに使用することができます。ユーザー名とパスワードが有効な場合、プロバイダーはUserModelをAuthenticationSessionModelに関連付け、success()ステータスを返します。"
 
 #. type: Plain text
 msgid ""
@@ -291,7 +295,7 @@ msgid ""
 "means the OTP setup page.  If the execution was optional, then this "
 "execution is skipped."
 msgstr ""
-"次に実行するのは、OTPフォームになります。このプロバイダーでは、ユーザーはフローに関連付けられている必要があります。この要件は、UsernamePasswordプロバイダーによって既にユーザーがフローに関連付けられているため、満たされています。このプロバイダーにはユーザーが必要なため、ユーザーがこのプロバイダーを使用できるよう設定されているかどうか、プロバイダーは確認されます。ユーザーが設定されていない状態でこの実行が必要な場合、認証が完了した後にユーザーが実行しなければならない必須アクションがフローによって設定されます。OTPの場合、これはOTP設定ページを意味します。実行がオプションの場合は、この実行はスキップされます。"
+"次のエグゼキューションは、OTPフォームです。このプロバイダーでは、ユーザーがフローに関連付けられている必要があります。UsernamePasswordプロバイダーがすでにユーザをフローに関連付けているため、この要件は満たされます。このプロバイダーは、ユーザーが必須であることから、ユーザーがこのプロバイダーを使用するように設定されているかを求められます。ユーザーが設定されておらず、このエグゼキューションを必要とする場合、フローは認証が完了した後にユーザーが実行する必要のある必須アクションを設定します。OTPの場合、これはOTP設定ページを表します。エグゼキューションがOPTIONALの場合はスキップされます。"
 
 #. type: Plain text
 msgid ""
@@ -300,7 +304,7 @@ msgid ""
 "then checks to see if the user is required to complete any required actions "
 "before logging in."
 msgstr ""
-"フローが完了した後、認証プロセッサーによって、UserSessionModelが作成されてAuthenticationSessionModelに関連付けられます。次に、ログイン前にユーザーが必須アクションを完了する必要があるかどうかを確認されます。"
+"フローが完了すると、認証プロセッサーはUserSessionModelを作成し、それをAuthenticationSessionModelに関連付けます。その後、ユーザーはログイン前に必須アクションを完了する必要があるかどうかを確認します。"
 
 #. type: Plain text
 msgid ""
@@ -309,7 +313,7 @@ msgid ""
 "that might trigger the action to be fired.  For example, if your realm has a"
 " password expiration policy, it might be triggered by this method."
 msgstr ""
-"まず、必須アクションそれぞれのevaluateTriggers()のメソッドが呼び出されます。これにより、アクションが実行されるトリガーになる可能性がある状態であるかどうかを必須アクション・プロバイダーは判断することができます。例えば、レルムにパスワード有効期限ポリシーがある場合、このポリシーはこのメソッドによりトリガーされる可能性があります。"
+"まず、それぞれの必須アクションのevaluateTriggers()メソッドが呼び出されます。これにより、必須アクション・プロバイダーは、アクションが実行されるトリガーとなる可能性があるかを判断できます。たとえば、レルムにパスワード有効期限ポリシーがある場合、このメソッドによってトリガーされる可能性があります。"
 
 #. type: Plain text
 msgid ""
@@ -318,20 +322,20 @@ msgid ""
 "response which renders the page for the required action.  This is done by "
 "setting a challenge status."
 msgstr ""
-"各必須アクションが、呼び出されたrequiredActionChallenge()メソッドを持っているユーザーに関連付けられました。これで、必須アクションのページをレンダリングするHTTPレスポンスを、プロバイダーが設定します。これは、チャレンジ・ステータスを設定することで実行されます。"
+"それぞれの必須アクションが、requiredActionChallenge()メソッドが呼び出されたユーザーに関連付けられました。ここでプロバイダーは、必須アクションのページをレンダリングするHTTPレスポンスを設定します。これは、チャレンジ・ステータスを設定することで実行されます。"
 
 #. type: Plain text
 msgid ""
 "If the required action is ultimately successful, then the required action is"
 " removed from the user's require actions list."
-msgstr "必須アクションが最終的に成功すると、必須アクションはユーザーの必須アクションリストから削除されます。"
+msgstr "必須アクションが最終的に成功すると、ユーザーの必須アクションリストから必須アクションが削除されます。"
 
 #. type: Plain text
 #, no-wrap
 msgid ""
 "After all required actions have been resolved, the user is finally logged "
 "in.         \n"
-msgstr "必須アクションがすべて解決した後、最後にユーザーがログインします。\n"
+msgstr "すべての必須アクションが解決した後、ユーザーはようやくログインします。\n"
 
 #. type: Title ===
 #, no-wrap
@@ -347,9 +351,7 @@ msgid ""
 "examples/providers/authenticator directory of the demo distribution of "
 "Keycloak."
 msgstr ""
-"このセクションでは、オーセンティケーター・インターフェイスについて説明します。これを説明するために、オーセンティケーターを実装していきます。このオーセンティケーターにより、ユーザーは"
-" \"あなたの母親の旧姓は何ですか？\" "
-"などの秘密の質問への回答を入力する必要があります。この例は、完全に実装され、Keycloakのデモ配布物のexamples/providers/authenticatorディレクトリに含まれています。"
+"このセクションでは、オーセンティケーター・インターフェイスについて説明します。これを説明するために、\"あなたの母親の旧姓は何ですか？\"のような秘密の質問にユーザーが回答を入力する必要のあるオーセンティケーターを実装していきます。この例は、完全に実装されており、Keycloakのデモ配布物のexamples/providers/authenticatorディレクトリーに含まれています。"
 
 #. type: Plain text
 msgid ""
@@ -360,7 +362,7 @@ msgid ""
 "Authenticator.  They both extend a more generic Provider and ProviderFactory"
 " set of interfaces that other Keycloak components like User Federation do."
 msgstr ""
-"実装する必要があるクラスは、org.keycloak.authentication.AuthenticatorFactoryとオーセンティケーター・インターフェイスです。オーセンティケーター・インターフェイスはロジックを定義します。AuthenticatorFactoryは、オーセンティケーターのインスタンスの作成を担当します。それらは両方とも、ユーザー・フェデレーションなどの他Keycloakのコンポーネントが実行する、汎用的なプロバイダーとインターフェイスのProviderFactoryセットを拡張します。"
+"実装する必要があるクラスは、org.keycloak.authentication.AuthenticatorFactoryとオーセンティケーター・インターフェイスです。オーセンティケーター・インターフェイスはロジックを定義します。AuthenticatorFactoryは、オーセンティケーターのインスタンスの作成を担います。それらは両方とも、ユーザー・フェデレーションのような他のKeycloakコンポーネントが行う、より汎用的なプロバイダーとProviderFactoryのインターフェイスのセットを拡張します。"
 
 #. type: Plain text
 #, no-wrap
@@ -370,10 +372,10 @@ msgid ""
 "This file must list the fully qualified classname of each AuthenticatorFactory implementation you have in the jar.\n"
 "For example: \n"
 msgstr ""
-"1つのjar内でクラスをパッケージ化します。このjarには、 "
-"`org.keycloak.authentication.AuthenticatorFactory` "
-"という名前のファイルが含まれている必要があります。また、このjarは、jarの `META-INF/services/` "
-"ディレクトリに格納されている必要があります。このファイルには、jar内にある各AuthenticatorFactory実装の要件を完全に満たしたクラス名がリストされている必要があります。サンプルは、以下の通りです。\n"
+"1つのjarファイル内にクラスをパッケージ化します。このjarには、 "
+"`org.keycloak.authentication.AuthenticatorFactory` という名前のファイルが、jarの `META-"
+"INF/services/` "
+"ディレクトリーに含まれている必要があります。このファイルには、jarファイル内にある各AuthenticatorFactory実装の完全修飾クラス名が一覧化されている必要があります。たとえば、以下の通りになります。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -408,7 +410,7 @@ msgid ""
 "this method as it can resolve a user from the negotiate header.  This "
 "example, however, is validating a specific credential of a specific user."
 msgstr ""
-"オーセンティケーター・インターフェイスを実装する場合、最初に実装する必要があるメソッドはrequiresUser()メソッドです。サンプルでは、このメソッドは、ユーザーに関連付けられた秘密の質問を検証する必要があるため、trueを返す必要があります。ケルベロスなどのプロバイダーは、ネゴシエート・ヘッダーからユーザーを解決することができるので、このメソッドからfalseを返します。ただし、このサンプルでは、特定のユーザーの特定のクレデンシャルが検証されています。"
+"オーセンティケーター・インターフェイスを実装する場合、最初に実装する必要があるメソッドはrequiresUser()メソッドです。この例では、このメソッドは、ユーザーに関連付けられた秘密の質問を検証する必要があるため、trueを返す必要があります。ケルベロスなどのプロバイダーは、ネゴシエーション・ヘッダーからユーザーを解決することができるので、このメソッドからfalseを返します。ただし、この例では、特定のユーザーの特定のクレデンシャルを検証しています。"
 
 #. type: Plain text
 msgid ""
@@ -420,7 +422,7 @@ msgid ""
 "the UserModel (just like passwords are stored).  Here's how we do this very "
 "simple check:"
 msgstr ""
-"次に実装するメソッドは、configuredFor()メソッドです。このメソッドは、ユーザーがこの特定のオーセンティケーターのために設定されているのかどうかの判断を担当します。このサンプルの場合、秘密の質問への回答がユーザーによって設定されているのかどうかが確認される必要があります。ここでは、ハッシュ化されたこの情報を、（パスワードが格納されているのと同じように）UserModel内のUserCredentialValueModel内で格納しています。これを簡単に確認する方法は、以下の通りです。"
+"次に実装するメソッドはconfiguredFor()メソッドです。このメソッドは、ユーザーがこの特定のオーセンティケーターとして設定されているのかを判定する役割を担います。この例では、秘密の質問に対する回答がユーザーによって設定されているのかどうかを確認する必要があります。このケースでは、ハッシュ化された情報を、（パスワードが格納されているのと同じように）UserModel内のUserCredentialValueModel内に格納しています。これを簡単に確認する方法は、以下の通りです。"
 
 #. type: delimited block -
 #, no-wrap
@@ -440,7 +442,7 @@ msgid ""
 "The configuredForCredentialType() call queries the user to see if it "
 "supports that credential type."
 msgstr ""
-"configuredForCredentialType()が呼び出されると、ユーザーは、そのクレデンシャル・タイプがサポートしているかどうかを尋ねられます。"
+"configuredForCredentialType()コールは、ユーザーがそのクレデンシャル・タイプをサポートしているかどうかを問い合わせます。"
 
 #. type: Plain text
 msgid ""
@@ -453,7 +455,7 @@ msgid ""
 "action provider later in this chapter.  Here is the implementation of the "
 "setRequiredActions() method."
 msgstr ""
-"次にオーセンティケーターで実装するメソッドは、setRequiredActions()です。configuredFor()がfalseを返し、オーセンティケーターのサンプルがフロー内で必要とされる場合、このメソッドが呼び出されます。このメソッドは、ユーザーが実行する必要がある必須アクションの登録を担当します。サンプルでは、ユーザーに秘密の質問への回答を設定させる、必須アクションを登録する必要があります。この章で、後ほど、この必須アクション・プロバイダーを実装します。setRequiredActions()メソッドの実装は、以下の通りです。"
+"オーセンティケーターで実装する次のメソッドはsetRequiredActions()です。configuredFor()がfalseを返し、フロー内でサンプルのオーセンティケーターが必要な場合、このメソッドが呼び出されます。このメソッドは、ユーザーが実行する必要がある必須アクションの登録を担います。この例では、秘密の質問に対する回答をユーザーに設定させるために必須アクションを登録する必要があります。この章の後半で、この必須アクション・プロバイダーを実装していきます。setRequiredActions()メソッドの実装は次の通りです。"
 
 #. type: delimited block -
 #, no-wrap
@@ -463,10 +465,10 @@ msgid ""
 "        user.addRequiredAction(\"SECRET_QUESTION_CONFIG\");\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public void setRequiredActions(KeycloakSession session, RealmModel realm, UserModel user) {\n"
-" user.addRequiredAction(\"SECRET_QUESTION_CONFIG\");\n"
-" }\n"
+"    @Override\n"
+"    public void setRequiredActions(KeycloakSession session, RealmModel realm, UserModel user) {\n"
+"        user.addRequiredAction(\"SECRET_QUESTION_CONFIG\");\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -479,9 +481,7 @@ msgid ""
 "the secret question form.  Its sole purpose is to render the page or to "
 "continue the flow."
 msgstr ""
-"さて今度は、オーセンティケーター実装の問題に取り掛かります。次に実装するメソッドはauthenticate()です。これは、最初の実行時にフローが呼び出す、初期のメソッドです。ユーザーが既にブラウザーのマシン上で秘密の質問に回答した場合、ユーザーはその質問に再度回答する必要はなく、そのマシンを"
-" \"trusted\" "
-"にすることが必要です。authenticate()メソッドには、秘密の質問フォームを処理する責任はありません。その唯一の目的は、ページをレンダリングするか、フローを継続することです。"
+"今度はオーセンティケーター実装の中身に入っていきます。次に実装するメソッドはauthenticate()です。これは、エグゼキューションが最初に訪れたときにフローが呼び出す初期メソッドです。ユーザーが既にブラウザーのマシン上で秘密の質問に回答した場合、ユーザーはその質問に再度回答する必要はなく、そのマシンを\"信頼できる\"ものにすることが望まれます。authenticate()メソッドは、秘密の質問フォームに対する処理を実装する必要はありません。その唯一の目的は、ページをレンダリングするか、フローを継続することです。"
 
 #. type: delimited block -
 #, no-wrap
@@ -496,15 +496,15 @@ msgid ""
 "        context.challenge(challenge);\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public void authenticate(AuthenticationFlowContext context) {\n"
-" if (hasCookie(context)) {\n"
-" context.success();\n"
-" return;\n"
-" }\n"
-" Response challenge = loginForm(context).createForm(\"secret_question.ftl\");\n"
-" context.challenge(challenge);\n"
-" }\n"
+"    @Override\n"
+"    public void authenticate(AuthenticationFlowContext context) {\n"
+"        if (hasCookie(context)) {\n"
+"           context.success();\n"
+"           return;\n"
+"        }\n"
+"        Response challenge = loginForm(context).createForm(\"secret_question.ftl\");\n"
+"        context.challenge(challenge);\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -514,7 +514,7 @@ msgid ""
 "using the AuthenticationFlowContext.success() method and returning from the "
 "authentication() method."
 msgstr ""
-"hasCookie()メソッドによって、秘密の質問に既に回答したことを示すブラウザーに、Cookieが既に設定されているかどうかが確認されます。確認した結果、trueが返された場合は、AuthenticationFlowContext.success()メソッドを使用してauthentication()メソッドから返し、この実行ステータスをSUCCESSとするだけです。"
+"hasCookie()は、秘密の質問に回答したことを示すCookieがすでにブラウザーに設定されているかを確認します。trueを返す場合は、authentication()メソッドから返されるAuthenticationFlowContext.success()メソッドを使用し、エグゼキューションのステータスをSUCCESSとします。"
 
 #. type: Plain text
 msgid ""
@@ -528,11 +528,9 @@ msgid ""
 "LoginFormsProvider.setAttribute() method if you want to pass additional "
 "information to the Freemarker template.  We'll go over this later."
 msgstr ""
-"hasCookie()メソッドによってfalseが返される場合、秘密の質問HTMLフォームをレンダリングするレスポンスを返す必要があります。AuthenticationFlowContextには、フォームを構築するのに必要な適切な基本情報を使用してFreemarkerページ・ビルダーを初期化する、form()メソッドがあります。このページ・ビルダーは"
+"hasCookie()メソッドがfalseを返す場合、秘密の質問のHTMLフォームをレンダリングするレスポンスを返す必要があります。AuthenticationFlowContextには、フォームを構築するために必要となる、適切な基本情報を持つFreemarkerページビルダーを初期化するform()メソッドがあります。このページ・ビルダーは"
 " `org.keycloak.login.LoginFormsProvider` "
-"と呼ばれています。LoginFormsProvider.createForm()メソッドは、ログイン・テーマからFreemarkerテンプレート・ファイルを読み込みます。さらに、Freemarker"
-" "
-"templateに追加情報を渡す必要がある場合は、LoginFormsProvider.setAttribute()メソッドを呼び出すことができます。この点については、後で説明します。"
+"と呼ばれています。LoginFormsProvider.createForm()メソッドは、ログインテーマからFreemarkerテンプレート・ファイルを読み込みます。さらに、Freemarkerテンプレートに追加情報を渡す場合は、LoginFormsProvider.setAttribute()メソッドを呼び出すことができます。こちらについては後ほど説明します。"
 
 #. type: Plain text
 msgid ""
@@ -541,9 +539,9 @@ msgid ""
 "  This sets the status of the execution as CHALLENGE and if the execution is"
 " Required, this JAX-RS Response object will be sent to the browser."
 msgstr ""
-"LoginFormsProvider.createForm()の呼び出しによって、JAX-"
-"RSレスポンスのオブジェクトが返されます。次に、このレスポンス内に渡すAuthenticationFlowContext.challenge()を呼び出します。これにより、実行のステータスがCHALLENGEに設定され"
-"、実行が必須の場合はこのJAX-RSレスポンスのオブジェクトがブラウザーに送信されます。"
+"LoginFormsProvider.createForm()を呼び出すと、JAX-RS "
+"Responseオブジェクトが返されます。次に、このレスポンスで渡すAuthenticationFlowContext.challenge()を呼び出します。これにより、エグゼキューションのステータスがCHALLENGEに設定され、エグゼキューションがREQUIREDの場合"
+"、このJAX-RSレスポンスのオブジェクトがブラウザーに送信されます。"
 
 #. type: Plain text
 msgid ""
@@ -552,7 +550,7 @@ msgid ""
 "URL of the HTML form will send an HTTP request to the flow.  The flow will "
 "end up invoking the action() method of our Authenticator implementation."
 msgstr ""
-"こうして、秘密の質問への回答を求めるHTMLページがユーザーに表示され、ユーザーが回答を入力して送信をクリックします。このHTMLフォームのURLアクションにより、HTTPの要求がフローに送信されます。このフローによって、オーセンティケーター実装のaction()メソッドが呼び出されることになります。"
+"したがって、秘密の質問に対する回答を求めるHTMLページがユーザーに表示され、ユーザーが回答を入力して送信をクリックします。HTMLフォームのアクションURLは、HTTPリクエストをフローに送信します。フローは、オーセンティケーター実装のaction()メソッドを呼び出すことになります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -571,19 +569,19 @@ msgid ""
 "        context.success();\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public void action(AuthenticationFlowContext context) {\n"
-" boolean validated = validateAnswer(context);\n"
-" if (!validated) {\n"
-" Response challenge = context.form()\n"
-" .setError(\"badSecret\")\n"
-" .createForm(\"secret-question.ftl\");\n"
-" context.failureChallenge(AuthenticationFlowError.INVALID_CREDENTIALS, challenge);\n"
-" return;\n"
-" }\n"
-" setCookie(context);\n"
-" context.success();\n"
-" }\n"
+"    @Override\n"
+"    public void action(AuthenticationFlowContext context) {\n"
+"        boolean validated = validateAnswer(context);\n"
+"        if (!validated) {\n"
+"           Response challenge = context.form()\n"
+"                                 .setError(\"badSecret\")\n"
+"                                 .createForm(\"secret-question.ftl\");\n"
+"           context.failureChallenge(AuthenticationFlowError.INVALID_CREDENTIALS, challenge);\n"
+"           return;\n"
+"        }\n"
+"        setCookie(context);\n"
+"        context.success();\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -593,8 +591,8 @@ msgid ""
 "failureChallenge() works the same as challenge(), but it also records the "
 "failure so it can be analyzed by any attack detection service."
 msgstr ""
-"回答が有効でない場合、HTMLフォームを追加のエラーメッセージで再構築します。次に、値とJAX-"
-"RSレスポンスの理由を渡すAuthenticationFlowContext.failureChallenge()を呼び出します。failureChallenge()は、challenge()と同じ働きをしますが、失敗を記録し、その失敗を攻撃の検出サービスで解析することもできます。"
+"回答が有効でない場合、HTMLフォームを追加のエラーメッセージで再構築します。次に、原因となる値とJAX-"
+"RSレスポンスを渡すAuthenticationFlowContext.failureChallenge()を呼び出します。failureChallenge()はchallenge()と同じ働きをしますが、失敗も記録するので、攻撃検出サービスによって解析できます。"
 
 #. type: Plain text
 msgid ""
@@ -602,7 +600,7 @@ msgid ""
 "secret question has been answered and we call "
 "AuthenticationFlowContext.success()."
 msgstr ""
-"検証が成功したら、次にCookieを設定して秘密の質問に回答したことを覚えておき、AuthenticationFlowContext.success()を呼び出します。"
+"検証に成功すると、秘密の質問に回答したことを記憶するCookieを設定し、AuthenticationFlowContext.success()を呼び出します。"
 
 #. type: Plain text
 msgid ""
@@ -610,8 +608,7 @@ msgid ""
 "example of providing configuration for the Authenticator.  In this case we "
 "want the max age of the cookie to be configurable."
 msgstr ""
-"最後にこれから説明するのが、setCookie()メソッドです。これはオーセンティケーターの設定を提供するサンプルになります。この場合"
-"、Cookieのmax-ageを設定できるようにする必要があります。"
+"最後にsetCookie()メソッドを説明していきます。このメソッドは、オーセンティケーターの設定を提供する見本になります。このケースでは、Cookieの最大有効期間を設定する必要があります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -622,11 +619,11 @@ msgid ""
 "        if (config != null) {\n"
 "            maxCookieAge = Integer.valueOf(config.getConfig().get(\"cookie.max.age\"));\n"
 msgstr ""
-"protected void setCookie(AuthenticationFlowContext context) {\n"
-" AuthenticatorConfigModel config = context.getAuthenticatorConfig();\n"
-" int maxCookieAge = 60 * 60 * 24 * 30; // 30 days\n"
-" if (config != null) {\n"
-" maxCookieAge = Integer.valueOf(config.getConfig().get(\"cookie.max.age\"));\n"
+"    protected void setCookie(AuthenticationFlowContext context) {\n"
+"        AuthenticatorConfigModel config = context.getAuthenticatorConfig();\n"
+"        int maxCookieAge = 60 * 60 * 24 * 30; // 30 days\n"
+"        if (config != null) {\n"
+"            maxCookieAge = Integer.valueOf(config.getConfig().get(\"cookie.max.age\"));\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -635,9 +632,9 @@ msgid ""
 "        ... set the cookie ...\n"
 "    }\n"
 msgstr ""
-"}\n"
-" ... set the cookie ...\n"
-" }\n"
+"        }\n"
+"        ... set the cookie ...\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -649,10 +646,7 @@ msgid ""
 "if you set up config definitions in your AuthenticatorFactory "
 "implementation."
 msgstr ""
-"AuthenticationFlowContext.getAuthenticatorConfig()メソッドからAuthenticatorConfigModelを取得します。設定がある場合"
-"、max-"
-"age設定を引き出します。何を設定するべきかを定義する方法については、AuthenticatorFactoryの実装について説明する時に、見ていきます。"
-" 設定値については、AuthenticatorFactory実装内で設定定義を設定した場合、管理コンソール内で定義することができます。"
+"AuthenticationFlowContext.getAuthenticatorConfig()メソッドからAuthenticatorConfigModelを取得します。設定が存在する場合は、その設定の最大有効期間を取り出します。何を設定するべきかを定義する方法については、AuthenticatorFactoryの実装について説明する際に確認していきます。AuthenticatorFactory実装で設定の定義をした場合、管理コンソール内で設定値を定義できます。"
 
 #. type: Title ====
 #, no-wrap
@@ -665,15 +659,15 @@ msgid ""
 " factory is responsible for instantiating an Authenticator.  It also "
 "provides deployment and configuration metadata about the Authenticator."
 msgstr ""
-"このプロセスでの次の手順は、AuthenticatorFactoryを実装することです。このファクトリーはオーセンティケーターのインスタンス化を担当します。"
-" また、オーセンティケーターに関するデプロイメントと設定のメタデータも提供します。"
+"このプロセスでの次のステップは、AuthenticatorFactoryを実装することです。このファクトリーはオーセンティケーターのインスタンス化を受け持ちます。"
+" また、オーセンティケーターに関する配備と設定のメタデータも提供します。"
 
 #. type: Plain text
 msgid ""
 "The getId() method is just the unique name of the component.  The create() "
 "method is called by the runtime to allocate and process the Authenticator."
 msgstr ""
-"getId()メソッドは、コンポーネントの独自の名前です。create()メソッドは、オーセンティケーターを割り当てて処理するために、ランタイムによって呼び出されます。"
+"getId()メソッドは、コンポーネントの一意の名前です。create()メソッドは、オーセンティケーターを割り当てて処理するために、ランタイムによって呼び出されます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -690,8 +684,8 @@ msgid ""
 "    public static final String PROVIDER_ID = \"secret-question-authenticator\";\n"
 "    private static final SecretQuestionAuthenticator SINGLETON = new SecretQuestionAuthenticator();\n"
 msgstr ""
-"public static final String PROVIDER_ID = \"secret-question-authenticator\";\n"
-" private static final SecretQuestionAuthenticator SINGLETON = new SecretQuestionAuthenticator();\n"
+"    public static final String PROVIDER_ID = \"secret-question-authenticator\";\n"
+"    private static final SecretQuestionAuthenticator SINGLETON = new SecretQuestionAuthenticator();\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -701,10 +695,10 @@ msgid ""
 "        return PROVIDER_ID;\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public String getId() {\n"
-" return PROVIDER_ID;\n"
-" }\n"
+"    @Override\n"
+"    public String getId() {\n"
+"        return PROVIDER_ID;\n"
+"    }\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -714,10 +708,10 @@ msgid ""
 "        return SINGLETON;\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public Authenticator create(KeycloakSession session) {\n"
-" return SINGLETON;\n"
-" }\n"
+"    @Override\n"
+"    public Authenticator create(KeycloakSession session) {\n"
+"        return SINGLETON;\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -728,7 +722,7 @@ msgid ""
 "console when defining a flow.  In our example, we're going to limit our "
 "requirement options to REQUIRED and DISABLED."
 msgstr ""
-"次にファクトリーが担当するのは、許可された要件スイッチを指定することです。ALTERNATIVE、REQUIRED、OPTIONAL、DISABLEの4つの異なる要件タイプがありますが、AuthenticatorFactoryの実装により、フローを定義する時に管理コンソールに表示される要件オプションを制限することができます。このサンプルでは、要件オプションをREQUIREDとDISABLEDに制限します。"
+"ファクトリーが次に受け持つのは、許可されたスイッチの要件を指定することです。ALTERNATIVE、REQUIRED、OPTIONAL、DISABLEDの4種類の要件タイプがありますが、AuthenticatorFactoryの実装では、フローを定義する際に管理コンソールに表示されるオプションの要件を制限できます。この例では、オプションの要件をREQUIREDとDISABLEDに制限します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -760,8 +754,7 @@ msgid ""
 "error.  If it returns true, then the flow manager will invoke "
 "Authenticator.setRequiredActions()."
 msgstr ""
-"AuthenticatorFactory.isUserSetupAllowed()は、Authenticator.setRequiredActions()メソッドが呼び出されるかどうかをフローマネージャーに通知するフラグです。オーセンティケーターがユーザー用に設定されていない場合、フローマネージャーがisUserSetupAllowed()を確認します。falseの場合は、フローによりエラーでアボートされます。trueが返された場合は、フローマネージャーはAuthenticator.setRequiredActions()を呼び出します。"
-" "
+"AuthenticatorFactory.isUserSetupAllowed()は、Authenticator.setRequiredActions()メソッドが呼び出されるかどうかをフローマネージャーに通知するフラグです。オーセンティケーターがユーザー用に設定されていない場合、フローマネージャーはisUserSetupAllowed()をチェックします。falseの場合、エラーを返して異常終了します。trueを返すと、フローマネージャーはAuthenticator.setRequiredActions()を呼び出します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -771,10 +764,10 @@ msgid ""
 "        return true;\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public boolean isUserSetupAllowed() {\n"
-" return true;\n"
-" }\n"
+"    @Override\n"
+"    public boolean isUserSetupAllowed() {\n"
+"        return true;\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -784,7 +777,7 @@ msgid ""
 "getConfigProperties() method returns a list of ProviderConfigProperty "
 "objects.  These objects define a specific configuration attribute."
 msgstr ""
-"次のいくつかのメソッドにより、オーセンティケーターの設定方法が定義されます。isConfigurable()メソッドは、オーセンティケーターをフロー内で設定することができるかどうかを管理コンソールに指定するフラグです。getConfigProperties()メソッドは、ProviderConfigPropertyオブジェクトのリストを返します。これらのオブジェクトにより、特定の設定属性が定義されます。"
+"次のいくつかのメソッドは、オーセンティケーターの設定方法を定義します。isConfigurable()メソッドは、オーセンティケーターをフロー内で設定することができるかを管理コンソールに指定するフラグです。getConfigProperties()メソッドは、ProviderConfigPropertyオブジェクトのリストを返します。これらのオブジェクトは、特定の設定属性を定義します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -794,10 +787,10 @@ msgid ""
 "        return configProperties;\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public List<ProviderConfigProperty> getConfigProperties() {\n"
-" return configProperties;\n"
-" }\n"
+"    @Override\n"
+"    public List<ProviderConfigProperty> getConfigProperties() {\n"
+"        return configProperties;\n"
+"    }\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -805,8 +798,8 @@ msgid ""
 "    private static final List<ProviderConfigProperty> configProperties = new"
 " ArrayList<ProviderConfigProperty>();\n"
 msgstr ""
-"private static final List<ProviderConfigProperty> configProperties = new "
-"ArrayList<ProviderConfigProperty>();\n"
+"    private static final List<ProviderConfigProperty> configProperties = new"
+" ArrayList<ProviderConfigProperty>();\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -821,15 +814,15 @@ msgid ""
 "        configProperties.add(property);\n"
 "    }\n"
 msgstr ""
-"static {\n"
-" 　ProviderConfigProperty property;\n"
-" 　property = new ProviderConfigProperty();\n"
-" 　property.setName(\"cookie.max.age\");\n"
-"　 property.setLabel(\"Cookie Max Age\");\n"
-" 　property.setType(ProviderConfigProperty.STRING_TYPE);\n"
-" 　property.setHelpText(\"Max age in seconds of the SECRET_QUESTION_COOKIE.\");\n"
-" 　configProperties.add(property);\n"
-" }\n"
+"    static {\n"
+"        ProviderConfigProperty property;\n"
+"        property = new ProviderConfigProperty();\n"
+"        property.setName(\"cookie.max.age\");\n"
+"        property.setLabel(\"Cookie Max Age\");\n"
+"        property.setType(ProviderConfigProperty.STRING_TYPE);\n"
+"        property.setHelpText(\"Max age in seconds of the SECRET_QUESTION_COOKIE.\");\n"
+"        configProperties.add(property);\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -841,7 +834,7 @@ msgid ""
 "text is what will be shown in the tooltip for the config attribute in the "
 "admin console.  Read the javadoc of ProviderConfigProperty for more detail."
 msgstr ""
-"各ProviderConfigPropertyにより、設定プロパティの名前が定義されます。これが、AuthenticatorConfigModel内に格納される設定マップで使用される鍵となります。ラベルにより、管理コンソール内でどのように設定オプションが表示されるかが定義されます。タイプにより、それがString、Booleanまたはその他のタイプなのかが定義されます。管理コンソールには、タイプによって異なるUI入力が表示されます。ヘルプのテキストは、管理コンソール内の設定属性のためのツールチップに表示されるものです。詳しくは、ProviderConfigPropertyのjavadocを参照ください。"
+"それぞれのProviderConfigPropertyは、設定プロパティーの名前を定義します。これが、AuthenticatorConfigModelに格納されている設定マップで使用されるキーとなります。ラベルは、管理コンソールでどのように設定オプションが表示されるかを定義します。タイプは、そのプロパティーがString、Booleanまたはその他のタイプであるかを定義します。管理コンソールには、タイプによって異なるUI入力が表示されます。ヘルプのテキストは、管理コンソールの設定属性のツールチップに表示されるものです。詳しくは、ProviderConfigPropertyのjavadocを参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -851,7 +844,7 @@ msgid ""
 "shown in the admin console when listing the Authenticator.  "
 "getReferenceCategory() is just a category the Authenticator belongs to."
 msgstr ""
-"残りのメソッドは管理コンソール用です。getHelpText()は、実行時にバインドする必要があるオーセンティケーターを選択する時に表示される、ツールチップのテキストです。getDisplayType()は、オーセンティケーターをリストアップする時に管理コンソールに表示されるテキストです。getReferenceCategory()は、オーセンティケーターが属する、単なるカテゴリーです。"
+"残りのメソッドは管理コンソール用です。getHelpText()は、エグゼキューションにバインドさせるオーセンティケーターを選択するときに表示されるツールチップ・テキストです。getDisplayType()は、オーセンティケーターを一覧表示する際に管理コンソールに表示されるテキストです。getReferenceCategory()は、オーセンティケーターが属するカテゴリーです。"
 " "
 
 #. type: Title ====
@@ -867,14 +860,15 @@ msgid ""
 "question.ftl.  This file should be placed in the login theme with all the "
 "other .ftl files you see for login."
 msgstr ""
-"Keycloakには、Freemarker <<_themes,theme and template engine>> "
-"が付属しています。オーセンティケーター・クラスのauthenticate()内に呼び出される、createForm()メソッドにより、secret-"
-"question.ftlというログイン・テーマ内のファイルからHTMLページが構築されます。このファイルは、ログイン時に表示されるその他すべての.ftlファイルと共に、ログイン・テーマ内に保存される必要があります。"
+"Keycloakには、Freemarker<<_themes,テーマとエンジン・テンプレート>> "
+"が付属しています。オーセンティケーター・クラスのauthenticate()内で呼び出されたcreateForm()メソッドは"
+"、ログインテーマ内のsecret-"
+"question.ftlファイルからHTMLページを構築します。このファイルは、ログイン時に参照するその他のすべての.ftlファイルと一緒にログインテーマに配置する必要があります。"
 
 #. type: Plain text
 msgid ""
 "Let's take a bigger look at secret-question.ftl Here's a small code snippet:"
-msgstr "secret-question.ftlの詳細を見ていきましょう。以下は、短いコード・スニペットになります。"
+msgstr "secret-question.ftlの詳細を見ていきましょう。以下は、短いコードスニペットになります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -913,11 +907,9 @@ msgid ""
 "value by calling the AuthenticationFlowContext.getActionURL() method in Java"
 " code."
 msgstr ""
-"`${}` に含まれるテキストの一部は、属性かテンプレートの機能に対応します。フォームの動作を確認すると、それは "
+"`${}` で囲まれたテキストは、属性またはテンプレートの関数に対応します。フォームのアクションが表示された場合、それは "
 "`${url.loginAction}` "
-"を指していることが分かります。この値は、AuthenticationFlowContext.form()メソッドを呼び出す時に自動的に生成されます。また、"
-" "
-"Javaコード内のAuthenticationFlowContext.getActionURL()メソッドを呼び出すことにより、この値を取得することもできます。"
+"を指しています。この値は、AuthenticationFlowContext.form()メソッドを呼び出すと自動的に生成されます。JavaコードでAuthenticationFlowContext.getActionURL()メソッドを呼び出すことで、この値を取得することもできます。"
 
 #. type: Plain text
 #, no-wrap
@@ -928,11 +920,12 @@ msgid ""
 "If you're just using english, you can just add the value of the `loginSecretQuestion`                value.\n"
 "This should be the question you want to ask the user. \n"
 msgstr ""
-"また、 `${properties.someValue}` も表示されます。\n"
-"これらは、テーマのtheme.propertiesファイル内で定義されたプロパティに対応します。\n"
-" `${msg(\"someValue\")}` は、ログイン・テーマのメッセージまたはディレクトリと共に含まれている、国際化されたメッセージのバンドル（.properties files）に対応します。\n"
-"英語のみを使用している場合は、 `loginSecretQuestion` の値を追加するだけです。\n"
-"これが、ユーザーに尋ねる必要がある質問になります。\n"
+"`${properties.someValue}` "
+"も同じく表示されます。これらは、テーマのtheme.propertiesファイルで定義されたプロパティに対応します。 "
+"`${msg(\"someValue\")}` "
+"は、ログインテーマのmessages/ディレクトリーに含まれている国際化されたメッセージ・バンドル（.properties "
+"files）に対応します。英語のみを使用している場合は、 `loginSecretQuestion` "
+"の値を追加することができます。これがユーザーに要求する質問になります。\n"
 
 #. type: Plain text
 msgid ""
@@ -943,13 +936,13 @@ msgid ""
 "attribute can be any Java bean as well."
 msgstr ""
 "AuthenticationFlowContext.form()を呼び出すと、LoginFormsProviderインスタンスが生成されます。 "
-"`LoginFormsProvider.setAttribute（ \"foo\" 、 \"bar\" ）` を呼び出した場合、 \"foo\" "
-"の値はフォーム内で `${foo}` として参照できるようになります。属性の値は、Java beanでも構いません。"
+"`LoginFormsProvider.setAttribute（ \"foo\" 、 \"bar\" ）` を呼び出した場合、\"foo\"の値は "
+"`${foo}` という形式で参照することができます。属性の値は、Java beanでも構いません。"
 
 #. type: Title ====
 #, no-wrap
 msgid "Adding Authenticator to a Flow"
-msgstr "オーセンティケーターをフローに追加"
+msgstr "フローにオーセンティケーターを追加"
 
 #. type: Plain text
 msgid ""
@@ -960,7 +953,7 @@ msgid ""
 " or create your own.  I'm hoping the UI is intuitive enough so that you can "
 "figure out for yourself how to create a flow and add the Authenticator."
 msgstr ""
-"フローへのオーセンティケーター追加は、管理コンソール内で行う必要があります。オーセンティケーション・メニュー・アイテムへ移動してフロー・タブを選択すると、現在定義済みのフローが表示されます。組み込みのフローを変更することはできませんので、作成したオーセンティケーターを追加するには、既存のフローをコピーするか、独自のフローを作成する必要があります。このUIは非常に分かりやすく作られているので、フローを作成してオーセンティケーターを追加する方法が直感的に分かるようになっていれば良いと思っています。"
+"フローへのオーセンティケーター追加は、管理コンソールで行う必要があります。Authenticationメニュー項目に移動してFlowタブを選択すると、現在定義されているフローが表示されます。組み込みのフローを変更することはできません。そのため、作成したオーセンティケーターを追加するには、既存のフローをコピーするか独自のフローを作成する必要があります。このUIは非常に分かりやすく作られているので、フローを作成してオーセンティケーターを追加する方法を見つけることができると思います。"
 
 #. type: Plain text
 msgid ""
@@ -969,7 +962,8 @@ msgid ""
 "Bindings tab you will see options to bind a flow to the browser, "
 "registration, or direct grant flow."
 msgstr ""
-"フローを作成した後、バインドしたいログイン動作に、これをバインドする必要があります。オーセンティケーション・メニューに移動してバインディング・タブを選択すると、フローをブラウザー、登録、または直接許可フローにバインドするオプションが表示されます。"
+"フローを作成した後、バインドさせるログイン・アクションに、そのフローをバインドする必要があります。Authenticationメニューに移動して、Bindingsタブを選択すると、フローをBrowser、Registration、またはDirect"
+" Grantフローにバインドするオプションが表示されます。"
 
 #. type: Title ===
 #, no-wrap
@@ -985,9 +979,7 @@ msgid ""
 "triggered.  This section discusses how to implement the required action for "
 "the Secret Question Authenticator."
 msgstr ""
-"このセクションでは、必須アクションを定義する方法について説明します。オーセンティケーター・セクションでは、 "
-"\"どのようにしてシステムに入力された秘密の質問に対するユーザーの回答をもらえば良いのだろう\" "
-"と疑問に思うかもしれません。サンプルで示された通り、回答が設定されていない場合は、必須アクションがトリガーになります。このセクションでは、秘密の質問オーセンティケーターのために必須アクションを実装する方法について説明します。"
+"このセクションでは、必須アクションを定義する方法について説明します。オーセンティケーターのセクションでは、\"どのようにしてシステムに入力された秘密の質問に対するユーザーの回答をもらえば良いのだろう\"と疑問に思ったかもしれません。例で示したように、回答が設定されていない場合は、必須アクションがトリガーされます。このセクションでは、シークレット・クエスチョン・オーセンティケーターに必須アクションを実装する方法について説明します。"
 
 #. type: Plain text
 #, no-wrap
@@ -997,10 +989,10 @@ msgid ""
 "This file must list the fully qualified classname of each RequiredActionFactory implementation you have in the jar.\n"
 "For example: \n"
 msgstr ""
-"1つのjar内でクラスをパッケージ化します。\n"
-"このjarを他のプロバイダーのクラスとは別にする必要はありませんが、  `org.keycloak.authentication.RequiredActionFactory` という名前のファイルを含む必要があります。また、これはjarの `META-INF/services/` ディレクトリ内に含まれる必要があります。\n"
-"このファイルには、jar内にある各RequiredActionFactory実装の完全修飾クラス名がリストされている必要があります。\n"
-"例えば、以下の通りです。\n"
+"1つのjarファイル内にクラスをパッケージ化します。このjarは、他のプロバイダーのクラスとは別にする必要はありませんが、  "
+"`org.keycloak.authentication.RequiredActionFactory` という名前のファイルが、jarの `META-"
+"INF/services/` "
+"ディレクトリーに含まれている必要があります。このファイルには、jarファイル内にある各RequiredActionFactory実装の完全修飾クラス名が一覧化されている必要があります。たとえば、以下の通りになります。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1021,7 +1013,7 @@ msgid ""
 "by the flow manager into the required action.  This method is responsible "
 "for rendering the HTML form that will drive the required action."
 msgstr ""
-"必須アクションでは、まずRequiredActionProviderインターフェイスが実装される必要があります。RequiredActionProvider.requiredActionChallenge()は、フローマネージャーから必須アクションに対する初回の呼び出しになります。このメソッドは、必須アクションを動作させるHTMLフォームのレンダリングを担当します。"
+"必須アクションは、最初にRequiredActionProviderインターフェイスを実装する必要があります。RequiredActionProvider.requiredActionChallenge()は、フローマネージャーの必須アクションによる初回の呼び出しになります。このメソッドは、必須アクションを実行するHTMLフォームのレンダリングを行います。"
 
 #. type: delimited block -
 #, no-wrap
@@ -1031,10 +1023,10 @@ msgid ""
 "        Response challenge = context.form().createForm(\"secret_question_config.ftl\");\n"
 "        context.challenge(challenge);\n"
 msgstr ""
-"@Override\n"
-" public void requiredActionChallenge(RequiredActionContext context) {\n"
-" Response challenge = context.form().createForm(\"secret_question_config.ftl\");\n"
-" context.challenge(challenge);\n"
+"    @Override\n"
+"    public void requiredActionChallenge(RequiredActionContext context) {\n"
+"        Response challenge = context.form().createForm(\"secret_question_config.ftl\");\n"
+"        context.challenge(challenge);\n"
 
 #. type: Plain text
 msgid ""
@@ -1044,13 +1036,13 @@ msgid ""
 "form() method.  You just need to reference it within your HTML form.  I'll "
 "show you this later."
 msgstr ""
-"RequiredActionContextには、AuthenticationFlowContextと同じようなメソッドがあります。form()メソッドにより、Freemarkerテンプレートからページをレンダリングすることができます。動作確認URLは、このform()メソッドの呼び出しにより事前設定されています。これをHTMLフォーム内で参照するだけで済みます。これについては、後ほど説明します。"
+"RequiredActionContextには、AuthenticationFlowContextと同じようなメソッドがあります。form()メソッドにより、Freemarkerテンプレートからページをレンダリングすることができます。アクションURLは、このform()メソッドの呼び出しにより事前に設定されるため、HTMLフォーム内で参照するだけで済みます。これについては、後ほど説明します。"
 
 #. type: Plain text
 msgid ""
 "The challenge() method notifies the flow manager that a required action must"
 " be executed."
-msgstr "challenge()メソッドにより、必須アクションを実行する必要があるということがフローマネージャーに通知されます。"
+msgstr "challenge()メソッドは、必須アクションを実行する必要があることをフローマネージャーに通知します。"
 
 #. type: Plain text
 msgid ""
@@ -1058,7 +1050,7 @@ msgid ""
 "the required action.  The action URL of the form will be routed to the "
 "RequiredActionProvider.processAction() method"
 msgstr ""
-"次のメソッドは、必須アクションのHTMLフォームからの入力処理を担当します。フォームの動作確認URLは、RequiredActionProvider.processAction()メソッドへルーティングされます。"
+"次のメソッドは、必須アクションのHTMLフォームからの入力を処理します。フォームのアクションURLは、RequiredActionProvider.processAction（）メソッドにルーティングされます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -1073,15 +1065,15 @@ msgid ""
 "        context.success();\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public void processAction(RequiredActionContext context) {\n"
-" String answer = (context.getHttpRequest().getDecodedFormParameters().getFirst(\"answer\"));\n"
-" UserCredentialValueModel model = new UserCredentialValueModel();\n"
-" model.setValue(answer);\n"
-" model.setType(SecretQuestionAuthenticator.CREDENTIAL_TYPE);\n"
-" context.getUser().updateCredentialDirectly(model);\n"
-" context.success();\n"
-" }\n"
+"    @Override\n"
+"    public void processAction(RequiredActionContext context) {\n"
+"        String answer = (context.getHttpRequest().getDecodedFormParameters().getFirst(\"answer\"));\n"
+"        UserCredentialValueModel model = new UserCredentialValueModel();\n"
+"        model.setValue(answer);\n"
+"        model.setType(SecretQuestionAuthenticator.CREDENTIAL_TYPE);\n"
+"        context.getUser().updateCredentialDirectly(model);\n"
+"        context.success();\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -1091,9 +1083,7 @@ msgid ""
 "RequiredActionContext.success() notifies the container that the required "
 "action was successful."
 msgstr ""
-"回答がフォーム投稿から引き出されます。UserCredentialValueModelが作成され、クレデンシャルのタイプと値が設定されます。次に、UserModel.updateCredentialDirectly()"
-" "
-"が呼び出されます。最後に、RequiredActionContext.success()により、必須アクションが成功したことがコンテナーに通知されます。"
+"回答はフォームのpostから取り出されます。UserCredentialValueModelが作成され、クレデンシャルのタイプと値がセットされます。その後、UserModel.updateCredentialDirectly()が呼び出されます。最後に、RequiredActionContext.success()は、必須アクションが成功したことをコンテナーに通知します。"
 
 #. type: Title ====
 #, no-wrap
@@ -1104,7 +1094,7 @@ msgstr "RequiredActionFactoryの実装"
 msgid ""
 "This class is really simple.  It is just responsible for creating the "
 "required actin provider instance."
-msgstr "このクラスは非常に単純です。これは必須アクション・プロバイダー・インスタンスの作成を担当するだけです。"
+msgstr "このクラスは非常にシンプルです。これは必須アクション・プロバイダー・インスタンスの作成を行うだけです。"
 
 #. type: delimited block -
 #, no-wrap
@@ -1121,7 +1111,7 @@ msgid ""
 "    private static final SecretQuestionRequiredAction SINGLETON = new "
 "SecretQuestionRequiredAction();\n"
 msgstr ""
-"private static final SecretQuestionRequiredAction SINGLETON = new "
+"    private static final SecretQuestionRequiredAction SINGLETON = new "
 "SecretQuestionRequiredAction();\n"
 
 #. type: delimited block -
@@ -1133,9 +1123,9 @@ msgid ""
 "    }\n"
 msgstr ""
 "    @Override\n"
-" public RequiredActionProvider create(KeycloakSession session) {\n"
-" return SINGLETON;\n"
-" }\n"
+"    public RequiredActionProvider create(KeycloakSession session) {\n"
+"        return SINGLETON;\n"
+"    }\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1145,10 +1135,10 @@ msgid ""
 "        return SecretQuestionRequiredAction.PROVIDER_ID;\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public String getId() {\n"
-" return SecretQuestionRequiredAction.PROVIDER_ID;\n"
-" }\n"
+"    @Override\n"
+"    public String getId() {\n"
+"        return SecretQuestionRequiredAction.PROVIDER_ID;\n"
+"    }\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1158,17 +1148,16 @@ msgid ""
 "        return \"Secret Question\";\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public String getDisplayText() {\n"
-" return \"Secret Question\";\n"
-" }\n"
+"    @Override\n"
+"    public String getDisplayText() {\n"
+"        return \"Secret Question\";\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
 "The getDisplayText() method is just for the admin console when it wants to "
 "display a friendly name for the required action."
-msgstr ""
-"getDisplayText()メソッドは、管理コンソールで、必須アクションのために分かりやすい名前を表示する必要がある時にだけ使用するものです。"
+msgstr "getDisplayText()メソッドは、必須アクションに対して分かりやすい名前を表示させたいときに、管理コンソールで使用されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -1182,7 +1171,8 @@ msgid ""
 "Register button and choose your new Required Action.  Your new required "
 "action should now be displayed and enabled in the required actions list."
 msgstr ""
-"最後に、管理コンソールに移動する必要があります。認証の左メニューをクリックします。必須アクションのタブをクリックします。登録ボタンをクリックし、新しい必須アクションンを選択します。これで、必須アクションのリストに新しい必須アクションが表示され、有効になります。"
+"最後に、管理コンソールに移動する必要があります。左メニューのAuthenticationをクリックします。Required "
+"Actionsタブをクリックします。Registerボタンをクリックし、新しい必須アクションを選択します。必須アクションのリストに新しい必須アクションが表示され、有効になります。"
 
 #. type: Title ===
 #, no-wrap
@@ -1201,13 +1191,13 @@ msgid ""
 " profile registration processing as well as the registration Google "
 "Recaptcha plugin."
 msgstr ""
-"認証のセットを使用して独自のフローを実装すれば、Keycloakでの登録方法を完全に変更することができます。しかし、通常は、登録ページにバリデーションを少し加えたいだけでしょう。このことを可能にするために、追加のSPIが作成されました。このSPIにより、基本的には、ユーザーの登録後、UserModel属性とデータを初期化するだけでなく、ページのフォーム要素にバリデーションを加えることができるようになります。Google"
-" Recaptchaプラグイン登録とユーザー・プロファイル登録処理の実装の両方を説明します。"
+"オーセンティケーターを使用して独自のフローを実装することは可能なため、Keycloakでの登録方法を完全に変更することができます。しかし、独自の登録ページにちょっとしたバリデーションを加えたいことも普段はあるかと思います。これを行うために追加のSPIが作成されました。このSPIは、基本的には、ページにフォーム要素のバリデーションを追加するだけでなく、ユーザー登録後にUserModel属性とデータを初期化することもできます。ユーザー・プロファイルの登録処理の実装とGoogle"
+" Recaptchaプラグインの登録の両方を説明していきます。"
 
 #. type: Title ====
 #, no-wrap
 msgid "Implementation FormAction Interface"
-msgstr "実装FormActionインターフェイス"
+msgstr "FormActionインターフェイスの実装"
 
 #. type: Plain text
 msgid ""
@@ -1217,7 +1207,7 @@ msgid ""
 "the validate() method, post validation operations are done in success().  "
 "Let's first take a look at buildPage() method of the Recaptcha plugin."
 msgstr ""
-"実装する必要がある最も重要なインターフェイスは、FormActionインターフェイスです。FormActionは、ページの一部のレンダリングと処理を担当します。レンダリングはbuildPage()メソッド内で、バリデーションはvalidate()メソッド内で、投稿バリデーション動作はsuccess()内で実行されます。まずは、RecaptchaプラグインのbuildPage()メソッドを見てみましょう。"
+"実装する必要のあるコアとなるインターフェイスは、FormActionインターフェイスです。FormActionは、ページの一部のレンダリングと処理を受け待ちます。レンダリングはbuildPage()メソッド、バリデーションはvalidate()メソッド、バリデーション後の動作はsuccess()で行います。まずは、RecaptchaプラグインのbuildPage()メソッドを見ていきます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -1238,21 +1228,21 @@ msgid ""
 "        form.addScript(\"https://www.google.com/recaptcha/api.js\");\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public void buildPage(FormContext context, LoginFormsProvider form) {\n"
-" AuthenticatorConfigModel captchaConfig = context.getAuthenticatorConfig();\n"
-" if (captchaConfig == null || captchaConfig.getConfig() == null\n"
-" || captchaConfig.getConfig().get(SITE_KEY) == null\n"
-" || captchaConfig.getConfig().get(SITE_SECRET) == null\n"
-" ) {\n"
-" form.addError(new FormMessage(null, Messages.RECAPTCHA_NOT_CONFIGURED));\n"
-" return;\n"
-" }\n"
-" String siteKey = captchaConfig.getConfig().get(SITE_KEY);\n"
-" form.setAttribute(\"recaptchaRequired\", true);\n"
-" form.setAttribute(\"recaptchaSiteKey\", siteKey);\n"
-" form.addScript(\"https://www.google.com/recaptcha/api.js\");\n"
-" }\n"
+"    @Override\n"
+"    public void buildPage(FormContext context, LoginFormsProvider form) {\n"
+"        AuthenticatorConfigModel captchaConfig = context.getAuthenticatorConfig();\n"
+"        if (captchaConfig == null || captchaConfig.getConfig() == null\n"
+"                || captchaConfig.getConfig().get(SITE_KEY) == null\n"
+"                || captchaConfig.getConfig().get(SITE_SECRET) == null\n"
+"                ) {\n"
+"            form.addError(new FormMessage(null, Messages.RECAPTCHA_NOT_CONFIGURED));\n"
+"            return;\n"
+"        }\n"
+"        String siteKey = captchaConfig.getConfig().get(SITE_KEY);\n"
+"        form.setAttribute(\"recaptchaRequired\", true);\n"
+"        form.setAttribute(\"recaptchaSiteKey\", siteKey);\n"
+"        form.addScript(\"https://www.google.com/recaptcha/api.js\");\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -1263,7 +1253,7 @@ msgid ""
 " Freemarker template."
 msgstr ""
 "Recaptcha "
-"buildPage()メソッドは、ページをレンダリングするための、フォーム・フローからのコールバックです。これは、LoginFormsProviderであるフォーム・パラメーターを受け取ります。フォーム・プロバイダーに追加属性を加えて、登録Freemarkerテンプレートによって生成されたHTMLページに表示させることができます。"
+"buildPage()メソッドは、ページのレンダリングを支援するフォームフローからのコールバックです。これは、LoginFormsProviderであるフォーム・パラメーターを受け取ります。フォーム・プロバイダーに追加属性を加えて、登録Freemarkerテンプレートによって生成されたHTMLページに表示させることができます。"
 
 #. type: Plain text
 msgid ""
@@ -1274,23 +1264,22 @@ msgid ""
 "add it as an attribute to the form provider.  Our regstration template file "
 "can read this attribute now."
 msgstr ""
-"上記のコードは、登録recaptchaプラグインからのものです。Recaptchaにはいくつかの特定の設定が必要で、それらを設定から取得する必要があります。FormActionsは、Authenticatorsとまったく同じように設定されています。このサンプルでは、設定からGoogle"
+"上記のコードは、登録recaptchaプラグインからのものです。Recaptchaには、設定から取得する必要のある特定の設定が必要です。FormActionsは、オーセンティケーターとまったく同じように設定されています。この例では、Google"
 " "
-"Recaptchaサイト鍵を引き出し、フォーム・プロバイダーに属性として追加します。これで、登録テンプレート・ファイルはこの属性を読み込むことができます。"
+"Recaptchaの公開鍵を設定から取り出し、フォーム・プロバイダーに属性として追加します。これで、登録テンプレート・ファイルはこの属性を読み込むことができます。"
 
 #. type: Plain text
 msgid ""
 "Recaptcha also has the requirement of loading a javascript script.  You can "
 "do this by calling LoginFormsProvider.addScript() passing in the URL."
 msgstr ""
-"また、Recaptchaには、javascriptのスクリプトを読み込む要件があります。URL内で渡すLoginFormsProvider.addScript()を呼び出して、これを実行することができます。"
+"Recaptchaには、Javascriptの読み込み要件もあります。これを行うには、URLを渡すLoginFormsProvider.addScript()を呼び出します。"
 
 #. type: Plain text
 msgid ""
 "For user profile processing, there is no additional information that it "
 "needs to add to the form, so its buildPage() method is empty."
-msgstr ""
-"ユーザー・プロファイルを処理するために、フォームに加える必要がある追加情報はありません。そのため、そのbuildPage()メソッドは空です。"
+msgstr "ユーザー・プロファイルを処理する場合、フォームに加える必要がある追加情報はないため、buildPage()メソッドは空です。"
 
 #. type: Plain text
 msgid ""
@@ -1298,7 +1287,7 @@ msgid ""
 "called immediately upon receiving a form post.  Let's look at the "
 "Recaptcha's plugin first."
 msgstr ""
-"このインターフェイスの次の部分はvalidate()メソッドです。これは、フォーム投稿を受信するとすぐに呼び出されます。まず、Recaptchaのプラグインを見てみましょう。"
+"このインターフェイスの次の部分は、validate()メソッドです。これは、フォームのpostを受け取ると、直後に呼び出されます。最初に、Recaptchaのプラグインを見ていきます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -1309,11 +1298,11 @@ msgid ""
 "        List<FormMessage> errors = new ArrayList<>();\n"
 "        boolean success = false;\n"
 msgstr ""
-"@Override\n"
-" public void validate(ValidationContext context) {\n"
-" MultivaluedMap<String, String> formData = context.getHttpRequest().getDecodedFormParameters();\n"
-" List<FormMessage> errors = new ArrayList<>();\n"
-" boolean success = false;\n"
+"    @Override\n"
+"    public void validate(ValidationContext context) {\n"
+"        MultivaluedMap<String, String> formData = context.getHttpRequest().getDecodedFormParameters();\n"
+"        List<FormMessage> errors = new ArrayList<>();\n"
+"        boolean success = false;\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1323,10 +1312,10 @@ msgid ""
 "            AuthenticatorConfigModel captchaConfig = context.getAuthenticatorConfig();\n"
 "            String secret = captchaConfig.getConfig().get(SITE_SECRET);\n"
 msgstr ""
-"String captcha = formData.getFirst(G_RECAPTCHA_RESPONSE);\n"
-" if (!Validation.isBlank(captcha)) {\n"
-" AuthenticatorConfigModel captchaConfig = context.getAuthenticatorConfig();\n"
-" String secret = captchaConfig.getConfig().get(SITE_SECRET);\n"
+"        String captcha = formData.getFirst(G_RECAPTCHA_RESPONSE);\n"
+"        if (!Validation.isBlank(captcha)) {\n"
+"            AuthenticatorConfigModel captchaConfig = context.getAuthenticatorConfig();\n"
+"            String secret = captchaConfig.getConfig().get(SITE_SECRET);\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1341,15 +1330,15 @@ msgid ""
 "            context.validationError(formData, errors);\n"
 "            return;\n"
 msgstr ""
-"success = validateRecaptcha(context, success, captcha, secret);\n"
-" }\n"
-" if (success) {\n"
-" context.success();\n"
-" } else {\n"
-" errors.add(new FormMessage(null, Messages.RECAPTCHA_FAILED));\n"
-" formData.remove(G_RECAPTCHA_RESPONSE);\n"
-" context.validationError(formData, errors);\n"
-" return;　\n"
+"            success = validateRecaptcha(context, success, captcha, secret);\n"
+"        }\n"
+"        if (success) {\n"
+"            context.success();\n"
+"        } else {\n"
+"            errors.add(new FormMessage(null, Messages.RECAPTCHA_FAILED));\n"
+"            formData.remove(G_RECAPTCHA_RESPONSE);\n"
+"            context.validationError(formData, errors);\n"
+"            return;\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1357,9 +1346,8 @@ msgid ""
 "        }\n"
 "    }\n"
 msgstr ""
-"}\n"
-" }　\n"
-"\n"
+"        }\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -1373,13 +1361,13 @@ msgid ""
 " validate() might be validating the format of a form element, i.e.  an "
 "alternative email attribute."
 msgstr ""
-"ここでは、Recaptchaウィジェットがフォームに追加するフォームデータを取得します。設定からRecaptcha秘密鍵を取得します。次に、recaptchaを検証します。成功すると、ValidationContext.success()が呼び出されます。成功しなかった場合は、formData内で渡すValidationContext.validationError()を呼び出します（こうしてユーザーはデータを再入力する必要がなくなります）。また、表示するエラーメッセージも指定します。エラーメッセージにより、国際化されたメッセージ・バンドル内のメッセージ・バンドル・プロパティが指し示される必要があります。他の登録拡張では、validate()はフォーム要素のフォーマット、例えば別の電子メール属性を検証している可能性があります。"
+"ここでは、Recaptchaウィジェットがフォームに追加するフォームデータを取得します。設定からRecaptchaの秘密鍵を取得します。次に、Recaptchaを検証します。成功すると、ValidationContext.success()が呼び出されます。成功しなかった場合は、formDataで渡すValidationContext.validationError()を呼び出します（ユーザーがデータを再入力する必要はありません）。また、表示するエラーメッセージを指定します。エラーメッセージは、国際化されたメッセージ・バンドルのメッセージ・バンドル・プロパティーを指し示している必要があります。他の登録拡張の場合、validate()はフォーム要素のフォーマット、つまり別の電子メール属性を検証する可能性もあります。"
 
 #. type: Plain text
 msgid ""
 "Let's also look at the user profile plugin that is used to validate email "
 "address and other user information when registering."
-msgstr "また、登録時にメールアドレスと他のユーザー情報を検証するために使用されるユーザー・プロファイル・プラグインを見てみましょう。"
+msgstr "また、登録時にメールアドレスや他のユーザー情報を検証するために使用されるユーザー・プロファイル・プラグインについても見ていきましょう。"
 
 #. type: delimited block -
 #, no-wrap
@@ -1389,15 +1377,15 @@ msgid ""
 "        MultivaluedMap<String, String> formData = context.getHttpRequest().getDecodedFormParameters();\n"
 "        List<FormMessage> errors = new ArrayList<>();\n"
 msgstr ""
-"@Override\n"
-" public void validate(ValidationContext context) {\n"
-" MultivaluedMap<String, String> formData = context.getHttpRequest().getDecodedFormParameters();\n"
-" List<FormMessage> errors = new ArrayList<>();\n"
+"    @Override\n"
+"    public void validate(ValidationContext context) {\n"
+"        MultivaluedMap<String, String> formData = context.getHttpRequest().getDecodedFormParameters();\n"
+"        List<FormMessage> errors = new ArrayList<>();\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "        String eventError = Errors.INVALID_REGISTRATION;\n"
-msgstr "String eventError = Errors.INVALID_REGISTRATION;\n"
+msgstr "        String eventError = Errors.INVALID_REGISTRATION;\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1406,9 +1394,9 @@ msgid ""
 "            errors.add(new FormMessage(RegistrationPage.FIELD_FIRST_NAME, Messages.MISSING_FIRST_NAME));\n"
 "        }\n"
 msgstr ""
-"if (Validation.isBlank(formData.getFirst((RegistrationPage.FIELD_FIRST_NAME)))) {\n"
-" errors.add(new FormMessage(RegistrationPage.FIELD_FIRST_NAME, Messages.MISSING_FIRST_NAME));\n"
-" }\n"
+"        if (Validation.isBlank(formData.getFirst((RegistrationPage.FIELD_FIRST_NAME)))) {\n"
+"            errors.add(new FormMessage(RegistrationPage.FIELD_FIRST_NAME, Messages.MISSING_FIRST_NAME));\n"
+"        }\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1417,10 +1405,9 @@ msgid ""
 "            errors.add(new FormMessage(RegistrationPage.FIELD_LAST_NAME, Messages.MISSING_LAST_NAME));\n"
 "        }\n"
 msgstr ""
-"if (Validation.isBlank(formData.getFirst((RegistrationPage.FIELD_LAST_NAME)))) {\n"
-" errors.add(new FormMessage(RegistrationPage.FIELD_LAST_NAME, Messages.MISSING_LAST_NAME));\n"
-" }\n"
-"\n"
+"        if (Validation.isBlank(formData.getFirst((RegistrationPage.FIELD_LAST_NAME)))) {\n"
+"            errors.add(new FormMessage(RegistrationPage.FIELD_LAST_NAME, Messages.MISSING_LAST_NAME));\n"
+"        }\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1433,14 +1420,13 @@ msgid ""
 "            errors.add(new FormMessage(RegistrationPage.FIELD_EMAIL, Messages.INVALID_EMAIL));\n"
 "        }\n"
 msgstr ""
-"String email = formData.getFirst(Validation.FIELD_EMAIL);\n"
-" if (Validation.isBlank(email)) {\n"
-" errors.add(new FormMessage(RegistrationPage.FIELD_EMAIL, Messages.MISSING_EMAIL));\n"
-" } else if (!Validation.isEmailValid(email)) {\n"
-" formData.remove(Validation.FIELD_EMAIL);\n"
-" errors.add(new FormMessage(RegistrationPage.FIELD_EMAIL, Messages.INVALID_EMAIL));\n"
-" }\n"
-"\n"
+"        String email = formData.getFirst(Validation.FIELD_EMAIL);\n"
+"        if (Validation.isBlank(email)) {\n"
+"            errors.add(new FormMessage(RegistrationPage.FIELD_EMAIL, Messages.MISSING_EMAIL));\n"
+"        } else if (!Validation.isEmailValid(email)) {\n"
+"            formData.remove(Validation.FIELD_EMAIL);\n"
+"            errors.add(new FormMessage(RegistrationPage.FIELD_EMAIL, Messages.INVALID_EMAIL));\n"
+"        }\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1450,11 +1436,10 @@ msgid ""
 "            errors.add(new FormMessage(RegistrationPage.FIELD_EMAIL, Messages.EMAIL_EXISTS));\n"
 "        }\n"
 msgstr ""
-"if (context.getSession().users().getUserByEmail(email, context.getRealm()) != null) {\n"
-" formData.remove(Validation.FIELD_EMAIL);\n"
-" errors.add(new FormMessage(RegistrationPage.FIELD_EMAIL, Messages.EMAIL_EXISTS));\n"
-" }\n"
-"\n"
+"        if (context.getSession().users().getUserByEmail(email, context.getRealm()) != null) {\n"
+"            formData.remove(Validation.FIELD_EMAIL);\n"
+"            errors.add(new FormMessage(RegistrationPage.FIELD_EMAIL, Messages.EMAIL_EXISTS));\n"
+"        }\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1463,10 +1448,9 @@ msgid ""
 "            context.validationError(formData, errors);\n"
 "            return;\n"
 msgstr ""
-"if (errors.size() > 0) {\n"
-" context.validationError(formData, errors);\n"
-" return;\n"
-"\n"
+"        if (errors.size() > 0) {\n"
+"            context.validationError(formData, errors);\n"
+"            return;\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1476,11 +1460,10 @@ msgid ""
 "        }\n"
 "    }\n"
 msgstr ""
-"} else {\n"
-" context.success();\n"
-" }\n"
-" }\n"
-"\n"
+"        } else {\n"
+"            context.success();\n"
+"        }\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -1495,7 +1478,7 @@ msgid ""
 "id must correspond to a property in one of the localized message bundle "
 "files.  in the theme."
 msgstr ""
-"上記に示されている通り、ユーザー・プロファイル処理のvalidate()メソッドにより、まず電子メール、次に苗字がフォーム内に入力されていることが確認されます。また、電子メールが正しいフォーマットであることも確認されます。これらの検証のいずれか1つでも失敗した場合、エラーメッセージがレンダリング用にキューに入れられます。エラー内のフィールドは、フォームデータから削除されます。エラーメッセージは、FormMessageクラスによって表されます。このクラスのコンストラクターでの最初のパラメーターにより、HTML要素idが取得されます。フォームが再レンダリングされる時に、エラー入力がハイライトされます。2番目のパラメーターはメッセージ参照idです。このidは、テーマ内でローカライズされたメッセージ・バンドル・ファイルのいずれかのプロパティに対応している必要があります。"
+"上記に示されている通り、ユーザー・プロファイル処理のvalidate()メソッドは、電子メール、名および姓がフォームに入力されていることを確認します。また、電子メールが適切なフォーマットであることを確認します。これらのバリデーションのいずれかが失敗すると、レンダリング用にエラーメッセージがキューに入れられます。エラーのあるフィールドは、すべてフォームデータから削除されます。エラーメッセージは、FormMessageクラスによって表されます。このクラスのコンストラクターでの最初のパラメーターは、HTML要素IDが取得されます。フォームが再レンダリングされると、エラー入力がハイライトされます。2番目のパラメーターはメッセージ参照IDです。このIDは、テーマ内でローカライズされたメッセージ・バンドル・ファイルのいずれかのプロパティーに対応している必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -1504,7 +1487,7 @@ msgid ""
 " go over it.  For user profile processing, this method fills in values in "
 "the registered user."
 msgstr ""
-"バリデーションがすべて処理された後、フォームフローは次にFormAction.success()メソッドを呼び出します。これはrecaptcha用で、オプションはありませんので、これについて説明はしません。ユーザー・プロファイルを処理するために、このメソッドによって、値が登録ユーザーに入力されます。"
+"すべてのバリデーションが処理された後、フォームフローはFormAction.success()メソッドを呼び出します。Recapthaに対して、これは何も行わないので説明はしません。ユーザー・プロファイル処理の場合、このメソッドは登録ユーザーの値を入力します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -1518,14 +1501,14 @@ msgid ""
 "        user.setEmail(formData.getFirst(RegistrationPage.FIELD_EMAIL));\n"
 "    }\n"
 msgstr ""
-"@Override\n"
-" public void success(FormContext context) {\n"
-" UserModel user = context.getUser();\n"
-" MultivaluedMap<String, String> formData = context.getHttpRequest().getDecodedFormParameters();\n"
-" user.setFirstName(formData.getFirst(RegistrationPage.FIELD_FIRST_NAME));\n"
-" user.setLastName(formData.getFirst(RegistrationPage.FIELD_LAST_NAME));\n"
-" user.setEmail(formData.getFirst(RegistrationPage.FIELD_EMAIL));\n"
-" }\n"
+"    @Override\n"
+"    public void success(FormContext context) {\n"
+"        UserModel user = context.getUser();\n"
+"        MultivaluedMap<String, String> formData = context.getHttpRequest().getDecodedFormParameters();\n"
+"        user.setFirstName(formData.getFirst(RegistrationPage.FIELD_FIRST_NAME));\n"
+"        user.setLastName(formData.getFirst(RegistrationPage.FIELD_LAST_NAME));\n"
+"        user.setEmail(formData.getFirst(RegistrationPage.FIELD_EMAIL));\n"
+"    }\n"
 
 #. type: Plain text
 msgid ""
@@ -1533,7 +1516,7 @@ msgid ""
 " obtained from the FormContext.  The appropriate methods are called to "
 "initialize UserModel data."
 msgstr ""
-"非常に簡単な実装です。新しく登録されたユーザーのUserModelは、FormContextから取得されます。適切なメソッドが呼び出され、UserModelデータが初期化されます。"
+"とてもシンプルな実装です。新しく登録されたユーザーのUserModelは、FormContextから取得されます。適切なメソッドが呼び出され、UserModelデータが初期化されます。"
 
 #. type: Plain text
 msgid ""
@@ -1541,12 +1524,12 @@ msgid ""
 "class is implemented similarly to AuthenticatorFactory, so we won't go over "
 "it."
 msgstr ""
-"最後に、またFormActionFactoryクラスの定義が必要です。このクラスは、AuthenticatorFactoryと同じように実装されますので、これについて説明はしません。"
+"最後に、FormActionFactoryクラスを定義する必要もあります。このクラスは、AuthenticatorFactoryと同様に実装されるため、ここでは説明はしません。"
 
 #. type: Title ====
 #, no-wrap
 msgid "Packaging the Action"
-msgstr "動作のパッケージ化"
+msgstr "アクションのパッケージ化"
 
 #. type: Plain text
 #, no-wrap
@@ -1556,9 +1539,10 @@ msgid ""
 "This file must list the fully qualified classname of each FormActionFactory implementation you have in the jar.\n"
 "For example: \n"
 msgstr ""
-"1つのjar内でクラスをパッケージ化します。\n"
-"このjarは `org.keycloak.authentication.FormActionFactory` という名前のファイルを含んでいる必要があり、jarの `META-INF/services/` ディレクトリ内に含まれている必要があります。\n"
-"このファイルには、jar内にある各FormActionFactory実装の完全修飾クラス名がリストされている必要があります。 例えば、以下の通りです。\n"
+"1つのjarファイル内にクラスをパッケージ化します。このjarには、 "
+"`org.keycloak.authentication.FormActionFactory` という名前のファイルが、jarの `META-"
+"INF/services/` "
+"ディレクトリーに含まれている必要があります。このファイルには、jarファイル内にある各FormActionFactory実装の完全修飾クラス名が一覧化されている必要があります。たとえば、以下の通りになります。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1572,7 +1556,7 @@ msgstr ""
 #. type: Title ====
 #, no-wrap
 msgid "Adding FormAction to the Registration Flow"
-msgstr "登録フローへのFormAction追加"
+msgstr "RegistrationフローへのFormActionの追加"
 
 #. type: Plain text
 msgid ""
@@ -1584,8 +1568,8 @@ msgid ""
 "so that you can figure out for yourself how to create a flow and add the "
 "FormAction."
 msgstr ""
-"FormActionの登録ページ・フローへの追加は管理コンソール内で行われる必要があります。 "
-"Authenticationメニュー項目へ移動してFlowタブを選択すると、現在定義されているフローが表示されます。組み込みのフローは変更することはできませんので、作成したオーセンティケーターを追加するには、既存のフローをコピーするか独自のフローを作成する必要があります。このUIは非常に分かりやすく作られているので、フローを作成してFormActionを追加する方法が直感的に分かるようになっていれば良いと思っています。"
+"登録ページフローへのFormActionの追加は管理コンソールで行う必要があります。 "
+"Authenticationメニュー項目へ移動してFlowタブを選択すると、現在定義されているフローが表示されます。組み込みのフローは変更することはできません。そのため、作成したオーセンティケーターを追加するには、既存のフローをコピーするか独自のフローを作成する必要があります。このUIは非常に分かりやすく作られているので、フローを作成してFormActionを追加する方法を見つけることができると思っています。"
 
 #. type: Plain text
 msgid ""
@@ -1598,10 +1582,12 @@ msgid ""
 "after user creation because the success() method of Regsitration User "
 "Creation is responsible for creating the new UserModel."
 msgstr ""
-"基本的には、登録フローをコピーする必要があります。次に、登録フォームの右側にあるActionsメニューをクリックし、 \"Add Execution\""
-" を選択して新しい実行を追加します。選択リストからFormActionを選択します。FormActionが \"登録ユーザー作成\" "
-"の後にリストされていない場合は、ダウンエラーを使用してそれを移動させることにより、FormActionが \"登録ユーザー作成\" "
-"の後に表示されることを確認してください。登録ユーザー作成のsuccess()メソッドが新しいUserModelの作成を担当しているため、FormActionはユーザー作成の後に表示される必要があるのです。"
+"基本的には、Registrationフローをコピーする必要があります。次に、Registration "
+"Formの右側にあるActionsメニューをクリックし、\"Add "
+"Execution\"を選択して新しいエグゼキューションを追加します。選択リストからFormActionを選択します。FormActionが\"Registration"
+" User Creation\"の後に表示されていない場合は、ダウンエラーを使用してFormActionが\"Registration User "
+"Creation\"の後に来ることを確認してください。Regsitration User "
+"Creationのsuccess()メソッドは、新しいUserModelの作成を受け持つため、FormActionはユーザー作成の後に表示される必要があります。"
 " "
 
 #. type: Plain text
@@ -1610,12 +1596,13 @@ msgid ""
 " go to the Authentication menu and go to the Bindings tab you will see "
 "options to bind a flow to the browser, registration, or direct grant flow."
 msgstr ""
-"フローを作成した後、そのフローを登録にバインドする必要があります。Authenticationメニューに移動してBindingsタブを選択すると、フローをブラウザー、登録、またはダイレクト許可フローにバインドするオプションが表示されます。"
+"フローを作成した後、そのフローをRegistrationにバインドする必要があります。Authenticationメニューに移動してBindingsタブを選択すると、フローをBrowser、Registration、またはDirect"
+" Grantフローにバインドするオプションが表示されます。"
 
 #. type: Title ===
 #, no-wrap
 msgid "Modifying Forgot Password/Credential Flow"
-msgstr "パスワードを忘れた場合の変更、またはクレデンシャル・フローの変更"
+msgstr "パスワード忘れおよびクレデンシャル・フローの変更"
 
 #. type: Plain text
 msgid ""
@@ -1627,10 +1614,10 @@ msgid ""
 " and OTP (if an OTP has been set up).  You can disable automatic OTP reset "
 "by disabling the \"Reset OTP\" authenticator in the flow."
 msgstr ""
-"また、Keycloakには、パスワードを忘れた時のための特定の認証フロー、ユーザーによって新しく作成されたクレデンシャル・リセットまであります。管理コンソールのフローページに移動すると、"
-" \"クレデンシャルのリセット\" "
-"フローがあります。Keycloakでは、デフォルトで、ユーザーの電子メールまたはユーザー名が要求され、ユーザーに電子メールが送信されます。ユーザーがリンクをクリックすると、パスワードとOTP（OTPが設定されている場合）の両方をリセットすることができます。フロー"
-" \"OTPのリセット\" オーセンティケーターを無効にすると、自動OTPリセットを無効にすることができます。"
+"Keycloakには、パスワードを忘れた場合の特定の認証フロー、またはユーザーにより発行されたクレデンシャルのリセットもあります。管理コンソールのフローページに移動すると、\"Reset"
+" "
+"Credentials\"フローがあります。デフォルトでは、Keycloakはユーザーの電子メールまたはユーザー名を要求し、ユーザーに電子メールを送信します。ユーザーがリンクをクリックすると、パスワードとOTP（OTPが設定されている場合）の両方をリセットすることができます。フローの\"Reset"
+" OTP\"オーセンティケーターを無効にすると、自動のOTPリセットを無効にすることができます。"
 
 #. type: Plain text
 msgid ""
@@ -1640,7 +1627,8 @@ msgid ""
 "on the secret question example that comes with the distro and incorporate it"
 " into the reset credential flow."
 msgstr ""
-"同じように、このフローに追加の機能を加えることができます。例えば、デプロイメントでは、リンクを含む電子メールの送信に加え、ユーザーによる1つまたは複数の秘密の質問に対する回答を必要とすることが多いです。配布物に付属する秘密の質問のサンプルを拡張し、クレデンシャル・リセット・フローに組み込むことができます。"
+"このフローにも機能を追加することができます。たとえば、多くのデプロイメントでは、リンク付きの電子メールを送信することに加え、ユーザーは1つ以上の秘密の質問に回答することができます。配布物に付属している秘密の質問のサンプルを拡張し、それをReset"
+" Credentialフローに組み込むことができます。"
 
 #. type: Plain text
 msgid ""
@@ -1656,16 +1644,16 @@ msgid ""
 " you should ask these questions after the email is sent.  In other words, "
 "add your custom authenticator after the \"Send Reset Email\" authenticator."
 msgstr ""
-"クレデンシャル・リセット・フローを拡張する場合、1つ注意点があります。最初の \"オーセンティケーター\" "
-"は、単にユーザー名と電子メールを取得するためだけのページです。ユーザー名と電子メールが既にある場合、AuthenticationFlowContext.getUser()はその既存のユーザーを返します。これ以外の場合は、無効になります。このフォームにより、以前の電子メールまたはユーザー名が存在しない場合、ユーザーは電子メールまたはユーザー名を入力するように"
-" *再度要求はされません* "
-"。攻撃者が有効なユーザーを推測できないようにする必要があるので、AuthenticationFlowContext.getUser()が無効を返した場合、フローを続行し、有効なユーザーが選択されたかのように見せかける必要があります。このフローへの秘密の質問を追加する必要がある場合は、電子メールの送信後にこれらの質問をすることをおすすめします。つまり、"
-" \"リセット電子メールの送信\" オーセンティケーターの後に、カスタム・オーセンティケーターを追加してください。"
+"Reset "
+"Credentialsフローを拡張する場合、1つ注意点があります。最初の\"オーセンティケーター\"は、ユーザー名または電子メールを取得するための単なるページです。ユーザー名または電子メールが存在する場合、AuthenticationFlowContext.getUser()はそのユーザーを返します。それ以外の場合はnullになります。このフォームは、以前の電子メールまたはユーザー名が存在しない場合、電子メールまたはユーザー名を入力するようにユーザーに再要求"
+" *しません* "
+"。攻撃者が有効なユーザーを推測できないようにする必要があるため、AuthenticationFlowContext.getUser()がnullを返す場合、有効なユーザーが選択されたかのように見せかけるために、フローを続行する必要があります。このフローに秘密の質問を追加する場合は、電子メールの送信後にこれらの質問をすることをお勧めします。つまり、\"Send"
+" Reset Email\"オーセンティケーターの後に、カスタム・オーセンティケーターを追加してください。"
 
 #. type: Title ===
 #, no-wrap
 msgid "Modifying First Broker Login Flow"
-msgstr "First Brokerログイン・フローの変更"
+msgstr "First Broker Loginフローの変更"
 
 #. type: Plain text
 msgid ""
@@ -1675,14 +1663,14 @@ msgid ""
 "provider account.  For more details about this flow see the `Identity "
 "Brokering` chapter in link:{adminguide_link}[{adminguide_name}] ."
 msgstr ""
-"First Brokerのログイン・フローは、アイデンティティー・プロバイダーに最初にログインした時に使用されるものです。 `First Login` "
-"という用語は、特定の認証されたアイデンティティー・プロバイダー・アカウントにリンクされている{project_name}アカウントがまだ存在していないことを意味します。このフローについて詳しくはlink:{adminguide_link}[{adminguide_name}]内の"
-" `Identity Brokering` 章を参照ください。"
+"First Broker Loginフローは、アイデンティティー・プロバイダーに最初にログインした時に使用されます。 `First Login` "
+"という用語は、特定の認証されたアイデンティティー・プロバイダー・アカウントにリンクされている{project_name}アカウントがまだ存在していないことを意味します。このフローの詳細については、link:{adminguide_link}[{adminguide_name}]の"
+" `アイデンティティー・ブローカリング` の章を参照してください。"
 
 #. type: Title ===
 #, no-wrap
 msgid "Authentication of clients"
-msgstr "クライアント認証"
+msgstr "クライアントの認証"
 
 #. type: Plain text
 msgid ""
@@ -1697,19 +1685,19 @@ msgid ""
 "Flow`)  or during `Service account` authentication (represented by OAuth2 "
 "`Client Credentials Flow`)."
 msgstr ""
-"{project_name}は実際には、http://openid.net/specs/openid-connect-core-"
-"1_0.html[OpenID "
-"Connect]クライアント・アプリケーションのためのプラグイン可能な認証をサポートしています。クライアント（アプリケーション）の認証は、（認証またはリフレッシュ・トークンの要求が成功した後に、アクセス・トークンに交換コードをリクエストするのと同じように）バックチャネル・リクエストを{project_name}サーバーに送信する間、{project_name}アダプターにより表示はされないながら実質的に使用されます。しかし、"
-" `Direct Access grants` （OAuth2により表される `Resource Owner Password Credentials "
-"Flow` ）または `Service account` 認証（OAuth2により表される `Client Credentials Flow` "
-"）の間は、クライアント認証を直接使用することも可能です。"
+"{project_name}は実際には、 http://openid.net/specs/openid-connect-core-"
+"1_0.html[OpenID Connect] "
+"クライアント・アプリケーションのためのプラグイン可能な認証をサポートしています。クライアント（アプリケーション）の認証は、{project_name}アダプターがバックチャネル要求を{project_name}サーバーに送信中に内部で使用されます（認証が成功した後にアクセストークンに交換コードを要求したり、リフレッシュトークンを要求したりするなど）。しかし、"
+" `ダイレクト・アクセス・グラント` （OAuth2により表される `Resource Owner Password Credentials Flow`"
+" ）または `サービス・アカウント` 認証（OAuth2により表される `Client Credentials Flow` "
+"）でクライアント認証を直接使用することも可能です。"
 
 #. type: Plain text
 msgid ""
 "For more details about {project_name} adapter and OAuth2 flows see "
 "link:{adapterguide_link}[{adapterguide_name}]."
 msgstr ""
-"{project_name}アダプターとOAuth2フローについて、詳しくはlink:{adapterguide_link}[{adapterguide_name}]を参照ください。"
+"{project_name}アダプターとOAuth2フローの詳細については、link:{adapterguide_link}[{adapterguide_name}]を参照してください。"
 
 #. type: Title ====
 #, no-wrap
@@ -1719,7 +1707,7 @@ msgstr "デフォルト実装"
 #. type: Plain text
 msgid ""
 "Actually Keycloak has 2 builtin implementations of client authentication:"
-msgstr "Keycloakには、実際のところ以下の通り、クライアント認証の実装が2つ組み込まれています。"
+msgstr "実際、Keycloakには、以下の2つのクライアント認証の実装が組み込まれています。"
 
 #. type: Labeled list
 #, no-wrap
@@ -1732,13 +1720,16 @@ msgid ""
 "This is default mechanism mentioned in the http://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect]                                or https://tools.ietf.org/html/rfc6749[OAuth2] specification and Keycloak supports it since it's early days.\n"
 "The public client needs to include `client_id` parameter with it's ID in the POST request (so it's defacto not authenticated) and the confidential client needs to include `Authorization: Basic` header with the clientId and clientSecret used as username and password. \n"
 msgstr ""
-"これは、http://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect]またはhttps://tools.ietf.org/html/rfc6749[OAuth2]の仕様で説明したデフォルトのメカニズムで、これはKeycloakによって早い段階からサポートされています。\n"
-"パブリック・クライアントには、POSTリクエスト内にIDを持つ `client_id` パラメーターが含まれている必要があり（そのため実際は認証されていません）、コンフィデンシャル・クライアントには、ユーザ名とパスワードとして使用されるclientIdとclientSecretを持つ `Authorization: Basic` ヘッダーが含まれている必要があります。\n"
+"これは、 http://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect] "
+"または https://tools.ietf.org/html/rfc6749[OAuth2] "
+"の仕様で記載されているデフォルトのメカニズムであり、Keycloakは初期段階からサポートしています。パブリック・クライアントには、POSTリクエストにIDを持つ"
+" `client_id` パラメーターが含まれている必要があり（実際は認証されていません）、コンフィデンシャル・クライアントには、クライアントIDの "
+"`Authorization: Basic` ヘッダーとユーザ名とパスワードとして使用されるクライアント・シークレットが含まれている必要があります。\n"
 
 #. type: Labeled list
 #, no-wrap
 msgid "Authentication with signed JWT"
-msgstr "署名付きのJWTによる認証"
+msgstr "署名付きJWTによる認証"
 
 #. type: Plain text
 #, no-wrap
@@ -1747,9 +1738,9 @@ msgid ""
 "The client/adapter generates the https://tools.ietf.org/html/rfc7519[JWT] and signs it with his private key.\n"
 "The Keycloak then verifies the signed JWT with the client's public key and authenticates client based on it.             \n"
 msgstr ""
-"これはhttps://tools.ietf.org/html/rfc7523[JWT Bearer Token Profiles for OAuth 2.0]仕様に基づいています。\n"
-"クライアントまたはアダプターがhttps://tools.ietf.org/html/rfc7519[JWT]を生成し、秘密鍵で署名します。\n"
-"次に、Keycloakにより、クライアントの公開鍵で署名付きのJWTを検証し、それに基づいてクライアントを認証します。 \n"
+"これは、 https://tools.ietf.org/html/rfc7523[JWT Bearer Token Profiles for OAuth"
+" 2.0] 仕様に基づいています。クライアントまたはアダプターは、 https://tools.ietf.org/html/rfc7519[JWT] "
+"を生成し、秘密鍵で署名します。Keycloakは、署名されたJWTをクライアントの公開鍵で検証し、それに基づいてクライアントを認証します。 \n"
 
 #. type: Plain text
 msgid ""
@@ -1757,8 +1748,8 @@ msgid ""
 "/product-app` for the example application showing the application using "
 "client authentication with signed JWT."
 msgstr ""
-"デモのサンプル、および署名付きのJWTによるクライアント認証を使用するアプリケーションを表示するアプリケーションのサンプル用には、特に "
-"`examples/preconfigured-demo/product-app` を参照ください。"
+"署名されたJWTでクライアント認証を使用するアプリケーションのサンプルを表示するには、デモの例と `examples/preconfigured-"
+"demo/product-app` にあるサンプルを参照してください。"
 
 #. type: Title ====
 #, no-wrap
@@ -1770,7 +1761,7 @@ msgid ""
 "For plug your own client authenticator, you need to implement few interfaces"
 " on both client (adapter) and server side."
 msgstr ""
-"独自のクライアント・オーセンティケーターをプラグインするには、クライアント（アダプター）とサーバー側の両方にインターフェースを少し実装する必要があります。"
+"独自のクライアント・オーセンティケーターをプラグインするには、クライアント（アダプター）とサーバー側の両方にいくつかのインターフェイスを実装する必要があります。"
 
 #. type: Labeled list
 #, no-wrap
@@ -1783,19 +1774,18 @@ msgid ""
 "`org.keycloak.adapters.authentication.ClientCredentialsProvider` and put the"
 " implementation either to:"
 msgstr ""
-"ここでは `org.keycloak.adapters.authentication.ClientCredentialsProvider` "
-"を実装し、以下にその実装を置く必要があります。"
+"ここでは、 `org.keycloak.adapters.authentication.ClientCredentialsProvider` "
+"を実装し、以下のいずれかにその実装を入れる必要があります。"
 
 #. type: Plain text
 msgid ""
 "your WAR file into WEB-INF/classes . But in this case, the implementation "
 "can be used just for this single WAR application"
-msgstr ""
-"WEB-INF/classes内のWARファイル。ただし、この場合、実装はこの1つのWARアプリケーションのためだけに使用することができます。"
+msgstr "WEB-INF/classesのWARファイル。ただし、この場合、実装はこの単一のWARアプリケーションに対してのみ使用できます。"
 
 #. type: Plain text
 msgid "Some JAR file, which will be added into WEB-INF/lib of your WAR"
-msgstr "WARのWEB-INF/libに追加されるJARファイル"
+msgstr "WARのWEB-INF/libに追加されるJARファイル。"
 
 #. type: Plain text
 #, no-wrap
@@ -1806,10 +1796,10 @@ msgid ""
 "INF/services/org.keycloak.adapters.authentication.ClientCredentialsProvider`"
 "                                either in the WAR or in your JAR. \n"
 msgstr ""
-"jbossモジュールとして使用され、WARのjboss-deployment-structure.xml内で設定される、JARファイル。 "
-"いずれの場合でも、WARまたはJARのいずれかに `META-"
+"JBossモジュールとして使用され、WARのjboss-deployment-structure.xmlで設定されるJARファイル。 "
+"いずれの場合も、WARまたはJARに `META-"
 "INF/services/org.keycloak.adapters.authentication.ClientCredentialsProvider`"
-" ファイルを作成する必要もあります。\n"
+" ファイルを作成する必要があります。\n"
 
 #. type: Labeled list
 #, no-wrap
@@ -1822,5 +1812,8 @@ msgid ""
 "Here you need to implement `org.keycloak.authentication.ClientAuthenticatorFactory` and `org.keycloak.authentication.ClientAuthenticator` . You also need to add the file `META-INF/services/org.keycloak.authentication.ClientAuthenticatorFactory` with the name of the implementation classes.\n"
 "See <<_auth_spi_walkthrough,authenticators>> for more details.             \n"
 msgstr ""
-"ここでは、 `org.keycloak.authentication.ClientAuthenticatorFactory` と  `org.keycloak.authentication.ClientAuthenticator` を実装する必要があります。また `META-INF/services/org.keycloak.authentication.ClientAuthenticatorFactory` ファイルを実装クラス名を使用して追加する必要があります。\n"
-"詳しくは <<_auth_spi_walkthrough,authenticators>> を参照ください。             \n"
+"ここでは、 `org.keycloak.authentication.ClientAuthenticatorFactory` と "
+"`org.keycloak.authentication.ClientAuthenticator` を実装する必要があります。また、 `META-"
+"INF/services/org.keycloak.authentication.ClientAuthenticatorFactory` "
+"ファイルに実装クラスの名前を追加する必要があります。詳細については、<<_auth_spi_walkthrough,オーセンティケーター>> "
+"を参照してください。\n"

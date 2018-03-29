@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2018\n"
+"Last-Translator: naoto watanabe <nabenao11@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr "トラブルシューティング"
 #. type: Title ===
 #, no-wrap
 msgid "Cross-Datacenter Replication Mode"
-msgstr "クロスデータセンターレプリケーションモード"
+msgstr "クロス・データセンター・レプリケーション・モード"
 
 #. type: Plain text
 msgid ""
@@ -32,14 +32,14 @@ msgid ""
 " sites that are in different geographic regions. When using this mode, each "
 "data center will have its own cluster of {project_name} servers."
 msgstr ""
-"クロスデータセンター・レプリケーション・モードは、複数のデータセンターを横断してクラスター内で{project_name}を実行する必要がある時のためのもので、地理的に異なる地域にあるデータセンター・サイトが一般的には最も使用されます。このモードを使用する場合、各データセンターには{project_name}サーバーの独自のクラスターがあります。"
+"クロス・データセンター・レプリケーション・モードは、複数のデータセンターを横断してクラスター内で{project_name}を実行する必要がある時のためのもので、地理的に異なる地域にあるデータセンター・サイトが一般的には最も使用されます。このモードを使用する場合、各データセンターには{project_name}サーバーの独自のクラスターがあります。"
 
 #. type: Plain text
 msgid ""
 "This documentation will refer the following example architecture diagram to "
 "illustrate and describe a simple Cross-Datacenter Replication use case."
 msgstr ""
-"このドキュメントでは、次のアーキテクチャー図の例を参照して、単純なクロスデータセンター・レプリケーションのユースケースを図解および説明します。"
+"このドキュメントでは、次のアーキテクチャー図の例を参照して、単純なクロス・データセンター・レプリケーションのユースケースを図解および説明します。"
 
 #. type: Block title
 #, no-wrap
@@ -59,7 +59,7 @@ msgstr "前提条件"
 msgid ""
 "As this is an advanced topic, we recommend you first read the following, "
 "which provide valuable background knowledge:"
-msgstr "これは高度なトピックなので、最初に以下を読み、背景にある重要な知識を頭にいれておくことをおすすめします。"
+msgstr "これは高度なトピックなので、最初に以下を読み、背景にある重要な知識を身につけておくことをお勧めします。"
 
 #. type: Plain text
 msgid ""
@@ -69,8 +69,8 @@ msgid ""
 "basic concepts and requirements such as load balancing, shared databases, "
 "and multicasting."
 msgstr ""
-"link:{installguide_clustering_link}[Clustering with {project_name}] "
-"クロスデータセンター・レプリケーションを設定する場合、より独立した{project_name}クラスターを使用しますので、クラスターの動作の仕方、およびロードバランシング、共有データベース、マルチキャスティングなどの基本コンセプトと要件を理解する必要があります。"
+"link:{installguide_clustering_link}[{project_name}によるクラスタリング] "
+"クロスデータセンター・レプリケーションを設定する場合、より独立した{project_name}クラスターを使用するため、クラスターの仕組みや、ロードバランシング、共有データベース、マルチキャストなどの基本的な概念と要件を理解する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -85,12 +85,12 @@ msgid ""
 msgstr ""
 "link:https://access.redhat.com/documentation/en-"
 "us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication[JBoss"
-" Data Grid Cross-Datacenter Replication] "
-"{project_name}では、Infinispanデータのデータセンター間でのレプリケーション用に、JBoss Data Grid "
-"(JDG)を使用します。link:https://access.redhat.com/documentation/en-"
+" Data Grid Cross-Datacenter Replication] {project_name}では、JBoss Data Grid "
+"(JDG)を使用して、データセンター間でInfinispanデータをレプリケーションします。link:https://access.redhat.com/documentation"
+"/en-"
 "us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#configure_cross_datacenter_replication_remote_client_server_mode[Configure"
-" Cross-Datacenter Replication]のJDGドキュメント内で説明された `Remote Client-Server Mode` "
-"を使用します。"
+" Cross-Datacenter Replication]のJDGドキュメントで記載されている `Remote Client-Server Mode`"
+" を使用します。"
 
 #. type: Title ====
 #, no-wrap
@@ -112,7 +112,7 @@ msgstr "データ"
 msgid ""
 "{project_name} is stateful application. It uses the following as data "
 "sources:"
-msgstr "{project_name}はステートフルなアプリケーションです。それは、以下をデータソースとして使用します。"
+msgstr "{project_name}はステートフルなアプリケーションです。データソースとして以下のものを使用します。"
 
 #. type: Plain text
 msgid ""
@@ -127,7 +127,7 @@ msgid ""
 "the data saved using Infinispan are not permanent and is not expected to "
 "persist across cluster restarts."
 msgstr ""
-"Infinispanキャッシュは、永続化データをデータベースからキャッシュし、ユーザー・セッションに使用できるような、短期間で頻繁に変化するメタデータを節約するためにも使用されます。Infinispanは通常データベースよりもかなり早いですが、Infinispanを使用して節約されたデータは永続的ではなく、クラスターを再起動すると保持できるとは期待できません。"
+"Infinispanキャッシュは、永続化データをデータベースからキャッシュし、短期間で頻繁に変化するメタデータ（ユーザー・セッションなど）を節約するためにも使用されます。Infinispanは通常、データベースよりもはるかに高速ですが、Infinispanを使用して保存されたデータは永続的ではなく、クラスターを再起動後も維持できるとは限りません。"
 
 #. type: Plain text
 msgid ""
@@ -137,7 +137,7 @@ msgid ""
 "are eventually able to read the data saved by {project_name} servers on "
 "`site2` ."
 msgstr ""
-"このアーキテクチャーのサンプルでは、 `site1` と `site2` "
+"このアーキテクチャーの例では、 `site1` と `site2` "
 "と呼ばれる2つのデータセンターがあります。クロスデータセンター・レプリケーションでは、両方のデータソースが確実に動作し、 `site2` "
 "の{project_name}サーバによって保存されたデータを `site1` "
 "の{project_name}サーバが最終的に読み取ることができるようにする必要があります。"
@@ -151,8 +151,7 @@ msgid ""
 "Reliability - which is typically used in Active/Active mode. Data written on"
 " `site1` must be visible immediately on `site2`."
 msgstr ""
-"確実性 - 通常はアクティブ/アクティブ・モードで使用されます。 `site1` で記述されたデータは `site2` "
-"ですぐに表示される必要があります。"
+"信頼性 - 通常はアクティブ/アクティブモードで使用されます。 `site1` で記述されたデータは `site2` ですぐに表示される必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -160,8 +159,8 @@ msgid ""
 "on `site1` does not need to be visible immediately on `site2`.  In some "
 "cases, the data may not be visible on `site2` at all."
 msgstr ""
-"パフォーマンス - 通常はアクティブ/パッシブ・モードで使用されます。 `site1` で記述されたデータはすぐに `site2` "
-"で表示される必要はありません。そのデータが `site2` でまったく表示されないというケースもあります。"
+"パフォーマンス - 通常はアクティブ/パッシブモードで使用されます。 `site1` で記述されたデータはすぐに `site2` "
+"で表示される必要はありません。状況によって、 `site2` でデータが表示されないこともあります。"
 
 #. type: Plain text
 msgid "For more details, see <<Modes>>."
@@ -179,9 +178,8 @@ msgid ""
 "balancer is usually HTTPD or WildFly with mod_cluster, NGINX, HA Proxy, or "
 "perhaps some other kind of software or hardware load balancer."
 msgstr ""
-"エンドユーザーのブラウザーにより、HTTPリクエストがlink:{installguide_loadbalancer_link}[front end "
-"load balancer]に送信されます。このロードバランサーは常にHTTPDかWildFlyで、mod_cluster、NGINX、HA "
-"Proxy、またはおそらくその他のソフトウェアかハードウェアのロードバランサーなどを使用します。"
+"エンドユーザーのブラウザーは、HTTPリクエストをlink:{installguide_loadbalancer_link}[フロント・エンド・ロードバランサー]に送信します。このロードバランサーは、通常mod_cluster、NGINX、HA"
+" Proxy、またはその他のソフトウェアかハードウェア・ロードバランサーを使用するHTTPDまたはWildFlyです。"
 
 #. type: Plain text
 msgid ""
@@ -192,9 +190,7 @@ msgid ""
 "the load balancer is able to always forward all HTTP requests from the same "
 "user to the same {project_name} instance in same data center."
 msgstr ""
-"ロードバランサーは、基にある{project_name}インスタンスに、受け取ったHTTPリクエストを転送します。このインスタンスは、複数のデータセンターに分散することができます。ロードバランサーは通常link:{installguide_stickysessions_link}[sticky"
-" "
-"sessions]をサポートしています。つまり、ロードバランサーは、同じデータセンターの同じ{project_name}インスタンスに、同じユーザーからのHTTPリクエストをすべて常に転送することができます。"
+"ロードバランサーは、基になる{project_name}インスタンスに、受け取ったHTTPリクエストを転送します。このインスタンスは、複数のデータセンターに分散させることができます。ロードバランサーは通常、link:{installguide_stickysessions_link}[スティッキー・セッション]をサポートしています。つまり、ロードバランサーは、同じデータセンターの同じ{project_name}インスタンスに、同じユーザーのすべてのHTTPリクエストを常に転送することができます。"
 
 #. type: Plain text
 msgid ""
@@ -210,10 +206,10 @@ msgid ""
 "must instead replicate some data across data centers, so the data are seen "
 "by subsequent HTTP requests during a particular flow."
 msgstr ""
-"クライアント・アプリケーションからロードバランサーに送られたHTTPリクエストは `backchannel requests` "
-"と呼ばれます。これらはエンドユーザーのブラウザーからは見えないので、ユーザーとロードバランサー間でスティッキー・セッションの一部になることはできません。ロードバランサーは、バックチャネル・リクエストのために、いかなるデータセンターのいかなる{project_name}インスタンスにもHTTPリクエストを転送することができます。ユーザーとアプリケーションの両方から複数のHTTPリクエスト要求する、OpenID"
+"クライアント・アプリケーションからロードバランサーに送られたHTTPリクエストは `バックチャネル要求` "
+"と呼ばれます。これらはエンドユーザーのブラウザーからは見えないので、ユーザーとロードバランサー間でスティッキー・セッションの一部になることはできません。バックチャネル要求の場合、ロードバランサーは、HTTPリクエストを任意のデータセンター内のいずれかの{project_name}インスタンスに転送することができます。これは、いくつかのOpenID"
 " "
-"ConnectとSAMLフローもあるので、これは難しい問題です。すべての関連リクエストを同じデータセンターの同じ{project_name}インスタンスに送るために、スティッキー・セッションに完全に頼ることはできないので、代わりに、データセンター間でデータをレプリケートする必要があります。これで、特定のフローの間、データは次のHTTPリクエストによって表示されます。"
+"ConnectといくつかのSAMLフローがユーザーとアプリケーションの両方から複数のHTTPリクエストするため、難しい問題です。関連するすべてのリクエストを同じデータセンター内の同じ{project_name}インスタンスに送信するのにスティッキー・セッションに完全に依存することはできないため、代わりに、データセンター間で一部のデータをレプリケートする必要があります。それにより、データは特定のフロー中の後続のHTTPリクエストによって表示されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -224,7 +220,7 @@ msgstr "モード"
 msgid ""
 "According your requirements, there are two basic operating modes for Cross-"
 "Datacenter Replication:"
-msgstr "要件に応じて、クロスデータセンターレプリケーションには2つの基本的な動作モードがあります。"
+msgstr "要件に応じて、クロスデータセンター・レプリケーションには2つの基本的な動作モードがあります。"
 
 #. type: Plain text
 msgid ""
@@ -235,8 +231,8 @@ msgid ""
 "second data center."
 msgstr ""
 "アクティブ/パッシブ - "
-"ここではユーザーとクライアント・アプリケーションは、1つのデータセンター内の{project_name}ノードにのみリクエストを送ります。2つ目のデータセンターは、データを保存するための"
-" `backup` としてのみ使用されます。メインのデータセンター内で問題が起きた場合、データは2つ目のデータセンターで常に保持されます。"
+"ユーザーとクライアント・アプリケーションは、単一のデータセンター内の{project_name}ノードにのみリクエストを送信します。第2のデータセンターは、データを保存するための"
+" `バックアップ` としてのみ使用されます。メインのデータセンターに障害が発生した場合、通常は第2のデータセンターからデータを復旧します。"
 
 #. type: Plain text
 msgid ""
@@ -250,11 +246,10 @@ msgid ""
 "finished."
 msgstr ""
 "アクティブ/アクティブ - "
-"ここではユーザーとクライアント・アプリケーションは、両方のデータセンターの{project_name}ノードにリクエストを送ります。つまり、データは両方のデータセンターですぐに表示され、"
-" "
-"両方のデータセンターの{project_name}サーバーですぐに使用される必要があるということになります。これは、{project_name}サーバーが"
-" `site1` にデータを書き込む場合、特に当てはまります。また、 `site1` への書き込みが終了した直後に、 `site2` "
-"の{project_name}サーバーによりデータがすぐに読み込まれるようにする必要があります。"
+"ユーザーとクライアント・アプリケーションは、両方のデータセンターの{project_name}ノードにリクエストを送信します。つまり、両方のサイトですぐにデータを表示し、"
+" 両方のサイトの{project_name}サーバーからデータをすぐに使用できるようにする必要があります。これは、{project_name}サーバーが"
+" `site1` に何かしらのデータを書き込む場合に特に当てはまります。また、 `site1` への書き込みが完了した直後に、 `site2` "
+"の{project_name}サーバーがデータをすぐに読み取ることができるようにする必要があります。"
 
 #. type: Plain text
 #, no-wrap
@@ -262,8 +257,8 @@ msgid ""
 "The active/passive mode is better for performance. For more information "
 "about how to configure caches for either mode, see: <<backups>>.    \n"
 msgstr ""
-"アクティブ/パッシブ・モードの方が、パフォーマンス面では良いです。どちらのモードについても、キャッシュの設定方法について、詳しくは "
-"<<backups>> を参照ください。\n"
+"アクティブ/パッシブモードは、パフォーマンスに優れています。いずれかのモードでキャッシュを設定する方法の詳細については、 <<backups>> "
+"を参照してください。\n"
 
 #. type: Attribute :installguide_database_name:
 #, no-wrap
@@ -283,11 +278,9 @@ msgid ""
 "transaction, those data are immediately visible by subsequent DB "
 "transactions on `site2`."
 msgstr ""
-"{project_name}はリレーショナル・データベース・マネジメント・システム（RDBMS）を使用し、レルム、クライアント、ユーザーなどのメタデータを保持します。詳しくは、サーバーインストールガイドのlink:{installguide_database_link}[this"
-" "
-"chapter]を参照ください。クロス・デタセンター・レプリケーションの設定では、どちらのデータセンターも同じデータベースに通信する、または各データセンターにはその独自のデータベース・ノードがあって両方のデータベース・ノードがデータセンター間で同期的にレプリケートされるということが想定されます。どちらの場合でも、"
-" `site1` の{project_name}サーバーがデータを保持してトランザクションを実行する際、 `site2` "
-"での次のDBトランザクションによって、これらのデータがすぐに表示される必要があります。"
+"{project_name}は、リレーショナル・データベース・マネジメント・システム（RDBMS）を使用して、レルム、クライアント、ユーザーなどのメタデータを保持します。詳細については、サーバーインストールガイドのlink:{installguide_database_link}[この章]を参照してください。クロス・デタセンター・レプリケーションのセットアップでは、両方のデータセンターが同じデータベースと通信するか、すべてのデータセンターに独自のデータベース・ノードがあり、両方のデータベース・ノードがデータセンター間で同期レプリケートされると想定しています。どちらの場合でも、"
+" `site1` の{project_name}サーバーがデータを保持してトランザクションをコミットすると、 `site2` "
+"の後続のDBトランザクションによって、それらのデータがすぐに表示される必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -295,7 +288,7 @@ msgid ""
 "vendors like MariaDB and Oracle offer replicated databases and synchronous "
 "replication. We test {project_name} with these vendors:"
 msgstr ""
-"DB設定の詳細については、{project_name}の担当範囲ではありませんが、MariaDBやOracleのようなRDBMSベンダーの多くは、レプリケートされたデータベースと同期的なレプリケーションを提供しています。これらのベンダを使用して、{project_name}をテストします。"
+"DBのセットアップの詳細については、{project_name}の範囲外ですが、MariaDBやOracleなどのRDBMSベンダーの多くは、レプリケートされたデータベースと同期レプリケーションを提供しています。これらのベンダーを使用して、{project_name}をテストします。"
 
 #. type: Plain text
 msgid "Oracle Database 12c Release 1 (12.1) RAC"
@@ -314,8 +307,7 @@ msgstr "Infinispanキャッシュ"
 msgid ""
 "This section begins with a high level description of the Infinispan caches. "
 "More details of the cache setup follow."
-msgstr ""
-"このセクションでは、Infinispanキャッシュの高次レベルの部分から説明していきます。キャッシュの設定について、詳しくは、以下の通りです。"
+msgstr "このセクションでは、Infinispanキャッシュの概要を説明していきます。キャッシュの設定の詳細は以下の通りです。"
 
 #. type: Block title
 #, no-wrap
@@ -333,7 +325,7 @@ msgid ""
 "in Active/Active mode."
 msgstr ""
 "{project_name}には、認証セッションの概念があります。 `authenticationSessions` "
-"と呼ばれる、別のInfinispanキャッシュがあり、特定のユーザーの認証中にデータを保存するのに使用されます。このキャッシュからのリクエストには通常、アプリケーションではなく、ブラウザーと{project_name}サーバーのみが含まれます。ここでは、スティッキー・セッションに依存することができ、アクティブ/アクティブ・モードの場合でも、"
+"と呼ばれる別のInfinispanキャッシュがあり、特定のユーザーの認証時にデータを保存するのに使用されます。このキャッシュからのリクエストには通常、アプリケーションではなく、ブラウザーと{project_name}サーバーのみが必要になります。ここでは、アクティブ/アクティブモードであっても、スティッキー・セッションに依存することができ、"
 " `authenticationSessions` キャッシュコンテンツをデータセンター間でレプリケートする必要はありません。"
 
 #. type: Block title
@@ -351,10 +343,9 @@ msgid ""
 "so it can't be reused second time. This usually needs to be replicated "
 "across data centers."
 msgstr ""
-"また、link:{developerguide_actiontoken_link}[action "
-"tokens]の概念もあり、これは一般的には、ユーザーが電子メールを使用して非同期で動作を確認する必要がある場合に使用されます。たとえば、 "
-"`forget password` フローの間に、 `actionTokens` "
-"Infinispanキャッシュが使用され、どのアクション・トークンが既に使用されたかなどのアクション・トークン関連のメタデータを追跡します。そのため、これをまた次も再利用することはできません。通常、これをデータセンター間でレプリケートする必要があります。"
+"link:{developerguide_actiontoken_link}[アクション・トークン]の概念もあります。アクション・トークンは、通常、ユーザーが電子メールでアクションを非同期で確認する必要があるシナリオで使用されます。たとえば、"
+" `forget password` フローの間に、 `actionTokens` "
+"Infinispanキャッシュは、どのアクション・トークンがすでに使用されているかなどの関連するアクション・トークンに関するメタデータを追跡するために使用されるため、2度目は再利用できません。これは通常、データセンター間でレプリケートする必要があります。"
 
 #. type: Block title
 #, no-wrap
@@ -371,9 +362,9 @@ msgid ""
 " uses local Infinispan caches called `realms`, `users`, and `authorization` "
 "to cache persistent data."
 msgstr ""
-"{project_name}はInfinispanを使用して永続化データをキャッシュし、データベースに不必要なリクエストの多くを避けます。キャッシュによりパフォーマンスは改善されますが、さらなる問題が追加されます。{project_name}サーバーがデータを更新した場合、すべてのデータセンターの他の{project_name}サーバーはすべてそのことに気づく必要があるので、それらのサーバーはキャッシュからの特定のデータを無効にします。{project_name}では、"
+"{project_name}はInfinispanを使用して永続化データをキャッシュし、データベースへの不要なリクエストを多く回避します。キャッシュによりパフォーマンスは改善されますが、さらなる問題が加わります。一部の{project_name}サーバーがデータを更新した場合、すべてのデータセンターの他のすべての{project_name}サーバーはそのことに気づく必要があるため、それらのキャッシュから特定のデータを無効にします。{project_name}は、"
 " `realms` 、 `users` 、および `authorization` "
-"という、ローカルInfinispanキャッシュが使用され、永続化データをキャッシュします。"
+"と呼ばれるローカルInfinispanキャッシュを使用して、永続化データをキャッシュします。"
 
 #. type: Plain text
 msgid ""
@@ -387,9 +378,9 @@ msgid ""
 "appropriate data from their local cache."
 msgstr ""
 "すべてのデータセンターでレプリケートされる、別のキャッシュ `work` "
-"を使用します。workキャッシュ自体はいかなる実際のデータもキャッシュしません。クラスターノードとデータセンター間で無効化メッセージを送信する場合にのみ使用されます。つまり、ユーザー"
+"を使用します。workキャッシュ自体は実際のデータをキャッシュしません。クラスターノードとデータセンター間で無効化メッセージを送信する場合にのみ使用されます。つまり、ユーザー"
 " `john` "
-"のようにデータが更新されると、{project_name}ノードによって、同じデータセンター内の他のクラスターノードすべて、および他のデータセンターすべてに、無効化メッセージが送信されます。すべてのノードは、無効にするという通知を受信した後、ローカル・キャッシュからの適切なデータを無効にします。"
+"などのデータが更新されると、{project_name}ノードは、同じデータセンター内の他のすべてのクラスターノード、および他のすべてのデータセンターに無効化メッセージを送信します。すべてのノードは、無効通知を受信した後、ローカル・キャッシュからの適切なデータを無効にします。"
 
 #. type: Block title
 #, no-wrap
@@ -410,12 +401,12 @@ msgid ""
 msgstr ""
 "`sessions` 、 `clientSessions` 、 `offlineSessions` 、および "
 "`offlineClientSessions` "
-"と呼ばれるInfinispanキャッシュがあり、それらのすべては通常、データセンター間でレプリケートされる必要があります。これらのキャッシュはユーザー・セッションに関するデータを保存するのに使用され、ユーザー・ブラウザー・セッションの長さのために有効です。キャッシュによって、エンドユーザーとアプリケーションからのHTTPリクエストが処理される必要があります。前に説明した通り、このインスタンスではスティッキー・セッションを確実性をもって使用することはできません。但しそれでも、次のHTTPリクエストが最新のデータを確認することができるか確かめる必要があります。この理由から、データは通常データセンター間でレプリケートされます。"
+"と呼ばれるInfinispanキャッシュがあり、それらのすべては通常、データセンター間でレプリケートされる必要があります。これらのキャッシュは、ユーザー・セッションに関するデータを保存するために使用され、ユーザーのブラウザー・セッションの長さに対して有効です。キャッシュは、エンドユーザーとアプリケーションからのHTTPリクエストを処理する必要があります。前述のとおり、このインスタンスではスティッキー・セッションを信頼性をもって使用することはできませんが、後続のHTTPリクエストが最新のデータを確認できるようにする必要があります。このため、データは通常、データセンター間でレプリケートされます。"
 
 #. type: Block title
 #, no-wrap
 msgid "Brute force protection"
-msgstr "ブルート・フォース保護"
+msgstr "ブルートフォース保護"
 
 #. type: Plain text
 msgid ""
@@ -428,8 +419,8 @@ msgid ""
 " is more important then accurate counts of login failures, the replication "
 "can be avoided."
 msgstr ""
-"最後に、 `loginFailures` キャッシュは、 `john` "
-"というユーザーが間違ったパスワードを何回入力したかなど、ログイン失敗に関するデータを追跡するために使用されます。詳しくは、link:{adminguide_bruteforce_link}[here]を参照ください。このキャッシュをデータセンター間でレプリケートするかどうかは、管理者次第です。ログイン失敗の正確な回数を取得するには、レプリケーションが必要です。一方、このデータをレプリケートしなければ、パフォーマンスを低下させずに済みます。したがって、パフォーマンスの方がログイン失敗の正確な回数よりも重要な場合は、レプリケーションを避けるという手もあります。"
+"最後に、 `loginFailures` キャッシュは、ユーザー `john` "
+"が不正なパスワードを入力した回数など、ログイン失敗に関するデータを追跡するために使用されます。詳細は、link:{adminguide_bruteforce_link}[こちら]を参照してください。このキャッシュをデータセンター間でレプリケートするかどうかは、管理者次第です。正確なログイン失敗の回数を取得するには、レプリケーションが必要です。一方、このデータをレプリケートしないと、パフォーマンスが低下する可能性があります。したがって、パフォーマンスがログイン失敗の正確な回数よりも重要な場合は、レプリケーションを避けるという手もあります。"
 
 #. type: Plain text
 msgid ""
@@ -453,10 +444,10 @@ msgid ""
 "link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#using_hot_rod_server[Infinispan"
 " HotRod protocol]."
 msgstr ""
-"{project_name}では、Infinispanキャッシュのセパレートされたクラスターが複数使用されます。各{project_name}ノードは、同じデータセンター内の他の{project_name}ノードと共にクラスター内にあります。しかし、異なるデータセンター内には{project_name}ノードはありません。{project_name}ノードは、異なるデータセンターの{project_name}ノードを直接使用して通信はしません。{project_name}ノードは、データセンター間の通信には外部のJDG"
+"{project_name}は、Infinispanキャッシュのセパレートされたクラスターを複数使用します。各{project_name}ノードは、同じデータセンター内の他の{project_name}ノードと共にクラスター内にありますが、異なるデータセンター内には{project_name}ノードはありません。{project_name}ノードは、異なるデータセンターの{project_name}ノードと直接通信できません。{project_name}ノードは、データセンター間の通信に外部JDG"
 " "
 "（実際には{jdgserver_name}サーバー）を使用します。これは、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#using_hot_rod_server[Infinispan"
-" HotRod protocol]を使用して行われます。"
+" HotRodプロトコル]を使用して行われます。"
 
 #. type: Plain text
 msgid ""
@@ -467,8 +458,8 @@ msgid ""
 "Infinispan cluster between JDG servers, so the data saved on JDG1 on `site1`"
 " are replicated to JDG2 on `site2` ."
 msgstr ""
-"データがリモート・キャッシュに保存されていることを確認するために、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#remote_store[remoteStore]を使用して、{project_name}側のInfinispanキャッシュを設定する必要があります。JDGサーバー間にはセパレートされたインフィニスパン・クラスターがあるので、"
-" `site1` のJDG1に保存されているデータは `site2` のJDG2にレプリケートされます。"
+"{project_name}側のInfinispanキャッシュは、データがリモート・キャッシュに保存されていることを確認するために、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#remote_store[remoteStore]を使用して設定する必要があります。JDGサーバー間にセパレートされたInfinispanクラスターがあるので、"
+" `site1` のJDG1に保存されていたデータは `site2` のJDG2にレプリケートされます。"
 
 #. type: Plain text
 msgid ""
@@ -478,9 +469,9 @@ msgid ""
 "caches and the particular user session is also visible on {project_name} "
 "nodes on `site2`."
 msgstr ""
-"最後に、JDGサーバーの受け取りによって、クライアント・リスナを介してそのクラスターの{project_name}サーバーに通知がいきます。これはHotRodプロトコルの機能です。次に、"
-" `site2` の{project_name}ノードにより、それらのInfinispanキャッシュが更新され、特定のユーザー・セッションも "
-"`site2` の{project_name}ノードで表示されます。 "
+"最後に、受信JDGサーバーは、HotRodプロトコルの機能であるクライアント・リスナーを介して、クラスター内の{project_name}サーバーに通知します。次に、"
+" `site2` の{project_name}ノードがInfinispanキャッシュを更新し、特定のユーザー・セッションが `site2` "
+"の{project_name}ノードにも表示されます。 "
 
 #. type: Plain text
 msgid "See the <<archdiagram>> for more details."
@@ -498,24 +489,24 @@ msgid ""
 "servers. We will end up with 2 {jdgserver_name} servers and 4 {project_name}"
 " servers in total."
 msgstr ""
-"これのサンプルとして、 `site1` と `site2` "
-"という2つのデータセンター使用して説明します。データセンターはそれぞれ、{jdgserver_name}サーバー1つと{project_name}サーバー2つで構成されています。合計すると、{jdgserver_name}サーバー2つと{project_name}サーバー4つになります。"
+"この例では、 `site1` と `site2` "
+"という2つのデータセンター使用して説明します。各データセンターは、1つの{jdgserver_name}サーバーと2つの{project_name}サーバーで構成されています。合計すると、2つの{jdgserver_name}サーバーと4つの{project_name}サーバーになります。"
 
 #. type: Plain text
 msgid ""
 "`Site1` consists of {jdgserver_name} server, `jdg1`, and 2 {project_name} "
 "servers, `node11` and `node12` ."
 msgstr ""
-"`Site1` は、 `jdg1` という{jdgserver_name}サーバー、と `node11` および `node12` "
-"という2つの{project_name}サーバーで構成されています。"
+"`Site1` は、{jdgserver_name}サーバーの `jdg1` と2つの{project_name}サーバーの `node11` および "
+"`node12` で構成されています。"
 
 #. type: Plain text
 msgid ""
 "`Site2` consists of {jdgserver_name} server, `jdg2`, and 2 {project_name} "
 "servers, `node21` and `node22` ."
 msgstr ""
-"`Site2` は、 `jdg2` という{jdgserver_name}サーバー、と `node21` および `node22` という2つの "
-"{project_name}サーバーで構成されています。"
+"`Site2` は、{jdgserver_name}サーバーの `jdg2` と2つの {project_name}サーバーの `node21` および"
+" `node22` で構成されています。"
 
 #. type: Plain text
 msgid ""
@@ -529,9 +520,8 @@ msgstr ""
 "{jdgserver_name}サーバーである `jdg1` と `jdg2` "
 "は、link:https://access.redhat.com/documentation/en-"
 "us/red_hat_jboss_data_grid/7.1/html-"
-"single/administration_and_configuration_guide/#configure_cross_datacenter_replication_remote_client_server_mode[JDG"
-" documentation]で説明されているのと同じ方法で、{jdgserver_name}キャッシュに基づく `backup` "
-"とRELAY2プロトコルを介してお互いに接続されています。"
+"single/administration_and_configuration_guide/#configure_cross_datacenter_replication_remote_client_server_mode[JDGのドキュメント]で記載されているのと同様の方法で、RELAY2プロトコルと"
+" `バックアップ` ベースの{jdgserver_name}キャッシュを介して相互に接続されています。"
 
 #. type: Plain text
 msgid ""
@@ -540,17 +530,17 @@ msgid ""
 "communicate with the Infinispan server `jdg1` using the HotRod protocol "
 "(Remote cache). See <<communication>> for the details."
 msgstr ""
-"{project_name}サーバーである `node11` と `node12` は、お互いにクラスターを形成していますが、 `site2` "
-"ではサーバーを直接使用しての通信はしません。それらはHotRodプロトコル （リモート・キャッシュ）を利用し、Infinispanサーバー `jdg1`"
-" を使用して通信します。詳しくは<<communication>>を参照ください。"
+"{project_name}サーバーである `node11` と `node12` は、お互いにクラスターを形成しますが、 `site2` "
+"内のサーバーとは直接通信はしません。それらはHotRodプロトコル （リモート・キャッシュ）を使用して、Infinispanサーバー `jdg1` "
+"と通信します。詳細については、<<communication>>を参照してください。"
 
 #. type: Plain text
 msgid ""
 "The same details apply for `node21` and `node22`. They cluster with each "
 "other and communicate only with `jdg2` server using the HotRod protocol."
 msgstr ""
-"同じ説明が `node21` と `node22` にも当てはまります。それらは、お互いにクラスター化してHotRodプロトコルを利用し、 `jdg2`"
-" サーバーを使用してのみ通信します。"
+"同じ説明が `node21` と `node22` にも当てはまります。それらはお互いにクラスター化し、HotRodプロトコルを使用して、 `jdg2`"
+" サーバーとのみ通信します。"
 
 #. type: Plain text
 msgid ""
@@ -559,7 +549,7 @@ msgid ""
 "synchronously replicated databases across data centers as described in "
 "<<database>>."
 msgstr ""
-"サンプルの設定では、{project_name}サーバー4つともすべて同じデータベースと通信するということを想定します。プロダクション環境では、<<database>>で説明されている通り、データセンターを介してセパレートされ同期的にレプリケートされたデータベースを使用することをおすすめします。"
+"この設定の例では、4つの{project_name}サーバーすべてが同じデータベースと通信することを前提としています。プロダクション環境では、<<database>>で説明されている通り、データセンター間で別々の同期レプリケートされたデータベースを使用することをお勧めします。"
 
 #. type: Title ====
 #, no-wrap
@@ -577,7 +567,7 @@ msgid ""
 "`JDG1_HOME` ."
 msgstr ""
 "{jdgserver_name} "
-"{jdgserver_version}サーバーをダウンロードし、いずれかのディレクトリーに解凍します。このロケーションは `JDG1_HOME` "
+"{jdgserver_version}サーバーをダウンロードし、選択したディレクトリーに解凍します。このロケーションは、 `JDG1_HOME` "
 "として後ほど参照することになります。"
 
 #. type: Plain text
@@ -614,8 +604,8 @@ msgid ""
 " a way that our site is `site1` and the other site, where we will backup, is"
 " `site2`:"
 msgstr ""
-"`relay` 要素を `udp` スタックの最後尾に追加します。自身のサイトは `site1` で、その他のサイトはバックアップするのですが "
-"`site2` であると設定します。"
+"`relay` 要素を `udp` スタックの最後尾に追加します。自身のサイトは `site1` で、バックアップする他のサイトは `site2` "
+"というように設定します。"
 
 #. type: Code block
 #, no-wrap
@@ -643,7 +633,7 @@ msgid ""
 "`initial_hosts` element points to the hosts `jdg1` and `jdg2`:"
 msgstr ""
 "`MPING` の代わりに、 `tcp` スタックを設定して `TCPPING` プロトコルを使用します。 `MPING` 要素を削除して "
-"`TCPPING` に置き換えます。 `initial_hosts` 要素が `jdg1` と `jdg2` ホストを指し示します。"
+"`TCPPING` に置き換えます。 `initial_hosts` 要素は、ホスト `jdg1` と `jdg2` を指します。"
 
 #. type: Code block
 #, no-wrap
@@ -682,10 +672,10 @@ msgid ""
 " documentation. See the {jdgserver_name} documentation and JGroups "
 "documentation for more details."
 msgstr ""
-"これは、単に早急に実行するための設定例です。プロダクション環境では、JGroups `RELAY2` のために `tcp` "
-"スタックを使用する必要はなく、他のどのスタックを設定しても構いません。たとえば、データセンター間のネットワークによりマルチキャストがサポートされている場合、デフォルトのudpスタックを使用することができます。{jdgserver_name}と{project_name}クラスターがお互いを見つけることはできないという点だけは確認してください。同じように、"
-" `TCPPING` を発見プロトコルとして使用する必要はありません。 `TCPPING` "
-"は静的な性質があるため、使用されないでしょう。最後に、サイト名も設定することができます。この設定に関する詳細については、{project_name}ドキュメントの説明範疇外になります。詳しくは、{jdgserver_name}ドキュメントとJGroupsドキュメントを参照ください。"
+"これは、単にすばやく実行するための設定例です。プロダクション環境では、JGroups `RELAY2` に `tcp` "
+"スタックを使用する必要はなく、他のどのスタックを設定しても構いません。たとえば、データセンター間のネットワークがマルチキャストをサポートできる場合は、デフォルトのudpスタックを使用することができます。{jdgserver_name}と{project_name}クラスターがお互いを見つけることはできないという点だけは確認してください。同じように、"
+" `TCPPING` を検出プロトコルとして使用する必要はありません。また、 `TCPPING` "
+"は静的な性質であるため、使用することはないでしょう。最後に、サイト名も設定することができます。この設定のより詳細な内容については、{project_name}ドキュメントの範囲外になります。詳細については、{jdgserver_name}のドキュメントおよびJGroupsのドキュメントを参照してください。"
 " "
 
 #. type: Plain text
@@ -693,8 +683,8 @@ msgid ""
 "Add this into `JDG1_HOME/standalone/configuration/clustered.xml` under "
 "cache-container named `clustered`:"
 msgstr ""
-"`clustered` というキャッシュ・コンテナーの下にある "
-"`JDG1_HOME/standalone/configuration/clustered.xml` にこれを追加します。"
+"`JDG1_HOME/standalone/configuration/clustered.xml` の `clustered` "
+"という名前のcache-containerの下に次の設定を追加します。"
 
 #. type: Code block
 #, no-wrap
@@ -750,13 +740,13 @@ msgid ""
 "about tweaking some of those options."
 msgstr ""
 "`replicated-cache-configuration` "
-"内の設定オプションについての詳細は<<tuningcache>>で説明されています。これには、これらのオプションのいくつかを調整することに関する情報が含まれています。"
+"内の設定オプションについての詳細は、<<tuningcache>>で説明しています。これには、これらのオプションのいくつかを調整するための情報が含まれています。"
 
 #. type: Plain text
 msgid ""
 "Copy the server into the second location, which will be referred to later as"
 " `JDG2_HOME`."
-msgstr "2つ目のロケーションにサーバーをコピーします。これは `JDG2_HOME` として後ほど参照することになります。"
+msgstr "2つ目のロケーションにサーバーをコピーします。これは、 `JDG2_HOME` として後ほど参照することになります。"
 
 #. type: Plain text
 msgid ""
@@ -766,8 +756,8 @@ msgid ""
 "example:"
 msgstr ""
 "`JDG2_HOME/standalone/configuration/clustered.xml` では、 `site1` を `site2` "
-"に置き換えます。また、JGroupsサブシステム内の `relay` の設定とキャッシュ・サブシステム内の `backups` "
-"の設定では、逆のことを行います。"
+"に置き換えると、JGroupsサブシステム内の `relay` の設定とcache-subsystem内の `backups` "
+"の設定において、逆の動作をします。次に例を示します。"
 
 #. type: Plain text
 msgid "The `relay` element should look like this:"
@@ -808,8 +798,7 @@ msgid ""
 " site names with expressions. See "
 "link:https://issues.jboss.org/browse/WFLY-9458[this issue] for more details."
 msgstr ""
-"今のところ、両方のサイトのJDGサーバーのために異なる設定ファイルが必要になります。なぜなら、Infinispanサブシステムはサイト名をプログラミング言語で置き換えることはサポートしていないからです。詳しくは、link:https://issues.jboss.org/browse/WFLY-9458[this"
-" issue]を参照ください。"
+"現時点では、Infinispanサブシステムはサイト名を式によって置き換えることはサポートしていないため、両方のサイトのJDGサーバーに異なる設定ファイルを用意する必要があります。詳細については、link:https://issues.jboss.org/browse/WFLY-9458[この課題]を参照してください。"
 
 #. type: Plain text
 msgid "Start server `jdg1`:"
@@ -835,9 +824,9 @@ msgid ""
 "are just connected through the RELAY2 protocol, and the TCP JGroups stack is"
 " used for communication between them. The start up command looks like this:"
 msgstr ""
-"`jdg2` サーバーを起動します。異なるマルチキャスト・アドレスがありますので、 `jdg1` と `jdg2` "
-"サーバーはお互いに直接クラスター化はしません。むしろ、それらは単にRELAY2プロトコルをを介して接続され、TCP "
-"JGroupsスタックがそれらが通信するために使用されます。最初のコマンドは、以下のように表示されます。"
+"`jdg2` サーバーを起動します。異なるマルチキャスト・アドレスがあるため、 `jdg1` と `jdg2` "
+"サーバーは互いに直接クラスター化されません。むしろ、それらはRELAY2プロトコルを介して接続されており、TCP "
+"JGroupsスタックはそれらの間の通信に使用されます。起動コマンドは次のようになります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -859,10 +848,10 @@ msgid ""
 " MBean `jgroups:type=protocol,cluster=\"cluster\",protocol=RELAY2` and "
 "operation `printRoutes`, you should see output like this:"
 msgstr ""
-"この時点でチャネルが動作するか検証するには、JConsoleを使用し、実行中の `JDG1` または `JDG2` "
+"この時点でチャネルが動作していることを検証するには、JConsoleを使用し、実行中の `JDG1` または `JDG2` "
 "サーバーに接続する必要があります。MBean "
-"`jgroups:type=protocol,cluster=\"cluster\",protocol=RELAY2` と `printRoutes` "
-"オペレーションを使用すると、以下のようなアウトプットが表示されます。"
+"`jgroups:type=protocol,cluster=\"cluster\",protocol=RELAY2` および "
+"`printRoutes` オペレーションを使用すると、以下のような出力が表示されます。"
 
 #. type: Code block
 #, no-wrap
@@ -906,9 +895,9 @@ msgid ""
 "`jboss.default.multicast.address` during startup). Then in jconsole in `GMS`"
 " protocol view, you will see all the members of current cluster."
 msgstr ""
-"プロダクション環境では、どのデータセンターにも、より多くの{jdgserver_name}サーバーがあります。同じデータセンター内の{jdgserver_name}サーバーで同じマルチキャストアドレスが使用されていること（つまり、起動中に同じ"
-" `jboss.default.multicast.address` が使用されていること）を確認するだけで済みます。そうすると、 `GMS` "
-"protocol プロトコルビューのjconsoleに、現在のクラスターのメンバーがすべて表示されます。"
+"プロダクション環境では、すべてのデータセンターにさらに多くの{jdgserver_name}サーバーを持つことができます。同じデータセンター内の{jdgserver_name}サーバーが同じマルチキャスト・アドレスを使用していること（つまり、起動中に同じ"
+" `jboss.default.multicast.address` を使用していること）を確認するだけです。そうすると、 `GMS` "
+"プロトコルビューのjconsoleに、現在のクラスターのメンバーがすべて表示されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -919,7 +908,7 @@ msgstr "{project_name}サーバーの設定"
 msgid ""
 "Unzip {project_name} server distribution to a location you choose. It will "
 "be referred to later as `NODE11`."
-msgstr "{project_name}サーバー配布物をどこかに解凍します。これは `NODE11` として後ほど参照することになります。"
+msgstr "{project_name}サーバー配布物を選択した場所に解凍します。これは `NODE11` として後ほど参照することになります。"
 
 #. type: Plain text
 msgid ""
@@ -927,7 +916,7 @@ msgid ""
 "use MySQL or MariaDB for testing purposes. See <<database>> for more "
 "details."
 msgstr ""
-"KeycloakDSデータソースのために共有データベースを設定します。目的がテストである場合はMySQLまたはMariaDBの使用をおすすめします。詳しくは<<database>>を参照ください。"
+"KeycloakDSデータソースの共有データベースを設定します。テストを目的とする場合は、MySQLまたはMariaDBの使用をお勧めします。詳細は<<database>>を参照ください。"
 
 #. type: Plain text
 #, no-wrap
@@ -937,15 +926,15 @@ msgid ""
 "replicated to each other. In the example setup, we just use a single "
 "database and connect all 4 {project_name} servers to it.   \n"
 msgstr ""
-"プロダクション環境では、すべてのデータセンターにおいて別のデータベース・サーバーを置く必要があり、どちらのデータベース・サーバーもお互い同期的にレプリケートされなければなりません。サンプルの設定では、単一のデータベースを使用し、それに4つの{project_name}サーバーをすべて接続するだけです。\n"
+"プロダクション環境では、すべてのデータセンターにおいて別々のデータベース・サーバーを用意する必要があり、両方のデータベース・サーバーを互いに同期してレプリケートする必要があります。設定例では、単一のデータベースを使用し、4つの{project_name}サーバーすべてに接続します。\n"
 
 #. type: Plain text
 msgid "Edit `NODE11/standalone/configuration/standalone-ha.xml` :"
-msgstr "以下のように `NODE11/standalone/configuration/standalone-ha.xml` を編集します。"
+msgstr "`NODE11/standalone/configuration/standalone-ha.xml` を以下のように編集してください。"
 
 #. type: Plain text
 msgid "Add the attribute `site` to the JGroups UDP protocol:"
-msgstr "次のように、 `site` 属性をJGroups UDPプロトコルに追加します。"
+msgstr "`site` 属性をJGroups UDPプロトコルに追加します。"
 
 #. type: Code block
 #, no-wrap
@@ -960,8 +949,7 @@ msgstr ""
 msgid ""
 "Add this `module` attribute under `cache-container` element of name "
 "`keycloak` :"
-msgstr ""
-"次のように、名前が `keycloak` の `cache-container` 要素の下に、この `module` 属性を追加してください。"
+msgstr "名前が `keycloak` の `cache-container` 要素の下に、この `module` 属性を追加します。"
 
 #. type: Code block
 msgid ""
@@ -973,7 +961,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "Add the `remote-store` under `work` cache:"
-msgstr "次のように、 `work` キャッシュの下に `remote-store` を追加してください。"
+msgstr "`work` キャッシュの下に `remote-store` を追加します。"
 
 #. type: Code block
 #, no-wrap
@@ -994,7 +982,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "Add the `remote-store` like this under `sessions` cache:"
-msgstr "次のように、 `session` キャッシュの中に、以下のように `remote-store` を追加してください。"
+msgstr "`session` キャッシュの下に `remote-store` を追加します。"
 
 #. type: Code block
 #, no-wrap
@@ -1020,9 +1008,9 @@ msgid ""
 "only difference from `sessions` cache is that `cache` property value are "
 "different):"
 msgstr ""
-"次のように、 `offlineSessions` 、 `clientSessions` 、 `offlineClientSessions` 、 "
+"`offlineSessions` 、 `clientSessions` 、 `offlineClientSessions` 、 "
 "`loginFailures` 、 `actionTokens` キャッシュでも同じことをします（ `sessions` キャッシュとの唯一の違いは、 "
-"`cache` プロパティー値が違うということです）。"
+"`cache` プロパティー値が異なることです）。"
 
 #. type: Code block
 #, no-wrap
@@ -1105,8 +1093,7 @@ msgstr ""
 msgid ""
 "Add outbound socket binding for the remote store into `socket-binding-group`"
 " element configuration:"
-msgstr ""
-"次のように、リモート・ストアーのアウトバウンド・ソケット・バインディングを `socket-binding-group` 要素の設定に追加します。"
+msgstr "リモートストアのアウトバウンド・ソケット・バインディングを `socket-binding-group` 要素の設定に追加します。"
 
 #. type: Code block
 #, no-wrap
@@ -1127,7 +1114,7 @@ msgstr "分散キャッシュ `authenticationSessions` と他のキャッシュ�
 
 #. type: Plain text
 msgid "Optionally enable DEBUG logging under the `logging` subsystem:"
-msgstr "次のように、オプションで、 `logging` サブシステムの下でDEBUGログを有効にします。"
+msgstr "オプションで、 `logging` サブシステムの下でDEBUGログを有効にします。"
 
 #. type: Code block
 #, no-wrap
@@ -1203,7 +1190,7 @@ msgstr ""
 msgid ""
 "The cluster nodes should be connected. Something like this should be in the "
 "log of both NODE11 and NODE12:"
-msgstr "クラスター・ノードを接続する必要があります。このようなものはNODE11とNODE12どちらのログにも残っていなければなりません。"
+msgstr "クラスター・ノードを接続する必要があります。このようなものは、NODE11とNODE12のどちらのログにも残っていなければなりません。"
 
 #. type: Code block
 msgid ""
@@ -1238,7 +1225,7 @@ msgstr ""
 msgid ""
 "It shouldn't be connected to the cluster with `NODE11` and `NODE12`, but to "
 "separate one:"
-msgstr "これを、 `NODE11` と `NODE12` を使用してクラスターに接続するのではなく、別のものに接続する必要があります。"
+msgstr "`NODE11` と `NODE12` を使用してクラスターに接続するのではなく、クラスターを分離する必要があります。"
 
 #. type: Code block
 msgid ""
@@ -1265,7 +1252,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "It should be in cluster with `NODE21` :"
-msgstr "これを `NODE21` を使用してクラスターに置く必要があります。"
+msgstr "`NODE21` をクラスター化する必要があります。"
 
 #. type: Code block
 msgid ""
@@ -1295,10 +1282,10 @@ msgid ""
 "After login, you should be able to see the same sessions in tab `Sessions` "
 "of particular user, client or realm on all 4 servers."
 msgstr ""
-"第二のブラウザーを開き、 `http://node12:8080/auth/admin` または "
+"2つ目のブラウザーを開き、 `http://node12:8080/auth/admin` または "
 "`http://node21:8080/auth/admin` もしくは `http://node22:8080/auth/admin` "
-"のいずれかのノードに移動します。ログイン後、4つのサーバーすべての特定のユーザー、クライアントまたはレルムの `Sessions` "
-"タブで、同じセッションが表示される必要があります。"
+"のいずれかのノードに移動します。ログイン後、4つのすべてのサーバー上の特定のユーザー、クライアントまたはレルムの `Sessions` "
+"タブで同じセッションを表示できます。"
 
 #. type: Plain text
 msgid ""
@@ -1306,14 +1293,14 @@ msgid ""
 "some realm), the update should be immediately visible on any of 4 nodes as "
 "caches should be properly invalidated everywhere."
 msgstr ""
-"Keycloakの管理コンソールで変更（たとえば、ユーザーやレルムの更新など）を加えた後、その変更はすぐに4つのノードのいずれかで表示される必要があります。なぜなら、キャッシュはどこででも適切に無効化される必要があるからです。"
+"Keycloakの管理コンソールで変更（たとえば、ユーザーやレルムの更新など）を加えた後、その変更は、すぐに4つのノードのいずれかで表示され、キャッシュがどこでも適切に無効化される必要があります。"
 
 #. type: Plain text
 msgid ""
 "Check server.logs if needed. After login or logout, the message like this "
 "should be on all the nodes `NODEXY/standalone/log/server.log` :"
 msgstr ""
-"必要に応じてサーバーのログを確認してください。ログインまたはログアウト後、以下のようなメッセージがすべての "
+"必要に応じてserver.logsを確認してください。ログインまたはログアウト後、以下のようなメッセージがすべての "
 "`NODEXY/standalone/log/server.log` ノードに表示される必要があります。"
 
 #. type: Code block
@@ -1334,7 +1321,7 @@ msgstr "Cross DCデプロイメントの管理"
 msgid ""
 "This section contains some tips and options related to Cross-Datacenter "
 "Replication."
-msgstr "このセクションでは、Cross-Datacenterレプリケーションに関するオプションとヒントについて説明します。"
+msgstr "このセクションでは、クロスデータセンター・レプリケーションに関するオプションとヒントについて説明します。"
 
 #. type: Plain text
 msgid ""
@@ -1346,9 +1333,9 @@ msgid ""
 "running. Otherwise the {project_name} server will fail to start."
 msgstr ""
 "{project_name}サーバーをデータセンター内で実行する場合、 `KeycloakDS` "
-"データソース内で参照されたデータベースがすでに実行され、データセンター内で利用可能な状態であることが必要です。また、 `outbound-socket-"
-"binding` から参照された{jdgserver_name}サーバーがすでに実行されていて、Infinispanキャッシュ `remote-"
-"store` 要素から参照済みであるということも必要です。そうでない場合、{project_name}サーバーの起動は失敗します。"
+"データソース内で参照されたデータベースがすでに実行され、そのデータセンター内で使用可能である必要があります。また、 Infinispanキャッシュの "
+"`remote-store` 要素から参照される `outbound-socket-binding` "
+"によって参照された{jdgserver_name}サーバーがすでに実行されてることが必要です。そうしないと、{project_name}サーバは起動に失敗します。"
 
 #. type: Plain text
 msgid ""
@@ -1358,8 +1345,8 @@ msgid ""
 " side and how the `KeycloakDS` datasource on Keycloak side needs to be "
 "configured."
 msgstr ""
-"データベース・フェイルオーバーと高い信頼性をサポートする必要がある場合、すべてのデータセンターにより多くのデータベース・ノードを持たせます。データベース側での設定方法とKeycloak側の"
-" `KeycloakDS` データソースで必要な設定方法について、詳しくはデータベースとJDBCドライバーのドキュメントを参照してください。"
+"データベース・フェイルオーバーと高い信頼性をサポートする必要がある場合、すべてのデータセンターでより多くのデータベース・ノードを持たせます。データベース側での設定方法とKeycloak側の"
+" `KeycloakDS` データソースで必要な設定方法の詳細については、JDBCドライバーのドキュメントを参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -1373,7 +1360,7 @@ msgid ""
 "servers it can connect. Read the {jdgserver_name} and Wildfly documentation "
 "for more details."
 msgstr ""
-"どのデータセンターも{jdgserver_name}サーバーをクラスター内で実行することができます。このことは、フェイルオーバーやフォールトトレランスが必要な場合に便利です。{jdgserver_name}サーバーと{project_name}サーバー間の通信で使用するHotRodプロトコルには、{jdgserver_name}サーバーが自動的に{project_name}サーバーに、{jdgserver_name}クラスター内の変更に関する新しいトポロジーを送るという機能があります。こうして、{project_name}側のリモート・ストアはどの{jdgserver_name}サーバーに接続できるのかが分かります。詳しくは、{jdgserver_name}とWildflyドキュメントを参照してください。"
+"すべてのデータセンターで、より多くの{jdgserver_name}サーバーをクラスター内で実行することができます。これは、フェイルオーバーとフォールトトレランスを強化する場合に便利です。{jdgserver_name}サーバーと{project_name}サーバー間の通信で使用されるHotRodプロトコルには、{jdgserver_name}サーバーが{jdgserver_name}クラスターの変更について、{project_name}サーバーに新しいトポロジーを自動的に送信する機能を備えています。したがって、{project_name}側のリモートストアは、どの{jdgserver_name}サーバーに接続できるのかが分かります。詳細については、{jdgserver_name}とWildflyドキュメントを参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -1388,19 +1375,19 @@ msgid ""
 "during startup until the backup site is taken offline automatically due the "
 "configured count of failed operations."
 msgstr ""
-"**任意の** "
-"のいかなるサイトでも{project_name}サーバーを起動する前に、サイト内でマスター{jdgserver_name}サーバーを実行することを強くおすすめします。サンプルにある通り、{project_name}サーバーの前に、"
+"**どんな** "
+"サイトの{project_name}サーバーも起動する前に、すべてのサイトでマスター{jdgserver_name}サーバーを実行することを強くお勧めします。この例では、すべての{project_name}サーバーの前に、"
 " `jdg1` と `jdg2` "
-"の両方を最初に起動します。{project_name}サーバーをそれでも実行する必要があり、バックアップ・サイトがオフラインである場合は、<1>での説明の通り、サイト上の{jdgserver_name}サーバーのバックアップ・サイトを手動でオフラインに切り替えることをおすすめします。使用できない状態のサイトをオフラインに手動で切り替えないと、初回起動に失敗するか、または失敗できる動作の設定数によってバックアップ・サイトがオフラインだと自動的に認識されるまで、起動中はエラーになります。"
+"の両方を最初に起動します。{project_name}サーバーをそれでも実行する必要があり、バックアップ・サイトがオフラインである場合は、<1>での説明の通り、サイトの{jdgserver_name}サーバー上のバックアップ・サイトを手動でオフラインに切り替えることをお勧めします。使用できない状態のサイトをオフラインに手動で切り替えることができない場合、初回起動に失敗するか、起動時にいくつか例外が発生する可能性があります。これは、失敗した操作の設定数によってバックアップ・サイトが自動的にオフラインになるまでです。"
 
 #. type: Title ====
 #, no-wrap
 msgid "Bringing sites offline and online"
-msgstr "サイトをオフラインおよびオンラインにします。"
+msgstr "サイトをオフラインおよびオンラインにする"
 
 #. type: Plain text
 msgid "For example, assume this scenario:"
-msgstr "たとえば、このシナリオを想定します。"
+msgstr "たとえば、以下のようなシナリオを想定します。"
 
 #. type: Plain text
 msgid ""
@@ -1408,19 +1395,19 @@ msgid ""
 "that all {jdgserver_name} servers on `site2` are off *or* the network "
 "between `site1` and `site2` is broken."
 msgstr ""
-"サイト `site2`は` site1`の観点から完全にオフラインです。 これは、 "
-"`site2`上のすべての{jdgserver_name}サーバーがオフであることを意味します。*または` site1`と "
-"`site2`の間のネットワークが壊れています。"
+"サイト `site2` は、 `site1` の観点から完全にオフラインです。これは、`site2` "
+"のすべての{jdgserver_name}サーバーがオフである。 *または* 、 ` site1` と `site2` "
+"の間のネットワークが切断されていることを意味します。"
 
 #. type: Plain text
 msgid ""
 "You run {project_name} servers and {jdgserver_name} server `jdg1` in site "
 "`site1`"
-msgstr "サイト `site1`で{project_name}サーバーと{jdgserver_name}サーバー` jdg1`を実行します。"
+msgstr "サイト `site1` で{project_name}サーバーと{jdgserver_name}サーバー `jdg1` を実行します。"
 
 #. type: Plain text
 msgid "Someone logs in on a {project_name} server on `site1`."
-msgstr "誰かが `site1`の{project_name}サーバーにログインします。"
+msgstr "いずれかのユーザーが `site1` の{project_name}サーバーにログインします。"
 
 #. type: Plain text
 msgid ""
@@ -1428,16 +1415,16 @@ msgid ""
 "remote cache on `jdg1` server, which is supposed to backup data to the "
 "`jdg2` server in the `site2`. See <<communication>> for more information."
 msgstr ""
-"`site1`の{project_name}サーバーは、` site2`の `jdg2`サーバーにデータをバックアップする` "
-"jdg1`サーバーのリモートキャッシュにセッションを書き込もうとします。 詳細については、<<communication>>を参照してください。"
+"`site1` の{project_name}サーバーは、` site2` の `jdg2` サーバーにデータをバックアップすることを想定し、 "
+"`jdg1` サーバー上のリモート・キャッシュにセッションを書き込もうとします。 詳細については、<<communication>>を参照してください。"
 
 #. type: Plain text
 msgid ""
 "Server `jdg2` is offline or unreachable from `jdg1`. So the backup from "
 "`jdg1` to `jdg2` will fail."
 msgstr ""
-"サーバー `jdg2`はオフラインであるか、` jdg1`から到達できません。 したがって、 `jdg1`から` "
-"jdg2`へのバックアップは失敗します。"
+"`jdg2` サーバーがオフラインであるか、 ` jdg1` から到達できない状態なので、 `jdg1` から `jdg2` "
+"へのバックアップは失敗します。"
 
 #. type: Plain text
 msgid ""
@@ -1446,14 +1433,14 @@ msgid ""
 "`FAIL` backup failure policy is configured. See <<backupfailure>> for "
 "details around the backup policies."
 msgstr ""
-"例外は `jdg1`ログにスローされ、デフォルト` FAIL`バックアップ失敗ポリシーが設定されているので、失敗は "
-"`jdg1`サーバーから{project_name}サーバーにも伝播されます。バックアップポリシーの詳細については、<<backupfailure>>を参照してください。"
+"例外は `jdg1` のログにスローされます。デフォルトの `FAIL` バックアップ失敗ポリシーが設定されているため、その失敗は `jdg1` "
+"サーバーから{project_name}サーバーにも伝播されます。バックアップ・ポリシーの詳細については、<<backupfailure>>を参照してください。"
 
 #. type: Plain text
 msgid ""
 "The error will happen on {project_name} side too and user may not be able to"
 " finish his login."
-msgstr "エラーは{project_name}側でも発生し、ユーザーはログインを完了できない可能性があります。"
+msgstr "このエラーは{project_name}側でも発生し、ユーザーはログインを完了できない可能性もあります。"
 
 #. type: Plain text
 msgid ""
@@ -1464,14 +1451,15 @@ msgid ""
 "so they will stop trying to reach the servers in the `jdg2` site and the "
 "backup failures won't happen. This is called `Take site offline` ."
 msgstr ""
-"ご使用の環境に応じて、サイト間のネットワークが利用できないか、一時的に壊れている（スプリット・ブレイン）可能性があります。 これが起こった場合、 "
-"`site1`の{jdgserver_name}サーバは` site2`の{jdgserver_name}サーバが利用できないことを知っているので、 "
-"`jdg2`サイトのサーバへのアクセスを停止し、 バックアップの失敗は発生しません。 これは `Take site offline`と呼ばれています。"
+"ご使用の環境に応じて、サイト間のネットワークが利用できないか、一時的に壊れている（スプリット・ブレイン）可能性があります。これが起こった場合、 "
+"`site1` の{jdgserver_name}サーバは、 `site2` の{jdgserver_name}サーバが利用できないことに気付き、 "
+"`jdg2` サイトのサーバへアクセスしようとするのを止めるため、バックアップの失敗は発生しません。これは `サイトをオフラインにする` "
+"と呼ばれています。"
 
 #. type: Block title
 #, no-wrap
 msgid "Take site offline"
-msgstr "サイトをオフラインにします。"
+msgstr "サイトをオフラインにする"
 
 #. type: Plain text
 msgid "There are 2 ways to take the site offline."
@@ -1484,9 +1472,12 @@ msgid ""
 "This is useful especially if the outage is planned. With `jconsole` or CLI, you can connect to the `jdg1` server and take the `site2` offline. \n"
 "More details about this are available in the link:https://access.redhat.com/documentation/en-us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#taking_a_site_offline[JDG documentation]. \n"
 msgstr ""
-"**管理者による手作業** - 管理者は `jconsole`または他のツールを使用して、いくつかのJMX操作を実行して手動で特定のサイトをオフラインにすることができます。\n"
-"これは、特に停止が計画されている場合に役立ちます。 `jconsole`やCLIを使うと、` jdg1`サーバーに接続し、 `site2`をオフラインにすることができます。\n"
-"この詳細については、https：//access.redhat.com/documentation/en-us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#taking_a_site_offline [JDGドキュメント]のリンクを参照してください。\n"
+"**管理者による手作業** - 管理者は `jconsole` "
+"または他のツールを使用して、いくつかのJMX操作を実行することで、手動で特定のサイトをオフラインにすることができます。これは、特に停止が計画されている場合に役立ちます。"
+" `jconsole` またはCLIを使用すると、 `jdg1` サーバーに接続し、 `site2` "
+"をオフラインにすることができます。この詳細については、 https：//access.redhat.com/documentation/en-"
+"us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#taking_a_site_offline"
+" [JDGドキュメント] のリンクを参照してください。\n"
 
 #. type: Plain text
 msgid ""
@@ -1494,8 +1485,8 @@ msgid ""
 " steps usually need to be done for all the other {project_name} caches "
 "mentioned in <<backups>>."
 msgstr ""
-"これにより、キャッシュ `sessions`の` site2`へのバックアップがオフになりました。 "
-"<<backups>>で述べた他のすべての{project_name}キャッシュについても、通常同じ手順を実行する必要があります。"
+"これにより、キャッシュ `sessions` の `site2` "
+"へのバックアップがオフになりました。<<backups>>で述べた他のすべての{project_name}キャッシュについても、通常と同じ手順を実行する必要があります。"
 
 #. type: Plain text
 #, no-wrap
@@ -1505,9 +1496,9 @@ msgid ""
 "of `take-offline` element inside the cache configuration as configured in "
 "<<jdgsetup>>.\n"
 msgstr ""
-"**自動的に** - バックアップに失敗した後、通常は自動的に "
-"`site2`がオフラインになります。これは、<<jdgsetup>>で設定されたキャッシュ構成内の `take-"
-"offline`要素の設定のために行われます。\n"
+"**自動的作業** - バックアップに失敗した後、通常は `site2` "
+"が自動的にオフラインになります。これは、<<jdgsetup>>で設定されたキャッシュ構成内の `take-offline` "
+"要素の設定によって行われます。\n"
 
 #. type: Code block
 msgid "<take-offline min-wait=\"60000\" after-failures=\"3\" />"
@@ -1530,8 +1521,8 @@ msgid ""
 "logins for some users or big login timeouts. Especially if `failure-policy` "
 "with value `FAIL` is used."
 msgstr ""
-"自動的にサイトをオフラインにすることは、特に、サイト間の壊れたネットワークが計画外である場合に便利です。欠点は、ネットワークの停止が検出されるまでバックアップが失敗し、アプリケーション側で障害が起きてる可能性があります。たとえば、一部のユーザーのログインに失敗したり、大きなログインタイムアウトが発生したりします。たとえば、一部のユーザーのログインに失敗したり、大きなログインタイムアウトが発生したりします。"
-" 特に、値が「FAIL」の `failure-policy`が使用されている場合。"
+"自動的にサイトをオフラインにすることは、特に、サイト間の切断されたネットワークが計画外である場合に便利です。欠点は、ネットワークの停止が検出されるまで何らかのバックアップが失敗し、アプリケーション側で障害が起きてる可能性があります。たとえば、一部のユーザーのログインに失敗したり、大きなログインタイムアウトが発生したりします。たとえば、一部のユーザーのログインに失敗したり、大きなログインタイムアウトが発生したりします。"
+" 特に、値が `FAIL` の `failure-policy` が使用されている場合です。"
 
 #. type: Plain text
 msgid ""
@@ -1542,7 +1533,7 @@ msgstr "サイトがオフラインであるかどうかの追跡は、キャッ
 #. type: Block title
 #, no-wrap
 msgid "Take site online"
-msgstr "サイトをオンラインにします。"
+msgstr "サイトをオンラインにする"
 
 #. type: Plain text
 msgid ""
@@ -1551,8 +1542,8 @@ msgid ""
 "JMX or CLI in similar way as taking a site offline.  Again, you may need to "
 "check all the caches and bring them online."
 msgstr ""
-"一旦ネットワークがバックアップされ、 `site1` と `site2` "
-"がお互いに通信することができたら、サイトをオンラインにする必要があります。これは、サイトをオフラインにするのと同じように、JMXまたはCLIを介して手動で行われる必要があります。また、再度キャッシュをすべて確認し、オンラインにする必要があります。"
+"一旦ネットワークが復旧し、 `site1` と `site2` "
+"がお互いに通信することができたら、サイトをオンラインにする必要があります。これは、サイトをオフラインにするのと同じように、JMXまたはCLIを使用して手動で行う必要があります。再度キャッシュをすべてチェックし、オンラインにする必要があります。"
 
 #. type: Plain text
 msgid "Once the sites are put online, it's usually good to:"
@@ -1569,7 +1560,7 @@ msgstr "手動で<<clearcache>>"
 #. type: Title ====
 #, no-wrap
 msgid "State transfer"
-msgstr "状態転送"
+msgstr "ステート・トランスファー"
 
 #. type: Plain text
 msgid ""
@@ -1579,9 +1570,8 @@ msgid ""
 "done bidirectionally between both sites or just unidirectionally, as in only"
 " from `site1` to `site2`, but not from `site2` to `site1`."
 msgstr ""
-"状態の転送は、手動で行う必要があります。 {jdgserver_name}はこれを自動的には行いません。たとえばsplit-"
-"brainの場合は、管理者だけがどちらのサイトに優先権があるのかを判断できるので、両方のサイト間で双方向に、または単方向で状態転送を行う必要がある場合、"
-" site1`を `site2`に、`site2`から` site1`には移動しません。"
+"ステート・トランスファーは、手動で行う必要があります。{jdgserver_name}はこれを自動的には行いません。たとえば、スプリット・ブレイン中は、管理者のみが誰がどのサイトを優先するかを決定することができます。したがって、ステート・トランスファーが両方のサイト間で双方向に、または"
+" `site1` から `site2` へのみ単方向で行われる必要がありますが、`site2` から `site1` への単方向は行われません。"
 
 #. type: Plain text
 msgid ""
@@ -1594,11 +1584,11 @@ msgid ""
 "this happens, one of the sites will *win* and will overwrite the updates "
 "done during split-brain by the second site."
 msgstr ""
-"双方向状態の転送によって、スプリット・ブレインの *後に* `site1` で作成されたエンティティが `site2` "
-"に転送されることが確認されます。これは `site2` ではまだ発生していないので問題ありません。同じように、スプリット・ブレインの *後に* "
-"`site2` で作成されたエンティティは `site1` に転送されます。おそらく問題のある部分は、両方のサイトのスプリット・ブレインの *前に* "
-"存在し、両方のサイトのスプリット・ブレイン中に更新されたエンティティです。これが発生すると、サイトの1つが *勝ち* "
-"、2番目のサイトがスプリットブレイン中に行った更新を上書きします。"
+"双方向のステート・トランスファーによって、スプリット・ブレインの *後に* `site1` で作成されたエンティティーが `site2` "
+"に確実に転送されます。これは `site2` ではまだ発生していないので問題ありません。同じように、スプリット・ブレインの *後に* `site2` "
+"で作成されたエンティティーは `site1` に転送されます。おそらく問題のある部分は、両方のサイトのスプリット・ブレインの *前に* "
+"存在し、両方のサイトのスプリット・ブレイン中に更新されたエンティティーです。これが発生すると、サイトの1つが *勝ち* "
+"、2番目のサイトがスプリット・ブレイン中に行った更新を上書きします。"
 
 #. type: Plain text
 msgid ""
@@ -1611,7 +1601,7 @@ msgid ""
 "{jdgserver_name}/JGroups documentation for more tips how to deal with split-"
 "brain."
 msgstr ""
-"残念ながら、これに対する広く一般的な解決方法はありません。スプリット・ブレインとネットワーク停止は単なる状態で、複数のサイト間では100%の構成データを使用して100%正確に処理することは通常不可能です。{project_name}の場合、これは特に重大な問題ではありません。最悪の場合、ユーザーがクライアントに再度ログインするか、loginFailuresの不適切な数字をブルートフォース・プロテクションのために追跡する必要があります。スプリット・ブレインの処理方法のヒントについて、詳しくは{jdgserver_name}/JGroupsドキュメントを参照してください。"
+"残念ながら、これに対する広く一般的な解決方法はありません。スプリット・ブレインやネットワークの停止は状態に過ぎず、サイト間で100%の一貫性のあるデータで100%正確に処理することは通常不可能です。{project_name}の場合、これは特に重大な問題ではありません。最悪の場合、ユーザーがクライアントに再度ログインするか、loginFailuresの不正カウント数をブルートフォース保護のために追跡する必要があります。スプリット・ブレインに対処するためのヒントについては、{jdgserver_name}/JGroupsドキュメントを参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -1623,8 +1613,8 @@ msgid ""
 "us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#state_transfer_between_sites[{jdgserver_name}"
 " docs]."
 msgstr ""
-"状態の転送は、JMXを介して{jdgserver_name}側でも行われます。動作名は `pushState` "
-"です。状態をモニタリングしたり、プッシュ状態をキャンセルしたりすることができる動作は、他にはほとんどありません。状態の転送について、詳しくはlink:https://access.redhat.com/documentation"
+"ステート・トランスファーは、JMXを介して{jdgserver_name}側でも行われます。操作名は `pushState` "
+"です。状態をモニタリングしたり、プッシュ状態をキャンセルしたりするその他の操作はほとんどありません。ステート・トランスファーの詳細については、link:https://access.redhat.com/documentation"
 "/en-"
 "us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#state_transfer_between_sites[{jdgserver_name}"
 " docs]を参照してください。"
@@ -1632,7 +1622,7 @@ msgstr ""
 #. type: Title ====
 #, no-wrap
 msgid "Clear caches"
-msgstr "キャッシュをクリアします。"
+msgstr "キャッシュのクリア"
 
 #. type: Plain text
 msgid ""
@@ -1643,9 +1633,9 @@ msgid ""
 "{project_name} nodes on `site2` may still have some stale data in their "
 "caches."
 msgstr ""
-"スプリット・ブレイン後は、手動で{project_name}の管理コンソール内のキャッシュをクリアにする方法が安全です。なぜなら、 `site1` "
-"ではデータベース内のデータが変更されている可能性があり、また無効にする必要があるキャッシュがスプリット・ブレイン中に `site2` "
-"へ転送されていなかった可能性もあるからです。したがって、 `site2` "
+"スプリット・ブレイン後は、{project_name}の管理コンソールで手動でキャッシュをクリアするのが安全です。これは、 `site1` "
+"のデータベースで変更されたデータがあり、イベントのために無効にする必要のあるキャッシュが、スプリット・ブレイン中に `site2` "
+"へ転送されなかった可能性があるためです。したがって、 `site2` "
 "の{project_name}ノードでは、キャッシュ内に古いデータがまだ残っている可能性があります。"
 
 #. type: Plain text
@@ -1665,12 +1655,12 @@ msgid ""
 "link:{adminguide_clearcache_link}[{adminguide_clearcache_name}] for more "
 "information."
 msgstr ""
-"ネットワークが戻ったら、いずれかのサイトの1つの{project_name}ノードでキャッシュをクリアすれば十分です。キャッシュの無効化イベントは、あらゆるサイトの別の{project_name}ノードすべてに送られます。ただし、すべてのキャッシュ（レルム、ユーザー、鍵）に対して実行される必要があります。詳しくは、link:{adminguide_clearcache_link}[{adminguide_clearcache_name}]を参照してください。"
+"ネットワークが復旧したら、いずれかのサイトの1つの{project_name}ノードでキャッシュをクリアするだけで十分です。キャッシュの無効化イベントは、それぞれのサイトの他の{project_name}ノードすべてに送られます。ただし、すべてのキャッシュ（レルム、ユーザー、鍵）に対して実行する必要があります。詳しくは、link:{adminguide_clearcache_link}[{adminguide_clearcache_name}]を参照してください。"
 
 #. type: Title ====
 #, no-wrap
 msgid "Tuning the JDG cache configuration"
-msgstr "JDGキャッシュ構成のチューニング"
+msgstr "JDGキャッシュ設定のチューニング"
 
 #. type: Plain text
 msgid "This section contains tips and options for configuring your JDG cache."
@@ -1687,8 +1677,8 @@ msgid ""
 "cache configuration in the JDG `clustered.xml` file is configured as `FAIL`."
 " You may change it to `WARN` or `IGNORE`, as you prefer."
 msgstr ""
-"デフォルトでは、JDG `clustered.xml`ファイル内のInfinispanキャッシュ設定のバックアップ` failure-"
-"policy`の設定は `FAIL`として設定されています。 必要に応じて `WARN`または` IGNORE`に変更することができます。"
+"デフォルトでは、JDG `clustered.xml` ファイルのInfinispanキャッシュ設定のバックアップ `failure-policy` "
+"の設定は、 `FAIL` として設定されています。必要に応じて `WARN` または `IGNORE` に変更することができます。"
 
 #. type: Plain text
 msgid ""
@@ -1702,7 +1692,7 @@ msgid ""
 "might see the error after a longer timeout."
 msgstr ""
 "`FAIL` と `WARN` の違いは、 `FAIL` "
-"が使用され、{jdgserver_name}サーバーが別のサイトにデータのバックアップを試みてバックアップが失敗した場合、その失敗により呼び出し側（{project_name}サーバー）にバック・プロパゲーションが行われるという点です。2番目のサイトが一時的に到達不能になったり、同じエンティティの更新を試みる同時的なトランザクションが発生した場合は、バックアップに失敗する可能性があります。このケースでは、次に{project_name}サーバーは複数回再試行します。ただし、その再試行が失敗した場合、より長いタイムアウトの後、ユーザーにはエラーが表示されます。"
+"が使用され、{jdgserver_name}サーバーが別のサイトにデータのバックアップを試みたときに、バックアップが失敗すると、その失敗が呼び出し側（{project_name}サーバー）に伝播されるという点です。2番目のサイトが一時的に到達不能になったり、同じエンティティの更新を試みる同時トランザクションが発生した場合は、バックアップが失敗する可能性があります。この場合、{project_name}サーバーは複数回再試行します。ただし、その再試行が失敗した場合、より長いタイムアウト後、ユーザーにはエラーが表示されます。"
 
 #. type: Plain text
 msgid ""
@@ -1714,10 +1704,10 @@ msgid ""
 "be retries. There will just be a WARNING message in the {jdgserver_name} "
 "server log."
 msgstr ""
-"`WARN`を使用すると、失敗したバックアップは{jdgserver_name}サーバーから{project_name}サーバーに伝播されません。 "
-"ユーザーにはエラーが表示されず、失敗したバックアップは無視されます。 バックアップのデフォルトのタイムアウトである10秒間のタイムアウトが短くなります。"
-" これは、 `backup`要素の` timeout`属性によって変更することができます。 再試行はありません。 "
-"{jdgserver_name}サーバーログにWARNINGメッセージが表示されます。"
+"`WARN` "
+"を使用すると、失敗したバックアップは、{jdgserver_name}サーバーから{project_name}サーバーに伝播されません。失敗したバックアップは無視され、ユーザーにはエラーが表示されません。バックアップのデフォルトのタイムアウトは10秒間であるため短いです。これは、"
+" `backup` 要素の `timeout` "
+"属性によって変更することができます。タイムアウトにおける再試行はありません。タイムアウト時は、{jdgserver_name}サーバーのログにWARNINGメッセージが表示されます。"
 
 #. type: Plain text
 msgid ""
@@ -1728,14 +1718,13 @@ msgid ""
 " update the same entity concurrently on both sites."
 msgstr ""
 "潜在的な課題としては、いくつかのケースで、再試行（ `FAIL` ポリシーの使用）が役に立つサイト間で短いネットワーク停止が発生する可能性があるため、 "
-"`WARN` "
-"（再試行なし）では、サイト間でデータ矛盾がいくつか発生します。また、これは、両方のサイトで同時に同じエンティティを更新しようとする際にも発生します。"
+"`WARN` （再試行なし）では、サイト間でデータの不整合が発生します。これは、両方のサイトで同時に同じエンティティを更新しようとする際にも発生します。"
 
 #. type: Plain text
 msgid ""
 "How bad are these inconsistencies? Usually only means that a user will need "
 "to re-authenticate."
-msgstr "これらの矛盾はどれくらいよろしくないのでしょうか。通常は、ユーザーが再認証される必要があるということを単に意味します。"
+msgstr "これらの不整合はどれくらいよろしくないのでしょうか？通常は、ユーザーが再認証する必要があることを意味します。"
 
 #. type: Plain text
 msgid ""
@@ -1749,9 +1738,9 @@ msgid ""
 "to write it concurrently in both sites."
 msgstr ""
 "`WARN` ポリシーを使用すると、 `actionTokens` "
-"キャッシュにより提供され、その特定の鍵を処理する、使い捨てのキャッシュが実際に1回使用されますが、同じ鍵が2回 \"正常に\" "
-"書き込まれる可能性があります。しかし、たとえば、OAuth2 "
-"仕様link:https://tools.ietf.org/html/rfc6749#section-10.5[mentions]のコードは使い捨てである必要があります。"
+"キャッシュにより提供され、その特定のキーを処理する、使い捨てのキャッシュが実際に1回使用されますが、同じキーが2回\"正常に\"書き込まれる可能性があります。しかし、たとえば、OAuth2"
+" "
+"仕様link:https://tools.ietf.org/html/rfc6749#section-10.5[mentions]では、コードは使い捨てでなければならないと言及されています。"
 " `WARN` "
 "ポリシーでは、これは厳密には保証されておらず、両方のサイトで同時に書き込まれる試みがあった場合、同じコードが2回書き込まれる可能性があります。"
 
@@ -1766,7 +1755,7 @@ msgid ""
 "mentioned in <<onoffline>>."
 msgstr ""
 "より長いネットワーク停止またはスプリット・ブレインが起きた場合、 `FAIL` と `WARN` "
-"を使用すると、<<onoffline>>で説明した通り、少し時間を置いて失敗した後、2番目のサイトがオフラインになります。デフォルトの1分のタイムアウトでは、関連するキャッシュがすべてオフラインになるまで、通常は1分から3分かかります。その後、エンドユーザーから見ると、動作はすべて問題なく進みます。<<onoffline>>で説明した通り、オンラインに戻ったら、手動でサイトを復元するだけで済みます。"
+"を使用すると、<<onoffline>>で説明した通り、少し時間を置いて失敗した後、他のサイトはオフラインになります。デフォルトの1分のタイムアウトでは、関連するキャッシュがすべてオフラインになるまで、通常は1～3分かかります。その後、エンドユーザーの観点から、動作はすべて問題なく進みます。<<onoffline>>で説明した通り、オンラインに戻ったときに手動でサイトを復元する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -1775,7 +1764,7 @@ msgid ""
 " single-use cache, but you never want end-users to see the errors and long "
 "timeouts, then switch to `WARN`."
 msgstr ""
-"要約すると、サイト間で頻繁により長い停止が発生する可能性があり、データの矛盾と100%正確というわけではない使い捨てのキャッシュについては受け入れられるが、エラーと長いタイムアウトがエンドユーザーに表示されるということについてはあってはならない場合、"
+"要約すると、サイト間で頻繁により長い停止が発生する可能性があり、データの不整合と100%正確ではない使い捨てのキャッシュについては許容されますが、エラーや長いタイムアウトがエンドユーザーに表示されないようにする場合には、"
 " `WARN` に切り替えます。"
 
 #. type: Plain text
@@ -1784,13 +1773,13 @@ msgid ""
 "are not written in the JDG log. See more details in the Infinispan "
 "documentation."
 msgstr ""
-"`WARN`と` IGNORE`の違いは、 `IGNORE`警告がJDGログに書き込まれていないことです。 "
-"詳細については、InfinisPanのドキュメントを参照してください。"
+"`WARN` と `IGNORE` の違いは、 `IGNORE` "
+"警告がJDGログに書き込まれていないことです。詳細については、InfinisPanのドキュメントを参照してください。"
 
 #. type: Block title
 #, no-wrap
 msgid "Lock acquisition timeout"
-msgstr "ロックタイムアウト取得"
+msgstr "ロックの取得タイムアウト"
 
 #. type: Plain text
 msgid ""
@@ -1798,7 +1787,7 @@ msgid ""
 "acquire timeout 0. This means that transaction will fail-fast if there is "
 "another transaction in progress for the same key."
 msgstr ""
-"デフォルト設定では、NON_DURABLE_XAモードでトランザクションを取得タイムアウト0で使用しています。これは、同じキーに対して進行中の別のトランザクションがある場合、トランザクションは高速で失敗することを意味します。"
+"デフォルト設定では、NON_DURABLE_XAモードでトランザクションを取得タイムアウト0で使用しています。これは、同じキーに対して進行中の別のトランザクションがある場合、トランザクションはすぐに失敗することを意味します。"
 
 #. type: Plain text
 msgid ""
@@ -1809,10 +1798,9 @@ msgid ""
 "will cause the transaction to be blocked for 10 seconds. See "
 "link:https://issues.jboss.org/browse/JDG-1318[this JIRA report] for details."
 msgstr ""
-"デフォルトの10秒ではなく0に切り替えるのは、デッドロックの可能性を避けるためです。 "
-"{project_name}を使用すると、同じエンティティ（通常はセッションエンティティまたはログインフェイラー）が両方のサイトから同時に更新されることがあります。"
-" これにより、状況によってはデッドロックが発生し、トランザクションが10秒間ブロックされる可能性があります。 詳細については、リンク： "
-"https://issues.jboss.org/browse/JDG-1318  [このJIRAレポート] を参照してください。"
+"デフォルトの10秒ではなく0に切り替えるのは、デッドロックの可能性を避けるためです。{project_name}では、同じエンティティ（通常はセッション・エンティティまたはloginFailure）が両方のサイトから同時に更新されることがあります。これにより、状況によってはデッドロックが発生し、トランザクションが10秒間ブロックされる可能性があります。"
+" 詳細については、link:https://issues.jboss.org/browse/JDG-1318[このJIRAレポート] "
+"を参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -1822,15 +1810,14 @@ msgid ""
 "the retry will usually be successful and the entity will have applied "
 "updates from both concurrent transactions."
 msgstr ""
-"タイムアウト0の場合、トランザクションは直ちに失敗し、値 `FAIL`のバックアップ` failure-"
-"policy`が設定されていれば{project_name}から再試行されます。 "
-"2番目の同時トランザクションが終了するまで、通常は再試行が成功し、エンティティは両方の同時トランザクションから更新を適用します。"
+"タイムアウト0の場合、トランザクションは直ちに失敗し、値 `FAIL`のバックアップ` failure-policy` "
+"が設定されていれば、{project_name}から再試行されます。2番目の同時トランザクションが終了するまで、通常は再試行が成功し、エンティティは両方の同時トランザクションから更新を適用します。"
 
 #. type: Plain text
 msgid ""
 "We see very good consistency and results for concurrent transaction with "
 "this configuration, and it is recommended to keep it."
-msgstr "この構成との同時トランザクションでは、非常に良好な一貫性と結果が得られるため、そのまま使用することをお勧めします。"
+msgstr "この設定での同時トランザクションは、非常に良い一貫性と結果が得られるため、そのまま使用することをお勧めします。"
 
 #. type: Plain text
 msgid ""
@@ -1841,7 +1828,7 @@ msgstr "唯一の（機能しない）問題は、{jdgserver_name}ログの例�
 #. type: Title ====
 #, no-wrap
 msgid "SYNC or ASYNC backups"
-msgstr "同期または非同期バックアップ"
+msgstr "SYNCまたはASYNCバックアップ"
 
 #. type: Plain text
 msgid ""
@@ -1850,20 +1837,20 @@ msgid ""
 " might be Cross-Datacenter Replication aware, and these can be configured in"
 " 3 different modes regarding cross-dc:"
 msgstr ""
-"`backup`要素の重要な部分は` strategy`属性です。`同期`と` 非同期`のどちらが必要かを決める必要があります。 Cross-"
-"Datacenterレプリケーションを認識できる7つのキャッシュがあり、これらはcross-dcに関して3つの異なるモードで構成できます。"
+"`backup` 要素の重要な部分は `strategy` 属性です。 `SYNC` と `SYNC` "
+"のどちらが必要かを決める必要があります。クロスデータセンター・レプリケーションを認識できる7つのキャッシュがあり、これらは、クロスデータセンターに対する次の3つの異なるモードで設定できます。"
 
 #. type: Plain text
 msgid "SYNC backup"
-msgstr "同期バックアップ"
+msgstr "SYNCバックアップ"
 
 #. type: Plain text
 msgid "ASYNC backup"
-msgstr "非同期バックアップ"
+msgstr "ASYNCバックアップ"
 
 #. type: Plain text
 msgid "No backup at all"
-msgstr "バックアップはまったくありません"
+msgstr "バックアップを全くしない"
 
 #. type: Plain text
 msgid ""
@@ -1877,10 +1864,10 @@ msgid ""
 "failed."
 msgstr ""
 "`SYNC` "
-"バックアップが使用された場合、バックアップが同期され、バックアップが2番目のサイトで処理されると、動作は呼び出し側（{project_name}サーバー）で完了したとみなされます。これは"
-" `ASYNC` よりもパフォーマンスが悪いですが、一方で、 `site2` のユーザーセッションなど特定のエンティティのその後の読み込みによって、 "
+"バックアップが使用された場合、バックアップが同期され、バックアップが2番目のサイトで処理されると、呼び出し側（{project_name}サーバー）で操作が完了したとみなされます。これは"
+" `ASYNC` よりもパフォーマンスが劣りますが、一方で、 `site2` のユーザー・セッションなど特定のエンティティーの後続の読み込みによって、 "
 "`site1` からの更新が確実に確認されます。また、データの一貫性が必要な場合は、これは必須になります。 `ASYNC` "
-"の場合と同じく、2番目のサイトへのバックアップが失敗した場合は、呼び出し側には全く通知されません。"
+"の場合と同様に、他のサイトへのバックアップが失敗した場合は、呼び出し側には全く通知されません。"
 
 #. type: Plain text
 msgid ""
@@ -1891,7 +1878,7 @@ msgid ""
 "then the particular `replicated-cache` element is also not needed on the "
 "{jdgserver_name} side."
 msgstr ""
-"キャッシュによっては、バックアップをまったくせずに、{jdgserver_name}サーバーへのデータ書き込みを完全にスキップすることも可能です。これを設定するには、"
+"キャッシュによっては、バックアップをまったく取らず、{jdgserver_name}サーバーへのデータ書き込みを完全にスキップすることも可能です。これを設定するには、"
 " {project_name}側（ `KEYCLOAK_HOME/standalone/configuration/standalone-ha.xml`"
 " ファイル）の特定のキャッシュに `remote-store` 要素を使用しないでください。また、特定の `replicated-cache` "
 "要素も{jdgserver_name}側では必要ありません。"
@@ -1901,7 +1888,7 @@ msgid ""
 "By default, all 7 caches are configured with `SYNC` backup, which is the "
 "safest option. Here are a few things to consider:"
 msgstr ""
-"デフォルトでは、7つのキャッシュすべてが最も安全なオプションである `SYNC`バックアップで設定されています。 考慮すべき点は次のとおりです。"
+"デフォルトでは、7つのキャッシュすべてが最も安全なオプションである `SYNC` バックアップで設定されています。考慮すべき点は次のとおりです。"
 
 #. type: Plain text
 msgid ""
@@ -1910,9 +1897,9 @@ msgid ""
 "purely as backup. More details [here](#modes)), then it is usually fine to "
 "use `ASYNC` strategy for all the caches to save the performance."
 msgstr ""
-"アクティブ・モードまたはパッシブ・モード（{project_name}サーバーは単独のサイト `site1` にあり、 `site2` "
-"にある{jdgserver_name}サーバーは単純にバックアップとしてのみ使用されます。詳しくは[こちら](#modes)）を使用している場合、パフォーマンスを低下させないよう、キャッシュのために"
-" `ASYNC` 戦略を使用するのが通常は望ましいです。"
+"アクティブ/パッシブモード（すべての{project_name}サーバーが単一のサイト `site1` にあり、 `site2` "
+"にある{jdgserver_name}サーバーが純粋にバックアップとしてのみ使用されます。詳しくは[こちら](#modes)）を使用している場合、パフォーマンスを低下させないよう、すべてのキャッシュに"
+" `ASYNC` 方式を使用するのが通常は望ましいです。"
 
 #. type: Plain text
 msgid ""
@@ -1921,9 +1908,9 @@ msgid ""
 "special events, such as userStorage synchronizations, happen only on single "
 "site. It is recommended to keep this set to `SYNC`."
 msgstr ""
-"`work`キャッシュは、主に、キャッシュ無効化イベントなどのいくつかのメッセージを他のサイトに送信するために使用されます。 "
-"また、userStorageの同期化などの特別なイベントが単一サイトでのみ発生するようにするためにも使用されます。 これを "
-"`SYNC`に設定することを推奨します。"
+"`work` "
+"キャッシュは、主に、キャッシュ無効化イベントなどのいくつかのメッセージを他のサイトに送信するために使用されます。また、userStorageの同期化などの特別なイベントが単一のサイトでのみ発生するようにするためにも使用されます。これを"
+" `SYNC` に設定することを推奨します。"
 
 #. type: Plain text
 msgid ""
@@ -1937,11 +1924,11 @@ msgid ""
 "security (`SYNC` strategy) or better performance (`ASYNC` strategy)."
 msgstr ""
 " `actionTokens` "
-"キャッシュは使い捨てのキャッシュとして使用され、トークンまたはチケットが1回だけ使用されたということを追跡します。たとえば、<<cache>>またはOAuth2"
+"キャッシュは、使い捨てのキャッシュとして使用され、トークンまたはチケットが1回だけ使用されたということを追跡します。たとえば、<<cache>>またはOAuth2"
 " コードです。これを `ASYNC` "
-"に設定して、わずかでもパフォーマンスを向上させることは可能ですが、特定のチケットが実際に1回だけ使用され使い捨てになるかは保証されていません。たとえば、両方のサイトで同じチケットが同時にリクエストされた場合、"
-" `ASYNC` 戦略によって両方のリクエストが成功する可能性があります。そのため、ここでの設定は、より高いセキュリティー（ `SYNC` "
-"戦略）またはより高いパフォーマンス（ `ASYNC` 戦略）のどちらを優先するかによります。"
+"に設定して、パフォーマンスをわずかに向上させることは可能ですが、特定のチケットが実際に1回だけ使用され使い捨てになるかは保証されていません。たとえば、両方のサイトで同じチケットの同時リクエストがある場合、"
+" `ASYNC` 方式によって両方のリクエストが成功する可能性があります。そのため、ここでの設定は、より高いセキュリティー（ `SYNC` "
+"方式）またはより高いパフォーマンス（ `ASYNC` 方式）のどちらを優先するかによります。"
 
 #. type: Plain text
 msgid ""
@@ -1959,10 +1946,10 @@ msgid ""
 "failures also will not be accurate with the `ASYNC` strategy."
 msgstr ""
 "`loginFailures` "
-"キャッシュを3つのモジュールのいずれにおいても使用することができます。バックアップがまったくない場合、ユーザーのログイン失敗の回数についてはいずれのサイトにおいても別途それぞれカウントされることになります（詳しくは<<cache>>を参照してください）。これにはセキュリティ上の意味がありますが、パフォーマンス上の利点があります。また、サービス拒否（DoS）攻撃のリスクを軽減します。たとえば、両方のサイトでユーザーのユーザー名とパスワードを使用して1000件のリクエストを同時にシミュレートすると、サイト間で多くのメッセージが渡され、ネットワークの混雑が発生する可能性があります。"
+"キャッシュは、3つのモードのいずれかで使用できます。バックアップがまったくない場合、ユーザーのログイン失敗のカウントがサイトごとに個別にカウントされることを意味します（詳しくは<<cache>>を参照してください）。これにはいくつかのセキュリティー上の意味がありますが、パフォーマンス上の利点があります。また、サービス拒否（DoS）攻撃のリスクを軽減します。たとえば、攻撃者が両方のサイトでユーザーのユーザー名とパスワードを使用して1000件の同時リクエストをシミュレートすると、サイト間で多くのメッセージが渡され、ネットワークの混雑が発生する可能性があります。"
 " `ASYNC` "
-"戦略は、攻撃者のリクエストが2番目のサイトへのバックアップを待つことによってブロックされないため、状況は悪化する可能性があり、結果的にはネットワーク混雑がさらに深刻化する可能性が潜在的にあります。また、ログイン失敗のカウントも"
-" `ASYNC` 戦略では正確ではありません。"
+"方式は、攻撃者のリクエストが他のサイトへのバックアップを待つことによってブロックされず、潜在的にさらに混雑したネットワーク・トラフィックを招くため、状況は悪化する可能性があります。ログイン失敗のカウントも"
+" `ASYNC` 方式では正確ではありません。"
 
 #. type: Plain text
 msgid ""
@@ -1970,8 +1957,8 @@ msgid ""
 "probability of DoS, it is recommended to not backup the `loginFailures` "
 "cache at all."
 msgstr ""
-"データセンター間のネットワークが遅く、DoSの確率が高い環境では、 "
-"`loginFailures`キャッシュをまったくバックアップしないことが推奨されます。"
+"データセンター間のネットワークが遅く、DoSの確率が高い環境では、 `loginFailures` "
+"キャッシュをまったくバックアップしないことが推奨されます。"
 
 #. type: Plain text
 msgid ""
@@ -1991,15 +1978,12 @@ msgid ""
 "both sites."
 msgstr ""
 "`sessions` と `clientSessions` キャッシュを `SYNC` "
-"で保管しておくことをおすすめします。ユーザー・リクエストとバックチャネル・リクエスト（<<requestprocessing>>で説明した通り、クライアント・アプリケーションから{project_name}へのリクエスト）が常に同じサイトで処理されることが確認できた場合にのみ、それらを"
-" `ASYNC` へ切り替えることが可能になります。たとえば、 "
-"**<<modes>>で説明した通り、アクティブ・モードまたはパッシブ・モードを使用した** "
-"場合です。クライアント・アプリケーションはすべて{project_name} "
-"link:http://www.keycloak.org/docs/latest/securing_apps/index.html#_javascript_adapter[Javascript"
-" "
-"Adapter]を使用しています。Javascriptアダプターによりブラウザー内のバックチャネル・リクエストが送られるため、それらはブラウザーのスティッキー・セッションに参加し、このユーザーの別のブラウザー・リクエストと同じクラスター・ノード（同じサイトということになります）で終了します。"
-" "
-"**ロードバランサーによって、クライアントIPアドレス（ロケーション）に基づいてリクエストが処理され、クライアント・アプリケーションは両方のサイトでデプロイされます。"
+"で保持しておくことをお勧めします。ユーザーのリクエストとバックチャネル要求（<<requestprocessing>>で説明したクライアント・アプリケーションから{project_name}へのリクエスト）が常に同じサイトで処理されることが確かな場合にのみ、それらを"
+" `ASYNC` へ切り替えることが可能になります。たとえば、次のような場合はこれが当てはまります。 ** "
+"<<modes>>で説明した通り、アクティブ/パッシブモードを使用します。 ** クライアント・アプリケーションはすべて{project_name} "
+"link:http://www.keycloak.org/docs/latest/securing_apps/index.html#_javascript_adapter[Javascriptアダプター]を使用しています。Javascriptアダプターは、ブラウザー内でバックチャネル要求を送信するため、それらはブラウザーのスティッキー・セッションに参加し、このユーザーの別のブラウザー・リクエストと同じクラスターノード（したがって同じサイト）で終了します。"
+" ** "
+"ロードバランサーは、クライアントIPアドレス（ロケーション）に基づいてリクエストを処理でき、クライアント・アプリケーションは両方のサイトに展開されます。"
 
 #. type: Plain text
 msgid ""
@@ -2013,9 +1997,9 @@ msgid ""
 "be processed on NYC site."
 msgstr ""
 "たとえば、ロンドンとニューヨークの2つのサイトがあります。 "
-"アプリケーションがロンドンサイトとニューヨークサイトの両方に配備されている場合は、ロンドンユーザーからのすべてのユーザー要求がロンドンサイトのアプリケーションとロンドンサイトの{project_name}サーバーにリダイレクトされるようにすることができます。"
-" ロンドンサイトクライアントの展開からのバックチャネル要求は、ロンドンサイトの{project_name}サーバーでも終了します。 "
-"一方、米国のユーザーの場合、すべての{project_name}リクエスト、アプリケーションリクエスト、バックチャンネルリクエストはニューヨークサイトで処理されます。"
+"アプリケーションがロンドンサイトとニューヨークサイトの両方に配備されている場合は、ロンドンユーザーからのすべてのユーザー・リクエストがロンドンサイトのアプリケーションとロンドンサイトの{project_name}サーバーにリダイレクトされるようにすることができます。"
+" ロンドンサイトのクライアント・デプロイメントからのバックチャネル要求は、ロンドンサイトの{project_name}サーバーでも終了します。 "
+"一方、米国のユーザーの場合、すべての{project_name}リクエスト、アプリケーション・リクエスト、バックチャネル要求はニューヨークサイトで処理されます。"
 
 #. type: Plain text
 msgid ""
@@ -2023,21 +2007,21 @@ msgid ""
 "difference that you even don't need to backup them at all if you never plan "
 "to use offline tokens for any of your client applications."
 msgstr ""
-"`offlineSessions`と` "
-"offlineClientSessions`の場合、似ていますが、クライアント・アプリケーションのためにオフライントークンを使用するイベントがないならば、それらをまったくバックアップする必要はありません。"
+"`offlineSessions` と `offlineClientSessions` "
+"に関して、類似していますが、クライアント・アプリケーションのいずれに対してもオフライン・トークンを使用する予定ががない場合、それらをバックアップする必要はまったくありません。"
 
 #. type: Plain text
 msgid ""
 "Generally, if you are in doubt and performance is not a blocker for you, "
 "it's safer to keep the caches in `SYNC` strategy."
-msgstr "一般的に、疑問があり、パフォーマンスがブロッカーではない場合は、キャッシュを `SYNC` 戦略に保存する方が安全です。"
+msgstr "一般的に、懸念があり、パフォーマンスがブロッカーではない場合は、キャッシュを `SYNC` 方式に保持する方が安全です。"
 
 #. type: Plain text
 msgid ""
 "Regarding the switch to SYNC/ASYNC backup, make sure that you edit the "
 "`strategy` attribute of the the `backup` element. For example like this:"
 msgstr ""
-"同期 / 非同期バックアップへの切り替えに関しては、 `backup`要素の` strategy`属性を編集してください。 "
+"SYNC/ASYNCバックアップへの切り替えに関しては、 `backup` 要素の `strategy` 属性を編集してください。 "
 "たとえば、次のようになります。"
 
 #. type: Code block
@@ -2046,7 +2030,7 @@ msgstr "<backup site=\"site2\" failure-policy=\"FAIL\" strategy=\"ASYNC\" enable
 
 #. type: Plain text
 msgid "Note the `mode` attribute of cache-configuration element."
-msgstr "cache-configuration要素の `mode`属性に注意してください。"
+msgstr "cache-configuration要素の `mode` 属性に注意してください。"
 
 #. type: Plain text
 msgid ""
@@ -2060,7 +2044,7 @@ msgid ""
 "first, so that you have some understanding of how things work. It is also "
 "wise to read this entire document to have some understanding of things."
 msgstr ""
-"<<setup>>を実行し、最初にこれを実行させて、どのように動作するかを理解することをお勧めします。物事を理解するためにこの文書全体を読むことも賢明です。"
+"<<setup>>を行い、最初にこの機能を有効にして、どのように動作するかを理解することをお勧めします。物事を理解するためにこの文書全体を読むことも賢明です。"
 
 #. type: Plain text
 msgid ""
@@ -2068,8 +2052,7 @@ msgid ""
 "{jdgserver_name} as described in <<jdgsetup>>. If things do not look as "
 "expected, then the issue is likely in the setup of {jdgserver_name} servers."
 msgstr ""
-"<<jdgsetup>>で説明されているように、jconsoleクラスターステータス（GMS）と{jdgserver_name}のJGroupsステータス（RELAY）をチェックインします。"
-" 状況が期待通りに見えない場合、問題は{jdgserver_name}サーバーの設定にある可能性があります。"
+"<<jdgsetup>>で説明されているように、jconsoleクラスターのステータス（GMS）と{jdgserver_name}のJGroupsのステータス（RELAY）をチェックインします。状況が期待通りに見えない場合、問題は{jdgserver_name}サーバーの設定にある可能性があります。"
 
 #. type: Plain text
 msgid ""
@@ -2100,15 +2083,12 @@ msgid ""
 " See link:{installguide_troubleshooting_link}[cluster troubleshooting] for "
 "additional details."
 msgstr ""
-"同じデータセンターの{project_name}サーバーだけが互いにクラスター化されていることを含め、{project_name}サーバーが期待通りにクラスターに入っていることを確認してください。"
-" これは、GMSビューを介してJConsoleでチェックすることもできます。 "
-"詳細については、リンク：{installguide_troubleshooting_link} "
-"[クラスターのトラブルシューティング]を参照してください。"
+"同じデータセンターの{project_name}サーバーだけが互いにクラスター化されていることを含め、{project_name}サーバーが期待通りにクラスター内にあることを確認してください。これは、GMSビューを介してJConsoleでチェックすることもできます。詳細については、link:{installguide_troubleshooting_link}[クラスターのトラブルシューティング]を参照してください。"
 
 #. type: Plain text
 msgid ""
 "If there are exceptions during startup of {project_name} server like this:"
-msgstr "{project_name}サーバーの起動時に次のような例外が発生した場合："
+msgstr "{project_name}サーバーの起動時に次のような例外が発生した場合。"
 
 #. type: Code block
 #, no-wrap
@@ -2131,8 +2111,7 @@ msgid ""
 "{jdgserver_name} server in his own datacenter. Make sure that firewall is "
 "set as expected and {jdgserver_name} server is possible to connect."
 msgstr ""
-"{project_name}サーバーが自分のデータセンターで{jdgserver_name}サーバーにアクセスできないことを意味します。 "
-"ファイアウォールが期待通りに設定され、{jdgserver_name}サーバーが接続可能であることを確認してください。"
+"これは通常、{project_name}サーバーが自身のデータセンター内の{jdgserver_name}サーバーにアクセスできないことを意味します。ファイアウォールが期待通りに設定され、{jdgserver_name}サーバーが接続可能であることを確認してください。"
 
 #. type: Code block
 #, no-wrap
@@ -2153,9 +2132,7 @@ msgid ""
 "operations to pass successfully on {project_name} server side as well. See "
 "<<administration>> for more information.   \n"
 msgstr ""
-"サイトの対応する{jdgserver_name}サーバーのログを確認し、他のサイトへのバックアップに失敗したかどうかを確認します。 "
-"バックアップサイトが利用できない場合は、{jdgserver_name}サーバーがオフラインサイトにバックアップしようとしないようにオフラインに切り替えて、{project_name}サーバー側で正常に操作が成功するようにすることをお勧めします。"
-" 詳細については、<<administration>>を参照してください。 \n"
+"サイトの該当する{jdgserver_name}サーバーのログをチェックし、他のサイトへのバックアップに失敗したかどうかを確認します。バックアップ・サイトが利用できない場合は、{jdgserver_name}サーバーがオフラインサイトにバックアップしようとしないようにオフラインに切り替えて、{project_name}サーバー側で正常に操作が成功するようにすることをお勧めします。詳細については、<<administration>>を参照してください。\n"
 
 #. type: Plain text
 msgid ""
@@ -2168,8 +2145,12 @@ msgid ""
 " and attribute `numberOfEntries`. After login, there should be one more "
 "entry for `numberOfEntries` on both {jdgserver_name} servers on both sites."
 msgstr ""
-"583/5000\n"
-"JMXを通じて利用可能なInfinispanの統計を確認してください。 たとえば、ログインして、新しいセッションが{jdgserver_name}サーバーの両方に正常に書き込まれたかどうかを確認し、そこの `sessions`キャッシュで利用可能かどうかを確認します。 これは間接的に、MBean `sessions` cache for the MBean `jboss.datagrid-infinispan:type=Cache,name=\"sessions(repl_sync)\",manager=\"clustered\",component=Statistics` and attribute `numberOfEntries`キャッシュ内の要素の数をチェックすることによって間接的に行うことができます。 `numberOfEntries`という属性を持っています。 ログイン後、両方のサイトの両方の{jdgserver_name}サーバーに `numberOfEntries`のエントリーがもう1つ存在するはずです。"
+"JMXを介して利用可能なInfinispanの統計を確認してください。たとえば、ログインして、新しいセッションが{jdgserver_name}サーバーの両方に正常に書き込まれたかどうかを確認し、そこの"
+" `sessions` キャッシュで利用可能かどうかを確認します。これは、MBean `jboss.datagrid-"
+"infinispan:type=Cache,name=\"sessions(repl_sync)\",manager=\"clustered\",component=Statistics`"
+" と `numberOfEntries` 属性の `sessions` "
+"キャッシュ内の要素の数をチェックすることによって間接的に行うことができます。ログイン後、両方のサイトのそれぞれの{jdgserver_name}サーバーに"
+" `numberOfEntries` のための1つ以上のエントリーが存在するはずです。"
 
 #. type: Plain text
 msgid ""
@@ -2182,11 +2163,10 @@ msgid ""
 "add the log snippets to the mails or put the logs somewhere and reference "
 "them in the email."
 msgstr ""
-"<<serversetup>>の説明に従ってDEBUGロギングを有効にします。 "
-"たとえば、ログインして2番目のサイトで新しいセッションが利用できないと思われる場合は、{project_name}サーバーログを確認し、<<serversetup>>で説明したようにリスナーがトリガーされていることを確認するとよいでしょう。"
+"<<serversetup>>の説明に従って、DEBUGロギングを有効にします。 "
+"たとえば、ログインして2番目のサイトで新しいセッションが利用できないと思われる場合は、{project_name}サーバーログをチェックし、<<serversetup>>で説明したようにリスナーがトリガーされていることを確認してください。"
 " keycloak-"
-"userメーリングリストを知りたくない場合は、電子メール内の両方のデータセンターの{project_name}サーバーからログファイルを送信すると便利です。"
-" ログスニペットをメールに追加するか、ログをどこかに置いて電子メールで参照してください。"
+"userメーリングリストに質問したい場合は、電子メール内の両方のデータセンターの{project_name}サーバーからログファイルを送信すると便利です。ログスニペットをメールに追加するか、ログをどこかに置いて電子メールで参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -2201,6 +2181,8 @@ msgid ""
 "specific to every database, so you will need to consult the documentation "
 "for your database."
 msgstr ""
+"`site1` の{project_name}サーバーで `user` などのエンティティーを更新しても、 `site2` "
+"の{project_name}サーバーで更新したエンティティーが表示されない場合は、同期したデータベース自体のレプリケーションか、{project_name}キャッシュが適切に無効化されなかったかのどちらかに問題があります。問題がデータベースのレプリケーション・レベルにある場合は、link:{installguide_disablingcaching_link}[ここ]で説明するように一時的に{project_name}キャッシュを無効化してください。また、データベースに手動で接続し、データが期待通りに更新されるかどうかを確認するのに役立ちます。これはすべてのデータベースに固有のものなので、データベースのドキュメントを参照する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -2227,9 +2209,7 @@ msgid ""
 "about the failed operation and will retry it, so from the user's point of "
 "view, there is usually not any issue."
 msgstr ""
-"これらの例外は必ずしも問題ではありません。 両方のDCで同じエンティティの同時編集がトリガーされると、いつでも発生する可能性があります。 "
-"これは、展開の多くの場合に当てはまります。 "
-"通常{project_name}サーバーは失敗した操作について通知を受けて再試行しますので、ユーザーの観点からは通常問題はありません。"
+"これらの例外は必ずしも問題ではありません。両方のデータセンターで同じエンティティーの同時編集がトリガーされると、いつでも発生する可能性があります。これは、デプロイメントの多くの場合に当てはまります。たいてい、{project_name}サーバーは、失敗した操作について通知を受けて再試行するため、ユーザーの観点からは通常問題はありません。"
 
 #. type: Plain text
 msgid ""
@@ -2237,7 +2217,7 @@ msgid ""
 "failed with the infinite number of redirects in your browser and you see the"
 " errors like this in the {project_name} server log:"
 msgstr ""
-"{project_name}でアプリケーションに認証しようとすると、ブラウザーの無限のリダイレクトに失敗し、{project_name}サーバーログに次のようなエラーが表示されます。"
+"{project_name}でアプリケーションに認証しようとすると、ブラウザーの無限のリダイレクトで失敗し、{project_name}サーバーログに次のようなエラーが表示されます。"
 
 #. type: Code block
 msgid ""
@@ -2256,6 +2236,7 @@ msgid ""
 "{project_name} server (Property `jboss.node.name`) contains the correct name"
 " used by the load balancer server to identify the current server."
 msgstr ""
-"ロードバランサーを スティッキー・セッションをサポートするように設定する必要があることを意味します。 {project_name}サーバー（プロパティー"
-" `jboss.node.name`）の起動時に使用される指定されたルート名に、 "
+"おそらく、ロードバランサーを "
+"スティッキー・セッションをサポートするように設定する必要があることを意味します。{project_name}サーバー（プロパティー "
+"`jboss.node.name` ）の起動時に使用される指定されたルート名に、 "
 "ロードバランサーサーバーが現在のサーバーを識別するために使用する正しい名前が含まれていることを確認してください。"

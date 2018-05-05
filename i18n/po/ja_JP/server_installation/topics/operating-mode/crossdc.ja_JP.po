@@ -59,7 +59,7 @@ msgstr "前提条件"
 msgid ""
 "As this is an advanced topic, we recommend you first read the following, "
 "which provide valuable background knowledge:"
-msgstr "これは高度なトピックなので、最初に以下を読み、背景にある重要な知識を身につけておくことをお勧めします。"
+msgstr "これは高度なトピックのため、最初に以下を読み、背景にある重要な知識を身につけておくことをお勧めします。"
 
 #. type: Plain text
 msgid ""
@@ -101,7 +101,7 @@ msgstr "技術的な詳細"
 msgid ""
 "This section provides an introduction to the concepts and details of how "
 "{project_name} Cross-Datacenter Replication is accomplished."
-msgstr "このセクションでは、{project_name}クロスデータセンター・レプリケーションの完成方法についての概念と詳細について説明します。"
+msgstr "このセクションでは、{project_name}クロスデータセンター・レプリケーションの仕組みについて概念と詳細について説明します。"
 
 #. type: Block title
 #, no-wrap
@@ -144,7 +144,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "Based on the environment, you have the option to decide if you prefer:"
-msgstr "環境によって、どうするか決めることができます。"
+msgstr "環境に基づいて、次の選択肢から決める必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -209,7 +209,7 @@ msgstr ""
 "クライアント・アプリケーションからロードバランサーに送られたHTTPリクエストは `バックチャネル要求` "
 "と呼ばれます。これらはエンドユーザーのブラウザーからは見えないので、ユーザーとロードバランサー間でスティッキー・セッションの一部になることはできません。バックチャネル要求の場合、ロードバランサーは、HTTPリクエストを任意のデータセンター内のいずれかの{project_name}インスタンスに転送することができます。これは、いくつかのOpenID"
 " "
-"ConnectといくつかのSAMLフローがユーザーとアプリケーションの両方から複数のHTTPリクエストするため、難しい問題です。関連するすべてのリクエストを同じデータセンター内の同じ{project_name}インスタンスに送信するのにスティッキー・セッションに完全に依存することはできないため、代わりに、データセンター間で一部のデータをレプリケートする必要があります。それにより、データは特定のフロー中の後続のHTTPリクエストによって表示されます。"
+"ConnectといくつかのSAMLフローがユーザーとアプリケーションの両方から複数のHTTPリクエストを必要とするため、難しい問題です。関連するすべてのリクエストを同じデータセンター内の同じ{project_name}インスタンスに送信するのにスティッキー・セッションに完全に依存することはできないため、代わりに、データセンター間で一部のデータをレプリケートする必要があります。それにより、データは特定のフロー中の後続のHTTPリクエストによって表示されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -326,7 +326,7 @@ msgid ""
 msgstr ""
 "{project_name}には、認証セッションの概念があります。 `authenticationSessions` "
 "と呼ばれる別のInfinispanキャッシュがあり、特定のユーザーの認証時にデータを保存するのに使用されます。このキャッシュからのリクエストには通常、アプリケーションではなく、ブラウザーと{project_name}サーバーのみが必要になります。ここでは、アクティブ/アクティブモードであっても、スティッキー・セッションに依存することができ、"
-" `authenticationSessions` キャッシュコンテンツをデータセンター間でレプリケートする必要はありません。"
+" `authenticationSessions` キャッシュ・コンテンツをデータセンター間でレプリケートする必要はありません。"
 
 #. type: Block title
 #, no-wrap
@@ -380,7 +380,7 @@ msgstr ""
 "すべてのデータセンターでレプリケートされる、別のキャッシュ `work` "
 "を使用します。workキャッシュ自体は実際のデータをキャッシュしません。クラスターノードとデータセンター間で無効化メッセージを送信する場合にのみ使用されます。つまり、ユーザー"
 " `john` "
-"などのデータが更新されると、{project_name}ノードは、同じデータセンター内の他のすべてのクラスターノード、および他のすべてのデータセンターに無効化メッセージを送信します。すべてのノードは、無効通知を受信した後、ローカル・キャッシュからの適切なデータを無効にします。"
+"などのデータが更新されると、{project_name}ノードは、同じデータセンター内の他のすべてのクラスターノード、および他のすべてのデータセンターに無効化メッセージを送信します。すべてのノードは、無効通知を受信した後、ローカル・キャッシュから適切なデータを無効にします。"
 
 #. type: Block title
 #, no-wrap
@@ -420,7 +420,7 @@ msgid ""
 "can be avoided."
 msgstr ""
 "最後に、 `loginFailures` キャッシュは、ユーザー `john` "
-"が不正なパスワードを入力した回数など、ログイン失敗に関するデータを追跡するために使用されます。詳細は、link:{adminguide_bruteforce_link}[こちら]を参照してください。このキャッシュをデータセンター間でレプリケートするかどうかは、管理者次第です。正確なログイン失敗の回数を取得するには、レプリケーションが必要です。一方、このデータをレプリケートしないと、パフォーマンスが低下する可能性があります。したがって、パフォーマンスがログイン失敗の正確な回数よりも重要な場合は、レプリケーションを避けるという手もあります。"
+"が不正なパスワードを入力した回数など、ログイン失敗に関するデータを追跡するために使用されます。詳細は、link:{adminguide_bruteforce_link}[こちら]を参照してください。このキャッシュをデータセンター間でレプリケートするかどうかは、管理者次第です。正確なログイン失敗の回数を取得するには、レプリケーションが必要です。一方、このデータをレプリケートしないことで、パフォーマンスをよくできます。したがって、パフォーマンスがログイン失敗の正確な回数よりも重要な場合は、レプリケーションを避けるという手もあります。"
 
 #. type: Plain text
 msgid ""
@@ -444,7 +444,7 @@ msgid ""
 "link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#using_hot_rod_server[Infinispan"
 " HotRod protocol]."
 msgstr ""
-"{project_name}は、Infinispanキャッシュのセパレートされたクラスターを複数使用します。各{project_name}ノードは、同じデータセンター内の他の{project_name}ノードと共にクラスター内にありますが、異なるデータセンター内には{project_name}ノードはありません。{project_name}ノードは、異なるデータセンターの{project_name}ノードと直接通信できません。{project_name}ノードは、データセンター間の通信に外部JDG"
+"{project_name}は、Infinispanキャッシュの分割されたクラスターを複数使用します。各{project_name}ノードは、同じデータセンター内の他の{project_name}ノードと共にクラスター内にありますが、異なるデータセンターの{project_name}ノードはそのクラスター内にありません。{project_name}ノードは、異なるデータセンターの{project_name}ノードと直接通信できません。{project_name}ノードは、データセンター間の通信に外部JDG"
 " "
 "（実際には{jdgserver_name}サーバー）を使用します。これは、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#using_hot_rod_server[Infinispan"
 " HotRodプロトコル]を使用して行われます。"
@@ -458,7 +458,7 @@ msgid ""
 "Infinispan cluster between JDG servers, so the data saved on JDG1 on `site1`"
 " are replicated to JDG2 on `site2` ."
 msgstr ""
-"{project_name}側のInfinispanキャッシュは、データがリモート・キャッシュに保存されていることを確認するために、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#remote_store[remoteStore]を使用して設定する必要があります。JDGサーバー間にセパレートされたInfinispanクラスターがあるので、"
+"{project_name}側のInfinispanキャッシュは、データがリモート・キャッシュに保存されていることを確認するために、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#remote_store[remoteStore]を使用して設定する必要があります。JDGサーバー間に分割されたInfinispanクラスターがあるので、"
 " `site1` のJDG1に保存されていたデータは `site2` のJDG2にレプリケートされます。"
 
 #. type: Plain text
@@ -1110,7 +1110,7 @@ msgstr ""
 msgid ""
 "The configuration of distributed cache `authenticationSessions` and other "
 "caches is left unchanged."
-msgstr "分散キャッシュ `authenticationSessions` と他のキャッシュの設定は変更されません。"
+msgstr "分散キャッシュ設定の `authenticationSessions` と他のキャッシュは変更されません。"
 
 #. type: Plain text
 msgid "Optionally enable DEBUG logging under the `logging` subsystem:"
@@ -1360,7 +1360,7 @@ msgid ""
 "servers it can connect. Read the {jdgserver_name} and Wildfly documentation "
 "for more details."
 msgstr ""
-"すべてのデータセンターで、より多くの{jdgserver_name}サーバーをクラスター内で実行することができます。これは、フェイルオーバーとフォールトトレランスを強化する場合に便利です。{jdgserver_name}サーバーと{project_name}サーバー間の通信で使用されるHotRodプロトコルには、{jdgserver_name}サーバーが{jdgserver_name}クラスターの変更について、{project_name}サーバーに新しいトポロジーを自動的に送信する機能を備えています。したがって、{project_name}側のリモートストアは、どの{jdgserver_name}サーバーに接続できるのかが分かります。詳細については、{jdgserver_name}とWildflyドキュメントを参照してください。"
+"すべてのデータセンターで、より多くの{jdgserver_name}サーバーをクラスター内で実行することができます。これは、フェイルオーバーとフォールト・トレランスを強化する場合に便利です。{jdgserver_name}サーバーと{project_name}サーバー間の通信で使用されるHotRodプロトコルには、{jdgserver_name}サーバーが{jdgserver_name}クラスターの変更について、{project_name}サーバーに新しいトポロジーを自動的に送信する機能を備えています。したがって、{project_name}側のリモートストアは、どの{jdgserver_name}サーバーに接続できるのかが分かります。詳細については、{jdgserver_name}とWildflyドキュメントを参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -1378,7 +1378,7 @@ msgstr ""
 "**どんな** "
 "サイトの{project_name}サーバーも起動する前に、すべてのサイトでマスター{jdgserver_name}サーバーを実行することを強くお勧めします。この例では、すべての{project_name}サーバーの前に、"
 " `jdg1` と `jdg2` "
-"の両方を最初に起動します。{project_name}サーバーをそれでも実行する必要があり、バックアップ・サイトがオフラインである場合は、<1>での説明の通り、サイトの{jdgserver_name}サーバー上のバックアップ・サイトを手動でオフラインに切り替えることをお勧めします。使用できない状態のサイトをオフラインに手動で切り替えることができない場合、初回起動に失敗するか、起動時にいくつか例外が発生する可能性があります。これは、失敗した操作の設定数によってバックアップ・サイトが自動的にオフラインになるまでです。"
+"の両方を最初に起動します。{project_name}サーバーをそれでも実行する必要があり、バックアップ・サイトがオフラインである場合は、<<onoffline>>での説明の通り、サイトの{jdgserver_name}サーバー上のバックアップ・サイトを手動でオフラインに切り替えることをお勧めします。使用できない状態のサイトをオフラインに手動で切り替えることができない場合、初回起動に失敗するか、起動時にいくつか例外が発生する可能性があります。これは、失敗した操作の設定数によってバックアップ・サイトが自動的にオフラインになるまでです。"
 
 #. type: Title ====
 #, no-wrap
@@ -1551,11 +1551,11 @@ msgstr "サイトをオンラインにしたら、通常は次のようにする
 
 #. type: Plain text
 msgid "Do the <<statetransfer>>."
-msgstr "<<statetransfer>>を実行します。"
+msgstr "<<statetransfer>>を行います。"
 
 #. type: Plain text
 msgid "Manually <<clearcache>>."
-msgstr "手動で<<clearcache>>"
+msgstr "手動で<<clearcache>>を行います。"
 
 #. type: Title ====
 #, no-wrap
@@ -1774,7 +1774,7 @@ msgid ""
 "documentation."
 msgstr ""
 "`WARN` と `IGNORE` の違いは、 `IGNORE` "
-"警告がJDGログに書き込まれていないことです。詳細については、InfinisPanのドキュメントを参照してください。"
+"警告がJDGログに書き込まれていないことです。詳細については、Infinispanのドキュメントを参照してください。"
 
 #. type: Block title
 #, no-wrap
@@ -1799,8 +1799,7 @@ msgid ""
 "link:https://issues.jboss.org/browse/JDG-1318[this JIRA report] for details."
 msgstr ""
 "デフォルトの10秒ではなく0に切り替えるのは、デッドロックの可能性を避けるためです。{project_name}では、同じエンティティ（通常はセッション・エンティティまたはloginFailure）が両方のサイトから同時に更新されることがあります。これにより、状況によってはデッドロックが発生し、トランザクションが10秒間ブロックされる可能性があります。"
-" 詳細については、link:https://issues.jboss.org/browse/JDG-1318[このJIRAレポート] "
-"を参照してください。"
+" 詳細については、link:https://issues.jboss.org/browse/JDG-1318[このJIRAレポート]を参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -1810,7 +1809,7 @@ msgid ""
 "the retry will usually be successful and the entity will have applied "
 "updates from both concurrent transactions."
 msgstr ""
-"タイムアウト0の場合、トランザクションは直ちに失敗し、値 `FAIL`のバックアップ` failure-policy` "
+"タイムアウト0の場合、トランザクションは直ちに失敗し、値 `FAIL`のバックアップ `failure-policy` "
 "が設定されていれば、{project_name}から再試行されます。2番目の同時トランザクションが終了するまで、通常は再試行が成功し、エンティティは両方の同時トランザクションから更新を適用します。"
 
 #. type: Plain text
@@ -2239,4 +2238,4 @@ msgstr ""
 "おそらく、ロードバランサーを "
 "スティッキー・セッションをサポートするように設定する必要があることを意味します。{project_name}サーバー（プロパティー "
 "`jboss.node.name` ）の起動時に使用される指定されたルート名に、 "
-"ロードバランサーサーバーが現在のサーバーを識別するために使用する正しい名前が含まれていることを確認してください。"
+"ロードバランサー・サーバーが現在のサーバーを識別するために使用する正しい名前が含まれていることを確認してください。"

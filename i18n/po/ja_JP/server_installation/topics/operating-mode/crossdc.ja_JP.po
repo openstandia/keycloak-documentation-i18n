@@ -1,0 +1,2241 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: naoto watanabe <nabenao11@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Attribute :installguide_troubleshooting_name:
+#, no-wrap
+msgid "Troubleshooting"
+msgstr "トラブルシューティング"
+
+#. type: Title ===
+#, no-wrap
+msgid "Cross-Datacenter Replication Mode"
+msgstr "クロスデータセンター・レプリケーション・モード"
+
+#. type: Plain text
+msgid ""
+"Cross-Datacenter Replication mode is for when you want to run {project_name}"
+" in a cluster across multiple data centers, most typically using data center"
+" sites that are in different geographic regions. When using this mode, each "
+"data center will have its own cluster of {project_name} servers."
+msgstr ""
+"クロスデータセンター・レプリケーション・モードは、複数のデータセンターを横断してクラスター内で{project_name}を実行する必要がある時のためのもので、地理的に異なる地域にあるデータセンター・サイトが一般的には最も使用されます。このモードを使用する場合、各データセンターには{project_name}サーバーの独自のクラスターがあります。"
+
+#. type: Plain text
+msgid ""
+"This documentation will refer the following example architecture diagram to "
+"illustrate and describe a simple Cross-Datacenter Replication use case."
+msgstr ""
+"このドキュメントでは、次のアーキテクチャー図の例を参照して、単純なクロスデータセンター・レプリケーションのユースケースを図解および説明します。"
+
+#. type: Block title
+#, no-wrap
+msgid "Example Architecture Diagram"
+msgstr "アーキテクチャー図の例"
+
+#. type: Plain text
+msgid "image:{project_images}/cross-dc-architecture.png[]"
+msgstr "image:{project_images}/cross-dc-architecture.png[]"
+
+#. type: Title ====
+#, no-wrap
+msgid "Prerequisities"
+msgstr "前提条件"
+
+#. type: Plain text
+msgid ""
+"As this is an advanced topic, we recommend you first read the following, "
+"which provide valuable background knowledge:"
+msgstr "これは高度なトピックのため、最初に以下を読み、背景にある重要な知識を身につけておくことをお勧めします。"
+
+#. type: Plain text
+msgid ""
+"link:{installguide_clustering_link}[Clustering with {project_name}] When "
+"setting up for Cross-Datacenter Replication, you will use more independent "
+"{project_name} clusters, so you must understand how a cluster works and the "
+"basic concepts and requirements such as load balancing, shared databases, "
+"and multicasting."
+msgstr ""
+"link:{installguide_clustering_link}[{project_name}によるクラスタリング] "
+"クロスデータセンター・レプリケーションを設定する場合、より独立した{project_name}クラスターを使用するため、クラスターの仕組みや、ロード・バランシング、共有データベース、マルチキャストなどの基本的な概念と要件を理解する必要があります。"
+
+#. type: Plain text
+msgid ""
+"link:https://access.redhat.com/documentation/en-"
+"us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication[JBoss"
+" Data Grid Cross-Datacenter Replication] {project_name} uses JBoss Data Grid"
+" (JDG) for the replication of Infinispan data between the data centers. We "
+"use the `Remote Client-Server Mode` described in the JDG documentation in "
+"link:https://access.redhat.com/documentation/en-"
+"us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#configure_cross_datacenter_replication_remote_client_server_mode[Configure"
+" Cross-Datacenter Replication]."
+msgstr ""
+"link:https://access.redhat.com/documentation/en-"
+"us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication[JBoss"
+" Data Grid Cross-Datacenter Replication] {project_name}では、JBoss Data "
+"Grid（JDG）を使用して、データセンター間でInfinispanデータをレプリケーションします。link:https://access.redhat.com/documentation"
+"/en-"
+"us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#configure_cross_datacenter_replication_remote_client_server_mode[Configure"
+" Cross-Datacenter Replication]のJDGドキュメントで記載されている `Remote Client-Server Mode`"
+" を使用します。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Technical details"
+msgstr "技術的な詳細"
+
+#. type: Plain text
+msgid ""
+"This section provides an introduction to the concepts and details of how "
+"{project_name} Cross-Datacenter Replication is accomplished."
+msgstr "このセクションでは、{project_name}クロスデータセンター・レプリケーションの仕組みについて概念と詳細について説明します。"
+
+#. type: Block title
+#, no-wrap
+msgid "Data"
+msgstr "データ"
+
+#. type: Plain text
+msgid ""
+"{project_name} is stateful application. It uses the following as data "
+"sources:"
+msgstr "{project_name}はステートフルなアプリケーションです。データソースとして以下のものを使用します。"
+
+#. type: Plain text
+msgid ""
+"A database is used to persist permanent data, such as user information."
+msgstr "データベースは、ユーザー情報などの永続的なデータを保持するために使用されます。"
+
+#. type: Plain text
+msgid ""
+"An Infinispan cache is used to cache persistent data from the database and "
+"also to save some short-lived and frequently-changing metadata, such as for "
+"user sessions.  Infinispan is usually much faster then a database, however "
+"the data saved using Infinispan are not permanent and is not expected to "
+"persist across cluster restarts."
+msgstr ""
+"Infinispanキャッシュは、永続化データをデータベースからキャッシュし、短期間で頻繁に変化するメタデータ（ユーザー・セッションなど）を節約するためにも使用されます。Infinispanは通常、データベースよりもはるかに高速ですが、Infinispanを使用して保存されたデータは永続的ではなく、クラスターを再起動後も維持できるとは限りません。"
+
+#. type: Plain text
+msgid ""
+"In our example architecture, there are two data centers called `site1` and "
+"`site2`. For Cross-Datacenter Replication, we must make sure that both "
+"sources of data work reliably and that {project_name} servers from `site1` "
+"are eventually able to read the data saved by {project_name} servers on "
+"`site2` ."
+msgstr ""
+"このアーキテクチャーの例では、 `site1` と `site2` "
+"と呼ばれる2つのデータセンターがあります。クロスデータセンター・レプリケーションでは、両方のデータソースが確実に動作し、 `site2` "
+"の{project_name}サーバによって保存されたデータを `site1` "
+"の{project_name}サーバが最終的に読み取ることができるようにする必要があります。"
+
+#. type: Plain text
+msgid "Based on the environment, you have the option to decide if you prefer:"
+msgstr "環境に基づいて、次の選択肢から決める必要があります。"
+
+#. type: Plain text
+msgid ""
+"Reliability - which is typically used in Active/Active mode. Data written on"
+" `site1` must be visible immediately on `site2`."
+msgstr ""
+"信頼性 - 通常はアクティブ/アクティブモードで使用されます。 `site1` で記述されたデータは `site2` ですぐに表示される必要があります。"
+
+#. type: Plain text
+msgid ""
+"Performance - which is typically used in Active/Passive mode. Data written "
+"on `site1` does not need to be visible immediately on `site2`.  In some "
+"cases, the data may not be visible on `site2` at all."
+msgstr ""
+"パフォーマンス - 通常はアクティブ/パッシブモードで使用されます。 `site1` で記述されたデータはすぐに `site2` "
+"で表示される必要はありません。状況によって、 `site2` でデータが表示されないこともあります。"
+
+#. type: Plain text
+msgid "For more details, see <<Modes>>."
+msgstr "詳細は、<<Modes>>を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Request processing"
+msgstr "リクエスト処理"
+
+#. type: Plain text
+msgid ""
+"An end user's browser sends an HTTP request to the "
+"link:{installguide_loadbalancer_link}[front end load balancer]. This load "
+"balancer is usually HTTPD or WildFly with mod_cluster, NGINX, HA Proxy, or "
+"perhaps some other kind of software or hardware load balancer."
+msgstr ""
+"エンドユーザーのブラウザーは、HTTPリクエストをlink:{installguide_loadbalancer_link}[フロント・エンド・ロードバランサー]に送信します。このロードバランサーは、通常mod_cluster、NGINX、HA"
+" Proxy、またはその他のソフトウェアかハードウェア・ロードバランサーを使用するHTTPDまたはWildFlyです。"
+
+#. type: Plain text
+msgid ""
+"The load balancer then forwards the HTTP requests it receives to the "
+"underlying {project_name} instances, which can be spread among multiple data"
+" centers. Load balancers typically offer support for "
+"link:{installguide_stickysessions_link}[sticky sessions], which means that "
+"the load balancer is able to always forward all HTTP requests from the same "
+"user to the same {project_name} instance in same data center."
+msgstr ""
+"ロードバランサーは、基になる{project_name}インスタンスに、受け取ったHTTPリクエストを転送します。このインスタンスは、複数のデータセンターに分散させることができます。ロードバランサーは通常、link:{installguide_stickysessions_link}[スティッキー・セッション]をサポートしています。つまり、ロードバランサーは、同じデータセンターの同じ{project_name}インスタンスに、同じユーザーのすべてのHTTPリクエストを常に転送することができます。"
+
+#. type: Plain text
+msgid ""
+"HTTP requests that are sent from client applications to the load balancer "
+"are called `backchannel requests`.  These are not seen by an end user's "
+"browser and therefore can not be part of a sticky session between the user "
+"and the load balancer. For backchannel requests, the loadbalancer can "
+"forward the HTTP request to any {project_name} instance in any data center. "
+"This is challenging as some OpenID Connect and some SAML flows require "
+"multiple HTTP requests from both the user and the application. Because we "
+"can not reliably depend on sticky sessions to force all the related requests"
+" to be sent to the same {project_name} instance in the same data center, we "
+"must instead replicate some data across data centers, so the data are seen "
+"by subsequent HTTP requests during a particular flow."
+msgstr ""
+"クライアント・アプリケーションからロードバランサーに送られたHTTPリクエストは `バックチャネル要求` "
+"と呼ばれます。これらはエンドユーザーのブラウザーからは見えないので、ユーザーとロードバランサー間でスティッキー・セッションの一部になることはできません。バックチャネル要求の場合、ロードバランサーは、HTTPリクエストを任意のデータセンター内のいずれかの{project_name}インスタンスに転送することができます。これは、いくつかのOpenID"
+" "
+"ConnectといくつかのSAMLフローがユーザーとアプリケーションの両方から複数のHTTPリクエストを必要とするため、難しい問題です。関連するすべてのリクエストを同じデータセンター内の同じ{project_name}インスタンスに送信するのにスティッキー・セッションに完全に依存することはできないため、代わりに、データセンター間で一部のデータをレプリケートする必要があります。それにより、データは特定のフロー中の後続のHTTPリクエストによって表示されます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Modes"
+msgstr "モード"
+
+#. type: Plain text
+msgid ""
+"According your requirements, there are two basic operating modes for Cross-"
+"Datacenter Replication:"
+msgstr "要件に応じて、クロスデータセンター・レプリケーションには2つの基本的な動作モードがあります。"
+
+#. type: Plain text
+msgid ""
+"Active/Passive - Here the users and client applications send the requests "
+"just to the {project_name} nodes in just a single data center.  The second "
+"data center is used just as a `backup` for saving the data. In case of the "
+"failure in the main data center, the data can be usually restored from the "
+"second data center."
+msgstr ""
+"アクティブ/パッシブ - "
+"ユーザーとクライアント・アプリケーションは、単一のデータセンター内の{project_name}ノードにのみリクエストを送信します。第2のデータセンターは、データを保存するための"
+" `バックアップ` としてのみ使用されます。メインのデータセンターに障害が発生した場合、通常は第2のデータセンターからデータを復旧します。"
+
+#. type: Plain text
+msgid ""
+"Active/Active - Here the users and client applications send the requests to "
+"the {project_name} nodes in both data centers.  It means that data need to "
+"be visible immediately on both sites and available to be consumed "
+"immediately from {project_name} servers on both sites. This is especially "
+"true if {project_name} server writes some data on `site1`, and it is "
+"required that the data are available immediately for reading by "
+"{project_name} servers on `site2` immediately after the write on `site1` is "
+"finished."
+msgstr ""
+"アクティブ/アクティブ - "
+"ユーザーとクライアント・アプリケーションは、両方のデータセンターの{project_name}ノードにリクエストを送信します。つまり、両方のサイトですぐにデータを表示し、"
+" 両方のサイトの{project_name}サーバーからデータをすぐに使用できるようにする必要があります。これは、{project_name}サーバーが"
+" `site1` に何かしらのデータを書き込む場合に特に当てはまります。また、 `site1` への書き込みが完了した直後に、 `site2` "
+"の{project_name}サーバーがデータをすぐに読み取ることができるようにする必要があります。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The active/passive mode is better for performance. For more information "
+"about how to configure caches for either mode, see: <<backups>>.    \n"
+msgstr ""
+"アクティブ/パッシブモードは、パフォーマンスに優れています。いずれかのモードでキャッシュを設定する方法の詳細については、 <<backups>> "
+"を参照してください。\n"
+
+#. type: Attribute :installguide_database_name:
+#, no-wrap
+msgid "Database"
+msgstr "データベース"
+
+#. type: Plain text
+msgid ""
+"{project_name} uses a relational database management system (RDBMS) to "
+"persist some metadata about realms, clients, users, and so on. See "
+"link:{installguide_database_link}[this chapter] of the server installation "
+"guide for more details. In a Cross-Datacenter Replication setup, we assume "
+"that either both data centers talk to the same database or that every data "
+"center has its own database node and both database nodes are synchronously "
+"replicated across the data centers. In both cases, it is required that when "
+"a {project_name} server on `site1` persists some data and commits the "
+"transaction, those data are immediately visible by subsequent DB "
+"transactions on `site2`."
+msgstr ""
+"{project_name}は、リレーショナル・データベース・マネジメント・システム（RDBMS）を使用して、レルム、クライアント、ユーザーなどのメタデータを保持します。詳細については、サーバーインストールガイドのlink:{installguide_database_link}[この章]を参照してください。クロスデータセンター・レプリケーションのセットアップでは、両方のデータセンターが同じデータベースと通信するか、すべてのデータセンターに独自のデータベース・ノードがあり、両方のデータベース・ノードがデータセンター間で同期レプリケートされると想定しています。どちらの場合でも、"
+" `site1` の{project_name}サーバーがデータを保持してトランザクションをコミットすると、 `site2` "
+"の後続のDBトランザクションによって、それらのデータがすぐに表示される必要があります。"
+
+#. type: Plain text
+msgid ""
+"Details of DB setup are out-of-scope for {project_name}, however many RDBMS "
+"vendors like MariaDB and Oracle offer replicated databases and synchronous "
+"replication. We test {project_name} with these vendors:"
+msgstr ""
+"DBのセットアップの詳細については、{project_name}の範囲外ですが、MariaDBやOracleなどのRDBMSベンダーの多くは、レプリケートされたデータベースと同期レプリケーションを提供しています。これらのベンダーを使用して、{project_name}をテストします。"
+
+#. type: Plain text
+msgid "Oracle Database 12c Release 1 (12.1) RAC"
+msgstr "Oracle Database 12c Release 1 (12.1) RAC"
+
+#. type: Plain text
+msgid "Galera 3.12 cluster for MariaDB server version 10.1.19-MariaDB"
+msgstr "Galera 3.12 cluster for MariaDB server version 10.1.19-MariaDB"
+
+#. type: Title ====
+#, no-wrap
+msgid "Infinispan caches"
+msgstr "Infinispanキャッシュ"
+
+#. type: Plain text
+msgid ""
+"This section begins with a high level description of the Infinispan caches. "
+"More details of the cache setup follow."
+msgstr "このセクションでは、Infinispanキャッシュの概要を説明していきます。キャッシュの設定の詳細は以下の通りです。"
+
+#. type: Block title
+#, no-wrap
+msgid "Authentication sessions"
+msgstr "認証セッション"
+
+#. type: Plain text
+msgid ""
+"In {project_name} we have the concept of authentication sessions. There is a"
+" separate Infinispan cache called `authenticationSessions` used to save data"
+" during authentication of particular user. Requests from this cache usually "
+"involve only a browser and the {project_name} server, not the application. "
+"Here we can rely on sticky sessions and the `authenticationSessions` cache "
+"content does not need to be replicated across data centers, even if you are "
+"in Active/Active mode."
+msgstr ""
+"{project_name}には、認証セッションの概念があります。 `authenticationSessions` "
+"と呼ばれる別のInfinispanキャッシュがあり、特定のユーザーの認証時にデータを保存するのに使用されます。このキャッシュからのリクエストには通常、アプリケーションではなく、ブラウザーと{project_name}サーバーのみが必要になります。ここでは、アクティブ/アクティブモードであっても、スティッキー・セッションに依存することができ、"
+" `authenticationSessions` キャッシュ・コンテンツをデータセンター間でレプリケートする必要はありません。"
+
+#. type: Block title
+#, no-wrap
+msgid "Action tokens"
+msgstr "アクション・トークン"
+
+#. type: Plain text
+msgid ""
+"We also have the concept of link:{developerguide_actiontoken_link}[action "
+"tokens], which are used typically for scenarios when the user needs to "
+"confirm an action asynchronously by email. For example, during the `forget "
+"password` flow the `actionTokens` Infinispan cache is used to track metadata"
+" about related action tokens, such as which action token was already used, "
+"so it can't be reused second time. This usually needs to be replicated "
+"across data centers."
+msgstr ""
+"link:{developerguide_actiontoken_link}[アクション・トークン]の概念もあります。アクション・トークンは、通常、ユーザーが電子メールでアクションを非同期で確認する必要があるシナリオで使用されます。たとえば、"
+" `forget password` フローの間に、 `actionTokens` "
+"Infinispanキャッシュは、どのアクション・トークンがすでに使用されているかなどの関連するアクション・トークンに関するメタデータを追跡するために使用されるため、2度目は再利用できません。これは通常、データセンター間でレプリケートする必要があります。"
+
+#. type: Block title
+#, no-wrap
+msgid "Caching and invalidation of persistent data"
+msgstr "永続データのキャッシングと無効化"
+
+#. type: Plain text
+msgid ""
+"{project_name} uses Infinispan to cache persistent data to avoid many "
+"unecessary requests to the database.  Caching improves performance, however "
+"it adds an additional challenge. When some {project_name} server updates any"
+" data, all other {project_name} servers in all data centers need to be aware"
+" of it, so they invalidate particular data from their caches. {project_name}"
+" uses local Infinispan caches called `realms`, `users`, and `authorization` "
+"to cache persistent data."
+msgstr ""
+"{project_name}はInfinispanを使用して永続化データをキャッシュし、データベースへの不要なリクエストを多く回避します。キャッシュによりパフォーマンスは改善されますが、さらなる問題が加わります。一部の{project_name}サーバーがデータを更新した場合、すべてのデータセンターの他のすべての{project_name}サーバーはそのことに気づく必要があるため、それらのキャッシュから特定のデータを無効にします。{project_name}は、"
+" `realms` 、 `users` 、および `authorization` "
+"と呼ばれるローカルInfinispanキャッシュを使用して、永続化データをキャッシュします。"
+
+#. type: Plain text
+msgid ""
+"We use a separate cache, `work`, which is replicated across all data "
+"centers. The work cache itself does not cache any real data. It is used only"
+" for sending invalidation messages between cluster nodes and data centers.  "
+"In other words, when data is updated, such as the user `john`, the "
+"{project_name} node sends the invalidation message to all other cluster "
+"nodes in the same data center and also to all other data centers. After "
+"receiving the invalidation notice, every node then invalidates the "
+"appropriate data from their local cache."
+msgstr ""
+"すべてのデータセンターでレプリケートされる、別のキャッシュ `work` "
+"を使用します。workキャッシュ自体は実際のデータをキャッシュしません。クラスターノードとデータセンター間で無効化メッセージを送信する場合にのみ使用されます。つまり、ユーザー"
+" `john` "
+"などのデータが更新されると、{project_name}ノードは、同じデータセンター内の他のすべてのクラスターノード、および他のすべてのデータセンターに無効化メッセージを送信します。すべてのノードは、無効通知を受信した後、ローカル・キャッシュから適切なデータを無効にします。"
+
+#. type: Block title
+#, no-wrap
+msgid "User sessions"
+msgstr "ユーザー・セッション"
+
+#. type: Plain text
+msgid ""
+"There are Infinispan caches called `sessions`, `clientSessions`, "
+"`offlineSessions`, and `offlineClientSessions`, all of which usually need to"
+" be replicated across data centers. These caches are used to save data about"
+" user sessions, which are valid for the length of a user's browser session. "
+"The caches must handle the HTTP requests from the end user and from the "
+"application. As described above, sticky sessions can not be reliably used in"
+" this instance, but we still want to ensure that subsequent HTTP requests "
+"can see the latest data. For this reason, the data are usually replicated "
+"across data centers."
+msgstr ""
+"`sessions` 、 `clientSessions` 、 `offlineSessions` 、および "
+"`offlineClientSessions` "
+"と呼ばれるInfinispanキャッシュがあり、それらのすべては通常、データセンター間でレプリケートされる必要があります。これらのキャッシュは、ユーザー・セッションに関するデータを保存するために使用され、ユーザーのブラウザー・セッションの長さに対して有効です。キャッシュは、エンドユーザーとアプリケーションからのHTTPリクエストを処理する必要があります。前述のとおり、このインスタンスではスティッキー・セッションを信頼性をもって使用することはできませんが、後続のHTTPリクエストが最新のデータを確認できるようにする必要があります。このため、データは通常、データセンター間でレプリケートされます。"
+
+#. type: Block title
+#, no-wrap
+msgid "Brute force protection"
+msgstr "ブルートフォース保護"
+
+#. type: Plain text
+msgid ""
+"Finally the `loginFailures` cache is used to track data about failed logins,"
+" such as how many times the user `john` entered a bad password. The details "
+"are described link:{adminguide_bruteforce_link}[here]. It is up to the admin"
+" whether this cache should be replicated across data centers. To have an "
+"accurate count of login failures, the replication is needed. On the other "
+"hand, not replicating this data can save some performance. So if performance"
+" is more important then accurate counts of login failures, the replication "
+"can be avoided."
+msgstr ""
+"最後に、 `loginFailures` キャッシュは、ユーザー `john` "
+"が不正なパスワードを入力した回数など、ログイン失敗に関するデータを追跡するために使用されます。詳細は、link:{adminguide_bruteforce_link}[こちら]を参照してください。このキャッシュをデータセンター間でレプリケートするかどうかは、管理者次第です。正確なログイン失敗の回数を取得するには、レプリケーションが必要です。一方、このデータをレプリケートしないことで、パフォーマンスをよくできます。したがって、パフォーマンスがログイン失敗の正確な回数よりも重要な場合は、レプリケーションを避けるという手もあります。"
+
+#. type: Plain text
+msgid ""
+"For more detail about how caches can be configured see <<tuningcache>>."
+msgstr "キャッシュの設定方法の詳細については、<<tuningcache>>を参照してください。 "
+
+#. type: Title ====
+#, no-wrap
+msgid "Communication details"
+msgstr "コミュニケーションの詳細"
+
+#. type: Plain text
+msgid ""
+"{project_name} uses multiple, separate clusters of Infinispan caches. Every "
+"{project_name} node is in the cluster with the other {project_name} nodes in"
+" same data center, but not with the {project_name} nodes in different data "
+"centers. A {project_name} node does not communicate directly with the "
+"{project_name} nodes from different data centers. {project_name} nodes use "
+"external JDG (actually {jdgserver_name} servers) for communication across "
+"data centers. This is done using the "
+"link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#using_hot_rod_server[Infinispan"
+" HotRod protocol]."
+msgstr ""
+"{project_name}は、Infinispanキャッシュの分割されたクラスターを複数使用します。各{project_name}ノードは、同じデータセンター内の他の{project_name}ノードと共にクラスター内にありますが、異なるデータセンターの{project_name}ノードはそのクラスター内にありません。{project_name}ノードは、異なるデータセンターの{project_name}ノードと直接通信できません。{project_name}ノードは、データセンター間の通信に外部JDG"
+" "
+"（実際には{jdgserver_name}サーバー）を使用します。これは、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#using_hot_rod_server[Infinispan"
+" HotRodプロトコル]を使用して行われます。"
+
+#. type: Plain text
+msgid ""
+"The Infinispan caches on the {project_name} side must be configured with the"
+" "
+"link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#remote_store[remoteStore]"
+" to ensure that data are saved to the remote cache. There is separate "
+"Infinispan cluster between JDG servers, so the data saved on JDG1 on `site1`"
+" are replicated to JDG2 on `site2` ."
+msgstr ""
+"{project_name}側のInfinispanキャッシュは、データがリモート・キャッシュに保存されていることを確認するために、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#remote_store[remoteStore]を使用して設定する必要があります。JDGサーバー間に分割されたInfinispanクラスターがあるので、"
+" `site1` のJDG1に保存されていたデータは `site2` のJDG2にレプリケートされます。"
+
+#. type: Plain text
+msgid ""
+"Finally, the receiving JDG server notifies the {project_name} servers in its"
+" cluster through the Client Listeners, which are a feature of the HotRod "
+"protocol. {project_name} nodes on `site2` then update their Infinispan "
+"caches and the particular user session is also visible on {project_name} "
+"nodes on `site2`."
+msgstr ""
+"最後に、受信JDGサーバーは、HotRodプロトコルの機能であるクライアント・リスナーを介して、クラスター内の{project_name}サーバーに通知します。次に、"
+" `site2` の{project_name}ノードがInfinispanキャッシュを更新し、特定のユーザー・セッションが `site2` "
+"の{project_name}ノードにも表示されます。 "
+
+#. type: Plain text
+msgid "See the <<archdiagram>> for more details."
+msgstr "詳細は、<<archdiagram>>を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Basic setup"
+msgstr "基本設定"
+
+#. type: Plain text
+msgid ""
+"For this example, we describe using two data centers, `site1` and `site2`. "
+"Each data center consists of 1 {jdgserver_name} server and 2 {project_name} "
+"servers. We will end up with 2 {jdgserver_name} servers and 4 {project_name}"
+" servers in total."
+msgstr ""
+"この例では、 `site1` と `site2` "
+"という2つのデータセンター使用して説明します。各データセンターは、1つの{jdgserver_name}サーバーと2つの{project_name}サーバーで構成されています。合計すると、2つの{jdgserver_name}サーバーと4つの{project_name}サーバーになります。"
+
+#. type: Plain text
+msgid ""
+"`Site1` consists of {jdgserver_name} server, `jdg1`, and 2 {project_name} "
+"servers, `node11` and `node12` ."
+msgstr ""
+"`Site1` は、{jdgserver_name}サーバーの `jdg1` と2つの{project_name}サーバーの `node11` および "
+"`node12` で構成されています。"
+
+#. type: Plain text
+msgid ""
+"`Site2` consists of {jdgserver_name} server, `jdg2`, and 2 {project_name} "
+"servers, `node21` and `node22` ."
+msgstr ""
+"`Site2` は、{jdgserver_name}サーバーの `jdg2` と2つの {project_name}サーバーの `node21` および"
+" `node22` で構成されています。"
+
+#. type: Plain text
+msgid ""
+"{jdgserver_name} servers `jdg1` and `jdg2` are connected to each other "
+"through the RELAY2 protocol and `backup` based {jdgserver_name} caches in a "
+"similar way as described in the link:https://access.redhat.com/documentation"
+"/en-us/red_hat_jboss_data_grid/7.1/html-"
+"single/administration_and_configuration_guide/#configure_cross_datacenter_replication_remote_client_server_mode[JDG"
+" documentation]."
+msgstr ""
+"{jdgserver_name}サーバーである `jdg1` と `jdg2` "
+"は、link:https://access.redhat.com/documentation/en-"
+"us/red_hat_jboss_data_grid/7.1/html-"
+"single/administration_and_configuration_guide/#configure_cross_datacenter_replication_remote_client_server_mode[JDGのドキュメント]で記載されているのと同様の方法で、RELAY2プロトコルと"
+" `バックアップ` ベースの{jdgserver_name}キャッシュを介して相互に接続されています。"
+
+#. type: Plain text
+msgid ""
+"{project_name} servers `node11` and `node12` form a cluster with each other,"
+" but they do not communicate directly with any server in `site2`.  They "
+"communicate with the Infinispan server `jdg1` using the HotRod protocol "
+"(Remote cache). See <<communication>> for the details."
+msgstr ""
+"{project_name}サーバーである `node11` と `node12` は、お互いにクラスターを形成しますが、 `site2` "
+"内のサーバーとは直接通信はしません。それらはHotRodプロトコル （リモート・キャッシュ）を使用して、Infinispanサーバー `jdg1` "
+"と通信します。詳細については、<<communication>>を参照してください。"
+
+#. type: Plain text
+msgid ""
+"The same details apply for `node21` and `node22`. They cluster with each "
+"other and communicate only with `jdg2` server using the HotRod protocol."
+msgstr ""
+"同じ説明が `node21` と `node22` にも当てはまります。それらはお互いにクラスター化し、HotRodプロトコルを使用して、 `jdg2`"
+" サーバーとのみ通信します。"
+
+#. type: Plain text
+msgid ""
+"Our example setup assumes all that all 4 {project_name} servers talk to the "
+"same database. In production, it is recommended to use separate "
+"synchronously replicated databases across data centers as described in "
+"<<database>>."
+msgstr ""
+"この設定の例では、4つの{project_name}サーバーすべてが同じデータベースと通信することを前提としています。プロダクション環境では、<<database>>で説明されている通り、データセンター間で別々の同期レプリケートされたデータベースを使用することをお勧めします。"
+
+#. type: Title ====
+#, no-wrap
+msgid "{jdgserver_name} server setup"
+msgstr "{jdgserver_name}サーバーの設定"
+
+#. type: Plain text
+msgid "Follow these steps to set up the {jdgserver_name} server:"
+msgstr "{jdgserver_name}サーバーの設定は、以下の手順に沿って行います。"
+
+#. type: Plain text
+msgid ""
+"Download {jdgserver_name} {jdgserver_version} server and unzip to a "
+"directory you choose. This location will be referred in later steps as "
+"`JDG1_HOME` ."
+msgstr ""
+"{jdgserver_name} "
+"{jdgserver_version}サーバーをダウンロードし、選択したディレクトリーに解凍します。このロケーションは、 `JDG1_HOME` "
+"として後ほど参照することになります。"
+
+#. type: Plain text
+msgid ""
+"Change those things in the "
+"`JDG1_HOME/standalone/configuration/clustered.xml` in the configuration of "
+"JGroups subsystem:"
+msgstr ""
+"JGroupsサブシステムの設定で、 `JDG1_HOME/standalone/configuration/clustered.xml` "
+"内にあるこれらを変更します。"
+
+#. type: Plain text
+msgid ""
+"Add the `xsite` channel, which will use `tcp` stack, under `channels` "
+"element:"
+msgstr "`xsite` チャネルを追加して、 `channels` 要素の下にある `tcp` スタックを使用します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<channels default=\"cluster\">\n"
+"    <channel name=\"cluster\"/>\n"
+"    <channel name=\"xsite\" stack=\"tcp\"/>\n"
+"</channels>\n"
+msgstr ""
+"<channels default=\"cluster\">\n"
+"    <channel name=\"cluster\"/>\n"
+"    <channel name=\"xsite\" stack=\"tcp\"/>\n"
+"</channels>\n"
+
+#. type: Plain text
+msgid ""
+"Add a `relay` element to the end of the `udp` stack. We will configure it in"
+" a way that our site is `site1` and the other site, where we will backup, is"
+" `site2`:"
+msgstr ""
+"`relay` 要素を `udp` スタックの最後尾に追加します。自身のサイトは `site1` で、バックアップする他のサイトは `site2` "
+"というように設定します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<stack name=\"udp\">\n"
+"    ...\n"
+"    <relay site=\"site1\">\n"
+"        <remote-site name=\"site2\" channel=\"xsite\"/>\n"
+"        <property name=\"relay_multicasts\">false</property>\n"
+"    </relay>\n"
+"</stack>\n"
+msgstr ""
+"<stack name=\"udp\">\n"
+"    ...\n"
+"    <relay site=\"site1\">\n"
+"        <remote-site name=\"site2\" channel=\"xsite\"/>\n"
+"        <property name=\"relay_multicasts\">false</property>\n"
+"    </relay>\n"
+"</stack>\n"
+
+#. type: Plain text
+msgid ""
+"Configure the `tcp` stack to use `TCPPING` protocol instead of `MPING`. "
+"Remove the `MPING` element and replace it with the `TCPPING`. The "
+"`initial_hosts` element points to the hosts `jdg1` and `jdg2`:"
+msgstr ""
+"`MPING` の代わりに、 `tcp` スタックを設定して `TCPPING` プロトコルを使用します。 `MPING` 要素を削除して "
+"`TCPPING` に置き換えます。 `initial_hosts` 要素は、ホスト `jdg1` と `jdg2` を指します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<stack name=\"tcp\">\n"
+"    <transport type=\"TCP\" socket-binding=\"jgroups-tcp\"/>\n"
+"    <protocol type=\"TCPPING\">\n"
+"        <property name=\"initial_hosts\">jdg1[7600],jdg2[7600]</property>\n"
+"        <property name=\"ergonomics\">false</property>\n"
+"    </protocol>\n"
+"    <protocol type=\"MERGE3\"/>\n"
+"    ...\n"
+"</stack>\n"
+msgstr ""
+"<stack name=\"tcp\">\n"
+"    <transport type=\"TCP\" socket-binding=\"jgroups-tcp\"/>\n"
+"    <protocol type=\"TCPPING\">\n"
+"        <property name=\"initial_hosts\">jdg1[7600],jdg2[7600]</property>\n"
+"        <property name=\"ergonomics\">false</property>\n"
+"    </protocol>\n"
+"    <protocol type=\"MERGE3\"/>\n"
+"    ...\n"
+"</stack>\n"
+
+#. type: Plain text
+msgid ""
+"This is just an example setup to have things quickly running. In production,"
+" you are not required to use `tcp` stack for the JGroups `RELAY2`, but you "
+"can configure any other stack. For example, you could use the default udp "
+"stack, if the network between your data centers is able to support "
+"multicast. Just make sure that the {jdgserver_name} and {project_name} "
+"clusters are mutually indiscoverable. Similarly, you are not required to use"
+" `TCPPING` as discovery protocol. And in production, you probably won't use "
+"`TCPPING` due it's static nature. Finally, site names are also configurable."
+"  Details of this more-detailed setup are out-of-scope of the {project_name}"
+" documentation. See the {jdgserver_name} documentation and JGroups "
+"documentation for more details."
+msgstr ""
+"これは、単にすばやく実行するための設定例です。プロダクション環境では、JGroups `RELAY2` に `tcp` "
+"スタックを使用する必要はなく、他のどのスタックを設定しても構いません。たとえば、データセンター間のネットワークがマルチキャストをサポートできる場合は、デフォルトのudpスタックを使用することができます。{jdgserver_name}と{project_name}クラスターがお互いを見つけることはできないという点だけは確認してください。同じように、"
+" `TCPPING` を検出プロトコルとして使用する必要はありません。また、 `TCPPING` "
+"は静的な性質であるため、使用することはないでしょう。最後に、サイト名も設定することができます。この設定のより詳細な内容については、{project_name}ドキュメントの範囲外になります。詳細については、{jdgserver_name}のドキュメントおよびJGroupsのドキュメントを参照してください。"
+" "
+
+#. type: Plain text
+msgid ""
+"Add this into `JDG1_HOME/standalone/configuration/clustered.xml` under "
+"cache-container named `clustered`:"
+msgstr ""
+"`JDG1_HOME/standalone/configuration/clustered.xml` の `clustered` "
+"という名前のcache-containerの下に次の設定を追加します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<cache-container name=\"clustered\" default-cache=\"default\" statistics=\"true\">\n"
+"        ...\n"
+"        <replicated-cache-configuration name=\"sessions-cfg\" mode=\"SYNC\" start=\"EAGER\" batching=\"false\">\n"
+"            <transaction mode=\"NON_DURABLE_XA\" locking=\"PESSIMISTIC\"/>\n"
+"            <locking acquire-timeout=\"0\" />\n"
+"            <backups>\n"
+"                <backup site=\"site2\" failure-policy=\"FAIL\" strategy=\"SYNC\" enabled=\"true\">\n"
+"                    <take-offline min-wait=\"60000\" after-failures=\"3\" />\n"
+"                </backup>\n"
+"            </backups>\n"
+"        </replicated-cache-configuration>\n"
+"\n"
+"        <replicated-cache name=\"work\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"sessions\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"clientSessions\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"offlineSessions\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"offlineClientSessions\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"actionTokens\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"loginFailures\" configuration=\"sessions-cfg\"/>\n"
+"                \n"
+"</cache-container>\n"
+msgstr ""
+"<cache-container name=\"clustered\" default-cache=\"default\" statistics=\"true\">\n"
+"        ...\n"
+"        <replicated-cache-configuration name=\"sessions-cfg\" mode=\"SYNC\" start=\"EAGER\" batching=\"false\">\n"
+"            <transaction mode=\"NON_DURABLE_XA\" locking=\"PESSIMISTIC\"/>\n"
+"            <locking acquire-timeout=\"0\" />\n"
+"            <backups>\n"
+"                <backup site=\"site2\" failure-policy=\"FAIL\" strategy=\"SYNC\" enabled=\"true\">\n"
+"                    <take-offline min-wait=\"60000\" after-failures=\"3\" />\n"
+"                </backup>\n"
+"            </backups>\n"
+"        </replicated-cache-configuration>\n"
+"\n"
+"        <replicated-cache name=\"work\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"sessions\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"clientSessions\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"offlineSessions\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"offlineClientSessions\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"actionTokens\" configuration=\"sessions-cfg\"/>\n"
+"        <replicated-cache name=\"loginFailures\" configuration=\"sessions-cfg\"/>\n"
+"                \n"
+"</cache-container>\n"
+
+#. type: Plain text
+msgid ""
+"Details about the configuration options inside `replicated-cache-"
+"configuration` are explained in <<tuningcache>>, which includes information "
+"about tweaking some of those options."
+msgstr ""
+"`replicated-cache-configuration` "
+"内の設定オプションについての詳細は、<<tuningcache>>で説明しています。これには、これらのオプションのいくつかを調整するための情報が含まれています。"
+
+#. type: Plain text
+msgid ""
+"Copy the server into the second location, which will be referred to later as"
+" `JDG2_HOME`."
+msgstr "2つ目のロケーションにサーバーをコピーします。これは、 `JDG2_HOME` として後ほど参照することになります。"
+
+#. type: Plain text
+msgid ""
+"In the `JDG2_HOME/standalone/configuration/clustered.xml` exchange `site1` "
+"with `site2` and viceversa in the configuration of `relay` in the JGroups "
+"subsystem and in configuration of `backups` in the cache-subsystem. For "
+"example:"
+msgstr ""
+"`JDG2_HOME/standalone/configuration/clustered.xml` では、 `site1` を `site2` "
+"に置き換えると、JGroupsサブシステム内の `relay` の設定とcache-subsystem内の `backups` "
+"の設定において、逆の動作をします。次に例を示します。"
+
+#. type: Plain text
+msgid "The `relay` element should look like this:"
+msgstr "`relay` 要素は、以下のように表示されます。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<relay site=\"site2\">\n"
+"    <remote-site name=\"site1\" channel=\"xsite\"/>\n"
+"    <property name=\"relay_multicasts\">false</property>\n"
+"</relay>\n"
+msgstr ""
+"<relay site=\"site2\">\n"
+"    <remote-site name=\"site1\" channel=\"xsite\"/>\n"
+"    <property name=\"relay_multicasts\">false</property>\n"
+"</relay>\n"
+
+#. type: Plain text
+msgid "The `backups` element like this:"
+msgstr "`backups` 要素は、以下のように表示されます。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"            <backups>\n"
+"                <backup site=\"site1\" ....\n"
+"                ...\n"
+msgstr ""
+"            <backups>\n"
+"                <backup site=\"site1\" ....\n"
+"                ...\n"
+
+#. type: Plain text
+msgid ""
+"It is currently required to have different configuration files for the JDG "
+"servers on both sites as the Infinispan subsystem does not support replacing"
+" site names with expressions. See "
+"link:https://issues.jboss.org/browse/WFLY-9458[this issue] for more details."
+msgstr ""
+"現時点では、Infinispanサブシステムはサイト名を式によって置き換えることはサポートしていないため、両方のサイトのJDGサーバーに異なる設定ファイルを用意する必要があります。詳細については、link:https://issues.jboss.org/browse/WFLY-9458[この課題]を参照してください。"
+
+#. type: Plain text
+msgid "Start server `jdg1`:"
+msgstr "`jdg1` サーバーを起動します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd JDG1_HOME/bin\n"
+"./standalone.sh -c clustered.xml -Djava.net.preferIPv4Stack=true \\\n"
+"  -Djboss.default.multicast.address=234.56.78.99 \\\n"
+"  -Djboss.node.name=jdg1 -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd JDG1_HOME/bin\n"
+"./standalone.sh -c clustered.xml -Djava.net.preferIPv4Stack=true \\\n"
+"  -Djboss.default.multicast.address=234.56.78.99 \\\n"
+"  -Djboss.node.name=jdg1 -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid ""
+"Start server `jdg2`. There is a different multicast address, so the `jdg1` "
+"and `jdg2` servers are not directly clustered with each other; rather, they "
+"are just connected through the RELAY2 protocol, and the TCP JGroups stack is"
+" used for communication between them. The start up command looks like this:"
+msgstr ""
+"`jdg2` サーバーを起動します。異なるマルチキャスト・アドレスがあるため、 `jdg1` と `jdg2` "
+"サーバーは互いに直接クラスター化されません。むしろ、それらはRELAY2プロトコルを介して接続されており、TCP "
+"JGroupsスタックはそれらの間の通信に使用されます。起動コマンドは次のようになります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd JDG2_HOME/bin\n"
+"./standalone.sh -c clustered.xml -Djava.net.preferIPv4Stack=true \\\n"
+"  -Djboss.default.multicast.address=234.56.78.100 \\\n"
+"  -Djboss.node.name=jdg2 -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd JDG2_HOME/bin\n"
+"./standalone.sh -c clustered.xml -Djava.net.preferIPv4Stack=true \\\n"
+"  -Djboss.default.multicast.address=234.56.78.100 \\\n"
+"  -Djboss.node.name=jdg2 -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid ""
+"To verify that channel works at this point, you may need to use JConsole and"
+" connect either to the running `JDG1` or the `JDG2` server. When you use the"
+" MBean `jgroups:type=protocol,cluster=\"cluster\",protocol=RELAY2` and "
+"operation `printRoutes`, you should see output like this:"
+msgstr ""
+"この時点でチャネルが動作していることを検証するには、JConsoleを使用し、実行中の `JDG1` または `JDG2` "
+"サーバーに接続する必要があります。MBean "
+"`jgroups:type=protocol,cluster=\"cluster\",protocol=RELAY2` および "
+"`printRoutes` オペレーションを使用すると、以下のような出力が表示されます。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"site1 --> _jdg1:site1\n"
+"site2 --> _jdg2:site2\n"
+msgstr ""
+"site1 --> _jdg1:site1\n"
+"site2 --> _jdg2:site2\n"
+
+#. type: Plain text
+msgid ""
+"When you use the MBean "
+"`jgroups:type=protocol,cluster=\"cluster\",protocol=GMS`, you should see "
+"that the attribute member contains just single member:"
+msgstr ""
+"MBean `jgroups:type=protocol,cluster=\"cluster\",protocol=GMS` "
+"を使用すると、属性メンバーには単一のメンバーしか含まれていないということがわかります。"
+
+#. type: Plain text
+msgid "On `JDG1` it should be like this:"
+msgstr "`JDG1` では、以下のように表示されます。"
+
+#. type: Code block
+msgid "(1) jdg1"
+msgstr "(1) jdg1"
+
+#. type: Plain text
+msgid "And on JDG2 like this:"
+msgstr "`JDG2` では、以下のように表示されます。"
+
+#. type: Code block
+msgid "(1) jdg2"
+msgstr "(1) jdg2"
+
+#. type: Plain text
+msgid ""
+"In production, you can have more {jdgserver_name} servers in every data "
+"center. You just need to ensure that {jdgserver_name} servers in same data "
+"center are using the same multicast address (In other words, the same "
+"`jboss.default.multicast.address` during startup). Then in jconsole in `GMS`"
+" protocol view, you will see all the members of current cluster."
+msgstr ""
+"プロダクション環境では、すべてのデータセンターにさらに多くの{jdgserver_name}サーバーを持つことができます。同じデータセンター内の{jdgserver_name}サーバーが同じマルチキャスト・アドレスを使用していること（つまり、起動中に同じ"
+" `jboss.default.multicast.address` を使用していること）を確認するだけです。そうすると、 `GMS` "
+"プロトコルビューのjconsoleに、現在のクラスターのメンバーがすべて表示されます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "{project_name} servers setup"
+msgstr "{project_name}サーバーの設定"
+
+#. type: Plain text
+msgid ""
+"Unzip {project_name} server distribution to a location you choose. It will "
+"be referred to later as `NODE11`."
+msgstr "{project_name}サーバー配布物を選択した場所に解凍します。これは `NODE11` として後ほど参照することになります。"
+
+#. type: Plain text
+msgid ""
+"Configure a shared database for KeycloakDS datasource. It is recommended to "
+"use MySQL or MariaDB for testing purposes. See <<database>> for more "
+"details."
+msgstr ""
+"KeycloakDSデータソースの共有データベースを設定します。テストを目的とする場合は、MySQLまたはMariaDBの使用をお勧めします。詳細は<<database>>を参照ください。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"In production you will likely need to have a separate database server in "
+"every data center and both database servers should be synchronously "
+"replicated to each other. In the example setup, we just use a single "
+"database and connect all 4 {project_name} servers to it.   \n"
+msgstr ""
+"プロダクション環境では、すべてのデータセンターにおいて別々のデータベース・サーバーを用意する必要があり、両方のデータベース・サーバーを互いに同期してレプリケートする必要があります。設定例では、単一のデータベースを使用し、4つの{project_name}サーバーすべてに接続します。\n"
+
+#. type: Plain text
+msgid "Edit `NODE11/standalone/configuration/standalone-ha.xml` :"
+msgstr "`NODE11/standalone/configuration/standalone-ha.xml` を以下のように編集してください。"
+
+#. type: Plain text
+msgid "Add the attribute `site` to the JGroups UDP protocol:"
+msgstr "`site` 属性をJGroups UDPプロトコルに追加します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"                  <stack name=\"udp\">\n"
+"                      <transport type=\"UDP\" socket-binding=\"jgroups-udp\" site=\"${jboss.site.name}\"/>\n"
+msgstr ""
+"                  <stack name=\"udp\">\n"
+"                      <transport type=\"UDP\" socket-binding=\"jgroups-udp\" site=\"${jboss.site.name}\"/>\n"
+
+#. type: Plain text
+msgid ""
+"Add this `module` attribute under `cache-container` element of name "
+"`keycloak` :"
+msgstr "名前が `keycloak` の `cache-container` 要素の下に、この `module` 属性を追加します。"
+
+#. type: Code block
+msgid ""
+"<cache-container name=\"keycloak\" jndi-name=\"infinispan/Keycloak\" "
+"module=\"org.keycloak.keycloak-model-infinispan\">"
+msgstr ""
+"<cache-container name=\"keycloak\" jndi-name=\"infinispan/Keycloak\" "
+"module=\"org.keycloak.keycloak-model-infinispan\">"
+
+#. type: Plain text
+msgid "Add the `remote-store` under `work` cache:"
+msgstr "`work` キャッシュの下に `remote-store` を追加します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<replicated-cache name=\"work\" mode=\"SYNC\">\n"
+"    <remote-store cache=\"work\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</replicated-cache>\n"
+msgstr ""
+"<replicated-cache name=\"work\" mode=\"SYNC\">\n"
+"    <remote-store cache=\"work\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</replicated-cache>\n"
+
+#. type: Plain text
+msgid "Add the `remote-store` like this under `sessions` cache:"
+msgstr "`session` キャッシュの下に `remote-store` を追加します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<distributed-cache name=\"sessions\" mode=\"SYNC\" owners=\"1\">\n"
+"    <remote-store cache=\"sessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">   \n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+msgstr ""
+"<distributed-cache name=\"sessions\" mode=\"SYNC\" owners=\"1\">\n"
+"    <remote-store cache=\"sessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">   \n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+
+#. type: Plain text
+msgid ""
+"Do the same for `offlineSessions`, `clientSessions`, "
+"`offlineClientSessions`, `loginFailures`, and `actionTokens` caches (the "
+"only difference from `sessions` cache is that `cache` property value are "
+"different):"
+msgstr ""
+"`offlineSessions` 、 `clientSessions` 、 `offlineClientSessions` 、 "
+"`loginFailures` 、 `actionTokens` キャッシュでも同じことをします（ `sessions` キャッシュとの唯一の違いは、 "
+"`cache` プロパティー値が異なることです）。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<distributed-cache name=\"offlineSessions\" mode=\"SYNC\" owners=\"1\">\n"
+"    <remote-store cache=\"offlineSessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+"\n"
+"<distributed-cache name=\"clientSessions\" mode=\"SYNC\" owners=\"1\">\n"
+"    <remote-store cache=\"clientSessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+"\n"
+"<distributed-cache name=\"offlineClientSessions\" mode=\"SYNC\" owners=\"1\">\n"
+"    <remote-store cache=\"offlineClientSessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+"\n"
+"<distributed-cache name=\"loginFailures\" mode=\"SYNC\" owners=\"1\">\n"
+"    <remote-store cache=\"loginFailures\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+"\n"
+"<distributed-cache name=\"actionTokens\" mode=\"SYNC\" owners=\"2\">\n"
+"    <eviction max-entries=\"-1\" strategy=\"NONE\"/>\n"
+"    <expiration max-idle=\"-1\" interval=\"300000\"/>\n"
+"    <remote-store cache=\"actionTokens\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"true\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+msgstr ""
+"<distributed-cache name=\"offlineSessions\" mode=\"SYNC\" owners=\"1\">\n"
+"    <remote-store cache=\"offlineSessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+"\n"
+"<distributed-cache name=\"clientSessions\" mode=\"SYNC\" owners=\"1\">\n"
+"    <remote-store cache=\"clientSessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+"\n"
+"<distributed-cache name=\"offlineClientSessions\" mode=\"SYNC\" owners=\"1\">\n"
+"    <remote-store cache=\"offlineClientSessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+"\n"
+"<distributed-cache name=\"loginFailures\" mode=\"SYNC\" owners=\"1\">\n"
+"    <remote-store cache=\"loginFailures\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+"\n"
+"<distributed-cache name=\"actionTokens\" mode=\"SYNC\" owners=\"2\">\n"
+"    <eviction max-entries=\"-1\" strategy=\"NONE\"/>\n"
+"    <expiration max-idle=\"-1\" interval=\"300000\"/>\n"
+"    <remote-store cache=\"actionTokens\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"true\" shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+
+#. type: Plain text
+msgid ""
+"Add outbound socket binding for the remote store into `socket-binding-group`"
+" element configuration:"
+msgstr "リモートストアのアウトバウンド・ソケット・バインディングを `socket-binding-group` 要素の設定に追加します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<outbound-socket-binding name=\"remote-cache\">\n"
+"    <remote-destination host=\"${remote.cache.host:localhost}\" port=\"${remote.cache.port:11222}\"/>\n"
+"</outbound-socket-binding>\n"
+msgstr ""
+"<outbound-socket-binding name=\"remote-cache\">\n"
+"    <remote-destination host=\"${remote.cache.host:localhost}\" port=\"${remote.cache.port:11222}\"/>\n"
+"</outbound-socket-binding>\n"
+
+#. type: Plain text
+msgid ""
+"The configuration of distributed cache `authenticationSessions` and other "
+"caches is left unchanged."
+msgstr "分散キャッシュ設定の `authenticationSessions` と他のキャッシュは変更されません。"
+
+#. type: Plain text
+msgid "Optionally enable DEBUG logging under the `logging` subsystem:"
+msgstr "オプションで、 `logging` サブシステムの下でDEBUGログを有効にします。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<logger category=\"org.keycloak.cluster.infinispan\">\n"
+"    <level name=\"DEBUG\"/>\n"
+"</logger>\n"
+"<logger category=\"org.keycloak.connections.infinispan\">\n"
+"    <level name=\"DEBUG\"/>\n"
+"</logger>\n"
+"<logger category=\"org.keycloak.models.cache.infinispan\">\n"
+"    <level name=\"DEBUG\"/>\n"
+"</logger>\n"
+"<logger category=\"org.keycloak.models.sessions.infinispan\">\n"
+"    <level name=\"DEBUG\"/>\n"
+"</logger>\n"
+msgstr ""
+"<logger category=\"org.keycloak.cluster.infinispan\">\n"
+"    <level name=\"DEBUG\"/>\n"
+"</logger>\n"
+"<logger category=\"org.keycloak.connections.infinispan\">\n"
+"    <level name=\"DEBUG\"/>\n"
+"</logger>\n"
+"<logger category=\"org.keycloak.models.cache.infinispan\">\n"
+"    <level name=\"DEBUG\"/>\n"
+"</logger>\n"
+"<logger category=\"org.keycloak.models.sessions.infinispan\">\n"
+"    <level name=\"DEBUG\"/>\n"
+"</logger>\n"
+
+#. type: Plain text
+msgid ""
+"Copy the `NODE11` to 3 other directories referred later as `NODE12`, "
+"`NODE21` and `NODE22`."
+msgstr ""
+"`NODE11` を後述する `NODE12` 、 `NODE21` 、 `NODE22` という3つのディレクトリーにコピーしてください。"
+
+#. type: Plain text
+msgid "Start `NODE11` :"
+msgstr "次のように、 `NODE11` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE11/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=jdg1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE11/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=jdg1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid "Start `NODE12` :"
+msgstr "次のように、 `NODE12` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE12/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=jdg1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE12/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=jdg1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid ""
+"The cluster nodes should be connected. Something like this should be in the "
+"log of both NODE11 and NODE12:"
+msgstr "クラスター・ノードを接続する必要があります。このようなものは、NODE11とNODE12のどちらのログにも残っていなければなりません。"
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node11|1] (2) [node11, "
+"node12]"
+msgstr ""
+"Received new cluster view for channel keycloak: [node11|1] (2) [node11, "
+"node12]"
+
+#. type: Plain text
+msgid "The channel name in the log might be different."
+msgstr "ログにあるチャネル名とは異なっている可能性があります。"
+
+#. type: Plain text
+msgid "Start `NODE21` :"
+msgstr "次のように、 `NODE21` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE21/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=jdg2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE21/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=jdg2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid ""
+"It shouldn't be connected to the cluster with `NODE11` and `NODE12`, but to "
+"separate one:"
+msgstr "`NODE11` と `NODE12` を使用してクラスターに接続するのではなく、クラスターを分離する必要があります。"
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node21|0] (1) [node21]"
+msgstr ""
+"Received new cluster view for channel keycloak: [node21|0] (1) [node21]"
+
+#. type: Plain text
+msgid "Start `NODE22` :"
+msgstr "次のように、 `NODE22` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE22/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=jdg2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE22/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=jdg2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid "It should be in cluster with `NODE21` :"
+msgstr "`NODE21` をクラスター化する必要があります。"
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node21|1] (2) [node21, "
+"node22]"
+msgstr ""
+"Received new cluster view for channel keycloak: [node21|1] (2) [node21, "
+"node22]"
+
+#. type: Plain text
+msgid "Test:"
+msgstr "次のように、テストを行ってください。"
+
+#. type: Plain text
+msgid "Go to `http://node11:8080/auth/` and create the initial admin user."
+msgstr "`http://node11:8080/auth/` に移動し、最初の管理者ユーザーを作成します。"
+
+#. type: Plain text
+msgid ""
+"Go to `http://node11:8080/auth/admin` and login as admin to admin console."
+msgstr "`http://node11:8080/auth/admin` に移動し、管理者として管理コンソールにログインします。"
+
+#. type: Plain text
+msgid ""
+"Open a second browser and go to any of nodes `http://node12:8080/auth/admin`"
+" or `http://node21:8080/auth/admin` or `http://node22:8080/auth/admin`. "
+"After login, you should be able to see the same sessions in tab `Sessions` "
+"of particular user, client or realm on all 4 servers."
+msgstr ""
+"2つ目のブラウザーを開き、 `http://node12:8080/auth/admin` または "
+"`http://node21:8080/auth/admin` もしくは `http://node22:8080/auth/admin` "
+"のいずれかのノードに移動します。ログイン後、4つのすべてのサーバー上の特定のユーザー、クライアントまたはレルムの `Sessions` "
+"タブで同じセッションを表示できます。"
+
+#. type: Plain text
+msgid ""
+"After doing any change in Keycloak admin console (eg. update some user or "
+"some realm), the update should be immediately visible on any of 4 nodes as "
+"caches should be properly invalidated everywhere."
+msgstr ""
+"Keycloakの管理コンソールで変更（たとえば、ユーザーやレルムの更新など）を加えた後、その変更は、すぐに4つのノードのいずれかで表示され、キャッシュがどこでも適切に無効化される必要があります。"
+
+#. type: Plain text
+msgid ""
+"Check server.logs if needed. After login or logout, the message like this "
+"should be on all the nodes `NODEXY/standalone/log/server.log` :"
+msgstr ""
+"必要に応じてserver.logsを確認してください。ログインまたはログアウト後、以下のようなメッセージがすべての "
+"`NODEXY/standalone/log/server.log` ノードに表示される必要があります。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store. \n"
+"Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
+msgstr ""
+"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store. \n"
+"Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Administration of Cross DC deployment"
+msgstr "Cross DCデプロイメントの管理"
+
+#. type: Plain text
+msgid ""
+"This section contains some tips and options related to Cross-Datacenter "
+"Replication."
+msgstr "このセクションでは、クロスデータセンター・レプリケーションに関するオプションとヒントについて説明します。"
+
+#. type: Plain text
+msgid ""
+"When you run the {project_name} server inside a data center, it is required "
+"that the database referenced in `KeycloakDS` datasource is already running "
+"and available in that data center. It is also necessary that the "
+"{jdgserver_name} server referenced by the `outbound-socket-binding`, which "
+"is referenced from the Infinispan cache `remote-store` element, is already "
+"running. Otherwise the {project_name} server will fail to start."
+msgstr ""
+"{project_name}サーバーをデータセンター内で実行する場合、 `KeycloakDS` "
+"データソース内で参照されたデータベースがすでに実行され、そのデータセンター内で使用可能である必要があります。また、 Infinispanキャッシュの "
+"`remote-store` 要素から参照される `outbound-socket-binding` "
+"によって参照された{jdgserver_name}サーバーがすでに実行されてることが必要です。そうしないと、{project_name}サーバは起動に失敗します。"
+
+#. type: Plain text
+msgid ""
+"Every data center can have more database nodes if you want to support "
+"database failover and better reliability. Refer to the documentation of your"
+" database and JDBC driver for the details how to set this up on the database"
+" side and how the `KeycloakDS` datasource on Keycloak side needs to be "
+"configured."
+msgstr ""
+"データベース・フェイルオーバーと高い信頼性をサポートする必要がある場合、すべてのデータセンターでより多くのデータベース・ノードを持たせます。データベース側での設定方法とKeycloak側の"
+" `KeycloakDS` データソースで必要な設定方法の詳細については、JDBCドライバーのドキュメントを参照してください。"
+
+#. type: Plain text
+msgid ""
+"Every datacenter can have more {jdgserver_name} servers running in the "
+"cluster. This is useful if you want some failover and better fault "
+"tolerance. The HotRod protocol used for communication between "
+"{jdgserver_name} servers and {project_name} servers has a feature that "
+"{jdgserver_name} servers will automatically send new topology to the "
+"{project_name} servers about the change in the {jdgserver_name} cluster, so "
+"the remote store on {project_name} side will know to which {jdgserver_name} "
+"servers it can connect. Read the {jdgserver_name} and Wildfly documentation "
+"for more details."
+msgstr ""
+"すべてのデータセンターで、より多くの{jdgserver_name}サーバーをクラスター内で実行することができます。これは、フェイルオーバーとフォールト・トレランスを強化する場合に便利です。{jdgserver_name}サーバーと{project_name}サーバー間の通信で使用されるHotRodプロトコルには、{jdgserver_name}サーバーが{jdgserver_name}クラスターの変更について、{project_name}サーバーに新しいトポロジーを自動的に送信する機能を備えています。したがって、{project_name}側のリモートストアは、どの{jdgserver_name}サーバーに接続できるのかが分かります。詳細については、{jdgserver_name}とWildflyドキュメントを参照してください。"
+
+#. type: Plain text
+msgid ""
+"It is highly recommended that a master {jdgserver_name} server is running in"
+" every site before the {project_name} servers in **any** site are started. "
+"As in our example, we started both `jdg1` and `jdg2` first, before all "
+"{project_name} servers. If you still need to run the {project_name} server "
+"and the backup site is offline, it is recommended to manually switch the "
+"backup site offline on the {jdgserver_name} servers on your site, as "
+"described in <<onoffline>>. If you do not manually switch the unavailable "
+"site offline, the first startup may fail or they may be some exceptions "
+"during startup until the backup site is taken offline automatically due the "
+"configured count of failed operations."
+msgstr ""
+"**どんな** "
+"サイトの{project_name}サーバーも起動する前に、すべてのサイトでマスター{jdgserver_name}サーバーを実行することを強くお勧めします。この例では、すべての{project_name}サーバーの前に、"
+" `jdg1` と `jdg2` "
+"の両方を最初に起動します。{project_name}サーバーをそれでも実行する必要があり、バックアップ・サイトがオフラインである場合は、<<onoffline>>での説明の通り、サイトの{jdgserver_name}サーバー上のバックアップ・サイトを手動でオフラインに切り替えることをお勧めします。使用できない状態のサイトをオフラインに手動で切り替えることができない場合、初回起動に失敗するか、起動時にいくつか例外が発生する可能性があります。これは、失敗した操作の設定数によってバックアップ・サイトが自動的にオフラインになるまでです。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Bringing sites offline and online"
+msgstr "サイトをオフラインおよびオンラインにする"
+
+#. type: Plain text
+msgid "For example, assume this scenario:"
+msgstr "たとえば、以下のようなシナリオを想定します。"
+
+#. type: Plain text
+msgid ""
+"Site `site2` is entirely offline from the `site1` perspective. This means "
+"that all {jdgserver_name} servers on `site2` are off *or* the network "
+"between `site1` and `site2` is broken."
+msgstr ""
+"サイト `site2` は、 `site1` の観点から完全にオフラインです。これは、`site2` "
+"のすべての{jdgserver_name}サーバーがオフである。 *または* 、 ` site1` と `site2` "
+"の間のネットワークが切断されていることを意味します。"
+
+#. type: Plain text
+msgid ""
+"You run {project_name} servers and {jdgserver_name} server `jdg1` in site "
+"`site1`"
+msgstr "サイト `site1` で{project_name}サーバーと{jdgserver_name}サーバー `jdg1` を実行します。"
+
+#. type: Plain text
+msgid "Someone logs in on a {project_name} server on `site1`."
+msgstr "いずれかのユーザーが `site1` の{project_name}サーバーにログインします。"
+
+#. type: Plain text
+msgid ""
+"The {project_name} server from `site1` will try to write the session to the "
+"remote cache on `jdg1` server, which is supposed to backup data to the "
+"`jdg2` server in the `site2`. See <<communication>> for more information."
+msgstr ""
+"`site1` の{project_name}サーバーは、` site2` の `jdg2` サーバーにデータをバックアップすることを想定し、 "
+"`jdg1` サーバー上のリモート・キャッシュにセッションを書き込もうとします。 詳細については、<<communication>>を参照してください。"
+
+#. type: Plain text
+msgid ""
+"Server `jdg2` is offline or unreachable from `jdg1`. So the backup from "
+"`jdg1` to `jdg2` will fail."
+msgstr ""
+"`jdg2` サーバーがオフラインであるか、 ` jdg1` から到達できない状態なので、 `jdg1` から `jdg2` "
+"へのバックアップは失敗します。"
+
+#. type: Plain text
+msgid ""
+"The exception is thrown in `jdg1` log and the failure will be propagated "
+"from `jdg1` server to {project_name} servers as well because the default "
+"`FAIL` backup failure policy is configured. See <<backupfailure>> for "
+"details around the backup policies."
+msgstr ""
+"例外は `jdg1` のログにスローされます。デフォルトの `FAIL` バックアップ失敗ポリシーが設定されているため、その失敗は `jdg1` "
+"サーバーから{project_name}サーバーにも伝播されます。バックアップ・ポリシーの詳細については、<<backupfailure>>を参照してください。"
+
+#. type: Plain text
+msgid ""
+"The error will happen on {project_name} side too and user may not be able to"
+" finish his login."
+msgstr "このエラーは{project_name}側でも発生し、ユーザーはログインを完了できない可能性もあります。"
+
+#. type: Plain text
+msgid ""
+"According to your environment, it may be more or less probable that the "
+"network between sites is unavailable or temporarily broken (split-brain). In"
+" case this happens, it is good that {jdgserver_name} servers on `site1` are "
+"aware of the fact that {jdgserver_name} servers on `site2` are unavailable, "
+"so they will stop trying to reach the servers in the `jdg2` site and the "
+"backup failures won't happen. This is called `Take site offline` ."
+msgstr ""
+"ご使用の環境に応じて、サイト間のネットワークが利用できないか、一時的に壊れている（スプリット・ブレイン）可能性があります。これが起こった場合、 "
+"`site1` の{jdgserver_name}サーバは、 `site2` の{jdgserver_name}サーバが利用できないことに気付き、 "
+"`jdg2` サイトのサーバへアクセスしようとするのを止めるため、バックアップの失敗は発生しません。これは `サイトをオフラインにする` "
+"と呼ばれています。"
+
+#. type: Block title
+#, no-wrap
+msgid "Take site offline"
+msgstr "サイトをオフラインにする"
+
+#. type: Plain text
+msgid "There are 2 ways to take the site offline."
+msgstr "サイトをオフラインにするには2つの方法があります。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"**Manually by admin** - Admin can use the `jconsole` or other tool and run some JMX operations to manually take the particular site offline.\n"
+"This is useful especially if the outage is planned. With `jconsole` or CLI, you can connect to the `jdg1` server and take the `site2` offline. \n"
+"More details about this are available in the link:https://access.redhat.com/documentation/en-us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#taking_a_site_offline[JDG documentation]. \n"
+msgstr ""
+"**管理者による手作業** - 管理者は `jconsole` "
+"または他のツールを使用して、いくつかのJMX操作を実行することで、手動で特定のサイトをオフラインにすることができます。これは、特に停止が計画されている場合に役立ちます。"
+" `jconsole` またはCLIを使用すると、 `jdg1` サーバーに接続し、 `site2` "
+"をオフラインにすることができます。この詳細については、 https：//access.redhat.com/documentation/en-"
+"us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#taking_a_site_offline"
+" [JDGドキュメント] のリンクを参照してください。\n"
+
+#. type: Plain text
+msgid ""
+"This has turned off the backup to `site2` for the cache `sessions`. The same"
+" steps usually need to be done for all the other {project_name} caches "
+"mentioned in <<backups>>."
+msgstr ""
+"これにより、キャッシュ `sessions` の `site2` "
+"へのバックアップがオフになりました。<<backups>>で述べた他のすべての{project_name}キャッシュについても、通常と同じ手順を実行する必要があります。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"**Automatically** - After some amount of failed backups, the `site2` will "
+"usually be taken offline automatically. This is done due the configuration "
+"of `take-offline` element inside the cache configuration as configured in "
+"<<jdgsetup>>.\n"
+msgstr ""
+"**自動的作業** - バックアップに失敗した後、通常は `site2` "
+"が自動的にオフラインになります。これは、<<jdgsetup>>で設定されたキャッシュ構成内の `take-offline` "
+"要素の設定によって行われます。\n"
+
+#. type: Code block
+msgid "<take-offline min-wait=\"60000\" after-failures=\"3\" />"
+msgstr "<take-offline min-wait=\"60000\" after-failures=\"3\" />"
+
+#. type: Plain text
+msgid ""
+"This example shows that the site will be taken offline automatically for the"
+" particular single cache if there are at least 3 subsequent failed backups "
+"and there is no any successful backup within 60 seconds."
+msgstr ""
+"この例では、少なくとも3回連続して失敗したバックアップがあり、60秒以内にバックアップが成功しなかった場合、特定のシングルキャッシュに対してサイトが自動的にオフラインになることを示しています。"
+
+#. type: Plain text
+msgid ""
+"Automatically taking a site offline is useful especially if the broken "
+"network between sites is unplanned. The disadvantage is that there will be "
+"some failed backups until the network outage is detected, which could also "
+"mean failures on the application side.  For example, there will be failed "
+"logins for some users or big login timeouts. Especially if `failure-policy` "
+"with value `FAIL` is used."
+msgstr ""
+"自動的にサイトをオフラインにすることは、特に、サイト間の切断されたネットワークが計画外である場合に便利です。欠点は、ネットワークの停止が検出されるまで何らかのバックアップが失敗し、アプリケーション側で障害が起きてる可能性があります。たとえば、一部のユーザーのログインに失敗したり、大きなログインタイムアウトが発生したりします。たとえば、一部のユーザーのログインに失敗したり、大きなログインタイムアウトが発生したりします。"
+" 特に、値が `FAIL` の `failure-policy` が使用されている場合です。"
+
+#. type: Plain text
+msgid ""
+"The tracking of whether a site is offline is tracked separately for every "
+"cache."
+msgstr "サイトがオフラインであるかどうかの追跡は、キャッシュごとに個別に追跡されます。"
+
+#. type: Block title
+#, no-wrap
+msgid "Take site online"
+msgstr "サイトをオンラインにする"
+
+#. type: Plain text
+msgid ""
+"Once your network is back and `site1` and `site2` can talk to each other, "
+"you may need to put the site online. This needs to be done manually through "
+"JMX or CLI in similar way as taking a site offline.  Again, you may need to "
+"check all the caches and bring them online."
+msgstr ""
+"一旦ネットワークが復旧し、 `site1` と `site2` "
+"がお互いに通信することができたら、サイトをオンラインにする必要があります。これは、サイトをオフラインにするのと同じように、JMXまたはCLIを使用して手動で行う必要があります。再度キャッシュをすべてチェックし、オンラインにする必要があります。"
+
+#. type: Plain text
+msgid "Once the sites are put online, it's usually good to:"
+msgstr "サイトをオンラインにしたら、通常は次のようにするのが良いです。"
+
+#. type: Plain text
+msgid "Do the <<statetransfer>>."
+msgstr "<<statetransfer>>を行います。"
+
+#. type: Plain text
+msgid "Manually <<clearcache>>."
+msgstr "手動で<<clearcache>>を行います。"
+
+#. type: Title ====
+#, no-wrap
+msgid "State transfer"
+msgstr "ステート・トランスファー"
+
+#. type: Plain text
+msgid ""
+"State transfer is a required, manual step. {jdgserver_name} does not do this"
+" automatically, for example during split-brain, it is only the admin who may"
+" decide which site has preference and hence if state transfer needs to be "
+"done bidirectionally between both sites or just unidirectionally, as in only"
+" from `site1` to `site2`, but not from `site2` to `site1`."
+msgstr ""
+"ステート・トランスファーは、手動で行う必要があります。{jdgserver_name}はこれを自動的には行いません。たとえば、スプリット・ブレイン中は、管理者のみが誰がどのサイトを優先するかを決定することができます。したがって、ステート・トランスファーが両方のサイト間で双方向に、または"
+" `site1` から `site2` へのみ単方向で行われる必要がありますが、`site2` から `site1` への単方向は行われません。"
+
+#. type: Plain text
+msgid ""
+"A bidirectional state transfer will ensure that entities which were created "
+"*after* split-brain on `site1` will be transferred to `site2`. This is not "
+"an issue as they do not yet exist on `site2`. Similarly, entities created "
+"*after* split-brain on `site2` will be transferred to `site1`. Possibly "
+"problematic parts are those entities which exist *before* split-brain on "
+"both sites and which were updated during split-brain on both sites. When "
+"this happens, one of the sites will *win* and will overwrite the updates "
+"done during split-brain by the second site."
+msgstr ""
+"双方向のステート・トランスファーによって、スプリット・ブレインの *後に* `site1` で作成されたエンティティーが `site2` "
+"に確実に転送されます。これは `site2` ではまだ発生していないので問題ありません。同じように、スプリット・ブレインの *後に* `site2` "
+"で作成されたエンティティーは `site1` に転送されます。おそらく問題のある部分は、両方のサイトのスプリット・ブレインの *前に* "
+"存在し、両方のサイトのスプリット・ブレイン中に更新されたエンティティーです。これが発生すると、サイトの1つが *勝ち* "
+"、2番目のサイトがスプリット・ブレイン中に行った更新を上書きします。"
+
+#. type: Plain text
+msgid ""
+"Unfortunately, there is no any universal solution to this. Split-brains and "
+"network outages are just state, which is usually impossible to be handled "
+"100% correctly with 100% consistent data between sites. In the case of "
+"{project_name}, it typically is not a critical issue. In the worst case, "
+"users will need to re-login again to their clients, or have the improper "
+"count of loginFailures tracked for brute force protection. See the "
+"{jdgserver_name}/JGroups documentation for more tips how to deal with split-"
+"brain."
+msgstr ""
+"残念ながら、これに対する広く一般的な解決方法はありません。スプリット・ブレインやネットワークの停止は状態に過ぎず、サイト間で100%の一貫性のあるデータで100%正確に処理することは通常不可能です。{project_name}の場合、これは特に重大な問題ではありません。最悪の場合、ユーザーがクライアントに再度ログインするか、loginFailuresの不正カウント数をブルートフォース保護のために追跡する必要があります。スプリット・ブレインに対処するためのヒントについては、{jdgserver_name}/JGroupsドキュメントを参照してください。"
+
+#. type: Plain text
+msgid ""
+"The state transfer can be also done on the {jdgserver_name} side through "
+"JMX. The operation name is `pushState`. There are few other operations to "
+"monitor status, cancel push state, and so on.  More info about state "
+"transfer is available in the link:https://access.redhat.com/documentation"
+"/en-"
+"us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#state_transfer_between_sites[{jdgserver_name}"
+" docs]."
+msgstr ""
+"ステート・トランスファーは、JMXを介して{jdgserver_name}側でも行われます。操作名は `pushState` "
+"です。状態をモニタリングしたり、プッシュ状態をキャンセルしたりするその他の操作はほとんどありません。ステート・トランスファーの詳細については、link:https://access.redhat.com/documentation"
+"/en-"
+"us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#state_transfer_between_sites[{jdgserver_name}"
+" docs]を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Clear caches"
+msgstr "キャッシュのクリア"
+
+#. type: Plain text
+msgid ""
+"After split-brain it is safe to manually clear caches in the {project_name} "
+"admin console. This is because there might be some data changed in the "
+"database on `site1` and because of the event, that the cache should be "
+"invalidated wasn't transferred during split-brain to `site2`. Hence "
+"{project_name} nodes on `site2` may still have some stale data in their "
+"caches."
+msgstr ""
+"スプリット・ブレイン後は、{project_name}の管理コンソールで手動でキャッシュをクリアするのが安全です。これは、 `site1` "
+"のデータベースで変更されたデータがあり、イベントのために無効にする必要のあるキャッシュが、スプリット・ブレイン中に `site2` "
+"へ転送されなかった可能性があるためです。したがって、 `site2` "
+"の{project_name}ノードでは、キャッシュ内に古いデータがまだ残っている可能性があります。"
+
+#. type: Plain text
+msgid ""
+"To clear the caches, see "
+"{adminguide_clearcache_link}[{adminguide_clearcache_name}]."
+msgstr ""
+"キャッシュをクリアするには、{adminguide_clearcache_link} "
+"[{adminguide_clearcache_name}]を参照してください。"
+
+#. type: Plain text
+msgid ""
+"When the network is back, it is sufficient to clear the cache just on one "
+"{project_name} node on any random site. The cache invalidation event will be"
+" sent to all the other {project_name} nodes in all sites. However, it needs "
+"to be done for all the caches (realms, users, keys). See "
+"link:{adminguide_clearcache_link}[{adminguide_clearcache_name}] for more "
+"information."
+msgstr ""
+"ネットワークが復旧したら、いずれかのサイトの1つの{project_name}ノードでキャッシュをクリアするだけで十分です。キャッシュの無効化イベントは、それぞれのサイトの他の{project_name}ノードすべてに送られます。ただし、すべてのキャッシュ（レルム、ユーザー、鍵）に対して実行する必要があります。詳しくは、link:{adminguide_clearcache_link}[{adminguide_clearcache_name}]を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Tuning the JDG cache configuration"
+msgstr "JDGキャッシュ設定のチューニング"
+
+#. type: Plain text
+msgid "This section contains tips and options for configuring your JDG cache."
+msgstr "このセクションでは、JDGキャッシュを設定するためのヒントとオプションについて説明します。"
+
+#. type: Block title
+#, no-wrap
+msgid "Backup failure policy"
+msgstr "バックアップ失敗ポリシー"
+
+#. type: Plain text
+msgid ""
+"By default, the configuration of backup `failure-policy` in the Infinispan "
+"cache configuration in the JDG `clustered.xml` file is configured as `FAIL`."
+" You may change it to `WARN` or `IGNORE`, as you prefer."
+msgstr ""
+"デフォルトでは、JDG `clustered.xml` ファイルのInfinispanキャッシュ設定のバックアップ `failure-policy` "
+"の設定は、 `FAIL` として設定されています。必要に応じて `WARN` または `IGNORE` に変更することができます。"
+
+#. type: Plain text
+msgid ""
+"The difference between `FAIL` and `WARN` is that when `FAIL` is used and the"
+" {jdgserver_name} server tries to back data up to the other site and the "
+"backup fails then the failure will be propagated back to the caller (the "
+"{project_name} server). The backup might fail because the second site is "
+"temporarily unreachable or there is a concurrent transaction which is trying"
+" to update same entity. In this case, the {project_name} server will then "
+"retry the operation a few times. However, if the retry fails, then the user "
+"might see the error after a longer timeout."
+msgstr ""
+"`FAIL` と `WARN` の違いは、 `FAIL` "
+"が使用され、{jdgserver_name}サーバーが別のサイトにデータのバックアップを試みたときに、バックアップが失敗すると、その失敗が呼び出し側（{project_name}サーバー）に伝播されるという点です。2番目のサイトが一時的に到達不能になったり、同じエンティティの更新を試みる同時トランザクションが発生した場合は、バックアップが失敗する可能性があります。この場合、{project_name}サーバーは複数回再試行します。ただし、その再試行が失敗した場合、より長いタイムアウト後、ユーザーにはエラーが表示されます。"
+
+#. type: Plain text
+msgid ""
+"When using `WARN`, the failed backups are not propagated from the "
+"{jdgserver_name} server to the {project_name} server. The user won't see the"
+" error and the failed backup will be just ignored. There will be a shorter "
+"timeout, typically 10 seconds as that's the default timeout for backup. It "
+"can be changed by the attribute `timeout` of `backup` element. There won't "
+"be retries. There will just be a WARNING message in the {jdgserver_name} "
+"server log."
+msgstr ""
+"`WARN` "
+"を使用すると、失敗したバックアップは、{jdgserver_name}サーバーから{project_name}サーバーに伝播されません。失敗したバックアップは無視され、ユーザーにはエラーが表示されません。バックアップのデフォルトのタイムアウトは10秒間であるため短いです。これは、"
+" `backup` 要素の `timeout` "
+"属性によって変更することができます。タイムアウトにおける再試行はありません。タイムアウト時は、{jdgserver_name}サーバーのログにWARNINGメッセージが表示されます。"
+
+#. type: Plain text
+msgid ""
+"The potential issue is, that in some cases, there may be just some a short "
+"network outage between sites, where the retry (usage of the `FAIL` policy) "
+"may help, so with `WARN` (without retry), there will be some data "
+"inconsistencies across sites. This can also happen if there is an attempt to"
+" update the same entity concurrently on both sites."
+msgstr ""
+"潜在的な課題としては、いくつかのケースで、再試行（ `FAIL` ポリシーの使用）が役に立つサイト間で短いネットワーク停止が発生する可能性があるため、 "
+"`WARN` （再試行なし）では、サイト間でデータの不整合が発生します。これは、両方のサイトで同時に同じエンティティを更新しようとする際にも発生します。"
+
+#. type: Plain text
+msgid ""
+"How bad are these inconsistencies? Usually only means that a user will need "
+"to re-authenticate."
+msgstr "これらの不整合はどれくらいよろしくないのでしょうか？通常は、ユーザーが再認証する必要があることを意味します。"
+
+#. type: Plain text
+msgid ""
+"When using the `WARN` policy, it may happen that the single-use cache, which"
+" is provided by the `actionTokens` cache and which handles that particular "
+"key is really single use, but may \"successfully\" write the same key twice."
+" But, for example, the OAuth2 specification "
+"link:https://tools.ietf.org/html/rfc6749#section-10.5[mentions] that code "
+"must be single-use. With the `WARN` policy, this may not be strictly "
+"guaranteed and the same code could be written twice if there is an attempt "
+"to write it concurrently in both sites."
+msgstr ""
+"`WARN` ポリシーを使用すると、 `actionTokens` "
+"キャッシュにより提供され、その特定のキーを処理する、使い捨てのキャッシュが実際に1回使用されますが、同じキーが2回\"正常に\"書き込まれる可能性があります。しかし、たとえば、OAuth2"
+" "
+"仕様link:https://tools.ietf.org/html/rfc6749#section-10.5[mentions]では、コードは使い捨てでなければならないと言及されています。"
+" `WARN` "
+"ポリシーでは、これは厳密には保証されておらず、両方のサイトで同時に書き込まれる試みがあった場合、同じコードが2回書き込まれる可能性があります。"
+
+#. type: Plain text
+msgid ""
+"If there is a longer network outage or split-brain, then with both `FAIL` "
+"and `WARN`, the other site will be taken offline after some time and "
+"failures as described in <<onoffline>>. With the default 1 minute timeout, "
+"it is usually 1-3 minutes until all the involved caches are taken offline. "
+"After that, all the operations will work fine from an end user perspective."
+"  You only need to manually restore the site when it is back online as "
+"mentioned in <<onoffline>>."
+msgstr ""
+"より長いネットワーク停止またはスプリット・ブレインが起きた場合、 `FAIL` と `WARN` "
+"を使用すると、<<onoffline>>で説明した通り、少し時間を置いて失敗した後、他のサイトはオフラインになります。デフォルトの1分のタイムアウトでは、関連するキャッシュがすべてオフラインになるまで、通常は1～3分かかります。その後、エンドユーザーの観点から、動作はすべて問題なく進みます。<<onoffline>>で説明した通り、オンラインに戻ったときに手動でサイトを復元する必要があります。"
+
+#. type: Plain text
+msgid ""
+"In summary, if you expect frequent, longer outages between sites and it is "
+"acceptable for you to have some data inconsistencies and a not 100% accurate"
+" single-use cache, but you never want end-users to see the errors and long "
+"timeouts, then switch to `WARN`."
+msgstr ""
+"要約すると、サイト間で頻繁により長い停止が発生する可能性があり、データの不整合と100%正確ではない使い捨てのキャッシュについては許容されますが、エラーや長いタイムアウトがエンドユーザーに表示されないようにする場合には、"
+" `WARN` に切り替えます。"
+
+#. type: Plain text
+msgid ""
+"The difference between `WARN` and `IGNORE` is, that with `IGNORE` warnings "
+"are not written in the JDG log. See more details in the Infinispan "
+"documentation."
+msgstr ""
+"`WARN` と `IGNORE` の違いは、 `IGNORE` "
+"警告がJDGログに書き込まれていないことです。詳細については、Infinispanのドキュメントを参照してください。"
+
+#. type: Block title
+#, no-wrap
+msgid "Lock acquisition timeout"
+msgstr "ロックの取得タイムアウト"
+
+#. type: Plain text
+msgid ""
+"The default configuration is using transaction in NON_DURABLE_XA mode with "
+"acquire timeout 0. This means that transaction will fail-fast if there is "
+"another transaction in progress for the same key."
+msgstr ""
+"デフォルト設定では、NON_DURABLE_XAモードでトランザクションを取得タイムアウト0で使用しています。これは、同じキーに対して進行中の別のトランザクションがある場合、トランザクションはすぐに失敗することを意味します。"
+
+#. type: Plain text
+msgid ""
+"The reason to switch this to 0 instead of default 10 seconds was to avoid "
+"possible deadlock issues. With {project_name}, it can happen that the same "
+"entity (typically session entity or loginFailure) is updated concurrently "
+"from both sites. This can cause deadlock under some circumstances, which "
+"will cause the transaction to be blocked for 10 seconds. See "
+"link:https://issues.jboss.org/browse/JDG-1318[this JIRA report] for details."
+msgstr ""
+"デフォルトの10秒ではなく0に切り替えるのは、デッドロックの可能性を避けるためです。{project_name}では、同じエンティティ（通常はセッション・エンティティまたはloginFailure）が両方のサイトから同時に更新されることがあります。これにより、状況によってはデッドロックが発生し、トランザクションが10秒間ブロックされる可能性があります。"
+" 詳細については、link:https://issues.jboss.org/browse/JDG-1318[このJIRAレポート]を参照してください。"
+
+#. type: Plain text
+msgid ""
+"With timeout 0, the transaction will immediately fail and then will be "
+"retried from {project_name} if backup `failure-policy` with the value `FAIL`"
+" is configured. As long as the second concurrent transaction is finished, "
+"the retry will usually be successful and the entity will have applied "
+"updates from both concurrent transactions."
+msgstr ""
+"タイムアウト0の場合、トランザクションは直ちに失敗し、値 `FAIL`のバックアップ `failure-policy` "
+"が設定されていれば、{project_name}から再試行されます。2番目の同時トランザクションが終了するまで、通常は再試行が成功し、エンティティは両方の同時トランザクションから更新を適用します。"
+
+#. type: Plain text
+msgid ""
+"We see very good consistency and results for concurrent transaction with "
+"this configuration, and it is recommended to keep it."
+msgstr "この設定での同時トランザクションは、非常に良い一貫性と結果が得られるため、そのまま使用することをお勧めします。"
+
+#. type: Plain text
+msgid ""
+"The only (non-functional) problem is the exception in the {jdgserver_name} "
+"log, which happens every time when the lock is not immediately available."
+msgstr "唯一の（機能しない）問題は、{jdgserver_name}ログの例外です。これは、ロックがすぐに利用できなくなるたびに発生します。"
+
+#. type: Title ====
+#, no-wrap
+msgid "SYNC or ASYNC backups"
+msgstr "SYNCまたはASYNCバックアップ"
+
+#. type: Plain text
+msgid ""
+"An important part of the `backup` element is the `strategy` attribute. You "
+"must decide whether it needs to be `SYNC` or `ASYNC`. We have 7 caches which"
+" might be Cross-Datacenter Replication aware, and these can be configured in"
+" 3 different modes regarding cross-dc:"
+msgstr ""
+"`backup` 要素の重要な部分は `strategy` 属性です。 `SYNC` と `SYNC` "
+"のどちらが必要かを決める必要があります。クロスデータセンター・レプリケーションを認識できる7つのキャッシュがあり、これらは、クロスデータセンターに対する次の3つの異なるモードで設定できます。"
+
+#. type: Plain text
+msgid "SYNC backup"
+msgstr "SYNCバックアップ"
+
+#. type: Plain text
+msgid "ASYNC backup"
+msgstr "ASYNCバックアップ"
+
+#. type: Plain text
+msgid "No backup at all"
+msgstr "バックアップを全くしない"
+
+#. type: Plain text
+msgid ""
+"If the `SYNC` backup is used, then the backup is synchronous and operation "
+"is considered finished on the caller ({project_name} server) side once the "
+"backup is processed on the second site. This has worse performance than "
+"`ASYNC`, but on the other hand, you are sure that subsequent reads of the "
+"particular entity, such as user session, on `site2` will see the updates "
+"from `site1`. Also, it is needed if you want data consistency. As with "
+"`ASYNC` the caller is not notified at all if backup to the other site "
+"failed."
+msgstr ""
+"`SYNC` "
+"バックアップが使用された場合、バックアップが同期され、バックアップが2番目のサイトで処理されると、呼び出し側（{project_name}サーバー）で操作が完了したとみなされます。これは"
+" `ASYNC` よりもパフォーマンスが劣りますが、一方で、 `site2` のユーザー・セッションなど特定のエンティティーの後続の読み込みによって、 "
+"`site1` からの更新が確実に確認されます。また、データの一貫性が必要な場合は、これは必須になります。 `ASYNC` "
+"の場合と同様に、他のサイトへのバックアップが失敗した場合は、呼び出し側には全く通知されません。"
+
+#. type: Plain text
+msgid ""
+"For some caches, it is even possible to not backup at all and completely "
+"skip writing data to the {jdgserver_name} server. To set this up, do not use"
+" the `remote-store` element for the particular cache on the {project_name} "
+"side (file `KEYCLOAK_HOME/standalone/configuration/standalone-ha.xml`) and "
+"then the particular `replicated-cache` element is also not needed on the "
+"{jdgserver_name} side."
+msgstr ""
+"キャッシュによっては、バックアップをまったく取らず、{jdgserver_name}サーバーへのデータ書き込みを完全にスキップすることも可能です。これを設定するには、"
+" {project_name}側（ `KEYCLOAK_HOME/standalone/configuration/standalone-ha.xml`"
+" ファイル）の特定のキャッシュに `remote-store` 要素を使用しないでください。また、特定の `replicated-cache` "
+"要素も{jdgserver_name}側では必要ありません。"
+
+#. type: Plain text
+msgid ""
+"By default, all 7 caches are configured with `SYNC` backup, which is the "
+"safest option. Here are a few things to consider:"
+msgstr ""
+"デフォルトでは、7つのキャッシュすべてが最も安全なオプションである `SYNC` バックアップで設定されています。考慮すべき点は次のとおりです。"
+
+#. type: Plain text
+msgid ""
+"If you are using active/passive mode (all {project_name} servers are in "
+"single site `site1` and the {jdgserver_name} server in `site2` is used "
+"purely as backup. More details [here](#modes)), then it is usually fine to "
+"use `ASYNC` strategy for all the caches to save the performance."
+msgstr ""
+"アクティブ/パッシブモード（すべての{project_name}サーバーが単一のサイト `site1` にあり、 `site2` "
+"にある{jdgserver_name}サーバーが純粋にバックアップとしてのみ使用されます。詳しくは[こちら](#modes)）を使用している場合、パフォーマンスを低下させないよう、すべてのキャッシュに"
+" `ASYNC` 方式を使用するのが通常は望ましいです。"
+
+#. type: Plain text
+msgid ""
+"The `work` cache is used mainly to send some messages, such as cache "
+"invalidation events, to the other site. It is also used to ensure that some "
+"special events, such as userStorage synchronizations, happen only on single "
+"site. It is recommended to keep this set to `SYNC`."
+msgstr ""
+"`work` "
+"キャッシュは、主に、キャッシュ無効化イベントなどのいくつかのメッセージを他のサイトに送信するために使用されます。また、userStorageの同期化などの特別なイベントが単一のサイトでのみ発生するようにするためにも使用されます。これを"
+" `SYNC` に設定することを推奨します。"
+
+#. type: Plain text
+msgid ""
+"The `actionTokens` cache is used as single-use cache to track that some "
+"tokens/tickets were used just once. For example <<cache>> or OAuth2 codes. "
+"It is possible to set this to `ASYNC` to slightly improved performance, but "
+"then it is not guaranteed that particular ticket is really single-use. For "
+"example, if there is concurrent request for same ticket in both sites, then "
+"it is possible that both requests will be successful with the `ASYNC` "
+"strategy. So what you set here will depend on whether you prefer better "
+"security (`SYNC` strategy) or better performance (`ASYNC` strategy)."
+msgstr ""
+" `actionTokens` "
+"キャッシュは、使い捨てのキャッシュとして使用され、トークンまたはチケットが1回だけ使用されたということを追跡します。たとえば、<<cache>>またはOAuth2"
+" コードです。これを `ASYNC` "
+"に設定して、パフォーマンスをわずかに向上させることは可能ですが、特定のチケットが実際に1回だけ使用され使い捨てになるかは保証されていません。たとえば、両方のサイトで同じチケットの同時リクエストがある場合、"
+" `ASYNC` 方式によって両方のリクエストが成功する可能性があります。そのため、ここでの設定は、より高いセキュリティー（ `SYNC` "
+"方式）またはより高いパフォーマンス（ `ASYNC` 方式）のどちらを優先するかによります。"
+
+#. type: Plain text
+msgid ""
+"The `loginFailures` cache may be used in any of the 3 modes. If there is no "
+"backup at all, it means that count of login failures for a user will be "
+"counted separately for every site (See <<cache>> for details). This has some"
+" security implications, however it has some performance advantages. Also it "
+"mitigates the possible risk of denial of service (DoS) attacks. For example,"
+" if an attacker simulates 1000 concurrent requests using the username and "
+"password of the user on both sites, it will mean lots of messages being "
+"passed between the sites, which may result in network congestion. The "
+"`ASYNC` strategy might be even worse as the attacker requests won't be "
+"blocked by waiting for the backup to the other site, resulting in "
+"potentially even more congested network traffic.  The count of login "
+"failures also will not be accurate with the `ASYNC` strategy."
+msgstr ""
+"`loginFailures` "
+"キャッシュは、3つのモードのいずれかで使用できます。バックアップがまったくない場合、ユーザーのログイン失敗のカウントがサイトごとに個別にカウントされることを意味します（詳しくは<<cache>>を参照してください）。これにはいくつかのセキュリティー上の意味がありますが、パフォーマンス上の利点があります。また、サービス拒否（DoS）攻撃のリスクを軽減します。たとえば、攻撃者が両方のサイトでユーザーのユーザー名とパスワードを使用して1000件の同時リクエストをシミュレートすると、サイト間で多くのメッセージが渡され、ネットワークの混雑が発生する可能性があります。"
+" `ASYNC` "
+"方式は、攻撃者のリクエストが他のサイトへのバックアップを待つことによってブロックされず、潜在的にさらに混雑したネットワーク・トラフィックを招くため、状況は悪化する可能性があります。ログイン失敗のカウントも"
+" `ASYNC` 方式では正確ではありません。"
+
+#. type: Plain text
+msgid ""
+"For the environments with slower network between data centers and "
+"probability of DoS, it is recommended to not backup the `loginFailures` "
+"cache at all."
+msgstr ""
+"データセンター間のネットワークが遅く、DoSの確率が高い環境では、 `loginFailures` "
+"キャッシュをまったくバックアップしないことが推奨されます。"
+
+#. type: Plain text
+msgid ""
+"It is recommended to keep the `sessions` and `clientSessions` caches in "
+"`SYNC`. Switching them to `ASYNC` is possible only if you are sure that user"
+" requests and backchannel requests (requests from client applications to "
+"{project_name} as described in <<requestprocessing>>) will be always "
+"processed on same site. This is true, for example, if: ** You use "
+"active/passive mode as described <<modes>>.  ** All your client applications"
+" are using the {project_name} "
+"link:http://www.keycloak.org/docs/latest/securing_apps/index.html#_javascript_adapter[Javascript"
+" Adapter]. The Javascript adapter sends the backchannel requests within the "
+"browser and hence they participate on the browser sticky session and will "
+"end on same cluster node (hence on same site) as the other browser requests "
+"of this user.  ** Your load balancer is able to serve the requests based on "
+"client IP address (location) and the client applications are deployed on "
+"both sites."
+msgstr ""
+"`sessions` と `clientSessions` キャッシュを `SYNC` "
+"で保持しておくことをお勧めします。ユーザーのリクエストとバックチャネル要求（<<requestprocessing>>で説明したクライアント・アプリケーションから{project_name}へのリクエスト）が常に同じサイトで処理されることが確かな場合にのみ、それらを"
+" `ASYNC` へ切り替えることが可能になります。たとえば、次のような場合はこれが当てはまります。 ** "
+"<<modes>>で説明した通り、アクティブ/パッシブモードを使用します。 ** クライアント・アプリケーションはすべて{project_name} "
+"link:http://www.keycloak.org/docs/latest/securing_apps/index.html#_javascript_adapter[Javascriptアダプター]を使用しています。Javascriptアダプターは、ブラウザー内でバックチャネル要求を送信するため、それらはブラウザーのスティッキー・セッションに参加し、このユーザーの別のブラウザー・リクエストと同じクラスターノード（したがって同じサイト）で終了します。"
+" ** "
+"ロードバランサーは、クライアントIPアドレス（ロケーション）に基づいてリクエストを処理でき、クライアント・アプリケーションは両方のサイトに展開されます。"
+
+#. type: Plain text
+msgid ""
+"For example you have 2 sites LON and NYC. As long as your applications are "
+"deployed in both LON and NYC sites too, you can ensure that all the user "
+"requests from London users will be redirected to the applications in LON "
+"site and also to the {project_name} servers in LON site. Backchannel "
+"requests from the LON site client deployments will end on {project_name} "
+"servers in LON site too. On the other hand, for the American users, all the "
+"{project_name} requests, application requests and backchannel requests will "
+"be processed on NYC site."
+msgstr ""
+"たとえば、ロンドンとニューヨークの2つのサイトがあります。 "
+"アプリケーションがロンドンサイトとニューヨークサイトの両方に配備されている場合は、ロンドンユーザーからのすべてのユーザー・リクエストがロンドンサイトのアプリケーションとロンドンサイトの{project_name}サーバーにリダイレクトされるようにすることができます。"
+" ロンドンサイトのクライアント・デプロイメントからのバックチャネル要求は、ロンドンサイトの{project_name}サーバーでも終了します。 "
+"一方、米国のユーザーの場合、すべての{project_name}リクエスト、アプリケーション・リクエスト、バックチャネル要求はニューヨークサイトで処理されます。"
+
+#. type: Plain text
+msgid ""
+"For `offlineSessions` and `offlineClientSessions` it is similar, with the "
+"difference that you even don't need to backup them at all if you never plan "
+"to use offline tokens for any of your client applications."
+msgstr ""
+"`offlineSessions` と `offlineClientSessions` "
+"に関して、類似していますが、クライアント・アプリケーションのいずれに対してもオフライン・トークンを使用する予定ががない場合、それらをバックアップする必要はまったくありません。"
+
+#. type: Plain text
+msgid ""
+"Generally, if you are in doubt and performance is not a blocker for you, "
+"it's safer to keep the caches in `SYNC` strategy."
+msgstr "一般的に、懸念があり、パフォーマンスがブロッカーではない場合は、キャッシュを `SYNC` 方式に保持する方が安全です。"
+
+#. type: Plain text
+msgid ""
+"Regarding the switch to SYNC/ASYNC backup, make sure that you edit the "
+"`strategy` attribute of the the `backup` element. For example like this:"
+msgstr ""
+"SYNC/ASYNCバックアップへの切り替えに関しては、 `backup` 要素の `strategy` 属性を編集してください。 "
+"たとえば、次のようになります。"
+
+#. type: Code block
+msgid "<backup site=\"site2\" failure-policy=\"FAIL\" strategy=\"ASYNC\" enabled=\"true\">"
+msgstr "<backup site=\"site2\" failure-policy=\"FAIL\" strategy=\"ASYNC\" enabled=\"true\">"
+
+#. type: Plain text
+msgid "Note the `mode` attribute of cache-configuration element."
+msgstr "cache-configuration要素の `mode` 属性に注意してください。"
+
+#. type: Plain text
+msgid ""
+"The following tips are intended to assist you should you need to "
+"troubleshoot:"
+msgstr "以下のヒントは、トラブルシューティングが必要な場合に役立ちます。"
+
+#. type: Plain text
+msgid ""
+"It is recommended to go through the <<setup>> and have this one working "
+"first, so that you have some understanding of how things work. It is also "
+"wise to read this entire document to have some understanding of things."
+msgstr ""
+"<<setup>>を行い、最初にこの機能を有効にして、どのように動作するかを理解することをお勧めします。物事を理解するためにこの文書全体を読むことも賢明です。"
+
+#. type: Plain text
+msgid ""
+"Check in jconsole cluster status (GMS) and the JGroups status (RELAY) of "
+"{jdgserver_name} as described in <<jdgsetup>>. If things do not look as "
+"expected, then the issue is likely in the setup of {jdgserver_name} servers."
+msgstr ""
+"<<jdgsetup>>で説明されているように、jconsoleクラスターのステータス（GMS）と{jdgserver_name}のJGroupsのステータス（RELAY）をチェックインします。状況が期待通りに見えない場合、問題は{jdgserver_name}サーバーの設定にある可能性があります。"
+
+#. type: Plain text
+msgid ""
+"For the {project_name} servers, you should see a message like this during "
+"the server startup:"
+msgstr "{project_name}サーバーの場合、サーバーの起動時に次のようなメッセージが表示されます。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"18:09:30,156 INFO  [org.keycloak.connections.infinispan.DefaultInfinispanConnectionProviderFactory] (ServerService Thread Pool -- 54) \n"
+"Node name: node11, Site name: site1\n"
+msgstr ""
+"18:09:30,156 INFO  [org.keycloak.connections.infinispan.DefaultInfinispanConnectionProviderFactory] (ServerService Thread Pool -- 54) \n"
+"Node name: node11, Site name: site1\n"
+
+#. type: Plain text
+msgid ""
+"Check that the site name and the node name looks as expected during the "
+"startup of {project_name} server."
+msgstr "{project_name}サーバーの起動時に、サイト名とノード名が想定通りに表示されていることを確認してください。"
+
+#. type: Plain text
+msgid ""
+"Check that {project_name} servers are in cluster as expected, including that"
+" only the {project_name} servers from the same data center are in cluster "
+"with each other.  This can be also checked in JConsole through the GMS view."
+" See link:{installguide_troubleshooting_link}[cluster troubleshooting] for "
+"additional details."
+msgstr ""
+"同じデータセンターの{project_name}サーバーだけが互いにクラスター化されていることを含め、{project_name}サーバーが期待通りにクラスター内にあることを確認してください。これは、GMSビューを介してJConsoleでチェックすることもできます。詳細については、link:{installguide_troubleshooting_link}[クラスターのトラブルシューティング]を参照してください。"
+
+#. type: Plain text
+msgid ""
+"If there are exceptions during startup of {project_name} server like this:"
+msgstr "{project_name}サーバーの起動時に次のような例外が発生した場合。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"17:33:58,605 ERROR [org.infinispan.client.hotrod.impl.operations.RetryOnFailureOperation] (ServerService Thread Pool -- 59) ISPN004007: Exception encountered. Retry 10 out of 10: org.infinispan.client.hotrod.exceptions.TransportException:: Could not fetch transport\n"
+"...\n"
+"Caused by: org.infinispan.client.hotrod.exceptions.TransportException:: Could not connect to server: 127.0.0.1:12232\n"
+"\tat org.infinispan.client.hotrod.impl.transport.tcp.TcpTransport.<init>(TcpTransport.java:82)\n"
+"\n"
+msgstr ""
+"17:33:58,605 ERROR [org.infinispan.client.hotrod.impl.operations.RetryOnFailureOperation] (ServerService Thread Pool -- 59) ISPN004007: Exception encountered. Retry 10 out of 10: org.infinispan.client.hotrod.exceptions.TransportException:: Could not fetch transport\n"
+"...\n"
+"Caused by: org.infinispan.client.hotrod.exceptions.TransportException:: Could not connect to server: 127.0.0.1:12232\n"
+"\tat org.infinispan.client.hotrod.impl.transport.tcp.TcpTransport.<init>(TcpTransport.java:82)\n"
+"\n"
+
+#. type: Plain text
+msgid ""
+"it usually means that {project_name} server is not able to reach the "
+"{jdgserver_name} server in his own datacenter. Make sure that firewall is "
+"set as expected and {jdgserver_name} server is possible to connect."
+msgstr ""
+"これは通常、{project_name}サーバーが自身のデータセンター内の{jdgserver_name}サーバーにアクセスできないことを意味します。ファイアウォールが期待通りに設定され、{jdgserver_name}サーバーが接続可能であることを確認してください。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"16:44:18,321 WARN  [org.infinispan.client.hotrod.impl.protocol.Codec21] (ServerService Thread Pool -- 57) ISPN004005: Error received from the server: javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.\n"
+" ...\n"
+msgstr ""
+"16:44:18,321 WARN  [org.infinispan.client.hotrod.impl.protocol.Codec21] (ServerService Thread Pool -- 57) ISPN004005: Error received from the server: javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.\n"
+" ...\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"then check the log of corresponding {jdgserver_name} server of your site and"
+" check if has failed to backup to the other site. If the backup site is "
+"unavailable, then it is recommended to switch it offline, so that "
+"{jdgserver_name} server won't try to backup to the offline site causing the "
+"operations to pass successfully on {project_name} server side as well. See "
+"<<administration>> for more information.   \n"
+msgstr ""
+"サイトの該当する{jdgserver_name}サーバーのログをチェックし、他のサイトへのバックアップに失敗したかどうかを確認します。バックアップ・サイトが利用できない場合は、{jdgserver_name}サーバーがオフラインサイトにバックアップしようとしないようにオフラインに切り替えて、{project_name}サーバー側で正常に操作が成功するようにすることをお勧めします。詳細については、<<administration>>を参照してください。\n"
+
+#. type: Plain text
+msgid ""
+"Check the Infinispan statistics, which are available through JMX. For "
+"example, try to login and then see if the new session was successfully "
+"written to both {jdgserver_name} servers and is available in the `sessions` "
+"cache there. This can be done indirectly by checking the count of elements "
+"in the `sessions` cache for the MBean `jboss.datagrid-"
+"infinispan:type=Cache,name=\"sessions(repl_sync)\",manager=\"clustered\",component=Statistics`"
+" and attribute `numberOfEntries`. After login, there should be one more "
+"entry for `numberOfEntries` on both {jdgserver_name} servers on both sites."
+msgstr ""
+"JMXを介して利用可能なInfinispanの統計を確認してください。たとえば、ログインして、新しいセッションが{jdgserver_name}サーバーの両方に正常に書き込まれたかどうかを確認し、そこの"
+" `sessions` キャッシュで利用可能かどうかを確認します。これは、MBean `jboss.datagrid-"
+"infinispan:type=Cache,name=\"sessions(repl_sync)\",manager=\"clustered\",component=Statistics`"
+" と `numberOfEntries` 属性の `sessions` "
+"キャッシュ内の要素の数をチェックすることによって間接的に行うことができます。ログイン後、両方のサイトのそれぞれの{jdgserver_name}サーバーに"
+" `numberOfEntries` のための1つ以上のエントリーが存在するはずです。"
+
+#. type: Plain text
+msgid ""
+"Enable DEBUG logging as described <<serversetup>>. For example, if you log "
+"in and you think that the new session is not available on the second site, "
+"it's good to check the {project_name} server logs and check that listeners "
+"were triggered as described in the <<serversetup>>. If you do not know and "
+"want to ask on keycloak-user mailing list, it is helpful to send the log "
+"files from {project_name} servers on both datacenters in the email. Either "
+"add the log snippets to the mails or put the logs somewhere and reference "
+"them in the email."
+msgstr ""
+"<<serversetup>>の説明に従って、DEBUGロギングを有効にします。 "
+"たとえば、ログインして2番目のサイトで新しいセッションが利用できないと思われる場合は、{project_name}サーバーログをチェックし、<<serversetup>>で説明したようにリスナーがトリガーされていることを確認してください。"
+" keycloak-"
+"userメーリングリストに質問したい場合は、電子メール内の両方のデータセンターの{project_name}サーバーからログファイルを送信すると便利です。ログスニペットをメールに追加するか、ログをどこかに置いて電子メールで参照してください。"
+
+#. type: Plain text
+msgid ""
+"If you updated the entity, such as `user`, on {project_name} server on "
+"`site1` and you do not see that entity updated on the {project_name} server "
+"on `site2`, then the issue can be either in the replication of the "
+"synchronous database itself or that {project_name} caches are not properly "
+"invalidated. You may try to temporarily disable the {project_name} caches as"
+" described link:{installguide_disablingcaching_link}[here] to nail down if "
+"the issue is at the database replication level. Also it may help to manually"
+" connect to the database and check if data are updated as expected. This is "
+"specific to every database, so you will need to consult the documentation "
+"for your database."
+msgstr ""
+"`site1` の{project_name}サーバーで `user` などのエンティティーを更新しても、 `site2` "
+"の{project_name}サーバーで更新したエンティティーが表示されない場合は、同期したデータベース自体のレプリケーションか、{project_name}キャッシュが適切に無効化されなかったかのどちらかに問題があります。問題がデータベースのレプリケーション・レベルにある場合は、link:{installguide_disablingcaching_link}[ここ]で説明するように一時的に{project_name}キャッシュを無効化してください。また、データベースに手動で接続し、データが期待通りに更新されるかどうかを確認するのに役立ちます。これはすべてのデータベースに固有のものなので、データベースのドキュメントを参照する必要があります。"
+
+#. type: Plain text
+msgid ""
+"Sometimes you may see the exceptions related to locks like this in "
+"{jdgserver_name} log:"
+msgstr "場合によっては、{jdgserver_name}ログに次のようなロックに関する例外が表示されることがあります。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"(HotRodServerHandler-6-35) ISPN000136: Error executing command ReplaceCommand, \n"
+"writing keys [[B0x033E243034396234..[39]]: org.infinispan.util.concurrent.TimeoutException: ISPN000299: Unable to acquire lock after \n"
+"0 milliseconds for key [B0x033E243034396234..[39] and requestor GlobalTx:jdg1:4353. Lock is held by GlobalTx:jdg1:4352\n"
+msgstr ""
+"(HotRodServerHandler-6-35) ISPN000136: Error executing command ReplaceCommand, \n"
+"writing keys [[B0x033E243034396234..[39]]: org.infinispan.util.concurrent.TimeoutException: ISPN000299: Unable to acquire lock after \n"
+"0 milliseconds for key [B0x033E243034396234..[39] and requestor GlobalTx:jdg1:4353. Lock is held by GlobalTx:jdg1:4352\n"
+
+#. type: Plain text
+msgid ""
+"Those exceptions are not necessarily an issue. They may happen anytime when "
+"concurrent edit of same entity is triggered on both DCs. This can be the "
+"often case in a deployment. Usually the {project_name} server is notified "
+"about the failed operation and will retry it, so from the user's point of "
+"view, there is usually not any issue."
+msgstr ""
+"これらの例外は必ずしも問題ではありません。両方のデータセンターで同じエンティティーの同時編集がトリガーされると、いつでも発生する可能性があります。これは、デプロイメントの多くの場合に当てはまります。たいてい、{project_name}サーバーは、失敗した操作について通知を受けて再試行するため、ユーザーの観点からは通常問題はありません。"
+
+#. type: Plain text
+msgid ""
+"If you try to authenticate with {project_name} to your application, but it "
+"failed with the infinite number of redirects in your browser and you see the"
+" errors like this in the {project_name} server log:"
+msgstr ""
+"{project_name}でアプリケーションに認証しようとすると、ブラウザーの無限のリダイレクトで失敗し、{project_name}サーバーログに次のようなエラーが表示されます。"
+
+#. type: Code block
+msgid ""
+"2017-11-27 14:50:31,587 WARN [org.keycloak.events] (default task-17) "
+"type=LOGIN_ERROR, realmId=master, clientId=null, userId=null, "
+"ipAddress=aa.bb.cc.dd, error=expired_code, restart_after_timeout=true"
+msgstr ""
+"2017-11-27 14:50:31,587 WARN [org.keycloak.events] (default task-17) "
+"type=LOGIN_ERROR, realmId=master, clientId=null, userId=null, "
+"ipAddress=aa.bb.cc.dd, error=expired_code, restart_after_timeout=true"
+
+#. type: Plain text
+msgid ""
+"it probably means that your load balancer needs to be set to support sticky "
+"sessions. Make sure that the provided route name used during startup of "
+"{project_name} server (Property `jboss.node.name`) contains the correct name"
+" used by the load balancer server to identify the current server."
+msgstr ""
+"おそらく、ロードバランサーを "
+"スティッキー・セッションをサポートするように設定する必要があることを意味します。{project_name}サーバー（プロパティー "
+"`jboss.node.name` ）の起動時に使用される指定されたルート名に、 "
+"ロードバランサー・サーバーが現在のサーバーを識別するために使用する正しい名前が含まれていることを確認してください。"

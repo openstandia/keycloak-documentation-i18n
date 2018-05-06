@@ -2,77 +2,71 @@
 # Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/"
-"teams/79437/ja_JP/)\n"
-"Language: ja_JP\n"
+"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Block title
-#: source/server_development/topics/user-storage/augmenting.adoc:45
-#: source/server_development/topics/user-storage/import.adoc:29
-#: source/server_development/topics/user-storage/registration-query.adoc:13
-#: source/server_development/topics/user-storage/registration-query.adoc:31
-#: source/server_development/topics/user-storage/registration-query.adoc:63
-#: source/server_development/topics/user-storage/registration-query.adoc:79
-#: source/server_development/topics/user-storage/registration-query.adoc:97
-#: source/server_development/topics/user-storage/registration-query.adoc:130
-#: source/server_development/topics/user-storage/registration-query.adoc:161
-#: source/server_development/topics/user-storage/registration-query.adoc:189
-#: source/server_development/topics/user-storage/registration-query.adoc:210
 #, no-wrap
 msgid "PropertyFileUserStorageProvider"
-msgstr ""
-
-#. type: Title ===
-#: source/server_development/topics/user-storage/import.adoc:2
-#, no-wrap
-msgid "Import Implementation Strategy"
-msgstr ""
+msgstr "PropertyFileUserStorageProvider"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:7
+msgid ""
+"There are some obvious disadvantages though to using an import strategy:"
+msgstr "インポート・ストラテジーの使用には明らかな欠点がいくつかあります。"
+
+#. type: Plain text
+msgid ""
+"With the import approach, you have to keep local keycloak storage and "
+"external storage in sync. The User Storage SPI has capability interfaces "
+"that you can implement to support synchronization, but this can quickly "
+"become painful and messy."
+msgstr ""
+"インポートのアプローチでは、ローカルkeycloakストレージと外部ストレージを同期させておく必要があります。ユーザー・ストレージSPIには、実装させると同期をサポートできるようになる、インターフェイス機能がありますが、これはすぐにやっかいで面倒なものになります。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Import Implementation Strategy"
+msgstr "インポート実装ストラテジー"
+
+#. type: Plain text
 msgid ""
 "When implementing a user storage provider, there's another strategy you can "
-"take. Instead of using user federated storage, you can create a user locally "
-"in the {project_name} built-in user database and copy attributes from your "
+"take. Instead of using user federated storage, you can create a user locally"
+" in the {project_name} built-in user database and copy attributes from your "
 "external store into this local copy. There are many advantages to this "
 "approach."
 msgstr ""
+"ユーザー・ストレージ・プロバイダーを実装する場合、選択可能な別のストラテジーがもう1つあります。ユーザー・フェデレーティッド・ストレージを使用せずに、{project_name}の組み込みユーザー・データベース内でユーザーをローカルで作成し、外部のストアからこのローカルコピーに属性をコピーすることができます。このアプローチにはたくさんの利点があります。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:10
 msgid ""
 "{project_name} basically becomes a persistence user cache for your external "
 "store. Once the user is imported you'll no longer hit the external store "
 "thus taking load off of it."
 msgstr ""
+"{project_name}は、基本的に外部ユーザーストア用の永続的なユーザー・キャッシュになります。ユーザーがインポートされると、外部ストアにヒットすることはなくなり、その負荷が取り除かれます。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:13
 msgid ""
 "If you are moving to {project_name} as your official user store and "
 "deprecating the old external store, you can slowly migrate applications to "
 "use {project_name}. When all applications have been migrated, unlink the "
 "imported user, and retire the old legacy external store."
 msgstr ""
+"公式のユーザーストアとして{project_name}に移行し、従来の外部ストアは廃止する場合、アプリケーションを徐々に移行して{project_name}を使用することができます。すべてのアプリケーションが移行されると、インポートされたユーザーのリンクを解除し、従来のレガシー外部ストアを廃止します。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:15
-#: source/server_development/topics/user-storage/migration.adoc:27
-msgid ""
-"There are some obvious disadvantages though to using an import strategy:"
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:19
 msgid ""
 "Looking up a user for the first time will require multiple updates to "
 "{project_name} database. This can be a big performance loss under load and "
@@ -80,36 +74,27 @@ msgid ""
 "storage approach will only store extra data as needed and may never be used "
 "depending on the capabilities of your external store."
 msgstr ""
+"初回のユーザーの検索では、{project_name}のデータベースを複数回更新する必要があります。これは大きなパフォーマンス低下を招き、{project_name}のデータベースに多くの負担をかけることになります。ユーザー・フェデレーティッド・ストレージのアプローチでは、必要に応じて追加のデータのみが保管され、外部ストアの機能に応じて使用されることはありません。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:21
-#: source/server_development/topics/user-storage/migration.adoc:33
-msgid ""
-"With the import approach, you have to keep local keycloak storage and "
-"external storage in sync. The User Storage SPI has capability interfaces "
-"that you can implement to support synchronization, but this can quickly "
-"become painful and messy."
-msgstr ""
-
-#. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:25
 msgid ""
 "To implement the import strategy you simply check to see first if the user "
 "has been imported locally. If so return the local user, if not create the "
-"user locally and import data from the external store. You can also proxy the "
-"local user so that most changes are automatically synchronized."
+"user locally and import data from the external store. You can also proxy the"
+" local user so that most changes are automatically synchronized."
 msgstr ""
+"インポート・ストラテジーを実装するには、ユーザーがローカルでインポートされたかどうかを最初だけ確認します。そうだった場合は、ローカルユーザーを返します。そうでなかった場合は、ユーザーをローカルで作成して外部ストアからデータをインポートします。また、ローカルユーザーをプロキシーして、ほとんどの変更を自動的に同期させます。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:28
 msgid ""
 "This will be a bit contrived, but we can extend our "
 "`PropertyFileUserStorageProvider` to take this approach. We begin first by "
 "modifying the `createAdapter()` method."
 msgstr ""
+"これは多少工夫を加えることになりますが、 `PropertyFileUserStorageProvider` "
+"を拡張してこのアプローチをとることができます。まずは `createAdapter()` メソッドを変更することからはじめます。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/import.adoc:50
 #, no-wrap
 msgid ""
 "    protected UserModel createAdapter(RealmModel realm, String username) {\n"
@@ -131,27 +116,49 @@ msgid ""
 "        };\n"
 "    }\n"
 msgstr ""
+"    protected UserModel createAdapter(RealmModel realm, String username) {\n"
+"        UserModel local = session.userLocalStorage().getUserByUsername(username, realm);\n"
+"        if (local == null) {\n"
+"            local = session.userLocalStorage().addUser(realm, username);\n"
+"            local.setFederationLink(model.getId());\n"
+"        }\n"
+"        return new UserModelDelegate(local) {\n"
+"            @Override\n"
+"            public void setUsername(String username) {\n"
+"                String pw = (String)properties.remove(username);\n"
+"                if (pw != null) {\n"
+"                    properties.put(username, pw);\n"
+"                    save();\n"
+"                }\n"
+"                super.setUsername(username);\n"
+"            }\n"
+"        };\n"
+"    }\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:56
 msgid ""
 "In this method we call the `KeycloakSession.userLocalStorage()` method to "
 "obtain a reference to local {project_name} user storage. We see if the user "
 "is stored locally, if not, we add it locally. Also note that we call "
 "`UserModel.setFederationLink()` and pass in the ID of the `ComponentModel` "
-"of our provider. This sets a link between the provider and the imported user."
+"of our provider. This sets a link between the provider and the imported "
+"user."
 msgstr ""
+"このメソッドでは `KeycloakSession.userLocalStorage()` "
+"メソッドを呼び出し、ローカルの{project_name}ユーザー・ストレージの参照を取得します。ユーザーがローカルで保存されたかどうかを確認し、そうでなかった場合はローカルにそれを追加します。また、"
+" `UserModel.setFederationLink()` を呼び出してプロバイダーの `ComponentModel` "
+"のIDに渡すことにも注意してください。これにより、プロバイダーとインポートされたユーザーの間でリンクが設定されます。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:59
 #, no-wrap
 msgid ""
 "When a user storage provider is removed, any user imported by it will also be removed.  This is one of the\n"
 "      purposes of calling `UserModel.setFederationLink()`.\n"
 msgstr ""
+"ユーザー・ストレージ・プロバイダーが削除されると、それによりインポートされたユーザーもすべて削除されます。これが "
+"`UserModel.setFederationLink()` を呼び出す目的の1つです。\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:64
 msgid ""
 "Another thing to note is that if a local user is linked, your storage "
 "provider will still be delegated to for methods that it implements from the "
@@ -159,38 +166,46 @@ msgid ""
 "Returning `false` from a validation or update will just result in "
 "{project_name} seeing if it can validate or update using local storage."
 msgstr ""
+"また、ローカルユーザーがリンクされている場合、ストレージ・プロバイダーは `CredentialInputValidator` インタフェースと "
+"`CredentialInputUpdater` インタフェースから実装されたメソッドに対して委譲されるという点にも注意してください。検証または更新から"
+" `false` が返ると、{project_name}では、ローカルストレージを使用して検証または更新できるかどうかを確認します。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:71
 msgid ""
-"Also notice that we are proxying the local user using the `org.keycloak."
-"models.utils.UserModelDelegate' class.  This class is an implementation of "
-"`UserModel`. Every method just delegates to the `UserModel` it was "
-"instantiated with.  We override the `setUsername()` method of this delegate "
-"class to synchronize automatically with the property file.  For your "
-"providers, you can use this to _intercept_ other methods on the local "
-"`UserModel` to perform synchronization with your external store.  For "
-"example, get methods could make sure that the local store is in sync. Set "
-"methods keep the external store in sync with the local one."
+"Also notice that we are proxying the local user using the "
+"`org.keycloak.models.utils.UserModelDelegate' class.  This class is an "
+"implementation of `UserModel`. Every method just delegates to the "
+"`UserModel` it was instantiated with.  We override the `setUsername()` "
+"method of this delegate class to synchronize automatically with the property"
+" file.  For your providers, you can use this to _intercept_ other methods on"
+" the local `UserModel` to perform synchronization with your external store."
+"  For example, get methods could make sure that the local store is in sync. "
+"Set methods keep the external store in sync with the local one."
 msgstr ""
+"また、 `org.keycloak.models.utils.UserModelDelegate` "
+"クラスを使用するローカルユーザーをプロキシしている点にも注意してください。このクラスは `UserModel` "
+"の実装です。すべてのメソッドは、インスタンス化された `UserModel` に委譲します。この委譲クラスの `setUsername()` "
+"メソッドをオーバーライドし、自動的にプロパティー・ファイルと同期させます。プロバイダーの場合は、これを使用して、ローカルの `UserModel` "
+"上の他のメソッドを _intercept_ "
+"して、外部ストアと同期させることができます。たとえば、getメソッドは、ローカルストアが同期していることを確認することができます。setメソッドは、外部ストアをローカルストアと同期し続けることができます。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:75
 #, no-wrap
 msgid ""
 "If your provider is implementing the `UserRegistrationProvider` interface, your `removeUser()` method does not\n"
 "      need to remove the user from local storage.  The runtime will automatically perform this operation.  Also\n"
 "      note that `removeUser()` will be invoked before it is removed from local storage.\n"
 msgstr ""
+"プロバイダーが `UserRegistrationProvider` インターフェイスを実装している場合、 `removeUser()` "
+"メソッドはローカル・ストレージからユーザーを削除する必要はありません。ランタイムはこの操作を自動的に実行します。また、 `removeUser()` "
+"は、ローカル・ストレージから削除される前に呼び出される点に注意してください。\n"
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/import.adoc:77
 #, no-wrap
 msgid "ImportedUserValidation Interface"
-msgstr ""
+msgstr "ImportedUserValidationインターフェイス"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:83
 msgid ""
 "If you remember earlier in this chapter, we discussed how querying for a "
 "user worked.  Local storage is queried first, if the user is found there, "
@@ -199,9 +214,11 @@ msgid ""
 "The User Storage SPI has a callback for whenever a linked local user is "
 "loaded from the local database."
 msgstr ""
+"この章の前半で、ユーザーのためのクエリーの機能について説明しました。ローカル・ストレージが最初に照会され、ユーザーがそこで見つかった場合、クエリーは終了します。これは、ユーザー名を同期させるためにローカルの"
+" `UserModel` "
+"をプロキシする必要があるので、上記の実装では問題になります。ユーザー・ストレージSPIでは、リンクされたローカルユーザーがローカル・データベースからロードされるたびに、コールバックがあります。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/import.adoc:97
 #, no-wrap
 msgid ""
 "package org.keycloak.storage.user;\n"
@@ -216,9 +233,19 @@ msgid ""
 "    UserModel validate(RealmModel realm, UserModel user);\n"
 "}\n"
 msgstr ""
+"package org.keycloak.storage.user;\n"
+"public interface ImportedUserValidation {\n"
+"    /**\n"
+"     * If this method returns null, then the user in local storage will be removed\n"
+"     *\n"
+"     * @param realm\n"
+"     * @param user\n"
+"     * @return null if user no longer valid\n"
+"     */\n"
+"    UserModel validate(RealmModel realm, UserModel user);\n"
+"}\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:103
 msgid ""
 "Whenever a linked local user is loaded, if the user storage provider class "
 "implements this interface, then the `validate()` method is called. Here you "
@@ -227,31 +254,35 @@ msgid ""
 "user still exists in the external store.  If `validate()` returns `null`, "
 "then the local user will be removed from the database."
 msgstr ""
+"リンクされたローカルユーザーがロードされるたびに、ユーザー・ストレージ・プロバイダー・クラスがこのインターフェイスを実装すると、 "
+"`validate()` "
+"メソッドが呼び出されます。ここでは、パラメーターとして渡されたローカルユーザーをプロキシして返すことができます。それにより、新しい "
+"`UserModel` が使用されます。また、ユーザーが外部ストアにまだ存在するかどうかを任意で確認することもできます。 `validate()` が "
+"`null` を返すと、ローカルユーザーはデータベースから削除されます。"
 
 #. type: Title ====
-#: source/server_development/topics/user-storage/import.adoc:104
 #, no-wrap
 msgid "ImportSynchronization Interface"
-msgstr ""
+msgstr "ImportSynchronizationインターフェイス"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:109
 msgid ""
 "With the import strategy you can see that it is possible for the local user "
-"copy to get out of sync with external storage. For example, maybe a user has "
-"been removed from the external store. The User Storage SPI has an additional "
-"interface you can implement to deal with this, `org.keycloak.storage.user."
-"ImportSynchronization`:"
+"copy to get out of sync with external storage. For example, maybe a user has"
+" been removed from the external store. The User Storage SPI has an "
+"additional interface you can implement to deal with this, "
+"`org.keycloak.storage.user.ImportSynchronization`:"
 msgstr ""
+"インポート戦略を使用すると、ローカルユーザーのコピーが外部ストレージと同期しない可能性があるということがわかります。たとえば、ユーザーが外部ストアから削除されている可能性があります。ユーザー・ストレージSPIには、"
+" これに対処するために実装可能な追加のインターフェイス、 "
+"`org.keycloak.storage.user.ImportSynchronization` があります。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/import.adoc:113
 #, no-wrap
 msgid "package org.keycloak.storage.user;\n"
-msgstr ""
+msgstr "package org.keycloak.storage.user;\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/import.adoc:118
 #, no-wrap
 msgid ""
 "public interface ImportSynchronization {\n"
@@ -259,9 +290,12 @@ msgid ""
 "    SynchronizationResult syncSince(Date lastSync, KeycloakSessionFactory sessionFactory, String realmId, UserStorageProviderModel model);\n"
 "}\n"
 msgstr ""
+"public interface ImportSynchronization {\n"
+"    SynchronizationResult sync(KeycloakSessionFactory sessionFactory, String realmId, UserStorageProviderModel model);\n"
+"    SynchronizationResult syncSince(Date lastSync, KeycloakSessionFactory sessionFactory, String realmId, UserStorageProviderModel model);\n"
+"}\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/import.adoc:121
 msgid ""
 "This interface is implemented by the provider factory. Once this interface "
 "is implemented by the provider factory, the administration console "
@@ -271,3 +305,7 @@ msgid ""
 "options are displayed that allow you to automatically schedule a "
 "synchronization. Automatic synchronizations invoke the `syncSince()` method."
 msgstr ""
+"このインターフェイスは、プロバイダー・ファクトリーによって実装されます。このインターフェイスがプロバイダー・ファクトリーによって実装されると、プロバイダーのための管理コンソール・マネージメントページに追加のオプションが表示されます。ボタンをクリックして、手動で同期させることができます。こうして、"
+" `ImportSynchronization.sync()` "
+"メソッドが呼び出されます。また、追加の設定オプションが表示され、自動的に同期実行が予定されます。自動同期によって、 `syncSince()` "
+"メソッドが呼び出されます。"

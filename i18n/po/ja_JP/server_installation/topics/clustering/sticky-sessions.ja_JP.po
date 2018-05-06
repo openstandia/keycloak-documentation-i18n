@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,17 +133,83 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Some loadbalancers can be configured to add the route information by "
-"themselves instead of rely on the backend {project_name} node. However "
-"adding the route by the {project_name} is more clever as {project_name} "
-"knows, who is the owner of particular session entity and can route it to "
-"that node, which is not necessarily the local node.  We plan to support the "
-"setup where the route info won't be added to AUTH_SESSION_ID cookie by the "
-"{project_name} server, but instead by the load balancer. However adding the "
-"cookie by {project_name} would be still the preferred option."
+"It is recommended on the {project_name} side to use the system property "
+"`jboss.node.name` during startup, with the value corresponding to the name "
+"of your route. For example, `-Djboss.node.name=node1` will use `node1` to "
+"identify the route. This route will be used by Infinispan caches and will be"
+" attached to the AUTH_SESSION_ID cookie when the node is the owner of the "
+"particular key. An example of the start up command with this system property"
+" can be seen in <<_example-setup-with-mod-cluster,Mod Cluster Example>>."
 msgstr ""
-"バックエンド{project_name}ノードに頼らずに、ルート情報を追加するよう設定できるロードバランサーもあります。しかし、{project_name}によるルート追加の方がより賢明な選択です。なぜなら、{project_name}は特定のセッション・エンティティの所有者が誰か知っているためです。必ずしもローカル・ノードである必要はありません。{project_name}サーバーではなく、その代わりにロードバランサーによって、ルート情報をAUTH_SESSION_ID"
-" Cookieに追加する設定をサポートする予定があります。しかし、それでも{project_name}によるCookie追加の方がより良い選択です。"
+"{project_name}側では、起動時にシステム・プロパティー `jboss.node.name` "
+"を使用し、経路名に対応する値を使用することをお勧めします。たとえば、 `-Djboss.node.name=node1` は経路を識別するために "
+"`node1` を使います。この経路はInfinispanのキャッシュで使用され、ノードが特定のキーの所有者である場合は、AUTH_SESSION_ID"
+" Cookieに関連付けられます。このシステム・プロパティーを使用した起動コマンドの例は、<<_example-setup-with-mod-"
+"cluster,Mod Clusterの例>>を参照してください。"
+
+#. type: Plain text
+msgid ""
+"Typically, the route name be the same name as your backend host, but it is "
+"not necessary. You can use a different route name, for example if you want "
+"to hide the host name of your {project_name} server inside your private "
+"network."
+msgstr ""
+"通常、経路名はバックエンド・ホストと同じ名前である必要はありません。たとえば、プライベート・ネットワーク内の{project_name}サーバーのホスト名を隠す場合などに、別の経路名を使用できます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Disable adding the route"
+msgstr "経路の追加を無効にする"
+
+#. type: Plain text
+msgid ""
+"Some load balancers can be configured to add the route information by "
+"themselves instead of relying on the back end {project_name} node.  However,"
+" as described above, adding the route by the {project_name} is recommended. "
+"This is because when done this way performance improves, since "
+"{project_name} is aware of the entity that is the owner of particular "
+"session and can route to that node, which is not necessarily the local node."
+msgstr ""
+"いくつかのロードバランサーは、バックエンドの{project_name}ノードに頼るのではなく、経路情報を自身で追加するように設定できます。ただし、前述のとおり、{project_name}による経路の追加が推奨されます。これは、{project_name}が特定のセッションの所有者であり、必ずしもローカルノードではないノードにルーティングできるエンティティを認識しているため、このようにパフォーマンスが向上するためです。"
+
+#. type: Plain text
+msgid ""
+"You are permitted to disable adding route information to the AUTH_SESSION_ID"
+" cookie by {project_name}, if you prefer, by adding the following into your "
+"`RHSSO_HOME/standalone/configuration/standalone-ha.xml` file in the "
+"{project_name} subsystem configuration:"
+msgstr ""
+"必要に応じて、{project_name}サブシステム設定の `RHSSO_HOME/standalone/configuration"
+"/standalone-ha.xml` "
+"ファイルに以下を追加することにより、AUTH_SESSION_IDクッキーへの経路情報の追加を無効にすることができます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
+"  ...\n"
+"    <spi name=\"stickySessionEncoder\">\n"
+"        <provider name=\"infinispan\" enabled=\"true\">\n"
+"            <properties>\n"
+"                <property name=\"shouldAttachRoute\" value=\"false\"/>\n"
+"            </properties>\n"
+"        </provider>\n"
+"    </spi>\n"
+msgstr ""
+"<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
+"  ...\n"
+"    <spi name=\"stickySessionEncoder\">\n"
+"        <provider name=\"infinispan\" enabled=\"true\">\n"
+"            <properties>\n"
+"                <property name=\"shouldAttachRoute\" value=\"false\"/>\n"
+"            </properties>\n"
+"        </provider>\n"
+"    </spi>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "</subsystem>\n"
+msgstr "</subsystem>\n"
 
 #. type: Title ====
 #, no-wrap

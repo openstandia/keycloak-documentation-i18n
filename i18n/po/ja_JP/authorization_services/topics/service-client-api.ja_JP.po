@@ -1,17 +1,18 @@
-# Japanese translations for keycloak-documentation-i18n package
-# Copyright (C) 2017 Nomura Research Institute, Ltd.
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
-# Automatically generated, 2017.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: keycloak-documentation-i18n  \n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ja\n"
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ==
@@ -26,19 +27,15 @@ msgstr ""
 #: source/authorization_services/topics/policy-time-policy.adoc:11
 #: source/authorization_services/topics/policy-user-policy.adoc:11
 #: source/authorization_services/topics/service-client-api.adoc:21
-#, fuzzy, no-wrap
-#| msgid "Domain Configuration"
+#, no-wrap
 msgid "Configuration"
-msgstr "ドメイン設定"
+msgstr "設定"
 
 #. type: Title =
 #: source/authorization_services/topics/service-client-api.adoc:2
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Authorization Client Java API"
-msgstr ""
-"#-#-#-#-#  service-overview.ja_JP.po (keycloak-documentation-i18n)  #-#-#-#-#\n"
-"#-#-#-#-#  profiles.ja_JP.po (keycloak-documentation-i18n)  #-#-#-#-#\n"
-"Authorization Servicesガイド"
+msgstr "認可クライアントJava API"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:6
@@ -48,20 +45,22 @@ msgid ""
 "are using Java, you can access the {project_name} Authorization Services "
 "using the Authorization Client API."
 msgstr ""
+"要件に応じて、リソース・サーバーはリソースをリモートで管理したり、プログラムでパーミッションをチェックしたりすることもできます。Javaを使用している場合は、認可クライアントAPIを使用して{project_name}認可サービスにアクセスできます。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:8
 msgid ""
 "It is targeted for resource servers that want to access the different APIs "
-"provided by the server such as the Protection, Authorization and Entitlement "
-"APIs."
+"provided by the server such as the Protection, Authorization and Entitlement"
+" APIs."
 msgstr ""
+"これは、保護API、認可API、エンタイトルメントAPIなど、サーバーが提供するさまざまなAPIにアクセスするリソース・サーバーを対象としています。"
 
 #. type: Title ==
 #: source/authorization_services/topics/service-client-api.adoc:9
 #, no-wrap
 msgid "Maven Dependency"
-msgstr ""
+msgstr "Maven依存関係"
 
 #. type: Code block
 #: source/authorization_services/topics/service-client-api.adoc:19
@@ -75,12 +74,19 @@ msgid ""
 "    </dependency>\n"
 "</dependencies>\n"
 msgstr ""
+"<dependencies>\n"
+"    <dependency>\n"
+"        <groupId>org.keycloak</groupId>\n"
+"        <artifactId>keycloak-authz-client</artifactId>\n"
+"        <version>${KEYCLOAK_VERSION}</version>\n"
+"    </dependency>\n"
+"</dependencies>\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:24
 msgid ""
 "The client configuration is defined in a ``keycloak.json`` file as follows:"
-msgstr ""
+msgstr "クライアントの設定は、 ``keycloak.json`` ファイルで次のように定義されています。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-client-api.adoc:34
@@ -95,26 +101,31 @@ msgid ""
 "  }\n"
 "}\n"
 msgstr ""
+"{\n"
+"  \"realm\": \"hello-world-authz\",\n"
+"  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"  \"resource\" : \"hello-world-authz-service\",\n"
+"  \"credentials\": {\n"
+"    \"secret\": \"secret\"\n"
+"  }\n"
+"}\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:37
 #, no-wrap
 msgid "*realm* (required)\n"
-msgstr ""
+msgstr "*realm* (required)\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:39
-#, fuzzy
-#| msgid "JNDI name of the dataSource"
 msgid "The name of the realm."
-msgstr "データソースのJNDI名"
+msgstr "レルムの名前。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:41
-#, fuzzy, no-wrap
-#| msgid "auth-server profile"
+#, no-wrap
 msgid "*auth-server-url* (required)\n"
-msgstr "認証サーバー・プロファイル"
+msgstr "*auth-server-url* (required)\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:43
@@ -123,19 +134,21 @@ msgid ""
 "and REST service endpoints are derived from this. It is usually in the form "
 "https://host:port/auth."
 msgstr ""
+"{project_name}サーバーのベースURL。 "
+"他のすべての{project_name}ページとRESTサービス・エンドポイントは、これから派生しています。通常、https://host:port/authという形式です。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:45
 #, no-wrap
 msgid "*resource* (required)\n"
-msgstr ""
+msgstr "*resource* (required)\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:47
 msgid ""
 "The client-id of the application. Each application has a client-id that is "
 "used to identify the application."
-msgstr ""
+msgstr "アプリケーションのクライアントID。各アプリケーションには、アプリケーションを識別するために使用されるクライアントIDがあります。"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:50
@@ -144,6 +157,8 @@ msgid ""
 "*credentials* (required)\n"
 "Specifies the credentials of the application. This is an object notation where the key is the credential type and the value is the value of the credential type.\n"
 msgstr ""
+"*credentials* (required)\n"
+"アプリケーションのクレデンシャルを指定します。これは、キーがクレデンシャル・タイプであり、値がクレデンシャル・タイプの値であるオブジェクトの表記法です。\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:52
@@ -152,13 +167,14 @@ msgid ""
 "the default location from where the client is going to try to find a "
 "```keycloak.json``` file."
 msgstr ""
+"設定ファイルは通常、クライアントの ```keycloak.json``` "
+"ファイルを見つける際のデフォルトのローケーションであるアプリケーションのクラスパスにあります。"
 
 #. type: Title ==
 #: source/authorization_services/topics/service-client-api.adoc:53
-#, fuzzy, no-wrap
-#| msgid "Creating the Admin Account"
+#, no-wrap
 msgid "Creating the Authorization Client"
-msgstr "管理者アカウントの作成"
+msgstr "認可クライアントの作成"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:56
@@ -166,6 +182,8 @@ msgid ""
 "Considering you have a ```keycloak.json``` file in your classpath, you can "
 "create a new ```AuthzClient``` instance as follows:"
 msgstr ""
+"クラスパスに ```keycloak.json``` ファイルがあることを考慮して、次のように新しい ```AuthzClient``` "
+"インスタンスを作成することができます。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-client-api.adoc:60
@@ -174,18 +192,19 @@ msgid ""
 "    // create a new instance based on the configuration defined in a keycloak.json located in your classpath\n"
 "    AuthzClient authzClient = AuthzClient.create();\n"
 msgstr ""
+"    // create a new instance based on the configuration defined in a keycloak.json located in your classpath\n"
+"    AuthzClient authzClient = AuthzClient.create();\n"
 
 #. type: Title ==
 #: source/authorization_services/topics/service-client-api.adoc:62
-#, fuzzy, no-wrap
-#| msgid "Obtaining Assertion Attributes"
+#, no-wrap
 msgid "Obtaining User Entitlements"
-msgstr "アサーション属性の取得"
+msgstr "ユーザー・エンタイトルメントの取得"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:65
 msgid "Here is an example illustrating how to obtain user entitlements:"
-msgstr ""
+msgstr "ユーザー・エンタイトルメントを取得する方法の例を示します。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-client-api.adoc:81
@@ -206,13 +225,27 @@ msgid ""
 "\n"
 "// now you can use the RPT to access protected resources on the resource server\n"
 msgstr ""
+"// create a new instance based on the configuration defined in keycloak-authz.json\n"
+"AuthzClient authzClient = AuthzClient.create();\n"
+"\n"
+"// obtain an Entitlement API Token to get access to the Entitlement API.\n"
+"// this token is an access token issued to a client on behalf of an user\n"
+"// with a uma_authorization scope\n"
+"String eat = getEntitlementAPIToken(authzClient);\n"
+"\n"
+"// send the entitlement request to the server to\n"
+"// obtain an RPT with all permissions granted to the user\n"
+"EntitlementResponse response = authzClient.entitlement(eat).getAll(\"hello-world-authz-service\");\n"
+"String rpt = response.getRpt();\n"
+"\n"
+"// now you can use the RPT to access protected resources on the resource server\n"
 
 #. type: Plain text
 #: source/authorization_services/topics/service-client-api.adoc:84
 msgid ""
-"Here is an example illustrating how to obtain user entitlements for a set of "
-"one or more resources:"
-msgstr ""
+"Here is an example illustrating how to obtain user entitlements for a set of"
+" one or more resources:"
+msgstr "1つ以上のリソースのセットに対してユーザー・エンタイトルメントを取得する方法の例を示します。"
 
 #. type: Code block
 #: source/authorization_services/topics/service-client-api.adoc:108
@@ -241,13 +274,34 @@ msgid ""
 "\n"
 "// now you can use the RPT to access protected resources on the resource server\n"
 msgstr ""
+"// create a new instance based on the configuration defined in keycloak-authz.json\n"
+"AuthzClient authzClient = AuthzClient.create();\n"
+"\n"
+"// obtain an Entitlement API Token to get access to the Entitlement API.\n"
+"// this token is an access token issued to a client on behalf of an user\n"
+"// with a uma_authorization scope\n"
+"String eat = getEntitlementAPIToken(authzClient);\n"
+"\n"
+"// create an entitlement request\n"
+"EntitlementRequest request = new EntitlementRequest();\n"
+"PermissionRequest permission = new PermissionRequest();\n"
+"\n"
+"permission.setResourceSetName(\"Hello World Resource\");\n"
+"\n"
+"request.addPermission(permission);\n"
+"\n"
+"// send the entitlement request to the server to obtain an RPT\n"
+"// with all permissions granted to the user\n"
+"EntitlementResponse response = authzClient.entitlement(eat).get(\"hello-world-authz-service\", request);\n"
+"String rpt = response.getRpt();\n"
+"\n"
+"// now you can use the RPT to access protected resources on the resource server\n"
 
 #. type: Title ==
 #: source/authorization_services/topics/service-client-api.adoc:110
-#, fuzzy, no-wrap
-#| msgid "Creating and Registering the Client"
+#, no-wrap
 msgid "Creating a Resource Using the Protection API"
-msgstr "クライアントの作成と登録"
+msgstr "保護APIを使用したリソースの作成"
 
 #. type: Code block
 #: source/authorization_services/topics/service-client-api.adoc:137
@@ -278,12 +332,36 @@ msgid ""
 "// query the resource using its newly generated id\n"
 "ResourceRepresentation resource = resourceClient.findById(resourceId).getResourceDescription();\n"
 msgstr ""
+"// create a new instance based on the configuration defined in keycloak-authz.json\n"
+"AuthzClient authzClient = AuthzClient.create();\n"
+"\n"
+"// create a new resource representation with the information we want\n"
+"ResourceRepresentation newResource = new ResourceRepresentation();\n"
+"\n"
+"newResource.setName(\"New Resource\");\n"
+"newResource.setType(\"urn:hello-world-authz:resources:example\");\n"
+"\n"
+"newResource.addScope(new ScopeRepresentation(\"urn:hello-world-authz:scopes:view\"));\n"
+"\n"
+"ProtectedResource resourceClient = authzClient.protection().resource();\n"
+"Set<String> existingResource = resourceClient.findByFilter(\"name=\" + newResource.getName());\n"
+"\n"
+"if (!existingResource.isEmpty()) {\n"
+"    resourceClient.delete(existingResource.iterator().next());\n"
+"}\n"
+"\n"
+"// create the resource on the server\n"
+"RegistrationResponse response = resourceClient.create(newResource);\n"
+"String resourceId = response.getId();\n"
+"\n"
+"// query the resource using its newly generated id\n"
+"ResourceRepresentation resource = resourceClient.findById(resourceId).getResourceDescription();\n"
 
 #. type: Title ==
 #: source/authorization_services/topics/service-client-api.adoc:139
 #, no-wrap
 msgid "Introspecting a RPT"
-msgstr ""
+msgstr "RPTのイントロスペクション"
 
 #. type: Code block
 #: source/authorization_services/topics/service-client-api.adoc:151
@@ -299,3 +377,12 @@ msgid ""
 "        }\n"
 "    }\n"
 msgstr ""
+"    AuthzClient authzClient = AuthzClient.create();\n"
+"    String rpt = getRequestingPartyToken(authzClient);\n"
+"    TokenIntrospectionResponse requestingPartyToken = authzClient.protection().introspectRequestingPartyToken(rpt);\n"
+"\n"
+"    if (requestingPartyToken.getActive()) {\n"
+"        for (Permission granted : requestingPartyToken.getPermissions()) {\n"
+"            // iterate over the granted permissions\n"
+"        }\n"
+"    }\n"

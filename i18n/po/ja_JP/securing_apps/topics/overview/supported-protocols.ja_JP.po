@@ -56,9 +56,9 @@ msgid ""
 "determine what resources the user is allowed to access on the application."
 msgstr ""
 "OIDCを使用するユースケースは、実際には2つの種類があります。1つ目は、{project_name}サーバーにユーザーの認証を要求するアプリケーションのユースケースです。ログインが成功すると、アプリケーションは"
-" _identity token_ と _access token_ を受け取ります。 _Identity token_ "
-"には、ユーザー名、電子メール、その他のプロファイル情報など、ユーザーに関する情報が含まれています。 _Access token_ "
-"はレルムによってデジタル署名されており、アプリケーションがユーザーのアクセス可能なリソースを決定するために使用できるアクセス情報（ユーザー・ロール・マッピングのような）が含まれています。"
+" _IDトークン_ と _アクセストークン_ を受け取ります。 _IDトークン_ "
+"には、ユーザー名、電子メール、その他のプロファイル情報など、ユーザーに関する情報が含まれています。 _アクセストークン_ "
+"はレルムによってデジタル署名されており、アプリケーションがユーザーのアクセス可能なリソースを決定するために使用できるアクセス情報（ユーザー・ロール・マッピングなど）が含まれています。"
 
 #. type: Plain text
 msgid ""
@@ -73,12 +73,12 @@ msgid ""
 "signature of the token, then decides based on access information within the "
 "token whether or not to process the request."
 msgstr ""
-"2つ目のタイプは、リモート・サービスへのアクセス権を取得したいクライアントのユースケースです。この場合、クライアントは、ユーザーの代理として他のリモート・サービスの呼び出しに使用できる"
-" _access token_ "
+"2つ目のタイプは、リモートサービスへのアクセス権を取得したいクライアントのユースケースです。この場合、クライアントは、ユーザーの代理として他のリモートサービスの呼び出しに使用できる"
+" _アクセストークン_ "
 "の取得を{project_name}に要求します。{project_name}は、ユーザーを認証し、クライアントのアクセスを許可する同意を要求します。そして、クライアントは"
-" _access token_ を受け取ります。この _access token_ はレルムによってデジタル署名されます。クライアントはこの "
-"_access token_ を使用して、リモート・サービスのREST呼び出しを行うことができます。REST サービスは _access token_ "
-"を抽出し、トークンの署名を検証し、トークン内のアクセス情報に基づいて、要求を処理するかどうかを決定します。"
+" _アクセストークン_ を受け取ります。この _アクセストークン_ はレルムによってデジタル署名されます。クライアントはこの _アクセストークン_ "
+"を使用して、リモートサービスのREST呼び出しを行うことができます。REST サービスは _アクセストークン_ "
+"を抽出し、トークンの署名を検証し、トークン内のアクセス情報に基づいて、リクエストを処理するかどうかを決定します。"
 
 #. type: Title ====
 #, no-wrap
@@ -96,15 +96,15 @@ msgid ""
 "responses."
 msgstr ""
 "link:http://saml.xml.org/saml-specifications[SAML "
-"2.0]は、OIDCに似ていますが、それよりも古く成熟した仕様です。SOAPと過度なWS-*の仕様をそのルーツを持っているため、OIDCよりも少し冗長になる傾向があります。SAML"
+"2.0]は、OIDCに似ていますが、それよりも古く成熟した仕様です。SOAPと過多なWS-*の仕様をそのルーツを持っているため、OIDCよりも少し冗長になる傾向があります。SAML"
 " "
-"2.0は、主に認証サーバーとアプリケーション間のXMLドキュメントの交換によって動作する認証プロトコルです。XML署名と暗号化を使用して、要求と応答を検証します。"
+"2.0は、主に認証サーバーとアプリケーション間のXMLドキュメントの交換によって動作する認証プロトコルです。XML署名と暗号化を使用して、リクエストとレスポンスを検証します。"
 
 #. type: Plain text
 msgid ""
 "In {project_name} SAML serves two types of use cases: browser applications "
 "and REST invocations."
-msgstr "{project_name}において、SAMLはブラウザー・アプリケーションとREST呼び出しの2種類のユースケースを提供しています 。"
+msgstr "{project_name}では、SAMLはブラウザー・アプリケーションとREST呼び出しの2種類のユースケースを提供しています 。"
 
 #. type: Plain text
 msgid ""
@@ -119,7 +119,7 @@ msgid ""
 msgstr ""
 "SAMLを使用するユースケースは、実際には2つの種類があります。1つ目は、{project_name}サーバーにユーザーの認証を要求するアプリケーションのユースケースです。ログインが成功すると、アプリケーションは"
 " "
-"ユーザーに関する様々な属性を指定するSAMLアサーションと呼ばれるものが含まれるXMLドキュメントを受け取ります。このXMLドキュメントはレルムによってデジタル署名されており、アプリケーションがユーザーのアクセス可能なリソースを決定するために使用できるアクセス情報(ユーザー・ロール・マッピングのような)が含まれています。"
+"ユーザーに関する様々な属性を指定するSAMLアサーションと呼ばれるものが含まれるXMLドキュメントを受け取ります。このXMLドキュメントはレルムによってデジタル署名されており、アプリケーションがユーザーのアクセス可能なリソースを決定するために使用できるアクセス情報(ユーザー・ロール・マッピングなど)が含まれています。"
 
 #. type: Plain text
 msgid ""
@@ -128,12 +128,12 @@ msgid ""
 "a SAML assertion it can use to invoke on other remote services on behalf of "
 "the user."
 msgstr ""
-"2つ目のタイプは、リモート・サービスへのアクセス権を取得したいクライアントのユースケースです。この場合、クライアントは、ユーザーの代理として他のリモート・サービスの呼び出しに使用できるSAMLアサーションの取得を{project_name}に要求します。"
+"2つ目のタイプは、リモートサービスへのアクセス権を取得したいクライアントのユースケースです。この場合、クライアントは、ユーザーの代理として他のリモートサービスの呼び出しに使用できるSAMLアサーションの取得を{project_name}に要求します。"
 
 #. type: Title ===
 #, no-wrap
 msgid "OpenID Connect vs. SAML"
-msgstr "OpenID Connect 対 SAML"
+msgstr "OpenID Connect vs SAML"
 
 #. type: Plain text
 msgid ""
@@ -145,7 +145,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "In most cases {project_name} recommends using OIDC."
-msgstr "ほとんどの場合において、{project_name}ではOIDCを使用することをおすすめします。"
+msgstr "ほとんどの場合において、{project_name}ではOIDCを使用することをお勧めします。"
 
 #. type: Plain text
 msgid "SAML tends to be a bit more verbose than OIDC."
@@ -164,7 +164,7 @@ msgid ""
 "1_0.html#ChangeNotification[iframe trick] that the specification uses to "
 "easily determine if a user is still logged in or not."
 msgstr ""
-"交換するデータの詳細度を度外視して仕様を比較した場合、OIDCはもともとWebで動作するように設計されていますが、SAMLはWeb上で動作するように改造されていることが分かります。たとえば、OIDCはSAMLよりもクライアントサイドに実装することが簡単なため、HTML5/JavaScriptアプリケーションにも適しています。トークンはJSON形式なので、JavaScriptにより簡単に扱うことができます。また、Webアプリケーションに対してセキュリティの実装を容易にする、いくつかの素晴らしい機能があります。たとえば、ユーザーがログインしているかどうかを容易に判断するために使用するlink:http://openid.net/specs"
+"交換するデータの詳細度を度外視して仕様を比較した場合、OIDCはもともとWebで動作するように設計されていますが、SAMLはWeb上で動作するように改造されていることが分かります。たとえば、OIDCはSAMLよりもクライアントサイドに実装することが簡単なため、HTML5/JavaScriptアプリケーションにも適しています。トークンはJSON形式なので、JavaScriptにより簡単に扱うことができます。また、Webアプリケーションに対してセキュリティーの実装を容易にする、いくつかの素晴らしい機能があります。たとえば、ユーザーがログインしているかどうかを容易に判断するために使用するlink:http://openid.net/specs"
 "/openid-connect-session-"
 "1_0.html#ChangeNotification[iframeトリック]の仕様をチェックしてください。"
 
@@ -176,4 +176,4 @@ msgid ""
 "it is more mature and also because they already have existing applications "
 "that are secured with it."
 msgstr ""
-"SAMLにも用途はあります。OIDCの仕様の進化を見ると、SAMLが長年に渡って実装してきた多数の機能がOIDCにも実装されていることが分かります。SAMLがOIDCより成熟しているという認識と、SAMLによりセキュリティ保護されている既存のアプリケーションが存在するという理由により、OIDCよりもSAMLが選ばれることは多々あります。"
+"SAMLにも用途はあります。OIDCの仕様の進化を見ると、SAMLが長年に渡って実装してきた多数の機能がOIDCにも実装されていることが分かります。SAMLがOIDCより成熟しているという認識と、SAMLによりセキュリティー保護されている既存のアプリケーションが存在するという理由により、OIDCよりもSAMLが選ばれることは多々あります。"

@@ -27,7 +27,7 @@ msgid ""
 "purposes, it may be useful if load balancer forwards all requests related to"
 " particular browser session to the same {project_name} backend node."
 msgstr ""
-"典型的なクラスター構成は、ロードバランサー（リバースプロキシ）とプライベート・ネットワーク上の2つ以上の{project_name}サーバーで構成されています。パフォーマンスのために、ロードバランサーが特定のブラウザー・セッションに関するリクエストをすべて同じ{project_name}バックエンド・ノードに転送すると有用かもしれません。"
+"典型的なクラスター構成は、ロードバランサー（リバース・プロキシー）とプライベート・ネットワーク上の2つ以上の{project_name}サーバーで構成されています。パフォーマンスのために、ロードバランサーが特定のブラウザー・セッションに関するリクエストをすべて同じ{project_name}バックエンド・ノードに転送することは有用かもしれません。"
 
 #. type: Plain text
 msgid ""
@@ -38,7 +38,7 @@ msgid ""
 "cluster node and the other nodes need to lookup the session remotely if they"
 " want to access it."
 msgstr ""
-"なぜなら、{project_name}が現在の認証セッションとユーザー・セッションに関するデータを保存するために、infinispanの分散キャッシュを使用しているためです。Infinispanの分散キャッシュは、デフォルトで所有者は1つと設定されています。つまり、特定のセッションは1つのクラスター・ノードに保存され、他のノードがこのセッションにアクセスする場合は、リモートで検索する必要があります。"
+"なぜなら、{project_name}が現在の認証セッションとユーザー・セッションに関するデータを保存するために、Infinispanの分散キャッシュを使用しているためです。Infinispanの分散キャッシュは、デフォルトで所有者は1つと設定されています。つまり、特定のセッションは1つのクラスター・ノードに保存され、他のノードがこのセッションにアクセスする場合は、リモートで検索する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -47,8 +47,8 @@ msgid ""
 "it needs to send the request to `node1` over the network to return the "
 "particular session entity."
 msgstr ""
-"例えば、ID `123` を持つ認証セッションが `node1` 上のinfinispanキャッシュに保存されていて、 `node2` "
-"はこのセッションを検索する必要がある場合は、特定のセッション・エンティティを返すためにネットワーク経由で `node1` "
+"たとえば、ID `123` を持つ認証セッションが `node1` 上のInfinispanキャッシュに保存されていて、 `node2` "
+"はこのセッションを検索する必要がある場合は、特定のセッション・エンティティーを返すためにネットワーク経由で `node1` "
 "へリクエストを送信する必要があります。"
 
 #. type: Plain text
@@ -58,7 +58,7 @@ msgid ""
 "cluster environment with the public frontend load balancer and two backend "
 "{project_name} nodes can be like this:"
 msgstr ""
-"特定のセッション・エンティティが常にローカルで使用できる場合は、スティッキー・セッションに助けを借りることができます。パブリック・フロントエンド・ロードバランサーと2つのバックエンド{project_name}ノードを持つクラスター環境内のワークフローは、以下のようになります。"
+"特定のセッション・エンティティーが常にローカルで使用できる場合は、スティッキー・セッションに助けを借りることができます。パブリック・フロントエンド・ロードバランサーと2つのバックエンド{project_name}ノードを持つクラスター環境内のワークフローは、以下のようになります。"
 
 #. type: Plain text
 msgid "User sends initial request to see the {project_name} login screen"
@@ -72,7 +72,7 @@ msgid ""
 "address etc). It all depends on the implementation and configuration of "
 "underlying load balancer (reverse proxy)."
 msgstr ""
-"このリクエストは、フロントエンド・ロードバランサーによって処理され、このフロントエンド・ロードバランサーがランダムにノード（例えばnode1）に転送します。厳密には、ノードはランダムである必要はなく、他のいくつかの基準（クライアントIPアドレスなど）によって選択することができます。それらはすべて、基にあるロードバランサー（リバースプロキシ）の実装と設定に依存します。"
+"このリクエストは、フロントエンド・ロードバランサーによって処理され、このフロントエンド・ロードバランサーがランダムにノード（例えばnode1）に転送します。厳密には、ノードはランダムである必要はなく、他のいくつかの基準（クライアントIPアドレスなど）によって選択することができます。それらはすべて、ロードバランサー（リバース・プロキシー）の実装と設定に依存します。"
 
 #. type: Plain text
 msgid ""
@@ -89,7 +89,7 @@ msgid ""
 "assigned `node2` to be the owner of this session."
 msgstr ""
 "Infinispanの分散キャッシュは、セッションIDのハッシュに基づいてセッションの主な所有者を割り当てます。これに関する詳細は、link:http://infinispan.org/docs/8.2.x/user_guide/user_guide.html#distribution_mode[Infinispan"
-" documentation]をご覧ください。infinispanがこのセッションの所有者として `node2` を割り当てたとしましょう。"
+" documentation]を参照してください。Infinispanがこのセッションの所有者として `node2` を割り当てたとしましょう。"
 
 #. type: Plain text
 msgid ""
@@ -97,7 +97,7 @@ msgid ""
 "`<session-id>.<owner-node-id>` . In our example case, it will be `123.node2`"
 " ."
 msgstr ""
-"{project_name}は `<session-id>.<owner-node-id>` のような形式のcookie "
+"{project_name}は `<session-id>.<owner-node-id>` のような形式のCookie "
 "`AUTH_SESSION_ID` を作成します．サンプルとしては、 `123.node2` となります。"
 
 #. type: Plain text
@@ -105,7 +105,7 @@ msgid ""
 "Response is returned to the user with the {project_name} login screen and "
 "the AUTH_SESSION_ID cookie in the browser"
 msgstr ""
-"レスポンスは、{project_name}のログイン・スクリーンとブラウザーのAUTH_SESSION_ID cookieでユーザーに返されます。"
+"レスポンスは、{project_name}のログイン画面とブラウザーの`AUTH_SESSION_ID` Cookieでユーザーに返されます。"
 
 #. type: Plain text
 msgid ""
@@ -128,8 +128,8 @@ msgid ""
 "your loadbalancer to sticky over the `AUTH_SESSION_ID` cookie. How exactly "
 "do this is dependent on your loadbalancer."
 msgstr ""
-"スティッキー・セッションはクラスターの設定のために必須ではありませんが、上記の理由からパフォーマンスをあげるのに有効です。 "
-"`AUTH_SESSION_ID` cookieで固定するようロードバランサーを設定する必要があります。どのように行うかはロードバランサーによります。"
+"スティッキー・セッションはクラスターの設定のために必須ではありませんが、上記の理由からパフォーマンスをあげるために有効です。 "
+"`AUTH_SESSION_ID` Cookieで固定するようロードバランサーを設定する必要があります。どのように行うかはロードバランサーによります。"
 
 #. type: Plain text
 msgid ""
@@ -143,8 +143,9 @@ msgid ""
 msgstr ""
 "{project_name}側では、起動時にシステム・プロパティー `jboss.node.name` "
 "を使用し、経路名に対応する値を使用することをお勧めします。たとえば、 `-Djboss.node.name=node1` は経路を識別するために "
-"`node1` を使います。この経路はInfinispanのキャッシュで使用され、ノードが特定のキーの所有者である場合は、AUTH_SESSION_ID"
-" Cookieに関連付けられます。このシステム・プロパティーを使用した起動コマンドの例は、<<_example-setup-with-mod-"
+"`node1` "
+"を使います。この経路はInfinispanのキャッシュで使用され、ノードが特定のキーの所有者である場合は、`AUTH_SESSION_ID` "
+"Cookieに関連付けられます。このシステム・プロパティーを使用した起動コマンドの例は、<<_example-setup-with-mod-"
 "cluster,Mod Clusterの例>>を参照してください。"
 
 #. type: Plain text
@@ -170,7 +171,7 @@ msgid ""
 "{project_name} is aware of the entity that is the owner of particular "
 "session and can route to that node, which is not necessarily the local node."
 msgstr ""
-"いくつかのロードバランサーは、バックエンドの{project_name}ノードに頼るのではなく、経路情報を自身で追加するように設定できます。ただし、前述のとおり、{project_name}による経路の追加が推奨されます。これは、{project_name}が特定のセッションの所有者であり、必ずしもローカルノードではないノードにルーティングできるエンティティを認識しているため、このようにパフォーマンスが向上するためです。"
+"いくつかのロードバランサーは、バックエンドの{project_name}ノードに頼るのではなく、経路情報を自身で追加するように設定できます。ただし、前述のとおり、{project_name}による経路の追加が推奨されます。これは、{project_name}が特定のセッションの所有者であり、必ずしもローカルノードではないノードにルーティングできるエンティティーを認識しているため、このようにパフォーマンスが向上するためです。"
 
 #. type: Plain text
 msgid ""
@@ -180,8 +181,8 @@ msgid ""
 "{project_name} subsystem configuration:"
 msgstr ""
 "必要に応じて、{project_name}サブシステム設定の `RHSSO_HOME/standalone/configuration"
-"/standalone-ha.xml` "
-"ファイルに以下を追加することにより、AUTH_SESSION_IDクッキーへの経路情報の追加を無効にすることができます。"
+"/standalone-ha.xml` ファイルに以下を追加することにより、`AUTH_SESSION_ID` "
+"Cookieへの経路情報の追加を無効にすることができます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -244,7 +245,7 @@ msgid ""
 "network interface. This can be done by running the following commands under "
 "root privileges (on linux):"
 msgstr ""
-"クラスタリングのサンプルでは、MULTICASTをマシンのループバック・ネットワーク・インターフェイスで有効にすることを要求されます。これは、root特権（linux上）で以下のコマンドを実行して行うことができます。"
+"クラスタリングのサンプルでは、MULTICASTをマシンのループバック・ネットワーク・インターフェイスで有効にすることを要求されます。これは、root特権（Linux上）で以下のコマンドを実行して行うことができます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -359,7 +360,7 @@ msgid ""
 "Database chapter >> for more details."
 msgstr ""
 "共有データベースに対して `RHSSO_NODE1/standalone/configuration/standalone-ha.xml` "
-"を編集してデータソースを設定します。詳しくは、<<_rdbms-setup-checklist, データベースの章>>をご覧ください。"
+"を編集してデータソースを設定します。詳しくは、<<_rdbms-setup-checklist, データベースの章>>を参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -387,9 +388,9 @@ msgid ""
 "that mod_cluster uses AJP connector by default, so you need to configure "
 "that one."
 msgstr ""
-"これで次に、<<_setting-up-a-load-balancer-or-proxy, ロードバランサー>>の章でご説明したとおり、 `proxy-"
+"これで次に、<<_setting-up-a-load-balancer-or-proxy, ロードバランサー>>の章で説明したとおり、 `proxy-"
 "address-forwarding` "
-"を設定することができます。この設定は、mod_clusterがデフォルトでAJP接続を使用するため必要だということにご注意ください。"
+"を設定することができます。この設定は、mod_clusterがデフォルトでAJP接続を使用するため必要だということに注意してください。"
 
 #. type: Plain text
 msgid "That's all as mod_cluster is already configured."
@@ -404,9 +405,9 @@ msgid ""
 "nodes on same physical server etc. So you can run the startup command like "
 "this:"
 msgstr ""
-"{project_name}のノード名は、現在のサーバーのホスト名に基づき自動的に検出されます。しかし、より細かく制御するには、システムプロパティ "
+"{project_name}のノード名は、現在のサーバーのホスト名に基づき自動的に検出されます。しかし、より細かく制御するには、システム・プロパティー "
 "`jboss.node.name` "
-"を使用してノード名を直接指定することをおすすめします。これは、同じ物理サーバー上で2つのバックエンド・ノードをテストする場合などに特に便利です。以下のようにstartupコマンドを実行することができます。"
+"を使用してノード名を直接指定することをお勧めします。これは、同じ物理サーバー上で2つのバックエンド・ノードをテストする場合などに特に便利です。以下のようにstartupコマンドを実行することができます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -440,5 +441,5 @@ msgid ""
 "`http://localhost:8180/auth` to create admin user."
 msgstr ""
 "`http://localhost:8080/auth` "
-"でサーバーにアクセスします。管理者ユーザーの作成は、ロードバランサー（プロキシ）へアクセスせずに、ローカルアドレスからのみ可能です。そのため、最初に "
+"でサーバーにアクセスします。管理者ユーザーの作成は、ロードバランサー（プロキシー）へアクセスせずに、ローカルアドレスからのみ可能です。そのため、最初に "
 "`http://localhost:8180/auth` のバックエンド・ノードに直接アクセスし、管理ユーザーを作成する必要があります。"

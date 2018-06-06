@@ -12,7 +12,7 @@ for file in $target; do
 
     echo $RESOURCE_SLUG
 
-    docker run --rm -v $(pwd):/workspace -v $HOME/.transifexrc:/root/.transifexrc tx tx push -s -r keycloak-documentation-i18n.$RESOURCE_SLUG
+    tx push -s -r keycloak-documentation-i18n.$RESOURCE_SLUG
 done
 
 

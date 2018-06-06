@@ -14,39 +14,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: Plain text
-msgid ""
-"With Red Hat Enterprise Linux 7, the term channel was replaced with the term "
-"repository. In these instructions only the term repository is used."
-msgstr ""
-
-#. type: Title ==
-#, no-wrap
-msgid "Prerequisites"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Ensure that your Red Hat Enterprise Linux system is registered to your "
-"account using Red Hat Subscription Manager. For more information see the "
-"link:https://access.redhat.com/documentation/en-us/"
-"red_hat_subscription_management/1/html-single/quick_registration_for_rhel/"
-"index[Red Hat Subscription Management documentation]."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"If you are already subscribed to another JBoss EAP repository, you must "
-"unsubscribe from that repository first."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Using Red Hat Subscription Manager, subscribe to the JBoss EAP 7.0 "
-"repository using the following command. Replace <RHEL_VERSION> with either 6 "
-"or 7 depending on your Red Hat Enterprise Linux version."
-msgstr ""
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -57,20 +24,6 @@ msgid ""
 "        <role-name>user</role-name>\n"
 "    </security-role>\n"
 "</web-app>\n"
-msgstr ""
-
-#. type: Title =====
-#, no-wrap
-msgid "Required Per WAR Configuration"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
-"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
-"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
-"      version=\"3.0\">\n"
 msgstr ""
 
 #. type: Title ====
@@ -106,8 +59,9 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Alternatively, you don't have to modify your WAR at all and you can secure "
-"it via the {project_name} adapter subsystem configuration in `standalone."
-"xml`.  Both methods are described in this section."
+"it via the {project_name} adapter subsystem configuration in the "
+"configuration file, such as `standalone.xml`.  Both methods are described in "
+"this section."
 msgstr ""
 
 #. type: Title =====
@@ -119,6 +73,13 @@ msgstr ""
 msgid ""
 "Adapters are available as a separate archive depending on what server "
 "version you are using."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{appserver_name} should be running when you install the adapter. If you have "
+"either one running, you must stop it before installing and then restart it "
+"after installation is complete."
 msgstr ""
 
 #. type: Plain text
@@ -194,71 +155,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "Install the EAP 7 Adapters from an RPM:"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You must subscribe to the JBoss EAP 7.0 repository before you can install "
-"the EAP 7 adapters from an RPM."
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ sudo subscription-manager repos --enable=jb-eap-7-for-rhel-<RHEL_VERSION>-server-rpms\n"
-msgstr ""
-
-#. type: Plain text
-msgid "Install the EAP 7 adapters for OIDC using the following command:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ sudo yum install eap7-keycloak-adapter\n"
-msgstr ""
-
-#. type: Plain text
-msgid "Install the EAP 7 adapters for SAML using the following command:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ sudo yum install eap7-keycloak-saml-adapter\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The default EAP_HOME path for the RPM installation is /opt/rh/eap7/root/usr/"
-"share/wildfly."
-msgstr ""
-
-#. type: Plain text
-msgid "Run the appropriate module installation script."
-msgstr ""
-
-#. type: Plain text
-msgid "For the OIDC module, enter the following command:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ {EAP_HOME}/bin/jboss-cli.sh -c --file=${EAP_HOME}/bin/adapter-install.cli\n"
-msgstr ""
-
-#. type: Plain text
-msgid "For the SAML module, enter the following command:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ {EAP_HOME}/bin/jboss-cli.sh -c --file=${EAP_HOME}/bin/adapter-install-saml.cli\n"
-msgstr ""
-
-#. type: Plain text
-msgid "Your installation is complete."
-msgstr ""
-
-#. type: Plain text
 msgid ""
 "You can install the EAP 6 adapters either by unzipping a ZIP file, or by "
 "using an RPM."
@@ -276,52 +172,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "Install the EAP 6 Adapters from an RPM:"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You must subscribe to the JBoss EAP 6.0 repository before you can install "
-"the EAP 6 adapters from an RPM."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Using Red Hat Subscription Manager, subscribe to the JBoss EAP 6.0 "
-"repository using the following command. Replace <RHEL_VERSION> with either 6 "
-"or 7 depending on your Red Hat Enterprise Linux version."
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ sudo subscription-manager repos --enable=jb-eap-6-for-rhel-<RHEL_VERSION>-server-rpms\n"
-msgstr ""
-
-#. type: Plain text
-msgid "Install the EAP 6 adapters for OIDC using the following command:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ sudo yum install eap6-keycloak-adapter\n"
-msgstr ""
-
-#. type: Plain text
-msgid "Install the EAP 6 adapters for SAML using the following command:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ sudo yum install eap6-keycloak-saml-adapter\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The default EAP_HOME path for the RPM installation is /opt/rh/eap6/root/usr/"
-"share/wildfly."
-msgstr ""
-
-#. type: Plain text
 msgid ""
 "This ZIP archive contains JBoss Modules specific to the {project_name} "
 "adapter. It also contains JBoss CLI scripts to configure the adapter "
@@ -333,9 +183,16 @@ msgid ""
 "To configure the adapter subsystem if the server is not running execute:"
 msgstr ""
 
+#. type: Plain text
+msgid ""
+"Alternatively, you can specify the `server.config` property while installing "
+"adapters from the command line to install adapters using a different config, "
+"for example: `-Dserver.config=standalone-ha.xml`."
+msgstr ""
+
 #. type: Block title
 #, no-wrap
-msgid "Wildfly 11"
+msgid "WildFly 11"
 msgstr ""
 
 #. type: delimited block -
@@ -345,7 +202,7 @@ msgstr ""
 
 #. type: Block title
 #, no-wrap
-msgid "Any other server but Wildfly 11"
+msgid "WildFly 10 or older"
 msgstr ""
 
 #. type: delimited block -
@@ -353,12 +210,27 @@ msgstr ""
 msgid "$ ./bin/jboss-cli.sh --file=adapter-install-offline.cli\n"
 msgstr ""
 
+#. type: Block title
+#, no-wrap
+msgid "JBoss EAP 7.1"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "JBoss EAP 7.0"
+msgstr ""
+
 #. type: Plain text
-msgid "The offline script is not available for JBoss EAP 6"
+msgid "The offline script is not available for JBoss EAP 6.4"
 msgstr ""
 
 #. type: Plain text
 msgid "Alternatively, if the server is running execute:"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Wildfly 11"
 msgstr ""
 
 #. type: delimited block -
@@ -371,6 +243,11 @@ msgstr ""
 msgid "$ ./bin/jboss-cli.sh --file=adapter-install.cli\n"
 msgstr ""
 
+#. type: Block title
+#, no-wrap
+msgid "JBoss EAP 7.0 and 6.4"
+msgstr ""
+
 #. type: Title =====
 #, no-wrap
 msgid "JBoss SSO"
@@ -381,6 +258,11 @@ msgid ""
 "{appserver_name} has built-in support for single sign-on for web "
 "applications deployed to the same {appserver_name} instance. This should not "
 "be enabled when using {project_name}."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Required Per WAR Configuration"
 msgstr ""
 
 #. type: Plain text
@@ -410,6 +292,15 @@ msgstr ""
 
 #. type: Plain text
 msgid "Here's an example:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"      version=\"3.0\">\n"
 msgstr ""
 
 #. type: delimited block -

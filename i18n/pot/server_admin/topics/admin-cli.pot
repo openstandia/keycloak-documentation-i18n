@@ -131,7 +131,7 @@ msgstr ""
 msgid ""
 "$ kcadm.sh config credentials --server http://localhost:8080/auth --realm demo --user admin --client admin\n"
 "$ kcadm.sh create realms -s realm=demorealm -s enabled=true -o\n"
-"$ C=$(kcadm.sh create clients -r demorealm -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]' -i)\n"
+"$ CID=$(kcadm.sh create clients -r demorealm -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]' -i)\n"
 "$ kcadm.sh get clients/$CID/installation/providers/keycloak-oidc-keycloak-json\n"
 msgstr ""
 
@@ -871,6 +871,38 @@ msgid ""
 "$ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm\n"
 msgstr ""
 
+#. type: Title ====
+#, no-wrap
+msgid "Importing a realm from exported .json file"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Use the [command]`create` command on the [filename]`partialImport` endpoint."
+msgstr ""
+
+#. type: Plain text
+msgid "Set `ifResourceExists` to one of `FAIL`, `SKIP`, `OVERWRITE`."
+msgstr ""
+
+#. type: Plain text
+msgid "Use `-f` to submit the exported realm `.json` file"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm.sh create partialImport -r demorealm2 -s ifResourceExists=FAIL -o -f demorealm.json\n"
+msgstr ""
+
+#. type: Plain text
+msgid "If realm does not yet exist, you first have to create it."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm.sh create realms -s realm=demorealm2 -s enabled=true\n"
+msgstr ""
+
 #. type: Title ===
 #, no-wrap
 msgid "Role operations"
@@ -1414,6 +1446,27 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
+msgid "Getting a Docker-v2 example configuration for a specific client"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Use a client's ID to construct an endpoint URI that targets a specific "
+"client, such as [filename]`clients/ID/installation/providers/docker-v2-"
+"compose-yaml`."
+msgstr ""
+
+#. type: Plain text
+msgid "Note that response will be in `.zip` format."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm.sh get http://localhost:8080/auth/admin/realms/demorealm/clients/8f271c35-44e3-446f-8953-b0893810ebe7/installation/providers/docker-v2-compose-yaml -r demorealm > keycloak-docker-compose-yaml.zip\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
 msgid "Updating a client"
 msgstr ""
 
@@ -1447,6 +1500,18 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcadm.sh delete clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r demorealm\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Adding or removing roles for client's service account"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Service account for the client is just a special kind of user account with "
+"username [filename]`service-account-CLIENT_ID`.  You can perform user "
+"operations on this account as if it was a regular user."
 msgstr ""
 
 #. type: Title ===
@@ -1503,7 +1568,7 @@ msgstr ""
 msgid ""
 "Filtering does not use exact matching. For example, the above example would "
 "match the value of the [filename]`username` attribute against the [filename]`"
-"\\*testuser*`` pattern."
+"\\*testuser*` pattern."
 msgstr ""
 
 #. type: Plain text
@@ -2377,30 +2442,29 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Use the [command]`create` command against the [filename]`user-federation/"
-"instances` endpoint."
+"Use the [command]`create` command against the [filename]`components` "
+"endpoint."
+msgstr ""
+
+#. type: Plain text
+msgid "Specify realm id as a value of the [command]`parentId` attribute."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Specify [command]`kerberos` as a value of the [command]`providerName` "
-"attribute."
+"Specify [command]`kerberos` as the value of the [command]`providerId` "
+"attribute, and [command]`org.keycloak.storage.UserStorageProvider` as the "
+"value of the [command]`providerType` attribute."
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "$ kcadm.sh create user-federation/instances -r demorealm -s providerName=kerberos -s priority=0 -s config.debug=false -s config.allowPasswordAuthentication=true -s 'config.editMode=\"UNSYNCED\"' -s config.updateProfileFirstLogin=true -s config.allowKerberosAuthentication=true -s 'config.kerberosRealm=\"KEYCLOAK.ORG\"' -s 'config.keyTab=\"http.keytab\"' -s 'config.serverPrincipal=\"HTTP/localhost@KEYCLOAK.ORG\"'\n"
+msgid "$ kcadm.sh create components -r demorealm -s parentId=demorealmId -s id=demokerberos -s name=demokerberos -s providerId=kerberos -s providerType=org.keycloak.storage.UserStorageProvider -s 'config.priority=[\"0\"]' -s 'config.debug=[\"false\"]' -s 'config.allowPasswordAuthentication=[\"true\"]' -s 'config.editMode=[\"UNSYNCED\"]' -s 'config.updateProfileFirstLogin=[\"true\"]' -s 'config.allowKerberosAuthentication=[\"true\"]' -s 'config.kerberosRealm=[\"KEYCLOAK.ORG\"]' -s 'config.keyTab=[\"http.keytab\"]' -s 'config.serverPrincipal=[\"HTTP/localhost@KEYCLOAK.ORG\"]' -s 'config.cachePolicy=[\"DEFAULT\"]'\n"
 msgstr ""
 
 #. type: Title ====
 #, no-wrap
 msgid "Configuring an LDAP user storage provider"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Use the [command]`create` command against the [filename]`components` "
-"endpoint."
 msgstr ""
 
 #. type: Plain text
@@ -2754,4 +2818,110 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "$ kcadm.sh get authentication/flows -r demorealm\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Getting a specific authentication flow"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Run the [command]`get` command on the [filename]`authentication/flows/"
+"FLOW_ID` endpoint."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm.sh get authentication/flows/febfd772-e1a1-42fb-b8ae-00c0566fafb8 -r demorealm\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Listing executions for a flow"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Run the [command]`get` command on the [filename]`authentication/flows/"
+"FLOW_ALIAS/executions` endpoint."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm.sh get authentication/flows/Copy%20of%20browser/executions -r demorealm\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Adding configuration to an execution"
+msgstr ""
+
+#. type: Plain text
+msgid "Get execution for a flow, and take note of its ID"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Run the [command]`create` command on the [filename]`authentication/"
+"executions/{executionId}/config` endpoint."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm create \"authentication/executions/a3147129-c402-4760-86d9-3f2345e401c7/config\" -r examplerealm -b '{\"config\":{\"x509-cert-auth.mapping-source-selection\":\"Match SubjectDN using regular expression\",\"x509-cert-auth.regular-expression\":\"(.*?)(?:$)\",\"x509-cert-auth.mapper-selection\":\"Custom Attribute Mapper\",\"x509-cert-auth.mapper-selection.user-attribute-name\":\"usercertificate\",\"x509-cert-auth.crl-checking-enabled\":\"\",\"x509-cert-auth.crldp-checking-enabled\":false,\"x509-cert-auth.crl-relative-path\":\"crl.pem\",\"x509-cert-auth.ocsp-checking-enabled\":\"\",\"x509-cert-auth.ocsp-responder-uri\":\"\",\"x509-cert-auth.keyusage\":\"\",\"x509-cert-auth.extendedkeyusage\":\"\",\"x509-cert-auth.confirmation-page-disallowed\":\"\"},\"alias\":\"my_otp_config\"}'\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Getting configuration for an execution"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Get execution for a flow, and get its [filename]`authenticationConfig` "
+"attribute, containing the config ID."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Run the [command]`get` command on the [filename]`authentication/config/ID` "
+"endpoint."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm get \"authentication/config/dd91611a-d25c-421a-87e2-227c18421833\" -r examplerealm\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Updating configuration for an execution"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Run the [command]`update` command on the [filename]`authentication/config/"
+"ID` endpoint."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm update \"authentication/config/dd91611a-d25c-421a-87e2-227c18421833\" -r examplerealm -b '{\"id\":\"dd91611a-d25c-421a-87e2-227c18421833\",\"alias\":\"my_otp_config\",\"config\":{\"x509-cert-auth.extendedkeyusage\":\"\",\"x509-cert-auth.mapper-selection.user-attribute-name\":\"usercertificate\",\"x509-cert-auth.ocsp-responder-uri\":\"\",\"x509-cert-auth.regular-expression\":\"(.*?)(?:$)\",\"x509-cert-auth.crl-checking-enabled\":\"true\",\"x509-cert-auth.confirmation-page-disallowed\":\"\",\"x509-cert-auth.keyusage\":\"\",\"x509-cert-auth.mapper-selection\":\"Custom Attribute Mapper\",\"x509-cert-auth.crl-relative-path\":\"crl.pem\",\"x509-cert-auth.crldp-checking-enabled\":\"false\",\"x509-cert-auth.mapping-source-selection\":\"Match SubjectDN using regular expression\",\"x509-cert-auth.ocsp-checking-enabled\":\"\"}}'\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Deleting configuration for an execution"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Run the [command]`delete` command on the [filename]`authentication/config/"
+"ID` endpoint."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm delete \"authentication/config/dd91611a-d25c-421a-87e2-227c18421833\" -r examplerealm\n"
 msgstr ""

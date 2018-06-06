@@ -57,21 +57,14 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Handle responses from a resource server protected by a <<_enforcer_overview, "
-"{project_name} Policy Enforcer>> and obtain a requesting party token (RPT) "
-"with the necessary permissions to gain access to the protected resources on "
-"the resource server."
-msgstr ""
-
-#. type: Plain text
-#, no-wrap
-msgid "** In this case, the library can handle whatever authorization protocol the resource server is using: <<_service_entitlement_api, Entitlements>>.\n"
+"Obtain permissions from the server using a permission ticket, if you are "
+"accessing a UMA protected resource server."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Obtain permissions from a {project_name} Server using the "
-"<<_service_entitlement_api, Entitlement API>>."
+"Obtain permissions from the server by sending the resources and scopes the "
+"application wants to access."
 msgstr ""
 
 #. type: Plain text
@@ -84,7 +77,7 @@ msgstr ""
 
 #. type: Title ==
 #, no-wrap
-msgid "Handling Authorization Responses from a Resource Server"
+msgid "Handling Authorization Responses from a UMA-Protected Resource Server"
 msgstr ""
 
 #. type: Plain text
@@ -97,26 +90,42 @@ msgid ""
 "and a `WWW-Authenticate` header."
 msgstr ""
 
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 401 Unauthorized\n"
+"WWW-Authenticate: UMA realm=\"${realm}\",\n"
+"    as_uri=\"https://${host}:${post}/auth/realms/${realm}\",\n"
+"    ticket=\"016f84e8-f9b9-11e0-bd6f-0021cc6004de\"\n"
+msgstr ""
+
 #. type: Plain text
 msgid ""
-"The value of the `WWW-Authenticate` header depends on the authorization "
-"protocol in use by the resource server. Whatever protocol is in use, you can "
-"use a `KeycloakAuthorization` instance to handle responses as follows:"
+"See <<_service_uma_authorization_process, UMA Authorization Process>> for "
+"more information."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"What your client needs to do is extract the permission ticket from the "
+"```WWW-Authenticate``` header returned by the resource server and use the "
+"library to send an authorization request as follows:"
 msgstr ""
 
 #. type: Code block
 #, no-wrap
 msgid ""
-"var wwwAuthenticateHeader = ... // extract WWW-Authenticate Header from the response in case of a 401 status code\n"
-"authorization.authorize(wwwAuthenticateHeader).then(function (rpt) {\n"
-"    // onGrant callback function.\n"
-"    // If authorization was successful you'll receive an RPT\n"
-"    // with the necessary permissions to access the resource server\n"
+"// prepare a authorization request with the permission ticket\n"
+"var authorizationRequest = {};\n"
+"authorizationRequest.ticket = ticket;\n"
+"\n"
+"// send the authorization request, if successful retry the request\n"
+"Identity.authorization.authorize(authorizationRequest).then(function (rpt) {\n"
+"    // onGrant\n"
 "}, function () {\n"
-"    // onDeny callback function.\n"
-"    // Called when the authorization request is denied by the server\n"
+"    // onDeny\n"
 "}, function () {\n"
-"    // onError callback function. Called when the server responds unexpectedly\n"
+"    // onError\n"
 "});\n"
 msgstr ""
 
@@ -159,8 +168,14 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The keycloak-authz.js library provides an `entitlement` function that you "
-"can use to obtain an RPT from the server using the Entitlement API."
+"The ```keycloak-authz.js``` library provides an `entitlement` function that "
+"you can use to obtain an RPT from the server by providing the resources and "
+"scopes your client wants to access."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Example about how to obtain an RPT with permissions for all resources and scopes the user can access"
 msgstr ""
 
 #. type: Code block
@@ -170,6 +185,25 @@ msgid ""
 "    // onGrant callback function.\n"
 "    // If authorization was successful you'll receive an RPT\n"
 "    // with the necessary permissions to access the resource server\n"
+"});\n"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Example about how to obtain an RPT with permissions for specific resources and scopes"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"authorization.entitlement('my-resource-server', {\n"
+"    \"permissions\": [\n"
+"        {\n"
+"            \"id\" : \"Some Resource\"\n"
+"        }\n"
+"    ]\n"
+"}).then(function (rpt) {\n"
+"    // onGrant\n"
 "});\n"
 msgstr ""
 
@@ -183,6 +217,82 @@ msgstr ""
 msgid ""
 "The `entitlement` function is completely asynchronous and supports a few "
 "callback functions to receive notifications from the server:"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Authorization Request"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Both ```authorize``` and ```entitlement``` functions accept an authorization "
+"request object. This object can be set with the following properties:"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*permissions*\n"
+msgstr ""
+
+#. type: Plain text
+msgid "An array of objects representing the resource and scopes. For instance:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"var authorizationRequest = {\n"
+"   \"permissions\": [\n"
+"       {\n"
+"           \"id\" : \"Some Resource\",\n"
+"           \"scopes\" : [\"view\", \"edit\"]\n"
+"       }\n"
+"   ]\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*metadata*\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"An object where its properties define how the authorization request should "
+"be processed by the server."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "** *response_include_resource_name*\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A boolean value indicating to the server if resource names should be "
+"included in the RPT's permissions. If false, only the resource identifier is "
+"included.  ** *response_permissions_limit*"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"An integer N that defines a limit for the amount of permissions an RPT can "
+"have. When used together with `rpt` parameter, only the last N requested "
+"permissions will be kept in the RPT"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*submit_request*\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A boolean value indicating whether the server should create permission "
+"requests to the resources and scopes referenced by a permission ticket.  "
+"This parameter will only take effect when used together with the `ticket` "
+"parameter as part of a UMA authorization process."
 msgstr ""
 
 #. type: Title ==

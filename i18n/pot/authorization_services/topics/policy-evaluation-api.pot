@@ -28,24 +28,28 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This API consists of a few interfaces that provides you access to "
-"information such as:"
-msgstr ""
-
-#. type: Plain text
-msgid "The permission being requested"
+"This API consists of a few interfaces that provide you access to "
+"information, such as"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The identity that is requesting the permission, from which you can obtain "
-"claims/attributes"
+"The permission being evaluated, representing both the resource and scopes "
+"being requested."
+msgstr ""
+
+#. type: Plain text
+msgid "The attributes associated with the resource being requested"
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "Runtime environment and any other attribute associated with the execution "
 "context"
+msgstr ""
+
+#. type: Plain text
+msgid "Information about users such as group membership and roles"
 msgstr ""
 
 #. type: Plain text
@@ -72,6 +76,13 @@ msgid ""
 "     * @return the evaluation context\n"
 "     */\n"
 "    EvaluationContext getContext();\n"
+"\n"
+"    /**\n"
+"     * Returns a {@link Realm} that can be used by policies to query information.\n"
+"     *\n"
+"     * @return a {@link Realm} instance\n"
+"     */\n"
+"    Realm getRealm();\n"
 "\n"
 "    /**\n"
 "     * Grants the requested permission to the caller.\n"
@@ -156,7 +167,7 @@ msgid ""
 "The `Identity` is built based on the OAuth2 Access Token that was sent along "
 "with the authorization request, and this construct has access to all claims "
 "extracted from the original token. For example, if you are using a _Protocol "
-"Mapper_ to include a custom claim in a OAuth2 Access Token you can also "
+"Mapper_ to include a custom claim in an OAuth2 Access Token you can also "
 "access this claim from a policy and use it to build your conditions."
 msgstr ""
 

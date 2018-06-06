@@ -19,6 +19,11 @@ msgstr ""
 msgid "Authorization Services"
 msgstr ""
 
+#. type: Title ===
+#, no-wrap
+msgid "Token Endpoint"
+msgstr ""
+
 #. type: Title =
 #, no-wrap
 msgid "Architecture"
@@ -58,8 +63,8 @@ msgstr ""
 msgid ""
 "Provides a distributable policy decision point to where authorization "
 "requests are sent and policies are evaluated accordingly with the "
-"permissions being requested. Part of this is also accomplished remotely "
-"through the use of the <<_service_entitlement_api, Entitlement>> APIs."
+"permissions being requested.  For more information, see "
+"<<_service_obtaining_permissions, Obtaining Permissions>>."
 msgstr ""
 
 #. type: Plain text
@@ -212,7 +217,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "For instance,to allow access to a group of resources only for users granted "
-"with a role \"User Premium,\"\" you can use RBAC (Role-based Access Control)."
+"with a role \"User Premium\", you can use RBAC (Role-based Access Control)."
 msgstr ""
 
 #. type: Plain text
@@ -253,28 +258,48 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "Authorization services consist of the following RESTFul APIs:"
+msgid "Authorization services consist of the following RESTFul endpoints:"
 msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid "*Protection API*\n"
+msgid "*Token Endpoint*\n"
 msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid "*Authorization API*\n"
+msgid "*Resource Management Endpoint*\n"
 msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid "*Entitlement API*\n"
+msgid "*Permission Management Endpoint*\n"
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "Each of these services provides a specific API covering the different steps "
 "involved in the authorization process."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"OAuth2 clients (such as front end applications) can obtain access tokens "
+"from the server using the token endpoint and use these same tokens to access "
+"resources protected by a resource server (such as back end services). In the "
+"same way, {project_name} Authorization Services provide extensions to OAuth2 "
+"to allow access tokens to be issued based on the processing of all policies "
+"associated with the resource(s) or scope(s) being requested. This means that "
+"resource servers can enforce access to their protected resources based on "
+"the permissions granted by the server and held by an access token. In "
+"{project_name} Authorization Services the access token with permissions is "
+"called a Requesting Party Token or RPT for short."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For more information, see <<_service_obtaining_permissions, Obtaining "
+"Permissions>>."
 msgstr ""
 
 #. type: Title =
@@ -284,11 +309,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The *Protection API* is a https://kantarainitiative.org/confluence/display/"
-"uma/UMA+1.0+Core+Protocol[UMA-compliant] endpoint providing a small set of "
-"operations for resource servers to help them manage their resources and "
-"scopes. Only resource servers are allowed to access this API, which also "
-"requires a *uma_protection* scope."
+"The *Protection API* is a set of https://docs.kantarainitiative.org/uma/wg/"
+"oauth-uma-federated-authz-2.0-09.html[UMA-compliant] endpoint-providing "
+"operations for resource servers to help them manage their resources, scopes, "
+"permissions, and policies associated with them. Only resource servers are "
+"allowed to access this API, which also requires a *uma_protection* scope."
 msgstr ""
 
 #. type: Plain text
@@ -303,8 +328,7 @@ msgid ""
 "** Create Resource\n"
 "** Delete Resource\n"
 "** Find by Id\n"
-"** Find All\n"
-"** Find with filters (for example, search by name, type, or URI)\n"
+"** Query\n"
 msgstr ""
 
 #. type: Plain text
@@ -336,66 +360,4 @@ msgstr ""
 
 #. type: Plain text
 msgid "For more information, see <<_service_protection_api, Protection API>>."
-msgstr ""
-
-#. type: Title =
-#, no-wrap
-msgid "Authorization API"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The Authorization API is also a https://kantarainitiative.org/confluence/"
-"display/uma/UMA+1.0+Core+Protocol[UMA-compliant] endpoint providing a single "
-"operation that exchanges an Access Token and "
-"<<_overview_terminology_permission_ticket, Permission Ticket>> with a "
-"Requesting Party Token (RPT)."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The RPT contains all permissions granted to a client and can be used to call "
-"a resource server to get access to its protected resources."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"When requesting an RPT you can also provide a previously issued RPT. In this "
-"case, the resulting RPT will consist of the union of the permissions from "
-"the previous RPT and the new ones within a permission ticket."
-msgstr ""
-
-#. type: Plain text
-msgid "image:images/authz-calls.png[alt=\"Authorization API Overview\"]"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"For more information, see <<_service_authorization_api, Authorization API>>."
-msgstr ""
-
-#. type: Title =
-#, no-wrap
-msgid "Entitlement API"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The Entitlement API provides a 1-legged protocol to issue RPTs. Unlike the "
-"Authorization API, the Entitlement API only expects an access token."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"From this API you can obtain all the entitlements or permissions for a user "
-"(based on the resources managed by a given resource server) or just the "
-"entitlements for a set of one or more resources."
-msgstr ""
-
-#. type: Plain text
-msgid "image:images/entitlement-calls.png[alt=\"Entitlement API Overview\"]"
-msgstr ""
-
-#. type: Plain text
-msgid "For more information see <<_service_entitlement_api, Entitlement API>>."
 msgstr ""

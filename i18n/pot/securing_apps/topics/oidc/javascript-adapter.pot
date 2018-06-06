@@ -92,9 +92,9 @@ msgid ""
 "    <script src=\"keycloak.js\"></script>\n"
 "    <script>\n"
 "        var keycloak = Keycloak();\n"
-"        keycloak.init().success(function(authenticated) {\n"
+"        keycloak.init().then(function(authenticated) {\n"
 "            alert(authenticated ? 'authenticated' : 'not authenticated');\n"
-"        }).error(function() {\n"
+"        }).catch(function() {\n"
 "            alert('failed to initialize');\n"
 "        });\n"
 "    </script>\n"
@@ -212,9 +212,9 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.updateToken(30).success(function() {\n"
+"keycloak.updateToken(30).then(function() {\n"
 "    loadData();\n"
-"}).error(function() {\n"
+"}).catch(function() {\n"
 "    alert('Failed to refresh token');\n"
 "});\n"
 msgstr ""
@@ -352,8 +352,21 @@ msgid "https://github.com/davidchambers/Base64.js"
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
-msgid "https://github.com/devote/HTML5-History-API        \n"
+msgid "https://github.com/devote/HTML5-History-API"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If available, the JavaScript adapter will use native Promise instances as "
+"return values from functions documented as returning promises.  To retain "
+"backwards compatibility, the `success()` and `error()` functions from "
+"previous versions of the adapter are retained.  These remain available "
+"whether or not native Promises are provided by the browser.  Promise API "
+"polyfills are available for browsers without support:"
+msgstr ""
+
+#. type: Plain text
+msgid "https://github.com/stefanpenner/es6-promise"
 msgstr ""
 
 #. type: Title ====
@@ -504,6 +517,36 @@ msgstr ""
 
 #. type: Labeled list
 #, no-wrap
+msgid "adapter"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Allows you to override the way that redirects and other browser-related "
+"functions will be handled by the library.  Available options:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"\"default\" - the library uses the browser api for redirects (this is the "
+"default)"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"\"cordova\" - the library will try to use the InAppBrowser cordova plugin to "
+"load keycloak login/registration pages (this is used automatically when the "
+"library is working in a cordova ecosystem)"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"custom - allows you to implement a custom adapter (only for advanced use "
+"cases)"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
 msgid "responseType"
 msgstr ""
 
@@ -634,7 +677,16 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "locale - Specifies the desired locale for the UI."
+msgid ""
+"locale - Sets the 'ui_locales' query param in compliance with section "
+"3.1.2.1 of the OIDC 1.0 specification."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"kcLocale - Specifies the desired Keycloak locale for the UI.  This differs "
+"from the locale param in that it tells the Keycloak server to set a cookie "
+"and update the user's profile to a new preferred locale."
 msgstr ""
 
 #. type: Title ======
@@ -764,9 +816,9 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.loadUserProfile().success(function(profile) {\n"
+"keycloak.loadUserProfile().then(function(profile) {\n"
 "        alert(JSON.stringify(test, null, \"  \"));\n"
-"    }).error(function() {\n"
+"    }).catch(function() {\n"
 "        alert('Failed to load user profile');\n"
 "    });\n"
 msgstr ""
@@ -803,13 +855,13 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.updateToken(5).success(function(refreshed) {\n"
+"keycloak.updateToken(5).then(function(refreshed) {\n"
 "        if (refreshed) {\n"
 "            alert('Token was successfully refreshed');\n"
 "        } else {\n"
 "            alert('Token is still valid');\n"
 "        }\n"
-"    }).error(function() {\n"
+"    }).catch(function() {\n"
 "        alert('Failed to refresh the token, or the session has expired');\n"
 "    });\n"
 msgstr ""

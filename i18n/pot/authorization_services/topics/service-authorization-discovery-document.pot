@@ -1,0 +1,119 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title =
+#, no-wrap
+msgid "Discovering Authorization Services Endpoints and Metadata"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} provides a discovery document from which clients can obtain "
+"all necessary information to interact with {project_name} Authorization "
+"Services, including endpoint locations and capabilities."
+msgstr ""
+
+#. type: Plain text
+msgid "The discovery document can be obtained from:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X GET \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/.well-known/uma2-configuration\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Where `${host}:${port}` is the hostname (or IP address) and port where "
+"{project_name} is running and `${realm}` is the name of a realm in "
+"{project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid "As a result, you should get a response as follows:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"{\n"
+"\n"
+"    // some claims are expected here\n"
+"\n"
+"    // these are the main claims in the discovery document about Authorization Services endpoints location\n"
+"    \"token_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/protocol/openid-connect/token\",\n"
+"    \"token_introspection_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/protocol/openid-connect/token/introspect\",\n"
+"    \"resource_registration_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/authz/protection/resource_set\",\n"
+"    \"permission_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/authz/protection/permission\"\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Each of these endpoints expose a specific set of capabilities:"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "**token_endpoint**\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A OAuth2-compliant Token Endpoint that supports the `urn:ietf:params:oauth:"
+"grant-type:uma-ticket` grant type. Through this endpoint clients can send "
+"authorization requests and obtain an RPT with all permissions granted by "
+"{project_name}."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "**token_introspection_endpoint**\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A OAuth2-compliant Token Introspection Endpoint which clients can use to "
+"query the server to determine the active state of an RPT and to determine "
+"any other information associated with the token, such as the permissions "
+"granted by {project_name}."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "**resource_registration_endpoint**\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A UMA-compliant Resource Registration Endpoint which resource servers can "
+"use to manage their protected resources and scopes. This endpoint provides "
+"operations create, read, update and delete resources and scopes in "
+"{project_name}."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "**permission_endpoint**\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A UMA-compliant Permission Endpoint which resource servers can use to manage "
+"permission tickets. This endpoint provides operations create, read, update, "
+"and delete permission tickets in {project_name}."
+msgstr ""

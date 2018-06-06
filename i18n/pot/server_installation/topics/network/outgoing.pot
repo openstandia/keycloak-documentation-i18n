@@ -152,6 +152,122 @@ msgid ""
 "set."
 msgstr ""
 
+#. type: Labeled list
+#, no-wrap
+msgid "proxy-mappings"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Dennotes proxy configurations for outgoing HTTP requests.  See the section "
+"on <<_proxymappings, Proxy Mappings for Outgoing HTTP Requests>> for more "
+"details."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Proxy Mappings for Outgoing HTTP Requests"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Outgoing HTTP requests sent by {project_name} can optionally use a proxy "
+"server based on a comma delimited list of proxy-mappings.  A proxy-mapping "
+"denotes the combination of a regex based hostname pattern and a proxy-uri in "
+"the form of `hostnamePattern;proxyUri`, e.g.:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ".*\\.(google|googleapis)\\.com;http://www-proxy.acme.com:8080\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To determine the proxy for an outgoing HTTP request the target hostname is "
+"matched against the configured hostname patterns. The first matching pattern "
+"determines the proxy-uri to use.  If none of the configured patterns match "
+"for the given hostname then no proxy is used."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The special value `NO_PROXY` for the proxy-uri can be used to indicate that "
+"no proxy should be used for hosts matching the associated hostname pattern.  "
+"It is possible to specify a catch-all pattern at the end of the proxy-"
+"mappings to define a default proxy for all outgoing requests."
+msgstr ""
+
+#. type: Plain text
+msgid "The following example demonstrates the proxy-mapping configuration."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"# All requests to Google APIs should use http://www-proxy.acme.com:8080 as proxy\n"
+".*\\.(google|googleapis)\\.com;http://www-proxy.acme.com:8080\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"# All requests to internal systems should use no proxy\n"
+".*\\.acme\\.com;NO_PROXY\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"# All other requests should use http://fallback:8080 as proxy\n"
+".*;http://fallback:8080\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This can be configured via the following `jboss-cli` command.  Note that you "
+"need to properly escape the regex-pattern as shown below."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "echo SETUP: Configure proxy routes for HttpClient SPI\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"# In case there is no connectionsHttpClient definition yet\n"
+"/subsystem=keycloak-server/spi=connectionsHttpClient/provider=default:add(enabled=true)\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"# Configure the proxy-mappings\n"
+"/subsystem=keycloak-server/spi=connectionsHttpClient/provider=default:write-attribute(name=properties.proxy-mappings,value=[\".*\\\\.(google|googleapis)\\\\.com;http://www-proxy.acme.com:8080\",\".*\\\\.acme\\\\.com;NO_PROXY\",\".*;http://fallback:8080\"])\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `jboss-cli` command results in the following subsystem configuration.  "
+"Note that one needs to encode `\"` characters with `&quot;`."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"connectionsHttpClient\">\n"
+"    <provider name=\"default\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property \n"
+"            name=\"proxy-mappings\" \n"
+"            value=\"[&quot;.*\\\\.(google|googleapis)\\\\.com;http://www-proxy.acme.com:8080&quot;,&quot;.*\\\\.acme\\\\.com;NO_PROXY&quot;,&quot;.*;http://fallback:8080&quot;]\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+
 #. type: Title ====
 #, no-wrap
 msgid "Outgoing HTTPS Request Truststore"
@@ -179,7 +295,7 @@ msgstr ""
 msgid ""
 "By default, a truststore provider is not configured, and any https connections fall back to standard java truststore configuration as described in\n"
 "          https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html[Java's JSSE Reference Guide].  If there is no trust\n"
-"          establised, then these outgoing HTTPS requests will fail.\n"
+"          established, then these outgoing HTTPS requests will fail.\n"
 msgstr ""
 
 #. type: Plain text

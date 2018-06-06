@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 401 Unauthorized\n"
+"WWW-Authenticate: UMA realm=\"${realm}\",\n"
+"    as_uri=\"https://${host}:${post}/auth/realms/${realm}\",\n"
+"    ticket=\"016f84e8-f9b9-11e0-bd6f-0021cc6004de\"\n"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"ticket=${permission_ticket}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If ${project_name} assessment process results in issuance of permissions, it "
+"issues the RPT with which it has associated the permissions:"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "{project_name} responds to the client with the RPT"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 200 OK\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"access_token\": \"${rpt}\",\n"
+"}\n"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "{project_name} denies the authorization request"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 403 Forbidden\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"error\": \"access_denied\",\n"
+"    \"error_description\": \"request_denied\"\n"
+"}\n"
+msgstr ""
+
+#. type: Title =
+#, no-wrap
+msgid "Authorization Process"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In UMA, the authorization process starts when a client tries to access a UMA "
+"protected resource server."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A UMA protected resource server expects a bearer token in the request where "
+"the token is an RPT. When a client requests a resource at the resource "
+"server without a permission ticket:"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Client requests a protected resource without sending an RPT"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X GET \\\n"
+"  http://${host}:8080/my-resource-server/resource/1bfdfe78-a4e1-4c2d-b142-fc92b75b986f\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The resource server sends a response back to the client with a permission "
+"`ticket` and a `as_uri` parameter with the location of a {project_name} "
+"server to where the ticket should be sent in order to obtain an RPT."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Resource server responds with a permission ticket"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The permission ticket is a special type of token issued by {project_name} "
+"Permission API. They represent the permissions being requested (e.g.: "
+"resources and scopes)  as well any other information associated with the "
+"request. Only resource servers are allowed to create those tokens."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Now that the client has a permission ticket and also the location of a "
+"{project_name} server, the client can use the discovery document to obtain "
+"the location of the token endpoint and send an authorization request."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Client sends an authorization request to the token endpoint to obtain an RPT"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The response from the server is just like any other response from the token "
+"endpoint when using some other grant type. The RPT can be obtained from the "
+"`access_token` response parameter. In case the client is not authorized to "
+"have permissions {project_name} responds with a `403` HTTP status code:"
+msgstr ""

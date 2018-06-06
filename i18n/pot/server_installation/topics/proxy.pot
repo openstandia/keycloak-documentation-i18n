@@ -74,6 +74,7 @@ msgstr ""
 msgid ""
 "{\n"
 "    \"target-url\": \"http://localhost:8082\",\n"
+"    \"target-request-timeout\": \"60000\",\n"
 "    \"send-access-token\": true,\n"
 "    \"bind-address\": \"localhost\",\n"
 "    \"http-port\": \"8080\",\n"
@@ -139,7 +140,17 @@ msgid "target-url"
 msgstr ""
 
 #. type: Plain text
-msgid "The URL this server is proxying _REQUIRED._."
+msgid "The URL this server is proxying. _REQUIRED_."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "target-request-timeout"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The timeout (in ms) for the proxied request. _OPTIONAL_.  Default is 30000."
 msgstr ""
 
 #. type: Labeled list
@@ -150,7 +161,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Boolean flag.  If true, this will send the access token via the "
-"KEYCLOAK_ACCESS_TOKEN header to the proxied server. _OPTIONAL._.  Default is "
+"KEYCLOAK_ACCESS_TOKEN header to the proxied server. _OPTIONAL_.  Default is "
 "false."
 msgstr ""
 
@@ -162,7 +173,7 @@ msgstr ""
 #. type: Plain text
 #, no-wrap
 msgid ""
-"DNS name or IP address to bind the proxy server's sockets to. _OPTIONAL._.\n"
+"DNS name or IP address to bind the proxy server's sockets to. _OPTIONAL_.\n"
 "The default value is _localhost_                        \n"
 msgstr ""
 
@@ -174,7 +185,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Port to listen for HTTP requests.  If you do not specify this value, then "
-"the proxy will not listen for regular HTTP requests. _OPTIONAL._."
+"the proxy will not listen for regular HTTP requests. _OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -185,7 +196,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Port to listen for HTTPS requests.  If you do not specify this value, then "
-"the proxy will not listen for HTTPS requests. _OPTIONAL._."
+"the proxy will not listen for HTTPS requests. _OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -197,7 +208,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "Path to a Java keystore file that contains private key and certificate for the server to be able to handle HTTPS requests.\n"
-"Can be a file path, or, if you prefix it with `classpath:`                            it will look for this file in the classpath. _OPTIONAL._.\n"
+"Can be a file path, or, if you prefix it with `classpath:`                            it will look for this file in the classpath. _OPTIONAL_.\n"
 "If you have enabled HTTPS, but have not defined a keystore, the proxy will auto-generate a self-signed certificate and use that. \n"
 msgstr ""
 
@@ -209,7 +220,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "HTTP server socket buffer size.  Usually the default is good enough. "
-"_OPTIONAL._."
+"_OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -220,7 +231,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "HTTP server socket buffers per region.  Usually the default is good enough. "
-"_OPTIONAL._."
+"_OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -234,7 +245,7 @@ msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid "_OPTIONAL._.\n"
+msgid "_OPTIONAL_.\n"
 msgstr ""
 
 #. type: Plain text
@@ -251,7 +262,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "Number of threads to handle requests.\n"
-"Usually the default is good enough. _OPTIONAL._.\n"
+"Usually the default is good enough. _OPTIONAL_.\n"
 "The default is the number of available processors * 16.         \n"
 msgstr ""
 
@@ -273,7 +284,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The base context root for the application.  Must start with '/' _REQUIRED._."
+"The base context root for the application.  Must start with '/'. _REQUIRED_."
 msgstr ""
 
 #. type: Labeled list
@@ -284,7 +295,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "If the proxy has an error, it will display the target application's error "
-"page relative URL _OPTIONAL._.  This is a relative path to the base-path.  "
+"page relative URL. _OPTIONAL_.  This is a relative path to the base-path.  "
 "In the example above it would be `/customer-portal/error.html`."
 msgstr ""
 
@@ -295,7 +306,18 @@ msgstr ""
 
 #.  See <<_adapter_config,Adapter Config>>                                        
 #. type: Plain text
-msgid "_REQUIRED._.  Same configuration as any other {project_name} adapter."
+msgid "_REQUIRED_.  Same configuration as any other {project_name} adapter."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "proxy-address-forwarding"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Enable usage of X-Forwarded-For, X-Forwarded-Host, X-Forwarded-Proto when "
+"hosted behind another proxy/load-balancer."
 msgstr ""
 
 #. type: Title ====
@@ -320,7 +342,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "URL pattern to match relative to the base-path of the application.  Must "
-"start with '/' _REQUIRED._ You may only have one wildcard and it must come "
+"start with '/'. _REQUIRED._ You may only have one wildcard and it must come "
 "at the end of the pattern."
 msgstr ""
 
@@ -339,7 +361,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Array of strings of roles allowed to access this url pattern. _OPTIONAL._."
+"Array of strings of roles allowed to access this url pattern. _OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -350,7 +372,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Array of strings of HTTP methods that will exclusively match this pattern "
-"and HTTP request. _OPTIONAL._."
+"and HTTP request. _OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -361,7 +383,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Array of strings of HTTP methods that will be ignored when match this "
-"pattern. _OPTIONAL._."
+"pattern. _OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -370,7 +392,7 @@ msgid "deny"
 msgstr ""
 
 #. type: Plain text
-msgid "Deny all access to this URL pattern. _OPTIONAL._."
+msgid "Deny all access to this URL pattern. _OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -381,7 +403,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Permit all access without requiring authentication or a role mapping. "
-"_OPTIONAL._."
+"_OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -391,8 +413,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Permit all access, but inject the headers, if user is already authenticated."
-"_OPTIONAL._."
+"Permit all access, but inject the headers, if user is already authenticated. "
+"_OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -402,7 +424,7 @@ msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid "Require authentication for this pattern, but no role mapping. _OPTIONAL._.                 \n"
+msgid "Require authentication for this pattern, but no role mapping. _OPTIONAL_.                 \n"
 msgstr ""
 
 #. type: Title ====
@@ -413,8 +435,8 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Next under the list of applications you can override the defaults for the "
-"names of the header fields injected by the proxy (see {project_name} "
-"Identity Headers). This mapping is optional."
+"names of the header fields injected by the proxy (see <<_identity_headers, "
+"{project_name} Identity Headers>>). This mapping is optional."
 msgstr ""
 
 #. type: Labeled list
@@ -493,7 +515,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "Username.\n"
-"Corresponds to JWT `preferred_username`                        \n"
+"Corresponds to JWT `preferred_username`.                        \n"
 msgstr ""
 
 #. type: Labeled list

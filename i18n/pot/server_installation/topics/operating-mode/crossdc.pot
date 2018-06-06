@@ -19,6 +19,11 @@ msgstr ""
 msgid "Troubleshooting"
 msgstr ""
 
+#. type: Title ==
+#, no-wrap
+msgid "Prerequisites"
+msgstr ""
+
 #. type: Title ===
 #, no-wrap
 msgid "Cross-Datacenter Replication Mode"
@@ -45,11 +50,6 @@ msgstr ""
 
 #. type: Plain text
 msgid "image:{project_images}/cross-dc-architecture.png[]"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Prerequisities"
 msgstr ""
 
 #. type: Plain text
@@ -111,7 +111,7 @@ msgstr ""
 msgid ""
 "An Infinispan cache is used to cache persistent data from the database and "
 "also to save some short-lived and frequently-changing metadata, such as for "
-"user sessions.  Infinispan is usually much faster then a database, however "
+"user sessions.  Infinispan is usually much faster than a database, however "
 "the data saved using Infinispan are not permanent and is not expected to "
 "persist across cluster restarts."
 msgstr ""
@@ -306,7 +306,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "{project_name} uses Infinispan to cache persistent data to avoid many "
-"unecessary requests to the database.  Caching improves performance, however "
+"unnecessary requests to the database.  Caching improves performance, however "
 "it adds an additional challenge. When some {project_name} server updates any "
 "data, all other {project_name} servers in all data centers need to be aware "
 "of it, so they invalidate particular data from their caches. {project_name} "
@@ -357,7 +357,7 @@ msgid ""
 "whether this cache should be replicated across data centers. To have an "
 "accurate count of login failures, the replication is needed. On the other "
 "hand, not replicating this data can save some performance. So if performance "
-"is more important then accurate counts of login failures, the replication "
+"is more important than accurate counts of login failures, the replication "
 "can be avoided."
 msgstr ""
 
@@ -462,7 +462,7 @@ msgid ""
 "<<database>>."
 msgstr ""
 
-#. type: Title ====
+#. type: Title =====
 #, no-wrap
 msgid "{jdgserver_name} server setup"
 msgstr ""
@@ -595,16 +595,87 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Copy the server into the second location, which will be referred to later as "
+"Newer {jdgserver_name} releases require authorization before accessing "
+"protected caches over network. {project_name} requires updates to "
+"`___script_cache` cache containing scripts. If you get errors accessing this "
+"cache, you will need to set up authorization in `clustered.xml` "
+"configuration as described below:"
+msgstr ""
+
+#. type: Plain text
+msgid "In the `<management>` section, add a security realm:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<management>\n"
+"    <security-realms>\n"
+"        ...\n"
+"        <security-realm name=\"AllowScriptManager\">\n"
+"            <authentication>\n"
+"                <users>\n"
+"                    <user username=\"___script_manager\">\n"
+"                        <password>not-so-secret-password</password>\n"
+"                    </user>\n"
+"                </users>\n"
+"            </authentication>\n"
+"        </security-realm>\n"
+"    </security-realms>\n"
+"\n"
+msgstr ""
+
+#. type: Plain text
+msgid "In the server core subsystem, add `<security>` as below:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<subsystem xmlns=\"urn:infinispan:server:core:8.4\">\n"
+"    <cache-container name=\"clustered\" default-cache=\"default\" statistics=\"true\">\n"
+"        <security>\n"
+"            <authorization>\n"
+"                <identity-role-mapper/>\n"
+"                <role name=\"___script_manager\" permissions=\"ALL\"/>\n"
+"            </authorization>\n"
+"        </security> \n"
+"        ...\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the endpoint subsystem, add authentication configuration to Hot Rod "
+"connector:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<subsystem xmlns=\"urn:infinispan:server:endpoint:8.1\">\n"
+"    <hotrod-connector cache-container=\"clustered\" socket-binding=\"hotrod\">\n"
+"        ...\n"
+"        <authentication security-realm=\"AllowScriptManager\">\n"
+"            <sasl mechanisms=\"DIGEST-MD5\" qop=\"auth\" server-name=\"keycloak-jdg-server\">\n"
+"                <policy>\n"
+"                    <no-anonymous value=\"false\" />\n"
+"                </policy>\n"
+"            </sasl>\n"
+"        </authentication>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Copy the server to the second location, which will be referred to later as "
 "`JDG2_HOME`."
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "In the `JDG2_HOME/standalone/configuration/clustered.xml` exchange `site1` "
-"with `site2` and viceversa in the configuration of `relay` in the JGroups "
-"subsystem and in configuration of `backups` in the cache-subsystem. For "
-"example:"
+"with `site2` and vice versa, both in the configuration of `relay` in the "
+"JGroups subsystem and in configuration of `backups` in the cache-subsystem. "
+"For example:"
 msgstr ""
 
 #. type: Plain text
@@ -717,7 +788,7 @@ msgid ""
 "protocol view, you will see all the members of current cluster."
 msgstr ""
 
-#. type: Title ====
+#. type: Title =====
 #, no-wrap
 msgid "{project_name} servers setup"
 msgstr ""
@@ -1060,7 +1131,7 @@ msgid ""
 "{jdgserver_name} servers will automatically send new topology to the "
 "{project_name} servers about the change in the {jdgserver_name} cluster, so "
 "the remote store on {project_name} side will know to which {jdgserver_name} "
-"servers it can connect. Read the {jdgserver_name} and Wildfly documentation "
+"servers it can connect. Read the {jdgserver_name} and WildFly documentation "
 "for more details."
 msgstr ""
 
@@ -1160,8 +1231,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This has turned off the backup to `site2` for the cache `sessions`. The same "
-"steps usually need to be done for all the other {project_name} caches "
+"These steps usually need to be done for all the {project_name} caches "
 "mentioned in <<backups>>."
 msgstr ""
 
@@ -1229,11 +1299,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"State transfer is a required, manual step. {jdgserver_name} does not do this "
-"automatically, for example during split-brain, it is only the admin who may "
-"decide which site has preference and hence if state transfer needs to be "
-"done bidirectionally between both sites or just unidirectionally, as in only "
-"from `site1` to `site2`, but not from `site2` to `site1`."
+"State transfer is a required, manual step. {jdgserver_name} server does not "
+"do this automatically, for example during split-brain, it is only the admin "
+"who may decide which site has preference and hence if state transfer needs "
+"to be done bidirectionally between both sites or just unidirectionally, as "
+"in only from `site1` to `site2`, but not from `site2` to `site1`."
 msgstr ""
 
 #. type: Plain text
@@ -1262,11 +1332,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The state transfer can be also done on the {jdgserver_name} side through "
-"JMX. The operation name is `pushState`. There are few other operations to "
-"monitor status, cancel push state, and so on.  More info about state "
-"transfer is available in the link:https://access.redhat.com/documentation/en-"
-"us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/"
+"The state transfer can be also done on the {jdgserver_name} server side "
+"through JMX. The operation name is `pushState`. There are few other "
+"operations to monitor status, cancel push state, and so on.  More info about "
+"state transfer is available in the link:https://access.redhat.com/"
+"documentation/en-us/red_hat_jboss_data_grid/7.1/html/"
+"administration_and_configuration_guide/"
 "set_up_cross_datacenter_replication#state_transfer_between_sites[{jdgserver_name} "
 "docs]."
 msgstr ""
@@ -1438,7 +1509,8 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The only (non-functional) problem is the exception in the {jdgserver_name} "
-"log, which happens every time when the lock is not immediately available."
+"server log, which happens every time when the lock is not immediately "
+"available."
 msgstr ""
 
 #. type: Title ====
@@ -1484,7 +1556,7 @@ msgid ""
 "the `remote-store` element for the particular cache on the {project_name} "
 "side (file `KEYCLOAK_HOME/standalone/configuration/standalone-ha.xml`) and "
 "then the particular `replicated-cache` element is also not needed on the "
-"{jdgserver_name} side."
+"{jdgserver_name} server side."
 msgstr ""
 
 #. type: Plain text
@@ -1497,8 +1569,8 @@ msgstr ""
 msgid ""
 "If you are using active/passive mode (all {project_name} servers are in "
 "single site `site1` and the {jdgserver_name} server in `site2` is used "
-"purely as backup. More details [here](#modes)), then it is usually fine to "
-"use `ASYNC` strategy for all the caches to save the performance."
+"purely as backup. See <<modes>> for more details), then it is usually fine "
+"to use `ASYNC` strategy for all the caches to save the performance."
 msgstr ""
 
 #. type: Plain text
@@ -1512,13 +1584,13 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The `actionTokens` cache is used as single-use cache to track that some "
-"tokens/tickets were used just once. For example <<cache>> or OAuth2 codes. "
-"It is possible to set this to `ASYNC` to slightly improved performance, but "
-"then it is not guaranteed that particular ticket is really single-use. For "
-"example, if there is concurrent request for same ticket in both sites, then "
-"it is possible that both requests will be successful with the `ASYNC` "
-"strategy. So what you set here will depend on whether you prefer better "
-"security (`SYNC` strategy) or better performance (`ASYNC` strategy)."
+"tokens/tickets were used just once. For example action tokens or OAuth2 "
+"codes. It is possible to set this to `ASYNC` to slightly improved "
+"performance, but then it is not guaranteed that particular ticket is really "
+"single-use. For example, if there is concurrent request for same ticket in "
+"both sites, then it is possible that both requests will be successful with "
+"the `ASYNC` strategy. So what you set here will depend on whether you prefer "
+"better security (`SYNC` strategy) or better performance (`ASYNC` strategy)."
 msgstr ""
 
 #. type: Plain text
@@ -1552,9 +1624,9 @@ msgid ""
 "{project_name} as described in <<requestprocessing>>) will be always "
 "processed on same site. This is true, for example, if: ** You use active/"
 "passive mode as described <<modes>>.  ** All your client applications are "
-"using the {project_name} link:http://www.keycloak.org/docs/latest/"
-"securing_apps/index.html#_javascript_adapter[Javascript Adapter]. The "
-"Javascript adapter sends the backchannel requests within the browser and "
+"using the {project_name} link:https://www.keycloak.org/docs/latest/"
+"securing_apps/index.html#_javascript_adapter[JavaScript Adapter]. The "
+"JavaScript adapter sends the backchannel requests within the browser and "
 "hence they participate on the browser sticky session and will end on same "
 "cluster node (hence on same site) as the other browser requests of this "
 "user.  ** Your load balancer is able to serve the requests based on client "
@@ -1589,7 +1661,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Regarding the switch to SYNC/ASYNC backup, make sure that you edit the "
-"`strategy` attribute of the the `backup` element. For example like this:"
+"`strategy` attribute of the `backup` element. For example like this:"
 msgstr ""
 
 #. type: Code block
@@ -1725,7 +1797,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Sometimes you may see the exceptions related to locks like this in "
-"{jdgserver_name} log:"
+"{jdgserver_name} server log:"
 msgstr ""
 
 #. type: Code block
@@ -1739,17 +1811,59 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Those exceptions are not necessarily an issue. They may happen anytime when "
-"concurrent edit of same entity is triggered on both DCs. This can be the "
-"often case in a deployment. Usually the {project_name} server is notified "
-"about the failed operation and will retry it, so from the user's point of "
-"view, there is usually not any issue."
+"a concurrent edit of the same entity is triggered on both DCs. This is "
+"common in a deployment. Usually the {project_name} server is notified about "
+"the failed operation and will retry it, so from the user's point of view, "
+"there is usually not any issue."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"If you try to authenticate with {project_name} to your application, but it "
-"failed with the infinite number of redirects in your browser and you see the "
-"errors like this in the {project_name} server log:"
+"If there are exceptions during startup of {project_name} server, like this:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"16:44:18,321 WARN  [org.infinispan.client.hotrod.impl.protocol.Codec21] (ServerService Thread Pool -- 55) ISPN004005: Error received from the server: java.lang.SecurityException: ISPN000287: Unauthorized access: subject 'Subject with principal(s): []' lacks 'READ' permission\n"
+" ...\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"These log entries are the result of {project_name} automatically detecting "
+"whether authentication is required on {jdgserver_name} and mean that "
+"authentication is necessary. At this point you will notice that either the "
+"server starts successfully and you can safely ignore these or that the "
+"server fails to start. If the server fails to start, ensure that "
+"{jdgserver_name} has been configured properly for authentication as "
+"described in <<jdgsetup>>. To prevent this log entry from being included, "
+"you can force authentication by setting `remoteStoreSecurityEnabled` "
+"property to `true` in `spi=connectionsInfinispan/provider=default` "
+"configuration:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
+"    ...\n"
+"    <spi name=\"connectionsInfinispan\">\n"
+"        ...\n"
+"        <provider name=\"default\" enabled=\"true\">\n"
+"            <properties>\n"
+"                ...\n"
+"                <property name=\"remoteStoreSecurityEnabled\" value=\"true\"/>\n"
+"            </properties>\n"
+"        </provider>\n"
+"    </spi>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If you try to authenticate with {project_name} to your application, but "
+"authentication fails with an infinite number of redirects in your browser "
+"and you see the errors like this in the {project_name} server log:"
 msgstr ""
 
 #. type: Code block
@@ -1765,4 +1879,21 @@ msgid ""
 "sessions. Make sure that the provided route name used during startup of "
 "{project_name} server (Property `jboss.node.name`) contains the correct name "
 "used by the load balancer server to identify the current server."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If the {jdgserver_name} `work` cache grows indefinitely, you may be "
+"experiencing https://issues.jboss.org/browse/JDG-987[this {jdgserver_name} "
+"issue], which is caused by cache items not being properly expired. In that "
+"case, update the cache declaration with an empty `<expiration />` tag like "
+"this:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"    <replicated-cache name=\"work\" configuration=\"sessions-cfg\">\n"
+"        <expiration />\n"
+"    </replicated-cache>\n"
 msgstr ""

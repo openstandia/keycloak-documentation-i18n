@@ -26,8 +26,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Keycloak supports login with a X.509 client certificate if the server is "
-"configured for mutual SSL authentication.\t"
+"{project_name} supports login with a X.509 client certificate if the server "
+"is configured for mutual SSL authentication."
 msgstr ""
 
 #. type: Plain text
@@ -46,7 +46,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The container (wildfly) validates the certificate PKIX path and the "
+"The container (WildFly) validates the certificate PKIX path and the "
 "certificate expiration"
 msgstr ""
 
@@ -122,6 +122,12 @@ msgstr ""
 
 #. type: Plain text
 msgid "X500 Subject's e-mail attribute"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"X500 Subject's e-mail from Subject Alternative Name Extension (RFC822Name "
+"General Name)"
 msgstr ""
 
 #. type: Plain text
@@ -223,7 +229,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The following sections describe how to configure Wildfly/Undertow and the "
-"Keycloak Server to enable X.509 client certificate authentication."
+"{project_name} Server to enable X.509 client certificate authentication."
 msgstr ""
 
 #. type: Labeled list
@@ -241,7 +247,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Open $KEYCLOAK_HOME/standalone/configuration/standalone.xml and add a new "
+"Open {project_dirref}/standalone/configuration/standalone.xml and add a new "
 "realm:"
 msgstr ""
 
@@ -426,7 +432,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Make a copy of the buit-in \"Browser\" flow. You may want to give the new "
+"Make a copy of the built-in \"Browser\" flow. You may want to give the new "
 "flow a distinctive name, i.e. \"X.509 Browser\""
 msgstr ""
 
@@ -583,7 +589,7 @@ msgid ""
 "Verifies whether the certificate's KeyUsage extension bits are set. For "
 "example, \"digitalSignature,KeyEncipherment\" will verify if bits 0 and 2 in "
 "the KeyUsage extension are asserted. Leave the parameter empty to disable "
-"the Key Usage validaion. See link:https://tools.ietf.org/html/"
+"the Key Usage validation. See link:https://tools.ietf.org/html/"
 "rfc5280#section-4.2.1.3[RFC5280, Section-4.2.1.3]. The server will raise an "
 "error only when flagged as critical by the issuing CA and there is a key "
 "usage extension mismatch."
@@ -612,7 +618,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "If set, X.509 client certificate authentication will not prompt the user to "
-"confirm the certificate identity and will automatiocally sign in the user "
+"confirm the certificate identity and will automatically sign in the user "
 "upon successful authentication."
 msgstr ""
 
@@ -623,8 +629,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Using keycloak admin console, click on \"Authentication\" and select the "
-"\"Direct Grant\" flow,"
+"Using {project_name} admin console, click on \"Authentication\" and select "
+"the \"Direct Grant\" flow,"
 msgstr ""
 
 #. type: Plain text
@@ -672,6 +678,138 @@ msgstr ""
 msgid "image:images/x509-directgrant-flow-bindings.png[]"
 msgstr ""
 
+#. type: Title ====
+#, no-wrap
+msgid "Client certificate lookup"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When an HTTP request is sent directly to {project_name} server, the "
+"{appserver_name} undertow subsystem will establish an SSL handshake and "
+"extract the client certificate. The client certificate will be then saved to "
+"the attribute `javax.servlet.request.X509Certificate` of the HTTP request, "
+"as specified in the servlet specification. The {project_name} X509 "
+"authenticator will be then able to lookup the certificate from this "
+"attribute."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"However, when the {project_name} server listens to HTTP requests behind a "
+"load balancer or reverse proxy, it may be the proxy server which extracts "
+"the client certificate and establishes the mutual SSL connection. A reverse "
+"proxy usually puts the authenticated client certificate in the HTTP header "
+"of the underlying request and forwards it to the back end {project_name} "
+"server. In this case, {project_name} must be able to look up the X.509 "
+"certificate chain from the HTTP headers instead of from the attribute of "
+"HTTP request, as is done for Undertow."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If {project_name} is behind a reverse proxy, you usually need to configure "
+"alternative provider of the `x509cert-lookup` SPI in {project_dirref}/"
+"standalone/configuration/standalone.xml. Along with the `default` provider, "
+"which looks up the certificate from the HTTP header, we also have two "
+"additional built-in providers: `haproxy` and `apache`, which are described "
+"next."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "HAProxy certificate lookup provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You can use this provider when your {project_name} server is behind an "
+"HAProxy reverse proxy. Configure the server like this:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"x509cert-lookup\">\n"
+"    <default-provider>haproxy</default-provider>\n"
+"    <provider name=\"haproxy\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"sslClientCert\" value=\"SSL_CLIENT_CERT\"/>\n"
+"            <property name=\"sslCertChainPrefix\" value=\"CERT_CHAIN\"/>\n"
+"            <property name=\"certificateChainLength\" value=\"10\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In this example configuration, the client certificate will be looked up from "
+"the HTTP header, `SSL_CLIENT_CERT`, and the other certificates from its "
+"chain will be looked up from HTTP headers like `CERT_CHAIN_0` , "
+"`CERT_CHAIN_1`, ..., `CERT_CHAIN_9` . The attribute `certificateChainLength` "
+"is the maximum length of the chain, so the last one tried attribute would be "
+"`CERT_CHAIN_9` ."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Consult the HAProxy documentation for the details of how the HTTP Headers "
+"for the client certificate and client certificate chain can be configured "
+"and their proper names."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Apache certificate lookup provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You can use this provider when your {project_name} server is behind an "
+"Apache reverse proxy. Configure the server like this:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"x509cert-lookup\">\n"
+"    <default-provider>apache</default-provider>\n"
+"    <provider name=\"apache\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"sslClientCert\" value=\"SSL_CLIENT_CERT\"/>\n"
+"            <property name=\"sslCertChainPrefix\" value=\"CERT_CHAIN\"/>\n"
+"            <property name=\"certificateChainLength\" value=\"10\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The configuration is same as for the `haproxy` provider. Consult the Apache "
+"documentation for the details of how the HTTP Headers for the client "
+"certificate and client certificate chain can be configured and their proper "
+"names."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Other reverse proxy implementations"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"We do not have built-in support for other reverse proxy implementations. "
+"However, it is possible that other reverse proxies can be made to behave in "
+"a similar way to `apache` or `haproxy` and that some of those providers can "
+"be used. If none of those works, you may need to create your own "
+"implementation of the `org.keycloak.services.x509."
+"X509ClientCertificateLookupFactory` and `org.keycloak.services.x509."
+"X509ClientCertificateLookup` provider. See the link:{developerguide_link}"
+"[{developerguide_name}] for the details on how to add your own provider."
+msgstr ""
+
 #. type: Labeled list
 #, no-wrap
 msgid "Direct Grant authentication with X.509"
@@ -700,7 +838,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The host and the port number of a remote Keycloak server that has been "
+"The host and the port number of a remote {project_name} server that has been "
 "configured to allow users authenticate with x.509 client certificates using "
 "the Direct Grant Flow."
 msgstr ""

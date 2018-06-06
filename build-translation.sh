@@ -7,6 +7,8 @@ cd $DIR
 REPO_DIR=$DIR/$SOURCE_DIR
 TRANSLATED_DIR=$DIR/$TRANSLATED_DIR
 
+export LANG=en_US.UTF-8
+
 # Clean all
 rm -rf $TRANSLATED_DIR/*
 mkdir -p $REPO_DIR
@@ -49,7 +51,7 @@ done
 cd $DIR
 type po4a
 if [ "$?" -eq 0 ]; then
-    po4a po4a.cfg
+    po4a --no-update --package-name="keycloak-documentation-i18n" --package-version=" " --copyright-holder="Nomura Research Institute, Ltd." --msgmerge-opt '--no-location --no-wrap --previous' po4a.cfg
 else
     docker run --rm -it -v $(pwd):/build -w /build -u $UID:$GID openstandia/keycloak-documentation-i18n:po4a-patch po4a --no-update --package-name="keycloak-documentation-i18n" --package-version=" " --copyright-holder="Nomura Research Institute, Ltd." --msgmerge-opt '--no-location --no-wrap --previous' po4a.cfg
 fi

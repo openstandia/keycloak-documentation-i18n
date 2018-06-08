@@ -8,9 +8,8 @@ REPO_DIR=$DIR/$SOURCE_DIR
 OUT_FILE=$DIR/$OUT_FILE
 
 # Clone
-git clone $SOURCE_REPO $REPO_DIR
+git clone --depth=1 $SOURCE_REPO $REPO_DIR
 cd $REPO_DIR && git checkout $SOURCE_REVISION
-git reset --hard HEAD && git clean -f
 
 # Generate base config
 cat << EOS > $OUT_FILE

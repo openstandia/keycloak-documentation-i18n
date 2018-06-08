@@ -4,17 +4,6 @@ DIR=$(cd $(dirname $0); pwd)
 . $DIR/settings.sh
 cd $DIR
 
-OUT_FILE=$DIR/.tx/config
-
-# Generate base tx config
-cat << EOS > $OUT_FILE
-# Don't edit this file directly!
-[main]
-host = https://www.transifex.com
-
-EOS
-
-# Setup tx config
 for doc in $DOCS; do
     for file in `find $DIR/i18n/pot/$doc/ -type f -name "*.pot"`; do
         SOURCE_FILE=`echo $file | sed "s|${DIR}/||"`

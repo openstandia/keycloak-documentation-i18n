@@ -18,7 +18,7 @@ git reset --hard HEAD && git clean -f
 cd $DIR
 type po4a
 if [ "$?" -eq 0 ]; then
-    po4a po4a.cfg
+    po4a --no-translations --package-name="keycloak-documentation-i18n" --package-version=" " --copyright-holder="Nomura Research Institute, Ltd." --msgmerge-opt '--previous' $@ po4a.cfg
 else
     docker run --rm -it -v $(pwd):/build -w /build -u $UID:$GID openstandia/keycloak-documentation-i18n:po4a-patch po4a --no-translations --package-name="keycloak-documentation-i18n" --package-version=" " --copyright-holder="Nomura Research Institute, Ltd." --msgmerge-opt '--previous' $@ po4a.cfg
 fi

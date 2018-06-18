@@ -52,25 +52,46 @@ msgstr ""
 msgid "The supported parameters are:"
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "scope"
+#. type: Plain text
+msgid ""
+"scope - Use a space-delimited list of scopes. A space-delimited list "
+"typically references link:{adminguide_link}#_client_scopes[Client scopes] "
+"defined on particular client. Note that the scope `openid` will be always be "
+"added to the list of scopes by the adapter. For example, if you enter the "
+"scope options `address phone`, then the request to {project_name} will "
+"contain the scope parameter `scope=openid address phone`."
 msgstr ""
 
 #. type: Plain text
-msgid "prompt"
+msgid ""
+"prompt - {project_name} supports these settings: ** `login` - SSO will be "
+"ignored and the {project_name} login page will be always shown, even if the "
+"user is already authenticated ** `none` - The login page will never be "
+"shown; instead the user will be redirected to the application, with an error "
+"if the user is not yet authenticated. This setting allows you to create a "
+"filter/interceptor on the application side and show a custom error page to "
+"the user. See more details in the specification."
 msgstr ""
 
 #. type: Plain text
-msgid "max_age"
+msgid ""
+"max_age - Used only if a user is already authenticated. Specifies maximum "
+"permitted time for the authentication to persist, measured from when the "
+"user authenticated. If user is authenticated longer than `maxAge`, the SSO "
+"is ignored and he must re-authenticate."
 msgstr ""
 
 #. type: Plain text
-msgid "login_hint"
+msgid ""
+"login_hint - Used to pre-fill the username/email field on the login form."
 msgstr ""
 
 #. type: Plain text
-msgid "kc_idp_hint"
+msgid ""
+"kc_idp_hint - Used to tell {project_name} to skip showing login page and "
+"automatically redirect to specified identity provider instead.  More info in "
+"the link:{adminguide_link}#_client_suggested_idp[Identity Provider "
+"documentation]."
 msgstr ""
 
 #. type: Plain text
@@ -81,4 +102,14 @@ msgid ""
 "and contains the name of the identity provider to automatically use.  For "
 "more information see the `Identity Brokering` section in link:"
 "{adminguide_link}[{adminguide_name}]."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If you open the URL using the attached parameters, the adapter will not "
+"redirect you to {project_name} if you are already authenticated in the "
+"application. For example, opening $$http://myappserver/mysecuredapp?"
+"prompt=login$$ will not automatically redirect you to the {project_name} "
+"login page if you are already authenticated to the application "
+"`mysecredapp` . This behavior may be changed in the future."
 msgstr ""

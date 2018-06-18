@@ -115,12 +115,12 @@ msgstr ""
 msgid ""
 "When an action token is passed to a {project_name} endpoint `_KEYCLOAK_ROOT_/"
 "auth/realms/master/login-actions/action-token` via `key` parameter, it is "
-"validated and a proper action token handler is executed. The processing "
-"always takes place in a context of an authentication session, either a fresh "
-"one or the action token service joins an existing authentication session "
-"(details are described below). The action token handler can perform actions "
-"prescribed by the token (often it alters the authentication session) and "
-"results into an HTTP response (e.g. it can continue in authentication or "
+"validated and a proper action token handler is executed. *The processing "
+"always takes place in a context of an authentication session*, either a "
+"fresh one or the action token service joins an existing authentication "
+"session (details are described below). The action token handler can perform "
+"actions prescribed by the token (often it alters the authentication session) "
+"and results into an HTTP response (e.g. it can continue in authentication or "
 "display an information/error page). These steps are detailed below."
 msgstr ""
 
@@ -184,6 +184,110 @@ msgid ""
 "of `org.keycloak.authentication.actiontoken.DefaultActionToken` and can be "
 "leveraged by implementors by using that class for tokens instead of plain "
 "`JsonWebToken`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The following example shows the implementation of a simple action token. "
+"Note that the class must have a private constructor without any arguments.  "
+"This is necessary to deserialize the token class from JWT."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "import org.keycloak.authentication.actiontoken.DefaultActionToken;\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "public class DemoActionToken extends DefaultActionToken {\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    public static final String TOKEN_TYPE = \"my-demo-token\";\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public DemoActionToken(String userId, int absoluteExpirationInSecs, String compoundAuthenticationSessionId) {\n"
+"        super(userId, TOKEN_TYPE, absoluteExpirationInSecs, null, compoundAuthenticationSessionId);\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    private DemoActionToken() {\n"
+"        // Required to deserialize from JWT\n"
+"        super();\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If the action token you are implementing contains any custom fields that "
+"should be serializabled to JSON fields, you should consider implementing a "
+"descendant of `org.keycloak.representations.JsonWebToken` class that would "
+"implement `org.keycloak.models.ActionTokenKeyModel` interface. In that case, "
+"you can take advantage of the existing `org.keycloak.authentication."
+"actiontoken.DefaultActionToken` class as it already satisfies both these "
+"conditions, and either use it directly or implement its child, the fields of "
+"which can be annotated with appropriate Jackson annotations, e.g. `com."
+"fasterxml.jackson.annotation.JsonProperty` to serialize them to JSON."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The following example extends the `DemoActionToken` from the previous "
+"example with the field `demo-id`:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"import com.fasterxml.jackson.annotation.JsonProperty;\n"
+"import org.keycloak.authentication.actiontoken.DefaultActionToken;\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    private static final String JSON_FIELD_DEMO_ID = \"demo-id\";\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @JsonProperty(value = JSON_FIELD_DEMO_ID)\n"
+"    private String demoId;\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public DemoActionToken(String userId, int absoluteExpirationInSecs, String compoundAuthenticationSessionId, String demoId) {\n"
+"        super(userId, TOKEN_TYPE, absoluteExpirationInSecs, null, compoundAuthenticationSessionId);\n"
+"        this.demoId =  demoId;\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    private DemoActionToken() {\n"
+"        // you must have this private constructor for deserializer\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public String getDemoId() {\n"
+"        return demoId;\n"
+"    }\n"
+"}\n"
 msgstr ""
 
 #. type: Title ====
@@ -267,17 +371,4 @@ msgid ""
 "Note that you have to register the custom `ActionTokenHandlerFactory` "
 "implementation as explained in the <<_providers,Service Provider "
 "Interfaces>> section of this guide."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"If the action token you are implementing contains any custom fields that "
-"should be serializabled to JSON fields, you should consider implementing a "
-"descendant of `org.keycloak.representations.JsonWebToken` class that would "
-"implement `org.keycloak.models.ActionTokenKeyModel` interface. In that case, "
-"you can take advantage of the existing `org.keycloak.authentication."
-"actiontoken.DefaultActionToken` class as it already satisfies both these "
-"conditions, and either use it directly or implement its child, the fields of "
-"which can be annotated with appropriate Jackson annotations, e.g. `com."
-"fasterxml.jackson.annotation.JsonProperty` to serialize them to JSON."
 msgstr ""

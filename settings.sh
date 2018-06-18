@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SOURCE_REPO=https://github.com/keycloak/keycloak-documentation.git
-SOURCE_REVISION=4.0.0.Beta3
+SOURCE_REVISION=4.0.0.Final
 SOURCE_DIR=source
 TRANSLATED_DIR=translated
 TARGET_LANG=ja_JP
@@ -13,6 +13,7 @@ DOCS="\
   server_development \
   authorization_services \
   upgrading \
+  release_notes \
   topics"
 
 TARGET_EXT=adoc

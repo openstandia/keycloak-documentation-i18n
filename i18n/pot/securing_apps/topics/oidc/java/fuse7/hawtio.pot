@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Securing the Hawtio Administration Console"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To secure the Hawtio Administration Console with {project_name}, complete "
+"the following steps:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Create a client in the {project_name} administration console in your realm. "
+"For example, in the {project_name} `demo` realm, create a client `hawtio-"
+"client`, specify `public` as the Access Type, and specify a redirect URI "
+"pointing to Hawtio: \\http://localhost:8181/hawtio/*. You must also have a "
+"corresponding Web Origin configured (in this case, \\http://localhost:8181)."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Create the `keycloak-hawtio-client.json` file in the `$FUSE_HOME/etc` "
+"directory using content similar to that shown in the example below. Change "
+"the `realm`, `resource`, and `auth-server-url` properties according to your "
+"{project_name} environment. The `resource` property must point to the client "
+"created in the previous step. This file is used by the client (Hawtio "
+"JavaScript application) side."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"resource\" : \"jaas\",\n"
+"  \"bearer-only\" : true,\n"
+"  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"use-resource-role-mappings\": false,\n"
+"  \"principal-attribute\": \"preferred_username\"\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Go to http://localhost:8181/hawtio and log in as a user from your "
+"{project_name} realm."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Note that the user needs to have the proper realm role to successfully "
+"authenticate to Hawtio. The available roles are configured in the `"
+"$FUSE_HOME/etc/system.properties` file in `hawtio.roles`."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"clientId\" : \"hawtio-client\",\n"
+"  \"url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"public-client\" : true\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Create the `keycloak-direct-access.json` file in the `$FUSE_HOME/etc` "
+"directory using content similar to that shown in the example below. Change "
+"the `realm` and `url` properties according to your {project_name} "
+"environment. This file is used by JavaScript client."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"resource\" : \"ssh-jmx-admin-client\",\n"
+"  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"credentials\": {\n"
+"    \"secret\": \"password\"\n"
+"  }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Create the `keycloak-bearer.json` file in the `$FUSE_HOME/etc` dicrectory "
+"using content similar to that shown in the example below. Change the `realm` "
+"and `auth-server-url` properties according to your {project_name} "
+"environment. This file is used by the adapters on the server (JAAS Login "
+"module) side."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Start {fuse7Version}, <<_fuse7_install_feature,install the Keycloak "
+"feature>>. Then type in the Karaf terminal:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"system:property hawtio.keycloakEnabled true\n"
+"system:property hawtio.realm keycloak\n"
+"system:property hawtio.keycloakClientConfig file://\\${karaf.base}/etc/keycloak-hawtio-client.json\n"
+"system:property hawtio.rolePrincipalClasses org.keycloak.adapters.jaas.RolePrincipal,org.apache.karaf.jaas.boot.principal.RolePrincipal\n"
+"restart io.hawt.hawtio-war \n"
+msgstr ""

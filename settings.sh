@@ -13,6 +13,7 @@ DOCS="\
   server_development \
   authorization_services \
   upgrading \
+  release_notes \
   topics"
 
 TARGET_EXT=adoc

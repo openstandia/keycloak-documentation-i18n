@@ -1,0 +1,158 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "</blueprint>\n"
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Securing an Apache CXF Endpoint on the Default Jetty Engine"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The configuration file `OSGI-INF/blueprint/blueprint.xml` inside your "
+"application might resemble the one below. Note that it adds the JAX-RS "
+"`customerservice` endpoint, which is endpoint-specific to your application, "
+"but more importantly, secures the entire `/cxf` context."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+"<blueprint xmlns=\"http://www.osgi.org/xmlns/blueprint/v1.0.0\"\n"
+"           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"           xmlns:jaxrs=\"http://cxf.apache.org/blueprint/jaxrs\"\n"
+"           xsi:schemaLocation=\"\n"
+"\t\thttp://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd\n"
+"\t\thttp://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd\">\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <!-- JAXRS Application -->\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <bean id=\"customerBean\" class=\"org.keycloak.example.rs.CxfCustomerService\" />\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <jaxrs:server id=\"cxfJaxrsServer\" address=\"/customerservice\">\n"
+"        <jaxrs:providers>\n"
+"            <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
+"        </jaxrs:providers>\n"
+"        <jaxrs:serviceBeans>\n"
+"            <ref component-id=\"customerBean\" />\n"
+"        </jaxrs:serviceBeans>\n"
+"    </jaxrs:server>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <bean id=\"defaultCxfReregistration\" class=\"org.keycloak.adapters.osgi.ServletReregistrationService\" depends-on=\"cxfKeycloakPaxWebIntegration\"\n"
+"          init-method=\"start\" destroy-method=\"stop\">\n"
+"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
+"        <property name=\"managedServiceReference\">\n"
+"            <reference interface=\"org.osgi.service.cm.ManagedService\" filter=\"(service.pid=org.apache.cxf.osgi)\" timeout=\"5000\"  />\n"
+"        </property>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `Import-Package` in `META-INF/MANIFEST.MF` must contain at least these "
+"imports:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Some services automatically come with deployed servlets on startup. One such "
+"service is the CXF servlet running in the $$http://localhost:8181/cxf$$ "
+"context. Securing such endpoints can be complicated. One approach, which "
+"{project_name} is currently using, is `ServletReregistrationService` which "
+"undeploys a built-in servlet at startup, enabling you to redeploy it on a "
+"context secured by {project_name}."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <!-- Securing of whole /cxf context by unregister default cxf servlet from paxweb and re-register with applied security constraints -->\n"
+"    <bean id=\"cxfConstraintMapping\" class=\"org.keycloak.adapters.osgi.PaxWebSecurityConstraintMapping\">\n"
+"        <!-- user accessing the servise has to have at least one of the following roles -->\n"
+"        <property name=\"roles\">\n"
+"            <list>\n"
+"                <value>user</value>\n"
+"            </list>\n"
+"        </property>\n"
+"        <property name=\"url\" value=\"/cxf/*\" />\n"
+"        <property name=\"authentication\" value=\"true\"/>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <bean id=\"cxfKeycloakPaxWebIntegration\" class=\"org.keycloak.adapters.osgi.undertow.PaxWebIntegrationService\"\n"
+"          init-method=\"start\" destroy-method=\"stop\">\n"
+"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
+"        <property name=\"constraintMappings\">\n"
+"            <list>\n"
+"                <ref component-id=\"cxfConstraintMapping\" />\n"
+"            </list>\n"
+"        </property>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"As a result, all other CXF services running on the default CXF HTTP "
+"destination are also secured. Similarly, when the application is undeployed, "
+"the entire `/cxf` context becomes unsecured as well. For this reason, use "
+"your own undertow engine for your applications as described in "
+"<<_fuse7_adapter_cxf_separate,Secure CXF Application on separate Undertow "
+"Engine>> since that gives you more control over security for each individual "
+"application."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `WEB-INF` directory might need to be inside your project (even if your "
+"project is not a web application). You might also need to edit the `/WEB-INF/"
+"keycloak.json` file similarly to <<_fuse7_adapter_classic_war,Classic WAR "
+"application>>.  Note that you do not need the `web.xml` file as the security "
+"constraints are declared in the blueprint configuration file."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"javax.ws.rs;version=\"[2,3)\",\n"
+"META-INF.cxf;version=\"[2.7,3.3)\",\n"
+"META-INF.cxf.osgi;version=\"[2.7,3.3)\";resolution:=optional,\n"
+"org.apache.cxf.transport.http;version=\"[2.7,3.3)\",\n"
+"org.apache.cxf.*;version=\"[2.7,3.3)\",\n"
+"com.fasterxml.jackson.jaxrs.json;version=\"${jackson.version}\",\n"
+"org.keycloak.*;version=\"${project.version}\",\n"
+msgstr ""

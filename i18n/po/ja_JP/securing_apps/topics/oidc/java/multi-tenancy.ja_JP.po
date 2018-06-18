@@ -16,14 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:2
-#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:152
 #, no-wrap
 msgid "Multi Tenancy"
 msgstr "マルチテナンシー"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:6
 msgid ""
 "Multi Tenancy, in our context, means that a single target application (WAR) "
 "can be secured with multiple {project_name} realms. The realms can be "
@@ -32,14 +29,12 @@ msgstr ""
 "マルチテナンシーとは、単一のターゲット・アプリケーション（WAR）が複数の{project_name}のレルムで保護されることを意味します。レルムは、同じ{project_name}インスタンスまたは異なるインスタンスに配置できます。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:8
 msgid ""
 "In practice, this means that the application needs to have multiple "
 "`keycloak.json` adapter configuration files."
 msgstr "実際には、これはアプリケーションが複数の `keycloak.json` アダプター設定ファイルを持つ必要があることを意味します。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:11
 msgid ""
 "You could have multiple instances of your WAR with different adapter "
 "configuration files deployed to different context-paths. However, this may "
@@ -49,7 +44,6 @@ msgstr ""
 "さまざまなコンテキストパスに異なるアダプター設定ファイルをデプロイして、WARの複数のインスタンスを作成することができます。しかし、これは不便かもしれませんし、コンテキストパス以外のものに基づいてレルムを選択するようにできます。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:13
 msgid ""
 "{project_name} makes it possible to have a custom config resolver so you can"
 " choose what adapter config is used for each request."
@@ -57,22 +51,19 @@ msgstr ""
 "{project_name}はカスタムの設定リゾルバーを持つことができるので、各リクエストにどのアダプター設定が使われるかを選ぶことができます。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:15
 msgid ""
 "To achieve this first you need to create an implementation of "
 "`org.keycloak.adapters.KeycloakConfigResolver`. For example:"
 msgstr ""
 "まずこれを達成するためには、 `org.keycloak.adapters.KeycloakConfigResolver` "
-"の実装を作成する必要があります。例えば、以下のようになります。"
+"の実装を作成する必要があります。たとえば、以下のようになります。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:19
 #, no-wrap
 msgid "package example;\n"
 msgstr "package example;\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:23
 #, no-wrap
 msgid ""
 "import org.keycloak.adapters.KeycloakConfigResolver;\n"
@@ -84,7 +75,6 @@ msgstr ""
 "import org.keycloak.adapters.KeycloakDeploymentBuilder;\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:25
 #, no-wrap
 msgid ""
 "public class PathBasedKeycloakConfigResolver implements "
@@ -94,7 +84,6 @@ msgstr ""
 "KeycloakConfigResolver {\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:39
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -126,16 +115,11 @@ msgstr ""
 "    }\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:41
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:52
-#: source/server_development/topics/extensions.adoc:70
-#: source/server_development/topics/providers.adoc:143
 #, no-wrap
 msgid "}\n"
 msgstr "}\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:44
 msgid ""
 "You also need to configure which `KeycloakConfigResolver` implementation to "
 "use with the `keycloak.config.resolver` context-param in your `web.xml`:"
@@ -144,7 +128,6 @@ msgstr ""
 "`KeycloakConfigResolver` 実装を使うかを設定する必要もあります。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:54
 #, no-wrap
 msgid ""
 "<web-app>\n"

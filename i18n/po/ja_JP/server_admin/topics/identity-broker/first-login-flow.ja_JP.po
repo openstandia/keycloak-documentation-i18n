@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,14 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
-#: source/server_admin/topics/identity-broker/configuration.adoc:77
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:3
 #, no-wrap
 msgid "First Login Flow"
 msgstr "初回ログインフロー"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:8
 msgid ""
 "When a user logs in through identity brokering some aspects of the user are "
 "imported and linked within the realm's local database.  When {project_name} "
@@ -33,7 +30,6 @@ msgstr ""
 "ユーザーがアイデンティティー・ブローカリングを介してログインすると、ユーザー情報が部分的にインポートされ、レルムのローカル・データベース内でリンクされます。{project_name}が外部アイデンティティー・プロバイダーを通じてユーザーを正常に認証すると、次の2つの状況が発生する可能性があります。"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:11
 msgid ""
 "There is already a {project_name} user account imported and linked with the "
 "authenticated identity provider account.  In this case, {project_name} will "
@@ -42,7 +38,6 @@ msgstr ""
 "認証済みのアイデンティティー・プロバイダー・アカウントをインポートしてリンクした{project_name}ユーザー・アカウントがすでに存在する場合、{project_name}は既存のユーザーとして認証され、アプリケーションにリダイレクトされます。"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:15
 msgid ""
 "There is not yet an existing {project_name} user account imported and linked"
 " for this external user.  Usually you just want to register and import the "
@@ -57,7 +52,6 @@ msgstr ""
 "既存のローカル・アカウントを外部アイデンティティー・プロバイダーに自動的にリンクすることは、外部アイデンティティー・プロバイダーから取得した情報を常に信頼できるとは限らないため、潜在的なセキュリティー・ホールになります。"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:20
 msgid ""
 "Different organizations have different requirements when dealing with some "
 "of the conflicts and situations listed above.  For this, there is a `First "
@@ -73,7 +67,6 @@ msgstr ""
 "フローが指定されていますが、独自のフローを設定して使用し、異なるアイデンティティー・プロバイダーに対して異なるフローを使用することができます。"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:24
 msgid ""
 "The flow itself is configured in admin console under `Authentication` tab.  "
 "When you choose `First Broker Login` flow, you will see what authenticators "
@@ -86,7 +79,6 @@ msgstr ""
 " `必須` としてマークしたり、いくつかのオーセンティケーターを設定する、など）。"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:28
 msgid ""
 "You can also create a new authentication flow and/or write your own "
 "Authenticator implementations and use it in your flow.  See "
@@ -95,25 +87,21 @@ msgstr ""
 "また、新しい認証フローを作成したり、独自の認証プロバイダー実装を作成して、そのフローで使用することもできます。詳細については、link:{developerguide_link}[{developerguide_name}]を参照してください。"
 
 #. type: Title ====
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:30
 #, no-wrap
 msgid "Default First Login Flow"
 msgstr "デフォルトの初回ログインフロー"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:33
 msgid ""
 "Let's describe the default behaviour provided by `First Broker Login` flow."
 msgstr "`First Broker Login` フローによって提供されるデフォルトの動作について説明します。"
 
 #. type: Labeled list
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:34
 #, no-wrap
 msgid "Review Profile"
 msgstr "Review Profile"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:42
 msgid ""
 "This authenticator might display the profile info page, where the user can "
 "review his profile retrieved from an identity provider.  The authenticator "
@@ -134,13 +122,11 @@ msgstr ""
 "Account` オーセンティケーターによって表示されるページ）を後のフェーズでユーザーがクリックしない限り、プロファイル・ページは表示されません。"
 
 #. type: Labeled list
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:43
 #, no-wrap
 msgid "Create User If Unique"
 msgstr "Create User If Unique"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:49
 msgid ""
 "This authenticator checks if there is already an existing {project_name} "
 "account with same email or username like the account from the identity "
@@ -158,13 +144,11 @@ msgstr ""
 "にマークすることができます。この場合、既存の{project_name}アカウントが存在する場合は、エラーページが表示され、ユーザーはアカウント管理を通じてアイデンティティー・プロバイダーのアカウントをリンクする必要があります。"
 
 #. type: Labeled list
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:50
 #, no-wrap
 msgid "Confirm Link Existing Account"
 msgstr "Confirm Link Existing Account"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:55
 msgid ""
 "On the info page, the user will see that there is an existing {project_name}"
 " account with same email.  He can review his profile again and use different"
@@ -180,13 +164,11 @@ msgstr ""
 "オーセンティケーターに戻ります）。または、アイデンティティー・プロバイダーのアカウントと既存の{project_name}のアカウントをリンクさせたいかどうかをユーザーに確認できます。ユーザーにこの確認ページが表示されないようにする場合は、このオーセンティケーターを無効にしますが、電子メールの確認または再認証によって、アイデンティティー・プロバイダーのアカウントを直接リンクするようにしてください。"
 
 #. type: Labeled list
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:56
 #, no-wrap
 msgid "Verify Existing Account By Email"
 msgstr "Verify Existing Account By Email"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:60
 msgid ""
 "This authenticator is `ALTERNATIVE` by default, so it's used only if the "
 "realm has SMTP setup configured.  It will send mail to the user, where he "
@@ -199,13 +181,11 @@ msgstr ""
 "であるため、レルムにSMTPが設定されている場合にのみ使用されます。ユーザーにメールが送信され、アイデンティティー・プロバイダーと{project_name}アカウントをリンクさせたいかどうかを確認できます。電子メールによるリンクを確認したくないが、代わりに、ユーザーに常にパスワード（またはOTP）で再認証させたい場合は、これを無効にしてください。"
 
 #. type: Labeled list
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:61
 #, no-wrap
 msgid "Verify Existing Account By Re-authentication"
 msgstr "Verify Existing Account By Re-authentication"
 
 #. type: Plain text
-#: source/server_admin/topics/identity-broker/first-login-flow.adoc:66
 msgid ""
 "This authenticator is used if email authenticator is disabled or non-"
 "available (SMTP not configured for realm). It will display a login screen "

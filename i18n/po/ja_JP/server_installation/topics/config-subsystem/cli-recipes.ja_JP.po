@@ -16,13 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:3
 #, no-wrap
 msgid "CLI Recipes"
 msgstr "CLIレシピ"
 
 #. type: Plain text
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:7
 msgid ""
 "Here are some configuration tasks and how to perform them with CLI commands."
 "  Note that in all but the first example, we use the wildcard path `**` to "
@@ -32,33 +30,27 @@ msgstr ""
 "serverサブシステムという意味でワイルドカード・パス `**` を使用しています。その点は注意してください。"
 
 #. type: Plain text
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:9
 msgid "For standalone, this just means:"
 msgstr "スタンドアローンの場合、これは単に以下の意味になります。"
 
 #. type: Plain text
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:11
 msgid "`**` = `/subsystem=keycloak-server`"
 msgstr "`**` = `/subsystem=keycloak-server`"
 
 #. type: Plain text
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:13
 msgid "For domain mode, this would mean something like:"
 msgstr "ドメインモードの場合、これは以下のような意味になります。"
 
 #. type: Plain text
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:15
 msgid "`**` = `/profile=auth-server-clustered/subsystem=keycloak-server`"
 msgstr "`**` = `/profile=auth-server-clustered/subsystem=keycloak-server`"
 
 #. type: Title ====
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:16
 #, no-wrap
 msgid "Change the web context of the server"
 msgstr "サーバーのwebコンテキストの変更"
 
 #. type: delimited block -
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:20
 #, no-wrap
 msgid ""
 "/subsystem=keycloak-server/:write-attribute(name=web-"
@@ -68,25 +60,21 @@ msgstr ""
 "context,value=myContext)\n"
 
 #. type: Title ====
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:21
 #, no-wrap
 msgid "Set the global default theme"
 msgstr "グローバルなデフォルトテーマの設定"
 
 #. type: delimited block -
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:25
 #, no-wrap
 msgid "**/theme=defaults/:write-attribute(name=default,value=myTheme)\n"
 msgstr "**/theme=defaults/:write-attribute(name=default,value=myTheme)\n"
 
 #. type: Title ====
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:26
 #, no-wrap
 msgid "Add a new SPI and a provider"
 msgstr "新しいSPIとプロバイダーの追加"
 
 #. type: delimited block -
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:31
 #, no-wrap
 msgid ""
 "**/spi=mySPI/:add\n"
@@ -96,13 +84,11 @@ msgstr ""
 "**/spi=mySPI/provider=myProvider/:add(enabled=true)\n"
 
 #. type: Title ====
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:32
 #, no-wrap
 msgid "Disable a provider"
 msgstr "プロバイダーの無効化"
 
 #. type: delimited block -
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:36
 #, no-wrap
 msgid ""
 "**/spi=mySPI/provider=myProvider/:write-"
@@ -112,25 +98,21 @@ msgstr ""
 "attribute(name=enabled,value=false)\n"
 
 #. type: Title ====
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:37
 #, no-wrap
 msgid "Change the default provider for an SPI"
 msgstr "SPIのデフォルトプロバイダーの変更"
 
 #. type: delimited block -
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:41
 #, no-wrap
 msgid "**/spi=mySPI/:write-attribute(name=default-provider,value=myProvider)\n"
 msgstr "**/spi=mySPI/:write-attribute(name=default-provider,value=myProvider)\n"
 
 #. type: Title ====
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:42
 #, no-wrap
 msgid "Configure the dblock SPI"
 msgstr "dblock SPIの設定"
 
 #. type: delimited block -
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:47
 #, no-wrap
 msgid ""
 "**/spi=dblock/:add(default-provider=jpa)\n"
@@ -140,13 +122,11 @@ msgstr ""
 "**/spi=dblock/provider=jpa/:add(properties={lockWaitTimeout => \"900\"},enabled=true)\n"
 
 #. type: Title ====
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:48
 #, no-wrap
 msgid "Add or change a single property value for a provider"
 msgstr "プロバイダーのシングル・プロパティー値の追加または変更"
 
 #. type: delimited block -
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:52
 #, no-wrap
 msgid ""
 "**/spi=dblock/provider=jpa/:map-"
@@ -156,13 +136,11 @@ msgstr ""
 "put(name=properties,key=lockWaitTimeout,value=3)\n"
 
 #. type: Title ====
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:53
 #, no-wrap
 msgid "Remove a single property from a provider"
 msgstr "プロバイダーからのシングル・プロパティーの削除"
 
 #. type: delimited block -
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:57
 #, no-wrap
 msgid ""
 "**/spi=dblock/provider=jpa/:map-"
@@ -172,13 +150,11 @@ msgstr ""
 "remove(name=properties,key=lockRecheckTime)\n"
 
 #. type: Title ====
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:58
 #, no-wrap
 msgid "Set values on a provider property of type `List`"
 msgstr " `List` 型のプロバイダー・プロパティー値の設定"
 
 #. type: delimited block -
-#: source/server_installation/topics/config-subsystem/cli-recipes.adoc:62
 #, no-wrap
 msgid ""
 "**/spi=eventsStore/provider=jpa/:map-put(name=properties,key=exclude-"

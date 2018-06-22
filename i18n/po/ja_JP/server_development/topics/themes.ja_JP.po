@@ -364,8 +364,8 @@ msgid ""
 "the `styles` property in `theme.properties`."
 msgstr ""
 "テーマには、1つ以上のスタイルシートを持たせることができます。スタイルシートを追加するには、テーマの `<THEME "
-"TYPE>/resources/css` ディレクトリー内でファイルを作成します。それから、 `theme.properties` 内の `styles`"
-" プロパティーへ、そのファイルを追加します。"
+"TYPE>/resources/css` ディレクトリー内でファイルを作成します。それから、 `theme.properties` 内の "
+"`styles` プロパティーへ、そのファイルを追加します。"
 
 #. type: Plain text
 msgid ""
@@ -404,7 +404,8 @@ msgid ""
 "`themes/mytheme/login/theme.properties` and changing `styles` to:"
 msgstr ""
 "変更されたか確認するには、レルム用のログインページを開きます。適用されたスタイルはカスタム・スタイルシートからのものだけだと分かります。親テーマからのスタイルも含ませるには、そのテーマからのスタイルも同様にロードする必要があります。これは、"
-" `themes/mytheme/login/theme.properties` を編集し、以下のとおり `styles` を変更することで実行できます。"
+" `themes/mytheme/login/theme.properties` を編集し、以下のとおり `styles` "
+"を変更することで実行できます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -754,8 +755,8 @@ msgid ""
 msgstr ""
 "テーマは、テーマ・ディレクトリーを `themes` "
 "へコピーすることによって、{project_name}へデプロイすることができ、アーカイブとしてデプロイすることも可能です。デプロイ中は、テーマを "
-"`themes` ディレクトリーへコピーしますが、プロダクション環境では `archive` の使用が検討した方がいいかもしれません。 `archive`"
-" "
+"`themes` ディレクトリーへコピーしますが、プロダクション環境では `archive` の使用が検討した方がいいかもしれません。 "
+"`archive` "
 "を使用すると、テーマのコピー版の作成が簡単になります。たとえばクラスター構成の{project_name}など、インスタンスが複数ある場合は特に便利です。"
 
 #. type: Plain text
@@ -830,127 +831,9 @@ msgstr "1つのアーカイブには複数のテーマを含めることがで�
 
 #. type: Plain text
 msgid ""
-"The deploy the archive to {project_name} you can either manually create a "
-"module in `modules` or use the `jboss-cli` command. It's simplest to use "
-"`jboss-cli` as it creates the required directories and module descriptor for"
-" you."
+"To deploy the archive to {project_name} simply drop it into the "
+"`standalone/deployments/` directory of {project_name} and it will be "
+"automatically loaded."
 msgstr ""
-"アーカイブを{project_name}にデプロイするには、手動で `modules` 内にモジュールを作成するか、 `jboss-cli` "
-"コマンドを使用するかのどちらでも可能です。 `jboss-cli` "
-"を使用すると、必要なディレクトリーとモジュール記述子が作成されるので、それが最も簡単な方法になります。"
-
-#. type: Plain text
-msgid "To deploy `mytheme.zip` on Linux run:"
-msgstr "Linuxの実行中に `mytheme.zip` をデプロイするには、以下のとおりになります。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"bin/jboss-cli.sh --command=\"module add --name=org.example.mytheme "
-"--resources=mytheme.zip\"\n"
-msgstr ""
-"bin/jboss-cli.sh --command=\"module add --name=org.example.mytheme "
-"--resources=mytheme.zip\"\n"
-
-#. type: Plain text
-msgid "On Windows run:"
-msgstr "Windowsの実行中の場合、以下のとおりになります。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"bin\\jboss-cli.bat --command=\"module add --name=org.example.mytheme "
-"--resources=mytheme.zip\"\n"
-msgstr ""
-"bin\\jboss-cli.bat --command=\"module add --name=org.example.mytheme "
-"--resources=mytheme.zip\"\n"
-
-#. type: Plain text
-msgid ""
-"This command creates `modules/org/example/mytheme/main` directory with the "
-"`mytheme.zip` archive and `module.xml`."
-msgstr ""
-"このコマンドは、 `mytheme.zip` アーカイブと `module.xml` を使用して、 "
-"`modules/org/example/mytheme/main` ディレクトリーを作成します。"
-
-#. type: Plain text
-msgid ""
-"To manually create the module create the directory "
-"`modules/org/keycloak/example/mytheme/main`, copy `mytheme.zip` to this "
-"directory and create the file "
-"`modules/org/keycloak/example/mytheme/main/module.xml` with the contents:"
-msgstr ""
-"手動でモジュールを作成するには、 `modules/org/keycloak/example/mytheme/main` ディレクトリーを作成して "
-"`mytheme.zip` をこのディレクトリーにコピーし、以下の内容で "
-"`modules/org/keycloak/example/mytheme/main/module.xml` ファイルを作成します。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<?xml version=\"1.0\" ?>\n"
-"<module xmlns=\"urn:jboss:module:1.3\" name=\"org.keycloak.example.themes\">\n"
-"    <resources>\n"
-"        <resource-root path=\"mytheme.zip\"/>\n"
-"    </resources>\n"
-"</module>\n"
-msgstr ""
-"<?xml version=\"1.0\" ?>\n"
-"<module xmlns=\"urn:jboss:module:1.3\" name=\"org.keycloak.example.themes\">\n"
-" <resources>\n"
-" <resource-root path=\"mytheme.zip\"/>\n"
-" </resources>\n"
-"</module>\n"
-
-#. type: Plain text
-msgid ""
-"You also need to register the module with {project_name}. This is done by "
-"editing `standalone.xml`, `standalone-ha.xml`, or `domain.xml`.  For more "
-"information on where the `standalone.xml`, `standalone-ha.xml`, or "
-"`domain.xml` file resides see the "
-"link:{installguide_link}[{installguide_name}]."
-msgstr ""
-"また、{project_name}を使用してモジュールを登録することも必要です。 `standalone.xml` 、 `standalone-"
-"ha.xml` または `domain.xml` を編集することで実行されます。 `standalone.xml` 、 `standalone-"
-"ha.xml` または `domain.xml` "
-"ファイルがどこにあるかについての詳細は、link:{installguide_link}[{installguide_name}]を参照してください。"
-
-#. type: Plain text
-msgid ""
-"Then find the `theme` tag under `keycloak-server` subsystem and add the "
-"module to `theme/modules/module`. For example:"
-msgstr ""
-"`keycloak-server` サブシステムの下に `theme` タブがあることを確認し、モジュールを "
-"`theme/modules/module` へ追加します。たとえば、以下のとおりとなります。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<theme>\n"
-"    ...\n"
-"    <modules>\n"
-"        <module>org.example.mytheme</module>\n"
-"    </modules>\n"
-"</theme>\n"
-msgstr ""
-"<theme>\n"
-" ...\n"
-" <modules>\n"
-" <module>org.example.mytheme</module>\n"
-" </modules>\n"
-"</theme>\n"
-
-#. type: Plain text
-msgid ""
-"If the server is running you need to restart the server after changing "
-"`standalone.xml`, `standalone-ha.xml`, or `domain.xml`."
-msgstr ""
-"サーバーが実行されている場合、 `standalone.xml` 、 `standalone-ha.xml` または `domain.xml` "
-"を変更してから、サーバーを再起動する必要があります。"
-
-#. type: delimited block =
-msgid ""
-"If the same theme is deployed to both the `themes` directory and as a module"
-" the version in the `themes` directory is used."
-msgstr ""
-"同じテーマが `themes` ディレクトリーとモジュールとしての両方にデプロイされている場合は、 `themes` "
-"ディレクトリー内のバージョンが使用されます。"
+"アーカイブを{project_name}にデプロイするには、{project_name}の `standalone/deployments/` "
+"ディレクトリーにドロップするだけで、それにより自動的にロードされます。"

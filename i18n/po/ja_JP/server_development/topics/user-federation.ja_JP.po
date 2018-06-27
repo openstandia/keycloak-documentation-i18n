@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,9 +16,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Plain text
-#: source/server_development/topics/events.adoc:8
-#: source/server_development/topics/user-federation-mapper.adoc:15
-#: source/server_development/topics/user-federation.adoc:15
 msgid ""
 "For details on how to package and deploy a custom provider refer to the "
 "<<providers.adoc#providers,Service Provider Interfaces>> chapter."
@@ -26,13 +23,11 @@ msgstr ""
 "カスタム・プロバイダーをパッケージ化してデプロイする方法の詳細については、<<providers.adoc#providers,サービス・プロバイダー・インターフェイス>>の章を参照してください。"
 
 #. type: Title ==
-#: source/server_development/topics/user-federation.adoc:2
 #, no-wrap
 msgid "User Federation SPI"
 msgstr "ユーザー・フェデレーションSPI"
 
 #. type: Plain text
-#: source/server_development/topics/user-federation.adoc:6
 msgid ""
 "The keycloak examples directory contains an example of a simple User "
 "Federation Provider backed by a simple properties file. See `providers"
@@ -45,7 +40,6 @@ msgstr ""
 "を参照してください。フェデレーション・プロバイダーの作成方法のほとんどは、サンプル・コード内で直接説明していますが、ここにもいくつかの情報があります。"
 
 #. type: Plain text
-#: source/server_development/topics/user-federation.adoc:9
 msgid ""
 "Writing a User Federation Provider starts by implementing the "
 "`UserFederationProvider` and `UserFederationProviderFactory` interfaces. "
@@ -56,17 +50,17 @@ msgstr ""
 "インターフェイスを実装することから始まります。これを行う方法の詳細については、Javadocとサンプルを参照してください。"
 
 #. type: Plain text
-#: source/server_development/topics/user-federation.adoc:14
 msgid ""
 "Some important methods of note: getUserByUsername() and getUserByEmail() "
 "require that you query your federated storage and if the user exists create "
 "and import the user into Keycloak storage. How much metadata you import is "
 "fully up to you. This import is done by invoking methods on the object "
-"returned `KeycloakSession.userStorage()` to add and import user information."
-" The proxy() method will be called whenever Keycloak has found an imported "
-"UserModel.  This allows the federation provider to proxy the UserModel which"
-" is useful if you want to support external storage updates on demand."
+"returned by `KeycloakSession.userFederatedStorage()` to add and import user "
+"information. The proxy() method will be called whenever Keycloak has found "
+"an imported UserModel.  This allows the federation provider to proxy the "
+"UserModel which is useful if you want to support external storage updates on"
+" demand."
 msgstr ""
 "getUserByUsername()およびgetUserByEmail()は、フェデレーション・ストレージを検索し、ユーザーが存在する場合、そのユーザーをKeycloakストレージに作成し、インポートする必要があります。インポートするメタデータの量は要件次第です。このインポートは、"
-" `KeycloakSession.userStorage()` "
+" `KeycloakSession.userFederatedStorage()` "
 "が返したオブジェクトのメソッドを呼び出して、ユーザー情報を追加およびインポートすることによって行われます。KeycloakでインポートされたUserModelが見つかるたびに、proxy()メソッドが呼び出されます。これにより、フェデレーション・プロバイダーはUserModelをプロキシすることができます。これは、必要に応じて外部ストレージの更新をサポートする場合に便利です。"

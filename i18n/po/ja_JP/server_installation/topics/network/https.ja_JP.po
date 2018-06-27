@@ -16,14 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
-#: source/server_installation/topics/network/https.adoc:2
 #, no-wrap
 msgid "Setting up HTTPS/SSL"
 msgstr "HTTPS/SSLの設定"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:6
-#: source/server_admin/topics/realms/ssl.adoc:11
 #, no-wrap
 msgid ""
 "{project_name} is not set up by default to handle SSL/HTTPS.\n"
@@ -32,7 +29,6 @@ msgstr ""
 "{project_name}は、デフォルトではSSL/HTTPSを処理するように設定されていません。{project_name}サーバー上、または{project_name}サーバーのフロントにあるリバース・プロキシー上のいずれかでSSLを有効にすることを強くお勧めします。\n"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:9
 msgid ""
 "This default behavior is defined by the SSL/HTTPS mode of each "
 "{project_name} realm.  This is discussed in more detail in the "
@@ -42,67 +38,54 @@ msgstr ""
 "このデフォルトの動作は、各{project_name}レルムのSSL/HTTPSモードによって定義されています。これについて詳しくはlink:{adminguide_link}[{adminguide_name}]で説明しますが、これらのモードの関連事項と簡単な概要についてはここで示します。"
 
 #. type: Labeled list
-#: source/server_installation/topics/network/https.adoc:10
-#: source/server_admin/topics/realms/ssl.adoc:19
 #, no-wrap
 msgid "external requests"
 msgstr "external requests"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:13
 msgid ""
 "{project_name} can run out of the box without SSL so long as you stick to "
 "private IP addresses like `localhost`, `127.0.0.1`, `10.0.x.x`, "
-"`192.168.x.x`, and `172..16.x.x`.  If you don’t have SSL/HTTPS configured on"
-" the server or you try to access {project_name} over HTTP from a non-private"
-" IP adress you will get an error."
+"`192.168.x.x`, and `172.16.x.x`.  If you don’t have SSL/HTTPS configured on "
+"the server or you try to access {project_name} over HTTP from a non-private "
+"IP adress you will get an error."
 msgstr ""
 "SSLが無効でも、 `localhost` 、 `127.0.0.1` 、 `10.0.x.x` 、 `192.168.x.x` 、 "
-"`172..16.x.x` "
-"のようなプライベートIPアドレス以外であれば、{project_name}をそのまま実行することは可能です。サーバーにSSL/HTTPSが設定されていない場合、またはプライベートIPアドレス以外からHTTP経由で{project_name}にアクセスする場合はエラーになります。"
+"`172.16.x.x` "
+"のようなプライベートIPアドレス以外であれば、{project_name}をそのまま実行することは可能です。サーバにSSL/HTTPSが設定されていない場合、またはプライベートIPアドレス以外からHTTP経由で{project_name}にアクセスする場合はエラーになります。"
 
 #. type: Labeled list
-#: source/server_installation/topics/network/https.adoc:14
-#: source/server_admin/topics/realms/ssl.adoc:23
 #, no-wrap
 msgid "none"
 msgstr "none"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:16
 msgid ""
 "{project_name} does not require SSL.  This should really only be used in "
 "development when you are playing around with things."
 msgstr "{project_name}はSSLを要求しません。この設定は、開発段階でいろいろと検証している時にのみ使用すべきです。"
 
 #. type: Labeled list
-#: source/server_installation/topics/network/https.adoc:17
-#: source/server_admin/topics/realms/ssl.adoc:27
 #, no-wrap
 msgid "all requests"
 msgstr "all requests"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:19
-#: source/server_admin/topics/realms/ssl.adoc:28
 msgid "{project_name} requires SSL for all IP addresses."
 msgstr "{project_name}はすべてのIPアドレスに対してSSLを要求します。"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:21
 msgid ""
 "The SSL mode for each realm can be configured in the {project_name} admin "
 "console."
 msgstr "各レルム用のSSLモードは、{project_name}管理コンソール内で設定できます。"
 
 #. type: Title ====
-#: source/server_installation/topics/network/https.adoc:22
 #, no-wrap
 msgid "Enabling SSL/HTTPS for the {project_name} Server"
 msgstr "{project_name}サーバー用SSL/HTTPSの有効化"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:26
 msgid ""
 "If you are not using a reverse proxy or load balancer to handle HTTPS "
 "traffic for you, you'll need to enable HTTPS for the {project_name} server."
@@ -111,26 +94,22 @@ msgstr ""
 "HTTPSトラフィックを処理するためにリバース・プロキシーまたはロードバランサーを使用していない場合、{project_name}サーバー用にHTTPSを有効にする必要があります。これには下記が含まれます。"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:28
 msgid ""
 "Obtaining or generating a keystore that contains the private key and "
 "certificate for SSL/HTTP traffic"
 msgstr "SSL/HTTPトラフィック用の秘密鍵と証明書を含むキーストアの取得または生成"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:29
 msgid ""
 "Configuring the {project_name} server to use this keypair and certificate."
 msgstr "このキーペアと証明書を使用するための{project_name}サーバー設定"
 
 #. type: Title =====
-#: source/server_installation/topics/network/https.adoc:30
 #, no-wrap
 msgid "Creating the Certificate and Java Keystore"
 msgstr "証明書とJavaキーストアの作成"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:33
 msgid ""
 "In order to allow HTTPS connections, you need to obtain a self signed or "
 "third-party signed certificate and import it into a Java keystore before you"
@@ -140,13 +119,11 @@ msgstr ""
 "HTTPS接続が許可されるには、{project_name}サーバーがデプロイされているwebコンテナー内でHTTPSを有効にする前に、自己署名証明書または第三者署名証明書を取得してJavaキーストアにインポートする必要があります。"
 
 #. type: Title ======
-#: source/server_installation/topics/network/https.adoc:34
 #, no-wrap
 msgid "Self Signed Certificate"
 msgstr "自己署名証明書"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:38
 msgid ""
 "In development, you will probably not have a third party signed certificate "
 "available to test a {project_name} deployment so you'll need to generate a "
@@ -156,7 +133,6 @@ msgstr ""
 "ユーティリティーを使用して自己署名証明書を生成する必要があります。"
 
 #. type: delimited block -
-#: source/server_installation/topics/network/https.adoc:60
 #, no-wrap
 msgid ""
 "$ keytool -genkey -alias localhost -keyalg RSA -keystore keycloak.jks -validity 10950\n"
@@ -196,7 +172,6 @@ msgstr ""
 "    [no]:  yes\n"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:65
 msgid ""
 "You should answer `What is your first and last name ?` question with the DNS"
 " name of the machine you're installing the server on.  For testing purposes,"
@@ -209,7 +184,6 @@ msgstr ""
 " `keycloak.jks` ファイルが生成されます。"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:68
 msgid ""
 "If you want a third-party signed certificate, but don't have one, you can "
 "obtain one for free at http://www.cacert.org[cacert.org].  You'll have to do"
@@ -219,12 +193,10 @@ msgstr ""
 "から無料で取得することができます。しかしこの方法で取得する前に、少し設定が必要になります。 "
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:70
 msgid "The first thing to do is generate a Certificate Request:"
 msgstr "まず、証明書署名要求を生成します。"
 
 #. type: delimited block -
-#: source/server_installation/topics/network/https.adoc:75
 #, no-wrap
 msgid ""
 "$ keytool -certreq -alias yourdomain -keystore keycloak.jks > "
@@ -234,14 +206,12 @@ msgstr ""
 "keycloak.careq\n"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:79
 msgid ""
 "Where `yourdomain` is a DNS name for which this certificate is generated "
 "for.  Keytool generates the request:"
 msgstr "`yourdomain` はこの証明書が生成されるDNS名になります。Keytoolにより以下のように生成されます。"
 
 #. type: delimited block -
-#: source/server_installation/topics/network/https.adoc:98
 #, no-wrap
 msgid ""
 "-----BEGIN NEW CERTIFICATE REQUEST-----\n"
@@ -277,7 +247,6 @@ msgstr ""
 "-----END NEW CERTIFICATE REQUEST-----\n"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:104
 msgid ""
 "Send this ca request to your CA.  The CA will issue you a signed certificate"
 " and send it to you.  Before you import your new cert, you must obtain and "
@@ -287,19 +256,16 @@ msgstr ""
 "この証明書署名要求を認証局に送信します。認証局は署名された証明書を発行し、送り返します。ただし、新しい証明書をインポートする前に、まず認証局のルート証明書を取得してインポートする必要があります。認証局からルート証明書（例：root.crt）をダウンロードし、以下のとおりインポートします。"
 
 #. type: delimited block -
-#: source/server_installation/topics/network/https.adoc:109
 #, no-wrap
 msgid "$ keytool -import -keystore keycloak.jks -file root.crt -alias root\n"
 msgstr "$ keytool -import -keystore keycloak.jks -file root.crt -alias root\n"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:112
 msgid ""
 "Last step is to import your new CA generated certificate to your keystore:"
 msgstr "最後に、以下のように新しい認証局の生成した証明書をキーストアにインポートします。"
 
 #. type: delimited block -
-#: source/server_installation/topics/network/https.adoc:117
 #, no-wrap
 msgid ""
 "$ keytool -import -alias yourdomain -keystore keycloak.jks -file your-"
@@ -309,13 +275,11 @@ msgstr ""
 "certificate.cer\n"
 
 #. type: Title =====
-#: source/server_installation/topics/network/https.adoc:119
 #, no-wrap
 msgid "Configure {project_name} to Use the Keystore"
 msgstr "キーストアを使用するための{project_name}設定"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:124
 msgid ""
 "Now that you have a Java keystore with the appropriate certificates, you "
 "need to configure your {project_name} installation to use it.  First step is"
@@ -330,14 +294,12 @@ msgstr ""
 "mode, 動作モード>>を参照してください）。"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:126
 msgid ""
 "In the standalone or domain configuration file, search for the `security-"
 "realms` element and add:"
 msgstr "スタンドアローンまたはドメイン設定ファイル内で、 `security-realms` 要素を検索して以下を追加します。"
 
 #. type: delimited block -
-#: source/server_installation/topics/network/https.adoc:137
 #, no-wrap
 msgid ""
 "<security-realm name=\"UndertowRealm\">\n"
@@ -357,7 +319,6 @@ msgstr ""
 "</security-realm>\n"
 
 #. type: Plain text
-#: source/server_installation/topics/network/https.adoc:140
 msgid ""
 "Find the element `server name=\"default-server\"` (it's a child element of "
 "`subsystem xmlns=\"{subsystem_undertow_xml_urn}\"`) and add:"
@@ -366,7 +327,6 @@ msgstr ""
 "xmlns=\"{subsystem_undertow_xml_urn}\"` の子要素）を検索して以下を追加します。"
 
 #. type: delimited block -
-#: source/server_installation/topics/network/https.adoc:149
 #, no-wrap
 msgid ""
 "<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"

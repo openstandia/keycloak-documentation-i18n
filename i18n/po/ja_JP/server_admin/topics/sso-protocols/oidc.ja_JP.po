@@ -15,12 +15,15 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: Title ===
+#, no-wrap
+msgid "OpenID Connect"
+msgstr "OpenID Connect"
+
 #. type: Plain text
-#: source/securing_apps/topics/overview/supported-protocols.adoc:11
-#: source/server_admin/topics/sso-protocols/oidc.adoc:9
 msgid ""
-"link:http://openid.net/connect/[Open ID Connect] (OIDC) is an authentication"
-" protocol that is an extension of "
+"link:http://openid.net/connect/[OpenID Connect] (OIDC) is an authentication "
+"protocol that is an extension of "
 "link:https://tools.ietf.org/html/rfc6749[OAuth 2.0].  While OAuth 2.0 is "
 "only a framework for building authorization protocols and is mainly "
 "incomplete, OIDC is a full-fledged authentication and authorization "
@@ -29,7 +32,7 @@ msgid ""
 "JSON format and ways to digitally sign and encrypt that data in a compact "
 "and web-friendly way."
 msgstr ""
-"link:http://openid.net/connect/[Open ID "
+"link:http://openid.net/connect/[OpenID "
 "Connect]（OIDC）はlink:https://tools.ietf.org/html/rfc6749[OAuth "
 "2.0]を拡張した認証プロトコルです。OAuth "
 "2.0が認可プロトコルのみを構築するためのフレームワークで、不完全であるのに対し、OIDCは完成された認証および認可のプロトコルです。OIDCはまた、link:https://jwt.io[Json"
@@ -37,8 +40,22 @@ msgstr ""
 "Token]（JWT）の標準セットを多用します。これらの標準は、コンパクトでwebフレンドリーな方法で、アイデンティティー・トークンのJSON形式とデジタル署名、データ暗号化の方法を定義します。"
 
 #. type: Plain text
-#: source/securing_apps/topics/overview/supported-protocols.adoc:24
-#: source/server_admin/topics/sso-protocols/oidc.adoc:22
+msgid ""
+"There are really two types of use cases when using OIDC.  The first is an "
+"application that asks the {project_name} server to authenticate a user for "
+"them.  After a successful login, the application will receive an _identity "
+"token_ and an _access token_.  The _identity token_ contains information "
+"about the user such as username, email, and other profile information.  The "
+"_access token_ is digitally signed by the realm and contains access "
+"information (like user role mappings) that the application can use to "
+"determine what resources the user is allowed to access on the application."
+msgstr ""
+"OIDCを使用するユースケースは、実際には2つの種類があります。1つ目は、{project_name}サーバーにユーザーの認証を要求するアプリケーションのユースケースです。ログインが成功すると、アプリケーションは"
+" _identity token_ と _access token_ を受け取ります。 _Identity token_ "
+"には、ユーザー名、電子メール、その他のプロファイル情報など、ユーザーに関する情報が含まれています。 _Access token_ "
+"はレルムによってデジタル署名されており、アプリケーションがユーザーのアクセス可能なリソースを決定するために使用できるアクセス情報（ユーザー・ロール・マッピングのような）が含まれています。"
+
+#. type: Plain text
 msgid ""
 "The second type of use cases is that of a client that wants to gain access "
 "to remote services.  In this case, the client asks {project_name} to obtain "
@@ -58,37 +75,12 @@ msgstr ""
 "を使用して、リモートサービスのREST呼び出しを行うことができます。REST サービスは _アクセストークン_ "
 "を抽出し、トークンの署名を検証し、トークン内のアクセス情報に基づいて、リクエストを処理するかどうかを決定します。"
 
-#. type: Title ===
-#: source/server_admin/topics/sso-protocols/oidc.adoc:3
-#, no-wrap
-msgid "Open ID Connect"
-msgstr "Open ID Connect"
-
-#. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:15
-msgid ""
-"There are really two types of use cases when using OIDC.  The first is an "
-"application that asks the {project_name} server to authenticate a user for "
-"them.  After a successful login, the application will receive an _identity "
-"token_ and an _access token_.  The _identity token_ contains information "
-"about the user such as username, email, and other profile information.  The "
-"_access token_ is digitally signed by the realm and contains access "
-"information (like user role mappings) that the application can use to "
-"determine what resources the user is allowed to access on the application."
-msgstr ""
-"OIDCを使用するユースケースは、実際には2つの種類があります。1つ目は、{project_name}サーバーにユーザーの認証を要求するアプリケーションのユースケースです。ログインが成功すると、アプリケーションは"
-" _identity token_ と _access token_ を受け取ります。 _Identity token_ "
-"には、ユーザー名、電子メール、その他のプロファイル情報など、ユーザーに関する情報が含まれています。 _Access token_ "
-"はレルムによってデジタル署名されており、アプリケーションがユーザーのアクセス可能なリソースを決定するために使用できるアクセス情報（ユーザー・ロール・マッピングのような）が含まれています。"
-
 #. type: Title ====
-#: source/server_admin/topics/sso-protocols/oidc.adoc:25
 #, no-wrap
 msgid "OIDC Auth Flows"
 msgstr "OIDC認証フロー"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:30
 msgid ""
 "OIDC has different ways for a client or application to authenticate a user "
 "and receive an _identity_ and _access_ token.  Which path you use depends "
@@ -101,13 +93,11 @@ msgstr ""
 " 2.0の仕様で説明されていますので、ここでは簡単な概要のみを説明します。"
 
 #. type: Title =====
-#: source/server_admin/topics/sso-protocols/oidc.adoc:31
 #, no-wrap
 msgid "Authorization Code Flow"
 msgstr "認可コード・フロー"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:35
 msgid ""
 "This is a browser-based protocol and it is what we recommend you use to "
 "authenticate and authorize browser-based applications.  It makes heavy use "
@@ -118,8 +108,6 @@ msgstr ""
 "トークンと _access_ トークンを取得するために、ブラウザーのリダイレクトを頻繁に使用します。概要を以下に示します。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:39
-#: source/server_admin/topics/sso-protocols/oidc.adoc:71
 msgid ""
 "Browser visits application.  The application notices the user is not logged "
 "in, so it redirects the browser to {project_name} to be authenticated.  The "
@@ -130,7 +118,6 @@ msgstr ""
 "ブラウザーがアプリケーションにアクセスします。アプリケーションは、ユーザーがログインしていないことを検知し、認証させるためにブラウザーを{project_name}にリダイレクトします。アプリケーションは、{project_name}が認証を完了したときに使用するブラウザー・リダイレクトのコールバックURL（リダイレクトURL）をクエリー・パラメーターとして渡します。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:42
 msgid ""
 "{project_name} authenticates the user and creates a one-time, very short "
 "lived, temporary code.  {project_name} redirects back to the application "
@@ -140,7 +127,6 @@ msgstr ""
 "{project_name}はユーザーを認証し、1回限りで非常に存続期間の短い、一時的なコードを作成します。{project_name}は、以前に提供されたコールバックURLを使用してアプリケーションにリダイレクトします。コールバックURLには、クエリー・パラメーターとして一時コードが追加されます。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:45
 msgid ""
 "The application extracts the temporary code and makes a background out of "
 "band REST invocation to {project_name} to exchange the code for an "
@@ -152,7 +138,6 @@ msgstr ""
 "トークンと交換するため、バックグラウンドで帯域外の{project_name}へのREST呼び出し｀を行います。この一時コードを一度使用してトークンを取得すると、それを再び使用することはできません。これにより潜在的なリプレイ攻撃が防止されます。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:51
 msgid ""
 "It is important to note that _access_ tokens are usually short lived and "
 "often expired after only minutes.  The additional _refresh_ token that was "
@@ -168,7 +153,6 @@ msgstr ""
 "トークンにより、アプリケーションは有効期限が切れた後に新しいアクセス・トークンを取得できます。このリフレッシュ・プロトコルは、システムが侵害された状況で重要です。アクセス・トークンが短命である場合、システム全体は、アクセストークンの存続期間中に盗まれたトークンに対してのみ脆弱です。管理者がアクセスを取り消した場合、その後のリフレッシュ・トークン・リクエストは失敗します。これにより、より安全でスケーラブルになります。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:59
 msgid ""
 "Another important aspect of this flow is the concept of a _public_ vs. a "
 "_confidential_ client.  _Confidential_ clients are required to provide a "
@@ -190,14 +174,21 @@ msgstr ""
 "クライアントでなければなりません。前述のとおり、HTTPSを使用し、リダイレクトURI登録を厳密に実施する限り、これは問題ありません。これに関するガイドは、<<_clients,"
 " クライアントの管理>>の章で詳しく説明しています。"
 
+#. type: Plain text
+msgid ""
+"{project_name} also supports the optional "
+"https://tools.ietf.org/html/rfc7636[Proof Key for Code Exchange] "
+"specification."
+msgstr ""
+"{project_name}は、オプションの https://tools.ietf.org/html/rfc7636[Proof Key for "
+"Code Exchange] の仕様もサポートしています。"
+
 #. type: Title =====
-#: source/server_admin/topics/sso-protocols/oidc.adoc:60
 #, no-wrap
 msgid "Implicit Flow"
 msgstr "インプリシット・フロー"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:67
 msgid ""
 "This is a browser-based protocol that is similar to Authorization Code Flow "
 "except there are fewer requests and no refresh tokens involved.  We do not "
@@ -215,7 +206,6 @@ msgstr ""
 " 2.0の仕様にあるため、サポートされています。プロトコルの概要を以下に示します。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:74
 msgid ""
 "{project_name} authenticates the user and creates an _identity_ and _access_"
 " token.  {project_name} redirects back to the application using the callback"
@@ -227,20 +217,17 @@ msgstr ""
 "トークンと _access_ トークンをクエリー・パラメーターとしてコールバックURLに追加します。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:75
 msgid ""
 "The application extracts the _identity_ and _access_ tokens from the "
 "callback URL."
 msgstr "アプリケーションは、コールバックURLから _identity_ トークンと _access_ トークンを抽出します。"
 
 #. type: Title =====
-#: source/server_admin/topics/sso-protocols/oidc.adoc:76
 #, no-wrap
 msgid "Resource Owner Password Credentials Grant (Direct Access Grants)"
 msgstr "リソース・オーナー・パスワード・クレデンシャル・グラント（ダイレクト・アクセス・グラント）"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:82
 msgid ""
 "This is referred to in the Admin Console as _Direct Access Grants_. This is "
 "used by REST clients that want to obtain a token on behalf of a user.  It is"
@@ -255,13 +242,11 @@ msgstr ""
 "トークン、 _access_ トークン、および _refresh_ トークンが含まれています。"
 
 #. type: Title =====
-#: source/server_admin/topics/sso-protocols/oidc.adoc:84
 #, no-wrap
 msgid "Client Credentials Grant"
 msgstr "クライアント・クレデンシャル・グラント"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:89
 msgid ""
 "This is also used by REST clients, but instead of obtaining a token that "
 "works on behalf of an external user, a token is created based on the "
@@ -272,13 +257,11 @@ msgstr ""
 "これはRESTクライアントでも使用されますが、外部ユーザーの代わりに動作するトークンを取得する代わりに、クライアントに関連付けられているサービス・アカウントのメタデータとパーミッションに基づいてトークンが作成されます。さらに詳しい情報は、<<_service_accounts,サービス・アカウント>>の章にあります。"
 
 #. type: Title ====
-#: source/server_admin/topics/sso-protocols/oidc.adoc:90
 #, no-wrap
 msgid "{project_name} Server OIDC URI Endpoints"
 msgstr "{project_name}サーバーOIDC URIエンドポイント"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:95
 msgid ""
 "Here's a list of OIDC endpoints that the {project_name} publishes.  These "
 "URLs are useful if you are using a non-{project_name} client adapter to talk"
@@ -290,7 +273,6 @@ msgstr ""
 " _/auth_ のプレフィックス付きのパスからなります。例： $$https://localhost:8080/auth$$"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:105
 #, no-wrap
 msgid ""
 "/realms/{realm-name}/protocol/openid-connect/token::\n"
@@ -313,6 +295,5 @@ msgstr ""
 "  これは、OIDC仕様で説明されているUserInfoサービスのURLエンドポイントです。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/oidc.adoc:106
 msgid "In all of these replace _{realm-name}_ with the name of the realm."
 msgstr "これらのURLすべてで、 _{realm-name}_ はレルムの名前に置き換えてください。"

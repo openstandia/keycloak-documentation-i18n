@@ -1,0 +1,229 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Securing Fuse Administration Services"
+msgstr "Fuse管理サービスのセキュリティー保護"
+
+#. type: Title ======
+#, no-wrap
+msgid "Using SSH Authentication to Fuse Terminal"
+msgstr "FuseターミナルへのSSH認証の使用"
+
+#. type: Plain text
+msgid ""
+"{project_name} mainly addresses use cases for authentication of web "
+"applications; however, if your other web services and applications are "
+"protected with {project_name}, protecting non-web administration services "
+"such as SSH with {project_name} credentials is a best pracrice. You can do "
+"this using the JAAS login module, which allows remote connection to "
+"{project_name} and verifies credentials based on "
+"<<_resource_owner_password_credentials_flow,Resource Owner Password "
+"Credentials>>."
+msgstr ""
+"{project_name}は、主にWebアプリケーションの認証のユースケースを扱います。ただし、他のWebサービスやアプリケーションが{project_name}で保護されている場合は、{project_name}のクレデンシャルでSSHなどのWeb以外の管理サービスを保護するのが最善の方法です。これは、{project_name}へのリモート接続を許可し、<<_resource_owner_password_credentials_flow,リソース・オーナー・パスワード・クレデンシャル>>に基づいてクレデンシャルを検証するJAASログイン・モジュールを使用して実行できます。"
+
+#. type: Plain text
+msgid "To enable SSH authentication, complete the following steps:"
+msgstr "SSH認証を有効にするには、次の手順を実行します。"
+
+#. type: Plain text
+msgid ""
+"In {project_name} create a client (for example, `ssh-jmx-admin-client`), "
+"which will be used for SSH authentication.  This client needs to have "
+"`Direct Access Grants Enabled` selected to `On`."
+msgstr ""
+"{project_name}では、SSH認証に使用されるクライアント（たとえば、 `ssh-jmx-admin-client` "
+"）を作成します。このクライアントでは、 `Direct Access Grants Enabled` が `On` に選択されている必要があります。"
+
+#. type: Plain text
+msgid ""
+"In the `$FUSE_HOME/etc/org.apache.karaf.shell.cfg` file, update or specify "
+"this property:"
+msgstr ""
+"`$FUSE_HOME/etc/org.apache.karaf.shell.cfg` ファイルで、次のとおりにこのプロパティーを更新または指定します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "sshRealm=keycloak\n"
+msgstr "sshRealm=keycloak\n"
+
+#. type: Plain text
+msgid ""
+"Add the `$FUSE_HOME/etc/keycloak-direct-access.json` file with content "
+"similar to the following (based on your environment and {project_name} "
+"client settings):"
+msgstr ""
+"（環境と{project_name}のクライアント設定に基づいて）次のような内容で `$FUSE_HOME/etc/keycloak-direct-"
+"access.json` ファイルを追加してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"    \"realm\": \"demo\",\n"
+"    \"resource\": \"ssh-jmx-admin-client\",\n"
+"    \"ssl-required\" : \"external\",\n"
+"    \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"    \"credentials\": {\n"
+"        \"secret\": \"password\"\n"
+"    }\n"
+"}\n"
+msgstr ""
+"{\n"
+"    \"realm\": \"demo\",\n"
+"    \"resource\": \"ssh-jmx-admin-client\",\n"
+"    \"ssl-required\" : \"external\",\n"
+"    \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"    \"credentials\": {\n"
+"        \"secret\": \"password\"\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"This file specifies the client application configuration, which is used by "
+"JAAS DirectAccessGrantsLoginModule from the `keycloak` JAAS realm for SSH "
+"authentication."
+msgstr ""
+"このファイルでは、JAASの `DirectAccessGrantsLoginModule` がSSH認証のために `keycloak` "
+"JAASレルムから使用するクライアント・アプリケーションの設定を指定します。"
+
+#. type: Plain text
+msgid "Use these commands in the Fuse terminal:"
+msgstr "Fuseターミナルで次のコマンドを使用します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"features:install keycloak-jaas\n"
+msgstr ""
+"features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"features:install keycloak-jaas\n"
+
+#. type: Plain text
+msgid ""
+"Log in using SSH as `admin` user by typing the following in the terminal:"
+msgstr "SSHで `admin` ユーザーとしてログインするには、ターミナルで次のように入力します。"
+
+#. type: Code block
+msgid "ssh -o PubkeyAuthentication=no -p 8101 admin@localhost"
+msgstr "ssh -o PubkeyAuthentication=no -p 8101 admin@localhost"
+
+#. type: Plain text
+msgid "Log in with password `password`."
+msgstr "パスワードは `password` でログインしてください。"
+
+#. type: Plain text
+msgid ""
+"Note that the user needs to have realm role `admin` to perform all "
+"operations or another role to perform a subset of operations (for example, "
+"the *viewer* role that restricts the user to run only read-only Karaf "
+"commands). The available roles are configured in "
+"`$FUSE_HOME/etc/org.apache.karaf.shell.cfg` or "
+"`$FUSE_HOME/etc/system.properties`."
+msgstr ""
+"ユーザーはすべての操作を実行するために、レルムロール `admin` "
+"を持つ必要があることに注意してください。また、操作のサブセットを実行するためには別のロールが必要となります（たとえば、読み取り専用のKarafコマンドのみを実行するようにユーザーを制限する"
+" *viewer* ロール）。利用可能なロールは、 `$FUSE_HOME/etc/org.apache.karaf.shell.cfg` または "
+"`$FUSE_HOME/etc/system.properties` で設定されます。"
+
+#. type: Title ======
+#, no-wrap
+msgid "Using JMX Authentication"
+msgstr "JMX認証の使用"
+
+#. type: Plain text
+msgid "To use JMX authentication, complete the following steps:"
+msgstr "JMX認証を使用するには、次の手順を実行します。"
+
+#. type: Plain text
+msgid ""
+"In the `$FUSE_HOME/etc/org.apache.karaf.management.cfg` file, change the "
+"jmxRealm property to:"
+msgstr ""
+"`$FUSE_HOME/etc/org.apache.karaf.management.cfg` ファイルで、 `jmxRealm` "
+"プロパティーを次のように変更します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "jmxRealm=keycloak\n"
+msgstr "jmxRealm=keycloak\n"
+
+#. type: Plain text
+msgid ""
+"Install the `keycloak-jaas` feature and configure the `$FUSE_HOME/etc"
+"/keycloak-direct-access.json` file as described in the SSH section above."
+msgstr ""
+"上記のSSHのセクションで説明したように、 `keycloak-jaas` フィーチャーをインストールし、 `$FUSE_HOME/etc"
+"/keycloak-direct-access.json` ファイルを設定してください。"
+
+#. type: Plain text
+msgid "In jconsole you can use a URL such as:"
+msgstr "jconsoleでは、次のようなURLを使用できます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "service:jmx:rmi://localhost:44444/jndi/rmi://localhost:1099/karaf-root\n"
+msgstr ""
+"service:jmx:rmi://localhost:44444/jndi/rmi://localhost:1099/karaf-root\n"
+
+#. type: Plain text
+msgid ""
+"and credentials: admin/password (based on the user with admin privileges "
+"according to your environment)."
+msgstr "クレデンシャルはadmin/password（利用環境の管理者権限を持つユーザー次第）です。"
+
+#. type: Plain text
+msgid ""
+"Start Fuse and install the `keycloak` JAAS realm. The easiest way is to "
+"install the `keycloak-jaas` feature, which has the JAAS realm predefined. "
+"You can override the feature's predefined realm by using your own `keycloak`"
+" JAAS realm with higher ranking. For details see the "
+"https://access.redhat.com/documentation/en-us/red_hat_fuse/7.0/html-"
+"single/security_guide/#ESBSecureContainer[JBoss Fuse documentation]."
+msgstr ""
+"Fuseを起動し、 `keycloak` のJAASレルムをインストールしてください。最も簡単な方法は、JAASレルムがあらかじめ定義された "
+"`keycloak-jaas` 機能をインストールすることです。独自の `keycloak` "
+"JAASレルムを使用して、より高いランクでその機能の定義済みレルムを上書きすることができます。詳細については、 "
+"https://access.redhat.com/documentation/en-us/red_hat_fuse/7.0/html-"
+"single/security_guide/#ESBSecureContainer[JBoss Fuse documentation] "
+"を参照してください。"
+
+#. type: Plain text
+msgid ""
+"On some later operating systems, you might also need to use the SSH "
+"command's -o option `-o HostKeyAlgorithms=+ssh-dss` because later SSH "
+"clients do not allow use of the `ssh-dss` algorithm, by default. However, by"
+" default, it is currently used in {fuse7Version}."
+msgstr ""
+"最近のオペレーティング・システムでは、SSHコマンドの-oオプション `-o HostKeyAlgorithms=+ssh-dss` "
+"を使用する必要があります。これは、最近のSSHクライアントではデフォルトで `ssh-dss` "
+"アルゴリズムの使用は許可されていないためです。しかし、{fuse7Version}では現在デフォルトで使用されています。"
+
+#. type: Plain text
+msgid ""
+"JMX authentication might be necessary if you want to use jconsole or another"
+" external tool to remotely connect to JMX through RMI. Otherwise it might be"
+" better to use hawt.io/jolokia, since the jolokia agent is installed in "
+"hawt.io by default. For more details see <<_fuse7_hawtio,Hawtio Admin "
+"Console>>."
+msgstr ""
+"jconsoleまたは別の外部ツールを使用してRMI経由でJMXにリモート接続する場合は、JMX認証が必要になることがあります。そうでなければ、jolokiaエージェントがデフォルトでhawt.ioにインストールされているので、hawt.io/jolokiaを使用する方が良いかもしれません。詳細については、<<_fuse7_hawtio,Hawtio"
+" Admin Console>>を参照してください。"

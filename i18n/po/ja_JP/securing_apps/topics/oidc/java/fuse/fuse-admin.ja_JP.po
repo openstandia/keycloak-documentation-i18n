@@ -16,19 +16,16 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title =====
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:3
 #, no-wrap
 msgid "Securing Fuse Administration Services"
 msgstr "Fuse管理サービスのセキュリティー保護"
 
 #. type: Title ======
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:5
 #, no-wrap
 msgid "Using SSH Authentication to Fuse Terminal"
 msgstr "FuseターミナルへのSSH認証の使用"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:10
 msgid ""
 "{project_name} mainly addresses use cases for authentication of web "
 "applications; however, if your other web services and applications are "
@@ -42,12 +39,10 @@ msgstr ""
 "{project_name}は、主にWebアプリケーションの認証のユースケースを扱います。ただし、他のWebサービスやアプリケーションが{project_name}で保護されている場合は、{project_name}のクレデンシャルでSSHなどのWeb以外の管理サービスを保護するのが最善の方法です。これは、{project_name}へのリモート接続を許可し、<<_resource_owner_password_credentials_flow,リソース・オーナー・パスワード・クレデンシャル>>に基づいてクレデンシャルを検証するJAASログイン・モジュールを使用して実行できます。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:12
 msgid "To enable SSH authentication, complete the following steps:"
 msgstr "SSH認証を有効にするには、次の手順を実行します。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:15
 msgid ""
 "In {project_name} create a client (for example, `ssh-jmx-admin-client`), "
 "which will be used for SSH authentication.  This client needs to have "
@@ -57,7 +52,6 @@ msgstr ""
 "）を作成します。このクライアントでは、 `Direct Access Grants Enabled` が `On` に選択されている必要があります。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:17
 msgid ""
 "In the `$FUSE_HOME/etc/org.apache.karaf.shell.cfg` file, update or specify "
 "this property:"
@@ -65,13 +59,11 @@ msgstr ""
 "`$FUSE_HOME/etc/org.apache.karaf.shell.cfg` ファイルで、次のとおりにこのプロパティーを更新または指定します。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:21
 #, no-wrap
 msgid "sshRealm=keycloak\n"
 msgstr "sshRealm=keycloak\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:24
 msgid ""
 "Add the `$FUSE_HOME/etc/keycloak-direct-access.json` file with content "
 "similar to the following (based on your environment and {project_name} "
@@ -81,7 +73,6 @@ msgstr ""
 "ファイルを（環境と{project_name}のクライアント設定に基づいて）次のような内容を追加してください。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:36
 #, no-wrap
 msgid ""
 "{\n"
@@ -105,7 +96,6 @@ msgstr ""
 "}\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:38
 msgid ""
 "This file specifies the client application configuration, which is used by "
 "JAAS DirectAccessGrantsLoginModule from the `keycloak` JAAS realm for SSH "
@@ -115,13 +105,12 @@ msgstr ""
 "JAASレルムから使用するクライアント・アプリケーションの設定を指定します。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:40
 msgid ""
 "Start Fuse and install the `keycloak` JAAS realm. The easiest way is to "
 "install the `keycloak-jaas` feature, which has the JAAS realm predefined. "
 "You can override the feature's predefined realm by using your own `keycloak`"
 " JAAS realm with higher ranking. For details see the "
-"https:access.redhat.com/documentation/en-us/red_hat_jboss_fuse/6.3/html-"
+"https://access.redhat.com/documentation/en-us/red_hat_jboss_fuse/6.3/html-"
 "single/security_guide/#ESBSecureContainer[JBoss Fuse documentation]."
 msgstr ""
 "Fuseを起動し、 `keycloak` JAASレルムをインストールしてください。最も簡単な方法は、JAASレルムがあらかじめ定義された "
@@ -132,12 +121,10 @@ msgstr ""
 "documentation]を参照してください。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:42
 msgid "Use these commands in the Fuse terminal:"
 msgstr "Fuseターミナルで次のコマンドを使用します。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:47
 #, no-wrap
 msgid ""
 "features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
@@ -147,23 +134,19 @@ msgstr ""
 "features:install keycloak-jaas\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:50
 msgid ""
 "Log in using SSH as `admin` user by typing the following in the terminal:"
 msgstr "SSHで `admin` ユーザーとしてログインするには、ターミナルで次のように入力します。"
 
 #. type: Code block
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:53
 msgid "ssh -o PubkeyAuthentication=no -p 8101 admin@localhost"
 msgstr "ssh -o PubkeyAuthentication=no -p 8101 admin@localhost"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:56
 msgid "Log in with password `password`."
 msgstr "パスワードは `password` でログインしてください。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:58
 msgid ""
 "On some later operating systems, you might also need to use the SSH "
 "command's -o option `-o HostKeyAlgorithms=+ssh-dss` because later SSH "
@@ -175,7 +158,6 @@ msgstr ""
 "アルゴリズムを使用できないためです。しかし、現在{fuseVersion}ではデフォルトで使用されています。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:60
 msgid ""
 "Note that the user needs to have realm role `admin` to perform all "
 "operations or another role to perform a subset of operations (for example, "
@@ -190,13 +172,11 @@ msgstr ""
 "`$FUSE_HOME/etc/system.properties` で設定されます。"
 
 #. type: Title ======
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:61
 #, no-wrap
 msgid "Using JMX Authentication"
 msgstr "JMX認証の使用"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:64
 msgid ""
 "JMX authentication might be necessary if you want to use jconsole or another"
 " external tool to remotely connect to JMX through RMI. Otherwise it might be"
@@ -207,12 +187,10 @@ msgstr ""
 " Admin Console>>を参照してください。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:66
 msgid "To use JMX authentication, complete the following steps:"
 msgstr "JMX認証を使用するには、次の手順を実行します。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:68
 msgid ""
 "In the `$FUSE_HOME/etc/org.apache.karaf.management.cfg` file, change the "
 "jmxRealm property to:"
@@ -221,13 +199,11 @@ msgstr ""
 "プロパティーを次のように変更します。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:72
 #, no-wrap
 msgid "jmxRealm=keycloak\n"
 msgstr "jmxRealm=keycloak\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:75
 msgid ""
 "Install the `keycloak-jaas` feature and configure the `$FUSE_HOME/etc"
 "/keycloak-direct-access.json` file as described in the SSH section above."
@@ -236,19 +212,16 @@ msgstr ""
 "/keycloak-direct-access.json` ファイルを設定してください。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:77
 msgid "In jconsole you can use a URL such as:"
 msgstr "jconsoleでは、次のようなURLを使用できます。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:81
 #, no-wrap
 msgid "service:jmx:rmi://localhost:44444/jndi/rmi://localhost:1099/karaf-root\n"
 msgstr ""
 "service:jmx:rmi://localhost:44444/jndi/rmi://localhost:1099/karaf-root\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/fuse/fuse-admin.adoc:83
 msgid ""
 "and credentials: admin/password (based on the user with admin privileges "
 "according to your environment)."

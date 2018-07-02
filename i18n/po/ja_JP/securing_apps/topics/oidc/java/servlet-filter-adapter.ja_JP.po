@@ -16,14 +16,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/jboss-adapter.adoc:146
-#: source/securing_apps/topics/oidc/java/jetty9-adapter.adoc:118
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:18
-#: source/securing_apps/topics/oidc/java/tomcat-adapter.adoc:63
-#: source/securing_apps/topics/saml/java/jetty-adapter/jetty9_per_war_config.adoc:36
-#: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:24
-#: source/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_per_war_config.adoc:28
-#: source/securing_apps/topics/saml/java/jboss-adapter/required_per_war_configuration.adoc:20
 #, no-wrap
 msgid ""
 "<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
@@ -37,14 +29,11 @@ msgstr ""
 "      version=\"3.0\">\n"
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:2
-#: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:2
 #, no-wrap
 msgid "Java Servlet Filter Adapter"
 msgstr "Javaサーブレット・フィルター・アダプター"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:7
 msgid ""
 "If you are deploying your Java Servlet application on a platform where there"
 " is no {project_name} adapter you opt to use the servlet filter adapter.  "
@@ -56,7 +45,6 @@ msgstr ""
 "{project_name}アダプターがないプラットフォームにJavaサーブレット・アプリケーションをデプロイする場合は、サーブレット・フィルター・アダプターを使用することを選択します。このアダプターは、他のアダプターとは多少動作が異なります。web.xmlにはセキュリティー制約を定義しません。代わりに{project_name}サーブレット・フィルター・アダプターを使用してフィルター・マッピングを定義して、URLパターンでセキュリティー保護します。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:11
 msgid ""
 "Backchannel logout works a bit differently than the standard adapters.  "
 "Instead of invalidating the HTTP session it marks the session id as logged "
@@ -66,13 +54,11 @@ msgstr ""
 "バックチャネル・ログアウトは、標準のアダプターとは少し異なります。HTTPセッションを無効にする代わりに、セッションIDをログアウトしたものとしてマークします。セッションIDに基づいてHTTPセッションを無効にする標準的な方法はありません。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:20
 #, no-wrap
 msgid "\t<module-name>application</module-name>\n"
 msgstr "\t<module-name>application</module-name>\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:31
 #, no-wrap
 msgid ""
 "    <filter>\n"
@@ -98,7 +84,6 @@ msgstr ""
 "</web-app>\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:35
 #, no-wrap
 msgid ""
 "In the snippet above there are two url-patterns.\n"
@@ -108,7 +93,6 @@ msgstr ""
 "?_/protected/*_ は保護したいファイルで、_/keycloak/*_ のurl-patternは{project_name}サーバーからのコールバックを処理します。\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:39
 msgid ""
 "If you need to exclude some paths beneath the configured `url-patterns` you "
 "can use the Filter init-param `keycloak.config.skipPattern` to configure a "
@@ -122,7 +106,6 @@ msgstr ""
 "を使用できます。デフォルトでは、skipPatternは設定されていません。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:41
 msgid ""
 "Patterns are matched against the `requestURI` without the `context-path`. "
 "Given the context-path `/myapp` a request for `/myapp/index.html` will be "
@@ -132,7 +115,6 @@ msgstr ""
 "`/myapp/index.html` のリクエストは、スキップ・パターンと `/index.html` で照合されます。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:48
 #, no-wrap
 msgid ""
 "<init-param>\n"
@@ -146,7 +128,6 @@ msgstr ""
 "</init-param>\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:51
 msgid ""
 "Note that you should configure your client in the {project_name} Admin "
 "Console with an Admin URL that points to a secured section covered by the "
@@ -156,7 +137,6 @@ msgstr ""
 "patternで保護されたセクションを指します。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:54
 msgid ""
 "The Admin URL will make callbacks to the Admin URL to do things like "
 "backchannel logout.  So, the Admin URL in this example should be "
@@ -166,7 +146,6 @@ msgstr ""
 "URLは `http[s]://hostname/{context-root}/keycloak` でなければなりません。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:56
 msgid ""
 "The {project_name} filter has the same configuration parameters as the other"
 " adapters except you must define them as filter init params instead of "
@@ -175,13 +154,10 @@ msgstr ""
 "{project_name}フィルターは、コンテキスト・パラメーターの代わりにフィルター初期化パラメーターとして定義する必要がある以外は、他のアダプターと同じ設定パラメーターを持ちます。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:58
-#: source/securing_apps/topics/saml/java/servlet-filter-adapter.adoc:49
 msgid "To use this filter, include this maven artifact in your WAR poms:"
 msgstr "このフィルタを使用するには、WARのpomに次のmavenアーティファクトを含めます。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc:66
 #, no-wrap
 msgid ""
 "<dependency>\n"

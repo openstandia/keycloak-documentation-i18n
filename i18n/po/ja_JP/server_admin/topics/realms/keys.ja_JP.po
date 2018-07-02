@@ -16,14 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
-#: source/server_admin/topics/realms/keys.adoc:2
-#: source/upgrading/topics/rhsso/changes.adoc:5
 #, no-wrap
 msgid "Realm Keys"
 msgstr "レルム鍵"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:6
 msgid ""
 "The authentication protocols that are used by {project_name} require "
 "cryptographic signatures and sometimes encryption.  {project_name} uses "
@@ -33,7 +30,6 @@ msgstr ""
 "{project_name}は、これに対応するために秘密鍵と公開鍵の鍵ペアを使用します。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:10
 msgid ""
 "{project_name} has a single active keypair at a time, but can have several "
 "passive keys as well. The active keypair is used to create new signatures, "
@@ -45,14 +41,12 @@ msgstr ""
 "アクティブな鍵ペアを使用して新しい署名を作成し、パッシブな鍵ペアを使用して以前の署名を検証することができます。これにより、ダウンタイムやユーザーの中断を招くことなく、鍵を定期的にローテーションさせることができます。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:12
 msgid ""
 "When a realm is created a key pair and a self-signed certificate is "
 "automatically generated."
 msgstr "レルムが作成されると、鍵ペアと自己署名証明書が自動的に生成されます。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:16
 msgid ""
 "To view the active keys for a realm select the realm in the admin console "
 "click on `Realm settings` then `Keys`. This will show the currently active "
@@ -64,7 +58,6 @@ msgstr ""
 "をクリックします。これにより、レルムの現在有効な鍵が表示されます。{project_name}は現在、RSA署名のみをサポートしているので、アクティブな鍵ペアは1つのみです。将来、署名アルゴリズムが追加された場合、アクティブな鍵ペアが増えることになります。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:21
 #, no-wrap
 msgid ""
 "To view all available keys select `All`. This will show all active, passive and disabled keys. A keypair can have the\n"
@@ -77,13 +70,11 @@ msgstr ""
 "ですが、レルムの現在のアクティブな鍵ペアとしてはまだ選択されません。署名のために使用されるアクティブな鍵ペアは、優先度によってソートされた最初の鍵プロバイダーが選択されます。\n"
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:22
 #, no-wrap
 msgid "Rotating keys"
 msgstr "鍵のローテーション"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:26
 msgid ""
 "It's recommended to regularly rotate keys. To do so you should start by "
 "creating new keys with a higher priority than the existing active keys. Or "
@@ -92,7 +83,6 @@ msgstr ""
 "鍵を定期的にローテーションさせることをお勧めします。ローテーションを行うには、既存のアクティブな鍵よりも優先度の高い新しい鍵を作成することから始めます。または、同じ優先度で新しい鍵を作成し、以前の鍵をパッシブにします。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:31
 msgid ""
 "Once new keys are available all new tokens and cookies will be signed with "
 "the new keys. When a user authenticates to an application the SSO cookie is "
@@ -106,7 +96,6 @@ msgstr ""
 "Connectトークンをリフレッシュすると、新しいトークンが新しい鍵で署名されます。つまり、すべてのトークンとCookieが新しい鍵を使用するようになるため、しばらく経つと古い鍵を削除することができます。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:35
 msgid ""
 "How long you wait to delete old keys is a tradeoff between security and "
 "making sure all cookies and tokens are updated.  In general it should be "
@@ -117,7 +106,6 @@ msgstr ""
 "古い鍵を削除するのにどれくらいかかるのかは、セキュリティーと、すべてのCookieとトークンが確実に更新される時間とのトレードオフです。一般的には、数週間後に古い鍵を削除することが可能となるべきでしょう。追加された新しい鍵と古い鍵が削除されるまでの間にアクティブでなかったユーザーは、再認証する必要があります。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:38
 msgid ""
 "This also applies to offline tokens. To make sure they are updated the "
 "applications need to refresh the tokens before the old keys are removed."
@@ -125,20 +113,17 @@ msgstr ""
 "これは、オフライン・トークンにも適用されます。トークンが更新されていることを確認するには、古い鍵が削除される前にアプリケーションでトークンをリフレッシュする必要があります。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:41
 msgid ""
 "As a guideline it may be a good idea to create new keys every 3-6 months and"
 " delete old keys 1-2 months after the new keys where created."
 msgstr "ガイドラインとして、3～6か月ごとに新しい鍵を作成し、新しい鍵が作成されてから1～2か月後に古い鍵を削除することをお勧めします。"
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:42
 #, no-wrap
 msgid "Adding a generated keypair"
 msgstr "鍵ペアの追加"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:47
 msgid ""
 "To add a new generated keypair select `Providers` and choose `rsa-generated`"
 " from the dropdown. You can change the priority to make sure the new keypair"
@@ -151,14 +136,12 @@ msgstr ""
 "`鍵のサイズ` を変更することもできます（デフォルトは2048、サポートされている値は1024、2048、および4096）。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:49
 msgid ""
 "Click `Save` to add the new keys. This will generated a new keypair "
 "including a self-signed certificate."
 msgstr "新しい鍵を追加するには `Save` をクリックしてください。これにより、自己署名証明書を含む新しい鍵ペアが生成されます。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:52
 msgid ""
 "Changing the priority for a provider will not cause the keys to be re-"
 "generated, but if you want to change the keysize you can edit the provider "
@@ -167,13 +150,11 @@ msgstr ""
 "プロバイダーの優先順位を変更しても鍵は再生成されませんが、鍵のサイズを変更したい場合は、プロバイダーを編集して新しい鍵を生成することができます。"
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:53
 #, no-wrap
 msgid "Adding an existing keypair and certificate"
 msgstr "既存の鍵ペアと証明書の追加"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:57
 msgid ""
 "To add a keypair and certificate obtained elsewhere select `Providers` and "
 "choose `rsa` from the dropdown. You can change the priority to make sure the"
@@ -183,7 +164,6 @@ msgstr ""
 "を選択します。優先順位を変更することで、新しい鍵ペアをアクティブな鍵ペアにすることができます。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:60
 msgid ""
 "Click on `Select file` for `Private RSA Key` to upload your private key. The"
 " file should be encoded in PEM format. You don't need to upload the public "
@@ -193,7 +173,6 @@ msgstr ""
 "をクリックしてください。ファイルはPEM形式でエンコードする必要があります。公開鍵は、秘密鍵から自動的に抽出されるため、アップロードする必要はありません。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:63
 #, no-wrap
 msgid ""
 "If you have a signed certificate for the keys click on `Select file` next to `X509 Certificate`. If you don't have one\n"
@@ -203,13 +182,11 @@ msgstr ""
 "持っていない場合は、これをスキップすることができ、自己署名証明書が生成されます。\n"
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:64
 #, no-wrap
 msgid "Loading keys from a Java Keystore"
 msgstr "Javaキーストアから鍵をロードする"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:68
 msgid ""
 "To add a keypair and certificate stored in a Java Keystore file on the host "
 "select `Providers` and choose `java-keystore` from the dropdown. You can "
@@ -219,7 +196,6 @@ msgstr ""
 "keystore` を選択します。優先順位を変更して、新しい鍵ペアをアクティブすることができます。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:70
 msgid ""
 "Fill in the values for `Keystore`, `Keystore Password`, `Key Alias` and `Key"
 " Password` and click on `Save`."
@@ -228,13 +204,11 @@ msgstr ""
 "`Save` をクリックします。"
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:71
 #, no-wrap
 msgid "Making keys passive"
 msgstr "鍵をパッシブにする"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:76
 msgid ""
 "Locate the keypair in `Active` or `All` then click on the provider in the "
 "`Provider` column. This will take you to the configuration screen for the "
@@ -247,13 +221,11 @@ msgstr ""
 " `Save` をクリックします。鍵はアクティブでなくなり、署名の検証にのみ使用できます。"
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:77
 #, no-wrap
 msgid "Disabling keys"
 msgstr "鍵の無効化"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:82
 msgid ""
 "Locate the keypair in `Active` or `All` then click on the provider in the "
 "`Provider` column. This will take you to the configuration screen for the "
@@ -265,18 +237,15 @@ msgstr ""
 "をクリックします。鍵は無効化されます。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:84
 msgid "Alternatively, you can delete the provider from the `Providers` table."
 msgstr "また、 `Providers` テーブルからプロバイダーを削除することもできます。"
 
 #. type: Title ====
-#: source/server_admin/topics/realms/keys.adoc:85
 #, no-wrap
 msgid "Compromised keys"
 msgstr "鍵の漏洩"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:90
 msgid ""
 "{project_name} has the signing keys stored just locally and they are never "
 "shared with the client applications, users or other entities. However if you"
@@ -287,7 +256,6 @@ msgstr ""
 "{project_name}では署名鍵がローカルに格納されており、クライアント・アプリケーション、ユーザーまたは他のエンティティーと共有されることはありません。しかし、レルムの署名鍵が漏洩したと思われる場合は、先に説明したように新しい鍵ペアを生成してから、即座に漏洩した鍵ペアを削除する必要があります。"
 
 #. type: Plain text
-#: source/server_admin/topics/realms/keys.adoc:95
 msgid ""
 "Then to ensure that client applications won't accept the tokens signed by "
 "the compromised key, you should update and push not-before policy for the "

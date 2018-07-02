@@ -1,0 +1,227 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Plain text
+msgid "For example:"
+msgstr "例："
+
+#. type: Title =====
+#, no-wrap
+msgid "Securing a Classic WAR Application"
+msgstr "クラシックWARアプリケーションのセキュリティー保護"
+
+#. type: Plain text
+msgid "The needed steps to secure your WAR application are:"
+msgstr "WARアプリケーションをセキュリティー保護するために必要な手順は次のとおりです。"
+
+#. type: Plain text
+msgid "In the `/WEB-INF/web.xml` file, declare the necessary:"
+msgstr "`/WEB-INF/web.xml` ファイルで、次のように必要なものを宣言します。"
+
+#. type: Plain text
+msgid "security constraints in the <security-constraint> element"
+msgstr "<security-constraint>要素のセキュリティー制約"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"         xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"         version=\"3.0\">\n"
+msgstr ""
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"         xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"         version=\"3.0\">\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <module-name>customer-portal</module-name>\n"
+msgstr "    <module-name>customer-portal</module-name>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <welcome-file-list>\n"
+"        <welcome-file>index.html</welcome-file>\n"
+"    </welcome-file-list>\n"
+msgstr ""
+"    <welcome-file-list>\n"
+"        <welcome-file>index.html</welcome-file>\n"
+"    </welcome-file-list>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <security-constraint>\n"
+"        <web-resource-collection>\n"
+"            <web-resource-name>Customers</web-resource-name>\n"
+"            <url-pattern>/customers/*</url-pattern>\n"
+"        </web-resource-collection>\n"
+"        <auth-constraint>\n"
+"            <role-name>user</role-name>\n"
+"        </auth-constraint>\n"
+"    </security-constraint>\n"
+msgstr ""
+"    <security-constraint>\n"
+"        <web-resource-collection>\n"
+"            <web-resource-name>Customers</web-resource-name>\n"
+"            <url-pattern>/customers/*</url-pattern>\n"
+"        </web-resource-collection>\n"
+"        <auth-constraint>\n"
+"            <role-name>user</role-name>\n"
+"        </auth-constraint>\n"
+"    </security-constraint>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <security-role>\n"
+"        <role-name>admin</role-name>\n"
+"    </security-role>\n"
+"    <security-role>\n"
+"        <role-name>user</role-name>\n"
+"    </security-role>\n"
+"</web-app>\n"
+msgstr ""
+"    <security-role>\n"
+"        <role-name>admin</role-name>\n"
+"    </security-role>\n"
+"    <security-role>\n"
+"        <role-name>user</role-name>\n"
+"    </security-role>\n"
+"</web-app>\n"
+
+#. type: Plain text
+msgid ""
+"Within the `/WEB-INF/` directory of your WAR, create a new file, "
+"keycloak.json. The format of this configuration file is described in the "
+"<<_java_adapter_config,Java Adapters Config>> section. It is also possible "
+"to make this file available externally as described in "
+"xref:config_external_adapter[Configuring the External Adapter]."
+msgstr ""
+"WARの `/WEB-INF/` ディレクトリー内に、新しい `keycloak.json` "
+"ファイルを作成します。この設定ファイルの形式は、<<_java_adapter_config,Javaアダプターの設定>>のセクションで説明しています。xref:config_external_adapter[外部アダプターの設定]で説明されているように、外部でこのファイルを使用することもできます。"
+
+#. type: Title ======
+#, no-wrap
+msgid "Configuring the External Adapter"
+msgstr "外部アダプターの設定"
+
+#. type: Plain text
+msgid ""
+"If you do not want the `keycloak.json` adapter configuration file to be "
+"bundled inside your WAR application, but instead made available externally "
+"and loaded based on naming conventions, use this configuration method."
+msgstr ""
+"`keycloak.json` "
+"アダプターの設定ファイルをWARアプリケーションの中にバンドルするのではなく、外部で使用可能にし、命名規則に基づいてロードする場合は、この設定方法を使用してください。"
+
+#. type: Plain text
+msgid ""
+"To enable the functionality, add this section to your `/WEB_INF/web.xml` "
+"file:"
+msgstr "この機能を有効にするには、次のセクションを `/WEB_INF/web.xml` ファイルに追加してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<context-param>\n"
+"    <param-name>keycloak.config.resolver</param-name>\n"
+"    <param-value>org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver</param-value>\n"
+"</context-param>\n"
+msgstr ""
+"<context-param>\n"
+"    <param-name>keycloak.config.resolver</param-name>\n"
+"    <param-value>org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver</param-value>\n"
+"</context-param>\n"
+
+#. type: Plain text
+msgid ""
+"That component uses `keycloak.config` or `karaf.etc` java properties to "
+"search for a base folder to locate the configuration.  Then inside one of "
+"those folders it searches for a file called "
+"`<your_web_context>-keycloak.json`."
+msgstr ""
+"そのコンポーネントは、 `keycloak.config` または `karaf.etc` "
+"のjavaプロパティーを使って基本フォルダーを検索し、設定を探します。そして、見つけたフォルダーの中で "
+"`<your_web_context>-keycloak.json` というファイルを探します。"
+
+#. type: Plain text
+msgid ""
+"So, for example, if your web application has context `my-portal`, then your "
+"adapter configuration is loaded from the `$FUSE_HOME/etc/my-portal-"
+"keycloak.json` file."
+msgstr ""
+"たとえば、Webアプリケーションにコンテキスト `my-portal` がある場合、アダプターの設定は `$FUSE_HOME/etc/my-"
+"portal-keycloak.json` ファイルからロードされます。"
+
+#. type: Plain text
+msgid ""
+"login configuration in the <login-config> element. Make sure that the "
+"`<auth-method>` is `KEYCLOAK`."
+msgstr ""
+"<login-config> 要素内のログイン設定。 `<auth-method>` が `KEYCLOAK` であることを確認してください。"
+
+#. type: Plain text
+msgid "security roles in the <security-role> element"
+msgstr "<security-role> 要素のセキュリティー・ロール。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <login-config>\n"
+"        <auth-method>KEYCLOAK</auth-method>\n"
+"        <realm-name>does-not-matter</realm-name>\n"
+"    </login-config>\n"
+msgstr ""
+"    <login-config>\n"
+"        <auth-method>KEYCLOAK</auth-method>\n"
+"        <realm-name>does-not-matter</realm-name>\n"
+"    </login-config>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"    \"realm\": \"demo\",\n"
+"    \"resource\": \"customer-portal\",\n"
+"    \"auth-server-url\": \"http://localhost:8080/auth\",\n"
+"    \"ssl-required\" : \"external\",\n"
+"    \"credentials\": {\n"
+"        \"secret\": \"password\"\n"
+"    }\n"
+"}\n"
+msgstr ""
+"{\n"
+"    \"realm\": \"demo\",\n"
+"    \"resource\": \"customer-portal\",\n"
+"    \"auth-server-url\": \"http://localhost:8080/auth\",\n"
+"    \"ssl-required\" : \"external\",\n"
+"    \"credentials\": {\n"
+"        \"secret\": \"password\"\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"Contrary to the Fuse 6 adapter, there are no special OSGi imports needed in "
+"MANIFEST.MF."
+msgstr "Fuse 6アダプターとは異なり、MANIFEST.MFには特別なOSGiのインポートは必要ありません。"

@@ -16,13 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ==
-#: source/server_development/topics/user-storage.adoc:2
 #, no-wrap
 msgid "User Storage SPI"
 msgstr "ユーザー・ストレージSPI"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage.adoc:5
 msgid ""
 "You can use the User Storage SPI to write extensions to {project_name} to "
 "connect to external user databases and credential stores. The built-in LDAP "
@@ -38,7 +36,6 @@ msgstr ""
 "ユーザー・ストレージSPIを使用して、外部ユーザー・データベースとクレデンシャル・ストアに接続するように、{project_name}の拡張機能を実装できます。組み込みのLDAPとActiveDirectoryのサポートは、このSPIを実際に実装したものです。設定などの作業をせず、すぐに{project_name}はローカル・データベースを使用して、ユーザーの作成、更新、検索とクレデンシャルの検証をします。しかし、多くの場合、組織は{project_name}のデータモデルに移行できない既存の外部独自のユーザー・データベースを持っています。このような状況では、アプリケーション開発者は、ユーザー・ストレージSPIの実装を記述して、外部ユーザーストアと、{project_name}がユーザーのログインおよび管理に使用する内部ユーザー・オブジェクト・モデルをブリッジすることができます。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage.adoc:7
 msgid ""
 "When the {project_name} runtime needs to look up a user, such as when a user"
 " is logging in, it performs a number of steps to locate the user. It first "
@@ -53,7 +50,6 @@ msgstr ""
 "{project_name}ランタイムは、ユーザーがログインしているときなど、ユーザーを検索する必要があるときに、ユーザーを特定するためにいくつかの手順を実行します。まず、ユーザーがユーザー・キャッシュに入っているかどうかを調べます。ユーザーが見つかった場合は、そのメモリー内表現を使用します。次に、{project_name}ローカル・データベース内のユーザーを探します。ユーザーが見つからない場合は、ユーザー・ストレージSPIプロバイダの実装をループして、そのうちの1つがランタイムが探しているユーザーを返すまでユーザークエリーを実行します。プロバイダーは外部ユーザーストアにユーザーを照会し、ユーザーの外部データ表現を{project_name}のユーザー・メタモデルにマップします。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage.adoc:9
 msgid ""
 "User Storage SPI provider implementations can also perform complex criteria "
 "queries, perform CRUD operations on users, validate and manage credentials, "
@@ -63,7 +59,6 @@ msgstr ""
 "ユーザー・ストレージSPIプロバイダーの実装では、複雑な条件のクエリーを実行したり、ユーザーに対してCRUD操作を実行したり、クレデンシャルを検証および管理したり、一度に多くのユーザーの一括更新を実行することもできます。これは外部ストアの機能に依存します。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage.adoc:11
 msgid ""
 "User Storage SPI provider implementations are packaged and deployed "
 "similarly to (and often are) Java EE components. They are not enabled by "

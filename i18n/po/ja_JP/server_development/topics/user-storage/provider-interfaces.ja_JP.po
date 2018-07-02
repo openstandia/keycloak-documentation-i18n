@@ -16,38 +16,21 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:41
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:52
-#: source/server_development/topics/extensions.adoc:70
-#: source/server_development/topics/providers.adoc:143
 #, no-wrap
 msgid "}\n"
 msgstr "}\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/saml/java/assertion-api.adoc:57
-#: source/server_development/topics/user-storage/configuration.adoc:18
-#: source/server_development/topics/user-storage/configuration.adoc:23
-#: source/server_development/topics/user-storage/configuration.adoc:28
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:26
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:38
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:50
-#: source/server_development/topics/user-storage/registration-query.adoc:109
-#: source/server_development/topics/user-storage/simple-example.adoc:146
-#: source/server_development/topics/auth-spi.adoc:460
-#: source/server_development/topics/providers.adoc:75
 #, no-wrap
 msgid "    }\n"
 msgstr "    }\n"
 
 #. type: Title ===
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:2
 #, no-wrap
 msgid "Provider Interfaces"
 msgstr "プロバイダー・インターフェイス"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:8
 msgid ""
 "When building an implementation of the User Storage SPI you have to define a"
 " provider class and a provider factory.  Provider class instances are "
@@ -59,20 +42,16 @@ msgstr ""
 " `org.keycloak.storage.UserStorageProvider` インターフェイスを実装する必要があります。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:12
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:61
 #, no-wrap
 msgid "package org.keycloak.storage;\n"
 msgstr "package org.keycloak.storage;\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:14
 #, no-wrap
 msgid "public interface UserStorageProvider extends Provider {\n"
 msgstr "public interface UserStorageProvider extends Provider {\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:24
 #, no-wrap
 msgid ""
 "    /**\n"
@@ -94,7 +73,6 @@ msgstr ""
 "    void preRemove(RealmModel realm) {\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:36
 #, no-wrap
 msgid ""
 "    /**\n"
@@ -118,7 +96,6 @@ msgstr ""
 "    void preRemove(RealmModel realm, GroupModel group) {\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:42
 #, no-wrap
 msgid ""
 "    /**\n"
@@ -130,7 +107,6 @@ msgstr ""
 "     * role mapping in your external store if appropriate\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:48
 #, no-wrap
 msgid ""
 "     * @param realm\n"
@@ -146,7 +122,6 @@ msgstr ""
 "    void preRemove(RealmModel realm, RoleModel role) {\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:55
 msgid ""
 "You may be thinking that the `UserStorageProvider` interface is pretty "
 "sparse? You'll see later in this chapter that there are other mix-in "
@@ -157,7 +132,6 @@ msgstr ""
 "インターフェイスは非常に稀薄だと思うかもしれません。この章の後半で、ユーザー統合の重要性をサポートするために、プロバイダー・クラスが実装するかもしれないミックスイン・インターフェイスがあることが分かります。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:57
 msgid ""
 "`UserStorageProvider` instances are created once per transaction. When the "
 "transaction is complete, the `UserStorageProvider.close()` method is invoked"
@@ -171,7 +145,6 @@ msgstr ""
 " `org.keycloak.storage.UserStorageProviderFactory` インターフェイスを実装します。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:67
 #, no-wrap
 msgid ""
 "/**\n"
@@ -187,7 +160,6 @@ msgstr ""
 "public interface UserStorageProviderFactory<T extends UserStorageProvider> extends ComponentFactory<T, UserStorageProvider> {\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:75
 #, no-wrap
 msgid ""
 "    /**\n"
@@ -207,7 +179,6 @@ msgstr ""
 "    String getId();\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:86
 #, no-wrap
 msgid ""
 "    /**\n"
@@ -233,7 +204,6 @@ msgstr ""
 "}\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:92
 msgid ""
 "Provider factory classses must specify the concrete provider class as a "
 "template parameter when implementing the `UserStorageProviderFactory`.  This"
@@ -247,7 +217,6 @@ msgstr ""
 " `FileProvider` という名前の場合、ファクトリー・クラスは以下のように表示されます。"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:96
 #, no-wrap
 msgid ""
 "public class FileProviderFactory implements "
@@ -257,13 +226,11 @@ msgstr ""
 "UserStorageProviderFactory<FileProvider> {\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:98
 #, no-wrap
 msgid "    public String getId() { return \"file-provider\"; }\n"
 msgstr "    public String getId() { return \"file-provider\"; }\n"
 
 #. type: delimited block -
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:102
 #, no-wrap
 msgid ""
 "    public FileProvider create(KeycloakSession session, ComponentModel model) {\n"
@@ -275,7 +242,6 @@ msgstr ""
 "    }\n"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:106
 msgid ""
 "The `getId()` method returns the name of the User Storage provider.  This id"
 " will be displayed in the admin console's `UserFederation` page when you "
@@ -286,7 +252,6 @@ msgstr ""
 "`UserFederation` ページ内に表示されます。"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:112
 msgid ""
 "The `create()` method is responsible for allocating an instance of the "
 "provider class.  It takes a `org.keycloak.models.KeycloakSession` parameter."
@@ -304,7 +269,6 @@ msgstr ""
 "パラメーターは、特定のレルム内でプロバイダーがどのように有効にされ設定されたかを表します。これには、有効なプロバイダーのインスタンスIDと、管理コンソールで有効にした際に指定した可能性がある設定が含まれます"
 
 #. type: Plain text
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:114
 msgid ""
 "The `UserStorageProviderFactory` has other capabilities as well which we "
 "will go over later in this chapter."

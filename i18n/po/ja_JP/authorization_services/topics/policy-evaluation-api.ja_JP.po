@@ -16,13 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title =
-#: source/authorization_services/topics/policy-evaluation-api.adoc:2
 #, no-wrap
 msgid "Policy Evaluation API"
 msgstr "ポリシー評価API"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:5
 msgid ""
 "When writing rule-based policies using JavaScript or JBoss Drools, "
 "{project_name} provides an Evaluation API that provides useful information "
@@ -32,33 +30,32 @@ msgstr ""
 "Droolsを使用してルールベースのポリシーを作成する場合、{project_name}は、パーミッションを与える必要があるかどうかを判断するのに役立つ情報を提供する評価APIを提供します。"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:7
 msgid ""
-"This API consists of a few interfaces that provides you access to "
-"information such as:"
+"This API consists of a few interfaces that provide you access to "
+"information, such as"
 msgstr "このAPIは、次のような情報へのアクセスを提供するいくつかのインターフェイスで構成されています。"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:9
-msgid "The permission being requested"
-msgstr "要求しているパーミッション"
-
-#. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:10
 msgid ""
-"The identity that is requesting the permission, from which you can obtain "
-"claims/attributes"
-msgstr "クレーム/属性を取得できるパーミッションを要求しているアイデンティティー"
+"The permission being evaluated, representing both the resource and scopes "
+"being requested."
+msgstr "要求されているリソースとスコープの両方を表す評価されたパーミッション。"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:11
+msgid "The attributes associated with the resource being requested"
+msgstr "要求されているリソースに関連付けられている属性"
+
+#. type: Plain text
 msgid ""
 "Runtime environment and any other attribute associated with the execution "
 "context"
 msgstr "ランタイム環境および実行コンテキストに関連付けられたその他の属性"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:13
+msgid "Information about users such as group membership and roles"
+msgstr "グループ・メンバーシップやロールなどのユーザーに関する情報"
+
+#. type: Plain text
 msgid ""
 "The main interface is "
 "*org.keycloak.authorization.policy.evaluation.Evaluation*, which defines the"
@@ -68,7 +65,6 @@ msgstr ""
 "で、次のコントラクトを定義します。"
 
 #. type: Code block
-#: source/authorization_services/topics/policy-evaluation-api.adoc:41
 #, no-wrap
 msgid ""
 "public interface Evaluation {\n"
@@ -88,6 +84,13 @@ msgid ""
 "    EvaluationContext getContext();\n"
 "\n"
 "    /**\n"
+"     * Returns a {@link Realm} that can be used by policies to query information.\n"
+"     *\n"
+"     * @return a {@link Realm} instance\n"
+"     */\n"
+"    Realm getRealm();\n"
+"\n"
+"    /**\n"
 "     * Grants the requested permission to the caller.\n"
 "     */\n"
 "    void grant();\n"
@@ -115,6 +118,13 @@ msgstr ""
 "    EvaluationContext getContext();\n"
 "\n"
 "    /**\n"
+"     * Returns a {@link Realm} that can be used by policies to query information.\n"
+"     *\n"
+"     * @return a {@link Realm} instance\n"
+"     */\n"
+"    Realm getRealm();\n"
+"\n"
+"    /**\n"
 "     * Grants the requested permission to the caller.\n"
 "     */\n"
 "    void grant();\n"
@@ -126,7 +136,6 @@ msgstr ""
 "}\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:44
 msgid ""
 "When processing an authorization request, {project_name} creates an "
 "`Evaluation` instance before evaluating any policy. This instance is then "
@@ -136,7 +145,6 @@ msgstr ""
 "インスタンスを作成します。このインスタンスは、各ポリシーに渡され、アクセスが *GRANT* か *DENY* かを判断します。"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:46
 msgid ""
 "Policies determine this by invoking the `grant()` or `deny()` methods on an "
 "`Evaluation` instance. By default, the state of the `Evaluation` instance is"
@@ -149,27 +157,23 @@ msgstr ""
 "`grant()` メソッドを呼び出してポリシー評価エンジンに許可を与える必要があることを示す必要があります。"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:48
 msgid ""
 "For more information about the Evaluation API see the "
 "{apidocs_link}[JavaDocs]."
 msgstr "評価APIの詳細については、 {apidocs_link}[JavaDocs] を参照してください。"
 
 #. type: Title ==
-#: source/authorization_services/topics/policy-evaluation-api.adoc:49
 #, no-wrap
 msgid "The Evaluation Context"
 msgstr "評価コンテキスト"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:52
 msgid ""
 "The evaluation context provides useful information to policies during their "
 "evaluation."
 msgstr "評価コンテキストは、評価中にポリシーに有用な情報を提供します。"
 
 #. type: Code block
-#: source/authorization_services/topics/policy-evaluation-api.adoc:70
 #, no-wrap
 msgid ""
 "public interface EvaluationContext {\n"
@@ -207,36 +211,32 @@ msgstr ""
 "}\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:73
 msgid "From this interface, policies can obtain:"
 msgstr "このインターフェイスから、ポリシーは以下を取得できます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:75
 msgid "The authenticated `Identity`"
 msgstr "認証された `Identity`"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:76
 msgid "Information about the execution context and runtime environment"
 msgstr "実行コンテキストとランタイム環境に関する情報"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:80
 msgid ""
 "The `Identity` is built based on the OAuth2 Access Token that was sent along"
 " with the authorization request, and this construct has access to all claims"
 " extracted from the original token. For example, if you are using a "
-"_Protocol Mapper_ to include a custom claim in a OAuth2 Access Token you can"
-" also access this claim from a policy and use it to build your conditions."
+"_Protocol Mapper_ to include a custom claim in an OAuth2 Access Token you "
+"can also access this claim from a policy and use it to build your "
+"conditions."
 msgstr ""
-"`Identity`  "
-"は、認可リクエストとともに送信されたOAuth2アクセス・トークンに基づいて作成され、このコンストラクトはオリジナルのトークンから抽出されたすべてのクレームにアクセスできます。たとえば、"
+"`Identity` "
+"は、認証リクエストと共に送られたOAuth2アクセストークンに基づいて構築され、この構造は元のトークンから抽出されたすべてのクレームへのアクセスを有します。たとえば、"
 " _Protocol Mapper_ "
-"を使用してカスタム・クレームをOAuth2アクセス・トークンに含める場合、ポリシーからこのクレームにアクセスして、条件を作成することもできます。"
+"を使用してカスタムクレームをOAuth2アクセストークンに含める場合は、ポリシーからこのクレームにアクセスして、それを使用して条件を構築することもできます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:82
 msgid ""
 "The `EvaluationContext` also gives you access to attributes related to both "
 "the execution and runtime environments. For now, there only a few built-in "
@@ -246,90 +246,70 @@ msgstr ""
 "は、実行およびランタイム環境の両方に関連する属性へのアクセスも提供します。今のところ、いくつかの組み込み属性しかありません。"
 
 #. type: Block title
-#: source/authorization_services/topics/policy-evaluation-api.adoc:83
 #, no-wrap
 msgid "Execution and Runtime Attributes"
 msgstr "実行属性およびランタイム属性"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:86
 msgid "Name |Description | Type"
 msgstr "名前 |説明 | タイプ"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:88
 msgid "kc.time.date_time"
 msgstr "kc.time.date_time"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:89
 msgid "Current date and time"
 msgstr "現在の日付と時刻"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:90
 msgid "String. Format `MM/dd/yyyy hh:mm:ss`"
 msgstr "String。フォーマット `MM/dd/yyyy hh:mm:ss`"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:92
 msgid "kc.client.network.ip_address"
 msgstr "kc.client.network.ip_address"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:93
 msgid "IPv4 address of the client"
 msgstr "クライアントのIPv4アドレス"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:94
-#: source/authorization_services/topics/policy-evaluation-api.adoc:98
-#: source/authorization_services/topics/policy-evaluation-api.adoc:102
-#: source/authorization_services/topics/policy-evaluation-api.adoc:110
 msgid "String"
 msgstr "String"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:96
 msgid "kc.client.network.host"
 msgstr "kc.client.network.host"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:97
 msgid "Client's host name"
 msgstr "クライアントのホスト名"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:100
 msgid "kc.client.id"
 msgstr "kc.client.id"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:101
 msgid "The client id"
 msgstr "クライアントID"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:104
 msgid "kc.client.user_agent"
 msgstr "kc.client.user_agent"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:105
 msgid "The value of the 'User-Agent' HTTP header"
 msgstr "'User-Agent' HTTPヘッダーの値"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:106
 msgid "String[]"
 msgstr "String[]"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:108
 msgid "kc.realm.name"
 msgstr "kc.realm.name"
 
 #. type: Plain text
-#: source/authorization_services/topics/policy-evaluation-api.adoc:109
 msgid "The name of the realm"
 msgstr "レルムの名前"

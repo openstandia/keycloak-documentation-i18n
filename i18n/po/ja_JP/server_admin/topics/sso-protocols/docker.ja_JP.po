@@ -16,8 +16,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/docker/docker-overview.adoc:5
-#: source/server_admin/topics/sso-protocols/docker.adoc:6
 msgid ""
 "Docker authentication is disabled by default. To enable see "
 "link:{installguide_profile_link}[{installguide_profile_name}]."
@@ -25,13 +23,11 @@ msgstr ""
 "Docker認証はデフォルトで無効です。有効にするには、link:{installguide_profile_link}[{installguide_profile_name}]を参照してください。"
 
 #. type: Title ===
-#: source/server_admin/topics/sso-protocols/docker.adoc:3
 #, no-wrap
 msgid "Docker Registry v2 Authentication"
 msgstr "Dockerレジストリーv2認証"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/docker.adoc:8
 msgid ""
 "link:https://docs.docker.com/registry/spec/auth/[Docker Registry V2 "
 "Authentciation] is an OIDC-Like protocol used to authenticate users against "
@@ -47,30 +43,26 @@ msgstr ""
 "link:https://docs.docker.com/registry/spec/auth/[Dockerレジストリーv2認証]は、Dockerレジストリーに対してユーザーを認証するために使用されるOIDCのようなプロトコルです。{project_name}はこのプロトコルを実装しており、Dockerクライアントがレジストリーに対しての認証に{project_name}認証サーバーを使用することができます。このプロトコルはかなり標準的なトークンと署名メカニズムを使用しますが、真のOIDC実装としては扱うことができない問題点があります。最大の問題点は、リクエストとレスポンスが非常に特殊なJSON形式であり、リポジトリー名とパーミッションをOAuthのスコープ・メカニズムにマップする方法を理解する必要がある点です。"
 
 #. type: Title ====
-#: source/server_admin/topics/sso-protocols/docker.adoc:9
 #, no-wrap
 msgid "Docker Auth Flow"
 msgstr "Docker認証フロー"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/docker.adoc:11
 msgid ""
 "The link:https://docs.docker.com/registry/spec/auth/token/[Docker API "
 "documentation] best describes and illustrates this process, however a brief "
-"summary will be given below from the perspective of they {project_name} "
+"summary will be given below from the perspective of the {project_name} "
 "authentication server."
 msgstr ""
 "link:https://docs.docker.com/registry/spec/auth/token/[Docker API "
-"documentation]はこのプロセスを最もよく説明していますが、{project_name}認証サーバーの観点から簡単な要約を以下に示します。"
+"documentation]はこのプロセスを最もよく説明していますが、{project_name}認証サーバーの観点から、簡単な概要を以下に示します。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/docker.adoc:13
 msgid ""
 "This flow assumes that a `docker login` command has already been performed"
 msgstr "このフローは、 `docker login` コマンドがすでに実行されていることを前提としています。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/docker.adoc:15
 msgid ""
 "The flow begins when the Docker client requests a resource from the Docker "
 "registry.  If the resource is protected and no auth token is present in the "
@@ -81,7 +73,6 @@ msgstr ""
 "DockerクライアントがDockerレジストリーからリソースを要求すると、フローが開始されます。リソースが保護されており、リクエストに認証トークンが存在しない場合、Dockerレジストリー・サーバーは、必要なパーミッションに関する情報と認可サーバーの場所を401でクライアントに応答します。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/docker.adoc:16
 msgid ""
 "The Docker client will construct an authentication request based on the 401 "
 "response from the Docker registry.  The client will then use the locally "
@@ -94,14 +85,12 @@ msgstr ""
 "コマンドから）ローカルにキャッシュされたクレデンシャルを使用します。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/docker.adoc:17
 msgid ""
 "The {project_name} authentication server will attempt to authenticate the "
 "user and return a JSON body containing an OAuth-style Bearer token."
 msgstr "{project_name}認証サーバーはユーザーを認証し、OAuth形式のベアラートークンを含むJSON本体を返します。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/docker.adoc:18
 msgid ""
 "The Docker client will get the bearer token from the JSON response and use "
 "it in the Authorization header to request the protected resource."
@@ -109,7 +98,6 @@ msgstr ""
 "Dockerクライアントは、JSONレスポンスからベアラートークンを取得し、Authorizationヘッダーでベアラートークンを使用して、保護されたリソースを要求します。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/docker.adoc:19
 msgid ""
 "When the Docker registry recieves the new request for the protected resource"
 " with the token from the {project_name} server, the registry validates the "
@@ -118,19 +106,16 @@ msgstr ""
 "Dockerレジストリーが保護されたリソースへの新しいリクエストを{project_name}サーバーからのトークンとともに受信すると、Dockerレジストリーはトークンを検証し、必要に応じてリソースへのアクセスを許可します。"
 
 #. type: Title ====
-#: source/server_admin/topics/sso-protocols/docker.adoc:20
 #, no-wrap
 msgid "{project_name} Docker Registry v2 Authentication Server URI Endpoints"
 msgstr "{project_name} Dockerレジストリーv2認証サーバーのURIエンドポイント"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/docker.adoc:23
 msgid ""
 "{project_name} really only has one endpoint for all Docker auth v2 requests."
 msgstr "{project_name}は、すべてのDocker認証v2リクエストに対して、実際には1つのエンドポイントしか持っていません。"
 
 #. type: Plain text
-#: source/server_admin/topics/sso-protocols/docker.adoc:25
 msgid ""
 "`http(s)://authserver.host/auth/realms/{realm-name}/protocol/docker-v2`"
 msgstr ""

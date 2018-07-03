@@ -16,60 +16,31 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Plain text
-#: source/getting_started/topics/first-boot/boot.adoc:10
-#: source/server_installation/topics/operating-mode/domain.adoc:186
-#: source/server_installation/topics/operating-mode/standalone-ha.adoc:36
-#: source/server_installation/topics/operating-mode/standalone.adoc:19
 msgid "To boot the server:"
 msgstr "サーバーを起動するには下記を実行します"
 
 #. type: Block title
-#: source/getting_started/topics/first-boot/boot.adoc:11
-#: source/getting_started/topics/secure-jboss-app/before.adoc:14
-#: source/getting_started/topics/secure-jboss-app/install-client-adapter.adoc:52
-#: source/server_installation/topics/config-subsystem/start-cli.adoc:11
-#: source/server_installation/topics/operating-mode/domain.adoc:187
-#: source/server_installation/topics/operating-mode/standalone-ha.adoc:37
-#: source/server_installation/topics/operating-mode/standalone.adoc:20
-#: source/server_installation/topics/manage.adoc:15
-#: source/server_admin/topics/initialization.adoc:27
-#: source/server_admin/topics/initialization.adoc:41
-#: source/authorization_services/topics/getting-started-overview.adoc:9
 #, no-wrap
 msgid "Linux/Unix"
 msgstr "Linux/Unix"
 
 #. type: Block title
-#: source/getting_started/topics/first-boot/boot.adoc:17
-#: source/getting_started/topics/secure-jboss-app/before.adoc:20
-#: source/getting_started/topics/secure-jboss-app/install-client-adapter.adoc:58
-#: source/server_installation/topics/config-subsystem/start-cli.adoc:17
-#: source/server_installation/topics/operating-mode/domain.adoc:193
-#: source/server_installation/topics/operating-mode/standalone-ha.adoc:43
-#: source/server_installation/topics/operating-mode/standalone.adoc:26
-#: source/server_installation/topics/manage.adoc:21
-#: source/server_admin/topics/initialization.adoc:33
-#: source/server_admin/topics/initialization.adoc:47
-#: source/authorization_services/topics/getting-started-overview.adoc:15
 #, no-wrap
 msgid "Windows"
 msgstr "Windows"
 
 #. type: Title ===
-#: source/server_installation/topics/operating-mode/domain.adoc:3
 #, no-wrap
 msgid "Domain Clustered Mode"
 msgstr "ドメイン・クラスター・モード"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:6
 msgid ""
 "Domain mode is a way to centrally manage and publish the configuration for "
 "your servers."
 msgstr "ドメインモードとは、サーバーの設定を一元管理し、クラスター内の各サーバーに反映させる方法です。"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:11
 msgid ""
 "Running a cluster in standard mode can quickly become aggravating as the "
 "cluster grows in size.  Every time you need to make a configuration change, "
@@ -82,7 +53,6 @@ msgstr ""
 "標準モードでクラスターを実行すると、クラスターが大きくなり、煩雑化する可能性があります。クラスター内の各ノードにおいて、都度設定を変更する必要がでてきてしまいます。一方、ドメインモードの場合は、設定を保存しパブリッシュするために一元管理する場所を提供することで、この問題を解決できます。セットアップにはかなり手間がかかりますが、最終的にはその工数は見合うことになります。この機能は{project_name}が構成される{appserver_name}アプリケーション・サーバーに組み込まれています。"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:14
 #, no-wrap
 msgid ""
 "The guide will go over the very basics of domain mode.  Detailed steps on how to set up domain mode in a cluster should be obtained from the\n"
@@ -91,18 +61,15 @@ msgstr ""
 "このガイドでは、ドメインモードの初歩的なところを説明します。クラスター内でのドメインモードのセットアップ手順について、詳しくは、link:{appserver_admindoc_link}[_{appserver_admindoc_name}_]を参照してください。\n"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:16
 msgid "Here are some of the basic concepts of running in domain mode."
 msgstr "ドメインモードを実行する基本的なコンセプトは、以下のとおりです。"
 
 #. type: Labeled list
-#: source/server_installation/topics/operating-mode/domain.adoc:17
 #, no-wrap
 msgid "domain controller"
 msgstr "ドメイン・コントローラー"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:20
 msgid ""
 "The domain controller is a process that is responsible for storing, "
 "managing, and publishing the general configuration for each node in the "
@@ -112,13 +79,11 @@ msgstr ""
 "ドメイン・コントローラーとは、クラスター内の各ノードの一般的な設定を保存、管理、パブリッシュする役割をもつ、プロセスのことです。また、クラスター内の各ノードが取得する設定を一元管理するデータベースでもあります。"
 
 #. type: Labeled list
-#: source/server_installation/topics/operating-mode/domain.adoc:21
 #, no-wrap
 msgid "host controller"
 msgstr "ホスト・コントローラー"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:26
 msgid ""
 "The host controller is responsible for managing server instances on a "
 "specific machine.  You configure it to run one or more server instances.  "
@@ -129,13 +94,11 @@ msgstr ""
 "ホスト・コントローラーの役割は、特定のマシン内のサーバー・インスタンスを管理することです。1つ以上のサーバー・インスタンスを実行できるよう、ホスト・コントローラーを設定することになります。また、ドメイン・コントローラーはクラスターを管理するために、各マシン内のホスト・コントローラーと連携します。実行プロセスを減らすために、ドメイン・コントローラーに、特定のマシン内のホスト・コントローラーとしての役割を担わせることもできます。"
 
 #. type: Labeled list
-#: source/server_installation/topics/operating-mode/domain.adoc:27
 #, no-wrap
 msgid "domain profile"
 msgstr "ドメイン・プロファイル"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:30
 msgid ""
 "A domain profile is a named set of configuration that can be used by a "
 "server to boot from.  A domain controller can define multiple domain "
@@ -144,14 +107,11 @@ msgstr ""
 "ドメイン・プロファイルとは、サーバーを起動するために使用する、名前付きの設定セットです。ドメイン・コントローラーで、複数のドメイン・プロファイルを定義することができます。そして、さまざまなサーバーがこのドメイン・プロファイルを使うことになります。"
 
 #. type: Block title
-#: source/server_installation/topics/operating-mode/domain.adoc:31
-#: source/server_installation/topics/operating-mode/domain.adoc:106
 #, no-wrap
 msgid "server group"
 msgstr "サーバーグループ"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:34
 msgid ""
 "A server group is a collection of servers.  They are managed and configured "
 "as one.  You can assign a domain profile to a server group and every service"
@@ -160,7 +120,6 @@ msgstr ""
 "サーバーグループとは、サーバーの集合体です。ひとつの集合体として管理、設定されます。サーバーグループに、ドメイン・プロファイルを割り当てることができます。そして、そのドメイン・プロファイルはサーバーグループ内のサービスの設定として使用されます。"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:40
 msgid ""
 "In domain mode, a domain controller is started on a master node.  The "
 "configuration for the cluster resides in the domain controller.  Next a host"
@@ -173,13 +132,11 @@ msgstr ""
 "ドメインモードでは、マスターノード上でドメイン・コントローラーが起動されます。クラスターの設定は、ドメイン・コントローラー内にあります。次に、ホスト・コントローラーがクラスター内の各マシンで起動されます。各ホスト・コントローラーのデプロイ設定では、そのマシンで起動する{project_name}サーバー・インスタンスの数を指定します。ホスト・コントローラーがー起動すると、指定された数の{project_name}サーバー・インスタンスが起動します。これらのサーバー・インスタンスは、ドメイン・コントローラーから設定を取得します。"
 
 #. type: Title ====
-#: source/server_installation/topics/operating-mode/domain.adoc:41
 #, no-wrap
 msgid "Domain Configuration"
 msgstr "ドメイン設定"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:47
 msgid ""
 "Various other chapters in this guide walk you through configuring various "
 "aspects like databases, HTTP network connections, caches, and other "
@@ -194,28 +151,24 @@ msgstr ""
 "を使用します。Keycloakサーバーのドメイン・プロファイルとサーバーグループは、以下で定義されます。"
 
 #. type: Block title
-#: source/server_installation/topics/operating-mode/domain.adoc:49
 #, no-wrap
 msgid "domain.xml"
 msgstr "domain.xml"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:51
 msgid "image:{project_images}/domain-file.png[]"
 msgstr "image:{project_images}/domain-file.png[]"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:55
 #, no-wrap
 msgid ""
 "Any changes you make to this file while the domain controller is running will not take effect and may even be overwritten\n"
-"      by the server.  Instead use the the command line scripting or the web console of {appserver_name}.  See\n"
+"      by the server.  Instead use the command line scripting or the web console of {appserver_name}.  See\n"
 "      the link:{appserver_admindoc_link}[_{appserver_admindoc_name}_] for more information.\n"
 msgstr ""
 "ドメイン・コントローラーの実行中にこのファイルに変更を加えても、変更されず、サーバーに上書きされる可能性があります。その場合は、代わりに{appserver_name}のwebコンソールまたはコマンドライン・スクリプトを使用します。詳しくは、link:{appserver_admindoc_link}[_{appserver_admindoc_name}_]を参照してください。\n"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:58
 msgid ""
 "Let's look at some aspects of this _domain.xml_ file.  The `auth-server-"
 "standalone` and `auth-server-clustered` `profile` XML blocks are where you "
@@ -228,33 +181,30 @@ msgstr ""
 "のXMLブロックでは、どのような設定にするかの大半を定義します。そして、ネットワーク接続、キャッシュ、データベース接続などを設定します。"
 
 #. type: Block title
-#: source/server_installation/topics/operating-mode/domain.adoc:60
 #, no-wrap
 msgid "auth-server profile"
 msgstr "認証サーバー・プロファイル"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:70
 #, no-wrap
 msgid ""
 "    <profiles>\n"
 "        <profile name=\"auth-server-standalone\">\n"
 "            ...\n"
-"         </profile>\n"
-"       <profile name=\"auth-server-clustered\">\n"
-"           ...\n"
+"        </profile>\n"
+"        <profile name=\"auth-server-clustered\">\n"
+"            ...\n"
 "        </profile>\n"
 msgstr ""
 "    <profiles>\n"
 "        <profile name=\"auth-server-standalone\">\n"
 "            ...\n"
-"         </profile>\n"
-"       <profile name=\"auth-server-clustered\">\n"
-"           ...\n"
+"        </profile>\n"
+"        <profile name=\"auth-server-clustered\">\n"
+"            ...\n"
 "        </profile>\n"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:73
 msgid ""
 "The `auth-server-standalone` profile is a non-clustered setup.  The `auth-"
 "server-clustered` profile is the clustered setup."
@@ -263,20 +213,17 @@ msgstr ""
 "clustered` プロファイルは、クラスター構成のセットアップ用です。"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:75
 msgid ""
 "If you scroll down further, you'll see various `socket-binding-groups` "
 "defined."
 msgstr "スクロールダウンしていくと、定義済みの `socket-binding-groups` が表示されます。"
 
 #. type: Block title
-#: source/server_installation/topics/operating-mode/domain.adoc:76
 #, no-wrap
 msgid "socket-binding-groups"
 msgstr "socket-binding-groups"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:91
 #, no-wrap
 msgid ""
 "    <socket-binding-groups>\n"
@@ -286,7 +233,7 @@ msgid ""
 "        <socket-binding-group name=\"ha-sockets\" default-interface=\"public\">\n"
 "           ...\n"
 "        </socket-binding-group>\n"
-"        <!-- load-balancer-sockets should be removed in production systems and replaced with a better softare or hardare based one -->\n"
+"        <!-- load-balancer-sockets should be removed in production systems and replaced with a better software or hardware based one -->\n"
 "        <socket-binding-group name=\"load-balancer-sockets\" default-interface=\"public\">\n"
 "           ...\n"
 "        </socket-binding-group>\n"
@@ -306,24 +253,21 @@ msgstr ""
 "    </socket-binding-groups>\n"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:97
 msgid ""
 "This config defines the default port mappings for various connectors that "
 "are opened with each {project_name} server instance.  Any value that "
-"contains `${...}` is a value that can be overriden on the command line with "
-"the `-D` switch, i.e."
+"contains `${...}` is a value that can be overridden on the command line with"
+" the `-D` switch, i.e."
 msgstr ""
 "この設定では、各{project_name}サーバー・インスタンスによって開かれる、さまざまなコネクターのデフォルトのポート・マッピングを定義します。 "
 "`${...}` を含む値はコマンドラインの `-D` スイッチで上書きできる値です。すなわち、以下のように上書きできます。"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:100
 #, no-wrap
 msgid "$ domain.sh -Djboss.http.port=80\n"
 msgstr "$ domain.sh -Djboss.http.port=80\n"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:105
 msgid ""
 "The definition of the server group for {project_name} resides in the "
 "`server-groups` XML block.  It specifies the domain profile that is used "
@@ -337,11 +281,10 @@ msgstr ""
 "はサーバーグループにバインドされます。"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:124
 #, no-wrap
 msgid ""
 "    <server-groups>\n"
-"        <!-- load-balancer-group should be removed in production systems and replaced with a better softare or hardare based one -->\n"
+"        <!-- load-balancer-group should be removed in production systems and replaced with a better software or hardware based one -->\n"
 "        <server-group name=\"load-balancer-group\" profile=\"load-balancer\">\n"
 "            <jvm name=\"default\">\n"
 "                <heap size=\"64m\" max-size=\"512m\"/>\n"
@@ -373,13 +316,11 @@ msgstr ""
 "    </server-groups>\n"
 
 #. type: Title ====
-#: source/server_installation/topics/operating-mode/domain.adoc:128
 #, no-wrap
 msgid "Host Controller Configuration"
 msgstr "ホスト・コントローラー設定"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:134
 msgid ""
 "{project_name} comes with two host controller configuration files that "
 "reside in the _.../domain/configuration/_ directory: _host-master.xml_ and "
@@ -388,14 +329,13 @@ msgid ""
 "slave.xml_ is configured to talk to the domain controller and boot up one "
 "{project_name} server instance."
 msgstr ""
-"{project_name}には、 _.../domain/configuration/_ ディレクトリーにある、 _host-master.xml_ と"
-" _host-slave.xml_ の2つのホスト・コントローラー設定ファイルが付属しています。 _host-master.xml_ "
+"{project_name}には、 _.../domain/configuration/_ ディレクトリーにある、 _host-master.xml_ "
+"と _host-slave.xml_ の2つのホスト・コントローラー設定ファイルが付属しています。 _host-master.xml_ "
 "はドメイン・コントローラー、ロードバランサー、および1つの{project_name}サーバー・インスタンスを起動するように設定されています。一方、 "
 "_host-slave.xml_ "
 "はドメイン・コントローラーと通信し、1つの{project_name}サーバー・インスタンスを起動するように設定されています。"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:138
 #, no-wrap
 msgid ""
 "The load balancer is not a required service.  It exists so that you can easily test drive clustering on your development\n"
@@ -405,18 +345,15 @@ msgstr ""
 "ロードバランサーは必須サービスではありません。これは、開発マシン上でクラスターリングを簡単にテストできるようにするものです。プロダクション環境で使用可能ですが、使いたい別のハードウェアまたはソフトウェア・ベースのロードバランサーがあるなら、置き換えるかどうかを選択できます。\n"
 
 #. type: Block title
-#: source/server_installation/topics/operating-mode/domain.adoc:139
 #, no-wrap
 msgid "Host Controller Config"
 msgstr "ホスト・コントローラー設定"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:141
 msgid "image:{project_images}/host-files.png[]"
 msgstr "image:{project_images}/host-files.png[]"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:143
 msgid ""
 "To disable the load balancer server instance, edit _host-master.xml_ and "
 "comment out or remove the `\"load-balancer\"` entry."
@@ -425,7 +362,6 @@ msgstr ""
 "エントリーをコメントアウトまたは削除します。"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:151
 #, no-wrap
 msgid ""
 "    <servers>\n"
@@ -441,7 +377,6 @@ msgstr ""
 "    </servers>\n"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:157
 msgid ""
 "Another interesting thing to note about this file is the declaration of the "
 "authentication server instance.  It has a `port-offset` setting.  Any "
@@ -456,7 +391,6 @@ msgstr ""
 "offsetの値が加算されます。このサンプルでは、ロードバランサー・サーバーによって開かれたポートが、起動中の認証サーバー・インスタンスと競合しないように設定しています。"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:166
 #, no-wrap
 msgid ""
 "    <servers>\n"
@@ -474,13 +408,11 @@ msgstr ""
 "    </servers>\n"
 
 #. type: Title ====
-#: source/server_installation/topics/operating-mode/domain.adoc:168
 #, no-wrap
 msgid "Server Instance Working Directories"
 msgstr "サーバー・インスタンス・ワーキング・ディレクトリー"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:173
 msgid ""
 "Each {project_name} server instance defined in your host files creates a "
 "working directory under _.../domain/servers/{SERVER NAME}_.  Additional "
@@ -494,25 +426,20 @@ msgstr ""
 "の下に作業ディレクトリーが作成されます。そこに追加の設定を保存でき、サーバー・インスタンスが必要とする、または作成する一時ファイル、ログファイル、データファイルも保存することができます。これらのサーバー・ディレクトリーごとの構造は、他の{appserver_name}ブートサーバーと同じようなものになります。"
 
 #. type: Block title
-#: source/server_installation/topics/operating-mode/domain.adoc:174
 #, no-wrap
 msgid "Working Directories"
 msgstr "ワーキング・ディレクトリー"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:176
 msgid "image:{project_images}/domain-server-dir.png[]"
 msgstr "image:{project_images}/domain-server-dir.png[]"
 
 #. type: Block title
-#: source/server_installation/topics/operating-mode/domain.adoc:177
-#: source/server_installation/topics/operating-mode/domain.adoc:182
 #, no-wrap
 msgid "Domain Boot Script"
 msgstr "ドメイン起動スクリプト"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:181
 msgid ""
 "When running the server in domain mode, there is a specific script you need "
 "to run to boot the server depending on your operating system.  These scripts"
@@ -522,37 +449,31 @@ msgstr ""
 "_bin/_ ディレクトリーにあります。"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:184
 msgid "image:{project_images}/domain-boot-files.png[]"
 msgstr "image:{project_images}/domain-boot-files.png[]"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:191
 #, no-wrap
 msgid "$ .../bin/domain.sh --host-config=host-master.xml\n"
 msgstr "$ .../bin/domain.sh --host-config=host-master.xml\n"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:197
 #, no-wrap
 msgid "> ...\\bin\\domain.bat --host-config=host-slave.xml\n"
 msgstr "> ...\\bin\\domain.bat --host-config=host-slave.xml\n"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:201
 msgid ""
 "When running the boot script you will need pass in the host controlling "
 "configuration file you are going to use via the `--host-config` switch."
 msgstr "起動スクリプトを実行する場合、 `--host-config` スイッチ経由で、使用するホスト制御設定ファイルを渡す必要があります 。"
 
 #. type: Title ====
-#: source/server_installation/topics/operating-mode/domain.adoc:203
 #, no-wrap
 msgid "Clustered Domain Example"
 msgstr "クラスター構成ドメインのサンプル"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:207
 msgid ""
 "You can test drive clustering using the out-of-the-box _domain.xml_ "
 "configuration.  This example domain is meant to run on one machine and boots"
@@ -562,22 +483,18 @@ msgstr ""
 "設定を使用してクラスターリングをテストできます。このサンプルドメインは、1台のマシンで実行され、以下を起動します。"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:209
 msgid "a domain controller"
 msgstr "ドメイン・コントローラー"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:210
 msgid "an HTTP load balancer"
 msgstr "HTTPロードバランサー"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:211
 msgid "2 {project_name} server instances"
 msgstr "2つの{project_name}サーバー・インスタンス"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:216
 msgid ""
 "To simulate running a cluster on two machines, you'll run the `domain.sh` "
 "script twice to start two separate host controllers.  The first will be the "
@@ -590,13 +507,11 @@ msgstr ""
 "スクリプトを2回実行して2つの別々のホスト・コントローラーを起動させます。はじめに、ドメイン・コントローラー、HTTPロード・バランサー、および1つの{project_name}認証サーバー・インスタンスを起動するマスター・ホスト・コントローラーを起動させます。次に、認証サーバー・インスタンスを起動するだけのスレーブ・ホスト・コントローラーを起動させます。"
 
 #. type: Title =====
-#: source/server_installation/topics/operating-mode/domain.adoc:217
 #, no-wrap
 msgid "Setup Slave Connection to Domain Controller"
 msgstr "ドメイン・コントローラーへのスレーブ接続セットアップ"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:223
 msgid ""
 "Before you can boot things up though, you have to configure the slave host "
 "controller so that it can talk securely to the domain controller.  If you do"
@@ -610,7 +525,6 @@ msgstr ""
 " `.../bin/add-user.sh` スクリプトを実行します。"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:227
 msgid ""
 "When you run the script select `Management User` and answer `yes` when it "
 "asks you if the new user is going to be used for one AS process to connect "
@@ -623,13 +537,11 @@ msgstr ""
 "ファイルにカット・アンド・ペーストする必要があるシークレットが生成されます。"
 
 #. type: Block title
-#: source/server_installation/topics/operating-mode/domain.adoc:228
 #, no-wrap
 msgid "Add App Server Admin"
 msgstr "アプリケーション・サーバー管理者の追加"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:256
 #, no-wrap
 msgid ""
 "$ add-user.sh\n"
@@ -685,7 +597,6 @@ msgstr ""
 " To represent the user add the following to the server-identities definition <secret value=\"bWdtdDEyMyE=\" />\n"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:259
 msgid ""
 "The add-user.sh does not add user to {project_name} server but to the "
 "underlying JBoss Enterprise Application Platform. The credentials used and "
@@ -696,7 +607,6 @@ msgstr ""
 "Platformにユーザーが追加されます。上記のスクリプトで使用、生成された証明書は、あくまでサンプルです。お使いのシステムで生成されたものを使用してください。"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:261
 msgid ""
 "Now cut and paste the secret value into the _.../domain/configuration/host-"
 "slave.xml_ file as follows:"
@@ -705,7 +615,6 @@ msgstr ""
 "ファイルにシークレットの値をカット・アンド・ペーストすると、以下のようになります。"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:270
 #, no-wrap
 msgid ""
 "     <management>\n"
@@ -722,44 +631,50 @@ msgstr ""
 "                     <secret value=\"bWdtdDEyMyE=\"/>\n"
 "                 </server-identities>\n"
 
+#. type: Plain text
+msgid ""
+"You will also need to add the _username_ of the created user in the "
+"_.../domain/configuration/host-slave.xml_ file:"
+msgstr ""
+"作成したユーザーの _username_ も _.../domain/configuration/host-slave.xml_ "
+"ファイルに追加する必要があります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "     <remote security-realm=\"ManagementRealm\" username=\"admin\">\n"
+msgstr "     <remote security-realm=\"ManagementRealm\" username=\"admin\">\n"
+
 #. type: Title =====
-#: source/server_installation/topics/operating-mode/domain.adoc:272
 #, no-wrap
 msgid "Run the Boot Scripts"
 msgstr "起動スクリプトの実行"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:275
 msgid ""
 "Since we're simulating a two node cluster on one development machine, you'll"
 " run the boot script twice:"
 msgstr "1つの開発マシンで2つのノードクラスターをシミュレートしますので、以下のとおり、起動スクリプトを2回実行します。"
 
 #. type: Block title
-#: source/server_installation/topics/operating-mode/domain.adoc:276
 #, no-wrap
 msgid "Boot up master"
 msgstr "マスターの起動"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:280
 #, no-wrap
 msgid "$ domain.sh --host-config=host-master.xml\n"
 msgstr "$ domain.sh --host-config=host-master.xml\n"
 
 #. type: Block title
-#: source/server_installation/topics/operating-mode/domain.adoc:282
 #, no-wrap
 msgid "Boot up slave"
 msgstr "スレーブの起動"
 
 #. type: delimited block -
-#: source/server_installation/topics/operating-mode/domain.adoc:286
 #, no-wrap
 msgid "$ domain.sh --host-config=host-slave.xml\n"
 msgstr "$ domain.sh --host-config=host-slave.xml\n"
 
 #. type: Plain text
-#: source/server_installation/topics/operating-mode/domain.adoc:288
-msgid "To try it out, open your browser and go to http://localhost:8080/auth"
+msgid "To try it out, open your browser and go to http://localhost:8080/auth."
 msgstr "これを試すには、ブラウザーを開いてhttp://localhost:8080/authに移動してください。"

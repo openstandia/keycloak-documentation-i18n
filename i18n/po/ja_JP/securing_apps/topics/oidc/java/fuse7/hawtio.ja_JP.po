@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Securing the Hawtio Administration Console"
+msgstr "Hawtio管理コンソールのセキュリティー保護"
+
+#. type: Plain text
+msgid ""
+"To secure the Hawtio Administration Console with {project_name}, complete "
+"the following steps:"
+msgstr "{project_name}を使用して、Hawtio管理コンソールをセキュリティー保護するには、以下の手順を実行します。"
+
+#. type: Plain text
+msgid ""
+"Create a client in the {project_name} administration console in your realm. "
+"For example, in the {project_name} `demo` realm, create a client `hawtio-"
+"client`, specify `public` as the Access Type, and specify a redirect URI "
+"pointing to Hawtio: \\http://localhost:8181/hawtio/*. You must also have a "
+"corresponding Web Origin configured (in this case, \\http://localhost:8181)."
+msgstr ""
+"利用レルムの{project_name}管理コンソールにクライアントを作成します。たとえば、{project_name}の `demo` "
+"レルムでクライアント `hawtio-client` を作成し、アクセス・タイプとして `public` を指定し、Hawtio: "
+"\\http://localhost:8181/hawtio/*を指すリダイレクトURIを指定します。また、対応するWeb "
+"Origin（この場合は、\\http://localhost:8181）も設定する必要があります。"
+
+#. type: Plain text
+msgid ""
+"Create the `keycloak-hawtio-client.json` file in the `$FUSE_HOME/etc` "
+"directory using content similar to that shown in the example below. Change "
+"the `realm`, `resource`, and `auth-server-url` properties according to your "
+"{project_name} environment. The `resource` property must point to the client"
+" created in the previous step. This file is used by the client (Hawtio "
+"JavaScript application) side."
+msgstr ""
+"`$FUSE_HOME/etc` ディレクトリーに `keycloak-hawtio-client.json` "
+"ファイルを作成します。このファイルは、以下の例のような内容で作成します。{project_name}環境に応じて、 `realm` 、 "
+"`resource` 、 `auth-server-url` の各プロパティーを変更してください。 `resource` "
+"プロパティーは前のステップで作成されたクライアントを指し示さなければなりません。このファイルは、クライアント（Hawtio "
+"JavaScriptアプリケーション）側で使用されます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"resource\" : \"jaas\",\n"
+"  \"bearer-only\" : true,\n"
+"  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"use-resource-role-mappings\": false,\n"
+"  \"principal-attribute\": \"preferred_username\"\n"
+"}\n"
+msgstr ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"resource\" : \"jaas\",\n"
+"  \"bearer-only\" : true,\n"
+"  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"use-resource-role-mappings\": false,\n"
+"  \"principal-attribute\": \"preferred_username\"\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"Go to http://localhost:8181/hawtio and log in as a user from your "
+"{project_name} realm."
+msgstr "http://localhost:8181/hawtio に移動し、{project_name}のレルムからユーザーとしてログインします。"
+
+#. type: Plain text
+msgid ""
+"Note that the user needs to have the proper realm role to successfully "
+"authenticate to Hawtio. The available roles are configured in the "
+"`$FUSE_HOME/etc/system.properties` file in `hawtio.roles`."
+msgstr ""
+"Hawtioに対して正常に認証するには、ユーザーが適切なレルムのロールを持っている必要があることに注意してください。利用可能なロールは、 "
+"`hawtio.roles` の `$FUSE_HOME/etc/system.properties` ファイルで設定されます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"clientId\" : \"hawtio-client\",\n"
+"  \"url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"public-client\" : true\n"
+"}\n"
+msgstr ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"clientId\" : \"hawtio-client\",\n"
+"  \"url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"public-client\" : true\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"Create the `keycloak-direct-access.json` file in the `$FUSE_HOME/etc` "
+"directory using content similar to that shown in the example below. Change "
+"the `realm` and `url` properties according to your {project_name} "
+"environment. This file is used by JavaScript client."
+msgstr ""
+"`$FUSE_HOME/etc` ディレクトリーに `keycloak-direct-access.json` "
+"ファイルを作成します。このファイルは、以下の例のような内容です。{project_name}の環境に応じて `realm` と `url` "
+"プロパティーを変更してください。このファイルは、JavaScriptクライアントによって使用されます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"resource\" : \"ssh-jmx-admin-client\",\n"
+"  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"credentials\": {\n"
+"    \"secret\": \"password\"\n"
+"  }\n"
+"}\n"
+msgstr ""
+"{\n"
+"  \"realm\" : \"demo\",\n"
+"  \"resource\" : \"ssh-jmx-admin-client\",\n"
+"  \"auth-server-url\" : \"http://localhost:8080/auth\",\n"
+"  \"ssl-required\" : \"external\",\n"
+"  \"credentials\": {\n"
+"    \"secret\": \"password\"\n"
+"  }\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"Create the `keycloak-bearer.json` file in the `$FUSE_HOME/etc` dicrectory "
+"using content similar to that shown in the example below. Change the `realm`"
+" and `auth-server-url` properties according to your {project_name} "
+"environment. This file is used by the adapters on the server (JAAS Login "
+"module) side."
+msgstr ""
+"`$FUSE_HOME/etc` ディレクトリーに `keycloak-bearer.json` "
+"ファイルを作成します。このファイルは、以下の例のような内容です。{project_name}の環境に応じて `realm` と `auth-"
+"server-url` プロパティーを変更してください。このファイルは、サーバー（JAASログイン・モジュール）側のアダプターによって使用されます。"
+
+#. type: Plain text
+msgid ""
+"Start {fuse7Version}, <<_fuse7_install_feature,install the Keycloak "
+"feature>>. Then type in the Karaf terminal:"
+msgstr ""
+"{fuse7Version}を開始し、<<_fuse7_install_feature, Keycloak "
+"featureをインストールします>>。次に以下をKarafターミナルに入力してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"system:property hawtio.keycloakEnabled true\n"
+"system:property hawtio.realm keycloak\n"
+"system:property hawtio.keycloakClientConfig file://\\${karaf.base}/etc/keycloak-hawtio-client.json\n"
+"system:property hawtio.rolePrincipalClasses org.keycloak.adapters.jaas.RolePrincipal,org.apache.karaf.jaas.boot.principal.RolePrincipal\n"
+"restart io.hawt.hawtio-war \n"
+msgstr ""
+"system:property hawtio.keycloakEnabled true\n"
+"system:property hawtio.realm keycloak\n"
+"system:property hawtio.keycloakClientConfig file://\\${karaf.base}/etc/keycloak-hawtio-client.json\n"
+"system:property hawtio.rolePrincipalClasses org.keycloak.adapters.jaas.RolePrincipal,org.apache.karaf.jaas.boot.principal.RolePrincipal\n"
+"restart io.hawt.hawtio-war \n"

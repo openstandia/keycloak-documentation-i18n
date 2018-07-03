@@ -120,8 +120,8 @@ msgid ""
 "When an action token is passed to a {project_name} endpoint "
 "`_KEYCLOAK_ROOT_/auth/realms/master/login-actions/action-token` via `key` "
 "parameter, it is validated and a proper action token handler is executed. "
-"The processing always takes place in a context of an authentication session,"
-" either a fresh one or the action token service joins an existing "
+"*The processing always takes place in a context of an authentication "
+"session*, either a fresh one or the action token service joins an existing "
 "authentication session (details are described below). The action token "
 "handler can perform actions prescribed by the token (often it alters the "
 "authentication session) and results into an HTTP response (e.g. it can "
@@ -130,7 +130,9 @@ msgid ""
 msgstr ""
 "アクション・トークンが{project_name}エンドポイント `_KEYCLOAK_ROOT_/auth/realms/master/login-"
 "actions/action-token` に `key` "
-"パラメーターを介して渡されると、それが検証され、適切なアクション・トークン・ハンドラーが実行されます。この処理は常に認証セッションのコンテキストに沿って行われ、新しいものかアクション・トークン・サービスが既存の認証セッションに参加します（詳しくは、後で説明します）。アクション・トークン・ハンドラーは、トークン（これで認証セッションを変更することが多い）によって規定されたアクションを実行し、HTTPレスポンスを返すことができます（たとえば、認証を続けるか、情報またはエラーページを表示することができます）。これらの手順について、詳しくは以下のとおりです。"
+"パラメーターを介して渡されると、それが検証され、適切なアクション・トークン・ハンドラーが実行されます。 "
+"*この処理は常に認証セッションのコンテキストに沿って行われ* "
+"、新しいものかアクション・トークン・サービスが既存の認証セッションに参加します（詳しくは、後で説明します）。アクション・トークン・ハンドラーは、トークン（これで認証セッションを変更することが多い）によって規定されたアクションを実行し、HTTPレスポンスを返すことができます（たとえば、認証を続けるか、情報またはエラーページを表示することができます）。これらの手順について、詳しくは以下のとおりです。"
 
 #. type: Plain text
 #, no-wrap
@@ -205,9 +207,146 @@ msgid ""
 msgstr ""
 "アクション・トークンは、必須フィールドがほとんどない署名付きJWTなので、Keycloakの `JWSBuilder` "
 "クラスを使用してシリアライズして署名することができます（<<_action_token_anatomy,アクショントークンの解剖>> "
-"を参照してください）。この方法は、 `org.keycloak.authentication.actiontoken.DefaultActionToken`"
-" の `serialize(session, realm, uriInfo)` メソッドにすでに実装されており、実装者はプレーンな "
+"を参照してください）。この方法は、 "
+"`org.keycloak.authentication.actiontoken.DefaultActionToken` の "
+"`serialize(session, realm, uriInfo)` メソッドにすでに実装されており、実装者はプレーンな "
 "`JsonWebToken` の代わりにそのクラスを使うことで活用できます。"
+
+#. type: Plain text
+msgid ""
+"The following example shows the implementation of a simple action token. "
+"Note that the class must have a private constructor without any arguments.  "
+"This is necessary to deserialize the token class from JWT."
+msgstr ""
+"次の例は、単純なアクション・トークンの実装を示しています。クラスには引数のないprivateコンストラクターが必要です。これは、JWTからトークンクラスをデシリアライズするために必要です。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "import org.keycloak.authentication.actiontoken.DefaultActionToken;\n"
+msgstr "import org.keycloak.authentication.actiontoken.DefaultActionToken;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "public class DemoActionToken extends DefaultActionToken {\n"
+msgstr "public class DemoActionToken extends DefaultActionToken {\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "    public static final String TOKEN_TYPE = \"my-demo-token\";\n"
+msgstr "    public static final String TOKEN_TYPE = \"my-demo-token\";\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public DemoActionToken(String userId, int absoluteExpirationInSecs, String compoundAuthenticationSessionId) {\n"
+"        super(userId, TOKEN_TYPE, absoluteExpirationInSecs, null, compoundAuthenticationSessionId);\n"
+"    }\n"
+msgstr ""
+"    public DemoActionToken(String userId, int absoluteExpirationInSecs, String compoundAuthenticationSessionId) {\n"
+"        super(userId, TOKEN_TYPE, absoluteExpirationInSecs, null, compoundAuthenticationSessionId);\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    private DemoActionToken() {\n"
+"        // Required to deserialize from JWT\n"
+"        super();\n"
+"    }\n"
+"}\n"
+msgstr ""
+"    private DemoActionToken() {\n"
+"        // Required to deserialize from JWT\n"
+"        super();\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"If the action token you are implementing contains any custom fields that "
+"should be serializabled to JSON fields, you should consider implementing a "
+"descendant of `org.keycloak.representations.JsonWebToken` class that would "
+"implement `org.keycloak.models.ActionTokenKeyModel` interface. In that case,"
+" you can take advantage of the existing "
+"`org.keycloak.authentication.actiontoken.DefaultActionToken` class as it "
+"already satisfies both these conditions, and either use it directly or "
+"implement its child, the fields of which can be annotated with appropriate "
+"Jackson annotations, e.g. `com.fasterxml.jackson.annotation.JsonProperty` to"
+" serialize them to JSON."
+msgstr ""
+"実装しているアクション・トークンが、JSONフィールドにシリアライズされる必要があるカスタム・フィールドを含んでいる場合、 "
+"`org.keycloak.models.ActionTokenKeyModel` のインターフェイスを実装する "
+"`org.keycloak.representations.JsonWebToken` "
+"クラスの子孫を実装することを検討する必要があります。この場合、既存の "
+"`org.keycloak.authentication.actiontoken.DefaultActionToken` "
+"クラスは、すでに両方の条件を満たしており、直接使用するか、そのクラスの子を実装することができます。フィールドには適切なJacksonアノテーション（たとえば、JSONにそれらをシリアライズするには"
+" `com.fasterxml.jackson.annotation.JsonProperty` ）を付けることができます。"
+
+#. type: Plain text
+msgid ""
+"The following example extends the `DemoActionToken` from the previous "
+"example with the field `demo-id`:"
+msgstr "次の例は、前の例の `DemoActionToken` をフィールド `demo-id` で拡張しています。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"import com.fasterxml.jackson.annotation.JsonProperty;\n"
+"import org.keycloak.authentication.actiontoken.DefaultActionToken;\n"
+msgstr ""
+"import com.fasterxml.jackson.annotation.JsonProperty;\n"
+"import org.keycloak.authentication.actiontoken.DefaultActionToken;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "    private static final String JSON_FIELD_DEMO_ID = \"demo-id\";\n"
+msgstr "    private static final String JSON_FIELD_DEMO_ID = \"demo-id\";\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @JsonProperty(value = JSON_FIELD_DEMO_ID)\n"
+"    private String demoId;\n"
+msgstr ""
+"    @JsonProperty(value = JSON_FIELD_DEMO_ID)\n"
+"    private String demoId;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public DemoActionToken(String userId, int absoluteExpirationInSecs, String compoundAuthenticationSessionId, String demoId) {\n"
+"        super(userId, TOKEN_TYPE, absoluteExpirationInSecs, null, compoundAuthenticationSessionId);\n"
+"        this.demoId =  demoId;\n"
+"    }\n"
+msgstr ""
+"    public DemoActionToken(String userId, int absoluteExpirationInSecs, String compoundAuthenticationSessionId, String demoId) {\n"
+"        super(userId, TOKEN_TYPE, absoluteExpirationInSecs, null, compoundAuthenticationSessionId);\n"
+"        this.demoId =  demoId;\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    private DemoActionToken() {\n"
+"        // you must have this private constructor for deserializer\n"
+"    }\n"
+msgstr ""
+"    private DemoActionToken() {\n"
+"        // you must have this private constructor for deserializer\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public String getDemoId() {\n"
+"        return demoId;\n"
+"    }\n"
+"}\n"
+msgstr ""
+"    public String getDemoId() {\n"
+"        return demoId;\n"
+"    }\n"
+"}\n"
 
 #. type: Title ====
 #, no-wrap
@@ -320,24 +459,3 @@ msgid ""
 msgstr ""
 "カスタムの `ActionTokenHandlerFactory` "
 "実装を、このガイドの<<_providers,サービス・プロバイダー・インターフェイス>>のセクションで説明するとおりに、登録しなければならないことに注意してください。"
-
-#. type: Plain text
-msgid ""
-"If the action token you are implementing contains any custom fields that "
-"should be serializabled to JSON fields, you should consider implementing a "
-"descendant of `org.keycloak.representations.JsonWebToken` class that would "
-"implement `org.keycloak.models.ActionTokenKeyModel` interface. In that case,"
-" you can take advantage of the existing "
-"`org.keycloak.authentication.actiontoken.DefaultActionToken` class as it "
-"already satisfies both these conditions, and either use it directly or "
-"implement its child, the fields of which can be annotated with appropriate "
-"Jackson annotations, e.g. `com.fasterxml.jackson.annotation.JsonProperty` to"
-" serialize them to JSON."
-msgstr ""
-"実装しているアクション・トークンが、JSONフィールドにシリアライズされる必要があるカスタム・フィールドを含んでいる場合、 "
-"`org.keycloak.models.ActionTokenKeyModel` のインターフェイスを実装する "
-"`org.keycloak.representations.JsonWebToken` "
-"クラスの子孫を実装することを検討する必要があります。この場合、既存の "
-"`org.keycloak.authentication.actiontoken.DefaultActionToken` "
-"クラスは、すでに両方の条件を満たしており、直接使用するか、そのクラスの子を実装することができます。フィールドには適切なJacksonアノテーション（たとえば、JSONにそれらをシリアライズするには"
-" `com.fasterxml.jackson.annotation.JsonProperty` ）を付けることができます。"

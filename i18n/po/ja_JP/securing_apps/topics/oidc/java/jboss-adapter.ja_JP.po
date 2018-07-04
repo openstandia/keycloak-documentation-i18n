@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,50 +15,6 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Plain text
-msgid ""
-"With Red Hat Enterprise Linux 7, the term channel was replaced with the term"
-" repository. In these instructions only the term repository is used."
-msgstr ""
-"Red Hat Enterprise Linux "
-"7では、チャンネルという用語はリポジトリーという用語に置き換えられました。これらの説明では、リポジトリーという用語のみが使用されています。"
-
-#. type: Title ==
-#, no-wrap
-msgid "Prerequisites"
-msgstr "前提条件"
-
-#. type: Plain text
-msgid ""
-"Ensure that your Red Hat Enterprise Linux system is registered to your "
-"account using Red Hat Subscription Manager. For more information see the "
-"link:https://access.redhat.com/documentation/en-"
-"us/red_hat_subscription_management/1/html-"
-"single/quick_registration_for_rhel/index[Red Hat Subscription Management "
-"documentation]."
-msgstr ""
-"Red Hat Subscription Managerを使用して、Red Hat Enterprise "
-"Linuxシステムがアカウントに登録されていることを確認してください。詳細は、link:https://access.redhat.com/documentation"
-"/en-us/red_hat_subscription_management/1/html-"
-"single/quick_registration_for_rhel/index[Red Hat Subscription Management "
-"documentation]のリンクを参照してください。"
-
-#. type: Plain text
-msgid ""
-"If you are already subscribed to another JBoss EAP repository, you must "
-"unsubscribe from that repository first."
-msgstr "すでに別のJBoss EAPリポジトリーに登録している場合は、まずそのリポジトリーから登録を解除する必要があります。"
-
-#. type: Plain text
-msgid ""
-"Using Red Hat Subscription Manager, subscribe to the JBoss EAP 7.0 "
-"repository using the following command. Replace <RHEL_VERSION> with either 6"
-" or 7 depending on your Red Hat Enterprise Linux version."
-msgstr ""
-"Red Hat Subscription Managerを使用して、次のコマンドを使用してJBoss EAP "
-"7.0リポジトリーをサブスクライブします。Red Hat Enterprise "
-"Linuxのバージョンに応じて、<RHEL_VERSION>を6または7のいずれかに置き換えてください。"
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -77,29 +33,11 @@ msgstr ""
 "        <role-name>user</role-name>\n"
 "    </security-role>\n"
 "</web-app>\n"
-
-#. type: Title =====
-#, no-wrap
-msgid "Required Per WAR Configuration"
-msgstr "WARごとに必要な設定"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
-"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
-"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
-"      version=\"3.0\">\n"
-msgstr ""
-"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
-"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
-"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
-"      version=\"3.0\">\n"
 
 #. type: Title ====
 #, no-wrap
-msgid "JBoss EAP/Wildfly Adapter"
-msgstr "JBoss EAP/WildFlyアダプター"
+msgid "JBoss EAP/WildFly Adapter"
+msgstr "JBoss EAP/WildFlyアダプター "
 
 #. type: Title ====
 #, no-wrap
@@ -133,11 +71,12 @@ msgstr "WARにアダプター設定ファイルを用意し、web.xml内のauth-
 #. type: Plain text
 msgid ""
 "Alternatively, you don't have to modify your WAR at all and you can secure "
-"it via the {project_name} adapter subsystem configuration in "
-"`standalone.xml`.  Both methods are described in this section."
+"it via the {project_name} adapter subsystem configuration in the "
+"configuration file, such as `standalone.xml`.  Both methods are described in"
+" this section."
 msgstr ""
 "あるいは、WARをまったく変更せずに、 `standalone.xml` "
-"の{project_name}アダプター・サブシステム設定で保護することもできます。このセクションで、両方の方法について説明します。"
+"などの設定ファイルの{project_name}アダプター・サブシステム設定で保護することもできます。このセクションで、両方の方法について説明します。"
 
 #. type: Title =====
 #, no-wrap
@@ -151,7 +90,15 @@ msgid ""
 msgstr "アダプターは、使用しているサーバーのバージョンに応じて別個のアーカイブとして利用できます。"
 
 #. type: Plain text
-msgid "Install on Wildfly 9, 10 or 11:"
+msgid ""
+"{appserver_name} should be running when you install the adapter. If you have"
+" either one running, you must stop it before installing and then restart it "
+"after installation is complete."
+msgstr ""
+"アダプターをインストールする際に、{appserver_name}が起動している必要があります。どちらか一方が起動している場合は、インストールする前に停止し、インストールが完了した後で再起動する必要があります。"
+
+#. type: Plain text
+msgid "Install on WildFly 9, 10 or 11:"
 msgstr "WildFly 9、10、11へのインストールは次のとおりです。"
 
 #. type: delimited block -
@@ -164,7 +111,7 @@ msgstr ""
 "$ unzip keycloak-wildfly-adapter-dist-{project_version}.zip\n"
 
 #. type: Plain text
-msgid "Install on Wildfly 8:"
+msgid "Install on WildFly 8:"
 msgstr "WildFly 8へのインストールは次のとおりです。"
 
 #. type: delimited block -
@@ -235,83 +182,6 @@ msgstr ""
 "$ unzip rh-sso-{project_version}-eap7-adapter.zip\n"
 
 #. type: Plain text
-msgid "Install the EAP 7 Adapters from an RPM:"
-msgstr "次のように、RPMからEAP 7アダプターをインストールします。"
-
-#. type: Plain text
-msgid ""
-"You must subscribe to the JBoss EAP 7.0 repository before you can install "
-"the EAP 7 adapters from an RPM."
-msgstr "RPMからEAP 7アダプターをインストールする前に、JBoss EAP 7.0リポジトリーにサブスクライブする必要があります。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"$ sudo subscription-manager repos --enable=jb-eap-7-for-rhel-<RHEL_VERSION"
-">-server-rpms\n"
-msgstr ""
-"$ sudo subscription-manager repos --enable=jb-eap-7-for-rhel-<RHEL_VERSION"
-">-server-rpms\n"
-
-#. type: Plain text
-msgid "Install the EAP 7 adapters for OIDC using the following command:"
-msgstr "次のコマンドを使用して、OIDC用のEAP 7アダプターをインストールします。"
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ sudo yum install eap7-keycloak-adapter\n"
-msgstr "$ sudo yum install eap7-keycloak-adapter\n"
-
-#. type: Plain text
-msgid "Install the EAP 7 adapters for SAML using the following command:"
-msgstr "次のコマンドを使用して、SAML用のEAP 7アダプターをインストールします。"
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ sudo yum install eap7-keycloak-saml-adapter\n"
-msgstr "$ sudo yum install eap7-keycloak-saml-adapter\n"
-
-#. type: Plain text
-msgid ""
-"The default EAP_HOME path for the RPM installation is "
-"/opt/rh/eap7/root/usr/share/wildfly."
-msgstr "RPMインストールのためのデフォルトのEAP_HOMEパスは、/opt/rh/eap7/root/usr/share/wildflyです。"
-
-#. type: Plain text
-msgid "Run the appropriate module installation script."
-msgstr "適切なモジュール・インストール・スクリプトを実行します。"
-
-#. type: Plain text
-msgid "For the OIDC module, enter the following command:"
-msgstr "OIDCモジュールの場合は、次のコマンドを実行します。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"$ {EAP_HOME}/bin/jboss-cli.sh -c --file=${EAP_HOME}/bin/adapter-"
-"install.cli\n"
-msgstr ""
-"$ {EAP_HOME}/bin/jboss-cli.sh -c --file=${EAP_HOME}/bin/adapter-"
-"install.cli\n"
-
-#. type: Plain text
-msgid "For the SAML module, enter the following command:"
-msgstr "SAMLモジュールの場合は、次のコマンドを実行します。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"$ {EAP_HOME}/bin/jboss-cli.sh -c --file=${EAP_HOME}/bin/adapter-install-"
-"saml.cli\n"
-msgstr ""
-"$ {EAP_HOME}/bin/jboss-cli.sh -c --file=${EAP_HOME}/bin/adapter-install-"
-"saml.cli\n"
-
-#. type: Plain text
-msgid "Your installation is complete."
-msgstr "インストールは完了です。"
-
-#. type: Plain text
 msgid ""
 "You can install the EAP 6 adapters either by unzipping a ZIP file, or by "
 "using an RPM."
@@ -331,59 +201,6 @@ msgstr ""
 "$ unzip rh-sso-{project_version}-eap6-adapter.zip\n"
 
 #. type: Plain text
-msgid "Install the EAP 6 Adapters from an RPM:"
-msgstr "次のように、RPMからEAP 6アダプターをインストールします。"
-
-#. type: Plain text
-msgid ""
-"You must subscribe to the JBoss EAP 6.0 repository before you can install "
-"the EAP 6 adapters from an RPM."
-msgstr "RPMからEAP 6アダプターをインストールする前に、JBoss EAP 6.0リポジトリーにサブスクライブする必要があります。"
-
-#. type: Plain text
-msgid ""
-"Using Red Hat Subscription Manager, subscribe to the JBoss EAP 6.0 "
-"repository using the following command. Replace <RHEL_VERSION> with either 6"
-" or 7 depending on your Red Hat Enterprise Linux version."
-msgstr ""
-"Red Hat Subscription Managerを使用して、次のコマンドを使用してJBoss EAP "
-"6.0リポジトリーにサブスクライブします。Red Hat Enterprise "
-"Linuxのバージョンに応じて、<RHEL_VERSION>を6または7のいずれかに置き換えてください。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"$ sudo subscription-manager repos --enable=jb-eap-6-for-rhel-<RHEL_VERSION"
-">-server-rpms\n"
-msgstr ""
-"$ sudo subscription-manager repos --enable=jb-eap-6-for-rhel-<RHEL_VERSION"
-">-server-rpms\n"
-
-#. type: Plain text
-msgid "Install the EAP 6 adapters for OIDC using the following command:"
-msgstr "次のコマンドを使用して、OIDC用のEAP 6アダプターをインストールします。"
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ sudo yum install eap6-keycloak-adapter\n"
-msgstr "$ sudo yum install eap6-keycloak-adapter\n"
-
-#. type: Plain text
-msgid "Install the EAP 6 adapters for SAML using the following command:"
-msgstr "次のコマンドを使用して、SAML用のEAP 6アダプターをインストールします。"
-
-#. type: delimited block -
-#, no-wrap
-msgid "$ sudo yum install eap6-keycloak-saml-adapter\n"
-msgstr "$ sudo yum install eap6-keycloak-saml-adapter\n"
-
-#. type: Plain text
-msgid ""
-"The default EAP_HOME path for the RPM installation is "
-"/opt/rh/eap6/root/usr/share/wildfly."
-msgstr "RPMインストールのためのデフォルトのEAP_HOMEパスは、/opt/rh/eap6/root/usr/share/wildflyです。"
-
-#. type: Plain text
 msgid ""
 "This ZIP archive contains JBoss Modules specific to the {project_name} "
 "adapter. It also contains JBoss CLI scripts to configure the adapter "
@@ -397,9 +214,18 @@ msgid ""
 "To configure the adapter subsystem if the server is not running execute:"
 msgstr "サーバーが起動していない場合に、アダプター・サブシステムを設定するには、次のようにします。"
 
+#. type: Plain text
+msgid ""
+"Alternatively, you can specify the `server.config` property while installing"
+" adapters from the command line to install adapters using a different "
+"config, for example: `-Dserver.config=standalone-ha.xml`."
+msgstr ""
+"あるいは、別の設定を使用してアダプターをインストールするため、コマンドラインからアダプターをインストールする際に `server.config` "
+"プロパティーを指定することもできます。たとえば、 `-Dserver.config=standalone-ha.xml` とします。"
+
 #. type: Block title
 #, no-wrap
-msgid "Wildfly 11"
+msgid "WildFly 11"
 msgstr "WildFly 11"
 
 #. type: delimited block -
@@ -411,8 +237,8 @@ msgstr ""
 
 #. type: Block title
 #, no-wrap
-msgid "Any other server but Wildfly 11"
-msgstr "WildFly 11以外のサーバー"
+msgid "WildFly 10 or older"
+msgstr "WildFly 10以上"
 
 #. type: delimited block -
 #, no-wrap
@@ -421,9 +247,19 @@ msgstr ""
 "$ cd bin\n"
 "$ ./jboss-cli.sh --file=adapter-install-offline.cli\n"
 
+#. type: Block title
+#, no-wrap
+msgid "JBoss EAP 7.1"
+msgstr "JBoss EAP 7.1"
+
+#. type: Block title
+#, no-wrap
+msgid "JBoss EAP 7.0"
+msgstr "JBoss EAP 7.0"
+
 #. type: Plain text
-msgid "The offline script is not available for JBoss EAP 6"
-msgstr "オフライン・スクリプトはJBoss EAP 6では使用できません"
+msgid "The offline script is not available for JBoss EAP 6.4"
+msgstr "オフライン・スクリプトはJBoss EAP 6.4では使用できません"
 
 #. type: Plain text
 msgid "Alternatively, if the server is running execute:"
@@ -443,6 +279,11 @@ msgstr ""
 "$ cd bin\n"
 "$ ./jboss-cli.sh --file=adapter-install-offline.cli\n"
 
+#. type: Block title
+#, no-wrap
+msgid "JBoss EAP 7.0 and 6.4"
+msgstr "JBoss EAP 7.0と6.4"
+
 #. type: Title =====
 #, no-wrap
 msgid "JBoss SSO"
@@ -455,6 +296,11 @@ msgid ""
 " be enabled when using {project_name}."
 msgstr ""
 "{appserver_name}には、同じ{appserver_name}インスタンスにデプロイされたWebアプリケーションのシングル・サインオンのサポートが組み込まれています。{project_name}を使用しているときは、これを有効にしないでください。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Required Per WAR Configuration"
+msgstr "WARごとに必要な設定"
 
 #. type: Plain text
 msgid ""
@@ -486,6 +332,19 @@ msgstr ""
 #. type: Plain text
 msgid "Here's an example:"
 msgstr "以下は例です。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"      version=\"3.0\">\n"
+msgstr ""
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"      version=\"3.0\">\n"
 
 #. type: delimited block -
 #, no-wrap

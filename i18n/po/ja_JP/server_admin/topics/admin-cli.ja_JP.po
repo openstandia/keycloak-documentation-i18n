@@ -144,12 +144,12 @@ msgstr "たとえば"
 msgid ""
 "$ kcadm.sh config credentials --server http://localhost:8080/auth --realm demo --user admin --client admin\n"
 "$ kcadm.sh create realms -s realm=demorealm -s enabled=true -o\n"
-"$ C=$(kcadm.sh create clients -r demorealm -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]' -i)\n"
+"$ CID=$(kcadm.sh create clients -r demorealm -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]' -i)\n"
 "$ kcadm.sh get clients/$CID/installation/providers/keycloak-oidc-keycloak-json\n"
 msgstr ""
 "$ kcadm.sh config credentials --server http://localhost:8080/auth --realm demo --user admin --client admin\n"
 "$ kcadm.sh create realms -s realm=demorealm -s enabled=true -o\n"
-"$ C=$(kcadm.sh create clients -r demorealm -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]' -i)\n"
+"$ CID=$(kcadm.sh create clients -r demorealm -s clientId=my_client -s 'redirectUris=[\"http://localhost:8980/myapp/*\"]' -i)\n"
 "$ kcadm.sh get clients/$CID/installation/providers/keycloak-oidc-keycloak-json\n"
 
 #. type: delimited block -
@@ -206,7 +206,7 @@ msgstr "認証"
 msgid ""
 "When you log in with the Admin CLI, you specify a server endpoint URL and a "
 "realm, and then you specify a user name. Another option is to specify only a"
-" clientId, which results in using a special \"service account.\" When you "
+" clientId, which results in using a special \"service account\". When you "
 "log in using a user name, you must use a password for the specified user. "
 "When you log in using a clientId, you only need the client secret, not the "
 "user password. You could also use [command]`Signed JWT` instead of the "
@@ -298,10 +298,10 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "By default, the Admin CLI automatically maintains a configuration file "
-"called [filename]kcadm.config located under the user's home directory. In "
+"called [filename]`kcadm.config` located under the user's home directory. In "
 "Linux-based systems, the full path name is "
-"[filename]$HOME/.keycloak/kcadm.config. On Windows, the full path name is "
-"[filename]%HOMEPATH%\\.keycloak\\kcadm.config. You can use the "
+"[filename]`$HOME/.keycloak/kcadm.config`. On Windows, the full path name is "
+"[filename]`%HOMEPATH%\\.keycloak\\kcadm.config`. You can use the "
 "[command]`--config` option to point to a different file or location so you "
 "can maintain multiple authenticated sessions in parallel."
 msgstr ""
@@ -1104,6 +1104,42 @@ msgstr ""
 "$ kcadm.sh create clear-user-cache -r demorealm -s realm=demorealm\n"
 "$ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm\n"
 
+#. type: Title ====
+#, no-wrap
+msgid "Importing a realm from exported .json file"
+msgstr "エクスポートされた.jsonファイルからのレルムのインポート"
+
+#. type: Plain text
+msgid ""
+"Use the [command]`create` command on the [filename]`partialImport` endpoint."
+msgstr "[filename]`partialImport` エンドポイントで [command]`create` コマンドを使用します。"
+
+#. type: Plain text
+msgid "Set `ifResourceExists` to one of `FAIL`, `SKIP`, `OVERWRITE`."
+msgstr "`ifResourceExists` を `FAIL` 、 `SKIP` 、 `OVERWRITE` のいずれかに設定します。"
+
+#. type: Plain text
+msgid "Use `-f` to submit the exported realm `.json` file"
+msgstr "エクスポートされたレルム `.json` ファイルを送信するには、 ` -f` を使います。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ kcadm.sh create partialImport -r demorealm2 -s ifResourceExists=FAIL -o -f"
+" demorealm.json\n"
+msgstr ""
+"$ kcadm.sh create partialImport -r demorealm2 -s ifResourceExists=FAIL -o -f"
+" demorealm.json\n"
+
+#. type: Plain text
+msgid "If realm does not yet exist, you first have to create it."
+msgstr "レルムが存在しない場合は、まずレルムを作成する必要があります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ kcadm.sh create realms -s realm=demorealm2 -s enabled=true\n"
+msgstr "$ kcadm.sh create realms -s realm=demorealm2 -s enabled=true\n"
+
 #. type: Title ===
 #, no-wrap
 msgid "Role operations"
@@ -1745,7 +1781,7 @@ msgstr ""
 #. type: Title ====
 #, no-wrap
 msgid ""
-"Getting a Wildfly subsystem adapter configuration for a specific client"
+"Getting a WildFly subsystem adapter configuration for a specific client"
 msgstr "特定のクライアントのためのWildFlyサブシステム・アダプター設定の取得"
 
 #. type: Plain text
@@ -1767,6 +1803,35 @@ msgstr ""
 "$ kcadm.sh get "
 "clients/c7b8547f-e748-4333-95d0-410b76b3f4a3/installation/providers"
 "/keycloak-oidc-jboss-subsystem -r demorealm\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Getting a Docker-v2 example configuration for a specific client"
+msgstr "特定のクライアントのためのDocker-v2のサンプル設定の取得"
+
+#. type: Plain text
+msgid ""
+"Use a client's ID to construct an endpoint URI that targets a specific "
+"client, such as [filename]`clients/ID/installation/providers/docker-v2"
+"-compose-yaml`."
+msgstr ""
+"クライアントIDを使用して、 [filename]`clients/ID/installation/providers/docker-v2"
+"-compose-yaml` のような特定のクライアントを対象とするエンドポイントURIを構築します。"
+
+#. type: Plain text
+msgid "Note that response will be in `.zip` format."
+msgstr "レスポンスは `.zip` 形式であることに注意してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ kcadm.sh get "
+"http://localhost:8080/auth/admin/realms/demorealm/clients/8f271c35-44e3-446f-8953-b0893810ebe7/installation/providers/docker-v2"
+"-compose-yaml -r demorealm > keycloak-docker-compose-yaml.zip\n"
+msgstr ""
+"$ kcadm.sh get "
+"http://localhost:8080/auth/admin/realms/demorealm/clients/8f271c35-44e3-446f-8953-b0893810ebe7/installation/providers/docker-v2"
+"-compose-yaml -r demorealm > keycloak-docker-compose-yaml.zip\n"
 
 #. type: Title ====
 #, no-wrap
@@ -1828,6 +1893,20 @@ msgid ""
 msgstr ""
 "$ kcadm.sh delete clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r "
 "demorealm\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Adding or removing roles for client's service account"
+msgstr "クライアントのサービス・アカウントのロールの追加または削除"
+
+#. type: Plain text
+msgid ""
+"Service account for the client is just a special kind of user account with "
+"username [filename]`service-account-CLIENT_ID`.  You can perform user "
+"operations on this account as if it was a regular user."
+msgstr ""
+"クライアントのサービス・アカウントは、ユーザー名[filename]`service-account-CLIENT_ID` "
+"を持つ特別な種類のユーザー・アカウントです。 このアカウントでは、通常のユーザーと同様にユーザー操作を実行できます。"
 
 #. type: Title ===
 #, no-wrap
@@ -1891,9 +1970,9 @@ msgstr ""
 msgid ""
 "Filtering does not use exact matching. For example, the above example would "
 "match the value of the [filename]`username` attribute against the "
-"[filename]`\\*testuser*`` pattern."
+"[filename]`\\*testuser*` pattern."
 msgstr ""
-"フィルタリングでは完全一致は使用されません。たとえば、上記の例では、[filename]`\\*testuser*`` のパターンと "
+"フィルタリングでは完全一致は使用されません。たとえば、上記の例では、[filename]`\\*testuser*` のパターンと "
 "[filename]`username` 属性の値が一致します。"
 
 #. type: Plain text
@@ -2144,8 +2223,9 @@ msgstr "次の例を使用して、 [command]`user` ロールをユーザー [co
 
 #. type: delimited block -
 #, no-wrap
-msgid "$ kcadm.sh add-roles --username testuser --rolename user -r demorealm\n"
-msgstr "$ kcadm.sh add-roles --username testuser --rolename user -r demorealm\n"
+msgid "$ kcadm.sh add-roles --uusername testuser --rolename user -r demorealm\n"
+msgstr ""
+"$ kcadm.sh add-roles --uusername testuser --rolename user -r demorealm\n"
 
 #. type: Title ====
 #, no-wrap
@@ -2167,9 +2247,9 @@ msgstr "以下の例を使用して、ユーザー [command]`testuser` から [c
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"$ kcadm.sh remove-roles --username testuser --rolename user -r demorealm\n"
+"$ kcadm.sh remove-roles --uusername testuser --rolename user -r demorealm\n"
 msgstr ""
-"$ kcadm.sh remove-roles --username testuser --rolename user -r demorealm\n"
+"$ kcadm.sh remove-roles --uusername testuser --rolename user -r demorealm\n"
 
 #. type: Title ====
 #, no-wrap
@@ -3014,47 +3094,57 @@ msgstr "Kerberosストレージ・プロバイダーの設定"
 
 #. type: Plain text
 msgid ""
-"Use the [command]`create` command against the [filename]`user-"
-"federation/instances` endpoint."
-msgstr ""
-"[filename]`user-federation/instances` エンドポイントに対して [command]`create` "
-"コマンドを使用します。"
+"Use the [command]`create` command against the [filename]`components` "
+"endpoint."
+msgstr "[filename]`components` エンドポイントに対して [command]`create` コマンドを使用します。"
+
+#. type: Plain text
+msgid "Specify realm id as a value of the [command]`parentId` attribute."
+msgstr "[command]`parentId` 属性の値としてレルムIDを指定します。"
 
 #. type: Plain text
 msgid ""
-"Specify [command]`kerberos` as a value of the [command]`providerName` "
-"attribute."
-msgstr "[command]`providerName` 属性の値として [command]`kerberos` を指定します。"
+"Specify [command]`kerberos` as the value of the [command]`providerId` "
+"attribute, and [command]`org.keycloak.storage.UserStorageProvider` as the "
+"value of the [command]`providerType` attribute."
+msgstr ""
+"[command]`providerId` 属性の値として [command]`kerberos` を指定し、 "
+"[command]`providerType` 属性の値として "
+"[command]`org.keycloak.storage.UserStorageProvider` を指定します。"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"$ kcadm.sh create user-federation/instances -r demorealm -s "
-"providerName=kerberos -s priority=0 -s config.debug=false -s "
-"config.allowPasswordAuthentication=true -s 'config.editMode=\"UNSYNCED\"' -s"
-" config.updateProfileFirstLogin=true -s "
-"config.allowKerberosAuthentication=true -s "
-"'config.kerberosRealm=\"KEYCLOAK.ORG\"' -s 'config.keyTab=\"http.keytab\"' "
-"-s 'config.serverPrincipal=\"HTTP/localhost@KEYCLOAK.ORG\"'\n"
+"$ kcadm.sh create components -r demorealm -s parentId=demorealmId -s "
+"id=demokerberos -s name=demokerberos -s providerId=kerberos -s "
+"providerType=org.keycloak.storage.UserStorageProvider -s "
+"'config.priority=[\"0\"]' -s 'config.debug=[\"false\"]' -s "
+"'config.allowPasswordAuthentication=[\"true\"]' -s "
+"'config.editMode=[\"UNSYNCED\"]' -s "
+"'config.updateProfileFirstLogin=[\"true\"]' -s "
+"'config.allowKerberosAuthentication=[\"true\"]' -s "
+"'config.kerberosRealm=[\"KEYCLOAK.ORG\"]' -s "
+"'config.keyTab=[\"http.keytab\"]' -s "
+"'config.serverPrincipal=[\"HTTP/localhost@KEYCLOAK.ORG\"]' -s "
+"'config.cachePolicy=[\"DEFAULT\"]'\n"
 msgstr ""
-"$ kcadm.sh create user-federation/instances -r demorealm -s "
-"providerName=kerberos -s priority=0 -s config.debug=false -s "
-"config.allowPasswordAuthentication=true -s 'config.editMode=\"UNSYNCED\"' -s"
-" config.updateProfileFirstLogin=true -s "
-"config.allowKerberosAuthentication=true -s "
-"'config.kerberosRealm=\"KEYCLOAK.ORG\"' -s 'config.keyTab=\"http.keytab\"' "
-"-s 'config.serverPrincipal=\"HTTP/localhost@KEYCLOAK.ORG\"'\n"
+"$ kcadm.sh create components -r demorealm -s parentId=demorealmId -s "
+"id=demokerberos -s name=demokerberos -s providerId=kerberos -s "
+"providerType=org.keycloak.storage.UserStorageProvider -s "
+"'config.priority=[\"0\"]' -s 'config.debug=[\"false\"]' -s "
+"'config.allowPasswordAuthentication=[\"true\"]' -s "
+"'config.editMode=[\"UNSYNCED\"]' -s "
+"'config.updateProfileFirstLogin=[\"true\"]' -s "
+"'config.allowKerberosAuthentication=[\"true\"]' -s "
+"'config.kerberosRealm=[\"KEYCLOAK.ORG\"]' -s "
+"'config.keyTab=[\"http.keytab\"]' -s "
+"'config.serverPrincipal=[\"HTTP/localhost@KEYCLOAK.ORG\"]' -s "
+"'config.cachePolicy=[\"DEFAULT\"]'\n"
 
 #. type: Title ====
 #, no-wrap
 msgid "Configuring an LDAP user storage provider"
 msgstr "LDAPユーザー・ストレージ・プロバイダーの設定"
-
-#. type: Plain text
-msgid ""
-"Use the [command]`create` command against the [filename]`components` "
-"endpoint."
-msgstr "[filename]`components` エンドポイントに対して [command]`create` コマンドを使用します。"
 
 #. type: Plain text
 msgid ""
@@ -3346,7 +3436,7 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Adding an user attribute LDAP mapper"
+msgid "Adding a user attribute LDAP mapper"
 msgstr "ユーザー属性LDAPマッパーの追加"
 
 #. type: Plain text
@@ -3598,3 +3688,182 @@ msgstr "[filename]`authentication/flows` エンドポイントで [command]`get`
 #, no-wrap
 msgid "$ kcadm.sh get authentication/flows -r demorealm\n"
 msgstr "$ kcadm.sh get authentication/flows -r demorealm\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Getting a specific authentication flow"
+msgstr "特定の認証フローの取得"
+
+#. type: Plain text
+msgid ""
+"Run the [command]`get` command on the "
+"[filename]`authentication/flows/FLOW_ID` endpoint."
+msgstr ""
+"[filename]`authentication/flows/FLOW_ID` エンドポイントで [command]`get` コマンドを実行します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ kcadm.sh get authentication/flows/febfd772-e1a1-42fb-b8ae-00c0566fafb8 -r "
+"demorealm\n"
+msgstr ""
+"$ kcadm.sh get authentication/flows/febfd772-e1a1-42fb-b8ae-00c0566fafb8 -r "
+"demorealm\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Listing executions for a flow"
+msgstr "フローのエグゼキューションの一覧表示"
+
+#. type: Plain text
+msgid ""
+"Run the [command]`get` command on the "
+"[filename]`authentication/flows/FLOW_ALIAS/executions` endpoint."
+msgstr ""
+"[filename]`authentication/flows/FLOW_ALIAS/executions` エンドポイントで "
+"[command]`get` コマンドを実行します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ kcadm.sh get authentication/flows/Copy%20of%20browser/executions -r "
+"demorealm\n"
+msgstr ""
+"$ kcadm.sh get authentication/flows/Copy%20of%20browser/executions -r "
+"demorealm\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Adding configuration to an execution"
+msgstr "エグゼキューションに対する設定の追加"
+
+#. type: Plain text
+msgid "Get execution for a flow, and take note of its ID"
+msgstr "フローのエグゼキューションを取得し、そのIDを記録します。"
+
+#. type: Plain text
+msgid ""
+"Run the [command]`create` command on the "
+"[filename]`authentication/executions/{executionId}/config` endpoint."
+msgstr ""
+"[filename]`authentication/executions/{executionId}/config` エンドポイントで "
+"[command]`create` コマンドを実行します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ kcadm create "
+"\"authentication/executions/a3147129-c402-4760-86d9-3f2345e401c7/config\" -r"
+" examplerealm -b '{\"config\":{\"x509-cert-auth.mapping-source-"
+"selection\":\"Match SubjectDN using regular expression\",\"x509-cert-auth"
+".regular-expression\":\"(.*?)(?:$)\",\"x509-cert-auth.mapper-"
+"selection\":\"Custom Attribute Mapper\",\"x509-cert-auth.mapper-selection"
+".user-attribute-name\":\"usercertificate\",\"x509-cert-auth.crl-checking-"
+"enabled\":\"\",\"x509-cert-auth.crldp-checking-enabled\":false,\"x509-cert-"
+"auth.crl-relative-path\":\"crl.pem\",\"x509-cert-auth.ocsp-checking-"
+"enabled\":\"\",\"x509-cert-auth.ocsp-responder-uri\":\"\",\"x509-cert-"
+"auth.keyusage\":\"\",\"x509-cert-auth.extendedkeyusage\":\"\",\"x509-cert-"
+"auth.confirmation-page-disallowed\":\"\"},\"alias\":\"my_otp_config\"}'\n"
+msgstr ""
+"$ kcadm create "
+"\"authentication/executions/a3147129-c402-4760-86d9-3f2345e401c7/config\" -r"
+" examplerealm -b '{\"config\":{\"x509-cert-auth.mapping-source-"
+"selection\":\"Match SubjectDN using regular expression\",\"x509-cert-auth"
+".regular-expression\":\"(.*?)(?:$)\",\"x509-cert-auth.mapper-"
+"selection\":\"Custom Attribute Mapper\",\"x509-cert-auth.mapper-selection"
+".user-attribute-name\":\"usercertificate\",\"x509-cert-auth.crl-checking-"
+"enabled\":\"\",\"x509-cert-auth.crldp-checking-enabled\":false,\"x509-cert-"
+"auth.crl-relative-path\":\"crl.pem\",\"x509-cert-auth.ocsp-checking-"
+"enabled\":\"\",\"x509-cert-auth.ocsp-responder-uri\":\"\",\"x509-cert-"
+"auth.keyusage\":\"\",\"x509-cert-auth.extendedkeyusage\":\"\",\"x509-cert-"
+"auth.confirmation-page-disallowed\":\"\"},\"alias\":\"my_otp_config\"}'\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Getting configuration for an execution"
+msgstr "エグゼキューションの設定の取得"
+
+#. type: Plain text
+msgid ""
+"Get execution for a flow, and get its [filename]`authenticationConfig` "
+"attribute, containing the config ID."
+msgstr "フローのエグゼキューションを取得し、設定IDを含む [filename]`authenticationConfig` 属性を取得します。"
+
+#. type: Plain text
+msgid ""
+"Run the [command]`get` command on the [filename]`authentication/config/ID` "
+"endpoint."
+msgstr ""
+"[filename]`authentication/config/ID` エンドポイントで [command]`get` コマンドを実行します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ kcadm get \"authentication/config/dd91611a-d25c-421a-87e2-227c18421833\" "
+"-r examplerealm\n"
+msgstr ""
+"$ kcadm get \"authentication/config/dd91611a-d25c-421a-87e2-227c18421833\" "
+"-r examplerealm\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Updating configuration for an execution"
+msgstr "エグゼキューションの設定の更新"
+
+#. type: Plain text
+msgid ""
+"Run the [command]`update` command on the "
+"[filename]`authentication/config/ID` endpoint."
+msgstr ""
+"[filename]`authentication/config/ID` エンドポイントで [command]`update` コマンドを実行します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ kcadm update \"authentication/config/dd91611a-d25c-421a-"
+"87e2-227c18421833\" -r examplerealm -b '{\"id\":\"dd91611a-d25c-421a-"
+"87e2-227c18421833\",\"alias\":\"my_otp_config\",\"config\":{\"x509-cert-"
+"auth.extendedkeyusage\":\"\",\"x509-cert-auth.mapper-selection.user-"
+"attribute-name\":\"usercertificate\",\"x509-cert-auth.ocsp-responder-"
+"uri\":\"\",\"x509-cert-auth.regular-expression\":\"(.*?)(?:$)\",\"x509-cert-"
+"auth.crl-checking-enabled\":\"true\",\"x509-cert-auth.confirmation-page-"
+"disallowed\":\"\",\"x509-cert-auth.keyusage\":\"\",\"x509-cert-auth.mapper-"
+"selection\":\"Custom Attribute Mapper\",\"x509-cert-auth.crl-relative-"
+"path\":\"crl.pem\",\"x509-cert-auth.crldp-checking-"
+"enabled\":\"false\",\"x509-cert-auth.mapping-source-selection\":\"Match "
+"SubjectDN using regular expression\",\"x509-cert-auth.ocsp-checking-"
+"enabled\":\"\"}}'\n"
+msgstr ""
+"$ kcadm update \"authentication/config/dd91611a-d25c-421a-"
+"87e2-227c18421833\" -r examplerealm -b '{\"id\":\"dd91611a-d25c-421a-"
+"87e2-227c18421833\",\"alias\":\"my_otp_config\",\"config\":{\"x509-cert-"
+"auth.extendedkeyusage\":\"\",\"x509-cert-auth.mapper-selection.user-"
+"attribute-name\":\"usercertificate\",\"x509-cert-auth.ocsp-responder-"
+"uri\":\"\",\"x509-cert-auth.regular-expression\":\"(.*?)(?:$)\",\"x509-cert-"
+"auth.crl-checking-enabled\":\"true\",\"x509-cert-auth.confirmation-page-"
+"disallowed\":\"\",\"x509-cert-auth.keyusage\":\"\",\"x509-cert-auth.mapper-"
+"selection\":\"Custom Attribute Mapper\",\"x509-cert-auth.crl-relative-"
+"path\":\"crl.pem\",\"x509-cert-auth.crldp-checking-"
+"enabled\":\"false\",\"x509-cert-auth.mapping-source-selection\":\"Match "
+"SubjectDN using regular expression\",\"x509-cert-auth.ocsp-checking-"
+"enabled\":\"\"}}'\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Deleting configuration for an execution"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Run the [command]`delete` command on the "
+"[filename]`authentication/config/ID` endpoint."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ kcadm delete \"authentication/config/dd91611a-d25c-421a-"
+"87e2-227c18421833\" -r examplerealm\n"
+msgstr ""
+"$ kcadm delete \"authentication/config/dd91611a-d25c-421a-"
+"87e2-227c18421833\" -r examplerealm\n"

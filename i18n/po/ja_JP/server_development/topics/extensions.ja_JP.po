@@ -16,19 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/multi-tenancy.adoc:41
-#: source/server_development/topics/user-storage/provider-interfaces.adoc:52
-#: source/server_development/topics/extensions.adoc:70
-#: source/server_development/topics/providers.adoc:143
 #, no-wrap
 msgid "}\n"
 msgstr "}\n"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:196
-#: source/securing_apps/topics/oidc/java/spring-security-adapter.adoc:295
-#: source/server_development/topics/user-storage/simple-example.adoc:236
-#: source/server_development/topics/extensions.adoc:123
 #, no-wrap
 msgid ""
 "    ...\n"
@@ -38,13 +30,11 @@ msgstr ""
 "}\n"
 
 #. type: Title ==
-#: source/server_development/topics/extensions.adoc:3
 #, no-wrap
 msgid "Extending the Server"
 msgstr "サーバーの拡張"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:7
 msgid ""
 "The {project_name} SPI framework offers the possibility to implement or "
 "override particular built-in providers. However {project_name} also provides"
@@ -54,32 +44,25 @@ msgstr ""
 "{project_name}SPIフレームワークによって、特定のビルトイン・プロバイダーを実装、またはオーバーライドすることが可能になります。ただし、{project_name}でも、その主機能とドメインを拡張することはできます。これにより、以下も可能になります。"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:9
 msgid "Add custom REST endpoints to the {project_name} server"
 msgstr "カスタムRESTエンドポイントを{project_name}サーバーに追加"
 
 #. type: Title ===
-#: source/server_development/topics/extensions.adoc:10
-#: source/server_development/topics/extensions.adoc:35
 #, no-wrap
 msgid "Add your own custom SPI"
 msgstr "独自のカスタムSPIを追加"
 
 #. type: Title ===
-#: source/server_development/topics/extensions.adoc:11
-#: source/server_development/topics/extensions.adoc:89
 #, no-wrap
 msgid "Add custom JPA entities to the {project_name} data model"
 msgstr "カスタムJPAエンティティーを{project_name}データモデルへ追加"
 
 #. type: Title ===
-#: source/server_development/topics/extensions.adoc:13
 #, no-wrap
 msgid "Add custom REST endpoints"
 msgstr "カスタムRESTエンドポイントを追加"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:17
 msgid ""
 "This is a very powerful extension, which allows you to deploy your own REST "
 "endpoints to the {project_name} server. It enables all kinds of extensions, "
@@ -90,7 +73,6 @@ msgstr ""
 "これは大変強力な拡張機能で、独自のRESTエンドポイントを{project_name}サーバーにデプロイすることができます。これによって、あらゆる種類の拡張が可能になります。たとえば、{project_name}サーバー上の機能を起動すことができます。これについては、ビルトインの{project_name}RESTエンドポイントのデフォルトセットでは利用できません。"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:19
 msgid ""
 "To add a custom REST endpoint, you need to implement the "
 "`RealmResourceProviderFactory` and `RealmResourceProvider` interfaces. "
@@ -101,13 +83,11 @@ msgstr ""
 "には、以下のとおり、重要なメソッドが1つあります。"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:24
 #, no-wrap
 msgid "Object getResource();\n"
 msgstr "Object getResource();\n"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:31
 msgid ""
 "which allows you to return an object, which acts as a https://github.com"
 "/jax-rs[JAX-RS Resource]. For more details, see the Javadoc and our "
@@ -124,7 +104,6 @@ msgstr ""
 "にはさらに高度なサンプルがあります。この高度なサンプルによって、認証済みのRESTエンドポイントと、<<extensions.adoc#_extensions_spi,独自のSPIを追加する>>や<<extensions.adoc#_extensions_jpa,独自のJPAエンティティーでデータモデルを拡張する>>のような、その他の機能を追加する方法が示されます。"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:33
 msgid ""
 "For details on how to package and deploy a custom provider, refer to the "
 "<<providers.adoc#_providers,Service Provider Interfaces>> chapter."
@@ -132,7 +111,6 @@ msgstr ""
 "カスタム・プロバイダーをパッケージングしてデプロイする方法についての詳細は、<<providers.adoc#_providers,サービス・プロバイダー・インタフェース>>の章を参照してください。"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:39
 msgid ""
 "This is useful especially with the <<extensions.adoc#_extensions_rest,Custom"
 " REST endpoints>>. To add your own kind of SPI, you need to implement the "
@@ -144,28 +122,21 @@ msgstr ""
 "`Provider` のクラスを定義する必要があります。以下のようになります。"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:43
 #, no-wrap
 msgid "package org.keycloak.examples.domainextension.spi;\n"
 msgstr "package org.keycloak.examples.domainextension.spi;\n"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:45
-#: source/server_development/topics/providers.adoc:22
-#: source/server_development/topics/providers.adoc:57
-#: source/server_development/topics/providers.adoc:161
 #, no-wrap
 msgid "import ...\n"
 msgstr "import ...\n"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:47
 #, no-wrap
 msgid "public class ExampleSpi implements Spi {\n"
 msgstr "public class ExampleSpi implements Spi {\n"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:52
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -179,7 +150,6 @@ msgstr ""
 " }\n"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:57
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -193,7 +163,6 @@ msgstr ""
 " }\n"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:62
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -207,7 +176,6 @@ msgstr ""
 " }\n"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:68
 #, no-wrap
 msgid ""
 "    @Override\n"
@@ -223,7 +191,6 @@ msgstr ""
 " }\n"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:74
 msgid ""
 "Then you need to create the file `META-"
 "INF/services/org.keycloak.provider.Spi` and add the class of your SPI to it."
@@ -233,13 +200,11 @@ msgstr ""
 "ファイルを作成し、そのファイルにSPIのクラスを追加する必要があります。たとえば、"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:78
 #, no-wrap
 msgid "org.keycloak.examples.domainextension.spi.ExampleSpi\n"
 msgstr "org.keycloak.examples.domainextension.spi.ExampleSpi\n"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:83
 msgid ""
 "The next step is to create the interfaces `ExampleServiceProviderFactory`, "
 "which extends from `ProviderFactory` and `ExampleService`, which extends "
@@ -256,7 +221,6 @@ msgstr ""
 "はリクエスト毎にスコープされます（または、より厳密に言うと `KeycloakSession` ライフサイクル毎になります）。"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:85
 msgid ""
 "Finally you need to implement your providers in the same manner as described"
 " in the <<providers.adoc#_providers,Service Provider Interfaces>> chapter."
@@ -264,7 +228,6 @@ msgstr ""
 "最後に、<<providers.adoc#_providers,サービス・プロバイダー・インタフェース>>の章で説明したのと同じ方法で、プロバイダーを実装する必要があります。"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:87
 msgid ""
 "For more details, take a look at the example distribution at `providers"
 "/domain-extension`, which shows an Example SPI similar to the one above."
@@ -273,7 +236,6 @@ msgstr ""
 "配布物のサンプルを参照してください。そこには、上記と同じようなSPIのサンプルが示されています。"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:94
 msgid ""
 "If the {project_name} data model does not exactly match your desired "
 "solution, or if you want to add some core functionality to {project_name}, "
@@ -285,26 +247,23 @@ msgstr ""
 " `EntityManager` へ追加することが可能になりました。"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:97
 msgid ""
 "To add your own JPA entities, you need to implement "
 "`JpaEntityProviderFactory` and `JpaEntityProvider`. The `JpaEntityProvider` "
 "allows you to return a list of your custom JPA entities and provide the "
-"location and id of the liquibase changelog. An example implementation can "
+"location and id of the Liquibase changelog. An example implementation can "
 "look like this:"
 msgstr ""
-"独自のJPAエンティティーを追加するには、 `JpaEntityProviderFactory` と `JpaEntityProvider` "
-"を実装する必要があります。 `JpaEntityProvider` によって、カスタムJPAエンティティーのリストを返し、Liquibase "
-"の変更履歴の場所とidを提供することができます。 実装サンプルは、以下のとおりになります。"
+"独自のJPAエンティティを追加するには、 `JpaEntityProviderFactory` と `JpaEntityProvider` "
+"を実装する必要があります。 `JpaEntityProvider` によって、カスタムJPAエンティティのリストを返し、Liquibase "
+"の変更履歴の場所とidを提供することができます。 実装サンプルは、以下の通りになります。"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:101
 #, no-wrap
 msgid "public class ExampleJpaEntityProvider implements JpaEntityProvider {\n"
 msgstr "public class ExampleJpaEntityProvider implements JpaEntityProvider {\n"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:107
 #, no-wrap
 msgid ""
 "    // List of your JPA entities.\n"
@@ -320,7 +279,6 @@ msgstr ""
 " }\n"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:114
 #, no-wrap
 msgid ""
 "    // This is used to return the location of the Liquibase changelog file.\n"
@@ -338,7 +296,6 @@ msgstr ""
 " }\n"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:120
 #, no-wrap
 msgid ""
 "    // Helper method, which will be used internally by Liquibase.\n"
@@ -354,7 +311,6 @@ msgstr ""
 " }\n"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:127
 msgid ""
 "In the example above, we added a single JPA entity represented by class "
 "`Company`. In the code of your REST endpoint, you can then use something "
@@ -365,7 +321,6 @@ msgstr ""
 "`EntityManager` を取得し、その上でDBオペレーションを呼び出すことができます。"
 
 #. type: delimited block -
-#: source/server_development/topics/extensions.adoc:133
 #, no-wrap
 msgid ""
 "EntityManager em = session.getProvider(JpaConnectionProvider.class).getEntityManager();\n"
@@ -375,7 +330,6 @@ msgstr ""
 "Company myCompany = em.find(Company.class, \"123\");\n"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:143
 msgid ""
 "The methods `getChangelogLocation` and `getFactoryId` are important to "
 "support automatic updating of your entities by Liquibase. "
@@ -383,27 +337,26 @@ msgid ""
 "database schema, which {project_name} internally uses to create the DB "
 "schema and update the DB schema among versions. You may need to use it as "
 "well and create a changelog for your entities. Note that versioning of your "
-"own liquibase changelog is independent of {project_name} versions. In other "
+"own Liquibase changelog is independent of {project_name} versions. In other "
 "words, when you update to a new {project_name} version, you are not forced "
 "to update your schema at the same time. And vice versa, you can update your "
 "schema even without updating the {project_name} version. The Liquibase "
 "update is always done at the server startup, so to trigger a DB update of "
-"your schema, you just need to add the new changeset to your liquibase "
+"your schema, you just need to add the new changeset to your Liquibase "
 "changelog file (in the example above it's the file `META-INF/example-"
-"changelog.xml` (which must be packed in same JAR as the JPA entities and "
+"changelog.xml` which must be packed in same JAR as the JPA entities and "
 "`ExampleJpaEntityProvider`) and then restart server.  The DB schema will be "
 "automatically updated at startup."
 msgstr ""
 "`getChangelogLocation` と `getFactoryId` "
-"のメソッドは、Liquibaseによるエンティティーの自動更新をサポートするために重要です。 "
+"のメソッドは、Liquibaseによるエンティティの自動更新をサポートするために重要です。 "
 "http://www.liquibase.org/[Liquibase] "
-"はデータベース・スキーマを更新するためのフレームワークです。これは{project_name}で内部的に使用され、DBスキーマを作成してバージョン間でDBスキーマを更新します。これを同じように使用して、エンティティーの変更履歴を作成する必要があるかもしれません。独自のLiquibaseの変更履歴のバージョニングは{project_name}のバージョンとは異なる独立したものであることに注意してください。つまり、新しい{project_name}バージョンへ更新した際、同時にスキーマを更新する必要はありません。また、その逆の場合でも、{project_name}バージョンを更新しなくてもスキーマを更新することができます。Liquibaseの更新は常にサーバー起動時に実行されるので、新しい変更セットをLiquibaseの変更履歴ファイル（上記のサンプルでは、これは"
-" `META-INF/example-changelog.xml` ファイル（これはJPAエンティティーと "
+"はデータベース・スキーマを更新するためのフレームワークです。これは{project_name}で内部的に使用され、DBスキーマを作成してバージョン間でDBスキーマを更新します。これを同じように使用して、エンティティの変更履歴を作成する必要があるかもしれません。独自のLiquibaseの変更履歴のバージョニングは{project_name}のバージョンとは異なる独立したものであることに注意してください。つまり、新しい{project_name}バージョンへ更新した際、同時にスキーマを更新する必要はありません。また、その逆の場合でも、{project_name}バージョンを更新しなくてもスキーマを更新することができます。Liquibaseの更新は常にサーバー起動時に実行されるので、新しい変更セットをLiquibaseの変更履歴ファイル（上記のサンプルでは、これは"
+" `META-INF/example-changelog.xml` ファイル（これはJPAエンティティと "
 "`ExampleJpaEntityProvider` "
 "と同じJAR内に含まれていなければなりません）になります）を追加して再起動するだけで、スキーマのDB更新のトリガーとなります。起動時に、DBスキーマが自動的に更新されます。"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:145
 msgid ""
 "For more details, take a look at the example distribution at example "
 "`providers/domain-extension`, which shows the `ExampleJpaEntityProvider` and"
@@ -413,7 +366,6 @@ msgstr ""
 "`ExampleJpaEntityProvider` と `example-changelog.xml` のサンプルが示されています。"
 
 #. type: Plain text
-#: source/server_development/topics/extensions.adoc:147
 msgid ""
 "Don't forget to always backup your database before doing any changes in the "
 "Liquibase changelog and triggering a DB update."

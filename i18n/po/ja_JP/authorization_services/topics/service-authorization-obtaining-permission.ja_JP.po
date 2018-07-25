@@ -1,0 +1,330 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\"\n"
+msgstr ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\"\n"
+
+#. type: Title =
+#, no-wrap
+msgid "Obtaining Permissions"
+msgstr "パーミッションの取得"
+
+#. type: Plain text
+msgid ""
+"To obtain permissions from {project_name} you send an authorization request "
+"to the token endpoint. As a result, {project_name} will evaluate all "
+"policies associated with the resource(s) and scope(s) being requested and "
+"issue an RPT with all permissions granted by the server."
+msgstr ""
+"{project_name}からパーミッションを取得するには、認可リクエストをトークン・エンドポイントに送信します。その結果、{project_name}は要求されているリソースとスコープに関連するすべてのポリシーを評価し、サーバーによって付与されたすべてのパーミッションを持つRPTを発行します。"
+
+#. type: Plain text
+msgid ""
+"Clients are allowed to send authorization requests to the token endpoint "
+"using the following parameters:"
+msgstr "クライアントは、次のパラメーターを使用してトークン・エンドポイントに認可リクエストを送信できます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*grant_type*\n"
+msgstr "*grant_type*\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *required*. Must be `urn:ietf:params:oauth:grant-type:uma-"
+"ticket`."
+msgstr ""
+"このパラメーターは *required* です。 `urn:ietf:params:oauth:grant-type:uma-ticket` "
+"でなければなりません。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**ticket**\n"
+msgstr "**ticket**\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *optional*. The most recent permission ticket received by "
+"the client as part of the UMA authorization process."
+msgstr "このパラメーターは *optional* です。UMA認可プロセスの一環としてクライアントが受信した最新のパーミッション・チケット。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**claim_token**\n"
+msgstr "**claim_token**\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *optional*. A string representing additional claims that "
+"should be considered by the server when evaluating permissions for the "
+"resource(s) and scope(s) being requested. This parameter allow clients to "
+"push claims to {project_name}. For more details about all supported token "
+"formats see `claim_token_format` parameter."
+msgstr ""
+"このパラメーターは *optional* "
+"です。要求されているリソースとスコープのパーミッションを評価するときに、サーバーが考慮する必要がある追加の要求を表す文字列。このパラメーターにより、クライアントは{project_name}にクレームをプッシュできます。サポートされているすべてのトークン形式の詳細については、"
+" `claim_token_format` パラメーターを参照してください。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**claim_token_format**\n"
+msgstr "**claim_token_format**\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *optional. A string indicating the format of the token "
+"specified in the `claim_token` parameter. {project_name} supports two token "
+"formats: `urn:ietf:params:oauth:token-type:jwt` and `http://openid.net/specs"
+"/openid-connect-core-1_0.html#IDToken`. The `urn:ietf:params:oauth:token-"
+"type:jwt` format indicates that the `claim_token` parameter references an "
+"access token. The `http://openid.net/specs/openid-connect-core-"
+"1_0.html#IDToken` indicates that the `claim_token` parameter references an "
+"OpenID Connect ID Token."
+msgstr ""
+"このパラメーターは *optional* です。 `claim_token` "
+"パラメーターで指定されたトークンのフォーマットを示す文字列です。{project_name}は  `urn:ietf:params:oauth"
+":token-type:jwt` と `http://openid.net/specs/openid-connect-core-"
+"1_0.html#IDToken`　の2つのトークン・フォーマットをサポートしています。 `urn:ietf:params:oauth:token-"
+"type:jwt` 形式は、 `claim_token` パラメーターがアクセストークンを参照することを示します。 "
+"`http://openid.net/specs/openid-connect-core-1_0.html#IDToken` は、 "
+"`claim_token` パラメーターがOpenID Connect IDトークンを参照することを示します。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**rpt**\n"
+msgstr "**rpt**\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *optional. A previously issued RPT which permissions "
+"should also be evaluated and added in a new one. This parameter allows "
+"clients in possession of an RPT to perform incremental authorization where "
+"permissions are added on demand."
+msgstr ""
+"このパラメーターは *optional* "
+"です。以前に発行されたRPTで、そのパーミッションも評価して新しいものに追加する必要があります。このパラメーターを使用すると、RPTを所有しているクライアントは、必要に応じてパーミッションが追加される増分認可を実行できます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**permission**\n"
+msgstr "**permission**\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *optional. A string representing a set of one or more "
+"resources and scopes the client is seeking access. This parameter can be "
+"defined multiple times in order to request permission for multiple resource "
+"and scopes. This parameter is an extension to `urn:ietf:params:oauth:grant-"
+"type:uma-ticket` grant type in order to allow clients to send authorization "
+"requests without a permission ticket. The format of the string must be: "
+"`RESOURCE_ID#SCOPE_ID`. For instance: `Resource A#Scope A`, `Resource "
+"A#Scope A, Scope B, Scope C`, `Resource A`, `#Scope A`."
+msgstr ""
+"このパラメーターは *optional* "
+"です。クライアントがアクセスしようとしている1つ以上のリソースとスコープのセットを表す文字列。このパラメーターは、複数のリソースとスコープに対するパーミッションを要求するために複数回定義することができます。このパラメーターは、クライアントがパーミッション・チケットなしで認可リクエストを送信できるようにするための、"
+" `urn:ietf:params:oauth:grant-type:uma-ticket` "
+"グラントタイプの拡張です。文字列の形式は次のとおりでなければなりません。`RESOURCE_ID#SCOPE_ID`. For instance: "
+"`Resource A#Scope A`, `Resource A#Scope A, Scope B, Scope C`, `Resource A`, "
+"`#Scope A`."
+
+#. type: Plain text
+#, no-wrap
+msgid "**audience**\n"
+msgstr "**audience**\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *optional*. The client identifier of the resource server "
+"to which the client is seeking access. This parameter is mandatory in case "
+"the `permission` parameter is defined. It serves as a hint to {project_name}"
+" to indicate the context in which permissions should be evaluated."
+msgstr ""
+"このパラメーターは *optional* です。クライアントがアクセスしようとしているリソースサーバーのクライアント識別子。このパラメーターは "
+"`permission` "
+"パラメーターが定義されている場合に必須です。パーミッションが評価されるべきコンテキストを示すための、{project_name}へのヒントとして役立ちます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**response_include_resource_name**\n"
+msgstr "**response_include_resource_name**\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *optional*. A boolean value indicating to the server "
+"whether resource names should be included in the RPT's permissions. if "
+"false, only the resource identifier is included."
+msgstr ""
+"このパラメーターは *optional* "
+"です。リソース名をRPTのパーミッションに含めるかどうかをサーバーに示すブール値。falseの場合、リソース識別子のみが含まれます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**response_permissions_limit**\n"
+msgstr "**response_permissions_limit**\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *optional*. An integer N that defines a limit for the "
+"amount of permissions an RPT can have. When used together with `rpt` "
+"parameter, only the last N requested permissions will be kept in the RPT."
+msgstr ""
+"このパラメーターは *optional* です。RPTが持つことができるパーミッションの量の限界を定義する整数N。 `rpt` "
+"パラメーターと一緒に使用すると、最後に要求されたN個のパーミッションだけがRPTに保持されます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**submit_request**\n"
+msgstr "**submit_request**\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *optional*. A boolean value indicating whether the server "
+"should create permission requests to the resources and scopes referenced by "
+"a permission ticket.  This parameter only have effect if used together with "
+"the `ticket` parameter as part of a UMA authorization process."
+msgstr ""
+"このパラメーターは *optional* "
+"です。サーバーがリソースへのパーミッション・リクエストを作成する必要があるかどうかを示すブール値。パーミッション・チケットによって参照されるスコープ。このパラメーターは、UMA認証プロセスの一部として"
+" `ticket` パラメーターとともに使用される場合にのみ有効です。"
+
+#. type: Plain text
+msgid ""
+"Example of a authorization request when a client is seeking access to two "
+"resources protected by a resource server."
+msgstr "クライアントがリソースサーバーによって保護された2つのリソースへのアクセスを求めている場合のパーミッション・リクエストの例"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"audience=${resource_server_id}\" \\\n"
+"  --data \"permission=Resource A#Scope A\" \\\n"
+"  --data \"permission=Resource B#Scope B\"\n"
+msgstr ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"audience=${resource_server_id}\" \\\n"
+"  --data \"permission=Resource A#Scope A\" \\\n"
+"  --data \"permission=Resource B#Scope B\"\n"
+
+#. type: Plain text
+msgid ""
+"Example of a authorization request when a client is seeking access to any "
+"resource and scope protected by a resource server."
+msgstr "クライアントがリソースサーバーによって保護されたすべてのリソースとスコープへのアクセスを求めている場合のパーミッション・リクエストの例。"
+
+#. type: Plain text
+msgid ""
+"Example of an authorization request when a client is seeking access to a UMA"
+" protected resource after receiving a permission ticket from the resource "
+"server as part of the authorization process:"
+msgstr ""
+"認可プロセスの一環として、リソースサーバーからパーミッション・チケットを受け取った後で、クライアントがUMA保護リソースへのアクセスを求めている場合の認可リクエストの例："
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"ticket=${permission_ticket}\n"
+msgstr ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"ticket=${permission_ticket}\n"
+
+#. type: Plain text
+msgid ""
+"If ${project_name} assessment process results in issuance of permissions, it"
+" issues the RPT with which it has associated the permissions:"
+msgstr ""
+"${project_name}の評価プロセスの結果、パーミッションが発行されると、そのパーミッションに関連付けられているRPTが発行されます。"
+
+#. type: Block title
+#, no-wrap
+msgid "{project_name} responds to the client with the RPT"
+msgstr "{project_name}はRPTを使用してクライアントに応答します"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 200 OK\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"access_token\": \"${rpt}\",\n"
+"}\n"
+msgstr ""
+"HTTP/1.1 200 OK\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"access_token\": \"${rpt}\",\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"The response from the server is just like any other response from the token "
+"endpoint when using some other grant type. The RPT can be obtained from the "
+"`access_token` response parameter. If the client is not authorized, "
+"{project_name} responds with a `403` HTTP status code:"
+msgstr ""
+"サーバーからのレスポンスは、他のグラントタイプを使用しているときのトークン・エンドポイントからの任意のレスポンスとまったく同じです。RPTは "
+"`access_token` レスポンス・パラメーターから取得できます。クライアントが承認されていない場合、{project_name}は `403` "
+"HTTPステータスコードで応答します："
+
+#. type: Block title
+#, no-wrap
+msgid "{project_name} denies the authorization request"
+msgstr "{project_name}は認可リクエストを拒否します"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 403 Forbidden\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"error\": \"access_denied\",\n"
+"    \"error_description\": \"request_denied\"\n"
+"}\n"
+msgstr ""
+"HTTP/1.1 403 Forbidden\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"error\": \"access_denied\",\n"
+"    \"error_description\": \"request_denied\"\n"
+"}\n"

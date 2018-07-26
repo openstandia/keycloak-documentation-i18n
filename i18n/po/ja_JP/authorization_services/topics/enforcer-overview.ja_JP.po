@@ -16,19 +16,20 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:80
-#: source/authorization_services/topics/enforcer-overview.adoc:8
 msgid "image:images/pep-pattern-diagram.png[alt=\"PEP Overview\"]"
 msgstr "image:images/pep-pattern-diagram.png[alt=\"PEPの概要\"]"
 
+#. type: Block title
+#, no-wrap
+msgid "keycloak.json"
+msgstr "keycloak.json"
+
 #. type: Title =
-#: source/authorization_services/topics/enforcer-overview.adoc:2
 #, no-wrap
 msgid "Policy Enforcers"
 msgstr "ポリシー・エンフォーサー"
 
 #. type: Plain text
-#: source/authorization_services/topics/enforcer-overview.adoc:7
 msgid ""
 "Policy Enforcement Point (PEP) is a design pattern and as such you can "
 "implement it in different ways. {project_name} provides all the necessary "
@@ -38,3 +39,57 @@ msgid ""
 "grained authorization using a centralized authorization server."
 msgstr ""
 "ポリシー実施ポイント（PEP）は設計パターンとなり、さまざまな方法で実装できます。{project_name}は、さまざまなプラットフォーム、環境、およびプログラミング言語に対してPEPを実装するために必要なすべての手段を提供します。{project_name}認可サービスは、RESTfulなAPIを提供し、一元的な認可サーバーを使用してきめ細かな認可を行うための、OAuth2認可機能を活用します。"
+
+#. type: Plain text
+msgid ""
+"A PEP is responsible for enforcing access decisions from the {project_name} "
+"server where these decisions are taken by evaluating the policies associated"
+" with a protected resource. It acts as a filter or interceptor in your "
+"application in order to check whether or not a particular request to a "
+"protected resource can be fulfilled based on the permissions granted by "
+"these decisions."
+msgstr ""
+"PEPは、保護されたリソースに関連するポリシーを評価することによって、これらの決定が行われる{project_name}サーバーからのアクセス決定を強制する責任があります。これらの決定によって与えられたパーミッションに基づいて、保護されたリソースへの特定の要求が満たされているかどうかをチェックするために、アプリケーションのフィルターまたはインターセプターとして機能します。"
+
+#. type: Plain text
+msgid ""
+"If you are using any of the {project_name} OIDC adapters, you can easily "
+"enable the policy enforcer by adding the following property to your "
+"*keycloak.json* file:"
+msgstr ""
+"{project_name} OIDCアダプターのいずれかを使用している場合は、 *keycloak.json* "
+"ファイルに次のプロパティーを追加することで簡単にポリシー・エンフォーサーを有効にできます。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"{\n"
+" \"policy-enforcer\": {}\n"
+"}\n"
+msgstr ""
+"{\n"
+" \"policy-enforcer\": {}\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"When you enable the policy enforcer all requests sent your application are "
+"intercepted and access to protected resources will be granted depending on "
+"the permissions granted by {project_name} to the identity making the "
+"request."
+msgstr ""
+"ポリシー・エンフォーサーを有効にすると、送信されたすべてのリクエストはインターセプトされ、保護されたリソースへのアクセスは、リクエストしているアイデンティティーに{project_name}が付与したパーミッションに応じて許可されます。"
+
+#. type: Plain text
+msgid ""
+"Policy enforcement is strongly linked to your application's paths and the "
+"<<_resource_overview, resources>> you created for a resource server using "
+"the {project_name} Administration Console. By default, when you create a "
+"resource server, {project_name} creates a <<_resource_server_default_config,"
+" default configuration>> for your resource server so you can enable policy "
+"enforcement quickly."
+msgstr ""
+"ポリシー適用は、アプリケーションのパスと、{project_name}管理コンソールを使用してリソースサーバー用に作成した<<_resource_overview,"
+" "
+"リソース>>に強く関連しています。デフォルトでは、リソースサーバーを作成すると、{project_name}はリソースサーバーの<<_resource_server_default_config,"
+" デフォルト設定>>を作成し、ポリシー適用を即時に有効化することができます。"

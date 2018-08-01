@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018\n"
+"Last-Translator: KojiNose <knose.dev@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,51 +24,10 @@ msgstr "各設定オプションの説明は次のとおりです。"
 msgid "keycloak.json"
 msgstr "keycloak.json"
 
-#. type: Title =
-#, no-wrap
-msgid "{project_name} Adapter Policy Enforcer"
-msgstr "{project_name} アダプター・ポリシー・エンフォーサー"
-
-#. type: Plain text
-msgid ""
-"You can enforce authorization decisions for your applications if you are "
-"using {project_name} OIDC adapters."
-msgstr "{project_name} OIDCアダプターを使用している場合は、アプリケーションの認可の決定を行うことができます。"
-
-#. type: Plain text
-msgid ""
-"When you enable policy enforcement for your {project_name} application, the "
-"corresponding adapter intercepts all requests to your application and "
-"enforces the authorization decisions obtained from the server."
-msgstr ""
-"{project_name}アプリケーションのポリシーの適用を有効にすると、対応するアダプターはアプリケーションへのすべてのリクエストをインターセプトし、サーバーから取得した認可の決定を行います。"
-
-#. type: Plain text
-msgid ""
-"Policy enforcement is strongly linked to your application's paths and the "
-"<<_resource_overview, resources>> you created for a resource server using "
-"the {project_name} Administration Console. By default, when you create a "
-"resource server, {project_name} creates a <<_resource_server_default_config,"
-" default configuration>> for your resource server so you can enable policy "
-"enforcement quickly."
-msgstr ""
-"ポリシー適用は、アプリケーションのパスと、{project_name}管理コンソールを使用してリソースサーバー用に作成した<<_resource_overview,"
-" "
-"リソース>>に強く関連しています。デフォルトでは、リソースサーバーを作成すると、{project_name}はリソースサーバーの<<_resource_server_default_config,"
-" デフォルト設定>>を作成し、ポリシー適用を即時に有効化することができます。"
-
-#. type: Plain text
-msgid ""
-"The default configuration allows access for all resources in your "
-"application provided the authenticated user belongs to the same realm as the"
-" resource server being protected."
-msgstr ""
-"デフォルト設定では、認証されたユーザーが保護対象のリソースサーバーと同じレルムに属している場合、アプリケーション内のすべてのリソースにアクセスできます。"
-
 #. type: Title ==
 #, no-wrap
-msgid "Policy Enforcement Configuration"
-msgstr "ポリシー適用の設定"
+msgid "Configuration"
+msgstr "設定"
 
 #. type: Plain text
 msgid ""
@@ -244,8 +203,13 @@ msgstr "*** *DISABLED*\n"
 #. type: Plain text
 msgid ""
 "Completely disables the evaluation of policies and allows access to any "
-"resource."
-msgstr "ポリシーの評価を完全に無効にし、任意のリソースへのアクセスを許可します。"
+"resource. When `enforcement-mode` is `DISABLED` applications are still able "
+"to obtain all permissions granted by {project_name} through the "
+"<<_enforcer_authorization_context, Authorization Context>>"
+msgstr ""
+"ポリシーの評価を完全に無効にし、任意のリソースへのアクセスを許可します。 `enforcement-mode` が `DISABLED` "
+"のとき、アプリケーションは <<_enforcer_authorization_context, "
+"認可コンテキスト>>を介して{project_name}によって与えられたすべてのパーミッションを引き続き取得できます。"
 
 #. type: Plain text
 #, no-wrap
@@ -264,12 +228,58 @@ msgstr ""
 
 #. type: Plain text
 #, no-wrap
+msgid "** *path-cache*\n"
+msgstr "** *path-cache*\n"
+
+#. type: Plain text
+msgid ""
+"Defines how the policy enforcer should track associations between paths in "
+"your application and resources defined in {project_name}. The cache is "
+"needed to avoid unnecessary requests to a {project_name} server by caching "
+"associations between paths and protected resources."
+msgstr ""
+"ポリシー・エンフォーサーがアプリケーション内のパスと{project_name}で定義されているリソースとの間の関連性を追跡する方法を定義します。キャッシュは、パスと保護されたリソース間の関連付けをキャッシュすることによって、{project_name}サーバーへの不要なリクエストを回避するために必要です。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*** *lifespan*\n"
+msgstr "*** *lifespan*\n"
+
+#. type: Plain text
+msgid ""
+"Defines the time in milliseconds when the entry should be expired. If not "
+"provided, default value is *3000*. A value less than or equal to 0 can be "
+"set to completely disable the cache."
+msgstr ""
+"エントリーを期限切れにする時間をミリ秒単位で定義します。指定されていない場合、デフォルト値は *3000* "
+"です。0以下の値を設定すると、キャッシュを完全に無効にすることができます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*** *max-entries*\n"
+msgstr "*** *max-entries*\n"
+
+#. type: Plain text
+msgid ""
+"Defines the limit of entries that should be kept in the cache. If not "
+"provided, default value is *1000*."
+msgstr "キャッシュに保持する必要があるエントリーの制限を定義します。指定されていない場合、デフォルト値は *1000* です。"
+
+#. type: Plain text
+#, no-wrap
 msgid "** *paths*\n"
 msgstr "** *paths*\n"
 
 #. type: Plain text
-msgid "Specifies the paths to protect."
-msgstr "保護するパスを指定します。"
+msgid ""
+"Specifies the paths to protect. This configuration is optional. If not "
+"defined, the policy enforcer will discover all paths by fetching the "
+"resources you defined to your application in {project_name}, where these "
+"resources are defined with a `URI` representing some path in your "
+"application."
+msgstr ""
+"保護するパスを指定します。この設定はオプションです。定義されていない場合、ポリシー・エンフォーサーは{project_name}でアプリケーションに定義したリソースをフェッチすることによってすべてのパスを検出します。これらのリソースは、アプリケーションのパスを表す"
+" `URI` で定義されます。"
 
 #. type: Plain text
 #, no-wrap
@@ -315,16 +325,20 @@ msgstr ""
 
 #. type: Plain text
 #, no-wrap
+msgid "*** *methods*\n"
+msgstr "*** *methods*\n"
+
+#. type: Plain text
 msgid ""
-"*** *methods*\n"
-"The HTTP methods (for example, GET, POST, PATCH) to protect and how they are associated with the scopes for a given resource in the server.\n"
-"+[/'']\n"
-"**** *method*\n"
+"The HTTP methods (for example, GET, POST, PATCH) to protect and how they are"
+" associated with the scopes for a given resource in the server."
 msgstr ""
-"*** *methods*\n"
-"保護するHTTPメソッド（GET、POST、PATCHなど）と、サーバー内の特定のリソースのスコープにどのように関連付けられているかを示します。\n"
-"+[/'']\n"
-"**** *method*\n"
+"保護するHTTPメソッド（GET、POST、PATCHなど）と、サーバー内の特定のリソースのスコープにどのように関連付けられているかを示します。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**** *method*\n"
+msgstr "**** *method*\n"
 
 #. type: Plain text
 msgid "The name of the HTTP method."
@@ -382,5 +396,30 @@ msgid "**** *DISABLED*\n"
 msgstr "**** *DISABLED*\n"
 
 #. type: Plain text
-msgid "Disables the evaluation of policies for a path"
-msgstr "パスのポリシーの評価を無効にします。"
+#, no-wrap
+msgid "*** *claim-information-point*\n"
+msgstr "*** *claim-information-point*\n"
+
+#. type: Plain text
+msgid ""
+"Defines a set of one or more claims that must be resolved and pushed to the "
+"{project_name} server in order to make these claims available to policies. "
+"See <<_enforcer_claim_information_point, Claim Information Point>> for more "
+"details.  ** *lazy-load-paths*"
+msgstr ""
+"これらのクレームをポリシーで利用できるようにするために解決され、{project_name}サーバーにプッシュされなければならない1つ以上のクレームのセットを定義します。詳細については、<<_enforcer_claim_information_point,"
+" 請求情報ポイント>>を参照してください。 ** *lazy-load-paths*"
+
+#. type: Plain text
+msgid ""
+"Specifies how the adapter should fetch the server for resources associated "
+"with paths in your application. If true, the policy enforcer is going to "
+"fetch resources on-demand accordingly with the path being requested. This "
+"configuration is specially useful when you don't want to fetch all resources"
+" from the server during deployment (in case you have provided no `paths`) or"
+" in case you have defined only a sub set of `paths` and want to fetch others"
+" on-demand."
+msgstr ""
+"アプリケーションのパスに関連付けられたリソースに対して、アダプターがサーバーをフェッチする方法を指定します。trueの場合、ポリシー・エンフォーサーは、要求されているパスに従ってオンデマンド・リソースをフェッチします。配備中にサーバーからすべてのリソースを取得したくない場合（"
+" `paths` を指定しなかった場合）や、 `paths` "
+"のサブセットしか定義せず、要求に応じて他のものをフェッチしたい場合に、この設定は特に便利です。"

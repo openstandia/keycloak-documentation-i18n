@@ -32,6 +32,175 @@ msgstr "移行に伴う変更"
 
 #. type: Title ===
 #, no-wrap
+msgid "Migrating to 4.0.0"
+msgstr "4.0.0への移行"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client Templates changed to Client Scopes"
+msgstr "クライアント・テンプレートがクライアント・スコープに変更されました"
+
+#. type: Plain text
+msgid ""
+"We added support for Client Scopes, which requires some attention during "
+"migration."
+msgstr "クライアント・スコープのサポートを追加しました。これは移行中に注意が必要です。"
+
+#. type: Plain text
+msgid ""
+"Client Templates were changed to Client Scopes. If you had any Client "
+"Templates, their protocol mappers and role scope mappings will be preserved."
+msgstr ""
+"クライアント・テンプレートがクライアント・スコープに変更されました。クライアント・テンプレートがあれば、そのプロトコル・マッパーとロールスコープのマッピングは保持されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Spaces replaced in the names"
+msgstr "名前の中の空白文字の置き換え"
+
+#. type: Plain text
+msgid ""
+"Client templates with the space character in the name were renamed by "
+"replacing spaces with an underscore, because spaces are not allowed in the "
+"name of client scopes. For example, a client template `my template` will be "
+"changed to client scope `my_template`."
+msgstr ""
+"名前に空白文字を含むクライアント・テンプレートの名前は、スペースをアンダースコアに置き換えた名前に変更されました。これは、クライアント・スコープの名前に空白文字が使用できないためです。たとえば、クライアント・テンプレート"
+" `my template` はクライアントスコープ `my_template` に変更されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Linking Client Scopes to Clients"
+msgstr "クライアントへのクライアントスコープのリンク"
+
+#. type: Plain text
+msgid ""
+"For clients which had the client template, the corresponding client scope is"
+" now added as `Default Client Scope` to the client. So protocol mappers and "
+"role scope mappings will be preserved on the client."
+msgstr ""
+"クライアント・テンプレートを持つクライアントの場合、対応するクライアント・スコープがクライアントに `Default Client Scope` "
+"として追加されます。したがって、プロトコル・マッパーとロール・スコープ・マッピングはクライアント上に保持されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Realm Default Client Scopes not linked with existing clients"
+msgstr "既存のクライアントにリンクされていないレルム既定のクライアントスコープ"
+
+#. type: Plain text
+msgid ""
+"During the migration, the list of built-in client scopes is added to each "
+"realm as well as list of `Realm Default Client Scopes`. However, existing "
+"clients are NOT upgraded and new client scopes are NOT automatically added "
+"to them. Also all the protocol mappers and role scope mappings are kept on "
+"existing clients. In the new version, when you create a new client, it "
+"automatically has Realm Default Client Scopes attached to it and it does not"
+" have any protocol mappers attached to it. We did not change existing "
+"clients during migration as it would be impossible to properly detect "
+"customizations, which you will have for protocol mappers of the clients, for"
+" example. If you want to update existing clients (remove protocol mappers "
+"from them and link them with client scopes), you will need to do it "
+"manually."
+msgstr ""
+"移行中に、ビルトインのクライアント・スコープのリストが各レルムに追加されます。また、 `Realm Default Client Scopes` "
+"のリストも追加されます。ただし、既存のクライアントはアップグレードされず、新しいクライアント・スコープは自動的に追加されません。また、すべてのプロトコル・マッパーとロール・スコープ・マッピングは、既存のクライアントに保持されます。新しいバージョンでは、新しいクライアントを作成すると、Realm"
+" Default Client "
+"Scopesが自動的に付属され、プロトコル・マッパーは付属されません。移行中に既存のクライアントを変更することはありません。クライアントのプロトコル・マッパーなどのカスタマイズを適切に検出することが不可能なためです（たとえば）。既存のクライアントを更新する場合（それらからプロトコル・マッパーを削除してクライアント・スコープとリンクする場合）、手動で行う必要があります。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Consents need to be confirmed again"
+msgstr "同意を再度確認する必要があります"
+
+#. type: Plain text
+msgid ""
+"The client scopes change required the refactoring of consents. Consents now "
+"point to client scopes, not to roles or protocol mappers.  Because of this "
+"change, the previously confirmed persistent consents by users are not valid "
+"anymore and users need to confirm the consent page again after the "
+"migration."
+msgstr ""
+"クライアント・スコープの変更は、同意のリファクタリングを必要としました。同意はクライアント・スコープを指し、ロールやプロトコル・マッパーは指しません。この変更により、ユーザーが以前に確認した永続的な同意はもはや有効ではなく、ユーザーは移行後に同意ページを再度確認する必要があります。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Some configuration switches removed"
+msgstr "一部の設定スイッチが削除されました"
+
+#. type: Plain text
+msgid ""
+"The switch `Scope Param Required` was removed from Role Detail. The switches"
+" `Consent Required` and `Consent Text` were removed from the Protocol Mapper"
+" details. Those switches were replaced by the Client Scope feature."
+msgstr ""
+"`Scope Param Required` がRole Detailから削除されました。 `Consent Required` と `Consent "
+"Text` のスイッチがプロトコル・マッパーの詳細から削除されました。これらのスイッチはクライアント・スコープ機能に置き換えられました。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 3.4.2"
+msgstr "3.4.2への移行"
+
+#. type: Title ===
+#, no-wrap
+msgid ""
+"Added session_state parameter to OpenID Connect Authentication Response"
+msgstr "OpenID Connect認証レスポンスにsession_stateパラメーターを追加"
+
+#. type: Plain text
+msgid ""
+"The OpenID Connect Session Management specification requires that the "
+"parameter `session_state` is present in the OpenID Connect Authentication "
+"Response."
+msgstr ""
+"OpenID Connectセッション管理仕様では、パラメーター `session_state` がOpenID "
+"Connect認証レスポンスに存在する必要があります。"
+
+#. type: Plain text
+msgid ""
+"In past releases, we did not have this parameter, but now {project_name} "
+"adds this parameter by default, as required by the specification."
+msgstr ""
+"過去のリリースでは、このパラメーターはありませんでしたが、{project_name}には、仕様で要求されているように、デフォルトでこのパラメーターを追加しました。"
+
+#. type: Plain text
+msgid ""
+"However, some OpenID Connect / OAuth2 adapters, and especially older "
+"{project_name} adapters, may have issues with this new parameter."
+msgstr ""
+"ただし、一部のOpenID Connect / "
+"OAuth2アダプター（特に以前の{project_name}アダプター）では、この新しいパラメーターに問題がある可能性があります。"
+
+#. type: Plain text
+msgid ""
+"For example, the parameter will be always present in the browser URL after "
+"successful authentication to the client application.  In these cases, it may"
+" be useful to disable adding the `session_state` parameter to the "
+"authentication response. This can be done for the particular client in the "
+"{project_name} admin console, in client details in the section with `OpenID "
+"Connect Compatibility Modes`, described in "
+"<<_compatibility_with_older_adapters>>. There is the `Exclude Session State "
+"From Authentication Response` switch, which can be turned on to prevent "
+"adding the `session_state` parameter to the Authentication Response."
+msgstr ""
+"たとえば、クライアント・アプリケーションへの認証が成功すると、ブラウザーのURLには常にパラメーターが表示されます。これらの場合、認証レスポンスに "
+"`session_state` "
+"パラメーターを追加することを無効にすると便利です。これは、{project_name}管理コンソールの特定のクライアントで行うことができます（クライアントの詳細については、"
+" <<_compatibility_with_older_adapters>>の `OpenID Connect Compatibility "
+"Modes` のセクションで説明しています）。 `session_state`パラメーターを認証レスポンスに追加しないようにすることができる "
+"`Exclude Session State From Authentication Response` スイッチがあります。"
+
+#. type: Plain text
+msgid ""
+"The parameter `session_state` was added in 3.4.2, however the switch "
+"`Exclude Session State From Authentication Response` was added in "
+"4.0.0.Beta1. If your {project_name} server is on 3.4.2 or 3.4.3 and you have"
+" issues with `session_state` parameter, you will need to upgrade the server "
+"to 4.0.0.Beta1 or newer."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 3.2.0"
 msgstr "3.2.0への移行"
 
@@ -75,11 +244,11 @@ msgid ""
 "generation of ID Token on purpose - for example for space or performance "
 "purposes."
 msgstr ""
-"OpenID Connectの仕様では、初回の認証要求において、 `openid` の値を持つパラメーターである `scope` "
+"OpenID Connectの仕様では、初回の認可リクエストにおいて、 `openid` の値を持つパラメーターである `scope` "
 "を使用する必要があります。そのため、{project_name} 2.1.0では、{project_name}へのURIへリダイレクトする際に "
 "`scope=openid` を使用するように、アダプターを変更しました。また、サーバー部分も変更され、 `scope=openid` "
 "が実際に使用される場合にのみ、IDトークンがアプリケーションに送信されます。 `scope=openid` "
-"が使用されない場合は、IDトークンはスキップされ、アクセス・トークンとリフレッシュ・トークンだけがアプリケーションに送信されます。これにより、目的に応じて（たとえば、容量やパフォーマンスなどの目的で）、IDトークンの生成を省略することもできます。"
+"が使用されない場合は、IDトークンはスキップされ、アクセストークンとリフレッシュトークンだけがアプリケーションに送信されます。これにより、目的に応じて（たとえば、容量やパフォーマンスなどの目的で）、IDトークンの生成を省略することもできます。"
 
 #. type: Plain text
 msgid ""
@@ -572,7 +741,7 @@ msgstr "アダプター・サブシステムはKeycloakが有効な場合にの�
 #. type: Plain text
 msgid ""
 "Previously, if you had installed our SAML or OIDC Keycloak subsystem "
-"adapters into Wildfly or JBoss EAP, we would automatically include Keycloak "
+"adapters into WildFly or JBoss EAP, we would automatically include Keycloak "
 "client jars into EVERY application irregardless if you were using Keycloak "
 "or not.  These libraries are now only added to your deployment if you have "
 "Keycloak authentication turned on for that adapter (via the subsystem, or "
@@ -662,12 +831,12 @@ msgstr "アダプターによりログイン後のセッションIDを変更"
 #. type: Plain text
 msgid ""
 "To plug a security attack vector, for platforms that support it (Tomcat 8, "
-"Undertow/Wildfly, Jetty 9), the Keycloak OIDC and SAML adapters will change "
+"Undertow/WildFly, Jetty 9), the Keycloak OIDC and SAML adapters will change "
 "the session id after login.  You can turn off this behavior check adapter "
 "config switches."
 msgstr ""
 "セッションIDをサポートするプラットフォーム（Tomcat "
-"8、Undertow/Wildfly、Jetty9）では、セキュリティー攻撃口をふさぐために、ログイン後にKeycloakのOIDCとSAMLアダプターによってセッションIDが変更されます。この動作をアダプターの設定スイッチをチェックすることでオフにすることができます。"
+"8、Undertow/WildFly、Jetty9）では、セキュリティー攻撃口をふさぐために、ログイン後にKeycloakのOIDCとSAMLアダプターによってセッションIDが変更されます。この動作をアダプターの設定スイッチをチェックすることでオフにすることができます。"
 
 #. type: Plain text
 msgid ""
@@ -1547,11 +1716,11 @@ msgstr "DBスキーマが変更されました。Alpha 2の時点では、デー
 
 #. type: Plain text
 msgid ""
-"JBoss and Wildfly adapters are now installed via a JBoss/Wildfly subsystem."
-"  Please review the adapter installation documentation.  Edits to "
+"JBoss and WildFly adapters are now installed via a {appserver_name} "
+"subsystem.  Please review the adapter installation documentation.  Edits to "
 "standalone.xml are now required."
 msgstr ""
-"現在、JBossアダプターとWildFlyアダプターはJBoss/Wildflyサブシステムでインストールされています。アダプターのインストールのドキュメントを参照してください。現在、standalone.xmlへの編集が必要です。"
+"現在、JBossアダプターとWildFlyアダプターは{appserver_name}サブシステムでインストールされています。アダプターのインストールのドキュメントを参照ください。現在、standalone.xmlへの編集が必要です。"
 
 #. type: Plain text
 msgid ""

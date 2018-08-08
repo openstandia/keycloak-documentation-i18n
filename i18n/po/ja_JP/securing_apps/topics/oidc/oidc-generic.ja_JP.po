@@ -39,7 +39,7 @@ msgid ""
 msgstr ""
 "{project_name}は、使いやすくて、{project_name}と統合しやすい付属のアダプターにより、セキュリティー保護できます。ただし、使用するプログラミング言語、フレームワーク、プラットフォームでアダプターが使用できない場合は、代わりに一般的なOpenID"
 " Connect Resource "
-"Provider（RP）ライブラリを使用することができます。この章では、{project_name}固有のことについて詳細に説明しますが、特定のプロトコルの詳細については言及しません。詳細については、"
+"Provider（RP）ライブラリーを使用することができます。この章では、{project_name}固有のことについて詳細に説明しますが、特定のプロトコルの詳細については言及しません。詳細については、"
 " http://openid.net/connect/[OpenID Connect specifications] と "
 "https://tools.ietf.org/html/rfc6749[OAuth2 specification] を参照してください。"
 
@@ -111,7 +111,7 @@ msgstr ""
 "詳細については、OpenID Connectの仕様の http://openid.net/specs/openid-connect-core-"
 "1_0.html#AuthorizationEndpoint[Authorization Endpoint] を参照してください。"
 
-#. type: Title =====
+#. type: Title ===
 #, no-wrap
 msgid "Token Endpoint"
 msgstr "トークン・エンドポイント"
@@ -230,17 +230,19 @@ msgstr "/realms/{realm-name}/protocol/openid-connect/token/introspect\n"
 #. type: Plain text
 msgid ""
 "The introspection endpoint is used to retrieve the active state of a token. "
-"It can only be invoked by confidential clients."
+"In other words, you can use it to validate an access or refresh token.  It "
+"can only be invoked by confidential clients."
 msgstr ""
-"イントロスペクション・エンドポイントは、トークンのアクティブ状態を取得するために使用されます。これは、コンフィデンシャル・クライアントによってのみ呼び出すことができます。"
+"イントロスペクション・エンドポイントは、トークンのアクティブ状態を取得するために使用されます。言い換えると、アクセストークンやリフレッシュトークンの検証に使用できます。これはコンフィデンシャル・クライアントによってのみ呼び出すことができます。"
 
 #. type: Plain text
 msgid ""
-"For more details see https://tools.ietf.org/html/rfc7662[OAuth 2.0 Token "
-"Introspection specification]."
+"For more details on how to invoke on this endpoint, see "
+"https://tools.ietf.org/html/rfc7662[OAuth 2.0 Token Introspection "
+"specification]."
 msgstr ""
-"詳細については、 https://tools.ietf.org/html/rfc7662[OAuth 2.0 Token Introspection "
-"specification] を参照してください。"
+"このエンドポイントで呼び出す方法の詳細については、 https://tools.ietf.org/html/rfc7662[OAuth 2.0 "
+"Token Introspection specification] を参照してください。"
 
 #. type: Title =====
 #, no-wrap
@@ -267,6 +269,38 @@ msgstr ""
 "詳細については、<<_client_registration,クライアントの登録の章>>と https://openid.net/specs"
 "/openid-connect-registration-1_0.html[OpenID Connect Dynamic Client "
 "Registration specification] を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Validating Access Tokens"
+msgstr "アクセストークンの検証"
+
+#. type: Plain text
+msgid ""
+"If you need to manually validate access tokens issued by {project_name} you "
+"can invoke the <<_token_introspection_endpoint,Introspection Endpoint>>.  "
+"The downside to this approach is that you have to make a network invocation "
+"to the {project_name} server.  This can be slow and possibily overload the "
+"server if you have too many validation requests going on at the same time.  "
+"{project_name} issued access tokens are "
+"https://tools.ietf.org/html/rfc7519[JSON Web Tokens (JWT)] digitally signed "
+"and encoded using https://www.rfc-editor.org/rfc/rfc7515.txt[JSON Web "
+"Signature (JWS)].  Because they are encoded in this way, this allows you to "
+"locally validate access tokens using the public key of the issuing realm.  "
+"You can either hard code the realm's public key in your validation code, or "
+"lookup and cache the public key using the <<_certificate_endpoint, "
+"certificate endpoint>> with the Key ID (KID) embedded within the JWS.  "
+"Depending what language you code in, there are a multitude of third party "
+"libraries out there that can help you with JWS validation."
+msgstr ""
+"{project_name}によって発行されたアクセストークンを手動で検証する必要がある場合は、<<_token_introspection_endpoint,"
+" Introspection Endpoint "
+">>を呼び出すことができます。このアプローチの欠点は、{project_name}サーバーへのネットワーク呼び出しが必要であることです。これは、同時に実行される検証リクエストが多すぎると、サーバーの速度を低下させ、過剰な負荷をかかる可能性があります。{project_name}が発行したアクセストークンはhttps://tools.ietf.org/html/rfc7519[JSON"
+" Web Tokens (JWT)]であり、https://www.rfc-editor.org/rfc/rfc7515.txt[JSON Web "
+"Signature "
+"(JWS)]によりデジタル署名されています。このようにエンコードされているため、発行したレルムの公開鍵を使用してアクセストークンをローカルで検証できます。レルムの公開鍵を検証コードにハードコードするか、<<_certificate_endpoint,"
+" 証明書エンドポイント >>を使用してJWSに埋め込まれたKey "
+"ID（KID）を使用して公開鍵を検索してキャッシュすることができます。コーディングする言語に応じて、JWS検証の手助けをするサードパーティー・ライブラリーが多数あります。"
 
 #. type: Title ====
 #, no-wrap
@@ -314,9 +348,9 @@ msgstr "インプリシット"
 #. type: Plain text
 msgid ""
 "The Implicit flow redirects works similarly to the Authorization Code flow, "
-"but instead of returning a Authorization Code the Access Token and ID Token "
-"is returned. This reduces the need for the extra invocation to exchange the "
-"Authorization Code for an Access Token. However, it does not include a "
+"but instead of returning an Authorization Code the Access Token and ID Token"
+" is returned. This reduces the need for the extra invocation to exchange the"
+" Authorization Code for an Access Token. However, it does not include a "
 "Refresh Token. This results in the need to either permit Access Tokens with "
 "a long expiration, which is problematic as it's very hard to invalidate "
 "these. Or requires a new redirect to obtain new Access Token once the "
@@ -324,7 +358,7 @@ msgid ""
 "application only wants to authenticate the user and deals with logout "
 "itself."
 msgstr ""
-"インプリシット・フローのリダイレクトは、認可コード・フローと同様に機能しますが、認可コードが返される代わりに、アクセス・トークンとIDトークンが返されます。これにより、アクセス・トークンのために認可コードを交換するための余分な呼び出しの必要性が減ります。ただし、リフレッシュ・トークンは含まれません。その結果、長い有効期限を持つアクセス・トークンを許可する必要があります。これらのトークンを無効にするのは難しいため、問題があります。または、最初のアクセス・トークンが期限切れになった場合は、新しいアクセス・トークンを取得するためにリダイレクトが必要です。インプリシット・フローは、アプリケーションがユーザーの認証のみを行い、自身でログアウトを処理する場合に便利です。"
+"インプリシット・フローのリダイレクトは、認可コードフローと同様に機能しますが、認可コードが返される代わりに、アクセストークンとIDトークンが返されます。これにより、アクセストークンのために認可コードを交換するための余分な呼び出しの必要性が減ります。ただし、リフレッシュトークンは含まれません。その結果、長い有効期限を持つアクセストークンを許可する必要があります。これらのトークンを無効にするのは難しいため、問題があります。または、初期アクセストークンが期限切れになった場合は、新しいアクセス・トークンを取得するためにリダイレクトが必要です。インプリシット・フローは、アプリケーションがユーザーの認証のみを行い、自身でログアウトを処理する場合に便利です。"
 
 #. type: Plain text
 msgid ""

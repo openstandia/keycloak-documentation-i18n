@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,8 +15,32 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: delimited block -
+#, no-wrap
+msgid "yum update\n"
+msgstr "yum update\n"
+
 #. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:6
+msgid ""
+"Overwrite the keycloak.js file in your application with the keycloak.js file"
+" from the downloaded archive."
+msgstr "ダウンロードしたアーカイブのkeycloak.jsファイルを使用して、アプリケーションのkeycloak.jsファイルを上書きします。"
+
+#. type: Plain text
+msgid "Remove the existing Node.js adapter directory"
+msgstr "既存のNode.jsアダプター・ディレクトリーを削除します。"
+
+#. type: Plain text
+msgid "Unzip the updated file into its place"
+msgstr "更新されたファイルをその場所に解凍します。"
+
+#. type: Plain text
+msgid ""
+"Change the dependency for keycloak-connect in the package.json of your "
+"application"
+msgstr "アプリケーションのpackage.json内のkeycloak-connectの依存関係を変更します。"
+
+#. type: Plain text
 msgid ""
 "It is important that you upgrade {project_name} server first, and then "
 "upgrade the adapters. Earlier versions of the adapter might work with later "
@@ -26,25 +50,53 @@ msgstr ""
 "まず{project_name}サーバーをアップグレードし、次にアダプターをアップグレードすることが重要です。以前のバージョンのアダプターは、それ以降のバージョンの{project_name}サーバーで動作しますが、以前のバージョンの{project_name}サーバーは、それ以降のバージョンのアダプターでは動作しません。"
 
 #. type: Title ==
-#: source/upgrading/topics/upgrade_adapters.adoc:9
+#, no-wrap
+msgid "Compatibility with older adapters"
+msgstr "古いアダプターとの互換性"
+
+#. type: Plain text
+msgid ""
+"As mentioned above, we try to support newer release versions of "
+"{project_name} server working with older release versions of the adapters.  "
+"However, in some cases we need to include fixes on the {project_name} server"
+" side which may break compatibility with older versions of the adapters. For"
+" example, when we implement new aspects of the OpenID Connect specification,"
+" which older client adapter versions were not aware of."
+msgstr ""
+"上記のように、古いバージョンのアダプターで動作する{project_name}サーバーの新しいリリース・バージョンをサポートしようとしています。ただし、{project_name}サーバー側に修正を含める必要があり、古いバージョンのアダプターとの互換性が損なわれることがあります。たとえば、私たちがOpenID"
+" Connectの仕様の新しい側面を実装するとき、古いクライアント・アダプターのバージョンは認識していませんでした。"
+
+#. type: Plain text
+msgid ""
+"In those cases, we added Compatibility modes. For OpenId Connect clients, "
+"there is a section named `OpenID Connect Compatibility Modes` in the "
+"{project_name} admin console, on the page with client details. Here, you can"
+" disable some new aspects of the {project_name} server to preserve "
+"compatibility with older client adapters. More details are available in the "
+"tool tips of individual switches."
+msgstr ""
+"そのような場合のために、互換モードを追加しました。OpenID "
+"Connectクライアントの場合、{project_name}管理コンソールのクライアントの詳細が表示されたページに、 `OpenID Connect "
+"Compatibility Modes` "
+"という名前のセクションがあります。ここでは、古いクライアント・アダプターとの互換性を維持するために、{project_name}サーバーの新しい機能を無効にすることができます。詳細は、各スイッチのツールチップを参照してください。"
+
+#. type: Title ==
 #, no-wrap
 msgid "Upgrading the EAP Adapter"
 msgstr "EAPアダプターのアップグレード"
 
 #. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:12
-msgid "To upgrade the {appserver_name} adapter, complete the following steps:"
-msgstr "{appserver_name}アダプターをアップグレードするには、以下の手順に沿って行います。"
+msgid ""
+"If you originally installed the adapter using a downloaded archive, to "
+"upgrade the {appserver_name} adapter, complete the following steps:"
+msgstr ""
+"最初にダウンロードしたアーカイブを使用してアダプターをインストールした場合、{appserver_name}アダプターをアップグレードするために、以下のステップを実行します。"
 
 #. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:14
-#: source/upgrading/topics/upgrade_adapters.adoc:24
-#: source/upgrading/topics/upgrade_adapters.adoc:33
 msgid "Download the new adapter archive."
 msgstr "新しいアダプター・アーカイブをダウンロードします。"
 
 #. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:15
 msgid ""
 "Remove the previous adapter modules by deleting the "
 "`{appserver_dirref}/modules/system/add-ons/keycloak/` directory."
@@ -53,60 +105,53 @@ msgstr ""
 "ディレクトリーを削除することで、以前のアダプター・モジュールを削除します。"
 
 #. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:16
 msgid "Unzip the downloaded archive into {appserver_dirref}."
 msgstr "ダウンロードしたアーカイブを{appserver_dirref}に解凍します。"
 
+#. type: Plain text
+msgid ""
+"If you originally installed the adapter using RPM, to upgrade the adapter, "
+"complete the following steps, which are different depending on whether you "
+"are performing a minor or a micro upgrade:"
+msgstr ""
+"最初にRPMを使用してアダプターをインストールした場合は、アダプターをアップグレードするために、以下のステップを実行します（マイナーまたはマイクロ・アップグレードのどちらを実行しているかによって異なります）。"
+
+#. type: Plain text
+msgid ""
+"For minor upgrades, use Yum to uninstall any adapters you currently have "
+"installed and then use Yum to install the new version of the adapters."
+msgstr ""
+"マイナー・アップグレードの場合は、Yumを使用して、現在インストールされているアダプターをアンインストールしてから、新しいバージョンをインストールします。"
+
+#. type: Plain text
+msgid ""
+"For micro upgrades, use Yum to upgrade the adapter. This is the only step "
+"for micro upgrades."
+msgstr ""
+"マイクロ・アップグレードの場合は、Yumを使用してアダプターをアップグレードしてください。これはマイクロ・アップグレードの唯一のステップです。"
+
+#. type: Plain text
+msgid "To upgrade the {appserver_name} adapter, complete the following steps:"
+msgstr "{appserver_name}アダプターをアップグレードするには、以下の手順に沿って行います。"
+
 #. type: Title ==
-#: source/upgrading/topics/upgrade_adapters.adoc:19
 #, no-wrap
 msgid "Upgrading the JavaScript Adapter"
 msgstr "Javaスクリプト・アダプターのアップグレード"
 
 #. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:22
 msgid ""
 "To upgrade a JavaScript adapter that has been copied to your web "
 "application, complete the following steps:"
 msgstr "webアプリケーションにコピーされたJavaスクリプト・アダプターをアップグレードするには、以下の手順に沿って行います。"
 
-#. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:25
-#: source/upgrading/topics/rhsso/patching_adapters.adoc:9
-msgid ""
-"Overwrite the keycloak.js file in your application with the keycloak.js file"
-" from the downloaded archive."
-msgstr "ダウンロードしたアーカイブのkeycloak.jsファイルを使用して、アプリケーションのkeycloak.jsファイルを上書きします。"
-
 #. type: Title ==
-#: source/upgrading/topics/upgrade_adapters.adoc:28
 #, no-wrap
 msgid "Upgrading the Node.js Adapter"
 msgstr "Node.jsアダプターのアップグレード"
 
 #. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:31
 msgid ""
 "To upgrade a Node.js adapter that has been copied to your web application, "
 "complete the following steps:"
 msgstr "webアプリケーションにコピーされたNode.jsアダプターをアップグレードするには、以下の手順に沿って行います。"
-
-#. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:34
-#: source/upgrading/topics/rhsso/patching_adapters.adoc:19
-msgid "Remove the existing Node.js adapter directory"
-msgstr "既存のNode.jsアダプター・ディレクトリーを削除します。"
-
-#. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:35
-#: source/upgrading/topics/rhsso/patching_adapters.adoc:20
-msgid "Unzip the updated file into its place"
-msgstr "更新されたファイルをその場所に解凍します。"
-
-#. type: Plain text
-#: source/upgrading/topics/upgrade_adapters.adoc:35
-#: source/upgrading/topics/rhsso/patching_adapters.adoc:20
-msgid ""
-"Change the dependency for keycloak-connect in the package.json of your "
-"application"
-msgstr "アプリケーションのpackage.json内のkeycloak-connectの依存関係を変更します。"

@@ -1,0 +1,484 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Example"
+msgstr "例"
+
+#. type: Title ===
+#, no-wrap
+msgid "Client Scopes"
+msgstr "クライアント・スコープ"
+
+#. type: Plain text
+msgid ""
+"If you have many applications you need to secure and register within your "
+"organization, it can become tedious to configure the <<_protocol-mappers, "
+"protocol mappers>> and <<_role_scope_mappings, role scope mappings>> for "
+"each of these clients. {project_name} allows you to define a shared client "
+"configuration in an entity called a _client scope_."
+msgstr ""
+"セキュリティー保護して、登録する必要があるアプリケーションが組織内に多数存在する場合、これらのクライアントごとに<<_protocol-mappers,"
+" プロトコル・マッパー>>や<<_role_scope_mappings, "
+"ロール・スコープ・マッピング>>を設定するのは面倒です。{project_name}を使用すると、 _クライアント・スコープ_ "
+"というエンティティーで共通クライアント設定を定義できます。"
+
+#. type: Plain text
+msgid ""
+"Client scopes also provide support for the OAuth 2 `scope` parameter, which "
+"allows a client application to request more or fewer claims or roles in the "
+"access token, according to the application needs."
+msgstr ""
+"クライアント・スコープは、OAuth 2の `scope` "
+"パラメーターもサポートしています。これにより、クライアント・アプリケーションは、アプリケーションのニーズに応じて、アクセストークン内のより多いまたはより少ないクレームまたはロールを要求できます。"
+
+#. type: Plain text
+msgid "To create a client scope, follow these steps:"
+msgstr "クライアント・スコープを作成するには、次の手順を実行します。"
+
+#. type: Plain text
+msgid ""
+"Go to the `Client Scopes` left menu item. This initial screen shows you a "
+"list of currently defined client scopes."
+msgstr ""
+"`Client Scopes` の左メニュー項目をクリックします。この初期画面には、現在定義されているクライアント・スコープのリストが表示されます。"
+
+#. type: Block title
+#, no-wrap
+msgid "Client Scopes List"
+msgstr "クライアント・スコープ一覧"
+
+#. type: Plain text
+msgid "image:{project_images}/client-scopes-list.png[]"
+msgstr "image:{project_images}/client-scopes-list.png[]"
+
+#. type: Plain text
+msgid ""
+"Click the `Create` button. Name the client scope and save. A _client scope_ "
+"will have similar tabs to a regular clients. You can define <<_protocol-"
+"mappers, protocol mappers>> and <<_role_scope_mappings, role scope "
+"mappings>>, which can be inherited by other clients, and which are "
+"configured to inherit from this client scope."
+msgstr ""
+"`Create` ボタンをクリックします。クライアントのスコープに名前を付けて保存します。 _クライアント・スコープ_ "
+"は、通常のクライアントと同様のタブを持ちます。<<_protocol-mappers, "
+"プロトコル・マッパー>>および<<_role_scope_mappings,ロール・スコープ・マッピング>>を定義することができます。これは他のクライアントによって継承でき、このクライアント・スコープから継承するように設定されています。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Protocol"
+msgstr "プロトコル"
+
+#. type: Plain text
+msgid ""
+"When you are creating the client scope, you must choose the `Protocol`. Only"
+" the clients which use same protocol can then be linked with this client "
+"scope."
+msgstr ""
+"クライアント・スコープを作成するときは、 `Protocol` "
+"を選択する必要があります。同じプロトコルを使用するクライアントだけがこのクライアント・スコープにリンクできます。"
+
+#. type: Plain text
+msgid ""
+"Once you have created new realm, you can see that there is a list of pre-"
+"defined (builtin) client scopes in the menu."
+msgstr "新しいレルムを作成すると、あらかじめ定義された（ビルトインの）クライアント・スコープの一覧がメニューに表示されます。"
+
+#. type: Plain text
+msgid ""
+"For the SAML protocol, there is one builtin client scope, `roles_list`, "
+"which contains one protocol mapper for showing the roles list in the SAML "
+"assertion."
+msgstr ""
+"SAMLプロトコルには、クライアント・スコープの組み込みの1つである `roles_list` "
+"があります。これには、SAMLアサーションのロールリストを表示するための、1つのプロトコル・マッパーが含まれています。"
+
+#. type: Plain text
+msgid ""
+"For the OpenID Connect protocol, there are client scopes `profile`, `email`,"
+" `address`, `phone` and `offline_access` ."
+msgstr ""
+"OpenID Connectプロトコルには、クライアント・スコープの `profile` 、 `email` 、 `address` 、 `phone`"
+" 、 `offline_access` があります。"
+
+#. type: Plain text
+msgid ""
+"The client scope, `offline_access`, is useful when client wants to obtain "
+"offline tokens. Learn about offline tokens in the <<_offline-access, Offline"
+" Access section>> or in the http://openid.net/specs/openid-connect-core-"
+"1_0.html#OfflineAccess[OpenID Connect specification], where scope parameter "
+"is defined with the value `offline_access`."
+msgstr ""
+"クライアント・スコープの `offline_access` "
+"は、クライアントがオフライン・トークンを取得したいときに便利です。オフライン・トークンについては、<<_offline-access, Offline "
+"Accessのセクション>>またはhttp://openid.net/specs/openid-connect-core-"
+"1_0.html#OfflineAccess[OpenID Connect仕様]を参照してください。ここでは、スコープ・パラメーターは "
+"`offline_access` 値で定義されています。"
+
+#. type: Plain text
+msgid ""
+"The client scopes `profile`, `email`, `address` and `phone` are also defined"
+" in the http://openid.net/specs/openid-connect-core-"
+"1_0.html#ScopeClaims[OpenID Connect specification].  These client scopes do "
+"not have any role scope mappings defined, but they have some protocol "
+"mappers defined, and these mappers correspond to the claims defined in the "
+"OpenID Connect specification."
+msgstr ""
+"クライアント・スコープの `profile` 、 ` email` 、 `address` および `phone` "
+"もhttp://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims[OpenID "
+"Connect仕様]で定義されています。これらのクライアント・スコープには、ロール・スコープ・マッピングは定義されていませんが、いくつかのプロトコル・マッパーが定義されています。これらのマッパーは、OpenID"
+" Connect仕様で定義されたクレームに対応しています。"
+
+#. type: Plain text
+msgid ""
+"For example, when you click to open the `phone` client scope and open the "
+"`Mappers` tab, you will see the protocol mappers, which correspond to the "
+"claims defined in the specification for the scope `phone`."
+msgstr ""
+"たとえば、 `phone` のクライアント・スコープを開き、` Mappers`タブを開くためにクリックすると、 `phone` "
+"スコープの仕様で定義されているクレームに対応するプロトコル・マッパーが表示されます。"
+
+#. type: Block title
+#, no-wrap
+msgid "Client Scope Mappers"
+msgstr "クライアント・スコープ・マッパー"
+
+#. type: Plain text
+msgid "image:{project_images}/client-scopes-phone.png[]"
+msgstr "image:{project_images}/client-scopes-phone.png[]"
+
+#. type: Plain text
+msgid ""
+"When the `phone` client scope is linked to a client, that client "
+"automatically inherits all the protocol mappers defined in the `phone` "
+"client scope. Access tokens issued for this client will contain the phone "
+"number information about the user, assuming that the user has a defined "
+"phone number."
+msgstr ""
+"`phone` クライアント・スコープがクライアントにリンクされると、そのクライアントは自動的に `phone` "
+"クライアント・スコープで定義されたすべてのプロトコル・マッパーを継承します。このクライアント用に発行されたアクセストークンには、ユーザーに関する電話番号情報が格納されます（定義された電話番号をユーザーが持っていると仮定すると）。"
+
+#. type: Plain text
+msgid ""
+"Builtin client scopes contain exactly the protocol mappers as defined per "
+"the specification, however you are free to edit client scopes and "
+"create/update/remove any protocol mappers (or role scope mappings)."
+msgstr ""
+"ビルトインのクライアント・スコープには、仕様に従って定義されたプロトコル・マッパーが完全に含まれていますが、クライアント・スコープの編集やプロトコル・マッパー（またはロール・スコープ・マッピング）の作成/更新/削除は自由にでできます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Consent related settings"
+msgstr "同意関連の設定"
+
+#. type: Plain text
+msgid ""
+"Client scope contains options related to the consent screen. Those options "
+"are useful only if the linked client is configured to require consent (if "
+"the `Consent Required` switch is enabled on the client)."
+msgstr ""
+"クライアント・スコープには、同意画面に関連するオプションが含まれています。これらのオプションは、リンクされたクライアントが同意を要求するように設定されている場合（クライアント上で"
+" `Consent Required` スイッチが有効になっている場合）にのみ有効です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Display On Consent Screen"
+msgstr "同意画面での表示"
+
+#. type: Plain text
+msgid ""
+"If on, and if this client scope is added to a client with consent required, "
+"then the text specified by `Consent Screen Text` will be displayed on the "
+"consent screen, which is shown once the user is authenticated and right "
+"before he is redirected from {project_name} to the client. If the switch is "
+"off, then this client scope will not be displayed on the consent screen."
+msgstr ""
+"オンで、かつ同意が必要なクライアントにこのクライアント・スコープが追加された場合、同意画面に同意画面テキストで指定されたテキストが表示されます。同意画面は、ユーザーが認証され、{project_name}からクライアントへリダイレクトされる直前に一度表示されます。スイッチがオフの場合、このクライアント・スコープは同意画面に表示されません。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Consent Screen Text"
+msgstr "同意画面テキスト"
+
+#. type: Plain text
+msgid ""
+"The text shown on the consent screen when this client scope is added to some"
+" client with consent required defaults to the name of client scope. The "
+"value for this text is localizable by specifying a substitution variable "
+"with `${var-name}` strings. The localized value is then configured within "
+"property files in your theme. See the "
+"link:{developerguide_link}[{developerguide_name}] for more information on "
+"localization."
+msgstr ""
+"このクライアント・スコープが一部の同意が必要なクライアントに加えられたときに、同意画面に表示されるテキストは、デフォルトでクライアント・スコープの名前になります。このテキストの値は、"
+" `${var-name}` "
+"文字列で置換変数を指定することによってローカライズ可能です。ローカライズされた値は、テーマのプロパティー・ファイル内で設定されます。ローカリゼーションの詳細については、link:{developerguide_link}[{developerguide_name}]を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Link Client Scope with the Client"
+msgstr "クライアントとクライアント・スコープをリンクする"
+
+#. type: Plain text
+msgid ""
+"Linking between client scope and client is configured in the `Client Scopes`"
+" tab of the particular client. There are 2 ways of linking between client "
+"scope and client."
+msgstr ""
+"クライアント・スコープとクライアントとの間のリンクは、特定のクライアントの `Client Scopes` "
+"タブで設定されます。クライアント・スコープとクライアントをリンクする方法は2つあります。"
+
+#. type: Block title
+#, no-wrap
+msgid "Default Client Scopes"
+msgstr "デフォルト・クライアント・スコープ"
+
+#. type: Plain text
+msgid ""
+"This is applicable for both OpenID Connect and SAML clients. Default client "
+"scopes are always applied when issuing OpenID Connect tokens or SAML "
+"assertions for this client. The client will inherit Protocol mappers and "
+"Role Scope Mappings defined on the client scope. For the OpenID Connect "
+"Protocol, the Mappers and Role Scope Mappings are always applied, regardless"
+" of value of used for the scope parameter in the OpenID Connect "
+"authorization request."
+msgstr ""
+"これは、OpenID ConnectとSAMLの両方のクライアントに適用されます。このクライアントに対してOpenID "
+"ConnectトークンまたはSAMLアサーションを発行するときは、デフォルトのクライアントスコープが常に適用されます。クライアントは、クライアント・スコープで定義されたプロトコル・マッパーとロール・スコープ・マッピングを継承します。OpenID"
+" Connectプロトコルでは、OpenID "
+"Connect認可リクエストのスコープ・パラメーターに使用されている値に関係なく、マッパーとロールスコープのマッピングが常に適用されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Optional Client Scopes"
+msgstr "オプションのクライアントスコープ"
+
+#. type: Plain text
+msgid ""
+"This is applicable only for OpenID Connect clients. Optional client scopes "
+"are applied when issuing tokens for this client, but only when they are "
+"requested by the `scope` parameter in the OpenID Connect authorization "
+"request."
+msgstr ""
+"これは、OpenID "
+"Connectクライアントにのみ適用されます。オプションのクライアント・スコープは、このクライアントに対してトークンを発行するときに適用されますが、OpenID"
+" Connect認可リクエストの `scope` パラメーターによって要求された場合に限られます。"
+
+#. type: Plain text
+msgid ""
+"For this example, we assume that the client has `profile` and `email` linked"
+" as default client scopes, and `phone` and `address` are linked as optional "
+"client scopes. The client will use the value of the scope parameter when "
+"sending a request to the OpenID Connect authorization endpoint:"
+msgstr ""
+"この例では、クライアントにはデフォルトのクライアント・スコープとして `profile` と `email` "
+"がリンクされており、オプションのクライアント・スコープとして `profile` と `email` "
+"がリンクされていると仮定します。クライアントは、OpenID "
+"Connect認可エンドポイントにリクエストを送信するときに、scopeパラメーターの値を使用します。"
+
+#. type: Code block
+msgid "scope=openid phone"
+msgstr "scope=openid phone"
+
+#. type: Plain text
+msgid ""
+"The scope parameter contains the string, with the scope values divided by "
+"space (which is also the reason why a client scope name cannot contain a "
+"space character in it). The value `openid` is the meta-value used for all "
+"OpenID Connect requests, so we will ignore it for this example. The token "
+"will contain mappers and role scope mappings from the client scopes "
+"`profile`, `email` (which are default scopes) and `phone` (an optional "
+"client scope requested by the scope parameter)."
+msgstr ""
+"scopeパラメーターには、スコープの値をスペースで区切った文字列が含まれます（これは、クライアント・スコープ名にスペース文字を含めることができない理由です）。値"
+" `openid` はすべてのOpenID "
+"Connectリクエストに使用されるメタ値なので、この例では無視します。トークンには、クライアント・スコープの `profile` 、 ` email`"
+" （デフォルト・スコープ）、 `phone` "
+"（スコープ・パラメーターによって要求されるオプションのクライアント・スコープ）のマッパーとロールスコープのマッピングが含まれます。"
+
+#. type: Block title
+#, no-wrap
+msgid "Evaluating Client Scopes"
+msgstr "クライアント・スコープの評価"
+
+#. type: Plain text
+msgid ""
+"The tabs `Mappers` and `Scope` of the client contain the protocol mappers "
+"and role scope mappings declared solely for this client.  They do not "
+"contain the mappers and scope mappings inherited from client scopes. "
+"However, it may be useful to see what the effective protocol mappers will be"
+" (protocol mappers defined on the client itself as well as inherited from "
+"the linked client scopes)  and the effective role scope mappings used when "
+"you generate the token for the particular client."
+msgstr ""
+"クライアントの `Mappers` と `Scope` "
+"タブには、このクライアント用に宣言されたプロトコル・マッパーとロールスコープのマッピングが含まれています。クライアント・スコープから継承されたマッパーとスコープ・マッピングは含まれていません。ただし、特定のクライアントのトークンを生成するときに、有効なプロトコル・マッパー（クライアント自体で定義され、リンクされたクライアント・スコープから継承されたプロトコル・マッパー）がどれであるか、有効なロール・スコープ・マッピングが使用されているかを確認すると便利です。"
+
+#. type: Plain text
+msgid ""
+"You can see all of these when you click the `Client Scopes` tab for the "
+"client and then open the sub-tab `Evaluate`. From here you can select the "
+"optional client scopes that you want to apply. This will also show you the "
+"value of the `scope` parameter, which needs to be sent from the application "
+"to the {project_name} OpenID Connect authorization endpoint."
+msgstr ""
+"クライアントの `Client Scopes` タブをクリックし、 `Evaluate` "
+"サブタブを開くと、これらのすべてを見ることができます。ここから、適用するオプションのクライアント・スコープを選択できます。これは `scope` "
+"パラメーターの値も表示します。このパラメーターは、アプリケーションから{project_name} OpenID "
+"Connect認可エンドポイントに送信する必要があります。"
+
+#. type: Plain text
+msgid "image:{project_images}/client-scopes-evaluate.png[]"
+msgstr "image:{project_images}/client-scopes-evaluate.png[]"
+
+#. type: Plain text
+msgid ""
+"If you want to see how you can send a custom value for a `scope` parameter "
+"from your application, see the "
+"link:{adapterguide_link}#_params_forwarding[parameters forwarding section], "
+"if your application uses the servlet adapter, or the "
+"link:{adapterguide_link}#_javascript_adapter[javascript adapter section], if"
+" your application uses the javascript adapter."
+msgstr ""
+"アプリケーションから `scope` "
+"パラメーターのカスタム値を送信する方法を知りたい場合、アプリケーションでサーブレット・アダプターを使用していれば、link:{adapterguide_link}#_params_forwarding[parameters"
+" forwarding "
+"section]を、アプリケーションでJavaScriptアダプターを使用していれば、link:{adapterguide_link}#_javascript_adapter[javascript"
+" adapter section]を参照してください。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Generating Example Tokens"
+msgstr "サンプルトークンの生成"
+
+#. type: Plain text
+msgid ""
+"To see an example of a real access token, generated for the particular user "
+"and issued for the particular client, with the specified value of `scope` "
+"parameter, select the user from the `Evaluate` screen. This will generate an"
+" example token that includes all of the claims and role mappings used."
+msgstr ""
+"特定のユーザーに対して生成され、特定のクライアントに対して発行された `scope` "
+"パラメーターの指定された値を持つ実際のアクセストークンのサンプルを見るには、 `Evaluate` "
+"画面からユーザーを選択してください。これにより、使用されているすべてのクレームおよびロールマッピングが含まれているトークンのサンプルが生成されます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Realm Default Client Scopes"
+msgstr "レルムのデフォルトのクライアントスコープ"
+
+#. type: Plain text
+msgid ""
+"The `Realm Default Client Scopes` allow you to define set of client scopes, "
+"which will be automatically linked to newly created clients."
+msgstr ""
+"`Realm Default Client Scopes` "
+"は、新しく作成されたクライアントに自動的にリンクされるクライアント・スコープのセットを定義することを可能にします。"
+
+#. type: Plain text
+msgid ""
+"Open the left menu item `Client Scopes` and then select `Default Client "
+"Scopes`."
+msgstr "左側のメニュー項目の `Client Scopes` を開き、`Default Client Scopes` を選択します。"
+
+#. type: Plain text
+msgid ""
+"From here, select the client scopes that you want to add as `Default Client "
+"Scopes` to newly created clients and `Optional Client Scopes` to newly "
+"created clients."
+msgstr ""
+"ここから、新しく作成したクライアントに `Default Client Scopes` と `Optional Client Scopes` "
+"として追加するクライアントスコープを選択します。"
+
+#. type: Plain text
+msgid "image:{project_images}/client-scopes-default.png[]"
+msgstr "image:{project_images}/client-scopes-default.png[]"
+
+#. type: Plain text
+msgid ""
+"Once the client is created, you can unlink the default client scopes, if "
+"needed. This is similar to how you remove <<_default_roles, Default Roles>>."
+msgstr ""
+"クライアントが作成されると、必要に応じてデフォルトのクライアント・スコープのリンクを解除できます。これは、<<_default_roles, "
+"デフォルトロール >>を削除する方法と似ています。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Scopes explained"
+msgstr "スコープの説明"
+
+#. type: Plain text
+msgid ""
+"The term `scope` is used in {project_name} on few places. Various occurences"
+" of scopes are related to each other, but may have a different context and "
+"meaning. To clarify, here we explain the various `scopes` used in "
+"{project_name}."
+msgstr ""
+"`scope` "
+"という用語は、{project_name}のいくつかの場所で使用されています。これらのスコープはお互いに関連していますが、異なるコンテキストと意味を持つことがあります。ここでは、{project_name}で使用されるさまざまな"
+" `scopes` について説明します。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client scope"
+msgstr "クライアント・スコープ"
+
+#. type: Plain text
+msgid ""
+"Referenced in this chapter. Client scopes are entities in {project_name}, "
+"which are configured at the realm level and they can be linked to clients. "
+"The client scopes are referenced by their name when a request is sent to the"
+" {project_name} authorization endpoint with a corresponding value of the "
+"`scope` parameter. The details are described in the "
+"<<_client_scopes_linking, section about client scopes linking>>."
+msgstr ""
+"この章を参照してください。クライアント・スコープは、{project_name}のエンティティーで、レルムレベルで設定され、クライアントにリンクできます。クライアント・スコープは、"
+" `scope` "
+"パラメーターの対応する値とともに{project_name}認可エンドポイントにリクエストが送信されるときに、その名前で参照されます。詳細については、<<_client_scopes_linking,"
+" クライアントスコープのリンク>>を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Role scope mapping"
+msgstr "ロール・スコープ・マッピング"
+
+#. type: Plain text
+msgid ""
+"This can be seen when you open tab `Scope` of a client or client scope. Role"
+" scope mapping allows you to limit the roles which can be used in the access"
+" tokens. The details are described in the <<_role_scope_mappings, Role Scope"
+" Mappings section>>."
+msgstr ""
+"クライアントまたはクライアント・スコープの `Scope` "
+"タブを開いたときに表示されます。ロール・スコープ・マッピングを使用すると、アクセストークンで使用できるロールを制限できます。詳細は、<<_role_scope_mappings,"
+" ロール・スコープ・マッピング >>のセクションで説明しています。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authorization scopes"
+msgstr "認可スコープ"
+
+#. type: Plain text
+msgid ""
+"This is used by the Authorization feature. The `Authorization Scope` is the "
+"action which can be done in the application.  More details in the "
+"link:{authorizationguide_link}[Authorization Services Guide]."
+msgstr ""
+"これは認可機能によって使用されます。 `Authorization Scope` "
+"はアプリケーションで実行できるアクションです。詳細はlink:{authorizationguide_link}[Authorization "
+"Services Guide]を参照してください。"

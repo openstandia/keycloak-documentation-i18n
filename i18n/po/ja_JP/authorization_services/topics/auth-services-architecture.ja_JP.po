@@ -16,22 +16,21 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title =
-#: source/server_installation/topics/profiles.adoc:19
-#: source/server_installation/topics/profiles.adoc:66
-#: source/authorization_services/topics/auth-services-architecture.adoc:84
-#: source/authorization_services/topics/service-overview.adoc:2
 #, no-wrap
 msgid "Authorization Services"
 msgstr "認可サービス"
 
+#. type: Title ===
+#, no-wrap
+msgid "Token Endpoint"
+msgstr "トークン・エンドポイント"
+
 #. type: Title =
-#: source/authorization_services/topics/auth-services-architecture.adoc:2
 #, no-wrap
 msgid "Architecture"
 msgstr "アーキテクチャー"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:5
 msgid ""
 "image:images/authz-arch-overview.png[alt=\"{project_name} AuthZ Architecture"
 " Overview\"]"
@@ -39,20 +38,17 @@ msgstr ""
 "image:images/authz-arch-overview.png[alt=\"{project_name} AuthZアーキテクチャー概要\"]"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:7
 msgid ""
 "From a design perspective, Authorization Services is based on a well-defined"
 " set of authorization patterns providing these capabilities:"
 msgstr "設計の観点から、認可サービスは、明確に定義された認可パターンのセットに基づいて次の機能を提供します。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:9
 #, no-wrap
 msgid "**Policy Administration Point (PAP)**\n"
 msgstr "**ポリシー管理ポイント（PAP）**\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:12
 msgid ""
 "Provides a set of UIs based on the {project_name} Administration Console to "
 "manage resource servers, resources, scopes, permissions, and policies.  Part"
@@ -63,30 +59,26 @@ msgstr ""
 " 保護API>>を使用してリモートでも実現できます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:15
 #, no-wrap
 msgid "**Policy Decision Point (PDP)**\n"
 msgstr "**ポリシー決定点（PDP）**\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:18
 msgid ""
 "Provides a distributable policy decision point to where authorization "
 "requests are sent and policies are evaluated accordingly with the "
-"permissions being requested. Part of this is also accomplished remotely "
-"through the use of the <<_service_entitlement_api, Entitlement>> APIs."
+"permissions being requested.  For more information, see "
+"<<_service_obtaining_permissions, Obtaining Permissions>>."
 msgstr ""
-"認可リクエストが送信され、リクエストが許可されることでポリシーが評価される場所に配布可能なポリシー決定点を提供します。このうちの一部は、<<_service_entitlement_api,"
-" エンタイトルメント>>APIを使用してリモートでも実現されます。"
+"認可リクエストが送信され、リクエストが許可されることでポリシーが評価される場所に配布可能なポリシー決定点を提供します。詳細については、<<_service_obtaining_permissions,"
+" パーミッションの取得>>を参照してください。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:21
 #, no-wrap
 msgid "**Policy Enforcement Point (PEP)**\n"
 msgstr "**ポリシー実施ポイント（PEP）**\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:24
 msgid ""
 "Provides implementations for different environments to actually enforce "
 "authorization decisions at the resource server side.  {project_name} "
@@ -96,13 +88,11 @@ msgstr ""
 " ポリシー・エンフォーサー>>が用意されています。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:27
 #, no-wrap
 msgid "**Policy Information Point (PIP)**\n"
 msgstr "**ポリシー情報ポイント（PIP）**\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:29
 msgid ""
 "Being based on {project_name} Authentication Server, you can obtain "
 "attributes from identities and runtime environment during the evaluation of "
@@ -110,13 +100,11 @@ msgid ""
 msgstr "{project_name}認証サーバーに基づいて、認可ポリシーの評価中にアイデンティティーとラインタイム環境から属性を取得できます。"
 
 #. type: Title ==
-#: source/authorization_services/topics/auth-services-architecture.adoc:30
 #, no-wrap
 msgid "The Authorization Process"
 msgstr "認可プロセス"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:33
 msgid ""
 "Three main processes define the necessary steps to understand how to use "
 "{project_name} to enable fine-grained authorization to your applications:"
@@ -124,32 +112,26 @@ msgstr ""
 "{project_name}を使用してアプリケーションにきめ細かな権限を与える方法を、理解するために必要な手順を定義する3つの主要なプロセスは、以下のとおりです。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:35
-#: source/authorization_services/topics/auth-services-architecture.adoc:103
 #, no-wrap
 msgid "*Resource Management*\n"
 msgstr "*リソース管理*\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:36
 #, no-wrap
 msgid "*Permission and Policy Management*\n"
 msgstr "*パーミッションとポリシーの管理*\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:37
 #, no-wrap
 msgid "*Policy Enforcement*\n"
 msgstr "*ポリシーの実施*\n"
 
 #. type: Title ===
-#: source/authorization_services/topics/auth-services-architecture.adoc:38
 #, no-wrap
 msgid "Resource Management"
 msgstr "リソース管理"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:41
 #, no-wrap
 msgid ""
 "*Resource Management* involves all the necessary steps to define what is "
@@ -157,13 +139,11 @@ msgid ""
 msgstr "*リソース管理* には、何が保護されているかを定義するために必要なすべてのステップが含まれます。\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:43
 msgid ""
 "image:images/resource-mgmt-process.png[alt=\"Resource Management Overview\"]"
 msgstr "image:images/resource-mgmt-process.png[alt=\"リソース管理の概要\"]"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:45
 msgid ""
 "First, you need to specify {project_name} what are you looking to protect, "
 "which usually represents a web application or a set of one or more services."
@@ -174,7 +154,6 @@ msgstr ""
 " 用語集>>を参照してください。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:47
 msgid ""
 "Resource servers are managed using the {project_name} Administration "
 "Console. There you can enable any registered client application as a "
@@ -184,12 +163,10 @@ msgstr ""
 "リソースサーバーは、{project_name}管理コンソールを使用して管理されます。そこで、登録されたクライアント・アプリケーションをリソースサーバーとして有効にし、保護するリソースとスコープの管理を開始できます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:49
 msgid "image:images/rs-r-scopes.png[alt=\"Resource Server Overview\"]"
 msgstr "image:images/rs-r-scopes.png[alt=\"リソースサーバーの概要\"]"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:51
 msgid ""
 "A resource can be a web page, a RESTFul resource, a file in your file "
 "system, an EJB, and so on. They can represent a group of resources (just "
@@ -198,7 +175,6 @@ msgstr ""
 "リソースには、Webページ、RESTFulリソース、ファイルシステム内のファイル、EJBなどがあります。それらはリソースのグループ（Javaのクラスと同様）、または単一の特定のリソースを表すことができます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:53
 msgid ""
 "For instance, you might have a _Bank Account_ resource that represents all "
 "banking accounts and use it to define the authorization policies that are "
@@ -209,10 +185,9 @@ msgid ""
 msgstr ""
 "たとえば、すべての銀行口座を表す _Bank Account_ "
 "リソースを持ったとして、それを使用してすべての銀行口座に共通する認可ポリシーを定義することができます。ただし、 _Alice Account_ "
-"（顧客に属しているリソース・インスタンス）に対して特定のポリシーを定義したい場合は、オーナーだけが情報にアクセスしたり、操作を実行することができます。"
+"（ある顧客に属しているリソース・インスタンス）に対しては、オーナーだけが情報にアクセスしたり、操作を実行することができるように、特定のポリシーを定義することができます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:55
 msgid ""
 "Resources can be managed using the {project_name} Administration Console or "
 "the <<_service_protection_api, Protection API>>. In the latter case, "
@@ -222,7 +197,6 @@ msgstr ""
 "保護API>>を使用して管理できます。後者の場合、リソースサーバーはリソースをリモートで管理できます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:57
 msgid ""
 "Scopes usually represent the actions that can be performed on a resource, "
 "but they are not limited to that. You can also use scopes to represent one "
@@ -231,34 +205,29 @@ msgstr ""
 "スコープは、通常、リソースに対して実行できるアクションを表しますが、これに限定されるものではありません。スコープを使用して、リソース内の1つ以上の属性を表すこともできます。"
 
 #. type: Title ===
-#: source/authorization_services/topics/auth-services-architecture.adoc:58
 #, no-wrap
 msgid "Permission and Policy Management"
 msgstr "権限とポリシーの管理"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:61
 msgid ""
 "Once you have defined your resource server and all the resources you want to"
 " protect, you must set up permissions and policies."
 msgstr "リソースサーバーと保護するすべてのリソースを定義したら、パーミッションとポリシーを設定する必要があります。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:63
 msgid ""
 "This process involves all the necessary steps to actually define the "
 "security and access requirements that govern your resources."
 msgstr "このプロセスには、リソースを管理するセキュリティーおよびアクセス要件を実際に定義するために必要なすべての手順が含まれます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:65
 msgid ""
 "image:images/policy-mgmt-process.png[alt=\"Permission and Policy Management "
 "Overview\"]"
 msgstr "image:images/policy-mgmt-process.png[alt=\"パーミッションとポリシー管理の概要\"]"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:67
 msgid ""
 "Policies define the conditions that must be satisfied to access or perform "
 "operations on something (resource or scope), but they are not tied to what "
@@ -268,17 +237,14 @@ msgstr ""
 "ポリシーは、何か（リソースまたはスコープ）へのアクセスや操作を実行するために満たす条件を定義しますが、保護しているものとは結びついていません。これらは一般的なもので、パーミッションやさらに複雑なポリシーを構築するために再利用することができます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:69
 msgid ""
 "For instance,to allow access to a group of resources only for users granted "
-"with a role \"User Premium,\"\" you can use RBAC (Role-based Access "
-"Control)."
+"with a role \"User Premium\", you can use RBAC (Role-based Access Control)."
 msgstr ""
-"たとえば、ロール\"User "
-"Premium\"が付与されたユーザーに対してのみリソースのグループへのアクセスを許可するために、RBAC（ロールベースのアクセス・コントロール）を使用できます。"
+"例えば、ロール \"User Premium\" "
+"が付与されたユーザーに対してのみリソースのグループへのアクセスを許可するために、RBAC（ロールベースのアクセス・コントロール）を使用できます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:71
 msgid ""
 "{project_name} provides a few built-in policy types (and their respective "
 "policy providers) covering the most common access control mechanisms. You "
@@ -289,7 +255,6 @@ msgstr ""
 " Droolsを使用して作成されたルールに基づいてポリシーを作成することもできます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:74
 msgid ""
 "Once you have your policies defined, you can start defining your "
 "permissions. Permissions are coupled with the resource they are protecting. "
@@ -299,13 +264,11 @@ msgstr ""
 "ポリシーを定義したら、パーミッションの定義を開始できます。パーミッションは、保護しているリソースと結合されます。ここでは、保護する対象（リソースまたはスコープ）と、パーミッションを許可または拒否するために満たす必要のあるポリシーを指定します。"
 
 #. type: Title ===
-#: source/authorization_services/topics/auth-services-architecture.adoc:75
 #, no-wrap
 msgid "Policy Enforcement"
 msgstr "ポリシー実施"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:78
 #, no-wrap
 msgid ""
 "*Policy Enforcement* involves the necessary steps to actually enforce "
@@ -321,13 +284,10 @@ msgstr ""
 "またはPEPを有効にし、サーバーによって返された決定とパーミッションに基づいて認可データを要求し、保護されたリソースへのアクセスを制御することによって実現されます。\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:80
-#: source/authorization_services/topics/enforcer-overview.adoc:8
 msgid "image:images/pep-pattern-diagram.png[alt=\"PEP Overview\"]"
 msgstr "image:images/pep-pattern-diagram.png[alt=\"PEPの概要\"]"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:82
 msgid ""
 "{project_name} provides some built-in <<_enforcer_overview, Policy "
 "Enforcers>> implementations that you can use to protect your applications "
@@ -337,93 +297,99 @@ msgstr ""
 " ポリシー・エンフォーサー>>実装がいくつか用意されています。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:87
-msgid "Authorization services consist of the following RESTFul APIs:"
-msgstr "認可サービスは以下のRESTFul APIで構成されています。"
+msgid "Authorization services consist of the following RESTFul endpoints:"
+msgstr "認可サービスは以下のRESTFulエンドポイントで構成されています。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:89
 #, no-wrap
-msgid "*Protection API*\n"
-msgstr "*保護API*\n"
+msgid "*Token Endpoint*\n"
+msgstr "*トークン・エンドポイント*\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:90
 #, no-wrap
-msgid "*Authorization API*\n"
-msgstr "*認可API*\n"
+msgid "*Resource Management Endpoint*\n"
+msgstr "*リソース管理エンドポイント*\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:91
 #, no-wrap
-msgid "*Entitlement API*\n"
-msgstr "*エンタイトルメントAPI*\n"
+msgid "*Permission Management Endpoint*\n"
+msgstr "*パーミッション管理エンドポイント*\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:93
 msgid ""
 "Each of these services provides a specific API covering the different steps "
 "involved in the authorization process."
 msgstr "これらの各サービスは、認可プロセスに関わるさまざまなステップをカバーする特定のAPIを提供します。"
 
+#. type: Plain text
+msgid ""
+"OAuth2 clients (such as front end applications) can obtain access tokens "
+"from the server using the token endpoint and use these same tokens to access"
+" resources protected by a resource server (such as back end services). In "
+"the same way, {project_name} Authorization Services provide extensions to "
+"OAuth2 to allow access tokens to be issued based on the processing of all "
+"policies associated with the resource(s) or scope(s) being requested. This "
+"means that resource servers can enforce access to their protected resources "
+"based on the permissions granted by the server and held by an access token. "
+"In {project_name} Authorization Services the access token with permissions "
+"is called a Requesting Party Token or RPT for short."
+msgstr ""
+"OAuth2クライアント（フロントエンド・アプリケーションなど）は、トークン・エンドポイントを使用してサーバーからアクセストークンを取得し、これらのトークンを使用してリソースサーバーによって保護されたリソース（バックエンド・サービスなど）にアクセスできます。同様に、{project_name}認可サービスは、要求されているリソースまたはスコープに関連するすべてのポリシーの処理に基づいてアクセストークンを発行できるように、OAuth2の拡張機能を提供します。つまり、リソースサーバーは、サーバーによって付与され、アクセストークンによって保持されているアクセス許可に基づいて、保護されたリソースへのアクセスを強制できます。{project_name}認可サービスでは、アクセス権を持つアクセストークンはリクエスティング・パーティー・トークンまたはRPTと呼ばれます。"
+
+#. type: Plain text
+msgid ""
+"For more information, see <<_service_obtaining_permissions, Obtaining "
+"Permissions>>."
+msgstr "詳細については、<<_service_obtaining_permissions, パーミッションの取得>>を参照してください。"
+
 #. type: Title =
-#: source/authorization_services/topics/auth-services-architecture.adoc:94
-#: source/authorization_services/topics/service-protection-protection-api.adoc:2
 #, no-wrap
 msgid "Protection API"
 msgstr "保護API"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:99
 msgid ""
-"The *Protection API* is a "
-"https://kantarainitiative.org/confluence/display/uma/UMA+1.0+Core+Protocol"
-"[UMA-compliant] endpoint providing a small set of operations for resource "
-"servers to help them manage their resources and scopes. Only resource "
-"servers are allowed to access this API, which also requires a "
-"*uma_protection* scope."
+"The *Protection API* is a set of https://docs.kantarainitiative.org/uma/wg"
+"/oauth-uma-federated-authz-2.0-09.html[UMA-compliant] endpoint-providing "
+"operations for resource servers to help them manage their resources, scopes,"
+" permissions, and policies associated with them. Only resource servers are "
+"allowed to access this API, which also requires a *uma_protection* scope."
 msgstr ""
-"保護APIは、リソースサーバーがリソースとスコープを管理するのに役立つ細かい一連の操作を提供する、 "
-"https://kantarainitiative.org/confluence/display/uma/UMA+1.0+Core+Protocol[UMA準拠]"
-" のエンドポイントです。リソースサーバーだけがこのAPIにアクセスできますが、 *uma_protection* スコープも必要です。"
+"*Protection API* はhttps://docs.kantarainitiative.org/uma/wg/oauth-uma-"
+"federated-"
+"authz-2.0-09.html[UMA準拠]のエンドポイントのセットであり、リソースサーバーがリソース、スコープ、パーミッション、およびそれらに関連付けられたポリシーを管理する上で役立つ操作を提供します。リソースサーバーだけがこのAPIにアクセスできますが、"
+" *uma_protection* スコープも必要です。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:101
 msgid ""
 "The operations provided by the Protection API can be organized in two main "
 "groups:"
 msgstr "保護APIによって提供される操作は、次の2つの主要なグループに分けられます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:108
 #, no-wrap
 msgid ""
 "** Create Resource\n"
 "** Delete Resource\n"
 "** Find by Id\n"
-"** Find All\n"
-"** Find with filters (for example, search by name, type, or URI)\n"
+"** Query\n"
 msgstr ""
-"** リソースの作成\n"
-"** リソースの削除\n"
-"** IDで検索\n"
-"** 全検索\n"
-"** フィルタで検索（たとえば、名前、タイプ、またはURIで検索）\n"
+"** Create Resource\n"
+"** Delete Resource\n"
+"** Find by Id\n"
+"** Query\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:109
 #, no-wrap
 msgid "*Permission Management*\n"
 msgstr "*パーミッション管理*\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:110
 #, no-wrap
 msgid "** Issue Permission Tickets\n"
 msgstr "** パーミッション・チケットの発行\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:113
 msgid ""
 "By default, Remote Resource Management is enabled. You can change that using"
 " the {project_name} Administration Console and only allow resource "
@@ -432,7 +398,6 @@ msgstr ""
 "デフォルトでは、リモートリソース管理が有効になっています。{project_name}管理コンソールを使用して変更することができ、コンソールからのリソース管理のみを許可できます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:115
 msgid ""
 "When using the UMA protocol, the issuance of Permission Tickets by the "
 "Protection API is an important part of the whole authorization process. As "
@@ -444,90 +409,5 @@ msgstr ""
 "UMAプロトコルを使用する場合、保護APIによるパーミッション・チケットの発行は、認可プロセス全体の重要な部分です。次のセクションで説明するように、これらはクライアントによって要求されたパーミッションを表し、要求されているリソースとスコープに関連付けられたパーミッションとポリシーの評価中に付与されたすべてのパーミッションを持つ最終的なトークンを取得するためにサーバーに送信されます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:117
 msgid "For more information, see <<_service_protection_api, Protection API>>."
 msgstr "より詳細な情報は<<_service_protection_api, 保護API>>を参照してください。"
-
-#. type: Title =
-#: source/authorization_services/topics/auth-services-architecture.adoc:118
-#: source/authorization_services/topics/service-authorization-authorization-api.adoc:2
-#, no-wrap
-msgid "Authorization API"
-msgstr "認可API"
-
-#. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:121
-msgid ""
-"The Authorization API is also a "
-"https://kantarainitiative.org/confluence/display/uma/UMA+1.0+Core+Protocol"
-"[UMA-compliant] endpoint providing a single operation that exchanges an "
-"Access Token and <<_overview_terminology_permission_ticket, Permission "
-"Ticket>> with a Requesting Party Token (RPT)."
-msgstr ""
-"認可APIは、アクセス・トークンと<<_overview_terminology_permission_ticket, "
-"パーミッション・チケット>>をリクエスティング・パーティー・トークン（RPT）と交換する単一の操作を提供する "
-"https://kantarainitiative.org/confluence/display/uma/UMA+1.0+Core+Protocol[UMA準拠]"
-" のエンドポイントです。"
-
-#. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:123
-msgid ""
-"The RPT contains all permissions granted to a client and can be used to call"
-" a resource server to get access to its protected resources."
-msgstr ""
-"RPTには、クライアントに付与されたすべてのパーミッションが含まれており、保護されたリソースにアクセスするためにリソースサーバーを呼び出す目的で使用できます。"
-
-#. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:126
-msgid ""
-"When requesting an RPT you can also provide a previously issued RPT. In this"
-" case, the resulting RPT will consist of the union of the permissions from "
-"the previous RPT and the new ones within a permission ticket."
-msgstr ""
-"RPTを要求する際に、以前に発行したRPTを提供することもできます。この場合、結果として得られるRPTは、以前のRPTのパーミッショとパーミッション・チケット内の新しいパーミッションの結合で構成されます。"
-
-#. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:128
-msgid "image:images/authz-calls.png[alt=\"Authorization API Overview\"]"
-msgstr "image:images/authz-calls.png[alt=\"認可APIの概要\"]"
-
-#. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:130
-msgid ""
-"For more information, see <<_service_authorization_api, Authorization API>>."
-msgstr "詳細については、<<_service_authorization_api, 認可API>>を参照してください。"
-
-#. type: Title =
-#: source/authorization_services/topics/auth-services-architecture.adoc:131
-#: source/authorization_services/topics/service-entitlement-entitlement-api.adoc:2
-#, no-wrap
-msgid "Entitlement API"
-msgstr "エンタイトルメントAPI"
-
-#. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:134
-msgid ""
-"The Entitlement API provides a 1-legged protocol to issue RPTs. Unlike the "
-"Authorization API, the Entitlement API only expects an access token."
-msgstr ""
-"エンタイトルメントAPIは、RPTを発行するための1-leggedプロトコルを提供します。認可APIとは異なり、エンタイトルメントAPIはアクセストークンのみを要求します。"
-
-#. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:137
-msgid ""
-"From this API you can obtain all the entitlements or permissions for a user "
-"(based on the resources managed by a given resource server) or just the "
-"entitlements for a set of one or more resources."
-msgstr ""
-"このAPIから、ユーザー（特定のリソースサーバーによって管理されるリソースに基づいた）のすべてのエンタイトルメントまたはパーミッション、または1つ以上のリソースのセットに対するエンタイトルメントのみを取得できます。"
-
-#. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:139
-msgid "image:images/entitlement-calls.png[alt=\"Entitlement API Overview\"]"
-msgstr "image:images/entitlement-calls.png[alt=\"エンタイトルメントAPIの概要\"]"
-
-#. type: Plain text
-#: source/authorization_services/topics/auth-services-architecture.adoc:140
-msgid ""
-"For more information see <<_service_entitlement_api, Entitlement API>>."
-msgstr "より詳細な情報は<<_service_entitlement_api, エンタイトルAPI>>を参照してください。"

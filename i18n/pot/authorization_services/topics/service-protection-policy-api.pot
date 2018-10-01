@@ -1,0 +1,259 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+msgid ""
+"When querying the server for permissions use parameters `first` and `max` "
+"results to limit the result."
+msgstr ""
+
+#. type: Title =
+#, no-wrap
+msgid "Managing Resource Permissions using the Policy API"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} leverages the UMA Protection API to allow resource servers to "
+"manage permissions for their users. In addition to the Resource and "
+"Permission APIs, {project_name} provides a Policy API from where permissions "
+"can be set to resources by resource servers on behalf of their users."
+msgstr ""
+
+#. type: Plain text
+msgid "The Policy API is available at:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"http://${host}:${port}/auth/realms/${realm_name}/authz/protection/uma-policy/"
+"{resource_id}"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This API is protected by a bearer token that must represent a consent "
+"granted by the user to the resource server to manage permissions on his "
+"behalf. The bearer token can be a regular access token obtained from the "
+"token endpoint using:"
+msgstr ""
+
+#. type: Plain text
+msgid "Resource Owner Password Credentials Grant Type"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Token Exchange, in order to exchange an access token granted to some client "
+"(public client) for a token where audience is the resource server"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Associating a Permission with a Resource"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To associate a permission with a specific resource you must send a HTTP POST "
+"request as follows:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://localhost:8180/auth/realms/photoz/authz/protection/uma-policy/{resource_id} \\\n"
+"  -H 'Authorization: Bearer '$access_token \\\n"
+"  -H 'Cache-Control: no-cache' \\\n"
+"  -H 'Content-Type: application/json' \\\n"
+"  -d '{\n"
+"\t\"name\": \"Any people manager\",\n"
+"\t\"description\": \"Allow access to any people manager\",\n"
+"\t\"scopes\": [\"read\"],\n"
+"\t\"roles\": [\"people-manager\"]\n"
+"}'\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the example above we are creating and associating a new permission to a "
+"resource represented by `resource_id` where any user with a role `people-"
+"manager` should be granted with the `read` scope."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You can also create policies using other access control mechanisms, such as "
+"using groups:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://localhost:8180/auth/realms/photoz/authz/protection/uma-policy/{resource_id} \\\n"
+"  -H 'Authorization: Bearer '$access_token \\\n"
+"  -H 'Cache-Control: no-cache' \\\n"
+"  -H 'Content-Type: application/json' \\\n"
+"  -d '{\n"
+"\t\"name\": \"Any people manager\",\n"
+"\t\"description\": \"Allow access to any people manager\",\n"
+"\t\"scopes\": [\"read\"],\n"
+"\t\"groups\": [\"/Managers/People Managers\"]\n"
+"}'\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Or a specific client:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://localhost:8180/auth/realms/photoz/authz/protection/uma-policy/{resource_id} \\\n"
+"  -H 'Authorization: Bearer '$access_token \\\n"
+"  -H 'Cache-Control: no-cache' \\\n"
+"  -H 'Content-Type: application/json' \\\n"
+"  -d '{\n"
+"\t\"name\": \"Any people manager\",\n"
+"\t\"description\": \"Allow access to any people manager\",\n"
+"\t\"scopes\": [\"read\"],\n"
+"\t\"clients\": [\"my-client\"]\n"
+"}'\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Or even using a custom policy using JavaScript:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://localhost:8180/auth/realms/photoz/authz/protection/uma-policy/{resource_id} \\\n"
+"  -H 'Authorization: Bearer '$access_token \\\n"
+"  -H 'Cache-Control: no-cache' \\\n"
+"  -H 'Content-Type: application/json' \\\n"
+"  -d '{\n"
+"\t\"name\": \"Any people manager\",\n"
+"\t\"description\": \"Allow access to any people manager\",\n"
+"\t\"scopes\": [\"read\"],\n"
+"\t\"condition\": \"if (isPeopleManager()) {$evaluation.grant()}\"\n"
+"}'\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"It is also possible to set any combination of these access control "
+"mechanisms."
+msgstr ""
+
+#. type: Plain text
+msgid "To update an existing permission, send an HTTP PUT request as follows:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X PUT \\\n"
+"  http://localhost:8180/auth/realms/photoz/authz/protection/uma-policy/{permission_id} \\\n"
+"  -H 'Authorization: Bearer '$access_token \\\n"
+"  -H 'Content-Type: application/json' \\\n"
+"  -d '{\n"
+"    \"id\": \"21eb3fed-02d7-4b5a-9102-29f3f09b6de2\",\n"
+"    \"name\": \"Any people manager\",\n"
+"    \"description\": \"Allow access to any people manager\",\n"
+"    \"type\": \"uma\",\n"
+"    \"scopes\": [\n"
+"        \"album:view\"\n"
+"    ],\n"
+"    \"logic\": \"POSITIVE\",\n"
+"    \"decisionStrategy\": \"UNANIMOUS\",\n"
+"    \"owner\": \"7e22131a-aa57-4f5f-b1db-6e82babcd322\",\n"
+"    \"roles\": [\n"
+"        \"user\"\n"
+"    ]\n"
+"}'\n"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Removing a Permission"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To remove a permission associated with a resource, send an HTTP DELETE "
+"request as follows:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X DELETE \\\n"
+"  http://localhost:8180/auth/realms/photoz/authz/protection/uma-policy/{permission_id} \\\n"
+"  -H 'Authorization: Bearer '$access_token\n"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Querying Permission"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To query the permissions associated with a resource, send an HTTP GET "
+"request as follows:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"http://${host}:${post}/auth/realms/${realm}/authz/protection/uma-policy?"
+"resource={resource_id}"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To query the permissions given its name, send an HTTP GET request as follows:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"http://${host}:${post}/auth/realms/${realm}/authz/protection/uma-policy?"
+"name=Any people manager"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To query the permissions associated with a specific scope, send an HTTP GET "
+"request as follows:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"http://${host}:${post}/auth/realms/${realm}/authz/protection/uma-policy?"
+"scope=read"
+msgstr ""
+
+#. type: Plain text
+msgid "To query all permissions, send an HTTP GET request as follows:"
+msgstr ""
+
+#. type: Code block
+msgid "http://${host}:${post}/auth/realms/${realm}/authz/protection/uma-policy"
+msgstr ""

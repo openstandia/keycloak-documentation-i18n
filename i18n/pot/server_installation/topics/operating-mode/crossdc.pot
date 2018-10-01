@@ -14,16 +14,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: Attribute :installguide_troubleshooting_name:
-#, no-wrap
-msgid "Troubleshooting"
-msgstr ""
-
-#. type: Title ==
-#, no-wrap
-msgid "Prerequisites"
-msgstr ""
-
 #. type: Title ===
 #, no-wrap
 msgid "Cross-Datacenter Replication Mode"
@@ -52,6 +42,11 @@ msgstr ""
 msgid "image:{project_images}/cross-dc-architecture.png[]"
 msgstr ""
 
+#. type: Block title
+#, no-wrap
+msgid "Prerequisites"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "As this is an advanced topic, we recommend you first read the following, "
@@ -69,15 +64,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"link:https://access.redhat.com/documentation/en-us/"
-"red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/"
-"set_up_cross_datacenter_replication[JBoss Data Grid Cross-Datacenter "
+"link:{jdgserver_crossdcdocs_link}[JBoss Data Grid Cross-Datacenter "
 "Replication] {project_name} uses JBoss Data Grid (JDG) for the replication "
 "of Infinispan data between the data centers. We use the `Remote Client-"
-"Server Mode` described in the JDG documentation in link:https://access."
-"redhat.com/documentation/en-us/red_hat_jboss_data_grid/7.1/html/"
-"administration_and_configuration_guide/"
-"set_up_cross_datacenter_replication#configure_cross_datacenter_replication_remote_client_server_mode[Configure "
+"Server Mode` described in the JDG documentation in link:"
+"{jdgserver_crossdcdocs_link}"
+"#configure_cross_datacenter_replication_remote_client_server_mode[Configure "
 "Cross-Datacenter Replication]."
 msgstr ""
 
@@ -433,9 +425,7 @@ msgstr ""
 msgid ""
 "{jdgserver_name} servers `jdg1` and `jdg2` are connected to each other "
 "through the RELAY2 protocol and `backup` based {jdgserver_name} caches in a "
-"similar way as described in the link:https://access.redhat.com/documentation/"
-"en-us/red_hat_jboss_data_grid/7.1/html-single/"
-"administration_and_configuration_guide/"
+"similar way as described in the link:{jdgserver_crossdcdocs_link}"
 "#configure_cross_datacenter_replication_remote_client_server_mode[JDG "
 "documentation]."
 msgstr ""
@@ -566,7 +556,9 @@ msgid ""
 "<cache-container name=\"clustered\" default-cache=\"default\" statistics=\"true\">\n"
 "        ...\n"
 "        <replicated-cache-configuration name=\"sessions-cfg\" mode=\"SYNC\" start=\"EAGER\" batching=\"false\">\n"
+"ifeval::[{project_product}==true]\n"
 "            <transaction mode=\"NON_DURABLE_XA\" locking=\"PESSIMISTIC\"/>\n"
+"endif::[]\n"
 "            <locking acquire-timeout=\"0\" />\n"
 "            <backups>\n"
 "                <backup site=\"site2\" failure-policy=\"FAIL\" strategy=\"SYNC\" enabled=\"true\">\n"
@@ -595,11 +587,30 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Newer {jdgserver_name} releases require authorization before accessing "
-"protected caches over network. {project_name} requires updates to "
-"`___script_cache` cache containing scripts. If you get errors accessing this "
-"cache, you will need to set up authorization in `clustered.xml` "
-"configuration as described below:"
+"Unlike in previous version, the {jdgserver_name} server `replicated-cache-"
+"configuration` needs to be configured without `transaction` element. See "
+"<<troubleshooting>> for more details."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Some {jdgserver_name} server releases require authorization before accessing "
+"protected caches over network."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You should not see any issue if you use recommended {jdgserver_name} "
+"{jdgserver_version} server and this step can (and should) be ignored.  "
+"Issues related to authorization may exist just for some other versions of "
+"{jdgserver_name} server."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} requires updates to `___script_cache` cache containing "
+"scripts. If you get errors accessing this cache, you will need to set up "
+"authorization in `clustered.xml` configuration as described below:"
 msgstr ""
 
 #. type: Plain text
@@ -833,8 +844,8 @@ msgstr ""
 
 #. type: Code block
 msgid ""
-"<cache-container name=\"keycloak\" jndi-name=\"infinispan/Keycloak\" module="
-"\"org.keycloak.keycloak-model-infinispan\">"
+"<cache-container name=\"keycloak\" module=\"org.keycloak.keycloak-model-"
+"infinispan\">"
 msgstr ""
 
 #. type: Plain text
@@ -844,7 +855,7 @@ msgstr ""
 #. type: Code block
 #, no-wrap
 msgid ""
-"<replicated-cache name=\"work\" mode=\"SYNC\">\n"
+"<replicated-cache name=\"work\">\n"
 "    <remote-store cache=\"work\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
 "        <property name=\"rawValues\">true</property>\n"
 "        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
@@ -859,7 +870,7 @@ msgstr ""
 #. type: Code block
 #, no-wrap
 msgid ""
-"<distributed-cache name=\"sessions\" mode=\"SYNC\" owners=\"1\">\n"
+"<distributed-cache name=\"sessions\" owners=\"1\">\n"
 "    <remote-store cache=\"sessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">   \n"
 "        <property name=\"rawValues\">true</property>\n"
 "        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
@@ -878,36 +889,36 @@ msgstr ""
 #. type: Code block
 #, no-wrap
 msgid ""
-"<distributed-cache name=\"offlineSessions\" mode=\"SYNC\" owners=\"1\">\n"
+"<distributed-cache name=\"offlineSessions\" owners=\"1\">\n"
 "    <remote-store cache=\"offlineSessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
 "        <property name=\"rawValues\">true</property>\n"
 "        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
 "    </remote-store>\n"
 "</distributed-cache>\n"
 "\n"
-"<distributed-cache name=\"clientSessions\" mode=\"SYNC\" owners=\"1\">\n"
+"<distributed-cache name=\"clientSessions\" owners=\"1\">\n"
 "    <remote-store cache=\"clientSessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
 "        <property name=\"rawValues\">true</property>\n"
 "        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
 "    </remote-store>\n"
 "</distributed-cache>\n"
 "\n"
-"<distributed-cache name=\"offlineClientSessions\" mode=\"SYNC\" owners=\"1\">\n"
+"<distributed-cache name=\"offlineClientSessions\" owners=\"1\">\n"
 "    <remote-store cache=\"offlineClientSessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
 "        <property name=\"rawValues\">true</property>\n"
 "        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
 "    </remote-store>\n"
 "</distributed-cache>\n"
 "\n"
-"<distributed-cache name=\"loginFailures\" mode=\"SYNC\" owners=\"1\">\n"
+"<distributed-cache name=\"loginFailures\" owners=\"1\">\n"
 "    <remote-store cache=\"loginFailures\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
 "        <property name=\"rawValues\">true</property>\n"
 "        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
 "    </remote-store>\n"
 "</distributed-cache>\n"
 "\n"
-"<distributed-cache name=\"actionTokens\" mode=\"SYNC\" owners=\"2\">\n"
-"    <eviction max-entries=\"-1\" strategy=\"NONE\"/>\n"
+"<distributed-cache name=\"actionTokens\" owners=\"2\">\n"
+"    <object-memory size=\"-1\"/>\n"
 "    <expiration max-idle=\"-1\" interval=\"300000\"/>\n"
 "    <remote-store cache=\"actionTokens\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"true\" shared=\"true\">\n"
 "        <property name=\"rawValues\">true</property>\n"
@@ -1226,7 +1237,7 @@ msgstr ""
 msgid ""
 "**Manually by admin** - Admin can use the `jconsole` or other tool and run some JMX operations to manually take the particular site offline.\n"
 "This is useful especially if the outage is planned. With `jconsole` or CLI, you can connect to the `jdg1` server and take the `site2` offline. \n"
-"More details about this are available in the link:https://access.redhat.com/documentation/en-us/red_hat_jboss_data_grid/7.1/html/administration_and_configuration_guide/set_up_cross_datacenter_replication#taking_a_site_offline[JDG documentation]. \n"
+"More details about this are available in the link:{jdgserver_crossdcdocs_link}#taking_a_site_offline[JDG documentation].\n"
 msgstr ""
 
 #. type: Plain text
@@ -1335,11 +1346,8 @@ msgid ""
 "The state transfer can be also done on the {jdgserver_name} server side "
 "through JMX. The operation name is `pushState`. There are few other "
 "operations to monitor status, cancel push state, and so on.  More info about "
-"state transfer is available in the link:https://access.redhat.com/"
-"documentation/en-us/red_hat_jboss_data_grid/7.1/html/"
-"administration_and_configuration_guide/"
-"set_up_cross_datacenter_replication#state_transfer_between_sites[{jdgserver_name} "
-"docs]."
+"state transfer is available in the link:{jdgserver_crossdcdocs_link}"
+"#state_transfer_between_sites[{jdgserver_name} docs]."
 msgstr ""
 
 #. type: Title ====
@@ -1674,6 +1682,11 @@ msgstr ""
 msgid "Note the `mode` attribute of cache-configuration element."
 msgstr ""
 
+#. type: Attribute :installguide_troubleshooting_name:
+#, no-wrap
+msgid "Troubleshooting"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "The following tips are intended to assist you should you need to "
@@ -1896,4 +1909,26 @@ msgid ""
 "    <replicated-cache name=\"work\" configuration=\"sessions-cfg\">\n"
 "        <expiration />\n"
 "    </replicated-cache>\n"
+msgstr ""
+
+#. type: Plain text
+msgid "If you see Warnings in the {jdgserver_name} server log like:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"18:06:19,687 WARN  [org.infinispan.server.hotrod.Decoder2x] (HotRod-ServerWorker-7-12) ISPN006011: Operation 'PUT_IF_ABSENT' forced to\n"
+"  return previous value should be used on transactional caches, otherwise data inconsistency issues could arise under failure situations\n"
+"18:06:19,700 WARN  [org.infinispan.server.hotrod.Decoder2x] (HotRod-ServerWorker-7-10) ISPN006010: Conditional operation 'REPLACE_IF_UNMODIFIED' should\n"
+"  be used with transactional caches, otherwise data inconsistency issues could arise under failure situations\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"you can just ignore them. To avoid the warning, the caches on "
+"{jdgserver_name} server side could be changed to transactional caches, but "
+"this is not recommended as it can cause some other issues caused by the bug "
+"https://issues.jboss.org/browse/ISPN-9323. So for now, the warnings just "
+"need to be ignored."
 msgstr ""

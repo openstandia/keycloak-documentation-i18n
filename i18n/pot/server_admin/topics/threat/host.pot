@@ -21,27 +21,49 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"{project_name} uses the request URL for a number of things. For example, the "
-"URL sent in password reset emails."
+"{project_name} uses the public hostname for a number of things. For example, "
+"in the token issuer fields and URLs sent in password reset emails."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"By default, the request URL is based on the `Host` header and there is no "
-"check to make sure this URL is the valid and correct URL."
+"By default, the hostname is based on the request headers and there is no "
+"check to make sure this hostname is valid."
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "If you are not using a load balancer or proxy in front of {project_name} "
-"that prevents invalid host headers, you must explicitly configure what URLs "
-"should be accepted."
+"that prevents invalid host headers, you must explicitly configure what "
+"hostnames should be accepted."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The following example will only permit requests to `localhost.localdomain` "
-"or `localhost`:"
+"The Hostname SPI provides a way to configure the hostname for a request. Out "
+"of the box there are two providers. These are request and fixed. It is also "
+"possible to develop your own provider in the case the built-in providers do "
+"not provide the functionality needed."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Request provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is the default hostname provider and uses request headers to determine "
+"the hostname. As it uses the headers from the request it is important to use "
+"this in combination with a proxy or a filter that rejects invalid hostnames."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"It is beyond the scope of this documentation to provide instructions on how "
+"to configure valid hostnames for a proxy. To configure it in a filter you "
+"need to edit standalone.xml to set permitted aliases for the server. The "
+"following example will only permit requests to `auth.example.com`:"
 msgstr ""
 
 #. type: delimited block -
@@ -50,7 +72,7 @@ msgid ""
 "<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
 "    <server name=\"default-server\" default-host=\"ignore\">\n"
 "        ...\n"
-"        <host name=\"default-host\" alias=\"localhost.localdomain, localhost\">\n"
+"        <host name=\"default-host\" alias=\"auth.example.com\">\n"
 "            <location name=\"/\" handler=\"welcome-content\"/>\n"
 "            <http-invoker security-realm=\"ApplicationRealm\"/>\n"
 "        </host>\n"
@@ -74,10 +96,83 @@ msgstr ""
 #, no-wrap
 msgid ""
 "/subsystem=undertow/server=default-server:write-attribute(name=default-host,value=ignore)\n"
-"/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=alias,value=[localhost.localdomain, localhost]\n"
+"/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=alias,value=[auth.example.com]\n"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
 msgid ":reload\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Fixed provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The fixed provider makes it possible to configure a fixed hostname. Unlike "
+"the request provider the fixed provider allows internal applications to "
+"invoke {project_name} on an alternative URL (for example an internal IP "
+"address). It is also possible to override the hostname for a specific realm "
+"through the configuration of the realm in the admin console."
+msgstr ""
+
+#. type: Plain text
+msgid "This is the recommended provider to use in production."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To change to the fixed provider and configure the hostname edit standalone."
+"xml. The following example shows the fixed provider with the hostname set to "
+"auth.example.com:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"hostname\">\n"
+"    <default-provider>fixed</default-provider>\n"
+"    <provider name=\"fixed\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"hostname\" value=\"auth.example.com\"/>\n"
+"            <property name=\"httpPort\" value=\"-1\"/>\n"
+"            <property name=\"httpsPort\" value=\"-1\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=keycloak-server/spi=hostname:write-attribute(name=default-provider, value=\"fixed\")\n"
+"/subsystem=keycloak-server/spi=hostname/provider=fixed:write-attribute(name=properties.hostname,value=\"auth.example.com\")\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By default the `httpPort` and `httpsPort` are received from the request. As "
+"long as any proxies are configured correctly it should not be necessary to "
+"change this. It is possible to configure fixed ports if necessary by setting "
+"the `httpPort` and `httpsPort` properties on the fixed provider."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Custom provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To develop a custom hostname provider you need to implement `org.keycloak."
+"urls.HostnameProviderFactory` and `org.keycloak.urls.HostnameProvider`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Follow the instructions in the Service Provider Interfaces section in link:"
+"{developerguide_link}[{developerguide_name}] for more information on how to "
+"develop a custom provider."
 msgstr ""

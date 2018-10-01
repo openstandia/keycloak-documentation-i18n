@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,13 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
-#: source/server_admin/topics/threat/compromised-tokens.adoc:2
 #, no-wrap
 msgid "Compromised Access and Refresh Tokens"
 msgstr "セキュリティー侵害されたアクセストークンとリフレッシュトークン"
 
 #. type: Plain text
-#: source/server_admin/topics/threat/compromised-tokens.adoc:5
 msgid ""
 "There are a few things you can do to mitigate access tokens and refresh "
 "tokens from being stolen. The most important thing is to enforce SSL/HTTPS "
@@ -33,7 +31,6 @@ msgstr ""
 "アクセストークンとリフレッシュトークンが盗まれることを軽減するためにできることがいくつかあります。最も重要なことは、{project_name}とそのクライアントとアプリケーションの間でSSL/HTTPS通信を強制することです。明らかなことだと思われるかもしれませんが、{project_name}はデフォルトでSSLが有効になっていないため、管理者はそれが必要であると認識していない可能性があります。"
 
 #. type: Plain text
-#: source/server_admin/topics/threat/compromised-tokens.adoc:8
 msgid ""
 "Another thing you can do to mitigate leaked access tokens is to shorten "
 "their lifespans.  You can specify this within the <<_timeouts, timeouts "
@@ -48,7 +45,18 @@ msgstr ""
 "タイムアウト・ページ>>内で指定できます。短時間でクライアントとアプリケーションがアクセストークンをリフレッシュするように、アクセストークンは短い寿命（数分）とします。管理者がリークを検出した場合には、すべてのユーザー・セッションをログアウトしてこれらのリフレッシュトークンを無効にするか、失効ポリシーを設定することができます。リフレッシュトークンが常にクライアントでプライベートに保たれ、決して送信されないことを確認することは非常に重要です。"
 
 #. type: Plain text
-#: source/server_admin/topics/threat/compromised-tokens.adoc:11
+msgid ""
+"You can also mitigate against leaked access tokens and refresh tokens by "
+"issuing these tokens as holder-of-key tokens. See <<_mtls-client-"
+"certificate-bound-tokens, OAuth 2.0 Mutual TLS Client Certificate Bound "
+"Access Token>> to learn how."
+msgstr ""
+"これらのトークンをholder-of-"
+"keyトークンとして発行することによって、アクセストークンとリフレッシュトークンの漏洩を軽減することもできます。方法については、<<_mtls-"
+"client-certificate-bound-tokens, OAuth 2.0 Mutual TLS Client Certificate "
+"Bound Access Token>>を参照してください。"
+
+#. type: Plain text
 msgid ""
 "If an access token or refresh token is compromised, the first thing you "
 "should do is go to the admin console and push a not-before revocation policy"
@@ -64,7 +72,6 @@ msgstr ""
 " 鍵の章>>にあります。"
 
 #. type: Plain text
-#: source/server_admin/topics/threat/compromised-tokens.adoc:13
 msgid ""
 "You can also disable specific applications, clients, and users if you feel "
 "that any one of those entities is completely compromised."

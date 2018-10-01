@@ -21,8 +21,8 @@ msgstr "例："
 
 #. type: Title ===
 #, no-wrap
-msgid "Javascript Adapter"
-msgstr "Javascriptアダプター"
+msgid "JavaScript Adapter"
+msgstr "JavaScriptアダプター"
 
 #. type: Plain text
 msgid ""
@@ -83,7 +83,7 @@ msgid ""
 "`keycloak.json` file should be hosted on your web server at the same "
 "location as your HTML pages."
 msgstr ""
-"クライアントが作成されたら `Installation` タブをクリックし、 `Format Option` の `Keycloak OIDC "
+"クライアントが作成されたら `Installation` タブをクリックし、 `Format Option` の中から `Keycloak OIDC "
 "JSON` を選択して、 `Download` をクリックします。ダウンロードした `keycloak.json` "
 "ファイルは、HTMLページと同じ場所にあるWebサーバー上にホストされるべきです。"
 
@@ -104,9 +104,9 @@ msgid ""
 "    <script src=\"keycloak.js\"></script>\n"
 "    <script>\n"
 "        var keycloak = Keycloak();\n"
-"        keycloak.init().success(function(authenticated) {\n"
+"        keycloak.init().then(function(authenticated) {\n"
 "            alert(authenticated ? 'authenticated' : 'not authenticated');\n"
-"        }).error(function() {\n"
+"        }).catch(function() {\n"
 "            alert('failed to initialize');\n"
 "        });\n"
 "    </script>\n"
@@ -116,9 +116,9 @@ msgstr ""
 "    <script src=\"keycloak.js\"></script>\n"
 "    <script>\n"
 "        var keycloak = Keycloak();\n"
-"        keycloak.init().success(function(authenticated) {\n"
+"        keycloak.init().then(function(authenticated) {\n"
 "            alert(authenticated ? 'authenticated' : 'not authenticated');\n"
-"        }).error(function() {\n"
+"        }).catch(function() {\n"
 "            alert('failed to initialize');\n"
 "        });\n"
 "    </script>\n"
@@ -270,15 +270,15 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.updateToken(30).success(function() {\n"
+"keycloak.updateToken(30).then(function() {\n"
 "    loadData();\n"
-"}).error(function() {\n"
+"}).catch(function() {\n"
 "    alert('Failed to refresh token');\n"
 "});\n"
 msgstr ""
-"keycloak.updateToken(30).success(function() {\n"
+"keycloak.updateToken(30).then(function() {\n"
 "    loadData();\n"
-"}).error(function() {\n"
+"}).catch(function() {\n"
 "    alert('Failed to refresh token');\n"
 "});\n"
 
@@ -300,7 +300,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"You should not rely on looking at this cookie directly. It's format can "
+"You should not rely on looking at this cookie directly. Its format can "
 "change and it's also associated with the URL of the {project_name} server, "
 "not your application."
 msgstr ""
@@ -437,9 +437,26 @@ msgid "https://github.com/davidchambers/Base64.js"
 msgstr "https://github.com/davidchambers/Base64.js"
 
 #. type: Plain text
-#, no-wrap
-msgid "https://github.com/devote/HTML5-History-API        \n"
-msgstr "https://github.com/devote/HTML5-History-API        \n"
+msgid "https://github.com/devote/HTML5-History-API"
+msgstr "https://github.com/devote/HTML5-History-API"
+
+#. type: Plain text
+msgid ""
+"If available, the JavaScript adapter will use native Promise instances as "
+"return values from functions documented as returning promises.  To retain "
+"backwards compatibility, the `success()` and `error()` functions from "
+"previous versions of the adapter are retained.  These remain available "
+"whether or not native Promises are provided by the browser.  Promise API "
+"polyfills are available for browsers without support:"
+msgstr ""
+"利用可能な場合、JavaScriptアダプターは、Promiseを返すように書かれた関数から取得した戻り値として、ネイティブのPromiseインスタンスを使用します。下位互換性を保持するために、以前のバージョンのアダプターの"
+" `success()` と `error()` "
+"関数は保持されます。これは、ネイティブのPromiseがブラウザーによって提供されているかどうかにかかわらず利用可能です。以下のPromise API "
+"polyfillはサポートがないブラウザーで使用できます。"
+
+#. type: Plain text
+msgid "https://github.com/stefanpenner/es6-promise"
+msgstr "https://github.com/stefanpenner/es6-promise"
 
 #. type: Title ====
 #, no-wrap
@@ -593,6 +610,39 @@ msgstr "initに渡されるフロー。"
 
 #. type: Labeled list
 #, no-wrap
+msgid "adapter"
+msgstr "アダプター"
+
+#. type: Plain text
+msgid ""
+"Allows you to override the way that redirects and other browser-related "
+"functions will be handled by the library.  Available options:"
+msgstr ""
+"リダイレクトの方法やライブラリーにより処理されるその他のブラウザー関連の関数をオーバーライドすることができます。利用可能なオプションは以下のとおりです。"
+
+#. type: Plain text
+msgid ""
+"\"default\" - the library uses the browser api for redirects (this is the "
+"default)"
+msgstr "\"default\" - ライブラリーはリダイレクトにブラウザーのAPIを使用します（これはデフォルトです）"
+
+#. type: Plain text
+msgid ""
+"\"cordova\" - the library will try to use the InAppBrowser cordova plugin to"
+" load keycloak login/registration pages (this is used automatically when the"
+" library is working in a cordova ecosystem)"
+msgstr ""
+"\"cordova\" - ライブラリーは、InAppBrowser "
+"cordovaプラグインを使用して、Keycloakのログイン/登録ページを読み込もうとします（これは、ライブラリーがcordovaエコシステムで動作しているときに自動的に使用されます）"
+
+#. type: Plain text
+msgid ""
+"custom - allows you to implement a custom adapter (only for advanced use "
+"cases)"
+msgstr "custom - カスタム・アダプターを実装することができます（高度なユースケースのみ）"
+
+#. type: Labeled list
+#, no-wrap
 msgid "responseType"
 msgstr "responseType"
 
@@ -732,14 +782,66 @@ msgstr "loginHint - ログイン・フォームのユーザー名/電子メー�
 
 #. type: Plain text
 msgid ""
+"scope - Used to forward the scope parameter to the {project_name} login "
+"endpoint. Use a space-delimited list of scopes. Those typically reference "
+"link:{adminguide_link}#_client_scopes[Client scopes] defined on particular "
+"client. Note that the scope `openid` will be always be added to the list of "
+"scopes by the adapter. For example, if you enter the scope options `address "
+"phone`, then the request to {project_name} will contain the scope parameter "
+"`scope=openid address phone`."
+msgstr ""
+"scope - "
+"{project_name}ログイン・エンドポイントに、scopeパラメーターを転送するために使用します。スペース区切りのスコープのリストを使用します。それらは通常、特定のクライアントで定義されたlink:{adminguide_link}#_client_scopes[Client"
+" scopes]を参照します。スコープ `openid` "
+"は、アダプターによって常にスコープのリストに追加されることに注意してください。たとえば、スコープ・オプション `address phone` "
+"を入力すると、{project_name}へのリクエストにスコープ・パラメーター `scope=openid address phone` "
+"が含まれます。"
+
+#. type: Plain text
+msgid ""
+"idpHint - Used to tell {project_name} to skip showing the login page and "
+"automatically redirect to the specified identity provider instead. More info"
+" in the link:{adminguide_link}#_client_suggested_idp[Identity Provider "
+"documentation]."
+msgstr ""
+"idpHint - "
+"{project_name}にログインページの表示をスキップし、代わりに指定されたアイデンティティー・プロバイダーに自動的にリダイレクトするように指示するために使用されます。詳細は、link:{adminguide_link}#_client_suggested_idp[Identity"
+" Provider documentation]を参照してください。"
+
+#. type: Plain text
+msgid ""
 "action - If value is 'register' then user is redirected to registration "
 "page, otherwise to login page."
 msgstr ""
 "action - 値が 'register' の場合、ユーザーは登録ページにリダイレクトされ、そうでない場合はログイン・ページにリダイレクトされます。"
 
 #. type: Plain text
-msgid "locale - Specifies the desired locale for the UI."
-msgstr "locale - UIのロケールを指定します。"
+msgid ""
+"locale - Sets the 'ui_locales' query param in compliance with section "
+"3.1.2.1 of the OIDC 1.0 specification."
+msgstr "locale - OIDC 1.0仕様のセクション3.1.2.1に準拠した 'ui_locales' クエリー・パラメーターを設定します。"
+
+#. type: Plain text
+msgid ""
+"kcLocale - Specifies the desired Keycloak locale for the UI.  This differs "
+"from the locale param in that it tells the Keycloak server to set a cookie "
+"and update the user's profile to a new preferred locale."
+msgstr ""
+"kcLocale - "
+"UIに対するKeycloakロケールを指定します。これは、Cookieを設定し、ユーザーのプロファイルを新しい優先ロケールに更新するようにKeycloakサーバーに指示するという点で、ロケール・パラメーターとは異なります。"
+
+#. type: Plain text
+msgid ""
+"cordovaOptions - Specifies the arguments that are passed to the Cordova in-"
+"app-browser (if applicable). Options `hidden` and `location` are not "
+"affected by these arguments. All available options are defined at "
+"https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-"
+"inappbrowser/. Example of use: `{ zoom: \"no\", hardwareback: \"yes\" }`;"
+msgstr ""
+"cordovaOptions - Cordovaのアプリケーション内ブラウザーに渡される引数を指定します（該当する場合）。オプション `hidden` "
+"と `location` はこれらの引数の影響を受けません。利用可能なすべてのオプションは "
+"https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-"
+"inappbrowser/ で定義されています。使用例： `{ zoom: \"no\", hardwareback: \"yes\" }`"
 
 #. type: Title ======
 #, no-wrap
@@ -872,15 +974,15 @@ msgstr "プロファイルが正常にロードされた場合、またはプロ
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.loadUserProfile().success(function(profile) {\n"
+"keycloak.loadUserProfile().then(function(profile) {\n"
 "        alert(JSON.stringify(test, null, \"  \"));\n"
-"    }).error(function() {\n"
+"    }).catch(function() {\n"
 "        alert('Failed to load user profile');\n"
 "    });\n"
 msgstr ""
-"keycloak.loadUserProfile().success(function(profile) {\n"
+"keycloak.loadUserProfile().then(function(profile) {\n"
 "        alert(JSON.stringify(test, null, \"  \"));\n"
-"    }).error(function() {\n"
+"    }).catch(function() {\n"
 "        alert('Failed to load user profile');\n"
 "    });\n"
 
@@ -918,23 +1020,23 @@ msgstr "トークンが有効な場合、またはトークンがもはや有効
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.updateToken(5).success(function(refreshed) {\n"
+"keycloak.updateToken(5).then(function(refreshed) {\n"
 "        if (refreshed) {\n"
 "            alert('Token was successfully refreshed');\n"
 "        } else {\n"
 "            alert('Token is still valid');\n"
 "        }\n"
-"    }).error(function() {\n"
+"    }).catch(function() {\n"
 "        alert('Failed to refresh the token, or the session has expired');\n"
 "    });\n"
 msgstr ""
-"keycloak.updateToken(5).success(function(refreshed) {\n"
+"keycloak.updateToken(5).then(function(refreshed) {\n"
 "        if (refreshed) {\n"
 "            alert('Token was successfully refreshed');\n"
 "        } else {\n"
 "            alert('Token is still valid');\n"
 "        }\n"
-"    }).error(function() {\n"
+"    }).catch(function() {\n"
 "        alert('Failed to refresh the token, or the session has expired');\n"
 "    });\n"
 

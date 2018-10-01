@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Block title
+#, no-wrap
+msgid "{project_name} denies the authorization request"
+msgstr "{project_name}の認可リクエストの拒否"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 403 Forbidden\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"error\": \"access_denied\",\n"
+"    \"error_description\": \"request_denied\"\n"
+"}\n"
+msgstr ""
+"HTTP/1.1 403 Forbidden\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"error\": \"access_denied\",\n"
+"    \"error_description\": \"request_denied\"\n"
+"}\n"
+
+#. type: Title =
+#, no-wrap
+msgid "Submitting Permission Requests"
+msgstr "パーミッション・リクエストの送信"
+
+#. type: Plain text
+msgid ""
+"As part of the authorization process, clients need first to obtain a "
+"permission ticket from a UMA protected resource server in order to exchange "
+"it with an RPT at the {project_name} Token Endpoint."
+msgstr ""
+"認可プロセスの一環として、クライアントは{project_name}トークン・エンドポイントでRPTと交換するために、まずUMAで保護されたリソースサーバーからパーミッション・チケットを取得する必要があります。"
+
+#. type: Plain text
+msgid ""
+"By default, {project_name} responds with a `403` HTTP status code and a "
+"`request_denied` error in case the client can not be issued with an RPT."
+msgstr ""
+"クライアントがRPTを発行できない場合、デフォルトで{project_name}は `403` HTTPステータスコードと "
+"`request_denied` エラーで応答します。"
+
+#. type: Plain text
+msgid ""
+"Such response implies that {project_name} could not issue an RPT with the "
+"permissions represented by a permission ticket."
+msgstr ""
+"このようなレスポンスは、{project_name}がパーミッション・チケットによって表されるパーミッションを持つRPTを発行できないことを意味します。"
+
+#. type: Plain text
+msgid ""
+"In some situations, client applications may want to start an asynchronous "
+"authorization flow and let the owner of the resources being requested decide"
+" whether or not access should be granted. For that, clients can use the "
+"`submit_request` request parameter along with an authorization request to "
+"the token endpoint:"
+msgstr ""
+"状況によっては、クライアント・アプリケーションが非同期認可フローを開始して、要求されているリソースオーナーにアクセスを許可するかどうかを決定させたい場合があります。そのために、次のようにクライアントは"
+" `submit_request` リクエスト・パラメーターをトークン・エンドポイントへの認可リクエストとともに使用できます。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"ticket=${permission_ticket} \\\n"
+"  --data \"submit_request=true\"\n"
+msgstr ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"ticket=${permission_ticket} \\\n"
+"  --data \"submit_request=true\"\n"
+
+#. type: Plain text
+msgid ""
+"When using the `submit_request` parameter, {project_name} will persist a "
+"permission request for each resource to which access was denied.  Once "
+"created, resource owners can check their account and manage their "
+"permissions requests."
+msgstr ""
+"`submit_request` "
+"パラメーターを使用すると、{project_name}は、アクセスが拒否された各リソースに対して、パーミッション・リクエストを永続化します。作成されると、リソースオーナーは自分のアカウントを確認し、パーミッション・リクエストを管理できます。"
+
+#. type: Plain text
+msgid ""
+"You can think about this functionality as a `Request Access` button in your "
+"application, where users can ask other users for access to their resources."
+msgstr ""
+"この機能は、アプリケーション内の `Request Access` "
+"ボタンとして考えることができます。このボタンは、ユーザーが他のユーザーにリソースへのアクセスを求めることを可能にします。"

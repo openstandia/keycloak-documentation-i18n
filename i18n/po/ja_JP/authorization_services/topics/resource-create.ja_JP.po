@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,38 +16,21 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Plain text
-#: source/server_admin/topics/clients/client-oidc.adoc:37
-#: source/authorization_services/topics/permission-create-resource.adoc:14
-#: source/authorization_services/topics/permission-create-scope.adoc:14
-#: source/authorization_services/topics/policy-aggregated-policy.adoc:22
-#: source/authorization_services/topics/policy-client-policy.adoc:14
-#: source/authorization_services/topics/policy-drools-policy.adoc:16
-#: source/authorization_services/topics/policy-group-policy.adoc:14
-#: source/authorization_services/topics/policy-js-policy.adoc:15
-#: source/authorization_services/topics/policy-role-policy.adoc:18
-#: source/authorization_services/topics/policy-time-policy.adoc:14
-#: source/authorization_services/topics/policy-user-policy.adoc:14
-#: source/authorization_services/topics/resource-create.adoc:15
 #, no-wrap
 msgid "*Name*\n"
 msgstr "*Name*\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/permission-create-scope.adoc:27
-#: source/authorization_services/topics/permission-overview.adoc:16
-#: source/authorization_services/topics/resource-create.adoc:31
 #, no-wrap
 msgid "*Scopes*\n"
 msgstr "*Scopes*\n"
 
 #. type: Title =
-#: source/authorization_services/topics/resource-create.adoc:2
 #, no-wrap
 msgid "Creating Resources"
 msgstr "リソースの作成"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:6
 msgid ""
 "Creating a resource is straightforward and generic. Your main concern is the"
 " granularity of the resources you create. In other words, resources can be "
@@ -57,43 +40,36 @@ msgstr ""
 "リソースの作成は簡単で一般的です。主な関心事は、作成するリソースの粒度です。言い換えれば、1つ以上のリソースのセットを作成することができ、それらを定義する方法はパーミッションを管理するために重要なことです。"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:8
 msgid ""
 "To create a new resource, click *Create* in the right upper corner of the "
 "resource listing."
 msgstr "新しいリソースを作成するには、リソース・リストの右上にある *Create* をクリックします。"
 
 #. type: Block title
-#: source/authorization_services/topics/resource-create.adoc:9
 #, no-wrap
 msgid "Add Resource"
 msgstr "リソースの追加"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:11
 msgid "image:{project_images}/resource/create.png[alt=\"Add Resource\"]"
 msgstr "image:{project_images}/resource/create.png[alt=\"リソースの追加\"]"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:13
 msgid ""
 "In {project_name}, a resource defines a small set of information that is "
 "common to different types of resources, such as:"
 msgstr "{project_name}では、リソースは、次のようなさまざまなタイプのリソースに共通する細かい情報のセットを定義します。"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:17
 msgid "A human-readable and unique string describing this resource."
 msgstr "このリソースを説明する、人間が読める形式で一意な文字列。"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:20
 #, no-wrap
 msgid "*Type*\n"
 msgstr "*Type*\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:23
 msgid ""
 "A string uniquely identifying the type of a set of one or more resources. "
 "The type is a _string_ used to group different resource instances.  For "
@@ -105,13 +81,11 @@ msgstr ""
 "name:resources:default` です。"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:26
 #, no-wrap
 msgid "*URI*\n"
 msgstr "*URI*\n"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:29
 msgid ""
 "A URI that provides the location/address for the resource. For HTTP "
 "resources, the URI is usually the relative path used to serve these "
@@ -120,18 +94,36 @@ msgstr ""
 "リソースのロケーション/アドレスを提供するURI。HTTPリソースの場合、URIは通常、これらのリソースを提供するために使用される相対パスです。"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:33
 msgid "One or more scopes to associate with the resource."
 msgstr "リソースに関連付ける1つ以上のスコープ。"
 
 #. type: Title ==
-#: source/authorization_services/topics/resource-create.adoc:34
+#, no-wrap
+msgid "Resource Attributes"
+msgstr "リソース属性"
+
+#. type: Plain text
+msgid ""
+"Resources may have attributes associated with them. These attributes can be "
+"used to provide additional information about a resource and to provide "
+"additional information to policies when evaluating permissions associated "
+"with a resource."
+msgstr ""
+"リソースには属性が関連付けられている場合があります。これらの属性を使用すると、リソースに関する追加情報を提供したり、リソースに関連付けられているアクセス許可を評価するときにポリシーに追加情報を提供できます。"
+
+#. type: Plain text
+msgid ""
+"Each attribute is a key and value pair where the value can be a set of one "
+"or many strings. Multiple values can be defined for an attribute by "
+"separating each value with a comma."
+msgstr "各属性はキーと値のペアで、値は1つ以上の文字列のセットになります。属性に複数の値を定義するには、各値をカンマで区切ります。"
+
+#. type: Title ==
 #, no-wrap
 msgid "Typed Resources"
 msgstr "タイプ付きのリソース"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:37
 msgid ""
 "The type field of a resource can be used to group different resources "
 "together, so they can be protected using a common set of permissions."
@@ -139,54 +131,48 @@ msgstr ""
 "リソースのタイプ・フィールドは、さまざまなリソースをグループ化するために使用できます。そのため、共通のパーミッションのセットを使用して保護することができます。"
 
 #. type: Title ==
-#: source/authorization_services/topics/resource-create.adoc:38
 #, no-wrap
 msgid "Resource Owners"
 msgstr "リソース・オーナー"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:40
 msgid ""
 "Resources also have an owner. By default, resources are owned by the "
 "resource server."
-msgstr "リソースはオーナーを持ちます。デフォルトでは、リソースはリソースサーバーによって所有されています。"
+msgstr "リソースにはオーナーがいます。デフォルトでは、リソースはリソースサーバーによって所有されています。"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:42
 msgid ""
 "However, resources can also be associated with users, so you can create "
 "permissions based on the resource owner. For example, only the resource "
 "owner is allowed to delete or update a given resource."
 msgstr ""
-"ただし、リソースはユーザーと関連付けることもできるため、リソース・オーナーに基づいてパーミッションを作成できます。たとえば、リソース・オーナーだけが特定のリソースを削除または更新することができます。"
+"ただし、リソースはユーザーと関連付けることもできるため、リソースオーナーに基づいてパーミッションを作成できます。たとえば、リソースオーナーだけが特定のリソースを削除または更新することができます。"
 
 #. type: Title ==
-#: source/authorization_services/topics/resource-create.adoc:43
 #, no-wrap
 msgid "Managing Resources Remotely"
 msgstr "リモートでリソースを管理する"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:46
 msgid ""
 "Resource management is also exposed through the <<_service_protection_api, "
 "Protection API>> to allow resource servers to remotely manage their "
 "resources."
 msgstr ""
-"リソース管理は、<<_service_protection_api, "
-"保護API>>を介しても公開され、リソースサーバーがリソースをリモートで管理できます。"
+"リソース管理は、<<_service_protection_api, Protection "
+"API>>を介しても公開され、リソースサーバーがリソースをリモートで管理できます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:49
 msgid ""
 "When using the Protection API, resource servers can be implemented to manage"
 " resources owned by their users. In this case, you can specify the user "
 "identifier to configure a resource as belonging to a specific user."
 msgstr ""
-"保護APIを使用すると、リソースサーバーを実装して、ユーザーが所有するリソースを管理できます。この場合、リソースを特定のユーザーに属するものとして設定するためのユーザー識別子を指定できます。"
+"Protection "
+"APIを使用すると、リソースサーバーを実装して、ユーザーが所有するリソースを管理できます。この場合、リソースを特定のユーザーに属するものとして設定するためのユーザー識別子を指定できます。"
 
 #. type: Plain text
-#: source/authorization_services/topics/resource-create.adoc:52
 msgid ""
 "{project_name} provides resource servers complete control over their "
 "resources. In the future, we should be able to allow users to control their "

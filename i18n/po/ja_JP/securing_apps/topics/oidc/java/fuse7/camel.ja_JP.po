@@ -1,0 +1,289 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Plain text
+msgid "For example:"
+msgstr "例："
+
+#. type: Title =====
+#, no-wrap
+msgid "Securing an Apache Camel Application"
+msgstr "Apache Camelアプリケーションのセキュリティー保護"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <bean id=\"helloProcessor\" "
+"class=\"org.keycloak.example.CamelHelloProcessor\" />\n"
+msgstr ""
+"    <bean id=\"helloProcessor\" "
+"class=\"org.keycloak.example.CamelHelloProcessor\" />\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "</blueprint>\n"
+msgstr "</blueprint>\n"
+
+#. type: Plain text
+msgid ""
+"The `Import-Package` in `META-INF/MANIFEST.MF` needs to contain these "
+"imports:"
+msgstr "`META-INF/MANIFEST.MF` の `Import-Package` には、以下のインポートが含まれている必要があります。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Camel RestDSL"
+msgstr "Camel RestDSL"
+
+#. type: Plain text
+msgid ""
+"Camel RestDSL is a Camel feature used to define your REST endpoints in a "
+"fluent way. But you must still use specific implementation classes and "
+"provide instructions on how to integrate with {project_name}."
+msgstr ""
+"Camel "
+"RestDSLは、流暢な方法でRESTエンドポイントを定義するために使用されるCamelの機能です。しかし、依然として特定の実装クラスを使用し、{project_name}との統合方法に関する指示を提供する必要があります。"
+
+#. type: Plain text
+msgid ""
+"The way to configure the integration mechanism depends on the Camel "
+"component for which you configure your RestDSL-defined routes."
+msgstr "統合機構を設定する方法は、RestDSLで定義されたルートを設定するCamelコンポーネントによって異なります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<camelContext id=\"blueprintContext\"\n"
+"              trace=\"false\"\n"
+"              xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
+msgstr ""
+"<camelContext id=\"blueprintContext\"\n"
+"              trace=\"false\"\n"
+"              xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "    </rest>\n"
+msgstr "    </rest>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <route id=\"justDirect\">\n"
+"        <from uri=\"direct:justDirect\"/>\n"
+"        <process ref=\"helloProcessor\" />\n"
+"        <log message=\"RestDSL correctly invoked ${body}\"/>\n"
+"        <setBody>\n"
+"            <constant>(__This second sentence is returned from a Camel RestDSL endpoint__)</constant>\n"
+"        </setBody>\n"
+"    </route>\n"
+msgstr ""
+"    <route id=\"justDirect\">\n"
+"        <from uri=\"direct:justDirect\"/>\n"
+"        <process ref=\"helloProcessor\" />\n"
+"        <log message=\"RestDSL correctly invoked ${body}\"/>\n"
+"        <setBody>\n"
+"            <constant>(__This second sentence is returned from a Camel RestDSL endpoint__)</constant>\n"
+"        </setBody>\n"
+"    </route>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "</camelContext>\n"
+msgstr "</camelContext>\n"
+
+#. type: Plain text
+msgid ""
+"You can secure Apache Camel endpoints implemented with the "
+"http://camel.apache.org/undertow.html[camel-undertow] component by injecting"
+" the proper security constraints via blueprint and updating the used "
+"component to `undertow-keycloak`. You have to add the `OSGI-"
+"INF/blueprint/blueprint.xml` file to your Camel application with a similar "
+"configuration as below. The roles and security constraint mappings, and "
+"adapter configuration might differ slightly depending on your environment "
+"and needs."
+msgstr ""
+"http://camel.apache.org/undertow.html[camel-undertow]コンポーネントで実装されたApache "
+"Camelエンドポイントをセキュリティー保護するには、適切なセキュリティー制約をBlueprintを介して注入し、使用されるコンポーネントを "
+"`undertow-keycloak` に更新します。以下のような設定で、 `OSGI-INF/blueprint/blueprint.xml` "
+"ファイルをCamelアプリケーションに追加する必要があります。ロールとセキュリティー制約のマッピング、およびアダプターの設定は、使用する環境と必要性により若干異なる場合があります。"
+
+#. type: Plain text
+msgid ""
+"Compared to the standard `undertow` component, `undertow-keycloak` component"
+" adds two new properties:"
+msgstr ""
+"標準の `undertow` コンポーネントと比較して、 `undertow-keycloak` "
+"コンポーネントは次の2つの新しいプロパティーを追加します。"
+
+#. type: Plain text
+msgid ""
+"`configResolver` is a bean that supplies {project_name} configuration file "
+"to:"
+msgstr "`configResolver` は{project_name}設定ファイルを以下のとおりに提供するBeanです。"
+
+#. type: Plain text
+msgid ""
+"`org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver`: the "
+"{project_name} adapter configuration will be looked up inside the bundle and"
+" should be stored in `WEB-INF/keycloak.json` file."
+msgstr ""
+"`org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver`: "
+"{project_name}アダプター設定はバンドル内で検索され、 `WEB-INF/keycloak.json` ファイルに格納されます。"
+
+#. type: Plain text
+msgid ""
+"`org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver`: the "
+"{project_name} adapter configuration will be looked up as described in "
+"<<_fuse7_config_external_adapter,External adapter configuration>>."
+msgstr ""
+"`org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver`: "
+"{project_name}アダプター設定は、<<_fuse7_config_external_adapter, "
+"外部アダプターの設定>>で説明されているように検索されます。"
+
+#. type: Plain text
+msgid ""
+"`allowedRoles` is a comma-separated list of roles. User accessing the "
+"service has to have at least one role to be permitted the access."
+msgstr ""
+"`allowedRoles` "
+"はカンマで区切られたロールのリストです。サービスにアクセスするユーザーは、アクセスを許可されるロールを少なくとも1つは持っていなければなりません。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+"<blueprint xmlns=\"http://www.osgi.org/xmlns/blueprint/v1.0.0\"\n"
+"           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"           xmlns:camel=\"http://camel.apache.org/schema/blueprint\"\n"
+"           xsi:schemaLocation=\"\n"
+"       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd\n"
+"       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint-2.17.1.xsd\">\n"
+msgstr ""
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+"<blueprint xmlns=\"http://www.osgi.org/xmlns/blueprint/v1.0.0\"\n"
+"           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"           xmlns:camel=\"http://camel.apache.org/schema/blueprint\"\n"
+"           xsi:schemaLocation=\"\n"
+"       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd\n"
+"       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint-2.17.1.xsd\">\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <bean id=\"keycloakConfigResolver\" class=\"org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver\" >\n"
+"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
+"    </bean>\n"
+msgstr ""
+"    <bean id=\"keycloakConfigResolver\" class=\"org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver\" >\n"
+"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
+"    </bean>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <camelContext id=\"blueprintContext\"\n"
+"                  trace=\"false\"\n"
+"                  xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
+msgstr ""
+"    <camelContext id=\"blueprintContext\"\n"
+"                  trace=\"false\"\n"
+"                  xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"        <route id=\"httpBridge\">\n"
+"            <from uri=\"undertow-keycloak:http://0.0.0.0:8383/admin-camel-endpoint?matchOnUriPrefix=true&amp;configResolver=#keycloakConfigResolver&amp;allowedRoles=admin\" />\n"
+"            <process ref=\"helloProcessor\" />\n"
+"            <log message=\"The message from camel endpoint contains ${body}\"/>\n"
+"        </route>\n"
+msgstr ""
+"        <route id=\"httpBridge\">\n"
+"            <from uri=\"undertow-keycloak:http://0.0.0.0:8383/admin-camel-endpoint?matchOnUriPrefix=true&amp;configResolver=#keycloakConfigResolver&amp;allowedRoles=admin\" />\n"
+"            <process ref=\"helloProcessor\" />\n"
+"            <log message=\"The message from camel endpoint contains ${body}\"/>\n"
+"        </route>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "    </camelContext>\n"
+msgstr "    </camelContext>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"javax.servlet;version=\"[3,4)\",\n"
+"javax.servlet.http;version=\"[3,4)\",\n"
+"javax.net.ssl,\n"
+"org.apache.camel.*,\n"
+"org.apache.camel;version=\"[2.13,3)\",\n"
+"io.undertow.*,\n"
+"org.keycloak.*;version=\"{project_versionMvn}\",\n"
+"org.osgi.service.blueprint,\n"
+"org.osgi.service.blueprint.container\n"
+msgstr ""
+"javax.servlet;version=\"[3,4)\",\n"
+"javax.servlet.http;version=\"[3,4)\",\n"
+"javax.net.ssl,\n"
+"org.apache.camel.*,\n"
+"org.apache.camel;version=\"[2.13,3)\",\n"
+"io.undertow.*,\n"
+"org.keycloak.*;version=\"{project_versionMvn}\",\n"
+"org.osgi.service.blueprint,\n"
+"org.osgi.service.blueprint.container\n"
+
+#. type: Plain text
+msgid ""
+"The following example shows how to configure integration using the "
+"`undertow-keycloak` component, with references to some of the beans defined "
+"in previous Blueprint example."
+msgstr ""
+"次の例は、 `undertow-keycloak` "
+"コンポーネントを使用して統合を設定する方法を示しています。前回のBlueprintの例で定義されたBeanのいくつかを参照しています。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <!--the link with Keycloak security handlers happens by using undertow-keycloak component -->\n"
+"    <restConfiguration apiComponent=\"undertow-keycloak\" contextPath=\"/restdsl\" port=\"8484\">\n"
+"        <endpointProperty key=\"configResolver\" value=\"#keycloakConfigResolver\" />\n"
+"        <endpointProperty key=\"allowedRoles\" value=\"admin,superadmin\" />\n"
+"    </restConfiguration>\n"
+msgstr ""
+"    <!--the link with Keycloak security handlers happens by using undertow-keycloak component -->\n"
+"    <restConfiguration apiComponent=\"undertow-keycloak\" contextPath=\"/restdsl\" port=\"8484\">\n"
+"        <endpointProperty key=\"configResolver\" value=\"#keycloakConfigResolver\" />\n"
+"        <endpointProperty key=\"allowedRoles\" value=\"admin,superadmin\" />\n"
+"    </restConfiguration>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <rest path=\"/hello\" >\n"
+"        <description>Hello rest service</description>\n"
+"        <get uri=\"/{id}\" outType=\"java.lang.String\">\n"
+"            <description>Just a hello</description>\n"
+"            <to uri=\"direct:justDirect\" />\n"
+"        </get>\n"
+msgstr ""
+"    <rest path=\"/hello\" >\n"
+"        <description>Hello rest service</description>\n"
+"        <get uri=\"/{id}\" outType=\"java.lang.String\">\n"
+"            <description>Just a hello</description>\n"
+"            <to uri=\"direct:justDirect\" />\n"
+"        </get>\n"

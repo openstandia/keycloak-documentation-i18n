@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,13 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ==
-#: source/server_admin/topics/user-federation.adoc:3
 #, no-wrap
 msgid "User Storage Federation"
 msgstr "ユーザー・ストレージ・フェデレーション"
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation.adoc:10
 msgid ""
 "Many companies have existing user databases that hold information about "
 "users and their passwords or other credentials.  In may cases, it is just "
@@ -38,7 +36,6 @@ msgstr ""
 "SPIを使用して、カスタムのユーザー・データベースに独自の拡張機能をコーディングすることもできます。"
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation.adoc:15
 msgid ""
 "The way it works is that when a user logs in, {project_name} will look into "
 "its own internal user store to find the user.  If it can't find it there it "
@@ -51,7 +48,6 @@ msgstr ""
 "それは以下のように動作します。ユーザーがログインすると、{project_name}がユーザーを見つけるために内部のユーザーストアを調べます。それが見つからない場合は、一致するものが見つかるまで、レルムに対して設定したすべてのユーザー・ストレージ・プロバイダを繰り返し処理します。外部ストアからのデータは、{project_name}ランタイムによって消費される、共通のユーザーモデルにマップされます。そして、この共通のユーザーモデルは、OIDCトークンクレームとSAMLアサーション属性にマッピングできます。"
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation.adoc:20
 msgid ""
 "External user databases rarely have every piece of data need to support all "
 "the features that {project_name} has.  In this case, the User Storage "
@@ -59,42 +55,87 @@ msgid ""
 "store.  Some providers even import the user locally and sync periodically "
 "with the external store.  All this depends on the capabilities of the "
 "provider and how its configured.  For example, your external user store may "
-"not support OTP.  Depending on the provider, this OTP support can be handled"
-" and stored by {project_name}"
+"not support OTP.  Depending on the provider, this OTP can be handled and "
+"stored by {project_name}."
 msgstr ""
 "外部ユーザー・データベースは、{project_name}が持つすべての機能をサポートするのに必要なデータを、すべて持つことはほとんどありません。この場合、ユーザー－・ストレージ・プロバイダーは、{project_name}ユーザーストアにローカルでいくつかのものを保存することを選ぶことができます。一部のプロバイダーでは、ユーザーをローカルにインポートして、定期的に外部ストアと同期します。このすべては、プロバイダの機能とその設定方法によって異なります。たとえば、外部ユーザーストアがOTPをサポートしていない可能性があります。プロバイダーに応じて、このOTPサポートは{project_name}によって処理され格納されます。"
 
 #. type: Title ===
-#: source/server_admin/topics/user-federation.adoc:21
 #, no-wrap
 msgid "Adding a Provider"
 msgstr "プロバイダーの追加"
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation.adoc:24
 msgid ""
 "To add a storage provider go to the `User Federation` left menu item in the "
 "Admin Console."
 msgstr "ストレージ・プロバイダーを追加するには、管理コンソールの左側メニュー項目 `User Federation` に移動します。"
 
 #. type: Block title
-#: source/server_admin/topics/user-federation.adoc:25
-#: source/server_development/topics/user-storage/simple-example.adoc:267
-#: source/server_development/topics/user-storage/simple-example.adoc:281
 #, no-wrap
 msgid "User Federation"
 msgstr "User Federation"
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation.adoc:27
 msgid "image:{project_images}/user-federation.png[]"
 msgstr "image:{project_images}/user-federation.png[]"
 
 #. type: Plain text
-#: source/server_admin/topics/user-federation.adoc:29
 msgid ""
-"On the right side, there is an `Add Provider` list box.  Choose the provider"
-" type you want to add and you will be brought to the configuration page of "
+"On the center, there is an `Add Provider` list box.  Choose the provider "
+"type you want to add and you will be brought to the configuration page of "
 "that provider."
 msgstr ""
-"右側には、 `Add Provider` リストボックスがあります。追加するプロバイダー・タイプを選択すると、そのプロバイダーの設定ページに移動します。"
+"中央には、 `Add Provider` リストボックスがあります。追加するプロバイダー・タイプを選択すると、そのプロバイダーの設定ページに移動します。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Dealing with Provider Failures"
+msgstr "プロバイダー障害の対応"
+
+#. type: Plain text
+msgid ""
+"If a User Storage Provider fails, that is, if your LDAP server is down, you "
+"may have trouble logging in and may not be able to view users in the admin "
+"console.  {project_name} does not catch failures when using a Storage "
+"Provider to lookup a user.  It will abort the invocation.  So, if you have a"
+" Storage Provider with a higher priority that fails during user lookup, the "
+"login or user query will fail entirely with an exception and abort.  It will"
+" not fail over to the next configured provider."
+msgstr ""
+"ユーザー・ストレージ・プロバイダーに障害が発生した場合（つまりLDAPサーバーが停止している場合）、ログインに問題があったり、管理コンソールでユーザーを表示できないことがあります。{project_name}は、ストレージ・プロバイダーを使用してユーザーを検索しても失敗を捕捉せず、呼び出しを中止します。したがって、ユーザー検索中に優先順位の高いストレージ・プロバイダーが失敗した場合、ログインまたはユーザー・クエリーは例外なく完全に失敗し、中止されます。次の設定済みプロバイダーにはフェールオーバーされません。"
+
+#. type: Plain text
+msgid ""
+"The local {project_name} user database is always searched first to resolve "
+"users before any LDAP or custom User Storage Provider.  You may want to "
+"consider creating an admin account that is stored in the local "
+"{project_name} user database just in case any problems come up in connecting"
+" to your LDAP and custom back ends."
+msgstr ""
+"LDAPまたはカスタムのユーザー・ストレージ・プロバイダーの前に、ローカル{project_name}ユーザー・データベースが常に最初に検索され、ユーザーを解決します。LDAPへの接続やカスタム・バックエンドに問題が発生した場合に備えて、ローカル{project_name}ユーザー・データベースに保存される管理者アカウントを作成することを検討してください。"
+
+#. type: Plain text
+msgid ""
+"Each LDAP and custom User Storage Provider has an `enable` switch on its "
+"admin console page.  Disabling the User Storage Provider will skip the "
+"provider when doing user queries so that you can view and login with users "
+"that might be stored in a different provider with lower priority.  If your "
+"provider is using an `import` strategy and you disable it, imported users "
+"are still available for lookup, but only in read only mode.  You will not be"
+" able to modify these users until you re-enable the provider."
+msgstr ""
+"LDAPとカスタムのそれぞれのユーザー・ストレージ・プロバイダーには、管理コンソールページに `enable` "
+"スイッチがあります。ユーザー・ストレージ・プロバイダーを無効にすると、ユーザークエリーを実行するときにそのプロバイダーがスキップされ、優先度の低い別のプロバイダーに保存されている可能性のあるユーザーを表示したり、ログインできるようにします。プロバイダーが"
+" `import` "
+"戦略を使用していて、それを無効にしている場合、インポートされたユーザーは引き続き参照可能ですが、読み取り専用モードでのみ利用できます。プロバイダーを再度有効にするまで、これらのユーザーを変更することはできません。"
+
+#. type: Plain text
+msgid ""
+"The reason why {project_name} does not fail over if a Storage Provider "
+"lookup fails is that user databases often have duplicate usernames or "
+"duplicate emails between them.  This can cause security issues and "
+"unforeseen problems as the user may be loaded from one external store when "
+"the admin is expecting the user to be loaded from another."
+msgstr ""
+"ストレージ・プロバイダーの検索が失敗した場合に{project_name}がフェイルオーバーしない理由は、ユーザー・データベースにユーザー名が重複したり、メールが重複したりすることがよくあるためです。これにより、セキュリティー上の問題や予期しない問題が発生する可能性があります。これは、ユーザーが別の外部ストアから読み込まれることを管理者が期待しているときに、ユーザーがまた別の外部ストアから読み込まれる可能性があるためです。"

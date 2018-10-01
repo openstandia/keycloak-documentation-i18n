@@ -117,7 +117,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "It is possible to not assign any [command]`realm-management` roles to a "
-"user. In that case, a user can still log in with the Registration Client CLI"
+"user. In that case, a user can still log in with the Client Registration CLI"
 " but cannot use it without an Initial Access Token. Trying to perform any "
 "operations without a token results in a *403 Forbidden* error."
 msgstr ""
@@ -151,34 +151,30 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
+"Create a new client (for example, [filename]`reg-cli`) if you want to use a "
+"separate client configuration for the Client Registration CLI."
+msgstr ""
+"クライアント登録CLIに別のクライアント設定を使用したい場合は、新しいクライアントを作成します（たとえば、 [filename]`reg-cli` ）。"
+
+#. type: Plain text
+msgid "Toggle the *Standard Flow Enabled* setting it to *Off*."
+msgstr "*Standard Flow Enabled* を *Off* に設定します。"
+
+#. type: Plain text
+msgid ""
 "Strengthen the security by configuring the client [filename]`Access Type` as"
 " [filename]`Confidential` and selecting *Credentials > ClientId and Secret*."
 msgstr ""
 "クライアント [filename]`Access Type` を [filename]`Confidential` に設定し、 *Credentials"
 " > ClientId and Secret* を選択することで、セキュリティーを強化してください。"
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"Provide a secret when running [command]`kcreg config credentials` by using "
-"the [command]`--secret` option."
+"You can configure either [filename]`Client Id and Secret` or "
+"[filename]`Signed JWT` under the *Credentials* tab ."
 msgstr ""
-"[command]`--secret` オプションを使用して、 [command]`kcreg config credentials` "
-"を実行する際にシークレットを提供してください。"
-
-#. type: Plain text
-msgid ""
-"Create a new client (for example, [filename]`reg-cli`) if you want to use a "
-"separate client configuration for the Registration Client CLI."
-msgstr ""
-"クライアント登録CLIに別のクライアント設定を使用したい場合は、新しいクライアントを作成します（たとえば、 [filename]`reg-cli` ）。"
-
-#. type: Plain text
-msgid ""
-"Specify which [filename]`clientId` to use (for example, [command]`--client "
-"reg-cli`) when running [command]`kcreg config credentials`."
-msgstr ""
-"[command]`kcreg config credentials` を実行する際に使用する [filename]`clientId` "
-"を指定します（たとえば、 [command]`--client reg-cli` ）。"
+"*Credentials* タブの下で、 [filename]`Client Id and Secret` または [filename]`Signed "
+"JWT` のいずれかを設定できます。"
 
 #. type: Plain text
 msgid ""
@@ -192,18 +188,44 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Under *Settings*, change the *Access Type* to *Confidential*, toggle the "
-"*Service Accounts Enabled* setting to *On*, and click [btn]`Save`."
+"*Service Accounts Enabled* setting to *On*, and click *Save*."
 msgstr ""
 "*Settings* で、 *Access Type* を *Confidential* に変更し、 *Service Accounts "
-"Enabled* の設定を *On* に切り替え、 [btn]`Save` をクリックします。"
+"Enabled* の設定を *On* に切り替え、 *Save* をクリックします。"
 
-#. type: delimited block =
+#. type: Plain text
 msgid ""
-"You can configure either [filename]`Client Id and Secret` or "
-"[filename]`Signed JWT` under the *Credentials* tab ."
+"Click *Service Account Roles* and select desired roles to configure the "
+"access for the service account. For the details on what roles to select, see"
+" <<_configuring_a_user_for_client_registration_cli>>."
 msgstr ""
-"*Credentials* タブの下で、 [filename]`Client Id and Secret` または [filename]`Signed "
-"JWT` のいずれかを設定できます。"
+"*Service Account Roles* "
+"をクリックし、目的のロールを選択してサービス・アカウントのアクセスを設定します。選択するロールの詳細については、<<_configuring_a_user_for_client_registration_cli>>を参照してください。"
+
+#. type: Plain text
+msgid ""
+"Toggle the *Direct Access Grants Enabled* setting it to *On* if you want to "
+"use a regular user account instead of a service account."
+msgstr ""
+"サービス・アカウントの代わりに通常のユーザー・アカウントを使用する場合は、 *Direct Access Grants Enabled* の設定を "
+"*On* に切り替えます。"
+
+#. type: Plain text
+msgid ""
+"If the client is configured as [filename]`Confidential`, provide the "
+"configured secret when running [command]`kcreg config credentials` by using "
+"the [command]`--secret` option."
+msgstr ""
+"クライアントが [filename]`Confidential` として設定されている場合、[command]`--secret` "
+"オプションを使用して、 [command]`kcreg config credentials` を実行する際に設定されたシークレットを提供してください。"
+
+#. type: Plain text
+msgid ""
+"Specify which [filename]`clientId` to use (for example, [command]`--client "
+"reg-cli`) when running [command]`kcreg config credentials`."
+msgstr ""
+"[command]`kcreg config credentials` を実行する際に使用する [filename]`clientId` "
+"を指定します（たとえば、 [command]`--client reg-cli` ）。"
 
 #. type: Plain text
 msgid ""
@@ -221,21 +243,21 @@ msgstr "クライアント登録CLIのインストール"
 
 #. type: Plain text
 msgid ""
-"The Client Registration CLI is packaged inside the Keycloak Server "
+"The Client Registration CLI is packaged inside the {project_name} Server "
 "distribution. You can find execution scripts inside the [filename]`bin` "
 "directory. The Linux script is called [filename]`kcreg.sh`, and the Windows "
 "script is called [filename]`kcreg.bat`."
 msgstr ""
-"クライアント登録CLIは、Keycloakサーバーの配布物内にパッケージ化されています。実行スクリプトは [filename]`bin` "
-"ディレクトリーにあります。Linuxスクリプトは [filename]`kcreg.sh` で、Windowsスクリプトは "
+"クライアント登録CLIは、{project_name}サーバーの配布物内にパッケージ化されています。実行スクリプトは [filename]`bin` "
+"ディレクトリにあります。Linuxスクリプトは [filename]`kcreg.sh` で、Windowsスクリプトは "
 "[filename]`kcreg.bat` です。"
 
 #. type: Plain text
 msgid ""
-"Add the Keycloak server directory to your [filename]`PATH` when setting up "
-"the client for use from any location on the file system ."
+"Add the {project_name} server directory to your [filename]`PATH` when "
+"setting up the client for use from any location on the file system."
 msgstr ""
-"ファイル・システム上の任意の場所からクライアントを使用できるように設定するときは、Keycloakサーバーのディレクトリーを "
+"ファイル・システム上の任意の場所からクライアントを使用できるように設定するときは、{project_name}サーバーのディレクトリーを "
 "[filename]`PATH` に追加してください。"
 
 #. type: Plain text
@@ -270,9 +292,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"[filename]`KEYCLOAK_HOME` refers to a directory where the Keycloak Server "
-"distribution was unpacked."
-msgstr "[filename]`KEYCLOAK_HOME` は、Keycloakサーバーの配布物が解凍されたディレクトリーを示します。"
+"[filename]`KEYCLOAK_HOME` refers to a directory where the {project_name} "
+"Server distribution was unpacked."
+msgstr "[filename]`KEYCLOAK_HOME` は、{project_name}サーバーの配布物が解凍されたディレクトリーを示します。"
 
 #. type: Title ===
 #, no-wrap
@@ -311,11 +333,11 @@ msgstr ""
 
 #. type: delimited block =
 msgid ""
-"In a production environment, Keycloak has to be accessed with "
+"In a production environment, {project_name} has to be accessed with "
 "[filename]`https:` to avoid exposing tokens to network sniffers."
 msgstr ""
 "プロダクション環境では、ネットワーク・スニファーへのトークンの公開を避けるため、 [filename]`https:` "
-"でKeycloakにアクセスする必要があります。"
+"で{project_name}にアクセスする必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -452,9 +474,9 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "You might want to avoid storing secrets inside a configuration file by using"
-" the [command]`--no-config` option with all of your commands, even thought "
-"it is less convenient and requires more token requests to do so. Specify all"
-" authentication information with each [command]`kcreg` invocation."
+" the [command]`--no-config` option with all of your commands, even though it"
+" is less convenient and requires more token requests to do so. Specify all "
+"authentication information with each [command]`kcreg` invocation."
 msgstr ""
 "利便性が低く、より多くのトークン要求が必要ではありますが、すべてのコマンドで [command]`--no-config` "
 "オプションを使用することで、設定ファイル内にシークレットを保存しないようにすることができます。各 [command]`kcreg` "
@@ -467,14 +489,15 @@ msgstr "初期アクセストークンと登録アクセストークン"
 
 #. type: Plain text
 msgid ""
-"Developers who do not have an account configured at the Keycloak server they"
-" want to use can use the Client Registration CLI. That is possible when the "
-"realm administrator issues a developer an Initial Access Token. It is up to "
-"the realm administrator to decide how to issue and distribute these tokens. "
-"The realm administrator can limit the maximum age of the Initial Access "
-"Token and the total number of clients that can be created with it."
+"Developers who do not have an account configured at the {project_name} "
+"server they want to use can use the Client Registration CLI. This is "
+"possible only when the realm administrator issues a developer an Initial "
+"Access Token. It is up to the realm administrator to decide how and when to "
+"issue and distribute these tokens. The realm administrator can limit the "
+"maximum age of the Initial Access Token and the total number of clients that"
+" can be created with it."
 msgstr ""
-"使用したいKeycloakサーバーで設定されたアカウントを持っていない開発者は、クライアント登録CLIを使用できます。レルム管理者が開発者に初期アクセストークンを発行することにより、開発者は使用することができます。これらのトークンの発行方法と配布方法は、レルム管理者が決定します。レルム管理者は、初期アクセストークンの最大経過時間と、初期アクセストークンを使用して作成できるクライアントの総数を制限できます。"
+"使用したい{project_name}サーバーで設定されたアカウントを持っていない開発者は、クライアント登録CLIを使用できます。レルム管理者が開発者に初期アクセストークンを発行したときだけ、開発者は使用することができます。これらのトークンをいつどのように発行し配布するかは、レルム管理者が決定します。レルム管理者は、初期アクセストークンの最大経過時間と、初期アクセストークンを使用して作成できるクライアントの総数を制限できます。"
 
 #. type: Plain text
 msgid ""

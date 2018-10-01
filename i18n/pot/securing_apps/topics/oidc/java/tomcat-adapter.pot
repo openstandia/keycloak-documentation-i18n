@@ -14,6 +14,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Plain text
+msgid ""
+"This section describes how to secure a WAR directly by adding config and "
+"editing files within your WAR package."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"      version=\"3.0\">\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "\t<module-name>customer-portal</module-name>\n"
+msgstr ""
+
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -31,30 +51,11 @@ msgstr ""
 msgid "Adapter Installation"
 msgstr ""
 
-#. type: Title =====
-#, no-wrap
-msgid "Required Per WAR Configuration"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
-"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
-"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
-"      version=\"3.0\">\n"
-msgstr ""
-
 #. type: Plain text
 msgid ""
-"This section describes how to secure a WAR directly by adding config and "
-"editing files within your WAR package."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Next you must create a `keycloak.json` adapter config file within the `WEB-"
-"INF` directory of your WAR."
+"The first thing you must do is create a `META-INF/context.xml` file in your "
+"WAR package.  This is a Tomcat specific config file and you must define a "
+"Keycloak specific Valve."
 msgstr ""
 
 #. type: Plain text
@@ -65,7 +66,16 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "\t<module-name>customer-portal</module-name>\n"
+msgid ""
+"    <security-constraint>\n"
+"        <web-resource-collection>\n"
+"            <web-resource-name>Customers</web-resource-name>\n"
+"            <url-pattern>/*</url-pattern>\n"
+"        </web-resource-collection>\n"
+"        <auth-constraint>\n"
+"            <role-name>user</role-name>\n"
+"        </auth-constraint>\n"
+"    </security-constraint>\n"
 msgstr ""
 
 #. type: delimited block -
@@ -75,6 +85,24 @@ msgid ""
 "        <auth-method>BASIC</auth-method>\n"
 "        <realm-name>this is ignored currently</realm-name>\n"
 "    </login-config>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Adapters are no longer included with the appliance or war distribution.  "
+"Each adapter is a separate download on the Keycloak download site.  They are "
+"also available as a maven artifact."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Required Per WAR Configuration"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Next you must create a `keycloak.json` adapter config file within the `WEB-"
+"INF` directory of your WAR."
 msgstr ""
 
 #. type: Title ====
@@ -88,13 +116,6 @@ msgid ""
 "the Keycloak Tomcat 6, 7 or 8 adapter into your Tomcat installation.  You "
 "then have to provide some extra configuration in each WAR you deploy to "
 "Tomcat.  Let's go over these steps."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Adapters are no longer included with the appliance or war distribution.  "
-"Each adapter is a separate download on the Keycloak download site.  They are "
-"also available as a maven artifact."
 msgstr ""
 
 #. type: Plain text
@@ -116,13 +137,6 @@ msgid ""
 "$ unzip keycloak-tomcat8-adapter-dist.zip\n"
 msgstr ""
 
-#. type: Plain text
-msgid ""
-"The first thing you must do is create a `META-INF/context.xml` file in your "
-"WAR package.  This is a Tomcat specific config file and you must define a "
-"Keycloak specific Valve."
-msgstr ""
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -134,18 +148,4 @@ msgstr ""
 #. type: Plain text
 #, no-wrap
 msgid "The format of this config file is described in the <<_java_adapter_config,Java adapter configuration>>           \n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <security-constraint>\n"
-"        <web-resource-collection>\n"
-"            <web-resource-name>Customers</web-resource-name>\n"
-"            <url-pattern>/*</url-pattern>\n"
-"        </web-resource-collection>\n"
-"        <auth-constraint>\n"
-"            <role-name>user</role-name>\n"
-"        </auth-constraint>\n"
-"    </security-constraint>\n"
 msgstr ""

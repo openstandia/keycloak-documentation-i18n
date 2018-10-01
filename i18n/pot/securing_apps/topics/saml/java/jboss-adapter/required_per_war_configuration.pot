@@ -14,16 +14,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: delimited block -
+#. type: Title =====
 #, no-wrap
+msgid "Per WAR Configuration"
+msgstr ""
+
+#. type: Plain text
 msgid ""
-"    <security-role>\n"
-"        <role-name>admin</role-name>\n"
-"    </security-role>\n"
-"    <security-role>\n"
-"        <role-name>user</role-name>\n"
-"    </security-role>\n"
-"</web-app>\n"
+"This section describes how to secure a WAR directly by adding config and "
+"editing files within your WAR package."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The first thing you must do is create a `keycloak-saml.xml` adapter config "
+"file within the `WEB-INF` directory of your WAR.  The format of this config "
+"file is described in the <<_saml-general-config,General Adapter Config>> "
+"section."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Next you must set the `auth-method` to `KEYCLOAK-SAML` in `web.xml`.  You "
+"also have to use standard servlet security to specify role-base constraints "
+"on your URLs.  Here's an example _web.xml_ file:"
 msgstr ""
 
 #. type: delimited block -
@@ -33,6 +47,11 @@ msgid ""
 "      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
 "      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
 "      version=\"3.0\">\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "\t<module-name>customer-portal</module-name>\n"
 msgstr ""
 
 #. type: delimited block -
@@ -64,37 +83,6 @@ msgid ""
 "    </security-constraint>\n"
 msgstr ""
 
-#. type: Plain text
-msgid ""
-"This section describes how to secure a WAR directly by adding config and "
-"editing files within your WAR package."
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "\t<module-name>customer-portal</module-name>\n"
-msgstr ""
-
-#. type: Title =====
-#, no-wrap
-msgid "Per WAR Configuration"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The first thing you must do is create a `keycloak-saml.xml` adapter config "
-"file within the `WEB-INF` directory of your WAR.  The format of this config "
-"file is described in the <<_saml-general-config,General Adapter Config>> "
-"section."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Next you must set the `auth-method` to `KEYCLOAK-SAML` in `web.xml`.  You "
-"also have to use standard servlet security to specify role-base constraints "
-"on your URLs.  Here's an example _web.xml_ file:"
-msgstr ""
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -102,6 +90,18 @@ msgid ""
 "        <auth-method>KEYCLOAK-SAML</auth-method>\n"
 "        <realm-name>this is ignored currently</realm-name>\n"
 "    </login-config>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <security-role>\n"
+"        <role-name>admin</role-name>\n"
+"    </security-role>\n"
+"    <security-role>\n"
+"        <role-name>user</role-name>\n"
+"    </security-role>\n"
+"</web-app>\n"
 msgstr ""
 
 #. type: Plain text

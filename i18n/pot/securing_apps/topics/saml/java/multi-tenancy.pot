@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Multi Tenancy"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"SAML offers the same functionality as OIDC for <<_multi_tenancy,Multi "
+"Tenancy>>, meaning that a single target application (WAR) can be secured "
+"with multiple {project_name} realms. The realms can be located on the same "
+"{project_name} instance or on different instances."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To do this, the application must have multiple `keycloak-saml.xml` adapter "
+"configuration files."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"While you could have multiple instances of your WAR with different adapter "
+"configuration files deployed to different context-paths, this may be "
+"inconvenient and you may also want to select the realm based on something "
+"other than context-path."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} makes it possible to have a custom config resolver, so you "
+"can choose which adapter config is used for each request. In SAML, the "
+"configuration is only interesting in the login processing; once the user is "
+"logged in, the session is authenticated and it does not matter if the "
+"`keycloak-saml.xml` returned is different. For that reason, returning the "
+"same configuration for the same session is the correct way to go."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To achieve this, create an implementation of `org.keycloak.adapters.saml."
+"SamlConfigResolver`. The following example uses the `Host` header to locate "
+"the proper configuration and load it and the associated elements from the "
+"applications's Java classpath:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "package example;\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"import java.io.InputStream;\n"
+"import org.keycloak.adapters.saml.SamlConfigResolver;\n"
+"import org.keycloak.adapters.saml.SamlDeployment;\n"
+"import org.keycloak.adapters.saml.config.parsers.DeploymentBuilder;\n"
+"import org.keycloak.adapters.saml.config.parsers.ResourceLoader;\n"
+"import org.keycloak.adapters.spi.HttpFacade;\n"
+"import org.keycloak.saml.common.exceptions.ParsingException;\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "public class SamlMultiTenantResolver implements SamlConfigResolver {\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    public SamlDeployment resolve(HttpFacade.Request request) {\n"
+"        String host = request.getHeader(\"Host\");\n"
+"        String realm = null;\n"
+"        if (host.contains(\"tenant1\")) {\n"
+"            realm = \"tenant1\";\n"
+"        } else if (host.contains(\"tenant2\")) {\n"
+"            realm = \"tenant2\";\n"
+"        } else {\n"
+"            throw new IllegalStateException(\"Not able to guess the keycloak-saml.xml to load\");\n"
+"        }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"        InputStream is = getClass().getResourceAsStream(\"/\" + realm + \"-keycloak-saml.xml\");\n"
+"        if (is == null) {\n"
+"            throw new IllegalStateException(\"Not able to find the file /\" + realm + \"-keycloak-saml.xml\");\n"
+"        }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"        ResourceLoader loader = new ResourceLoader() {\n"
+"            @Override\n"
+"            public InputStream getResourceAsStream(String path) {\n"
+"                return getClass().getResourceAsStream(path);\n"
+"            }\n"
+"        };\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"        try {\n"
+"            return new DeploymentBuilder().build(is, loader);\n"
+"        } catch (ParsingException e) {\n"
+"            throw new IllegalStateException(\"Cannot load SAML deployment\", e);\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You must also configure which `SamlConfigResolver` implementation to use "
+"with the `keycloak.config.resolver` context-param in your `web.xml`:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<web-app>\n"
+"    ...\n"
+"    <context-param>\n"
+"        <param-name>keycloak.config.resolver</param-name>\n"
+"        <param-value>example.SamlMultiTenantResolver</param-value>\n"
+"    </context-param>\n"
+"</web-app>\n"
+msgstr ""

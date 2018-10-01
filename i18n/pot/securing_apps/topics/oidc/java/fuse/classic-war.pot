@@ -14,6 +14,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <security-role>\n"
+"        <role-name>admin</role-name>\n"
+"    </security-role>\n"
+"    <security-role>\n"
+"        <role-name>user</role-name>\n"
+"    </security-role>\n"
+"</web-app>\n"
+msgstr ""
+
 #. type: Plain text
 msgid "For example:"
 msgstr ""
@@ -33,14 +45,6 @@ msgstr ""
 
 #. type: Plain text
 msgid "security constraints in the <security-constraint> element"
-msgstr ""
-
-#. type: Plain text
-msgid "login configuration in the <login-config> element"
-msgstr ""
-
-#. type: Plain text
-msgid "security roles in the <security-role> element."
 msgstr ""
 
 #. type: delimited block -
@@ -80,6 +84,43 @@ msgid ""
 "    </security-constraint>\n"
 msgstr ""
 
+#. type: Plain text
+msgid ""
+"Within the `/WEB-INF/` directory of your WAR, create a new file, keycloak."
+"json. The format of this configuration file is described in the "
+"<<_java_adapter_config,Java Adapters Config>> section. It is also possible "
+"to make this file available externally as described in xref:"
+"config_external_adapter[Configuring the External Adapter]."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<context-param>\n"
+"    <param-name>keycloak.config.resolver</param-name>\n"
+"    <param-value>org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver</param-value>\n"
+"</context-param>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"org.keycloak.adapters.jetty;version=\"{project_versionMvn}\",\n"
+"org.keycloak.adapters;version=\"{project_versionMvn}\",\n"
+"org.keycloak.constants;version=\"{project_versionMvn}\",\n"
+"org.keycloak.util;version=\"{project_versionMvn}\",\n"
+"org.keycloak.*;version=\"{project_versionMvn}\",\n"
+"*;resolution:=optional\n"
+msgstr ""
+
+#. type: Plain text
+msgid "login configuration in the <login-config> element"
+msgstr ""
+
+#. type: Plain text
+msgid "security roles in the <security-role> element."
+msgstr ""
+
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -87,18 +128,6 @@ msgid ""
 "        <auth-method>BASIC</auth-method>\n"
 "        <realm-name>does-not-matter</realm-name>\n"
 "    </login-config>\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <security-role>\n"
-"        <role-name>admin</role-name>\n"
-"    </security-role>\n"
-"    <security-role>\n"
-"        <role-name>user</role-name>\n"
-"    </security-role>\n"
-"</web-app>\n"
 msgstr ""
 
 #. type: Plain text
@@ -125,15 +154,6 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Within the `/WEB-INF/` directory of your WAR, create a new file, keycloak."
-"json. The format of this configuration file is described in the "
-"<<_java_adapter_config,Java Adapters Config>> section. It is also possible "
-"to make this file available externally as described in xref:"
-"config_external_adapter[Configuring the External Adapter]."
-msgstr ""
-
-#. type: Plain text
-msgid ""
 "Ensure your WAR application imports `org.keycloak.adapters.jetty` and maybe "
 "some more packages in the `META-INF/MANIFEST.MF` file, under the `Import-"
 "Package` header. Using `maven-bundle-plugin` in your project properly "
@@ -145,17 +165,6 @@ msgstr ""
 
 #. type: Plain text
 msgid "The list of the packages to import might look like this:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"org.keycloak.adapters.jetty;version=\"{project_versionMvn}\",\n"
-"org.keycloak.adapters;version=\"{project_versionMvn}\",\n"
-"org.keycloak.constants;version=\"{project_versionMvn}\",\n"
-"org.keycloak.util;version=\"{project_versionMvn}\",\n"
-"org.keycloak.*;version=\"{project_versionMvn}\",\n"
-"*;resolution:=optional\n"
 msgstr ""
 
 #. type: Title ======
@@ -174,15 +183,6 @@ msgstr ""
 msgid ""
 "To enable the functionality, add this section to your `/WEB_INF/web.xml` "
 "file:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<context-param>\n"
-"    <param-name>keycloak.config.resolver</param-name>\n"
-"    <param-value>org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver</param-value>\n"
-"</context-param>\n"
 msgstr ""
 
 #. type: Plain text

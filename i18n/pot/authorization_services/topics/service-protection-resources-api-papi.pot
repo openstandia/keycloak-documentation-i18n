@@ -63,3 +63,206 @@ msgid ""
 "https://docs.kantarainitiative.org/uma/wg/oauth-uma-federated-authz-2.0-09."
 "html#reg-api[UMA Resource Registration API]."
 msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Creating a Resource"
+msgstr ""
+
+#. type: Plain text
+msgid "To create a resource you must send an HTTP POST request as follows:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -v -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm_name}/authz/protection/resource_set \\\n"
+"  -H 'Authorization: Bearer '$pat \\\n"
+"  -H 'Content-Type: application/json' \\\n"
+"  -d '{\n"
+"     \"name\":\"Tweedl Social Service\",\n"
+"     \"type\":\"http://www.example.com/rsrcs/socialstream/140-compatible\",\n"
+"     \"icon_uri\":\"http://www.example.com/icons/sharesocial.png\",\n"
+"     \"resource_scopes\":[\n"
+"         \"read-public\",\n"
+"         \"post-updates\",\n"
+"         \"read-private\",\n"
+"         \"http://www.example.com/scopes/all\"\n"
+"      ]\n"
+"  }'\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By default, the owner of a resource is the resource server. If you want to "
+"define a different owner, such as an specific user, you can send a request "
+"as follows:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -v -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm_name}/authz/protection/resource_set \\\n"
+"  -H 'Authorization: Bearer '$pat \\\n"
+"  -H 'Content-Type: application/json' \\\n"
+"  -d '{\n"
+"     \"name\":\"Alice Resource\",\n"
+"     \"owner\": \"alice\"\n"
+"  }'\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Where the property `owner` can be set with the username or the identifier of "
+"the user."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Creating User-Managed Resources"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By default, resources created via Protection API can not be managed by "
+"resource owners through the <<_service_authorization_my_resources, User "
+"Account Service>>."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To create resources and allow resource owners to manage these resources, you "
+"must set `ownerManagedAccess` property as follows:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -v -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm_name}/authz/protection/resource_set \\\n"
+"  -H 'Authorization: Bearer '$pat \\\n"
+"  -H 'Content-Type: application/json' \\\n"
+"  -d '{\n"
+"     \"name\":\"Alice Resource\",\n"
+"     \"owner\": \"alice\",\n"
+"     \"ownerManagedAccess\": true\n"
+"  }'\n"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Updating Resources"
+msgstr ""
+
+#. type: Plain text
+msgid "To update an existing resource, send an HTTP PUT request as follows:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -v -X PUT \\\n"
+"  http://${host}:${port}/auth/realms/${realm_name}/authz/protection/resource_set/{resource_id} \\\n"
+"  -H 'Authorization: Bearer '$pat \\\n"
+"  -H 'Content-Type: application/json' \\\n"
+"  -d '{\n"
+"     \"_id\": \"Alice Resource\",\n"
+"     \"name\":\"Alice Resource\",\n"
+"     \"resource_scopes\": [\n"
+"        \"read\"\n"
+"     ]\n"
+"  }'\n"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Deleting Resources"
+msgstr ""
+
+#. type: Plain text
+msgid "To delete an existing resource, send an HTTP DELETE request as follows:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -v -X DELETE \\\n"
+"  http://${host}:${port}/auth/realms/${realm_name}/authz/protection/resource_set/{resource_id} \\\n"
+"  -H 'Authorization: Bearer '$pat\n"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Querying Resources"
+msgstr ""
+
+#. type: Plain text
+msgid "To query the resources by `id`, send an HTTP GET request as follows:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"http://${host}:${port}/auth/realms/${realm_name}/authz/protection/"
+"resource_set/{resource_id}"
+msgstr ""
+
+#. type: Plain text
+msgid "To query resources given a `name`, send an HTTP GET request as follows:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"http://${host}:${port}/auth/realms/${realm_name}/authz/protection/"
+"resource_set?name=Alice Resource"
+msgstr ""
+
+#. type: Plain text
+msgid "To query resources given an `uri`, send an HTTP GET request as follows:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"http://${host}:${port}/auth/realms/${realm_name}/authz/protection/"
+"resource_set?uri=/api/alice"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To query resources given an `owner`, send an HTTP GET request as follows:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"http://${host}:${port}/auth/realms/${realm_name}/authz/protection/"
+"resource_set?owner=alice"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To query resources given an `type`, send an HTTP GET request as follows:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"http://${host}:${port}/auth/realms/${realm_name}/authz/protection/"
+"resource_set?type=albums"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To query resources given an `scope`, send an HTTP GET request as follows:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"http://${host}:${port}/auth/realms/${realm_name}/authz/protection/"
+"resource_set?scope=read"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When querying the server for permissions use parameters `first` and `max` "
+"results to limit the result."
+msgstr ""

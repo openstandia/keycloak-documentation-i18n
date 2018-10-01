@@ -46,6 +46,49 @@ msgid ""
 "set."
 msgstr ""
 
+#. type: Plain text
+msgid ""
+"This should be set to __true__ if your application serves both a web "
+"application and web services (e.g. SOAP or REST).  It allows you to redirect "
+"unauthenticated users of the web application to the Keycloak login page, but "
+"send an HTTP `401` status code to unauthenticated SOAP or REST clients "
+"instead as they would not understand a redirect to the login page.  Keycloak "
+"auto-detects SOAP or REST clients based on typical headers like `X-Requested-"
+"With`, `SOAPAction` or `Accept`.  The default value is _false_."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "resource"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If the {project_name} server requires HTTPS and this config option is set to "
+"`true` you do not have to specify a truststore.  This setting should only be "
+"used during development and *never* in production as it will disable "
+"verification of SSL certificates.  This is _OPTIONAL_.  The default value is "
+"`false`."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "truststore"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Password for the truststore keystore.  This is _REQUIRED_ if `truststore` is "
+"set and the truststore requires a password."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is the file path to a keystore file.  This keystore contains client "
+"certificate for two-way SSL when the adapter makes HTTPS requests to the "
+"{project_name} server.  This is _OPTIONAL_."
+msgstr ""
+
 #. type: Title ====
 #, no-wrap
 msgid "Java Adapter Config"
@@ -74,6 +117,7 @@ msgid ""
 "  \"bearer-only\" : false,\n"
 "  \"enable-basic-auth\" : false,\n"
 "  \"expose-token\" : true,\n"
+"  \"verify-token-audience\" : true,\n"
 "   \"credentials\" : {\n"
 "      \"secret\" : \"234234-234234-234234\"\n"
 "   },\n"
@@ -126,11 +170,6 @@ msgstr ""
 
 #. type: Plain text
 msgid "Name of the realm.  This is _REQUIRED._"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "resource"
 msgstr ""
 
 #. type: Plain text
@@ -291,17 +330,6 @@ msgstr ""
 msgid "autodetect-bearer-only"
 msgstr ""
 
-#. type: Plain text
-msgid ""
-"This should be set to __true__ if your application serves both a web "
-"application and web services (e.g. SOAP or REST).  It allows you to redirect "
-"unauthenticated users of the web application to the Keycloak login page, but "
-"send an HTTP `401` status code to unauthenticated SOAP or REST clients "
-"instead as they would not understand a redirect to the login page.  Keycloak "
-"auto-detects SOAP or REST clients based on typical headers like `X-Requested-"
-"With`, `SOAPAction` or `Accept`.  The default value is _false_."
-msgstr ""
-
 #. type: Labeled list
 #, no-wrap
 msgid "enable-basic-auth"
@@ -352,15 +380,6 @@ msgstr ""
 msgid "disable-trust-manager"
 msgstr ""
 
-#. type: Plain text
-msgid ""
-"If the {project_name} server requires HTTPS and this config option is set to "
-"`true` you do not have to specify a truststore.  This setting should only be "
-"used during development and *never* in production as it will disable "
-"verification of SSL certificates.  This is _OPTIONAL_.  The default value is "
-"`false`."
-msgstr ""
-
 #. type: Labeled list
 #, no-wrap
 msgid "allow-any-hostname"
@@ -385,11 +404,6 @@ msgstr ""
 msgid "The URL for the HTTP proxy if one is used."
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "truststore"
-msgstr ""
-
 #. type: Plain text
 msgid ""
 "The value is the file path to a keystore file.  If you prefix the path with "
@@ -407,19 +421,6 @@ msgstr ""
 #. type: Labeled list
 #, no-wrap
 msgid "truststore-password"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Password for the truststore keystore.  This is _REQUIRED_ if `truststore` is "
-"set and the truststore requires a password."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"This is the file path to a keystore file.  This keystore contains client "
-"certificate for two-way SSL when the adapter makes HTTPS requests to the "
-"{project_name} server.  This is _OPTIONAL_."
 msgstr ""
 
 #. type: Labeled list
@@ -563,4 +564,20 @@ msgid ""
 "where the key is the regular expression to which the Redirect URI is to be "
 "matched and the value is the replacement String.  `$` character can be used "
 "for backreferences in the replacement String."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "verify-token-audience"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If set to `true`, then during authentication with the bearer token, the "
+"adapter will verify whether the token contains this client name (resource) "
+"as an audience. The option is especially useful for services, which "
+"primarily serve requests authenticated by the bearer token. This is set to "
+"`false` by default, however for improved security, it is recommended to "
+"enable this.  See link:{adminguide_link}#_audience[Audience Support] for "
+"more details about audience support."
 msgstr ""

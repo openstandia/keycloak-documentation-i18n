@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Installing the Keycloak Feature"
+msgstr "Keycloakフィーチャーのインストール"
+
+#. type: Title ======
+#, no-wrap
+msgid "Installing from the Maven Repository"
+msgstr "Mavenリポジトリーからのインストール"
+
+#. type: Plain text
+msgid ""
+"As a prerequisite, you must be online and have access to the Maven "
+"repository."
+msgstr "前提条件として、オンラインでMavenリポジトリーにアクセスできる必要があります。"
+
+#. type: Plain text
+msgid ""
+"For community it's sufficient to be online as all the artifacts and 3rd "
+"party dependencies should be available in the maven central repository."
+msgstr ""
+"コミュニティー版の場合、すべてのアーティファクトとサード・パーティーの依存関係がMavenのセントラル・リポジトリーで利用できるため、オンラインにするだけで十分です。"
+
+#. type: Plain text
+msgid ""
+"For {project_name} you first need to configure a proper Maven repository, so"
+" you can install the artifacts. For more information see the "
+"https://access.redhat.com/maven-repository[JBoss Enterprise Maven "
+"repository] page."
+msgstr ""
+"{project_name}の場合、最初に適切なMavenリポジトリーを設定する必要があり、アーティファクトをインストールします。詳細は、 "
+"https://access.redhat.com/maven-repository[JBoss Enterprise Mavenリポジトリー] "
+"ページを参照してください。"
+
+#. type: Plain text
+msgid ""
+"Assuming the Maven repository is https://maven.repository.redhat.com/ga/, "
+"add the following to the `$FUSE_HOME/etc/org.ops4j.pax.url.mvn.cfg` file and"
+" add the repository to the list of supported repositories. For example:"
+msgstr ""
+"Mavenリポジトリーが https://maven.repository.redhat.com/ga/ であると仮定して、 "
+"`$FUSE_HOME/etc/org.ops4j.pax.url.mvn.cfg` "
+"ファイルに次の行を追加し、サポートされるリポジトリーのリストにリポジトリーを追加します。次に例を示します。"
+
+#. type: Plain text
+msgid ""
+"To install the keycloak feature using the Maven repository, complete the "
+"following steps:"
+msgstr "Mavenリポジトリーを使用して、Keycloakフィーチャーをインストールするには、以下の手順を実行します。"
+
+#. type: Plain text
+msgid "Ensure that the features were installed:"
+msgstr "以下のようにフィーチャーがインストールされていることを確認します。"
+
+#. type: Title ======
+#, no-wrap
+msgid "Installing from the ZIP bundle"
+msgstr "ZIPバンドルからのインストール"
+
+#. type: Plain text
+msgid ""
+"This is useful if you are offline or do not want to use Maven to obtain the "
+"JAR files and other artifacts."
+msgstr "これは、オフラインになっている場合や、Mavenを使用してJARファイルやその他のアーティファクトを取得したくない場合に便利です。"
+
+#. type: Plain text
+msgid ""
+"To install the Fuse adapter from the ZIP archive, complete the following "
+"steps:"
+msgstr "ZIPアーカイブからFuseアダプターをインストールするには、次の手順を実行します。"
+
+#. type: Plain text
+msgid "Download the {project_name} Fuse adapter ZIP archive."
+msgstr "{project_name} FuseアダプターのZIPアーカイブをダウンロードしてください。"
+
+#. type: Plain text
+msgid ""
+"Unzip it into the root directory of JBoss Fuse. The dependencies are then "
+"installed under the `system` directory. You can overwrite all existing jar "
+"files."
+msgstr ""
+"JBoss Fuseのルート・ディレクトリーに解凍します。依存関係にあるファイルは `system` "
+"ディレクトリーの下にインストールされます。既存のすべてのjarファイルが上書きされます。"
+
+#. type: Plain text
+msgid "Start Fuse and run these commands in the fuse/karaf terminal:"
+msgstr "Fuseを起動し、Fuse/Karafターミナルで次のコマンドを実行します。"
+
+#. type: Plain text
+msgid ""
+"You must first install the `keycloak-pax-http-undertow` and `keycloak-jaas` "
+"features in the JBoss Fuse environment. The `keycloak` feature includes the "
+"Fuse adapter and all third-party dependencies. The `keycloak-jaas` contains "
+"JAAS module used in realm for SSH and JMX authentication. You can install it"
+" either from the Maven repository or from an archive."
+msgstr ""
+"最初に `keycloak-pax-http-undertow` と `keycloak-jaas` のフィーチャーをJBoss "
+"Fuse環境にインストールする必要があります。 `keycloak` "
+"フィーチャーには、Fuseアダプターとサード・パーティーのすべての依存関係が含まれます。 `keycloak-jaas` "
+"には、SSHとJMX認証のためにレルムで使用されるJAASモジュールが含まれています。Mavenリポジトリーまたはアーカイブからインストールすることができます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"config:edit org.ops4j.pax.url.mvn\n"
+"config:property-append org.ops4j.pax.url.mvn.repositories ,https://maven.repository.redhat.com/ga@id=redhat.product.repo\n"
+"config:update\n"
+msgstr ""
+"config:edit org.ops4j.pax.url.mvn\n"
+"config:property-append org.ops4j.pax.url.mvn.repositories ,https://maven.repository.redhat.com/ga@id=redhat.product.repo\n"
+"config:update\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "feature:repo-refresh \n"
+msgstr "feature:repo-refresh \n"
+
+#. type: Plain text
+msgid "Start {fuse7Version}; then in the Karaf terminal type:"
+msgstr "{fuse7Version}を開始します。Karafターミナルで以下のとおりにタイプします。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"feature:repo-add mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"feature:install keycloak-pax-http-undertow keycloak-jaas\n"
+msgstr ""
+"feature:repo-add mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"feature:install keycloak-pax-http-undertow keycloak-jaas\n"
+
+#. type: Plain text
+msgid "You might also need to install the Undertow feature:"
+msgstr "以下のようにUndertowフィーチャーをインストールする必要もあるかもしれません。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "feature:install pax-http-undertow\n"
+msgstr "feature:install pax-http-undertow\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "feature:list | grep keycloak\n"
+msgstr "feature:list | grep keycloak\n"
+
+#. type: Plain text
+msgid "Use this for {fuse7Version}:"
+msgstr "{Fuse7Version}には、これを使用します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd /path-to-fuse/jboss-fuse-7.0.z\n"
+"ifeval::[{project_community}==true]\n"
+"unzip -q /path-to-adapter-zip/keycloak-fuse-adapter-{project_versionMvn}.zip\n"
+"endif::[]\n"
+"ifeval::[{project_product}==true]\n"
+"unzip -q /path-to-adapter-zip/rh-sso-{project_version}-fuse-adapter.zip\n"
+"endif::[]\n"
+msgstr ""
+"cd /path-to-fuse/jboss-fuse-7.0.z\n"
+"ifeval::[{project_community}==true]\n"
+"unzip -q /path-to-adapter-zip/keycloak-fuse-adapter-{project_versionMvn}.zip\n"
+"endif::[]\n"
+"ifeval::[{project_product}==true]\n"
+"unzip -q /path-to-adapter-zip/rh-sso-{project_version}-fuse-adapter.zip\n"
+"endif::[]\n"
+
+#. type: Plain text
+msgid ""
+"Install the corresponding Undertow adapter. Since the artifacts are "
+"available directly in the JBoss Fuse `system` directory, you do not need to "
+"use the Maven repository."
+msgstr ""
+"対応するUndertowアダプターをインストールします。アーティファクトはJBoss Fuseの `system` "
+"ディレクトリーから直接利用できるので、Mavenリポジトリーを使う必要はありません。"

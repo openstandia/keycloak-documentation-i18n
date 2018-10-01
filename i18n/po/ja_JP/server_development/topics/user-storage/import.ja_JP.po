@@ -20,20 +20,6 @@ msgstr ""
 msgid "PropertyFileUserStorageProvider"
 msgstr "PropertyFileUserStorageProvider"
 
-#. type: Plain text
-msgid ""
-"There are some obvious disadvantages though to using an import strategy:"
-msgstr "インポート・ストラテジーの使用には明らかな欠点がいくつかあります。"
-
-#. type: Plain text
-msgid ""
-"With the import approach, you have to keep local keycloak storage and "
-"external storage in sync. The User Storage SPI has capability interfaces "
-"that you can implement to support synchronization, but this can quickly "
-"become painful and messy."
-msgstr ""
-"インポートのアプローチでは、ローカルkeycloakストレージと外部ストレージを同期させておく必要があります。ユーザー・ストレージSPIには、実装させると同期をサポートできるようになる、インターフェイス機能がありますが、これはすぐにやっかいで面倒なものになります。"
-
 #. type: Title ===
 #, no-wrap
 msgid "Import Implementation Strategy"
@@ -68,6 +54,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
+"There are some obvious disadvantages though to using an import strategy:"
+msgstr "インポート・ストラテジーの使用には明らかな欠点がいくつかあります。"
+
+#. type: Plain text
+msgid ""
 "Looking up a user for the first time will require multiple updates to "
 "{project_name} database. This can be a big performance loss under load and "
 "put a lot of strain on the {project_name} database. The user federated "
@@ -75,6 +66,15 @@ msgid ""
 "depending on the capabilities of your external store."
 msgstr ""
 "初回のユーザーの検索では、{project_name}のデータベースを複数回更新する必要があります。これは大きなパフォーマンス低下を招き、{project_name}のデータベースに多くの負担をかけることになります。ユーザー・フェデレーティッド・ストレージのアプローチでは、必要に応じて追加のデータのみが保管され、外部ストアの機能に応じて使用されることはありません。"
+
+#. type: Plain text
+msgid ""
+"With the import approach, you have to keep local keycloak storage and "
+"external storage in sync. The User Storage SPI has capability interfaces "
+"that you can implement to support synchronization, but this can quickly "
+"become painful and messy."
+msgstr ""
+"インポートのアプローチでは、ローカルkeycloakストレージと外部ストレージを同期させておく必要があります。ユーザー・ストレージSPIには、実装させると同期をサポートできるようになる、インターフェイス機能がありますが、これはすぐにやっかいで面倒なものになります。"
 
 #. type: Plain text
 msgid ""
@@ -139,14 +139,16 @@ msgstr ""
 msgid ""
 "In this method we call the `KeycloakSession.userLocalStorage()` method to "
 "obtain a reference to local {project_name} user storage. We see if the user "
-"is stored locally, if not, we add it locally. Also note that we call "
-"`UserModel.setFederationLink()` and pass in the ID of the `ComponentModel` "
-"of our provider. This sets a link between the provider and the imported "
-"user."
+"is stored locally, if not, we add it locally. Do not set the `id` of the "
+"local user.  Let {project_name} set auto generate the `id`.  Also note that "
+"we call `UserModel.setFederationLink()` and pass in the ID of the "
+"`ComponentModel` of our provider. This sets a link between the provider and "
+"the imported user."
 msgstr ""
 "このメソッドでは `KeycloakSession.userLocalStorage()` "
-"メソッドを呼び出し、ローカルの{project_name}ユーザー・ストレージの参照を取得します。ユーザーがローカルで保存されたかどうかを確認し、そうでなかった場合はローカルにそれを追加します。また、"
-" `UserModel.setFederationLink()` を呼び出してプロバイダーの `ComponentModel` "
+"メソッドを呼び出し、ローカルの{project_name}ユーザー・ストレージの参照を取得します。ユーザーがローカルで保存されたかどうかを確認し、そうでなかった場合はローカルにそれを追加します。ローカルユーザーの"
+" `id` を設定せずに、{project_name}が `id` を自動生成するようにしてください。また、 "
+"`UserModel.setFederationLink()` を呼び出してプロバイダーの `ComponentModel` "
 "のIDに渡すことにも注意してください。これにより、プロバイダーとインポートされたユーザーの間でリンクが設定されます。"
 
 #. type: Plain text
@@ -171,23 +173,25 @@ msgstr ""
 " `false` が返ると、{project_name}では、ローカルストレージを使用して検証または更新できるかどうかを確認します。"
 
 #. type: Plain text
+#, no-wrap
 msgid ""
-"Also notice that we are proxying the local user using the "
-"`org.keycloak.models.utils.UserModelDelegate' class.  This class is an "
-"implementation of `UserModel`. Every method just delegates to the "
-"`UserModel` it was instantiated with.  We override the `setUsername()` "
-"method of this delegate class to synchronize automatically with the property"
-" file.  For your providers, you can use this to _intercept_ other methods on"
-" the local `UserModel` to perform synchronization with your external store."
-"  For example, get methods could make sure that the local store is in sync. "
-"Set methods keep the external store in sync with the local one."
+"Also notice that we are proxying the local user using the `org.keycloak.models.utils.UserModelDelegate` class.\n"
+"This class is an implementation of `UserModel`. Every method just delegates to the `UserModel` it was instantiated with.\n"
+"We override the `setUsername()` method of this delegate class to synchronize automatically with the property file.\n"
+"For your providers, you can use this to _intercept_ other methods on the local `UserModel` to perform synchronization\n"
+"with your external store.  For example, get methods could make sure that the local store is in sync. Set methods\n"
+"keep the external store in sync with the local one.  One thing to note is that the `getId()` method should always return\n"
+" the id that was auto generated when you created the user locally.  You should not return a federated id as shown in\n"
+"the other non-import examples.\n"
 msgstr ""
 "また、 `org.keycloak.models.utils.UserModelDelegate` "
-"クラスを使用するローカルユーザーをプロキシしている点にも注意してください。このクラスは `UserModel` "
+"クラスを使用するローカルユーザーをプロキシーしている点にも注意してください。このクラスは `UserModel` "
 "の実装です。すべてのメソッドは、インスタンス化された `UserModel` に委譲します。この委譲クラスの `setUsername()` "
 "メソッドをオーバーライドし、自動的にプロパティー・ファイルと同期させます。プロバイダーの場合は、これを使用して、ローカルの `UserModel` "
 "上の他のメソッドを _intercept_ "
-"して、外部ストアと同期させることができます。たとえば、getメソッドは、ローカルストアが同期していることを確認することができます。setメソッドは、外部ストアをローカルストアと同期し続けることができます。"
+"して、外部ストアと同期させることができます。たとえば、getメソッドは、ローカルストアが同期していることを確認することができます。setメソッドは、外部ストアをローカルストアと同期し続けることができます。注目すべきは、"
+" `getId()` メソッドは、ユーザーをローカルで作成したときに自動的に生成されたIDを常に返すべきだということです。 "
+"他の非インポートの例に示すように、フェデレーションIDを返すべきではありません。\n"
 
 #. type: Plain text
 #, no-wrap

@@ -30,7 +30,7 @@ msgid ""
 "{project_name} supports login with a X.509 client certificate if the server "
 "is configured for mutual SSL authentication."
 msgstr ""
-"{project_name}は、サーバーが相互SSL認証用に設定されている場合、X.509クライアント証明書によるログインをサポートします。"
+"{project_name}は、サーバーがMutual SSL認証用に設定されている場合、X.509クライアント証明書によるログインをサポートします。"
 
 #. type: Plain text
 msgid "A typical workflow is as follows:"
@@ -132,7 +132,8 @@ msgid ""
 "X500 Subject's e-mail from Subject Alternative Name Extension (RFC822Name "
 "General Name)"
 msgstr ""
-"Subject Alternative Name Extension (RFC822Name General Name)からの件名の電子メール"
+"Subject Alternative Name Extension（RFC822Name General Name）からのX500 Subject's"
+" e-mail"
 
 #. type: Plain text
 msgid "X500 Subject's Common Name attribute"
@@ -486,13 +487,13 @@ msgid ""
 "Make a copy of the built-in \"Browser\" flow. You may want to give the new "
 "flow a distinctive name, i.e. \"X.509 Browser\""
 msgstr ""
-"ビルトインの\"Browser\"フローのコピーを作成します。新しいフローに特有の名前、すなわち、\"X.509 "
-"Browser\"を付けることをお勧めします。"
+"ビルトインの \"Browser\" フローのコピーを作成します。新しいフローに特有の名前、すなわち、 \"X.509 Browser\" "
+"を付けることをお勧めします。"
 
 #. type: Plain text
 msgid ""
 "Using the drop down, select the copied flow, and click on \"Add execution\""
-msgstr "ドロップダウンを使用して、コピーされたフローを選択し、\"Add execution\"をクリックします。"
+msgstr "ドロップダウンを使用して、コピーされたフローを選択し、 \"Add execution\" をクリックします。"
 
 #. type: Plain text
 msgid "Select \"X509/Validate User Form\" using the drop down and click on \"Save\""
@@ -660,8 +661,9 @@ msgid ""
 "Section-4.2.1.3]. The server will raise an error only when flagged as "
 "critical by the issuing CA and there is a key usage extension mismatch."
 msgstr ""
-"証明書のKeyUsage拡張のビットが設定されているかどうかを確認します。たとえば、\"digitalSignature,KeyEncipherment\"は、KeyUsage拡張のビット0と2がアサートされているかどうかを検証します。Key"
-" "
+"証明書のKeyUsage拡張のビットが設定されているかどうかを確認します。たとえば、 "
+"\"digitalSignature,KeyEncipherment\" "
+"は、KeyUsage拡張のビット0と2がアサートされているかどうかを検証します。Key "
 "Usageの有効性を無効にするには、パラメータを空のままにします。link:https://tools.ietf.org/html/rfc5280#section-4.2.1.3[RFC5280、セクション4.2.1.3]を参照してください。サーバーは、発行認証局によってクリティカルであるとフラグが立てられ、キー使用拡張の不一致がある場合にのみ、エラーを発生させます。"
 
 #. type: Labeled list
@@ -706,8 +708,8 @@ msgid ""
 "Using {project_name} admin console, click on \"Authentication\" and select "
 "the \"Direct Grant\" flow,"
 msgstr ""
-"{project_name}管理コンソールを使用して、\"Authentication\"をクリックし、\"Direct "
-"Grant\"フローを選択します。"
+"{project_name}管理コンソールを使用して、 \"Authentication\" をクリックし、 \"Direct Grant\" "
+"フローを選択します。"
 
 #. type: Plain text
 msgid ""
@@ -719,15 +721,15 @@ msgstr ""
 
 #. type: Plain text
 msgid "Delete \"Username Validation\" and \"Password\" authenticators,"
-msgstr "\"Username Validation\"と\"Password\"のオーセンティケーターを削除します。"
+msgstr "\"Username Validation\" と \"Password\" のオーセンティケーターを削除します。"
 
 #. type: Plain text
 msgid ""
 "Click on \"Add execution\" and add \"X509/Validate Username\" and click on "
 "\"Save\" to add the execution step to the parent flow."
 msgstr ""
-"\"Add execution\"をクリックし、\"X509/Validate "
-"Username\"を追加し、\"Save\"をクリックして実行ステップを親フローに追加します。"
+"\"Add execution\" をクリックし、 \"X509/Validate Username\" を追加し、 \"Save\" "
+"をクリックして実行ステップを親フローに追加します。"
 
 #. type: Plain text
 msgid "image:images/x509-directgrant-execution.png[]"
@@ -777,7 +779,7 @@ msgid ""
 msgstr ""
 "HTTPリクエストが{project_name}サーバーに直接送信されると、{appserver_name} "
 "undertowサブシステムはSSLハンドシェイクを確立し、クライアント証明書を抽出します。クライアント証明書は、サーブレット仕様で指定されているHTTPリクエストの属性"
-" `javax.servlet.request.X509Certificate` に保存されます。 {project_name} "
+" `javax.servlet.request.X509Certificate` に保存されます。{project_name} "
 "X509オーセンティケーターは、この属性から証明書を検索できます。"
 
 #. type: Plain text
@@ -791,7 +793,9 @@ msgid ""
 "certificate chain from the HTTP headers instead of from the attribute of "
 "HTTP request, as is done for Undertow."
 msgstr ""
-"ただし、{project_name}サーバーがロードバランサーまたはリバース・プロキシーの背後にあるHTTPリクエストをリッスンする場合、クライアント証明書を抽出して相互SSL接続を確立するのはプロキシー・サーバーであるかもしれません。リバース・プロキシーは通常、認証されたクライアント証明書を基礎となるもとのリクエストのHTTPヘッダーに入れ、バックエンドの{project_name}サーバーに転送します。この場合、{project_name}は、Undertowの場合と同様に、HTTPリクエストの属性ではなく、HTTPヘッダーからX.509証明書チェーンをルックアップできる必要があります。"
+"ただし、{project_name}サーバーがロードバランサーまたはリバース・プロキシーの背後にあるHTTPリクエストをリッスンする場合、クライアント証明書を抽出してMutual"
+" "
+"SSL接続を確立するのはプロキシー・サーバーであるかもしれません。リバース・プロキシーは通常、認証されたクライアント証明書を基礎となるもとのリクエストのHTTPヘッダーに入れ、バックエンドの{project_name}サーバーに転送します。この場合、{project_name}は、Undertowの場合と同様に、HTTPリクエストの属性ではなく、HTTPヘッダーからX.509証明書チェーンをルックアップできる必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -816,8 +820,7 @@ msgid ""
 "You can use this provider when your {project_name} server is behind an "
 "HAProxy reverse proxy. Configure the server like this:"
 msgstr ""
-"{project_name}サーバーがHAProxyリバース・プロキシーの背後にある場合、このプロバイダーを使用できます。 "
-"次のようにサーバーを構成します。"
+"{project_name}サーバーがHAProxyリバース・プロキシーの背後にある場合、このプロバイダーを使用できます。次のようにサーバーを構成します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -854,8 +857,8 @@ msgid ""
 "be `CERT_CHAIN_9` ."
 msgstr ""
 "この設定例では、クライアント証明書はHTTPヘッダー `SSL_CLIENT_CERT` から検索され、チェーンの他の証明書は "
-"`CERT_CHAIN_0` 、 `CERT_CHAIN_1` 、…、` CERT_CHAIN_9' のようなHTTPヘッダーから検索されます。属性 "
-"`certificateChainLength` はチェーンの最大長です。最後に試した属性は `CERT_CHAIN_9` です。"
+"`CERT_CHAIN_0` 、 `CERT_CHAIN_1` 、…、` CERT_CHAIN_9` のようなHTTPヘッダーから検索されます。属性 "
+"`certificateChainLength` はチェーンの最大長です。最後に試行された属性は `CERT_CHAIN_9` です。"
 
 #. type: Plain text
 msgid ""
@@ -930,7 +933,7 @@ msgid ""
 "add your own provider."
 msgstr ""
 "他のリバース・プロキシーの実装のための組み込みサポートはありません。しかし、他のリバース・プロキシーを `apache` や `haproxy` "
-"と同様に動作させることができ、それらのプロバイダーの一部を使用することも可能です。これらのいずれの作業もない場合は、 "
+"と同様に動作させることができれば、それらのプロバイダーを使用することも可能です。そのような動作ができない場合は、 "
 "`org.keycloak.services.x509.X509ClientCertificateLookupFactory` と "
 "`org.keycloak.services.x509.X509ClientCertificateLookup` "
 "プロバイダーの独自の実装を作成する必要があります。独自のプロバイダーを追加する方法については、link:{developerguide_link}[{developerguide_name}]を参照してください。"

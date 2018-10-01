@@ -16,8 +16,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/java-adapter-config.adoc:127
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:58
 msgid ""
 "This should be set to __true__ if your application serves both a web "
 "application and web services (e.g. SOAP or REST).  It allows you to redirect"
@@ -35,25 +33,20 @@ msgstr ""
 "です。"
 
 #. type: Labeled list
-#: source/securing_apps/topics/saml/java/general-config/idp_element.adoc:18
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:18
 #, no-wrap
 msgid "entityID"
 msgstr "entityID"
 
 #. type: Title =====
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:2
 #, no-wrap
 msgid "SP Element"
 msgstr "SP要素"
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:5
 msgid "Here is the explanation of the SP element attributes:"
 msgstr "ここでは、SP要素の属性の説明をします。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:17
 #, no-wrap
 msgid ""
 "<SP entityID=\"sp\"\n"
@@ -75,7 +68,6 @@ msgstr ""
 "</SP>\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:21
 msgid ""
 "This is the identifier for this client.  The IdP needs this value to "
 "determine who the client is that is communicating with it. This setting is "
@@ -84,13 +76,11 @@ msgstr ""
 "このクライアントの識別子です。IdPは、IdPと通信しているクライアントを特定するため、この値を必要とします。この設定は、_REQUIRED_ です。"
 
 #. type: Labeled list
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:22
 #, no-wrap
 msgid "sslPolicy"
 msgstr "sslPolicy"
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:29
 msgid ""
 "This is the SSL policy the adapter will enforce.  Valid values are: `ALL`, "
 "`EXTERNAL`, and `NONE`.  For `ALL`, all requests must come in via HTTPS.  "
@@ -104,13 +94,11 @@ msgstr ""
 "の場合、HTTPS経由であることは要求されません。この設定は _OPTIONAL_ です。デフォルト値は `EXTERNAL` です。"
 
 #. type: Labeled list
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:30
 #, no-wrap
 msgid "nameIDPolicyFormat"
 msgstr "nameIDPolicyFormat"
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:36
 msgid ""
 "SAML clients can request a specific NameID Subject format.  Fill in this "
 "value if you want a specific format.  It must be a standard SAML format "
@@ -123,13 +111,11 @@ msgstr ""
 "_OPTIONAL_ です。デフォルトでは、特別な形式は要求されません。"
 
 #. type: Labeled list
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:37
 #, no-wrap
 msgid "forceAuthentication"
 msgstr "forceAuthentication"
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:41
 msgid ""
 "SAML clients can request that a user is re-authenticated even if they are "
 "already logged in at the IdP.  Set this to `true` to enable. This setting is"
@@ -139,13 +125,11 @@ msgstr ""
 "に設定します。この設定は _OPTIONAL_ です。デフォルト値は `false` です。"
 
 #. type: Labeled list
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:42
 #, no-wrap
 msgid "isPassive"
 msgstr "isPassive"
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:47
 msgid ""
 "SAML clients can request that a user is never asked to authenticate even if "
 "they are not logged in at the IdP.  Set this to `true` if you want this.  Do"
@@ -157,13 +141,11 @@ msgstr ""
 "です。デフォルト値は `false` です。"
 
 #. type: Labeled list
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:48
 #, no-wrap
 msgid "turnOffChangeSessionIdOnLogin"
 msgstr "turnOffChangeSessionIdOnLogin"
 
 #. type: Plain text
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:52
 msgid ""
 "The session ID is changed by default on a successful login on some platforms"
 " to plug a security attack vector.  Change this to `true` to disable this.  "
@@ -173,7 +155,27 @@ msgstr ""
 "`true` に変更してください。これは無効にしないことをお勧めします。デフォルト値は `false` です。"
 
 #. type: Labeled list
-#: source/securing_apps/topics/saml/java/general-config/sp_element.adoc:53
 #, no-wrap
 msgid "autodetectBearerOnly"
 msgstr "autodetectBearerOnly"
+
+#. type: Labeled list
+#, no-wrap
+msgid "logoutPage"
+msgstr "logoutPage"
+
+#. type: Plain text
+msgid ""
+"This sets the page to display after logout. If the page is a full URL, such "
+"as `http://web.example.com/logout.html`, the user is redirected after logout"
+" to that page using the HTTP `302` status code. If a link without scheme "
+"part is specified, such as `/logout.jsp`, the page is displayed after "
+"logout, _regardless of whether it lies in a protected area according to "
+"`security-constraint` declarations in web.xml_, and the page is resolved "
+"relative to the deployment context root."
+msgstr ""
+"これは、ログアウト後に表示するページを設定します。ページが `http://web.example.com/logout.html` "
+"のような完全なURLである場合、ログアウトすると、HTTP `302` ステータスコードを使用してそのページにリダイレクトされます。 "
+"`/logout.jsp` のようなスキーム部分を持たないリンクが指定された場合、 _web.xmlの `security-constraint` "
+"宣言に従って保護されたレルムにあるかどうかに関わらず、_ "
+"ログアウト後にそのページが表示されます。このページは、デプロイメント・コンテキスト・ルートに関連して解決されます。"

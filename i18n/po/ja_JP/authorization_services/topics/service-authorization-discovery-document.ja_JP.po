@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2018\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =
+#, no-wrap
+msgid "Discovering Authorization Services Endpoints and Metadata"
+msgstr "認可サービスのエンドポイントとメタデータの検出"
+
+#. type: Plain text
+msgid ""
+"{project_name} provides a discovery document from which clients can obtain "
+"all necessary information to interact with {project_name} Authorization "
+"Services, including endpoint locations and capabilities."
+msgstr ""
+"{project_name}は、クライアントが{project_name}認可サービスと対話するために必要なすべての情報を取得するためのディスカバリー・ドキュメントを提供します。これにはエンドポイントの場所とケイパビリティーを含んでいます。"
+
+#. type: Plain text
+msgid "The discovery document can be obtained from:"
+msgstr "ディスカバリー・ドキュメントは以下から入手できます。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X GET \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/.well-known/uma2-configuration\n"
+msgstr ""
+"curl -X GET \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/.well-known/uma2-configuration\n"
+
+#. type: Plain text
+msgid ""
+"Where `${host}:${port}` is the hostname (or IP address) and port where "
+"{project_name} is running and `${realm}` is the name of a realm in "
+"{project_name}."
+msgstr ""
+"`${host}:${port}` は、{project_name}が実行されているホスト名（またはIPアドレス）とポートであり、 `${realm}`"
+" は{project_name}のレルム名です。"
+
+#. type: Plain text
+msgid "As a result, you should get a response as follows:"
+msgstr "その結果、次のようなレスポンスが得られます。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"{\n"
+"\n"
+"    // some claims are expected here\n"
+"\n"
+"    // these are the main claims in the discovery document about Authorization Services endpoints location\n"
+"    \"token_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/protocol/openid-connect/token\",\n"
+"    \"token_introspection_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/protocol/openid-connect/token/introspect\",\n"
+"    \"resource_registration_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/authz/protection/resource_set\",\n"
+"    \"permission_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/authz/protection/permission\"\n"
+"}\n"
+msgstr ""
+"{\n"
+"\n"
+"    // some claims are expected here\n"
+"\n"
+"    // these are the main claims in the discovery document about Authorization Services endpoints location\n"
+"    \"token_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/protocol/openid-connect/token\",\n"
+"    \"token_introspection_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/protocol/openid-connect/token/introspect\",\n"
+"    \"resource_registration_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/authz/protection/resource_set\",\n"
+"    \"permission_endpoint\": \"http://${host}:${post}/auth/realms/${realm}/authz/protection/permission\"\n"
+"}\n"
+
+#. type: Plain text
+msgid "Each of these endpoints expose a specific set of capabilities:"
+msgstr "これらの各エンドポイントは、特定のケイパビリティーのセットを公開します。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**token_endpoint**\n"
+msgstr "**token_endpoint**\n"
+
+#. type: Plain text
+msgid ""
+"A OAuth2-compliant Token Endpoint that supports the `urn:ietf:params:oauth"
+":grant-type:uma-ticket` grant type. Through this endpoint clients can send "
+"authorization requests and obtain an RPT with all permissions granted by "
+"{project_name}."
+msgstr ""
+"`urn:ietf:params:oauth:grant-type:uma-ticket` "
+"グラントタイプをサポートするOAuth2準拠のトークン・エンドポイント。このエンドポイントを通じて、クライアントは、{project_name}によって許可されたすべてのパーミッションを使用して認可リクエストを送信し、RPTを取得できます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**token_introspection_endpoint**\n"
+msgstr "**token_introspection_endpoint**\n"
+
+#. type: Plain text
+msgid ""
+"A OAuth2-compliant Token Introspection Endpoint which clients can use to "
+"query the server to determine the active state of an RPT and to determine "
+"any other information associated with the token, such as the permissions "
+"granted by {project_name}."
+msgstr ""
+"クライアントがRPTのアクティブな状態を判断し、トークンに関連付けられているその他の情報（{project_name}によって付与されたパーミッションなど）を決定するため、サーバーの検索に使用できるOAuth2準拠のトークン・イントロスペクション・エンドポイント。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**resource_registration_endpoint**\n"
+msgstr "**resource_registration_endpoint**\n"
+
+#. type: Plain text
+msgid ""
+"A UMA-compliant Resource Registration Endpoint which resource servers can "
+"use to manage their protected resources and scopes. This endpoint provides "
+"operations create, read, update and delete resources and scopes in "
+"{project_name}."
+msgstr ""
+"リソースサーバーが保護されたリソースとスコープを管理するために使用できるUMA準拠のリソース登録エンドポイント。このエンドポイントは、{project_name}のリソースとスコープの作成、読み取り、更新、および削除の操作を提供します。"
+
+#. type: Plain text
+#, no-wrap
+msgid "**permission_endpoint**\n"
+msgstr "**permission_endpoint**\n"
+
+#. type: Plain text
+msgid ""
+"A UMA-compliant Permission Endpoint which resource servers can use to manage"
+" permission tickets. This endpoint provides operations create, read, update,"
+" and delete permission tickets in {project_name}."
+msgstr ""
+"リソースサーバーがパーミッション・チケットの管理に使用できるUMA準拠のパーミッション・エンドポイント。このエンドポイントは、{project_name}のパーミッション・チケットの作成、読み取り、更新、および削除の操作を提供します。"

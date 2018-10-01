@@ -16,13 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:2
 #, no-wrap
 msgid "Parameters Forwarding"
 msgstr "パラメーター・フォワーディング"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:8
 msgid ""
 "The {project_name} initial authorization endpoint request has support for "
 "various parameters. Most of the parameters are described in "
@@ -39,7 +37,6 @@ msgstr ""
 "に記述されています。一部のパラメーターは、アダプターの設定に基づいて、アダプターにより自動的に追加されます。ただし、呼び出しごとに追加できるパラメーターもいくつかあります。保護されたアプリケーションURIにアクセスすると、特定のパラメーターは{project_name}認可エンドポイントにフォワードされます。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:10
 msgid ""
 "For example, if you request an offline token, then you can open the secured "
 "application URI with the `scope` parameter like:"
@@ -47,52 +44,76 @@ msgstr ""
 "たとえば、オフライントークンを要求する場合、以下のように `scope` パラメーターを使用して保護されたアプリケーションのURIにアクセスできます。"
 
 #. type: delimited block -
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:14
 #, no-wrap
 msgid "http://myappserver/mysecuredapp?scope=offline_access\n"
 msgstr "http://myappserver/mysecuredapp?scope=offline_access\n"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:17
 msgid ""
 "and the parameter `scope=offline_access` will be automatically forwarded to "
 "the {project_name} authorization endpoint."
 msgstr "パラメーター `scope=offline_access` が自動的に{project_name}認可エンドポイントにフォワードされます。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:19
 msgid "The supported parameters are:"
 msgstr "サポートされるパラメーターは次のとおりです。"
 
-#. type: Labeled list
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:21
-#: source/securing_apps/topics/token-exchange/token-exchange.adoc:63
-#, no-wrap
-msgid "scope"
-msgstr "scope"
+#. type: Plain text
+msgid ""
+"scope - Use a space-delimited list of scopes. A space-delimited list "
+"typically references link:{adminguide_link}#_client_scopes[Client scopes] "
+"defined on particular client. Note that the scope `openid` will be always be"
+" added to the list of scopes by the adapter. For example, if you enter the "
+"scope options `address phone`, then the request to {project_name} will "
+"contain the scope parameter `scope=openid address phone`."
+msgstr ""
+"scope - "
+"スペース区切りのスコープリストを使用します。スペースで区切られたリストは通常、特定のクライアントで定義されたlink:{adminguide_link}#_client_scopes[クライアントスコープ]を参照します。スコープ"
+" `openid` は、アダプターによって常にスコープのリストに追加されることに注意してください。たとえば、スコープ・オプション `address "
+"phone` を入力すると、{project_name}へのリクエストにスコープ・パラメーター `scope=openid address phone`"
+" が含まれます。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:23
-msgid "prompt"
-msgstr "prompt"
+msgid ""
+"prompt - {project_name} supports these settings: ** `login` - SSO will be "
+"ignored and the {project_name} login page will be always shown, even if the "
+"user is already authenticated ** `none` - The login page will never be "
+"shown; instead the user will be redirected to the application, with an error"
+" if the user is not yet authenticated. This setting allows you to create a "
+"filter/interceptor on the application side and show a custom error page to "
+"the user. See more details in the specification."
+msgstr ""
+"prompt - {project_name}は以下の設定をサポートしています：\n"
+"** `login` - SSOは無視され、ユーザーがすでに認証されていても{project_name}ログインページが常に表示されます\n"
+"** `none` - ログインページは表示されません。代わりにユーザーはアプリケーションにリダイレクトされ、ユーザーがまだ認証されていない場合はエラーが発生します。この設定により、アプリケーション側でフィルター/インターセプターを作成し、ユーザーにカスタム・エラーページを表示することができます。詳細については、仕様を参照してください。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:25
-msgid "max_age"
-msgstr "max_age"
+msgid ""
+"max_age - Used only if a user is already authenticated. Specifies maximum "
+"permitted time for the authentication to persist, measured from when the "
+"user authenticated. If user is authenticated longer than `maxAge`, the SSO "
+"is ignored and he must re-authenticate."
+msgstr ""
+"max_age - "
+"ユーザーがすでに認証されている場合にのみ使用されます。ユーザーが認証されたときから測定された、認証が維持される最大許容時間を指定します。ユーザーが認証されてから"
+" `maxAge` が経過すると、SSOは無視され、再認証が必要になります。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:27
-msgid "login_hint"
-msgstr "login_hint"
+msgid ""
+"login_hint - Used to pre-fill the username/email field on the login form."
+msgstr "login_hint - ログイン・フォームのユーザー名/電子メール・フィールドを事前入力するために使用されます。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:29
-msgid "kc_idp_hint"
-msgstr "kc_idp_hint"
+msgid ""
+"kc_idp_hint - Used to tell {project_name} to skip showing login page and "
+"automatically redirect to specified identity provider instead.  More info in"
+" the link:{adminguide_link}#_client_suggested_idp[Identity Provider "
+"documentation]."
+msgstr ""
+"kc_idp_hint - "
+"{project_name}にログインページの表示をスキップし、代わりに指定されたアイデンティティー・プロバイダーに自動的にリダイレクトするように指示するために使用されます。詳細は、link:{adminguide_link}#_client_suggested_idp[アイデンティティー・プロバイダーのドキュメント]を参照してください。"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/params_forwarding.adoc:32
 msgid ""
 "Most of the parameters are described in the http://openid.net/specs/openid-"
 "connect-core-1_0.html#AuthorizationEndpoint[OIDC specification].  The only "
@@ -105,3 +126,17 @@ msgstr ""
 "1_0.html#AuthorizationEndpoint[OIDC仕様] に記載されています。唯一の例外はパラメーター `kc_idp_hint` "
 "です。これは{project_name}固有で、自動的に使用するアイデンティティー・プロバイダーの名前を含んでいます。詳細はlink:{adminguide_link}[{adminguide_name}]の"
 " `アイデンティティー・ブローカリング` のセクションを参照してください。"
+
+#. type: Plain text
+msgid ""
+"If you open the URL using the attached parameters, the adapter will not "
+"redirect you to {project_name} if you are already authenticated in the "
+"application. For example, opening "
+"$$http://myappserver/mysecuredapp?prompt=login$$ will not automatically "
+"redirect you to the {project_name} login page if you are already "
+"authenticated to the application `mysecredapp` . This behavior may be "
+"changed in the future."
+msgstr ""
+"アプリケーションで既に認証されている場合、添付されたパラメーターを使用してURLを開いても、アダプターは{project_name}にリダイレクトしません。たとえば、アプリケーションmysecredappにすでに認証されている場合、"
+" $$http://myappserver/mysecuredapp?prompt=login$$ "
+"を開いても、自動的に{project_name}ログインページにリダイレクトされません。この挙動は将来変更される可能性があります。"

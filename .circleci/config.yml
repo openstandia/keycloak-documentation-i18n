@@ -11,7 +11,7 @@ jobs:
       - run:
           name: clean s3 for deleted branches
           command: |
-            S3_BRANCHES=`aws s3 ls s3://keycloak-documentation/ | grep PRE | sed -e "s|.*PRE \(.*\)/.*|\1|" | grep -v "^review$"`
+            S3_BRANCHES=`aws s3 ls s3://keycloak-documentation/ | grep PRE | sed -e "s|.*PRE \(.*\)/.*|\1|" | grep -v "^review$" | grep -v ".*\.Final$"`
             GIT_BRANCHES=`git branch -r | sed -e "s|.* origin/||"` 
 
             echo "--- S3 Folders ---"
@@ -97,13 +97,51 @@ jobs:
             [[ "$CIRCLE_BRANCH" != translate-* ]] && aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_BRANCH/ --delete
             echo "end"
 
+  tag_deploy:
+    docker:
+      - image: openstandia/keycloak-documentation-i18n:po4a-patch
+
+    working_directory: ~/repo
+
+    steps:
+      - restore_cache:
+          keys:
+            - dist-{{ .Branch }}-
+      - run:
+          name: deply to s3
+          command: |
+            cp -r ~/repo/site/* ~/repo/translated/dist/
+
+            VERSION=`grep "SOURCE_REVISION" ~/repo/settings.sh | cut -d "=" -f 2`
+            sed -e "s|@VERSION@|$VERSION|g" ~/repo/site/index.html.tmpl > ~/repo/translated/dist/index.html
+
+            rm ~/repo/translated/dist/index.html.tmpl
+            rm ~/repo/site/index.html.tmpl
+
+            [[ "$CIRCLE_TAG" = *.Final ]] && aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_TAG/ --delete
+            echo "end"
+
 workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - clean
-      - build
+      - clean:
+          filters:
+            tags:
+              only: /.*\.Final/
+      - build:
+          filters:
+            tags:
+              only: /.*\.Final/
       - deploy:
           requires:
             - build
+      - tag_deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /.*\.Final/
+            branches:
+              ignore: /.*/
 

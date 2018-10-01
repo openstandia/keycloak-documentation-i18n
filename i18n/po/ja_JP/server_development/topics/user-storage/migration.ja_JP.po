@@ -15,6 +15,20 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: Plain text
+msgid ""
+"There are some obvious disadvantages though to using an import strategy:"
+msgstr "インポート・ストラテジーの使用には明らかな欠点がいくつかあります。"
+
+#. type: Plain text
+msgid ""
+"With the import approach, you have to keep local keycloak storage and "
+"external storage in sync. The User Storage SPI has capability interfaces "
+"that you can implement to support synchronization, but this can quickly "
+"become painful and messy."
+msgstr ""
+"インポートのアプローチでは、ローカルのkeycloakストレージと外部ストレージを同期させておく必要があります。ユーザー・ストレージSPIには、同期をサポートできるために実装できるケーパビリティー・インターフェイスがありますが、これはすぐにやっかいで面倒なものになります。"
+
 #. type: Title ===
 #, no-wrap
 msgid "Migrating from an Earlier User Federation SPI"
@@ -54,7 +68,7 @@ msgid ""
 "You can still port your earlier provider as-is, but you should consider "
 "whether a non-import strategy might be a better approach."
 msgstr ""
-"以前のユーザー・フェデレーションSPIでは、{project_name}のデータベース内でユーザーのローカルコピーを作成し、外部ストアからの情報をローカルコピーにインポートする必要がありました。しかし、これはもう要件ではなくなりました。以前のプロバイダーをそのまま移植することもできますが、非インポート戦略の方がより良いアプローチになるかを検討する必要があります。"
+"以前のユーザー・フェデレーションSPIでは、{project_name}のデータベース内でユーザーのローカルコピーを作成し、外部ストアからの情報をローカルコピーにインポートする必要がありました。しかし、これはもう要件ではなくなりました。以前のプロバイダーをそのまま移植することもできますが、非インポート・ストラテジーの方がより良いアプローチになるかを検討する必要があります。"
 
 #. type: Plain text
 msgid "Advantages of the import strategy:"
@@ -80,11 +94,6 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There are some obvious disadvantages though to using an import strategy:"
-msgstr "インポート戦略の使用には明らかな欠点がいくつかあります。"
-
-#. type: Plain text
-msgid ""
 "Looking up a user for the first time will require multiple updates to "
 "{project_name} database. This can be a big performance loss under load and "
 "put a lot of strain on the {project_name} database. The user federated "
@@ -93,15 +102,6 @@ msgid ""
 msgstr ""
 "初めてユーザーを検索するには、{project_name}データベースを複数回更新する必要があります。これは、負荷がかかった状態でパフォーマンスが大きく低下する可能性があり、{project_name}データベースに多くの負担をかけることになります。ユーザー・フェデレーティッド・ストレージ・アプローチでは、必要以上のデータを保持し、外部ストアの機能に応じて使用されるということがありません。"
 " "
-
-#. type: Plain text
-msgid ""
-"With the import approach, you have to keep local keycloak storage and "
-"external storage in sync. The User Storage SPI has capability interfaces "
-"that you can implement to support synchronization, but this can quickly "
-"become painful and messy."
-msgstr ""
-"インポートのアプローチでは、ローカルのkeycloakストレージと外部ストレージを同期させておく必要があります。ユーザー・ストレージSPIには、同期をサポートできるために実装できるケーパビリティー・インターフェイスがありますが、これはすぐにやっかいで面倒なものになります。"
 
 #. type: Title ====
 #, no-wrap
@@ -130,7 +130,7 @@ msgid ""
 "`userStorage()` method no longer exists."
 msgstr ""
 "`UserFederationProvider.getUserByUsername()` と `getUserByEmail()` "
-"は、新しいSPIに完全に同等のものを持ちます。この両者の違いはインポート方法にあります。インポート戦略を引き続き使用している場合、ユーザーをローカルで作成するために"
+"は、新しいSPIに完全に同等のものを持ちます。この両者の違いはインポート方法にあります。インポート・ストラテジーを引き続き使用している場合、ユーザーをローカルで作成するために"
 " `KeycloakSession.userStorage().addUser()` を呼び出す必要はありません。その代わりに、 "
 "`KeycloakSession.userLocalStorage().addUser()` を呼び出します。 `userStorage()` "
 "メソッドは存在しません。"
@@ -277,4 +277,4 @@ msgid ""
 "upgrading {project_name}. This will remove linked local imported copies of "
 "any user you imported."
 msgstr ""
-"インポート戦略を廃止してユーザー・ストレージ・プロバイダーを実装し直すことに決めた場合は、{project_name}をアップグレードする前に以前のプロバイダーを削除することをお勧めします。これにより、インポートされたすべてのユーザーのリンクされたローカル・インポート済みのコピーが削除されます。"
+"インポート・ストラテジーを廃止してユーザー・ストレージ・プロバイダーを実装し直すことに決めた場合は、{project_name}をアップグレードする前に以前のプロバイダーを削除することをお勧めします。これにより、インポートされたすべてのユーザーのリンクされたローカル・インポート済みのコピーが削除されます。"

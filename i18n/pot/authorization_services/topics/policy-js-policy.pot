@@ -14,6 +14,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Title ==
+#, no-wrap
+msgid "Configuration"
+msgstr ""
+
 #. type: Plain text
 #, no-wrap
 msgid "*Name*\n"
@@ -24,9 +29,8 @@ msgstr ""
 msgid "*Description*\n"
 msgstr ""
 
-#. type: Title ==
-#, no-wrap
-msgid "Configuration"
+#. type: Plain text
+msgid "A string containing details about this policy."
 msgstr ""
 
 #. type: Plain text
@@ -38,10 +42,6 @@ msgstr ""
 msgid ""
 "The <<_policy_logic, Logic>> of this policy to apply after the other "
 "conditions have been evaluated."
-msgstr ""
-
-#. type: Plain text
-msgid "A string containing details about this policy."
 msgstr ""
 
 #. type: Title ==
@@ -94,6 +94,11 @@ msgstr ""
 msgid "The JavaScript code providing the conditions for this policy."
 msgstr ""
 
+#. type: Title ===
+#, no-wrap
+msgid "Checking for attributes from the evaluation context"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "Here is a simple example of a JavaScript-based policy that uses attribute-"
@@ -110,6 +115,42 @@ msgid ""
 "if (contextAttributes.containsValue('kc.client.network.ip_address', '127.0.0.1')) {\n"
 "    $evaluation.grant();\n"
 "}\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Checking for attributes from the current identity"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Here is a simple example of a JavaScript-based policy that uses attribute-"
+"based access control (ABAC) to define a condition based on an attribute "
+"obtained associated with the current identity:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"var context = $evaluation.getContext();\n"
+"var identity = context.getIdentity();\n"
+"var attributes = identity.getAttributes();\n"
+"var email = attributes.getValue('email').asString(0);\n"
+"\n"
+"if (email.endsWith('@keycloak.org')) {\n"
+"    $evaluation.grant();\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Where these attributes are mapped from whatever claim is defined in the "
+"token that was used in the authorization request."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Checking for roles granted to the current identity"
 msgstr ""
 
 #. type: Plain text
@@ -145,6 +186,104 @@ msgid ""
 "if (identity.hasClientRole('my-client', 'my-client-role')) {\n"
 "    $evaluation.grant();\n"
 "}\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Checking for roles granted to an user"
+msgstr ""
+
+#. type: Plain text
+msgid "To check for realm roles granted to an user:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"var realm = $evaluation.getRealm();\n"
+"\n"
+"if (realm.isUserInRealmRole('marta', 'role-a')) {\n"
+"    $evaluation.grant();\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Or for client roles granted to an user:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"var realm = $evaluation.getRealm();\n"
+"\n"
+"if (realm.isUserInClientRole('marta', 'my-client', 'some-client-role')) {\n"
+"    $evaluation.grant();\n"
+"}\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Checking for roles granted to a group"
+msgstr ""
+
+#. type: Plain text
+msgid "To check for realm roles granted to a group:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"var realm = $evaluation.getRealm();\n"
+"\n"
+"if (realm.isGroupInRole('/Group A/Group D', 'role-a')) {\n"
+"    $evaluation.grant();\n"
+"}\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Pushing arbitrary claims to the resource server"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To push arbitrary claims to the resource server in order to provide "
+"additional information on how permissions should be enforced:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"var permission = $evaluation.getPermission();\n"
+"\n"
+"// decide if permission should be granted\n"
+"\n"
+"if (granted) {\n"
+"    permission.addClaim('claim-a', 'claim-a');\n"
+"    permission.addClaim('claim-a', 'claim-a1');\n"
+"    permission.addClaim('claim-b', 'claim-b');\n"
+"}\n"
+"\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Checking for group membership"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"var realm = $evaluation.getRealm();\n"
+"\n"
+"if (realm.isUserInGroup('marta', '/Group A/Group B')) {\n"
+"    $evaluation.grant();\n"
+"}\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Mixing different access control mechanisms"
 msgstr ""
 
 #. type: Plain text

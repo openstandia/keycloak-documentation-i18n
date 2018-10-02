@@ -18,11 +18,6 @@ msgstr ""
 msgid "Here is a description of each configuration option:"
 msgstr ""
 
-#. type: Block title
-#, no-wrap
-msgid "keycloak.json"
-msgstr ""
-
 #. type: Title ==
 #, no-wrap
 msgid "Configuration"
@@ -32,6 +27,11 @@ msgstr ""
 msgid ""
 "To enable policy enforcement for your application, add the following "
 "property to your *keycloak.json* file:"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "keycloak.json"
 msgstr ""
 
 #. type: Code block
@@ -102,7 +102,7 @@ msgid ""
 "enforced and optionally the paths you want to protect. If not specified, the "
 "policy enforcer queries the server for all resources associated with the "
 "resource server being protected. In this case, you need to ensure the "
-"resources are properly configured with a <<_resource_create_uri, URI>> "
+"resources are properly configured with a <<_resource_create_uri, URIS>> "
 "property that matches the paths you want to protect."
 msgstr ""
 
@@ -114,9 +114,12 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Specifies that the adapter uses the UMA protocol. If specified, the adapter "
-"queries the server for permission tickets and return them to clients "
-"according to the UMA specification. If not specified, the adapter relies on "
-"the requesting party token (RPT) sent to the server to enforce permissions."
+"queries the server for permission tickets and returns them to clients "
+"according to the UMA specification. If not specified, the policy enforcer "
+"will be able to enforce permissions based on regular access tokens or RPTs. "
+"In this case, before denying access to the resource when the token lacks "
+"permission, the policy enforcer will try to obtain permissions directly from "
+"the server."
 msgstr ""
 
 #. type: Plain text
@@ -221,7 +224,7 @@ msgid ""
 "Specifies the paths to protect. This configuration is optional. If not "
 "defined, the policy enforcer will discover all paths by fetching the "
 "resources you defined to your application in {project_name}, where these "
-"resources are defined with a `URI` representing some path in your "
+"resources are defined with `URIS` representing some paths in your "
 "application."
 msgstr ""
 
@@ -234,7 +237,7 @@ msgstr ""
 msgid ""
 "The name of a resource on the server that is to be associated with a given "
 "path. When used in conjunction with a *path*, the policy enforcer ignores "
-"the resource's *URI* property and uses the path you provided instead.  *** "
+"the resource's *URIS* property and uses the path you provided instead.  *** "
 "*path*"
 msgstr ""
 

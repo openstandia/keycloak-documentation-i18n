@@ -14,41 +14,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: delimited block -
-#, no-wrap
-msgid "</blueprint>\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"For the CXF JAX-RS application, the only difference might be in the "
-"configuration of the endpoint dependent on engine-factory:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
-"    depends-on=\"kc-cxf-endpoint\">\n"
-"    <jaxrs:providers>\n"
-"        <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
-"    </jaxrs:providers>\n"
-"</jaxrs:server>\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The `Import-Package` in `META-INF/MANIFEST.MF` must contain those imports:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <bean id=\"keycloakConfigResolver\" class=\"org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver\" >\n"
-"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
-"    </bean>\n"
-msgstr ""
-
 #. type: Title =====
 #, no-wrap
 msgid "Securing an Apache CXF Endpoint on a Separate Undertow Engine"
@@ -88,6 +53,14 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
+"    <bean id=\"keycloakConfigResolver\" class=\"org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver\" >\n"
+"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
 "    <httpu:engine-factory bus=\"cxf\" id=\"kc-cxf-endpoint\">\n"
 "        <httpu:engine port=\"8282\">\n"
 "            <httpu:handlers>\n"
@@ -104,6 +77,33 @@ msgstr ""
 msgid ""
 "    <jaxws:endpoint implementor=\"org.keycloak.example.ws.ProductImpl\"\n"
 "                    address=\"http://localhost:8282/ProductServiceCF\" depends-on=\"kc-cxf-endpoint\"/>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "</blueprint>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For the CXF JAX-RS application, the only difference might be in the "
+"configuration of the endpoint dependent on engine-factory:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
+"    depends-on=\"kc-cxf-endpoint\">\n"
+"    <jaxrs:providers>\n"
+"        <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
+"    </jaxrs:providers>\n"
+"</jaxrs:server>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `Import-Package` in `META-INF/MANIFEST.MF` must contain those imports:"
 msgstr ""
 
 #. type: delimited block -

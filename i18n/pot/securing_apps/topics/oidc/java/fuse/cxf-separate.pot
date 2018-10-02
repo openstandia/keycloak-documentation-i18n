@@ -14,18 +14,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: delimited block -
-#, no-wrap
-msgid "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+#. type: Plain text
+msgid ""
+"For the CXF JAX-RS application, the only difference might be in the "
+"configuration of the endpoint dependent on engine-factory:"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
-"        <property name=\"constraint\" ref=\"constraint\"/>\n"
-"        <property name=\"pathSpec\" value=\"/*\"/>\n"
-"    </bean>\n"
+"<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
+"    depends-on=\"kc-cxf-endpoint\">\n"
+"    <jaxrs:providers>\n"
+"        <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
+"    </jaxrs:providers>\n"
+"</jaxrs:server>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `Import-Package` in `META-INF/MANIFEST.MF` must contain those imports:"
 msgstr ""
 
 #. type: Title =====
@@ -45,6 +53,11 @@ msgid ""
 "`httpj:engine-factory` with Jetty SecurityHandler with injected "
 "`KeycloakJettyAuthenticator`. The configuration for a CFX JAX-WS application "
 "might resemble this one:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 msgstr ""
 
 #. type: delimited block -
@@ -106,6 +119,15 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
+"    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
+"        <property name=\"constraint\" ref=\"constraint\"/>\n"
+"        <property name=\"pathSpec\" value=\"/*\"/>\n"
+"    </bean>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
 "    <bean id=\"securityHandler\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
 "        <property name=\"authenticator\" ref=\"keycloakAuthenticator\" />\n"
 "        <property name=\"constraintMappings\">\n"
@@ -142,28 +164,6 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid "</beans>\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"For the CXF JAX-RS application, the only difference might be in the "
-"configuration of the endpoint dependent on engine-factory:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
-"    depends-on=\"kc-cxf-endpoint\">\n"
-"    <jaxrs:providers>\n"
-"        <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
-"    </jaxrs:providers>\n"
-"</jaxrs:server>\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The `Import-Package` in `META-INF/MANIFEST.MF` must contain those imports:"
 msgstr ""
 
 #. type: delimited block -

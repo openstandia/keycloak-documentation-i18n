@@ -53,9 +53,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Alternatively, you can opt to use a signed Json Web Token (JWT) instead of a"
-" secret."
-msgstr "また、シークレットではなく署名付きJson Webトークン（JWT）を使用することもできます。"
+"Alternatively, you can opt to use a signed Json Web Token (JWT) or x509 "
+"certificate validation (also called Mutual TLS) instead of a secret."
+msgstr ""
+"また、シークレットではなく署名付きJson Webトークン（JWT）またはx509証明書検証（相互TLSとも呼ばれます）を使用することもできます。"
 
 #. type: Block title
 #, no-wrap
@@ -171,3 +172,50 @@ msgstr ""
 #. type: Plain text
 msgid "This client secret will be used to sign the JWT by the client."
 msgstr "このクライアント・シークレットは、クライアントによってJWTに署名するために使用されます。"
+
+#. type: Block title
+#, no-wrap
+msgid "X509 Certificate"
+msgstr "X509証明書"
+
+#. type: Plain text
+msgid ""
+"By enabling this option {project_name} will validate if the client uses "
+"proper X509 certificate during the TLS Handshake."
+msgstr ""
+"このオプションを有効にすると、{project_name}はTLSハンドシェイク中にクライアントが適切なX509証明書を使用するかどうかを検証します。"
+
+#. type: Plain text
+msgid ""
+"This option requires mutual TLS in {project_name}, see <<_enable-mtls-"
+"wildfly, Enable mutual SSL in WildFly>>."
+msgstr ""
+"このオプションは、{project_name}に相互TLSが必要です。<<_enable-mtls-wildfly, WildFlyでMutual "
+"SSLを有効にする>>を参照してください。"
+
+#. type: Plain text
+msgid "image:{project_images}/x509-client-auth.png[]"
+msgstr "image:{project_images}/x509-client-auth.png[]"
+
+#. type: Plain text
+msgid ""
+"The validator checks also the certificate's Subject DN field with configured"
+" regexp validation expression. For some use cases, it is sufficient to "
+"accept all certificates. In that case, you can use `(.*?)(?:$)` expression."
+msgstr ""
+"バリデーターは、設定された正規表現の検証式を使用して、証明書のSubject "
+"DNフィールドもチェックします。いくつかのユースケースでは、すべての証明書を受け入れるだけで十分です。その場合、 `(.*?)(?:$)` "
+"式を使うことができます。"
+
+#. type: Plain text
+msgid ""
+"There are two ways for {project_name} to obtain the Client ID from the "
+"request. The first option is the `client_id` parameter in the query "
+"(described in Section 2.2 of the https://tools.ietf.org/html/rfc6749[OAuth "
+"2.0 Specification]).  The second option is to supply `client_id` as a query "
+"parameter."
+msgstr ""
+"{project_name}がリクエストからクライアントIDを取得するには、2つの方法があります。最初のオプションは、クエリーの `client_id`"
+" パラメーターです（https://tools.ietf.org/html/rfc6749[OAuth 2.0 "
+"Specification]のセクション2.2で説明されています）。2番目のオプションは、クエリー・パラメーターとして `client_id` "
+"を提供することです。"

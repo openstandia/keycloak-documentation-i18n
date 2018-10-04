@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,9 +75,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"  Files in the bin directory should not be overwritten by the files from "
-"previous versions. Changes should be made manually."
-msgstr "binディレクトリー内のファイルを、以前のバージョンのファイルで上書してはいけません。変更は手作業で行う必要があります。"
+"NOTE: Files in the bin directory should not be overwritten by the files from"
+" previous versions. Changes should be made manually."
+msgstr "注意：binディレクトリー内のファイルを、以前のバージョンのファイルで上書してはいけません。変更は手作業で行う必要があります。"
 
 #. type: Plain text
 msgid "Copy any custom modules that have been added to the modules directory."
@@ -86,6 +86,88 @@ msgstr "modulesディレクトリーに追加されたカスタム・モジュ�
 #. type: Plain text
 msgid "Run the applicable upgrade script below."
 msgstr "以下の該当するアップグレード・スクリプトを実行します。"
+
+#. type: Plain text
+msgid ""
+"To upgrade {project_name} server RPM distribution, complete the following "
+"steps:"
+msgstr "{project_name}サーバーRPMディストリビューションをアップグレードするには、以下の手順に沿って行います。"
+
+#. type: Plain text
+msgid ""
+"Prior to applying the upgrade, handle any open transactions and delete the "
+"/var/opt/rh/rh-sso7/lib/keycloak/standalone/data/tx-object-store/ "
+"transaction directory."
+msgstr ""
+"アップグレードする前に、開いているトランザクションを処理し、/var/opt/rh/rh-"
+"sso7/lib/keycloak/standalone/data/tx-object-store/トランザクション・ディレクトリーを削除します。"
+
+#. type: Plain text
+msgid ""
+"Make sure you have subscribed to proper repositories containing JBOSS EAP "
+"and {project_name}."
+msgstr "JBOSS EAPと{project_name}を含む適切なリポジトリーを有効化していることを確認してください。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"subscription-manager repos --enable=jb-eap-7.1-for-rhel-7-server-rpms\n"
+"subscription-manager repos --enable=rh-sso-7.2-for-rhel-7-server-rpms\n"
+msgstr ""
+"subscription-manager repos --enable=jb-eap-7.1-for-rhel-7-server-rpms\n"
+"subscription-manager repos --enable=rh-sso-7.2-for-rhel-7-server-rpms\n"
+
+#. type: delimited block =
+msgid ""
+"To disable older product repositories for both JBOSS EAP and {project_name} "
+"use:"
+msgstr "JBOSS EAPと{project_name}の両方の古い製品リポジトリーを無効にするには、以下を使用します。"
+
+#. type: delimited block =
+#, no-wrap
+msgid " subscription-manager repos --disable=<OLDER_PRODUCT_REPO>\n"
+msgstr " subscription-manager repos --disable=<OLDER_PRODUCT_REPO>\n"
+
+#. type: delimited block =
+msgid "To check the repositories use:"
+msgstr "リポジトリーをチェックするには以下を使用します。"
+
+#. type: delimited block =
+#, no-wrap
+msgid " yum repolist\n"
+msgstr " yum repolist\n"
+
+#. type: Plain text
+msgid ""
+"The RPM upgrade process will not replace any of your modified configuration "
+"files, and will instead create .rpmnew files for the default configuration "
+"of the new {project_name} version."
+msgstr ""
+"RPMのアップグレード・プロセスは、変更された設定ファイルを置き換えるのではなく、新しい{project_name}バージョンのデフォルト設定用に.rpmnewファイルを作成します。"
+
+#. type: Plain text
+msgid ""
+"To activate any new features in the new release, such as new subsystems, you"
+" must manually merge each .rpmnew file into your existing configuration "
+"files"
+msgstr ""
+"新しいサブシステムなどの、新しいリリースの新機能を有効にするには、各.rpmnewファイルを既存の設定ファイルに手動でマージする必要があります"
+
+#. type: Plain text
+msgid "Run the applicable upgrade script as described below."
+msgstr "下記の説明に従って、該当するアップグレード・スクリプトを実行します。"
+
+#. type: delimited block =
+msgid "{project_name} RPM server distribution is using"
+msgstr "{project_name} RPMサーバー・ディストリビューションは、以下を使用しています。"
+
+#. type: delimited block =
+msgid "`{project_dirref}=/opt/rh/rh-sso7/root/usr/share/keycloak`"
+msgstr "`{project_dirref}=/opt/rh/rh-sso7/root/usr/share/keycloak`"
+
+#. type: delimited block =
+msgid "Use it when calling migration scripts below."
+msgstr "以下の移行スクリプトを呼び出すときに使用します。"
 
 #. type: Title ===
 #, no-wrap

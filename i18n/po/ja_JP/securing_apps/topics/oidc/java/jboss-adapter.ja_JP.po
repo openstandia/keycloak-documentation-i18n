@@ -18,6 +18,72 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"      version=\"3.0\">\n"
+msgstr ""
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"      version=\"3.0\">\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <security-constraint>\n"
+"        <web-resource-collection>\n"
+"            <web-resource-name>Admins</web-resource-name>\n"
+"            <url-pattern>/admin/*</url-pattern>\n"
+"        </web-resource-collection>\n"
+"        <auth-constraint>\n"
+"            <role-name>admin</role-name>\n"
+"        </auth-constraint>\n"
+"        <user-data-constraint>\n"
+"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
+"        </user-data-constraint>\n"
+"    </security-constraint>\n"
+"    <security-constraint>\n"
+"        <web-resource-collection>\n"
+"            <web-resource-name>Customers</web-resource-name>\n"
+"            <url-pattern>/customers/*</url-pattern>\n"
+"        </web-resource-collection>\n"
+"        <auth-constraint>\n"
+"            <role-name>user</role-name>\n"
+"        </auth-constraint>\n"
+"        <user-data-constraint>\n"
+"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
+"        </user-data-constraint>\n"
+"    </security-constraint>\n"
+msgstr ""
+"    <security-constraint>\n"
+"        <web-resource-collection>\n"
+"            <web-resource-name>Admins</web-resource-name>\n"
+"            <url-pattern>/admin/*</url-pattern>\n"
+"        </web-resource-collection>\n"
+"        <auth-constraint>\n"
+"            <role-name>admin</role-name>\n"
+"        </auth-constraint>\n"
+"        <user-data-constraint>\n"
+"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
+"        </user-data-constraint>\n"
+"    </security-constraint>\n"
+"    <security-constraint>\n"
+"        <web-resource-collection>\n"
+"            <web-resource-name>Customers</web-resource-name>\n"
+"            <url-pattern>/customers/*</url-pattern>\n"
+"        </web-resource-collection>\n"
+"        <auth-constraint>\n"
+"            <role-name>user</role-name>\n"
+"        </auth-constraint>\n"
+"        <user-data-constraint>\n"
+"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
+"        </user-data-constraint>\n"
+"    </security-constraint>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
 "    <security-role>\n"
 "        <role-name>admin</role-name>\n"
 "    </security-role>\n"
@@ -34,6 +100,41 @@ msgstr ""
 "    </security-role>\n"
 "</web-app>\n"
 
+#. type: Plain text
+msgid ""
+"We only test and maintain adapter with the most recent version of WildFly "
+"available upon the release. Once new version of WildFly is released, the "
+"current adapters become deprecated and support for them will be removed "
+"after next WildFly release.  The other alternative is to switch your "
+"applications from WildFly to the JBoss EAP, as the JBoss EAP adapter is "
+"supported for much longer period."
+msgstr ""
+"今回のリリースでは、WildFlyの最新バージョンでアダプターのテストとメンテナンスを行っています。WildFlyの新しいバージョンがリリースされると、現在のアダプターは非推奨になり、WildFlyの次のリリース後にサポートが削除されます。もう一つの選択肢は、JBoss"
+" EAPアダプターがより長期間サポートされるように、アプリケーションをWildFlyからJBoss EAPに切り替えることです。"
+
+#. type: Block title
+#, no-wrap
+msgid "WildFly 11 or newer"
+msgstr "WildFly 11以上"
+
+#. type: Block title
+#, no-wrap
+msgid "JBoss EAP 7.1 or newer"
+msgstr "JBoss EAP 7.1以上"
+
+#. type: Title =====
+#, no-wrap
+msgid "JBoss SSO"
+msgstr "JBoss SSO"
+
+#. type: Plain text
+msgid ""
+"{appserver_name} has built-in support for single sign-on for web "
+"applications deployed to the same {appserver_name} instance. This should not"
+" be enabled when using {project_name}."
+msgstr ""
+"{appserver_name}には、同じ{appserver_name}インスタンスにデプロイされたWebアプリケーションのシングル・サインオンのサポートが組み込まれています。これは、{project_name}を使用しているときは有効にしないでください。"
+
 #. type: Title ====
 #, no-wrap
 msgid "JBoss EAP/WildFly Adapter"
@@ -43,6 +144,11 @@ msgstr "JBoss EAP/WildFlyアダプター "
 #, no-wrap
 msgid "JBoss EAP Adapter"
 msgstr "JBoss EAPアダプター"
+
+#. type: Title =====
+#, no-wrap
+msgid "Required Per WAR Configuration"
+msgstr "WARごとに必要な設定"
 
 #. type: Plain text
 msgid ""
@@ -90,16 +196,8 @@ msgid ""
 msgstr "アダプターは、使用しているサーバーのバージョンに応じて別個のアーカイブとして利用できます。"
 
 #. type: Plain text
-msgid ""
-"{appserver_name} should be running when you install the adapter. If you have"
-" either one running, you must stop it before installing and then restart it "
-"after installation is complete."
-msgstr ""
-"アダプターをインストールする際に、{appserver_name}が起動している必要があります。どちらか一方が起動している場合は、インストールする前に停止し、インストールが完了した後で再起動する必要があります。"
-
-#. type: Plain text
-msgid "Install on WildFly 9, 10 or 11:"
-msgstr "WildFly 9、10、11へのインストールは次のとおりです。"
+msgid "Install on WildFly 9 or newer:"
+msgstr "WildFly 9以上へのインストールは次のとおりです。"
 
 #. type: delimited block -
 #, no-wrap
@@ -223,11 +321,6 @@ msgstr ""
 "あるいは、別の設定を使用してアダプターをインストールするため、コマンドラインからアダプターをインストールする際に `server.config` "
 "プロパティーを指定することもできます。たとえば、 `-Dserver.config=standalone-ha.xml` とします。"
 
-#. type: Block title
-#, no-wrap
-msgid "WildFly 11"
-msgstr "WildFly 11"
-
 #. type: delimited block -
 #, no-wrap
 msgid "$ ./bin/jboss-cli.sh --file=adapter-elytron-install-offline.cli\n"
@@ -247,15 +340,28 @@ msgstr ""
 "$ cd bin\n"
 "$ ./jboss-cli.sh --file=adapter-install-offline.cli\n"
 
-#. type: Block title
-#, no-wrap
-msgid "JBoss EAP 7.1"
-msgstr "JBoss EAP 7.1"
+#. type: Plain text
+msgid ""
+"It is possible to use the legacy non-Elytron adapter on WildFly 11 or newer "
+"as well, meaning you can use `adapter-install-offline.cli` even on those "
+"versions. However, we recommend to use the newer Elytron adapter."
+msgstr ""
+"WildFly 11以上でもレガシーな非Elytronアダプターが使用できます。つまり、それらのバージョンでも `adapter-install-"
+"offline.cli` を使用することができます。ただし、新しいElytronアダプターを使用することをお勧めします。"
 
 #. type: Block title
 #, no-wrap
 msgid "JBoss EAP 7.0"
 msgstr "JBoss EAP 7.0"
+
+#. type: Plain text
+msgid ""
+"It is possible to use the legacy non-Elytron adapter on JBoss EAP 7.1 or "
+"newer as well, meaning you can use `adapter-install-offline.cli` even on "
+"those versions. However, we recommend to use the newer Elytron adapter."
+msgstr ""
+"JBoss EAP 7.1以上でもレガシーな非Elytronアダプターが使用できます。つまり、それらのバージョンでも `adapter-install-"
+"offline.cli` を使用することができます。ただし、新しいElytronアダプターを使用することをお勧めします。"
 
 #. type: Plain text
 msgid "The offline script is not available for JBoss EAP 6.4"
@@ -283,24 +389,6 @@ msgstr ""
 #, no-wrap
 msgid "JBoss EAP 7.0 and 6.4"
 msgstr "JBoss EAP 7.0と6.4"
-
-#. type: Title =====
-#, no-wrap
-msgid "JBoss SSO"
-msgstr "JBoss SSO"
-
-#. type: Plain text
-msgid ""
-"{appserver_name} has built-in support for single sign-on for web "
-"applications deployed to the same {appserver_name} instance. This should not"
-" be enabled when using {project_name}."
-msgstr ""
-"{appserver_name}には、同じ{appserver_name}インスタンスにデプロイされたWebアプリケーションのシングル・サインオンのサポートが組み込まれています。これは、{project_name}を使用しているときは有効にしないでください。"
-
-#. type: Title =====
-#, no-wrap
-msgid "Required Per WAR Configuration"
-msgstr "WARごとに必要な設定"
 
 #. type: Plain text
 msgid ""
@@ -335,74 +423,8 @@ msgstr "以下は例です。"
 
 #. type: delimited block -
 #, no-wrap
-msgid ""
-"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
-"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
-"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
-"      version=\"3.0\">\n"
-msgstr ""
-"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
-"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
-"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
-"      version=\"3.0\">\n"
-
-#. type: delimited block -
-#, no-wrap
 msgid "    <module-name>application</module-name>\n"
 msgstr "    <module-name>application</module-name>\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <security-constraint>\n"
-"        <web-resource-collection>\n"
-"            <web-resource-name>Admins</web-resource-name>\n"
-"            <url-pattern>/admin/*</url-pattern>\n"
-"        </web-resource-collection>\n"
-"        <auth-constraint>\n"
-"            <role-name>admin</role-name>\n"
-"        </auth-constraint>\n"
-"        <user-data-constraint>\n"
-"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
-"        </user-data-constraint>\n"
-"    </security-constraint>\n"
-"    <security-constraint>\n"
-"        <web-resource-collection>\n"
-"            <web-resource-name>Customers</web-resource-name>\n"
-"            <url-pattern>/customers/*</url-pattern>\n"
-"        </web-resource-collection>\n"
-"        <auth-constraint>\n"
-"            <role-name>user</role-name>\n"
-"        </auth-constraint>\n"
-"        <user-data-constraint>\n"
-"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
-"        </user-data-constraint>\n"
-"    </security-constraint>\n"
-msgstr ""
-"    <security-constraint>\n"
-"        <web-resource-collection>\n"
-"            <web-resource-name>Admins</web-resource-name>\n"
-"            <url-pattern>/admin/*</url-pattern>\n"
-"        </web-resource-collection>\n"
-"        <auth-constraint>\n"
-"            <role-name>admin</role-name>\n"
-"        </auth-constraint>\n"
-"        <user-data-constraint>\n"
-"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
-"        </user-data-constraint>\n"
-"    </security-constraint>\n"
-"    <security-constraint>\n"
-"        <web-resource-collection>\n"
-"            <web-resource-name>Customers</web-resource-name>\n"
-"            <url-pattern>/customers/*</url-pattern>\n"
-"        </web-resource-collection>\n"
-"        <auth-constraint>\n"
-"            <role-name>user</role-name>\n"
-"        </auth-constraint>\n"
-"        <user-data-constraint>\n"
-"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
-"        </user-data-constraint>\n"
-"    </security-constraint>\n"
 
 #. type: delimited block -
 #, no-wrap

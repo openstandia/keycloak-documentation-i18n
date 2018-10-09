@@ -1602,8 +1602,8 @@ msgid ""
 "ID of \"fc400897-ef6a-4e8c-872b-1581b7fa8a71\"."
 msgstr ""
 "[filename]`test-client` のclientId属性をもつクライアントと、 [filename]`support` "
-"というクライアントロール、および [filename]`operations` という別のクライアントロールがあり、IDが\"fc400897"
-"-ef6a-4e8c-872b-1581b7fa8a71\"という複合ロールになると仮定します。"
+"というクライアントロール、および [filename]`operations` という別のクライアントロールがあり、IDが \"fc400897"
+"-ef6a-4e8c-872b-1581b7fa8a71\" という複合ロールになると仮定します。"
 
 #. type: Plain text
 msgid "Use the following example to add another role to the composite role."
@@ -1646,8 +1646,8 @@ msgid ""
 "[command]`realm management` - `create-client` role and the [command]`view-"
 "users` role from the [command]`testrole` composite role."
 msgstr ""
-"次の例を使用して、 [command]`realm management` - `create-client` ロールと [command]`view-"
-"users` ロールで定義された2つのクライアントロールを複合ロール [command]`testrole` から削除します。"
+"次の例を使用して、 [command]`realm-management` クライアントに定義された [command]`create-client` "
+"と [command]`view-users` の2つのロールを複合ロール [command]`testrole` から削除します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -1656,6 +1656,66 @@ msgid ""
 "management --rolename create-client --rolename view-users\n"
 msgstr ""
 "$ kcadm.sh remove-roles -r demorealm --rname testrole --cclientid realm-"
+"management --rolename create-client --rolename view-users\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Adding client roles to a group"
+msgstr "グループへのクライアント・ロールの追加"
+
+#. type: Plain text
+msgid ""
+"The following example adds the roles defined on the client [command]`realm-"
+"management` - `create-client` role and the [command]`view-users` role to the"
+" [command]`Group` group (via the [command]`--gname` option). The group can "
+"alternatively be specified by ID (via the [command]`--gid` option)."
+msgstr ""
+"次の例では、 [command]`realm-management` クライアントに定義された [command]`create-client` "
+"ロールと [command]`view-users` ロールを [command]`Group` グループに追加します。（ "
+"[command]`--gid` オプションを使用して、）グループはグループ名の代わりにIDで指定できます。"
+
+#. type: Plain text
+msgid ""
+"See <<_group_operations, Group operations>> for more operations that can be "
+"performed to groups."
+msgstr "グループに対して実行できるその他の操作については、<<_group_operations, グループ操作>>を参照してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ kcadm.sh add-roles -r demorealm --gname Group --cclientid realm-management"
+" --rolename create-client --rolename view-users\n"
+msgstr ""
+"$ kcadm.sh add-roles -r demorealm --gname Group --cclientid realm-management"
+" --rolename create-client --rolename view-users\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Removing client roles from a group"
+msgstr "グループからのクライアントロールの削除"
+
+#. type: Plain text
+msgid ""
+"Use a dedicated [command]`remove-roles` command to remove client roles from "
+"a group."
+msgstr "グループからクライアントロールを削除するには、専用の [command]`remove-roles` コマンドを使用します。"
+
+#. type: Plain text
+msgid ""
+"Use the following example to remove two roles defined on the client "
+"[command]`realm management` - `create-client` role and the [command]`view-"
+"users` role from the [command]`Group` group."
+msgstr ""
+"次の例を使用して、クライアント [command]`realm-management` で定義された2つのロール（ `create-client` と "
+"[command]`view-users` ）を [command]`Group` グループから削除します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ kcadm.sh remove-roles -r demorealm --gname Group --cclientid realm-"
+"management --rolename create-client --rolename view-users\n"
+msgstr ""
+"$ kcadm.sh remove-roles -r demorealm --gname Group --cclientid realm-"
 "management --rolename create-client --rolename view-users\n"
 
 #. type: Title ===
@@ -2269,7 +2329,7 @@ msgid ""
 "[command]`realm management` - `create-client` role and the [command]`view-"
 "users` role to the user `testuser`."
 msgstr ""
-"次の例を使用して、クライアント[command]`realm management` に定義された2つのロール（ [command]`create-"
+"次の例を使用して、クライアント [command]`realm-management` に定義された2つのロール（ [command]`create-"
 "client` ロールと [command]`view-users` ロール）を `testuser` ユーザーに追加します。"
 
 #. type: delimited block -

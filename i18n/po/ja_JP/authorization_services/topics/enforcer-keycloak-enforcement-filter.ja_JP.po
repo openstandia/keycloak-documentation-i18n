@@ -19,11 +19,6 @@ msgstr ""
 msgid "Here is a description of each configuration option:"
 msgstr "各設定オプションの説明は次のとおりです。"
 
-#. type: Block title
-#, no-wrap
-msgid "keycloak.json"
-msgstr "keycloak.json"
-
 #. type: Title ==
 #, no-wrap
 msgid "Configuration"
@@ -34,6 +29,11 @@ msgid ""
 "To enable policy enforcement for your application, add the following "
 "property to your *keycloak.json* file:"
 msgstr "アプリケーションのポリシー適用を有効にするには、 *keycloak.json* ファイルに次のプロパティーを追加します。"
+
+#. type: Block title
+#, no-wrap
+msgid "keycloak.json"
+msgstr "keycloak.json"
 
 #. type: Code block
 #, no-wrap
@@ -144,11 +144,11 @@ msgid ""
 "enforced and optionally the paths you want to protect. If not specified, the"
 " policy enforcer queries the server for all resources associated with the "
 "resource server being protected. In this case, you need to ensure the "
-"resources are properly configured with a <<_resource_create_uri, URI>> "
+"resources are properly configured with a <<_resource_create_uri, URIS>> "
 "property that matches the paths you want to protect."
 msgstr ""
 "ポリシーが実際にどのように実施されるのかを定義する設定オプションと、保護したいパス（任意）を指定します。指定されていない場合、ポリシー・エンフォーサーは、保護されているリソースサーバーに関連付けられているすべてのリソースをサーバーに問い合わせます。この場合、保護するパスと一致する<<_resource_create_uri,"
-" URI>>プロパティーを持つリソースが適切に設定されていることを確認する必要があります。"
+" URIS>>プロパティーを持つリソースが適切に設定されていることを確認する必要があります。"
 
 #. type: Plain text
 #, no-wrap
@@ -158,11 +158,14 @@ msgstr "** *user-managed-access*\n"
 #. type: Plain text
 msgid ""
 "Specifies that the adapter uses the UMA protocol. If specified, the adapter "
-"queries the server for permission tickets and return them to clients "
-"according to the UMA specification. If not specified, the adapter relies on "
-"the requesting party token (RPT) sent to the server to enforce permissions."
+"queries the server for permission tickets and returns them to clients "
+"according to the UMA specification. If not specified, the policy enforcer "
+"will be able to enforce permissions based on regular access tokens or RPTs. "
+"In this case, before denying access to the resource when the token lacks "
+"permission, the policy enforcer will try to obtain permissions directly from"
+" the server."
 msgstr ""
-"アダプターがUMAプロトコルを使用することを指定します。指定されている場合、アダプターはサーバーにパーミッション・チケットを問い合わせ、UMA仕様に従ってクライアントに戻します。指定されていない場合、アダプターはサーバーに送信されたリクエスティング・パーティー・トークン（RPT）に基づいてパーミッションを適用します。"
+"アダプターがUMAプロトコルを使用することを指定します。指定されている場合、アダプターはサーバーにパーミッション・チケットを問い合わせ、UMA仕様に従ってクライアントに戻します。指定されていない場合、ポリシー・エンフォーサーは、通常のアクセストークンまたはRPTに基づいて、パーミッションを適用できます。この場合、トークンにパーミッションがないときは、リソースへのアクセスを拒否する前に、ポリシー・エンフォーサーはサーバーから直接パーミッションを取得しようとします。"
 
 #. type: Plain text
 #, no-wrap
@@ -275,11 +278,11 @@ msgid ""
 "Specifies the paths to protect. This configuration is optional. If not "
 "defined, the policy enforcer will discover all paths by fetching the "
 "resources you defined to your application in {project_name}, where these "
-"resources are defined with a `URI` representing some path in your "
+"resources are defined with `URIS` representing some paths in your "
 "application."
 msgstr ""
 "保護するパスを指定します。この設定はオプションです。定義されていない場合、ポリシー・エンフォーサーは{project_name}でアプリケーションに定義したリソースをフェッチすることによってすべてのパスを検出します。これらのリソースは、アプリケーションのパスを表す"
-" `URI` で定義されます。"
+" `URIS` で定義されます。"
 
 #. type: Plain text
 #, no-wrap
@@ -290,11 +293,11 @@ msgstr "*** *name*\n"
 msgid ""
 "The name of a resource on the server that is to be associated with a given "
 "path. When used in conjunction with a *path*, the policy enforcer ignores "
-"the resource's *URI* property and uses the path you provided instead.  *** "
+"the resource's *URIS* property and uses the path you provided instead.  *** "
 "*path*"
 msgstr ""
-"指定されたパスに関連付けられるサーバー上のリソースの名前。ポリシー・エンフォーサーは、 *path* と組み合わせて使用すると、リソースの *URI* "
-"プロパティーを無視し、代わりに指定したパスを使用します。 *** *path*"
+"指定されたパスに関連付けられるサーバー上のリソースの名前。ポリシー・エンフォーサーは、 *path* と組み合わせて使用すると、リソースの *URIS*"
+" プロパティーを無視し、代わりに指定したパスを使用します。 *** *path*"
 
 #. type: Plain text
 msgid ""

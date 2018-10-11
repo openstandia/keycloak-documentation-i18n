@@ -21,12 +21,67 @@ msgid ""
 "curl -X POST \\\n"
 "  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
 "  -H \"Authorization: Bearer ${access_token}\" \\\n"
-"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\"\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"ticket=${permission_ticket}\n"
 msgstr ""
 "curl -X POST \\\n"
 "  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
 "  -H \"Authorization: Bearer ${access_token}\" \\\n"
-"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\"\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"ticket=${permission_ticket}\n"
+
+#. type: Plain text
+msgid ""
+"If ${project_name} assessment process results in issuance of permissions, it"
+" issues the RPT with which it has associated the permissions:"
+msgstr ""
+"${project_name}の評価プロセスの結果、パーミッションが発行されると、そのパーミッションに関連付けられているRPTが発行されます。"
+
+#. type: Block title
+#, no-wrap
+msgid "{project_name} responds to the client with the RPT"
+msgstr "{project_name}はRPTを使用してクライアントに応答します"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 200 OK\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"access_token\": \"${rpt}\",\n"
+"}\n"
+msgstr ""
+"HTTP/1.1 200 OK\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"access_token\": \"${rpt}\",\n"
+"}\n"
+
+#. type: Block title
+#, no-wrap
+msgid "{project_name} denies the authorization request"
+msgstr "{project_name}の認可リクエストの拒否"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 403 Forbidden\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"error\": \"access_denied\",\n"
+"    \"error_description\": \"request_denied\"\n"
+"}\n"
+msgstr ""
+"HTTP/1.1 403 Forbidden\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"error\": \"access_denied\",\n"
+"    \"error_description\": \"request_denied\"\n"
+"}\n"
 
 #. type: Title =
 #, no-wrap
@@ -98,19 +153,19 @@ msgstr "**claim_token_format**\n"
 msgid ""
 "This parameter is *optional. A string indicating the format of the token "
 "specified in the `claim_token` parameter. {project_name} supports two token "
-"formats: `urn:ietf:params:oauth:token-type:jwt` and `http://openid.net/specs"
-"/openid-connect-core-1_0.html#IDToken`. The `urn:ietf:params:oauth:token-"
-"type:jwt` format indicates that the `claim_token` parameter references an "
-"access token. The `http://openid.net/specs/openid-connect-core-"
-"1_0.html#IDToken` indicates that the `claim_token` parameter references an "
-"OpenID Connect ID Token."
+"formats: `urn:ietf:params:oauth:token-type:jwt` and "
+"`https://openid.net/specs/openid-connect-core-1_0.html#IDToken`. The "
+"`urn:ietf:params:oauth:token-type:jwt` format indicates that the "
+"`claim_token` parameter references an access token. The "
+"`https://openid.net/specs/openid-connect-core-1_0.html#IDToken` indicates "
+"that the `claim_token` parameter references an OpenID Connect ID Token."
 msgstr ""
 "このパラメーターは *optional* です。 `claim_token` "
 "パラメーターで指定されたトークンのフォーマットを示す文字列です。{project_name}は  `urn:ietf:params:oauth"
-":token-type:jwt` と `http://openid.net/specs/openid-connect-core-"
+":token-type:jwt` と `https://openid.net/specs/openid-connect-core-"
 "1_0.html#IDToken`　の2つのトークン・フォーマットをサポートしています。 `urn:ietf:params:oauth:token-"
 "type:jwt` 形式は、 `claim_token` パラメーターがアクセストークンを参照することを示します。 "
-"`http://openid.net/specs/openid-connect-core-1_0.html#IDToken` は、 "
+"`https://openid.net/specs/openid-connect-core-1_0.html#IDToken` は、 "
 "`claim_token` パラメーターがOpenID Connect IDトークンを参照することを示します。"
 
 #. type: Plain text
@@ -212,6 +267,82 @@ msgstr ""
 " `ticket` パラメーターとともに使用される場合にのみ有効です。"
 
 #. type: Plain text
+#, no-wrap
+msgid "**response_mode**\n"
+msgstr "**response_mode**\n"
+
+#. type: Plain text
+msgid ""
+"This parameter is *optional*. A string value indicating how the server "
+"should respond to authorization requests. This parameter is specially useful"
+" when you are mainly interested in either the overall decision or the "
+"permissions granted by the server, instead of an standard OAuth2 response. "
+"Possible values are:"
+msgstr ""
+"このパラメーターは *optional* "
+"です。サーバーが認可リクエストにどのように応答するかを示す文字列値。このパラメーターは、標準的なOAuth2レスポンスではなく、サーバーによって付与された全体的な決定またはパーミッションに主に関心がある場合に特に便利です。可能な値は次のとおりです。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*** `decision`\n"
+msgstr "*** `decision`\n"
+
+#. type: Plain text
+msgid ""
+"Indicates that responses from the server should only represent the overall "
+"decision by returning a JSON with the following format:"
+msgstr "サーバーからの応答は、次の形式でJSONを返すことによって、全体の決定のみを表す必要があることを示します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"{\n"
+"    'result': true\n"
+"}\n"
+msgstr ""
+"{\n"
+"    'result': true\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"If the authorization request does not map to any permission, a `403` HTTP "
+"status code is returned instead."
+msgstr "認可リクエストがどのパーミッションにもマッピングされない場合、代わりに `403` HTTPステータスコードが返されます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*** `permissions`\n"
+msgstr "*** `permissions`\n"
+
+#. type: Plain text
+msgid ""
+"Indicates that responses from the server should contain any permission "
+"granted by the server by returning a JSON with the following format:"
+msgstr "サーバーからの応答は、次の形式でJSONを返すことによって、サーバーにより付与されたパーミッションが含まれている必要があることを示します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"[\n"
+"    {\n"
+"        'rsid': 'My Resource'\n"
+"        'scopes': ['view', 'update']\n"
+"    },\n"
+"\n"
+"    ...\n"
+"]\n"
+msgstr ""
+"[\n"
+"    {\n"
+"        'rsid': 'My Resource'\n"
+"        'scopes': ['view', 'update']\n"
+"    },\n"
+"\n"
+"    ...\n"
+"]\n"
+
+#. type: Plain text
 msgid ""
 "Example of a authorization request when a client is seeking access to two "
 "resources protected by a resource server."
@@ -224,7 +355,7 @@ msgid ""
 "  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
 "  -H \"Authorization: Bearer ${access_token}\" \\\n"
 "  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
-"  --data \"audience=${resource_server_id}\" \\\n"
+"  --data \"audience={resource_server_client_id}\" \\\n"
 "  --data \"permission=Resource A#Scope A\" \\\n"
 "  --data \"permission=Resource B#Scope B\"\n"
 msgstr ""
@@ -232,7 +363,7 @@ msgstr ""
 "  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
 "  -H \"Authorization: Bearer ${access_token}\" \\\n"
 "  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
-"  --data \"audience=${resource_server_id}\" \\\n"
+"  --data \"audience={resource_server_client_id}\" \\\n"
 "  --data \"permission=Resource A#Scope A\" \\\n"
 "  --data \"permission=Resource B#Scope B\"\n"
 
@@ -243,6 +374,21 @@ msgid ""
 msgstr ""
 "クライアントがリソースサーバーによって保護されたすべてのリソースとスコープへのアクセスを求めている場合のパーミッション・リクエストの例です。"
 
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"audience={resource_server_client_id}\"\n"
+msgstr ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"audience={resource_server_client_id}\"\n"
+
 #. type: Plain text
 msgid ""
 "Example of an authorization request when a client is seeking access to a UMA"
@@ -250,50 +396,6 @@ msgid ""
 "server as part of the authorization process:"
 msgstr ""
 "認可プロセスの一環として、リソースサーバーからパーミッション・チケットを受け取った後で、クライアントがUMA保護リソースへのアクセスを求めている場合の認可リクエストの例です。"
-
-#. type: Code block
-#, no-wrap
-msgid ""
-"curl -X POST \\\n"
-"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
-"  -H \"Authorization: Bearer ${access_token}\" \\\n"
-"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
-"  --data \"ticket=${permission_ticket}\n"
-msgstr ""
-"curl -X POST \\\n"
-"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
-"  -H \"Authorization: Bearer ${access_token}\" \\\n"
-"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
-"  --data \"ticket=${permission_ticket}\n"
-
-#. type: Plain text
-msgid ""
-"If ${project_name} assessment process results in issuance of permissions, it"
-" issues the RPT with which it has associated the permissions:"
-msgstr ""
-"${project_name}の評価プロセスの結果、パーミッションが発行されると、そのパーミッションに関連付けられているRPTが発行されます。"
-
-#. type: Block title
-#, no-wrap
-msgid "{project_name} responds to the client with the RPT"
-msgstr "{project_name}はRPTを使用してクライアントに応答します"
-
-#. type: Code block
-#, no-wrap
-msgid ""
-"HTTP/1.1 200 OK\n"
-"Content-Type: application/json\n"
-"...\n"
-"{\n"
-"    \"access_token\": \"${rpt}\",\n"
-"}\n"
-msgstr ""
-"HTTP/1.1 200 OK\n"
-"Content-Type: application/json\n"
-"...\n"
-"{\n"
-"    \"access_token\": \"${rpt}\",\n"
-"}\n"
 
 #. type: Plain text
 msgid ""
@@ -305,27 +407,3 @@ msgstr ""
 "サーバーからのレスポンスは、他のグラントタイプを使用しているときのトークン・エンドポイントからの任意のレスポンスとまったく同じです。RPTは "
 "`access_token` レスポンス・パラメーターから取得できます。クライアントが承認されていない場合、{project_name}は次のように "
 "`403` HTTPステータスコードで応答します。"
-
-#. type: Block title
-#, no-wrap
-msgid "{project_name} denies the authorization request"
-msgstr "{project_name}の認可リクエストの拒否"
-
-#. type: Code block
-#, no-wrap
-msgid ""
-"HTTP/1.1 403 Forbidden\n"
-"Content-Type: application/json\n"
-"...\n"
-"{\n"
-"    \"error\": \"access_denied\",\n"
-"    \"error_description\": \"request_denied\"\n"
-"}\n"
-msgstr ""
-"HTTP/1.1 403 Forbidden\n"
-"Content-Type: application/json\n"
-"...\n"
-"{\n"
-"    \"error\": \"access_denied\",\n"
-"    \"error_description\": \"request_denied\"\n"
-"}\n"

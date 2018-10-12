@@ -15,26 +15,31 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: delimited block -
-#, no-wrap
-msgid "</blueprint>\n"
-msgstr "</blueprint>\n"
-
 #. type: Title =====
 #, no-wrap
-msgid "Securing an Apache CXF Endpoint on the Default Jetty Engine"
-msgstr "デフォルトのJettyエンジンでのApache CXFエンドポイントの保護"
+msgid "Securing an Apache CXF Endpoint on the Default Undertow Engine"
+msgstr "デフォルトのUndertowエンジンでのApache CXFエンドポイントの保護"
+
+#. type: Plain text
+msgid ""
+"Some services automatically come with deployed servlets on startup. One such"
+" service is the CXF servlet running in the $$http://localhost:8181/cxf$$ "
+"context. Fuse's Pax Web supports altering existing contexts via "
+"configuration admin. This can be used to secure endpoints by {project_name}."
+msgstr ""
+"いくつかのサービスは、起動時にデプロイされたサーブレットを自動的に提供します。そのようなサービスの1つは、$$http://localhost:8181/cxf$$"
+" コンテキストで実行されているCXFサーブレットです。FuseのPax "
+"Webは、設定管理を介して既存のコンテキストを変更することをサポートしています。これは、{project_name}でエンドポイントを保護するために使用できます。"
 
 #. type: Plain text
 msgid ""
 "The configuration file `OSGI-INF/blueprint/blueprint.xml` inside your "
 "application might resemble the one below. Note that it adds the JAX-RS "
-"`customerservice` endpoint, which is endpoint-specific to your application, "
-"but more importantly, secures the entire `/cxf` context."
+"`customerservice` endpoint, which is endpoint-specific to your application."
 msgstr ""
-"アプリケーション内の設定ファイル `OSGI-INF/blueprint/blueprint.xml` は、以下のようになります。JAX-RSの "
-"`customerservice` エンドポイント（アプリケーション固有のエンドポイント）を追加しますが、もっと重要なのは、 `/cxf` "
-"コンテキスト全体をセキュリティー保護することです。"
+"アプリケーション内の設定ファイル `OSGI-INF/blueprint/blueprint.xml` は、以下のようになります"
+"。アプリケーションにJAX-RSの `customerservice` "
+"エンドポイント（アプリケーション固有のエンドポイント）を追加することに注意してください。"
 
 #. type: delimited block -
 #, no-wrap
@@ -57,17 +62,12 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    <!-- JAXRS Application -->\n"
-msgstr "    <!-- JAXRS Application -->\n"
-
-#. type: delimited block -
-#, no-wrap
 msgid ""
-"    <bean id=\"customerBean\" "
-"class=\"org.keycloak.example.rs.CxfCustomerService\" />\n"
+"    <!-- JAXRS Application -->\n"
+"    <bean id=\"customerBean\" class=\"org.keycloak.example.rs.CxfCustomerService\" />\n"
 msgstr ""
-"    <bean id=\"customerBean\" "
-"class=\"org.keycloak.example.rs.CxfCustomerService\" />\n"
+"    <!-- JAXRS Application -->\n"
+"    <bean id=\"customerBean\" class=\"org.keycloak.example.rs.CxfCustomerService\" />\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -80,6 +80,7 @@ msgid ""
 "            <ref component-id=\"customerBean\" />\n"
 "        </jaxrs:serviceBeans>\n"
 "    </jaxrs:server>\n"
+"</blueprint>\n"
 msgstr ""
 "    <jaxrs:server id=\"cxfJaxrsServer\" address=\"/customerservice\">\n"
 "        <jaxrs:providers>\n"
@@ -89,25 +90,123 @@ msgstr ""
 "            <ref component-id=\"customerBean\" />\n"
 "        </jaxrs:serviceBeans>\n"
 "    </jaxrs:server>\n"
+"</blueprint>\n"
+
+#. type: Plain text
+msgid ""
+"Furthermore, you have to create `${karaf.etc}/org.ops4j.pax.web.context-"
+"_anyName_.cfg file`. It will be treated as factory PID configuration that is"
+" tracked by `pax-web-runtime` bundle. Such configuration may contain the "
+"following properties that correspond to some of the properties of standard "
+"`web.xml`:"
+msgstr ""
+"さらに `${karaf.etc}/org.ops4j.pax.web.context-_anyName_.cfg file` "
+"を作成する必要があります。これは、 `pax-web-runtime` "
+"バンドルによって追跡されるファクトリーPID設定として扱われます。このような設定には、標準の `web.xml` "
+"のいくつかのプロパティーに対応する以下のプロパティーを含めることができます。"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"    <bean id=\"defaultCxfReregistration\" class=\"org.keycloak.adapters.osgi.ServletReregistrationService\" depends-on=\"cxfKeycloakPaxWebIntegration\"\n"
-"          init-method=\"start\" destroy-method=\"stop\">\n"
-"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
-"        <property name=\"managedServiceReference\">\n"
-"            <reference interface=\"org.osgi.service.cm.ManagedService\" filter=\"(service.pid=org.apache.cxf.osgi)\" timeout=\"5000\"  />\n"
-"        </property>\n"
-"    </bean>\n"
+"bundle.symbolicName = org.apache.cxf.cxf-rt-transports-http\n"
+"context.id = default\n"
 msgstr ""
-"    <bean id=\"defaultCxfReregistration\" class=\"org.keycloak.adapters.osgi.ServletReregistrationService\" depends-on=\"cxfKeycloakPaxWebIntegration\"\n"
-"          init-method=\"start\" destroy-method=\"stop\">\n"
-"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
-"        <property name=\"managedServiceReference\">\n"
-"            <reference interface=\"org.osgi.service.cm.ManagedService\" filter=\"(service.pid=org.apache.cxf.osgi)\" timeout=\"5000\"  />\n"
-"        </property>\n"
-"    </bean>\n"
+"bundle.symbolicName = org.apache.cxf.cxf-rt-transports-http\n"
+"context.id = default\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"context.param.keycloak.config.resolver = "
+"org.keycloak.adapters.osgi.HierarchicalPathBasedKeycloakConfigResolver\n"
+msgstr ""
+"context.param.keycloak.config.resolver = "
+"org.keycloak.adapters.osgi.HierarchicalPathBasedKeycloakConfigResolver\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "login.config.authMethod = KEYCLOAK\n"
+msgstr "login.config.authMethod = KEYCLOAK\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"security.cxf.url = /cxf/customerservice/*\n"
+"security.cxf.roles = admin, user\n"
+msgstr ""
+"security.cxf.url = /cxf/customerservice/*\n"
+"security.cxf.roles = admin, user\n"
+
+#. type: Plain text
+msgid ""
+"For full description of available properties in configuration admin file, "
+"please refer to Fuse documentation. The properties above have the following "
+"meaning:"
+msgstr ""
+"設定管理ファイルで利用可能なプロパティーの詳細については、Fuseのドキュメントを参照してください。上記のプロパティーの意味は次のとおりです。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "`bundle.symbolicName` and `context.id`"
+msgstr "`bundle.symbolicName` と `context.id`"
+
+#. type: Plain text
+msgid ""
+"Identification of the bundle and its deployment context within "
+"`org.ops4j.pax.web.service.WebContainer`."
+msgstr "`org.ops4j.pax.web.service.WebContainer` 内のバンドルとその配備コンテキストの識別。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "`context.param.keycloak.config.resolver`"
+msgstr "`context.param.keycloak.config.resolver`"
+
+#. type: Plain text
+msgid ""
+"Provides value of `keycloak.config.resolver` context parameter to the bundle"
+" just the same as in `web.xml` for classic WARs. Available resolvers are "
+"described in <<_fuse7_config_external_adapter,Configuration Resolvers>> "
+"section."
+msgstr ""
+"古典的なWARの `web.xml` とまったく同じバンドルへの `keycloak.config.resolver` "
+"コンテキスト・パラメーターの値を提供します。使用可能なリゾルバーについては、<<_fuse7_config_external_adapter,設定リゾルバー>>のセクションで説明しています。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "`login.config.authMethod`"
+msgstr "`login.config.authMethod`"
+
+#. type: Plain text
+msgid "Authentication method. Must be `KEYCLOAK`."
+msgstr "認証方法。 `KEYCLOAK` でなければなりません。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "`security._anyName_.url` and `security._anyName_.roles`"
+msgstr "`security._anyName_.url` と `security._anyName_.roles`"
+
+#. type: Plain text
+msgid ""
+"Values of properties of individual security constraints just as they would "
+"be set in `security-constraint/web-resource-collection/url-pattern` and "
+"`security-constraint/auth-constraint/role-name` in `web.xml`, respectively. "
+"Roles are separated by comma and whitespace around it. The `_anyName_` "
+"identifier can be arbitrary but must match for individual properties of the "
+"same security constraint."
+msgstr ""
+"`web.xml` の `security-constraint/web-resource-collection/url-pattern` と "
+"`security-constraint/auth-constraint/role-name` に設定されているように、 それぞれ、 "
+"ロールはカンマとその周囲の空白で区切られます。 `_anyName_` "
+"識別子は任意ですが、同じセキュリティー制約の個々のプロパティーに一致する必要があります。"
+
+#. type: delimited block =
+msgid ""
+"Some Fuse versions contain a bug that requires roles to be separated by `\","
+" \"` (comma and single space). Make sure you use precisely this notation for"
+" separating the roles."
+msgstr ""
+"一部のFuseのバージョンには、ロールを `\", \"` "
+"（カンマと単一のスペース）で区切らなければならないバグがあります。ロールを区切るためにこの表記法を正確に使用してください。"
 
 #. type: Plain text
 msgid ""
@@ -116,100 +215,6 @@ msgid ""
 msgstr ""
 "`META-INF/MANIFEST.MF` の `Import-Package` は、少なくとも以下のインポートを含んでいなければなりません。"
 
-#. type: Plain text
-msgid ""
-"Some services automatically come with deployed servlets on startup. One such"
-" service is the CXF servlet running in the $$http://localhost:8181/cxf$$ "
-"context. Securing such endpoints can be complicated. One approach, which "
-"{project_name} is currently using, is `ServletReregistrationService` which "
-"undeploys a built-in servlet at startup, enabling you to redeploy it on a "
-"context secured by {project_name}."
-msgstr ""
-"いくつかのサービスは、起動時にデプロイされたサーブレットを自動的に提供します。そのようなサービスの1つは、$$http://localhost:8181/cxf$$"
-" "
-"コンテキストで実行されているCXFサーブレットです。そのようなエンドポイントを保護することは複雑になる可能性があります。{project_name}が現在使用しているアプローチの1つは"
-" `ServletReregistrationService` "
-"で、これは組み込みのサーブレットを起動時にアンデプロイし、{project_name}によってセキュリティー保護されたコンテキストに再デプロイできるようにします。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <!-- Securing of whole /cxf context by unregister default cxf servlet from paxweb and re-register with applied security constraints -->\n"
-"    <bean id=\"cxfConstraintMapping\" class=\"org.keycloak.adapters.osgi.PaxWebSecurityConstraintMapping\">\n"
-"        <!-- user accessing the servise has to have at least one of the following roles -->\n"
-"        <property name=\"roles\">\n"
-"            <list>\n"
-"                <value>user</value>\n"
-"            </list>\n"
-"        </property>\n"
-"        <property name=\"url\" value=\"/cxf/*\" />\n"
-"        <property name=\"authentication\" value=\"true\"/>\n"
-"    </bean>\n"
-msgstr ""
-"    <!-- Securing of whole /cxf context by unregister default cxf servlet from paxweb and re-register with applied security constraints -->\n"
-"    <bean id=\"cxfConstraintMapping\" class=\"org.keycloak.adapters.osgi.PaxWebSecurityConstraintMapping\">\n"
-"        <!-- user accessing the servise has to have at least one of the following roles -->\n"
-"        <property name=\"roles\">\n"
-"            <list>\n"
-"                <value>user</value>\n"
-"            </list>\n"
-"        </property>\n"
-"        <property name=\"url\" value=\"/cxf/*\" />\n"
-"        <property name=\"authentication\" value=\"true\"/>\n"
-"    </bean>\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <bean id=\"cxfKeycloakPaxWebIntegration\" class=\"org.keycloak.adapters.osgi.undertow.PaxWebIntegrationService\"\n"
-"          init-method=\"start\" destroy-method=\"stop\">\n"
-"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
-"        <property name=\"constraintMappings\">\n"
-"            <list>\n"
-"                <ref component-id=\"cxfConstraintMapping\" />\n"
-"            </list>\n"
-"        </property>\n"
-"    </bean>\n"
-msgstr ""
-"    <bean id=\"cxfKeycloakPaxWebIntegration\" class=\"org.keycloak.adapters.osgi.undertow.PaxWebIntegrationService\"\n"
-"          init-method=\"start\" destroy-method=\"stop\">\n"
-"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
-"        <property name=\"constraintMappings\">\n"
-"            <list>\n"
-"                <ref component-id=\"cxfConstraintMapping\" />\n"
-"            </list>\n"
-"        </property>\n"
-"    </bean>\n"
-
-#. type: Plain text
-msgid ""
-"As a result, all other CXF services running on the default CXF HTTP "
-"destination are also secured. Similarly, when the application is undeployed,"
-" the entire `/cxf` context becomes unsecured as well. For this reason, use "
-"your own undertow engine for your applications as described in "
-"<<_fuse7_adapter_cxf_separate,Secure CXF Application on separate Undertow "
-"Engine>> since that gives you more control over security for each individual"
-" application."
-msgstr ""
-"その結果、デフォルトのCXF HTTPの宛先で実行されている他のすべてのCXFサービスも保護されます。同様に、アプリケーションがアンデプロイされると、 "
-"`/cxf` "
-"コンテキスト全体がセキュリティー保護されなくなります。このため、<<_fuse7_adapter_cxf_separate,独立したUndertowエンジンでのApache"
-" "
-"CXFエンドポイントの保護>>で説明されているように、独自のUndertowエンジンをアプリケーションに使用すると、個々のアプリケーションのセキュリティーをより詳細に制御できます。"
-
-#. type: Plain text
-msgid ""
-"The `WEB-INF` directory might need to be inside your project (even if your "
-"project is not a web application). You might also need to edit the `/WEB-"
-"INF/keycloak.json` file similarly to <<_fuse7_adapter_classic_war,Classic "
-"WAR application>>.  Note that you do not need the `web.xml` file as the "
-"security constraints are declared in the blueprint configuration file."
-msgstr ""
-"`WEB-INF` ディレクトリーはプロジェクト内にある必要があります（プロジェクトがWebアプリケーションでない場合でも）。 "
-"また、<<_fuse7_adapter_classic_war,クラシックWARアプリケーション>>と同様に、 `/WEB-"
-"INF/keycloak.json` ファイルを編集する必要があります。セキュリティー制約がblueprint設定ファイルで宣言されているので、 "
-"`web.xml` ファイルは必要ないことに注意してください。"
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -218,13 +223,11 @@ msgid ""
 "META-INF.cxf.osgi;version=\"[2.7,3.3)\";resolution:=optional,\n"
 "org.apache.cxf.transport.http;version=\"[2.7,3.3)\",\n"
 "org.apache.cxf.*;version=\"[2.7,3.3)\",\n"
-"com.fasterxml.jackson.jaxrs.json;version=\"${jackson.version}\",\n"
-"org.keycloak.*;version=\"${project.version}\",\n"
+"com.fasterxml.jackson.jaxrs.json;version=\"${jackson.version}\"\n"
 msgstr ""
 "javax.ws.rs;version=\"[2,3)\",\n"
 "META-INF.cxf;version=\"[2.7,3.3)\",\n"
 "META-INF.cxf.osgi;version=\"[2.7,3.3)\";resolution:=optional,\n"
 "org.apache.cxf.transport.http;version=\"[2.7,3.3)\",\n"
 "org.apache.cxf.*;version=\"[2.7,3.3)\",\n"
-"com.fasterxml.jackson.jaxrs.json;version=\"${jackson.version}\",\n"
-"org.keycloak.*;version=\"${project.version}\",\n"
+"com.fasterxml.jackson.jaxrs.json;version=\"${jackson.version}\"\n"

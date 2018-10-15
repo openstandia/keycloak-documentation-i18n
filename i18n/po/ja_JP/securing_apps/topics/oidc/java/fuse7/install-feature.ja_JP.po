@@ -20,6 +20,20 @@ msgstr ""
 msgid "Installing the Keycloak Feature"
 msgstr "Keycloakフィーチャーのインストール"
 
+#. type: Plain text
+msgid ""
+"You must first install the `keycloak-pax-http-undertow` and `keycloak-jaas` "
+"features in the JBoss Fuse environment. The `keycloak-pax-http-undertow` "
+"feature includes the Fuse adapter and all third-party dependencies. The "
+"`keycloak-jaas` contains JAAS module used in realm for SSH and JMX "
+"authentication. You can install it either from the Maven repository or from "
+"an archive."
+msgstr ""
+"最初に `keycloak-pax-http-undertow` と `keycloak-jaas` のフィーチャーをJBoss "
+"Fuse環境にインストールする必要があります。 `keycloak-pax-http-undertow` "
+"フィーチャーには、Fuseアダプターとサード・パーティーのすべての依存関係が含まれます。 `keycloak-jaas` "
+"には、SSHとJMX認証のためにレルムで使用されるJAASモジュールが含まれています。Mavenリポジトリーまたはアーカイブからインストールすることができます。"
+
 #. type: Title ======
 #, no-wrap
 msgid "Installing from the Maven Repository"
@@ -51,13 +65,29 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Assuming the Maven repository is https://maven.repository.redhat.com/ga/, "
-"add the following to the `$FUSE_HOME/etc/org.ops4j.pax.url.mvn.cfg` file and"
-" add the repository to the list of supported repositories. For example:"
+"Assuming the Maven repository is {maven_repository}, add the following to "
+"the `$FUSE_HOME/etc/org.ops4j.pax.url.mvn.cfg` file and add the repository "
+"to the list of supported repositories. For example:"
 msgstr ""
-"Mavenリポジトリーが https://maven.repository.redhat.com/ga/ であると仮定して、 "
+"Mavenリポジトリーが{maven_repository}であると仮定して、 "
 "`$FUSE_HOME/etc/org.ops4j.pax.url.mvn.cfg` "
 "ファイルに次の行を追加し、サポートされるリポジトリーのリストにリポジトリーを追加します。次に例を示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"config:edit org.ops4j.pax.url.mvn\n"
+"config:property-append org.ops4j.pax.url.mvn.repositories ,{maven_repository}@id=redhat.product.repo\n"
+"config:update\n"
+msgstr ""
+"config:edit org.ops4j.pax.url.mvn\n"
+"config:property-append org.ops4j.pax.url.mvn.repositories ,{maven_repository}@id=redhat.product.repo\n"
+"config:update\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "feature:repo-refresh \n"
+msgstr "feature:repo-refresh \n"
 
 #. type: Plain text
 msgid ""
@@ -66,8 +96,35 @@ msgid ""
 msgstr "Mavenリポジトリーを使用して、Keycloakフィーチャーをインストールするには、以下の手順を実行します。"
 
 #. type: Plain text
+msgid "Start {fuse7Version}; then in the Karaf terminal type:"
+msgstr "{fuse7Version}を開始します。Karafターミナルで以下のとおりにタイプします。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"feature:repo-add mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"feature:install keycloak-pax-http-undertow keycloak-jaas\n"
+msgstr ""
+"feature:repo-add mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"feature:install keycloak-pax-http-undertow keycloak-jaas\n"
+
+#. type: Plain text
+msgid "You might also need to install the Undertow feature:"
+msgstr "以下のようにUndertowフィーチャーをインストールする必要もあるかもしれません。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "feature:install pax-http-undertow\n"
+msgstr "feature:install pax-http-undertow\n"
+
+#. type: Plain text
 msgid "Ensure that the features were installed:"
 msgstr "以下のようにフィーチャーがインストールされていることを確認します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "feature:list | grep keycloak\n"
+msgstr "feature:list | grep keycloak\n"
 
 #. type: Title ======
 #, no-wrap
@@ -100,66 +157,6 @@ msgstr ""
 "ディレクトリーの下にインストールされます。既存のすべてのjarファイルが上書きされます。"
 
 #. type: Plain text
-msgid "Start Fuse and run these commands in the fuse/karaf terminal:"
-msgstr "Fuseを起動し、Fuse/Karafターミナルで次のコマンドを実行します。"
-
-#. type: Plain text
-msgid ""
-"You must first install the `keycloak-pax-http-undertow` and `keycloak-jaas` "
-"features in the JBoss Fuse environment. The `keycloak` feature includes the "
-"Fuse adapter and all third-party dependencies. The `keycloak-jaas` contains "
-"JAAS module used in realm for SSH and JMX authentication. You can install it"
-" either from the Maven repository or from an archive."
-msgstr ""
-"最初に `keycloak-pax-http-undertow` と `keycloak-jaas` のフィーチャーをJBoss "
-"Fuse環境にインストールする必要があります。 `keycloak` "
-"フィーチャーには、Fuseアダプターとサード・パーティーのすべての依存関係が含まれます。 `keycloak-jaas` "
-"には、SSHとJMX認証のためにレルムで使用されるJAASモジュールが含まれています。Mavenリポジトリーまたはアーカイブからインストールすることができます。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"config:edit org.ops4j.pax.url.mvn\n"
-"config:property-append org.ops4j.pax.url.mvn.repositories ,https://maven.repository.redhat.com/ga@id=redhat.product.repo\n"
-"config:update\n"
-msgstr ""
-"config:edit org.ops4j.pax.url.mvn\n"
-"config:property-append org.ops4j.pax.url.mvn.repositories ,https://maven.repository.redhat.com/ga@id=redhat.product.repo\n"
-"config:update\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid "feature:repo-refresh \n"
-msgstr "feature:repo-refresh \n"
-
-#. type: Plain text
-msgid "Start {fuse7Version}; then in the Karaf terminal type:"
-msgstr "{fuse7Version}を開始します。Karafターミナルで以下のとおりにタイプします。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"feature:repo-add mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
-"feature:install keycloak-pax-http-undertow keycloak-jaas\n"
-msgstr ""
-"feature:repo-add mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
-"feature:install keycloak-pax-http-undertow keycloak-jaas\n"
-
-#. type: Plain text
-msgid "You might also need to install the Undertow feature:"
-msgstr "以下のようにUndertowフィーチャーをインストールする必要もあるかもしれません。"
-
-#. type: delimited block -
-#, no-wrap
-msgid "feature:install pax-http-undertow\n"
-msgstr "feature:install pax-http-undertow\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid "feature:list | grep keycloak\n"
-msgstr "feature:list | grep keycloak\n"
-
-#. type: Plain text
 msgid "Use this for {fuse7Version}:"
 msgstr "{Fuse7Version}には、これを使用します。"
 
@@ -181,6 +178,10 @@ msgstr ""
 "ifeval::[{project_product}==true]\n"
 "unzip -q /path-to-adapter-zip/rh-sso-{project_version}-fuse-adapter.zip\n"
 "endif::[]\n"
+
+#. type: Plain text
+msgid "Start Fuse and run these commands in the fuse/karaf terminal:"
+msgstr "Fuseを起動し、Fuse/Karafターミナルで次のコマンドを実行します。"
 
 #. type: Plain text
 msgid ""

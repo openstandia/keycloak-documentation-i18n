@@ -7,13 +7,34 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2018\n"
+"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =
+#, no-wrap
+msgid "Authorization Services"
+msgstr "認可サービス"
+
+#. type: Title ==
+#, no-wrap
+msgid "Resource Attributes"
+msgstr "リソース属性"
+
+#. type: Plain text
+msgid ""
+"One of the main changes introduced by this release is that you are no longer"
+" required to exchange access tokens with RPTs in order to access resources "
+"protected by a resource server (when not using UMA). Depending on how the "
+"policy enforcer is configured on the resource server side, you can just send"
+" regular access tokens as a bearer token and permissions will still be "
+"enforced."
+msgstr ""
+"このリリースで導入された主な変更の1つは、（UMAを使用しない場合）リソースサーバーによって保護されたリソースにアクセスするために、アクセストークンをRPTと交換する必要がなくなったことです。ポリシー・エンフォーサーがリソースサーバー側でどのように設定されているかに応じて、通常のアクセストークンをベアラートークンとして送信するだけで、パーミッションは引き続き適用されます。"
 
 #. type: Title =
 #, no-wrap
@@ -69,3 +90,167 @@ msgstr ""
 #. type: Plain text
 msgid "Thanks to https://github.com/tnorimat[tnorimat] for the contribution."
 msgstr "https://github.com/tnorimat[tnorimat]のコントリビューションに感謝します。"
+
+#. type: Title ==
+#, no-wrap
+msgid "UMA 2.0 Support"
+msgstr "UMA 2.0のサポート"
+
+#. type: Plain text
+msgid ""
+"UMA 2.0 is now supported for Authorization Services. Check the documentation"
+" for more details if you are coming from previous versions of "
+"{project_name}."
+msgstr ""
+"UMA "
+"2.0が認可サービスでサポートされるようになりました。以前のバージョンの{project_name}からアップグレードしている場合は、ドキュメントの詳細を確認してください。"
+
+#. type: Title ===
+#, no-wrap
+msgid "User-Managed Access through the {project_name} Account Service"
+msgstr "{project_name}アカウント・サービスによるUser-Managed Access"
+
+#. type: Plain text
+msgid ""
+"Now end-users are able to manage their resources and the permissions "
+"associated with them through the {project_name} Account Service.  From "
+"there, resource owners can now check their resources, share resources with "
+"another users as well approve requests from other users."
+msgstr ""
+"これで、エンドユーザーは{project_name}アカウント・サービスを通じて、リソースとそのリソースに関連付けられたパーミッションを管理することができます。そこから、リソースオーナーは自分のリソースを確認し、他のユーザーとリソースを共有したり、他のユーザーからの要求を承認することができます。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Asynchronous Authorization Flow"
+msgstr "非同期認可フロー"
+
+#. type: Plain text
+msgid ""
+"When using UMA, client applications can now choose whether or not an "
+"authorization request should start an authorization flow to ask for the "
+"resource owner approval. This functionality allows applications to ask for "
+"resource owner approval when trying to access one of his resources on behalf"
+" of another user."
+msgstr ""
+"UMAを使用する場合、クライアント・アプリケーションは、認可リクエストが認可フローを開始してリソースオーナーの承認を求めるかどうかを選択できるようになりました。この機能により、アプリケーションは、別のユーザーの代わりにリソースの1つにアクセスしようとするときに、リソースオーナーの承認を求めることができます。"
+
+#. type: Title ===
+#, no-wrap
+msgid "User-Managed Permission API"
+msgstr "ユーザー管理パーミッションAPI"
+
+#. type: Plain text
+msgid ""
+"Resource servers are now capable of associating additional policies to "
+"resources owned by a particular user. The new API provides operations to "
+"manage these permissions using different policy types such as role, group, "
+"user, client or a condition using JavaScript."
+msgstr ""
+"リソースサーバーは、特定のユーザーが所有するリソースに追加のポリシーを関連付けることができるようになりました。新しいAPIは、ロール、グループ、ユーザー、クライアント、JavaScriptなどのさまざまなポリシータイプを使用して、これらのパーミッションを管理する操作を提供します。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Pushed Claims"
+msgstr "クレームのプッシュ"
+
+#. type: Plain text
+msgid ""
+"Clients applications are now able to send arbitrary claims to {project_name}"
+" along with an authorization request in order to evaluate permissions based "
+"on these claims. This is a very handy addition when access should be granted"
+" (or denied) in the scope of a specific transaction or based on information "
+"about the runtime."
+msgstr ""
+"クライアント・アプリケーションは、任意のクレームに基づいてパーミッションを評価するために、認可リクエストとともに{project_name}にそれらのクレームを送信できるようになりました。これは、特定のトランザクションの範囲内で、またはランタイムに関する情報に基づいてアクセスを許可（または拒否）する必要がある場合に、非常に便利です。"
+
+#. type: Plain text
+msgid ""
+"It is now possible to associated attributes with resources protected by "
+"{project_name} and use these same attributes to evaluate permissions from "
+"your policies."
+msgstr ""
+"{project_name}で保護されているリソースに属性を関連付け、これらの属性を使用してポリシーのパーミッションを評価することが可能になりました。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Policy enforcer now accepts regular access tokens"
+msgstr "ポリシー・エンフォーサーは、通常のアクセストークンを受け入れるようになりました"
+
+#. type: Plain text
+msgid ""
+"In some situations, you may want to just send regular access tokens to a "
+"resource server but still be able to enforce policies on these resources."
+msgstr "場合によっては、通常のアクセストークンをリソースサーバーに送信するだけで、これらのリソースに対してポリシーを適用することができます。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Policy enforcer can now load resources from the server on-demand"
+msgstr "ポリシー・エンフォーサーは、オンデマンドでサーバーからリソースをロードできるようになりました"
+
+#. type: Plain text
+msgid ""
+"Until now, when deploying an application configured with a `policy-"
+"enforcer`, the policy enforcer would either load all protected paths from "
+"the server or just map these paths from the adapter configuration. Users can"
+" now decide to load paths on-demand from the server and avoid map these "
+"resources in the adapter configuration. Depending on how many protected "
+"resources you have this functionality can also improve the time to deploy an"
+" application."
+msgstr ""
+"今のところ、 `policy-enforcer` "
+"で設定されたアプリケーションをデプロイするときに、ポリシー・エンフォーサーはサーバーからすべてのプロテクトされたパスをロードするか、またはアダプター設定から取得したこれらのパスをマップするだけです。ユーザーは、サーバーからオンデマンドでパスをロードし、アダプター設定でこれらのリソースをマップすることを避けることができます。保護されたリソースの数に応じて、この機能を使用すると、アプリケーションのデプロイメント時間を短縮することもできます。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Policy enforcer now supports configuring the resource cache"
+msgstr "ポリシー・エンフォーサーは、リソース・キャッシュの設定をサポートするようになりました"
+
+#. type: Plain text
+msgid ""
+"In order to avoid unnecessary hits to the server, the policy enforcer caches"
+" the mapping between protected resources and their corresponding paths in "
+"your application. Users can now configure the behaviour of the cache or even"
+" completely disable it."
+msgstr ""
+"サーバーへの不必要なヒットを避けるために、ポリシー・エンフォーサーは、保護されたリソースとアプリケーション内の対応するパスとの間のマッピングをキャッシュします。ユーザーはキャッシュの動作を設定したり、完全に無効にすることもできます。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Claim Information Points"
+msgstr "クレーム情報ポイント"
+
+#. type: Plain text
+msgid ""
+"The `policy-enforcer` definition on the adapters (`keycloak.json`) was also "
+"updated to support the concept of pushed claims. There you have the concept "
+"of a `claim-information-point` which can be set to push claims from "
+"different sources such as the HTTP request or even from an external HTTP "
+"service."
+msgstr ""
+"アダプターの `policy-enforcer` 定義（ `keycloak.json` "
+"）もプッシュされたクレームの概念をサポートするように更新されました。ここには、クレーム情報ポイントという概念があります。このクレーム情報ポイントには、HTTPリクエストや外部HTTPサービスなど、さまざまなソースからクレームをプッシュするように設定できます。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Improvements to the Evaluation API"
+msgstr "Evaluation APIの改善"
+
+#. type: Plain text
+msgid ""
+"The Evaluation API used to implement policies in {project_name}, especially "
+"JavaScript and Drools policies, provides now methods to:"
+msgstr ""
+"{project_name}（特にJavaScriptとDroolsポリシー）でポリシーを実装するために使用されるEvaluation "
+"APIは、以下のメソッドを提供します。"
+
+#. type: Plain text
+msgid ""
+"Access information from the current realm such as check for user roles, "
+"groups and attributes"
+msgstr "ユーザーロール、グループ、および属性のチェックなど、現在のレルムからの情報にアクセスする"
+
+#. type: Plain text
+msgid ""
+"Push back arbitrary claims to the resource server in order to provide "
+"additional information on how a specific permissions should be enforced"
+msgstr "特定のパーミッションの強制方法に関する追加情報を提供するために、任意のクレームをリソースサーバーにプッシュバックします。"

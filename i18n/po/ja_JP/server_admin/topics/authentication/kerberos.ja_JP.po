@@ -20,15 +20,6 @@ msgstr ""
 msgid "Troubleshooting"
 msgstr "トラブルシューティング"
 
-#. type: Block title
-#, no-wrap
-msgid "Browser Flow"
-msgstr "ブラウザーフロー"
-
-#. type: Plain text
-msgid "image:{project_images}/browser-flow.png[]"
-msgstr "image:{project_images}/browser-flow.png[]"
-
 #. type: Title ===
 #, no-wrap
 msgid "Kerberos"
@@ -253,6 +244,15 @@ msgid ""
 msgstr ""
 "{project_name}では、デフォルトでSPNEGOプロトコルのサポートが有効になっていません。したがって、<<_authentication-"
 "flows, ブラウザーフロー>>に移動して `Kerberos` を有効にする必要があります。"
+
+#. type: Block title
+#, no-wrap
+msgid "Browser Flow"
+msgstr "ブラウザーフロー"
+
+#. type: Plain text
+msgid "image:{project_images}/browser-flow.png[]"
+msgstr "image:{project_images}/browser-flow.png[]"
 
 #. type: Plain text
 msgid ""
@@ -527,6 +527,109 @@ msgstr ""
 " "
 "http://www.microhowto.info/howto/configure_firefox_to_authenticate_using_spnego_and_kerberos.html[この記事]"
 " の例を参照してください。\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Cross-realm trust"
+msgstr "クロスレルム・トラスト"
+
+#. type: Plain text
+msgid ""
+"In the Kerberos V5 protocol, the `realm` is a set of Kerberos principals "
+"defined in the Kerberos database (typically LDAP server).  The Kerberos "
+"protocol has a concept of cross-realm trust. For example, if there are 2 "
+"kerberos realms A and B, the cross-realm trust will allow the users from "
+"realm A to access resources (services) of realm B. This means that realm B "
+"trusts the realm A."
+msgstr ""
+"Kerberos V5プロトコルでは、 `realm` "
+"はKerberosデータベース（通常はLDAPサーバー）で定義されたKerberosプリンシパルのセットです。Kerberosプロトコルには、クロスレルム・トラストという概念があります。たとえば、2つのケルベロス・レルムAとBがある場合、クロスレルム・トラストは、レルムAのユーザーがレルムBのリソース（サービス）にアクセスできるようにします。つまり、レルムBはレルムAを信頼します。"
+
+#. type: Block title
+#, no-wrap
+msgid "Kerberos cross-realm trust"
+msgstr "Kerberosクロスレルム・トラスト"
+
+#. type: Plain text
+msgid "image:images/kerberos-trust-basic.png[]"
+msgstr "image:images/kerberos-trust-basic.png[]"
+
+#. type: Plain text
+msgid ""
+"The {project_name} server has support for cross-realm trust. There are few "
+"things which need to be done to achieve this:"
+msgstr "{project_name}サーバーは、クロスレルム・トラストをサポートしています。これを達成するために必要なことがいくつかあります。"
+
+#. type: Plain text
+msgid ""
+"Configure the Kerberos servers for the cross-realm trust. This step is "
+"dependent on the concrete Kerberos server implementations used.  In general,"
+" it is needed to add the Kerberos principal `krbtgt/B@A` to both Kerberos "
+"databases of realm A and B. It is needed that this principal has same keys "
+"on both Kerberos realms. This is usually achieved when the principals have "
+"same password, key version number and there are same ciphers used in both "
+"realms. It is recommended to consult the Kerberos server documentation for "
+"more details."
+msgstr ""
+"クロスドメイン・トラストのためにKerberosサーバーを設定します。この手順は、使用された具体的なKerberosサーバー実装に依存します。一般に、レルムAとBの両方のKerberosデータベースにKerberosプリンシパル"
+" `krbtgt/B@A` "
+"を追加する必要があります。このプリンシパルは両方のKerberosレルムで同じキーを持つ必要があります。これは通常、プリンシパルが同じパスワード、キーバージョン番号を持ち、両方のレルムで同じ暗号が使用されている場合に実現されます。詳細については、Kerberosサーバーのマニュアルを参照することをお勧めします。"
+
+#. type: Plain text
+msgid ""
+"The cross-realm trust is unidirectional by default. If you want "
+"bidirectional trust to have realm A also trust realm B, you must also add "
+"the principal `krbtgt/A@B` to both Kerberos databases. However, trust is "
+"transitive by default. If realm B trusts realm A and realm C trusts realm B,"
+" then realm C automatically trusts realm A without a need to have principal "
+"`krbtgt/C@A` available. Some additional configuration (for example "
+"`capaths`) may be needed to configure on Kerberos client side, so that the "
+"clients are able to find the trust path. Consult the Kerberos documentation "
+"for more details."
+msgstr ""
+"クロスレルム・トラストは、デフォルトでは単方向です。レルムAとレルムBを双方向に信頼させたい場合は、両方のKerberosデータベースにプリンシパル "
+"`krbtgt/A@B` "
+"を追加する必要があります。ただし、信頼はデフォルトでは推移的です。レルムBがレルムAを信頼し、レルムCがレルムBを信頼する場合、レルムCは利用可能なプリンシパル"
+" `krbtgt/C@A` "
+"を必要とせずに、レルムAを自動的に信頼します。Kerberosクライアント側で、クライアントがトラスト･パスを見つけることができるように設定するには、いくつかの追加の設定（例えば"
+" `capaths` ）が必要な場合があります。詳細については、Kerberosのマニュアルを参照してください。"
+
+#. type: Plain text
+msgid "Configure {project_name} server"
+msgstr "{project_name}サーバーの設定"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"** If you use an LDAP storage provider with Kerberos support, you need to configure the server principal for realm B as in this\n"
+"example: `HTTP/mydomain.com@B`. The LDAP server must be able to find the users from realm A if you want users from realm A to\n"
+"successfully authenticate to {project_name}, as {project_name} server must be able to do SPNEGO flow and then find the users.\n"
+"For example, kerberos principal user `john@A` must be available as a user in the LDAP under an LDAP DN\n"
+"such as `uid=john,ou=People,dc=example,dc=com`. If you want both users from realm A and B to authenticate, you need to ensure\n"
+"that LDAP is able to find users from both realms A and B. We want to improve this limitation in future versions, so you can\n"
+"potentially create more separate LDAP providers for separate realms and ensure that SPNEGO works for both of them.\n"
+msgstr ""
+"** KerberosサポートでLDAPストレージ・プロバイダーを使用する場合は、次の例のようにレルムBのサーバー・プリンシパルを設定する必要があります：  `HTTP/mydomain.com@B` 。 {project_name}サーバーがSPNEGOフローを実行してからユーザーを見つけることができる必要があるため、レルムAのユーザーが{project_name}に対して正常に認証されるようにするには、LDAPサーバーがレルムAからユーザーを検出できる必要があります。\n"
+"たとえば、kerberosプリンシパル・ユーザー `john@A` が、 `uid=john,ou=People,dc=example,dc=com` のようなLDAP DNの下で、LDAPのユーザーとして利用可能でなければなりません。レルムAとレルムBの両方のユーザーが認証されるようにするには、LDAPがレルムAとレルムBの両方からユーザーを検出できるようにする必要があります。この制限を将来のバージョンで改善する計画があり、その場合は別々のレルムに対して別々のLDAPプロバイダーを作成し、両方でSPNEGOが機能することができます。\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"** If you use a Kerberos user storage provider (typically the Kerberos without LDAP integration), you need to configure the\n"
+"server principal as `HTTP/mydomain.com@B` and users from both Kerberos realms A and B should be able to authenticate.\n"
+msgstr ""
+"** Kerberosユーザー・ストレージ・プロバイダー（通常はLDAP統合なしのKerberos）を使用する場合は、サーバーのプリンシパルを "
+"`HTTP/mydomain.com@B` として設定し、KerberosのレルムAとレルムBの両方のユーザーで認証できる必要があります 。\n"
+
+#. type: Plain text
+msgid ""
+"For the Kerberos user storage provider, it is recommended that there are no "
+"conflicting users among kerberos realms. If conflicting users exist, they "
+"will be mapped to the same {project_name} user. This is also something, "
+"which we want to improve in future versions and provide some more flexible "
+"mappings from Kerberos principals to {project_name} usernames."
+msgstr ""
+"Kerberosユーザー・ストレージ・プロバイダーでは、Kerberosレルム間で競合するユーザーが存在しないようにすることをお勧めします。競合するユーザーが存在する場合、それらは同じ{project_name}ユーザーに割り当てられます。これも将来のバージョンで改善し、Kerberosプリンシパルから{project_name}ユーザー名へのより柔軟なマッピングを提供する計画があります。"
 
 #. type: Plain text
 msgid ""

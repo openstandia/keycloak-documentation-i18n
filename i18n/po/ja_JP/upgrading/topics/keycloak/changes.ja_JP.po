@@ -3,11 +3,16 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# jic_m_mito <jic-m-mito@nri.co.jp>, 2017
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,10 +30,155 @@ msgstr "1.9.0への移行"
 msgid "SAML SP Client Adapter Changes"
 msgstr "SAML SPクライアント・アダプターの変更"
 
+#. type: Title ====
+#, no-wrap
+msgid "New Password Hashing algorithms"
+msgstr "新しいパスワード・ハッシュ・アルゴリズム"
+
+#. type: Title ====
+#, no-wrap
+msgid "ID Token requires scope=openid"
+msgstr "IDトークンにはscope=openidが必要"
+
+#. type: Title ====
+#, no-wrap
+msgid ""
+"Added session_state parameter to OpenID Connect Authentication Response"
+msgstr "OpenID Connect認証レスポンスにsession_stateパラメーターを追加"
+
+#. type: Plain text
+msgid ""
+"The OpenID Connect Session Management specification requires that the "
+"parameter `session_state` is present in the OpenID Connect Authentication "
+"Response."
+msgstr ""
+"OpenID Connectセッション管理仕様では、パラメーター `session_state` がOpenID "
+"Connect認証レスポンスに存在する必要があります。"
+
 #. type: Title ==
 #, no-wrap
 msgid "Migration Changes"
 msgstr "移行に伴う変更"
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 4.4.0"
+msgstr "4.4.0への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 13"
+msgstr "WildFly 13へのアップグレード"
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 13 as the underlying "
+"container. This does not directly involve any specific {project_name} server"
+" functionality, but there are few changes related to the migration, which "
+"worth mentioning."
+msgstr ""
+"WildFly "
+"13をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。これは、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更があります。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Dependency updates"
+msgstr "依存関係の更新"
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 13 server. For"
+" example, Infinispan is now 9.2.4.Final and Undertow is 2.0.9.Final"
+msgstr ""
+"依存関係が、WildFly "
+"13サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.2.4.Finalで、Undertowは2.0.9.Finalです。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Configuration changes"
+msgstr "設定の変更"
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and "
+"`domain.xml` files. You should follow the <<_install_new_version>> section "
+"to handle the migration of configuration files automatically. If more detail"
+" is needed, because, for example, you did some configuration changes on your"
+" own, here is a list of the most important changes:"
+msgstr ""
+"`standalone(-ha).xml` と `domain.xml` "
+"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。たとえば、自分で設定を変更したため、より詳細な情報が必要な場合を考慮して、最も重要な変更の一覧を以下に示します。"
+
+#. type: Plain text
+msgid ""
+"Element `eviction` on infinispan caches is now deprecated (unused) and was "
+"replaced by element `object-memory`"
+msgstr ""
+"infinispanキャッシュ上の `eviction` 要素は廃止され（未使用）、 `object-memory` 要素に置き換えられました。"
+
+#. type: Plain text
+msgid ""
+"There is no `jndi-attribute` on `cache-container` element in infinispan "
+"subsystem."
+msgstr "infinispanサブシステムの `cache-container` 要素の `jndi-attribute` はなくなりました。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Cross-Datacenter Replication changes"
+msgstr "クロス・データセンター・レプリケーションの変更"
+
+#. type: Plain text
+msgid ""
+"You will need to upgrade {jdgserver_name} server to version "
+"{jdgserver_version}. The older version may still work, but it is"
+msgstr ""
+"{jdgserver_name}サーバーをバージョン{jdgserver_version}にアップグレードする必要があります。古いバージョンはまだ動作するかもしれませんが、"
+
+#. type: Plain text
+msgid "not guaranteed as we don't test it anymore."
+msgstr "テストしていないため、動作保証されていません。"
+
+#. type: Plain text
+msgid ""
+"You don't need to configure security anymore in the {jdgserver_name} server "
+"configuration file."
+msgstr "{jdgserver_name}サーバー設定ファイルでセキュリティーを設定する必要はありません。"
+
+#. type: Plain text
+msgid ""
+"There is a need to remove `transaction` element from the configuration of "
+"replicated caches in the {jdgserver_name} server"
+msgstr ""
+"{jdgserver_name}サーバー設定ファイルのレプリケートされたキャッシュの設定から、 `transaction` "
+"要素を削除する必要があります。"
+
+#. type: Plain text
+msgid ""
+"configuration file. This is needed because of the infinispan bug "
+"https://issues.jboss.org/browse/ISPN-9323."
+msgstr ""
+"これは、infinispanバグ https://issues.jboss.org/browse/ISPN-9323 の対策のために必要です。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Migration to 4.3.0"
+msgstr "4.3.0への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "Hostname configuration"
+msgstr "ホスト名の設定"
+
+#. type: Plain text
+msgid ""
+"In previous versions it was recommended to use a filter to specify permitted"
+" hostnames. It is now possible to set a fixed hostname which makes it easier"
+" to make sure the valid hostname is used and also allows internal "
+"applications to invoke {project_name} through an alternative URL, for "
+"example an internal IP address. It is recommended that you switch to this "
+"approach in production."
+msgstr ""
+"以前のバージョンでは、フィルターを使用して許可されたホスト名を指定することが推奨されていました。有効なホスト名が使用されていることを確認しやすくするため、固定ホスト名を設定することができ、内部アプリケーションが内部IPアドレスなどの代替URLを通じて{project_name}を呼び出すことも可能になりました。本番環境では、このアプローチに切り替えることをお勧めします。"
 
 #. type: Title ===
 #, no-wrap
@@ -136,25 +286,143 @@ msgstr ""
 "`Scope Param Required` がRole Detailから削除されました。 `Consent Required` と `Consent "
 "Text` のスイッチがプロトコル・マッパーの詳細から削除されました。これらのスイッチはクライアント・スコープ機能に置き換えられました。"
 
+#. type: Title ====
+#, no-wrap
+msgid "Changes to Authorization Services"
+msgstr "認可サービスの変更"
+
+#. type: Plain text
+msgid ""
+"We added support for UMA 2.0. This version of the UMA specification "
+"introduced some important changes on how permissions are obtained from the "
+"server."
+msgstr ""
+"UMA 2.0のサポートを追加しました。このバージョンのUMA仕様では、サーバーからのパーミッションの取得方法に関する重要な変更が導入されました。"
+
+#. type: Plain text
+msgid ""
+"Here are the main changes introduced by UMA 2.0 support. See "
+"link:{authorizationguide_link}[{authorizationguide_name}] for details."
+msgstr ""
+"ここでは、UMA 2.0サポートによって導入された主な変更点を示します。詳細は、 "
+"link:{authorizationguide_link}[{authorizationguide_name}] を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authorization API was removed"
+msgstr "Authorization APIが削除されました"
+
+#. type: Plain text
+msgid ""
+"Prior to UMA 2.0 (UMA 1.0), client applications were using the Authorization"
+" API to obtain permissions from the server in the format of a RPT. The new "
+"version of UMA specification has removed the Authorization API which was "
+"also removed from {project_name}. In UMA 2.0, RPTs can now be obtained from "
+"the token endpoint by using a specific grant type.  See "
+"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
+" for details."
+msgstr ""
+"UMA 2.0以前（UMA 1.0）では、クライアント・アプリケーションがAuthorization "
+"APIを使用して、RPTの形式でサーバーからパーミッションを取得していました。新しいバージョンのUMA仕様では、Authorization "
+"APIが削除され、{project_name}からも削除されました。UMA "
+"2.0では、特定の認可タイプを使用してトークン・エンドポイントからRPTを取得できるようになりました。詳細は、 "
+"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
+" を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Entitlement API was removed"
+msgstr "Entitlement APIが削除されました"
+
+#. type: Plain text
+msgid ""
+"With the introduction of UMA 2.0, we decided to leverage the token endpoint "
+"and UMA grant type to allow obtaining RPTs from {project_name} and avoid "
+"having different APIs. The functionality provided by the Entitlement API was"
+" kept the same and is still possible to obtain permissions for a set of one "
+"or more resources and scopes or all permissions from the server in case no "
+"resource or scope is provided.  See "
+"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
+" for details."
+msgstr ""
+"UMA "
+"2.0の導入により、{project_name}からRPTを取得し、異なるAPIを使用することを避けるように、トークン・エンドポイントとUMAグラントタイプを活用することにしました。Entitlement"
+" "
+"APIによって提供される機能はこれまでどおり、リソースまたはスコープが提供されていない場合でも、1つ以上のリソースとスコープのセット、またはサーバーからのすべてのパーミッションを取得できます。詳細は、"
+" "
+"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
+" を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes to UMA Discovery Endpoint"
+msgstr "UMA Discoveryエンドポイントの変更"
+
+#. type: Plain text
+msgid ""
+"UMA Discovery document changed, see "
+"link:{authorizationguide_link}#_service_authorization_api[{authorizationguide_name}]"
+" for details."
+msgstr ""
+"UMA Discoveryドキュメントが変更されました。詳細は "
+"link:{authorizationguide_link}#_service_authorization_api[{authorizationguide_name}]"
+" を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes to {project_name} Authorization JavaScript Adapter"
+msgstr "{project_name}認可JavaScriptアダプターの変更"
+
+#. type: Plain text
+msgid ""
+"The {project_name} Authorization JavaScript Adapter (keycloak-authz.js) "
+"changed in order to comply with the changes introduced by UMA 2.0 while "
+"keeping the same behavior as before. The main change is on how you invoke "
+"both `authorization` and `entitlement` methods which now expect a specific "
+"object type representing an authorization request. This new object type "
+"provides more flexibility on how permissions can be obtained from the server"
+" by supporting the different parameters supported by the UMA grant type.  "
+"See "
+"link:{authorizationguide_link}#_enforcer_js_adapter[{authorizationguide_name}]"
+" for details."
+msgstr ""
+"以前と同じ動作を維持しながら、UMA 2.0によって導入された変更に準拠するように、{project_name}認可JavaScriptアダプター"
+"（keycloak-authz.js）が変更されました。主な変更点は、認可リクエストを表す特定のオブジェクト・タイプを想定する "
+"`authorization` メソッドと `entitlement` "
+"メソッドの両方を呼び出す方法です。この新しいオブジェクト・タイプは、UMAグラントタイプでサポートされているさまざまなパラメーターをサポートすることにより、サーバからパーミッションを取得するより柔軟な方法を提供します。詳細は、"
+" "
+"link:{authorizationguide_link}#_enforcer_js_adapter[{authorizationguide_name}]"
+" を参照してください。"
+
+#. type: Plain text
+msgid ""
+"One of the main changes introduced by this release is that you are no longer"
+" required to exchange access tokens with RPTs in order to access resources "
+"protected by a resource server (when not using UMA). Depending on how the "
+"policy enforcer is configured on the resource server side, you can just send"
+" regular access tokens as a bearer token and permissions will still be "
+"enforced."
+msgstr ""
+"このリリースで導入された主な変更の1つは、（UMAを使用しない場合）リソースサーバーによって保護されたリソースにアクセスするために、アクセストークンをRPTと交換する必要がなくなったことです。ポリシー・エンフォーサーがリソースサーバー側でどのように設定されているかに応じて、通常のアクセストークンをベアラートークンとして送信するだけで、パーミッションは引き続き適用されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes to {project_name} Authorization Client Java API"
+msgstr "{project_name}認可クライアントJava APIの変更"
+
+#. type: Plain text
+msgid ""
+"When upgrading to the new version of {project_name} Authorization Client "
+"Java API, you'll notice that some representation classes were moved to a "
+"different package in `org.keycloak:keycloak-core`."
+msgstr ""
+"新しいバージョンの{project_name}}認可クライアントJava APIにアップグレードすると、いくつかの表現クラスが "
+"`org.keycloak:keycloak-core` の別のパッケージに移動されたことに気付くでしょう。"
+
 #. type: Title ===
 #, no-wrap
 msgid "Migrating to 3.4.2"
 msgstr "3.4.2への移行"
-
-#. type: Title ===
-#, no-wrap
-msgid ""
-"Added session_state parameter to OpenID Connect Authentication Response"
-msgstr "OpenID Connect認証レスポンスにsession_stateパラメーターを追加"
-
-#. type: Plain text
-msgid ""
-"The OpenID Connect Session Management specification requires that the "
-"parameter `session_state` is present in the OpenID Connect Authentication "
-"Response."
-msgstr ""
-"OpenID Connectセッション管理仕様では、パラメーター `session_state` がOpenID "
-"Connect認証レスポンスに存在する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -208,11 +476,6 @@ msgstr ""
 msgid "Migrating to 3.2.0"
 msgstr "3.2.0への移行"
 
-#. type: Title ===
-#, no-wrap
-msgid "New Password Hashing algorithms"
-msgstr "新しいパスワード・ハッシュ・アルゴリズム"
-
 #. type: Plain text
 msgid ""
 "We've added two new password hashing algorithms (pbkdf2-sha256 and "
@@ -230,11 +493,6 @@ msgid ""
 "pbkdf2-sha256 if you'd like to use the more secure hashing algorithm."
 msgstr ""
 "既存のレルムは、パスワードポリシーにハッシュ・アルゴリズム（未指定）とイテレーション（20000）のデフォルト値が含まれている場合、アップグレードされます。ハッシュ・イテレーションを変更しており、セキュリティー上より安全なハッシュ・アルゴリズムを使用したい場合は、手動でpbkdf2-sha256に変更する必要があります。"
-
-#. type: Title ===
-#, no-wrap
-msgid "ID Token requires scope=openid"
-msgstr "IDトークンにはscope=openidが必要"
 
 #. type: Plain text
 msgid ""

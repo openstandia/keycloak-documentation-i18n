@@ -3,11 +3,15 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,6 +52,62 @@ msgid ""
 "set."
 msgstr "クライアント・キー用のパスワードです。 `client-keystore` が設定されている場合、これは _REQUIRED_ です。"
 
+#. type: Plain text
+msgid ""
+"This should be set to __true__ if your application serves both a web "
+"application and web services (e.g. SOAP or REST).  It allows you to redirect"
+" unauthenticated users of the web application to the Keycloak login page, "
+"but send an HTTP `401` status code to unauthenticated SOAP or REST clients "
+"instead as they would not understand a redirect to the login page.  Keycloak"
+" auto-detects SOAP or REST clients based on typical headers like `X"
+"-Requested-With`, `SOAPAction` or `Accept`.  The default value is _false_."
+msgstr ""
+"アプリケーションがWebアプリケーションとWebサービス（SOAPやRESTなど）の両方を提供する場合は、これを __true__ "
+"に設定する必要があります。 "
+"Webアプリケーションの未認証のユーザーをKeycloakのログインページにリダイレクトできますが、ログインページへのリダイレクトを理解できない未認証のSOAPクライアントまたはRESTクライアントにはHTTPの"
+" `401` ステータスコードを送信します。Keycloakは、 `X-Requested-With` 、 `SOAPAction` 、 "
+"`Accept` のような典型的なヘッダーに基づいて、SOAPクライアントまたはRESTクライアントを自動検出します。デフォルト値は _false_ "
+"です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "resource"
+msgstr "resource"
+
+#. type: Plain text
+msgid ""
+"If the {project_name} server requires HTTPS and this config option is set to"
+" `true` you do not have to specify a truststore.  This setting should only "
+"be used during development and *never* in production as it will disable "
+"verification of SSL certificates.  This is _OPTIONAL_.  The default value is"
+" `false`."
+msgstr ""
+"{project_name}サーバーがHTTPSを必要とし、この設定オプションを `true` "
+"に設定する場合は、トラストストアを指定する必要はありません。この設定は、SSL証明書の検証を無効とするため、開発時にのみ使用すべきで、プロダクション環境では"
+" *決して使用してはいけません* 。これは _OPTIONAL_ です。デフォルトは `false` です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "truststore"
+msgstr "truststore"
+
+#. type: Plain text
+msgid ""
+"Password for the truststore keystore.  This is _REQUIRED_ if `truststore` is"
+" set and the truststore requires a password."
+msgstr ""
+"トラストストアのキーストアのパスワードです。これは _REQUIRED_ で、 `truststore` "
+"を設定すると、トラストストアはパスワードを必要とします。"
+
+#. type: Plain text
+msgid ""
+"This is the file path to a keystore file.  This keystore contains client "
+"certificate for two-way SSL when the adapter makes HTTPS requests to the "
+"{project_name} server.  This is _OPTIONAL_."
+msgstr ""
+"キーストア・ファイルへのファイルパスです。このキーストアには、アダプターが{project_name}サーバーにHTTPSリクエストを行う際の、双方向SSLのためのクライアント証明書を含めます。これは"
+" _OPTIONAL_ です。"
+
 #. type: Title ====
 #, no-wrap
 msgid "Java Adapter Config"
@@ -76,6 +136,7 @@ msgid ""
 "  \"bearer-only\" : false,\n"
 "  \"enable-basic-auth\" : false,\n"
 "  \"expose-token\" : true,\n"
+"  \"verify-token-audience\" : true,\n"
 "   \"credentials\" : {\n"
 "      \"secret\" : \"234234-234234-234234\"\n"
 "   },\n"
@@ -94,6 +155,7 @@ msgstr ""
 "  \"bearer-only\" : false,\n"
 "  \"enable-basic-auth\" : false,\n"
 "  \"expose-token\" : true,\n"
+"  \"verify-token-audience\" : true,\n"
 "   \"credentials\" : {\n"
 "      \"secret\" : \"234234-234234-234234\"\n"
 "   },\n"
@@ -167,11 +229,6 @@ msgstr "realm"
 #. type: Plain text
 msgid "Name of the realm.  This is _REQUIRED._"
 msgstr "レルムの名前。 これは _REQUIRED_ です。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "resource"
-msgstr "resource"
 
 #. type: Plain text
 msgid ""
@@ -364,23 +421,6 @@ msgstr ""
 msgid "autodetect-bearer-only"
 msgstr "autodetect-bearer-only"
 
-#. type: Plain text
-msgid ""
-"This should be set to __true__ if your application serves both a web "
-"application and web services (e.g. SOAP or REST).  It allows you to redirect"
-" unauthenticated users of the web application to the Keycloak login page, "
-"but send an HTTP `401` status code to unauthenticated SOAP or REST clients "
-"instead as they would not understand a redirect to the login page.  Keycloak"
-" auto-detects SOAP or REST clients based on typical headers like `X"
-"-Requested-With`, `SOAPAction` or `Accept`.  The default value is _false_."
-msgstr ""
-"アプリケーションがWebアプリケーションとWebサービス（SOAPやRESTなど）の両方を提供する場合は、これを __true__ "
-"に設定する必要があります。 "
-"Webアプリケーションの未認証のユーザーをKeycloakのログインページにリダイレクトできますが、ログインページへのリダイレクトを理解できない未認証のSOAPクライアントまたはRESTクライアントにはHTTPの"
-" `401` ステータスコードを送信します。Keycloakは、 `X-Requested-With` 、 `SOAPAction` 、 "
-"`Accept` のような典型的なヘッダーに基づいて、SOAPクライアントまたはRESTクライアントを自動検出します。デフォルト値は _false_ "
-"です。"
-
 #. type: Labeled list
 #, no-wrap
 msgid "enable-basic-auth"
@@ -442,18 +482,6 @@ msgstr ""
 msgid "disable-trust-manager"
 msgstr "disable-trust-manager"
 
-#. type: Plain text
-msgid ""
-"If the {project_name} server requires HTTPS and this config option is set to"
-" `true` you do not have to specify a truststore.  This setting should only "
-"be used during development and *never* in production as it will disable "
-"verification of SSL certificates.  This is _OPTIONAL_.  The default value is"
-" `false`."
-msgstr ""
-"{project_name}サーバーがHTTPSを必要とし、この設定オプションを `true` "
-"に設定する場合は、トラストストアを指定する必要はありません。この設定は、SSL証明書の検証を無効とするため、開発時にのみ使用すべきで、プロダクション環境では"
-" *決して使用してはいけません* 。これは _OPTIONAL_ です。デフォルトは `false` です。"
-
 #. type: Labeled list
 #, no-wrap
 msgid "allow-any-hostname"
@@ -481,11 +509,6 @@ msgstr "proxy-url"
 msgid "The URL for the HTTP proxy if one is used."
 msgstr "HTTPプロキシーを使用する場合はそのURLを設定します。"
 
-#. type: Labeled list
-#, no-wrap
-msgid "truststore"
-msgstr "truststore"
-
 #. type: Plain text
 msgid ""
 "The value is the file path to a keystore file.  If you prefix the path with "
@@ -507,23 +530,6 @@ msgstr ""
 #, no-wrap
 msgid "truststore-password"
 msgstr "truststore-password"
-
-#. type: Plain text
-msgid ""
-"Password for the truststore keystore.  This is _REQUIRED_ if `truststore` is"
-" set and the truststore requires a password."
-msgstr ""
-"トラストストアのキーストアのパスワードです。これは _REQUIRED_ で、 `truststore` "
-"を設定すると、トラストストアはパスワードを必要とします。"
-
-#. type: Plain text
-msgid ""
-"This is the file path to a keystore file.  This keystore contains client "
-"certificate for two-way SSL when the adapter makes HTTPS requests to the "
-"{project_name} server.  This is _OPTIONAL_."
-msgstr ""
-"キーストア・ファイルへのファイルパスです。このキーストアには、アダプターが{project_name}サーバーにHTTPSリクエストを行う際の、双方向SSLのためのクライアント証明書を含めます。これは"
-" _OPTIONAL_ です。"
 
 #. type: Labeled list
 #, no-wrap
@@ -693,3 +699,23 @@ msgid ""
 msgstr ""
 "必要に応じて、リダイレクトURIリライトのルールを指定します。キーがリダイレクトURIに一致する正規表現であり、値が置換文字列であるオブジェクト表記法で表します。置換文字列の後方参照に"
 " `$` 文字を使用できます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "verify-token-audience"
+msgstr "verify-token-audience"
+
+#. type: Plain text
+msgid ""
+"If set to `true`, then during authentication with the bearer token, the "
+"adapter will verify whether the token contains this client name (resource) "
+"as an audience. The option is especially useful for services, which "
+"primarily serve requests authenticated by the bearer token. This is set to "
+"`false` by default, however for improved security, it is recommended to "
+"enable this.  See link:{adminguide_link}#_audience[Audience Support] for "
+"more details about audience support."
+msgstr ""
+"`true` "
+"に設定されている場合、ベアラートークンによる認証中に、アダプターはトークンにこのクライアント名（リソース）がオーディエンスとして含まれているかどうかを検証します。このオプションは、ベアラートークンによって認証されたリクエストを主に処理するサービスに特に便利です。これはデフォルトで"
+" `false` に設定されていますが、セキュリティーを強化するため、これを有効にすることをお勧めします。オーディエンス・サポートの詳細については、 "
+"link:{adminguide_link}#_audience[オーディエンス・サポート] を参照してください。"

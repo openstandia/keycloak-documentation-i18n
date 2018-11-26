@@ -3,6 +3,10 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -14,6 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <security-role>\n"
+"        <role-name>admin</role-name>\n"
+"    </security-role>\n"
+"    <security-role>\n"
+"        <role-name>user</role-name>\n"
+"    </security-role>\n"
+"</web-app>\n"
+msgstr ""
+"    <security-role>\n"
+"        <role-name>admin</role-name>\n"
+"    </security-role>\n"
+"    <security-role>\n"
+"        <role-name>user</role-name>\n"
+"    </security-role>\n"
+"</web-app>\n"
+
+#. type: Plain text
+msgid ""
+"Contrary to the Fuse 6 adapter, there are no special OSGi imports needed in "
+"MANIFEST.MF."
+msgstr "Fuse 6アダプターとは異なり、MANIFEST.MFには特別なOSGiのインポートは必要ありません。"
 
 #. type: Plain text
 msgid "For example:"
@@ -35,6 +64,17 @@ msgstr "`/WEB-INF/web.xml` ファイルで、次のように必要なものを�
 #. type: Plain text
 msgid "security constraints in the <security-constraint> element"
 msgstr "<security-constraint>要素のセキュリティー制約"
+
+#. type: Plain text
+msgid ""
+"login configuration in the <login-config> element. Make sure that the "
+"`<auth-method>` is `KEYCLOAK`."
+msgstr ""
+"<login-config> 要素内のログイン設定。 `<auth-method>` が `KEYCLOAK` であることを確認してください。"
+
+#. type: Plain text
+msgid "security roles in the <security-role> element"
+msgstr "<security-role> 要素のセキュリティー・ロール。"
 
 #. type: delimited block -
 #, no-wrap
@@ -93,21 +133,15 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"    <security-role>\n"
-"        <role-name>admin</role-name>\n"
-"    </security-role>\n"
-"    <security-role>\n"
-"        <role-name>user</role-name>\n"
-"    </security-role>\n"
-"</web-app>\n"
+"    <login-config>\n"
+"        <auth-method>KEYCLOAK</auth-method>\n"
+"        <realm-name>does-not-matter</realm-name>\n"
+"    </login-config>\n"
 msgstr ""
-"    <security-role>\n"
-"        <role-name>admin</role-name>\n"
-"    </security-role>\n"
-"    <security-role>\n"
-"        <role-name>user</role-name>\n"
-"    </security-role>\n"
-"</web-app>\n"
+"    <login-config>\n"
+"        <auth-method>KEYCLOAK</auth-method>\n"
+"        <realm-name>does-not-matter</realm-name>\n"
+"    </login-config>\n"
 
 #. type: Plain text
 msgid ""
@@ -120,25 +154,48 @@ msgstr ""
 "WARの `/WEB-INF/` ディレクトリー内に、新しい `keycloak.json` "
 "ファイルを作成します。この設定ファイルの形式は、<<_java_adapter_config,Javaアダプターの設定>>のセクションで説明しています。xref:config_external_adapter[外部アダプターの設定]で説明されているように、外部でこのファイルを使用することもできます。"
 
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"    \"realm\": \"demo\",\n"
+"    \"resource\": \"customer-portal\",\n"
+"    \"auth-server-url\": \"http://localhost:8080/auth\",\n"
+"    \"ssl-required\" : \"external\",\n"
+"    \"credentials\": {\n"
+"        \"secret\": \"password\"\n"
+"    }\n"
+"}\n"
+msgstr ""
+"{\n"
+"    \"realm\": \"demo\",\n"
+"    \"resource\": \"customer-portal\",\n"
+"    \"auth-server-url\": \"http://localhost:8080/auth\",\n"
+"    \"ssl-required\" : \"external\",\n"
+"    \"credentials\": {\n"
+"        \"secret\": \"password\"\n"
+"    }\n"
+"}\n"
+
 #. type: Title ======
 #, no-wrap
-msgid "Configuring the External Adapter"
-msgstr "外部アダプターの設定"
+msgid "Configuration Resolvers"
+msgstr "設定リゾルバー"
 
 #. type: Plain text
 msgid ""
-"If you do not want the `keycloak.json` adapter configuration file to be "
-"bundled inside your WAR application, but instead made available externally "
-"and loaded based on naming conventions, use this configuration method."
+"The `keycloak.json` adapter configuration file can be stored inside a "
+"bundle, which is default behaviour, or in a directory on a filesystem. To "
+"specify the actual source of the configuration file, set the "
+"`keycloak.config.resolver` deployment parameter to the desired configuration"
+" resolver class.  For example, in a classic WAR application, set the "
+"`keycloak.config.resolver` context parameter in `web.xml` file like this:"
 msgstr ""
 "`keycloak.json` "
-"アダプターの設定ファイルをWARアプリケーションの中にバンドルするのではなく、外部で使用可能にし、命名規則に基づいてロードする場合は、この設定方法を使用してください。"
-
-#. type: Plain text
-msgid ""
-"To enable the functionality, add this section to your `/WEB_INF/web.xml` "
-"file:"
-msgstr "この機能を有効にするには、次のセクションを `/WEB_INF/web.xml` ファイルに追加してください。"
+"アダプター設定ファイルはバンドル内か（デフォルトの動作）、ファイルシステム上のディレクトリーに保存することができます。設定ファイルの実際のソースを指定するには、"
+" `keycloak.config.resolver` "
+"配備パラメーターを目的の設定リゾルバークラスに設定します。たとえば、古典的なWARアプリケーションでは、 `web.xml` ファイルに "
+"`keycloak.config.resolver` コンテキスト・パラメーターを以下のように設定します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -154,74 +211,84 @@ msgstr ""
 "</context-param>\n"
 
 #. type: Plain text
-msgid ""
-"That component uses `keycloak.config` or `karaf.etc` java properties to "
-"search for a base folder to locate the configuration.  Then inside one of "
-"those folders it searches for a file called "
-"`<your_web_context>-keycloak.json`."
-msgstr ""
-"そのコンポーネントは、 `keycloak.config` または `karaf.etc` "
-"のjavaプロパティーを使って基本フォルダーを検索し、設定を探します。そして、見つけたフォルダーの中で "
-"`<your_web_context>-keycloak.json` というファイルを探します。"
+msgid "The following resolvers are available for `keycloak.config.resolver`:"
+msgstr "`keycloak.config.resolver` には、次のリゾルバーがあります。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver"
+msgstr "org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver"
 
 #. type: Plain text
 msgid ""
-"So, for example, if your web application has context `my-portal`, then your "
-"adapter configuration is loaded from the `$FUSE_HOME/etc/my-portal-"
-"keycloak.json` file."
+"This is the default resolver. The configuration file is expected inside the "
+"OSGi bundle that is being secured. By default, it loads file named `WEB-"
+"INF/keycloak.json` but this file name can be configured via `configLocation`"
+" property."
 msgstr ""
-"たとえば、Webアプリケーションにコンテキスト `my-portal` がある場合、アダプターの設定は `$FUSE_HOME/etc/my-"
-"portal-keycloak.json` ファイルからロードされます。"
+"これがデフォルトのリゾルバーです。設定ファイルは、セキュリティー保護されているOSGiバンドル内にあります。デフォルトでは、 `WEB-"
+"INF/keycloak.json` という名前のファイルをロードしますが、このファイル名は `configLocation` "
+"プロパティーで設定できます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver"
+msgstr "org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver"
 
 #. type: Plain text
 msgid ""
-"login configuration in the <login-config> element. Make sure that the "
-"`<auth-method>` is `KEYCLOAK`."
+"This resolver searches for a file called `<your_web_context>-keycloak.json` "
+"inside a folder that is specified by `keycloak.config` system property. If "
+"`keycloak.config` is not set, `karaf.etc` system property is used instead."
 msgstr ""
-"<login-config> 要素内のログイン設定。 `<auth-method>` が `KEYCLOAK` であることを確認してください。"
+"このリゾルバーは、 `keycloak.config` システム・プロパティーで指定されたフォルダーの中で "
+"`<your_web_context>-keycloak.json` というファイルを探します。 `keycloak.config` "
+"が設定されていなければ、代わりに ` karaf.etc` システム・プロパティーが使われます。"
 
 #. type: Plain text
-msgid "security roles in the <security-role> element"
-msgstr "<security-role> 要素のセキュリティー・ロール。"
-
-#. type: delimited block -
 #, no-wrap
 msgid ""
-"    <login-config>\n"
-"        <auth-method>KEYCLOAK</auth-method>\n"
-"        <realm-name>does-not-matter</realm-name>\n"
-"    </login-config>\n"
+"For example, if your web application is deployed into context `my-portal`, then\n"
+"  your adapter configuration would be loaded either from the \n"
+"  `${keycloak.config}/my-portal-keycloak.json` file, or from `${karaf.etc}/my-portal-keycloak.json`.\n"
 msgstr ""
-"    <login-config>\n"
-"        <auth-method>KEYCLOAK</auth-method>\n"
-"        <realm-name>does-not-matter</realm-name>\n"
-"    </login-config>\n"
+"たとえば、Webアプリケーションがコンテキスト `my-portal` にデプロイされている場合、アダプターの設定は "
+"`${keycloak.config}/my-portal-keycloak.json` ファイルか `${karaf.etc}/my-portal-"
+"keycloak.json` のいずれかからロードされます。\n"
 
-#. type: delimited block -
+#. type: Labeled list
 #, no-wrap
-msgid ""
-"{\n"
-"    \"realm\": \"demo\",\n"
-"    \"resource\": \"customer-portal\",\n"
-"    \"auth-server-url\": \"http://localhost:8080/auth\",\n"
-"    \"ssl-required\" : \"external\",\n"
-"    \"credentials\": {\n"
-"        \"secret\": \"password\"\n"
-"    }\n"
-"}\n"
+msgid "org.keycloak.adapters.osgi.HierarchicalPathBasedKeycloakConfigResolver"
 msgstr ""
-"{\n"
-"    \"realm\": \"demo\",\n"
-"    \"resource\": \"customer-portal\",\n"
-"    \"auth-server-url\": \"http://localhost:8080/auth\",\n"
-"    \"ssl-required\" : \"external\",\n"
-"    \"credentials\": {\n"
-"        \"secret\": \"password\"\n"
-"    }\n"
-"}\n"
+"org.keycloak.adapters.osgi.HierarchicalPathBasedKeycloakConfigResolver"
 
 #. type: Plain text
 msgid ""
-"Contrary to the Fuse 6 adapter, there are no special OSGi imports needed in "
-"MANIFEST.MF."
-msgstr "Fuse 6アダプターとは異なり、MANIFEST.MFには特別なOSGiのインポートは必要ありません。"
+"This resolver is similar to `PathBasedKeycloakConfigResolver` above, where "
+"for given URI path, configuration locations are checked from most to least "
+"specific."
+msgstr ""
+"このリゾルバーは、上記の `PathBasedKeycloakConfigResolver` "
+"に似ています。与えられたURIパスに対して、設定の場所が手当たり次第にチェックされます。"
+
+#. type: Plain text
+msgid ""
+"For example, for `/my/web-app/context` URI, the following configuration "
+"locations are searched for existence until the first one exists:"
+msgstr "たとえば、URIが `/my/web-app/context` の場合、設定場所が存在するまで、次のものが存在するかどうかが検索されます。"
+
+#. type: Plain text
+msgid "`${karaf.etc}/my-web-app-context-keycloak.json`"
+msgstr "`${karaf.etc}/my-web-app-context-keycloak.json`"
+
+#. type: Plain text
+msgid "`${karaf.etc}/my-web-app-keycloak.json`"
+msgstr "`${karaf.etc}/my-web-app-keycloak.json`"
+
+#. type: Plain text
+msgid "`${karaf.etc}/my-keycloak.json`"
+msgstr "`${karaf.etc}/my-keycloak.json`"
+
+#. type: Plain text
+msgid "`${karaf.etc}/keycloak.json`"
+msgstr "`${karaf.etc}/keycloak.json`"

@@ -46,9 +46,169 @@ msgid ""
 "Response."
 msgstr ""
 
+#. type: Title ====
+#, no-wrap
+msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Legacy client applications registered under \"Live SDK applications\" won't "
+"work with the Microsoft Graph endpoints due to changes in the id format of "
+"the applications. If you run into an error saying that the application "
+"identifier was not found in the directory, you will have to register the "
+"client application again in the https://account.live.com/developers/"
+"applications/create[Microsoft Application Registration] portal to obtain a "
+"new application id."
+msgstr ""
+
 #. type: Title ==
 #, no-wrap
 msgid "Migration Changes"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 4.6.0"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "New default client scopes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"We have added new realm default client scopes `roles` and `web-origins`. "
+"These client scopes contain protocol mappers to add the roles of the user "
+"and allowed web origins to the token. During migration, these client scopes "
+"should be automatically added to all the OpenID Connect clients as default "
+"client scopes. Hence no setup should be required after database migration is "
+"finished."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Protocol mapper SPI addition"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Related to this, there is a small addition in the (unsupported) Protocol "
+"Mappers SPI. You can be affected only if you implemented a custom "
+"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
+"interface. The method has the default implementation set to return 0. If "
+"your protocol mapper implementation relies on the roles in the access token "
+"`realmAccess` or `resourceAccess` properties, you may need to increase the "
+"priority of your mapper."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Audience resolving"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Audiences of all the clients, for which authenticated user has at least one "
+"client role in the token, are automatically added to the `aud` claim in the "
+"access token now. On the other hand, an access token may not automatically "
+"contain the audience of the frontend client, for which it was issued. Read "
+"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "JavaScipt Adapter Promise"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To use native JavaScript promise with the JavaScript adapter it is now "
+"required to set `promiseType` to `native` in the init options."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the past if native promise was available a wrapper was returned that "
+"provided both the legacy Keycloak promise and the native promise. This was "
+"causing issues as the error handler was not always set prior to the native "
+"error event, which resulted in `Uncaught (in promise)` error."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Microsoft Identity Provider implementation in {project_name} up to "
+"version 4.5.0 relies on the Live SDK endpoints for authorization and "
+"obtaining the user profile. From November 2018 onwards, Microsoft is "
+"removing support for the Live SDK API in favor of the new Microsoft Graph "
+"API. The {project_name} identity provider has been updated to use the new "
+"endpoints so if this integration is in use make sure you upgrade to "
+"{project_name} version 4.6.0 or later."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 14"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 14 as the underlying "
+"container. This does not directly involve any specific {project_name} server "
+"functionality, but there are few changes related to the migration, which "
+"worth mentioning."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Dependency updates"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 14 server. For "
+"example, Infinispan is now 9.3.1.Final."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Configuration changes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and `domain."
+"xml` files. You should follow the <<_install_new_version>> section to handle "
+"the migration of configuration files automatically."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Cross-Datacenter Replication changes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You will need to upgrade {jdgserver_name} server to version "
+"{jdgserver_version}. The older version may still work, but it is"
+msgstr ""
+
+#. type: Plain text
+msgid "not guaranteed as we don't test it anymore."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There is a need to add `protocolVersion` property with the value `2.6` to "
+"the configuration of the `remote-store` element in the"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} configuration. This is required as there is a need to "
+"downgrade the version of HotRod protocol to be compatible with the version "
+"used by {jdgserver_name} {jdgserver_version}."
 msgstr ""
 
 #. type: Title ===
@@ -69,20 +229,10 @@ msgid ""
 "worth mentioning."
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "Dependency updates"
-msgstr ""
-
 #. type: Plain text
 msgid ""
 "The dependencies were updated to the versions used by Wildfly 13 server. For "
 "example, Infinispan is now 9.2.4.Final and Undertow is 2.0.9.Final"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Configuration changes"
 msgstr ""
 
 #. type: Plain text
@@ -104,21 +254,6 @@ msgstr ""
 msgid ""
 "There is no `jndi-attribute` on `cache-container` element in infinispan "
 "subsystem."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Cross-Datacenter Replication changes"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You will need to upgrade {jdgserver_name} server to version "
-"{jdgserver_version}. The older version may still work, but it is"
-msgstr ""
-
-#. type: Plain text
-msgid "not guaranteed as we don't test it anymore."
 msgstr ""
 
 #. type: Plain text

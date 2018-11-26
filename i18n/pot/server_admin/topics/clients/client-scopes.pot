@@ -96,7 +96,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "For the OpenID Connect protocol, there are client scopes `profile`, `email`, "
-"`address`, `phone` and `offline_access` ."
+"`address`, `phone`, `offline_access`, `roles` and `web-origins`."
 msgstr ""
 
 #. type: Plain text
@@ -148,6 +148,23 @@ msgid ""
 "Builtin client scopes contain exactly the protocol mappers as defined per "
 "the specification, however you are free to edit client scopes and create/"
 "update/remove any protocol mappers (or role scope mappings)."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The client scope `roles` is not defined in the OpenID Connect specification "
+"and it is also not added automatically to the `scope` claim in the access "
+"token. This client scope has some mappers, which are used to add roles of "
+"the user to the access token and possibly add some audiences for the clients "
+"with at least one client role as described in the <<_audience_resolve, "
+"Audience section>>."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The client scope `web-origins` is also not defined in the OpenID Connect "
+"specification and not added to the `scope` claim. This is used to add "
+"allowed web origins to the access token `allowed-origins` claim."
 msgstr ""
 
 #. type: Title ====
@@ -305,6 +322,30 @@ msgid ""
 "and issued for the particular client, with the specified value of `scope` "
 "parameter, select the user from the `Evaluate` screen. This will generate an "
 "example token that includes all of the claims and role mappings used."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Client Scopes Permissions"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When issuing tokens for a particular user, the client scope is applied only "
+"if the user is permitted to use it. In the case that a client scope does not "
+"have any role scope mappings defined on itself, then each user is "
+"automatically permitted to use this client scope. However, when a client "
+"scope has any role scope mappings defined on itself, then the user must be a "
+"member of at least one of the roles. In other words, there must be an "
+"intersection between the user roles and the roles of the client scope. "
+"Composite roles are taken into account when evaluating this intersection."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If a user is not permitted to use the client scope, then no protocol mappers "
+"or role scope mappings will be used when generating tokens and the client "
+"scope will not appear in the _scope_ value in the token."
 msgstr ""
 
 #. type: Title ====

@@ -92,9 +92,9 @@ msgid ""
 "    <script src=\"keycloak.js\"></script>\n"
 "    <script>\n"
 "        var keycloak = Keycloak();\n"
-"        keycloak.init().then(function(authenticated) {\n"
+"        keycloak.init().success(function(authenticated) {\n"
 "            alert(authenticated ? 'authenticated' : 'not authenticated');\n"
-"        }).catch(function() {\n"
+"        }).error(function() {\n"
 "            alert('failed to initialize');\n"
 "        });\n"
 "    </script>\n"
@@ -212,9 +212,9 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.updateToken(30).then(function() {\n"
+"keycloak.updateToken(30).success(function() {\n"
 "    loadData();\n"
-"}).catch(function() {\n"
+"}).error(function() {\n"
 "    alert('Failed to refresh token');\n"
 "});\n"
 msgstr ""
@@ -479,9 +479,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The JavaScript adapter depends on Base64 (window.btoa and window.atob) and "
-"HTML5 History API.  If you need to support browsers that do not have these "
-"available (for example, IE9) you need to add polyfillers."
+"The JavaScript adapter depends on Base64 (window.btoa and window.atob), "
+"HTML5 History API and optionally the Promise API.  If you need to support "
+"browsers that do not have these available (for example, IE9) you need to add "
+"polyfillers."
 msgstr ""
 
 #. type: Plain text
@@ -489,25 +490,15 @@ msgid "Example polyfill libraries:"
 msgstr ""
 
 #. type: Plain text
-msgid "https://github.com/davidchambers/Base64.js"
+msgid "Base64 - https://github.com/davidchambers/Base64.js"
 msgstr ""
 
 #. type: Plain text
-msgid "https://github.com/devote/HTML5-History-API"
+msgid "HTML5 History - https://github.com/devote/HTML5-History-API"
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"If available, the JavaScript adapter will use native Promise instances as "
-"return values from functions documented as returning promises.  To retain "
-"backwards compatibility, the `success()` and `error()` functions from "
-"previous versions of the adapter are retained.  These remain available "
-"whether or not native Promises are provided by the browser.  Promise API "
-"polyfills are available for browsers without support:"
-msgstr ""
-
-#. type: Plain text
-msgid "https://github.com/stefanpenner/es6-promise"
+msgid "Promise - https://github.com/stefanpenner/es6-promise"
 msgstr ""
 
 #. type: Title ====
@@ -779,6 +770,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
+msgid ""
+"promiseType - If set to `native` all methods returning a promise will return "
+"a native JavaScript promise. If not set will return Keycloak specific "
+"promise objects."
+msgstr ""
+
+#. type: Plain text
 msgid "Returns promise to set functions to be invoked on success or error."
 msgstr ""
 
@@ -993,9 +991,9 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.loadUserProfile().then(function(profile) {\n"
-"        alert(JSON.stringify(test, null, \"  \"));\n"
-"    }).catch(function() {\n"
+"keycloak.loadUserProfile().success(function(profile) {\n"
+"        alert(JSON.stringify(profile, null, \"  \"));\n"
+"    }).error(function() {\n"
 "        alert('Failed to load user profile');\n"
 "    });\n"
 msgstr ""
@@ -1032,13 +1030,13 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.updateToken(5).then(function(refreshed) {\n"
+"keycloak.updateToken(5).success(function(refreshed) {\n"
 "        if (refreshed) {\n"
 "            alert('Token was successfully refreshed');\n"
 "        } else {\n"
 "            alert('Token is still valid');\n"
 "        }\n"
-"    }).catch(function() {\n"
+"    }).error(function() {\n"
 "        alert('Failed to refresh the token, or the session has expired');\n"
 "    });\n"
 msgstr ""

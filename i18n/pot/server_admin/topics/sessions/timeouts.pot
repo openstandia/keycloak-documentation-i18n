@@ -62,7 +62,8 @@ msgstr ""
 #, no-wrap
 msgid ""
 "Also pertains to OIDC clients.  If the user is not active for longer than this timeout, the user session will be invalidated.  How is idle time checked?\n"
-" A client requesting authentication will bump the idle timeout.  Refresh token requests will also bump the idle timeout.\n"
+"A client requesting authentication will bump the idle timeout.  Refresh token requests will also bump the idle timeout.\n"
+"There is a small window of time that is always added to the idle timeout before the session is actually invalidated (See note below).\n"
 msgstr ""
 
 #. type: Plain text
@@ -77,13 +78,38 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
+msgid "SSO Session Idle Remember Me"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Same as the standard SSO Session Idle configuration but specific to logins with remember me enabled. It allows for the specification of longer\n"
+" session idle timeouts when remember me is selected during the login process. It is an optional configuration and if not set to a value\n"
+" bigger than 0 it uses the same idle timeout set in the SSO Session Idle configuration.\n"
+msgstr ""
+
+#. type: Plain text
+msgid "SSO Session Max Remember Me"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Same as the standard SSO Session Max but specific to logins with remember me enabled. It allows for the specification of longer lived\n"
+" sessions when remember me is selected during the login process. It is an optional configuration and if not set to a value bigger than 0\n"
+" it uses the same session lifespan set in the SSO Session Max configuration.\n"
+msgstr ""
+
+#. type: Plain text
 msgid "Offline Session Idle"
 msgstr ""
 
 #. type: Plain text
+#, no-wrap
 msgid ""
-"For <<_offline-access, offline access>>, this is the time the session is "
-"allowed to remain idle before the offline token is revoked."
+"For <<_offline-access, offline access>>, this is the time the session is allowed to remain idle before the offline token is revoked.\n"
+"There is a small window of time that is always added to the idle timeout before the session is actually invalidated (See note below).\n"
 msgstr ""
 
 #. type: Plain text
@@ -190,4 +216,17 @@ msgid ""
 "mail verification, forgot password, user actions and Identity Provider E-"
 "mail Verification). This field is non mandatory and if nothing is specified "
 "it defaults to the value configured at _User-Initiated Action Lifespan_."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For idle timeouts, there is a small window of time (2 minutes) during which "
+"the session is kept unexpired. For example, when you have timeout set to 30 "
+"minutes, it will be actually 32 minutes before the session is expired. This "
+"is needed for some corner-case scenarios in cluster and cross-datacenter "
+"environments, in cases where the token was refreshed on one cluster node for "
+"a very short time before the expiration and the other cluster nodes would in "
+"the meantime incorrectly consider the session as expired, because they had "
+"not yet received the message about successful refresh from the node which "
+"did the refresh."
 msgstr ""

@@ -3,11 +3,16 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Shinsuke UEDA, 2017
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,24 +54,167 @@ msgstr "image:{project_images}/brute-force.png[]"
 
 #. type: Plain text
 msgid ""
-"The way this works is that if there are `Max Login Failures` during a period"
-" of `Failure Reset Time`, the account is temporarily disabled for the `Wait "
-"Increment` multiplied by the number of failures over the max.  After "
-"`Failure Reset Time` is reached all failures are wiped clean.  The `Max "
-"Wait` is the maximum amount of time an account can be disabled.  Another "
-"preventive measure is that if there are subsequent login failures for one "
-"account that are too quick for a human to initiate the account will be "
-"disabled.  This is controlled by the `Quick Login Check Milli Seconds` "
-"value.  So, if there are two login failures for the same account within that"
-" value, the account will be disabled for `Minimum Quick Login Wait`."
+"There are 2 different configurations for brute force detection; permanent "
+"lockout and temporary lockout. Permanent lockout will disable a user's "
+"account after an attack is detected; the account will be disabled until an "
+"administrator renables it. Temporary lockout will disable a user's account "
+"for a time period after an attack is detected; the time period for which the"
+" account is disabled increases the longer the attack continues."
 msgstr ""
-"`Failure Reset Time` の期間中に `Max Login Failures` を超えるログイン失敗があった場合、アカウントは一時的に、"
-" `Wait Increment` に超過した回数分を掛けた時間の間、無効にされます。 `Failure Reset Time`  "
-"が経過すると、失敗はすべてクリアされます。 `Max Wait` "
-"は、アカウントが無効にされる最大時間です。もう1つの予防策として、あるアカウントに対して人間が行うにしては早すぎるログイン失敗が続いた場合に、アカウントが無効にされます。これは"
-" `Quick Login Check Milli Seconds` "
-"値によって制御されます。その値の間に同じアカウントに対して2回のログイン失敗があった場合、アカウントは `Minimum Quick Login "
-"Wait` の間だけ無効になります。"
+"ブルートフォースの検出には2つの異なる設定があります。永続的なロックアウトと一時的なロックアウトです。永続的なロックアウトは、攻撃が検出された後でユーザーのアカウントを無効にします。管理者がアカウントを無効にするまで、アカウントは無効になります。一時的なロックアウトにより、攻撃が検出された後の一定期間ユーザーのアカウントが無効になります。アカウントが無効になっている期間は、攻撃が継続する時間が長くなるほど長くなります。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*Common Parameters*\n"
+msgstr "*共通パラメーター*\n"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Max Login Failures"
+msgstr "Max Login Failures"
+
+#. type: delimited block =
+msgid "Maximum number of login failures permitted. Default value is 30."
+msgstr "許可されたログイン失敗の最大回数。デフォルト値は30です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Quick Login Check Milli Seconds"
+msgstr "Quick Login Check Milli Seconds"
+
+#. type: delimited block =
+msgid "Minimum time required between login attempts. Default is 1000."
+msgstr "ログイン試行の間に必要な最小時間。デフォルトは1000です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Minimum Quick Login Wait"
+msgstr "Minimum Quick Login Wait"
+
+#. type: delimited block =
+msgid ""
+"Minimum amount of time the user will be temporarily disabled if logins "
+"attempts are quicker than _Quick Login Check Milli Seconds_. Default is 1 "
+"minute."
+msgstr ""
+"ログインの試行が _Quick Login Check Milli Seconds_ "
+"より早い場合に、ユーザーが一時的に無効になる最小時間。デフォルトは1分です。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*Temporary Lockout Parameters*\n"
+msgstr "*一時ロックアウト・パラメーター*\n"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Wait Increment"
+msgstr "Wait Increment"
+
+#. type: delimited block =
+msgid ""
+"Amount of time added to the time a user is temporarily disabled after each "
+"time _Max Login Failures_ is reached. Default is 1 minute."
+msgstr "_Max Login Failures_ に達するたびにユーザーが一時的に無効にされた時間に加算される時間。デフォルトは1分です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Max Wait"
+msgstr "Max Wait"
+
+#. type: delimited block =
+msgid ""
+"The maximum amount of time for which a user will be temporarily disabled. "
+"Default is 15 minutes."
+msgstr "ユーザーが一時的に無効になる最大時間。デフォルトは15分です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Failure Reset Time"
+msgstr "Failure Reset Time"
+
+#. type: delimited block =
+msgid ""
+"Time after which the failure count will be reset; timer runs from the last "
+"failed login. Default is 12 hours."
+msgstr "失敗回数がリセットされるまでの時間。タイマーは最後に失敗したログインから実行されます。デフォルトは12時間です。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*Permanent Lockout Algorithm*\n"
+msgstr "*永続的ロックアウト・アルゴリズム*\n"
+
+#. type: delimited block =
+msgid "On successful login"
+msgstr "ログインに成功した場合"
+
+#. type: delimited block =
+msgid "Reset `count`"
+msgstr "`count` のリセット"
+
+#. type: delimited block =
+msgid "On failed login"
+msgstr "ログインに失敗した場合"
+
+#. type: delimited block =
+msgid "Increment `count`"
+msgstr "`count` のインクリメント"
+
+#. type: delimited block =
+msgid ""
+"If `count` greater than _Max Login Failures_ ... Permanently disable user"
+msgstr "`count` が _Max Login Failures_ より大きい場合 ... ユーザーを永続的に無効にします"
+
+#. type: delimited block =
+msgid ""
+"Else if time between this failure and the last failure is less than _Quick "
+"Login Check Milli Seconds_ ... Temporarily disable user for _Minimum Quick "
+"Login Wait_"
+msgstr ""
+"そうでなければ、この失敗と最後の失敗との間の時間が _Quick Login Check Milli Seconds_ 未満の場合 ... "
+"_Minimum Quick Login Wait_ の間、一時的にユーザーを無効にします"
+
+#. type: delimited block =
+msgid ""
+"When a user is disabled they can not login until an administrator enables "
+"the user; enabling an account resets `count`."
+msgstr ""
+"ユーザーが無効になっている場合、管理者がユーザーを有効にするまでログインできません。アカウントを有効にすると `count` がリセットされます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*Temporary Lockout Algorithm*\n"
+msgstr "*一時的ロックアウト・アルゴリズム*\n"
+
+#. type: delimited block =
+msgid ""
+"If time between this failure and the last failure is greater than _Failure "
+"Reset Time_ ... Reset `count`"
+msgstr "この失敗と最後の失敗との間の時間が _Failure Reset Time_ より大きい場合 ... `count` をリセットします"
+
+#. type: delimited block =
+msgid ""
+"Calculate `wait` using _Wait Increment_ * (`count` / _Max Login Failures_). "
+"The division is an integer division so will always be rounded down to a "
+"whole number"
+msgstr ""
+"_Wait Increment_ *（ `count` / _Max Login Failures_ ）を使って `wait` "
+"を計算します。除算は整数除算なので、常に整数に切り捨てられます"
+
+#. type: delimited block =
+msgid ""
+"If `wait` equals 0 and time between this failure and the last failure is "
+"less than _Quick Login Check Milli Seconds_ then set `wait` to _Minimum "
+"Quick Login Wait_ instead ... Temporarily disable the user for the smaller "
+"of `wait` and _Max Wait_ seconds"
+msgstr ""
+"`wait` が0に等しく、この失敗と最後の失敗との間の時間が _Quick Login Check Milli Seconds_ より小さい場合、 "
+"`wait` に _Minimum Quick Login Wait_ を設定します。... `wait` と _Max Wait_ "
+"秒のうち小さい方の値を一時的に無効にします"
+
+#. type: delimited block =
+msgid ""
+"Login failures when a user is temporarily disabled do not increment `count`."
+msgstr "ユーザーが一時的に無効になったときのログイン失敗に対しては、 `count` をインクリメントしません。"
 
 #. type: Plain text
 msgid ""

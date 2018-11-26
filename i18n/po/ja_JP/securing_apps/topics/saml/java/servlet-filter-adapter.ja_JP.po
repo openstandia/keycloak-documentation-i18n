@@ -3,11 +3,15 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Hiroyuki Wada <wadahiro@gmail.com>, 2017
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,10 +41,6 @@ msgstr "\t<module-name>customer-portal</module-name>\n"
 #, no-wrap
 msgid "Java Servlet Filter Adapter"
 msgstr "Javaサーブレット・フィルター・アダプター"
-
-#. type: Plain text
-msgid "To use this filter, include this maven artifact in your WAR poms:"
-msgstr "このフィルタを使用するには、WARのpomに次のmavenアーティファクトを含めます。"
 
 #. type: Plain text
 msgid ""
@@ -130,6 +130,10 @@ msgstr ""
 "IdPとともにSPを登録するときは、Assert Consumer Service URLとSingle Logout Service URLとして "
 "`http[s]://hostname/{context-root}/saml` を登録する必要があります。"
 
+#. type: Plain text
+msgid "To use this filter, include this maven artifact in your WAR poms:"
+msgstr "このフィルタを使用するには、WARのpomに次のmavenアーティファクトを含めます。"
+
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -144,3 +148,32 @@ msgstr ""
 "   <artifactId>keycloak-saml-servlet-filter-adapter</artifactId>\n"
 "   <version>{project_versionMvn}</version>\n"
 "</dependency>\n"
+
+#. type: Plain text
+msgid ""
+"In order to use <<_saml_multi_tenancy,Multi Tenancy>> the "
+"`keycloak.config.resolver` parameter should be passed as a filter parameter."
+msgstr ""
+"<<_saml_multi_tenancy,マルチテナンシー>>を使用するには、 `keycloak.config.resolver` "
+"パラメーターをフィルター・パラメーターとして渡す必要があります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <filter>\n"
+"        <filter-name>Keycloak Filter</filter-name>\n"
+"        <filter-class>org.keycloak.adapters.saml.servlet.SamlFilter</filter-class>\n"
+"        <init-param>\n"
+"            <param-name>keycloak.config.resolver</param-name>\n"
+"            <param-value>example.SamlMultiTenantResolver</param-value>\n"
+"        </init-param>\n"
+"    </filter>\n"
+msgstr ""
+"    <filter>\n"
+"        <filter-name>Keycloak Filter</filter-name>\n"
+"        <filter-class>org.keycloak.adapters.saml.servlet.SamlFilter</filter-class>\n"
+"        <init-param>\n"
+"            <param-name>keycloak.config.resolver</param-name>\n"
+"            <param-value>example.SamlMultiTenantResolver</param-value>\n"
+"        </init-param>\n"
+"    </filter>\n"

@@ -7,7 +7,9 @@ Support Languages
 -------------------------------
 Support languages are as follows.
 
-* Japanese (ja_JP)
+| Lang           | Translated Site                                   |
+| -------------- | ------------------------------------------------- |
+|Japanese (ja_JP)|https://keycloak-documentation.openstandia.jp      |
 
 Contributing
 -------------------------------

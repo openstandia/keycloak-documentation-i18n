@@ -3,6 +3,10 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -15,96 +19,26 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Plain text
-msgid "For example:"
-msgstr "例："
-
-#. type: Title =====
-#, no-wrap
-msgid "Securing an Apache Camel Application"
-msgstr "Apache Camelアプリケーションのセキュリティー保護"
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"    <bean id=\"helloProcessor\" "
-"class=\"org.keycloak.example.CamelHelloProcessor\" />\n"
+"    <bean id=\"keycloakConfigResolver\" class=\"org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver\" >\n"
+"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
+"    </bean>\n"
 msgstr ""
-"    <bean id=\"helloProcessor\" "
-"class=\"org.keycloak.example.CamelHelloProcessor\" />\n"
+"    <bean id=\"keycloakConfigResolver\" class=\"org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver\" >\n"
+"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
+"    </bean>\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "</blueprint>\n"
 msgstr "</blueprint>\n"
 
-#. type: Plain text
-msgid ""
-"The `Import-Package` in `META-INF/MANIFEST.MF` needs to contain these "
-"imports:"
-msgstr "`META-INF/MANIFEST.MF` の `Import-Package` には、以下のインポートが含まれている必要があります。"
-
 #. type: Title =====
 #, no-wrap
-msgid "Camel RestDSL"
-msgstr "Camel RestDSL"
-
-#. type: Plain text
-msgid ""
-"Camel RestDSL is a Camel feature used to define your REST endpoints in a "
-"fluent way. But you must still use specific implementation classes and "
-"provide instructions on how to integrate with {project_name}."
-msgstr ""
-"Camel "
-"RestDSLは、流暢な方法でRESTエンドポイントを定義するために使用されるCamelの機能です。しかし、依然として特定の実装クラスを使用し、{project_name}との統合方法に関する指示を提供する必要があります。"
-
-#. type: Plain text
-msgid ""
-"The way to configure the integration mechanism depends on the Camel "
-"component for which you configure your RestDSL-defined routes."
-msgstr "統合機構を設定する方法は、RestDSLで定義されたルートを設定するCamelコンポーネントによって異なります。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<camelContext id=\"blueprintContext\"\n"
-"              trace=\"false\"\n"
-"              xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
-msgstr ""
-"<camelContext id=\"blueprintContext\"\n"
-"              trace=\"false\"\n"
-"              xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid "    </rest>\n"
-msgstr "    </rest>\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <route id=\"justDirect\">\n"
-"        <from uri=\"direct:justDirect\"/>\n"
-"        <process ref=\"helloProcessor\" />\n"
-"        <log message=\"RestDSL correctly invoked ${body}\"/>\n"
-"        <setBody>\n"
-"            <constant>(__This second sentence is returned from a Camel RestDSL endpoint__)</constant>\n"
-"        </setBody>\n"
-"    </route>\n"
-msgstr ""
-"    <route id=\"justDirect\">\n"
-"        <from uri=\"direct:justDirect\"/>\n"
-"        <process ref=\"helloProcessor\" />\n"
-"        <log message=\"RestDSL correctly invoked ${body}\"/>\n"
-"        <setBody>\n"
-"            <constant>(__This second sentence is returned from a Camel RestDSL endpoint__)</constant>\n"
-"        </setBody>\n"
-"    </route>\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid "</camelContext>\n"
-msgstr "</camelContext>\n"
+msgid "Securing an Apache Camel Application"
+msgstr "Apache Camelアプリケーションのセキュリティー保護"
 
 #. type: Plain text
 msgid ""
@@ -132,28 +66,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"`configResolver` is a bean that supplies {project_name} configuration file "
-"to:"
-msgstr "`configResolver` は{project_name}設定ファイルを以下のとおりに提供するBeanです。"
-
-#. type: Plain text
-msgid ""
-"`org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver`: the "
-"{project_name} adapter configuration will be looked up inside the bundle and"
-" should be stored in `WEB-INF/keycloak.json` file."
+"`configResolver` is a resolver bean that supplies {project_name} adapter "
+"configuration. Available resolvers are listed in "
+"<<_fuse7_config_external_adapter,Configuration Resolvers>> section."
 msgstr ""
-"`org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver`: "
-"{project_name}アダプター設定はバンドル内で検索され、 `WEB-INF/keycloak.json` ファイルに格納されます。"
-
-#. type: Plain text
-msgid ""
-"`org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver`: the "
-"{project_name} adapter configuration will be looked up as described in "
-"<<_fuse7_config_external_adapter,External adapter configuration>>."
-msgstr ""
-"`org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver`: "
-"{project_name}アダプター設定は、<<_fuse7_config_external_adapter, "
-"外部アダプターの設定>>で説明されているように検索されます。"
+"`configResolver` "
+"は、{project_name}アダプター設定を提供するリゾルバービーンです。利用可能なリゾルバーは、<<_fuse7_config_external_adapter,設定リゾルバー>>セクションにリストされています。"
 
 #. type: Plain text
 msgid ""
@@ -163,6 +81,10 @@ msgstr ""
 "`allowedRoles` "
 "はカンマで区切られたロールのリストです。サービスにアクセスするユーザーは、アクセスを許可されるロールを少なくとも1つは持っていなければなりません。"
 
+#. type: Plain text
+msgid "For example:"
+msgstr "例："
+
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -185,13 +107,11 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"    <bean id=\"keycloakConfigResolver\" class=\"org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver\" >\n"
-"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
-"    </bean>\n"
+"    <bean id=\"helloProcessor\" "
+"class=\"org.keycloak.example.CamelHelloProcessor\" />\n"
 msgstr ""
-"    <bean id=\"keycloakConfigResolver\" class=\"org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver\" >\n"
-"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
-"    </bean>\n"
+"    <bean id=\"helloProcessor\" "
+"class=\"org.keycloak.example.CamelHelloProcessor\" />\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -224,6 +144,12 @@ msgstr ""
 msgid "    </camelContext>\n"
 msgstr "    </camelContext>\n"
 
+#. type: Plain text
+msgid ""
+"The `Import-Package` in `META-INF/MANIFEST.MF` needs to contain these "
+"imports:"
+msgstr "`META-INF/MANIFEST.MF` の `Import-Package` には、以下のインポートが含まれている必要があります。"
+
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -246,6 +172,26 @@ msgstr ""
 "org.keycloak.*;version=\"{project_versionMvn}\",\n"
 "org.osgi.service.blueprint,\n"
 "org.osgi.service.blueprint.container\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Camel RestDSL"
+msgstr "Camel RestDSL"
+
+#. type: Plain text
+msgid ""
+"Camel RestDSL is a Camel feature used to define your REST endpoints in a "
+"fluent way. But you must still use specific implementation classes and "
+"provide instructions on how to integrate with {project_name}."
+msgstr ""
+"Camel "
+"RestDSLは、流暢な方法でRESTエンドポイントを定義するために使用されるCamelの機能です。しかし、依然として特定の実装クラスを使用し、{project_name}との統合方法に関する指示を提供する必要があります。"
+
+#. type: Plain text
+msgid ""
+"The way to configure the integration mechanism depends on the Camel "
+"component for which you configure your RestDSL-defined routes."
+msgstr "統合機構を設定する方法は、RestDSLで定義されたルートを設定するCamelコンポーネントによって異なります。"
 
 #. type: Plain text
 msgid ""
@@ -259,6 +205,17 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
+"<camelContext id=\"blueprintContext\"\n"
+"              trace=\"false\"\n"
+"              xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
+msgstr ""
+"<camelContext id=\"blueprintContext\"\n"
+"              trace=\"false\"\n"
+"              xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
 "    <!--the link with Keycloak security handlers happens by using undertow-keycloak component -->\n"
 "    <restConfiguration apiComponent=\"undertow-keycloak\" contextPath=\"/restdsl\" port=\"8484\">\n"
 "        <endpointProperty key=\"configResolver\" value=\"#keycloakConfigResolver\" />\n"
@@ -287,3 +244,34 @@ msgstr ""
 "            <description>Just a hello</description>\n"
 "            <to uri=\"direct:justDirect\" />\n"
 "        </get>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "    </rest>\n"
+msgstr "    </rest>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <route id=\"justDirect\">\n"
+"        <from uri=\"direct:justDirect\"/>\n"
+"        <process ref=\"helloProcessor\" />\n"
+"        <log message=\"RestDSL correctly invoked ${body}\"/>\n"
+"        <setBody>\n"
+"            <constant>(__This second sentence is returned from a Camel RestDSL endpoint__)</constant>\n"
+"        </setBody>\n"
+"    </route>\n"
+msgstr ""
+"    <route id=\"justDirect\">\n"
+"        <from uri=\"direct:justDirect\"/>\n"
+"        <process ref=\"helloProcessor\" />\n"
+"        <log message=\"RestDSL correctly invoked ${body}\"/>\n"
+"        <setBody>\n"
+"            <constant>(__This second sentence is returned from a Camel RestDSL endpoint__)</constant>\n"
+"        </setBody>\n"
+"    </route>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "</camelContext>\n"
+msgstr "</camelContext>\n"

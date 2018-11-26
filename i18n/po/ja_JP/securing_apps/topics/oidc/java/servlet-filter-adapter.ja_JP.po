@@ -3,17 +3,27 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# KojiNose <knose.dev@gmail.com>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Installation"
+msgstr "インストール"
 
 #. type: delimited block -
 #, no-wrap
@@ -32,6 +42,10 @@ msgstr ""
 #, no-wrap
 msgid "Java Servlet Filter Adapter"
 msgstr "Javaサーブレット・フィルター・アダプター"
+
+#. type: Plain text
+msgid "To use this filter, include this maven artifact in your WAR poms:"
+msgstr "このフィルタを使用するには、WARのpomに次のmavenアーティファクトを含めます。"
 
 #. type: Plain text
 msgid ""
@@ -153,10 +167,6 @@ msgid ""
 msgstr ""
 "{project_name}フィルターは、コンテキスト・パラメーターの代わりにフィルター初期化パラメーターとして定義する必要がある以外は、他のアダプターと同じ設定パラメーターを持ちます。"
 
-#. type: Plain text
-msgid "To use this filter, include this maven artifact in your WAR poms:"
-msgstr "このフィルタを使用するには、WARのpomに次のmavenアーティファクトを含めます。"
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -171,3 +181,232 @@ msgstr ""
 "    <artifactId>keycloak-servlet-filter-adapter</artifactId>\n"
 "    <version>{project_versionMvn}</version>\n"
 "</dependency>\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Using on OSGi"
+msgstr "OSGiでの使用"
+
+#. type: Plain text
+msgid ""
+"The servlet filter adapter is packaged as an OSGi bundle, and thus is usable"
+" in a generic OSGi environment (R6 and above) with HTTP Service and HTTP "
+"Whiteboard."
+msgstr ""
+"サーブレット・フィルター・アダプターは、OSGiバンドルとしてパッケージされているため、HTTP ServiceとHTTP "
+"Whiteboardを使用する汎用OSGi環境（R6以上）で使用できます。"
+
+#. type: Plain text
+msgid ""
+"The adapter and its dependencies are distributed as Maven artifacts, so "
+"you'll need either working Internet connection to access Maven Central, or "
+"have the artifacts cached in your local Maven repo."
+msgstr ""
+"アダプターとその依存関係はMavenのアーティファクトとして配布されるため、Maven "
+"Centralにアクセスするためにインターネット接続を使用するか、ローカルのMavenリポジトリーにアーティファクトをキャッシュする必要があります。"
+
+#. type: Plain text
+msgid ""
+"If you are using Apache Karaf, you can simply install a feature from the "
+"Keycloak feature repo:"
+msgstr "Apache Karafを使用している場合は、Keycloakフィーチャー・リポジトリーからフィーチャーをインストールするだけです。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"karaf@root()> feature:repo-add mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"karaf@root()> feature:install keycloak-servlet-filter-adapter\n"
+msgstr ""
+"karaf@root()> feature:repo-add mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"karaf@root()> feature:install keycloak-servlet-filter-adapter\n"
+
+#. type: Plain text
+msgid ""
+"For other OSGi runtimes, please refer to the runtime documentation on how to"
+" install the adapter bundle and its dependencies."
+msgstr ""
+"その他のOSGiランタイムについては、ランタイム・ドキュメントでアダプター・バンドルとその依存関係をインストールする方法を参照してください。"
+
+#. type: Plain text
+msgid ""
+"If your OSGi platform is Apache Karaf with Pax Web, you should consider "
+"using <<_fuse_adapter,JBoss Fuse 6>> or <<_fuse7_adapter,JBoss Fuse 7>> "
+"adapters instead."
+msgstr ""
+"OSGiプラットフォームがPax WebとApache Karafである場合は、代わりに<<_fuse_adapter,JBoss Fuse 6 "
+">>アダプターまたは<<_fuse7_adapter,JBoss Fuse 7 >>アダプターを使用することを検討してください。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Configuration"
+msgstr "設定"
+
+#. type: Plain text
+msgid ""
+"First, the adapter needs to be registered as a servlet filter with the OSGi "
+"HTTP Service. The most common ways to do this are programmatic (e.g. via "
+"bundle activator) and declarative (using OSGi annotations).  We recommend "
+"using the latter since it simplifies the process of dynamically registering "
+"and un-registering the filter:"
+msgstr ""
+"まず、アダプターをOSGi HTTP "
+"Serviceでサーブレット・フィルターとして登録する必要があります。これを行う最も一般的な方法は、プログラム的な方法（例えば、バンドル・アクティベーターを介して）と宣言的な方法（OSGiアノテーションを使用して）です。フィルターを動的に登録および登録解除するプロセスが簡素化されるため、後者を使用することをお勧めします。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "package mypackage;\n"
+msgstr "package mypackage;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"import javax.servlet.Filter;\n"
+"import org.keycloak.adapters.servlet.KeycloakOIDCFilter;\n"
+"import org.osgi.service.component.annotations.Component;\n"
+"import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;\n"
+msgstr ""
+"import javax.servlet.Filter;\n"
+"import org.keycloak.adapters.servlet.KeycloakOIDCFilter;\n"
+"import org.osgi.service.component.annotations.Component;\n"
+"import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"@Component(\n"
+"    immediate = true,\n"
+"    service = Filter.class,\n"
+"    property = {\n"
+"        KeycloakOIDCFilter.CONFIG_FILE_PARAM + \"=\" + \"keycloak.json\",\n"
+"        HttpWhiteboardConstants.HTTP_WHITEBOARD_FILTER_PATTERN + \"=\" +\"/*\",\n"
+"        HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT + \"=\" + \"(osgi.http.whiteboard.context.name=mycontext)\"\n"
+"    }\n"
+")\n"
+"public class KeycloakFilter extends KeycloakOIDCFilter {\n"
+"  //\n"
+"}\n"
+msgstr ""
+"@Component(\n"
+"    immediate = true,\n"
+"    service = Filter.class,\n"
+"    property = {\n"
+"        KeycloakOIDCFilter.CONFIG_FILE_PARAM + \"=\" + \"keycloak.json\",\n"
+"        HttpWhiteboardConstants.HTTP_WHITEBOARD_FILTER_PATTERN + \"=\" +\"/*\",\n"
+"        HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT + \"=\" + \"(osgi.http.whiteboard.context.name=mycontext)\"\n"
+"    }\n"
+")\n"
+"public class KeycloakFilter extends KeycloakOIDCFilter {\n"
+"  //\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"The above snippet uses OSGi declarative service specification to expose the "
+"filter as an OSGI service under `javax.servlet.Filter` class.  Once the "
+"class is published in the OSGi service registry, it is going to be picked up"
+" by OSGi HTTP Service implementation and used for filtering requests for the"
+" specified servlet context. This will trigger Keycloak adapter for every "
+"request that matches servlet context path + filter path."
+msgstr ""
+"上記のスニペットは、OSGi宣言型サービスの仕様を使用して、 `javax.servlet.Filter` "
+"クラスの下でOSGIサービスとしてフィルターを公開します。クラスがOSGiサービス・レジストリーにパブリッシュされると、OSGi HTTP "
+"Serviceの実装によってピックアップされ、指定されたサーブレット・コンテキストへのリクエストをフィルタリングするために使用されます。これにより、サーブレットのコンテキストパス+フィルターパスに一致するすべてのリクエストに対して、Keycloakアダプターがトリガーされます。"
+
+#. type: Plain text
+msgid ""
+"Since the component is put under the control of OSGi Configuration Admin "
+"Service, it's properties can be configured dynamically.  To do that, either "
+"create a `mypackage.KeycloakFilter.cfg` file under the standard config "
+"location for your OSGi runtime:"
+msgstr ""
+"コンポーネントはOSGi Configuration Admin "
+"Serviceの制御下に置かれるため、そのプロパティーは動的に設定できます。これを行うには、OSGiランタイムの標準の設定場所に "
+"`mypackage.KeycloakFilter.cfg` ファイルを作成するか、"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"keycloak.config.file = /path/to/keycloak.json\n"
+"osgi.http.whiteboard.filter.pattern = /secure/*\n"
+msgstr ""
+"keycloak.config.file = /path/to/keycloak.json\n"
+"osgi.http.whiteboard.filter.pattern = /secure/*\n"
+
+#. type: Plain text
+msgid "or use interactive console, if your runtime allows for that:"
+msgstr "または、ランタイムが可能な場合は、対話型コンソールを使用してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"karaf@root()> config:edit mypackage.KeycloakFilter\n"
+"karaf@root()> config:property-set keycloak.config.file '${karaf.etc}/keycloak.json'\n"
+"karaf@root()> config:update\n"
+msgstr ""
+"karaf@root()> config:edit mypackage.KeycloakFilter\n"
+"karaf@root()> config:property-set keycloak.config.file '${karaf.etc}/keycloak.json'\n"
+"karaf@root()> config:update\n"
+
+#. type: Plain text
+msgid ""
+"If you need more control, like e.g. providing custom "
+"`KeycloakConfigResolver` to implement <<_multi_tenancy,multi tenancy>>, you "
+"can register the filter programmatically:"
+msgstr ""
+"より多くの制御が必要な場合、たとえば<<_multi_tenancy,マルチテナンシー >>を実装するカスタム "
+"`KeycloakConfigResolver` を提供する場合は、次のようにフィルターをプログラムで登録することができます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "public class Activator implements BundleActivator {\n"
+msgstr "public class Activator implements BundleActivator {\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "  private ServiceRegistration registration;\n"
+msgstr "  private ServiceRegistration registration;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"  public void start(BundleContext context) throws Exception {\n"
+"    Hashtable props = new Hashtable();\n"
+"    props.put(HttpWhiteboardConstants.HTTP_WHITEBOARD_FILTER_PATTERN, \"/secure/*\");\n"
+"    props.put(KeycloakOIDCFilter.CONFIG_RESOLVER_PARAM, new MyConfigResolver());\n"
+msgstr ""
+"  public void start(BundleContext context) throws Exception {\n"
+"    Hashtable props = new Hashtable();\n"
+"    props.put(HttpWhiteboardConstants.HTTP_WHITEBOARD_FILTER_PATTERN, \"/secure/*\");\n"
+"    props.put(KeycloakOIDCFilter.CONFIG_RESOLVER_PARAM, new MyConfigResolver());\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    this.registration = context.registerService(Filter.class.getName(), new KeycloakOIDCFilter(), props);\n"
+"  }\n"
+msgstr ""
+"    this.registration = context.registerService(Filter.class.getName(), new KeycloakOIDCFilter(), props);\n"
+"  }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"  public void stop(BundleContext context) throws Exception {\n"
+"    this.registration.unregister();\n"
+"  }\n"
+"}\n"
+msgstr ""
+"  public void stop(BundleContext context) throws Exception {\n"
+"    this.registration.unregister();\n"
+"  }\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"Please refer to http://felix.apache.org/documentation/subprojects/apache-"
+"felix-http-service.html#using-the-osgi-http-whiteboard[Apache Felix HTTP "
+"Service] for more info on programmatic registration."
+msgstr ""
+"プログラムによる登録の詳細については、 http://felix.apache.org/documentation/subprojects"
+"/apache-felix-http-service.html#using-the-osgi-http-whiteboard[Apache Felix "
+"HTTP Service] を参照してください。"

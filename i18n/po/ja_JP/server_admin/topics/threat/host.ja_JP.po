@@ -3,11 +3,16 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2017
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,31 +27,58 @@ msgstr "ホスト"
 
 #. type: Plain text
 msgid ""
-"{project_name} uses the request URL for a number of things. For example, the"
-" URL sent in password reset emails."
+"{project_name} uses the public hostname for a number of things. For example,"
+" in the token issuer fields and URLs sent in password reset emails."
 msgstr ""
-"{project_name}は、リクエストURLをさまざまな用途に使用します。たとえば、パスワード・リセット・メールで送信されるURLです。"
+"{project_name}は、パブリックホスト名をさまざまな用途に使用します。たとえば、トークン発行者のフィールドやパスワードリセットの電子メールで送信されたURLなどです。"
 
 #. type: Plain text
 msgid ""
-"By default, the request URL is based on the `Host` header and there is no "
-"check to make sure this URL is the valid and correct URL."
-msgstr ""
-"デフォルトでは、リクエストURLは `Host` ヘッダーに基づいており、このURLが有効で正しいURLであることを確認するチェックはありません。"
+"By default, the hostname is based on the request headers and there is no "
+"check to make sure this hostname is valid."
+msgstr "デフォルトでは、ホスト名はリクエスト･ヘッダーに基づいており、このホスト名が有効であることを確認するためのチェックはありません。"
 
 #. type: Plain text
 msgid ""
 "If you are not using a load balancer or proxy in front of {project_name} "
-"that prevents invalid host headers, you must explicitly configure what URLs "
-"should be accepted."
+"that prevents invalid host headers, you must explicitly configure what "
+"hostnames should be accepted."
 msgstr ""
-"無効なホストヘッダーを防ぐために、{project_name}の前にロードバランサーまたはプロキシを使用していない場合は、受け入れるURLを明示的に設定する必要があります。"
+"無効なホストヘッダーを防ぐために、{project_name}の前にロードバランサーまたはプロキシーを使用していない場合は、受け入れるホスト名を明示的に設定する必要があります。"
 
 #. type: Plain text
 msgid ""
-"The following example will only permit requests to `localhost.localdomain` "
-"or `localhost`:"
-msgstr "次の例では、 `localhost.localdomain` または `localhost` へのリクエストのみを許可します。"
+"The Hostname SPI provides a way to configure the hostname for a request. Out"
+" of the box there are two providers. These are request and fixed. It is also"
+" possible to develop your own provider in the case the built-in providers do"
+" not provide the functionality needed."
+msgstr ""
+"Hostname "
+"SPIは、リクエストのホスト名を設定する方法を提供します。すぐに利用可能な2つのプロバイダーがあります。リクエスト・プロバイダーと固定プロバイダーです。組み込みプロバイダーが必要な機能を提供しない場合は、独自のプロバイダーを開発することも可能です。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Request provider"
+msgstr "リクエスト・プロバイダー "
+
+#. type: Plain text
+msgid ""
+"This is the default hostname provider and uses request headers to determine "
+"the hostname. As it uses the headers from the request it is important to use"
+" this in combination with a proxy or a filter that rejects invalid "
+"hostnames."
+msgstr ""
+"これはデフォルトのホスト名プロバイダーであり、リクエスト・ヘッダーを使用してホスト名を判別します。リクエストのヘッダーを使用するため、無効なホスト名を拒否するプロキシーまたはフィルターと組み合わせて使用することが重要です。"
+
+#. type: Plain text
+msgid ""
+"It is beyond the scope of this documentation to provide instructions on how "
+"to configure valid hostnames for a proxy. To configure it in a filter you "
+"need to edit standalone.xml to set permitted aliases for the server. The "
+"following example will only permit requests to `auth.example.com`:"
+msgstr ""
+"プロキシーの有効なホスト名を設定する方法については、このドキュメントの範囲を超えています。フィルターに設定するには、サーバーに許可されたエイリアスを設定するようにstandalone.xmlを編集する必要があります。次の例は"
+" `auth.example.com` へのリクエストのみを許可します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -54,7 +86,7 @@ msgid ""
 "<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
 "    <server name=\"default-server\" default-host=\"ignore\">\n"
 "        ...\n"
-"        <host name=\"default-host\" alias=\"localhost.localdomain, localhost\">\n"
+"        <host name=\"default-host\" alias=\"auth.example.com\">\n"
 "            <location name=\"/\" handler=\"welcome-content\"/>\n"
 "            <http-invoker security-realm=\"ApplicationRealm\"/>\n"
 "        </host>\n"
@@ -64,7 +96,7 @@ msgstr ""
 "<subsystem xmlns=\"{subsystem_undertow_xml_urn}\">\n"
 "    <server name=\"default-server\" default-host=\"ignore\">\n"
 "        ...\n"
-"        <host name=\"default-host\" alias=\"localhost.localdomain, localhost\">\n"
+"        <host name=\"default-host\" alias=\"auth.example.com\">\n"
 "            <location name=\"/\" handler=\"welcome-content\"/>\n"
 "            <http-invoker security-realm=\"ApplicationRealm\"/>\n"
 "        </host>\n"
@@ -90,12 +122,107 @@ msgstr "CLIコマンドを使用した同等の設定は以下になります。
 #, no-wrap
 msgid ""
 "/subsystem=undertow/server=default-server:write-attribute(name=default-host,value=ignore)\n"
-"/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=alias,value=[localhost.localdomain, localhost]\n"
+"/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=alias,value=[auth.example.com]\n"
 msgstr ""
 "/subsystem=undertow/server=default-server:write-attribute(name=default-host,value=ignore)\n"
-"/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=alias,value=[localhost.localdomain, localhost]\n"
+"/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=alias,value=[auth.example.com]\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid ":reload\n"
 msgstr ":reload\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Fixed provider"
+msgstr "固定プロバイダー"
+
+#. type: Plain text
+msgid ""
+"The fixed provider makes it possible to configure a fixed hostname. Unlike "
+"the request provider the fixed provider allows internal applications to "
+"invoke {project_name} on an alternative URL (for example an internal IP "
+"address). It is also possible to override the hostname for a specific realm "
+"through the configuration of the realm in the admin console."
+msgstr ""
+"固定プロバイダーを使用すると、固定ホスト名を設定することができます。リクエスト･プロバイダーとは異なり、固定プロバイダーは、内部アプリケーションが代替URL（たとえば、内部IPアドレス）で{project_name}を呼び出すことを許可します。また、管理コンソールでレルムの設定を使用して、特定のレルムのホスト名を上書きすることもできます。"
+
+#. type: Plain text
+msgid "This is the recommended provider to use in production."
+msgstr "これは、プロダクション環境で使用するために推奨されるプロバイダーです。"
+
+#. type: Plain text
+msgid ""
+"To change to the fixed provider and configure the hostname edit "
+"standalone.xml. The following example shows the fixed provider with the "
+"hostname set to auth.example.com:"
+msgstr ""
+"固定プロバイダーに変更してホスト名を設定するには、standalone.xmlを編集します。次の例は、ホスト名がauth.example.comに設定された固定プロバイダーを示しています。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"hostname\">\n"
+"    <default-provider>fixed</default-provider>\n"
+"    <provider name=\"fixed\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"hostname\" value=\"auth.example.com\"/>\n"
+"            <property name=\"httpPort\" value=\"-1\"/>\n"
+"            <property name=\"httpsPort\" value=\"-1\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"hostname\">\n"
+"    <default-provider>fixed</default-provider>\n"
+"    <provider name=\"fixed\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"hostname\" value=\"auth.example.com\"/>\n"
+"            <property name=\"httpPort\" value=\"-1\"/>\n"
+"            <property name=\"httpsPort\" value=\"-1\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=keycloak-server/spi=hostname:write-attribute(name=default-provider, value=\"fixed\")\n"
+"/subsystem=keycloak-server/spi=hostname/provider=fixed:write-attribute(name=properties.hostname,value=\"auth.example.com\")\n"
+msgstr ""
+"/subsystem=keycloak-server/spi=hostname:write-attribute(name=default-provider, value=\"fixed\")\n"
+"/subsystem=keycloak-server/spi=hostname/provider=fixed:write-attribute(name=properties.hostname,value=\"auth.example.com\")\n"
+
+#. type: Plain text
+msgid ""
+"By default the `httpPort` and `httpsPort` are received from the request. As "
+"long as any proxies are configured correctly it should not be necessary to "
+"change this. It is possible to configure fixed ports if necessary by setting"
+" the `httpPort` and `httpsPort` properties on the fixed provider."
+msgstr ""
+"デフォルトでは、 `httpPort` と `httpsPort` "
+"がリクエストから受信されます。プロキシーが正しく設定されている限り、これを変更する必要はありません。固定プロバイダーに `httpPort` と "
+"`httpsPort` プロパティーを設定することで、必要に応じて固定ポートを設定することができます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Custom provider"
+msgstr "カスタム・プロバイダー"
+
+#. type: Plain text
+msgid ""
+"To develop a custom hostname provider you need to implement "
+"`org.keycloak.urls.HostnameProviderFactory` and "
+"`org.keycloak.urls.HostnameProvider`."
+msgstr ""
+"カスタムのホスト名プロバイダーを開発するには、 `org.keycloak.urls.HostnameProviderFactory` と "
+"`org.keycloak.urls.HostnameProvider` を実装する必要があります。"
+
+#. type: Plain text
+msgid ""
+"Follow the instructions in the Service Provider Interfaces section in "
+"link:{developerguide_link}[{developerguide_name}] for more information on "
+"how to develop a custom provider."
+msgstr ""
+"カスタム・プロバイダーの開発方法の詳細については、 link:{developerguide_link}[{developerguide_name}] "
+"のサービス・プロバイダー・インターフェイスのセクションの指示に従ってください。"

@@ -3,11 +3,15 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Hiroyuki Wada <wadahiro@gmail.com>, 2017
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,29 +19,10 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
-"features:install keycloak\n"
-msgstr ""
-"features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
-"features:install keycloak\n"
-
 #. type: Title =====
 #, no-wrap
 msgid "Installing the Keycloak Feature"
 msgstr "Keycloakフィーチャーのインストール"
-
-#. type: Plain text
-msgid ""
-"You must first install the `keycloak` feature in the JBoss Fuse environment."
-" The keycloak feature includes the Fuse adapter and all third-party "
-"dependencies. You can install it either from the Maven repository or from an"
-" archive."
-msgstr ""
-"最初に `keycloak` フィーチャーをJBoss Fuse環境にインストールする必要があります。 `keycloak` "
-"フィーチャーには、Fuseアダプターとサード・パーティーのすべての依存関係が含まれます。Mavenリポジトリーまたはアーカイブからインストールすることができます。"
 
 #. type: Title ======
 #, no-wrap
@@ -70,26 +55,13 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Assuming the Maven repository is https://maven.repository.redhat.com/ga/, "
-"add the following to the `$FUSE_HOME/etc/org.ops4j.pax.url.mvn.cfg` file and"
-" add the repository to the list of supported repositories. For example:"
+"Assuming the Maven repository is {maven_repository}, add the following to "
+"the `$FUSE_HOME/etc/org.ops4j.pax.url.mvn.cfg` file and add the repository "
+"to the list of supported repositories. For example:"
 msgstr ""
-"Mavenリポジトリーが https://maven.repository.redhat.com/ga/ であると仮定して、 "
+"Mavenリポジトリーが{maven_repository}であると仮定して、 "
 "`$FUSE_HOME/etc/org.ops4j.pax.url.mvn.cfg` "
 "ファイルに次の行を追加し、サポートされるリポジトリーのリストにリポジトリーを追加します。次に例を示します。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-" org.ops4j.pax.url.mvn.repositories= \\\n"
-"    https://maven.repository.redhat.com/ga@id=redhat.product.repo\n"
-"    http://repo1.maven.org/maven2@id=maven.central.repo, \\\n"
-"    ...\n"
-msgstr ""
-" org.ops4j.pax.url.mvn.repositories= \\\n"
-"    https://maven.repository.redhat.com/ga@id=redhat.product.repo\n"
-"    http://repo1.maven.org/maven2@id=maven.central.repo, \\\n"
-"    ...\n"
 
 #. type: Plain text
 msgid ""
@@ -98,34 +70,8 @@ msgid ""
 msgstr "Mavenリポジトリーを使用して、Keycloakフィーチャーをインストールするには、以下の手順を実行します。"
 
 #. type: Plain text
-msgid "Start {fuseVersion}; then in the Karaf terminal type:"
-msgstr "{fuseVersion}を開始します。Karafターミナルで以下のとおりにタイプします。"
-
-#. type: Plain text
-msgid "You might also need to install the Jetty 9 feature:"
-msgstr "以下のようにJetty 9フィーチャーをインストールする必要があるかもしれません。"
-
-#. type: delimited block -
-#, no-wrap
-msgid "features:install keycloak-jetty9-adapter\n"
-msgstr "features:install keycloak-jetty9-adapter\n"
-
-#. type: Plain text
-msgid ""
-"If you are using JBoss Fuse 6.2 or later, use `keycloak-jetty8-adapter`. "
-"However, upgrading to {fuseVersion} is recommended."
-msgstr ""
-"JBoss Fuse 6.2以降を使用している場合は、 `keycloak-jetty8-adapter` "
-"を使用してください。ただし、{fuseVersion}にアップグレードすることをお勧めします。"
-
-#. type: Plain text
 msgid "Ensure that the features were installed:"
 msgstr "以下のようにフィーチャーがインストールされていることを確認します。"
-
-#. type: delimited block -
-#, no-wrap
-msgid "features:list | grep keycloak\n"
-msgstr "features:list | grep keycloak\n"
 
 #. type: Title ======
 #, no-wrap
@@ -158,6 +104,68 @@ msgstr ""
 "ディレクトリーの下にインストールされます。既存のすべてのjarファイルが上書きされます。"
 
 #. type: Plain text
+msgid "Start Fuse and run these commands in the fuse/karaf terminal:"
+msgstr "Fuseを起動し、Fuse/Karafターミナルで次のコマンドを実行します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"features:install keycloak\n"
+msgstr ""
+"features:addurl mvn:org.keycloak/keycloak-osgi-features/{project_versionMvn}/xml/features\n"
+"features:install keycloak\n"
+
+#. type: Plain text
+msgid ""
+"You must first install the `keycloak` feature in the JBoss Fuse environment."
+" The keycloak feature includes the Fuse adapter and all third-party "
+"dependencies. You can install it either from the Maven repository or from an"
+" archive."
+msgstr ""
+"最初に `keycloak` フィーチャーをJBoss Fuse環境にインストールする必要があります。 `keycloak` "
+"フィーチャーには、Fuseアダプターとサード・パーティーのすべての依存関係が含まれます。Mavenリポジトリーまたはアーカイブからインストールすることができます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+" org.ops4j.pax.url.mvn.repositories= \\\n"
+"    {maven_repository}@id=redhat.product.repo\n"
+"    http://repo1.maven.org/maven2@id=maven.central.repo, \\\n"
+"    ...\n"
+msgstr ""
+" org.ops4j.pax.url.mvn.repositories= \\\n"
+"    {maven_repository}@id=redhat.product.repo\n"
+"    http://repo1.maven.org/maven2@id=maven.central.repo, \\\n"
+"    ...\n"
+
+#. type: Plain text
+msgid "Start {fuseVersion}; then in the Karaf terminal type:"
+msgstr "{fuseVersion}を開始します。Karafターミナルで以下のとおりにタイプします。"
+
+#. type: Plain text
+msgid "You might also need to install the Jetty 9 feature:"
+msgstr "以下のようにJetty 9フィーチャーをインストールする必要があるかもしれません。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "features:install keycloak-jetty9-adapter\n"
+msgstr "features:install keycloak-jetty9-adapter\n"
+
+#. type: Plain text
+msgid ""
+"If you are using JBoss Fuse 6.2 or later, use `keycloak-jetty8-adapter`. "
+"However, upgrading to {fuseVersion} is recommended."
+msgstr ""
+"JBoss Fuse 6.2以降を使用している場合は、 `keycloak-jetty8-adapter` "
+"を使用してください。ただし、{fuseVersion}にアップグレードすることをお勧めします。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "features:list | grep keycloak\n"
+msgstr "features:list | grep keycloak\n"
+
+#. type: Plain text
 msgid "Use this for {fuseVersion}:"
 msgstr "{FuseVersion}には、これを使用します。"
 
@@ -179,10 +187,6 @@ msgstr ""
 "ifeval::[{project_product}==true]\n"
 "unzip -q /path-to-adapter-zip/rh-sso-{project_version}-fuse-adapter.zip\n"
 "endif::[]\n"
-
-#. type: Plain text
-msgid "Start Fuse and run these commands in the fuse/karaf terminal:"
-msgstr "Fuseを起動し、Fuse/Karafターミナルで次のコマンドを実行します。"
 
 #. type: Plain text
 msgid ""

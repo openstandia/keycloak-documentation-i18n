@@ -3,11 +3,14 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,23 +19,48 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ====
-#: source/securing_apps/topics/oidc/java/logout.adoc:1
-#: source/securing_apps/topics/saml/java/logout.adoc:1
 #, no-wrap
 msgid "Logout"
 msgstr "ログアウト"
 
 #. type: Plain text
-#: source/securing_apps/topics/oidc/java/logout.adoc:6
 msgid ""
 "You can log out of a web application in multiple ways.  For Java EE servlet "
-"containers, you can call HttpServletRequest.logout(). For other browser "
+"containers, you can call `HttpServletRequest.logout()`. For other browser "
 "applications, you can redirect the browser to `$$http://auth-"
 "server/auth/realms/{realm-name}/protocol/openid-"
 "connect/logout?redirect_uri=encodedRedirectUri$$`, which logs you out if you"
 " have an SSO session with your browser."
 msgstr ""
-"Webアプリケーションからログアウトする方法は複数あります。Java "
-"EEサーブレット・コンテナーの場合、HttpServletRequest.logout()を呼び出すことができます。他のブラウザー・アプリケーションでブラウザーのSSOセッションがある場合は、"
-" `$$http://auth-server/auth/realms/{realm-name}/protocol/openid-"
+"Webアプリケーションからログアウトする方法は複数あります。Java EEサーブレット・コンテナーの場合、 "
+"`HttpServletRequest.logout()` "
+"を呼び出すことができます。他のブラウザー・アプリケーションでブラウザーのSSOセッションがある場合は、 `$$http://auth-"
+"server/auth/realms/{realm-name}/protocol/openid-"
 "connect/logout?redirect_uri=encodedRedirectUri$$` にリダイレクトすることでログアウトできます。"
+
+#. type: Plain text
+msgid ""
+"When using the `HttpServletRequest.logout()` option the adapter executes a "
+"back-channel POST call against the {project_name} server passing the refresh"
+" token.  If the method is executed from an unprotected page (a page that "
+"does not check for a valid token) the refresh token can be unavailable and, "
+"in that case, the adapter skips the call. For this reason, using a protected"
+" page to execute `HttpServletRequest.logout()` is recommended so that "
+"current tokens are always taken into account and an interaction with the "
+"{project_name} server is performed if needed."
+msgstr ""
+"`HttpServletRequest.logout()` "
+"オプションを使用すると、アダプターはリフレッシュトークンを渡す{project_name}サーバーに対して、バックチャネルPOSTコールを実行します。保護されていないページ（有効なトークンをチェックしていないページ）からメソッドが実行された場合、リフレッシュトークンは使用できなくなり、その場合はアダプターが呼び出しをスキップします。このため、現在のトークンが常に考慮され、必要に応じて{project_name}サーバーとの対話が実行されるように、保護されたページを使用して"
+" `HttpServletRequest.logout()` を実行することを推奨します。"
+
+#. type: Plain text
+msgid ""
+"If you want to avoid logging out of an external identity provider as part of"
+" the logout process, you can supply the parameter `$$initiating_idp$$`, with"
+" the value being the identity (alias) of the identity provider in question. "
+"This is useful when the logout endpoint is invoked as part of single logout "
+"initiated by the external identity provider."
+msgstr ""
+"ログアウト・プロセスの一部として外部アイデンティティー･プロバイダーからログアウトしないようにするには、パラメーター "
+"`$$initiating_idp$$` "
+"を指定します。値は問題のアイデンティティー･プロバイダーのアイデンティティー（エイリアス）です。これは、外部アイデンティティー･プロバイダーによって開始されたシングルログアウトの一部として、ログアウト・エンドポイントが呼び出された場合に便利です。"

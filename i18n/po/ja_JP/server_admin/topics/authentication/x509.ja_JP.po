@@ -3,11 +3,17 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# n.watanabe <nwatanabe.ase@gmail.com>, 2018
+# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: n.watanabe <nwatanabe.ase@gmail.com>, 2018\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -862,11 +868,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Consult the HAProxy documentation for the details of how the HTTP Headers "
-"for the client certificate and client certificate chain can be configured "
-"and their proper names."
+"Consult the link:http://www.haproxy.org/#docs[HAProxy documentation] for the"
+" details of how the HTTP Headers for the client certificate and client "
+"certificate chain can be configured and their proper names."
 msgstr ""
-"クライアント証明書とクライアント証明書チェーンのHTTPヘッダーの構成方法と固有名詞の詳細については、HAProxyのドキュメントを参照してください。"
+"クライアント証明書とクライアント証明書チェーンのHTTPヘッダーの構成方法と固有名詞の詳細については、 "
+"link:http://www.haproxy.org/#docs[HAProxyのドキュメント] を参照してください。"
 
 #. type: Title =====
 #, no-wrap
@@ -908,12 +915,119 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The configuration is same as for the `haproxy` provider. Consult the Apache "
-"documentation for the details of how the HTTP Headers for the client "
-"certificate and client certificate chain can be configured and their proper "
-"names."
+"documentation on "
+"link:https://httpd.apache.org/docs/current/mod/mod_ssl.html[mod_ssl] and "
+"link:https://httpd.apache.org/docs/current/mod/mod_headers.html[mod_headers]"
+" for the details of how the HTTP Headers for the client certificate and "
+"client certificate chain can be configured and their proper names."
 msgstr ""
-"設定は `haproxy` "
-"プロバイダーと同じです。クライアント証明書とクライアント証明書チェーンのHTTPヘッダーの設定方法とその固有名については、Apacheのドキュメントを参照してください。"
+"設定は `haproxy` プロバイダーと同じです。クライアント証明書とクライアント証明書チェーンのHTTPヘッダーの設定方法とその固有名については、 "
+"link:https://httpd.apache.org/docs/current/mod/mod_ssl.html[mod_ssl] と "
+"link:https://httpd.apache.org/docs/current/mod/mod_headers.html[mod_headers]"
+" Apacheのドキュメントを参照してください。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Nginx certificate lookup provider"
+msgstr "Nginx証明書検索プロバイダー"
+
+#. type: Plain text
+msgid ""
+"You can use this provider when your {project_name} server is behind an Nginx"
+" reverse proxy. Configure the server like this:"
+msgstr ""
+"{project_name}サーバーがNginxリバース・プロキシーの背後にある場合、このプロバイダーを使用できます。次のようにサーバーを構成します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"x509cert-lookup\">\n"
+"    <default-provider>nginx</default-provider>\n"
+"    <provider name=\"nginx\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"sslClientCert\" value=\"ssl-client-cert\"/>\n"
+"            <property name=\"sslCertChainPrefix\" value=\"USELESS\"/>\n"
+"            <property name=\"certificateChainLength\" value=\"2\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"x509cert-lookup\">\n"
+"    <default-provider>nginx</default-provider>\n"
+"    <provider name=\"nginx\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"sslClientCert\" value=\"ssl-client-cert\"/>\n"
+"            <property name=\"sslCertChainPrefix\" value=\"USELESS\"/>\n"
+"            <property name=\"certificateChainLength\" value=\"2\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid ""
+"NGINX "
+"link:http://nginx.org/en/docs/http/ngx_http_ssl_module.html#variables[SSL/TLS"
+" module] does not expose the client certificate chain, so Keycloak NGINX "
+"certificate lookup provider is rebuilding it using the "
+"link:{installguide_truststore_link}[{installguide_truststore_name}]. Please "
+"populate Keycloak truststore using keytool CLI with all root and "
+"intermediate CA's needed for rebuilding client certificate chain."
+msgstr ""
+"NGINX "
+"link:http://nginx.org/en/docs/http/ngx_http_ssl_module.html#variables[SSL/TLS"
+" module] はクライアント証明書チェーンを公開しないため、Keycloak NGINX証明書ルックアップ・プロバイダーは "
+"link:{installguide_truststore_link}[{installguide_truststore_name}] "
+"を使用して再構築しています。keytool "
+"CLIを使用してクライアント証明書チェーンを再構築するために必要なすべてのルートCAおよび中間CAを使用して、Keycloakトラストストアにデータを入力してください。"
+
+#. type: Plain text
+msgid ""
+"Consult the NGINX documentation for the details of how the HTTP Headers for "
+"the client certificate can be configured.  Example of NGINX configuration "
+"file :"
+msgstr ""
+"クライアント証明書のHTTPヘッダーの設定方法の詳細については、NGINXのドキュメントを参照してください。NGINX設定ファイルの例を以下に示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+" ...\n"
+" server { \n"
+"    ...\n"
+"    ssl_client_certificate                  trusted-ca-list-for-client-auth.pem;\n"
+"    ssl_verify_client                       optional_no_ca;\n"
+"    ssl_verify_depth                        2;\n"
+"    ...\n"
+"    location / {\n"
+"      ...\n"
+"      proxy_set_header ssl-client-cert        $ssl_client_escaped_cert;\n"
+"      ...\n"
+"    }\n"
+"    ...\n"
+"}\n"
+msgstr ""
+" ...\n"
+" server { \n"
+"    ...\n"
+"    ssl_client_certificate                  trusted-ca-list-for-client-auth.pem;\n"
+"    ssl_verify_client                       optional_no_ca;\n"
+"    ssl_verify_depth                        2;\n"
+"    ...\n"
+"    location / {\n"
+"      ...\n"
+"      proxy_set_header ssl-client-cert        $ssl_client_escaped_cert;\n"
+"      ...\n"
+"    }\n"
+"    ...\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"all certificates in trusted-ca-list-for-client-auth.pem must be added to "
+"link:{installguide_truststore_link}[{installguide_truststore_name}]."
+msgstr ""
+"link:{installguide_truststore_link}[{installguide_truststore_name}] に"
+"、trusted-ca-list-for-client-auth.pemのすべての証明書を追加する必要があります。"
 
 #. type: Title =====
 #, no-wrap
@@ -937,6 +1051,58 @@ msgstr ""
 "`org.keycloak.services.x509.X509ClientCertificateLookupFactory` と "
 "`org.keycloak.services.x509.X509ClientCertificateLookup` "
 "プロバイダーの独自の実装を作成する必要があります。独自のプロバイダーを追加する方法については、link:{developerguide_link}[{developerguide_name}]を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Dumping HTTP headers"
+msgstr "HTTPヘッダーのダンプ"
+
+#. type: Plain text
+msgid ""
+"If you want to view what the reverse proxy is sending to Keycloak, simply "
+"activate link:https://mirocupak.com/logging-requests-with-"
+"undertow/[RequestDumpingHandler] and consult `server.log` file."
+msgstr ""
+"リバース・プロキシーがKeycloakに送信している内容を表示するには、 link:https://mirocupak.com/logging-"
+"requests-with-undertow/[RequestDumpingHandler] を有効にして、 `server.log` "
+"ファイルを参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Enable TRACE logging under the logging subsystem"
+msgstr "ロギング・サブシステムでTRACEロギングを有効にします。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"...\n"
+"    <profile>\n"
+"        <subsystem xmlns=\"urn:jboss:domain:logging:3.0\">\n"
+"...\n"
+"            <logger category=\"org.keycloak.authentication.authenticators.x509\">\n"
+"                <level name=\"TRACE\"/>\n"
+"            </logger>\n"
+"            <logger category=\"org.keycloak.services.x509\">\n"
+"                <level name=\"TRACE\"/>\n"
+"            </logger>\n"
+msgstr ""
+"...\n"
+"    <profile>\n"
+"        <subsystem xmlns=\"urn:jboss:domain:logging:3.0\">\n"
+"...\n"
+"            <logger category=\"org.keycloak.authentication.authenticators.x509\">\n"
+"                <level name=\"TRACE\"/>\n"
+"            </logger>\n"
+"            <logger category=\"org.keycloak.services.x509\">\n"
+"                <level name=\"TRACE\"/>\n"
+"            </logger>\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+" WARNING: Don't use RequestDumpingHandler or TRACE logging in production.\n"
+msgstr ""
+" WARNING: Don't use RequestDumpingHandler or TRACE logging in production.\n"
 
 #. type: Labeled list
 #, no-wrap

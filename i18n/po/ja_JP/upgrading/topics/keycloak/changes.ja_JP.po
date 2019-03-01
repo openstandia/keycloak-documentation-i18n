@@ -55,10 +55,204 @@ msgstr ""
 "OpenID Connectセッション管理仕様では、パラメーター `session_state` がOpenID "
 "Connect認証レスポンスに存在する必要があります。"
 
+#. type: Title ====
+#, no-wrap
+msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
+msgstr "Microsoft Graph APIを使用するように更新されたMicrosoft Identity Provider"
+
+#. type: Plain text
+msgid ""
+"Legacy client applications registered under \"Live SDK applications\" won't "
+"work with the Microsoft Graph endpoints due to changes in the id format of "
+"the applications. If you run into an error saying that the application "
+"identifier was not found in the directory, you will have to register the "
+"client application again in the "
+"https://account.live.com/developers/applications/create[Microsoft "
+"Application Registration] portal to obtain a new application id."
+msgstr ""
+"\"Live SDK "
+"applications\"で登録された従来のクライアント・アプリケーションは、アプリケーションのID形式が変更されたため、Microsoft "
+"Graphエンドポイントでは機能しません。アプリケーション識別子がディレクトリーに見つからないというエラーが発生した場合は、新しいアプリケーションIDを取得するために"
+" https://account.live.com/developers/applications/create[Microsoft "
+"Application Registration] ポータルにクライアント・アプリケーションを再度登録する必要があります。"
+
 #. type: Title ==
 #, no-wrap
 msgid "Migration Changes"
 msgstr "移行に伴う変更"
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 4.6.0"
+msgstr "4.6.0への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "New default client scopes"
+msgstr "新しいデフォルト・クライアント・スコープ"
+
+#. type: Plain text
+msgid ""
+"We have added new realm default client scopes `roles` and `web-origins`. "
+"These client scopes contain protocol mappers to add the roles of the user "
+"and allowed web origins to the token. During migration, these client scopes "
+"should be automatically added to all the OpenID Connect clients as default "
+"client scopes. Hence no setup should be required after database migration is"
+" finished."
+msgstr ""
+"新しいレルムのデフォルトのクライアント・スコープ `role` と `web-origins` "
+"を追加しました。これらのクライアント・スコープには、ユーザーのロールを追加するプロトコル・マッパーとトークンに許可されたWeb起点が含まれています。移行中に、これらのクライアント・スコープはデフォルトのクライアント・スコープとしてすべてのOpenID"
+" Connectクライアントに自動的に追加されます。したがって、データベースの移行が完了した後でセットアップを行う必要はありません。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Protocol mapper SPI addition"
+msgstr "プロトコル・マッパーSPIの追加"
+
+#. type: Plain text
+msgid ""
+"Related to this, there is a small addition in the (unsupported) Protocol "
+"Mappers SPI. You can be affected only if you implemented a custom "
+"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
+"interface. The method has the default implementation set to return 0. If "
+"your protocol mapper implementation relies on the roles in the access token "
+"`realmAccess` or `resourceAccess` properties, you may need to increase the "
+"priority of your mapper."
+msgstr ""
+"これに関連して、（サポートされていない）プロトコル・マッパーSPIにはわずかな追加があります。カスタムのProtocolMapperを実装した場合にのみ影響を受ける可能性があります。ProtocolMapperインターフェイスには新しい"
+" `getPriority()` "
+"メソッドがあります。このメソッドは、デフォルトの実装が0を返すように設定しています。プロトコル・マッパーの実装がアクセストークンの "
+"`realmAccess` または `resourceAccess` "
+"プロパティーにあるロールに依存している場合は、マッパーの優先度を高くする必要があります。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Audience resolving"
+msgstr "オーディエンスの解決"
+
+#. type: Plain text
+msgid ""
+"Audiences of all the clients, for which authenticated user has at least one "
+"client role in the token, are automatically added to the `aud` claim in the "
+"access token now. On the other hand, an access token may not automatically "
+"contain the audience of the frontend client, for which it was issued. Read "
+"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
+msgstr ""
+"すべてのクライアント（認証されたユーザーはトークン内に少なくとも1つのクライアント・ロールを持ちます）のオーディエンスは、アクセストークン内の "
+"`aud` "
+"クレームに自動的に追加されます。一方、アクセストークンには、発行されたフロントエンド・クライアントのオーディエンスが自動的に含まれるわけではありません。詳細については、"
+" link:{adminguide_link}#_audience[{adminguide_name}] を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "JavaScipt Adapter Promise"
+msgstr "JavaScriptアダプターのPromise"
+
+#. type: Plain text
+msgid ""
+"To use native JavaScript promise with the JavaScript adapter it is now "
+"required to set `promiseType` to `native` in the init options."
+msgstr ""
+"JavaScriptアダプターでネイティブのJavaScriptのPromiseを使用するには、initオプションで `promiseType` を "
+"`native` に設定する必要があります。"
+
+#. type: Plain text
+msgid ""
+"In the past if native promise was available a wrapper was returned that "
+"provided both the legacy Keycloak promise and the native promise. This was "
+"causing issues as the error handler was not always set prior to the native "
+"error event, which resulted in `Uncaught (in promise)` error."
+msgstr ""
+"以前は、ネイティブのPromiseが利用可能であった場合、レガシーのKeycloakのPromiseとネイティブのPromiseの両方を提供するラッパーが返されました。これにより、ネイティブのエラーイベントの前にエラーハンドラーが常に設定されていないために問題が発生していました。"
+
+#. type: Plain text
+msgid ""
+"The Microsoft Identity Provider implementation in {project_name} up to "
+"version 4.5.0 relies on the Live SDK endpoints for authorization and "
+"obtaining the user profile. From November 2018 onwards, Microsoft is "
+"removing support for the Live SDK API in favor of the new Microsoft Graph "
+"API. The {project_name} identity provider has been updated to use the new "
+"endpoints so if this integration is in use make sure you upgrade to "
+"{project_name} version 4.6.0 or later."
+msgstr ""
+"バージョン4.5.0までの{project_name}でのMicrosoft Identity "
+"Providerの実装では、認可とユーザー・プロファイルの取得がLive "
+"SDKエンドポイントに依存しています。2018年11月以降、Microsoftは新しいMicrosoft Graph APIを支持してLive SDK "
+"APIのサポートを削除します。{project_name}アイデンティティー･プロバイダーは新しいエンドポイントを使用するように更新されたため、この統合を使用している場合は、必ず{project_name}バージョン4.6.0以降にアップグレードしてください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 14"
+msgstr "WildFly 14へのアップグレード"
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 14 as the underlying "
+"container. This does not directly involve any specific {project_name} server"
+" functionality, but there are few changes related to the migration, which "
+"worth mentioning."
+msgstr ""
+"WildFly "
+"14をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。これは、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更があります。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Dependency updates"
+msgstr "依存関係の更新"
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 14 server. For"
+" example, Infinispan is now 9.3.1.Final."
+msgstr ""
+"依存関係が、WildFly 14サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.3.1.Finalです。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Configuration changes"
+msgstr "設定の変更"
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and "
+"`domain.xml` files. You should follow the <<_install_new_version>> section "
+"to handle the migration of configuration files automatically."
+msgstr ""
+"`standalone(-ha).xml` と `domain.xml` "
+"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Cross-Datacenter Replication changes"
+msgstr "クロス・データセンター・レプリケーションの変更"
+
+#. type: Plain text
+msgid ""
+"You will need to upgrade {jdgserver_name} server to version "
+"{jdgserver_version}. The older version may still work, but it is"
+msgstr ""
+"{jdgserver_name}サーバーをバージョン{jdgserver_version}にアップグレードする必要があります。古いバージョンはまだ動作するかもしれませんが、"
+
+#. type: Plain text
+msgid "not guaranteed as we don't test it anymore."
+msgstr "テストしていないため、動作保証されていません。"
+
+#. type: Plain text
+msgid ""
+"There is a need to add `protocolVersion` property with the value `2.6` to "
+"the configuration of the `remote-store` element in the"
+msgstr ""
+"{project_name}の設定の `remote-store` 要素の設定に値 `2.6` を持つ `protocolVersion` "
+"プロパティーを追加する必要があります。 "
+
+#. type: Plain text
+msgid ""
+"{project_name} configuration. This is required as there is a need to "
+"downgrade the version of HotRod protocol to be compatible with the version "
+"used by {jdgserver_name} {jdgserver_version}."
+msgstr ""
+"HotRodプロトコルのバージョンを {jdgserver_name} {jdgserver_version} "
+"で使用されるバージョンと互換性があるようにダウングレードする必要があるため、これが必要です。"
 
 #. type: Title ===
 #, no-wrap
@@ -80,11 +274,6 @@ msgstr ""
 "WildFly "
 "13をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。これは、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更があります。"
 
-#. type: Labeled list
-#, no-wrap
-msgid "Dependency updates"
-msgstr "依存関係の更新"
-
 #. type: Plain text
 msgid ""
 "The dependencies were updated to the versions used by Wildfly 13 server. For"
@@ -92,11 +281,6 @@ msgid ""
 msgstr ""
 "依存関係が、WildFly "
 "13サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.2.4.Finalで、Undertowは2.0.9.Finalです。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Configuration changes"
-msgstr "設定の変更"
 
 #. type: Plain text
 msgid ""
@@ -121,22 +305,6 @@ msgid ""
 "There is no `jndi-attribute` on `cache-container` element in infinispan "
 "subsystem."
 msgstr "infinispanサブシステムの `cache-container` 要素の `jndi-attribute` はなくなりました。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Cross-Datacenter Replication changes"
-msgstr "クロス・データセンター・レプリケーションの変更"
-
-#. type: Plain text
-msgid ""
-"You will need to upgrade {jdgserver_name} server to version "
-"{jdgserver_version}. The older version may still work, but it is"
-msgstr ""
-"{jdgserver_name}サーバーをバージョン{jdgserver_version}にアップグレードする必要があります。古いバージョンはまだ動作するかもしれませんが、"
-
-#. type: Plain text
-msgid "not guaranteed as we don't test it anymore."
-msgstr "テストしていないため、動作保証されていません。"
 
 #. type: Plain text
 msgid ""

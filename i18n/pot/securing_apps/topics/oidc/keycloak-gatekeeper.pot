@@ -228,6 +228,9 @@ msgid ""
 "  white-listed: true\n"
 "- uri: /img/*\n"
 "  white-listed: true\n"
+"headers:\n"
+"  myheader1: value_1\n"
+"  myheader2: value_2\n"
 msgstr ""
 
 #. type: Plain text
@@ -253,7 +256,9 @@ msgid ""
 "    --resources=\"uri=/backend*|roles=test1\" \\\n"
 "    --resources=\"uri=/css/*|white-listed=true\" \\\n"
 "    --resources=\"uri=/img/*|white-listed=true\" \\\n"
-"    --resources=\"uri=/public/*|white-listed=true\"\n"
+"    --resources=\"uri=/public/*|white-listed=true\" \\\n"
+"    --headers=\"myheader1=value1\" \\\n"
+"    --headers=\"myheader2=value2\"\n"
 msgstr ""
 
 #. type: Plain text
@@ -262,6 +267,22 @@ msgid ""
 "roles specified must be present in the claims, this behavior can be altered "
 "by the `require-any-role` option, however, so as long as one role is present "
 "the permission is granted."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "OpenID Provider Communication"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By default the communication with the OpenID provider is direct. If you "
+"wish, you can specify a forwarding proxy server in your configuration file:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "openid-provider-proxy: http://proxy.example.com:8080\n"
 msgstr ""
 
 #. type: Title ====
@@ -487,6 +508,13 @@ msgid ""
 "}\n"
 msgstr ""
 
+#. type: Plain text
+msgid ""
+"To control the `Authorization` header use the `enable-authorization-header` "
+"yaml configuration or the `--enable-authorization-header` command line "
+"option. By default this option is set to `true`."
+msgstr ""
+
 #. type: Title ====
 #, no-wrap
 msgid "Custom claim headers"
@@ -539,6 +567,24 @@ msgid ""
 "X-Auth-Family-Name: User\n"
 "X-Auth-Given-Name: Beloved\n"
 "X-Auth-Name: Beloved User\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Custom headers"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You can inject custom headers using the `--headers=\"name=value\"` option or "
+"the configuration file:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"headers:\n"
+"  name: value\n"
 msgstr ""
 
 #. type: Title ====
@@ -954,4 +1000,19 @@ msgid ""
 "very low this value, such as 8 KB). Be sure that all network devices have "
 "sufficient header size limits. Otherwise, your users won't be able to obtain "
 "an access token."
+msgstr ""
+
+#. type: Title =
+#, no-wrap
+msgid "Known Issues"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There is a known issue with the Keycloak server 4.7.0.Final in which "
+"Gatekeeper is unable to find the _client_id_ in the _aud_ claim. This is due "
+"to the fact the _client_id_ is not in the audience anymore. The workaround "
+"is to add the \"Audience\" protocol mapper to the client with the audience "
+"pointed to the _client_id_. For more information, see link:https://issues."
+"jboss.org/browse/KEYCLOAK-8954[KEYCLOAK-8954]."
 msgstr ""

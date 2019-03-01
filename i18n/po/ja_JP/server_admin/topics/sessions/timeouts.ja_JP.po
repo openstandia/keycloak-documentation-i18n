@@ -5,14 +5,14 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2018\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,10 +72,12 @@ msgstr "SSO Session Idle"
 #, no-wrap
 msgid ""
 "Also pertains to OIDC clients.  If the user is not active for longer than this timeout, the user session will be invalidated.  How is idle time checked?\n"
-" A client requesting authentication will bump the idle timeout.  Refresh token requests will also bump the idle timeout.\n"
+"A client requesting authentication will bump the idle timeout.  Refresh token requests will also bump the idle timeout.\n"
+"There is a small window of time that is always added to the idle timeout before the session is actually invalidated (See note below).\n"
 msgstr ""
 "OIDCクライアントにも関係します。ユーザーがこのタイムアウトよりも長くアクティブでない場合、ユーザー・セッションは無効になります。どのようにアイドル時間はチェックされるでしょうか？\n"
 "認証を要求するクライアントは、アイドル・タイムアウトがあります。リフレッシュ・トークン・リクエストもアイドル・タイムアウトがあります。\n"
+"セッションが実際に無効になる前にアイドル・タイムアウトに常に追加される小さなウィンドウがあります（下記の注釈を参照）。\n"
 
 #. type: Plain text
 msgid "SSO Session Max"
@@ -90,16 +92,45 @@ msgstr ""
 "ユーザー・セッションが期限切れで無効になるまでの最大時間。これは具体的な数字と時間です。最大時間を制御します。アクティビティに関係なく、ユーザー・セッションがアクティブのままにできる最大時間を制御します。\n"
 
 #. type: Plain text
+msgid "SSO Session Idle Remember Me"
+msgstr "SSO Session Idle Remember Me"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Same as the standard SSO Session Idle configuration but specific to logins with remember me enabled. It allows for the specification of longer\n"
+" session idle timeouts when remember me is selected during the login process. It is an optional configuration and if not set to a value\n"
+" bigger than 0 it uses the same idle timeout set in the SSO Session Idle configuration.\n"
+msgstr ""
+"標準のSSOセッション・アイドル設定と同じですが、リメンバーミーの有効化とともにログインに固有の設定です。ログイン処理中にリメンバーミーが選択されている場合は、より長いセッション・アイドル・タイムアウトを指定できます。これはオプションの設定であり、0より大きい値に設定されていない場合は、SSOセッション・アイドルで設定されているものと同じアイドル・タイムアウトが使用されます。\n"
+
+#. type: Plain text
+msgid "SSO Session Max Remember Me"
+msgstr "SSO Session Max Remember Me"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Same as the standard SSO Session Max but specific to logins with remember me enabled. It allows for the specification of longer lived\n"
+" sessions when remember me is selected during the login process. It is an optional configuration and if not set to a value bigger than 0\n"
+" it uses the same session lifespan set in the SSO Session Max configuration.\n"
+msgstr ""
+"標準のSSO Session "
+"Maxの設定と同じですが、リメンバーミーの有効化とともにログインに固有の設定です。ログイン処理中にリメンバーミーが選択されている場合は、より長い存続期間のセッションを指定できます。これはオプションの設定であり、0より大きい値に設定されていない場合は、SSO"
+" Session Maxで設定されているものと同じセッション存続期間が使用されます。\n"
+
+#. type: Plain text
 msgid "Offline Session Idle"
 msgstr "Offline Session Idle"
 
 #. type: Plain text
+#, no-wrap
 msgid ""
-"For <<_offline-access, offline access>>, this is the time the session is "
-"allowed to remain idle before the offline token is revoked."
+"For <<_offline-access, offline access>>, this is the time the session is allowed to remain idle before the offline token is revoked.\n"
+"There is a small window of time that is always added to the idle timeout before the session is actually invalidated (See note below).\n"
 msgstr ""
 "<<_offline-access, "
-"オフライン・アクセス>>の場合、これはオフライン・トークンが取り消される前にセッションがアイドル状態を維持できる時間です。"
+"オフライン・アクセス>>では、これはオフライントークンが取り消される前にセッションがアイドル状態を維持できる時間です。セッションが実際に無効になる前に、アイドル・タイムアウトに常に追加されるわずかな時間のウインドウがあります（下記の注意を参照）。\n"
 
 #. type: Plain text
 msgid "Offline Session Max Limited"
@@ -216,3 +247,17 @@ msgid ""
 msgstr ""
 "操作ごとに独立したタイムアウトがある可能性があります（電子メールの確認、パスワード忘れ、ユーザーの操作、アイデンティティー・プロバイダーの電子メールの確認など）。このフィールドは必須ではなく、未指定の場合、"
 " _User-Initiated Action Lifespan_ で設定された値がデフォルトになります。"
+
+#. type: Plain text
+msgid ""
+"For idle timeouts, there is a small window of time (2 minutes) during which "
+"the session is kept unexpired. For example, when you have timeout set to 30 "
+"minutes, it will be actually 32 minutes before the session is expired. This "
+"is needed for some corner-case scenarios in cluster and cross-datacenter "
+"environments, in cases where the token was refreshed on one cluster node for"
+" a very short time before the expiration and the other cluster nodes would "
+"in the meantime incorrectly consider the session as expired, because they "
+"had not yet received the message about successful refresh from the node "
+"which did the refresh."
+msgstr ""
+"アイドル・タイムアウトには、セッションが期限切れにならないようにするためのわずかな時間のウインドウ（2分）があります。たとえば、タイムアウトを30分に設定した場合、セッションが期限切れになるまでに実際には32分かかります。これは、有効期限が切れる前にトークンが1つのクラスターノードで非常に短時間に更新され、リフレッシュを行ったノードからリフレッシュの成功についてのメッセージをまだ受け取っていないため、その間に他のクラスターノードがセッションを誤ってセッションを期限切れと見なしてしまうような、クラスターおよびクロス･データセンター環境における一般的なシナリオで必要とされます。"

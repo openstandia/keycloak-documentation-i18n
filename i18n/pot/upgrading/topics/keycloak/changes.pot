@@ -26,368 +26,6 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "New Password Hashing algorithms"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "ID Token requires scope=openid"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Added session_state parameter to OpenID Connect Authentication Response"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The OpenID Connect Session Management specification requires that the "
-"parameter `session_state` is present in the OpenID Connect Authentication "
-"Response."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Legacy client applications registered under \"Live SDK applications\" won't "
-"work with the Microsoft Graph endpoints due to changes in the id format of "
-"the applications. If you run into an error saying that the application "
-"identifier was not found in the directory, you will have to register the "
-"client application again in the https://account.live.com/developers/"
-"applications/create[Microsoft Application Registration] portal to obtain a "
-"new application id."
-msgstr ""
-
-#. type: Title ==
-#, no-wrap
-msgid "Migration Changes"
-msgstr ""
-
-#. type: Title ===
-#, no-wrap
-msgid "Migrating to 4.6.0"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "New default client scopes"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"We have added new realm default client scopes `roles` and `web-origins`. "
-"These client scopes contain protocol mappers to add the roles of the user "
-"and allowed web origins to the token. During migration, these client scopes "
-"should be automatically added to all the OpenID Connect clients as default "
-"client scopes. Hence no setup should be required after database migration is "
-"finished."
-msgstr ""
-
-#. type: Title =====
-#, no-wrap
-msgid "Protocol mapper SPI addition"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Related to this, there is a small addition in the (unsupported) Protocol "
-"Mappers SPI. You can be affected only if you implemented a custom "
-"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
-"interface. The method has the default implementation set to return 0. If "
-"your protocol mapper implementation relies on the roles in the access token "
-"`realmAccess` or `resourceAccess` properties, you may need to increase the "
-"priority of your mapper."
-msgstr ""
-
-#. type: Title =====
-#, no-wrap
-msgid "Audience resolving"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Audiences of all the clients, for which authenticated user has at least one "
-"client role in the token, are automatically added to the `aud` claim in the "
-"access token now. On the other hand, an access token may not automatically "
-"contain the audience of the frontend client, for which it was issued. Read "
-"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "JavaScipt Adapter Promise"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"To use native JavaScript promise with the JavaScript adapter it is now "
-"required to set `promiseType` to `native` in the init options."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"In the past if native promise was available a wrapper was returned that "
-"provided both the legacy Keycloak promise and the native promise. This was "
-"causing issues as the error handler was not always set prior to the native "
-"error event, which resulted in `Uncaught (in promise)` error."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The Microsoft Identity Provider implementation in {project_name} up to "
-"version 4.5.0 relies on the Live SDK endpoints for authorization and "
-"obtaining the user profile. From November 2018 onwards, Microsoft is "
-"removing support for the Live SDK API in favor of the new Microsoft Graph "
-"API. The {project_name} identity provider has been updated to use the new "
-"endpoints so if this integration is in use make sure you upgrade to "
-"{project_name} version 4.6.0 or later."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Upgrade to Wildfly 14"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The {project_name} server was upgraded to use Wildfly 14 as the underlying "
-"container. This does not directly involve any specific {project_name} server "
-"functionality, but there are few changes related to the migration, which "
-"worth mentioning."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Dependency updates"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The dependencies were updated to the versions used by Wildfly 14 server. For "
-"example, Infinispan is now 9.3.1.Final."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Configuration changes"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"There are few configuration changes in the `standalone(-ha).xml` and `domain."
-"xml` files. You should follow the <<_install_new_version>> section to handle "
-"the migration of configuration files automatically."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Cross-Datacenter Replication changes"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You will need to upgrade {jdgserver_name} server to version "
-"{jdgserver_version}. The older version may still work, but it is"
-msgstr ""
-
-#. type: Plain text
-msgid "not guaranteed as we don't test it anymore."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"There is a need to add `protocolVersion` property with the value `2.6` to "
-"the configuration of the `remote-store` element in the"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"{project_name} configuration. This is required as there is a need to "
-"downgrade the version of HotRod protocol to be compatible with the version "
-"used by {jdgserver_name} {jdgserver_version}."
-msgstr ""
-
-#. type: Title ===
-#, no-wrap
-msgid "Migrating to 4.4.0"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Upgrade to Wildfly 13"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The {project_name} server was upgraded to use Wildfly 13 as the underlying "
-"container. This does not directly involve any specific {project_name} server "
-"functionality, but there are few changes related to the migration, which "
-"worth mentioning."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The dependencies were updated to the versions used by Wildfly 13 server. For "
-"example, Infinispan is now 9.2.4.Final and Undertow is 2.0.9.Final"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"There are few configuration changes in the `standalone(-ha).xml` and `domain."
-"xml` files. You should follow the <<_install_new_version>> section to handle "
-"the migration of configuration files automatically. If more detail is "
-"needed, because, for example, you did some configuration changes on your "
-"own, here is a list of the most important changes:"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Element `eviction` on infinispan caches is now deprecated (unused) and was "
-"replaced by element `object-memory`"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"There is no `jndi-attribute` on `cache-container` element in infinispan "
-"subsystem."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You don't need to configure security anymore in the {jdgserver_name} server "
-"configuration file."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"There is a need to remove `transaction` element from the configuration of "
-"replicated caches in the {jdgserver_name} server"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"configuration file. This is needed because of the infinispan bug https://"
-"issues.jboss.org/browse/ISPN-9323."
-msgstr ""
-
-#. type: Title ===
-#, no-wrap
-msgid "Migration to 4.3.0"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Hostname configuration"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"In previous versions it was recommended to use a filter to specify permitted "
-"hostnames. It is now possible to set a fixed hostname which makes it easier "
-"to make sure the valid hostname is used and also allows internal "
-"applications to invoke {project_name} through an alternative URL, for "
-"example an internal IP address. It is recommended that you switch to this "
-"approach in production."
-msgstr ""
-
-#. type: Title ===
-#, no-wrap
-msgid "Migrating to 4.0.0"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Client Templates changed to Client Scopes"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"We added support for Client Scopes, which requires some attention during "
-"migration."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Client Templates were changed to Client Scopes. If you had any Client "
-"Templates, their protocol mappers and role scope mappings will be preserved."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Spaces replaced in the names"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Client templates with the space character in the name were renamed by "
-"replacing spaces with an underscore, because spaces are not allowed in the "
-"name of client scopes. For example, a client template `my template` will be "
-"changed to client scope `my_template`."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Linking Client Scopes to Clients"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"For clients which had the client template, the corresponding client scope is "
-"now added as `Default Client Scope` to the client. So protocol mappers and "
-"role scope mappings will be preserved on the client."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Realm Default Client Scopes not linked with existing clients"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"During the migration, the list of built-in client scopes is added to each "
-"realm as well as list of `Realm Default Client Scopes`. However, existing "
-"clients are NOT upgraded and new client scopes are NOT automatically added "
-"to them. Also all the protocol mappers and role scope mappings are kept on "
-"existing clients. In the new version, when you create a new client, it "
-"automatically has Realm Default Client Scopes attached to it and it does not "
-"have any protocol mappers attached to it. We did not change existing clients "
-"during migration as it would be impossible to properly detect "
-"customizations, which you will have for protocol mappers of the clients, for "
-"example. If you want to update existing clients (remove protocol mappers "
-"from them and link them with client scopes), you will need to do it manually."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Consents need to be confirmed again"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The client scopes change required the refactoring of consents. Consents now "
-"point to client scopes, not to roles or protocol mappers.  Because of this "
-"change, the previously confirmed persistent consents by users are not valid "
-"anymore and users need to confirm the consent page again after the migration."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Some configuration switches removed"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The switch `Scope Param Required` was removed from Role Detail. The switches "
-"`Consent Required` and `Consent Text` were removed from the Protocol Mapper "
-"details. Those switches were replaced by the Client Scope feature."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
 msgid "Changes to Authorization Services"
 msgstr ""
 
@@ -485,6 +123,444 @@ msgid ""
 "When upgrading to the new version of {project_name} Authorization Client "
 "Java API, you'll notice that some representation classes were moved to a "
 "different package in `org.keycloak:keycloak-core`."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client Templates changed to Client Scopes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"We added support for Client Scopes, which requires some attention during "
+"migration."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Spaces replaced in the names"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Linking Client Scopes to Clients"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Realm Default Client Scopes not linked with existing clients"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Consents need to be confirmed again"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Some configuration switches removed"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "New default client scopes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"We have added new realm default client scopes `roles` and `web-origins`. "
+"These client scopes contain protocol mappers to add the roles of the user "
+"and allowed web origins to the token. During migration, these client scopes "
+"should be automatically added to all the OpenID Connect clients as default "
+"client scopes. Hence no setup should be required after database migration is "
+"finished."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Protocol mapper SPI addition"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Related to this, there is a small addition in the (unsupported) Protocol "
+"Mappers SPI. You can be affected only if you implemented a custom "
+"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
+"interface. The method has the default implementation set to return 0. If "
+"your protocol mapper implementation relies on the roles in the access token "
+"`realmAccess` or `resourceAccess` properties, you may need to increase the "
+"priority of your mapper."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Audience resolving"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Audiences of all the clients, for which authenticated user has at least one "
+"client role in the token, are automatically added to the `aud` claim in the "
+"access token now. On the other hand, an access token may not automatically "
+"contain the audience of the frontend client, for which it was issued. Read "
+"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Dependency updates"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Configuration changes"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Cross-Datacenter Replication changes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You will need to upgrade {jdgserver_name} server to version "
+"{jdgserver_version}. The older version may still work, but it is"
+msgstr ""
+
+#. type: Plain text
+msgid "not guaranteed as we don't test it anymore."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There is a need to add `protocolVersion` property with the value `2.6` to "
+"the configuration of the `remote-store` element in the"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} configuration. This is required as there is a need to "
+"downgrade the version of HotRod protocol to be compatible with the version "
+"used by {jdgserver_name} {jdgserver_version}."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Hostname configuration"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In previous versions it was recommended to use a filter to specify permitted "
+"hostnames. It is now possible to set a fixed hostname which makes it easier "
+"to make sure the valid hostname is used and also allows internal "
+"applications to invoke {project_name} through an alternative URL, for "
+"example an internal IP address. It is recommended that you switch to this "
+"approach in production."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "JavaScipt Adapter Promise"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To use native JavaScript promise with the JavaScript adapter it is now "
+"required to set `promiseType` to `native` in the init options."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the past if native promise was available a wrapper was returned that "
+"provided both the legacy Keycloak promise and the native promise. This was "
+"causing issues as the error handler was not always set prior to the native "
+"error event, which resulted in `Uncaught (in promise)` error."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Microsoft Identity Provider implementation in {project_name} up to "
+"version 4.5.0 relies on the Live SDK endpoints for authorization and "
+"obtaining the user profile. From November 2018 onwards, Microsoft is "
+"removing support for the Live SDK API in favor of the new Microsoft Graph "
+"API. The {project_name} identity provider has been updated to use the new "
+"endpoints so if this integration is in use make sure you upgrade to "
+"{project_name} version 4.6.0 or later."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Legacy client applications registered under \"Live SDK applications\" won't "
+"work with the Microsoft Graph endpoints due to changes in the id format of "
+"the applications. If you run into an error saying that the application "
+"identifier was not found in the directory, you will have to register the "
+"client application again in the https://account.live.com/developers/"
+"applications/create[Microsoft Application Registration] portal to obtain a "
+"new application id."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Google Identity Provider updated to use Google Sign-in authentication system"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If you run into an error saying that the application identifier was not "
+"found in the directory, you will have to register the client application "
+"again in the https://console.developers.google.com/apis/credentials[Google "
+"API Console] portal to obtain a new application id and secret."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"It is possible that you will need to adjust custom mappers for non-standard "
+"claims that were provided by Google+ user information endpoint and are "
+"provided under different name by Google Sign-in API. Please consult Google "
+"documentation for the most up-to-date information on available claims."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Accordingly with LinkedIn, all developers need to migrate to version 2.0 of "
+"their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social "
+"Broker."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Existing deployments using this broker may start experiencing errors when "
+"fetching user's profile using version 2 of LinkedIn APIs. This error may be "
+"related with the lack of permissions granted to the client application used "
+"to configure the broker which may not be authorized to access the Profile "
+"API or request specific OAuth2 scopes during the authentication process."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Even for newly created LinkedIn client applications, you need to make sure "
+"that the client is able to request the `r_liteprofile` and `r_emailaddress` "
+"OAuth2 scopes, at least, as well that the client application can fetch "
+"current member's profile from the `https://api.linkedin.com/v2/me` endpoint."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Due to these privacy restrictions imposed by LinkedIn in regards to access "
+"to member's information and the limited set of claims returned by the "
+"current member's Profile API, the LinkedIn Social Broker is now using the "
+"member's email address as the default username. That means that the "
+"`r_emailaddress` is always set when sending authorization requests during "
+"the authentication."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "New Password Hashing algorithms"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "ID Token requires scope=openid"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Added session_state parameter to OpenID Connect Authentication Response"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The OpenID Connect Session Management specification requires that the "
+"parameter `session_state` is present in the OpenID Connect Authentication "
+"Response."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Migration Changes"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 4.8.2"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Google Identity Provider implementation in {project_name} up to version "
+"4.8.1 relies on the Google+ API endpoints endpoints for authorization and "
+"obtaining the user profile. From March 2019 onwards, Google is removing "
+"support for the Google+ API in favor of the new Google Sign-in "
+"authentication system. The {project_name} identity provider has been updated "
+"to use the new endpoints so if this integration is in use make sure you "
+"upgrade to {project_name} version 4.8.2 or later."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 4.6.0"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 14"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 14 as the underlying "
+"container. This does not directly involve any specific {project_name} server "
+"functionality, but there are few changes related to the migration, which "
+"worth mentioning."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 14 server. For "
+"example, Infinispan is now 9.3.1.Final."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and `domain."
+"xml` files. You should follow the <<_install_new_version>> section to handle "
+"the migration of configuration files automatically."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 4.4.0"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 13"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 13 as the underlying "
+"container. This does not directly involve any specific {project_name} server "
+"functionality, but there are few changes related to the migration, which "
+"worth mentioning."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 13 server. For "
+"example, Infinispan is now 9.2.4.Final and Undertow is 2.0.9.Final"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and `domain."
+"xml` files. You should follow the <<_install_new_version>> section to handle "
+"the migration of configuration files automatically. If more detail is "
+"needed, because, for example, you did some configuration changes on your "
+"own, here is a list of the most important changes:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Element `eviction` on infinispan caches is now deprecated (unused) and was "
+"replaced by element `object-memory`"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There is no `jndi-attribute` on `cache-container` element in infinispan "
+"subsystem."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You don't need to configure security anymore in the {jdgserver_name} server "
+"configuration file."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There is a need to remove `transaction` element from the configuration of "
+"replicated caches in the {jdgserver_name} server"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"configuration file. This is needed because of the infinispan bug https://"
+"issues.jboss.org/browse/ISPN-9323."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Migration to 4.3.0"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 4.0.0"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Client Templates were changed to Client Scopes. If you had any Client "
+"Templates, their protocol mappers and role scope mappings will be preserved."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Client templates with the space character in the name were renamed by "
+"replacing spaces with an underscore, because spaces are not allowed in the "
+"name of client scopes. For example, a client template `my template` will be "
+"changed to client scope `my_template`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For clients which had the client template, the corresponding client scope is "
+"now added as `Default Client Scope` to the client. So protocol mappers and "
+"role scope mappings will be preserved on the client."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"During the migration, the list of built-in client scopes is added to each "
+"realm as well as list of `Realm Default Client Scopes`. However, existing "
+"clients are NOT upgraded and new client scopes are NOT automatically added "
+"to them. Also all the protocol mappers and role scope mappings are kept on "
+"existing clients. In the new version, when you create a new client, it "
+"automatically has Realm Default Client Scopes attached to it and it does not "
+"have any protocol mappers attached to it. We did not change existing clients "
+"during migration as it would be impossible to properly detect "
+"customizations, which you will have for protocol mappers of the clients, for "
+"example. If you want to update existing clients (remove protocol mappers "
+"from them and link them with client scopes), you will need to do it manually."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The client scopes change required the refactoring of consents. Consents now "
+"point to client scopes, not to roles or protocol mappers.  Because of this "
+"change, the previously confirmed persistent consents by users are not valid "
+"anymore and users need to confirm the consent page again after the migration."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The switch `Scope Param Required` was removed from Role Detail. The switches "
+"`Consent Required` and `Consent Text` were removed from the Protocol Mapper "
+"details. Those switches were replaced by the Client Scope feature."
 msgstr ""
 
 #. type: Title ===

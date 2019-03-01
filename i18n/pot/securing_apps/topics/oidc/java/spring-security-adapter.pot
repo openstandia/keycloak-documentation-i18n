@@ -438,7 +438,7 @@ msgstr ""
 
 #. type: Title ======
 #, no-wrap
-msgid "Avoid double Filter bean registration"
+msgid "Avoid double bean registration"
 msgstr ""
 
 #. type: Plain text
@@ -448,6 +448,17 @@ msgid ""
 "adapter in a Spring Boot environment, it may be necessary to add "
 "``FilterRegistrationBean``s to your security configuration to prevent the "
 "Keycloak filters from being registered twice."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Spring Boot 2.1 also disables `spring.main.allow-bean-definition-overriding` "
+"by default. This can mean that an `BeanDefinitionOverrideException` will be "
+"encountered if a `Configuration` class extending "
+"`KeycloakWebSecurityConfigurerAdapter` registers a bean that is already "
+"detected by a `@ComponentScan`. This can be avoided by overriding the "
+"registration to use the Boot-specific `@ConditionalOnMissingBean` "
+"annotation, as with `HttpSessionManager` below."
 msgstr ""
 
 #. type: delimited block -
@@ -506,4 +517,17 @@ msgid ""
 "        registrationBean.setEnabled(false);\n"
 "        return registrationBean;\n"
 "    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Bean\n"
+"    @Override\n"
+"    @ConditionalOnMissingBean(HttpSessionManager.class)\n"
+"    protected HttpSessionManager httpSessionManager() {\n"
+"        return new HttpSessionManager();\n"
+"    }\n"
+"    ...\n"
+"}\n"
 msgstr ""

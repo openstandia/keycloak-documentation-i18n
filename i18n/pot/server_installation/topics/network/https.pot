@@ -226,17 +226,45 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Now that you have a Java keystore with the appropriate certificates, you "
-"need to configure your {project_name} installation to use it.  First step is "
-"to move the keystore file to the _configuration/_ directory of your "
-"deployment and to edit the _standalone.xml_, _standalone-ha.xml_ or _domain."
-"xml_ file to use the keystore and enable HTTPS.  (See <<_operating-mode, "
-"operating mode>>)."
+"need to configure your {project_name} installation to use it.  First, you "
+"must edit the _standalone.xml_, _standalone-ha.xml_, or _host.xml_ file to "
+"use the keystore and enable HTTPS. You may then either move the keystore "
+"file to the _configuration/_ directory of your deployment or the file in a "
+"location you choose and provide an absolute path to it. If you are using "
+"absolute paths, remove the optional `relative-to` parameter from your "
+"configuration (See <<_operating-mode, operating mode>>)."
+msgstr ""
+
+#. type: Plain text
+msgid "Add the new `security-realm` element using the CLI:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ /core-service=management/security-realm=UndertowRealm:add()\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ /core-service=management/security-realm=UndertowRealm/server-identity=ssl:add(keystore-path=keycloak.jks, keystore-relative-to=jboss.server.config.dir, keystore-password=secret)\n"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"In the standalone or domain configuration file, search for the `security-"
-"realms` element and add:"
+"If using domain mode, the commands should be executed in every host using "
+"the `/host=<host_name>/` prefix (in order to create the `security-realm` in "
+"all of them), like this, which you would repeat for each host:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ /host=<host_name>/core-service=management/security-realm=UndertowRealm/server-identity=ssl:add(keystore-path=keycloak.jks, keystore-relative-to=jboss.server.config.dir, keystore-password=secret)\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the standalone or host configuration file, the `security-realms` element "
+"should look like this:"
 msgstr ""
 
 #. type: delimited block -
@@ -253,8 +281,27 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Find the element `server name=\"default-server\"` (it's a child element of "
-"`subsystem xmlns=\"{subsystem_undertow_xml_urn}\"`) and add:"
+"Next, in the standalone or each domain configuration file, search for any "
+"instances of `security-realm`. Modify the `https-listener` to use the "
+"created realm:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ /subsystem=undertow/server=default-server/https-listener=https:write-attribute(name=security-realm, value=UndertowRealm)\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If using domain mode, prefix the command with the profile that is being used "
+"with: `/profile=<profile_name>/`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The resulting element, `server name=\"default-server\"`, which is a child "
+"element of `subsystem xmlns=\"{subsystem_undertow_xml_urn}\"`, should "
+"contain the following stanza:"
 msgstr ""
 
 #. type: delimited block -

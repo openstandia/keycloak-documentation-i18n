@@ -14,6 +14,86 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Title ====
+#, no-wrap
+msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Legacy client applications registered under \"Live SDK applications\" won't "
+"work with the Microsoft Graph endpoints due to changes in the id format of "
+"the applications. If you run into an error saying that the application "
+"identifier was not found in the directory, you will have to register the "
+"client application again in the https://account.live.com/developers/"
+"applications/create[Microsoft Application Registration] portal to obtain a "
+"new application id."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Google Identity Provider updated to use Google Sign-in authentication system"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Google Identity Provider implementation in {project_name} up to version "
+"7.2.5 relies on the Google+ API endpoints endpoints for authorization and "
+"obtaining the user profile. From March 2019 onwards, Google is removing "
+"support for the Google+ API in favor of the new Google Sign-in "
+"authentication system. The {project_name} identity provider has been updated "
+"to use the new endpoints so if this integration is in use make sure you "
+"upgrade to {project_name} version 7.2.6 or later."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If you run into an error saying that the application identifier was not "
+"found in the directory, you will have to register the client application "
+"again in the https://console.developers.google.com/apis/credentials[Google "
+"API Console] portal to obtain a new application id and secret."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"It is possible that you will need to adjust custom mappers for non-standard "
+"claims that were provided by Google+ user information endpoint and are "
+"provided under different name by Google Sign-in API. Please consult Google "
+"documentation for the most up-to-date information on available claims."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Existing deployments using this broker may start experiencing errors when "
+"fetching user's profile using version 2 of LinkedIn APIs. This error may be "
+"related with the lack of permissions granted to the client application used "
+"to configure the broker which may not be authorized to access the Profile "
+"API or request specific OAuth2 scopes during the authentication process."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Even for newly created LinkedIn client applications, you need to make sure "
+"that the client is able to request the `r_liteprofile` and `r_emailaddress` "
+"OAuth2 scopes, at least, as well that the client application can fetch "
+"current member's profile from the `https://api.linkedin.com/v2/me` endpoint."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Due to these privacy restrictions imposed by LinkedIn in regards to access "
+"to member's information and the limited set of claims returned by the "
+"current member's Profile API, the LinkedIn Social Broker is now using the "
+"member's email address as the default username. That means that the "
+"`r_emailaddress` is always set when sending authorization requests during "
+"the authentication."
+msgstr ""
+
 #. type: Title ==
 #, no-wrap
 msgid "RH-SSO 7.2"
@@ -126,11 +206,6 @@ msgid ""
 "Response."
 msgstr ""
 
-#. type: Title ====
-#, no-wrap
-msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
-msgstr ""
-
 #. type: Plain text
 msgid ""
 "The Microsoft Identity Provider implementation in {project_name} up to "
@@ -144,11 +219,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Legacy client applications registered under \"Live SDK applications\" won't "
-"work with the Microsoft Graph endpoints due to changes in the id format of "
-"the applications. If you run into an error saying that the application "
-"identifier was not found in the directory, you will have to register the "
-"client application again in the https://account.live.com/developers/"
-"applications/create[Microsoft Application Registration] portal to obtain a "
-"new application id."
+"Accordingly with LinkedIn, all developers need to migrate to version 2.0 of "
+"their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social "
+"Broker so if this integration is in use make sure you upgrade to "
+"{project_name} version 7.2.6 or later."
 msgstr ""

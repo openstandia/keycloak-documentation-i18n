@@ -5,12 +5,13 @@
 # 
 # Translators:
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -116,9 +117,9 @@ msgstr ""
 "service` "
 "から追加のデータを取得する必要があるかもしれないため、このワークフロー例は要求された動作でさえあるかもしれません。あなたは、Kerberos "
 "Credential Delegationとの類似点に気付くかもしれません。Kerberos Credential "
-"Delegationと同様に、サービス間に高い信頼レベルがある場合にのみ有用なため、無制限のオーディエンスは必ずしもいい事ずくめではないです。それ以外の場合は、次に説明するようにオーディエンスを制限することをお勧めします。オーディエンスを制限し、同時に"
+"Delegationと同様に、サービス間に高い信頼レベルがある場合にのみ有用なため、無制限のAudienceは必ずしもいい事ずくめではないです。それ以外の場合は、次に説明するようにAudienceを制限することをお勧めします。Audienceを制限し、同時に"
 " `evil-service` が `good-service` から必要なデータを取得することを許可することができます。この場合、トークンに "
-"`evil-service` と `good-service` の両方がオーディエンスとして追加されていることを確認する必要があります。\n"
+"`evil-service` と `good-service` の両方がAudienceとして追加されていることを確認する必要があります。\n"
 
 #. type: Plain text
 msgid ""
@@ -128,7 +129,7 @@ msgid ""
 "change, like this:"
 msgstr ""
 "上記の例のようにアクセストークンの誤用を防ぐために、トークンの _Audience_ "
-"を制限し、トークンのオーディエンスを検証するようにサービスを設定することをお勧めします。これが行われると、上記のフローは次のように変わります。"
+"を制限し、トークンのAudienceを検証するようにサービスを設定することをお勧めします。これが行われると、上記のフローは次のように変わります。"
 
 #. type: Plain text
 msgid ""
@@ -146,7 +147,7 @@ msgstr ""
 "を呼び出す必要があることを知っているので、{project_name}サーバーに送信される認証リクエストで `scope = evil-service`"
 " を使いました。 _scope_ パラメータの詳細については、<<_client_scopes, "
 "クライアント・スコープのセクション>>を参照してください。 `my-app` クライアントに発行されたトークンは `\"audience\": [ "
-"\"evil-service\" ]` のようにオーディエンスを含んでいます。これはクライアントがこのアクセストークンを使って `evil-"
+"\"evil-service\" ]` のようにAudienceを含んでいます。これはクライアントがこのアクセストークンを使って `evil-"
 "service` サービスだけを呼び出すことを望んでいることを宣言します。"
 
 #. type: Plain text
@@ -164,8 +165,9 @@ msgid ""
 "service`. This is expected behavior and security is not broken."
 msgstr ""
 "それから `evil-service` アプリケーションは以前に保持されたトークンで `good-service` "
-"を呼び出しました。呼び出しは成功しませんでした。なぜなら、 `good-service` はトークン上のオーディエンスをチェックし、オーディエンスは単に"
-" `evil-service` であると見なしたためです。これは予想される動作であり、セキュリティーは破られていません。"
+"を呼び出しました。呼び出しは成功しませんでした。なぜなら、 `good-service` "
+"はトークン上のAudienceをチェックし、Audienceは単に `evil-service` "
+"であると見なしたためです。これは予想される動作であり、セキュリティーは破られていません。"
 
 #. type: Plain text
 msgid ""
@@ -174,7 +176,7 @@ msgid ""
 " The returned token will then contain `good-service` as an audience:"
 msgstr ""
 "クライアントが後で `good-service` を呼び出したい場合は、 `scope = good-service` "
-"を指定してSSOログインを発行し、別のトークンを取得する必要があります。返されたトークンはオーディエンスとして `good-service` "
+"を指定してSSOログインを発行し、別のトークンを取得する必要があります。返されたトークンはAudienceとして `good-service` "
 "を含みます。"
 
 #. type: delimited block -
@@ -193,7 +195,7 @@ msgstr "セットアップ"
 
 #. type: Plain text
 msgid "To properly set up audience checking:"
-msgstr "オーディエンスチェックを正しく設定するには、次のようにします。"
+msgstr "Audienceチェックを正しく設定するには、次のようにします。"
 
 #. type: Plain text
 msgid ""
@@ -203,7 +205,7 @@ msgid ""
 "configuration] for details."
 msgstr ""
 "アダプター設定にフラグ _verify-token-audience_ "
-"を追加して、サービスがそれらに送信されたアクセストークンでオーディエンスをチェックするように設定されていることを確認します。詳しくは、 "
+"を追加して、サービスがそれらに送信されたアクセストークンでAudienceをチェックするように設定されていることを確認します。詳しくは、 "
 "link:{adapterguide_link}#_java_adapter_config[アダプター構成] を参照してください。"
 
 #. type: Plain text
@@ -214,14 +216,14 @@ msgid ""
 "as described in the <<_audience_resolve, next section>> or it can be "
 "hardcoded as described <<_audience_hardcoded, below>>."
 msgstr ""
-"アクセストークンが{project_name}によって発行されたときに、要求されたすべてのオーディエンスが含まれ、不要なオーディエンスが含まれていないことを確認してください。オーディエンスは、"
+"アクセストークンが{project_name}によって発行されたときに、要求されたすべてのAudienceが含まれ、不要なAudienceが含まれていないことを確認してください。Audienceは、"
 " <<_audience_resolve, 次のセクション>> で説明されているようにクライアントロールによって自動的に追加されるか、または "
 "<<_audience_hardcoded, 以下>> のようにハードコーディングされます。"
 
 #. type: Title =====
 #, no-wrap
 msgid "Automatically add audience"
-msgstr "オーディエンスを自動的に追加"
+msgstr "Audienceを自動的に追加"
 
 #. type: Plain text
 msgid ""
@@ -233,7 +235,7 @@ msgid ""
 "client roles."
 msgstr ""
 "デフォルトのクライアント・スコープ _roles_ には、 _Audience Resolve_ "
-"プロトコル・マッパーが定義されています。このプロトコルマッパーは、現在のトークンに使用可能なクライアントロールが少なくとも1つあるか、すべてのクライアントに対してチェックします。その後、それらの各クライアントのクライアントIDがオーディエンスとして自動的に追加されます。これは、サービス（通常はベアラーのみ）クライアントがクライアントロールに依存している場合に特に便利です。"
+"プロトコル・マッパーが定義されています。このプロトコルマッパーは、現在のトークンに使用可能なクライアントロールが少なくとも1つあるか、すべてのクライアントに対してチェックします。その後、それらの各クライアントのクライアントIDがAudienceとして自動的に追加されます。これは、サービス（通常はベアラーのみ）クライアントがクライアントロールに依存している場合に特に便利です。"
 
 #. type: Plain text
 msgid ""
@@ -251,7 +253,7 @@ msgstr "`good-service` クライアントはそれ自身に定義された任意
 
 #. type: Plain text
 msgid "Target user has at least one of those client roles assigned"
-msgstr "ターゲットユーザーに、これらのクライアントロールの少なくとも1つが割り当てられている"
+msgstr "ターゲット・ユーザーに、これらのクライアントロールの少なくとも1つが割り当てられている"
 
 #. type: Plain text
 msgid "Client `my-app` has the role scope mappings for the assigned role"
@@ -261,7 +263,7 @@ msgstr "クライアント `my-app` は、割り当てられたロールに対�
 msgid ""
 "then the `good-service` will be automatically added as an audience to the "
 "access token issued for the `my-app`."
-msgstr "`good-service` が ` my-app` に対して発行されたアクセストークンにオーディエンスとして自動的に追加されます。"
+msgstr "`good-service` が ` my-app` に対して発行されたアクセストークンにAudienceとして自動的に追加されます。"
 
 #. type: Plain text
 msgid ""
@@ -274,10 +276,11 @@ msgid ""
 "will be added to the token just if explicitly requested by the `scope=good-"
 "service` parameter."
 msgstr ""
-"オーディエンスが自動的に追加されないようにするには、ロール・スコープ・マッピングを直接 `my-app` クライアントに設定しないでください。代わりに、"
-" `good-service` クライアントのクライアントロールのロール・スコープ・マッピングを含む専用のクライアント・スコープ（たとえば、 "
-"`good-service` ）を作成してください。このクライアント・スコープがオプションのクライアント・スコープとして `my-app` "
-"クライアントに追加されると仮定すると、クライアントロールとオーディエンスは `scope=good-service` "
+"Audienceが自動的に追加されないようにするには、ロール・スコープ・マッピングを直接 `my-app` "
+"クライアントに設定しないでください。代わりに、 `good-service` "
+"クライアントのクライアントロールのロール・スコープ・マッピングを含む専用のクライアント・スコープ（たとえば、 `good-service` "
+"）を作成してください。このクライアント・スコープがオプションのクライアント・スコープとして `my-app` "
+"クライアントに追加されると仮定すると、クライアントロールとAudienceは `scope=good-service` "
 "パラメーターによって明示的に要求された場合にのみトークンに追加されます。"
 
 #. type: Plain text
@@ -290,15 +293,15 @@ msgid ""
 " see the <<_audience_hardcoded, hardcoded audience>> option. However, using "
 "the same client as both frontend and REST service is not recommended."
 msgstr ""
-"フロントエンド・クライアント自体は、アクセストークンのオーディエンスに自動的に追加されません。アクセストークンには、トークンがオーディエンスとして発行されたクライアントが含まれないため、これによりアクセストークンとIDトークンを簡単に区別できます。したがって、上記の例では、"
+"フロントエンド・クライアント自体は、アクセストークンのAudienceに自動的に追加されません。アクセストークンには、トークンがAudienceとして発行されたクライアントが含まれないため、これによりアクセストークンとIDトークンを簡単に区別できます。したがって、上記の例では、"
 " `my-app` "
-"はオーディエンスとして追加されません。クライアント自体をオーディエンスとして必要とする場合は、<<_audience_hardcoded, "
-"ハードコードされたオーディエンス>>のオプションを見てください。ただし、フロントエンドとRESTサービスの両方に同じクライアントを使用することはお勧めできません。"
+"はAudienceとして追加されません。クライアント自体をAudienceとして必要とする場合は、<<_audience_hardcoded, "
+"ハードコードされたAudience>>のオプションを見てください。ただし、フロントエンドとRESTサービスの両方に同じクライアントを使用することはお勧めできません。"
 
 #. type: Title =====
 #, no-wrap
 msgid "Hardcoded audience"
-msgstr "ハードコードされたオーディエンス"
+msgstr "ハードコードされたAudience"
 
 #. type: Plain text
 msgid ""
@@ -308,7 +311,7 @@ msgid ""
 "client as an audience to the token.  You can even use any custom value, for "
 "example some URL, if you want different audience than client ID."
 msgstr ""
-"サービスがレルムロールに依存している場合、またはトークン内のロールにまったく依存していない場合は、ハードコードされたオーディエンスを使用すると便利です。これはプロトコル・マッパーであり、指定されたサービス・クライアントのクライアントIDをオーディエンスとしてトークンに追加します。クライアントIDとは異なるユーザー層が必要な場合は、任意のカスタム値（たとえば、URL）を使用することもできます。"
+"サービスがレルムロールに依存している場合、またはトークン内のロールにまったく依存していない場合は、ハードコードされたAudienceを使用すると便利です。これはプロトコル・マッパーであり、指定されたサービス・クライアントのクライアントIDをAudienceとしてトークンに追加します。クライアントIDとは異なるユーザー層が必要な場合は、任意のカスタム値（たとえば、URL）を使用することもできます。"
 
 #. type: Plain text
 msgid ""
@@ -317,13 +320,13 @@ msgid ""
 "can create protocol mapper on the dedicated client scope, which will be "
 "called for example `good-service`."
 msgstr ""
-"プロトコル・マッパーをフロントエンド・クライアントに直接追加できますが、オーディエンスは常に追加されます。よりきめ細かい制御が必要な場合は、専用のクライアント・スコープで、たとえば"
+"プロトコル・マッパーをフロントエンド・クライアントに直接追加できますが、Audienceは常に追加されます。よりきめ細かい制御が必要な場合は、専用のクライアント・スコープで、たとえば"
 " `good-service` と呼ばれるようなプロトコル・マッパーを作成できます。"
 
 #. type: Block title
 #, no-wrap
 msgid "Audience Protocol Mapper"
-msgstr "オーディエンス・プロトコル・マッパー"
+msgstr "Audience Protocol Mapper"
 
 #. type: Plain text
 msgid "image:{project_images}/audience_mapper.png[]"
@@ -339,7 +342,7 @@ msgid ""
 msgstr ""
 "`good-service` クライアントの<<_client_installation, "
 "Installationタブ>>から、アダプター設定を生成でき、 _verify-token-audience_ "
-"オプションがtrueに設定されることを確認できます。この生成された設定を使用する場合、アダプターがオーディエンスの検証を必要とすることを示しています。"
+"オプションがtrueに設定されることを確認できます。この生成された設定を使用する場合、アダプターがAudienceの検証を必要とすることを示しています。"
 
 #. type: Plain text
 msgid ""
@@ -349,7 +352,7 @@ msgid ""
 "optional (or default) client scope. See <<_client_scopes_linking, Client "
 "Scopes Linking section>> for more details."
 msgstr ""
-"最後に、 `my-app` フロントエンド・クライアントがそのトークンの中のオーディエンスとして `good-service` "
+"最後に、 `my-app` フロントエンド・クライアントがそのトークンの中のAudienceとして `good-service` "
 "をリクエストできることを確認する必要があります。 `my-app` クライアントで、 _Client Scopes_ "
 "タブをクリックしてください。それからオプションの（またはデフォルトの）クライアント・スコープとして `good-service` "
 "を割り当てます。詳しくは<<_client_scopes_linking, クライアント・スコープ・リンキングのセクション>>を参照してください。"
@@ -364,7 +367,7 @@ msgid ""
 msgstr ""
 "オプションで<<_client_scopes_evaluate, "
 "クライアント・スコープの評価>>を実行してアクセストークンのサンプルを生成することもできます。その場合、 `good-service` が "
-"_scope_ パラメーターに含まれている場合にのみ、生成されたアクセストークンのオーディエンスに `good-service` "
+"_scope_ パラメーターに含まれている場合にのみ、生成されたアクセストークンのAudienceに `good-service` "
 "が追加されることに注意してください。"
 
 #. type: Plain text
@@ -391,7 +394,7 @@ msgid ""
 "it is always a good idea to <<_client_scopes_evaluate, Evaluate Client "
 "Scopes>> in the admin console and do some testing around it."
 msgstr ""
-"トークン内の正しいオーディエンスとロールがどのようなものになるのかわからない場合は、管理コンソールで<<_client_scopes_evaluate,"
+"トークン内の正しいAudienceとロールがどのようなものになるのかわからない場合は、管理コンソールで<<_client_scopes_evaluate,"
 " クライアント・スコープの評価>>を実行し、それをテストすることをお勧めします。"
 
 #. type: Plain text
@@ -405,6 +408,6 @@ msgid ""
 "the audience mappers added it."
 msgstr ""
 "_Audience_ と _Audience Resolve_ "
-"の両方のプロトコル・マッパーは、デフォルトでオーディエンスをアクセストークンだけに追加します。IDトークンには通常、単一のオーディエンス（トークンが発行されたクライアントのクライアントID）しか含まれていません。これはOpenID"
+"の両方のプロトコル・マッパーは、デフォルトでAudienceをアクセストークンだけに追加します。IDトークンには通常、単一のAudience（トークンが発行されたクライアントのクライアントID）しか含まれていません。これはOpenID"
 " "
-"Connectの仕様における要件です。一方、アクセストークンは、オーディエンス・マッパーがそれを追加しない限り、必ずしもクライアントID（発行されたトークンであるクライアントのID）を持つ必要はありません。"
+"Connectの仕様における要件です。一方、アクセストークンは、Audienceマッパーがそれを追加しない限り、必ずしもクライアントID（発行されたトークンであるクライアントのクライアントID）を持つ必要はありません。"

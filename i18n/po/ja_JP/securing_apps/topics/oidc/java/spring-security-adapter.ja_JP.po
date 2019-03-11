@@ -3,11 +3,15 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,20 +19,20 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: delimited block -
+#. type: Title =====
 #, no-wrap
-msgid "</beans>\n"
-msgstr "</beans>\n"
+msgid "Multi Tenancy"
+msgstr "マルチテナンシー"
 
 #. type: Title =====
 #, no-wrap
 msgid "Adapter Installation"
 msgstr "アダプターのインストール"
 
-#. type: Title =====
+#. type: delimited block -
 #, no-wrap
-msgid "Multi Tenancy"
-msgstr "マルチテナンシー"
+msgid "</beans>\n"
+msgstr "</beans>\n"
 
 #. type: Title ====
 #, no-wrap
@@ -597,8 +601,8 @@ msgstr ""
 
 #. type: Title ======
 #, no-wrap
-msgid "Avoid double Filter bean registration"
-msgstr "Filter Beanの二重登録を避ける"
+msgid "Avoid double bean registration"
+msgstr "Beanの二重登録を避ける"
 
 #. type: Plain text
 msgid ""
@@ -613,6 +617,23 @@ msgstr ""
 "Securityアダプターを実行する場合は、Keycloakフィルターが2回登録されないように、セキュリティー設定に "
 "`FilterRegistrationBean` を追加する必要があります。"
 
+#. type: Plain text
+msgid ""
+"Spring Boot 2.1 also disables `spring.main.allow-bean-definition-overriding`"
+" by default. This can mean that an `BeanDefinitionOverrideException` will be"
+" encountered if a `Configuration` class extending "
+"`KeycloakWebSecurityConfigurerAdapter` registers a bean that is already "
+"detected by a `@ComponentScan`. This can be avoided by overriding the "
+"registration to use the Boot-specific `@ConditionalOnMissingBean` "
+"annotation, as with `HttpSessionManager` below."
+msgstr ""
+"また、Spring Boot 2.1はデフォルトで `spring.main.allow-bean-definition-overriding` "
+"を無効にしています。これは、もし `KeycloakWebSecurityConfigurerAdapter` を拡張した "
+"`Configuration` クラスが `@ComponentScan` によってすでに検出されているBeanを登録しようとすると、 "
+"`BeanDefinitionOverrideException` が発生することを意味します。これについては以下の "
+"`HttpSessionManager` のように、 `@ConditionalOnMissingBean` "
+"アノテーションを使用して登録を上書きすることで避けることができます。"
+
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -703,3 +724,24 @@ msgstr ""
 "        registrationBean.setEnabled(false);\n"
 "        return registrationBean;\n"
 "    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Bean\n"
+"    @Override\n"
+"    @ConditionalOnMissingBean(HttpSessionManager.class)\n"
+"    protected HttpSessionManager httpSessionManager() {\n"
+"        return new HttpSessionManager();\n"
+"    }\n"
+"    ...\n"
+"}\n"
+msgstr ""
+"    @Bean\n"
+"    @Override\n"
+"    @ConditionalOnMissingBean(HttpSessionManager.class)\n"
+"    protected HttpSessionManager httpSessionManager() {\n"
+"        return new HttpSessionManager();\n"
+"    }\n"
+"    ...\n"
+"}\n"

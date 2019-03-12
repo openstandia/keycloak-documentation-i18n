@@ -3,11 +3,17 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
+# jic_m_mito <jic-m-mito@nri.co.jp>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,6 +25,20 @@ msgstr ""
 #, no-wrap
 msgid "PropertyFileUserStorageProvider"
 msgstr "PropertyFileUserStorageProvider"
+
+#. type: Plain text
+msgid ""
+"There are some obvious disadvantages though to using an import strategy:"
+msgstr "インポート・ストラテジーの使用には明らかな欠点がいくつかあります。"
+
+#. type: Plain text
+msgid ""
+"With the import approach, you have to keep local {project_name} storage and "
+"external storage in sync. The User Storage SPI has capability interfaces "
+"that you can implement to support synchronization, but this can quickly "
+"become painful and messy."
+msgstr ""
+"インポートのアプローチでは、ローカルの{project_name}ストレージと外部ストレージを同期させておく必要があります。ユーザー・ストレージSPIには、同期をサポートできるために実装できるケーパビリティー・インターフェイスがありますが、これはすぐにやっかいで面倒なものになります。"
 
 #. type: Title ===
 #, no-wrap
@@ -54,11 +74,6 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There are some obvious disadvantages though to using an import strategy:"
-msgstr "インポート・ストラテジーの使用には明らかな欠点がいくつかあります。"
-
-#. type: Plain text
-msgid ""
 "Looking up a user for the first time will require multiple updates to "
 "{project_name} database. This can be a big performance loss under load and "
 "put a lot of strain on the {project_name} database. The user federated "
@@ -66,15 +81,6 @@ msgid ""
 "depending on the capabilities of your external store."
 msgstr ""
 "初回のユーザーの検索では、{project_name}のデータベースを複数回更新する必要があります。これは大きなパフォーマンス低下を招き、{project_name}のデータベースに多くの負担をかけることになります。ユーザー・フェデレーティッド・ストレージのアプローチでは、必要に応じて追加のデータのみが保管され、外部ストアの機能に応じて使用されることはありません。"
-
-#. type: Plain text
-msgid ""
-"With the import approach, you have to keep local keycloak storage and "
-"external storage in sync. The User Storage SPI has capability interfaces "
-"that you can implement to support synchronization, but this can quickly "
-"become painful and messy."
-msgstr ""
-"インポートのアプローチでは、ローカルのkeycloakストレージと外部ストレージを同期させておく必要があります。ユーザー・ストレージSPIには、同期をサポートできるために実装できるケーパビリティー・インターフェイスがありますが、これはすぐにやっかいで面倒なものになります。"
 
 #. type: Plain text
 msgid ""
@@ -140,8 +146,8 @@ msgid ""
 "In this method we call the `KeycloakSession.userLocalStorage()` method to "
 "obtain a reference to local {project_name} user storage. We see if the user "
 "is stored locally, if not, we add it locally. Do not set the `id` of the "
-"local user.  Let {project_name} set auto generate the `id`.  Also note that "
-"we call `UserModel.setFederationLink()` and pass in the ID of the "
+"local user.  Let {project_name} automatically generate the `id`.  Also note "
+"that we call `UserModel.setFederationLink()` and pass in the ID of the "
 "`ComponentModel` of our provider. This sets a link between the provider and "
 "the imported user."
 msgstr ""
@@ -168,9 +174,10 @@ msgid ""
 "Returning `false` from a validation or update will just result in "
 "{project_name} seeing if it can validate or update using local storage."
 msgstr ""
-"また、ローカルユーザーがリンクされている場合、ストレージ・プロバイダーは `CredentialInputValidator` インタフェースと "
-"`CredentialInputUpdater` インタフェースから実装されたメソッドに対して委譲されるという点にも注意してください。検証または更新から"
-" `false` が返ると、{project_name}では、ローカルストレージを使用して検証または更新できるかどうかを確認します。"
+"また、ローカルユーザーがリンクされている場合、ストレージ・プロバイダーは `CredentialInputValidator` インターフェイスと "
+"`CredentialInputUpdater` "
+"インターフェイスから実装されたメソッドに対して委譲されるという点にも注意してください。検証または更新から `false` "
+"が返ると、{project_name}では、ローカル・ストレージを使用して検証または更新できるかどうかを確認します。"
 
 #. type: Plain text
 #, no-wrap

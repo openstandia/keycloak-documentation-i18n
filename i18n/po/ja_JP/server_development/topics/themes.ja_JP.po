@@ -6,14 +6,14 @@
 # Translators:
 # katakura__pro <h.katakura@pro-japan.co.jp>, 2017
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
 # Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,13 +109,12 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "To change the welcome theme you need to edit `standalone.xml`, `standalone-"
-"ha.xml`, or `domain.xml`.  For more information on where the "
-"`standalone.xml`, `standalone-ha.xml`, or `domain.xml` file resides see the "
-"link:{installguide_link}[{installguide_name}]."
+"ha.xml`, or `domain.xml`.  For more information on where these files reside "
+"see the link:{installguide_link}[{installguide_name}]."
 msgstr ""
 "ウェルカムページのテーマを変更するには `standalone.xml` 、 `standalone-ha.xml` 、または `domain.xml`"
-" のいずれかを編集する必要があります。 `standalone.xml` 、 `standalone-ha.xml` 、または `domain.xml`"
-" のファイルがある場所について、詳しくは、link:{installguide_link}[{installguide_name}]を参照してください。"
+" "
+"のいずれかを編集する必要があります。これらのファイルがある場所についての詳細は、link:{installguide_link}[{installguide_name}]を参照してください。"
 
 #. type: Plain text
 msgid "Add `welcomeTheme` to the theme element, for example:"
@@ -152,7 +151,7 @@ msgid ""
 "{project_name} comes bundled with default themes in the server's root "
 "`themes` directory. To simplify upgrading you should not edit the bundled "
 "themes directly. Instead create your own theme that extends one of the "
-"bundle themes."
+"bundled themes."
 msgstr ""
 "{project_name}には、サーバーのルート `themes` "
 "ディレクトリー内のデフォルト・テーマがバンドルされています。アップグレードを簡単にするために、バンドルされたテーマを直接編集しないでください。代わりに、バンドルされたテーマの1つを拡張する独自のテーマを作成してください。"
@@ -365,7 +364,7 @@ msgstr "カスタム・プロパティーを追加し、それらをカスタム
 
 #. type: Plain text
 msgid ""
-"A theme can have one or more stylesheets, to add a stylesheet create a file "
+"A theme can have one or more stylesheets. To add a stylesheet create a file "
 "in the `<THEME TYPE>/resources/css` directory of your theme. Then add it to "
 "the `styles` property in `theme.properties`."
 msgstr ""
@@ -510,9 +509,9 @@ msgstr "メッセージ"
 
 #. type: Plain text
 msgid ""
-"Text in the templates are loaded from message bundles. A theme that extends "
-"another theme will inherit all messages from the parents message bundle and "
-"you can override individual messages by adding `<THEME "
+"Text in the templates is loaded from message bundles. A theme that extends "
+"another theme will inherit all messages from the parent's message bundle and"
+" you can override individual messages by adding `<THEME "
 "TYPE>/messages/messages_en.properties` to your theme."
 msgstr ""
 "テンプレート内のテキストは、メッセージ・バンドルからロードされます。他のテーマを拡張するテーマは、親メッセージ・バンドルからすべてのメッセージを引き継ぎ、テーマに"
@@ -561,9 +560,10 @@ msgid ""
 "theme has to support the language, so you need to add your language for "
 "those theme types."
 msgstr ""
-"新しく言語を追加するには、テーマのディレクトリー内で `<THEME TYPE>/messages/messages_<LOCALE>` "
-"ファイルを作成します。次に、そのファイルを `<THEME TYPE>/theme.properties` 内の `locales` "
-"プロパティーへ追加します。ユーザーが言語を使用できるようにするには、レルムの `login` 、 `account` および `email` "
+"新しく言語を追加するには、テーマのディレクトリー内で `<THEME "
+"TYPE>/messages/messages_<LOCALE>.properties` ファイルを作成します。次に、そのファイルを `<THEME "
+"TYPE>/theme.properties` 内の `locales` プロパティーへ追加します。ユーザーが言語を使用できるようにするには、レルムの "
+"`login` 、 `account` および `email` "
 "のテーマによってその言語がサポートされなければなりません。したがって、それらのテーマ・タイプとしてその言語を追加する必要があります。"
 
 #. type: Plain text
@@ -718,9 +718,9 @@ msgstr "電子メール"
 #. type: Plain text
 msgid ""
 "To edit the subject and contents for emails, for example password recovery "
-"email, add a message bundle to the `email` type of your theme. There's three"
-" messages for each email. One for the subject, one for the plain text body "
-"and one for the html body."
+"email, add a message bundle to the `email` type of your theme. There are "
+"three messages for each email. One for the subject, one for the plain text "
+"body and one for the html body."
 msgstr ""
 "電子メールの題名と内容（たとえばパスワード・リカバリー電子メールなど）を編集するには、テーマの `email` "
 "タイプへメッセージ・バンドルを追加します。各電子メールには3つのメッセージがあります。題名、プレーン・テキストの本文、およびhtmlのbodyです。"
@@ -761,15 +761,15 @@ msgstr "テーマのデプロイ"
 #. type: Plain text
 msgid ""
 "Themes can be deployed to {project_name} by copying the theme directory to "
-"`themes` or it can be deployed as an archive. During development copying the"
-" theme to the `themes` directory, but in production you may want to consider"
-" using an `archive`. An `archive` makes it simpler to have a versioned copy "
-"of the theme, especially when you have multiple instances of {project_name} "
-"for example with clustering."
+"`themes` or it can be deployed as an archive. During development you can "
+"copy the theme to the `themes` directory, but in production you may want to "
+"consider using an `archive`. An `archive` makes it simpler to have a "
+"versioned copy of the theme, especially when you have multiple instances of "
+"{project_name} for example with clustering."
 msgstr ""
 "テーマは、テーマ・ディレクトリーを `themes` "
-"へコピーすることによって、{project_name}へデプロイすることができ、アーカイブとしてデプロイすることも可能です。デプロイ中は、テーマを "
-"`themes` ディレクトリーへコピーしますが、プロダクション環境では `archive` の使用が検討した方がいいかもしれません。 "
+"へコピーすることによって、{project_name}へデプロイすることができ、アーカイブとしてデプロイすることも可能です。開発中は、テーマを "
+"`themes` ディレクトリーへコピーできますが、プロダクション環境では `archive` の使用を検討した方がいいかもしれません。 "
 "`archive` "
 "を使用すると、テーマのコピー版の作成が簡単になります。たとえばクラスター構成の{project_name}など、インスタンスが複数ある場合は特に便利です。"
 
@@ -785,8 +785,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"For example for the `mytheme` theme create `mytheme.zip` with the contents:"
-msgstr "たとえば、 `mytheme` テーマの場合、以下の内容で `mytheme.zip` を作成します。"
+"For example for the `mytheme` theme create `mytheme.jar` with the contents:"
+msgstr "たとえば、 `mytheme` テーマの場合、以下の内容で `mytheme.jar` を作成します。"
 
 #. type: Plain text
 msgid "META-INF/keycloak-themes.json"

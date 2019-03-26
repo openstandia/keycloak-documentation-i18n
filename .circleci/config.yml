@@ -28,10 +28,10 @@ jobs:
             for sb in ${S3_BRANCHES}; do
               echo "$GIT_BRANCHES" | grep "^${sb}$" > /dev/null
               if [ $? -ne 0 ] && [ -n "${sb}" ]; then
-                echo "'${sb}' branch has already deleted, but let's check in tags before cleaning the s3 folder..."
+                echo "'${sb}' branch has already been deleted, but let's check in tags before cleaning the s3 folder..."
                 echo "$GIT_TAGS" | grep "^${sb}$" > /dev/null
                 if [ $? -ne 0 ] && [ -n "${sb}" ]; then
-                  echo "'${sb}' branch/tag already has been deleted, let's clean the s3 folder..."
+                  echo "'${sb}' branch/tag has already been deleted, let's clean the s3 folder..."
                   aws s3 rm s3://keycloak-documentation/${sb} --recursive
                 else
                   echo "'${sb}' exists as a tag, skip cleaning."

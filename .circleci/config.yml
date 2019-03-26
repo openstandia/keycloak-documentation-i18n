@@ -11,13 +11,16 @@ jobs:
       - run:
           name: clean s3 for deleted branches
           command: |
-            S3_BRANCHES=`aws s3 ls s3://keycloak-documentation/ | grep PRE | sed -e "s|.*PRE \(.*\)/.*|\1|" | grep -v "^review$" | grep -v ".*\.Final$"`
+            S3_BRANCHES=`aws s3 ls s3://keycloak-documentation/ | grep PRE | sed -e "s|.*PRE \(.*\)/.*|\1|" | grep -v "^review$"`
             GIT_BRANCHES=`git branch -r | sed -e "s|.* origin/||"` 
+            GIT_TAGS=`git ls-remote --tags | sed -e "s|.*refs/tags/\(.*\)|\1|"`
 
             echo "--- S3 Folders ---"
             echo "$S3_BRANCHES"
             echo "--- GIT Branches ---"
             echo "$GIT_BRANCHES"
+            echo "--- GIT Tags ---"
+            echo "$GIT_TAGS"
             echo "--------------------"
 
             set +e
@@ -25,8 +28,16 @@ jobs:
             for sb in ${S3_BRANCHES}; do
               echo "$GIT_BRANCHES" | grep "^${sb}$" > /dev/null
               if [ $? -ne 0 ] && [ -n "${sb}" ]; then
-                echo "'${sb}' branch has already deleted, let's clean the s3 folder..."
-                aws s3 rm s3://keycloak-documentation/${sb} --recursive
+                echo "'${sb}' branch has already deleted, but let's check in tags before cleaning the s3 folder..."
+                echo "$GIT_TAGS" | grep "^${sb}$" > /dev/null
+                if [ $? -ne 0 ] && [ -n "${sb}" ]; then
+                  echo "'${sb}' branch/tag already has been deleted, let's clean the s3 folder..."
+                  aws s3 rm s3://keycloak-documentation/${sb} --recursive
+                else
+                  echo "'${sb}' exists as a tag, skip cleaning."
+                fi
+              else
+                echo "'${sb}' exists as a branch, skip cleaning."
               fi
             done
 
@@ -118,7 +129,7 @@ jobs:
             rm ~/repo/translated/dist/index.html.tmpl
             rm ~/repo/site/index.html.tmpl
 
-            [[ "$CIRCLE_TAG" = *.Final ]] && aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_TAG/ --delete
+            aws s3 sync ~/repo/translated/dist/ s3://keycloak-documentation/$CIRCLE_TAG/ --delete
             echo "end"
 
 workflows:
@@ -128,11 +139,11 @@ workflows:
       - clean:
           filters:
             tags:
-              only: /.*\.Final/
+              only: /.*/
       - build:
           filters:
             tags:
-              only: /.*\.Final/
+              only: /.*/
       - deploy:
           requires:
             - build
@@ -141,7 +152,7 @@ workflows:
             - build
           filters:
             tags:
-              only: /.*\.Final/
+              only: /.*/
             branches:
               ignore: /.*/
 

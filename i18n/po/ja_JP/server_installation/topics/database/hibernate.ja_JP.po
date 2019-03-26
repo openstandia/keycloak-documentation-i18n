@@ -3,11 +3,16 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2017
+# jic_m_mito <jic-m-mito@nri.co.jp>, 2017
+# Hiroyuki Wada <wadahiro@gmail.com>, 2017
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: jic_m_mito <jic-m-mito@nri.co.jp>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,14 +20,16 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: Plain text
+msgid "Possible configuration options are:"
+msgstr "設定可能なオプションは、以下のとおりです。"
+
 #. type: Title ===
-#: source/server_installation/topics/database/hibernate.adoc:2
 #, no-wrap
 msgid "Database Configuration"
 msgstr "データベース設定"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:5
 msgid ""
 "The configuration for this component is found in the `standalone.xml`, "
 "`standalone-ha.xml`, or `domain.xml` file in your distribution. The location"
@@ -32,13 +39,11 @@ msgstr ""
 "のいずれかの中にこのコンポーネント用の設定があります。このファイルの場所は<<_operating-mode, 動作モード>>によって異なります。"
 
 #. type: Block title
-#: source/server_installation/topics/database/hibernate.adoc:6
 #, no-wrap
 msgid "Database Config"
 msgstr "データベース設定"
 
 #. type: delimited block -
-#: source/server_installation/topics/database/hibernate.adoc:23
 #, no-wrap
 msgid ""
 "<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
@@ -71,42 +76,30 @@ msgstr ""
 "    ...\n"
 "</subsystem>\n"
 
-#. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:26
-#: source/server_installation/topics/network/outgoing.adoc:21
-msgid "Possible configuration options are:"
-msgstr "設定可能なオプションは、以下のとおりです。"
-
 #. type: Labeled list
-#: source/server_installation/topics/database/hibernate.adoc:27
 #, no-wrap
 msgid "dataSource"
 msgstr "dataSource"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:29
 msgid "JNDI name of the dataSource"
 msgstr "データソースのJNDI名"
 
 #. type: Labeled list
-#: source/server_installation/topics/database/hibernate.adoc:30
 #, no-wrap
 msgid "jta"
 msgstr "jta"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:32
 msgid "boolean property to specify if datasource is JTA capable"
 msgstr "データソースがJTA対応かどうか指定するbooleanプロパティー"
 
 #. type: Labeled list
-#: source/server_installation/topics/database/hibernate.adoc:33
 #, no-wrap
 msgid "driverDialect"
 msgstr "driverDialect"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:36
 msgid ""
 "Value of database dialect.  In most cases you don't need to specify this "
 "property as dialect will be autodetected by Hibernate."
@@ -114,13 +107,11 @@ msgstr ""
 "データベース・ダイアレクトの値。ほとんどの場合、ダイアレクトはHibernateによって自動検出されるため、このプロパティーを指定する必要はありません。"
 
 #. type: Labeled list
-#: source/server_installation/topics/database/hibernate.adoc:37
 #, no-wrap
 msgid "initializeEmpty"
 msgstr "initializeEmpty"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:39
 msgid ""
 "Initialize database if empty. If set to false the database has to be "
 "manually initialized. If you want to manually initialize the database set "
@@ -131,13 +122,11 @@ msgstr ""
 " `manual` に設定し、データベース初期化用のSQLコマンドが書かれたファイルを作成します。デフォルトはtrueになっています。"
 
 #. type: Labeled list
-#: source/server_installation/topics/database/hibernate.adoc:40
 #, no-wrap
 msgid "migrationStrategy"
 msgstr "migrationStrategy"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:42
 msgid ""
 "Strategy to use to migrate database. Valid values are `update`, `manual` and"
 " `validate`. Update will automatically migrate the database schema. Manual "
@@ -149,49 +138,41 @@ msgstr ""
 "です。updateは、自動的にデータベース・スキーマを移行します。manualは、データベースに対して手動実行可能な、必要な変更のSQLコマンドが書かれたファイルをエクスポートします。validateは、データベースが最新であるかどうかを単にチェックするものです。"
 
 #. type: Labeled list
-#: source/server_installation/topics/database/hibernate.adoc:43
 #, no-wrap
 msgid "migrationExport"
 msgstr "migrationExport"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:45
 msgid "Path for where to write manual database initialization/migration file."
 msgstr "手動によるデータベース初期化または移行用ファイルを書き込む場所のパス。"
 
 #. type: Labeled list
-#: source/server_installation/topics/database/hibernate.adoc:46
 #, no-wrap
 msgid "showSql"
 msgstr "showSql"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:48
 msgid ""
 "Specify whether Hibernate should show all SQL commands in the console (false"
 " by default).  This is very verbose!"
 msgstr ""
-"Hibernateがコンソール内にすべてのSQLコマンドを表示するかどうかを指定します（デフォルトはfalse）。これは非常に冗長な出力となります。」"
+"Hibernateがコンソール内にすべてのSQLコマンドを表示するかどうかを指定します（デフォルトはfalse）。これは非常に冗長な出力となります。"
 
 #. type: Labeled list
-#: source/server_installation/topics/database/hibernate.adoc:49
 #, no-wrap
 msgid "formatSql"
 msgstr "formatSql"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:51
 msgid "Specify whether Hibernate should format SQL commands (true by default)"
 msgstr "HibernateがSQLコマンドをフォーマットするかどうかを指定します（デフォルトはtrue）。 "
 
 #. type: Labeled list
-#: source/server_installation/topics/database/hibernate.adoc:52
 #, no-wrap
 msgid "globalStatsInterval"
 msgstr "globalStatsInterval"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:55
 msgid ""
 "Will log global statistics from Hibernate about executed DB queries and "
 "other things.  Statistics are always reported to server log at specified "
@@ -200,18 +181,15 @@ msgstr ""
 "実行されたDBクエリーなどに関する、Hibernateのグローバル統計情報をログに出力します。統計情報は、秒単位で指定された間隔でサーバーログに常にレポートされ、各レポート後にクリアされます。"
 
 #. type: Labeled list
-#: source/server_installation/topics/database/hibernate.adoc:56
 #, no-wrap
 msgid "schema"
 msgstr "schema"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:58
 msgid "Specify the database schema to use"
 msgstr "使用するデータベース・スキーマを指定します。"
 
 #. type: Plain text
-#: source/server_installation/topics/database/hibernate.adoc:60
 msgid ""
 "These configuration switches and more are described in the "
 "link:{appserver_jpa_link}[_{appserver_jpa_name}_]."

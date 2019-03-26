@@ -13,11 +13,15 @@ jobs:
           command: |
             S3_BRANCHES=`aws s3 ls s3://keycloak-documentation/ | grep PRE | sed -e "s|.*PRE \(.*\)/.*|\1|" | grep -v "^review$"`
             GIT_BRANCHES=`git branch -r | sed -e "s|.* origin/||"` 
+            git pull --tags
+            GIT_TAGS=`git tag`
 
             echo "--- S3 Folders ---"
             echo "$S3_BRANCHES"
             echo "--- GIT Branches ---"
             echo "$GIT_BRANCHES"
+            echo "--- GIT Tags ---"
+            echo "$GIT_TAGS"
             echo "--------------------"
 
             set +e
@@ -25,8 +29,16 @@ jobs:
             for sb in ${S3_BRANCHES}; do
               echo "$GIT_BRANCHES" | grep "^${sb}$" > /dev/null
               if [ $? -ne 0 ] && [ -n "${sb}" ]; then
-                echo "'${sb}' branch has already deleted, let's clean the s3 folder..."
-                aws s3 rm s3://keycloak-documentation/${sb} --recursive
+                echo "'${sb}' branch has already deleted, but let's check in tags before cleaning the s3 folder..."
+                echo "$GIT_TAGS" | grep "^${sb}$" > /dev/null
+                if [ $? -ne 0 ] && [ -n "${sb}" ]; then
+                  echo "'${sb}' branch/tag already has been deleted, let's clean the s3 folder..."
+                  aws s3 rm s3://keycloak-documentation/${sb} --recursive
+                else
+                  echo "'${sb}' exists as a tag, skip cleaning."
+                fi
+              else
+                echo "'${sb}' exists as a branch, skip cleaning."
               fi
             done
 

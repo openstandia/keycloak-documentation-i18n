@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2018\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,8 +54,8 @@ msgid ""
 "determine what resources the user is allowed to access on the application."
 msgstr ""
 "OIDCを使用するユースケースは、実際には2つの種類があります。1つ目は、{project_name}サーバーにユーザーの認証を要求するアプリケーションのユースケースです。ログインが成功すると、アプリケーションは"
-" _identity token_ と _access token_ を受け取ります。 _Identity token_ "
-"には、ユーザー名、電子メール、その他のプロファイル情報など、ユーザーに関する情報が含まれています。 _Access token_ "
+" _IDトークン_ と _アクセストークン_ を受け取ります。 _IDトークン_ "
+"には、ユーザーに関する情報（ユーザー名、電子メール、その他のプロファイル情報など）が含まれています。 _アクセストークン_ "
 "はレルムによってデジタル署名されており、アプリケーションがユーザーのアクセス可能なリソースを決定するために使用できるアクセス情報（ユーザー・ロール・マッピングのような）が含まれています。"
 
 #. type: Plain text
@@ -91,7 +91,7 @@ msgid ""
 "these flows are described in the OIDC and OAuth 2.0 specifications so only a"
 " brief overview will be provided here."
 msgstr ""
-"OIDCには、クライアントまたはアプリケーションがユーザーを認証し、 _identity_ トークンおよび _access_ "
+"OIDCには、クライアントまたはアプリケーションがユーザーを認証し、 _ID_ トークンおよび _アクセス_ "
 "トークンを受け取るさまざまな方法があります。どの方法を使用するかは、アクセスを要求するアプリケーションまたはクライアントのタイプによって大きく異なります。これらのフローはすべてOIDCおよびOAuth"
 " 2.0の仕様で説明されていますので、ここでは簡単な概要のみを説明します。"
 
@@ -107,8 +107,8 @@ msgid ""
 "of browser redirects to obtain an _identity_ and _access_ token.  Here's a "
 "brief summary:"
 msgstr ""
-"これはブラウザー・ベースのプロトコルであり、ブラウザー・ベースのアプリケーションの認証と認可に使用することをお勧めします。 _identity_ "
-"トークンと _access_ トークンを取得するために、ブラウザーのリダイレクトを頻繁に使用します。概要を以下に示します。"
+"これはブラウザーベースのプロトコルであり、ブラウザーベースのアプリケーションの認証と認可に使用することをお勧めします。 _ID_ トークンと "
+"_アクセス_ トークンを取得するために、ブラウザーのリダイレクトを頻繁に使用します。概要を以下に示します。"
 
 #. type: Plain text
 msgid ""
@@ -137,7 +137,7 @@ msgid ""
 " used once to obtain the tokens, it can never be used again.  This prevents "
 "potential replay attacks."
 msgstr ""
-"アプリケーションは一時コードを抽出し、それを _identity_ トークン、 _access_ トークンおよび _refresh_ "
+"アプリケーションは一時コードを抽出し、それを _ID_ トークン、 _アクセス_ トークンおよび _リフレッシュ_ "
 "トークンと交換するため、バックグラウンドで帯域外の{project_name}へのREST呼び出しを行います。この一時コードを一度使用してトークンを取得すると、それを再び使用することはできません。これにより潜在的なリプレイ攻撃が防止されます。"
 
 #. type: Plain text
@@ -169,12 +169,12 @@ msgid ""
 "registration.  This guide goes more detail into this in the <<_clients, "
 "Managing Clients>> chapter."
 msgstr ""
-"このフローのもう一つの重要な側面は、 _public_ クライアント対 _confidential_ クライアントの概念です。 "
-"_Confidential_ クライアントは、トークンと一時コードを交換するときにクライアント・シークレットを提供する必要があります。 _Public_"
-" クライアントはこのクライアント・シークレットを提供する必要がありません。 _Public_ "
-"クライアントは、HTTPSが厳格に実施されており、クライアントにリダイレクトURIの登録が非常に厳密に行われている限り問題ありません。HTML5/JavaScriptクライアントは、常に安全な方法でクライアント・シークレットを送信する方法がないため、必ず"
-" _public_ "
-"クライアントでなければなりません。前述のとおり、HTTPSを使用し、リダイレクトURI登録を厳密に実施する限り、これは問題ありません。これに関するガイドは、<<_clients,"
+"このフローのもう一つの重要な側面は、 _パブリック_ ・クライアント対 _コンフィデンシャル_ ・クライアントの概念です。 _コンフィデンシャル_ "
+"・クライアントは、トークンと一時コードを交換するときにクライアント・シークレットを提供する必要があります。 _パブリック_ "
+"・クライアントはこのクライアント・シークレットを提供する必要がありません。 _パブリック_ "
+"・クライアントは、HTTPSが厳格に実施されており、クライアントにリダイレクトURIの登録が非常に厳密に行われている限り問題ありません。HTML5/JavaScriptクライアントは、常に安全な方法でクライアント・シークレットを送信する方法がないため、必ず"
+" _パブリック_ "
+"・クライアントでなければなりません。前述のとおり、HTTPSを使用し、リダイレクトURI登録を厳密に実施する限り、これは問題ありません。これに関するガイドは、<<_clients,"
 " クライアントの管理>>の章で詳しく説明しています。"
 
 #. type: Plain text
@@ -204,7 +204,7 @@ msgid ""
 "summary of the protocol:"
 msgstr ""
 "これは、リクエストが少なく、リフレッシュトークンが含まれていない点を除いて、認可コードフローと同様のブラウザーベースのプロトコルです。トークンがリダイレクトURI（以下を参照）を介して送信されるため、ブラウザーの履歴に"
-" _access_ "
+" _アクセス_ "
 "トークンがリークする可能性があるため、このフローはお勧めしません。また、このフローではクライアントにリフレッシュトークンが提供されないため、アクセストークンを長くするか、期限切れになったときに再認証する必要があります。このフローは、OIDCおよびOAuth"
 " 2.0の仕様にあるため、サポートされています。プロトコルの概要を以下に示します。"
 
@@ -215,15 +215,15 @@ msgid ""
 " URL provided earlier and additionally adding the _identity_ and _access_ "
 "tokens as query parameters in the callback URL."
 msgstr ""
-"{project_name}はユーザーを認証し、 _identity_ トークンと _access_ "
-"トークンを作成します。{project_name}は、前述のコールバックURLを使用してアプリケーションにリダイレクトし、さらに _identity_ "
-"トークンと _access_ トークンをクエリー・パラメーターとしてコールバックURLに追加します。"
+"{project_name}はユーザーを認証し、 _ID_ トークンと _アクセス_ "
+"トークンを作成します。{project_name}は、前述のコールバックURLを使用してアプリケーションにリダイレクトし、さらに _ID_ トークンと "
+"_アクセス_ トークンをクエリー・パラメーターとしてコールバックURLに追加します。"
 
 #. type: Plain text
 msgid ""
 "The application extracts the _identity_ and _access_ tokens from the "
 "callback URL."
-msgstr "アプリケーションは、コールバックURLから _identity_ トークンと _access_ トークンを抽出します。"
+msgstr "アプリケーションは、コールバックURLから _ID_ トークンと _アクセス_ トークンを抽出します。"
 
 #. type: Title =====
 #, no-wrap
@@ -241,8 +241,8 @@ msgid ""
 msgstr ""
 "これは、管理コンソールでは _Direct Access Grants_ "
 "と呼ばれます。ユーザーに代わってトークンを取得するRESTクライアントによって使用されます。これは、クライアントIDとクライアント・シークレット（コンフィデンシャル・クライアントの場合）と同様に、ユーザーのクレデンシャルを含む1つのHTTP"
-" POSTリクエストとなります。ユーザーのクレデンシャルは、フォーム・パラメーター内で送信されます。HTTPレスポンスには、 _identity_  "
-"トークン、 _access_ トークン、および _refresh_ トークンが含まれています。"
+" POSTリクエストとなります。ユーザーのクレデンシャルは、フォーム・パラメーター内で送信されます。HTTPレスポンスには、 _ID_  トークン、 "
+"_アクセス_ トークン、および _リフレッシュ_ トークンが含まれています。"
 
 #. type: Title =====
 #, no-wrap

@@ -7,13 +7,13 @@
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2018
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
 # Hiroyuki Wada <wadahiro@gmail.com>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr "}\n"
 #. type: Title ====
 #, no-wrap
 msgid "Packaging Classes and Deployment"
-msgstr "クラスとデプロイのパッケージ化"
+msgstr "クラスのパッケージ化とデプロイ"
 
 #. type: Title ==
 #, no-wrap
@@ -93,7 +93,7 @@ msgid ""
 "are made up of.  Flows can contain other flows.  You can also bind a new "
 "different flow for browser login, direct grant access, and registration."
 msgstr ""
-"フローは、ログインまたは登録中に発生する必要のある、すべての認証のためのコンテナーです。管理コンソールの認証ページに移動すると、システム内で定義されたすべてのフローと、どのようなオーセンティケーターで構成されたかが表示されます。フローには、他のフローを含めることができます。また、ブラウザーのログイン、ダイレクト・グラント・アクセス、および登録用に、新しい異なるフローをバインドすることもできます。"
+"フローは、ログインまたは登録中に必ず発生するすべての認証のためのコンテナーです。管理コンソールの認証ページに移動すると、システム内で定義されたすべてのフローと、どのようなオーセンティケーターで構成されているかが表示されます。フローには、他のフローを含めることができます。また、ブラウザーのログイン、ダイレクト・グラント・アクセス、および登録用に、新しい異なるフローをバインドすることもできます。"
 
 #. type: Labeled list
 #, no-wrap
@@ -118,7 +118,7 @@ msgid ""
 "authenticator to the configuration of the authenticator.  Flows contain "
 "execution entries."
 msgstr ""
-"エグゼキューションは、オーセンティケーターをフローにバインドしたり、オーセンティケーターの設定に対する認証を行うオブジェクトです。フローには、エグゼキューション・エントリーが含まれます。"
+"エグゼキューションは、オーセンティケーターをフローにバインドしたり、オーセンティケーターの設定にオーセンティケーターをバインドするオブジェクトです。フローには、エグゼキューション・エントリーが含まれます。"
 
 #. type: Labeled list
 #, no-wrap
@@ -135,7 +135,9 @@ msgid ""
 "and the set of all login forms are all alternative.  If one of those is "
 "successful, none of the others are executed."
 msgstr ""
-"エグゼキューションごとに、オーセンティケーターがフロー内でどのように動作するかを定義します。要件には、オーセンティケーターがenabledか、disabledか、optionalか、requiredか、またはalternativeかを定義します。alternativeの要件では、フロー内で他のalternativeのオーセンティケーターが成功しない限り、そのオーセンティケーターはoptionalであることを意味します。たとえば、Cookie認証、ケルベロス、ログイン画面のセットは、すべてalternativeです。そのうちの1つが成功した場合、他は実行されません。"
+"エグゼキューションごとに、オーセンティケーターがフロー内でどのように動作するかを定義します。要件には、オーセンティケーターがenabled、disabled、optional、required、またはalternativeのいずれであるかを定義します。"
+" "
+"alternativeの要件では、フロー内で他のalternativeのオーセンティケーターが成功しない限り、そのオーセンティケーターはoptionalであることを意味します。たとえば、Cookie認証、ケルベロス、ログイン画面のセットは、すべてalternativeです。そのうちの1つが成功した場合、他は実行されません。"
 
 #. type: Labeled list
 #, no-wrap
@@ -230,12 +232,12 @@ msgid ""
 "success either.  The provider tried, but the request just wasn't set up to "
 "handle this authenticator."
 msgstr ""
-"このフローは、Cookieのエグゼキューションから、それがALTERNATIVEであると見なします。Cookieプロバイダーがロードされ、ユーザーがすでに認証セッションに関連付けられているかをチェックします。Cookieプロバイダーには、ユーザーは必要ありません。必要とされる場合は、そのフローが中断され、ユーザーにはエラー画面が表示されます。その後、SSO"
-" Cookieセットがあるかどうかを確認することを目的として、Cookieプロバイダーが実行されます。1つのセットがある場合、そのSSO "
+"このフローは、Cookieのエグゼキューションを参照し、それがALTERNATIVEであることを確認します。そして、Cookieプロバイダーをロードし、ユーザーが認証セッションに関連付けられていることをCookieプロバイダーが要求しているかどうかを確認します。Cookieプロバイダーには、ユーザーは必要ありません。もしそうであれば、フローは中断され、ユーザーにはエラー画面が表示されます。その後、Cookieプロバイダーが実行されます。その目的は、SSO"
+" Cookieセットがあるかどうかを確認することです。1つのセットがある場合、そのSSO "
 "CookieとUserSessionModelが検証され、AuthenticationSessionModelに関連付けられます。SSO "
 "Cookieが存在し、検証が済むと、Cookieプロバイダーはsuccess()ステータスを返します。Cookieプロバイダーは成功を返すと、このフローのレベルでのそれぞれのエグゼキューションはALTERNATIVEであるため、他のエグゼキューションは実行されず、ログインに成功します。SSO"
 " "
-"Cookieが存在しない場合は、Cookieプロバイダーはattempted()のステータスを返します。この場合、エラー状態ではありませんが、成功でもないことを示します。プロバイダーを試してきましたが、リクエストはこのオーセンティケーターを処理するようには設定されていません。"
+"Cookieが存在しない場合は、Cookieプロバイダーはattempted()のステータスを返します。この場合、エラー状態ではありませんが、成功でもないことを意味します。プロバイダーは試行しましたが、リクエストはこのオーセンティケーターを処理するようには設定されていませんでした。"
 
 #. type: Plain text
 msgid ""
@@ -258,7 +260,7 @@ msgid ""
 "on this level of the flow are all alternatives.  Otherwise, again, the "
 "kerberos provider sets an attempted() status and the flow continues."
 msgstr ""
-"次に、ケルベロスのエグゼキューションのフローを見ていきます。これもまたALTERNATIVEです。ケルベロス・プロバイダーは、ユーザーがすでに設定されていて、AuthenticationSessionModelに関連付けられている必要はないので、このプロバイダーを実行できます。ケルベロスは、SPNEGOブラウザー・プロトコルを使用します。これには、サーバーとクライアントがネゴシエーション・ヘッダーを交換する一連のチャレンジまたはレスポンスが必要となります。ケルベロス・プロバイダーは、ネゴシエーション・ヘッダーを見ないため、サーバーとクライアント間の最初のやりとりであることを前提とします。したがって、クライアントへのHTTPチャレンジ・レスポンスを作成し、forceChallenge()ステータスを設定します。forceChallenge()は、フローによってHTTPレスポンスを無視できないことを意味し、クライアントに返さなければなりません。代わりにプロバイダーがchallenge()ステータスを返した場合、フローは他のすべてのALTERNATIVEが試行されるまでチャレンジ・レスポンスを保持します。したがって、この初期フェーズでは、フローが停止し、チャレンジ・レスポンスがブラウザーに返されます。ブラウザーが成功したネゴシエーション・ヘッダーで応答すると、プロバイダーはユーザーをAuthenticationSessionに関連付けし、このフローのレベルの残りのエグゼキューションはALTERNATIVEであるため、フローが終了します。それ以外の場合は、ケルベロス・プロバイダーは、attempted()を設定し、フローを続行します。"
+"次に、フローはケルベロス・エグゼキューションを参照します。これもALTERNATIVEです。ケルベロス・プロバイダーもまた、このプロバイダーを実行されるように、ユーザーに設定されていることと、AuthenticationSessionModelに関連付けられていることを要求しません。ケルベロスは、SPNEGOブラウザー・プロトコルを使用します。これは、サーバーとクライアントがネゴシエーション・ヘッダーを交換する一連のチャレンジ/レスポンスを必要とします。ケルベロス・プロバイダーは、ネゴシエーション・ヘッダーをまったく見ないため、これがサーバーとクライアント間の最初のやりとりであることを前提とします。したがって、クライアントへのHTTPチャレンジ・レスポンスを作成し、forceChallenge()ステータスを設定します。forceChallenge()は、このHTTPレスポンスがフローで無視できないため、クライアントに返す必要があることを意味します。代わりにプロバイダーがchallenge()ステータスを返した場合、フローは他のすべてのALTERNATIVEが試行されるまでチャレンジ・レスポンスを保持します。したがって、この初期フェーズでフローが停止し、チャレンジ・レスポンスがブラウザーに返されます。ブラウザーが成功のネゴシエーション・ヘッダーで応答すると、プロバイダーはユーザーをAuthenticationSessionに関連付け、フローが終了します（このフローのレベルの残りのエグゼキューションはALTERNATIVEであるため）。それ以外の場合は、ケルベロス・プロバイダーは、attempted()を設定し、フローを続行します。"
 
 #. type: Plain text
 msgid ""
@@ -285,9 +287,9 @@ msgid ""
 "valid, the provider associated the UserModel with the "
 "AuthenticationSessionModel and returns a status of success()"
 msgstr ""
-"Formsサブフローでの最初のエグゼキューションはUsernamePasswordプロバイダーです。このプロバイダーは、ユーザーがすでにフローに関連付けられている必要はありません。このプロバイダーは、チャレンジHTTPレスポンスを作成し、そのステータスをchallenge()に設定します。このエグゼキューションは必須なので、フローはこのチャレンジを優先し、ブラウザーにHTTPレスポンスを返します。このレスポンスは、Username/Password"
+"Formsサブフローの最初のエグゼキューションは、UsernamePasswordプロバイダーです。このプロバイダーも、ユーザーがフローに関連付けられていることを要求しません。このプロバイダーは、チャレンジHTTPレスポンスを作成し、そのステータスをchallenge()に設定します。このエグゼキューションは必須なので、フローはこのチャレンジを優先し、ブラウザーにHTTPレスポンスを返します。このレスポンスは、Username/Password"
 " "
-"HTMLページのレンダリングです。ユーザーは、ユーザー名とパスワードを入力し、送信をクリックします。このHTTPリクエストは、UsernamePasswordプロバイダーに送信されます。ユーザーが無効なユーザー名またはパスワードを入力した場合、新しいチャレンジ・レスポンスが作成され、このエグゼキューションにfailureChallenge()のステータスが設定されます。failureChallenge()は、チャレンジがあることを表しますが、エラーログにerrorとして記録する必要があります。このエラーログは、ログイン失敗回数の多いアカウント、またはIPアドレスをロックするのに使用することができます。ユーザー名とパスワードが有効な場合、プロバイダーはUserModelをAuthenticationSessionModelに関連付け、success()ステータスを返します。"
+"HTMLページのレンダリングです。ユーザーは、ユーザー名とパスワードを入力し、送信をクリックします。このHTTPリクエストは、UsernamePasswordプロバイダーに送信されます。ユーザーが無効なユーザー名またはパスワードを入力した場合、新しいチャレンジ・レスポンスが作成され、このエグゼキューションにfailureChallenge()のステータスが設定されます。failureChallenge()は、チャレンジがあるが、エラーログにエラーとして記録する必要があることを意味します。このエラーログは、ログイン失敗回数の多いアカウントまたはIPアドレスをロックするのに使用できます。ユーザー名とパスワードが有効な場合、プロバイダーはUserModelをAuthenticationSessionModelに関連付け、success()ステータスを返します。"
 
 #. type: Plain text
 msgid ""
@@ -328,7 +330,7 @@ msgid ""
 "response which renders the page for the required action.  This is done by "
 "setting a challenge status."
 msgstr ""
-"それぞれの必須アクションが、requiredActionChallenge()メソッドが呼び出されたユーザーに関連付けられました。ここでプロバイダーは、必須アクションのページをレンダリングするHTTPレスポンスを設定します。これは、チャレンジ・ステータスを設定することで実行されます。"
+"ユーザーに関連付けられた各必須アクションにあるrequiredActionChallenge()メソッドが呼び出されます。ここでプロバイダーは、必須アクションのページをレンダリングするHTTPレスポンスをセットアップします。これは、チャレンジ・ステータスを設定することで実行されます。"
 
 #. type: Plain text
 msgid ""
@@ -341,7 +343,7 @@ msgstr "必須アクションが最終的に成功すると、ユーザーの必
 msgid ""
 "After all required actions have been resolved, the user is finally logged "
 "in.         \n"
-msgstr "すべての必須アクションが解決した後、ユーザーはようやくログインします。\n"
+msgstr "すべての必須アクションが解決した後、ユーザーはようやくログインしたことになります。\n"
 
 #. type: Title ===
 #, no-wrap
@@ -368,7 +370,9 @@ msgid ""
 "Authenticator.  They both extend a more generic Provider and ProviderFactory"
 " set of interfaces that other Keycloak components like User Federation do."
 msgstr ""
-"実装する必要があるクラスは、org.keycloak.authentication.AuthenticatorFactoryとオーセンティケーター・インターフェイスです。オーセンティケーター・インターフェイスはロジックを定義します。AuthenticatorFactoryは、オーセンティケーターのインスタンスの作成を担います。それらは両方とも、ユーザー・フェデレーションのような他のKeycloakコンポーネントが行う、より汎用的なプロバイダーとProviderFactoryのインターフェイスのセットを拡張します。"
+"実装する必要があるクラスは、org.keycloak.authentication.AuthenticatorFactoryとAuthenticator"
+" "
+"インターフェイスです。Authenticatorインターフェイスはロジックを定義します。AuthenticatorFactoryは、Authenticatorインスタンスの作成を担います。それらは両方とも、ユーザー・フェデレーションのような他のKeycloakコンポーネントが行う、より汎用的なProviderとProviderFactoryのインターフェイスのセットを継承します。"
 
 #. type: Plain text
 #, no-wrap
@@ -396,16 +400,16 @@ msgstr ""
 msgid ""
 "This services/ file is used by Keycloak to scan the providers it has to load"
 " into the system."
-msgstr "このサービスまたはファイルは、システムにロードする必要があるプロバイダーをKeycloakがスキャンするために使用されます。"
+msgstr "このservices/ファイルは、システムにロードする必要があるプロバイダーをKeycloakがスキャンするために使用されます。"
 
 #. type: Plain text
 msgid "To deploy this jar, just copy it to the providers directory."
-msgstr "このjarをデプロイするには、これをprovidersディレクトリーにコピーするだけです。"
+msgstr "このjarをデプロイするには、これをprovidersディレクトリーにコピーします。"
 
 #. type: Title ====
 #, no-wrap
 msgid "Implementing an Authenticator"
-msgstr "オーセンティケーターの実装"
+msgstr "Authenticatorの実装"
 
 #. type: Plain text
 msgid ""
@@ -416,7 +420,7 @@ msgid ""
 "this method as it can resolve a user from the negotiate header.  This "
 "example, however, is validating a specific credential of a specific user."
 msgstr ""
-"オーセンティケーター・インターフェイスを実装する場合、最初に実装する必要があるメソッドはrequiresUser()メソッドです。この例では、このメソッドは、ユーザーに関連付けられた秘密の質問を検証する必要があるため、trueを返す必要があります。ケルベロスなどのプロバイダーは、ネゴシエーション・ヘッダーからユーザーを解決することができるので、このメソッドからfalseを返します。ただし、この例では、特定のユーザーの特定のクレデンシャルを検証しています。"
+"Authenticatorインターフェイスを実装する場合、最初に実装する必要があるメソッドはrequiresUser()メソッドです。サンプルでは、このメソッドは、ユーザーに関連付けられた秘密の質問を検証する必要があるため、trueを返す必要があります。ケルベロスなどのプロバイダーは、ネゴシエーション・ヘッダーからユーザーを解決することができるので、このメソッドはfalseを返します。ただし、この例では、特定のユーザーの特定のクレデンシャルを検証しています。"
 
 #. type: Plain text
 msgid ""
@@ -428,7 +432,7 @@ msgid ""
 "the UserModel (just like passwords are stored).  Here's how we do this very "
 "simple check:"
 msgstr ""
-"次に実装するメソッドはconfiguredFor()メソッドです。このメソッドは、ユーザーがこの特定のオーセンティケーターとして設定されているのかを判定する役割を担います。この例では、秘密の質問に対する回答がユーザーによって設定されているのかどうかを確認する必要があります。このケースでは、ハッシュ化された情報を、（パスワードが格納されているのと同じように）UserModel内のUserCredentialValueModel内に格納しています。これを簡単に確認する方法は、以下のとおりです。"
+"次に実装するメソッドはconfiguredFor()メソッドです。このメソッドは、ユーザーが特定のオーセンティケーターに設定されているかどうかを判定する役割を担います。この例では、秘密の質問に対する回答がユーザーによって設定されているかどうかを確認する必要があります。このケースでは、ハッシュ化された情報を、（パスワードが格納されているのと同じように）UserModel内のUserCredentialValueModel内に格納しています。これを簡単に確認する方法は、以下のとおりです。"
 
 #. type: delimited block -
 #, no-wrap
@@ -448,7 +452,7 @@ msgid ""
 "The configuredForCredentialType() call queries the user to see if it "
 "supports that credential type."
 msgstr ""
-"configuredForCredentialType()コールは、ユーザーがそのクレデンシャル・タイプをサポートしているかどうかを問い合わせます。"
+"configuredForCredentialType()の呼び出しは、ユーザーがそのクレデンシャル・タイプをサポートしているかどうかを問い合わせます。"
 
 #. type: Plain text
 msgid ""
@@ -461,7 +465,7 @@ msgid ""
 "action provider later in this chapter.  Here is the implementation of the "
 "setRequiredActions() method."
 msgstr ""
-"オーセンティケーターで実装する次のメソッドはsetRequiredActions()です。configuredFor()がfalseを返し、フロー内でサンプルのオーセンティケーターが必要な場合、このメソッドが呼び出されます。このメソッドは、ユーザーが実行する必要がある必須アクションの登録を担います。この例では、秘密の質問に対する回答をユーザーに設定させるために必須アクションを登録する必要があります。この章の後半で、この必須アクション・プロバイダーを実装していきます。setRequiredActions()メソッドの実装は次のとおりです。"
+"Authenticatorで実装する次のメソッドはsetRequiredActions()です。configuredFor()がfalseを返し、フロー内でサンプルのオーセンティケーターが必要な場合、このメソッドが呼び出されます。このメソッドは、ユーザーが実行する必要がある必須アクションの登録を担います。この例では、秘密の質問に対する回答をユーザーに設定させるために必須アクションを登録する必要があります。この章の後半で、この必須アクション・プロバイダーを実装していきます。setRequiredActions()メソッドの実装は次のとおりです。"
 
 #. type: delimited block -
 #, no-wrap
@@ -487,7 +491,7 @@ msgid ""
 "the secret question form.  Its sole purpose is to render the page or to "
 "continue the flow."
 msgstr ""
-"今度はオーセンティケーター実装の中身に入っていきます。次に実装するメソッドはauthenticate()です。これは、エグゼキューションが最初に訪れたときにフローが呼び出す初期メソッドです。ユーザーがすでにブラウザーのマシン上で秘密の質問に回答した場合、ユーザーはその質問に再度回答する必要はなく、そのマシンを\"信頼できる\"ものにすることが望まれます。authenticate()メソッドは、秘密の質問フォームに対する処理を実装する必要はありません。その唯一の目的は、ページをレンダリングするか、フローを継続することです。"
+"今度はAuthenticator実装の中身に入っていきます。次に実装するメソッドはauthenticate()です。これは、エグゼキューションが最初に訪れたときにフローが呼び出す初期メソッドです。ユーザーがすでにブラウザーのマシン上で秘密の質問に回答した場合、ユーザーはその質問に再度回答する必要はなく、そのマシンを\"信頼できる\"ものにすることが望まれます。authenticate()メソッドは、秘密の質問フォームに対する処理を実装する必要はありません。その唯一の目的は、ページをレンダリングするか、フローを継続することです。"
 
 #. type: delimited block -
 #, no-wrap
@@ -556,7 +560,7 @@ msgid ""
 "URL of the HTML form will send an HTTP request to the flow.  The flow will "
 "end up invoking the action() method of our Authenticator implementation."
 msgstr ""
-"したがって、秘密の質問に対する回答を求めるHTMLページがユーザーに表示され、ユーザーが回答を入力して送信をクリックします。HTMLフォームのアクションURLは、HTTPリクエストをフローに送信します。フローは、オーセンティケーター実装のaction()メソッドを呼び出すことになります。"
+"したがって、秘密の質問に対する回答を求めるHTMLページがユーザーに表示され、ユーザーが回答を入力して送信をクリックします。HTMLフォームのアクションURLは、HTTPリクエストをフローに送信します。フローは、Authenticatorの実装のaction()メソッドを呼び出すことになります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -665,14 +669,14 @@ msgid ""
 " factory is responsible for instantiating an Authenticator.  It also "
 "provides deployment and configuration metadata about the Authenticator."
 msgstr ""
-"このプロセスでの次のステップは、AuthenticatorFactoryを実装することです。このファクトリーはオーセンティケーターのインスタンス化を担当します。また、オーセンティケーターに関する配備と設定のメタデータも提供します。"
+"このプロセスでの次のステップは、AuthenticatorFactoryを実装することです。このファクトリーはAuthenticatorのインスタンス化を担当します。また、Authenticatorに関する配備と設定のメタデータも提供します。"
 
 #. type: Plain text
 msgid ""
 "The getId() method is just the unique name of the component.  The create() "
 "method is called by the runtime to allocate and process the Authenticator."
 msgstr ""
-"getId()メソッドは、コンポーネントの一意の名前です。create()メソッドは、オーセンティケーターを割り当てて処理するために、ランタイムによって呼び出されます。"
+"getId()メソッドは、コンポーネントの一意の名前です。create()メソッドは、Authenticatorを割り当てて処理するために、ランタイムによって呼び出されます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -727,7 +731,7 @@ msgid ""
 "console when defining a flow.  In our example, we're going to limit our "
 "requirement options to REQUIRED and DISABLED."
 msgstr ""
-"ファクトリーが次に受け持つのは、許可されたスイッチの要件を指定することです。ALTERNATIVE、REQUIRED、OPTIONAL、DISABLEDの4種類の要件タイプがありますが、AuthenticatorFactoryの実装では、フローを定義する際に管理コンソールに表示されるオプションの要件を制限できます。この例では、オプションの要件をREQUIREDとDISABLEDに制限します。"
+"ファクトリーが次に受け持つのは、許可されたスイッチの要件を指定することです。ALTERNATIVE、REQUIRED、OPTIONAL、DISABLEDの4種類の要件タイプがありますが、AuthenticatorFactoryの実装では、フローを定義する際に管理コンソールに表示されるオプションの要件を制限できます。この例では、オプションの要件をREQUIREDとDISABLEDに制限しています。"
 
 #. type: delimited block -
 #, no-wrap
@@ -759,7 +763,7 @@ msgid ""
 "error.  If it returns true, then the flow manager will invoke "
 "Authenticator.setRequiredActions()."
 msgstr ""
-"AuthenticatorFactory.isUserSetupAllowed()は、Authenticator.setRequiredActions()メソッドが呼び出されるかどうかをフローマネージャーに通知するフラグです。オーセンティケーターがユーザー用に設定されていない場合、フローマネージャーはisUserSetupAllowed()をチェックします。falseの場合、エラーを返して異常終了します。trueを返すと、フローマネージャーはAuthenticator.setRequiredActions()を呼び出します。"
+"AuthenticatorFactory.isUserSetupAllowed()は、Authenticator.setRequiredActions()メソッドが呼び出されるかどうかをフロー・マネージャーに通知するフラグです。オーセンティケーターがユーザーに設定されていない場合、フロー・マネージャーはisUserSetupAllowed()をチェックします。falseの場合、エラーを返して異常終了します。trueを返すと、フロー・マネージャーはAuthenticator.setRequiredActions()を呼び出します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -782,7 +786,7 @@ msgid ""
 "getConfigProperties() method returns a list of ProviderConfigProperty "
 "objects.  These objects define a specific configuration attribute."
 msgstr ""
-"次のいくつかのメソッドは、オーセンティケーターの設定方法を定義します。isConfigurable()メソッドは、オーセンティケーターをフロー内で設定することができるかを管理コンソールに指定するフラグです。getConfigProperties()メソッドは、ProviderConfigPropertyオブジェクトのリストを返します。これらのオブジェクトは、特定の設定属性を定義します。"
+"次のいくつかのメソッドは、オーセンティケーターの設定方法を定義します。isConfigurable()メソッドは、オーセンティケーターをフロー内で設定することができるかどうかを管理コンソールに指定するフラグです。getConfigProperties()メソッドは、ProviderConfigPropertyオブジェクトのリストを返します。これらのオブジェクトは、特定の設定属性を定義します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -960,7 +964,7 @@ msgid ""
 " create your own.  I'm hoping the UI is intuitive enough so that you can "
 "figure out for yourself how to create a flow and add the Authenticator."
 msgstr ""
-"フローへのオーセンティケーター追加は、管理コンソールで行う必要があります。Authenticationメニュー項目に移動してFlowタブを選択すると、現在定義されているフローが表示されます。組み込みのフローを変更することはできません。そのため、作成したオーセンティケーターを追加するには、既存のフローをコピーするか独自のフローを作成する必要があります。このUIは非常に分かりやすく作られているので、フローを作成してオーセンティケーターを追加する方法を見つけることができると思います。"
+"フローへのオーセンティケーター追加は、管理コンソールで行う必要があります。Authenticationメニュー項目に移動してFlowタブを選択すると、現在定義されているフローが表示されます。組み込みのフローを変更することはできません。そのため、作成したオーセンティケーターを追加するには、既存のフローをコピーするか独自のフローを作成する必要があります。このUIは非常に分かりやすく作られているので、フローを作成してオーセンティケーターを追加する方法を理解することができると思います。"
 
 #. type: Plain text
 msgid ""
@@ -969,7 +973,7 @@ msgid ""
 "Bindings tab you will see options to bind a flow to the browser, "
 "registration, or direct grant flow."
 msgstr ""
-"フローを作成した後、バインドさせるログイン・アクションに、そのフローをバインドする必要があります。Authenticationメニューに移動して、Bindingsタブを選択すると、フローをBrowser、Registration、またはDirect"
+"フローを作成したら、バインドさせたいログイン・アクションに、そのフローをバインドする必要があります。Authenticationメニューに移動して、Bindingsタブを選択すると、フローをBrowser、Registration、またはDirect"
 " Grantフローにバインドするオプションが表示されます。"
 
 #. type: Title ===
@@ -1025,7 +1029,7 @@ msgid ""
 "by the flow manager into the required action.  This method is responsible "
 "for rendering the HTML form that will drive the required action."
 msgstr ""
-"必須アクションは、最初にRequiredActionProviderインターフェイスを実装する必要があります。RequiredActionProvider.requiredActionChallenge()は、フローマネージャーの必須アクションによる初回の呼び出しになります。このメソッドは、必須アクションを実行するHTMLフォームのレンダリングを行います。"
+"必須アクションは、最初にRequiredActionProviderインターフェイスを実装する必要があります。RequiredActionProvider.requiredActionChallenge()は、フロー・マネージャーによる必須アクションの最初の呼び出しになります。このメソッドは、必須アクションを実行するHTMLフォームのレンダリングを行います。"
 
 #. type: delimited block -
 #, no-wrap
@@ -1203,7 +1207,7 @@ msgid ""
 " profile registration processing as well as the registration Google "
 "Recaptcha plugin."
 msgstr ""
-"オーセンティケーターを使用して独自のフローを実装することは可能なため、Keycloakでの登録方法を完全に変更することができます。しかし、独自の登録ページにちょっとしたバリデーションを加えたいことも普段はあるかと思います。これを行うために追加のSPIが作成されました。このSPIは、基本的には、ページにフォーム要素のバリデーションを追加するだけでなく、ユーザー登録後にUserModel属性とデータを初期化することもできます。ユーザー・プロファイルの登録処理の実装とGoogle"
+"Keycloakでの登録方法を完全に変更するために、オーセンティケーターのセットを使用して独自のフローを実装することが可能です。しかし、独自の登録ページにちょっとしたバリデーションを加えたいことも普通にあるかと思います。これを行うために追加のSPIが作成されました。このSPIは、基本的には、ページにフォーム要素のバリデーションを追加するだけでなく、ユーザー登録後にUserModel属性とデータを初期化することもできます。ユーザー・プロファイルの登録処理の実装とGoogle"
 " Recaptchaプラグインの登録の両方を説明していきます。"
 
 #. type: Title ====
@@ -1264,8 +1268,7 @@ msgid ""
 "so that they can be displayed in the HTML page generated by the registration"
 " Freemarker template."
 msgstr ""
-"Recaptcha "
-"buildPage()メソッドは、ページのレンダリングを支援するフォームフローからのコールバックです。これは、LoginFormsProviderであるフォーム・パラメーターを受け取ります。フォーム・プロバイダーに追加属性を加えて、登録Freemarkerテンプレートによって生成されたHTMLページに表示させることができます。"
+"RecaptchaのbuildPage()メソッドは、ページのレンダリングを支援するフォームフローからのコールバックです。これは、LoginFormsProviderであるフォーム・パラメーターを受け取ります。フォーム・プロバイダーに追加属性を加えて、登録Freemarkerテンプレートによって生成されたHTMLページに表示させることができます。"
 
 #. type: Plain text
 msgid ""
@@ -1580,8 +1583,7 @@ msgid ""
 "so that you can figure out for yourself how to create a flow and add the "
 "FormAction."
 msgstr ""
-"登録ページフローへのFormActionの追加は管理コンソールで行う必要があります。 "
-"Authenticationメニュー項目へ移動してFlowタブを選択すると、現在定義されているフローが表示されます。組み込みのフローは変更することはできません。そのため、作成したオーセンティケーターを追加するには、既存のフローをコピーするか独自のフローを作成する必要があります。このUIは非常に分かりやすく作られているので、フローを作成してFormActionを追加する方法を見つけることができると思っています。"
+"登録ページフローへのFormActionの追加は管理コンソールで行う必要があります。Authenticationメニュー項目へ移動してFlowタブを選択すると、現在定義されているフローが表示されます。組み込みのフローは変更することはできません。そのため、作成したオーセンティケーターを追加するには、既存のフローをコピーするか独自のフローを作成する必要があります。このUIは非常に分かりやすく作られているので、フローを作成してFormActionを追加する方法を見つけることができると思っています。"
 
 #. type: Plain text
 msgid ""
@@ -1597,7 +1599,7 @@ msgstr ""
 "基本的には、Registrationフローをコピーする必要があります。次に、Registration "
 "Formの右側にあるActionsメニューをクリックし、\"Add "
 "execution\"を選択して新しいエグゼキューションを追加します。選択リストからFormActionを選択します。FormActionが\"Registration"
-" User Creation\"の後に表示されていない場合は、ダウンエラーを使用してFormActionが\"Registration User "
+" User Creation\"の後に表示されていない場合は、ダウンボタンを使用してFormActionが\"Registration User "
 "Creation\"の後に来ることを確認してください。Regsitration User "
 "Creationのsuccess()メソッドは、新しいUserModelの作成を受け持つため、FormActionはユーザー作成の後に表示される必要があります。"
 " "
@@ -1699,7 +1701,7 @@ msgid ""
 msgstr ""
 "{project_name}は実際には、 https://openid.net/specs/openid-connect-core-"
 "1_0.html[OpenID Connect] "
-"クライアント・アプリケーションのためのプラグイン可能な認証をサポートしています。クライアント（アプリケーション）の認証は、{project_name}アダプターがバックチャネル・リクエストを{project_name}サーバーに送信中に内部で使用されます（認証が成功した後にアクセストークンに交換コードを要求したり、リフレッシュトークンを要求したりするなど）。しかし、"
+"クライアント・アプリケーションのためのプラグイン可能な認証をサポートしています。クライアント（アプリケーション）の認証は、{project_name}アダプターがバックチャネル・リクエストを{project_name}サーバーに送信中に内部で使用されます（認証が成功した後にコードとアクセストークンを交換する要求をしたり、リフレッシュトークンを要求したりするなど）。しかし、"
 " `ダイレクト・アクセス・グラント` （OAuth2により表される `Resource Owner Password Credentials Flow`"
 " ）または `サービス・アカウント` 認証（OAuth2により表される `Client Credentials Flow` "
 "）でクライアント認証を直接使用することも可能です。"
@@ -1734,10 +1736,10 @@ msgid ""
 msgstr ""
 "これは、 https://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect] "
 "または https://tools.ietf.org/html/rfc6749[OAuth2] "
-"の仕様で記載されているデフォルトのメカニズムであり、Keycloakは初期段階からサポートしています。パブリック・クライアントには、POSTリクエストにIDを持つ"
-" `client_id` パラメーターが含まれている必要があり（実際は認証されていません）、コンフィデンシャル・クライアントには、クライアントIDの "
+"の仕様で記載されているデフォルトのメカニズムであり、Keycloakは初期段階からサポートしています。パブリック・クライアントは、POSTリクエストに自身のIDを指定した"
+" `client_id` パラメーターが含まれている必要があり（実際は認証されていません）、コンフィデンシャル・クライアントは、 "
 "`Authorization: Basic` "
-"ヘッダーとユーザー名とパスワードとして使用されるクライアント・シークレットが含まれている必要があります。\n"
+"ヘッダーとともに、ユーザー名とパスワードとして使用されるクライアントIDとクライアント・シークレットが含まれている必要があります。\n"
 
 #. type: Labeled list
 #, no-wrap
@@ -1761,8 +1763,8 @@ msgid ""
 "/product-app` for the example application showing the application using "
 "client authentication with signed JWT."
 msgstr ""
-"署名されたJWTでクライアント認証を使用するアプリケーションのサンプルを表示するには、デモの例と `examples/preconfigured-"
-"demo/product-app` にあるサンプルを参照してください。"
+"署名付きJWTでクライアント認証を使用するアプリケーションを示すアプリケーションの例については、デモのサンプルと、特に `examples"
+"/preconfigured-demo/product-app` を参照してください。"
 
 #. type: Title ====
 #, no-wrap

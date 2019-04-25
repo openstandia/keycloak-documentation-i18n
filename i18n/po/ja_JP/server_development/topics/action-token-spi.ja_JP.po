@@ -5,14 +5,14 @@
 # 
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2018
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,11 +33,11 @@ msgid ""
 " to an endpoint processing action tokens for a particular realm."
 msgstr ""
 "アクション・トークンとは、Json Web "
-"Token（JWT）の特別なインスタンスで、そのベアラーがいくつかの動作を実行できるようにするものです。たとえば、パスワードをリセットしたり、電子メールアドレスを検証したりすることができます。それらは通常、特定のレルムのアクション・トークンを処理するエンドポイントを指し示すリンクのフォームでユーザーに送信されます。"
+"Token（JWT）の特別なインスタンスで、その持参者がいくつかの動作を実行できるようにするものです。たとえば、パスワードをリセットしたり、電子メールアドレスを検証したりすることができます。それらは通常、特定のレルムのアクション・トークンを処理するエンドポイントを指すリンクの形式でユーザーに送信されます。"
 
 #. type: Plain text
 msgid "{project_name} offers four basic token types allowing the bearer to:"
-msgstr "{project_name}は、4つの基本のトークンタイプを提供して、ベアラーが以下を実行できるようにします。"
+msgstr "{project_name}は、4つの基本のトークンタイプを提供して、持参者が以下を実行できるようにします。"
 
 #. type: Plain text
 msgid "Reset credentials"
@@ -73,11 +73,12 @@ msgstr "アクション・トークンの解剖"
 msgid ""
 "Action token is a standard Json Web Token signed with active realm key where"
 " the payload contains several fields:"
-msgstr "アクション・トークンは、ペイロードに複数のフィールドが含まれている、アクティブなレルム鍵で署名された標準のJson Webトークンです。"
+msgstr ""
+"アクション・トークンは、ペイロードに複数のフィールドが含まれている、アクティブなレルム鍵で署名された標準のJson Web Tokenです。"
 
 #. type: Plain text
 msgid "`typ` - Identification of the action (e.g. `verify-email`)"
-msgstr "`typ` - アクションの識別（例： `verify-email` ）"
+msgstr "`typ` - アクションの識別子（例： `verify-email` ）"
 
 #. type: Plain text
 msgid "`iat` and `exp` - Times of token validity"
@@ -107,7 +108,7 @@ msgstr "`asid` - 認証セッションのID (_optional_)"
 msgid ""
 "`nonce` - Random nonce to guarantee uniqueness of use if the operation can "
 "only be executed once (_optional_)"
-msgstr "`nonce` - 操作が一度しか実行できない場合は、使用の一意性を保証するランダムなノンス (_optional_)"
+msgstr "`nonce` - 操作が1回しか実行できない場合の、使用の一意性を保証するためのランダムなノンス (_optional_)"
 
 #. type: Plain text
 msgid ""
@@ -137,7 +138,7 @@ msgstr ""
 "actions/action-token` に `key` "
 "パラメーターを介して渡されると、それが検証され、適切なアクション・トークン・ハンドラーが実行されます。 "
 "*この処理は常に認証セッションのコンテキストに沿って行われ* "
-"、新しいものかアクション・トークン・サービスが既存の認証セッションに参加します（詳しくは、後で説明します）。アクション・トークン・ハンドラーは、トークン（これで認証セッションを変更することが多い）によって規定されたアクションを実行し、HTTPレスポンスを返すことができます（たとえば、認証を続けるか、情報またはエラーページを表示することができます）。これらの手順について、詳しくは以下のとおりです。"
+"、新しいものかアクション・トークン・サービスが既存の認証セッションに加わります（詳しくは、後で説明します）。アクション・トークン・ハンドラーは、トークン（これで認証セッションを変更することが多い）によって規定されたアクションを実行し、HTTPレスポンスを返すことができます（たとえば、認証を続けるか、情報またはエラーページを表示することができます）。これらの手順について、詳しくは以下のとおりです。"
 
 #. type: Plain text
 #, no-wrap
@@ -145,8 +146,8 @@ msgid ""
 "*Basic action token validation.* Signature and time validity is checked, and action token handler is determined based\n"
 "on `typ` field.\n"
 msgstr ""
-"*Basic action token validation* 。シグネチャーと時間の有効性が確認され、アクション・トークン・ハンドラーが `typ` "
-"フィールドに基づいて定義されます。\n"
+"*基本的なアクショントークンの検証* 。シグネチャーと時間の有効性がチェックされ、アクション・トークン・ハンドラーが `typ` "
+"フィールドに基づいて決定されます。\n"
 
 #. type: Plain text
 msgid ""
@@ -180,8 +181,8 @@ msgid ""
 "*Performing the action.* After all these validations, action token handler code is called that performs the actual\n"
 "action according to parameters in the token.\n"
 msgstr ""
-"*アクションを実行する。* "
-"これらの検証がすべて行われた後で、トークン内のパラメーターに応じて実際の動作を実行する、アクション・トークン・ハンドラー・コードが呼び出されます。\n"
+"*アクションの実行。* "
+"これらの検証がすべて行われた後で、トークン内のパラメーターに応じて実際にアクションを実行する、アクション・トークン・ハンドラー・コードが呼び出されます。\n"
 
 #. type: Plain text
 #, no-wrap
@@ -280,7 +281,7 @@ msgid ""
 " serialize them to JSON."
 msgstr ""
 "実装しているアクション・トークンが、JSONフィールドにシリアライズされる必要があるカスタム・フィールドを含んでいる場合、 "
-"`org.keycloak.models.ActionTokenKeyModel` のインターフェイスを実装する "
+"`org.keycloak.models.ActionTokenKeyModel` インターフェイスを実装する "
 "`org.keycloak.representations.JsonWebToken` "
 "クラスの子孫を実装することを検討する必要があります。この場合、既存の "
 "`org.keycloak.authentication.actiontoken.DefaultActionToken` "
@@ -356,7 +357,7 @@ msgstr ""
 #. type: Title ====
 #, no-wrap
 msgid "Packaging Classes and Deployment"
-msgstr "クラスのパッケージングと配備"
+msgstr "クラスのパッケージ化とデプロイ"
 
 #. type: Plain text
 msgid ""
@@ -413,7 +414,7 @@ msgid ""
 "`VerificationException` (or better its more descriptive variant "
 "`ExplainedTokenVerificationException`) to signal that would be forbidden."
 msgstr ""
-"トークンからの認証セッションが現在のものと一致しない場合、アクション・トークン・ハンドラーは、 "
+"トークンから取得した認証セッションが現在のものと一致しない場合、アクション・トークン・ハンドラーは、 "
 "`startFreshAuthenticationSession(token, context)` "
 "を呼び出すことにより新しいセッションを開始するよう要求されます。これにより、禁止されることを通知するための "
 "`VerificationException` （または、より説明的な表現である "
@@ -443,7 +444,7 @@ msgid ""
 msgstr ""
 "ほとんどの `ActionTokenHandler` メソッドのデフォルト実装は、 `keycloak-services` モジュール内の "
 "`org.keycloak.authentication.actiontoken.AbstractActionTokenHander` "
-"抽象クラスです。実装する必要のある唯一のメソッドは、実際の動作を実行する `handleToken(token, context)` です。"
+"抽象クラスです。実装する必要のある唯一のメソッドは、実際のアクションを実行する `handleToken(token, context)` です。"
 
 #. type: Plain text
 msgid ""

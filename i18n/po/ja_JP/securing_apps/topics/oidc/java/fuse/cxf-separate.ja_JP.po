@@ -3,11 +3,15 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,23 +19,33 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: delimited block -
-#, no-wrap
-msgid "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-msgstr "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+#. type: Plain text
+msgid ""
+"For the CXF JAX-RS application, the only difference might be in the "
+"configuration of the endpoint dependent on engine-factory:"
+msgstr "CXFのJAX-RSアプリケーションの場合、engine-factortyに依存するエンドポイントの設定にのみ違いがある可能性があります。"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
-"        <property name=\"constraint\" ref=\"constraint\"/>\n"
-"        <property name=\"pathSpec\" value=\"/*\"/>\n"
-"    </bean>\n"
+"<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
+"    depends-on=\"kc-cxf-endpoint\">\n"
+"    <jaxrs:providers>\n"
+"        <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
+"    </jaxrs:providers>\n"
+"</jaxrs:server>\n"
 msgstr ""
-"    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
-"        <property name=\"constraint\" ref=\"constraint\"/>\n"
-"        <property name=\"pathSpec\" value=\"/*\"/>\n"
-"    </bean>\n"
+"<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
+"    depends-on=\"kc-cxf-endpoint\">\n"
+"    <jaxrs:providers>\n"
+"        <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
+"    </jaxrs:providers>\n"
+"</jaxrs:server>\n"
+
+#. type: Plain text
+msgid ""
+"The `Import-Package` in `META-INF/MANIFEST.MF` must contain those imports:"
+msgstr "`META-INF/MANIFEST.MF` の `Import-Package` は以下のインポートを含まなければなりません。"
 
 #. type: Title =====
 #, no-wrap
@@ -54,6 +68,11 @@ msgstr ""
 "アプリケーションに `META-INF/spring/beans.xml` を追加し、 `KeycloakJettyAuthenticator` "
 "を注入したJettyの `SecurityHandler` で `httpj:engine-factory` を宣言してください。CFXのJAX-"
 "WSアプリケーションの設定は、次のようになります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+msgstr "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -145,6 +164,19 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
+"    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
+"        <property name=\"constraint\" ref=\"constraint\"/>\n"
+"        <property name=\"pathSpec\" value=\"/*\"/>\n"
+"    </bean>\n"
+msgstr ""
+"    <bean id=\"constraintMapping\" class=\"org.eclipse.jetty.security.ConstraintMapping\">\n"
+"        <property name=\"constraint\" ref=\"constraint\"/>\n"
+"        <property name=\"pathSpec\" value=\"/*\"/>\n"
+"    </bean>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
 "    <bean id=\"securityHandler\" class=\"org.eclipse.jetty.security.ConstraintSecurityHandler\">\n"
 "        <property name=\"authenticator\" ref=\"keycloakAuthenticator\" />\n"
 "        <property name=\"constraintMappings\">\n"
@@ -204,34 +236,6 @@ msgstr ""
 msgid "</beans>\n"
 msgstr "</beans>\n"
 
-#. type: Plain text
-msgid ""
-"For the CXF JAX-RS application, the only difference might be in the "
-"configuration of the endpoint dependent on engine-factory:"
-msgstr "CXFのJAX-RSアプリケーションの場合、engine-factortyに依存するエンドポイントの設定にのみ違いがある可能性があります。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
-"    depends-on=\"kc-cxf-endpoint\">\n"
-"    <jaxrs:providers>\n"
-"        <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
-"    </jaxrs:providers>\n"
-"</jaxrs:server>\n"
-msgstr ""
-"<jaxrs:server serviceClass=\"org.keycloak.example.rs.CustomerService\" address=\"http://localhost:8282/rest\"\n"
-"    depends-on=\"kc-cxf-endpoint\">\n"
-"    <jaxrs:providers>\n"
-"        <bean class=\"com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\" />\n"
-"    </jaxrs:providers>\n"
-"</jaxrs:server>\n"
-
-#. type: Plain text
-msgid ""
-"The `Import-Package` in `META-INF/MANIFEST.MF` must contain those imports:"
-msgstr "`META-INF/MANIFEST.MF` の `Import-Package` は以下のインポートを含まなければなりません。"
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -243,8 +247,8 @@ msgid ""
 "org.apache.cxf.transport.http;version=\"[2.7,3.2)\",\n"
 "org.apache.cxf.*;version=\"[2.7,3.2)\",\n"
 "org.springframework.beans.factory.config,\n"
-"org.eclipse.jetty.security;version=\"[8,10)\",\n"
-"org.eclipse.jetty.util.security;version=\"[8,10)\",\n"
+"org.eclipse.jetty.security;version=\"[9,10)\",\n"
+"org.eclipse.jetty.util.security;version=\"[9,10)\",\n"
 "org.keycloak.*;version=\"{project_versionMvn}\"\n"
 msgstr ""
 "META-INF.cxf;version=\"[2.7,3.2)\",\n"
@@ -255,6 +259,6 @@ msgstr ""
 "org.apache.cxf.transport.http;version=\"[2.7,3.2)\",\n"
 "org.apache.cxf.*;version=\"[2.7,3.2)\",\n"
 "org.springframework.beans.factory.config,\n"
-"org.eclipse.jetty.security;version=\"[8,10)\",\n"
-"org.eclipse.jetty.util.security;version=\"[8,10)\",\n"
+"org.eclipse.jetty.security;version=\"[9,10)\",\n"
+"org.eclipse.jetty.util.security;version=\"[9,10)\",\n"
 "org.keycloak.*;version=\"{project_versionMvn}\"\n"

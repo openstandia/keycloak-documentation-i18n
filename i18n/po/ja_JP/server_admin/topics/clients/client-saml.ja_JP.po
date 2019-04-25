@@ -79,7 +79,7 @@ msgid ""
 "responses as well."
 msgstr ""
 "{project_name}は、登録されたアプリケーションのために<<_saml,SAML "
-"2.0>>をサポートしています。POSTバインディングとREDIRECTバインディングの両方がサポートされています。クライアントの署名検証を要求することもできますし、サーバーに署名したり、レスポンスを暗号化したりすることもできます。"
+"2.0>>をサポートしています。POSTバインディングとREDIRECTバインディングの両方がサポートされています。クライアントに署名の検証を要求するように選択することも、サーバーにレスポンスの署名や暗号化を依頼することもできます。"
 
 #. type: Plain text
 msgid ""
@@ -111,7 +111,7 @@ msgstr ""
 "クライアントの `Client ID` に入力します。これはしばしばURLであり、アプリケーションが送信するSAMLリクエスト内の期待される "
 "`issuer` 値になります。次に、 `Client Protocol` ドロップダウンボックスで `saml` を選択します。最後に、 "
 "`Client SAML Endpoint` "
-"URLを入力します。{project_name}サーバーがSAMLリクエストとレスポンスを送信するURLを入力します。通常、アプリケーションにはSAMLリクエストを処理するURLが1つしかありません。アプリケーションがそのバインディングのために異なるURLを持っていれば、心配する問題はありません。クライアントの"
+"URLを入力します。{project_name}サーバーがSAMLリクエストとレスポンスを送信するURLを入力します。通常、アプリケーションにはSAMLリクエストを処理するURLが1つしかありません。アプリケーションがバインディングのために異なるURLを持っている場合でも、心配する問題はありません。クライアントの"
 " `Settings` タブでこれを修正できます。 `Save` をクリックすると、クライアントが作成され、クライアントの `Settings` "
 "タブに移動します。"
 
@@ -130,8 +130,7 @@ msgid ""
 "{project_name} will pull the issuer from the Authn SAML request and match it"
 " to a client by this value."
 msgstr ""
-"この値は、AuthNRequestsで送信されたissuer値と一致する必要があります。{project_name}はissuerをAuthn "
-"SAMLリクエストから引き出し、この値でクライアントに照合します。"
+"この値は、AuthNRequestとともに送信されたissuer値と一致する必要があります。{project_name}はissuerを認証SAMLリクエストから取得し、この値でクライアントと照合します。"
 
 #. type: Plain text
 msgid ""
@@ -211,8 +210,7 @@ msgid ""
 "where both IDP and SP are provided by {project_name} server and adapter. "
 "This option is only relevant when `Sign Documents` is switched on."
 msgstr ""
-"onにすると、SAMLプロトコル・メッセージに署名鍵IDのヒントを含む{project_name}のネイティブ拡張が含まれます。 "
-"SPがこの拡張を理解すると、既知のすべての鍵で署名を検証するのではなく、署名の検証にヒントを使用できます。このオプションは、署名情報にこの情報が含まれておらず、クエリー・パラメータで署名が転送される、REDIRECTバインディングにのみ適用されます（鍵IDが常にドキュメントの署名に含まれるPOSTバインディング・メッセージとは異なります）。現時点では、IDPとSPの両方が{project_name}サーバーとアダプターによって提供される状況に関係します。このオプションは、"
+"onにすると、SAMLプロトコル・メッセージに署名鍵IDのヒントを含む{project_name}のネイティブ拡張が含まれます。SPがこの拡張を理解すると、既知のすべての鍵で署名を検証するのではなく、署名の検証にヒントを使用できます。このオプションは、署名情報にこの情報が含まれておらず、クエリー・パラメータで署名が転送される、REDIRECTバインディングにのみ適用されます（鍵IDが常にドキュメントの署名に含まれるPOSTバインディング・メッセージとは異なります）。現時点では、IDPとSPの両方が{project_name}サーバーとアダプターによって提供される状況に関係します。このオプションは、"
 " `Sign Documents` がonになっている場合にのみ関係します。"
 
 #. type: Labeled list
@@ -225,8 +223,8 @@ msgid ""
 "The `Sign Documents` switch signs the whole document.  With this setting the"
 " assertion is also signed and embedded within the SAML XML Auth response."
 msgstr ""
-"`Sign Documents` スイッチはドキュメント全体に署名します。この設定では、アサーションも署名され、SAML XML "
-"Authレスポンスに埋め込まれます。"
+"`Sign Documents` スイッチはドキュメント全体に署名します。この設定により、アサーションも署名され、SAML "
+"XML認証レスポンスに埋め込まれます。"
 
 #. type: Plain text
 msgid "Choose between a variety of algorithms for signing SAML documents."

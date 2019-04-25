@@ -167,3 +167,116 @@ msgid ""
 "permissions for the resource and scope(s) associated with the permission "
 "ticket."
 msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Other non UMA-compliant endpoints"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Creating permission ticket"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To grant permissions for a specific resource with id {resource_id} to a user "
+"with id {user_id}, as an owner of the resource send an HTTP POST request as "
+"follows:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"     http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket \\\n"
+"     -H 'Authorization: Bearer '$access_token \\\n"
+"     -H 'Content-Type: application/json' \\\n"
+"     -d '{\n"
+"       \"resource\": \"{resource_id}\",\n"
+"       \"requester\": \"{user_id}\",\n"
+"       \"granted\": true,\n"
+"       \"scopeName\": \"view\"\n"
+"     }'\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Getting permission tickets"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket \\\n"
+"     -H 'Authorization: Bearer '$access_token\n"
+msgstr ""
+
+#. type: Plain text
+msgid "You can use any of these query parameters:"
+msgstr ""
+
+#. type: Plain text
+msgid "`scopeId`"
+msgstr ""
+
+#. type: Plain text
+msgid "`resourceId`"
+msgstr ""
+
+#. type: Plain text
+msgid "`owner`"
+msgstr ""
+
+#. type: Plain text
+msgid "`requester`"
+msgstr ""
+
+#. type: Plain text
+msgid "`granted`"
+msgstr ""
+
+#. type: Plain text
+msgid "`returnNames`"
+msgstr ""
+
+#. type: Plain text
+msgid "`first`"
+msgstr ""
+
+#. type: Plain text
+msgid "`max`"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Updating permission ticket"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X PUT \\\n"
+"     http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket \\\n"
+"     -H 'Authorization: Bearer '$access_token \\\n"
+"     -H 'Content-Type: application/json' \\\n"
+"     -d '{\n"
+"       \"id\": \"{ticket_id}\"\n"
+"       \"resource\": \"{resource_id}\",\n"
+"       \"requester\": \"{user_id}\",\n"
+"       \"granted\": false,\n"
+"       \"scopeName\": \"view\"\n"
+"     }'\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Deleting permission ticket"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X DELETE http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket/{ticket_id} \\\n"
+"     -H 'Authorization: Bearer '$access_token\n"
+msgstr ""

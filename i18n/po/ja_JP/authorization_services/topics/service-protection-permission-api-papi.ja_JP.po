@@ -5,14 +5,14 @@
 # 
 # Translators:
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2017
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -215,3 +215,143 @@ msgid ""
 "ticket."
 msgstr ""
 "パーミッション・チケットに関連付けられているリソースおよびスコープのパーミッションを評価する際に、これらのクレームをポリシーで使用できる場所。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Other non UMA-compliant endpoints"
+msgstr "その他のUMA非準拠エンドポイント"
+
+#. type: Title ===
+#, no-wrap
+msgid "Creating permission ticket"
+msgstr "パーミッション・チケットを作成する"
+
+#. type: Plain text
+msgid ""
+"To grant permissions for a specific resource with id {resource_id} to a user"
+" with id {user_id}, as an owner of the resource send an HTTP POST request as"
+" follows:"
+msgstr ""
+"ID {resource_id} の特定のリソースに対するパーミッションをID {user_id} "
+"のユーザーに付与するには、リソースの所有者として次のようにHTTP POSTリクエストを送信します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"     http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket \\\n"
+"     -H 'Authorization: Bearer '$access_token \\\n"
+"     -H 'Content-Type: application/json' \\\n"
+"     -d '{\n"
+"       \"resource\": \"{resource_id}\",\n"
+"       \"requester\": \"{user_id}\",\n"
+"       \"granted\": true,\n"
+"       \"scopeName\": \"view\"\n"
+"     }'\n"
+msgstr ""
+"curl -X POST \\\n"
+"     http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket \\\n"
+"     -H 'Authorization: Bearer '$access_token \\\n"
+"     -H 'Content-Type: application/json' \\\n"
+"     -d '{\n"
+"       \"resource\": \"{resource_id}\",\n"
+"       \"requester\": \"{user_id}\",\n"
+"       \"granted\": true,\n"
+"       \"scopeName\": \"view\"\n"
+"     }'\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Getting permission tickets"
+msgstr "パーミッション・チケットを取得する"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket \\\n"
+"     -H 'Authorization: Bearer '$access_token\n"
+msgstr ""
+"curl http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket \\\n"
+"     -H 'Authorization: Bearer '$access_token\n"
+
+#. type: Plain text
+msgid "You can use any of these query parameters:"
+msgstr "次のクエリー・パラメーターはどれでも使用できます。"
+
+#. type: Plain text
+msgid "`scopeId`"
+msgstr "`scopeId`"
+
+#. type: Plain text
+msgid "`resourceId`"
+msgstr "`resourceId`"
+
+#. type: Plain text
+msgid "`owner`"
+msgstr "`owner`"
+
+#. type: Plain text
+msgid "`requester`"
+msgstr "`requester`"
+
+#. type: Plain text
+msgid "`granted`"
+msgstr "`granted`"
+
+#. type: Plain text
+msgid "`returnNames`"
+msgstr "`returnNames`"
+
+#. type: Plain text
+msgid "`first`"
+msgstr "`first`"
+
+#. type: Plain text
+msgid "`max`"
+msgstr "`max`"
+
+#. type: Title ===
+#, no-wrap
+msgid "Updating permission ticket"
+msgstr "パーミッション・チケットを更新する"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X PUT \\\n"
+"     http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket \\\n"
+"     -H 'Authorization: Bearer '$access_token \\\n"
+"     -H 'Content-Type: application/json' \\\n"
+"     -d '{\n"
+"       \"id\": \"{ticket_id}\"\n"
+"       \"resource\": \"{resource_id}\",\n"
+"       \"requester\": \"{user_id}\",\n"
+"       \"granted\": false,\n"
+"       \"scopeName\": \"view\"\n"
+"     }'\n"
+msgstr ""
+"curl -X PUT \\\n"
+"     http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket \\\n"
+"     -H 'Authorization: Bearer '$access_token \\\n"
+"     -H 'Content-Type: application/json' \\\n"
+"     -d '{\n"
+"       \"id\": \"{ticket_id}\"\n"
+"       \"resource\": \"{resource_id}\",\n"
+"       \"requester\": \"{user_id}\",\n"
+"       \"granted\": false,\n"
+"       \"scopeName\": \"view\"\n"
+"     }'\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Deleting permission ticket"
+msgstr "パーミッション・チケットを削除する"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X DELETE http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket/{ticket_id} \\\n"
+"     -H 'Authorization: Bearer '$access_token\n"
+msgstr ""
+"curl -X DELETE http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket/{ticket_id} \\\n"
+"     -H 'Authorization: Bearer '$access_token\n"

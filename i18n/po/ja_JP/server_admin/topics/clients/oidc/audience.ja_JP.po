@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "フロントエンドのクライアント・アプリケーションからのリクエストを処理し、リソースを提供する _サービス_（OAuth 2の仕様では _リソースサーバー_"
 " と呼ばれます）もあります。これらのサービスは通常、特定のリクエストに対して認証するためにサービスに送信される _アクセストークン_ "
-"（ベアラートークン）を必要とします。このトークンは、フロントエンド・アプリケーションが{project_name}に対してログインを試行したときに取得されたものです。"
+"（ベアラートークン）を必要とします。このトークンは、クライアント・アプリケーションが{project_name}に対してログインを試行したときに取得されたものです。"
 
 #. type: Plain text
 msgid ""
@@ -56,15 +56,14 @@ msgstr "サービス間の信頼性が低い環境では、次のシナリオが
 msgid ""
 "A frontend client called `my-app` is required to be authenticated against "
 "{project_name}."
-msgstr "`my-app` というフロントエンド・クライアントは{project_name}によって認証される必要があります。"
+msgstr "`my-app` というフロントエンドのクライアント・アプリケーションは{project_name}によって認証される必要があります。"
 
 #. type: Plain text
 msgid ""
 "A user is authenticated in {project_name}. {project_name} then issued tokens"
 " to the `my-app` application."
 msgstr ""
-"ユーザーは{project_name}で認証されています。そして{project_name}は `my-app` "
-"アプリケーションにトークンを発行しました。"
+"ユーザーは{project_name}で認証されています。そして{project_name}は `my-app` にトークンを発行しました。"
 
 #. type: Plain text
 msgid ""
@@ -72,15 +71,14 @@ msgid ""
 "service`. The application needs to invoke `evil-service` as the service is "
 "able to serve some very useful data."
 msgstr ""
-"アプリケーション `my-app` はトークンを使ってサービス `evil-service` "
-"を呼び出しました。サービスは非常に有用なデータを提供することができるので、アプリケーションは `evil-service` を呼び出す必要があります。"
+"`my-app` はトークンを使って `evil-service` というサービスを呼び出しました。 `evil-service` "
+"は非常に有用なデータを提供することができるので、 `my-app` は `evil-service` を呼び出す必要があります。"
 
 #. type: Plain text
 msgid ""
 "The `evil-service` application returned the response to `my-app`. However, "
 "at the same time, it kept the token previously sent to it."
-msgstr ""
-"`evil-service` アプリケーションは `my-app` にレスポンスを返しました。ただし、同時に、以前に送信されたトークンが保持されました。"
+msgstr "`evil-service` は `my-app` にレスポンスを返しました。ただし、同時に、以前に送信されたトークンを保持しました。"
 
 #. type: Plain text
 msgid ""
@@ -90,9 +88,9 @@ msgid ""
 "`evil-service` misused the token to access other services on behalf of the "
 "client `my-app`."
 msgstr ""
-"そして `evil-service` アプリケーションは以前に保持したトークンを使って `good-service` "
-"と呼ばれる別のサービスを呼び出しました。呼び出しは成功し、 `good-service` はデータを返しました。 `evil-service` "
-"がクライアント `my-app` に代わって他のサービスにアクセスするためにトークンを悪用したため、セキュリティーが破綻します。"
+"そして `evil-service` は以前に保持したトークンを使って `good-service` "
+"という別のサービスを呼び出しました。呼び出しは成功し、 `good-service` はデータを返しました。 `evil-service` が `my-"
+"app` に代わって他のサービスにアクセスするためにトークンを悪用したため、セキュリティーが破綻します。"
 
 #. type: Plain text
 msgid ""
@@ -113,7 +111,7 @@ msgid ""
 "      retrieve required data from the `good-service`. In this case, you need to ensure that both the `evil-service` and `good-service`\n"
 "      are added as audiences to the token.\n"
 msgstr ""
-"環境によっては、リクエストされたデータを元の呼び出し元（my-appクライアント）に正しく返せるように、 `evil-service` が `good-"
+"環境によっては、リクエストされたデータを元の呼び出し元（`my-app`）に正しく返せるように、 `evil-service` が `good-"
 "service` "
 "から追加のデータを取得する必要があるかもしれないため、このワークフロー例は要求された動作でさえあるかもしれません。あなたは、Kerberos "
 "Credential Delegationとの類似点に気付くかもしれません。Kerberos Credential "
@@ -142,20 +140,19 @@ msgid ""
 "as in `\"audience\": [ \"evil-service\" ]`, which declares that the client "
 "wants to use this access token to invoke just the service `evil-service`."
 msgstr ""
-"ユーザーは{project_name}で認証されています。そして{project_name}は `my-app` "
-"アプリケーションにトークンを発行しました。クライアント・アプリケーションはすでにサービス `evil-service` "
+"ユーザーは{project_name}で認証されています。そして{project_name}は `my-app` にトークンを発行しました。 `my-"
+"app` はすでにサービス `evil-service` "
 "を呼び出す必要があることを知っているので、{project_name}サーバーに送信される認証リクエストで `scope = evil-service`"
-" を使いました。 _scope_ パラメータの詳細については、<<_client_scopes, "
-"クライアント・スコープのセクション>>を参照してください。 `my-app` クライアントに発行されたトークンは `\"audience\": [ "
-"\"evil-service\" ]` のようにAudienceを含んでいます。これはクライアントがこのアクセストークンを使って `evil-"
-"service` サービスだけを呼び出すことを望んでいることを宣言します。"
+" を使いました。 _scope_ パラメーターの詳細については、<<_client_scopes, "
+"クライアント・スコープのセクション>>を参照してください。 `my-app` に発行されたトークンは `\"audience\": [ \"evil-"
+"service\" ]` のようにAudienceを含んでいます。これは `my-app` がこのアクセストークンを使って `evil-service`"
+" サービスだけを呼び出すことを望んでいることを宣言します。"
 
 #. type: Plain text
 msgid ""
 "The `evil-service` application served the request to the `my-app`. At the "
 "same time, it kept the token previously sent to it."
-msgstr ""
-"`evil-service` アプリケーションは `my-app` にリクエストを送信しました。同時に、以前に送信されたトークンが保持されました。"
+msgstr "`evil-service` は `my-app` からのリクエストを処理しました。同時に、以前に送信されたトークンを保持しました。"
 
 #. type: Plain text
 msgid ""
@@ -164,7 +161,7 @@ msgid ""
 "checks the audience on the token and it sees that audience is only `evil-"
 "service`. This is expected behavior and security is not broken."
 msgstr ""
-"それから `evil-service` アプリケーションは以前に保持されたトークンで `good-service` "
+"それから `evil-service` は以前に保持されたトークンで `good-service` "
 "を呼び出しました。呼び出しは成功しませんでした。なぜなら、 `good-service` "
 "はトークン上のAudienceをチェックし、Audienceは単に `evil-service` "
 "であると見なしたためです。これは予想される動作であり、セキュリティーは破られていません。"
@@ -175,7 +172,7 @@ msgid ""
 "obtain another token by issuing the SSO login with the `scope=good-service`."
 " The returned token will then contain `good-service` as an audience:"
 msgstr ""
-"クライアントが後で `good-service` を呼び出したい場合は、 `scope = good-service` "
+"`my-app` が後で `good-service` を呼び出したい場合は、 `scope = good-service` "
 "を指定してSSOログインを発行し、別のトークンを取得する必要があります。返されたトークンはAudienceとして `good-service` "
 "を含みます。"
 
@@ -216,7 +213,7 @@ msgid ""
 "as described in the <<_audience_resolve, next section>> or it can be "
 "hardcoded as described <<_audience_hardcoded, below>>."
 msgstr ""
-"アクセストークンが{project_name}によって発行されたときに、要求されたすべてのAudienceが含まれ、不要なAudienceが含まれていないことを確認してください。Audienceは、"
+"アクセストークンが{project_name}によって発行されるときに、要求されたすべてのAudienceが含まれ、不要なAudienceが含まれていないことを確認してください。Audienceは、"
 " <<_audience_resolve, 次のセクション>> で説明されているようにクライアントロールによって自動的に追加されるか、または "
 "<<_audience_hardcoded, 以下>> のようにハードコーディングされます。"
 
@@ -234,8 +231,8 @@ msgid ""
 "especially useful if your service (usually bearer-only) clients rely on "
 "client roles."
 msgstr ""
-"デフォルトのクライアント・スコープ _roles_ には、 _Audience Resolve_ "
-"プロトコル・マッパーが定義されています。このプロトコルマッパーは、現在のトークンに使用可能なクライアントロールが少なくとも1つあるか、すべてのクライアントに対してチェックします。その後、それらの各クライアントのクライアントIDがAudienceとして自動的に追加されます。これは、サービス（通常はベアラーのみ）クライアントがクライアントロールに依存している場合に特に便利です。"
+"デフォルトのクライアント・スコープ・ _ロール_ には、 _Audience Resolve_ "
+"プロトコル・マッパーが定義されています。このプロトコル・マッパーは、現在のトークンに使用可能なクライアントロールが少なくとも1つあるか、すべてのクライアントに対してチェックします。その後、それらの各クライアントのクライアントIDがAudienceとして自動的に追加されます。これは、サービス（通常はベアラーのみ）クライアントがクライアントロールに依存している場合に特に便利です。"
 
 #. type: Plain text
 msgid ""
@@ -249,15 +246,15 @@ msgstr ""
 
 #. type: Plain text
 msgid "The `good-service` client has any client roles defined on itself"
-msgstr "`good-service` クライアントはそれ自身に定義された任意のクライアントロールを持つ"
+msgstr "`good-service` クライアントは、自身に定義された任意のクライアントロールを持つ"
 
 #. type: Plain text
 msgid "Target user has at least one of those client roles assigned"
-msgstr "ターゲット・ユーザーに、これらのクライアントロールの少なくとも1つが割り当てられている"
+msgstr "ターゲット・ユーザーには、これらのクライアントロールの少なくとも1つが割り当てられている"
 
 #. type: Plain text
 msgid "Client `my-app` has the role scope mappings for the assigned role"
-msgstr "クライアント `my-app` は、割り当てられたロールに対してロール・スコープ・マッピングを持っている"
+msgstr "`my-app` クライアントは、割り当てられたロールに対してロール・スコープ・マッピングを持っている"
 
 #. type: Plain text
 msgid ""
@@ -320,8 +317,8 @@ msgid ""
 "can create protocol mapper on the dedicated client scope, which will be "
 "called for example `good-service`."
 msgstr ""
-"プロトコル・マッパーをフロントエンド・クライアントに直接追加できますが、Audienceは常に追加されます。よりきめ細かい制御が必要な場合は、専用のクライアント・スコープで、たとえば"
-" `good-service` と呼ばれるようなプロトコル・マッパーを作成できます。"
+"プロトコル・マッパーをフロントエンド・クライアントに直接追加できますが、Audienceは常に追加されます。よりきめ細かい制御が必要な場合は、専用のクライアント・スコープ（たとえば、"
+" `good-service` ）で、プロトコル・マッパーを作成できます。"
 
 #. type: Block title
 #, no-wrap

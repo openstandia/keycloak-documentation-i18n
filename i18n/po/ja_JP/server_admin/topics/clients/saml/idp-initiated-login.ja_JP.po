@@ -3,11 +3,17 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Shinsuke UEDA, 2017
+# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,13 +22,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ====
-#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:2
 #, no-wrap
 msgid "IDP Initiated Login"
 msgstr "IDP Initiated ログイン"
 
 #. type: Plain text
-#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:8
 msgid ""
 "IDP Initiated Login is a feature that allows you to set up an endpoint on "
 "the {project_name} server that will log you into a specific "
@@ -39,7 +43,44 @@ msgstr ""
 "のURLでクライアントを参照することができます  。"
 
 #. type: Plain text
-#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:12
+msgid ""
+"The IDP initiated login implementation prefers _POST_ over _REDIRECT_ "
+"binding (check <<saml-bindings, saml bindings>> for more information).  "
+"Therefore the final binding and SP URL are selected in the following way:"
+msgstr ""
+"IdP initiated loginの実装は、_REDIRECT_ バインディングよりも _POST_ "
+"バインディングを優先します（詳細については<<samlバインディング, "
+"SAMLバインディング>>をチェックしてください）。したがって、最終的なバインディングとSPのURLは次のように選択されます。"
+
+#. type: Plain text
+msgid ""
+"If the specific `Assertion Consumer Service POST Binding URL` is defined "
+"(inside `Fine Grain SAML Endpoint Configuration` section of the client "
+"settings) _POST_ binding is used through that URL."
+msgstr ""
+"特定の `Assertion Consumer Service POST Binding URL` が（クライアント設定の `Fine Grain "
+"SAML Endpoint Configuration` セクション内に）定義されている場合、_POST_ "
+"バインディングはそのURLを介して使用されます。"
+
+#. type: Plain text
+msgid ""
+"If the general `Master SAML Processing URL` is specified then _POST_ binding"
+" is used again throught this general URL."
+msgstr ""
+"一般的な `Master SAML Processing URL` が指定されている場合は、この一般的なURLを介して _POST_ "
+"バインディングが再度使用されます。"
+
+#. type: Plain text
+msgid ""
+"As the last resort, if the `Assertion Consumer Service Redirect Binding URL`"
+" is configured (inside `Fine Grain SAML Endpoint Configuration`) _REDIRECT_ "
+"binding is used with this URL."
+msgstr ""
+"最後の手段として、 `Assertion Consumer Service Redirect Binding URL` が（ `Fine Grain "
+"SAML Endpoint Configuration` 内に）設定されている場合、このURLとともに _REDIRECT_ "
+"バインディングが使用されます。"
+
+#. type: Plain text
 msgid ""
 "If your client requires a special relay state, you can also configure this "
 "on the `Settings` tab in the `IDP Initiated SSO Relay State` field.  "
@@ -53,7 +94,6 @@ msgstr ""
 "name}?RelayState=thestate` でリレーステートを指定することができます。"
 
 #. type: Plain text
-#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:18
 msgid ""
 "When using <<_identity_broker,identity brokering>>, it is possible to set up"
 " an IDP Initiated Login for a client from an external IDP. The actual client"
@@ -70,7 +110,6 @@ msgstr ""
 "Initiated ログイン・エンドポイントを代理します。つまり、外部IDPのクライアント設定では次のようになります。"
 
 #. type: Plain text
-#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:20
 msgid ""
 "`IDP Initiated SSO URL Name` is set to a name that will be published as IDP "
 "Initiated Login initial point,"
@@ -79,7 +118,6 @@ msgstr ""
 "ログインのイニシャル・ポイントとして公開される名前に設定されます。"
 
 #. type: Plain text
-#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:23
 msgid ""
 "`Assertion Consumer Service POST Binding URL` in the `Fine Grain SAML "
 "Endpoint Configuration` section has to be set to the following URL: `broker-"
@@ -91,7 +129,6 @@ msgstr ""
 "name}/endpoint/clients/{client-id}` のURLで設定する必要があります。URLの詳細は次のとおりです。"
 
 #. type: Plain text
-#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:28
 #, no-wrap
 msgid ""
 "** _broker-root_ is base broker URL\n"
@@ -105,7 +142,6 @@ msgstr ""
 "** _client-id_ は、ブローカーで定義されたSAMLクライアントの `IDP Initiated SSO URL Name` 属性の値です。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:29
 #, no-wrap
 msgid ""
 "this client, which will be made available for IDP Initiated Login from the "
@@ -113,7 +149,6 @@ msgid ""
 msgstr "このクライアントは、外部IDPからのIDP Initiated ログインに対して利用可能になります。\n"
 
 #. type: Plain text
-#: source/server_admin/topics/clients/saml/idp-initiated-login.adoc:32
 msgid ""
 "Please note that you can import basic client settings from the brokering IDP"
 " into client settings of the external IDP - just use "

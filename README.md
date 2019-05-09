@@ -18,7 +18,7 @@ Please see [CONTRIBUTING.md](./CONTRIBUTING.md)
 Building Translated Keycloak Documentation
 -------------------------------
 
-Ensure that you have [Maven installed](https://maven.apache.org/) and [Docker installed](https://www.docker.com/docker-community).
+Ensure that you have [po4a (version 0.52 or later) installed](https://github.com/mquinson/po4a), [Maven installed](https://maven.apache.org/) and [Docker installed](https://www.docker.com/docker-community).
 
 First, clone this repository:
 

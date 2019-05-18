@@ -6,14 +6,14 @@
 # Translators:
 # n.watanabe <nwatanabe.ase@gmail.com>, 2018
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,9 +43,9 @@ msgid ""
 "some strategies you can use to port it."
 msgstr ""
 "Keycloakバージョン2.4.0以前では、 ユーザー・フェデレーション SPIがありました。Red Hat Single Sign-"
-"Onバージョン7.0は、サポートされていませんが、以前のSPIが利用可能でした。 "
-"この以前のユーザー・フェデレーションSPIは、Keycloakバージョン2.5.0およびRed Hat Single Sign-"
-"Onバージョン7.1から削除されました。ただし、このSPIを使用してプロバイダーを作成した場合、この章では、SPIを移植するためのいくつかの方法について説明します。"
+"Onバージョン7.0は、サポートされていませんが、以前のSPIが利用可能でした。この以前のユーザー・フェデレーションSPIは、Keycloakバージョン2.5.0およびRed"
+" Hat Single Sign-"
+"Onバージョン7.1から削除されました。しかし、この章では、このSPIを使用してプロバイダーを作成した場合の、SPIを移植するためのいくつかの方法について説明します。"
 
 #. type: Title ====
 #, no-wrap
@@ -60,11 +60,11 @@ msgid ""
 "You can still port your earlier provider as-is, but you should consider "
 "whether a non-import strategy might be a better approach."
 msgstr ""
-"以前のユーザー・フェデレーションSPIでは、{project_name}のデータベース内でユーザーのローカルコピーを作成し、外部ストアからの情報をローカルコピーにインポートする必要がありました。しかし、これはもう要件ではなくなりました。以前のプロバイダーをそのまま移植することもできますが、非インポート・ストラテジーの方がより良いアプローチになるかを検討する必要があります。"
+"以前のユーザー・フェデレーションSPIでは、{project_name}のデータベース内でユーザーのローカルコピーを作成し、外部ストアからの情報をローカルコピーにインポートする必要がありました。しかし、これはもう要件ではなくなりました。以前のプロバイダーをそのまま移植することもできますが、インポートしない方法の方がより良いアプローチになるかを検討する必要があります。"
 
 #. type: Plain text
 msgid "Advantages of the import strategy:"
-msgstr "インポート方法の利点。"
+msgstr "インポートによる方法の利点は、以下のとおりです。"
 
 #. type: Plain text
 msgid ""
@@ -72,8 +72,7 @@ msgid ""
 "store. Once the user is imported you'll no longer hit the external store, "
 "thus taking load off of it."
 msgstr ""
-"{project_name}は、基本的に外部ストアの永続ユーザーキャッシュになります。 "
-"ユーザーがインポートされると、外部ストアにアクセスしなくなり、その負荷を取り除きます。"
+"{project_name}は、基本的に外部ストアの永続ユーザーキャッシュになります。ユーザーがインポートされると、外部ストアにアクセスしなくなり、その負荷が無くなります。"
 
 #. type: Plain text
 msgid ""
@@ -82,12 +81,12 @@ msgid ""
 "to use {project_name}. When all applications have been migrated, unlink the "
 "imported user, and retire the earlier legacy external store."
 msgstr ""
-"{project_name}に移行して公式ユーザーストアとし、以前の外部ストアを廃止する場合、アプリケーションを徐々に移行して{project_name}を使用することができます。すべてのアプリケーションが移行されると、インポートされたユーザーのリンクを解除し、以前のレガシー外部ストアを廃止します。"
+"公式のユーザーストアを{project_name}にし、従来の外部ストアは廃止する場合、アプリケーションを徐々に移行して{project_name}を使用することができます。すべてのアプリケーションが移行されたら、インポートされたユーザーのリンクを解除し、従来のレガシー外部ストアは廃止します。"
 
 #. type: Plain text
 msgid ""
 "There are some obvious disadvantages though to using an import strategy:"
-msgstr "インポート・ストラテジーの使用には明らかな欠点がいくつかあります。"
+msgstr "インポートによる方法の使用には明らかな欠点がいくつかあります。"
 
 #. type: Plain text
 msgid ""
@@ -97,8 +96,7 @@ msgid ""
 "storage approach will only store extra data as needed and might never be "
 "used depending on the capabilities of your external store."
 msgstr ""
-"初めてユーザーを検索するには、{project_name}データベースを複数回更新する必要があります。これは、負荷がかかった状態でパフォーマンスが大きく低下する可能性があり、{project_name}データベースに多くの負担をかけることになります。ユーザー・フェデレーティッド・ストレージ・アプローチでは、必要以上のデータを保持し、外部ストアの機能に応じて使用されるということがありません。"
-" "
+"初回のユーザーの検索では、{project_name}のデータベースを複数回更新する必要があります。これは大きなパフォーマンス低下を招き、{project_name}のデータベースに多くの負担をかけることになります。ユーザー・フェデレーティッド・ストレージのアプローチでは、必要に応じて追加のデータのみが保存されるだけであり、外部ストアの機能によってはまったく使用されない可能性もあります。"
 
 #. type: Plain text
 msgid ""
@@ -121,10 +119,10 @@ msgid ""
 "`UserStorageProvider` has instead broken up this interface into multiple "
 "capability interfaces that you implement as needed."
 msgstr ""
-"最初に気付くべきは、 `UserFederationProvider` "
-"が完成されたインターフェイスであったことです。このインターフェイスにはすべてのメソッドが実装されました。ただし、 "
+"最初に注意することは、 `UserFederationProvider` "
+"が完全なインターフェイスだったということです。このインターフェイスにはすべてのメソッドを実装しました。ただし、 "
 "`UserStorageProvider` "
-"では、代わりにこのインターフェイスを、必要に応じて実装可能な複数のケーパビリティー・インターフェイスに分割しています。"
+"では、代わりにこのインターフェイスを、必要に応じて実装可能な複数のケイパビリティー・インターフェイスに分割しています。"
 
 #. type: Plain text
 msgid ""
@@ -211,7 +209,7 @@ msgid ""
 "though."
 msgstr ""
 "`searchByAttributes()` や `getGroupMembers()` のような `UserFederationProvider` "
-"クエリーメソッドは、オプションのインターフェイス `UserQueryProvider` "
+"のクエリーメソッドは、オプションのインターフェイス `UserQueryProvider` "
 "にカプセル化されました。このインターフェイスを実装しないと、管理コンソールでユーザーを表示できなくなります。なお、ログインすることはできます。"
 
 #. type: Title ====
@@ -283,4 +281,4 @@ msgid ""
 "upgrading {project_name}. This will remove linked local imported copies of "
 "any user you imported."
 msgstr ""
-"インポート・ストラテジーを廃止してユーザー・ストレージ・プロバイダーを実装し直すことに決めた場合は、{project_name}をアップグレードする前に以前のプロバイダーを削除することをお勧めします。これにより、インポートされたすべてのユーザーのリンクされたローカル・インポート済みのコピーが削除されます。"
+"インポートによる方法を廃止してユーザー・ストレージ・プロバイダーを実装し直すことに決めた場合は、{project_name}をアップグレードする前に以前のプロバイダーを削除することをお勧めします。これにより、インポートされたすべてのユーザーのリンクされたローカル・インポート済みのコピーが削除されます。"

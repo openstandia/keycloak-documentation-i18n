@@ -1581,7 +1581,7 @@ msgid ""
 "`jdg2` server in the `site2`. See <<communication>> for more information."
 msgstr ""
 "`site1` の{project_name}サーバーは、`site2` の `jdg2` サーバーにデータをバックアップすることを想定し、 "
-"`jdg1` サーバー上のリモート・キャッシュにセッションを書き込もうとします。 詳細については、<<communication>>を参照してください。"
+"`jdg1` サーバー上のリモート・キャッシュにセッションを書き込もうとします。詳細については、<<communication>>を参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -1659,7 +1659,7 @@ msgid ""
 "<<jdgsetup>>.\n"
 msgstr ""
 "**自動的作業** - バックアップに失敗した後、通常は `site2` "
-"が自動的にオフラインになります。これは、<<jdgsetup>>で設定されたキャッシュ構成内の `take-offline` "
+"が自動的にオフラインになります。これは、<<jdgsetup>>で設定されたキャッシュ設定内の `take-offline` "
 "要素の設定によって行われます。\n"
 
 #. type: Code block
@@ -1683,14 +1683,14 @@ msgid ""
 "logins for some users or big login timeouts. Especially if `failure-policy` "
 "with value `FAIL` is used."
 msgstr ""
-"自動的にサイトをオフラインにすることは、特に、サイト間の切断されたネットワークが計画外である場合に便利です。欠点は、ネットワークの停止が検出されるまで何らかのバックアップが失敗し、アプリケーション側で障害が起きてる可能性があります。たとえば、一部のユーザーのログインに失敗したり、大きなログインタイムアウトが発生したりします。たとえば、一部のユーザーのログインに失敗したり、大きなログインタイムアウトが発生したりします。"
+"自動的にサイトをオフラインにすることは、特に、サイト間の切断されたネットワークが計画外である場合に便利です。欠点は、ネットワークの停止が検出されるまで何らかのバックアップが失敗し、アプリケーション側で障害が起きてる可能性があります。たとえば、一部のユーザーのログインに失敗したり、大きなログインタイムアウトが発生したりします。"
 " 特に、値が `FAIL` の `failure-policy` が使用されている場合です。"
 
 #. type: Plain text
 msgid ""
 "The tracking of whether a site is offline is tracked separately for every "
 "cache."
-msgstr "サイトがオフラインであるかどうかの追跡は、キャッシュごとに個別に追跡されます。"
+msgstr "サイトがオフラインであるかどうかの追跡は、キャッシュごとに個別に行われます。"
 
 #. type: Block title
 #, no-wrap
@@ -1732,7 +1732,7 @@ msgid ""
 "to be done bidirectionally between both sites or just unidirectionally, as "
 "in only from `site1` to `site2`, but not from `site2` to `site1`."
 msgstr ""
-"ステート・トランスファーは、手動で行う必要があります。{jdgserver_name}サーバーはこれを自動的には行いません。たとえば、スプリット・ブレイン中は、管理者のみが誰がどのサイトを優先するかを決定することができます。したがって、ステート・トランスファーが両方のサイト間で双方向に、または"
+"ステート・トランスファーは、手動で行う必要があります。{jdgserver_name}サーバーはこれを自動的には行いません。たとえば、スプリット・ブレイン中は、誰がどのサイトを優先するかを管理者のみが決定することができます。したがって、ステート・トランスファーが両方のサイト間で双方向に、または"
 " `site1` から `site2` へのみ単方向で行われる必要がありますが、`site2` から `site1` への単方向は行われません。"
 
 #. type: Plain text
@@ -1837,8 +1837,8 @@ msgid ""
 "cache configuration in the JDG `clustered.xml` file is configured as `FAIL`."
 " You may change it to `WARN` or `IGNORE`, as you prefer."
 msgstr ""
-"デフォルトでは、JDG `clustered.xml` ファイルのInfinispanキャッシュ設定のバックアップ `failure-policy` "
-"の設定は、 `FAIL` として設定されています。必要に応じて `WARN` または `IGNORE` に変更することができます。"
+"デフォルトでは、JDGの `clustered.xml` ファイル内にあるInfinispanキャッシュ設定のバックアップの設定 `failure-"
+"policy` が `FAIL` に設定されています。必要に応じて `WARN` または `IGNORE` に変更できます。"
 
 #. type: Plain text
 msgid ""
@@ -1885,7 +1885,7 @@ msgstr ""
 msgid ""
 "How bad are these inconsistencies? Usually only means that a user will need "
 "to re-authenticate."
-msgstr "これらの不整合はどれくらいよろしくないのでしょうか？通常は、ユーザーが再認証する必要があることを意味します。"
+msgstr "これらの不整合はどれほど悪いことなのでしょうか。通常は、ユーザーが再認証する必要があることだけを意味します。"
 
 #. type: Plain text
 msgid ""
@@ -1899,10 +1899,8 @@ msgid ""
 "to write it concurrently in both sites."
 msgstr ""
 "`WARN` ポリシーを使用すると、 `actionTokens` "
-"キャッシュにより提供され、その特定のキーを処理する、使い捨てのキャッシュが実際に1回使用されますが、同じキーが2回\"正常に\"書き込まれる可能性があります。しかし、たとえば、OAuth2"
-" "
-"仕様link:https://tools.ietf.org/html/rfc6749#section-10.5[mentions]では、コードは使い捨てでなければならないと言及されています。"
-" `WARN` "
+"キャッシュにより提供され、その特定のキーを処理する、使い捨てのキャッシュが実際に1回使用されますが、同じキーが2回\"正常に\"書き込まれる可能性があります。しかし、たとえば、link:https://tools.ietf.org/html/rfc6749#section-10.5[OAuth2"
+" 仕様]では、コードは使い捨てでなければならないと言及されています。 `WARN` "
 "ポリシーでは、これは厳密には保証されておらず、両方のサイトで同時に書き込まれる試みがあった場合、同じコードが2回書き込まれる可能性があります。"
 
 #. type: Plain text
@@ -1935,7 +1933,7 @@ msgid ""
 "documentation."
 msgstr ""
 "`WARN` と `IGNORE` の違いは、 `IGNORE` "
-"警告がJDGログに書き込まれていないことです。詳細については、Infinispanのドキュメントを参照してください。"
+"では警告がJDGログに書き込まれていないことです。詳細については、Infinispanのドキュメントを参照してください。"
 
 #. type: Block title
 #, no-wrap
@@ -1999,7 +1997,7 @@ msgid ""
 " might be Cross-Datacenter Replication aware, and these can be configured in"
 " 3 different modes regarding cross-dc:"
 msgstr ""
-"`backup` 要素の重要な部分は `strategy` 属性です。 `SYNC` と `SYNC` "
+"`backup` 要素の重要な部分は `strategy` 属性です。 `SYNC` と `ASYNC` "
 "のどちらが必要かを決める必要があります。クロスデータセンター・レプリケーションを認識できる7つのキャッシュがあり、これらは、クロスデータセンターに対する次の3つの異なるモードで設定できます。"
 
 #. type: Plain text
@@ -2040,7 +2038,7 @@ msgid ""
 "then the particular `replicated-cache` element is also not needed on the "
 "{jdgserver_name} server side."
 msgstr ""
-"キャッシュによっては、バックアップをまったく取らず、{jdgserver_name}サーバーへのデータ書き込みを完全にスキップすることも可能です。これを設定するには、"
+"キャッシュによっては、バックアップをまったく取らず、{jdgserver_name}サーバーへのデータ書き込みを完全にスキップすることも可能です。これを設定するために、"
 " {project_name}側（ `KEYCLOAK_HOME/standalone/configuration/standalone-ha.xml`"
 " ファイル）の特定のキャッシュに `remote-store` 要素を使用しないでください。また、特定の `replicated-cache` "
 "要素も{jdgserver_name}サーバー側では必要ありません。"
@@ -2087,11 +2085,11 @@ msgid ""
 " better security (`SYNC` strategy) or better performance (`ASYNC` strategy)."
 msgstr ""
 " `actionTokens` "
-"キャッシュは、使い捨てのキャッシュとして使用され、トークンまたはチケットが1回だけ使用されたということを追跡します。たとえば、アクショントークンまたはOAuth2コードです。これを"
+"キャッシュは、使い捨てのキャッシュとして使用され、トークンまたはチケットが1回だけ使用されたということを追跡します。たとえば、アクショントークンまたはOAuth2のコードです。これを"
 " `ASYNC` "
 "に設定して、パフォーマンスをわずかに向上させることは可能ですが、特定のチケットが実際に1回だけ使用され使い捨てになるかは保証されていません。たとえば、両方のサイトで同じチケットの同時リクエストがある場合、"
-" `ASYNC` 方式によって両方のリクエストが成功する可能性があります。そのため、ここでの設定は、より高いセキュリティー（ `SYNC` "
-"方式）またはより高いパフォーマンス（ `ASYNC` 方式）のどちらを優先するかによります。"
+" `ASYNC` 方式によって両方のリクエストが成功する可能性があります。そのため、ここでの設定は、セキュリティー（ `SYNC` "
+"方式）を優先するか、パフォーマンス（ `ASYNC` 方式）を優先するかによります。"
 
 #. type: Plain text
 msgid ""
@@ -2140,9 +2138,9 @@ msgid ""
 "client IP address (location) and the client applications are deployed on "
 "both sites."
 msgstr ""
-"`sessions` と `clientSessions` キャッシュを `SYNC` で保持しておくことをお勧めします。ユーザーのリクエストとバックチャネル要求（<<requestprocessing>>で説明したクライアント・アプリケーションから{project_name}へのリクエスト）が常に同じサイトで処理されることが確かな場合にのみ、それらを `ASYNC` へ切り替えることが可能になります。たとえば、次のような場合はこれが当てはまります。\n"
+"`sessions` と `clientSessions` キャッシュを `SYNC` で保持しておくことをお勧めします。ユーザーのリクエストとバックチャネル・リクエスト（<<requestprocessing>>で説明したクライアント・アプリケーションから{project_name}へのリクエスト）が常に同じサイトで処理されることが確かな場合にのみ、それらを `ASYNC` へ切り替えることが可能になります。たとえば、次のような場合はこれが当てはまります。\n"
 "** <<modes>>で説明した通り、アクティブ/パッシブモードを使用しています。\n"
-"** クライアント・アプリケーションはすべて{project_name} link:https://www.keycloak.org/docs/latest/securing_apps/index.html#_javascript_adapter[JavaScriptアダプター]を使用しています。JavaScriptアダプターは、ブラウザー内でバックチャネル要求を送信するため、それらはブラウザーのスティッキー・セッションに参加し、このユーザーの別のブラウザー・リクエストと同じクラスターノード（したがって同じサイト）で終了します。\n"
+"** クライアント・アプリケーションはすべて{project_name} link:https://www.keycloak.org/docs/latest/securing_apps/index.html#_javascript_adapter[JavaScriptアダプター]を使用しています。JavaScriptアダプターは、ブラウザー内でバックチャネル・リクエストを送信するため、それらはブラウザーのスティッキー・セッションに参加し、このユーザーの別のブラウザー・リクエストと同じクラスターノード（したがって同じサイト）で終了します。\n"
 "** ロードバランサーは、クライアントIPアドレス（ロケーション）に基づいてリクエストを処理でき、クライアント・アプリケーションは両方のサイトにデプロイされています。"
 
 #. type: Plain text
@@ -2168,7 +2166,7 @@ msgid ""
 "to use offline tokens for any of your client applications."
 msgstr ""
 "`offlineSessions` と `offlineClientSessions` "
-"に関して、類似していますが、クライアント・アプリケーションのいずれに対してもオフライン・トークンを使用する予定ががない場合、それらをバックアップする必要はまったくありません。"
+"に対して、それは類似していますが、クライアント・アプリケーションのいずれに対してもオフライン・トークンを使用する予定ががない場合、それらをバックアップする必要はまったくありません。"
 
 #. type: Plain text
 msgid ""
@@ -2253,7 +2251,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "If there are exceptions during startup of {project_name} server like this:"
-msgstr "{project_name}サーバーの起動時に次のような例外が発生した場合。"
+msgstr "{project_name}サーバーの起動時に次のような例外が発生した場合、"
 
 #. type: Code block
 #, no-wrap
@@ -2315,7 +2313,7 @@ msgstr ""
 "infinispan:type=Cache,name=\"sessions(repl_sync)\",manager=\"clustered\",component=Statistics`"
 " と `numberOfEntries` 属性の `sessions` "
 "キャッシュ内の要素の数をチェックすることによって間接的に行うことができます。ログイン後、両方のサイトのそれぞれの{jdgserver_name}サーバーに"
-" `numberOfEntries` のための1つ以上のエントリーが存在するはずです。"
+" `numberOfEntries` の1つ以上のエントリーが存在するはずです。"
 
 #. type: Plain text
 msgid ""
@@ -2328,9 +2326,8 @@ msgid ""
 "add the log snippets to the mails or put the logs somewhere and reference "
 "them in the email."
 msgstr ""
-"<<serversetup>>の説明に従って、DEBUGロギングを有効にします。 "
-"たとえば、ログインして2番目のサイトで新しいセッションが利用できないと思われる場合は、{project_name}サーバーログをチェックし、<<serversetup>>で説明したようにリスナーがトリガーされていることを確認してください。"
-" keycloak-"
+"<<serversetup>>の説明に従って、DEBUGロギングを有効にします。たとえば、ログインして2番目のサイトで新しいセッションが利用できないと思われる場合は、{project_name}サーバーログをチェックし、<<serversetup>>で説明したようにリスナーがトリガーされていることを確認してください"
+"。keycloak-"
 "userメーリングリストに質問したい場合は、電子メール内の両方のデータセンターの{project_name}サーバーからログファイルを送信すると便利です。ログスニペットをメールに追加するか、ログをどこかに置いて電子メールで参照してください。"
 
 #. type: Plain text
@@ -2472,9 +2469,10 @@ msgid ""
 "case, update the cache declaration with an empty `<expiration />` tag like "
 "this:"
 msgstr ""
-"{jdgserver_name}の `work` "
-"キャッシュが無期限に増加した場合、https://issues.jboss.org/browse/JDG-987[この{jdgserver_name}の問題]が発生している可能性があります（キャッシュが正しく期限切れになっていないことに起因する問題）。その場合、キャッシュ宣言を次のような空の"
-" `<expiration />` タグで更新してください。"
+"{jdgserver_name}の `work` キャッシュが無期限に増加した場合、 "
+"https://issues.jboss.org/browse/JDG-987[この{jdgserver_name}の問題] "
+"が発生している可能性があります（キャッシュが正しく期限切れになっていないことに起因する問題）。その場合、キャッシュ宣言を次のような空の "
+"`<expiration />` タグで更新してください。"
 
 #. type: Code block
 #, no-wrap

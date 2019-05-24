@@ -31,32 +31,32 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Keycloak comes out of the box with a bunch of different authentication "
+"{project_name} comes out of the box with a bunch of different authentication "
 "mechanisms: kerberos, password, and otp.  These mechanisms may not meet all "
 "of your requirements and you may want to plug in your own custom ones.  "
-"Keycloak provides an authentication SPI that you can use to write new "
+"{project_name} provides an authentication SPI that you can use to write new "
 "plugins.  The admin console supports applying, ordering, and configuring "
 "these new mechanisms."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Keycloak also supports a simple registration form.  Different aspects of "
-"this form can be enabled and disabled i.e.  Recaptcha support can be turned "
-"off and on.  The same authentication SPI can be used to add another page to "
-"the registration flow or reimplement it entirely.  There's also an "
+"{project_name} also supports a simple registration form.  Different aspects "
+"of this form can be enabled and disabled i.e.  Recaptcha support can be "
+"turned off and on.  The same authentication SPI can be used to add another "
+"page to the registration flow or reimplement it entirely.  There's also an "
 "additional fine-grain SPI you can use to add specific validations and user "
 "extensions to the built in registration form."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"A required action in Keycloak is an action that a user has to perform after "
-"he authenticates.  After the action is performed successfully, the user "
-"doesn't have to perform the action again.  Keycloak comes with some built in "
-"required actions like \"reset password\".  This action forces the user to "
-"change their password after they have logged in.  You can write and plug in "
-"your own required actions."
+"A required action in {project_name} is an action that a user has to perform "
+"after he authenticates.  After the action is performed successfully, the "
+"user doesn't have to perform the action again.  {project_name} comes with "
+"some built in required actions like \"reset password\".  This action forces "
+"the user to change their password after they have logged in.  You can write "
+"and plug in your own required actions."
 msgstr ""
 
 #. type: Title ===
@@ -180,7 +180,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The OpenID Connect or SAML protocol provider unpacks relevent data, verifies "
+"The OpenID Connect or SAML protocol provider unpacks relevant data, verifies "
 "the client and any signatures.  It creates an AuthenticationSessionModel.  "
 "It looks up what the browser flow should be, then starts executing the flow."
 msgstr ""
@@ -230,7 +230,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The next execution is a subflow called Forms.  The executions for this "
-"subflow are loaded and the same processing logic occurs"
+"subflow are loaded and the same processing logic occurs."
 msgstr ""
 
 #. type: Plain text
@@ -249,7 +249,7 @@ msgid ""
 "the error log.  This error log can be used to lock accounts or IP Addresses "
 "that have had too many login failures.  If the username and password is "
 "valid, the provider associated the UserModel with the "
-"AuthenticationSessionModel and returns a status of success()"
+"AuthenticationSessionModel and returns a status of success()."
 msgstr ""
 
 #. type: Plain text
@@ -311,7 +311,7 @@ msgid ""
 "this, we are going to implement an authenticator that requires that a user "
 "enter in the answer to a secret question like \"What is your mother's maiden "
 "name?\".  This example is fully implemented and contained in the examples/"
-"providers/authenticator directory of the demo distribution of Keycloak."
+"providers/authenticator directory of the demo distribution of {project_name}."
 msgstr ""
 
 #. type: Plain text
@@ -320,17 +320,17 @@ msgid ""
 "AuthenticatorFactory and Authenticator interfaces.  The Authenticator "
 "interface defines the logic.  The AuthenticatorFactory is responsible for "
 "creating instances of an Authenticator.  They both extend a more generic "
-"Provider and ProviderFactory set of interfaces that other Keycloak "
+"Provider and ProviderFactory set of interfaces that other {project_name} "
 "components like User Federation do."
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"You will package your classes within a single jar.\n"
-"This jar must contain a file named  `org.keycloak.authentication.AuthenticatorFactory`                and must be contained in the `META-INF/services/` directory of your jar.\n"
-"This file must list the fully qualified classname of each AuthenticatorFactory implementation you have in the jar.\n"
-"For example: \n"
+"You will package your classes within a single jar.  This jar must contain a "
+"file named `org.keycloak.authentication.AuthenticatorFactory` and must be "
+"contained in the `META-INF/services/` directory of your jar.  This file must "
+"list the fully qualified class name of each AuthenticatorFactory "
+"implementation you have in the jar.  For example:"
 msgstr ""
 
 #. type: delimited block -
@@ -342,8 +342,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This services/ file is used by Keycloak to scan the providers it has to load "
-"into the system."
+"This services/ file is used by {project_name} to scan the providers it has "
+"to load into the system."
 msgstr ""
 
 #. type: Plain text
@@ -379,9 +379,9 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"@Override\n"
-"  public boolean configuredFor(KeycloakSession session, RealmModel realm, UserModel user) {\n"
-"     return session.users().configuredForCredentialType(\"secret_question\", realm, user);\n"
+"    @Override\n"
+"    public boolean configuredFor(KeycloakSession session, RealmModel realm, UserModel user) {\n"
+"        return session.users().configuredForCredentialType(\"secret_question\", realm, user);\n"
 "    }\n"
 msgstr ""
 
@@ -472,7 +472,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "So, the HTML page asking for the answer to a secret question is displayed to "
-"the user and the user enteres in the answer and clicks submit.  The action "
+"the user and the user enters in the answer and clicks submit.  The action "
 "URL of the HTML form will send an HTTP request to the flow.  The flow will "
 "end up invoking the action() method of our Authenticator implementation."
 msgstr ""
@@ -700,12 +700,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Keycloak comes with a Freemarker <<_themes,theme and template engine>>.  The "
-"createForm() method you called within authenticate() of your Authenticator "
-"class, builds an HTML page from a file within your login theme: `secret-"
-"question.ftl`.  This file should be added to the `theme-resources/templates` "
-"in your JAR, see <<_theme_resource,Theme Resource Provider>> for more "
-"details."
+"{project_name} comes with a Freemarker <<_themes,theme and template "
+"engine>>.  The createForm() method you called within authenticate() of your "
+"Authenticator class, builds an HTML page from a file within your login "
+"theme: `secret-question.ftl`.  This file should be added to the `theme-"
+"resources/templates` in your JAR, see <<_theme_resource,Theme Resource "
+"Provider>> for more details."
 msgstr ""
 
 #. type: Plain text
@@ -958,14 +958,14 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "It is entirely possible for you to implement your own flow with a set of "
-"Authenticators to totally change how registration is done in Keycloak.  But "
-"what you'll usually want to do is just add a little bit of validation to the "
-"out of the box registration page.  An additional SPI was created to be able "
-"to do this.  It basically allows you to add validation of form elements on "
-"the page as well as to initialize UserModel attributes and data after the "
-"user has been registered.  We'll look at both the implementation of the user "
-"profile registration processing as well as the registration Google Recaptcha "
-"plugin."
+"Authenticators to totally change how registration is done in "
+"{project_name}.  But what you'll usually want to do is just add a little bit "
+"of validation to the out of the box registration page.  An additional SPI "
+"was created to be able to do this.  It basically allows you to add "
+"validation of form elements on the page as well as to initialize UserModel "
+"attributes and data after the user has been registered.  We'll look at both "
+"the implementation of the user profile registration processing as well as "
+"the registration Google Recaptcha plugin."
 msgstr ""
 
 #. type: Title ====
@@ -1017,13 +1017,13 @@ msgid ""
 "requires some specific settings that must be obtained from configuration.  "
 "FormActions are configured in the exact same as Authenticators are.  In this "
 "example, we pull the Google Recaptcha site key from configuration and add it "
-"as an attribute to the form provider.  Our regstration template file can "
+"as an attribute to the form provider.  Our registration template file can "
 "read this attribute now."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Recaptcha also has the requirement of loading a javascript script.  You can "
+"Recaptcha also has the requirement of loading a JavaScript script.  You can "
 "do this by calling LoginFormsProvider.addScript() passing in the URL."
 msgstr ""
 
@@ -1170,9 +1170,9 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "As you can see, this validate() method of user profile processing makes sure "
-"that the email, first, and last name are filled in in the form.  It also "
-"makes sure that email is in the right format.  If any of these validations "
-"fail, an error message is queued up for rendering.  Any fields in error are "
+"that the email, first, and last name are filled in the form.  It also makes "
+"sure that email is in the right format.  If any of these validations fail, "
+"an error message is queued up for rendering.  Any fields in error are "
 "removed from the form data.  Error messages are represented by the "
 "FormMessage class.  The first parameter of the constructor of this class "
 "takes the HTML element id.  The input in error will be highlighted when the "
@@ -1226,7 +1226,7 @@ msgstr ""
 msgid ""
 "You will package your classes within a single jar.\n"
 "This jar must contain a file named  `org.keycloak.authentication.FormActionFactory`                and must be contained in the `META-INF/services/` directory of your jar.\n"
-"This file must list the fully qualified classname of each FormActionFactory implementation you have in the jar.\n"
+"This file must list the fully qualified class name of each FormActionFactory implementation you have in the jar.\n"
 "For example: \n"
 msgstr ""
 
@@ -1259,9 +1259,9 @@ msgid ""
 "menu to the right of the Registration Form, and pick \"Add execution\" to "
 "add a new execution.  You'll pick the FormAction from the selection list.  "
 "Make sure your FormAction comes after \"Registration User Creation\" by "
-"using the down errors to move it if your FormAction isn't already listed "
+"using the down buttons to move it if your FormAction isn't already listed "
 "after \"Registration User Creation\".  You want your FormAction to come "
-"after user creation because the success() method of Regsitration User "
+"after user creation because the success() method of Registration User "
 "Creation is responsible for creating the new UserModel."
 msgstr ""
 
@@ -1279,13 +1279,13 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Keycloak also has a specific authentication flow for forgot password, or "
-"rather credential reset initiated by a user.  If you go to the admin console "
-"flows page, there is a \"reset credentials\" flow.  By default, Keycloak "
-"asks for the email or username of the user and sends an email to them.  If "
-"the user clicks on the link, then they are able to reset both their password "
-"and OTP (if an OTP has been set up).  You can disable automatic OTP reset by "
-"disabling the \"Reset OTP\" authenticator in the flow."
+"{project_name} also has a specific authentication flow for forgot password, "
+"or rather credential reset initiated by a user.  If you go to the admin "
+"console flows page, there is a \"reset credentials\" flow.  By default, "
+"{project_name} asks for the email or username of the user and sends an email "
+"to them.  If the user clicks on the link, then they are able to reset both "
+"their password and OTP (if an OTP has been set up).  You can disable "
+"automatic OTP reset by disabling the \"Reset OTP\" authenticator in the flow."
 msgstr ""
 
 #. type: Plain text
@@ -1358,7 +1358,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Actually Keycloak has 2 builtin implementations of client authentication:"
+"Actually {project_name} has 2 builtin implementations of client "
+"authentication:"
 msgstr ""
 
 #. type: Labeled list
@@ -1369,8 +1370,8 @@ msgstr ""
 #. type: Plain text
 #, no-wrap
 msgid ""
-"This is default mechanism mentioned in the https://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect]                                or https://tools.ietf.org/html/rfc6749[OAuth2] specification and Keycloak supports it since it's early days.\n"
-"The public client needs to include `client_id` parameter with it's ID in the POST request (so it's defacto not authenticated) and the confidential client needs to include `Authorization: Basic` header with the clientId and clientSecret used as username and password. \n"
+"This is default mechanism mentioned in the https://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect]                                or https://tools.ietf.org/html/rfc6749[OAuth2] specification and {project_name} supports it since it's early days.\n"
+"The public client needs to include `client_id` parameter with its ID in the POST request (so it's defacto not authenticated) and the confidential client needs to include `Authorization: Basic` header with the clientId and clientSecret used as username and password. \n"
 msgstr ""
 
 #. type: Labeled list
@@ -1383,7 +1384,7 @@ msgstr ""
 msgid ""
 "This is based on the https://tools.ietf.org/html/rfc7523[JWT Bearer Token Profiles for OAuth 2.0] specification.\n"
 "The client/adapter generates the https://tools.ietf.org/html/rfc7519[JWT] and signs it with his private key.\n"
-"The Keycloak then verifies the signed JWT with the client's public key and authenticates client based on it.             \n"
+"The {project_name} then verifies the signed JWT with the client's public key and authenticates client based on it.             \n"
 msgstr ""
 
 #. type: Plain text

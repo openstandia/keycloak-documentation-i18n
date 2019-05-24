@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -355,6 +355,201 @@ msgid ""
 "    app.get( '/admin', keycloak.protect( 'realm:admin' ), adminHandler );\n"
 msgstr ""
 "    app.get( '/admin', keycloak.protect( 'realm:admin' ), adminHandler );\n"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Resource-Based Authorization"
+msgstr "リソースベースの認可"
+
+#. type: Plain text
+msgid ""
+"Resource-Based Authorization allows you to protect resources, and their "
+"specific methods/actions,**** based on a set of policies defined in "
+"Keycloak, thus externalizing authorization from your application. This is "
+"achieved by exposing a `keycloak.enforcer` method which you can use to "
+"protect resources.*"
+msgstr ""
+"リソースベースの認可では、Keycloakで定義されている一連のポリシーに基づいてリソースとその特定のメソッド/アクションを保護することができます。したがって、アプリケーションからの認可を外部化できます。これは、リソースを保護するために使用できる"
+" `keycloak.enforcer` メソッドを公開することによって達成されます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    app.get('/apis/me', keycloak.enforcer('user:profile'), "
+"userProfileHandler);\n"
+msgstr ""
+"    app.get('/apis/me', keycloak.enforcer('user:profile'), "
+"userProfileHandler);\n"
+
+#. type: Plain text
+msgid ""
+"The `keycloak-enforcer` method operates in two modes, depending on the value"
+" of the `response_mode` configuration option."
+msgstr "`keycloak-enforcer` メソッドは、 `response_mode` 設定オプションの値に応じて2つのモードで動作します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    app.get('/apis/me', keycloak.enforcer('user:profile', {response_mode: "
+"'token'}), userProfileHandler);\n"
+msgstr ""
+"    app.get('/apis/me', keycloak.enforcer('user:profile', {response_mode: "
+"'token'}), userProfileHandler);\n"
+
+#. type: Plain text
+msgid ""
+"If `response_mode` is set to `token`, permissions are obtained from the "
+"server on behalf of the subject represented by the bearer token that was "
+"sent to your application. In this case, a new access token is issued by "
+"Keycloak with the permissions granted by the server. If the server did not "
+"respond with a token with the expected permissions, the request is denied. "
+"When using this mode, you should be able to obtain the token from the "
+"request as follows:"
+msgstr ""
+"`response_mode` が `token` "
+"に設定されている場合、パーミッションはアプリケーションに送られたベアラートークンによって表されるサブジェクトに代わりにサーバーから取得されます。この場合、Keycloakによって付与されたパーミッションとともに新しいアクセストークンが発行されます。サーバーが想定したパーミッションを持つトークンで応答しなかった場合、リクエストは拒否されます。このモードを使用するときは、次のようにリクエストからトークンを取得できるはずです。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    app.get('/apis/me', keycloak.enforcer('user:profile', {response_mode: 'token'}), function (req, res) {\n"
+"        var token = var token = req.kauth.grant.access_token.content;\n"
+"        var permissions = token.authorization ? token.authorization.permissions : undefined;\n"
+msgstr ""
+"    app.get('/apis/me', keycloak.enforcer('user:profile', {response_mode: 'token'}), function (req, res) {\n"
+"        var token = var token = req.kauth.grant.access_token.content;\n"
+"        var permissions = token.authorization ? token.authorization.permissions : undefined;\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"        // show user profile\n"
+"    });\n"
+msgstr ""
+"        // show user profile\n"
+"    });\n"
+
+#. type: Plain text
+msgid ""
+"Prefer this mode when your application is using sessions and you want to "
+"cache previous decisions from the server, as well automatically handle "
+"refresh tokens. This mode is especially useful for applications acting as a "
+"client and resource server."
+msgstr ""
+"アプリケーションがセッションを使用していて、サーバーからの以前の決定をキャッシュしたい場合や、自動的に更新トークンを処理したい場合は、このモードを選択してください。このモードは、クライアントおよびリソースサーバーとして機能するアプリケーションに特に役立ちます。"
+
+#. type: Plain text
+msgid ""
+"If `response_mode` is set to `permissions` (default mode), the server only "
+"returns the list of granted permissions, without issuing a new access token."
+" In addition to not issuing a new token, this method exposes the permissions"
+" granted by the server through the `request` as follows:"
+msgstr ""
+"`response_mode` が `permissions` "
+"に設定されている場合（デフォルトモード）、サーバーは新しいアクセストークンを発行せずに、許可されたパーミッションのリストのみを返します。新しいトークンを発行しないことに加えて、このメソッドは以下のように"
+" `request` を介してサーバーにより与えられたパーミッションを公開します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    app.get('/apis/me', keycloak.enforcer('user:profile', {response_mode: 'token'}), function (req, res) {\n"
+"        var permissions = req.permissions;\n"
+msgstr ""
+"    app.get('/apis/me', keycloak.enforcer('user:profile', {response_mode: 'token'}), function (req, res) {\n"
+"        var permissions = req.permissions;\n"
+
+#. type: Plain text
+msgid ""
+"Regardless of the `response_mode` in use, the `keycloak.enforcer` method "
+"will first try to check the permissions within the bearer token that was "
+"sent to your application. If the bearer token already carries the expected "
+"permissions, there is no need to interact with the server to obtain a "
+"decision. This is specially useful when your clients are capable of "
+"obtaining access tokens from the server with the expected permissions before"
+" accessing a protected resource, so they can use some capabilities provided "
+"by Keycloak Authorization Services such as incremental authorization and "
+"avoid additional requests to the server when `keycloak.enforcer` is "
+"enforcing access to the resource."
+msgstr ""
+"`response_mode` が使われているかどうかにかかわらず、 `keycloak.enforcer` "
+"メソッドは最初にアプリケーションに送られたベアラートークンの中のパーミッションをチェックしようとします。ベアラートークンがすでに想定されたパーミッションを持っている場合は、決定を得るためにサーバーと対話する必要はありません。これは、保護されたリソースにアクセスする前に、クライアントが期待されるパーミッションでサーバーからアクセストークンを取得できる場合に特に役立ちます。そのため、クライアントは増分認可などのKeycloak認可サービスによって提供される機能を使用できます。"
+" `keycloak.enforcer` はリソースへのアクセスを強制します。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"By default, the policy enforcer will use the `client_id` defined to the application (for instance, via `keycloak.json`) to\n"
+" reference a client in Keycloak that supports Keycloak Authorization Services. In this case, the client can not be public given\n"
+" that it is actually a resource server.\n"
+msgstr ""
+"デフォルトでは、ポリシー・エンフォーサーはアプリケーションに定義された `client_id` を使って（例えば `keycloak.json` "
+"を介して）、Keycloakの認可サービスをサポートするKeycloakのクライアントを参照します。この場合、クライアントは実際にはリソースサーバーであるため、パブリックにすることはできません。\n"
+
+#. type: Plain text
+msgid ""
+"If your application is acting as both a public client(frontend) and resource"
+" server(backend), you can use the following configuration to reference a "
+"different client in Keycloak with the policies that you want to enforce:"
+msgstr ""
+"アプリケーションがパブリック・クライアント（フロントエンド）とリソースサーバー（バックエンド）の両方として機能している場合は、次の設定を使用して、施行したいポリシーでKeycloak内の別のクライアントを参照できます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"      keycloak.enforcer('user:profile', {resource_server_id: 'my-"
+"apiserver'})\n"
+msgstr ""
+"      keycloak.enforcer('user:profile', {resource_server_id: 'my-"
+"apiserver'})\n"
+
+#. type: Plain text
+msgid ""
+"It is recommended to use distinct clients in Keycloak to represent your "
+"frontend and backend."
+msgstr "フロントエンドとバックエンドを表すために、Keycloakで個別のクライアントを使用することをお勧めします。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"If the application you are protecting is enabled with Keycloak authorization services and you have defined client credentials\n"
+" in `keycloak.json`, you can push additional claims to the server and make them available to your policies in order to make decisions.\n"
+"For that, you can define a `claims` configuration option which expects a `function` that returns a JSON with the claims you want to push:\n"
+msgstr ""
+"保護しているアプリケーションがKeycloak認可サービスで有効になっていて、 `keycloak.json` "
+"でクライアントのクレデンシャルを定義している場合は、決定を下すために、追加のクレームをサーバーにプッシュし、それらをポリシーで利用できるようにすることができます。そのために、プッシュしたいクレームを持つJSONを返す"
+" `function` を期待する `claim` 設定オプションを定義できます。\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"      app.get('/protected/resource', keycloak.enforcer(['resource:view', 'resource:write'], {\n"
+"          claims: function(request) {\n"
+"            return {\n"
+"              \"http.uri\": [\"/protected/resource\"],\n"
+"              \"user.agent\": // get user agent  from request\n"
+"            }\n"
+"          }\n"
+"        }), function (req, res) {\n"
+"          // access granted\n"
+msgstr ""
+"      app.get('/protected/resource', keycloak.enforcer(['resource:view', 'resource:write'], {\n"
+"          claims: function(request) {\n"
+"            return {\n"
+"              \"http.uri\": [\"/protected/resource\"],\n"
+"              \"user.agent\": // get user agent  from request\n"
+"            }\n"
+"          }\n"
+"        }), function (req, res) {\n"
+"          // access granted\n"
+
+#. type: Plain text
+msgid ""
+"For more details about how to configure Keycloak to protected your "
+"application resources, please take a look at the "
+"link:{authorizationguide_link}[{authorizationguide_name}]."
+msgstr ""
+"アプリケーションのリソースを保護するようにKeycloakを設定する方法の詳細については、 "
+"link:{authorizationguide_link}[{authorizationguide_name}] をご覧ください。"
 
 #. type: Labeled list
 #, no-wrap

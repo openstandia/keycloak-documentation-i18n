@@ -39,14 +39,14 @@ msgid ""
 "    public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {\n"
 "        if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel)) return false;\n"
 msgstr ""
-"@Override\n"
-" public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {\n"
-" if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel)) return false;\n"
+"    @Override\n"
+"    public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {\n"
+"        if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel)) return false;\n"
 
 #. type: Title ===
 #, no-wrap
 msgid "Add/Remove User and Query Capability interfaces"
-msgstr "ユーザーおよびクエリー機能の追加/削除インターフェイス"
+msgstr "ユーザーの追加/削除およびクエリーのケイパビリティー・インターフェイス"
 
 #. type: Plain text
 msgid ""
@@ -56,8 +56,8 @@ msgid ""
 "enhancements, our example provider must implement the `UserQueryProvider` "
 "and `UserRegistrationProvider` interfaces."
 msgstr ""
-"これまでの例で行っていないことの1つは、ユーザーの追加と削除やパスワードの変更を許可することです。これまでの例で定義されたユーザーは、管理コンソールで照会することも表示することもできません。これらの拡張機能を追加するには、サンプル・プロバイダーで"
-" `UserQueryProvider` と `UserRegistrationProvider` インタフェースを実装する必要があります。"
+"これまでのサンプルで行っていないことの1つは、ユーザーの追加と削除やパスワードの変更をできるようにすることです。これまでのサンプルで定義されたユーザーは、管理コンソールで照会することも表示することもできません。これらの拡張機能を追加するには、サンプル・プロバイダーで"
+" `UserQueryProvider` と `UserRegistrationProvider` インターフェイスを実装する必要があります。"
 
 #. type: Title ====
 #, no-wrap
@@ -68,7 +68,7 @@ msgstr "UserRegistrationProviderの実装"
 msgid ""
 "To implement adding and removing users from this particular store, we first "
 "have to be able to save our properties file to disk."
-msgstr "特定のストアにユーザーを追加または削除するために、プロパティー・ファイルをディスクに保存する必要があります。"
+msgstr "特定のストアに対するユーザーの追加と削除を実装するためには、まずプロパティー・ファイルをディスクに保存できるようにする必要があります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -157,8 +157,8 @@ msgid ""
 "property in the property value. We also have to modify the "
 "`CredentialInputValidator` methods to reflect this."
 msgstr ""
-"ユーザーを追加するとき、プロパティー・マップのパスワード値を `UNSET_PASSWORD` "
-"に設定することに注意してください。これは、プロパティー値に対してnull値を持つことができないためです。これを反映するために、 "
+"ユーザーを追加する際に、プロパティー・マップのパスワード値を `UNSET_PASSWORD` "
+"に設定することに注意してください。これは、プロパティー値をnullにすることができないためです。これを反映するために、 "
 "`CredentialInputValidator` メソッドを変更する必要もあります。"
 
 #. type: Plain text
@@ -169,8 +169,8 @@ msgid ""
 " the provider and call the next one."
 msgstr ""
 "プロバイダーが `UserRegistrationProvider` インターフェイスを実装している場合、 `addUser()` "
-"メソッドが呼び出されます。プロバイダーがユーザーを追加するための設定スイッチを持っている場合、このメソッドから  `null` "
-"を返すとプロバイダーをスキップして、次のメソッドを呼び出します。"
+"メソッドが呼び出されます。プロバイダーがユーザーの追加をオフにする設定スイッチを持っている場合、このメソッドから  `null` "
+"を返すことで、このプロバイダーをスキップして、次を呼び出すようにできます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -191,7 +191,7 @@ msgstr ""
 msgid ""
 "Since we can now save our property file, it also makes sense to allow "
 "password updates."
-msgstr "プロパティー・ファイルを保存できるようになったので、パスワードの更新を許可するのも理にかなっています。"
+msgstr "これでプロパティー・ファイルを保存できるようになったので、パスワードも更新できるようになります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -283,7 +283,7 @@ msgstr ""
 msgid ""
 "With these methods implemented, you'll now be able to change and disable the"
 " password for the user in the administration console."
-msgstr "これらのメソッドを実装すると、管理コンソールでユーザーのパスワードを変更および無効にできるようになります。"
+msgstr "これらのメソッドを実装すると、管理コンソールでユーザーのパスワードの変更や無効化ができるようになります。"
 
 #. type: Title ====
 #, no-wrap

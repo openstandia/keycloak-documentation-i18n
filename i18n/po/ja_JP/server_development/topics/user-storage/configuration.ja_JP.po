@@ -41,7 +41,7 @@ msgid ""
 "perform this configuration within the administration console UI."
 msgstr ""
 "`PropertyFileUserStorageProvider` "
-"のサンプルには少し工夫が必要です。プロバイダーのjarに組み込まれたプロパティー・ファイルにハードコードされていて、これはあまり便利ではありません。プロバイダーのインスタンス毎にこのファイルの場所を設定できるようにすることをお勧めします。つまり、複数の異なるレルムで複数回にわたりこのプロバイダーを利用して、完全に異なるユーザー・プロパティー・ファイルを指し示す必要があるということです。また、この設定は管理コンソールのUI内でも変更できるようにすることをお勧めします。"
+"のサンプルには少し工夫が必要です。プロバイダーのjarに組み込まれたプロパティー・ファイルにハードコードされていて、これはあまり便利ではありません。プロバイダーのインスタンス毎にこのファイルの場所を設定できるようにすることをお勧めします。つまり、このプロバイダーを複数の異なるレルムで複数回再利用して、まったく異なるユーザー・プロパティー・ファイルを指すようにしたい場合があります。また、この設定は管理コンソールのUI内でも変更できるようにすることをお勧めします。"
 
 #. type: Plain text
 msgid ""
@@ -55,7 +55,7 @@ msgid ""
 "`org.keycloak.component.ComponentFactory` interface."
 msgstr ""
 "`UserStorageProviderFactory` "
-"には、プロバイダーの設定を処理する、実装可能な追加のメソッドがあります。プロバイダー毎に設定する必要がある変数を記述し、この設定を取り込むための一般的な入力ページを管理コンソールで自動的にレンダリングします。実装されると、それが保存される前、プロバイダーが初めて作成された時、および更新時に、callbackメソッドも設定を検証します。"
+"には、プロバイダーの設定を処理する、実装可能な追加のメソッドがあります。プロバイダーごとに設定したい変数を記述すると、管理コンソールが自動的に汎用入力ページを表示してこの設定を収集します。実装されると、プロバイダーが初めて作成された時、および更新時に、callbackメソッドが設定を保存する前に検証します。"
 " `UserStorageProviderFactory` は `org.keycloak.component.ComponentFactory` "
 "インターフェイスからこれらのメソッドを継承します。"
 
@@ -116,7 +116,7 @@ msgid ""
 "Let's expand our `PropertyFileUserStorageProviderFactory` example to allow "
 "you to point a provider instance to a specific file on disk."
 msgstr ""
-"ディスク上の特定のファイルへプロバイダー・インスタンスを参照するように、 "
+"プロバイダー・インスタンスがディスク上の特定のファイルを参照するように、 "
 "`PropertyFileUserStorageProviderFactory` のサンプルを拡張してみましょう。"
 
 #. type: Block title
@@ -187,11 +187,10 @@ msgid ""
 "help text, `File path to properties file`."
 msgstr ""
 "`ProviderConfigurationBuilder` "
-"クラスは、設定プロパティーのリストを作成するのに非常に役立ちます。ここでは文字列の種類である `path` "
-"という名前の変数を指定します。このプロバイダーのための管理コンソール設定ページでは、この設定変数が `Path` としてラベル付けされ、デフォルト値は "
-"`${jboss.server.config.dir}/example-users.properties` "
-"になります。この設定オプションのツールチップにマウスポインターを置くと、ヘルプテキスト `File path to properties file` "
-"が表示されます。"
+"クラスは、設定プロパティーのリストを作成するための優れたヘルパークラスです。ここでは、String型のpathという名前の変数を指定します。管理コンソールにおけるこのプロバイダーの設定ページでは、この設定変数は"
+" `Path` というラベルが付けられており、デフォルト値は `${jboss.server.config.dir}/example-"
+"users.properties` です。この設定オプションのツールチップにカーソルを合わせると、ヘルプテキスト `File path to "
+"properties file` が表示されます。"
 
 #. type: Plain text
 msgid ""
@@ -200,7 +199,7 @@ msgid ""
 "points to a valid user property file. To do this, we implement the "
 "`validateConfiguration()` method."
 msgstr ""
-"次にすべきことは、このファイルがディスク上に存在することの検証です。有効なユーザー・プロパティー・ファイルを指し示していない限り、レルム内でこのプロバイダーのインスタンスを有効にしません。これを行うには、"
+"次にすべきことは、このファイルがディスク上に存在することを確認することです。有効なユーザー・プロパティー・ファイルを指していない限り、レルム内でこのプロバイダーのインスタンスを有効にしたくありません。これを行うには、"
 " `validateConfiguration()` メソッドを実装します。"
 
 #. type: delimited block -
@@ -241,11 +240,11 @@ msgid ""
 "this example."
 msgstr ""
 "`validateConfiguration()` メソッド内では、 `ComponentModel` "
-"から設定変数を取得し、そのファイルがディスク上に存在するかどうかを確認します。　"
+"から設定変数を取得し、そのファイルがディスク上に存在するかどうかを確認します。 "
 "`org.keycloak.common.util.EnvUtil.replace()` "
-"メソッドを使用していることに注意してください。このメソッドを使用すると、 `${}` "
-"が入っている文字列によりシステム・プロパティー値でそれは置き換えられます。 `${jboss.server.config.dir}` "
-"文字列は、サーバーの `configuration/` ディレクトリーに対応しており、このサンプルでは非常に便利です。"
+"メソッドを使用していることに注意してください。このメソッドを使用すると、 `${}` が含まれる文字列がシステム・プロパティー値で置換されます。 "
+"`${jboss.server.config.dir}` という文字列は、サーバーの `configuration/` "
+"ディレクトリーに対応しており、このサンプルでは非常に便利です。"
 
 #. type: Plain text
 msgid ""
@@ -304,7 +303,7 @@ msgid ""
 "user property file from disk, but hopefully this illustrates, in a simple "
 "way, how to hook in configuration variables."
 msgstr ""
-"このロジックは、すべてのトランザクションがディスクからユーザー・プロパティー・ファイル全体を読み込むので、もちろん非効率ですが、これは設定変数にフックする方法を簡単な方法で示しているはずです。"
+"このロジックは、すべてのトランザクションがディスクからユーザー・プロパティー・ファイル全体を読み込むので、もちろん非効率ですが、設定変数にフックする簡単な方法を示しているはずです。"
 
 #. type: Title ====
 #, no-wrap
@@ -320,7 +319,7 @@ msgstr "これで、設定ができるようになりました。管理コンソ
 #. type: Block title
 #, no-wrap
 msgid "Configured Provider"
-msgstr "設定プロバイダー"
+msgstr "設定されたプロバイダー"
 
 #. type: Plain text
 msgid "image:{project_images}/storage-provider-with-config.png[]"

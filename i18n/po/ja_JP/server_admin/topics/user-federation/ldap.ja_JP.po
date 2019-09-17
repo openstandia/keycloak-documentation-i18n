@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hiroyuki Wada <wadahiro@gmail.com>, 2017
 # Shinsuke UEDA, 2017
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
@@ -44,9 +44,9 @@ msgid ""
 "`Add Provider` select box.  You should see _ldap_ within this list.  "
 "Selecting _ldap_ will bring you to the LDAP configuration page."
 msgstr ""
-"フェデレーテッドLDAPストアを設定するには、管理コンソールを開きます。左メニューのオプションから `User Federation` "
-"をクリックしてください。このページに移動すると、 `Add Provider` 選択ボックスがあります。このリストの中に _ldap_ があるはずです。"
-" _ldap_ を選択すると、LDAP設定ページが表示されます。"
+"統合されたLDAPストアを設定するには、管理コンソールを開きます。左メニューのオプションから `User Federation` "
+"をクリックしてください。このページに移動すると、 `Add Provider` の選択ボックスがあります。このリストの中に _ldap_ があります。 "
+"_ldap_ を選択すると、LDAP設定ページが表示されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -68,7 +68,7 @@ msgid ""
 "queried, this will require a {project_name} database insert.  The import "
 "will also have to be synchronized with your LDAP server as needed."
 msgstr ""
-"デフォルトでは、{project_name}はLDAPからローカル{project_name}ユーザー・データベースにユーザーをインポートします。このユーザーのコピーは、オンデマンドで同期されるか、または定期的なバックグラウンド・タスクによって同期されます。1つの例外はパスワードです。パスワードはインポートされず、パスワードの検証はLDAPサーバーに委任されます。このアプローチの利点は、必要とされる追加のユーザーごとのデータをローカルに保存できるため、すべての{project_name}機能が動作することです。この方法はまた、LDAPサーバーの負荷を軽減します。非キャッシュ・ユーザーは、2回目のアクセス時に{project_name}データベースからロードされます。LDAPサーバーが持つ唯一の負荷はパスワードの検証です。このアプローチの欠点は、ユーザーが最初に問い合わせされるときに、{project_name}データベースの挿入が必要になることです。インポートも、必要に応じてLDAPサーバーと同期する必要があります。"
+"デフォルトでは、{project_name}はLDAPからローカル{project_name}ユーザー・データベースにユーザーをインポートします。このユーザーのコピーは、要求に応じて同期されるか、または定期的なバックグラウンド・タスクによって同期されます。1つの例外はパスワードです。パスワードはインポートされず、パスワードの検証はLDAPサーバーに委任されます。このアプローチの利点は、必要とされる追加のユーザーごとにデータをローカルに保存できるため、すべての{project_name}機能が動作することです。また、この方法は、キャッシュされていないユーザーが2回目のアクセス時に{project_name}データベースからロードされるため、LDAPサーバーの負荷を軽減します。LDAPサーバーにかかる唯一の負荷はパスワードの検証です。このアプローチの欠点は、ユーザーが最初に照会されたときに、{project_name}のデータベースへの挿入が必要になることです。インポートも、必要に応じてLDAPサーバーと同期する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -80,7 +80,7 @@ msgid ""
 " the overhead of importing and synchronizing a copy of the LDAP user into "
 "the {project_name} user database."
 msgstr ""
-"また、ユーザーを{project_name}ユーザー・データベースにインポートしないように選択することもできます。この場合、{project_name}ランタイムが使用する共通ユーザーモデルは、LDAPサーバーによってのみバックアップされます。つまり、LDAPが{project_name}機能に必要なデータをサポートしていない場合、その機能は動作しません。この方法の利点は、LDAPユーザーのコピーを{project_name}ユーザー・データベースにインポートして同期するオーバーヘッドがないことです。"
+"また、ユーザーを{project_name}ユーザー・データベースにインポートしないように選択することもできます。この場合、{project_name}ランタイムが使用する共通ユーザーモデルは、LDAPサーバーによってのみバックアップされます。つまり、LDAPが{project_name}の機能に必要なデータをサポートしていない場合、その機能は動作しません。この方法の利点は、LDAPユーザーのコピーを{project_name}のユーザー・データベースにインポートして同期するオーバーヘッドがないことです。"
 
 #. type: Plain text
 msgid ""
@@ -144,7 +144,7 @@ msgid ""
 "only applies when you are importing users from LDAP into the local "
 "{project_name} user database."
 msgstr ""
-"ユーザー名、メールアドレス、姓、パスワードの変更は{project_name}ローカル・ストレージに保存されます。LDAPに同期する方法は、あなた次第です。これにより、{project_name}デプロイメントは、読み取り専用LDAPサーバー上のユーザー・メタデータの更新をサポートできます。このオプションは、LDAPからローカル{project_name}ユーザー・データベースにユーザーをインポートする場合にのみ適用されます。"
+"ユーザー名、電子メール、姓、パスワードの変更は{project_name}ローカル・ストレージに保存されます。LDAPに同期する方法は、あなた次第です。これにより、{project_name}デプロイメントは、読み取り専用LDAPサーバー上のユーザー・メタデータの更新をサポートできます。このオプションは、LDAPからローカルの{project_name}ユーザー・データベースにユーザーをインポートする場合にのみ適用されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -180,7 +180,7 @@ msgid ""
 "users created by {project_name} in the admin console or the registration "
 "page to be added to LDAP."
 msgstr ""
-"LDAPは新規ユーザーの追加をサポートするかどうか。管理コンソールの{project_name}によって作成された新しいユーザーまたは登録ページをLDAPに追加する場合は、このスイッチをクリックします。"
+"LDAPが新規ユーザーの追加をサポートするかどうか。管理コンソールまたは登録ページで{project_name}によって作成された新規ユーザーをLDAPに追加する場合は、このスイッチをクリックします。"
 
 #. type: Labeled list
 #, no-wrap
@@ -192,7 +192,7 @@ msgid ""
 "Enable Kerberos/SPNEGO authentication in realm with users data provisioned "
 "from LDAP.  More info in <<_kerberos,Kerberos section>>."
 msgstr ""
-"LDAPからプロビジョニングされたユーザーデータでの、レルム内のKerberos/SPNEGO認証を有効にします。詳細は<<_kerberos,Kerberosのセクション>>にあります。"
+"LDAPからプロビジョニングされたユーザーデータを使用し、レルム内でKerberos/SPNEGO認証を有効にします。詳細は<<_kerberos,Kerberosのセクション>>にあります。"
 
 #. type: Labeled list
 #, no-wrap
@@ -218,8 +218,8 @@ msgid ""
 "configure a truststore on the {project_name} server side, otherwise "
 "{project_name} can't trust the SSL connection to LDAP."
 msgstr ""
-"LDAPストアへのセキュリティーで保護された接続URL（たとえば `ldaps://myhost.com:636` "
-"）を設定すると、{project_name}はLDAPサーバーとの通信にSSLを使用します。重要なことは、{project_name}サーバー側でトラストストアを適切に構成することです。そうしないと{project_name}はLDAPへのSSL接続を信頼できません。"
+"LDAPストアへのセキュリティー保護された接続URL（たとえば `ldaps://myhost.com:636` "
+"）を設定すると、{project_name}はLDAPサーバーとの通信にSSLを使用します。重要なことは、{project_name}サーバー側でトラストストアを適切に設定することです。そうしないと、{project_name}はLDAPへのSSL接続を信頼できません。"
 
 #. type: Plain text
 msgid ""
@@ -276,8 +276,8 @@ msgid ""
 " configure and enable the `Sync Settings` of the LDAP provider you "
 "configured.  There are 2 types of synchronization:"
 msgstr ""
-"すべてのLDAPユーザーを{project_name}データベースに同期させたい場合は、設定したLDAPプロバイダーの `Sync Settings` "
-"を設定して有効にすることができます。同期には2種類あります。"
+"すべてのLDAPユーザーを{project_name}のデータベースに同期させたい場合は、設定したLDAPプロバイダーの `Sync Settings`"
+" を設定して有効にすることができます。同期には2種類あります。"
 
 #. type: Labeled list
 #, no-wrap
@@ -291,9 +291,8 @@ msgid ""
 "directly will be updated in {project_name} DB (For example if user `Mary "
 "Kelly` was changed in LDAP to `Mary Smith`)."
 msgstr ""
-"これにより、すべてのLDAPユーザーが{project_name} "
-"DBに同期されます。{project_name}にすでに存在し、LDAPで直接変更されたLDAPユーザーは、{project_name} "
-"DBで更新されます（たとえば、ユーザー `Mary Kelly` がLDAPで `Mary Smith` に変更された場合）。"
+"これにより、すべてのLDAPユーザーが{project_name}のDBに同期されます。LDAPで直接更新されたLDAPユーザーが{project_name}にも存在する場合、{project_name}のDBも更新されます（たとえば、ユーザー"
+" `Mary Kelly` がLDAPで `Mary Smith` に変更された場合）。"
 
 #. type: Labeled list
 #, no-wrap
@@ -314,7 +313,7 @@ msgid ""
 " options to support you."
 msgstr ""
 "同期を処理する最善の方法は、LDAPプロバイダーを最初に作成するときに `Synchronize all users` "
-"ボタンをクリックした後、変更されたユーザーの定期的な同期を設定することです。 LDAPプロバイダーの設定ページには、いくつかのオプションがあります。"
+"ボタンをクリックして、その後、変更されたユーザーの定期的な同期を設定することです。LDAPプロバイダーの設定ページには、いくつかのオプションがあります。"
 
 #. type: Title ====
 #, no-wrap
@@ -386,9 +385,9 @@ msgid ""
 "mappings from groups under `ou=finance,dc=example,dc=org` will be mapped to "
 "client role mappings of client `finance` ."
 msgstr ""
-"これにより、LDAPからのロールマッピングを{project_name}のロールマッピングに設定できます。1つのロールマッパーを使用して、LDAPロール（通常はLDAPツリーの特定のブランチからのグループ）を、レルムロールまたはクライアントロールのいずれかにマップできます。同じLDAPプロバイダーに対してさらにロールマッパーを設定することは問題ではありません。たとえば、"
-" `ou=main,dc=example,dc=org` のグループからのロールマッピングをレルムロール・マッピングにマップし、 "
-"`ou=finance,dc=example,dc=org` のグループからのロールマッピングをクライアント `finance` "
+"これにより、LDAPから取得したロールマッピングを{project_name}のロールマッピングに設定できます。1つのロールマッパーを使用して、LDAPロール（通常はLDAPツリーの特定のブランチから取得したグループ）を、レルムロールまたはクライアントロールのいずれかにマップできます。同じLDAPプロバイダーに対してさらにロールマッパーを設定することも問題ありません。たとえば、"
+" `ou=main,dc=example,dc=org` のグループから取得したロールマッピングをレルムロール・マッピングにマップし、 "
+"`ou=finance,dc=example,dc=org` のグループから取得したロールマッピングをクライアント `finance` "
 "のクライアントロール・マッピングにマップするように指定できます。"
 
 #. type: Labeled list
@@ -415,7 +414,7 @@ msgid ""
 "also propagate user-group mappings from LDAP into user-group mappings in "
 "{project_name}."
 msgstr ""
-"これにより、LDAPからのグループ・マッピングを{project_name}グループ・マッピングに設定できます。グループマッパーを使用すると、LDAPツリーの特定のブランチからのLDAPグループを{project_name}のグループにマップできます。また、LDAPからのユーザーグループ・マッピングを{project_name}のユーザーグループ・マッピングに伝播します。"
+"これにより、LDAPから取得したグループ・マッピングを{project_name}グループ・マッピングに設定できます。グループマッパーを使用すると、LDAPツリーの特定のブランチから取得したLDAPグループを{project_name}のグループにマップできます。また、LDAPから取得したユーザーグループ・マッピングを{project_name}のユーザーグループ・マッピングに伝播します。"
 
 #. type: Labeled list
 #, no-wrap
@@ -437,7 +436,7 @@ msgstr ""
 "このマッパーは、Microsoft Active Directory（MSAD）固有のものです。 "
 "MSADユーザー・アカウントの状態を{project_name}アカウントの状態（アカウントが有効、パスワードが期限切れなど）に緊密に統合できます。 "
 "`userAccountControl` と `pwdLastSet` "
-"LDAP属性を使っています（どちらもMSAD固有のものであり、LDAP標準ではありません）。たとえば `pwdLastSet` が `0` "
+"のLDAP属性を使っています（どちらもMSAD固有のものであり、LDAP標準ではありません）。たとえば `pwdLastSet` が `0` "
 "の場合、{project_name}ユーザーはパスワードを更新する必要があり、UPDATE_PASSWORD必須アクションがユーザーに追加されます。 "
 "`userAccountControl` が `514` （無効なアカウント）の場合、{project_name}ユーザーも無効になります。"
 

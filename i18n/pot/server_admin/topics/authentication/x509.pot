@@ -145,15 +145,19 @@ msgid "Match IssuerDN using regular expression"
 msgstr ""
 
 #. type: Plain text
-msgid "X500 Issuer's e-mail attribute"
-msgstr ""
-
-#. type: Plain text
-msgid "X500 Issuer's Common Name attribute"
-msgstr ""
-
-#. type: Plain text
 msgid "Certificate Serial Number"
+msgstr ""
+
+#. type: Plain text
+msgid "Certificate Serial Number and IssuerDN"
+msgstr ""
+
+#. type: Plain text
+msgid "SHA-256 Certificate thumbprint"
+msgstr ""
+
+#. type: Plain text
+msgid "Full certificate in PEM format"
 msgstr ""
 
 #. type: Labeled list
@@ -200,6 +204,27 @@ msgid ""
 "Please notice that if we disable `Login with email` at realm settings, the "
 "same rules will be applied to certificate authentication. In other words, "
 "users won't be able to log in using e-mail attribute."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Usage of `Certificate Serial Number and IssuerDN` as an identity source "
+"requires two custom attributes - one for serial number and the other for "
+"IssuerDN."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`SHA-256 Certificate thumbprint` is lowercase hexadecimal representation of "
+"SHA-256 certificate thumbprint."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Usage of `Full certificate in PEM format` as an identity source is limited "
+"to custom attributes mapped to external federation sources like LDAP. You "
+"must enable `Always Read Value From LDAP` in this case, because certificates "
+"cannot be stored in Keycloak database due to a length limitation."
 msgstr ""
 
 #. type: Labeled list
@@ -450,7 +475,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Select \"X509/Validate User Form\" using the drop down and click on \"Save\""
+"Select \"X509/Validate Username Form\" using the drop down and click on "
+"\"Save\""
 msgstr ""
 
 #. type: Plain text
@@ -498,6 +524,40 @@ msgstr ""
 
 #. type: Labeled list
 #, no-wrap
+msgid "`Canonical DN representation enabled` (optional)"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Defines whether to use the canonical format to determine a distinguished "
+"name.  The format is described in detail in the official link:https://docs."
+"oracle.com/javase/8/docs/api/javax/security/auth/x500/X500Principal."
+"html#getName-java.lang.String-[Java API documentation] .  This option only "
+"affects the two User Identity Sources _Match SubjectDN using regular "
+"expression_ and _Match IssuerDN using regular expression_.  If you setup a "
+"new keycloak instance it is recommended to enable this option. Leave this "
+"option disabled to remain beckward compatible with existing Keycloak "
+"instances."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "`Enable Serial Number hexadecimal representation` (optional)"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"An option to use hexadecimal representation of the Serial Number. See link:"
+"https://tools.ietf.org/html/rfc5280#section-4.1.2.2[RFC5280, "
+"Section-4.1.2.2]. Serial Number with sign bit set to 1 should be left padded "
+"with 00 octet. E.g. Serial number with decimal value _161_, or _a1_ in "
+"hexadecimal representation according to RFC5280 must be encoded as _00a1_. "
+"More details can be found: link:https://tools.ietf.org/html/rfc5280#appendix-"
+"B[RFC5280, appendix-B]."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
 msgid "`A regular expression` (optional)"
 msgstr ""
 
@@ -529,7 +589,8 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "A custom attribute which value will be matched against the certificate "
-"identity."
+"identity. Multiple custom attributes are relevant when attribute mapping is "
+"related to multiple values, e.g. 'Certificate Serial Number and IssuerDN'."
 msgstr ""
 
 #. type: Labeled list

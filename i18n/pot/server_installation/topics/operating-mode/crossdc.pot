@@ -21,6 +21,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
+"Cross-Datacenter Replication Mode is Technology Preview and is not fully "
+"supported."
+msgstr ""
+
+#. type: Plain text
+msgid ""
 "Cross-Datacenter Replication mode is for when you want to run {project_name} "
 "in a cluster across multiple data centers, most typically using data center "
 "sites that are in different geographic regions. When using this mode, each "
@@ -205,8 +211,9 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
-msgid "The active/passive mode is better for performance. For more information about how to configure caches for either mode, see: <<backups>>.    \n"
+msgid ""
+"The active/passive mode is better for performance. For more information "
+"about how to configure caches for either mode, see: <<backups>>."
 msgstr ""
 
 #. type: Attribute :installguide_database_name:
@@ -366,14 +373,14 @@ msgid ""
 "centers. A {project_name} node does not communicate directly with the "
 "{project_name} nodes from different data centers. {project_name} nodes use "
 "external JDG (actually {jdgserver_name} servers) for communication across "
-"data centers. This is done using the link:http://infinispan.org/docs/8.2.x/"
+"data centers. This is done using the link:https://infinispan.org/docs/8.2.x/"
 "user_guide/user_guide.html#using_hot_rod_server[Infinispan HotRod protocol]."
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "The Infinispan caches on the {project_name} side must be configured with the "
-"link:http://infinispan.org/docs/8.2.x/user_guide/user_guide."
+"link:https://infinispan.org/docs/8.2.x/user_guide/user_guide."
 "html#remote_store[remoteStore] to ensure that data are saved to the remote "
 "cache. There is separate Infinispan cluster between JDG servers, so the data "
 "saved on JDG1 on `site1` are replicated to JDG2 on `site2` ."
@@ -569,7 +576,7 @@ msgid ""
 "        <replicated-cache name=\"offlineClientSessions\" configuration=\"sessions-cfg\"/>\n"
 "        <replicated-cache name=\"actionTokens\" configuration=\"sessions-cfg\"/>\n"
 "        <replicated-cache name=\"loginFailures\" configuration=\"sessions-cfg\"/>\n"
-"                \n"
+"\n"
 "</cache-container>\n"
 msgstr ""
 
@@ -645,7 +652,7 @@ msgid ""
 "                <identity-role-mapper/>\n"
 "                <role name=\"___script_manager\" permissions=\"ALL\"/>\n"
 "            </authorization>\n"
-"        </security> \n"
+"        </security>\n"
 "        ...\n"
 msgstr ""
 
@@ -812,8 +819,11 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
-msgid "In production you will likely need to have a separate database server in every data center and both database servers should be synchronously replicated to each other. In the example setup, we just use a single database and connect all 4 {project_name} servers to it.   \n"
+msgid ""
+"In production you will likely need to have a separate database server in "
+"every data center and both database servers should be synchronously "
+"replicated to each other. In the example setup, we just use a single "
+"database and connect all 4 {project_name} servers to it."
 msgstr ""
 
 #. type: Plain text
@@ -869,7 +879,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "<distributed-cache name=\"sessions\" owners=\"1\">\n"
-"    <remote-store cache=\"sessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">   \n"
+"    <remote-store cache=\"sessions\" remote-servers=\"remote-cache\" passivation=\"false\" fetch-state=\"false\" purge=\"false\" preload=\"false\" shared=\"true\">\n"
 "        <property name=\"rawValues\">true</property>\n"
 "        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
 "ifeval::[{project_product}==true]\n"
@@ -1115,7 +1125,7 @@ msgstr ""
 #. type: Code block
 #, no-wrap
 msgid ""
-"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store. \n"
+"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store.\n"
 "Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
 msgstr ""
 
@@ -1252,7 +1262,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "**Manually by admin** - Admin can use the `jconsole` or other tool and run some JMX operations to manually take the particular site offline.\n"
-"This is useful especially if the outage is planned. With `jconsole` or CLI, you can connect to the `jdg1` server and take the `site2` offline. \n"
+"This is useful especially if the outage is planned. With `jconsole` or CLI, you can connect to the `jdg1` server and take the `site2` offline.\n"
 "More details about this are available in the link:{jdgserver_crossdcdocs_link}#taking_a_site_offline[JDG documentation].\n"
 msgstr ""
 
@@ -1732,7 +1742,7 @@ msgstr ""
 #. type: Code block
 #, no-wrap
 msgid ""
-"18:09:30,156 INFO  [org.keycloak.connections.infinispan.DefaultInfinispanConnectionProviderFactory] (ServerService Thread Pool -- 54) \n"
+"18:09:30,156 INFO  [org.keycloak.connections.infinispan.DefaultInfinispanConnectionProviderFactory] (ServerService Thread Pool -- 54)\n"
 "Node name: node11, Site name: site1\n"
 msgstr ""
 
@@ -1781,8 +1791,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
-msgid "then check the log of corresponding {jdgserver_name} server of your site and check if has failed to backup to the other site. If the backup site is unavailable, then it is recommended to switch it offline, so that {jdgserver_name} server won't try to backup to the offline site causing the operations to pass successfully on {project_name} server side as well. See <<administration>> for more information.   \n"
+msgid ""
+"then check the log of corresponding {jdgserver_name} server of your site and "
+"check if has failed to backup to the other site. If the backup site is "
+"unavailable, then it is recommended to switch it offline, so that "
+"{jdgserver_name} server won't try to backup to the offline site causing the "
+"operations to pass successfully on {project_name} server side as well. See "
+"<<administration>> for more information."
 msgstr ""
 
 #. type: Plain text
@@ -1832,8 +1847,8 @@ msgstr ""
 #. type: Code block
 #, no-wrap
 msgid ""
-"(HotRodServerHandler-6-35) ISPN000136: Error executing command ReplaceCommand, \n"
-"writing keys [[B0x033E243034396234..[39]]: org.infinispan.util.concurrent.TimeoutException: ISPN000299: Unable to acquire lock after \n"
+"(HotRodServerHandler-6-35) ISPN000136: Error executing command ReplaceCommand,\n"
+"writing keys [[B0x033E243034396234..[39]]: org.infinispan.util.concurrent.TimeoutException: ISPN000299: Unable to acquire lock after\n"
 "0 milliseconds for key [B0x033E243034396234..[39] and requestor GlobalTx:jdg1:4353. Lock is held by GlobalTx:jdg1:4352\n"
 msgstr ""
 

@@ -162,6 +162,28 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
+msgid "Accepts prompt=none forward from client"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Specifies whether the IDP accepts forwarded authentication requests that contain the prompt=none query parameter or not. When a realm receives an auth request with `prompt=none` it checks\n"
+" if the user is currently authenticated and normally returns a `login_required` error if the user is not logged in. However, when a default IDP can be determined\n"
+" for the auth request (either via `kc_idp_hint` query param or by setting up a default IDP for the realm) we should be able to forward the auth request with\n"
+" `prompt=none` to the default IDP so that it checks if the user is currently authenticated there. Because not all IDPs support requests with `prompt=none` this switch\n"
+" is used to indicate if the default IDP supports the param before redirecting the auth request.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+" It is important to note that if the user is not authenticated in the IDP, the client will still get a `login_required` error. Even if the user is currently authenticated in the IDP,\n"
+" the client might still get an `interaction_required` error if authentication or consent pages requiring user interaction would be otherwise displayed. This includes required actions\n"
+" (e.g. change password), consent screens and any screens set to be displayed by the `first broker login` flow or `post broker login` flow.\n"
+msgstr ""
+
+#. type: Plain text
 msgid "Validate Signatures"
 msgstr ""
 

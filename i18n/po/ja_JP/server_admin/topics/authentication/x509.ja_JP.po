@@ -158,16 +158,20 @@ msgid "Match IssuerDN using regular expression"
 msgstr "正規表現を使用したIssuerDN一致"
 
 #. type: Plain text
-msgid "X500 Issuer's e-mail attribute"
-msgstr "X500 Issuer's e-mail属性"
-
-#. type: Plain text
-msgid "X500 Issuer's Common Name attribute"
-msgstr "X500 Issuer's Common Name属性"
-
-#. type: Plain text
 msgid "Certificate Serial Number"
 msgstr "証明書のシリアル番号"
+
+#. type: Plain text
+msgid "Certificate Serial Number and IssuerDN"
+msgstr "証明書のシリアル番号とIssuerDN"
+
+#. type: Plain text
+msgid "SHA-256 Certificate thumbprint"
+msgstr "SHA-256証明書のサムプリント"
+
+#. type: Plain text
+msgid "Full certificate in PEM format"
+msgstr "PEM形式の完全な証明書"
 
 #. type: Labeled list
 #, no-wrap
@@ -224,6 +228,31 @@ msgid ""
 msgstr ""
 "レルム設定で `電子メールによるログイン` を無効にすると、同じルールが証明書認証に適用されることに注意してください。つまり、ユーザーはe-"
 "mail属性を使用してログインすることはできません。"
+
+#. type: Plain text
+msgid ""
+"Usage of `Certificate Serial Number and IssuerDN` as an identity source "
+"requires two custom attributes - one for serial number and the other for "
+"IssuerDN."
+msgstr ""
+"アイデンティティー・ソースとして「証明書のシリアル番号とIssuerDN」を使用するには、シリアル番号用とIssuerDN用の2つのカスタム属性が必要です。"
+
+#. type: Plain text
+msgid ""
+"`SHA-256 Certificate thumbprint` is lowercase hexadecimal representation of "
+"SHA-256 certificate thumbprint."
+msgstr "`SHA-256証明書サムプリント` は、SHA-256証明書のサムプリントの小文字での16進数表現です。"
+
+#. type: Plain text
+msgid ""
+"Usage of `Full certificate in PEM format` as an identity source is limited "
+"to custom attributes mapped to external federation sources like LDAP. You "
+"must enable `Always Read Value From LDAP` in this case, because certificates"
+" cannot be stored in Keycloak database due to a length limitation."
+msgstr ""
+"アイデンティティー･ソースとしての `PEM形式の完全な証明書` "
+"の使用は、LDAPなどの外部フェデレーション・ソースにマッピングされたカスタム属性に制限されます。この場合、 `Always Read Value "
+"From LDAP` を有効にする必要があります。これは、長さの制限により証明書をKeycloakデータベースに保存できないためです。"
 
 #. type: Labeled list
 #, no-wrap
@@ -511,8 +540,10 @@ msgid ""
 msgstr "ドロップダウンを使用して、コピーされたフローを選択し、 \"Add execution\" をクリックします。"
 
 #. type: Plain text
-msgid "Select \"X509/Validate User Form\" using the drop down and click on \"Save\""
-msgstr "ドロップダウンを使用して\"X509/Validate User Form\"を選択し、\"Save\"をクリックします。"
+msgid ""
+"Select \"X509/Validate Username Form\" using the drop down and click on "
+"\"Save\""
+msgstr "ドロップダウンを使用して\"X509/Validate Username Form\"を選択し、\"Save\"をクリックします。"
 
 #. type: Plain text
 msgid "image:images/x509-execution.png[]"
@@ -564,6 +595,53 @@ msgstr "クライアント証明書からユーザー・アイデンティティ
 
 #. type: Labeled list
 #, no-wrap
+msgid "`Canonical DN representation enabled` (optional)"
+msgstr "`Canonical DN representation enabled` (optional)"
+
+#. type: Plain text
+msgid ""
+"Defines whether to use the canonical format to determine a distinguished "
+"name.  The format is described in detail in the official "
+"link:https://docs.oracle.com/javase/8/docs/api/javax/security/auth/x500/X500Principal.html"
+"#getName-java.lang.String-[Java API documentation] .  This option only "
+"affects the two User Identity Sources _Match SubjectDN using regular "
+"expression_ and _Match IssuerDN using regular expression_.  If you setup a "
+"new keycloak instance it is recommended to enable this option. Leave this "
+"option disabled to remain beckward compatible with existing Keycloak "
+"instances."
+msgstr ""
+"標準形式を使用して識別名を決定するかどうかを定義します。形式については、公式 "
+"link:https://docs.oracle.com/javase/8/docs/api/javax/security/auth/x500/X500Principal.html"
+"#getName-java.lang.String-[Java API documentation] "
+"で詳しく説明されています。このオプションは、2つのユーザー・アイデンティティー・ソースの _正規表現を使用したSubjectDN一致_ と "
+"_正規表現を使用したIssuerDN一致_ "
+"にのみ影響します。新しい{project_name}インスタンスをセットアップする場合は、このオプションを有効にすることをお勧めします。既存の{project_name}インスタンスとの互換性を維持するには、このオプションを無効のままにします。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "`Enable Serial Number hexadecimal representation` (optional)"
+msgstr "`Enable Serial Number hexadecimal representation` (optional)"
+
+#. type: Plain text
+msgid ""
+"An option to use hexadecimal representation of the Serial Number. See "
+"link:https://tools.ietf.org/html/rfc5280#section-4.1.2.2[RFC5280, "
+"Section-4.1.2.2]. Serial Number with sign bit set to 1 should be left padded"
+" with 00 octet. E.g. Serial number with decimal value _161_, or _a1_ in "
+"hexadecimal representation according to RFC5280 must be encoded as _00a1_. "
+"More details can be found: "
+"link:https://tools.ietf.org/html/rfc5280#appendix-B[RFC5280, appendix-B]."
+msgstr ""
+"シリアル番号の16進表現を使用するオプション。 "
+"link:https://tools.ietf.org/html/rfc5280#section-4.1.2.2[RFC5280, "
+"Section-4.1.2.2] を参照してください。符号ビットが1に設定されたシリアル番号は、00オクテットで埋められる必要があります。例えば。 "
+"RFC5280に従って、10進数値が _161_ のシリアル番号、または16進数表現の _a1_ は _00a1_ "
+"としてエンコードする必要があります。詳細については、 "
+"link:https://tools.ietf.org/html/rfc5280#appendix-B[RFC5280, appendix-B] "
+"を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
 msgid "`A regular expression` (optional)"
 msgstr "`A regular expression` （オプション）"
 
@@ -598,8 +676,10 @@ msgstr "`A name of user attribute` （オプション）"
 #. type: Plain text
 msgid ""
 "A custom attribute which value will be matched against the certificate "
-"identity."
-msgstr "値が証明書アイデンティティーと照合されるカスタム属性。"
+"identity. Multiple custom attributes are relevant when attribute mapping is "
+"related to multiple values, e.g. 'Certificate Serial Number and IssuerDN'."
+msgstr ""
+"値が証明書IDと照合されるカスタム属性。属性マッピングが複数の値に関連している場合、複数のカスタム属性が関係します。例：「証明書のシリアル番号と発行者DN」。"
 
 #. type: Labeled list
 #, no-wrap

@@ -5,14 +5,14 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -455,3 +455,180 @@ msgid ""
 msgstr ""
 "警告：現在、Keycloakクライアント・アダプターのどれも、holder-of-"
 "keyトークンの検証をサポートしていません。代わりに、Keycloakアダプターはアクセストークンとリフレッシュトークンをベアラートークンとして扱います。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*Proof Key for Code Exchange (PKCE)*\n"
+msgstr "*Proof Key for Code Exchange (PKCE)*\n"
+
+#. type: Plain text
+msgid ""
+"When an attacker steals an authorization code that was issued to a "
+"legitimate client, PKCE prevents the attacker from receiving the tokens that"
+" apply to that code."
+msgstr ""
+"攻撃者が正当なクライアントに発行された認可コードを盗んだとしても、PKCEは攻撃者がそのコードと引き換えてトークンを受信できないようにします。"
+
+#. type: Plain text
+msgid "The administrator can select the following three options:"
+msgstr "管理者は、次の3つのオプションを選択できます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*Proof Key for Code Exchange Code Challenge Method*\n"
+msgstr "*Proof Key for Code Exchange Code Challenge Method*\n"
+
+#. type: Plain text
+msgid ""
+"(blank) : {project_name} does not apply PKCE unless the client sends PKCE's "
+"parameters appropriately to keycloak's authorization endpoint. It is the "
+"default setting."
+msgstr ""
+"(blank) : "
+"クライアントがPKCEのパラメーターを{project_name}の認可エンドポイントに適切に送信しない限り、{project_name}はPKCEを適用しません。これがデフォルト設定です。"
+
+#. type: Plain text
+msgid ""
+"S256 : {project_name} applies to the client PKCE whose code challenge method"
+" is S256."
+msgstr "S256 : {project_name}は、コード・チャレンジ・メソッドがS256であるクライアントPKCEに適用します。"
+
+#. type: Plain text
+msgid ""
+"plain : {project_name} applies to the client PKCE whose code challenge "
+"method is plain."
+msgstr "plain : {project_name}は、コード・チャレンジ・メソッドがプレーンなクライアントPKCEに適用します。"
+
+#. type: Plain text
+msgid ""
+"Please see https://tools.ietf.org/html/rfc7636[RFC 7636 Proof Key for Code "
+"Exchange by OAuth Public Clients] for more details."
+msgstr ""
+"詳細については、 https://tools.ietf.org/html/rfc7636[RFC 7636 Proof Key for Code "
+"Exchange by OAuth Public Clients] を参照してください。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*Signed and Encrypted ID Token Support*\n"
+msgstr "*Signed and Encrypted ID Token Support*\n"
+
+#. type: Plain text
+msgid ""
+"{project_name} can encrypt ID token according to "
+"https://tools.ietf.org/html/rfc7516[Json Web Encryption (JWE)] "
+"specification. The administrator can determine whether encrypting ID token "
+"or not per client. This feature is disabled as default."
+msgstr ""
+"{project_name}は、https://tools.ietf.org/html/rfc7516[Json Web Encryption "
+"(JWE)]の仕様に従ってIDトークンを暗号化できます。管理者は、クライアントごとにIDトークンを暗号化するかどうかを決定できます。この機能はデフォルトで無効になっています。"
+
+#. type: Plain text
+msgid ""
+"The key for encrypting ID token is called Content Encryption Key (CEK). "
+"{project_name} and a client need to negotiate which CEK is used and how to "
+"deliver it. The way to do so is called Key Management Mode."
+msgstr ""
+"IDトークンを暗号化するためのキーは、Content Encryption Key "
+"(CEK)と呼ばれます。{project_name}とクライアントは、使用するCEKとその配信方法について交渉する必要があります。これを行う方法は、Key"
+" Management Modeと呼ばれます。"
+
+#. type: Plain text
+msgid ""
+"JWE specification determines 5 types of Key Management Mode. {project_name} "
+"supports Key Encryption among them."
+msgstr ""
+"JWE仕様は、5種類のKey Management Modeを決定します。{project_name}はそれらの間で Key "
+"Encryptionをサポートします。"
+
+#. type: Plain text
+msgid ""
+"In Key Encryption, the client generates a key pair of asymmetric "
+"cryptography. The public key is used to encrypt CEK. {project_name} "
+"generates CEK per ID token, encrypts the ID token by this generated CEK and "
+"encrypts this CEK by this client's public key. The client decrypts this "
+"encrypted CEK by their private key, and decrypt the ID token by decrypted "
+"CEK. Therefore, any party other than the client is not able to decrypt ID "
+"token."
+msgstr ""
+"Key "
+"Encryptionでは、クライアントは非対称暗号化のキーペアを生成します。公開鍵はCEKの暗号化に使用されます。{project_name}はIDトークンごとにCEKを生成し、この生成されたCEKによってIDトークンを暗号化し、このクライアントの公開キーによってこのCEKを暗号化します。クライアントは、この暗号化されたCEKを自分の秘密鍵で復号し、復号されたCEKでIDトークンを復号します。したがって、クライアント以外の第三者はIDトークンを復号できません。"
+
+#. type: Plain text
+msgid ""
+"The client needs to pass their public key for encrypting CEK onto "
+"{project_name}. {project_name} supports downloading public keys from the URL"
+" the client provides. The client needs to provide their public keys "
+"according to https://tools.ietf.org/html/rfc7517[Json Web Keys (JWK)] "
+"specification. The way to do so is defined in `Signed JWT` of <<_client-"
+"credentials, Confidential Client Credentials>>. The detailed procedure is as"
+" follows:"
+msgstr ""
+"クライアントは、CEKを暗号化するための公開鍵を{project_name}に渡す必要があります。{project_name}は、クライアントが提供するURLからの公開鍵のダウンロードをサポートしています。クライアントは"
+" https://tools.ietf.org/html/rfc7517[Json Web Keys (JWK)] "
+"の仕様に従って公開鍵を提供する必要があります。その方法は、<<_client-credentials, Confidential Client "
+"Credentials >>の `Signed JWT` で定義されています。詳細な手順は次のとおりです。"
+
+#. type: Plain text
+msgid "open the client's `Credentials` tab"
+msgstr "クライアントの `Credentials` タブを開きます"
+
+#. type: Plain text
+msgid "select `Signed Jwt` from `Client Authenticator` pulldown menu"
+msgstr "`Client Authenticator` のプルダウン・メニューから `Signed Jwt` を選択します"
+
+#. type: Plain text
+msgid "set ON to `JWKS URL` switch"
+msgstr "`JWKS URL`スイッチをONに設定します"
+
+#. type: Plain text
+msgid "input the client's public key providing URL on `JWKS URL` textbox"
+msgstr "`JWKS URL` テキストボックスにURLを提供するクライアントの公開鍵を入力します"
+
+#. type: Plain text
+msgid ""
+"Key Encryption's algorithms are defined in "
+"https://tools.ietf.org/html/rfc7518#section-4.1[Json Web Algorithm (JWA)] "
+"specification. {project_name} supports RSAES-PKCS1-v1_5(RSA1_5) and RSAES "
+"OAEP using default parameters (RSA-OAEP). The detailed procedure to select "
+"this algorithm is as follows:"
+msgstr ""
+"鍵暗号化のアルゴリズムは、 https://tools.ietf.org/html/rfc7518#section-4.1[Json Web "
+"Algorithm (JWA)] の仕様で定義されています。{project_name}は、デフォルトのパラメーター（RSA-OAEP"
+"）を使用してRSAES-PKCS1-v1_5（RSA1_5）およびRSAES "
+"OAEPをサポートします。このアルゴリズムを選択する詳細な手順は次のとおりです。"
+
+#. type: Plain text
+msgid "open the client's `Settings` tab"
+msgstr "クライアントの `Settings` タブを開きます"
+
+#. type: Plain text
+msgid "open `Advanced Settings`"
+msgstr "`Advanced Settings` タブを開きます"
+
+#. type: Plain text
+msgid ""
+"select `RSA1_5` or `RSA-OAEP` from `ID Token Encryption Key Management "
+"Algorithm` pulldown menu"
+msgstr ""
+"`ID Token Encryption Key Management Algorithm` のプルダウンメニューから `RSA1_5` または "
+"`RSA-OAEP` を選択します"
+
+#. type: Plain text
+msgid ""
+"ID token encryption algorithms by CEK are also defined in "
+"https://tools.ietf.org/html/rfc7518#section-5.1[JWA] specification. "
+"{project_name} supports AES_128_CBC_HMAC_SHA_256 authenticated encryption "
+"(A128CBC-HS256) and AES GCM using 128-bit key (A128GCM). The detailed "
+"procedure to select this algorithm is as follows:"
+msgstr ""
+"CEKによるIDトークン暗号化アルゴリズムは、 https://tools.ietf.org/html/rfc7518#section-5.1[JWA]"
+" の仕様でも定義されています。{project_name}は、AES_128_CBC_HMAC_SHA_256認証暗号化（A128CBC-"
+"HS256）および128ビットキーを使用したAES GCM（A128GCM）をサポートしています。このアルゴリズムを選択する詳細な手順は次のとおりです。"
+
+#. type: Plain text
+msgid ""
+"select `A128CBC-HS256` or `A128GCM` from `ID Token Encryption Content "
+"Encryption Algorithm` pulldown menu"
+msgstr ""
+"`ID Token Encryption Content Encryption Algorithm` のプルダウンメニューから `A128CBC-"
+"HS256` または `A128GCM` を選択します"

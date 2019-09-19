@@ -316,11 +316,6 @@ msgid ""
 msgstr ""
 "以前のバージョンでは、フィルターを使用して許可されたホスト名を指定することが推奨されていました。有効なホスト名が使用されていることを確認しやすくするため、固定ホスト名を設定することができ、内部アプリケーションが内部IPアドレスなどの代替URLを通じて{project_name}を呼び出すことも可能になりました。本番環境では、このアプローチに切り替えることをお勧めします。"
 
-#. type: Title ====
-#, no-wrap
-msgid "JavaScipt Adapter Promise"
-msgstr "JavaScriptアダプターのPromise"
-
 #. type: Plain text
 msgid ""
 "To use native JavaScript promise with the JavaScript adapter it is now "
@@ -469,6 +464,42 @@ msgstr "移行に伴う変更"
 
 #. type: Title ===
 #, no-wrap
+msgid "Migrating to 7.0.0"
+msgstr "7.0.0への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 17"
+msgstr "WildFly 17へのアップグレード"
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 17 as the underlying "
+"container. This does not directly involve any specific {project_name} server"
+" functionality, but there are a few changes related to the migration, which "
+"are worth mentioning."
+msgstr ""
+"WildFly "
+"17をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。これは、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更（言及する価値がある変更）があります。"
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 17 server. For"
+" example, Infinispan is now 9.4.14.Final."
+msgstr ""
+"依存関係が、WildFly 17サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.4.14.Finalです。"
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and "
+"`domain.xml` files. You should follow the <<_install_new_version>> section "
+"to handle the migration of configuration files automatically."
+msgstr ""
+"`standalone(-ha).xml` と `domain.xml` "
+"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 6.0.0"
 msgstr "6.0.0への移行"
 
@@ -494,15 +525,6 @@ msgid ""
 msgstr ""
 "依存関係が、WildFly 16サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.4.8.Finalです。"
 
-#. type: Plain text
-msgid ""
-"There are few configuration changes in the `standalone(-ha).xml` and "
-"`domain.xml` files. You should follow the <<_install_new_version>> section "
-"to handle the migration of configuration files automatically."
-msgstr ""
-"`standalone(-ha).xml` と `domain.xml` "
-"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
-
 #. type: Title ====
 #, no-wrap
 msgid "New optional client scope"
@@ -521,6 +543,49 @@ msgstr ""
 "Specification] で定義されているリクエストを処理するために、新しいオプションの `microprofile-jwt` "
 "クライアント・スコープを追加しました。この新しいクライアント・スコープは、認証されたユーザーのユーザー名を `upn` クレームに、レルムロールを "
 "`groups` クレームに設定するためのプロトコル・マッパーを定義します。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Ability to propagate prompt=none to default IDP"
+msgstr "prompt=noneをデフォルトのIDPに伝播する機能"
+
+#. type: Plain text
+msgid ""
+"We have added a new switch in the OIDC identity provider configuration named"
+" `Accepts prompt=none forward from client` to identify IDPs that are able to"
+" handle forwarded requests that include the `prompt=none` query parameter."
+msgstr ""
+"転送されてきた `prompt=none` クエリー・パラメーターを含むリクエストを処理できるIDPを識別するために、 `Accepts "
+"prompt=none forward from client` "
+"という名前の新しいスイッチをOIDCアイデンティティー・プロバイダーの設定に追加しました。"
+
+#. type: Plain text
+msgid ""
+"Until now, when receiving an auth request with `prompt=none` a realm would "
+"return a `login_required` error if the user is not authenticated in the "
+"realm without checking if the user has been authenticated by an IDP. From "
+"now on, if a default IDP can be determined for the auth request (either by "
+"the use of the `kc_idp_hint` query param or by setting up a default IDP for "
+"the realm) and if the `Accepts prompt=none forward from client` switch has "
+"been enabled for the IDP, the auth request is forwarded to the IDP to check "
+"if the user has been authenticated there."
+msgstr ""
+"これまでは、ユーザーがレルムで認証されていない場合、 `prompt=none` "
+"で認証リクエストを受け取ると、レルムはユーザーがIDPによって認証されているかどうかを確認せずに `login_required` "
+"エラーを返していました。これからは、（ `kc_idp_hint` "
+"クエリー・パラメーターを使用するか、レルムのデフォルトIDPを設定することにより、）認証リクエストに対してデフォルトのIDPが決定できる場合と、IDPに対して"
+" `Accepts prompt=none forward from client` "
+"スイッチが有効になっている場合、認証リクエストはIDPに転送され、ユーザーがそこで認証されているかどうかを確認します。"
+
+#. type: Plain text
+msgid ""
+"It is important to note that this switch is only taken into account if a "
+"default IDP is specified, in which case we know where to forward the auth "
+"request without having to prompt the user to select an IDP. If a default IDP"
+" cannot be determined we cannot assume which one will be used to fulfill the"
+" auth request so the request forwarding is not performed."
+msgstr ""
+"このスイッチは、デフォルトのIDPが指定されている場合にのみ考慮されることに注意することが重要です。この場合、ユーザーにIDPの選択を求めることなく、どこに認証リクエストを転送するかがわかります。デフォルトのIDPを決定できない場合、認証リクエストを実行するためにどのIDPが使用されるかを推測できないため、リクエストの転送は実行されません。"
 
 #. type: Title ===
 #, no-wrap
@@ -573,6 +638,11 @@ msgstr ""
 #, no-wrap
 msgid "Migrating to 4.6.0"
 msgstr "4.6.0への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "JavaScript Adapter Promise"
+msgstr "JavaScriptアダプターのPromise"
 
 #. type: Plain text
 msgid ""
@@ -842,7 +912,7 @@ msgid ""
 "{project_name}. Now we changed the server part too and ID token will be sent"
 " to the application just if `scope=openid` is really used. If it's not used,"
 " then ID token will be skipped and just Access token and Refresh token will "
-"be sent to the application.  This also allows that you can ommit the "
+"be sent to the application.  This also allows that you can omit the "
 "generation of ID Token on purpose - for example for space or performance "
 "purposes."
 msgstr ""
@@ -1226,7 +1296,7 @@ msgstr "アイデンティティー・プロバイダーからデフォルトで
 #. type: Plain text
 msgid ""
 "Identity providers no longer has an option to set it as a default "
-"authenticaton provider. Instead go to Authentication, select the `Browser` "
+"authentication provider. Instead go to Authentication, select the `Browser` "
 "flow and configure the `Identity Provider Redirector`. It has an option to "
 "set the default identity provider."
 msgstr ""
@@ -1875,10 +1945,10 @@ msgstr "適切なものを選ぶよう注意してください。"
 #. type: Plain text
 msgid ""
 "You also need to update standalone.xml as the extension module and subsystem"
-" definition has changed.  See link:{adapterguide_link}[{adapterguide_name] "
+" definition has changed.  See link:{adapterguide_link}[{adapterguide_name}] "
 "for details."
 msgstr ""
-"また、拡張モジュールとサブシステム定義が変更されたので、standalone.xmlを更新する必要があります。詳しくは、link:{adapterguide_link}[{adapterguide_name]]を参照してください。"
+"また、拡張モジュールとサブシステム定義が変更されたので、standalone.xmlを更新する必要があります。詳しくは、link:{adapterguide_link}[{adapterguide_name}]を参照してください。"
 
 #. type: Title ===
 #, no-wrap
@@ -1992,7 +2062,7 @@ msgstr "テーマの変更"
 
 #. type: Plain text
 msgid ""
-"The layout of themes have changed.  The directory hierarchy used to be "
+"The layout of themes has changed.  The directory hierarchy used to be "
 "`type/name` this is now changed to `name/type`.  For example a login theme "
 "named `sunrise` used to be deployed to "
 "`standalone/configuration/themes/login/sunrise`, which is now moved to "
@@ -2095,11 +2165,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve "
+"`org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve` "
 "+`org.keycloak.adapters.tomcat.KeycloakAuthenticatorValve`"
 msgstr ""
-"`org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve` + "
-"`org.keycloak.adapters.tomcat.KeycloakAuthenticatorValve`"
+"`org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve` "
+"+`org.keycloak.adapters.tomcat.KeycloakAuthenticatorValve`"
 
 #. type: Plain text
 msgid ""
@@ -2213,8 +2283,8 @@ msgid ""
 msgstr "認証SPIは削除されて書き換えられました。新しいSPIはUserFederationProviderで、より柔軟性が高くなっています。"
 
 #. type: Plain text
-msgid "ssl-not-required +`ssl-required` +`all` +`external` +`none`"
-msgstr "ssl-not-required +`ssl-required` +`all` +`external` +`none`"
+msgid "`ssl-not-required` +`ssl-required` +`all` +`external` +`none`"
+msgstr "`ssl-not-required` +`ssl-required` +`all` +`external` +`none`"
 
 #. type: Plain text
 msgid "DB Schema has changed again."
@@ -2343,7 +2413,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Because of the \"secret\" credential change to Application and OAuth Client,"
-" you'll have to update your keycloak.json configuration files and regenarate"
+" you'll have to update your keycloak.json configuration files and regenerate"
 " a secret within the Application or OAuth Client credentials tab in the "
 "administration console."
 msgstr ""

@@ -126,6 +126,10 @@ msgstr "WildFly 11以上"
 msgid "JBoss EAP 7.1 or newer"
 msgstr "JBoss EAP 7.1以上"
 
+#. type: Plain text
+msgid "The security context is propagated to the EJB tier automatically."
+msgstr "セキュリティー・コンテキストは、EJB層に自動的に伝播されます。"
+
 #. type: Title =====
 #, no-wrap
 msgid "JBoss SSO"
@@ -211,19 +215,6 @@ msgid ""
 msgstr ""
 "$ cd $WILDFLY_HOME\n"
 "$ unzip keycloak-wildfly-adapter-dist-{project_version}.zip\n"
-
-#. type: Plain text
-msgid "Install on WildFly 8:"
-msgstr "WildFly 8へのインストールは次のとおりです。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"$ cd $WILDFLY_HOME\n"
-"$ unzip keycloak-wf8-adapter-dist-{project_version}.zip\n"
-msgstr ""
-"$ cd $WILDFLY_HOME\n"
-"$ unzip keycloak-wf8-adapter-dist-{project_version}.zip\n"
 
 #. type: Plain text
 msgid "Install on JBoss EAP 7:"
@@ -569,47 +560,3 @@ msgstr ""
 #, no-wrap
 msgid "Security Domain"
 msgstr "セキュリティー・ドメイン"
-
-#. type: Plain text
-msgid ""
-"To propagate the security context to the EJB tier you need to configure it "
-"to use the \"keycloak\" security domain. This can be achieved with the "
-"@SecurityDomain annotation:"
-msgstr ""
-"セキュリティー・コンテキストをEJB層に伝播するには、\"keycloak\"セキュリティー・ドメインを使用するようにセキュリティー・コンテキストを設定する必要があります。これは"
-" `@SecurityDomain` アノテーションで実現できます。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"import org.jboss.ejb3.annotation.SecurityDomain;\n"
-"...\n"
-msgstr ""
-"import org.jboss.ejb3.annotation.SecurityDomain;\n"
-"...\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"@Stateless\n"
-"@SecurityDomain(\"keycloak\")\n"
-"public class CustomerService {\n"
-msgstr ""
-"@Stateless\n"
-"@SecurityDomain(\"keycloak\")\n"
-"public class CustomerService {\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    @RolesAllowed(\"user\")\n"
-"    public List<String> getCustomers() {\n"
-"        return db.getCustomers();\n"
-"    }\n"
-"}\n"
-msgstr ""
-"    @RolesAllowed(\"user\")\n"
-"    public List<String> getCustomers() {\n"
-"        return db.getCustomers();\n"
-"    }\n"
-"}\n"

@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
 # Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -114,7 +114,7 @@ msgid ""
 "Backchannel logout is a background, out-of-band, REST invocation to the IDP to logout the user.  Some IDPs can only perform logout through browser redirects as they may\n"
 " only be able to identity sessions via a browser cookie.\n"
 msgstr ""
-"バックチャネル・ログアウトは、バックグラウンド（帯域外）で、IDPへのREST呼び出しでユーザーをログアウトします。一部のIDPは、ブラウザーのリダイレクトを介してのみログアウトを実行できます。ブラウザーのCookieを使用してセッションを識別できる場合があるためです。\n"
+"バックチャネル・ログアウトは、バックグラウンド（アウトオブバンド）で、IDPへのREST呼び出しでユーザーをログアウトします。一部のIDPは、ブラウザーのリダイレクトを介してのみログアウトを実行できます。ブラウザーのCookieを使用してセッションを識別できる場合があるためです。\n"
 
 #. type: Plain text
 msgid "User Info URL"
@@ -179,6 +179,40 @@ msgid ""
 " more details.\n"
 msgstr ""
 "オプションの項目。これは、OIDC仕様で定義されたプロンプト・パラメーターです。これにより、再認証やその他のオプションを強制することができます。詳細は、仕様を参照してください。\n"
+
+#. type: Plain text
+msgid "Accepts prompt=none forward from client"
+msgstr "Accepts prompt=none forward from client"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Specifies whether the IDP accepts forwarded authentication requests that contain the prompt=none query parameter or not. When a realm receives an auth request with `prompt=none` it checks\n"
+" if the user is currently authenticated and normally returns a `login_required` error if the user is not logged in. However, when a default IDP can be determined\n"
+" for the auth request (either via `kc_idp_hint` query param or by setting up a default IDP for the realm) we should be able to forward the auth request with\n"
+" `prompt=none` to the default IDP so that it checks if the user is currently authenticated there. Because not all IDPs support requests with `prompt=none` this switch\n"
+" is used to indicate if the default IDP supports the param before redirecting the auth request.\n"
+msgstr ""
+"IDPが、転送されてきたprompt=noneクエリー・パラメーターを含む認証リクエストを受け入れるかどうかを指定します。レルムが "
+"`prompt=none` の認証リクエストを受信すると、ユーザーが現在認証されているかどうかを確認し、ユーザーがログインしていない場合は通常 "
+"`login_required` エラーを返します。ただし、認証リクエストのデフォルトIDP（ `kc_idp_hint` "
+"クエリー・パラメーターを使用するか、レルムのデフォルトIDPを設定することにより） `prompt=none` "
+"で認証リクエストをデフォルトIDPに転送して、ユーザーが現在認証されているかどうかを確認できるようにする必要があります。すべてのIDPが "
+"`prompt=none` "
+"のリクエストをサポートするわけではないため、このスイッチはデフォルトのIDPが認証リクエストをリダイレクトする前にパラメーターをサポートするかどうかを示すために使用されます。\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+" It is important to note that if the user is not authenticated in the IDP, the client will still get a `login_required` error. Even if the user is currently authenticated in the IDP,\n"
+" the client might still get an `interaction_required` error if authentication or consent pages requiring user interaction would be otherwise displayed. This includes required actions\n"
+" (e.g. change password), consent screens and any screens set to be displayed by the `first broker login` flow or `post broker login` flow.\n"
+msgstr ""
+"ユーザーがIDPで認証されていない場合、クライアントは依然として `login_required` "
+"エラーを受け取ることに注意することが重要です。ユーザーが現在IDPで認証されている場合でも、ユーザーの操作を必要とする認証または同意ページが表示されると、クライアントは依然として"
+" `interaction_required` エラーを受け取る可能性があります。これには、必須アクション（パスワードの変更など）、同意画面、および "
+"`first broker login` フローまたは `post broker login` "
+"フローによって表示されるように設定された画面が含まれます。\n"
 
 #. type: Plain text
 msgid "Validate Signatures"

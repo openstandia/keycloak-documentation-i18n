@@ -5,14 +5,14 @@
 # 
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -316,11 +316,6 @@ msgid ""
 msgstr ""
 "以前のバージョンでは、フィルターを使用して許可されたホスト名を指定することが推奨されていました。有効なホスト名が使用されていることを確認しやすくするため、固定ホスト名を設定することができ、内部アプリケーションが内部IPアドレスなどの代替URLを通じて{project_name}を呼び出すことも可能になりました。本番環境では、このアプローチに切り替えることをお勧めします。"
 
-#. type: Title ====
-#, no-wrap
-msgid "JavaScipt Adapter Promise"
-msgstr "JavaScriptアダプターのPromise"
-
 #. type: Plain text
 msgid ""
 "To use native JavaScript promise with the JavaScript adapter it is now "
@@ -469,6 +464,42 @@ msgstr "移行に伴う変更"
 
 #. type: Title ===
 #, no-wrap
+msgid "Migrating to 7.0.0"
+msgstr "7.0.0への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 17"
+msgstr "WildFly 17へのアップグレード"
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 17 as the underlying "
+"container. This does not directly involve any specific {project_name} server"
+" functionality, but there are a few changes related to the migration, which "
+"are worth mentioning."
+msgstr ""
+"WildFly "
+"17をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。これは、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更（言及する価値がある変更）があります。"
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 17 server. For"
+" example, Infinispan is now 9.4.14.Final."
+msgstr ""
+"依存関係が、WildFly 17サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.4.14.Finalです。"
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and "
+"`domain.xml` files. You should follow the <<_install_new_version>> section "
+"to handle the migration of configuration files automatically."
+msgstr ""
+"`standalone(-ha).xml` と `domain.xml` "
+"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 6.0.0"
 msgstr "6.0.0への移行"
 
@@ -494,15 +525,6 @@ msgid ""
 msgstr ""
 "依存関係が、WildFly 16サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.4.8.Finalです。"
 
-#. type: Plain text
-msgid ""
-"There are few configuration changes in the `standalone(-ha).xml` and "
-"`domain.xml` files. You should follow the <<_install_new_version>> section "
-"to handle the migration of configuration files automatically."
-msgstr ""
-"`standalone(-ha).xml` と `domain.xml` "
-"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
-
 #. type: Title ====
 #, no-wrap
 msgid "New optional client scope"
@@ -519,8 +541,51 @@ msgid ""
 msgstr ""
 "https://wiki.eclipse.org/MicroProfile/JWT_Auth[MicroProfile/JWT Auth "
 "Specification] で定義されているリクエストを処理するために、新しいオプションの `microprofile-jwt` "
-"クライアント・スコープを追加しました。この新しいクライアント・スコープは、認証されたユーザーのユーザー名を `upn`クレームに、レルムロールを "
+"クライアント・スコープを追加しました。この新しいクライアント・スコープは、認証されたユーザーのユーザー名を `upn` クレームに、レルムロールを "
 "`groups` クレームに設定するためのプロトコル・マッパーを定義します。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Ability to propagate prompt=none to default IDP"
+msgstr "prompt=noneをデフォルトのIDPに伝播する機能"
+
+#. type: Plain text
+msgid ""
+"We have added a new switch in the OIDC identity provider configuration named"
+" `Accepts prompt=none forward from client` to identify IDPs that are able to"
+" handle forwarded requests that include the `prompt=none` query parameter."
+msgstr ""
+"転送されてきた `prompt=none` クエリー・パラメーターを含むリクエストを処理できるIDPを識別するために、 `Accepts "
+"prompt=none forward from client` "
+"という名前の新しいスイッチをOIDCアイデンティティー・プロバイダーの設定に追加しました。"
+
+#. type: Plain text
+msgid ""
+"Until now, when receiving an auth request with `prompt=none` a realm would "
+"return a `login_required` error if the user is not authenticated in the "
+"realm without checking if the user has been authenticated by an IDP. From "
+"now on, if a default IDP can be determined for the auth request (either by "
+"the use of the `kc_idp_hint` query param or by setting up a default IDP for "
+"the realm) and if the `Accepts prompt=none forward from client` switch has "
+"been enabled for the IDP, the auth request is forwarded to the IDP to check "
+"if the user has been authenticated there."
+msgstr ""
+"これまでは、ユーザーがレルムで認証されていない場合、 `prompt=none` "
+"で認証リクエストを受け取ると、レルムはユーザーがIDPによって認証されているかどうかを確認せずに `login_required` "
+"エラーを返していました。これからは、（ `kc_idp_hint` "
+"クエリー・パラメーターを使用するか、レルムのデフォルトIDPを設定することにより、）認証リクエストに対してデフォルトのIDPが決定できる場合と、IDPに対して"
+" `Accepts prompt=none forward from client` "
+"スイッチが有効になっている場合、認証リクエストはIDPに転送され、ユーザーがそこで認証されているかどうかを確認します。"
+
+#. type: Plain text
+msgid ""
+"It is important to note that this switch is only taken into account if a "
+"default IDP is specified, in which case we know where to forward the auth "
+"request without having to prompt the user to select an IDP. If a default IDP"
+" cannot be determined we cannot assume which one will be used to fulfill the"
+" auth request so the request forwarding is not performed."
+msgstr ""
+"このスイッチは、デフォルトのIDPが指定されている場合にのみ考慮されることに注意することが重要です。この場合、ユーザーにIDPの選択を求めることなく、どこに認証リクエストを転送するかがわかります。デフォルトのIDPを決定できない場合、認証リクエストを実行するためにどのIDPが使用されるかを推測できないため、リクエストの転送は実行されません。"
 
 #. type: Title ===
 #, no-wrap
@@ -573,6 +638,11 @@ msgstr ""
 #, no-wrap
 msgid "Migrating to 4.6.0"
 msgstr "4.6.0への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "JavaScript Adapter Promise"
+msgstr "JavaScriptアダプターのPromise"
 
 #. type: Plain text
 msgid ""
@@ -791,10 +861,10 @@ msgid ""
 "From Authentication Response` switch, which can be turned on to prevent "
 "adding the `session_state` parameter to the Authentication Response."
 msgstr ""
-"たとえば、クライアント・アプリケーションへの認証が成功すると、ブラウザーのURLには常にパラメーターが表示されます。これらの場合、認証レスポンスに "
+"たとえば、クライアント・アプリケーションへの認証が成功すると、ブラウザーのURLには常にパラメーターが表示されます。このような場合、認証レスポンスに "
 "`session_state` "
 "パラメーターを追加することを無効にすると便利です。これは、{project_name}管理コンソールの特定のクライアントで行うことができます（クライアントの詳細については、"
-" <<_compatibility_with_older_adapters>>の `OpenID Connect Compatibility "
+" <<_compatibility_with_older_adapters>> の `OpenID Connect Compatibility "
 "Modes` のセクションで説明しています）。 `session_state` パラメーターを認証レスポンスに追加しないようにすることができる "
 "`Exclude Session State From Authentication Response` スイッチがあります。"
 
@@ -823,7 +893,7 @@ msgid ""
 " 27500 hashing iterations. Since pbkdf2-sha256 is slightly faster than "
 "pbkdf2 the iterations was increased to 27500 from 20000."
 msgstr ""
-"2つの新しいパスワード・ハッシュ・アルゴリズム（pbkdf2-sha256とpbkdf2-sha512）を追加しました。新しいレルムでは、27500ハッシュ・イテレーションでpbkdf2-sha256ハッシュ・アルゴリズムを使用されます。pbkdf2-sha256はpbkdf2よりは多少速いため、そのイテレーションは20000から27500に増加されました。"
+"2つの新しいパスワード・ハッシュ・アルゴリズム（pbkdf2-sha256とpbkdf2-sha512）を追加しました。新しいレルムでは、27500ハッシュ・イテレーションでpbkdf2-sha256ハッシュ・アルゴリズムが使用されます。pbkdf2-sha256はpbkdf2よりは多少速いため、そのイテレーションは20000から27500に増加されました。"
 
 #. type: Plain text
 msgid ""
@@ -842,7 +912,7 @@ msgid ""
 "{project_name}. Now we changed the server part too and ID token will be sent"
 " to the application just if `scope=openid` is really used. If it's not used,"
 " then ID token will be skipped and just Access token and Refresh token will "
-"be sent to the application.  This also allows that you can ommit the "
+"be sent to the application.  This also allows that you can omit the "
 "generation of ID Token on purpose - for example for space or performance "
 "purposes."
 msgstr ""
@@ -1069,8 +1139,8 @@ msgid ""
 " records in underlying `realms` and `users` caches should be invalidated."
 msgstr ""
 "クラスター内で{project_name}を使用する場合でも、 `standalone-ha.xml` "
-"内のインフィニスパン・サブシステム内で定義されたキャッシュ `realms` と `users` "
-"は、現在常にローカル・キャッシュです。これらとは別に、クラスター・ノード間で無効化メッセージの送信し、クラスター全体に、 `realms` と "
+"内のinfinispanサブシステム内で定義されたキャッシュ `realms` と `users` "
+"は、現在常にローカル・キャッシュです。これらとは別に、クラスターノード間で無効化メッセージの送信し、クラスター全体に、 `realms` と "
 "`users` キャッシュの前提となるレコードの内どれが無効となるのかを知らせるキャッシュ `work` というものがあります。"
 
 #. type: Title ===
@@ -1089,7 +1159,7 @@ msgid ""
 "All Admin REST API endpoints that support pagination now have a default max results set to 100. If you want to return\n"
 " more than 100 entries you need to explicitly specify that with `?max=<RESULTS>`.\n"
 msgstr ""
-"現在、ページネーションをサポートするすべてのAdmin REST "
+"現在、ページネーションをサポートするすべての管理REST "
 "APIエンドポイントで、最大結果件数のデフォルトは100に設定されています。100を超えるエントリーを返す場合は、敢えて  "
 "`?max=<RESULTS>` を使用して、それを指定する必要があります。\n"
 
@@ -1140,7 +1210,7 @@ msgid ""
 msgstr ""
 "このリリースでは、 `standalone.xml` または `standalone-ha.xml` "
 "設定ファイルで定義されたInfinispanサブシステムに、新しいキャッシュ `keys` "
-"を追加しました。これには、エビクションと期限があります。このキャッシュは、サーバーによって信頼されるエンティティーの外部公開鍵をキャッシュするために内部的に使用されます（署名されたJWTでの認証を使用するアイデンティティー・プロバイダーまたはクライアント）。"
+"を追加しました。これには、エビクションと期限があります。このキャッシュは、サーバー（署名されたJWTでの認証を使用するアイデンティティー・プロバイダーまたはクライアント）によって信頼されるエンティティーの外部公開鍵をキャッシュするために内部的に使用されます。"
 
 #. type: Title ===
 #, no-wrap
@@ -1207,7 +1277,7 @@ msgid ""
 "query component is present in this URI, so the `redirect_uri` needs to "
 "exactly match this saved URI as well."
 msgstr ""
-"登録済みの有効なリダイレクトURIのワイルドカードは、クエリー・コンポーネントを持っていない場合、もはやサポートされません。そのため、 "
+"クエリー・コンポーネントを持たない、登録済みの有効なリダイレクトURIのワイルドカードは、サポートされなくなりました。そのため、 "
 "`redirect_uri` はこの登録済みのURIとも同様に一致する必要があります。"
 
 #. type: Plain text
@@ -1226,7 +1296,7 @@ msgstr "アイデンティティー・プロバイダーからデフォルトで
 #. type: Plain text
 msgid ""
 "Identity providers no longer has an option to set it as a default "
-"authenticaton provider. Instead go to Authentication, select the `Browser` "
+"authentication provider. Instead go to Authentication, select the `Browser` "
 "flow and configure the `Identity Provider Redirector`. It has an option to "
 "set the default identity provider."
 msgstr ""
@@ -1242,14 +1312,14 @@ msgstr "2.0.0への移行"
 #. type: Title ====
 #, no-wrap
 msgid "Upgrading from 1.0.0.Final no longer supported"
-msgstr "1.0.0.Finalからのアップグレードはもはやサポートされません"
+msgstr "1.0.0.Finalからのアップグレードはサポートされなくなりました"
 
 #. type: Plain text
 msgid ""
 "Upgrading from 1.0.0.Final is no longer supported. To upgrade to this "
 "version upgrade to 1.9.8.Final prior to upgrading to 2.0.0."
 msgstr ""
-"1.0.0.Finalからのアップグレードはもうサポートされません。2.0.0へアップグレードするには、その前に1.9.8.Finalへアップグレードしてください。"
+"1.0.0.Finalからのアップグレードはサポートされなくなりました。2.0.0へアップグレードするには、その前に1.9.8.Finalへアップグレードしてください。"
 
 #. type: Title ===
 #, no-wrap
@@ -1296,7 +1366,7 @@ msgstr "1.9.2への移行"
 #. type: Title ====
 #, no-wrap
 msgid "Adapter option auth-server-url-for-backend-requests removed"
-msgstr "アダプターオプションauth-server-url-for-backend-requestsを削除"
+msgstr "アダプター・オプションauth-server-url-for-backend-requestsを削除"
 
 #. type: Plain text
 msgid ""
@@ -1351,7 +1421,7 @@ msgid ""
 msgstr ""
 "以前は、SAMLまたはOIDCのKeycloakサブシステム・アダプターを、WildFlyまたはJBoss "
 "EAPにすでにインストールしていた場合に、Keycloakを使用していたか否かに関わらず、全てのアプリケーションにKeycloakクライアントのjarを自動的に含めていました。現在は、そのアダプターのためにKeycloak認証を（サブシステムまたはweb"
-".xml内のauth-methodを通じて）有効にしている場合にのみ、これらのライブラリはデプロイメントに追加されることになります。"
+".xml内のauth-methodを通じて）有効にしている場合にのみ、これらのライブラリーはデプロイメントに追加されることになります。"
 
 #. type: Title ====
 #, no-wrap
@@ -1530,7 +1600,7 @@ msgstr ""
 "Settingsのページにフラグを追加しました。そのページでは、さまざまな種類のOpenID ConnectまたはOAuth2のフロー（Standard"
 " flow、Implicit flow、Direct Access Grants、Service "
 "Accounts）を有効または無効にすることができます。この一環として、新規クライアント用にはデフォルトで無効となっている `Direct Access"
-" Grants` （OAuth2 `Resource Owner Password Credentials Grant` に対応）があります。"
+" Grants` （OAuth2の `Resource Owner Password Credentials Grant` に対応）があります。"
 
 #. type: Plain text
 msgid ""
@@ -1552,8 +1622,8 @@ msgid ""
 "direct access grants enabled anymore by default."
 msgstr ""
 "また、組み込みのクライアント `admin-cli` を各レルムに追加しました。このクライアントは `Direct Access Grants` "
-"が有効になっています。そのため、Admin REST APIまたはKeycloak admin-clientを使用している場合は、 `security-"
-"admin-console` の代わりに `admin-cli` "
+"が有効になっています。そのため、管理REST APIまたはKeycloakの管理クライアントを使用している場合は、 `security-admin-"
+"console` の代わりに `admin-cli` "
 "を使用するように設定を更新する必要があります。現在、後者はデフォルトでダイレクト・アクセス・グラントが有効になっていないためです。"
 
 #. type: Title ====
@@ -1606,7 +1676,7 @@ msgid ""
 "error codes.  See documentation for more details if you want to catch and "
 "handle adapter error conditions."
 msgstr ""
-"web.xml内のform-error-pageはもはやクライアント・アダプター認証エラーにより動作しません"
+"web.xml内のform-error-pageは、クライアント・アダプター認証エラーにより動作しなくなりました"
 "。さまざまなHTTPエラーコード用にerror-"
 "pageを定義する必要があります。アダプターのエラー条件を確認および処理したい場合、詳細はドキュメントを参照してください。"
 
@@ -1732,10 +1802,9 @@ msgid ""
 "  As Infinispan is the only provider there's no longer any need for the "
 "realmCache and userCache objects so these can be removed."
 msgstr ""
-"Infinispanは現在デフォルトでレルムとユーザーのキャッシュ・プロバイダーのみとなっています。非クラスターモードでは、ローカルのInfinispanキャッシュが使用されます。"
-" また、カスタムのin-memoryキャッシュと非キャッシュ・プロバイダーは削除しました"
+"Infinispanは現在デフォルトでレルムとユーザーのキャッシュ・プロバイダーのみとなっています。非クラスターモードでは、ローカルのInfinispanキャッシュが使用されます。また、カスタムのイン・メモリー・キャッシュと非キャッシュ・プロバイダーは削除しました"
 "。realmCacheまたはuserCacheがkeycloak-"
-"server.jsonでmemまたはnoneに設定されている場合は、それらを削除してください。Infinispanは、realmCacheとuserCacheのオブジェクトをもはや必要としない唯一のプロバイダーなので、それらを削除することができます。"
+"server.jsonでmemまたはnoneに設定されている場合は、それらを削除してください。Infinispanは、realmCacheとuserCacheのオブジェクトを必要としなくなった唯一のプロバイダーなので、それらを削除することができます。"
 
 #. type: Title ====
 #, no-wrap
@@ -1753,7 +1822,7 @@ msgid ""
 msgstr ""
 "Infinispanは現在デフォルトで唯一のユーザー・セッション・プロバイダーです。非クラスター・モードでは、ローカルのInfinispanキャッシュが使用されます。また、JPAとMongoユーザー・セッション・プロバイダーを削除しました。ユーザー"
 "・セッションをkeycloak-"
-"server.jsonでmem、jpaまたはmongoに設定している場合、それを削除してください。Infinispanは、ユーザー・セッションのオブジェクトをもはや必要としない唯一のプロバイダーなので、それを削除することができます。"
+"server.jsonでmem、jpaまたはmongoに設定している場合、それを削除してください。Infinispanは、ユーザー・セッションのオブジェクトを必要としなくなった唯一のプロバイダーなので、それを削除することができます。"
 
 #. type: Plain text
 msgid ""
@@ -1876,10 +1945,10 @@ msgstr "適切なものを選ぶよう注意してください。"
 #. type: Plain text
 msgid ""
 "You also need to update standalone.xml as the extension module and subsystem"
-" definition has changed.  See link:{adapterguide_link}[{adapterguide_name] "
+" definition has changed.  See link:{adapterguide_link}[{adapterguide_name}] "
 "for details."
 msgstr ""
-"また、拡張モジュールとサブシステム定義が変更されたので、standalone.xmlを更新する必要があります。詳しくは、link:{adapterguide_link}[{adapterguide_name]を参照してください。"
+"また、拡張モジュールとサブシステム定義が変更されたので、standalone.xmlを更新する必要があります。詳しくは、link:{adapterguide_link}[{adapterguide_name}]を参照してください。"
 
 #. type: Title ===
 #, no-wrap
@@ -1993,7 +2062,7 @@ msgstr "テーマの変更"
 
 #. type: Plain text
 msgid ""
-"The layout of themes have changed.  The directory hierarchy used to be "
+"The layout of themes has changed.  The directory hierarchy used to be "
 "`type/name` this is now changed to `name/type`.  For example a login theme "
 "named `sunrise` used to be deployed to "
 "`standalone/configuration/themes/login/sunrise`, which is now moved to "
@@ -2030,7 +2099,7 @@ msgid ""
 "with protocol mappers which are more flexible."
 msgstr ""
 "以前は、アプリケーションとOAuthクライアント用に、管理コンソール内に `Claims` "
-"タブがありました。これは、特定のアプリケーションまたはクライアント用に、どの属性をアクセス・トークンに入れるのかを設定するために使用していました。このタブは削除し、より柔軟性が高いプロトコル・マッパーに置き換えました。"
+"タブがありました。これは、特定のアプリケーションまたはクライアント用に、どの属性をアクセストークンに入れるのかを設定するために使用していました。このタブは削除し、より柔軟性が高いプロトコル・マッパーに置き換えました。"
 
 #. type: Plain text
 msgid ""
@@ -2096,10 +2165,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve "
+"`org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve` "
 "+`org.keycloak.adapters.tomcat.KeycloakAuthenticatorValve`"
 msgstr ""
-"org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve "
+"`org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve` "
 "+`org.keycloak.adapters.tomcat.KeycloakAuthenticatorValve`"
 
 #. type: Plain text
@@ -2137,14 +2206,14 @@ msgstr "1.0.x.Finalから1.1.0.Beta1への移行"
 
 #. type: Plain text
 msgid "RealmModel JPA and Mongo storage schema has changed"
-msgstr "RealmModel JPAとMongoストレージ・スキーマが変更されました"
+msgstr "RealmModelのJPAとMongoストレージ・スキーマが変更されました"
 
 #. type: Plain text
 msgid ""
 "UserSessionModel JPA and Mongo storage schema has changed as these "
 "interfaces have been refactored"
 msgstr ""
-"UserSessionModel JPAとMongoストレージ・スキーマは、これらのインターフェイスがリファクタリングされたので、変更されました"
+"UserSessionModelのJPAとMongoストレージ・スキーマは、これらのインターフェイスがリファクタリングされたので、変更されました"
 
 #. type: Plain text
 msgid ""
@@ -2214,8 +2283,8 @@ msgid ""
 msgstr "認証SPIは削除されて書き換えられました。新しいSPIはUserFederationProviderで、より柔軟性が高くなっています。"
 
 #. type: Plain text
-msgid "ssl-not-required +`ssl-required` +`all` +`external` +`none`"
-msgstr "ssl-not-required +`ssl-required` +`all` +`external` +`none`"
+msgid "`ssl-not-required` +`ssl-required` +`all` +`external` +`none`"
+msgstr "`ssl-not-required` +`ssl-required` +`all` +`external` +`none`"
 
 #. type: Plain text
 msgid "DB Schema has changed again."
@@ -2303,7 +2372,7 @@ msgstr ""
 
 #. type: Plain text
 msgid "Subject in AccessToken has been changed to the User ID."
-msgstr "AccessTokenの件名がUser IDに変更されました。"
+msgstr "AccessTokenのサブジェクトがUser IDに変更されました。"
 
 #. type: Title ===
 #, no-wrap
@@ -2330,8 +2399,8 @@ msgid ""
 "it is stored in plain text in the database and can be viewed in the admin "
 "console."
 msgstr ""
-"新しいクレデンシャル・タイプの \"secret\" "
-"画追加されました。他のクレデンシャル・タイプと異なり、データベース内のプレーンテキストに保存されていて、管理コンソールで確認することができます。"
+"新しいクレデンシャル・タイプ \"secret\" "
+"が追加されました。他のクレデンシャル・タイプと異なり、データベース内のプレーンテキストに保存されていて、管理コンソールで確認することができます。"
 
 #. type: Plain text
 msgid ""
@@ -2344,7 +2413,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Because of the \"secret\" credential change to Application and OAuth Client,"
-" you'll have to update your keycloak.json configuration files and regenarate"
+" you'll have to update your keycloak.json configuration files and regenerate"
 " a secret within the Application or OAuth Client credentials tab in the "
 "administration console."
 msgstr ""

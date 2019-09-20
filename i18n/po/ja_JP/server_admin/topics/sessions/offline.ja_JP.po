@@ -5,14 +5,14 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2018\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,9 +37,9 @@ msgid ""
 "a periodic backup of some data every night."
 msgstr ""
 "オフライン・アクセスは、 https://openid.net/specs/openid-connect-core-"
-"1_0.html#OfflineAccess[OpenID Connect仕様] "
+"1_0.html#OfflineAccess[OpenID Connectの仕様] "
 "で説明されている機能です。このアイディアは、ログイン中にクライアント・アプリケーションが古典的なリフレッシュトークンの代わりにオフライントークンを要求するというものです。アプリケーションはこのオフライントークンをデータベースまたはディスクに保存し、ユーザーがログアウトしても後で使用できます。これは、ユーザーがオンラインでなくても、アプリケーションがユーザーのために何らか"
-" \"オフライン\" アクションを実行する必要がある場合に便利です。一例として、毎晩の何らかのデータの定期的なバックアップがあります。"
+" \"オフライン\" アクションを実行する必要がある場合に便利です。一つの例として、一部のデータの定期的な（毎晩の）バックアップが挙げられます。"
 
 #. type: Plain text
 msgid ""
@@ -67,13 +67,14 @@ msgid ""
 "store the new offline token from refresh response into your DB instead of "
 "the previous one."
 msgstr ""
-"従来のリフレッシュトークンとオフライントークンの違いは、デフォルトではオフライントークンは期限切れせず、 `SSOセッション・アイドル・タイムアウト` "
+"従来のリフレッシュトークンとオフライントークンの違いは、デフォルトではオフライントークンは期限切れせず、 `SSO Session Max "
+"lifespan` "
 "の対象ではないということです。オフライントークンは、ユーザー・ログアウトまたはサーバーの再起動後も有効です。ただしデフォルトでは、オフライントークンをリフレッシュトークン・アクションに少なくとも30日に1回、使用する必要があります（この値は、管理コンソールの"
 " `Realm Settings` の `Tokens` タブの `Offline Session Idle timeout` "
 "で変更できます）。さらに、オプション `Offline Session Max Limited` "
 "を有効にすると、オフライントークンをリフレッシュトークン・アクションに使用するかどうかにかかわらず、オフライントークンは60日後に失効します（この値（ "
-"`Offline Session Max lifespan` ）は、管理コンソールのRealm設定のTokensタブで変更できます）。また、オプションの"
-" `Revoke refresh tokens` "
+"`Offline Session Max` ）は、管理コンソールのRealm SettingsのTokensタブで変更できます）。また、オプションの "
+"`Revoke refresh tokens` "
 "を有効にした場合、各オフライントークンは1回だけ使用できるため、リフレッシュ後は前のオフライントークンに代えて、リフレッシュ・レスポンスからの新しいオフライントークンをDBに保存する必要があります。"
 
 #. type: Plain text
@@ -115,6 +116,7 @@ msgid ""
 msgstr ""
 "クライアントは、{project_name}に認可リクエストを送信するときに、パラメーター `scope=offline_access` "
 "を追加することにより、オフライントークンを要求できます。{project_name} "
-"OIDCクライアント・アダプターは、アプリケーションのセキュリティー保護されたURL（$$http://localhost:8080/customer-"
-"portal/secured?scope=offline_access$$）にアクセスするときに、このパラメータを自動的に追加します。ダイレクト・アクセス・グラントとサービス・アカウントは、認証リクエストのボディーに"
+"OIDCクライアント・アダプターは、アプリケーションのセキュリティー保護されたURL（例： $$http://localhost:8080"
+"/customer-"
+"portal/secured?scope=offline_access$$）にアクセスするときに、このパラメーターを自動的に追加します。ダイレクト・アクセス・グラントとサービス・アカウントは、認証リクエストのボディーに"
 " `scope=offline_access` を含めると、オフライントークンもサポートします。"

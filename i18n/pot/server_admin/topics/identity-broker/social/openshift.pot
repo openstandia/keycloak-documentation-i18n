@@ -21,7 +21,7 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "OpenShift"
+msgid "OpenShift 3"
 msgstr ""
 
 #. type: Plain text
@@ -48,7 +48,7 @@ msgstr ""
 msgid "Registering OAuth client"
 msgstr ""
 
-#. type: Plain text
+#. type: delimited block =
 msgid "You can register your client using `oc` command line tool."
 msgstr ""
 
@@ -103,4 +103,83 @@ msgid ""
 "Please refer to https://docs.okd.io/latest/architecture/additional_concepts/"
 "authentication.html#oauth[official OpenShift documentation] for more "
 "detailed guides."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "OpenShift 4"
+msgstr ""
+
+#. type: delimited block =
+#, no-wrap
+msgid ""
+"Prior to configuring OpenShift 4 Identity Provider, please locate the correct OpenShift 4 API URL up.\n"
+"In some scenarios, that URL might be hidden from users. The easiest way to obtain it is to invoke the following command (this might require installing `jq` command separately) `curl -s -k -H \"Authorization: Bearer $(oc whoami -t)\" \\https://<openshift-user-facing-api-url>/apis/config.openshift.io/v1/infrastructures/cluster | jq \".status.apiServerURL\"`. In most cases, the address will be protected by HTTPS. Therefore, it is essential to configure `X509_CA_BUNDLE` in the container and set it to `/var/run/secrets/kubernetes.io/serviceaccount/ca.crt`. Otherwise, {project_name} won't be able to communicate\n"
+" with the API Server.\n"
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"There are a just a few steps you have to complete to be able to enable login "
+"with OpenShift 4.  First, go to the `Identity Providers` left menu item and "
+"select `OpenShift v4` from the `Add provider` drop down list.  This will "
+"bring you to the `Add identity provider` page."
+msgstr ""
+
+#. type: delimited block =
+msgid "image:images/openshift-4-add-identity-provider.png[]"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ oc create -f <(echo '\n"
+"kind: OAuthClient\n"
+"apiVersion: v1\n"
+"metadata:\n"
+" name: keycloak-broker <1>\n"
+"secret: \"...\" <2>\n"
+"redirectURIs:\n"
+" - \"<copy pasted Redirect URI from OpenShift 4 Identity Providers page>\" <3>\n"
+"grantMethod: prompt <4>\n"
+"')\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `name` of your OAuth client. Passed as `client_id` request parameter "
+"when making requests to `_<openshift_master>_/oauth/authorize` and "
+"`_<openshift_master>_/oauth/token`. The `name` parameter needs to be the same"
+msgstr ""
+
+#. type: Plain text
+msgid "in `OAuthClient` object as well as in {project_name} configuration."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `redirect_uri` parameter specified in requests to `_<openshift_master>_/"
+"oauth/authorize` and `_<openshift_master>_/oauth/token` must be equal to (or "
+"prefixed by) one of the URIs in `redirectURIs`. The easiest way to configure "
+"it correctly is to copy-paste"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"it from {project_name} OpenShift 4 Identity Provider configuration page "
+"(`Redirect URI` field)."
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"Use the client ID and secret defined by `oc create` command to enter them "
+"back on the {project_name} `Add identity provider` page.  Go back to "
+"{project_name} and specify those items."
+msgstr ""
+
+#. type: delimited block =
+#, no-wrap
+msgid ""
+"The OpenShift API server returns `The client is not authorized to request a token using this method` whenever `OAuthClient`\n"
+" `name`, `secret` or `redirectURIs` is incorrect. Make sure you copy-pasted them into {project_name} OpenShift 4 Identity Provider page correctly.\n"
 msgstr ""

@@ -3,39 +3,21 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#. type: Plain text
-msgid ""
-"This should be set to __true__ if your application serves both a web "
-"application and web services (e.g. SOAP or REST).  It allows you to redirect"
-" unauthenticated users of the web application to the Keycloak login page, "
-"but send an HTTP `401` status code to unauthenticated SOAP or REST clients "
-"instead as they would not understand a redirect to the login page.  Keycloak"
-" auto-detects SOAP or REST clients based on typical headers like `X"
-"-Requested-With`, `SOAPAction` or `Accept`.  The default value is _false_."
-msgstr ""
-"アプリケーションがWebアプリケーションとWebサービス（SOAPやRESTなど）の両方を提供する場合は、これを __true__ "
-"に設定する必要があります。 "
-"Webアプリケーションの未認証のユーザーをKeycloakのログインページにリダイレクトできますが、ログインページへのリダイレクトを理解できない未認証のSOAPクライアントまたはRESTクライアントにはHTTPの"
-" `401` ステータスコードを送信します。Keycloakは、 `X-Requested-With` 、 `SOAPAction` 、 "
-"`Accept` のような典型的なヘッダーに基づいて、SOAPクライアントまたはRESTクライアントを自動検出します。デフォルト値は _false_ "
-"です。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "entityID"
-msgstr "entityID"
 
 #. type: Title =====
 #, no-wrap
@@ -54,6 +36,7 @@ msgid ""
 "    nameIDPolicyFormat=\"format\"\n"
 "    forceAuthentication=\"true\"\n"
 "    isPassive=\"false\"\n"
+"    keepDOMAssertion=\"true\"\n"
 "    autodetectBearerOnly=\"false\">\n"
 "...\n"
 "</SP>\n"
@@ -63,9 +46,15 @@ msgstr ""
 "    nameIDPolicyFormat=\"format\"\n"
 "    forceAuthentication=\"true\"\n"
 "    isPassive=\"false\"\n"
+"    keepDOMAssertion=\"true\"\n"
 "    autodetectBearerOnly=\"false\">\n"
 "...\n"
 "</SP>\n"
+
+#. type: Labeled list
+#, no-wrap
+msgid "entityID"
+msgstr "entityID"
 
 #. type: Plain text
 msgid ""
@@ -159,6 +148,23 @@ msgstr ""
 msgid "autodetectBearerOnly"
 msgstr "autodetectBearerOnly"
 
+#. type: Plain text
+msgid ""
+"This should be set to __true__ if your application serves both a web "
+"application and web services (e.g. SOAP or REST).  It allows you to redirect"
+" unauthenticated users of the web application to the Keycloak login page, "
+"but send an HTTP `401` status code to unauthenticated SOAP or REST clients "
+"instead as they would not understand a redirect to the login page.  Keycloak"
+" auto-detects SOAP or REST clients based on typical headers like `X"
+"-Requested-With`, `SOAPAction` or `Accept`.  The default value is _false_."
+msgstr ""
+"アプリケーションがWebアプリケーションとWebサービス（SOAPやRESTなど）の両方を提供する場合は、これを __true__ "
+"に設定する必要があります。 "
+"Webアプリケーションの未認証のユーザーをKeycloakのログインページにリダイレクトできますが、ログインページへのリダイレクトを理解できない未認証のSOAPクライアントまたはRESTクライアントにはHTTPの"
+" `401` ステータスコードを送信します。Keycloakは、 `X-Requested-With` 、 `SOAPAction` 、 "
+"`Accept` のような典型的なヘッダーに基づいて、SOAPクライアントまたはRESTクライアントを自動検出します。デフォルト値は _false_ "
+"です。"
+
 #. type: Labeled list
 #, no-wrap
 msgid "logoutPage"
@@ -179,3 +185,24 @@ msgstr ""
 "`/logout.jsp` のようなスキーム部分を持たないリンクが指定された場合、 _web.xmlの `security-constraint` "
 "宣言に従って保護されたレルムにあるかどうかに関わらず、_ "
 "ログアウト後にそのページが表示されます。このページは、デプロイメント・コンテキスト・ルートに関連して解決されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "keepDOMAssertion"
+msgstr "keepDOMAssertion"
+
+#. type: Plain text
+msgid ""
+"This attribute should be set to __true__ to make the adapter store the DOM "
+"representation of the assertion in its original form inside the "
+"`SamlPrincipal` associated to the request. The assertion document can be "
+"retrieved using the method `getAssertionDocument` inside the principal. This"
+" is specially useful when re-playing a signed assertion.  The returned "
+"document is the one that was generated parsing the SAML response received by"
+" the {project_name} server.  This setting is _OPTIONAL_ and its default "
+"value is __false__ (the document is not saved inside the principal)."
+msgstr ""
+"この属性を __true__ に設定して、アダプターにアサーションのDOM表現を、リクエストに関連付けられた `SamlPrincipal` "
+"内の元の形式で保存させる必要があります。アサーション・ドキュメントは、プリンシパル内のメソッド `getAssertionDocument` "
+"を使用して取得できます。これは、署名されたアサーションを再生するときに特に便利です。返されるドキュメントは、{project_name}サーバーが受信したSAMLレスポンスを解析して生成されたドキュメントです。この設定は_OPTIONAL_で、デフォルト値は"
+" __false__ です（ドキュメントはプリンシパル内に保存されません）。"

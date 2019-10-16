@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ==
+#, no-wrap
+msgid "Using Vault to Obtain Secrets"
+msgstr "ボールトを使用してシークレットを取得する"
+
+#. type: Plain text
+msgid ""
+"Several fields in the administration support obtaining the value of a secret"
+" from an external vault."
+msgstr "管理のいくつかのフィールドは、外部ボールトからのシークレット値の取得をサポートしています。"
+
+#. type: Plain text
+msgid ""
+"To obtain a secret from a vault instead of entering it directly, enter the "
+"following specially crafted string into the appropriate field: `**${vault"
+".**_entry-name_**}**` where you replace the `_entry-name_` with the name of "
+"the secret as recognized by the vault."
+msgstr ""
+"直接入力する代わりにボールトからシークレットを取得するには、次の特別に細工された文字列を適切なフィールドに入力します。 `**${vault"
+".**_entry-name_**}**` ここでで、 `_entry-name_` をボールトによって認識されるシークレットの名前で置き換えます。"
+
+#. type: Plain text
+msgid ""
+"Currently, the secret can be obtained from the vault in the following "
+"fields:"
+msgstr "現在、シークレットは、次のフィールドのボールトから取得できます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "SMTP password"
+msgstr "SMTPパスワード"
+
+#. type: Plain text
+msgid "In realm <<_email,SMTP settings>>"
+msgstr "レルムの<<_email,SMTP設定>>"
+
+#. type: Labeled list
+#, no-wrap
+msgid "LDAP bind credential"
+msgstr "LDAPバインド・クレデンシャル"
+
+#. type: Plain text
+msgid "In <<_ldap,LDAP settings>> of LDAP-based user federation."
+msgstr "LDAPベースのユーザーフェデレーションの<<_ldap,LDAP設定>>内。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "OIDC identity provider secret"
+msgstr "OIDCアイデンティティー・プロバイダー・シークレット"
+
+#. type: Plain text
+msgid ""
+"In _Client Secret_ inside identity provider <<_identity_broker_oidc,OpenID "
+"Connect Config>>"
+msgstr ""
+"アイデンティティー・プロバイダー<<_identity_broker_oidc,OpenID Connect設定>>内の _Client Secret_"
+" 内。"
+
+#. type: Plain text
+msgid ""
+"To use a vault, a vault provider must be registered within {project_name}.  "
+"It is possible to either use a built-in provider described below or "
+"implement your own provider. See the "
+"link:{developerguide_link}[{developerguide_name}] for more information."
+msgstr ""
+"ボールトを使用するには、{project_name}内にボールト・プロバイダーを登録する必要があります。以下で説明する組み込みプロバイダーを使用するか、独自のプロバイダーを実装することができます。詳細については、リンクlink:{developerguide_link}[{developerguide_name}]を参照してください。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Kubernetes / OpenShift plaintext vault provider"
+msgstr "Kubernetes / OpenShift平文ボールト・プロバイダー"
+
+#. type: Plain text
+msgid ""
+"{project_name} supports vault implementation for "
+"https://kubernetes.io/docs/concepts/configuration/secret/[Kubernetes "
+"secrets]. These secrets can be mounted as data volumes, and they appear as a"
+" directory with a flat file structure, where each secret is represented by a"
+" file whose name is the secret name, and contents of that file is the secret"
+" value."
+msgstr ""
+"{project_name}は、https://kubernetes.io/docs/concepts/configuration/secret/[Kubernetes"
+" "
+"secrets]のボールト実装をサポートしています。これらのシークレットはデータボリュームとしてマウントでき、フラットファイル構造のディレクトリーとして表示されます。各シークレットは名前がシークレット名であり、そのファイルの内容がシークレット値です。"
+
+#. type: Plain text
+msgid ""
+"The files within this directory have to be named as secret name prefixed by "
+"realm name and an underscore. All underscores within the secret name or the "
+"realm name have to be doubled in the file name. For example, for a field "
+"within a realm called `sso_realm`, a reference to a secret with name "
+"`secret-name` would be written as `${vault.secret-name}`, and the file name "
+"looked up would be `sso+++__+++realm+++_+++secret-name` (note the underscore"
+" doubled in realm name)."
+msgstr ""
+"このディレクトリー内のファイルは、レルム名とアンダースコアを前に付けたシークレット名として命名する必要があります。シークレット名またはレルム名内のすべての下線は、ファイル名で二重にする必要があります。たとえば、"
+" `sso_realm` というレルム内のフィールドの場合、 `secret-name` という名前のシークレットへの参照は `${vault"
+".secret-name}` と記述され、検索されるファイル名は `sso+++__+++realm+++_+++secret-name` "
+"（アンダースコアがレルム名で2重になっていることに注意してください）。"
+
+#. type: Plain text
+msgid ""
+"To use this type of secret store, you have to declare the `plaintext` vault "
+"provider in standalone.xml, and set its parameter for the directory that "
+"contains the mounted volume. The following example shows the `plaintext` "
+"provider with the directory where vault files are searched for set to "
+"`standalone/configuration/vault` relative to {project_name} base directory:"
+msgstr ""
+"このタイプのシークレット・ストアを使用するには、standalone.xmlで `plaintext` "
+"ボールト・プロバイダーを宣言し、マウントされたボリュームを含むディレクトリーのパラメーターを設定する必要があります。次の例は、{project_name}ベース・ディレクトリーに対して"
+" `standalone/configuration/vault` に設定されたボールトファイルが検索されるディレクトリーを持つ` plaintext`"
+" プロバイダーを示しています。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"vault\">\n"
+"    <default-provider>plaintext</default-provider>\n"
+"    <provider name=\"plaintext\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"dir\" value=\"${jboss.home.dir}/standalone/configuration/vault/\" />\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"vault\">\n"
+"    <default-provider>plaintext</default-provider>\n"
+"    <provider name=\"plaintext\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"dir\" value=\"${jboss.home.dir}/standalone/configuration/vault/\" />\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid "Here is the equivalent configuration using CLI commands:"
+msgstr "CLIコマンドを使用した同等の設定は以下になります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=keycloak-server/spi=vault/:add\n"
+"/subsystem=keycloak-server/spi=vault/provider=plaintext/:add(enabled=true,properties={dir => \"${jboss.home.dir}/standalone/configuration/vault\"})\n"
+msgstr ""
+"/subsystem=keycloak-server/spi=vault/:add\n"
+"/subsystem=keycloak-server/spi=vault/provider=plaintext/:add(enabled=true,properties={dir => \"${jboss.home.dir}/standalone/configuration/vault\"})\n"
+
+#. type: Plain text
+msgid ""
+"There is at most one vault provider active per {project_name} instance at "
+"any given time, and the vault provider in each instance within the cluster "
+"have to be configured consistently."
+msgstr ""
+"常に{project_name}インスタンスごとにアクティブなボールト・プロバイダーは最大1つであり、クラスター内の各インスタンスのボールト・プロバイダーは一貫して設定される必要があります。"

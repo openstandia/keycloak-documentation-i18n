@@ -1,0 +1,152 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ==
+#, no-wrap
+msgid "Vault SPI"
+msgstr "ボールトSPI"
+
+#. type: Title ===
+#, no-wrap
+msgid "Vault provider"
+msgstr "ボールト・プロバイダー "
+
+#. type: Plain text
+msgid ""
+"You can use a vault SPI from `org.keycloak.vault` package to write custom "
+"extension for {project_name} to connect to arbitrary vault implementation."
+msgstr ""
+"{project_name}のカスタム拡張機能を記述し、任意のボールト実装に接続するために、 `org.keycloak.vault` "
+"パッケージのボールトSPIを使用できます。"
+
+#. type: Plain text
+msgid ""
+"The built-in `plaintext` provider is an example of the implementation of "
+"this SPI. In general the following rules apply:"
+msgstr "ビルトインの `plaintext` プロバイダーは、このSPIの実装の一例です。一般的に、次のルールが適用されます。"
+
+#. type: Plain text
+msgid ""
+"To prevent a secret from leaking across realms, you mey want to isolate or "
+"limit what secrets can be retrieved by a realm.  In that case, your provider"
+" should take into account the realm name when looking up secrets, for "
+"example by prefixing entries with the realm name. For example, an expression"
+" `${vault.secret-id}` would then evaluate generally to different values of a"
+" secret `secret-id`, depending on whether it was used in a realm _A_ or "
+"realm _B_.  To differentiate between realms, the realm needs to be passed to"
+" the created `VaultProvider` instance from"
+msgstr ""
+"シークレットがレルム間で漏洩するのを防ぐために、レルムによって取得できるシークレットを隔離または制限したい場合があります。その場合、プロバイダーは、たとえば、エントリーにプレフィックスとしてレルム名を付けるなどして、シークレットを検索するときにレルム名を考慮する必要があります。たとえば、式"
+" `${vault.secret-id}` は、それがレルム _A_ またはレルム _B_ で使用されたかどうかに応じて、一般的にシークレット "
+"`secret-id` の異なる値に評価されます。レルムを区別するには、作成された "
+"`VaultProvider`インスタンスにレルムを渡す必要があります"
+
+#. type: Plain text
+msgid ""
+"`VaultProviderFactory.create()` method where it is available from its the "
+"`KeycloakSession` parameter."
+msgstr "`KeycloakSession` パラメーターから利用できる `VaultProviderFactory.create()` メソッド。"
+
+#. type: Plain text
+msgid ""
+"The vault provider needs to implement a single method `obtainSecret` that "
+"returns a `VaultRawSecret` for the given secret name. That class holds the "
+"representation of the secret either in `byte[]` or `ByteBuffer` and is "
+"expected to convert between the two upon demand. Note that this buffer would"
+" be discarded after usage as explained below."
+msgstr ""
+"ボールト・プロバイダーは、指定されたシークレット名に対して `VaultRawSecret` を返す単一のメソッド `obtainSecret` "
+"を実装する必要があります。このクラスは、 `byte[]` または `ByteBuffer` "
+"のいずれかでシークレットの表現を保持し、必要に応じて2つの間で変換することを期待されています。以下で説明するように、このバッファーは使用後に破棄されることに注意してください。"
+
+#. type: Plain text
+msgid ""
+"For details on how to package and deploy a custom provider refer to the "
+"<<_providers,Service Provider Interfaces>> chapter."
+msgstr ""
+"カスタム・プロバイダーをパッケージングしてデプロイする方法についての詳細は、<<_providers,サービス・プロバイダー・インターフェイス>>の章を参照してください。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Consuming values from vault"
+msgstr "ボールトから取得した値を消費する"
+
+#. type: Plain text
+msgid ""
+"The vault contains sensitive data and {project_name} treats the secrets "
+"accordingly. When accessing a secret, the secret is obtained from the vault "
+"and retained in JVM memory only for the necessary time. Then all possible "
+"attempts to discard its content from JVM memory is done. This is achieved by"
+" using the vault secrets only within `try`-with-resources statement as "
+"outlined below:"
+msgstr ""
+"ボールトには機密データが含まれており、{project_name}はそれに応じてシークレットを扱います。シークレットにアクセスすると、シークレットはボールトから取得され、必要な時間だけJVMメモリーに保持されます。その後、JVMメモリーからコンテンツを破棄するすべての可能な試行が行われます。"
+" これは、以下で概説するように、 `try-with-resources` ステートメント内でのみボールト・シークレットを使用することで実現されます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    char[] c;\n"
+"    try (VaultCharSecret cSecret = session.vault().getCharSecret(SECRET_NAME)) {\n"
+"        // ... use cSecret\n"
+"        c = cSecret.getAsArray().orElse(null);\n"
+"        // if c != null, it now contains password\n"
+"    }\n"
+msgstr ""
+"    char[] c;\n"
+"    try (VaultCharSecret cSecret = session.vault().getCharSecret(SECRET_NAME)) {\n"
+"        // ... use cSecret\n"
+"        c = cSecret.getAsArray().orElse(null);\n"
+"        // if c != null, it now contains password\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "    // if c != null, it now contains garbage\n"
+msgstr "    // if c != null, it now contains garbage\n"
+
+#. type: Plain text
+msgid ""
+"The example uses `KeycloakSession.vault()` as the entrypoint for accessing "
+"the secrets. Using the `VaultProvider.obtainSecret` method directly is "
+"indeed also possible. However the `vault()` method has the benefit of "
+"ability to interpret the raw secret (which is generally a byte array)  as a "
+"character array (via `vault().getCharSecret()`) or a `String` (via "
+"`vault().getStringSecret()`) in addition to obtaining the original "
+"uninterpreted value (via `vault().getRawSecret()` method)."
+msgstr ""
+"この例では、シークレットにアクセスするためのエントリー・ポイントとして `KeycloakSession.vault()` を使用しています。 "
+"`VaultProvider.obtainSecret` メソッドを直接使用することもできます。しかし、 `vault()` メソッドは、（ "
+"`vault().getRawSecret()` メソッドを介して）元の未解釈の値を取得することに加えて、文字配列（ "
+"`vault().getStringSecret()` 経由）または `String` （ `vault().getStringSecret()` "
+"）で平文のシークレット（通常はバイト配列）を解釈できる利点があります。"
+
+#. type: Plain text
+msgid ""
+"Note that since `String` objects are immutable, their content cannot be "
+"discarded by overriding with random garbage. Even though measures have been "
+"taken in the default `VaultStringSecret` implementation to prevent "
+"internalizing ``String``s, the secrets stored in `String` objects would live"
+" at least to the next GC round. Thus using plain byte and character arrays "
+"and buffers is preferrable."
+msgstr ""
+"`String` オブジェクトは不変であるため、ランダムなガーベージでオーバーライドしてもコンテンツを破棄できないことに注意してください。デフォルトの "
+"`VaultStringSecret` の実装では ``String`` の内部化を防ぐための対策が講じられていますが、 `String` "
+"オブジェクトに保存されたシークレットは少なくとも次のGCラウンドまで存続します。したがって、プレーンなバイト配列と文字配列およびバッファーを使用することをお勧めします。"

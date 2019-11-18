@@ -1,0 +1,107 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ==
+#, no-wrap
+msgid "SAML Role Mappings SPI"
+msgstr "SAMLロールマッピングSPI"
+
+#. type: Plain text
+msgid ""
+"{project_name} defines a SPI for mapping SAML roles into roles that exist in"
+" the SP environment. The roles returned by a third-party IDP might not "
+"always correspond to the roles that were defined for the SP application so "
+"there is a need for a mechanism that allows mapping the SAML roles into "
+"different roles. It is used by the SAML adapter after it extracts the roles "
+"from the SAML assertion to set up the container's security context."
+msgstr ""
+"{project_name}は、SP環境に存在するロールにSAMLロールをマッピングするためのSPIを定義します。サードパーティーのIDPによって返されるロールは、SPアプリケーション用に定義されたロールに常に対応するとは限らないため、SAMLロールを異なるロールにマッピングできるメカニズムが必要です。SAMLアサーションからロールを抽出してコンテナのセキュリティー・コンテキストをセットアップした後、SAMLアダプターによって使用されます。"
+
+#. type: Plain text
+msgid ""
+"The `org.keycloak.adapters.saml.RoleMappingsProvider` SPI doesn't impose any"
+" restrictions on the mappings that can be performed.  Implementations can "
+"not only map roles into other roles but also add or remove roles (and thus "
+"augment or reduce the set of roles assigned to the SAML principal) depending"
+" on the use case."
+msgstr ""
+"`org.keycloak.adapters.saml.RoleMappingsProvider` "
+"SPIは、実行可能なマッピングに制限を課しません。実装は、ロールを他のロールにマッピングするだけでなく、ユースケースに応じてロールを追加または削除することができます（したがって、SAMLプリンシパルに割り当てられたロールのセットを増やしたり減らしたりします）。"
+
+#. type: Plain text
+msgid ""
+"For details about the configuration of the role mappings provider for the "
+"SAML adapter as well as a description of the default implementations "
+"available see the link:{adapterguide_link}[{adapterguide_name}]."
+msgstr ""
+"SAMLアダプターのロールマッピング・プロバイダーの設定の詳細、および利用可能なデフォルトの実装の説明については、link:{adapterguide_link}[{adapterguide_name}]を参照してください。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Implementing a Custom Role Mappings Provider"
+msgstr "カスタム・ロールマッピング・プロバイダーの実装"
+
+#. type: Plain text
+msgid ""
+"To implement a custom role mappings provider one first needs to implement "
+"the `org.keycloak.adapters.saml.RoleMappingsProvider` interface. Then, a "
+"`META-INF/services/org.keycloak.adapters.saml.RoleMappingsProvider` file "
+"containing the fully qualified name of the custom implementation must be "
+"added to the archive that also contains the implementation class. This "
+"archive can be:"
+msgstr ""
+"カスタム・ロールマッピング・プロバイダーを実装するには、最初に "
+"`org.keycloak.adapters.saml.RoleMappingsProvider` "
+"インターフェイスを実装する必要があります。次に、カスタム実装の完全修飾名を含む `META-"
+"INF/services/org.keycloak.adapters.saml.RoleMappingsProvider` "
+"ファイルを、実装クラスも含むアーカイブに追加する必要があります。このアーカイブには次のものがあります。"
+
+#. type: Plain text
+msgid ""
+"The SP application WAR file where the provider class is included in WEB-"
+"INF/classes;"
+msgstr "プロバイダー・クラスがWEB-INF/classesに含まれているSPアプリケーションWARファイル。"
+
+#. type: Plain text
+msgid ""
+"A custom JAR file which will be added into WEB-INF/lib of the SP application"
+" WAR;"
+msgstr "SPアプリケーションのWARのWEB-INF/libに追加されるカスタムJARファイル。"
+
+#. type: Plain text
+msgid ""
+"(WildFly/JBoss EAP only) A custom JAR file configured as a `jboss module` "
+"and referenced in `jboss-deployment-structure.xml` of the SP application "
+"WAR."
+msgstr ""
+"（WildFly/JBoss EAPのみ） `jboss module` として設定され、SPアプリケーションのWARの `jboss-"
+"deployment-structure.xml` で参照されるカスタムJARファイル。"
+
+#. type: Plain text
+msgid ""
+"When the SP application is deployed, the role mappings provider that will be"
+" used is selected by the id that was set in `keycloak-saml.xml` or in the "
+"`keycloak-saml` subsystem. So to enable your custom provider simply make "
+"sure that its id is properly set in the adapter configuration."
+msgstr ""
+"SPアプリケーションがデプロイされると、使用されるロールマッピング・プロバイダーは、 `keycloak-saml.xml` または "
+"`keycloak-saml` "
+"サブシステムで設定されたIDによって選択されます。したがって、カスタム・プロバイダーを有効にするには、アダプター設定でそのIDが適切に設定されていることを確認するだけです。"

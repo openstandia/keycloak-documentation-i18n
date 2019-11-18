@@ -516,6 +516,219 @@ msgid ""
 "    }\n"
 msgstr ""
 
+#. type: Attribute :developerguide_jsproviders_name:
+#, no-wrap
+msgid "JavaScript Providers"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} has the ability to execute scripts during runtime in order to "
+"allow administrators to customize specific functionalities:"
+msgstr ""
+
+#. type: Plain text
+msgid "OpenID Connect Script Protocol Mapper"
+msgstr ""
+
+#. type: Plain text
+msgid "OpenID Connect Script Authenticator"
+msgstr ""
+
+#. type: Plain text
+msgid "JavaScript Policy"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Create a JAR with the scripts you want to deploy"
+msgstr ""
+
+#. type: Plain text
+msgid "JAR files are regular ZIP files with a `.jar` extension."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In order to make your scripts available to {project_name} you need to deploy "
+"them to the server. For that, you should create a `JAR` file with the "
+"following structure:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "META-INF/keycloak-scripts.json\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"my-script-authenticator.js\n"
+"my-script-policy.js\n"
+"my-script-mapper.js\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `META-INF/keycloak-scripts.json` is a file descriptor that provides "
+"metadata information about the scripts you want to deploy. It is a JSON file "
+"with the following structure:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"{\n"
+"    \"authenticators\": [\n"
+"        {\n"
+"            \"name\": \"My Authenticator\",\n"
+"            \"fileName\": \"my-authenticator.js\",\n"
+"            \"description\": \"My Authenticator from a JS file\"\n"
+"        }\n"
+"    ],\n"
+"    \"policies\": [\n"
+"        {\n"
+"            \"name\": \"My Policy\",\n"
+"            \"fileName\": \"my-policy.js\",\n"
+"            \"description\": \"My Policy from a JS file\"\n"
+"        }\n"
+"    ],\n"
+"    \"mappers\": [\n"
+"        {\n"
+"            \"name\": \"My Mapper\",\n"
+"            \"fileName\": \"my-mapper.js\",\n"
+"            \"description\": \"My Mapper from a JS file\"\n"
+"        }\n"
+"    ]\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This file should reference the different types of script providers that you "
+"want to deploy:"
+msgstr ""
+
+#. type: Plain text
+msgid "`authenticators`"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For OpenID Connect Script Authenticators. You can have one or multiple "
+"authenticators in the same JAR file"
+msgstr ""
+
+#. type: Plain text
+msgid "`policies`"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For JavaScript Policies when using {project_name} Authorization Services. "
+"You can have one or multiple policies in the same JAR file"
+msgstr ""
+
+#. type: Plain text
+msgid "`mappers`"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For OpenID Connect Script Protocol Mappers. You can have one or multiple "
+"mappers in the same JAR file"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For each script file in your `JAR` file you must have a corresponding entry "
+"in `META-INF/keycloak-scripts.json` that maps your scripts files to a "
+"specific provider type. For that you should provide the following properties "
+"for each entry:"
+msgstr ""
+
+#. type: Plain text
+msgid "`name`"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A friendly name that will be used to show the scripts through the "
+"{project_name} Administration Console. If not provided, the name of the "
+"script file will be used instead"
+msgstr ""
+
+#. type: Plain text
+msgid "`description`"
+msgstr ""
+
+#. type: Plain text
+msgid "An optional text that better describes the intend of the script file"
+msgstr ""
+
+#. type: Plain text
+msgid "`fileName`"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The name of the script file. This property is *mandatory* and should map to "
+"a file within the JAR."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Deploy the Script JAR"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Once you have a JAR file with a descriptor and the scripts you want to "
+"deploy, you just need to copy the JAR to the to the {project_name} "
+"`standalone/deployments/` directory."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Using {project_name} Administration Console to upload scripts"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By default, the {project_name} Administration Console won't allow "
+"administrators to upload scripts to the server. The reason is that script "
+"execution can potentially harm the system due to the execution of malicious "
+"scripts. In order to prevent different types of attacks and lower the risks "
+"when running scripts at runtime, administrators should prefer deploying "
+"scripts directly to the server using a JAR file."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By deploying scripts directly into the server, we expect that scripts go "
+"through a proper code analysis in order to find possible vulnerabilities "
+"that can be introduced by any script deployed to the server."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"However, it should still be possible to upload scripts to the server through "
+"the {project_name} Administration Console. For that, you must set the "
+"following system property when booting the server:"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid "    -Dkeycloak.profile.feature.upload_scripts=enabled\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For more details about how to enable the `upload_scripts` feature. Please, "
+"take a look at the link:{installguide_profile_link}"
+"[{installguide_profile_name}]."
+msgstr ""
+
 #. type: Title ===
 #, no-wrap
 msgid "Available SPIs"

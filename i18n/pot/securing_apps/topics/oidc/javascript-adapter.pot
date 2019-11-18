@@ -62,7 +62,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"You also need to configure valid redirect URIs and valid web origins. Be as "
+"You also need to configure `Valid Redirect URIs` and `Web Origins`. Be as "
 "specific as possible as failing to do so may result in a security "
 "vulnerability."
 msgstr ""
@@ -91,10 +91,10 @@ msgid ""
 "<head>\n"
 "    <script src=\"keycloak.js\"></script>\n"
 "    <script>\n"
-"        var keycloak = Keycloak();\n"
-"        keycloak.init().success(function(authenticated) {\n"
+"        var keycloak = new Keycloak();\n"
+"        keycloak.init({ promiseType: 'native' }).then(function(authenticated) {\n"
 "            alert(authenticated ? 'authenticated' : 'not authenticated');\n"
-"        }).error(function() {\n"
+"        }).catch(function() {\n"
 "            alert('failed to initialize');\n"
 "        });\n"
 "    </script>\n"
@@ -108,7 +108,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "var keycloak = Keycloak('http://localhost:8080/myapp/keycloak.json');\n"
+msgid "var keycloak = new Keycloak('http://localhost:8080/myapp/keycloak.json');\n"
 msgstr ""
 
 #. type: Plain text
@@ -120,7 +120,7 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"var keycloak = Keycloak({\n"
+"var keycloak = new Keycloak({\n"
 "    url: 'http://keycloak-server/auth',\n"
 "    realm: 'myrealm',\n"
 "    clientId: 'myapp'\n"
@@ -161,7 +161,12 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "keycloak.init({ onLoad: 'check-sso', silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html'})\n"
+msgid ""
+"keycloak.init({\n"
+"    onLoad: 'check-sso',\n"
+"    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',\n"
+"    promiseType: 'native',\n"
+"})\n"
 msgstr ""
 
 #. type: Plain text
@@ -177,9 +182,9 @@ msgstr ""
 msgid ""
 "<html>\n"
 "<body>\n"
-"  <script>\n"
-"    parent.postMessage(location.href, location.origin)\n"
-"  </script>\n"
+"    <script>\n"
+"        parent.postMessage(location.href, location.origin)\n"
+"    </script>\n"
 "</body>\n"
 "</html>\n"
 msgstr ""
@@ -199,7 +204,11 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "keycloak.init({ onLoad: 'login-required' })\n"
+msgid ""
+"keycloak.init({\n"
+"    onLoad: 'login-required',\n"
+"    promiseType: 'native',\n"
+"})\n"
 msgstr ""
 
 #. type: Plain text
@@ -256,17 +265,17 @@ msgid ""
 "One thing to keep in mind is that the access token by default has a short "
 "life expiration so you may need to refresh the access token prior to sending "
 "the request. You can do this by the `updateToken` method. The `updateToken` "
-"method returns a promise object which makes it easy to invoke the service "
-"only if the token was successfully refreshed and for example display an "
-"error to the user if it wasn't. For example:"
+"method returns a promise which makes it easy to invoke the service only if "
+"the token was successfully refreshed and display an error to the user if it "
+"wasn't. For example:"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.updateToken(30).success(function() {\n"
+"keycloak.updateToken(30).then(function() {\n"
 "    loadData();\n"
-"}).error(function() {\n"
+"}).catch(function() {\n"
 "    alert('Failed to refresh token');\n"
 "});\n"
 msgstr ""
@@ -337,7 +346,11 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "keycloak.init({ flow: 'implicit' })\n"
+msgid ""
+"keycloak.init({\n"
+"    flow: 'implicit',\n"
+"    promiseType: 'native',\n"
+"})\n"
 msgstr ""
 
 #. type: Plain text
@@ -380,7 +393,11 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "keycloak.init({ flow: 'hybrid' })\n"
+msgid ""
+"keycloak.init({\n"
+"    flow: 'hybrid',\n"
+"    promiseType: 'native',\n"
+"})\n"
 msgstr ""
 
 #. type: Title ====
@@ -455,7 +472,11 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "keycloak.init({ adapter: 'cordova-native' })\n"
+msgid ""
+"keycloak.init({\n"
+"    adapter: 'cordova-native',\n"
+"    promiseType: 'native',\n"
+"})\n"
 msgstr ""
 
 #. type: Plain text
@@ -551,6 +572,55 @@ msgstr ""
 
 #. type: Plain text
 msgid "Promise - https://github.com/stefanpenner/es6-promise"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "A note about `promiseType`"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Throughout the examples in the documentation you will find `promiseType: "
+"'native'` specified wherever {project_name} is initialized.  Historically "
+"{project_name} has used its own implementation of promises that is not "
+"compatible with native promises as provided by the browser.  By default "
+"{project_name}'s own promise implementation (also known as `promiseType: "
+"'legacy'`) will be used if no promise type is specified."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In future versions of {project_name} the default promise type will change "
+"from `legacy` to `native`. Eventually, support for legacy promises will be "
+"removed entirely. It is therefore highly recommended that you always specify "
+"`promiseType: 'native'` to future-proof your code."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Native promises and TypeScript"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If you want to use native promises and get correct type information when "
+"using TypeScript you will have to specify the `promiseType` when "
+"constructing a new instance of Keycloak."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"// Typescript assumes this is a 'legacy' promise, all methods return .success() and .error()\n"
+"const keycloak = new Keycloak();\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"// Typescript assumes this is a native promise, all methods return standard promises\n"
+"const keycloak = new Keycloak<'native'>();\n"
 msgstr ""
 
 #. type: Title ====
@@ -857,7 +927,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "Returns promise to set functions to be invoked on success or error."
+msgid ""
+"enableLogging - Enables logging messages from Keycloak to the console "
+"(default is false)."
+msgstr ""
+
+#. type: Plain text
+msgid "Returns a promise that resolves when initialization completes."
 msgstr ""
 
 #. type: Title ======
@@ -1064,17 +1140,16 @@ msgid "Loads the users profile."
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"Returns promise to set functions to be invoked if the profile was loaded "
-"successfully, or if the profile could not be loaded."
+msgid "Returns a promise that resolves with the profile."
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.loadUserProfile().success(function(profile) {\n"
-"        alert(JSON.stringify(profile, null, \"  \"));\n"
-"    }).error(function() {\n"
+"keycloak.loadUserProfile()\n"
+"    .then(function(profile) {\n"
+"        alert(JSON.stringify(profile, null, \"  \"))\n"
+"    }).catch(function() {\n"
 "        alert('Failed to load user profile');\n"
 "    });\n"
 msgstr ""
@@ -1104,20 +1179,21 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Returns promise to set functions that can be invoked if the token is still "
-"valid, or if the token is no longer valid.  For example:"
+"Returns a promise that resolves with a boolean indicating whether or not the "
+"token has been refreshed."
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"keycloak.updateToken(5).success(function(refreshed) {\n"
+"keycloak.updateToken(5)\n"
+"    .then(function(refreshed) {\n"
 "        if (refreshed) {\n"
 "            alert('Token was successfully refreshed');\n"
 "        } else {\n"
 "            alert('Token is still valid');\n"
 "        }\n"
-"    }).error(function() {\n"
+"    }).catch(function() {\n"
 "        alert('Failed to refresh the token, or the session has expired');\n"
 "    });\n"
 msgstr ""

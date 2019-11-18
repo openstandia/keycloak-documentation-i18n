@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
 # Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,10 +53,49 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Unlike the other Keycloak Adapters, you should not configure your security "
-"in web.xml.  However, keycloak.json is still required."
+"in web.xml.  However, keycloak.json is still required.  In order for Single "
+"Sign Out work properly you have to define a session listener."
 msgstr ""
 "他のKeycloakアダプターとは異なり、web.xmlにセキュリティーを設定しないでください。ただし、 `keycloak.json` "
-"は依然として必要です。"
+"は依然として必要です。シングル・サインアウトが適切に機能するためには、セッション・リスナーを定義する必要があります。"
+
+#. type: Block title
+#, no-wrap
+msgid "The session listener can be defined:"
+msgstr "次のようにセッションリスナーを定義できます。"
+
+#. type: Plain text
+msgid "in web.xml (for pure Spring Security environments):"
+msgstr "web.xml内（純粋なSpring Security環境用）"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<listener>\n"
+"     <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>\n"
+"</listener>\n"
+msgstr ""
+"<listener>\n"
+"     <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>\n"
+"</listener>\n"
+
+#. type: Plain text
+msgid ""
+"as a Spring bean (in Spring Boot environments using Spring Security adapter)"
+msgstr "Spring Beanとして（Spring Securityアダプターを使用するSpring Boot環境で）"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"@Bean\n"
+"public ServletListenerRegistrationBean<HttpSessionEventPublisher> httpSessionEventPublisher() {\n"
+"    return new ServletListenerRegistrationBean<HttpSessionEventPublisher>(new HttpSessionEventPublisher());\n"
+"}\n"
+msgstr ""
+"@Bean\n"
+"public ServletListenerRegistrationBean<HttpSessionEventPublisher> httpSessionEventPublisher() {\n"
+"    return new ServletListenerRegistrationBean<HttpSessionEventPublisher>(new HttpSessionEventPublisher());\n"
+"}\n"
 
 #. type: Plain text
 msgid ""

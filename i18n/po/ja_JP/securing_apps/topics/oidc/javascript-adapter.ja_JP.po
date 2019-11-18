@@ -178,6 +178,75 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
+"You can configure a _silent_ `check-sso` option.  With this feature enabled,"
+" your browser won't do a full redirect to the {project_name} server and back"
+" to your application, but this action will be performed in a hidden iframe, "
+"so your application resources only need to be loaded and parsed once by the "
+"browser when the app is initialized and not again after the redirect back "
+"from {project_name} to your app.  This is particularly useful in case of "
+"SPAs (Single Page Applications)."
+msgstr ""
+"_silent_ `check-sso` "
+"オプションを設定できます。この機能を有効にすると、ブラウザーは{project_name}サーバーへの完全なリダイレクトを行わず、アプリケーションに戻ります。このアクションは非表示のiframeで実行されるため、アプリケーションのリソースはアプリの初期化時にブラウザーによって1回だけロードと解析がされ、{project_name}からアプリへのリダイレクト・バック後に再度行われはしません。これは、SPA（シングル・ページ・アプリケーション）の場合に特に便利です。"
+
+#. type: Plain text
+msgid ""
+"To enable the _silent_ `check-sso`, you have to provide a "
+"`silentCheckSsoRedirectUri` attribute in the init method.  This URI needs to"
+" be a valid endpoint in the application (and of course it must be configured"
+" as a valid redirect for the client in the {project_name} Administration "
+"Console):"
+msgstr ""
+"_silent_ `check-sso` を有効にするには、initメソッドで `silentCheckSsoRedirectUri` "
+"属性を提供する必要があります。このURIは、アプリケーションの有効なエンドポイントである必要があります（もちろん、{project_name}管理コンソールでクライアントの有効なリダイレクトとして設定する必要があります）。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"keycloak.init({ onLoad: 'check-sso', silentCheckSsoRedirectUri: "
+"window.location.origin + '/silent-check-sso.html'})\n"
+msgstr ""
+"keycloak.init({ onLoad: 'check-sso', silentCheckSsoRedirectUri: "
+"window.location.origin + '/silent-check-sso.html'})\n"
+
+#. type: Plain text
+msgid ""
+"The page at the silent check-sso redirect uri is loaded in the iframe after "
+"successfully checking your authentication state and retrieving the tokens "
+"from the {project_name} server.  It has no other task than sending the "
+"received tokens to the main application and should only look like this:"
+msgstr ""
+"サイレント・チェックSSOリダイレクトURIのページは、認証状態を正常にチェックし、{project_name}サーバーからトークンを取得した後、iframeにロードされます。受信したトークンをメイン・アプリケーションに送信する以外のタスクはなく、次のように見えるはずです。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<html>\n"
+"<body>\n"
+"  <script>\n"
+"    parent.postMessage(location.href, location.origin)\n"
+"  </script>\n"
+"</body>\n"
+"</html>\n"
+msgstr ""
+"<html>\n"
+"<body>\n"
+"  <script>\n"
+"    parent.postMessage(location.href, location.origin)\n"
+"  </script>\n"
+"</body>\n"
+"</html>\n"
+
+#. type: Plain text
+msgid ""
+"Please keep in mind that this page at the specified location must be "
+"provided by the application itself and is _not_ part of the JavaScript "
+"adapter!"
+msgstr ""
+"指定されたlocationにあるこのページは、アプリケーション自体によって提供される必要があり、JavaScriptアダプターの一部ではないことに注意してください。"
+
+#. type: Plain text
+msgid ""
 "To enable `login-required` set `onLoad` to `login-required` and pass to the "
 "init method:"
 msgstr ""
@@ -872,10 +941,24 @@ msgstr "optionsはオブジェクトで、以下のプロパティーがあり�
 
 #. type: Plain text
 msgid ""
+"useNonce - Adds a cryptographic nonce to verify that the authentication "
+"response matches the request (default is true)."
+msgstr "useNonce - 暗号化ノンスを追加して、認証レスポンスがリクエストと一致することを確認します（デフォルトはtrueです）。"
+
+#. type: Plain text
+msgid ""
 "onLoad - Specifies an action to do on load. Supported values are 'login-"
 "required' or 'check-sso'."
 msgstr ""
 "onLoad - ロード時に実行するアクションを指定します。サポートされている値は'login-required'または'check-sso'です。"
+
+#. type: Plain text
+msgid ""
+"silentCheckSsoRedirectUri - Set the redirect uri for silent authentication "
+"check if onLoad is set to 'check-sso'."
+msgstr ""
+"silentCheckSsoRedirectUri - onLoadが'check-"
+"sso'に設定されている場合、サイレント認証チェックのリダイレクトURIを設定します。"
 
 #. type: Plain text
 msgid "token - Set an initial value for the token."

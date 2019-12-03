@@ -1,0 +1,187 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ==
+#, no-wrap
+msgid "Hostname"
+msgstr "Hostname"
+
+#. type: Plain text
+msgid ""
+"{project_name} uses the public hostname for a number of things. For example,"
+" in the token issuer fields and URLs sent in password reset emails."
+msgstr ""
+"{project_name}は、パブリックホスト名をさまざまな用途に使用します。たとえば、トークン発行者のフィールドやパスワードリセットの電子メールで送信されたURLなどです。"
+
+#. type: Plain text
+msgid ""
+"The Hostname SPI provides a way to configure the hostname for a request. The"
+" default provider allows setting a fixed URL for frontend requests, while "
+"allowing backend requests to be based on the request URI. It is also "
+"possible to develop your own provider in the case the built-in provider does"
+" not provide the functionality needed."
+msgstr ""
+"Hostname "
+"SPIは、リクエストのホスト名を設定する方法を提供します。デフォルト・プロバイダーでは、フロントエンドのリクエストに固定のURLを設定でき、バックエンドのリクエストはリクエストURIに基づくことができます。ビルトイン・プロバイダーが必要な機能を提供しない場合、独自のプロバイダーを開発することもできます。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Default provider"
+msgstr "デフォルト・プロバイダー"
+
+#. type: Plain text
+msgid ""
+"The default hostname provider uses the configured `frontendUrl` as the base "
+"URL for frontend requests (requests from user-agents) and uses the request "
+"URL as the basis for backend requests (direct requests from clients)."
+msgstr ""
+"デフォルトのHostnameプロバイダーは、設定済みの `frontendUrl` "
+"をフロントエンド・リクエスト（ユーザー・エージェントからのリクエスト）をベースURLとして使用し、リクエストURLをバックエンド・リクエスト（クライアントからの直接リクエスト）のベースとして使用します。"
+
+#. type: Plain text
+msgid ""
+"Frontend request do not have to have the same context-path as the Keycloak "
+"server. This means you can expose Keycloak on for example "
+"`https://auth.example.org` or `https://example.org/keycloak` while "
+"internally its URL could be `https://10.0.0.10:8080/auth`."
+msgstr ""
+"フロントエンド・リクエストは、Keycloakサーバーと同じコンテキストパスを持つ必要はありません。これは、たとえば "
+"`https://auth.example.org` または `https://example.org/keycloak` "
+"でKeycloakを公開できる一方で、内部的にはURLが `https://10.0.0.10:8080/auth` "
+"である可能性があることを意味します。"
+
+#. type: Plain text
+msgid ""
+"This makes it possible to have user-agents (browsers) send requests to "
+"${project.name} through the public domain name, while internal clients can "
+"use an internal domain name or IP address."
+msgstr ""
+"これにより、ユーザー・エージェント（ブラウザー）がパブリック・ドメイン名を介して ${project.name} "
+"にリクエストを送信し、内部クライアントが内部ドメイン名またはIPアドレスを使用できるようになります。"
+
+#. type: Plain text
+msgid ""
+"This is reflected in the OpenID Connect Discovery endpoint for example where"
+" the `authorization_endpoint` uses the frontend URL, while `token_endpoint` "
+"uses the backend URL. As a note here a public client for instance would "
+"contact Keycloak through the public endpoint, which would result in the base"
+" of `authorization_endpoint` and `token_endpoint` being the same."
+msgstr ""
+"これは、たとえば、 `authorization_endpoint` がフロントエンドURLを使用し、 `token_endpoint` "
+"がバックエンドURLを使用するOpenID Connect "
+"Discoveryエンドポイントに反映されます。ここでの注意点は、たとえば、パブリック・クライアントはパブリック・エンドポイントを介してKeycloakにアクセスし、その結果、"
+" `authorization_endpoint` と `token_endpoint` のベースが同じになるということです。"
+
+#. type: Plain text
+msgid ""
+"To set the frontendUrl for Keycloak you can either pass add "
+"`-Dkeycloak.frontendUrl=https://auth.example.org` to the startup or you can "
+"configure it in `standalone.xml`. See the example below:"
+msgstr ""
+"KeycloakのfrontendUrlを設定するには、追加の "
+"`-Dkeycloak.frontendUrl=https://auth.example.org` を起動に渡すか、 `standalone.xml` "
+"で設定します。以下の例を参照してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"hostname\">\n"
+"    <default-provider>default</default-provider>\n"
+"    <provider name=\"default\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"frontendUrl\" value=\"https://auth.example.com\"/>\n"
+"            <property name=\"forceBackendUrlToFrontendUrl\" value=\"false\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"hostname\">\n"
+"    <default-provider>default</default-provider>\n"
+"    <provider name=\"default\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"frontendUrl\" value=\"https://auth.example.com\"/>\n"
+"            <property name=\"forceBackendUrlToFrontendUrl\" value=\"false\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid "To update the `frontendUrl` with jboss-cli use the following command:"
+msgstr "jboss-cliで `frontendUrl` を更新するには、次のコマンドを使用します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=keycloak-server/spi=hostname/provider=fixed:write-"
+"attribute(name=properties.frontendUrl,value=\"https://auth.example.com\")\n"
+msgstr ""
+"/subsystem=keycloak-server/spi=hostname/provider=fixed:write-"
+"attribute(name=properties.frontendUrl,value=\"https://auth.example.com\")\n"
+
+#. type: Plain text
+msgid ""
+"If you want all requests to go through the public domain name you can force "
+"backend requests to use the frontend URL as well by setting "
+"`forceBackendUrlToFrontendUrl` to `true`."
+msgstr ""
+"すべてのリクエストがパブリック・ドメイン名を通過するようにしたい場合は、 `forceBackendUrlToFrontendUrl` を `true`"
+" に設定することで、バックエンド・リクエストにフロントエンドURLも使用させることができます。"
+
+#. type: Plain text
+msgid ""
+"It is also possible to override the default frontend URL for individual "
+"realms. This can be done in the admin console."
+msgstr "個々のレルムのデフォルトのフロントエンドURLをオーバーライドすることもできます。これは管理コンソールで実行できます。"
+
+#. type: Plain text
+msgid ""
+"If you do not want to expose the admin endpoints and console on the public "
+"domain use the property `adminUrl` to set a fixed URL for the admin console,"
+" which is different to the `frontendUrl`. It is also required to block "
+"access to `/auth/admin` externally, for details on how to do that refer to "
+"the link:{adminguide_link}[{adminguide_name}]."
+msgstr ""
+"パブリック・ドメインで管理エンドポイントとコンソールを公開したくない場合は、プロパティー `adminUrl` "
+"を使用して、管理コンソールの固定URLを設定します。これは `frontendUrl` とは異なります。また、外部から `/auth/admin` "
+"へのアクセスをブロックする必要があります。その方法の詳細については、link:{adminguide_link}[{adminguide_name}]を参照してください。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Custom provider"
+msgstr "カスタム・プロバイダー"
+
+#. type: Plain text
+msgid ""
+"To develop a custom hostname provider you need to implement "
+"`org.keycloak.urls.HostnameProviderFactory` and "
+"`org.keycloak.urls.HostnameProvider`."
+msgstr ""
+"カスタムのホスト名プロバイダーを開発するには、 `org.keycloak.urls.HostnameProviderFactory` と "
+"`org.keycloak.urls.HostnameProvider` を実装する必要があります。"
+
+#. type: Plain text
+msgid ""
+"Follow the instructions in the Service Provider Interfaces section in "
+"link:{developerguide_link}[{developerguide_name}] for more information on "
+"how to develop a custom provider."
+msgstr ""
+"カスタム・プロバイダーの開発方法の詳細については、 link:{developerguide_link}[{developerguide_name}] "
+"のサービス・プロバイダー・インターフェイスのセクションの指示に従ってください。"

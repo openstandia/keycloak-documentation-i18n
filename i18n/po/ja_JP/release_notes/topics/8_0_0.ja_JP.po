@@ -18,6 +18,16 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: Title ==
+#, no-wrap
+msgid "New Default Hostname provider"
+msgstr "新しいDefault Hostnameプロバイダー"
+
+#. type: Title ==
+#, no-wrap
+msgid "Deploying Scripts to the Server"
+msgstr "サーバーへのスクリプトのデプロイ"
+
 #. type: Title =
 #, no-wrap
 msgid "Highlights"
@@ -41,6 +51,28 @@ msgid ""
 "Furthermore, new vault SPI has been introduced to enable development of "
 "extensions to access secrets from custom vaults."
 msgstr "さらに、カスタム・ボールトからシークレットにアクセスするための拡張機能の開発を可能にする新しいボールトSPIが導入されました。"
+
+#. type: Plain text
+msgid ""
+"The fixed and request hostname providers have been replaced with a single "
+"new default hostname provider. This provider comes with a number of "
+"improvements, including:"
+msgstr ""
+"固定ホスト名プロバイダーとリクエストホスト名プロバイダーは、単一の新しいデフォルト・ホスト名プロバイダーに置き換えられました。このプロバイダーには、次のような多くの改善点があります。"
+
+#. type: Plain text
+msgid "No need to change provider to set fixed base URL"
+msgstr "固定ベースURLを設定するためにプロバイダーを変更する必要がない"
+
+#. type: Plain text
+msgid "Support different base URL for frontend and backend requests"
+msgstr "フロントエンドとバックエンドのリクエストでの異なるベースURLをサポート"
+
+#. type: Plain text
+msgid ""
+"Support changing context-path in cases where Keycloak is exposed on a "
+"different context-path through a reverse proxy"
+msgstr "Keycloakがリバース・プロキシーを介して異なるコンテキストパスで公開されている場合のコンテキストパスの変更をサポート"
 
 #. type: Title ==
 #, no-wrap
@@ -88,3 +120,190 @@ msgstr ""
 "{project_name}がIDPとして機能する場合、ロールをアサーションに設定する前に、組み込みのロールマッパーを使用して必要なマッピングを実行できるため、この場合、このSPIはおそらく冗長になることに注意してください。"
 " `RoleMappingsProvider` "
 "SPIは、IDPがロールをアサーションに追加する前にマップする方法を提供しない状況のために設計されました。"
+
+#. type: Title ==
+#, no-wrap
+msgid "WildFly 18 Upgrade"
+msgstr "WildFly 18 アップグレード"
+
+#. type: Plain text
+msgid "Keycloak server was upgraded to use WildFly 18 under the covers."
+msgstr "{project_name}サーバーは内部でWildFly 18を使用するようにアップグレードされました。"
+
+#. type: Title ==
+#, no-wrap
+msgid "W3C Web Authentication support"
+msgstr "W3C Web Authenticationサポート"
+
+#. type: Plain text
+msgid ""
+"In this release, we added initial support for W3C Web Authentication "
+"(WebAuthn). There are a few limitations in current implementation, however "
+"we are working on further improvements in this area. Thanks to "
+"https://github.com/tnorimat[tnorimat] for the contribution. Also thanks to "
+"https://github.com/ynojima[ynojima] for the help and feedback."
+msgstr ""
+"このリリースでは、W3C Web "
+"Authentication（WebAuthn）の初期サポートを追加しました。現在の実装にはいくつかの制限がありますが、この領域のさらなる改善に取り組んでいます。貢献してくれた"
+" https://github.com/tnorimat[tnorimat] に感謝します。また、ヘルプとフィードバックを "
+"https://github.com/ynojima[ynojima] に感謝します。"
+
+#. type: Title ==
+#, no-wrap
+msgid ""
+"Support for password-less authentication, multi-factor authentication and "
+"multiple credentials per user"
+msgstr "パスワードレス認証、多要素認証、ユーザーごとの複数のクレデンシャルのサポート"
+
+#. type: Plain text
+msgid ""
+"With the arrival of W3C Web Authentication support, we've refined the "
+"authentication flow system to be able to allow a user to select which "
+"authentication method is preferred for login (for example, the choice "
+"between an OTP credential and a WebAuthn credential). The new mechanisms "
+"also allow an administrator to craft flows for password-less login, for "
+"example just using WebAuthn as an authentication method. Please note that "
+"with these changes, any custom authentication flow you have created may need"
+" to be adapted to the new flow logic."
+msgstr ""
+"W3C Web "
+"Authenticationサポートの登場により、認証フローシステムを改良し、ユーザーがログインに適した認証方法の選択（たとえば、OTPクレデンシャルとWebAuthnクレデンシャルの選択）ができるようにしました。新しいメカニズムにより、管理者はパスワードレス・ログインのフローを作成することもできます。たとえば、認証方法としてWebAuthnを使用するだけです。これらの変更により、場合によっては作成したカスタム認証フローを新しい制御ロジックに適合させる必要があることに注意してください。"
+
+#. type: Plain text
+msgid ""
+"As a result of these changes, users can now have multiple OTP devices and "
+"multiple WebAuthn devices. The same system that allows a user to select "
+"which type of device to use during login also allows that user to select "
+"which specific device to use. Thanks to the "
+"https://github.com/cloudtrust[Cloudtrust] team: "
+"https://github.com/AlistairDoswald[AlistairDoswald], "
+"https://github.com/fperot74[sispeo] and https://github.com/Fratt[Fratt] for "
+"their contributions, and to https://github.com/harture[harture] and "
+"https://github.com/lagess[Laurent] for their help."
+msgstr ""
+"これらの変更の結果、ユーザーは複数のOTPデバイスと複数のWebAuthnデバイスを使用できるようになりました。ユーザーがログイン時に使用するデバイスのタイプを選択できるようにする同じシステムでは、ユーザーが使用する特定のデバイスを選択することもできます。"
+" https://github.com/cloudtrust[Cloudtrust] チーム： "
+"https://github.com/AlistairDoswald[AlistairDoswald] 、 "
+"https://github.com/fperot74[sispeo] 、 https://github.com/Fratt[Fratt] "
+"の貢献、および https://github.com/harture[harture] および "
+"https://github.com/lagess[Laurent] への支援に感謝します。"
+
+#. type: Title =
+#, no-wrap
+msgid "Other Improvements"
+msgstr "その他の改善"
+
+#. type: Title ==
+#, no-wrap
+msgid ""
+"System properties and environment variables support in theme.properties"
+msgstr "theme.propertiesでのシステム・プロパティーと環境変数のサポート"
+
+#. type: Plain text
+msgid ""
+"It is now possible to use system properties and environment variables within"
+" theme.properties file. Thanks to https://github.com/Opa-[Opa-]"
+msgstr ""
+"theme.propertiesファイル内でシステム・プロパティーと環境変数を使用できるようになりました。 "
+"https://github.com/Opa-[Opa-] に感謝"
+
+#. type: Title ==
+#, no-wrap
+msgid ""
+"Support more signing algorithms for client authentication with signed JWT"
+msgstr "署名されたJWTを使用したクライアント認証のためのより多くの署名アルゴリズムのサポート"
+
+#. type: Plain text
+msgid ""
+"Thanks to https://github.com/tnorimat[tnorimat], we support more signing "
+"algorithms for client authentication with signed JWT."
+msgstr ""
+"https://github.com/tnorimat[tnorimat] "
+"の貢献により、署名付きJWTを使用したクライアント認証用の署名アルゴリズムをサポートしました。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Configurable client authentication method for OIDC Identity providers"
+msgstr "OIDCアイデンティティー・プロバイダーの設定可能なクライアント認証方法"
+
+#. type: Plain text
+msgid ""
+"In this release, possibility to authenticate OIDC providers with signed JWT "
+"or basic authentication was added. So all the client authentication methods "
+"mentioned in the https://openid.net/specs/openid-connect-core-"
+"1_0.html#ClientAuthentication[OIDC specification] are supported now. Thanks "
+"to https://github.com/madgaet[madgaet] and "
+"https://github.com/rradillen[rradillen] for contributions."
+msgstr ""
+"このリリースでは、署名付きJWTまたはBASIC認証でOIDCプロバイダーを認証できる機能が追加されました。そのため、 "
+"https://openid.net/specs/openid-connect-core-"
+"1_0.html#ClientAuthentication[OIDC仕様] "
+"に記載されているすべてのクライアント認証方法がサポートされるようになりました。貢献してくれた "
+"https://github.com/madgaet[madgaet] と "
+"https://github.com/rradillen[rradillen] に感謝します。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Support enable/disable logging into the JavaScript adapter"
+msgstr "JavaScriptアダプターへのログインの有効化/無効化のサポート"
+
+#. type: Plain text
+msgid ""
+"Thanks to https://github.com/jonkoops[jonkoops] now it's possible to enable "
+"or disable logging for the JS adapter."
+msgstr ""
+"https://github.com/jonkoops[jonkoops] "
+"の貢献により、JSアダプターのロギングを有効または無効にできるようになりました。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Credentials support removed from the JavaScript adapter"
+msgstr "JavaScriptアダプターからクレデンシャルのサポートが削除されました"
+
+#. type: Plain text
+msgid ""
+"The option to provide client credentials in the JavaScript adapter was "
+"removed. Thanks to https://github.com/jonkoops[jonkoops]"
+msgstr ""
+"JavaScriptアダプターでクライアント・クレデンシャルを提供するオプションが削除されました。 "
+"https://github.com/jonkoops[jonkoops] に感謝"
+
+#. type: Title ==
+#, no-wrap
+msgid "Updates for Gatekeeper"
+msgstr "Gatekeeperの更新"
+
+#. type: Plain text
+msgid ""
+"Secure token and logout endpoint were included in Gatekeeper. Thanks to "
+"https://github.com/fredbi[fredbi]"
+msgstr ""
+"セキュア・トークンとログアウト・エンドポイントはGatekeeperに含まれていました。 "
+"https://github.com/fredbi[fredbi] に感謝"
+
+#. type: Plain text
+msgid ""
+"There was a bug on Gatekeeper which was making cookies to be applied to "
+"subdomains. Thanks to https://github.com/daniel-ac-martin[daniel-ac-martin] "
+"the issue was fixed"
+msgstr ""
+"Gatekeeperには、サブドメインに適用されるCookieを作成するバグがありました。 https://github.com/daniel-ac-"
+"martin[daniel-ac-martin] のおかげで、問題は修正されました。"
+
+#. type: Plain text
+msgid ""
+"Now Gatekeeper provides support to https://www.owasp.org/index.php/SameSite"
+"[Same-site cookies]. Thanks to https://github.com/fiji-flo[fiji-flo]"
+msgstr ""
+"現在、Gatekeeperは https://www.owasp.org/index.php/SameSite[Same-site cookies] "
+"のサポートを提供しています。 https://github.com/fiji-flo[fiji-flo] に感謝"
+
+#. type: Plain text
+msgid ""
+"Please take a look at link:{releasenotes_link}#keycloak-7-0-1-final[7.0.1 "
+"{releasenotes_name}] for more details on how you can now deploy and run "
+"scripts to customize specific behavior."
+msgstr ""
+"特定の動作をカスタマイズするためにスクリプトをデプロイおよび実行する方法の詳細については、 "
+"link:{releasenotes_link}#keycloak-7-0-1-final[7.0.1 {releasenotes_name}] "
+"を参照してください。"

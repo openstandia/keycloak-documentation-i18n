@@ -701,6 +701,260 @@ msgstr ""
 "        }\n"
 "    }\n"
 
+#. type: Attribute :developerguide_jsproviders_name:
+#, no-wrap
+msgid "JavaScript Providers"
+msgstr "JavaScriptプロバイダー"
+
+#. type: Plain text
+msgid ""
+"{project_name} has the ability to execute scripts during runtime in order to"
+" allow administrators to customize specific functionalities:"
+msgstr "{project_name}には、管理者が特定の機能をカスタマイズできるようにするために、起動中にスクリプトを実行する機能があります。"
+
+#. type: Plain text
+msgid "OpenID Connect Script Protocol Mapper"
+msgstr "OpenID Connectスクリプト・プロトコル・マッパー"
+
+#. type: Plain text
+msgid "OpenID Connect Script Authenticator"
+msgstr "OpenID Connectスクリプト・オーセンティケーター"
+
+#. type: Plain text
+msgid "JavaScript Policy"
+msgstr "JavaScriptポリシー"
+
+#. type: Title ====
+#, no-wrap
+msgid "Create a JAR with the scripts you want to deploy"
+msgstr "デプロイするスクリプトを使用してJARを作成します"
+
+#. type: Plain text
+msgid "JAR files are regular ZIP files with a `.jar` extension."
+msgstr "JARファイルは、拡張子が `.jar` の通常のZIPファイルです。"
+
+#. type: Plain text
+msgid ""
+"In order to make your scripts available to {project_name} you need to deploy"
+" them to the server. For that, you should create a `JAR` file with the "
+"following structure:"
+msgstr ""
+"スクリプトを{project_name}で使用できるようにするには、それらをサーバーにデプロイする必要があります。そのためには、次の構造を持つ "
+"`JAR` ファイルを作成する必要があります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "META-INF/keycloak-scripts.json\n"
+msgstr "META-INF/keycloak-scripts.json\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"my-script-authenticator.js\n"
+"my-script-policy.js\n"
+"my-script-mapper.js\n"
+msgstr ""
+"my-script-authenticator.js\n"
+"my-script-policy.js\n"
+"my-script-mapper.js\n"
+
+#. type: Plain text
+msgid ""
+"The `META-INF/keycloak-scripts.json` is a file descriptor that provides "
+"metadata information about the scripts you want to deploy. It is a JSON file"
+" with the following structure:"
+msgstr ""
+"`META-INF/keycloak-scripts.json` "
+"は、デプロイするスクリプトに関するメタデータ情報を提供するファイル・ディスクリプターです。次の構造を持つJSONファイルです。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"{\n"
+"    \"authenticators\": [\n"
+"        {\n"
+"            \"name\": \"My Authenticator\",\n"
+"            \"fileName\": \"my-authenticator.js\",\n"
+"            \"description\": \"My Authenticator from a JS file\"\n"
+"        }\n"
+"    ],\n"
+"    \"policies\": [\n"
+"        {\n"
+"            \"name\": \"My Policy\",\n"
+"            \"fileName\": \"my-policy.js\",\n"
+"            \"description\": \"My Policy from a JS file\"\n"
+"        }\n"
+"    ],\n"
+"    \"mappers\": [\n"
+"        {\n"
+"            \"name\": \"My Mapper\",\n"
+"            \"fileName\": \"my-mapper.js\",\n"
+"            \"description\": \"My Mapper from a JS file\"\n"
+"        }\n"
+"    ]\n"
+"}\n"
+msgstr ""
+"{\n"
+"    \"authenticators\": [\n"
+"        {\n"
+"            \"name\": \"My Authenticator\",\n"
+"            \"fileName\": \"my-authenticator.js\",\n"
+"            \"description\": \"My Authenticator from a JS file\"\n"
+"        }\n"
+"    ],\n"
+"    \"policies\": [\n"
+"        {\n"
+"            \"name\": \"My Policy\",\n"
+"            \"fileName\": \"my-policy.js\",\n"
+"            \"description\": \"My Policy from a JS file\"\n"
+"        }\n"
+"    ],\n"
+"    \"mappers\": [\n"
+"        {\n"
+"            \"name\": \"My Mapper\",\n"
+"            \"fileName\": \"my-mapper.js\",\n"
+"            \"description\": \"My Mapper from a JS file\"\n"
+"        }\n"
+"    ]\n"
+"}\n"
+
+#. type: Plain text
+msgid ""
+"This file should reference the different types of script providers that you "
+"want to deploy:"
+msgstr "このファイルは、デプロイするさまざまなタイプのスクリプト・プロバイダーを参照する必要があります。"
+
+#. type: Plain text
+msgid "`authenticators`"
+msgstr "`authenticators`"
+
+#. type: Plain text
+msgid ""
+"For OpenID Connect Script Authenticators. You can have one or multiple "
+"authenticators in the same JAR file"
+msgstr "OpenID Connectスクリプト・オーセンティケーター用。同じJARファイルに1つ以上のオーセンティケーターを含めることができます。"
+
+#. type: Plain text
+msgid "`policies`"
+msgstr "`policies`"
+
+#. type: Plain text
+msgid ""
+"For JavaScript Policies when using {project_name} Authorization Services. "
+"You can have one or multiple policies in the same JAR file"
+msgstr ""
+"{project_name}認可サービスを使用する場合のJavaScriptポリシー用。同じJARファイルに1つ以上のポリシーを含めることができます。"
+
+#. type: Plain text
+msgid "`mappers`"
+msgstr "`mappers`"
+
+#. type: Plain text
+msgid ""
+"For OpenID Connect Script Protocol Mappers. You can have one or multiple "
+"mappers in the same JAR file"
+msgstr "OpenID Connectスクリプト・プロトコル・マッパー用。同じJARファイルに1つ以上のマッパーを含めることができます。"
+
+#. type: Plain text
+msgid ""
+"For each script file in your `JAR` file you must have a corresponding entry "
+"in `META-INF/keycloak-scripts.json` that maps your scripts files to a "
+"specific provider type. For that you should provide the following properties"
+" for each entry:"
+msgstr ""
+"`JAR` ファイル内の各スクリプト・ファイルに対して、スクリプト・ファイルを特定のプロバイダー・タイプにマッピングする `META-INF"
+"/keycloak-scripts.json` に対応するエントリーが必要です。そのためには、各エントリーに次のプロパティーを提供する必要があります。"
+
+#. type: Plain text
+msgid "`name`"
+msgstr "`name`"
+
+#. type: Plain text
+msgid ""
+"A friendly name that will be used to show the scripts through the "
+"{project_name} Administration Console. If not provided, the name of the "
+"script file will be used instead"
+msgstr ""
+"{project_name}管理コンソールでスクリプトを表示するために使用されるわかりやすい名前。指定しない場合は、代わりにスクリプト・ファイルの名前が使用されます。"
+
+#. type: Plain text
+msgid "`description`"
+msgstr "`description`"
+
+#. type: Plain text
+msgid "An optional text that better describes the intend of the script file"
+msgstr "スクリプト・ファイルの意図をより詳しく説明するオプションのテキスト。"
+
+#. type: Plain text
+msgid "`fileName`"
+msgstr "`fileName`"
+
+#. type: Plain text
+msgid ""
+"The name of the script file. This property is *mandatory* and should map to "
+"a file within the JAR."
+msgstr "スクリプト・ファイルの名前。 このプロパティーは *必須* であり、JAR内のファイルにマップする必要があります。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Deploy the Script JAR"
+msgstr "スクリプトJARをデプロイする"
+
+#. type: Plain text
+msgid ""
+"Once you have a JAR file with a descriptor and the scripts you want to "
+"deploy, you just need to copy the JAR to the to the {project_name} "
+"`standalone/deployments/` directory."
+msgstr ""
+"ディスクリプターとデプロイしたいスクリプトを含むJARファイルを作成したら、JARを{project_name}の "
+"`standalone/deployments/` ディレクトリーにコピーするだけです。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Using {project_name} Administration Console to upload scripts"
+msgstr "{project_name}管理コンソールを使用してスクリプトをアップロードする"
+
+#. type: Plain text
+msgid ""
+"By default, the {project_name} Administration Console won't allow "
+"administrators to upload scripts to the server. The reason is that script "
+"execution can potentially harm the system due to the execution of malicious "
+"scripts. In order to prevent different types of attacks and lower the risks "
+"when running scripts at runtime, administrators should prefer deploying "
+"scripts directly to the server using a JAR file."
+msgstr ""
+"デフォルトでは、{project_name}管理コンソールで管理者がサーバーにスクリプトをアップロードすることはできません。その理由は、悪意のあるスクリプトの実行により、スクリプトの実行がシステムに損害を与える可能性があるためです。さまざまな種類の攻撃を防ぎ、実行時にスクリプトを実行する際のリスクを下げるために、管理者はJARファイルを使用してサーバーにスクリプトを直接デプロイすることを選択する必要があります。"
+
+#. type: Plain text
+msgid ""
+"By deploying scripts directly into the server, we expect that scripts go "
+"through a proper code analysis in order to find possible vulnerabilities "
+"that can be introduced by any script deployed to the server."
+msgstr ""
+"サーバーにスクリプトを直接デプロイすることにより、そのスクリプトによって引き起こされる可能性のある脆弱性を見つけるための適切なコード分析が実施されることを期待しています。"
+
+#. type: Plain text
+msgid ""
+"However, it should still be possible to upload scripts to the server through"
+" the {project_name} Administration Console. For that, you must set the "
+"following system property when booting the server:"
+msgstr ""
+"ただし、{project_name}管理コンソールからサーバーにスクリプトをアップロードすることは引き続き可能です。そのためには、サーバーの起動時に次のシステム・プロパティーを設定する必要があります。"
+
+#. type: Code block
+#, no-wrap
+msgid "    -Dkeycloak.profile.feature.upload_scripts=enabled\n"
+msgstr "    -Dkeycloak.profile.feature.upload_scripts=enabled\n"
+
+#. type: Plain text
+msgid ""
+"For more details about how to enable the `upload_scripts` feature. Please, "
+"take a look at the "
+"link:{installguide_profile_link}[{installguide_profile_name}]."
+msgstr ""
+"`upload_scripts` "
+"機能を有効にする方法の詳細については、link:{installguide_profile_link}[{installguide_profile_name}]を参照してください。"
+
 #. type: Title ===
 #, no-wrap
 msgid "Available SPIs"

@@ -6,14 +6,14 @@
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2018
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Hiroyuki Wada <wadahiro@gmail.com>, 2019
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -339,8 +339,8 @@ msgid ""
 "method will evaluate to true if any alternative authenticator evaluates to "
 "true."
 msgstr ""
-"Conditional OTPサブフローの最初のエグゼキューションは、Condition - User Configuredです。 "
-"このプロバイダーでは、ユーザーがフローに関連付けられている必要があります。UsernamePasswordプロバイダーは既にユーザーをフローに関連付けているため、このRequirementは満たされています。このプロバイダーの"
+"Conditional OTPサブフローの最初のエグゼキューションは、Condition - User "
+"Configuredです。このプロバイダーでは、ユーザーがフローに関連付けられている必要があります。UsernamePasswordプロバイダーは既にユーザーをフローに関連付けているため、このRequirementは満たされています。このプロバイダーの"
 " `matchCondition` メソッドは、現在のサブフロー内の他のすべてのオーセンティケーターの `configuredFor` "
 "メソッドを評価します。サブフローに、Requirementがrequiredに設定されたエグゼキューターが含まれている場合、必要なすべてのオーセンティケーターの"
 " `configuredFor` メソッドがtrueに評価される場合にのみ、`matchCondition` "
@@ -448,7 +448,8 @@ msgstr ""
 msgid ""
 "These types of authenticators are called CredentialValidators, and will "
 "require you to implement a few more classes:"
-msgstr "これらのタイプのオーセンティケーターはCredentialValidatorsと呼ばれ、さらにいくつかのクラスを実装する必要があります。"
+msgstr ""
+"これらのタイプのオーセンティケーターはCredentialValidatorsと呼ばれ、さらに次のいくつかのクラスを実装する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -579,9 +580,9 @@ msgstr ""
 "* `credential_type` は、作成中に設定される文字列で、既存のクレデンシャル・タイプを参照する必要があります。\n"
 "* `created_date` は、クレデンシャルの作成タイムスタンプ（長い形式）です。\n"
 "* `user_label` は、ユーザーによるクレデンシャルの編集可能な名前です。\n"
-"* `secret_data` には、{project_name}の外部に送信できない情報を持つ静的JSONが含まれます\n"
+"* `secret_data` には、{project_name}の外部に送信できない情報を持つ静的JSONが含まれます。\n"
 "* `credential_data` には、管理コンソールまたはREST APIを介して共有できるクレデンシャルの静的情報を含むJSONが含まれています。\n"
-"* `priority` は、ユーザーが複数の選択肢を持っているときにどのクレデンシャルを提示するかを決定するために、ユーザーにとってクレデンシャルがどのように「優先される」かを定義します。\n"
+"* `priority` は、ユーザーが複数の選択肢を持っているときにどのクレデンシャルを提示するかを決定するために、ユーザーにとってクレデンシャルがどのように\"優先される\"かを定義します。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -675,9 +676,9 @@ msgid ""
 "Where `TYPE` is the credential_type we write in the database. For consistency, we make sure that this String is always the one referenced when\n"
 "getting the type for this credential. The classes `SecretQuestionCredentialData` and `SecretQuestionSecretData` are used to marshal and unmarshal the json:\n"
 msgstr ""
-"`TYPE` は、データベースに書き込むcredential_typeです。 "
-"一貫性を保つために、このクレデンシャルの型を取得するときにこのStringが常に参照されるようにします。クラス "
-"`SecretQuestionCredentialData` と `SecretQuestionSecretData` "
+"`TYPE` "
+"は、データベースに書き込むcredential_typeです。一貫性を保つために、このクレデンシャルの型を取得するときにこのStringが常に参照されるようにします。クラス"
+" `SecretQuestionCredentialData` と `SecretQuestionSecretData` "
 "は、jsonのマーシャリングとアンマーシャリングに使用されます。\n"
 
 #. type: Plain text
@@ -1246,7 +1247,7 @@ msgid ""
 "have to answer the question again, making that machine \"trusted\".  The authenticate() method isn't responsible for processing the secret question form.\n"
 "Its sole purpose is to render the page or to continue the flow.\n"
 msgstr ""
-"Authenticatorの実装の要点を説明します。実装する次のメソッドはauthenticate()です。これは、実行が最初にアクセスされたときにフローが呼び出す最初のメソッドです。ユーザーがブラウザーのマシン上で秘密の質問にすでに答えている場合、ユーザーは質問に再度答える必要がなく、そのマシンを「信頼できる」ものにすることが望まれます。authenticate()メソッドは、秘密の質問フォームの処理を担当しません。その唯一の目的は、ページをレンダリングするか、フローを継続することです。\n"
+"Authenticatorの実装の要点を説明します。実装する次のメソッドはauthenticate()です。これは、実行が最初にアクセスされたときにフローが呼び出す最初のメソッドです。ユーザーがブラウザーのマシン上で秘密の質問にすでに答えている場合、ユーザーは質問に再度答える必要がなく、そのマシンを\"信頼できる\"ものにすることが望まれます。authenticate()メソッドは、秘密の質問フォームの処理を担当しません。その唯一の目的は、ページをレンダリングするか、フローを継続することです。\n"
 
 #. type: Plain text
 #, no-wrap
@@ -1313,8 +1314,7 @@ msgid ""
 msgstr ""
 "hasCookie()メソッドがfalseを返す場合、秘密の質問のHTMLフォームをレンダリングするレスポンスを返す必要があります。AuthenticationFlowContextには、フォームの構築に必要な適切な基本情報でFreemarkerページビルダーを初期化するform()メソッドがあります。このページビルダーは"
 " `org.keycloak.login.LoginFormsProvider` "
-"と呼ばれます。LoginFormsProvider.createForm()メソッドは、ログインテーマからFreemarkerテンプレートファイルをロードします。さらに、Freemarkerテンプレートに追加情報を渡す場合は、"
-" LoginFormsProvider.setAttribute() メソッドを呼び出すことができます。これについては後で説明します。\n"
+"と呼ばれます。LoginFormsProvider.createForm()メソッドは、ログインテーマからFreemarkerテンプレートファイルをロードします。さらに、Freemarkerテンプレートに追加情報を渡す場合は、LoginFormsProvider.setAttribute()メソッドを呼び出すことができます。これについては後で説明します。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1400,7 +1400,7 @@ msgid ""
 msgstr ""
 "検証自体は、フォームから受信したデータを取得し、SecretQuestionCredentialProviderからisValidメソッドを呼び出します。クレデンシャルIDの取得に関するコードのセクションがあることに気付くでしょう。これは、{project_name}が複数のタイプの代替オーセンティケーターを許可するように設定されている場合、またはユーザーがSECRET_QUESTIONタイプの複数のクレデンシャルを記録できる場合（たとえば、複数の質問から選択でき、ユーザーがこれらの質問の1つ以上に回答できるようにできる場合）、{project_name}はユーザーのログ記録に使用されているクレデンシャルを知る必要があります。複数のクレデンシャルがある場合、{project_name}を使用すると、ログイン時にユーザーがどのクレデンシャルを使用するかを選択できます。情報はフォームからオーセンティケーターに送信されます。フォームがこの情報を提示しない場合、使用されるクレデンシャルIDは、CredentialProviderの"
 " `default getDefaultCredential` "
-"メソッドによって与えられます。このメソッドは、ユーザーの正しいタイプの「最も優先される」クレデンシャルを返します。\n"
+"メソッドによって与えられます。このメソッドは、ユーザーの正しいタイプの\"最も優先される\"クレデンシャルを返します。\n"
 
 #. type: Plain text
 #, no-wrap
@@ -1674,8 +1674,7 @@ msgid ""
 "getDisplayType() is the text that will be shown in the admin console when listing the Authenticator.\n"
 "getReferenceCategory() is just a category the Authenticator belongs to.\n"
 msgstr ""
-"残りのメソッドは管理コンソール用です。getHelpText()は、エグゼキューションにバインドさせるオーセンティケーターを選択するときに表示されるツールチップ・テキストです。getDisplayType()は、オーセンティケーターを一覧表示する際に管理コンソールに表示されるテキストです。getReferenceCategory()は、オーセンティケーターが属するカテゴリーです。"
-" \n"
+"残りのメソッドは管理コンソール用です。getHelpText()は、エグゼキューションにバインドさせるオーセンティケーターを選択するときに表示されるツールチップ・テキストです。getDisplayType()は、オーセンティケーターを一覧表示する際に管理コンソールに表示されるテキストです。getReferenceCategory()は、オーセンティケーターが属するカテゴリーです。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1846,10 +1845,10 @@ msgid ""
 "This file must list the fully qualified classname of each RequiredActionFactory implementation you have in the jar.\n"
 "For example:\n"
 msgstr ""
-"1つのjarファイル内にクラスをパッケージ化します。このjarは、他のプロバイダーのクラスとは別にする必要はありませんが、  "
-"`org.keycloak.authentication.RequiredActionFactory` という名前のファイルが、jarの `META-"
+"1つのJARファイル内にクラスをパッケージ化します。このJARは、他のプロバイダーのクラスとは別にする必要はありませんが、 "
+"`org.keycloak.authentication.RequiredActionFactory` という名前のファイルが、JARの `META-"
 "INF/services/` "
-"ディレクトリーに含まれている必要があります。このファイルには、jarファイル内にある各RequiredActionFactory実装の完全修飾クラス名が一覧化されている必要があります。たとえば、以下のとおりになります。\n"
+"ディレクトリーに含まれている必要があります。このファイルには、JARファイル内にある各RequiredActionFactory実装の完全修飾クラス名が一覧化されている必要があります。たとえば、以下のとおりになります。\n"
 
 #. type: Plain text
 msgid ""
@@ -1870,7 +1869,7 @@ msgstr ""
 msgid ""
 "To deploy this jar, just copy it to the `standalone/deployments` "
 "directory.\n"
-msgstr "このjarをデプロイするには、これを `standalone/deployments` ディレクトリーにコピーしてください。\n"
+msgstr "このJARをデプロイするには、これを `standalone/deployments` ディレクトリーにコピーしてください。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -2136,7 +2135,7 @@ msgid ""
 "In this example, we pull the Google Recaptcha site key from configuration and add it as an attribute to the form provider.\n"
 "Our registration template file can read this attribute now.\n"
 msgstr ""
-"上記のコードは、登録recaptchaプラグインからのものです。Recaptchaには、設定から取得する必要のある特定の設定が必要です。FormActionsは、オーセンティケーターとまったく同じように設定されています。この例では、Google"
+"上記のコードは、登録Recaptchaプラグインからのものです。Recaptchaには、設定から取得する必要のある特定の設定が必要です。FormActionsは、オーセンティケーターとまったく同じように設定されています。この例では、Google"
 " "
 "Recaptchaの公開鍵を設定から取り出し、フォーム・プロバイダーに属性として追加します。これで、登録テンプレート・ファイルはこの属性を読み込むことができます。\n"
 
@@ -2417,10 +2416,10 @@ msgid ""
 "This file must list the fully qualified class name of each FormActionFactory implementation you have in the jar.\n"
 "For example:\n"
 msgstr ""
-"1つのjarファイル内にクラスをパッケージ化します。このjarには、 "
-"`org.keycloak.authentication.FormActionFactory` という名前のファイルが、jarの `META-"
+"1つのJARファイル内にクラスをパッケージ化します。このJARには、 "
+"`org.keycloak.authentication.FormActionFactory` という名前のファイルが、JARの `META-"
 "INF/services/` "
-"ディレクトリーに含まれている必要があります。このファイルには、jarファイル内にある各FormActionFactory実装の完全修飾クラス名が一覧化されている必要があります。たとえば、以下のようになります。\n"
+"ディレクトリーに含まれている必要があります。このファイルには、JARファイル内にある各FormActionFactory実装の完全修飾クラス名が一覧化されている必要があります。たとえば、以下のようになります。\n"
 
 #. type: Plain text
 msgid ""
@@ -2458,8 +2457,7 @@ msgstr ""
 "execution\"を選択して新しいエグゼキューションを追加します。選択リストからFormActionを選択します。FormActionが\"Registration"
 " User Creation\"の後に表示されていない場合は、ダウンボタンを使用してFormActionが\"Registration User "
 "Creation\"の後に来ることを確認してください。Regsitration User "
-"Creationのsuccess()メソッドは、新しいUserModelの作成を受け持つため、FormActionはユーザー作成の後に表示される必要があります。"
-" \n"
+"Creationのsuccess()メソッドは、新しいUserModelの作成を受け持つため、FormActionはユーザー作成の後に表示される必要があります。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -2495,7 +2493,7 @@ msgid ""
 "For example, many deployments would like for the user to answer one or more secret questions in additional to sending an email with a link.\n"
 "You could expand on the secret question example that comes with the distro and incorporate it into the reset credential flow.\n"
 msgstr ""
-"このフローにも機能を追加することができます。たとえば、多くのデプロイメントでは、リンク付きの電子メールを送信することに加え、ユーザーは1つ以上の秘密の質問に回答することができます。配布物に付属している秘密の質問のサンプルを拡張し、それをReset"
+"このフローにも機能を追加することができます。たとえば、多くのデプロイメントでは、リンク付きの電子メールを送信することに加え、ユーザーが1つ以上の秘密の質問に回答するようにしたいと考えています。配布物に付属している秘密の質問のサンプルを拡張し、それをReset"
 " Credentialフローに組み込むことができます。\n"
 
 #. type: delimited block -
@@ -2530,8 +2528,9 @@ msgid ""
 "For more details about this flow see the `Identity Brokering` chapter in link:{adminguide_link}[{adminguide_name}] .\n"
 msgstr ""
 "First Broker Loginフローは、アイデンティティー・プロバイダーに最初にログインした時に使用されます。 `First Login` "
-"という用語は、特定の認証されたアイデンティティー・プロバイダー・アカウントにリンクされている{project_name}アカウントがまだ存在していないことを意味します。このフローの詳細については、link:{adminguide_link}[{adminguide_name}]の"
-" `アイデンティティー・ブローカリング` の章を参照してください。\n"
+"という用語は、特定の認証されたアイデンティティー・プロバイダー・アカウントにリンクされている{project_name}アカウントがまだ存在していないことを意味します。このフローの詳細については、"
+" link:{adminguide_link}[{adminguide_name}] の `アイデンティティー・ブローカリング` "
+"の章を参照してください。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -2540,7 +2539,7 @@ msgid ""
 "=== Authentication of clients\n"
 msgstr ""
 "[[_client_authentication]]\n"
-"=== クライアントの認証 \n"
+"=== クライアントの認証\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -2564,12 +2563,13 @@ msgid ""
 "For more details about {project_name} adapter and OAuth2 flows see "
 "link:{adapterguide_link}[{adapterguide_name}].\n"
 msgstr ""
-"{project_name}アダプターとOAuth2フローの詳細については、link:{adapterguide_link}[{adapterguide_name}]を参照してください。\n"
+"{project_name}アダプターとOAuth2フローの詳細については、 "
+"link:{adapterguide_link}[{adapterguide_name}] を参照してください。\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid "==== Default implementations\n"
-msgstr "==== デフォルト実装 \n"
+msgstr "==== デフォルト実装\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -2597,7 +2597,7 @@ msgid ""
 "  The {project_name} then verifies the signed JWT with the client's public key and authenticates client based on it.\n"
 msgstr ""
 "署名付きJWTによる認証:: \n"
-"これは、 https://tools.ietf.org/html/rfc7523[JWT Bearer Token Profiles for OAuth 2.0] 仕様に基づいています。クライアントまたはアダプターは、 https://tools.ietf.org/html/rfc7519[JWT] を生成し、秘密鍵で署名します。{project_name}は、署名されたJWTをクライアントの公開鍵で検証し、それに基づいてクライアントを認証します。 \n"
+"これは、 https://tools.ietf.org/html/rfc7523[JWT Bearer Token Profiles for OAuth 2.0] 仕様に基づいています。クライアントまたはアダプターは、 https://tools.ietf.org/html/rfc7519[JWT] を生成し、秘密鍵で署名します。{project_name}は、署名されたJWTをクライアントの公開鍵で検証し、それに基づいてクライアントを認証します。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -2649,4 +2649,4 @@ msgid ""
 "  See <<_auth_spi_walkthrough,authenticators>> for more details.\n"
 msgstr ""
 "サーバーサイド::\n"
-"ここでは、 `org.keycloak.authentication.ClientAuthenticatorFactory` と `org.keycloak.authentication.ClientAuthenticator` を実装する必要があります。また、 `META-INF/services/org.keycloak.authentication.ClientAuthenticatorFactory` ファイルに実装クラスの名前を追加する必要があります。詳細については、<<_auth_spi_walkthrough,オーセンティケーター>> を参照してください。\n"
+"ここでは、 `org.keycloak.authentication.ClientAuthenticatorFactory` と `org.keycloak.authentication.ClientAuthenticator` を実装する必要があります。また、 `META-INF/services/org.keycloak.authentication.ClientAuthenticatorFactory` ファイルに実装クラスの名前を追加する必要があります。詳細については、<<_auth_spi_walkthrough,オーセンティケーター>>を参照してください。\n"

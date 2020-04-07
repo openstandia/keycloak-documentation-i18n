@@ -6,14 +6,14 @@
 # Translators:
 # Shinsuke UEDA, 2017
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,22 +32,22 @@ msgid ""
 "users and their passwords or other credentials.  In many cases, it is just "
 "not possible to migrate off of those existing stores to a pure "
 "{project_name} deployment.  {project_name} can federate existing external "
-"user databases.  Out of the box we have support for LDAP and Active "
-"Directory.  You can also code your own extension for any custom user "
-"databases you might have using our User Storage SPI."
+"user databases.  By default, we support LDAP and Active Directory, but you "
+"can also code your own extension for any custom user database using our User"
+" Storage SPI."
 msgstr ""
 "多くの企業には、ユーザーとそのパスワードやその他のクレデンシャルに関する情報を保持する既存のユーザー・データベースがあります。多くの場合、既存のストアから純粋な{project_name}デプロイメントに移行することはできません。"
-" {project_name}は既存の外部ユーザー・データベースを統合できます。デフォルトで、LDAPとActive "
-"Directoryをサポートしています。User Storage "
+" {project_name}は既存の外部ユーザー・データベースを統合できます。デフォルトでは、LDAPとActive "
+"Directoryをサポートしていますが、User Storage "
 "SPIを使用して、カスタムのユーザー・データベースに独自の拡張機能をコーディングすることもできます。"
 
 #. type: Plain text
 msgid ""
 "The way it works is that when a user logs in, {project_name} will look into "
-"its own internal user store to find the user.  If it can't find it there it "
-"will iterate over every User Storage provider you have configured for the "
-"realm until it finds a match.  Data from the external store is mapped into a"
-" common user model that is consumed by the {project_name} runtime.  This "
+"its own internal user store to find the user.  If it cannot find it there, "
+"it will iterate over every User Storage provider you have configured for the"
+" realm until it finds a match.  Data from the external store is mapped into "
+"a common user model that is consumed by the {project_name} runtime.  This "
 "common user model can then be mapped to OIDC token claims and SAML assertion"
 " attributes."
 msgstr ""
@@ -56,15 +56,15 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "External user databases rarely have every piece of data needed to support "
-"all the features that {project_name} has.  In this case, the User Storage "
+"all the features that {project_name} has.  Therefore, the User Storage "
 "Provider can opt to store some things locally in the {project_name} user "
 "store.  Some providers even import the user locally and sync periodically "
-"with the external store.  All this depends on the capabilities of the "
-"provider and how its configured.  For example, your external user store may "
-"not support OTP.  Depending on the provider, this OTP can be handled and "
-"stored by {project_name}."
+"with the external store. This approach depends on the capabilities of the "
+"provider and how it is configured.  For example, your external user store "
+"may not support OTP.  Depending on the provider, this OTP can be handled and"
+" stored by {project_name}."
 msgstr ""
-"外部ユーザー・データベースは、{project_name}が持つすべての機能をサポートするのに必要なデータを、すべて持つことはほとんどありません。この場合、ユーザー－・ストレージ・プロバイダーは、{project_name}ユーザーストアにローカルでいくつかのものを保存することを選ぶことができます。一部のプロバイダーでは、ユーザーをローカルにインポートして、定期的に外部ストアと同期します。このすべては、プロバイダーの機能とその設定方法によって異なります。たとえば、外部ユーザーストアがOTPをサポートしていない可能性があります。プロバイダーに応じて、このOTPサポートは{project_name}によって処理され格納されます。"
+"外部ユーザー・データベースは、{project_name}が持つすべての機能をサポートするのに必要なデータを、すべて持つことはほとんどありません。そのため、ユーザー－・ストレージ・プロバイダーは、{project_name}ユーザーストアにローカルでいくつかのものを保存することを選ぶことができます。一部のプロバイダーでは、ユーザーをローカルにインポートして、定期的に外部ストアと同期します。このアプローチは、プロバイダーの機能とその設定方法によって異なります。たとえば、外部ユーザーストアがOTPをサポートしていない可能性があります。プロバイダーに応じて、このOTPサポートは{project_name}によって処理され格納されます。"
 
 #. type: Title ===
 #, no-wrap
@@ -101,15 +101,15 @@ msgstr "プロバイダー障害の対応"
 
 #. type: Plain text
 msgid ""
-"If a User Storage Provider fails, that is, if your LDAP server is down, you "
-"may have trouble logging in and may not be able to view users in the admin "
-"console.  {project_name} does not catch failures when using a Storage "
+"If a User Storage Provider fails (for example, your LDAP server is down), "
+"you may have trouble logging in and may not be able to view users in the "
+"admin console.  {project_name} does not catch failures when using a Storage "
 "Provider to lookup a user.  It will abort the invocation.  So, if you have a"
 " Storage Provider with a higher priority that fails during user lookup, the "
 "login or user query will fail entirely with an exception and abort.  It will"
 " not fail over to the next configured provider."
 msgstr ""
-"ユーザー・ストレージ・プロバイダーに障害が発生した場合（つまりLDAPサーバーが停止している場合）、ログインに問題があったり、管理コンソールでユーザーを表示できないことがあります。{project_name}は、ストレージ・プロバイダーを使用してユーザーを検索しても失敗を捕捉せず、呼び出しを中止します。したがって、ユーザー検索中に優先順位の高いストレージ・プロバイダーが失敗した場合、ログインまたはユーザー・クエリーは例外なく完全に失敗し、中止されます。次の設定済みプロバイダーにはフェールオーバーされません。"
+"ユーザー・ストレージ・プロバイダーに障害が発生した場合（たとえば、LDAPサーバーが停止している場合）、ログインに問題があったり、管理コンソールでユーザーを表示できないことがあります。{project_name}は、ストレージ・プロバイダーを使用してユーザーを検索しても失敗を捕捉せず、呼び出しを中止します。したがって、ユーザー検索中に優先順位の高いストレージ・プロバイダーが失敗した場合、ログインまたはユーザー・クエリーは例外なく完全に失敗し、中止されます。次の設定済みプロバイダーにはフェールオーバーされません。"
 
 #. type: Plain text
 msgid ""

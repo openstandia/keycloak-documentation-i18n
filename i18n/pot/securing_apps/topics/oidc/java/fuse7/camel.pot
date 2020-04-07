@@ -14,12 +14,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <bean id=\"keycloakConfigResolver\" class=\"org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver\" >\n"
-"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
-"    </bean>\n"
+#. type: Plain text
+msgid "For example:"
 msgstr ""
 
 #. type: delimited block -
@@ -30,6 +26,74 @@ msgstr ""
 #. type: Title =====
 #, no-wrap
 msgid "Securing an Apache Camel Application"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    <bean id=\"helloProcessor\" class=\"org.keycloak.example.CamelHelloProcessor\" />\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `Import-Package` in `META-INF/MANIFEST.MF` needs to contain these "
+"imports:"
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Camel RestDSL"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Camel RestDSL is a Camel feature used to define your REST endpoints in a "
+"fluent way. But you must still use specific implementation classes and "
+"provide instructions on how to integrate with {project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The way to configure the integration mechanism depends on the Camel "
+"component for which you configure your RestDSL-defined routes."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<camelContext id=\"blueprintContext\"\n"
+"              trace=\"false\"\n"
+"              xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "    </rest>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <route id=\"justDirect\">\n"
+"        <from uri=\"direct:justDirect\"/>\n"
+"        <process ref=\"helloProcessor\" />\n"
+"        <log message=\"RestDSL correctly invoked ${body}\"/>\n"
+"        <setBody>\n"
+"            <constant>(__This second sentence is returned from a Camel RestDSL endpoint__)</constant>\n"
+"        </setBody>\n"
+"    </route>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "</camelContext>\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <bean id=\"keycloakConfigResolver\" class=\"org.keycloak.adapters.osgi.BundleBasedKeycloakConfigResolver\" >\n"
+"        <property name=\"bundleContext\" ref=\"blueprintBundleContext\" />\n"
+"    </bean>\n"
 msgstr ""
 
 #. type: Plain text
@@ -63,10 +127,6 @@ msgid ""
 "service has to have at least one role to be permitted the access."
 msgstr ""
 
-#. type: Plain text
-msgid "For example:"
-msgstr ""
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -77,11 +137,6 @@ msgid ""
 "           xsi:schemaLocation=\"\n"
 "       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd\n"
 "       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint-2.17.1.xsd\">\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "    <bean id=\"helloProcessor\" class=\"org.keycloak.example.CamelHelloProcessor\" />\n"
 msgstr ""
 
 #. type: delimited block -
@@ -107,12 +162,6 @@ msgstr ""
 msgid "    </camelContext>\n"
 msgstr ""
 
-#. type: Plain text
-msgid ""
-"The `Import-Package` in `META-INF/MANIFEST.MF` needs to contain these "
-"imports:"
-msgstr ""
-
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -127,37 +176,11 @@ msgid ""
 "org.osgi.service.blueprint.container\n"
 msgstr ""
 
-#. type: Title =====
-#, no-wrap
-msgid "Camel RestDSL"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Camel RestDSL is a Camel feature used to define your REST endpoints in a "
-"fluent way. But you must still use specific implementation classes and "
-"provide instructions on how to integrate with {project_name}."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The way to configure the integration mechanism depends on the Camel "
-"component for which you configure your RestDSL-defined routes."
-msgstr ""
-
 #. type: Plain text
 msgid ""
 "The following example shows how to configure integration using the `undertow-"
 "keycloak` component, with references to some of the beans defined in "
 "previous Blueprint example."
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<camelContext id=\"blueprintContext\"\n"
-"              trace=\"false\"\n"
-"              xmlns=\"http://camel.apache.org/schema/blueprint\">\n"
 msgstr ""
 
 #. type: delimited block -
@@ -179,27 +202,4 @@ msgid ""
 "            <description>Just a hello</description>\n"
 "            <to uri=\"direct:justDirect\" />\n"
 "        </get>\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "    </rest>\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <route id=\"justDirect\">\n"
-"        <from uri=\"direct:justDirect\"/>\n"
-"        <process ref=\"helloProcessor\" />\n"
-"        <log message=\"RestDSL correctly invoked ${body}\"/>\n"
-"        <setBody>\n"
-"            <constant>(__This second sentence is returned from a Camel RestDSL endpoint__)</constant>\n"
-"        </setBody>\n"
-"    </route>\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "</camelContext>\n"
 msgstr ""

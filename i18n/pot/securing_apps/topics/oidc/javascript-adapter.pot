@@ -92,7 +92,7 @@ msgid ""
 "    <script src=\"keycloak.js\"></script>\n"
 "    <script>\n"
 "        var keycloak = new Keycloak();\n"
-"        keycloak.init({ promiseType: 'native' }).then(function(authenticated) {\n"
+"        keycloak.init().then(function(authenticated) {\n"
 "            alert(authenticated ? 'authenticated' : 'not authenticated');\n"
 "        }).catch(function() {\n"
 "            alert('failed to initialize');\n"
@@ -164,8 +164,7 @@ msgstr ""
 msgid ""
 "keycloak.init({\n"
 "    onLoad: 'check-sso',\n"
-"    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',\n"
-"    promiseType: 'native',\n"
+"    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html'\n"
 "})\n"
 msgstr ""
 
@@ -198,6 +197,13 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
+"Starting with Chrome version 80 (released on February 2020), silent `check-"
+"sso` functionality will work only when the SSL / TLS connection is "
+"configured on the {project_name} side."
+msgstr ""
+
+#. type: Plain text
+msgid ""
 "To enable `login-required` set `onLoad` to `login-required` and pass to the "
 "init method:"
 msgstr ""
@@ -206,8 +212,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "keycloak.init({\n"
-"    onLoad: 'login-required',\n"
-"    promiseType: 'native',\n"
+"    onLoad: 'login-required'\n"
 "})\n"
 msgstr ""
 
@@ -301,6 +306,16 @@ msgid ""
 "not your application."
 msgstr ""
 
+#. type: Plain text
+msgid ""
+"Starting with Chrome version 80 (released on February 2020), status iframe "
+"will only be able to see the special cookie over the SSL / TLS connection "
+"configured on the {project_name} side. Using an insecure connection may lead "
+"to redirecting to {project_name} every time iframe checks the status. You "
+"can avoid this behavior by disabling iframe or link:{installguide_link}"
+"#_setting_up_ssl[configuring the SSL / TLS] on the {project_name} side."
+msgstr ""
+
 #. type: Title ====
 #, no-wrap
 msgid "Implicit and Hybrid Flow"
@@ -348,8 +363,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "keycloak.init({\n"
-"    flow: 'implicit',\n"
-"    promiseType: 'native',\n"
+"    flow: 'implicit'\n"
 "})\n"
 msgstr ""
 
@@ -395,8 +409,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "keycloak.init({\n"
-"    flow: 'hybrid',\n"
-"    promiseType: 'native',\n"
+"    flow: 'hybrid'\n"
 "})\n"
 msgstr ""
 
@@ -474,8 +487,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "keycloak.init({\n"
-"    adapter: 'cordova-native',\n"
-"    promiseType: 'native',\n"
+"    adapter: 'cordova-native'\n"
 "})\n"
 msgstr ""
 
@@ -572,55 +584,6 @@ msgstr ""
 
 #. type: Plain text
 msgid "Promise - https://github.com/stefanpenner/es6-promise"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "A note about `promiseType`"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Throughout the examples in the documentation you will find `promiseType: "
-"'native'` specified wherever {project_name} is initialized.  Historically "
-"{project_name} has used its own implementation of promises that is not "
-"compatible with native promises as provided by the browser.  By default "
-"{project_name}'s own promise implementation (also known as `promiseType: "
-"'legacy'`) will be used if no promise type is specified."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"In future versions of {project_name} the default promise type will change "
-"from `legacy` to `native`. Eventually, support for legacy promises will be "
-"removed entirely. It is therefore highly recommended that you always specify "
-"`promiseType: 'native'` to future-proof your code."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Native promises and TypeScript"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"If you want to use native promises and get correct type information when "
-"using TypeScript you will have to specify the `promiseType` when "
-"constructing a new instance of Keycloak."
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"// Typescript assumes this is a 'legacy' promise, all methods return .success() and .error()\n"
-"const keycloak = new Keycloak();\n"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"// Typescript assumes this is a native promise, all methods return standard promises\n"
-"const keycloak = new Keycloak<'native'>();\n"
 msgstr ""
 
 #. type: Title ====
@@ -819,22 +782,6 @@ msgid ""
 "setting this value."
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "pkceMethod"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The method for Proof Key Code Exchange (https://tools.ietf.org/html/"
-"rfc7636[PKCE]) to use. Configuring this value enables the PKCE mechanism.  "
-"Available options:"
-msgstr ""
-
-#. type: Plain text
-msgid "\"S256\" - The SHA256 based PKCE method"
-msgstr ""
-
 #. type: Title =====
 #, no-wrap
 msgid "Methods"
@@ -861,8 +808,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"onLoad - Specifies an action to do on load. Supported values are 'login-"
-"required' or 'check-sso'."
+"onLoad - Specifies an action to do on load. Supported values are `login-"
+"required` or `check-sso`."
 msgstr ""
 
 #. type: Plain text
@@ -894,7 +841,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "checkLoginIframe - Set to enable/disable monitoring login state (default is "
-"true)."
+"`true`)."
 msgstr ""
 
 #. type: Plain text
@@ -906,30 +853,34 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "responseMode - Set the OpenID Connect response mode send to {project_name} "
-"server at login request. Valid values are query or fragment. Default value "
-"is fragment, which means that after successful authentication will "
+"server at login request. Valid values are `query` or `fragment`. Default "
+"value is `fragment`, which means that after successful authentication will "
 "{project_name} redirect to JavaScript application with OpenID Connect "
 "parameters added in URL fragment. This is generally safer and recommended "
-"over query."
+"over `query`."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"flow - Set the OpenID Connect flow. Valid values are standard, implicit or "
-"hybrid."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"promiseType - If set to `native` all methods returning a promise will return "
-"a native JavaScript promise. If not set will return Keycloak specific "
-"promise objects."
+"flow - Set the OpenID Connect flow. Valid values are `standard`, `implicit` "
+"or `hybrid`."
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "enableLogging - Enables logging messages from Keycloak to the console "
-"(default is false)."
+"(default is `false`)."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"pkceMethod - The method for Proof Key Code Exchange (https://tools.ietf.org/"
+"html/rfc7636[PKCE]) to use. Configuring this value enables the PKCE "
+"mechanism. Available options:"
+msgstr ""
+
+#. type: Plain text
+msgid "\"S256\" - The SHA256 based PKCE method"
 msgstr ""
 
 #. type: Plain text
@@ -994,7 +945,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"action - If value is 'register' then user is redirected to registration "
+"action - If value is `register` then user is redirected to registration "
 "page, otherwise to login page."
 msgstr ""
 

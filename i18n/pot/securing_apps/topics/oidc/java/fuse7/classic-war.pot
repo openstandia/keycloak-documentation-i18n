@@ -26,16 +26,6 @@ msgid ""
 "</web-app>\n"
 msgstr ""
 
-#. type: Plain text
-msgid ""
-"Contrary to the Fuse 6 adapter, there are no special OSGi imports needed in "
-"MANIFEST.MF."
-msgstr ""
-
-#. type: Plain text
-msgid "For example:"
-msgstr ""
-
 #. type: Title =====
 #, no-wrap
 msgid "Securing a Classic WAR Application"
@@ -54,13 +44,7 @@ msgid "security constraints in the <security-constraint> element"
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"login configuration in the <login-config> element. Make sure that the `<auth-"
-"method>` is `KEYCLOAK`."
-msgstr ""
-
-#. type: Plain text
-msgid "security roles in the <security-role> element"
+msgid "For example:"
 msgstr ""
 
 #. type: delimited block -
@@ -100,15 +84,6 @@ msgid ""
 "    </security-constraint>\n"
 msgstr ""
 
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <login-config>\n"
-"        <auth-method>KEYCLOAK</auth-method>\n"
-"        <realm-name>does-not-matter</realm-name>\n"
-"    </login-config>\n"
-msgstr ""
-
 #. type: Plain text
 msgid ""
 "Within the `/WEB-INF/` directory of your WAR, create a new file, keycloak."
@@ -116,6 +91,34 @@ msgid ""
 "<<_java_adapter_config,Java Adapters Config>> section. It is also possible "
 "to make this file available externally as described in xref:"
 "config_external_adapter[Configuring the External Adapter]."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<context-param>\n"
+"    <param-name>keycloak.config.resolver</param-name>\n"
+"    <param-value>org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver</param-value>\n"
+"</context-param>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"login configuration in the <login-config> element. Make sure that the `<auth-"
+"method>` is `KEYCLOAK`."
+msgstr ""
+
+#. type: Plain text
+msgid "security roles in the <security-role> element"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <login-config>\n"
+"        <auth-method>KEYCLOAK</auth-method>\n"
+"        <realm-name>does-not-matter</realm-name>\n"
+"    </login-config>\n"
 msgstr ""
 
 #. type: delimited block -
@@ -132,6 +135,12 @@ msgid ""
 "}\n"
 msgstr ""
 
+#. type: Plain text
+msgid ""
+"Contrary to the Fuse 6 adapter, there are no special OSGi imports needed in "
+"MANIFEST.MF."
+msgstr ""
+
 #. type: Title ======
 #, no-wrap
 msgid "Configuration Resolvers"
@@ -145,15 +154,6 @@ msgid ""
 "config.resolver` deployment parameter to the desired configuration resolver "
 "class.  For example, in a classic WAR application, set the `keycloak.config."
 "resolver` context parameter in `web.xml` file like this:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<context-param>\n"
-"    <param-name>keycloak.config.resolver</param-name>\n"
-"    <param-value>org.keycloak.adapters.osgi.PathBasedKeycloakConfigResolver</param-value>\n"
-"</context-param>\n"
 msgstr ""
 
 #. type: Plain text

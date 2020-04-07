@@ -1,0 +1,601 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Shinsuke UEDA, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "W3C Web Authentication (WebAuthn)"
+msgstr "W3C Web Authentication（WebAuthn）"
+
+#. type: Plain text
+msgid ""
+"{project_name} provides the limited support for "
+"https://www.w3.org/TR/webauthn/[W3C Web Authentication (WebAuthn)]. "
+"{project_name} works as a WebAuthn's https://www.w3.org/TR/webauthn/#rp-"
+"operations[Relying Party (RP)]."
+msgstr ""
+"{project_name}は、https://www.w3.org/TR/webauthn/[W3C Web "
+"Authentication（WebAuthn）]の限定的なサポートを提供します。{project_name}はWebAuthnの "
+"https://www.w3.org/TR/webauthn/#rp-operations[Relying Party（RP）] として機能します。"
+
+#. type: Plain text
+msgid ""
+"Please note that WebAuthn support is still in development and not yet "
+"complete, so we recommend that you use this feature experimentally. Also, "
+"this support's specification and user interfaces may change."
+msgstr ""
+"WebAuthnのサポートはまだ開発中であり、まだ完全ではないことに注意してください。この機能を実験的に使用することをお勧めします。また、このサポートの仕様とユーザー・インターフェイスは変更される場合があります。"
+
+#. type: Plain text
+msgid ""
+"Whether WebAuthn's operations succeed depends on a user's WebAuthn "
+"supporting authenticator, browser and platform. If you use this WebAuthn "
+"support, please clarify to what extent those entities support the WebAuthn "
+"specification."
+msgstr ""
+"WebAuthnの操作が成功するかどうかは、オーセンティケーター、ブラウザー、およびプラットフォームをサポートするユーザーのWebAuthnに依存します。このWebAuthnサポートを使用する場合は、それらのエンティティーがWebAuthn仕様をサポートする範囲を明確にしてください。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Setup"
+msgstr "セットアップ"
+
+#. type: Plain text
+msgid "The setup procedure of WebAuthn support for 2FA is the following :"
+msgstr "2FAのWebAuthnサポートのセットアップ手順は次のとおりです。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Enable User Registration"
+msgstr "ユーザー登録の有効化"
+
+#. type: Plain text
+msgid ""
+"An administrator carries out the following operations on the `Admin Console`"
+" :"
+msgstr "管理者は、 `管理コンソール` で次の操作を行います。"
+
+#. type: Plain text
+msgid "Open the `Realm Settings -> Login` tab."
+msgstr "`Realm Settings -> Login` タブを開きます。"
+
+#. type: Plain text
+msgid "Set the `User Registration` to ON and click `Save`."
+msgstr "`User Registration` をオンに設定し、 `Save` をクリックします。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Enable Webauthn Authenticator Registration"
+msgstr "Webauthnオーセンティケーターの登録の有効化"
+
+#. type: Plain text
+msgid "Open the `Authentication -> Required Actions` tab."
+msgstr "`Authentication -> Required Actions` タブを開きます。"
+
+#. type: Plain text
+msgid "Click `Register`."
+msgstr "`Register` をクリックします。"
+
+#. type: Plain text
+msgid "Select `Webauthn Register` as `Required Action`."
+msgstr "`Required Action` として `Webauthn Register` を選択します。"
+
+#. type: Plain text
+msgid "Mark `Enabled` and `Default Action` checkbox."
+msgstr "`Enabled` と `Default Action` のチェックボックスをマークします。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Adding WebAuthn Authentication to a Browser Flow"
+msgstr "ブラウザーフローへのWebAuthn認証の追加"
+
+#. type: Plain text
+msgid "Select a realm, click on Authentication link, select the \"Browser\" flow"
+msgstr "レルムを選択し、Authenticationのリンクをクリックし、\"Browser\"フローを選択します。"
+
+#. type: Plain text
+msgid ""
+"Make a copy of the built-in \"Browser\" flow. You may want to give the new "
+"flow a distinctive name, for example \"WebAuthn Browser\""
+msgstr ""
+"ビルトインの \"Browser\" フローのコピーを作成します。新しいフローに特有の名前、たとえば、 \"WebAuthn Browser\" "
+"を付けることをお勧めします。"
+
+#. type: Plain text
+msgid "Using the drop down, select the copied flow"
+msgstr "ドロップダウンを使用して、コピーしたフローを選択します"
+
+#. type: Plain text
+msgid ""
+"Delete the `WebAuthn Browser Browser - Conditional OTP` sub-flow using its "
+"`Actions` menu"
+msgstr ""
+"`Actions` メニューを使用して、 `WebAuthn Browser Browser - Conditional OTP` "
+"サブフローを削除します"
+
+#. type: Plain text
+msgid "If you want to have WebAuthn required for all users:"
+msgstr "すべてのユーザーにWebAuthnが必要な場合は以下のようにします。"
+
+#. type: Plain text
+msgid ""
+"Using the `Actions` menu of the `WebAuthn Browser Forms`, click on `Add "
+"execution`"
+msgstr ""
+"`WebAuthn Browser Forms` の `Actions` メニューを使用して、 `Add execution` をクリックします"
+
+#. type: Plain text
+msgid "Select `WebAuthn Authenticator` using the drop down and click on \"Save\""
+msgstr "ドロップダウンを使用して `WebAuthn Authenticator` を選択し、 \"Save\" をクリックします"
+
+#. type: Plain text
+msgid "Set its Requirement to _Required_."
+msgstr "Requirementを _Required_ に変更してください。"
+
+#. type: Plain text
+msgid "image:images/webauthn-browser-flow-required.png[]"
+msgstr "image:images/webauthn-browser-flow-required.png[]"
+
+#. type: Plain text
+msgid ""
+"Note that in this scenario, if a user doesn't have a WebAuthn credential, a "
+"required action will be set that forces that user to register one."
+msgstr ""
+"このシナリオでは、ユーザーがWebAuthnのクレデンシャルを持っていなければ、そのユーザーに強制的に登録させる必須アクションが設定されることに注意してください。"
+
+#. type: Plain text
+msgid ""
+"Alternatively, you can have users log in with WebAuthn only if they have a "
+"WebAuthn credential registered, so instead of adding the `WebAuthn "
+"Authenticator` execution:"
+msgstr ""
+"あるいは、WebAuthnのクレデンシャルが登録されている場合にのみ、ユーザーにWebAuthnでログインさせることができます。そのため、代わりに以下のように"
+" `WebAuthn Authenticator` のエグゼキューションを追加します。"
+
+#. type: Plain text
+msgid ""
+"Using the `Actions` menu of the `WebAuthn Browser Forms`, click on `Add "
+"flow`"
+msgstr "`WebAuthn Browser Forms` の `Actions` メニューを使用して、 `Add flow` をクリックします"
+
+#. type: Plain text
+msgid "Set the alias to \"Conditional 2FA\""
+msgstr "エイリアスを\"Conditional 2FA\"に設定します"
+
+#. type: Plain text
+msgid "Set the Requirement of `Conditional 2FA` to _Conditional_"
+msgstr "`Conditional 2FA` のRequirementを _Conditional_ に設定します"
+
+#. type: Plain text
+msgid ""
+"Using the `Actions` menu of the `Conditional 2FA`, click on `Add execution`"
+msgstr "`Conditional 2FA` の `Actions` メニューを使用して、 `Add execution` をクリックします"
+
+#. type: Plain text
+msgid ""
+"Select `Condition - User Configured` using the drop down and click on "
+"\"Save\""
+msgstr "ドロップダウンを使用して `Condition - User Configured` を選択し、\"Save\"をクリックします"
+
+#. type: Plain text
+msgid "Set its Requirement to _Alternative_."
+msgstr "Requirementを _Alternative_ に変更してください。"
+
+#. type: Plain text
+msgid "image:images/webauthn-browser-flow-conditional.png[]"
+msgstr "image:images/webauthn-browser-flow-conditional.png[]"
+
+#. type: Plain text
+msgid ""
+"You can also allow the user to choose between using WebAuthn and OTP for his"
+" second factor:"
+msgstr "ユーザーが2番目の要素としてWebAuthnとOTPのどちらを使用するかを選択できるようにすることもできます。"
+
+#. type: Plain text
+msgid "Select `OTP Form` using the drop down and click on \"Save\""
+msgstr "ドロップダウンを使用して `OTP Form` を選択し、\"Save\" をクリックします"
+
+#. type: Plain text
+msgid "image:images/webauthn-browser-flow-conditional-with-OTP.png[]"
+msgstr "image:images/webauthn-browser-flow-conditional-with-OTP.png[]"
+
+#. type: Title ====
+#, no-wrap
+msgid "Authenticate with WebAuthn Authenticator"
+msgstr "WebAuthnオーセンティケーターで認証する"
+
+#. type: Plain text
+msgid ""
+"After registering their WebAuthn authenticator, the user carries out the "
+"following operations :"
+msgstr "WebAuthnオーセンティケーターを登録した後、ユーザーは次の操作を実行します。"
+
+#. type: Plain text
+msgid "Open the login form."
+msgstr "ログインフォームを開きます。"
+
+#. type: Plain text
+msgid ""
+"Select the credential or credentials that {project_name} must accept for "
+"login. Then click `Save` and click `Login`."
+msgstr ""
+"{project_name}がログインにおいて受け入れる必要があるクレデンシャルを選択します。次に、 `Save` をクリックして `Login` "
+"をクリックします。"
+
+#. type: Plain text
+msgid ""
+"The list of registered Webauthn Authenticators' labels appears. Click "
+"`Authenticate`."
+msgstr "登録済みのWebauthnオーセンティケーターのラベルのリストが表示されます。 `Authenticate` をクリックします。"
+
+#. type: Plain text
+msgid ""
+"The user's browser asks the user to authenticate by their WebAuthn "
+"authenticator."
+msgstr "ユーザーのブラウザーは、WebAuthnオーセンティケーターによる認証をユーザーに要求します。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Managing WebAuthn as an administrator"
+msgstr "管理者としてWebAuthnを管理する"
+
+#. type: Title =====
+#, no-wrap
+msgid "Managing Credentials"
+msgstr "クレデンシャルの管理"
+
+#. type: Plain text
+msgid ""
+"WebAuthn credentials are managed in a similar manner as other credentials, "
+"such as OTP, from the <<user-credentials, User credential management>>:"
+msgstr ""
+"WebAuthnクレデンシャルは、OTPなどの他のクレデンシャルと同様の方法で、<<user-credentials, "
+"ユーザー・クレデンシャル管理>>から管理されます。"
+
+#. type: Plain text
+msgid ""
+"Users can be assigned a required action to create a WebAuthn credential from"
+" the `Reset Actions` list, and selecting `Webauthn Register`"
+msgstr ""
+"ユーザーに `Reset Actions` のリストからWebAuthnクレデンシャルを作成するために必要なアクションを割り当て、 `Webauthn "
+"Register` を選択することができます"
+
+#. type: Plain text
+msgid ""
+"The administrator can delete a WebAuthn credential by pressing `Delete`."
+msgstr "管理者は、 `Delete` を押すことでWebAuthnのクレデンシャルを削除できます。"
+
+#. type: Plain text
+msgid ""
+"The administrator can view the credential's data such as the AAGUID by "
+"selecting `Show data...`."
+msgstr "管理者は、 `Show data...` を選択して、AAGUIDなどのクレデンシャルのデータを表示できます。"
+
+#. type: Plain text
+msgid ""
+"The administrator can set a label for the credential by setting a value in "
+"the `User Label` field and saving the data."
+msgstr "管理者は、 `User Label` フィールドに値を設定してデータを保存することで、クレデンシャルのラベルを設定できます。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Managing Policy"
+msgstr "ポリシーの管理"
+
+#. type: Plain text
+msgid ""
+"An administrator can configure WebAuthn related operations as `WebAuthn "
+"Policy` per realm."
+msgstr "管理者は、レルムごとに `WebAuthn Policy` としてWebAuthn関連の操作を設定できます。"
+
+#. type: Plain text
+msgid "Open the `Authentication -> WebAuthn Policy` tab."
+msgstr "`Authentication -> WebAuthn Policy` タブを開きます。"
+
+#. type: Plain text
+msgid "Configure items and click `Save`."
+msgstr "アイテムを設定し、 `Save` をクリックします。"
+
+#. type: Plain text
+msgid "The configurable items and their description follow."
+msgstr "設定可能な項目とその説明は次のとおりです。"
+
+#. type: Plain text
+msgid "Configuration|Description"
+msgstr "設定|説明"
+
+#. type: Plain text
+msgid "Relying Party Entity Name"
+msgstr "Relying Party Entity Name"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Human-readable server name as a WebAuthn Relying Party. This is a mandatory configuration, which is applied to the operation of registering the WebAuthn authenticator. The default setting is \"keycloak\".\n"
+" For more details, see https://www.w3.org/TR/webauthn/#dictionary-pkcredentialentity[WebAuthn Specification].\n"
+msgstr ""
+"人間が読めるWebAuthn Relying "
+"Partyのサーバー名。これは必須の設定であり、WebAuthnオーセンティケーターを登録する操作に適用されます。デフォルト設定は\"keycloak\"です。詳細については、"
+" https://www.w3.org/TR/webauthn/#dictionary-pkcredentialentity[WebAuthn "
+"Specification] を参照してください。\n"
+
+#. type: Plain text
+msgid "Signature Algorithms"
+msgstr "Signature Algorithms"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"It tells the WebAuthn authenticator which signature algorithms to use for the https://www.w3.org/TR/webauthn/#public-key-credential[Public Key Credential] that can be used for signing and verifying the https://www.w3.org/TR/webauthn/#authentication-assertion[Authentication Assertion]. Multiple algorithms can be specified. If no algorithm is specified, https://tools.ietf.org/html/rfc8152#section-8.1[ES256] is adapted. The default setting is ES256. This is an optional configuration item that is applied to the operation of registering a WebAuthn authenticator.\n"
+" For more details, see https://www.w3.org/TR/webauthn/#dictdef-publickeycredentialparameters[WebAuthn Specification].\n"
+msgstr ""
+"これは、 https://www.w3.org/TR/webauthn/#authentication-assertion[認証アサーション] "
+"の署名と検証に使用される https://www.w3.org/TR/webauthn/#public-key-"
+"credential[公開鍵クレデンシャル] "
+"に使用する署名アルゴリズムをWebAuthnオーセンティケーターに伝えます。複数のアルゴリズムを指定できます。アルゴリズムが指定されていない場合、 "
+"https://tools.ietf.org/html/rfc8152#section-8.1[ES256] "
+"が適応されます。デフォルト設定はES256です。これは、WebAuthnオーセンティケーターを登録する操作に適用されるオプションの設定項目です。詳細については、"
+" https://www.w3.org/TR/webauthn/#dictdef-"
+"publickeycredentialparameters[WebAuthn Specification] を参照してください。\n"
+
+#. type: Plain text
+msgid "Relying Party ID"
+msgstr "Relying Party ID"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"This is the ID as a WebAuthn Relying Party and determines the scope of Public Key Credentials. It must be origin's effective domain. This is an optional configuration item that is applied to the operation of registering a WebAuthn authenticator. If no entry is entered, the host part of the base URL of {project_name}'s server is adapted.\n"
+" For more details, see https://www.w3.org/TR/webauthn/#rp-id[WebAuthn Specification].\n"
+msgstr ""
+"これは、WebAuthnリライング・パーティーとしてのIDであり、公開鍵クレデンシャルのスコープを決定します。オリジンの有効なドメインでなければなりません。これは、WebAuthnオーセンティケーターを登録する操作に適用されるオプションの設定項目です。エントリーが入力されていない場合、{project_name}のサーバーのベースURLのホスト部分が適応されます。詳細については、"
+" https://www.w3.org/TR/webauthn/#rp-id[WebAuthn Specification] を参照してください。\n"
+
+#. type: Plain text
+msgid "Attestation Conveyance Preference"
+msgstr "Attestation Conveyance Preference"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"It tells the WebAuthn API implementation on the browser (https://www.w3.org/TR/webauthn/#webauthn-client[WebAuthn Client]) the preference of how to generate an Attestation Statement. This is an optional configuration item that is applied to the operation of registering a WebAuthn authenticator. If no option is selected, its behavior is the same as selecting \"none\".\n"
+" For more details, see https://www.w3.org/TR/webauthn/#attestation-convey[WebAuthn Specification].\n"
+msgstr ""
+"ブラウザーのWebAuthn API実装（https://www.w3.org/TR/webauthn/#webauthn-"
+"client[WebAuthnクライアント]）に、認証ステートメントの生成方法の設定を伝えます。これは、WebAuthnオーセンティケーターを登録する操作に適用されるオプションの設定項目です。オプションが選択されていない場合、その動作は\"none\"を選択した場合と同じです。詳細については、"
+" https://www.w3.org/TR/webauthn/#attestation-convey[WebAuthn Specification] "
+"を参照してください。\n"
+
+#. type: Plain text
+msgid "Authenticator Attachment"
+msgstr "Authenticator Attachment"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"It tells the WebAuthn Client an acceptable attachment pattern of a WebAuthn authenticator. This is an optional configuration item that is applied to the operation of registering a WebAuthn authenticator. If no option is selected, the WebAuthn Client does not consider the attachment pattern.\n"
+" For more details, see https://www.w3.org/TR/webauthn/#enumdef-authenticatorattachment[WebAuthn Specification].\n"
+msgstr ""
+"これは、WebAuthnオーセンティケーターの受け入れ可能なアタッチパターンをWebAuthnクライアントに伝えます。これは、WebAuthnオーセンティケーターを登録する操作に適用されるオプションの設定項目です。オプションが選択されていない場合、WebAuthnクライアントはアタッチパターンを考慮しません。詳細については、"
+" https://www.w3.org/TR/webauthn/#enumdef-authenticatorattachment[WebAuthn "
+"Specification] を参照してください。\n"
+
+#. type: Plain text
+msgid "Require Resident Key"
+msgstr "Require Resident Key"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"It tells the WebAuthn authenticator to generate the Public Key Credential as https://www.w3.org/TR/webauthn/#client-side-resident-public-key-credential-source[Client-side-resident Public Key Credential Source]. This is an optional configuration item that is applied to the operation of registering a WebAuthn authenticator. If no option is selected, its behavior is the same as selecting \"No\".\n"
+" For more details, see https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-requireresidentkey[WebAuthn Specification].\n"
+msgstr ""
+"https://www.w3.org/TR/webauthn/#client-side-resident-public-key-credential-"
+"source[Client-side-resident Public Key Credential Source] "
+"として公開鍵クレデンシャルを生成するようにWebAuthnオーセンティケーターに指示します。これは、WebAuthnオーセンティケーターを登録する操作に適用されるオプションの設定項目です。オプションが選択されていない場合、その動作は\"No\"を選択した場合と同じです。詳細については、"
+" https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-"
+"requireresidentkey[WebAuthn Specification] を参照してください。\n"
+
+#. type: Plain text
+msgid "User Verification Requirement"
+msgstr "User Verification Requirement"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"It tells the WebAuthn authenticator to confirm actually verifying a user. This is an optional configuration item that is applied to the operation of registering a WebAuthn authenticator and authenticating the user by a WebAuthn authenticator. If no option is selected, its behavior is the same as selecting \"preferred\".\n"
+" For more details, see https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-userverification[WebAuthn Specification for registering a WebAuthn authenticator] and https://www.w3.org/TR/webauthn/#dom-publickeycredentialrequestoptions-userverification[WebAuthn Specification for authenticating the user by a WebAuthn authenticator].\n"
+msgstr ""
+"WebAuthnオーセンティケーターに、ユーザーの実際の検証を確認するよう指示します。これは、WebAuthnオーセンティケーターを登録し、WebAuthnオーセンティケーターによってユーザーを認証する操作に適用されるオプションの設定項目です。オプションが選択されていない場合、その動作は\"preferred\"を選択した場合と同じです。詳細については、"
+" https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-"
+"userverification[WebAuthn Specification for registering a WebAuthn "
+"authenticator] と https://www.w3.org/TR/webauthn/#dom-"
+"publickeycredentialrequestoptions-userverification[WebAuthn Specification "
+"for authenticating the user by a WebAuthn authenticator] を参照してください。\n"
+
+#. type: Plain text
+msgid "Timeout"
+msgstr "Timeout"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"It specifies the timeout value in seconds for registering a WebAuthn authenticator and authenticating the user by a WebAuthn authenticator. If set to 0, its behavior depends on the WebAuthn authenticator's implementation. The default value is 0.\n"
+" For more details, see https://www.w3.org/TR/webauthn/#dom-publickeycredentialcreationoptions-timeout[WebAuthn Specification for registering a WebAuthn authenticator] and https://www.w3.org/TR/webauthn/#dom-publickeycredentialrequestoptions-timeout[WebAuthn Specification for authenticating the user by a WebAuthn authenticator].\n"
+msgstr ""
+"WebAuthnオーセンティケーターを登録し、WebAuthnオーセンティケーターによってユーザーを認証するためのタイムアウト値を秒単位で指定します。0に設定した場合、その動作はWebAuthnオーセンティケーターの実装に依存します。デフォルト値は0です。詳細については、 \n"
+"https://www.w3.org/TR/webauthn/#dom-publickeycredentialcreationoptions-timeout[WebAuthn Specification for registering a WebAuthn authenticator] および https://www.w3.org/TR/webauthn/#dom-publickeycredentialrequestoptions-timeout[WebAuthn Specification for authenticating the user by a WebAuthn authenticator] を参照してください。\n"
+
+#. type: Plain text
+msgid "Avoid Same Authenticator Registration"
+msgstr "Avoid Same Authenticator Registration"
+
+#. type: Plain text
+msgid ""
+"If set to \"ON\", the WebAuthn authenticator that has already been "
+"registered can not be newly registered. This is applied to the operation of "
+"registering a WebAuthn authenticator. The default setting is \"OFF\"."
+msgstr ""
+"\"ON\"に設定すると、すでに登録されているWebAuthnオーセンティケーターを新規登録できません。これは、WebAuthnオーセンティケーターを登録する操作に適用されます。デフォルト設定は\"OFF\"です。"
+
+#. type: Plain text
+msgid "Acceptable AAGUIDs"
+msgstr "Acceptable AAGUIDs"
+
+#. type: Plain text
+msgid ""
+"The white list of AAGUID of which a WebAuthn authenticator can be "
+"registered. This is applied to the operation of registering a WebAuthn "
+"authenticator. If no entry is set on this list, any WebAuthn authenticator "
+"can be registered."
+msgstr ""
+"WebAuthnオーセンティケーターを登録できるAAGUIDのホワイトリスト。これは、WebAuthnオーセンティケーターを登録する操作に適用されます。このリストにエントリーが設定されていない場合、任意のWebAuthnオーセンティケーターを登録できます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Attestation Statement Verification"
+msgstr "Attestation Statement Verification"
+
+#. type: Plain text
+msgid ""
+"When registering a WebAuthn authenticator, {project_name} verifies an "
+"attestation statement generated by this WebAuthn authenticator. On this "
+"verification process, {project_name} validates this attestation statement's "
+"trustworthiness. It requires trust anchor's certificates. {project_name} "
+"uses the link:{installguide_truststore_link}[{installguide_truststore_name}]"
+" so that you need to import these certificates onto it in advance."
+msgstr ""
+"WebAuthnオーセンティケーターを登録するとき、{project_name}はこのWebAuthnオーセンティケーターによって生成された認証ステートメントを検証します。この検証プロセスで、{project_name}はこの認証ステートメントの信頼性を検証します。トラストアンカーの証明書が必要です。{project_name}は"
+" link:{installguide_truststore_link}[{installguide_truststore_name}] "
+"を使用するため、これらの証明書を事前にインポートする必要があります。"
+
+#. type: Plain text
+msgid ""
+"If you want to omit this attestation statement trustworthiness validation, "
+"please disable this truststore or set the WebAuthn policy's configuration "
+"item \"Attestation Conveyance Preference\" to \"none\"."
+msgstr ""
+"この検証ステートメントの信頼性検証を省略する場合は、このトラストストアを無効にするか、WebAuthnポリシーの設定項目\"Attestation "
+"Conveyance Preference\"を\"none\"に設定してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Managing WebAuthn credentials as a user"
+msgstr "ユーザーとしてのWebAuthnクレデンシャルの管理"
+
+#. type: Title =====
+#, no-wrap
+msgid "Register WebAuthn Authenticator"
+msgstr "WebAuthnオーセンティケーターの登録"
+
+#. type: Plain text
+msgid ""
+"The appropriate method to register a WebAuthn authenticator depends on if "
+"the user has or has not already registered an account on {project_name}."
+msgstr ""
+"WebAuthnオーセンティケーターを登録する適切な方法は、ユーザーが{project_name}にアカウントを登録しているかどうかによって異なります。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "New user"
+msgstr "新規ユーザー"
+
+#. type: Plain text
+msgid "A new user carries out the following operations :"
+msgstr "新しいユーザーで次の操作を実行します。"
+
+#. type: Plain text
+msgid "Click the `Register` link."
+msgstr "`Register` のリンクをクリックします。"
+
+#. type: Plain text
+msgid "Fill in items on the register form and click `Register`."
+msgstr "登録フォームの項目に入力し、 `Register` をクリックします。"
+
+#. type: Plain text
+msgid ""
+"The user's browser asks the user to register their WebAuthn authenticator."
+msgstr "ユーザーのブラウザーは、WebAuthnオーセンティケーターを登録するようにユーザーに要求します。"
+
+#. type: Plain text
+msgid ""
+"After successful registration, the user's browser asks the user to enter the"
+" text as their just registered WebAuthn authenticator's label."
+msgstr ""
+"登録が成功すると、ユーザーのブラウザーは、登録されたばかりのWebAuthnオーセンティケーターのラベルとしてテキストを入力するようにユーザーに要求します。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Existing user"
+msgstr "既存のユーザー"
+
+#. type: Plain text
+msgid ""
+"When existing users try to log in, they are required to register their "
+"WebAuthn authenticator automatically :"
+msgstr "既存のユーザーがログインしようとすると、WebAuthnオーセンティケーターを自動的に登録する必要があります。"
+
+#. type: Plain text
+msgid "Fill in items, click `Save` and click `Login`."
+msgstr "項目を入力し、 `Save` をクリックして `Login` をクリックします。"
+
+#. type: Plain text
+msgid ""
+"When the users log in, they are required to register their WebAuthn "
+"authenticator."
+msgstr "ユーザーがログインしたら、WebAuthnオーセンティケーターを登録する必要があります。"
+
+#. type: Title =====
+#, no-wrap
+msgid "View Registered WebAuthn Authenticator"
+msgstr "登録済みのWebAuthnオーセンティケーターを表示"
+
+#. type: Plain text
+msgid ""
+"A user carries out the following operations on the <<_account-service, `User"
+" Account Service`>> :"
+msgstr "ユーザーは<<_account-service, `User Account Service`>>で以下の操作を実行します。"
+
+#. type: Plain text
+msgid "View the `Account` page."
+msgstr "`Account` ページを表示します。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Edit Registered WebAuthn Authenticator"
+msgstr "登録済みのWebAuthnオーセンティケーターを編集"
+
+#. type: Plain text
+msgid "A user can edit the following information :"
+msgstr "ユーザーは次の情報を編集できます。"
+
+#. type: Plain text
+msgid ""
+"Label (WebAuthn authenticator's label the user entered on registering it)"
+msgstr "ラベル（登録時にユーザーが入力したWebAuthnオーセンティケーターのラベル）"
+
+#. type: Plain text
+msgid "Edit the text in `Public Key Credential Label`."
+msgstr "`Public Key Credential Label` のテキストを編集します。"
+
+#. type: Plain text
+msgid "Click `Save`."
+msgstr "`Save` をクリックします。"

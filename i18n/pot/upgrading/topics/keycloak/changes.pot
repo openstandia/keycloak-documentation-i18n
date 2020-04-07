@@ -378,6 +378,159 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
+msgid "Migrating to 8.0.0"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "New Default Hostname provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The old request and fixed hostname providers have been replaced with a new "
+"default hostname provider. The request and fixed hostname providers are now "
+"deprecated and it is recommended to switch to the default hostname provider "
+"as soon as possible."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 18"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 18 as the underlying "
+"container. This does not directly involve any specific {project_name} server "
+"functionality, but there are a few changes related to the migration, which "
+"are worth mentioning."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 18 server. For "
+"example, Infinispan is now 9.4.16.Final."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and `domain."
+"xml` files. You should follow the <<_install_new_version>> section to handle "
+"the migration of configuration files automatically."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Deploying Scripts to the Server"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Until now, administrators were allowed to upload scripts to the server "
+"through the {project_name} Administration Console as well as through the "
+"RESTful Admin API."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For now on, this capability is *disabled* by default and users should prefer "
+"to deploy scripts directly to the server. For more details, please take a "
+"look at link:{developerguide_jsproviders_link}"
+"[{developerguide_jsproviders_name}]."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Client Credentials in the JavaScript adapter"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the previous releases, developers were allowed to provide client "
+"credentials to the JavaScript adapter. For now on, this capability was "
+"*removed*, because client-side apps are not safe to keep secrets."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Authentication flows changes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"We did some refactoring and improvements related to the authentication "
+"flows, which requires some attention during migration."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "OPTIONAL execution requirement removed"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Regarding migration, the most important change is removing the support for "
+"the OPTIONAL requirement from authentication executions and replacing it "
+"with the CONDITIONAL requirement, which allows more flexibility. The "
+"existing OPTIONAL authenticators configured in the previous version will be "
+"replaced with the CONDITIONAL subflows. These subflows will have the "
+"`Condition - User Configured` condition configured as first execution, and "
+"the previously OPTIONAL authenticator (for example `OTP Form`) as second "
+"execution.  From the user's point of view, the behavior during "
+"authentication should be same as in the previous version."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes in the Java SPI"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There are some changes in the Java Authentication SPI and Credential "
+"Provider SPI. The interface `Authenticator` is not changed, but you may be "
+"affected if you're developing more advanced authenticators, which introduce "
+"some new credential types (subclasses of `CredentialModel`).  There are "
+"changes on the `CredentialProvider` interface and introduction of some new "
+"interfaces like `CredentialValidator`. Also you may be affected if your "
+"authenticator supported the OPTIONAL execution requirement. It is "
+"recommended to double check the latest authentication examples in the server "
+"development guide for more details."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Freemarker template changes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There are also some changes in the freemarker templates. You may be affected "
+"if you have your own theme with custom freemarker templates for login forms "
+"or some account forms, especially for the forms related to OTP. It is "
+"recommended to double check changes in the Freemarker templates in the "
+"latest {project_name} and align your templates according to it."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "User credentials changes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"We added more flexibility around storing of user credentials. Among other "
+"things, every user can have multiple credentials of the same type, for "
+"example multiple OTP credentials. There are some changes in the database "
+"schema in relation to that, however the credentials from the previous "
+"version should be automatically updated to the new format and users should "
+"be still able to login with their passwords or OTP credentials set in the "
+"previous version."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 7.0.0"
 msgstr ""
 
@@ -398,13 +551,6 @@ msgstr ""
 msgid ""
 "The dependencies were updated to the versions used by Wildfly 17 server. For "
 "example, Infinispan is now 9.4.14.Final."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"There are few configuration changes in the `standalone(-ha).xml` and `domain."
-"xml` files. You should follow the <<_install_new_version>> section to handle "
-"the migration of configuration files automatically."
 msgstr ""
 
 #. type: Title ===

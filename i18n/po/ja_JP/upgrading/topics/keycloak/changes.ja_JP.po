@@ -5,14 +5,14 @@
 # 
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
-# Hiroyuki Wada <wadahiro@gmail.com>, 2019
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -464,6 +464,182 @@ msgstr "移行に伴う変更"
 
 #. type: Title ===
 #, no-wrap
+msgid "Migrating to 8.0.0"
+msgstr "8.0.0への移行"
+
+#. type: Title ==
+#, no-wrap
+msgid "New Default Hostname provider"
+msgstr "新しいデフォルト・ホスト名プロバイダー"
+
+#. type: Plain text
+msgid ""
+"The old request and fixed hostname providers have been replaced with a new "
+"default hostname provider. The request and fixed hostname providers are now "
+"deprecated and it is recommended to switch to the default hostname provider "
+"as soon as possible."
+msgstr ""
+"古いリクエストと固定ホスト名プロバイダーは、新しいデフォルトのホスト名プロバイダーに置き換えられました。リクエストおよび固定ホスト名プロバイダーは廃止されました。できるだけ早くデフォルトのホスト名プロバイダーに切り替えることをお勧めします。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 18"
+msgstr "WildFly 18へのアップグレード"
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 18 as the underlying "
+"container. This does not directly involve any specific {project_name} server"
+" functionality, but there are a few changes related to the migration, which "
+"are worth mentioning."
+msgstr ""
+"WildFly "
+"18をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。これは、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更（言及する価値がある変更）があります。"
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 18 server. For"
+" example, Infinispan is now 9.4.16.Final."
+msgstr ""
+"依存関係が、WildFly 18サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.4.16.Finalです。"
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and "
+"`domain.xml` files. You should follow the <<_install_new_version>> section "
+"to handle the migration of configuration files automatically."
+msgstr ""
+"`standalone(-ha).xml` と `domain.xml` "
+"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Deploying Scripts to the Server"
+msgstr "サーバーへのスクリプトのデプロイ"
+
+#. type: Plain text
+msgid ""
+"Until now, administrators were allowed to upload scripts to the server "
+"through the {project_name} Administration Console as well as through the "
+"RESTful Admin API."
+msgstr ""
+"これまで、管理者は{project_name}管理コンソールとRESTful Admin "
+"APIを使用して、サーバーにスクリプトをアップロードできました。"
+
+#. type: Plain text
+msgid ""
+"For now on, this capability is *disabled* by default and users should prefer"
+" to deploy scripts directly to the server. For more details, please take a "
+"look at "
+"link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}]."
+msgstr ""
+"現時点では、この機能はデフォルトで *無効* "
+"であり、ユーザーはスクリプトをサーバーに直接デプロイすることを選択する必要があります。詳細については、link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}]を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Client Credentials in the JavaScript adapter"
+msgstr "JavaScriptアダプターのクライアント・クレデンシャル"
+
+#. type: Plain text
+msgid ""
+"In the previous releases, developers were allowed to provide client "
+"credentials to the JavaScript adapter. For now on, this capability was "
+"*removed*, because client-side apps are not safe to keep secrets."
+msgstr ""
+"以前のリリースでは、開発者はクライアントのクレデンシャルをJavaScriptアダプターに提供できました。現時点では、この機能は *削除* "
+"されました。これは、クライアントサイドのアプリがシークレットを保持する上で安全ではないためです。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Authentication flows changes"
+msgstr "認証フローの変更"
+
+#. type: Plain text
+msgid ""
+"We did some refactoring and improvements related to the authentication "
+"flows, which requires some attention during migration."
+msgstr "認証フローに関連するリファクタリングと改善をいくつか行いました。これにより、移行の際に注意が必要です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "OPTIONAL execution requirement removed"
+msgstr "OPTIONALのエグゼキューション要件が削除されました"
+
+#. type: Plain text
+msgid ""
+"Regarding migration, the most important change is removing the support for "
+"the OPTIONAL requirement from authentication executions and replacing it "
+"with the CONDITIONAL requirement, which allows more flexibility. The "
+"existing OPTIONAL authenticators configured in the previous version will be "
+"replaced with the CONDITIONAL subflows. These subflows will have the "
+"`Condition - User Configured` condition configured as first execution, and "
+"the previously OPTIONAL authenticator (for example `OTP Form`) as second "
+"execution.  From the user's point of view, the behavior during "
+"authentication should be same as in the previous version."
+msgstr ""
+"移行に関して最も重要な変更は、認証のエグゼキューションからOPTIONALの要件のサポートを削除し、それをCONDITIONALの要件に置き換えることです。これにより、柔軟性が高まります。前のバージョンで構成された既存のOPTIONALのオーセンティケーターは、CONDITIONALのサブフローに置き換えられます。これらのサブフローには、最初のエグゼキューションとして設定された"
+" `Condition - User Configured` "
+"条件があり、2回目のエグゼキューションとして以前のOPTIONALオーセンティケーター（たとえば、 `OTP Form` "
+"）が設定されます。ユーザーの観点からは、認証中の動作は以前のバージョンと同じであるはずです。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes in the Java SPI"
+msgstr "Java SPIの変更"
+
+#. type: Plain text
+msgid ""
+"There are some changes in the Java Authentication SPI and Credential "
+"Provider SPI. The interface `Authenticator` is not changed, but you may be "
+"affected if you're developing more advanced authenticators, which introduce "
+"some new credential types (subclasses of `CredentialModel`).  There are "
+"changes on the `CredentialProvider` interface and introduction of some new "
+"interfaces like `CredentialValidator`. Also you may be affected if your "
+"authenticator supported the OPTIONAL execution requirement. It is "
+"recommended to double check the latest authentication examples in the server"
+" development guide for more details."
+msgstr ""
+"Java Authentication SPIおよびCredential Provider SPIにはいくつかの変更があります。インターフェース "
+"`Authenticator` は変更されませんが、新しいクレデンシャル・タイプ（ `CredentialModel` "
+"のサブクラス）を導入するより高度なオーセンティケーターを開発している場合は影響を受ける可能性があります。 `CredentialProvider` "
+"インターフェイスに変更があり、 `CredentialValidator` "
+"のようないくつかの新しいインターフェイスが導入されています。また、オーセンティケーターがOPTIONALのエグゼキューション要件をサポートしている場合、影響を受ける可能性があります。詳細については、サーバー開発ガイドの最新の認証の例を再確認することをお勧めします。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Freemarker template changes"
+msgstr "Freemarkerテンプレートの変更"
+
+#. type: Plain text
+msgid ""
+"There are also some changes in the freemarker templates. You may be affected"
+" if you have your own theme with custom freemarker templates for login forms"
+" or some account forms, especially for the forms related to OTP. It is "
+"recommended to double check changes in the Freemarker templates in the "
+"latest {project_name} and align your templates according to it."
+msgstr ""
+"Freemarkerテンプレートにもいくつかの変更があります。ログインフォームまたは一部のアカウント・フォーム、特にOTPに関連するフォームのカスタムFreemarkerテンプレートを使用した独自のテーマがある場合、影響を受ける可能性があります。最新の{project_name}のFreemarkerテンプレートの変更を再確認し、それに応じてテンプレートを調整することをお勧めします。"
+
+#. type: Title ====
+#, no-wrap
+msgid "User credentials changes"
+msgstr "ユーザー・クレデンシャルの変更"
+
+#. type: Plain text
+msgid ""
+"We added more flexibility around storing of user credentials. Among other "
+"things, every user can have multiple credentials of the same type, for "
+"example multiple OTP credentials. There are some changes in the database "
+"schema in relation to that, however the credentials from the previous "
+"version should be automatically updated to the new format and users should "
+"be still able to login with their passwords or OTP credentials set in the "
+"previous version."
+msgstr ""
+"ユーザー・クレデンシャルの保存に関する柔軟性を追加しました。とりわけ、すべてのユーザーは同じタイプの複数のクレデンシャル、たとえば複数のOTPクレデンシャルを持つことができます。それに関連してデータベース・スキーマにいくつかの変更がありますが、以前のバージョンのクレデンシャルは新しい形式に自動的に更新される必要があり、ユーザーは以前のバージョンで設定されたパスワードまたはOTPクレデンシャルを使用してログインできます。"
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 7.0.0"
 msgstr "7.0.0への移行"
 
@@ -488,15 +664,6 @@ msgid ""
 " example, Infinispan is now 9.4.14.Final."
 msgstr ""
 "依存関係が、WildFly 17サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.4.14.Finalです。"
-
-#. type: Plain text
-msgid ""
-"There are few configuration changes in the `standalone(-ha).xml` and "
-"`domain.xml` files. You should follow the <<_install_new_version>> section "
-"to handle the migration of configuration files automatically."
-msgstr ""
-"`standalone(-ha).xml` と `domain.xml` "
-"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
 
 #. type: Title ===
 #, no-wrap

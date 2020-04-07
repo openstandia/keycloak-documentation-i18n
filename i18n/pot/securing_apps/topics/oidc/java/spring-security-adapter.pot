@@ -45,7 +45,39 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Unlike the other Keycloak Adapters, you should not configure your security "
-"in web.xml.  However, keycloak.json is still required."
+"in web.xml.  However, keycloak.json is still required.  In order for Single "
+"Sign Out work properly you have to define a session listener."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "The session listener can be defined:"
+msgstr ""
+
+#. type: Plain text
+msgid "in web.xml (for pure Spring Security environments):"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<listener>\n"
+"     <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>\n"
+"</listener>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"as a Spring bean (in Spring Boot environments using Spring Security adapter)"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"@Bean\n"
+"public ServletListenerRegistrationBean<HttpSessionEventPublisher> httpSessionEventPublisher() {\n"
+"    return new ServletListenerRegistrationBean<HttpSessionEventPublisher>(new HttpSessionEventPublisher());\n"
+"}\n"
 msgstr ""
 
 #. type: Plain text

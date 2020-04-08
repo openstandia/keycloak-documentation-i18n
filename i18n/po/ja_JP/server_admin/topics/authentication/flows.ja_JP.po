@@ -7,12 +7,13 @@
 # katakura__pro <h.katakura@pro-japan.co.jp>, 2017
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Yoshikazu Nojima <mail@ynojima.net>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Yoshikazu Nojima <mail@ynojima.net>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,6 +25,11 @@ msgstr ""
 #, no-wrap
 msgid "Description"
 msgstr "Description"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Alias"
+msgstr "Alias"
 
 #. type: Block title
 #, no-wrap
@@ -85,12 +91,17 @@ msgid ""
 "and may or may not be executed depending on the behavior of its parent. The "
 "`Requirement` column is a set of radio buttons which define whether or not "
 "the action will execute. Let's describe what each radio button means in this"
-" context:"
+" context."
 msgstr ""
 "`Auth Type` "
 "列は、実行される認証またはアクションの名前です。認証がインデントされている場合、これはサブフローにあり、親の動作に応じて実行される場合と実行されない場合があります。"
 " `Requirement` "
 "列は、アクションが実行されるかどうかを定義するラジオボタンのセットです。このコンテキストでの各ラジオボタンの意味を説明します。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Execution requirements"
+msgstr "エグゼキューション要件"
 
 #. type: Labeled list
 #, no-wrap
@@ -99,16 +110,16 @@ msgstr "Required"
 
 #. type: Plain text
 msgid ""
-"This authentication execution must execute successfully. If the user doesn't"
-" have that type of authentication mechanism configured and there is a "
-"required action associated with that authentication type, then a required "
-"action will be attached to that account.  For example, if you switch the "
-"`Browser - Conditional OTP` sub-flow to `Required`, users that don't have an"
-" OTP generator configured will be asked to do so."
+"For a flow to be evaluated as successful, all required elements in the flow "
+"must evaluate as successful. This means that all _Required_ elements in the "
+"flow must be sequentially executed, from top to bottom, unless one of the "
+"elements causes the flow to fail. However, this is only true for the current"
+" flow.  Any _Required_ element within a sub-flow is only processed if that "
+"sub-flow is entered."
 msgstr ""
-"この認証のエグゼキューションは正常に実行されなければなりません。ユーザーにそのタイプの認証メカニズムが設定されておらず、その認証タイプに関連する必須アクションがある場合、必須アクションがそのアカウントにアタッチされます。たとえば、"
-" `Browser - Conditional OTP` サブフローを `Required` "
-"に切り替えると、OTPジェネレーターが設定されていないユーザーには、OTPジェネレーターの設定が要求されます。"
+"フローが成功と評価されるには、フロー内のすべての必須要素が成功と評価される必要があります。つまり、要素がフローの失敗を引き起こさない限り、フロー内のすべての"
+" _Required_ 要素を上から下に順番に実行する必要があります。ただし、これは現在のフローにのみ当てはまります。サブフロー内の "
+"_Required_ 要素は、そのサブフローが入力された場合にのみ処理されます。"
 
 #. type: Labeled list
 #, no-wrap
@@ -117,9 +128,17 @@ msgstr "Alternative"
 
 #. type: Plain text
 msgid ""
-"This means that at least one alternative authentication type must execute "
-"successfully at that level of the flow."
-msgstr "少なくとも1つの代替の認証タイプが、そのフローのレベルで正常に実行されなければならないことを意味します。"
+"When a flow contains only _Alternative_ elements, only a single element must"
+" evaluate as successful for the flow to evaluate as successful.  Because the"
+" _Required_ flow elements within a flow are sufficient to mark a flow as "
+"successful, any _Alternative_ flow element within a flow that contains "
+"_Required_ flow elements will never be executed. In this case, they are "
+"functionally _Disabled_."
+msgstr ""
+"フローに _Alternative_ "
+"要素のみが含まれる場合、フローが成功と評価されるためには、単一の要素のみが成功と評価される必要があります。フロー内の _Required_ "
+"要素はフローを成功としてマークするには十分なので、 _Required_ 要素を含むフロー内の _Alternative_ "
+"要素は実行されません。この場合、それらは機能的には _Disabled_ です。"
 
 #. type: Labeled list
 #, no-wrap
@@ -127,8 +146,10 @@ msgid "Disabled"
 msgstr "Disabled"
 
 #. type: Plain text
-msgid "If disabled, the authentication type is not executed."
-msgstr "無効にすると、認証タイプは実行されません。"
+msgid ""
+"Any _Disabled_ element is not evaluated and does not count to mark a flow as"
+" successful."
+msgstr "_Disabled_ 要素は評価されず、フローを成功としてマークする際にカウントされません。"
 
 #. type: Labeled list
 #, no-wrap
@@ -137,9 +158,23 @@ msgstr "Conditional"
 
 #. type: Plain text
 msgid ""
-"This requirement type can only be set on sub-flows, indicating that it will "
-"only be executed if its condition evaluates to true."
-msgstr "この要件タイプはサブフローでのみ設定でき、条件がtrueと評価された場合にのみ実行されることを示します。"
+"This requirement type can only be set on sub-flows. A _Conditional_ sub-flow"
+" can contain a \"Condition\" execution. These \"Condition\" executions must "
+"evaluate as logical statements. If all \"Condition\" executions evaluate as "
+"_true_ then the _Conditional_ sub-flow acts as _Required_. If not, the "
+"_Conditional_ sub-flow acts as _Disabled_. If no \"Condition\" execution is "
+"set, the _Conditional_ sub-flow acts as _Disabled_. If a flow contains "
+"\"Condition\" executions and is not set to _Conditional_, the \"Condition\" "
+"executions are not evaluated, and can be considered functionally _Disabled_."
+msgstr ""
+"この要件タイプは、サブフローでのみ設定できます。 _Conditional_ "
+"サブフローには、\"Condition\"のエグゼキューションを含めることができます。これらの "
+"\"Condition\"のエグゼキューションは、論理ステートメントとして評価する必要があります。すべての "
+"\"Condition\"のエグゼキューションが _true_ として評価される場合、 _Conditional_ サブフローは _Required_ "
+"として機能します。そうでない場合、 _Conditional_ サブフローは _Disabled_ として機能します。 "
+"\"Condition\"の実行が設定されていない場合、 _Conditional_ サブフローは _Disabled_ として機能します。フローに "
+"\"Condition\"のエグゼキューションが含まれ、 _Conditional_ に設定されていない場合、 "
+"\"Condition\"のエグゼキューションは評価されず、機能的に _Disabled_ と見なすことができます。"
 
 #. type: Plain text
 msgid ""
@@ -286,11 +321,6 @@ msgid "With the following options:"
 msgstr "次のオプションがあります。"
 
 #. type: Plain text
-#, no-wrap
-msgid "Alias"
-msgstr "Alias"
-
-#. type: Plain text
 msgid "The name of the flow."
 msgstr "フローの名前。"
 
@@ -398,62 +428,11 @@ msgstr ""
 msgid ""
 "Fully understanding this requires a more complete explanation of how "
 "requirements work when evaluating a flow, and this also applies to sub-"
-"flows:"
+"flows.  Refer to the <<_execution-requirements, execution requirements "
+"section>> above for more details."
 msgstr ""
-"これを完全に理解するには、フローを評価するときに要件がどのように機能するかについて、より完全な説明が必要です（これはサブフローにも適用されます）。"
-
-#. type: Plain text
-msgid ""
-"For a flow to be evaluated as successful, all required elements in the flow "
-"must evaluate as successful. This means that all _Required_ elements in the "
-"flow must be sequentially executed, from top to bottom, unless one the the "
-"elements causes the flow to fail. However, this is only true for the current"
-" flow.  Any _Required_ element within a sub-flow is only processed if that "
-"sub-flow is entered."
-msgstr ""
-"フローが成功と評価されるには、フロー内のすべての必須要素が成功と評価される必要があります。つまり、要素がフローの失敗を引き起こさない限り、フロー内のすべての"
-" _Required_ 要素を上から下に順番に実行する必要があります。ただし、これは現在のフローにのみ当てはまります。サブフロー内の "
-"_Required_ 要素は、そのサブフローが入力された場合にのみ処理されます。"
-
-#. type: Plain text
-msgid ""
-"When a flow contains only _Alternative_ elements, only a single element must"
-" evaluate as successful for the flow to evaluate as successful.  Because the"
-" _Required_ flow elements within a flow are sufficient to mark a flow as "
-"successful, any _Alternative_ flow element within a flow that contains "
-"_Required_ flow elements will never be executed. In this case, they are "
-"functionally _Disabled_."
-msgstr ""
-"フローに _Alternative_ "
-"要素のみが含まれる場合、フローが成功と評価されるためには、単一の要素のみが成功と評価される必要があります。フロー内の _Required_ "
-"要素はフローを成功としてマークするには十分なので、 _Required_ 要素を含むフロー内の _Alternative_ "
-"要素は実行されません。この場合、それらは機能的には _Disabled_ です。"
-
-#. type: Plain text
-msgid ""
-"Any _Disabled_ element is not evaluated and does not count to mark a flow as"
-" successful."
-msgstr "_Disabled_ 要素は評価されず、フローを成功としてマークする際にカウントされません。"
-
-#. type: Plain text
-msgid ""
-"This requirement type can only be set on sub-flows. A _Conditional_ sub-flow"
-" can contain a \"Condition\" execution. These \"Condition\" executions must "
-"evaluate as logical statements. If all \"Condition\" executions evaluate as "
-"_true_ then the _Conditional_ sub-flow acts as _Required_. If not, the "
-"_Conditional_ sub-flow acts as _Disabled_. If no \"Condition\" execution is "
-"set, the _Conditional_ sub-flow acts as _Disabled_. If a flow contains "
-"\"Condition\" executions and is not set to _Conditional_, the \"Condition\" "
-"executions are not evaluated, and can be considered functionally _Disabled_."
-msgstr ""
-"この要件タイプは、サブフローでのみ設定できます。 _Conditional_ "
-"サブフローには、\"Condition\"のエグゼキューションを含めることができます。これらの "
-"\"Condition\"のエグゼキューションは、論理ステートメントとして評価する必要があります。すべての "
-"\"Condition\"のエグゼキューションが _true_ として評価される場合、 _Conditional_ サブフローは _Required_ "
-"として機能します。そうでない場合、 _Conditional_ サブフローは _Disabled_ として機能します。 "
-"\"Condition\"の実行が設定されていない場合、 _Conditional_ サブフローは _Disabled_ として機能します。フローに "
-"\"Condition\"のエグゼキューションが含まれ、 _Conditional_ に設定されていない場合、 "
-"\"Condition\"のエグゼキューションは評価されず、機能的に _Disabled_ と見なすことができます。"
+"これを完全に理解するには、フローを評価するときに要件がどのように機能するかについて、より完全な説明が必要です（これはサブフローにも適用されます）。詳しくは"
+" <<_execution-requirements, execution requirements セクション>>を参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -590,11 +569,11 @@ msgstr ""
 msgid ""
 "Using the `Actions` menu on the right-hand side of the \"Authentication\" "
 "subflow, select \"Add execution\". Using the drop-down select \"Webauthn "
-"Authenticator\". After pressing \"Save\", set its Requirement to "
-"_Alternative_."
+"Passwordless Authenticator\". After pressing \"Save\", set its Requirement "
+"to _Alternative_."
 msgstr ""
 "\"Authentication\"サブフローの右側にある `Actions` メニューを使用して、\"Add "
-"execution\"を選択します。ドロップダウンを使用して、\"Webauthn "
+"execution\"を選択します。ドロップダウンを使用して、\"Webauthn Passwordless "
 "Authenticator\"を選択します。\"Save\"を押した後、その要件を _Alternative_ に設定します。"
 
 #. type: Plain text
@@ -653,40 +632,45 @@ msgstr "ユーザー名を入力すると、このフローは次のように機
 
 #. type: Plain text
 msgid ""
-"If the user has any WebAuthn credentials recorded, he will be able to use "
-"any of them to log in directly. This is the password-less login.  The user "
-"also has a drop-down allowing him to select \"Password with OTP\". He can do"
-" this because the \"WebAuthn\" execution and the \"Password with OTP\" flow "
-"are set to _Alternative_. Were they set to _Required_ the user would have to"
-" enter WebAuthn, password, and OTP."
+"If the user has any WebAuthn passwordless credentials recorded, that user "
+"will be able to use any of them to log in directly. This is the password-"
+"less login.  The user can instead select \"Password with OTP\". The user can"
+" do this because the \"WebAuthn Passwordless\" execution and the \"Password "
+"with OTP\" flow are set to _Alternative_. Were they set to _Required_ the "
+"user would have to enter WebAuthn, password, and OTP."
 msgstr ""
-"ユーザーがWebAuthnクレデンシャルを記録している場合、ユーザーはそれらのいずれかを使用して直接ログインできます。これがパスワードレス・ログインです。ユーザーにはドロップダウン・リストもあり、\"Password"
-" with OTP\"を選択できます。\"WebAuthn\"エグゼキューションと\"Password with OTP\"フローが "
+"ユーザーがWebAuthnパスワードレスクレデンシャルを記録している場合、ユーザーはそれらのいずれかを使用して直接ログインできます。これがパスワードレス・ログインです。ユーザーは\"Password"
+" with OTP\"を選択することもできます。\"WebAuthn\"エグゼキューションと\"Password with OTP\"フローが "
 "_Alternative_ に設定されているため、ユーザーはこれを行うことができます。これらが _Required_ "
 "に設定されている場合、ユーザーはWebAuthn、パスワード、およびOTPを入力する必要があります。"
 
 #. type: Plain text
 msgid ""
-"If the user selects the \"Password with OTP\" from the drop-down, or if the "
-"user doesn't have any WebAuthn credentials, he will have to first enter his "
-"password, and then his OTP. If the user has no OTP credential, he will be "
-"asked to record one."
+"If the user selects `Try another way` link on the screen with \"WebAuthn "
+"passwordless\" authentication, the user can choose between \"Password\" and "
+"\"Security Key\" (WebAuthn passwordless). When selecting the password, the "
+"user will need to continue and log in with the assigned OTP as well.  If the"
+" user has no WebAuthn credentials, he will have to first enter his password,"
+" and then his OTP. If the user has no OTP credential, he will be asked to "
+"record one."
 msgstr ""
-"ユーザーがドロップダウンから\"Password with "
-"OTP\"を選択した場合、またはユーザーにWebAuthnクレデンシャルがない場合は、最初にパスワードを入力し、次にOTPを入力する必要があります。ユーザーにOTPクレデンシャルがない場合は、記録するように求められます。"
+"ユーザーが\"WebAuthn passwordless\" 認証のスクリーンで `Try another way` "
+"リンクを選択した場合、ユーザーは\"Password\" と\"Security Key\" (WebAuthn Passwordless) "
+"から選択することが出来ます。パスワードを選択した場合、ユーザーは続けて紐づけられたOTPでログインする必要があります。ユーザーがWebAuthnクレデンシャルを持たない場合、ユーザーにWebAuthnクレデンシャルがない場合は、最初にパスワードを入力し、次にOTPを入力する必要があります。ユーザーにOTPクレデンシャルがない場合は、記録するように求められます。"
 
 #. type: Plain text
 msgid ""
-"It is important to note that since the WebAuthn execution is set to "
-"_Alternative_ instead of _Required_, this flow will never ask the user to "
-"register a WebAuthn credential. For a user to have a Webauthn credential, he"
-" must have a required action added to him by an administrator. This is done "
-"first by making sure that that the `Webauthn Register` required action is "
-"enabled in the realm (see the <<_webauthn,WebAuthn>> documentation), and "
-"then by setting the required action by using the `Credential Reset` part of "
-"a user's <<user-credentials,Credentials>> management menu."
+"It is important to note that since the WebAuthn Passwordless execution is "
+"set to _Alternative_ instead of _Required_, this flow will never ask the "
+"user to register a WebAuthn credential. For a user to have a Webauthn "
+"credential, that user must have a required action added by an administrator."
+" This is done first by making sure that the `Webauthn Register Passwordless`"
+" required action is enabled in the realm (see the <<_webauthn,WebAuthn>> "
+"documentation), and then by setting the required action by using the "
+"`Credential Reset` part of a user's <<_user-credentials,Credentials>> "
+"management menu."
 msgstr ""
-"WebAuthnのエグゼキューションは _Required_ ではなく _Alternative_ "
+"WebAuthnパスワードレスのエグゼキューションは _Required_ ではなく _Alternative_ "
 "に設定されているため、このフローではユーザーにWebAuthnのクレデンシャルの登録を求めることはありません。ユーザーがWebauthnのクレデンシャルを登録させるには、管理者が必須アクションを追加する必要があります。これは最初にレルムで"
 " `Webauthn Register` "
 "の必須アクションが有効になっていることを確認して（<<_webauthn,WebAuthn>>ドキュメントを参照）、次にユーザーの<<user-"
@@ -730,178 +714,20 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "Executions"
-msgstr "エグゼキューション"
-
-#. type: Plain text
-msgid "Executions can be used"
-msgstr "以下のエグゼキューションが利用可能です。"
-
-#. type: Block title
-#, no-wrap
 msgid "Script Authenticator"
 msgstr "スクリプト・オーセンティケーター"
 
 #. type: Plain text
 msgid ""
-"A _script_ authenticator allows to define custom authentication logic via "
-"JavaScript.  Custom authenticators. In order to make use of this feature, it"
-" must be explicitly enabled:"
-msgstr ""
-"_Script_ "
-"オーセンティケーターを使用すると、JavaScriptを介してカスタム認証ロジックを定義できます。この機能を利用するには、次のように明示的に有効にする必要があります。"
-
-#. type: delimited block -
-#, no-wrap
-msgid "bin/standalone.sh|bat -Dkeycloak.profile.feature.scripts=enabled\n"
-msgstr "bin/standalone.sh|bat -Dkeycloak.profile.feature.scripts=enabled\n"
+"Ability to upload scripts through the Admin Console and REST endpoints is "
+"deprecated."
+msgstr "スクリプトを管理コンソールやRESTエンドポイントからアップロードする機能は廃止予定です。"
 
 #. type: Plain text
 msgid ""
-"For more information, see the "
-"link:{installguide_profile_link}[{installguide_profile_name}] section."
+"For more details see "
+"link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}]."
 msgstr ""
-"詳しくは、 link:{installguide_profile_link}[{installguide_profile_name}] "
-"セクションを参照してください。"
-
-#. type: Plain text
-msgid ""
-"Authentication scripts must at least provide one of the following functions:"
-" `authenticate(..)` which is called from "
-"`Authenticator#authenticate(AuthenticationFlowContext)` `action(..)` which "
-"is called from `Authenticator#action(AuthenticationFlowContext)`"
-msgstr ""
-"認証スクリプトは、少なくとも以下の関数のうちの1つを提供しなければなりません。 "
-"`Authenticator#authenticate(AuthenticationFlowContext)` から呼び出された "
-"`authenticate(..)` 。 `Authenticator#action(AuthenticationFlowContext)` "
-"から呼び出された `action(..)` 。"
-
-#. type: Plain text
-msgid ""
-"Custom `Authenticator` should at least provide the `authenticate(..)` "
-"function.  The following script `javax.script.Bindings` are available for "
-"convenient use within script code."
-msgstr ""
-"カスタム `Authenticator` は、少なくとも `authenticate(..)` 関数を提供す必要があります。次のスクリプト "
-"`javax.script.Bindings` は、スクリプトコード内での便利な使用のために利用できます。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "`script`"
-msgstr "`script`"
-
-#. type: Plain text
-msgid "the `ScriptModel` to access script metadata"
-msgstr "スクリプトのメタデータにアクセスするための `ScriptModel` "
-
-#. type: Labeled list
-#, no-wrap
-msgid "`realm`"
-msgstr "`realm`"
-
-#. type: Plain text
-msgid "the `RealmModel`"
-msgstr "`RealmModel`"
-
-#. type: Labeled list
-#, no-wrap
-msgid "`user`"
-msgstr "`user`"
-
-#. type: Plain text
-msgid "the current `UserModel`"
-msgstr "現在の `UserModel`"
-
-#. type: Labeled list
-#, no-wrap
-msgid "`session`"
-msgstr "`session`"
-
-#. type: Plain text
-msgid "the active `KeycloakSession`"
-msgstr "アクティブな `KeycloakSession`"
-
-#. type: Labeled list
-#, no-wrap
-msgid "`authenticationSession`"
-msgstr "`authenticationSession`"
-
-#. type: Plain text
-msgid "the current `AuthenticationSessionModel`"
-msgstr "現在の `AuthenticationSessionModel`"
-
-#. type: Labeled list
-#, no-wrap
-msgid "`httpRequest`"
-msgstr "`httpRequest`"
-
-#. type: Plain text
-msgid "the current `org.jboss.resteasy.spi.HttpRequest`"
-msgstr "現在の `org.jboss.resteasy.spi.HttpRequest`"
-
-#. type: Labeled list
-#, no-wrap
-msgid "`LOG`"
-msgstr "`LOG`"
-
-#. type: Plain text
-msgid "a `org.jboss.logging.Logger` scoped to `ScriptBasedAuthenticator`"
-msgstr "`ScriptBasedAuthenticator` にスコープされた `org.jboss.logging.Logger`"
-
-#. type: Plain text
-msgid ""
-"Note that additional context information can be extracted from the `context`"
-" argument passed to the `authenticate(context)` `action(context)` function."
-msgstr ""
-"追加のコンテキスト情報は、 `authenticate(context)` や、 `action(context)` 関数に渡される `context`"
-" 引数から抽出できます。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"AuthenticationFlowError = "
-"Java.type(\"org.keycloak.authentication.AuthenticationFlowError\");\n"
-msgstr ""
-"AuthenticationFlowError = "
-"Java.type(\"org.keycloak.authentication.AuthenticationFlowError\");\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid "function authenticate(context) {\n"
-msgstr "function authenticate(context) {\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid "  LOG.info(script.name + \" --> trace auth for: \" + user.username);\n"
-msgstr "  LOG.info(script.name + \" --> trace auth for: \" + user.username);\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"  if (   user.username === \"tester\"\n"
-"      && user.getAttribute(\"someAttribute\")\n"
-"      && user.getAttribute(\"someAttribute\").contains(\"someValue\")) {\n"
-msgstr ""
-"  if (   user.username === \"tester\"\n"
-"      && user.getAttribute(\"someAttribute\")\n"
-"      && user.getAttribute(\"someAttribute\").contains(\"someValue\")) {\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"      context.failure(AuthenticationFlowError.INVALID_USER);\n"
-"      return;\n"
-"  }\n"
-msgstr ""
-"      context.failure(AuthenticationFlowError.INVALID_USER);\n"
-"      return;\n"
-"  }\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"  context.success();\n"
-"}\n"
-msgstr ""
-"  context.success();\n"
-"}\n"
+"詳しくは、 "
+"link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}] "
+"を参照してください。"

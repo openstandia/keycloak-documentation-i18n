@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2017
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Yoshikazu Nojima <mail@ynojima.net>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Yoshikazu Nojima <mail@ynojima.net>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -202,8 +203,9 @@ msgstr "その他のオプション"
 #. type: Plain text
 msgid ""
 "The rest of the configuration options should be self explanatory.  You can "
-"mouseover the tooltips in Admin Console to see some more details about them."
-msgstr "残りの設定オプションは自明のはずです。 管理コンソールでツールチップをマウスオーバーすると、それらの詳細が表示されます。"
+"hover the mouse pointer over the tooltips in the Admin Console to see some "
+"more details about them."
+msgstr "残りの設定オプションは自明のはずです。 管理コンソールでツールチップにマウスポインタ-をのせると、それらの詳細が表示されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -212,9 +214,9 @@ msgstr "SSL経由でLDAPに接続する"
 
 #. type: Plain text
 msgid ""
-"When you configure a secured connection URL to your LDAP store(for example "
-"`ldaps://myhost.com:636` ), {project_name} will use SSL for the "
-"communication with LDAP server.  The important thing is to properly "
+"When you configure a secured connection URL to your LDAP store (for "
+"example,`ldaps://myhost.com:636'), {project_name} will use SSL for "
+"communication with the LDAP server.  The important thing is to properly "
 "configure a truststore on the {project_name} server side, otherwise "
 "{project_name} can't trust the SSL connection to LDAP."
 msgstr ""
@@ -225,8 +227,8 @@ msgstr ""
 msgid ""
 "The global truststore for the {project_name} can be configured with the "
 "Truststore SPI.  Please check out the "
-"link:{installguide_link}[{installguide_name}] for more detail.  If you don't"
-" configure the truststore SPI, the truststore will fallback to the default "
+"link:{installguide_link}[{installguide_name}] for more details.  If you do "
+"not figure the truststore SPI, the truststore will fall back on the default "
 "mechanism provided by Java (either the file provided by system property "
 "`javax.net.ssl.trustStore` or the cacerts file from the JDK if the system "
 "property is not set)."
@@ -243,11 +245,11 @@ msgid ""
 "federation provider configuration, where you can choose whether the "
 "Truststore SPI is used.  By default, the value is `Only for ldaps`, which is"
 " fine for most deployments.  The Truststore SPI will only be used if the "
-"connection to LDAP starts with `ldaps`."
+"connection URL to LDAP starts with `ldaps`."
 msgstr ""
 "LDAPフェデレーション・プロバイダーの設定には、設定プロパティー `Use Truststore SPI` "
 "があり、トラストストアSPIを使用するかどうかを選択できます。デフォルト値は `Only for ldaps` "
-"です。ほとんどのデプロイメントで問題ありません。トラストストアSPIは、LDAPへの接続が `ldaps` で始まる場合にのみ使用されます。"
+"です。ほとんどのデプロイメントで問題ありません。トラストストアSPIは、LDAPへの接続URLが `ldaps` で始まる場合にのみ使用されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -256,28 +258,29 @@ msgstr "LDAPユーザーと{project_name}の同期"
 
 #. type: Plain text
 msgid ""
-"If you have import enabled, the LDAP Provider will automatically take care "
-"of synchronization (import) of needed LDAP users into the {project_name} "
-"local database.  As users log in, the LDAP provider will import the LDAP "
-"user into the {project_name} database and then authenticate against the LDAP"
-" password. This is the only time users will be imported.  If you go to the "
-"`Users` left menu item in the Admin Console and click the `View all users` "
-"button, you will only see those LDAP users that have been authenticated at "
-"least once by {project_name}.  It is implemented this way so that admins "
-"don't accidentally try to import a huge LDAP DB of users."
+"If you enable the Import Users option, the LDAP Provider will automatically "
+"take care of synchronization (import) of needed LDAP users into the "
+"{project_name} local database.  As users log in, the LDAP provider will "
+"import the LDAP user into the {project_name} database and then authenticate "
+"against the LDAP password. This is the only time users will be imported.  If"
+" you go to the `Users` left menu item in the Admin Console and click the "
+"`View all users` button, you will only see those LDAP users that have been "
+"authenticated at least once by {project_name}.  It is implemented this way "
+"so that this operation does not trigger an import of the entire LDAP user "
+"database."
 msgstr ""
-"インポートが有効になっている場合、LDAPプロバイダーは必要なLDAPユーザーの同期（インポート）を{project_name}ローカル・データベースに自動的に行います。ユーザーがログインすると、LDAPプロバイダーはLDAPユーザーを{project_name}データベースにインポートし、LDAPパスワードに対して認証します。これは、ユーザーがインポートされる唯一のタイミングです。管理コンソールの左側の"
+"インポートを有効としている場合、LDAPプロバイダーは必要なLDAPユーザーの同期（インポート）を{project_name}ローカル・データベースに自動的に行います。ユーザーがログインすると、LDAPプロバイダーはLDAPユーザーを{project_name}データベースにインポートし、LDAPパスワードに対して認証します。これは、ユーザーがインポートされる唯一の時です。管理コンソールの左側の"
 " `Users` メニュー項目に移動し、 `View all users` "
-"ボタンをクリックすると、{project_name}によって少なくとも1回は認証されたLDAPユーザーのみが表示されます。管理者が誤って巨大なLDAPユーザーDBをインポートしようとしないように、この方法で実装されています。"
+"ボタンをクリックすると、{project_name}によって少なくとも1回は認証されたLDAPユーザーのみが表示されます。この操作によりLDAPのユーザーDB全体をインポートしないように、この方法で実装されています。"
 
 #. type: Plain text
 msgid ""
 "If you want to sync all LDAP users into the {project_name} database, you may"
-" configure and enable the `Sync Settings` of the LDAP provider you "
-"configured.  There are 2 types of synchronization:"
+" configure and enable the `Sync Settings` on the LDAP provider configuration"
+" page.  Two types of synchronization exist:"
 msgstr ""
-"すべてのLDAPユーザーを{project_name}のデータベースに同期させたい場合は、設定したLDAPプロバイダーの `Sync Settings`"
-" を設定して有効にすることができます。同期には2種類あります。"
+"すべてのLDAPユーザーを{project_name}のデータベースに同期させたい場合は、LDAPプロバイダー設定ページの `Sync "
+"Settings` を設定して有効にすることができます。2種類の同期が存在します。"
 
 #. type: Labeled list
 #, no-wrap
@@ -286,13 +289,13 @@ msgstr "定期的な完全同期"
 
 #. type: Plain text
 msgid ""
-"This will synchronize all LDAP users into {project_name} DB.  Those LDAP "
-"users, which already exist in {project_name} and were changed in LDAP "
-"directly will be updated in {project_name} DB (For example if user `Mary "
-"Kelly` was changed in LDAP to `Mary Smith`)."
+"This type will synchronize all LDAP users into the {project_name} database."
+"  Those LDAP users, which already exist in {project_name} and were changed "
+"in LDAP directly will be updated in the {project_name} database.  For "
+"example, the user `Mary Kelly` was changed in LDAP to `Mary Smith`."
 msgstr ""
-"これにより、すべてのLDAPユーザーが{project_name}のDBに同期されます。LDAPで直接更新されたLDAPユーザーが{project_name}にも存在する場合、{project_name}のDBも更新されます（たとえば、ユーザー"
-" `Mary Kelly` がLDAPで `Mary Smith` に変更された場合）。"
+"このタイプでは、すべてのLDAPユーザーを{project_name}のデータベースに同期します。LDAPで直接更新されたLDAPユーザーが{project_name}にも存在する場合、{project_name}のデータベースも更新されます。たとえば、ユーザー"
+" `Mary Kelly` がLDAPで `Mary Smith` に変更された場合。"
 
 #. type: Labeled list
 #, no-wrap
@@ -309,11 +312,10 @@ msgstr "同期が行われると、最後の同期後に作成または更新さ
 msgid ""
 "The best way to handle syncing is to click the `Synchronize all users` "
 "button when you first create the LDAP provider, then set up a periodic sync "
-"of changed users.  The configuration page for your LDAP Provider has several"
-" options to support you."
+"of changed users."
 msgstr ""
 "同期を処理する最善の方法は、LDAPプロバイダーを最初に作成するときに `Synchronize all users` "
-"ボタンをクリックして、その後、変更されたユーザーの定期的な同期を設定することです。LDAPプロバイダーの設定ページには、いくつかのオプションがあります。"
+"ボタンをクリックして、その後、変更されたユーザーの定期的な同期を設定することです。"
 
 #. type: Title ====
 #, no-wrap
@@ -323,22 +325,22 @@ msgstr "LDAPマッパー"
 #. type: Plain text
 msgid ""
 "LDAP mappers are `listeners`, which are triggered by the LDAP Provider at "
-"various points, provide another extension point to LDAP integration.  They "
-"are triggered when a user logs in via LDAP and needs to be imported, during "
-"{project_name} initiated registration, or when a user is queried from the "
-"Admin Console.  When you create an LDAP Federation provider, {project_name} "
-"will automatically provide set of built-in `mappers` for this provider.  You"
-" are free to change this set and create a new mapper or update/delete "
-"existing ones."
+"various points and provide another extension point to LDAP integration.  "
+"They are triggered when a user logs in via LDAP and needs to be imported, "
+"during {project_name} initiated registration, or when a user is queried from"
+" the Admin Console.  When you create an LDAP Federation provider, "
+"{project_name} will automatically provide set of built-in `mappers` for this"
+" provider.  You are free to change this set and create a new mapper or "
+"update/delete existing ones."
 msgstr ""
 "LDAPマッパーは `リスナー` "
 "であり、さまざまな時点でLDAPプロバイダーによってトリガーされ、LDAP統合の別の拡張ポイントを提供します。これらは、ユーザーがLDAP経由でログインしてインポートが要求されたとき、{project_name}の登録が開始されたとき、または、ユーザーが管理コンソールから問い合わせを受けたときにトリガーされます。LDAPフェデレーション・プロバイダーを作成すると、{project_name}は自動的にこのプロバイダー用の組込み"
-" `マッパー` セットを提供します。このセットを変更して新しいマッパーを作成したり、既存のマッパーを更新/削除することが自由にできます。"
+" `マッパー` セットを提供します。このセットを変更して新しいマッパーを作成したり、既存のマッパーを更新／削除することが自由にできます。"
 
 #. type: Labeled list
 #, no-wrap
 msgid "User Attribute Mapper"
-msgstr "ユーザー属性マッパー"
+msgstr "User Attribute Mapper"
 
 #. type: Plain text
 msgid ""
@@ -370,6 +372,20 @@ msgstr ""
 
 #. type: Labeled list
 #, no-wrap
+msgid "Hardcoded Attribute Mapper"
+msgstr "Hardcoded Attribute Mapper"
+
+#. type: Plain text
+msgid ""
+"This mapper adds a hardcoded attribute value to each {project_name} user "
+"linked with LDAP.  This mapper can also force the values for the `enabled` "
+"or `emailVerified` user properties."
+msgstr ""
+"このマッパーはLDAPにリンクされた各 {project_name} ユーザーにハードコードされた属性値を追加します。このマッパーは `enabled`"
+" あるいは `emailVerified` ユーザープロパティを強制することもできます。"
+
+#. type: Labeled list
+#, no-wrap
 msgid "Role Mapper"
 msgstr "ロールマッパー"
 
@@ -383,7 +399,7 @@ msgid ""
 "example you can specify that role mappings from groups under "
 "`ou=main,dc=example,dc=org` will be mapped to realm role mappings and role "
 "mappings from groups under `ou=finance,dc=example,dc=org` will be mapped to "
-"client role mappings of client `finance` ."
+"client role mappings of client `finance`."
 msgstr ""
 "これにより、LDAPから取得したロールマッピングを{project_name}のロールマッピングに設定できます。1つのロールマッパーを使用して、LDAPロール（通常はLDAPツリーの特定のブランチから取得したグループ）を、レルムロールまたはクライアントロールのいずれかにマップできます。同じLDAPプロバイダーに対してさらにロールマッパーを設定することも問題ありません。たとえば、"
 " `ou=main,dc=example,dc=org` のグループから取得したロールマッピングをレルムロール・マッピングにマップし、 "
@@ -398,8 +414,8 @@ msgstr "ハードコードされたロールマッパー"
 #. type: Plain text
 msgid ""
 "This mapper will grant a specified {project_name} role to each "
-"{project_name} user linked with LDAP."
-msgstr "このマッパーは、LDAPにリンクされた各{project_name}ユーザーに特定の{project_name}ロールを付与します。"
+"{project_name} user from the LDAP provider."
+msgstr "このマッパーは、LDAPプロバイダーからの各{project_name}ユーザーに特定の{project_name}ロールを付与します。"
 
 #. type: Labeled list
 #, no-wrap
@@ -408,13 +424,11 @@ msgstr "グループマッパー"
 
 #. type: Plain text
 msgid ""
-"This allows you to configure group mappings from LDAP into {project_name} "
-"group mappings.  Group mapper can be used to map LDAP groups from a "
-"particular branch of an LDAP tree into groups in {project_name}.  It will "
-"also propagate user-group mappings from LDAP into user-group mappings in "
-"{project_name}."
+"This allows you to map LDAP groups from a particular branch of an LDAP tree "
+"into groups in {project_name}.  It will also propagate user-group mappings "
+"from LDAP into user-group mappings in {project_name}."
 msgstr ""
-"これにより、LDAPから取得したグループ・マッピングを{project_name}グループ・マッピングに設定できます。グループマッパーを使用すると、LDAPツリーの特定のブランチから取得したLDAPグループを{project_name}のグループにマップできます。また、LDAPから取得したユーザーグループ・マッピングを{project_name}のユーザーグループ・マッピングに伝播します。"
+"これにより、LDAPツリーの特定のブランチから取得したLDAPグループを{project_name}のグループにマップできます。また、LDAPから取得したユーザーグループ・マッピングを{project_name}のユーザーグループ・マッピングに伝播します。"
 
 #. type: Labeled list
 #, no-wrap
@@ -425,18 +439,18 @@ msgstr "MSADユーザー・アカウント・マッパー"
 msgid ""
 "This mapper is specific to Microsoft Active Directory (MSAD). It's able to "
 "tightly integrate the MSAD user account state into the {project_name} "
-"account state (account enabled, password is expired etc).  It's using the "
-"`userAccountControl` and `pwdLastSet` LDAP attributes.  (both are specific "
-"to MSAD and are not LDAP standard).  For example if `pwdLastSet` is `0`, the"
-" {project_name} user is required to update their password and there will be "
-"an UPDATE_PASSWORD required action added to the user. If "
-"`userAccountControl` is `514` (disabled account) the {project_name} user is "
-"disabled as well."
+"account state (account enabled, password is expired, and so on).  It is "
+"using the `userAccountControl` and `pwdLastSet` LDAP attributes, which are "
+"both specific to MSAD and are not LDAP standard.  For example if "
+"`pwdLastSet` is `0`, the {project_name} user is required to update their "
+"password and there will be an UPDATE_PASSWORD required action added to the "
+"user. If `userAccountControl` is `514` (disabled account) the {project_name}"
+" user is disabled as well."
 msgstr ""
 "このマッパーは、Microsoft Active Directory（MSAD）固有のものです。 "
 "MSADユーザー・アカウントの状態を{project_name}アカウントの状態（アカウントが有効、パスワードが期限切れなど）に緊密に統合できます。 "
 "`userAccountControl` と `pwdLastSet` "
-"のLDAP属性を使っています（どちらもMSAD固有のものであり、LDAP標準ではありません）。たとえば `pwdLastSet` が `0` "
+"のLDAP属性を使っています。どちらもMSAD固有のものであり、LDAP標準ではありません。たとえば `pwdLastSet` が `0` "
 "の場合、{project_name}ユーザーはパスワードを更新する必要があり、UPDATE_PASSWORD必須アクションがユーザーに追加されます。 "
 "`userAccountControl` が `514` （無効なアカウント）の場合、{project_name}ユーザーも無効になります。"
 

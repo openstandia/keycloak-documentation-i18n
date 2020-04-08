@@ -5,14 +5,15 @@
 # 
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
-# Hiroyuki Wada <wadahiro@gmail.com>, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Yoshikazu Nojima <mail@ynojima.net>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2018\n"
+"Last-Translator: Yoshikazu Nojima <mail@ynojima.net>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -153,7 +154,7 @@ msgid ""
 " command (e.g. by using `utf8` character set as the default database "
 "character set in MySQL 5.5. Please note that `utf8mb4` character set does "
 "not work due to different storage requirements to `utf8` character set "
-"footnote:[Tracked as https://issues.jboss.org/browse/KEYCLOAK-3873]). Note "
+"footnote:[Tracked as https://issues.redhat.com/browse/KEYCLOAK-3873]). Note "
 "that in this case, length restriction to non-special fields does not apply "
 "because columns are created to accommodate given amount of characters, not "
 "bytes. If the database default character set does not allow storing Unicode,"
@@ -162,9 +163,9 @@ msgstr ""
 "`CREATE DATABASE` コマンドで、 `VARCHAR` と `CHAR` "
 "のフィールド内のユニコード・サポートを使用してデータベースが作成される場合は、ユニコード文字は適切に処理されます（例：MySQL "
 "5.5でデフォルトのデータベース文字セットとして `utf8` 文字セットを使用する場合。 `utf8` "
-"文字セットに求められるさまざまなストレージ要件により、 `utf8mb4` "
-"文字セットは動作しませんので注意してくださいfootnote:[https://issues.jboss.org/browse/KEYCLOAK-"
-"3873として追跡]）。この場合、バイト数ではなく文字数に合わせて列が作成されるため、通常のフィールドには長さ制限は適用されないことに注意が必要です。データベースのデフォルト文字セットでユニコードの保存が許可されていない場合、特別なフィールドでのみユニコード値の保存が許可されることになります。"
+"文字セットに求められるさまざまなストレージ要件により、 `utf8mb4` 文字セットは動作しませんので注意してください "
+"footnote:[https://issues.redhat.com/browse/KEYCLOAK-3873として追跡] "
+"）。この場合、バイト数ではなく文字数に合わせて列が作成されるため、通常のフィールドには長さ制限は適用されないことに注意が必要です。データベースのデフォルト文字セットでユニコードの保存が許可されていない場合、特別なフィールドでのみユニコード値の保存が許可されることになります。"
 
 #. type: Plain text
 msgid ""
@@ -187,3 +188,26 @@ msgid ""
 msgstr ""
 "データベース文字セットが `UTF8` "
 "である場合、ユニコードはサポートされます。この場合、ユニコード文字はどのフィールドでも使用することができますが、通常フィールドではフィールド長は短縮されません。JDBCドライバーの特別な設定は必要ありません。"
+
+#. type: Plain text
+msgid ""
+"The character set of a PostgreSQL database is determined at the time it is "
+"created. You can determine the default character set for a PostgreSQL "
+"cluster with the SQL command"
+msgstr ""
+"PostgreSQL "
+"Databaseの文字コードは作成時に決定されます。PostgreSQLクラスターのデフォルトの文字コードは以下のSQLコマンドで判定できます"
+
+#. type: Code block
+msgid "show server_encoding;"
+msgstr "show server_encoding;"
+
+#. type: Plain text
+msgid ""
+"If the default character set is not UTF 8, then you can create the database "
+"with UTF8 as its character set like this:"
+msgstr "デフォルトの文字コードがUTF-8でない場合は、次のように文字コードとしてUTF-8を使用してデータベースを作成することが出来ます："
+
+#. type: Code block
+msgid "create database keycloak with encoding 'UTF8';"
+msgstr "create database keycloak with encoding 'UTF8';"

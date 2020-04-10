@@ -5,14 +5,14 @@
 # 
 # Translators:
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -195,14 +195,13 @@ msgstr "Verify Existing Account By Re-authentication"
 msgid ""
 "This authenticator is used if email authenticator is disabled or not "
 "available (SMTP not configured for realm). It will display a login screen "
-"where the user needs to authenticate with his password to link their "
-"{project_name} account with the Identity provider.  User can also re-"
-"authenticate with some different identity provider, which is already linked "
-"to their {project_name} account.  You can also force users to use OTP. "
-"Otherwise it's optional and used only if OTP is already set for the user "
-"account."
+"where the user needs to authenticate to link their {project_name} account "
+"with the Identity provider.  User can also re-authenticate with some "
+"different identity provider, which is already linked to their {project_name}"
+" account.  You can also force users to use OTP. Otherwise it's optional and "
+"used only if OTP is already set for the user account."
 msgstr ""
-"このオーセンティケーターは、電子メールのオーセンティケーターが無効であるか、または使用できない場合に使用されます（レルムに対してSMTPが設定されていない場合）。{project_name}アカウントとアイデンティティー・プロバイダーをリンクするために、パスワードで認証する必要があるログイン画面が表示されます。また、ユーザーは、自分の{project_name}アカウントにすでにリンクされている別のアイデンティティー・プロバイダーで再認証することもできます。ユーザーに強制的にOTPを使用させることもできます。それ以外の場合はオプションで、すでにOTPがユーザー・アカウントに設定されている場合にのみ使用されます。"
+"このオーセンティケーターは、電子メールのオーセンティケーターが無効であるか、または使用できない場合に使用されます（レルムに対してSMTPが設定されていない場合）。{project_name}アカウントとアイデンティティー・プロバイダーをリンクするために、認証する必要があるログイン画面が表示されます。また、ユーザーは、自分の{project_name}アカウントにすでにリンクされている別のアイデンティティー・プロバイダーで再認証することもできます。ユーザーに強制的にOTPを使用させることもできます。それ以外の場合はオプションで、すでにOTPがユーザー・アカウントに設定されている場合にのみ使用されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -258,3 +257,42 @@ msgstr ""
 " "
 "Profileオーセンティケーターを追加することができます。また、このフローに認証メカニズムを追加して、ユーザーにクレデンシャルの確認を強制することもできます。これには、より複雑なフローが必要になります。たとえば、\"Alternative\"サブフローで\"Automatically"
 " Set Existing User\"と\"Password Form\"を\"Required\"に設定します。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Disabling Automatic User Creation"
+msgstr "自動ユーザー作成の無効化"
+
+#. type: Plain text
+msgid ""
+"The Default first login flow will look up a Keycloak account matching the "
+"external identity, and will then offer to link them; if there is no matching"
+" Keycloak account, it will automatically create one.  This default behavior "
+"may be unsuitable for some setups, for example, when using read-only LDAP "
+"user store (which means all users are pre-created).  In this case, automatic"
+" user creation should be turned off. To disable user creation:"
+msgstr ""
+"デフォルトの最初のログインフローは、外部アイデンティティーと一致するKeycloakアカウントを検索し、それらをリンクすることを提案します。一致するKeycloakアカウントがない場合は、自動的に作成されます。このデフォルトの動作は、たとえば、読み取り専用のLDAPユーザーストアを使用する場合（つまり、すべてのユーザーが事前に作成されている場合）、一部の設定には適さない場合があります。この場合、自動ユーザー作成をオフにする必要があります。ユーザーの作成を無効にするには以下を実施します。"
+
+#. type: Plain text
+msgid "open the `First Broker Login` flow configuration;"
+msgstr "`First Broker Login` フロー設定を開く。"
+
+#. type: Plain text
+msgid "set `Create User If Unique` to `DISABLED`;"
+msgstr "`Create User If Unique` を `DISABLED` に設定する。"
+
+#. type: Plain text
+msgid "set `Confirm Link Existing Account` to `DISABLED`."
+msgstr "`Confirm Link Existing Account` を `DISABLED` に設定する。"
+
+#. type: Plain text
+msgid ""
+"This configuration also implies that Keycloak itself won't be able to "
+"determine which internal account would correspond to the external identity."
+"  Therefore, the `Verify Existing Account By Re-authentication` "
+"authenticator will ask the user to provide both username and password."
+msgstr ""
+"この設定は、Keycloak自体が、外部アイデンティティーに対応する内部アカウントを判別できないことも意味します。したがって、 `Verify "
+"Existing Account By Re-authentication` "
+"オーセンティケーターは、ユーザーにユーザー名とパスワードの両方を提供するように要求します。"

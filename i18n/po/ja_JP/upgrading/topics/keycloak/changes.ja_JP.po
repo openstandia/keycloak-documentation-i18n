@@ -5,14 +5,14 @@
 # 
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,6 +29,121 @@ msgstr "1.9.0への移行"
 #, no-wrap
 msgid "SAML SP Client Adapter Changes"
 msgstr "SAML SPクライアント・アダプターの変更"
+
+#. type: Title ====
+#, no-wrap
+msgid "New Password Hashing algorithms"
+msgstr "新しいパスワード・ハッシュ・アルゴリズム"
+
+#. type: Title ====
+#, no-wrap
+msgid "ID Token requires scope=openid"
+msgstr "IDトークンにはscope=openidが必要"
+
+#. type: Title ====
+#, no-wrap
+msgid ""
+"Added session_state parameter to OpenID Connect Authentication Response"
+msgstr "OpenID Connect認証レスポンスにsession_stateパラメーターを追加"
+
+#. type: Plain text
+msgid ""
+"The OpenID Connect Session Management specification requires that the "
+"parameter `session_state` is present in the OpenID Connect Authentication "
+"Response."
+msgstr ""
+"OpenID Connectセッション管理仕様では、パラメーター `session_state` がOpenID "
+"Connect認証レスポンスに存在する必要があります。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
+msgstr "Microsoft Identity ProviderはMicrosoft Graph APIを使用するように更新されました"
+
+#. type: Plain text
+msgid ""
+"Legacy client applications registered under \"Live SDK applications\" won't "
+"work with the Microsoft Graph endpoints due to changes in the id format of "
+"the applications. If you run into an error saying that the application "
+"identifier was not found in the directory, you will have to register the "
+"client application again in the "
+"https://account.live.com/developers/applications/create[Microsoft "
+"Application Registration] portal to obtain a new application id."
+msgstr ""
+"\"Live SDK "
+"applications\"で登録された従来のクライアント・アプリケーションは、アプリケーションのID形式が変更されたため、Microsoft "
+"Graphエンドポイントでは機能しません。アプリケーション識別子がディレクトリーに見つからないというエラーが発生した場合は、新しいアプリケーションIDを取得するために"
+" https://account.live.com/developers/applications/create[Microsoft "
+"Application Registration] ポータルにクライアント・アプリケーションを再度登録する必要があります。"
+
+#. type: Title ====
+#, no-wrap
+msgid ""
+"Google Identity Provider updated to use Google Sign-in authentication system"
+msgstr "Google Identity ProviderはGoogle Sign-in認証システムを使用するように更新されました"
+
+#. type: Plain text
+msgid ""
+"If you run into an error saying that the application identifier was not "
+"found in the directory, you will have to register the client application "
+"again in the https://console.developers.google.com/apis/credentials[Google "
+"API Console] portal to obtain a new application id and secret."
+msgstr ""
+"アプリケーション識別子がディレクトリーに見つからないというエラーが発生した場合は、新しいアプリケーションIDとシークレットを取得するために、 "
+"https://console.developers.google.com/apis/credentials[Google API Console] "
+"ポータルにクライアン・トアプリケーションを再度登録する必要があります。"
+
+#. type: Plain text
+msgid ""
+"It is possible that you will need to adjust custom mappers for non-standard "
+"claims that were provided by Google+ user information endpoint and are "
+"provided under different name by Google Sign-in API. Please consult Google "
+"documentation for the most up-to-date information on available claims."
+msgstr ""
+"Google+ユーザー情報エンドポイントによって提供され、Google Sign-in "
+"APIによって別の名前で提供されている非標準のクレームについては、カスタムマッパーを調整する必要があるかもしれません。利用可能なクレームに関する最新情報については、Googleのドキュメントを参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs"
+msgstr "LinkedIn Social BrokerがLinkedIn APIのバージョン2に更新されました"
+
+#. type: Plain text
+msgid ""
+"Existing deployments using this broker may start experiencing errors when "
+"fetching user's profile using version 2 of LinkedIn APIs. This error may be "
+"related with the lack of permissions granted to the client application used "
+"to configure the broker which may not be authorized to access the Profile "
+"API or request specific OAuth2 scopes during the authentication process."
+msgstr ""
+"このブローカーを使用している既存のデプロイメントでは、LinkedIn "
+"APIのバージョン2を使用してユーザーのプロファイルを取得する際にエラーが発生する可能性があります。このエラーは、ブローカの設定に使用されるクライアント・アプリケーションに付与されたアクセス権が不足しており、認証プロセス中にProfile"
+" APIへのアクセスや特定のOAuth2スコープの要求を許可されていない可能性があります。"
+
+#. type: Plain text
+msgid ""
+"Even for newly created LinkedIn client applications, you need to make sure "
+"that the client is able to request the `r_liteprofile` and `r_emailaddress` "
+"OAuth2 scopes, at least, as well that the client application can fetch "
+"current member's profile from the `https://api.linkedin.com/v2/me` endpoint."
+msgstr ""
+"新しく作成されたLinkedInクライアント・アプリケーションの場合でも、少なくともクライアント・アプリケーションが "
+"`https://api.linkedin.com/v2/me` エンドポイントから現在のメンバーのプロファイルを取得できるように、クライアントが "
+"`r_liteprofile` と `r_emailaddress` のOAuth2スコープを要求できることを確認する必要があります。"
+
+#. type: Plain text
+msgid ""
+"Due to these privacy restrictions imposed by LinkedIn in regards to access "
+"to member's information and the limited set of claims returned by the "
+"current member's Profile API, the LinkedIn Social Broker is now using the "
+"member's email address as the default username. That means that the "
+"`r_emailaddress` is always set when sending authorization requests during "
+"the authentication."
+msgstr ""
+"メンバーの情報へのアクセスと現在のメンバーのProfile "
+"APIによって返される限定されたクレーム・セットに関して、LinkedInによって課されたプライバシー制限のために、LinkedIn Social "
+"Brokerは現在デフォルトのユーザー名としてメンバーのメールアドレスを使用しています。つまり、認証中に認可リクエストを送信する際には常に "
+"`r_emailaddress` が設定されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -333,59 +448,6 @@ msgid ""
 msgstr ""
 "以前は、ネイティブのPromiseが利用可能であった場合、レガシーのKeycloakのPromiseとネイティブのPromiseの両方を提供するラッパーが返されました。これにより、ネイティブのエラーイベントの前にエラーハンドラーが常に設定されていないために問題が発生していました。"
 
-#. type: Title ====
-#, no-wrap
-msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
-msgstr "Microsoft Identity ProviderはMicrosoft Graph APIを使用するように更新されました"
-
-#. type: Plain text
-msgid ""
-"Legacy client applications registered under \"Live SDK applications\" won't "
-"work with the Microsoft Graph endpoints due to changes in the id format of "
-"the applications. If you run into an error saying that the application "
-"identifier was not found in the directory, you will have to register the "
-"client application again in the "
-"https://account.live.com/developers/applications/create[Microsoft "
-"Application Registration] portal to obtain a new application id."
-msgstr ""
-"\"Live SDK "
-"applications\"で登録された従来のクライアント・アプリケーションは、アプリケーションのID形式が変更されたため、Microsoft "
-"Graphエンドポイントでは機能しません。アプリケーション識別子がディレクトリーに見つからないというエラーが発生した場合は、新しいアプリケーションIDを取得するために"
-" https://account.live.com/developers/applications/create[Microsoft "
-"Application Registration] ポータルにクライアント・アプリケーションを再度登録する必要があります。"
-
-#. type: Title ====
-#, no-wrap
-msgid ""
-"Google Identity Provider updated to use Google Sign-in authentication system"
-msgstr "Google Identity ProviderはGoogle Sign-in認証システムを使用するように更新されました"
-
-#. type: Plain text
-msgid ""
-"If you run into an error saying that the application identifier was not "
-"found in the directory, you will have to register the client application "
-"again in the https://console.developers.google.com/apis/credentials[Google "
-"API Console] portal to obtain a new application id and secret."
-msgstr ""
-"アプリケーション識別子がディレクトリーに見つからないというエラーが発生した場合は、新しいアプリケーションIDとシークレットを取得するために、 "
-"https://console.developers.google.com/apis/credentials[Google API Console] "
-"ポータルにクライアン・トアプリケーションを再度登録する必要があります。"
-
-#. type: Plain text
-msgid ""
-"It is possible that you will need to adjust custom mappers for non-standard "
-"claims that were provided by Google+ user information endpoint and are "
-"provided under different name by Google Sign-in API. Please consult Google "
-"documentation for the most up-to-date information on available claims."
-msgstr ""
-"Google+ユーザー情報エンドポイントによって提供され、Google Sign-in "
-"APIによって別の名前で提供されている非標準のクレームについては、カスタムマッパーを調整する必要があるかもしれません。利用可能なクレームに関する最新情報については、Googleのドキュメントを参照してください。"
-
-#. type: Title ====
-#, no-wrap
-msgid "LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs"
-msgstr "LinkedIn Social BrokerがLinkedIn APIのバージョン2に更新されました"
-
 #. type: Plain text
 msgid ""
 "Accordingly with LinkedIn, all developers need to migrate to version 2.0 of "
@@ -395,72 +457,115 @@ msgstr ""
 "したがってLinkedInでは、すべての開発者が自分のAPIのバージョン2.0とOAuth 2.0に移行する必要があります。そのため、LinkedIn "
 "Social Brokerを更新しました。"
 
-#. type: Plain text
-msgid ""
-"Existing deployments using this broker may start experiencing errors when "
-"fetching user's profile using version 2 of LinkedIn APIs. This error may be "
-"related with the lack of permissions granted to the client application used "
-"to configure the broker which may not be authorized to access the Profile "
-"API or request specific OAuth2 scopes during the authentication process."
-msgstr ""
-"このブローカーを使用している既存のデプロイメントでは、LinkedIn "
-"APIのバージョン2を使用してユーザーのプロファイルを取得する際にエラーが発生する可能性があります。このエラーは、ブローカの設定に使用されるクライアント・アプリケーションに付与されたアクセス権が不足しており、認証プロセス中にProfile"
-" APIへのアクセスや特定のOAuth2スコープの要求を許可されていない可能性があります。"
-
-#. type: Plain text
-msgid ""
-"Even for newly created LinkedIn client applications, you need to make sure "
-"that the client is able to request the `r_liteprofile` and `r_emailaddress` "
-"OAuth2 scopes, at least, as well that the client application can fetch "
-"current member's profile from the `https://api.linkedin.com/v2/me` endpoint."
-msgstr ""
-"新しく作成されたLinkedInクライアント・アプリケーションの場合でも、少なくともクライアント・アプリケーションが "
-"`https://api.linkedin.com/v2/me` エンドポイントから現在のメンバーのプロファイルを取得できるように、クライアントが "
-"`r_liteprofile` と `r_emailaddress` のOAuth2スコープを要求できることを確認する必要があります。"
-
-#. type: Plain text
-msgid ""
-"Due to these privacy restrictions imposed by LinkedIn in regards to access "
-"to member's information and the limited set of claims returned by the "
-"current member's Profile API, the LinkedIn Social Broker is now using the "
-"member's email address as the default username. That means that the "
-"`r_emailaddress` is always set when sending authorization requests during "
-"the authentication."
-msgstr ""
-"メンバーの情報へのアクセスと現在のメンバーのProfile "
-"APIによって返される限定されたクレーム・セットに関して、LinkedInによって課されたプライバシー制限のために、LinkedIn Social "
-"Brokerは現在デフォルトのユーザー名としてメンバーのメールアドレスを使用しています。つまり、認証中に認可リクエストを送信する際には常に "
-"`r_emailaddress` が設定されます。"
-
-#. type: Title ====
-#, no-wrap
-msgid "New Password Hashing algorithms"
-msgstr "新しいパスワード・ハッシュ・アルゴリズム"
-
-#. type: Title ====
-#, no-wrap
-msgid "ID Token requires scope=openid"
-msgstr "IDトークンにはscope=openidが必要"
-
-#. type: Title ====
-#, no-wrap
-msgid ""
-"Added session_state parameter to OpenID Connect Authentication Response"
-msgstr "OpenID Connect認証レスポンスにsession_stateパラメーターを追加"
-
-#. type: Plain text
-msgid ""
-"The OpenID Connect Session Management specification requires that the "
-"parameter `session_state` is present in the OpenID Connect Authentication "
-"Response."
-msgstr ""
-"OpenID Connectセッション管理仕様では、パラメーター `session_state` がOpenID "
-"Connect認証レスポンスに存在する必要があります。"
-
 #. type: Title ==
 #, no-wrap
 msgid "Migration Changes"
 msgstr "移行に伴う変更"
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 9.0.1"
+msgstr "9.0.1への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "Legacy promise in JavaScript adapter"
+msgstr "JavaScriptのアダプターのレガシーPromise"
+
+#. type: Plain text
+msgid ""
+"It is no longer necessary to set promiseType in the JavaScript adapter, and "
+"both are available at the same time. It is recommended to update "
+"applications to use native promise API (`then` and `catch`) as soon as "
+"possible, as the legacy API (`success` and `error`) will be removed at some "
+"point."
+msgstr ""
+"JavaScriptアダプターでpromiseTypeを設定する必要がなくなり、両方を同時に使用できるようになりました。レガシーAPI（ "
+"`success` と `error` ）はいつか削除されるため、できるだけ早くネイティブpromise API（ `then` と `catch` "
+"）を使用するようにアプリケーションを更新することをお勧めします。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 9.0.0"
+msgstr "9.0.0への移行"
+
+#. type: Title ==
+#, no-wrap
+msgid "Improved handling of user locale"
+msgstr "ユーザーロケールの処理の改善"
+
+#. type: Plain text
+msgid ""
+"A number of improvements have been made to how the locale for the login page"
+" is selected, as well as when the locale is updated for a user."
+msgstr "ログインページのロケールが選択される方法、およびユーザーのロケールが更新されるタイミングに多くの改良が加えられました。"
+
+#. type: Plain text
+msgid ""
+"See the link:{adminguide_link}#_user_locale_selection[{adminguide_name}] for"
+" more details."
+msgstr ""
+"詳細については、 link:{adminguide_link}#_user_locale_selection[{adminguide_name}] "
+"を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Deprecated methods in token representation Java classes"
+msgstr "トークン表現Javaクラスの非推奨メソッド"
+
+#. type: Plain text
+msgid ""
+"In the year 2038 an `int` is no longer able to hold the value of seconds "
+"since 1970, as such we are working on updating these to `long` values. In "
+"token representation there is a further issue, which is an `int` will by "
+"default result in `0` in the JSON representation, while it should not be "
+"included."
+msgstr ""
+"2038年には、 `int` は1970年以降の秒の値を保持できなくなります。そのため、これらを `long` "
+"値に更新する作業を行っています。トークン表現には、さらに問題があります。これは、JSON表現で `int` がデフォルトで `0` "
+"になることを意味しますが、これを含めることはできません。"
+
+#. type: Plain text
+msgid ""
+"See JavaDocs for further details on exact methods that have been deprecated "
+"and replacement methods."
+msgstr "非推奨となった正確なメソッドと置換メソッドの詳細については、Javadocを参照してください。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 8.0.2"
+msgstr "8.0.2への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "More Authentication flows changes"
+msgstr "より多くの認証フローの変更"
+
+#. type: Labeled list
+#, no-wrap
+msgid "REQUIRED and ALTERNATIVE executions not supported at same flow"
+msgstr "REQUIREDとALTERNATIVEの実行は同じフローではサポートされません"
+
+#. type: Plain text
+msgid ""
+"In previous version, it was possible to have REQUIRED and ALTERNATIVE "
+"executions in the same authentication flow at the same level.  There were "
+"some issues with this approach and we did the refactoring in the "
+"Authentication SPI, which means that this is not considered valid anymore. "
+"If ALTERNATIVE and REQUIRED executions are configured at the same level, the"
+" ALTERNATIVE executions are considered disabled.  So when migrating to the "
+"newest version, your existing authentication flows will be automatically "
+"migrated preserved the same behavior as existed in the previous version.  If"
+" they contain ALTERNATIVE executions at the same level as some REQUIRED "
+"executions, then the ALTERNATIVE executions will be added to the separate "
+"REQUIRED subflow. This should ensure same/similar behavior of the particular"
+" authentication flow as in the previous version. We always recommend to "
+"doublecheck the configuration of your authentication flow and test it to "
+"doublecheck that everything works as expected.  This recommendation is true "
+"in particular if you have some more customized authentication flows with "
+"custom authenticator implementations."
+msgstr ""
+"以前のバージョンでは、同じレベルの同じ認証フロー内にREQUIREDとALTERNATIVEのエグゼキューションを設定することが可能でした。このアプローチにはいくつかの問題があり、認証SPIでリファクタリングを行いました。つまり、これはもはや有効とは見なされません。ALTERNATIVEとREQUIREDのエグゼキューションが同じレベルで設定されている場合、ALTERNATIVEのエグゼキューションは無効と見なされます。そのため、最新バージョンに移行すると、既存の認証フローは自動的に移行され、前のバージョンと同じ動作が維持されます。一部のREQUIREDのエグゼキューションと同じレベルのALTERNATIVEのエグゼキューションが含まれている場合、ALTERNATIVEのエグゼキューションは別のREQUIREDサブフローに追加されます。これにより、前のバージョンと同様に、特定の認証フローの動作が同じまたは同様になります。認証フローの設定を再確認してテストし、すべてが期待どおりに機能することを再確認することを常にお勧めします。この推奨事項は、カスタム認証システムの実装を使用してさらにカスタマイズされた認証フローがある場合に特に当てはまります。"
 
 #. type: Title ===
 #, no-wrap
@@ -512,7 +617,7 @@ msgstr ""
 "`standalone(-ha).xml` と `domain.xml` "
 "にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
 
-#. type: Title ==
+#. type: Title =
 #, no-wrap
 msgid "Deploying Scripts to the Server"
 msgstr "サーバーへのスクリプトのデプロイ"
@@ -917,9 +1022,9 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "configuration file. This is needed because of the infinispan bug "
-"https://issues.jboss.org/browse/ISPN-9323."
+"https://issues.redhat.com/browse/ISPN-9323."
 msgstr ""
-"これは、infinispanバグ https://issues.jboss.org/browse/ISPN-9323 の対策のために必要です。"
+"これは、infinispanバグ https://issues.redhat.com/browse/ISPN-9323 の対策のために必要です。"
 
 #. type: Title ===
 #, no-wrap

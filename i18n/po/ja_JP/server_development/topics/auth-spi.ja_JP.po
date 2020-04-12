@@ -6,14 +6,14 @@
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2018
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,11 +26,6 @@ msgstr ""
 msgid "    }\n"
 msgstr "}\n"
 
-#. type: Title ====
-#, no-wrap
-msgid "Packaging Classes and Deployment"
-msgstr "クラスのパッケージ化とデプロイ"
-
 #. type: Title ==
 #, no-wrap
 msgid "Authentication SPI"
@@ -38,9 +33,9 @@ msgstr "認証SPI"
 
 #. type: Plain text
 msgid ""
-"{project_name} comes out of the box with a bunch of different authentication"
-" mechanisms: kerberos, password, and otp.  These mechanisms may not meet all"
-" of your requirements and you may want to plug in your own custom ones.  "
+"{project_name} includes a range of different authentication mechanisms: "
+"kerberos, password, otp and others.  These mechanisms may not meet all of "
+"your requirements and you may want to plug in your own custom ones.  "
 "{project_name} provides an authentication SPI that you can use to write new "
 "plugins.  The admin console supports applying, ordering, and configuring "
 "these new mechanisms."
@@ -95,7 +90,7 @@ msgid ""
 msgstr ""
 "フローは、ログインまたは登録中に必ず発生するすべての認証のためのコンテナーです。管理コンソールの認証ページに移動すると、システム内で定義されたすべてのフローと、どのようなオーセンティケーターで構成されているかが表示されます。フローには、他のフローを含めることができます。また、ブラウザーのログイン、ダイレクト・グラント・アクセス、および登録用に、新しい異なるフローをバインドすることもできます。"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Authenticator"
 msgstr "オーセンティケーター"
@@ -472,6 +467,11 @@ msgid ""
 "CredentialValidator, so we'll see how to implement all these classes."
 msgstr ""
 "このウォークスルーで確認するSecretQuestionAuthenticatorはCredentialValidatorであるため、これらのクラスをすべて実装する方法を確認します。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Packaging Classes and Deployment"
+msgstr "クラスのパッケージ化とデプロイ"
 
 #. type: Plain text
 msgid ""
@@ -1408,21 +1408,19 @@ msgid ""
 "protected boolean validateAnswer(AuthenticationFlowContext context) {\n"
 "    MultivaluedMap<String, String> formData = context.getHttpRequest().getDecodedFormParameters();\n"
 "    String secret = formData.getFirst(\"secret_answer\");\n"
-"    String credentialId = context.getSelectedCredentialId();\n"
+"    String credentialId = formData.getFirst(\"credentialId\");\n"
 "    if (credentialId == null || credentialId.isEmpty()) {\n"
 "        credentialId = getCredentialProvider(context.getSession())\n"
 "                .getDefaultCredential(context.getSession(), context.getRealm(), context.getUser()).getId();\n"
-"        context.setSelectedCredentialId(credentialId);\n"
 "    }\n"
 msgstr ""
 "protected boolean validateAnswer(AuthenticationFlowContext context) {\n"
 "    MultivaluedMap<String, String> formData = context.getHttpRequest().getDecodedFormParameters();\n"
 "    String secret = formData.getFirst(\"secret_answer\");\n"
-"    String credentialId = context.getSelectedCredentialId();\n"
+"    String credentialId = formData.getFirst(\"credentialId\");\n"
 "    if (credentialId == null || credentialId.isEmpty()) {\n"
 "        credentialId = getCredentialProvider(context.getSession())\n"
 "                .getDefaultCredential(context.getSession(), context.getRealm(), context.getUser()).getId();\n"
-"        context.setSelectedCredentialId(credentialId);\n"
 "    }\n"
 
 #. type: Plain text
@@ -1439,11 +1437,11 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"The last thing to go over is the setCookie() method.\n"
+"Next method is the setCookie().\n"
 "This is an example of providing configuration for the Authenticator.\n"
 "In this case we want the max age of the cookie to be configurable.\n"
 msgstr ""
-"最後に検討するのはsetCookie()メソッドです。これは、オーセンティケーターの設定を提供する例です。この場合、Cookieの最大有効期間を設定可能にする必要があります。\n"
+"次のメソッドはsetCookie()です。これは、オーセンティケーターの設定を提供する例です。この場合、Cookieの最大有効期間を設定可能にする必要があります。\n"
 
 #. type: Plain text
 #, no-wrap
@@ -1490,6 +1488,52 @@ msgid ""
 "The config values can be defined within the admin console if you set up config definitions in your AuthenticatorFactory implementation.\n"
 msgstr ""
 "AuthenticationFlowContext.getAuthenticatorConfig()メソッドからAuthenticatorConfigModelを取得します。設定が存在する場合は、その設定の最大有効期間を取り出します。何を設定するべきかを定義する方法については、AuthenticatorFactoryの実装について説明する際に確認していきます。AuthenticatorFactory実装で設定の定義をした場合、管理コンソール内で設定値を定義できます。\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"@Override\n"
+"    public CredentialTypeMetadata getCredentialTypeMetadata() {\n"
+"        return CredentialTypeMetadata.builder()\n"
+"                .type(getType())\n"
+"                .category(CredentialTypeMetadata.Category.TWO_FACTOR)\n"
+"                .displayName(SecretQuestionCredentialProviderFactory.PROVIDER_ID)\n"
+"                .helpText(\"secret-question-text\")\n"
+"                .createAction(SecretQuestionAuthenticatorFactory.PROVIDER_ID)\n"
+"                .removeable(false)\n"
+"                .build(session);\n"
+"    }\n"
+msgstr ""
+"@Override\n"
+"    public CredentialTypeMetadata getCredentialTypeMetadata() {\n"
+"        return CredentialTypeMetadata.builder()\n"
+"                .type(getType())\n"
+"                .category(CredentialTypeMetadata.Category.TWO_FACTOR)\n"
+"                .displayName(SecretQuestionCredentialProviderFactory.PROVIDER_ID)\n"
+"                .helpText(\"secret-question-text\")\n"
+"                .createAction(SecretQuestionAuthenticatorFactory.PROVIDER_ID)\n"
+"                .removeable(false)\n"
+"                .build(session);\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"Last method in SecretQuestionCredentialProvider class is getCredentialTypeMetadata(), which is an abstract method of CredentialProvider\n"
+"interface. Each Credential provider has to provide and implement this method. The method returns an instance of CredentialTypeMetadata,\n"
+"which should at least include type and category of authenticator, displayName and removable item. In this example, the builder\n"
+"takes type of authenticator from method getType(), category is Two Factor (the authenticator can be used as second factor of authentication)\n"
+"and removable, which is set up to false (user can't remove some previously registered credentials).\n"
+msgstr ""
+"SecretQuestionCredentialProviderクラスの最後のメソッドは、CredentialProviderの抽象メソッドであるgetCredentialTypeMetadata()です。各クレデンシャル・プロバイダーは、このメソッドを提供および実装する必要があります。このメソッドは、CredentialTypeMetadataのインスタンスを返します。これには、少なくともオーセンティケーターのタイプとカテゴリー、displayName、および取り外し可能なアイテムが含まれている必要があります。この例では、ビルダーはメソッドgetType()からオーセンティケーターのタイプを取り、カテゴリーは2要素（オーセンティケーターは認証の2番目の要素として使用できます）かつ取り外し可能で、falseに設定されています。（ユーザーは以前に登録されたクレデンシャルを削除できません）。\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"Other items of builder are helpText (will be shown to the user on various screens), createAction (the providerID of the required action,\n"
+"which can be used by the user to create new credential) or updateAction (same as createAction, but instead of creating the new credential, it will update the credential).\n"
+msgstr ""
+"ビルダーの他の項目は、helpText（さまざまな画面でユーザーに表示されます）、createAction（必要なアクションのプロバイダーID、ユーザーが新しいクレデンシャルを作成するために使用できます）、またはupdateAction（createActionと同じですが、新しいクレデンシャルを作成する代わりに、クレデンシャルを更新します）。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1805,9 +1849,12 @@ msgid ""
 "Adding an Authenticator to a flow must be done in the admin console.\n"
 "If you go to the Authentication menu item and go to the Flow tab, you will be able to view the currently defined flows.\n"
 "You cannot modify built in flows, so, to add the Authenticator we've created you have to copy an existing flow or create your own.\n"
-"I'm hoping the UI is intuitive enough so that you can figure out for yourself how to create a flow and add the Authenticator.\n"
+"Our hope is that the user interface is sufficiently clear so that you can determine how to create a flow and add the Authenticator. For\n"
+"more details, see the `Authentication Flows` chapter in link:{adminguide_link}[{adminguide_name}] .\n"
 msgstr ""
-"フローへのオーセンティケーター追加は、管理コンソールで行う必要があります。Authenticationメニュー項目に移動してFlowタブを選択すると、現在定義されているフローが表示されます。組み込みのフローを変更することはできません。そのため、作成したオーセンティケーターを追加するには、既存のフローをコピーするか独自のフローを作成する必要があります。このUIは非常に分かりやすく作られているので、フローを作成してオーセンティケーターを追加する方法を理解することができると思います。\n"
+"オーセンティケーターをフローに追加するには、管理コンソールで行う必要があります。Authenticationメニュー項目に移動してFlowタブに移動すると、現在定義されているフローを表示できます。組み込みフローを変更することはできないため、作成した認証システムを追加するには、既存のフローをコピーするか、独自のフローを作成する必要があります。ユーザーインターフェイスが十分に明確であり、フローの作成方法とオーセンティケーターの追加方法を決定できることが期待されます。"
+" 詳細については、 link:{adminguide_link}[{adminguide_name}] の `Authentication Flows`"
+" の章を参照してください。\n"
 
 #. type: delimited block -
 #, no-wrap

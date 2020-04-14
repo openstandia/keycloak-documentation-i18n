@@ -183,7 +183,8 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The rest of the configuration options should be self explanatory.  You can "
-"mouseover the tooltips in Admin Console to see some more details about them."
+"hover the mouse pointer over the tooltips in the Admin Console to see some "
+"more details about them."
 msgstr ""
 
 #. type: Title ====
@@ -193,22 +194,21 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"When you configure a secured connection URL to your LDAP store(for example "
-"`ldaps://myhost.com:636` ), {project_name} will use SSL for the "
-"communication with LDAP server.  The important thing is to properly "
-"configure a truststore on the {project_name} server side, otherwise "
-"{project_name} can't trust the SSL connection to LDAP."
+"When you configure a secured connection URL to your LDAP store (for example,"
+"`ldaps://myhost.com:636'), {project_name} will use SSL for communication "
+"with the LDAP server.  The important thing is to properly configure a "
+"truststore on the {project_name} server side, otherwise {project_name} can't "
+"trust the SSL connection to LDAP."
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "The global truststore for the {project_name} can be configured with the "
 "Truststore SPI.  Please check out the link:{installguide_link}"
-"[{installguide_name}] for more detail.  If you don't configure the "
-"truststore SPI, the truststore will fallback to the default mechanism "
-"provided by Java (either the file provided by system property `javax.net.ssl."
-"trustStore` or the cacerts file from the JDK if the system property is not "
-"set)."
+"[{installguide_name}] for more details.  If you do not figure the truststore "
+"SPI, the truststore will fall back on the default mechanism provided by Java "
+"(either the file provided by system property `javax.net.ssl.trustStore` or "
+"the cacerts file from the JDK if the system property is not set)."
 msgstr ""
 
 #. type: Plain text
@@ -217,7 +217,7 @@ msgid ""
 "federation provider configuration, where you can choose whether the "
 "Truststore SPI is used.  By default, the value is `Only for ldaps`, which is "
 "fine for most deployments.  The Truststore SPI will only be used if the "
-"connection to LDAP starts with `ldaps`."
+"connection URL to LDAP starts with `ldaps`."
 msgstr ""
 
 #. type: Title ====
@@ -227,22 +227,23 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"If you have import enabled, the LDAP Provider will automatically take care "
-"of synchronization (import) of needed LDAP users into the {project_name} "
-"local database.  As users log in, the LDAP provider will import the LDAP "
-"user into the {project_name} database and then authenticate against the LDAP "
-"password. This is the only time users will be imported.  If you go to the "
-"`Users` left menu item in the Admin Console and click the `View all users` "
-"button, you will only see those LDAP users that have been authenticated at "
-"least once by {project_name}.  It is implemented this way so that admins "
-"don't accidentally try to import a huge LDAP DB of users."
+"If you enable the Import Users option, the LDAP Provider will automatically "
+"take care of synchronization (import) of needed LDAP users into the "
+"{project_name} local database.  As users log in, the LDAP provider will "
+"import the LDAP user into the {project_name} database and then authenticate "
+"against the LDAP password. This is the only time users will be imported.  If "
+"you go to the `Users` left menu item in the Admin Console and click the "
+"`View all users` button, you will only see those LDAP users that have been "
+"authenticated at least once by {project_name}.  It is implemented this way "
+"so that this operation does not trigger an import of the entire LDAP user "
+"database."
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "If you want to sync all LDAP users into the {project_name} database, you may "
-"configure and enable the `Sync Settings` of the LDAP provider you "
-"configured.  There are 2 types of synchronization:"
+"configure and enable the `Sync Settings` on the LDAP provider configuration "
+"page.  Two types of synchronization exist:"
 msgstr ""
 
 #. type: Labeled list
@@ -252,10 +253,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This will synchronize all LDAP users into {project_name} DB.  Those LDAP "
-"users, which already exist in {project_name} and were changed in LDAP "
-"directly will be updated in {project_name} DB (For example if user `Mary "
-"Kelly` was changed in LDAP to `Mary Smith`)."
+"This type will synchronize all LDAP users into the {project_name} database.  "
+"Those LDAP users, which already exist in {project_name} and were changed in "
+"LDAP directly will be updated in the {project_name} database.  For example, "
+"the user `Mary Kelly` was changed in LDAP to `Mary Smith`."
 msgstr ""
 
 #. type: Labeled list
@@ -273,8 +274,7 @@ msgstr ""
 msgid ""
 "The best way to handle syncing is to click the `Synchronize all users` "
 "button when you first create the LDAP provider, then set up a periodic sync "
-"of changed users.  The configuration page for your LDAP Provider has several "
-"options to support you."
+"of changed users."
 msgstr ""
 
 #. type: Title ====
@@ -285,13 +285,13 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "LDAP mappers are `listeners`, which are triggered by the LDAP Provider at "
-"various points, provide another extension point to LDAP integration.  They "
-"are triggered when a user logs in via LDAP and needs to be imported, during "
-"{project_name} initiated registration, or when a user is queried from the "
-"Admin Console.  When you create an LDAP Federation provider, {project_name} "
-"will automatically provide set of built-in `mappers` for this provider.  You "
-"are free to change this set and create a new mapper or update/delete "
-"existing ones."
+"various points and provide another extension point to LDAP integration.  "
+"They are triggered when a user logs in via LDAP and needs to be imported, "
+"during {project_name} initiated registration, or when a user is queried from "
+"the Admin Console.  When you create an LDAP Federation provider, "
+"{project_name} will automatically provide set of built-in `mappers` for this "
+"provider.  You are free to change this set and create a new mapper or update/"
+"delete existing ones."
 msgstr ""
 
 #. type: Labeled list
@@ -323,6 +323,18 @@ msgstr ""
 
 #. type: Labeled list
 #, no-wrap
+msgid "Hardcoded Attribute Mapper"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This mapper adds a hardcoded attribute value to each {project_name} user "
+"linked with LDAP.  This mapper can also force the values for the `enabled` "
+"or `emailVerified` user properties."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
 msgid "Role Mapper"
 msgstr ""
 
@@ -336,7 +348,7 @@ msgid ""
 "example you can specify that role mappings from groups under `ou=main,"
 "dc=example,dc=org` will be mapped to realm role mappings and role mappings "
 "from groups under `ou=finance,dc=example,dc=org` will be mapped to client "
-"role mappings of client `finance` ."
+"role mappings of client `finance`."
 msgstr ""
 
 #. type: Labeled list
@@ -347,7 +359,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "This mapper will grant a specified {project_name} role to each "
-"{project_name} user linked with LDAP."
+"{project_name} user from the LDAP provider."
 msgstr ""
 
 #. type: Labeled list
@@ -357,11 +369,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This allows you to configure group mappings from LDAP into {project_name} "
-"group mappings.  Group mapper can be used to map LDAP groups from a "
-"particular branch of an LDAP tree into groups in {project_name}.  It will "
-"also propagate user-group mappings from LDAP into user-group mappings in "
-"{project_name}."
+"This allows you to map LDAP groups from a particular branch of an LDAP tree "
+"into groups in {project_name}.  It will also propagate user-group mappings "
+"from LDAP into user-group mappings in {project_name}."
 msgstr ""
 
 #. type: Labeled list
@@ -373,13 +383,13 @@ msgstr ""
 msgid ""
 "This mapper is specific to Microsoft Active Directory (MSAD). It's able to "
 "tightly integrate the MSAD user account state into the {project_name} "
-"account state (account enabled, password is expired etc).  It's using the "
-"`userAccountControl` and `pwdLastSet` LDAP attributes.  (both are specific "
-"to MSAD and are not LDAP standard).  For example if `pwdLastSet` is `0`, the "
-"{project_name} user is required to update their password and there will be "
-"an UPDATE_PASSWORD required action added to the user. If "
-"`userAccountControl` is `514` (disabled account) the {project_name} user is "
-"disabled as well."
+"account state (account enabled, password is expired, and so on).  It is "
+"using the `userAccountControl` and `pwdLastSet` LDAP attributes, which are "
+"both specific to MSAD and are not LDAP standard.  For example if "
+"`pwdLastSet` is `0`, the {project_name} user is required to update their "
+"password and there will be an UPDATE_PASSWORD required action added to the "
+"user. If `userAccountControl` is `514` (disabled account) the {project_name} "
+"user is disabled as well."
 msgstr ""
 
 #. type: Labeled list

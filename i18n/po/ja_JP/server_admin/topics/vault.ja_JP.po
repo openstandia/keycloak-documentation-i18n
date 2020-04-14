@@ -5,7 +5,7 @@
 # 
 # Translators:
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2019
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
 # 
 #, fuzzy
@@ -34,12 +34,24 @@ msgstr "管理のいくつかのフィールドは、外部ボールトからの
 #. type: Plain text
 msgid ""
 "To obtain a secret from a vault instead of entering it directly, enter the "
-"following specially crafted string into the appropriate field: `**${vault"
-".**_entry-name_**}**` where you replace the `_entry-name_` with the name of "
-"the secret as recognized by the vault."
+"following specially crafted string into the appropriate field: "
+"`**${vault.**_key_**}**` where you replace the `_key_` with the name of the "
+"secret as recognized by the vault."
 msgstr ""
-"直接入力する代わりにボールトからシークレットを取得するには、次の特別に細工された文字列を適切なフィールドに入力します。 `**${vault"
-".**_entry-name_**}**` （ `_entry-name_` をボールトによって認識されるシークレットの名前で置き換えます。）"
+"直接入力する代わりにボールトからシークレットを取得するには、次の特別に細工された文字列を適切なフィールドに入力します。 "
+"`**${vault.**_key_**}**` （ `_key_` をボールトによって認識されるシークレットの名前で置き換えます。）"
+
+#. type: Plain text
+msgid ""
+"In order to prevent secrets from leaking across realms, implementations may "
+"combine the realm name with the `_key_` obtained from the vault expression. "
+"This means that the `_key_` won't directly map to an entry in the vault, but"
+" rather be used to create the final entry name according to the algorithm "
+"used to combine it with the realm name."
+msgstr ""
+"シークレットがレルム間で漏洩するのを防ぐために、実装では、レルム名をボールト式から取得した `_key_` と組み合わせる場合があります。つまり、 "
+"`_key_` "
+"はボールト内のエントリーに直接マップされず、レルム名と組み合わせるために使用されるアルゴリズムに従って最終的なエントリー名を作成するために使用されます。"
 
 #. type: Plain text
 msgid ""
@@ -87,10 +99,18 @@ msgid ""
 msgstr ""
 "ボールトを使用するには、{project_name}内にボールト・プロバイダーを登録する必要があります。以下で説明する組み込みプロバイダーを使用するか、独自のプロバイダーを実装することができます。詳細については、リンクlink:{developerguide_link}[{developerguide_name}]を参照してください。"
 
+#. type: Plain text
+msgid ""
+"There is at most one vault provider active per {project_name} instance at "
+"any given time, and the vault provider in each instance within the cluster "
+"has to be configured consistently."
+msgstr ""
+"{project_name}インスタンスごとにアクティブなボールト・プロバイダーは常に最大1つであり、クラスター内の各インスタンスのボールト・プロバイダーは一貫して設定される必要があります。"
+
 #. type: Title ===
 #, no-wrap
-msgid "Kubernetes / OpenShift files plaintext vault provider"
-msgstr "Kubernetes / OpenShift files plaintext ボールト・プロバイダー"
+msgid "Kubernetes / OpenShift Files Plaintext Vault Provider"
+msgstr "Kubernetes / OpenShift Files Plaintext ボールト・プロバイダー"
 
 #. type: Plain text
 msgid ""
@@ -169,10 +189,363 @@ msgstr ""
 "/subsystem=keycloak-server/spi=vault/:add\n"
 "/subsystem=keycloak-server/spi=vault/provider=files-plaintext/:add(enabled=true,properties={dir => \"${jboss.home.dir}/standalone/configuration/vault\"})\n"
 
+#. type: Title ===
+#, no-wrap
+msgid "Elytron Credential Store Vault Provider"
+msgstr "Elytron Credential Storeボールト・プロバイダー"
+
 #. type: Plain text
 msgid ""
-"There is at most one vault provider active per {project_name} instance at "
-"any given time, and the vault provider in each instance within the cluster "
-"have to be configured consistently."
+"{project_name} also provides support for reading secrets stored in an "
+"Elytron credential store. The `elytron-cs-keystore` vault provider is "
+"capable of retrieving secrets from the keystore-based implementation of the "
+"credential store, which is also the default implementation provided by "
+"Elytron."
 msgstr ""
-"{project_name}インスタンスごとにアクティブなボールト・プロバイダーは常に最大1つであり、クラスター内の各インスタンスのボールト・プロバイダーは一貫して設定される必要があります。"
+"{project_name}は、Elytronクレデンシャル・ストアに保存されているシークレットを読み取るためのサポートも提供します。 "
+"`elytron-cs-keystore` "
+"ボールト・プロバイダーは、クレデンシャル・ストアのキーストア・ベースの実装からシークレットを取得できます。これは、Elytronが提供するデフォルトの実装でもあります。"
+
+#. type: Plain text
+msgid ""
+"This credential store is backed by a keystore (`JCEKS` is the default "
+"format, but it is possible to use other formats such as `PKCS12`)  and users"
+" can create and manage the store contents using either the `elytron` "
+"subsystem in WildFly/JBoss EAP, or using the `elytron-tool.sh` script."
+msgstr ""
+"このクレデンシャル・ストアはキーストア（ `JCEKS` がデフォルトのフォーマットですが、 `PKCS12` "
+"などの他のフォーマットを使用することもできます）に支えられており、ユーザーはWildFly/JBoss EAPの `elytron` "
+"サブシステムかを使用して（または `elytron-tool.sh` スクリプトを使用して）、ストアコンテンツを作成および管理できます。"
+
+#. type: Plain text
+msgid ""
+"To use this provider, you have to declare the `elytron-cs-keystore` in the "
+"`keycloak-server` subsystem and set the location and master secret of the "
+"keystore that was created by Elytron. An example of the minimal "
+"configuration for the provider follows:"
+msgstr ""
+"このプロバイダーを使用するには、 `keycloak-server` サブシステムで `elytron-cs-keystore` "
+"を宣言し、Elytronによって作成されたキーストアの場所とマスター・シークレットを設定する必要があります。プロバイダーの最小設定の例を以下に示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"vault\">\n"
+"    <default-provider>elytron-cs-keystore</default-provider>\n"
+"    <provider name=\"elytron-cs-keystore\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"location\" value=\"${jboss.home.dir}/standalone/configuration/vault/credential-store.jceks\" />\n"
+"            <property name=\"secret\" value=\"secretpw1!\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"vault\">\n"
+"    <default-provider>elytron-cs-keystore</default-provider>\n"
+"    <provider name=\"elytron-cs-keystore\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"location\" value=\"${jboss.home.dir}/standalone/configuration/vault/credential-store.jceks\" />\n"
+"            <property name=\"secret\" value=\"secretpw1!\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid ""
+"If the underlying keystore has a format other than `JCEKS`, this format has "
+"to be informed using the `keyStoreType`:"
+msgstr "基になるキーストアの形式が `JCEKS` 以外の場合、この形式は `keyStoreType` を使用して通知する必要があります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"vault\">\n"
+"    <default-provider>elytron-cs-keystore</default-provider>\n"
+"    <provider name=\"elytron-cs-keystore\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"location\" value=\"${jboss.home.dir}/standalone/configuration/vault/credential-store.p12\" />\n"
+"            <property name=\"secret\" value=\"secretpw1!\"/>\n"
+"            <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"vault\">\n"
+"    <default-provider>elytron-cs-keystore</default-provider>\n"
+"    <provider name=\"elytron-cs-keystore\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"location\" value=\"${jboss.home.dir}/standalone/configuration/vault/credential-store.p12\" />\n"
+"            <property name=\"secret\" value=\"secretpw1!\"/>\n"
+"            <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid ""
+"For the secret, the `elytron-cs-keystore` provider supports both clear-text "
+"values (as shown above) and also values that were masked using the `elytron-"
+"tool.sh` script:"
+msgstr ""
+"シークレットのために、上記のような `elytron-cs-keystore` プロバイダーはクリアテキスト値と次のような `elytron-"
+"tool.sh` スクリプトを使用してマスクされた値の両方をサポートしています。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"vault\">\n"
+"   ...\n"
+"            <property name=\"secret\" value=\"MASK-3u2HNQaMogJJ8VP7J6gRIl;12345678;321\"/>\n"
+"   ...\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"vault\">\n"
+"   ...\n"
+"            <property name=\"secret\" value=\"MASK-3u2HNQaMogJJ8VP7J6gRIl;12345678;321\"/>\n"
+"   ...\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid ""
+"For more detailed information on how to create/manage elytron credential "
+"stores, as well as how to mask keystore secrets, please refer to the Elytron"
+" documentation."
+msgstr ""
+"Elytronクレデンシャル・ストアを作成/管理する方法、およびキーストア・シークレットをマスクする方法の詳細については、Elytronのドキュメントを参照してください。"
+
+#. type: Plain text
+msgid ""
+"The `elytron-cs-keystore` vault provider has been implemented as a WildFly "
+"extension and as such is only available if the {project_name} server runs on"
+" WildFly/JBoss EAP."
+msgstr ""
+"`elytron-cs-keystore` "
+"ボールト・プロバイダーはWildFly拡張機能として実装されているため、{project_name}サーバーがWildFly/JBoss "
+"EAPで実行されている場合にのみ使用できます。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Key Resolvers"
+msgstr "キーリゾルバー"
+
+#. type: Plain text
+msgid ""
+"All built-in providers support the configuration of one or more key "
+"resolvers. A key resolver essentially implements the algorithm or strategy "
+"for combining the realm name with the key (as obtained from the "
+"`${vault.key}` expression} into the final entry name that will be used to "
+"retrieve the secret from the vault. The `keyResolvers` property is used to "
+"configure the resolvers that are to be used by the provider. The value is a "
+"comma-separated list of resolver names. An example of configuration for the "
+"`files-plaintext` provider follows:"
+msgstr ""
+"すべての組み込みプロバイダーは、1つ以上のキーリゾルバーの設定をサポートしています。キーリゾルバーは基本的に、レルム名とキー（ "
+"`${vault.key}` 式から得られる最終エントリー名にボールトからシークレットを取得するために使用されるアルゴリズムまたは戦略を実装します。 "
+"`keyResolvers` プロパティーは、プロバイダーが使用するリゾルバーを設定するために使用されます。値はリゾルバー名のカンマ区切りのリストです。"
+" `files-plaintext` プロバイダーの設定例は次のとおりです。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"vault\">\n"
+"    <default-provider>files-plaintext</default-provider>\n"
+"    <provider name=\"files-plaintext\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"dir\" value=\"${jboss.home.dir}/standalone/configuration/vault/\" />\n"
+"            <property name=\"keyResolvers\" value=\"REALM_UNDERSCORE_KEY, KEY_ONLY\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"vault\">\n"
+"    <default-provider>files-plaintext</default-provider>\n"
+"    <provider name=\"files-plaintext\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"dir\" value=\"${jboss.home.dir}/standalone/configuration/vault/\" />\n"
+"            <property name=\"keyResolvers\" value=\"REALM_UNDERSCORE_KEY, KEY_ONLY\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid ""
+"The resolvers are executed in the same order that they are declared in the "
+"configuration. For each resolver, the final entry name produced by the "
+"resolver that combines the realm with the vault key is used to search for "
+"the secret in the vault.  If a secret is found, it is immediately returned. "
+"If not, the next resolver is used and this continues until a non-empty "
+"secret is found or all resolvers have been tried, in which case an empty "
+"secret is returned. In the example above, first the `REALM_UNDERSCORE_KEY` "
+"resolver is used. If an entry is found in the vault with the name it "
+"produces, it is returned.  If not, then the `KEY_ONLY` resolver is used. "
+"Again, if an entry is found in the vault with the name it produces, it is "
+"returned. If not, an empty secret is returned since there are no more "
+"resolvers to be used."
+msgstr ""
+"リゾルバーは、設定で宣言されている順序で実行されます。各リゾルバーについて、レルムとボールトキーを組み合わせたリゾルバーによって生成された最終エントリー名は、ボールト内のシークレットを検索するために使用されます。シークレットが見つかると、すぐに返されます。そうでない場合は、次のリゾルバーが使用され、空でないシークレットが見つかるか、すべてのリゾルバーが試行されるまでこれが続きます。この場合、空のシークレットが返されます。上記の例では、最初に"
+" `REALM_UNDERSCORE_KEY` "
+"リゾルバーが使用されます。ボールトで生成された名前のエントリーが見つかった場合、そのエントリが返されます。そうでない場合、 `KEY_ONLY` "
+"リゾルバーが使用されます。繰り返しになりますが、ボールトで生成された名前のエントリーが見つかった場合、そのエントリーが返されます。そうでない場合は、使用するリゾルバーがなくなるため、空のシークレットが返されます。"
+
+#. type: Plain text
+msgid "A list of the currently available resolvers follows:"
+msgstr "現在利用可能なリゾルバーのリストは次のとおりです。"
+
+#. type: Plain text
+msgid ""
+"`KEY_ONLY`: the realm name is ignored and the key from the vault expression "
+"is used as is."
+msgstr "`KEY_ONLY` ：レルム名は無視され、ボールト式のキーがそのまま使用されます。"
+
+#. type: Plain text
+msgid ""
+"`REALM_UNDERSCORE_KEY`: the realm and key are combined using an underscore "
+"`_` character. Occurrences of underscore in either the realm or key are "
+"escaped by another underscore character. So if the realm is called "
+"`master_realm` and the key is `smtp_key`, the combined key will be "
+"`master+++__+++realm_smtp+++__+++key`."
+msgstr ""
+"`REALM_UNDERSCORE_KEY` ：レルムとキーは、アンダースコア `_` "
+"文字を使用して結合されます。レルムまたはキーでのアンダースコアの出現は、別のアンダースコア文字によってエスケープされます。したがって、レルムが "
+"`master_realm` と呼ばれ、キーが `smtp_key` である場合、結合されたキーは "
+"`master+++__+++realm_smtp+++__+++key` になります。"
+
+#. type: Plain text
+msgid ""
+"`REALM_FILESEPARATOR_KEY`: the realm and key are combined using the platform"
+" file separator character. This is useful in situations where the keys are "
+"grouped by realm using a directory structure."
+msgstr ""
+"`REALM_FILESEPARATOR_KEY` "
+"：レルムとキーは、プラットフォーム・ファイル・セパレーター文字を使用して結合されます。これは、キーがレルムによってディレクトリー構造を使用してグループ化されている状況で役立ちます。"
+
+#. type: Plain text
+msgid ""
+"`FACTORY_PROVIDED`: the realm and key are combined using the "
+"`VaultKeyResolver` that is provided by the vault provider factory, allowing "
+"the creation of a custom key resolver by extending an existing factory and "
+"implementing the `getFactoryResolver` method."
+msgstr ""
+"`FACTORY_PROVIDED` ：レルムとキーは、ボールト・プロバイダー・ファクトリーによって提供される `VaultKeyResolver` "
+"を使用して結合されます。これにより、既存のファクトリーを拡張し、 `getFactoryResolver` "
+"メソッドを実装することにより、カスタム・キーリゾルバーを作成できます。"
+
+#. type: Plain text
+msgid ""
+"If no resolver is configured for the built-in providers, the "
+"`REALM_UNDERSCORE_KEY` is selected by default."
+msgstr "組み込みプロバイダーにリゾルバーが設定されていない場合、デフォルトで `REALM_UNDERSCORE_KEY` が選択されます。"
+
+#. type: Plain text
+msgid ""
+"The `FACTORY_PROVIDED` resolver provides a hook that can be used to "
+"implement a custom resolver by extending the provider factory of choice and "
+"overriding the `getFactoryResolver` method so it returns the custom "
+"resolver. For example, if you want to use the `elytron-cs-keystore` provider"
+" but none of the built-in resolvers match the format used in your keystore, "
+"you can extend the `ElytronCSKeystoreProvider and implement the "
+"getFactoryResolver method:"
+msgstr ""
+"`FACTORY_PROVIDED` リゾルバーは、選択したプロバイダー・ファクトリーを拡張し、 `getFactoryResolver` "
+"メソッドをオーバーライドしてカスタム・リゾルバーを返すことにより、カスタム・リゾルバーを実装するために使用できるフックを提供します。たとえば、 "
+"`elytron-cs-keystore` プロバイダーを使用したいが、組み込みリゾルバーがキーストアで使用されている形式と一致しない場合、 "
+"`ElytronCSKeystoreProvider` を拡張して `getFactoryResolver` メソッドを実装できます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    public class CustomElytronProviderFactory extends ElytronCSKeyStoreProviderFactory {\n"
+"        ...\n"
+"        @Override\n"
+"        protected VaultKeyResolver getFactoryResolver() {\n"
+"            return (realm, key) -> realm + \"###\" + key;\n"
+"        }\n"
+msgstr ""
+"    public class CustomElytronProviderFactory extends ElytronCSKeyStoreProviderFactory {\n"
+"        ...\n"
+"        @Override\n"
+"        protected VaultKeyResolver getFactoryResolver() {\n"
+"            return (realm, key) -> realm + \"###\" + key;\n"
+"        }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"        @Override\n"
+"        public String getId() {\n"
+"            return \"custom-elytron-cs-keystore;\n"
+"        }\n"
+msgstr ""
+"        @Override\n"
+"        public String getId() {\n"
+"            return \"custom-elytron-cs-keystore;\n"
+"        }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"        ...\n"
+"    }\n"
+msgstr ""
+"        ...\n"
+"    }\n"
+
+#. type: Plain text
+msgid ""
+"The custom factory returns a key resolver that combines the realm and key "
+"with a triple `#` character. So an entry would look like "
+"`master_realm###smtp_key`, for example. This factory must then be installed "
+"just like any custom provider."
+msgstr ""
+"カスタム・ファクトリーは、レルムとキーを3つの `#` 文字で組み合わせるキーリゾルバーを返します。たとえば、エントリーは "
+"`master_realm###smtp_key` "
+"のようになります。このファクトリーは、カスタム・プロバイダーと同じようにインストールする必要があります。"
+
+#. type: Plain text
+msgid ""
+"Note that the custom factory must override both the `getFactoryResolver` and"
+" `getId` methods. The second method is needed so that we can properly "
+"configure the custom factory in {project_name}."
+msgstr ""
+"カスタム・ファクトリーは `getFactoryResolver` と `getId` "
+"メソッドの両方をオーバーライドする必要があることに注意してください。2番目のメソッドは、{project_name}でカスタム・ファクトリーを適切に設定するために必要です。"
+
+#. type: Plain text
+msgid ""
+"To install and use the above custom provider the configuration would look "
+"something like this:"
+msgstr "上記のカスタム・プロバイダーをインストールして使用する設定は、次のようになります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"vault\">\n"
+"    <default-provider>custom-elytron-cs-keystore</default-provider>\n"
+"    <provider name=\"custom-elytron-cs-keystore\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"location\" value=\"${jboss.home.dir}/standalone/configuration/vault/credential-store.p12\" />\n"
+"            <property name=\"secret\" value=\"MASK-3u2HNQaMogJJ8VP7J6gRIl;12345678;321\"/>\n"
+"            <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"            <property name=\"keyResolvers\" value=\"FACTORY_PROVIDED\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"vault\">\n"
+"    <default-provider>custom-elytron-cs-keystore</default-provider>\n"
+"    <provider name=\"custom-elytron-cs-keystore\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"location\" value=\"${jboss.home.dir}/standalone/configuration/vault/credential-store.p12\" />\n"
+"            <property name=\"secret\" value=\"MASK-3u2HNQaMogJJ8VP7J6gRIl;12345678;321\"/>\n"
+"            <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"            <property name=\"keyResolvers\" value=\"FACTORY_PROVIDED\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid ""
+"The configuration above tells {project_name} to setup the custom Elytron "
+"provider and use the key resolver that is created by the custom factory."
+msgstr ""
+"上記の設定は、{project_name}にカスタムElytronプロバイダーをセットアップし、カスタム・ファクトリーによって作成されたキーリゾルバーを使用するように指示します。"

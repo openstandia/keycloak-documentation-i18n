@@ -5,14 +5,14 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2017
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -89,7 +89,7 @@ msgstr ""
 msgid ""
 "Groups and roles are automatically registered, but not synchronized, so any "
 "changes made by the {project_name} administrator directly in {project_name} "
-"is not synchronized with SSSD."
+"are not synchronized with SSSD."
 msgstr ""
 "グループとロールは自動的に登録されますが、同期されないため、{project_name}管理者が{project_name}に直接行った変更はSSSDと同期されません。"
 
@@ -104,7 +104,7 @@ msgstr "FreeIPA/IdMサーバー"
 
 #. type: Plain text
 msgid ""
-"As a matter of simplicity, a https://hub.docker.com/r/freeipa/freeipa-"
+"For the sake of simplicity, a https://hub.docker.com/r/freeipa/freeipa-"
 "server/[FreeIPA Docker image] already available is used. To set up a server,"
 " see the https://www.freeipa.org/page/Quick_Start_Guide[FreeIPA "
 "documentation]."
@@ -154,10 +154,10 @@ msgstr "この変更を行わない場合は、DNSサーバーを設定する必
 
 #. type: Plain text
 msgid ""
-"So that the SSSD federation provider is started and running on "
-"{project_name} you must enroll your Linux machine in the IPA domain:"
+"You must enroll your Linux machine in the IPA domain so that the SSSD "
+"federation provider is started and running on {project_name}:"
 msgstr ""
-"SSSDフェデレーション・プロバイダーが起動され、{project_name}上で実行するように、LinuxマシンをIPAドメインに登録する必要があります。"
+"SSSDフェデレーション・プロバイダーが起動して{project_name}で実行されるように、LinuxマシンをIPAドメインに登録する必要があります。"
 
 #. type: Plain text
 #, no-wrap
@@ -186,11 +186,35 @@ msgstr "パスワードの入力が求められます。その後、次のコマ
 msgid ""
 " $ ipa user-add john --first=John --last=Smith --email=john@smith.com "
 "--phone=042424242 --street=\"Testing street\" \\      --city=\"Testing "
-"city\" --state=\"Testing State\" --postalcode=0000000000\n"
+"city\" --state=\"Testing State\" --postalcode=0000000000 --password\n"
 msgstr ""
 " $ ipa user-add john --first=John --last=Smith --email=john@smith.com "
 "--phone=042424242 --street=\"Testing street\" \\      --city=\"Testing "
-"city\" --state=\"Testing State\" --postalcode=0000000000\n"
+"city\" --state=\"Testing State\" --postalcode=0000000000 --password\n"
+
+#. type: Plain text
+msgid ""
+"To force setting the user's password, use kinit.  Given the user john, you "
+"would enter this command:"
+msgstr "ユーザーのパスワードを強制的に設定するには、kinitを使用します。ユーザーjohnを指定して、次のコマンドを入力します。"
+
+#. type: Plain text
+#, no-wrap
+msgid " kinit john\n"
+msgstr " kinit john\n"
+
+#. type: Plain text
+msgid "To restore normal IPA operation, you would enter these commands:"
+msgstr "通常のIPA操作を復元するには、次のコマンドを入力します。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+" kdestroy -A\n"
+" kinit admin\n"
+msgstr ""
+" kdestroy -A\n"
+" kinit admin\n"
 
 #. type: Title ====
 #, no-wrap
@@ -294,10 +318,10 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "You should be able to see the user's group. If this command returns a "
-"timeout or an error, it means that the federation provider will also not be "
-"able to retrieve anything on {project_name}."
+"timeout or an error, it means that the federation provider running on "
+"{project_name} will also be unable to retrieve anything."
 msgstr ""
-"そのユーザーのグループを確認することができるはずです。このコマンドでタイムアウトまたはエラーが返された場合、フェデレーション・プロバイダーは{project_name}で何も取得できないことを意味します。"
+"ユーザーのグループを表示できるはずです。このコマンドがタイムアウトまたはエラーを返す場合、{project_name}上で起動しているフェデレーション・プロバイダーは何も取得できないことを意味します。"
 
 #. type: Plain text
 msgid ""
@@ -307,10 +331,11 @@ msgstr "ほとんどの場合、マシンがFreeIPA IdMサーバーに登録さ�
 
 #. type: Plain text
 msgid ""
-"If you do not have permission, ensure that the user running {project_name} "
-"is included in the `/etc/sssd/sssd.conf` file in the following section:"
+"If you do not have permission, ensure that the user running the "
+"{project_name} server is included in the `/etc/sssd/sssd.conf` file in the "
+"following section:"
 msgstr ""
-"アクセス許可がない場合は、{project_name}を実行しているユーザーが次のセクションの `/etc/sssd/sssd.conf` "
+"パーミッションがない場合は、{project_name}サーバーを実行しているユーザーが次のセクションの `/etc/sssd/sssd.conf` "
 "ファイルに含まれていることを確認してください。"
 
 #. type: Plain text
@@ -401,7 +426,7 @@ msgid "Configuring a Federated SSSD Store"
 msgstr "フェデレーションSSSDストアの設定"
 
 #. type: Plain text
-msgid "After installation, you need to configure a federated SSSD store."
+msgid "After the installation, you need to configure a federated SSSD store."
 msgstr "インストール後、フェデレーションSSSDストアを設定する必要があります。"
 
 #. type: Plain text

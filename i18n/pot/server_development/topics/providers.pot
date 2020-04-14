@@ -14,6 +14,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Title ====
+#, no-wrap
+msgid "Authenticator"
+msgstr ""
+
 #. type: Title ==
 #, no-wrap
 msgid "Service Provider Interfaces (SPI)"
@@ -528,20 +533,137 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "OpenID Connect Script Protocol Mapper"
-msgstr ""
-
-#. type: Plain text
-msgid "OpenID Connect Script Authenticator"
-msgstr ""
-
-#. type: Plain text
 msgid "JavaScript Policy"
+msgstr ""
+
+#. type: Plain text
+msgid "OpenID Connect Protocol Mapper"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authentication scripts must provide at least one of the following functions: "
+"`authenticate(..)`, which is called from "
+"`Authenticator#authenticate(AuthenticationFlowContext)` `action(..)`, which "
+"is called from `Authenticator#action(AuthenticationFlowContext)`"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Custom `Authenticator` should at least provide the `authenticate(..)` "
+"function.  You can use the `javax.script.Bindings` script within the code."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "`script`"
+msgstr ""
+
+#. type: Plain text
+msgid "the `ScriptModel` to access script metadata"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "`realm`"
+msgstr ""
+
+#. type: Plain text
+msgid "the `RealmModel`"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "`user`"
+msgstr ""
+
+#. type: Plain text
+msgid "the current `UserModel`"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "`session`"
+msgstr ""
+
+#. type: Plain text
+msgid "the active `KeycloakSession`"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "`authenticationSession`"
+msgstr ""
+
+#. type: Plain text
+msgid "the current `AuthenticationSessionModel`"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "`httpRequest`"
+msgstr ""
+
+#. type: Plain text
+msgid "the current `org.jboss.resteasy.spi.HttpRequest`"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "`LOG`"
+msgstr ""
+
+#. type: Plain text
+msgid "a `org.jboss.logging.Logger` scoped to `ScriptBasedAuthenticator`"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You can extract additional context information from the `context` argument "
+"passed to the `authenticate(context)` `action(context)` function."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "AuthenticationFlowError = Java.type(\"org.keycloak.authentication.AuthenticationFlowError\");\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "function authenticate(context) {\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "  LOG.info(script.name + \" --> trace auth for: \" + user.username);\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"  if (   user.username === \"tester\"\n"
+"      && user.getAttribute(\"someAttribute\")\n"
+"      && user.getAttribute(\"someAttribute\").contains(\"someValue\")) {\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"      context.failure(AuthenticationFlowError.INVALID_USER);\n"
+"      return;\n"
+"  }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"  context.success();\n"
+"}\n"
 msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Create a JAR with the scripts you want to deploy"
+msgid "Create a JAR with the scripts to deploy"
 msgstr ""
 
 #. type: Plain text
@@ -582,21 +704,21 @@ msgid ""
 "    \"authenticators\": [\n"
 "        {\n"
 "            \"name\": \"My Authenticator\",\n"
-"            \"fileName\": \"my-authenticator.js\",\n"
+"            \"fileName\": \"my-script-authenticator.js\",\n"
 "            \"description\": \"My Authenticator from a JS file\"\n"
 "        }\n"
 "    ],\n"
 "    \"policies\": [\n"
 "        {\n"
 "            \"name\": \"My Policy\",\n"
-"            \"fileName\": \"my-policy.js\",\n"
+"            \"fileName\": \"my-script-policy.js\",\n"
 "            \"description\": \"My Policy from a JS file\"\n"
 "        }\n"
 "    ],\n"
 "    \"mappers\": [\n"
 "        {\n"
 "            \"name\": \"My Mapper\",\n"
-"            \"fileName\": \"my-mapper.js\",\n"
+"            \"fileName\": \"my-script-mapper.js\",\n"
 "            \"description\": \"My Mapper from a JS file\"\n"
 "        }\n"
 "    ]\n"
@@ -695,31 +817,23 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"By default, the {project_name} Administration Console won't allow "
-"administrators to upload scripts to the server. The reason is that script "
-"execution can potentially harm the system due to the execution of malicious "
-"scripts. In order to prevent different types of attacks and lower the risks "
-"when running scripts at runtime, administrators should prefer deploying "
-"scripts directly to the server using a JAR file."
+"Ability to upload scripts through the admin console is deprecated and will "
+"be removed in a future version of {project_name}"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"By deploying scripts directly into the server, we expect that scripts go "
-"through a proper code analysis in order to find possible vulnerabilities "
-"that can be introduced by any script deployed to the server."
+"Administrators cannot upload scripts to the server. This behavior prevents "
+"potential harm to the system in case malicious scripts are accidentally "
+"executed. Administrators should always deploy scripts directly to the server "
+"using a JAR file to prevent attacks when you run scripts at runtime."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"However, it should still be possible to upload scripts to the server through "
-"the {project_name} Administration Console. For that, you must set the "
-"following system property when booting the server:"
-msgstr ""
-
-#. type: Code block
-#, no-wrap
-msgid "    -Dkeycloak.profile.feature.upload_scripts=enabled\n"
+"Ability to upload scripts can be explicitly enabled. This should be used "
+"with great care and plans should be created to deploy all scripts directly "
+"to the server as soon as possible."
 msgstr ""
 
 #. type: Plain text

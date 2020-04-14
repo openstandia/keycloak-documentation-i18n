@@ -5,16 +5,15 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2017
-# Hiroshi Aida <daian183@gmail.com>, 2018
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2018
-# Hiroyuki Wada <wadahiro@gmail.com>, 2019
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,11 +23,6 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "    }\n"
-msgstr "    }\n"
-
-#. type: delimited block -
-#, no-wrap
 msgid ""
 "    ...\n"
 "}\n"
@@ -36,10 +30,20 @@ msgstr ""
 "    ...\n"
 "}\n"
 
+#. type: delimited block -
+#, no-wrap
+msgid "    }\n"
+msgstr "    }\n"
+
 #. type: Block title
 #, no-wrap
 msgid "User Federation"
 msgstr "ユーザー・フェデレーション"
+
+#. type: Title ====
+#, no-wrap
+msgid "Packaging and Deployment"
+msgstr "パッケージ化とデプロイ"
 
 #. type: Block title
 #, no-wrap
@@ -349,25 +353,23 @@ msgstr ""
 msgid ""
 "    @Override\n"
 "    public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {\n"
-"        if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel)) return false;\n"
+"        if (!supportsCredentialType(input.getType())) return false;\n"
 msgstr ""
 "    @Override\n"
 "    public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {\n"
-"        if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel)) return false;\n"
+"        if (!supportsCredentialType(input.getType())) return false;\n"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"        UserCredentialModel cred = (UserCredentialModel)input;\n"
 "        String password = properties.getProperty(user.getUsername());\n"
 "        if (password == null) return false;\n"
-"        return password.equals(cred.getValue());\n"
+"        return password.equals(input.getChallengeResponse());\n"
 "    }\n"
 msgstr ""
-"        UserCredentialModel cred = (UserCredentialModel)input;\n"
 "        String password = properties.getProperty(user.getUsername());\n"
 "        if (password == null) return false;\n"
-"        return password.equals(cred.getValue());\n"
+"        return password.equals(input.getChallengeResponse());\n"
 "    }\n"
 
 #. type: Plain text
@@ -697,11 +699,6 @@ msgid ""
 msgstr ""
 "`PropertyFileUserStorageProvider` "
 "クラスを単にアロケートするだけです。このcreateメソッドはトランザクション毎に都度呼び出されます。"
-
-#. type: Title ===
-#, no-wrap
-msgid "Packaging and Deployment"
-msgstr "パッケージ化とデプロイ"
 
 #. type: Plain text
 msgid ""

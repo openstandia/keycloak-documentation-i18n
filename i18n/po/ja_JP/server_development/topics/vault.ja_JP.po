@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,25 +45,21 @@ msgstr "ビルトインの `files-plaintext` プロバイダーは、このSPI�
 
 #. type: Plain text
 msgid ""
-"To prevent a secret from leaking across realms, you mey want to isolate or "
-"limit what secrets can be retrieved by a realm.  In that case, your provider"
-" should take into account the realm name when looking up secrets, for "
-"example by prefixing entries with the realm name. For example, an expression"
-" `${vault.secret-id}` would then evaluate generally to different values of a"
-" secret `secret-id`, depending on whether it was used in a realm _A_ or "
-"realm _B_.  To differentiate between realms, the realm needs to be passed to"
-" the created `VaultProvider` instance from"
+"To prevent a secret from leaking across realms, you may want to isolate or "
+"limit the secrets that can be retrieved by a realm.  In that case, your "
+"provider should take into account the realm name when looking up secrets, "
+"for example by prefixing entries with the realm name. For example, an "
+"expression `${vault.key}` would then evaluate generally to different entry "
+"names, depending on whether it was used in a realm _A_ or realm _B_. To "
+"differentiate between realms, the realm needs to be passed to the created "
+"`VaultProvider` instance from `VaultProviderFactory.create()` method where "
+"it is available from the `KeycloakSession` parameter."
 msgstr ""
 "シークレットがレルム間で漏洩するのを防ぐために、レルムによって取得できるシークレットを隔離または制限したい場合があります。その場合、プロバイダーは、たとえば、エントリーにプレフィックスとしてレルム名を付けるなどして、シークレットを検索するときにレルム名を考慮する必要があります。たとえば、式"
-" `${vault.secret-id}` は、それがレルム _A_ またはレルム _B_ で使用されたかどうかに応じて、一般的にシークレット "
-"`secret-id` の異なる値に評価されます。レルムを区別するには、作成された `VaultProvider` "
-"インスタンスにレルムを渡す必要があります"
-
-#. type: Plain text
-msgid ""
-"`VaultProviderFactory.create()` method where it is available from its the "
-"`KeycloakSession` parameter."
-msgstr "`KeycloakSession` パラメーターから利用できる `VaultProviderFactory.create()` メソッド。"
+" `${vault.key}` は、それがレルム _A_ またはレルム _B_ "
+"で使用されたかどうかに応じて、一般的に異なるエントリー名に評価されます。レルムを区別するには、 `KeycloakSession` "
+"パラメーターから利用できる `VaultProviderFactory.create()` メソッドから作成された `VaultProvider` "
+"インスタンスにレルムを渡す必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -76,6 +72,24 @@ msgstr ""
 "ボールト・プロバイダーは、指定されたシークレット名に対して `VaultRawSecret` を返す単一のメソッド `obtainSecret` "
 "を実装する必要があります。このクラスは、 `byte[]` または `ByteBuffer` "
 "のいずれかでシークレットの表現を保持し、必要に応じて2つの間で変換することを期待されています。以下で説明するように、このバッファーは使用後に破棄されることに注意してください。"
+
+#. type: Plain text
+msgid ""
+"Regarding realm separation, all built-in vault provider factories allow the "
+"configuration of one or more key resolvers. Represented by the "
+"`VaultKeyResolver` interface, a key resolver essentially implements the "
+"algorithm or strategy for combining the realm name with the key (as obtained"
+" from the `${vault.key}` expression} into the final entry name that will be "
+"used to retrieve the secret from the vault. The code that handles this "
+"configuration has been extracted into abstract vault provider and vault "
+"provider factory classes, so custom implementations that want to offer "
+"support for key resolvers may extend these abstract classes instead of the "
+"implementing SPI interfaces to inherit the ability to configure the key "
+"resolvers that should be tried when retrieving a secret."
+msgstr ""
+"レルムの分離に関して、すべての組み込みのボールト・プロバイダー・ファクトリーでは、1つ以上のキーリゾルバーを設定できます。 "
+"`VaultKeyResolver` "
+"インターフェイスで表されるキーリゾルバーは基本的に、レルム名とキーを組み合わせて、ボールトからシークレットを取得するために使用される最終的なエントリー名にアルゴリズムまたは戦略を実装します。この設定を処理するコードは、抽象ボールト・プロバイダーおよびボールト・プロバイダー・ファクトリー・クラスに抽出されているため、キーリゾルバーのサポートを提供するカスタム実装は、SPIインターフェースを実装する代わりにこれらの抽象クラスを拡張して、シークレットを取得するときに試されるキーリゾルバーを設定する機能を継承できます。"
 
 #. type: Plain text
 msgid ""

@@ -6,12 +6,13 @@
 # Translators:
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Yoshikazu Nojima <mail@ynojima.net>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Yoshikazu Nojima <mail@ynojima.net>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,7 +110,7 @@ msgid ""
 "    <script src=\"keycloak.js\"></script>\n"
 "    <script>\n"
 "        var keycloak = new Keycloak();\n"
-"        keycloak.init({ promiseType: 'native' }).then(function(authenticated) {\n"
+"        keycloak.init().then(function(authenticated) {\n"
 "            alert(authenticated ? 'authenticated' : 'not authenticated');\n"
 "        }).catch(function() {\n"
 "            alert('failed to initialize');\n"
@@ -121,7 +122,7 @@ msgstr ""
 "    <script src=\"keycloak.js\"></script>\n"
 "    <script>\n"
 "        var keycloak = new Keycloak();\n"
-"        keycloak.init({ promiseType: 'native' }).then(function(authenticated) {\n"
+"        keycloak.init().then(function(authenticated) {\n"
 "            alert(authenticated ? 'authenticated' : 'not authenticated');\n"
 "        }).catch(function() {\n"
 "            alert('failed to initialize');\n"
@@ -208,14 +209,12 @@ msgstr ""
 msgid ""
 "keycloak.init({\n"
 "    onLoad: 'check-sso',\n"
-"    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',\n"
-"    promiseType: 'native',\n"
+"    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html'\n"
 "})\n"
 msgstr ""
 "keycloak.init({\n"
 "    onLoad: 'check-sso',\n"
-"    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',\n"
-"    promiseType: 'native',\n"
+"    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html'\n"
 "})\n"
 
 #. type: Plain text
@@ -256,6 +255,15 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
+"Starting with Chrome version 80 (released on February 2020), silent `check-"
+"sso` functionality will work only when the SSL / TLS connection is "
+"configured on the {project_name} side."
+msgstr ""
+"Chromeバージョン80（2020年2月リリース）から、サイレント `check-sso` 機能は {project_name} 側でSSL / "
+"TLS 接続が設定されている場合のみ動作するようになりました。"
+
+#. type: Plain text
+msgid ""
 "To enable `login-required` set `onLoad` to `login-required` and pass to the "
 "init method:"
 msgstr ""
@@ -266,13 +274,11 @@ msgstr ""
 #, no-wrap
 msgid ""
 "keycloak.init({\n"
-"    onLoad: 'login-required',\n"
-"    promiseType: 'native',\n"
+"    onLoad: 'login-required'\n"
 "})\n"
 msgstr ""
 "keycloak.init({\n"
-"    onLoad: 'login-required',\n"
-"    promiseType: 'native',\n"
+"    onLoad: 'login-required'\n"
 "})\n"
 
 #. type: Plain text
@@ -395,6 +401,21 @@ msgid ""
 msgstr ""
 "このクッキーを直接参照することに頼るべきではありません。フォーマットは変更可能で、アプリケーションではなく{project_name}サーバーのURLに関連付けられています。"
 
+#. type: Plain text
+msgid ""
+"Starting with Chrome version 80 (released on February 2020), status iframe "
+"will only be able to see the special cookie over the SSL / TLS connection "
+"configured on the {project_name} side. Using an insecure connection may lead"
+" to redirecting to {project_name} every time iframe checks the status. You "
+"can avoid this behavior by disabling iframe or "
+"link:{installguide_link}#_setting_up_ssl[configuring the SSL / TLS] on the "
+"{project_name} side."
+msgstr ""
+"Chromeバージョン80（2020年2月リリース）から、ステータスiframeは {project_name} 側で設定された SSL / TLS "
+"接続上でのみ特別なCookieが見えるようになりました。安全でない接続を使用している場合、iframeがステータスをチェックする毎に "
+"{project_name} へのリダイレクトを招くようになる場合があります。この動作は、iframeを無効化するか、{project_name}側で "
+"link:{installguide_link}#_setting_up_ssl[SSL / TLSを設定] することで回避することが可能です。"
+
 #. type: Title ====
 #, no-wrap
 msgid "Implicit and Hybrid Flow"
@@ -453,13 +474,11 @@ msgstr ""
 #, no-wrap
 msgid ""
 "keycloak.init({\n"
-"    flow: 'implicit',\n"
-"    promiseType: 'native',\n"
+"    flow: 'implicit'\n"
 "})\n"
 msgstr ""
 "keycloak.init({\n"
-"    flow: 'implicit',\n"
-"    promiseType: 'native',\n"
+"    flow: 'implicit'\n"
 "})\n"
 
 #. type: Plain text
@@ -510,13 +529,11 @@ msgstr ""
 #, no-wrap
 msgid ""
 "keycloak.init({\n"
-"    flow: 'hybrid',\n"
-"    promiseType: 'native',\n"
+"    flow: 'hybrid'\n"
 "})\n"
 msgstr ""
 "keycloak.init({\n"
-"    flow: 'hybrid',\n"
-"    promiseType: 'native',\n"
+"    flow: 'hybrid'\n"
 "})\n"
 
 #. type: Title ====
@@ -609,13 +626,11 @@ msgstr ""
 #, no-wrap
 msgid ""
 "keycloak.init({\n"
-"    adapter: 'cordova-native',\n"
-"    promiseType: 'native',\n"
+"    adapter: 'cordova-native'\n"
 "})\n"
 msgstr ""
 "keycloak.init({\n"
-"    adapter: 'cordova-native',\n"
-"    promiseType: 'native',\n"
+"    adapter: 'cordova-native'\n"
 "})\n"
 
 #. type: Plain text
@@ -735,67 +750,6 @@ msgstr "HTML5 History - https://github.com/devote/HTML5-History-API"
 #. type: Plain text
 msgid "Promise - https://github.com/stefanpenner/es6-promise"
 msgstr "Promise - https://github.com/stefanpenner/es6-promise"
-
-#. type: Title ====
-#, no-wrap
-msgid "A note about `promiseType`"
-msgstr "A note about `promiseType`"
-
-#. type: Plain text
-msgid ""
-"Throughout the examples in the documentation you will find `promiseType: "
-"'native'` specified wherever {project_name} is initialized.  Historically "
-"{project_name} has used its own implementation of promises that is not "
-"compatible with native promises as provided by the browser.  By default "
-"{project_name}'s own promise implementation (also known as `promiseType: "
-"'legacy'`) will be used if no promise type is specified."
-msgstr ""
-"ドキュメントの例全体を通して、{project_name}が初期化されている場所で指定された `promiseType: 'native'` "
-"が見つかります。歴史的に、{project_name}はブラウザーが提供するネイティブのPromiseと互換性のないPromiseの独自の実装を使用していました。デフォルトでは、{project_name}の独自のPromise実装（"
-" `promiseType: 'legacy'` としても知られています）が、Promiseタイプが指定されていない場合に使用されます。"
-
-#. type: Plain text
-msgid ""
-"In future versions of {project_name} the default promise type will change "
-"from `legacy` to `native`. Eventually, support for legacy promises will be "
-"removed entirely. It is therefore highly recommended that you always specify"
-" `promiseType: 'native'` to future-proof your code."
-msgstr ""
-"{project_name}の将来のバージョンでは、デフォルトのPromiseタイプが `legacy` から `native` "
-"に変更されます。最終的に、レガシーなPromiseのサポートは完全に削除されます。したがって、コードを将来にわたって保証するために、常に "
-"`promiseType: 'native'` を指定することを強くお勧めします。"
-
-#. type: Title ====
-#, no-wrap
-msgid "Native promises and TypeScript"
-msgstr "ネイティブPromiseとTypeScript"
-
-#. type: Plain text
-msgid ""
-"If you want to use native promises and get correct type information when "
-"using TypeScript you will have to specify the `promiseType` when "
-"constructing a new instance of Keycloak."
-msgstr ""
-"ネイティブPromiseを使用して、TypeScript使用時に正しい型情報を取得したい場合は、Keycloakの新しいインスタンスを構築するときに "
-"`promiseType` を指定する必要があります。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"// Typescript assumes this is a 'legacy' promise, all methods return .success() and .error()\n"
-"const keycloak = new Keycloak();\n"
-msgstr ""
-"// Typescript assumes this is a 'legacy' promise, all methods return .success() and .error()\n"
-"const keycloak = new Keycloak();\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"// Typescript assumes this is a native promise, all methods return standard promises\n"
-"const keycloak = new Keycloak<'native'>();\n"
-msgstr ""
-"// Typescript assumes this is a native promise, all methods return standard promises\n"
-"const keycloak = new Keycloak<'native'>();\n"
 
 #. type: Title ====
 #, no-wrap
@@ -1004,24 +958,6 @@ msgid ""
 msgstr ""
 "{project_name}にログイン・リクエストとともに送信されたレスポンスタイプ。これは、初期化中に使用されたフロー値に基づいて決定されますが、この値を設定することで上書きできます。"
 
-#. type: Labeled list
-#, no-wrap
-msgid "pkceMethod"
-msgstr "pkceMethod"
-
-#. type: Plain text
-msgid ""
-"The method for Proof Key Code Exchange "
-"(https://tools.ietf.org/html/rfc7636[PKCE]) to use. Configuring this value "
-"enables the PKCE mechanism.  Available options:"
-msgstr ""
-"Proof Key Code Exchange（ https://tools.ietf.org/html/rfc7636[PKCE] "
-"）が使用するメソッド。この値を設定すると、PKCEメカニズムが有効になります。利用可能なオプションは、以下の通りです。"
-
-#. type: Plain text
-msgid "\"S256\" - The SHA256 based PKCE method"
-msgstr "\"S256\" - SHA256ベースのPKCEメソッド"
-
 #. type: Title =====
 #, no-wrap
 msgid "Methods"
@@ -1048,10 +984,11 @@ msgstr "useNonce - 暗号化ノンスを追加して、認証レスポンスが�
 
 #. type: Plain text
 msgid ""
-"onLoad - Specifies an action to do on load. Supported values are 'login-"
-"required' or 'check-sso'."
+"onLoad - Specifies an action to do on load. Supported values are `login-"
+"required` or `check-sso`."
 msgstr ""
-"onLoad - ロード時に実行するアクションを指定します。サポートされている値は'login-required'または'check-sso'です。"
+"onLoad - ロード時に実行するアクションを指定します。サポートされている値は `login-required` または `check-sso` "
+"です。"
 
 #. type: Plain text
 msgid ""
@@ -1086,8 +1023,8 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "checkLoginIframe - Set to enable/disable monitoring login state (default is "
-"true)."
-msgstr "checkLoginIframe - ログイン状態の監視を有効/無効に設定します（デフォルトはtrue）。"
+"`true`)."
+msgstr "checkLoginIframe - ログイン状態の監視を有効/無効に設定します（デフォルトは `true` ）。"
 
 #. type: Plain text
 msgid ""
@@ -1098,37 +1035,45 @@ msgstr "checkLoginIframeInterval - ログイン状態を確認する間隔を設
 #. type: Plain text
 msgid ""
 "responseMode - Set the OpenID Connect response mode send to {project_name} "
-"server at login request. Valid values are query or fragment. Default value "
-"is fragment, which means that after successful authentication will "
+"server at login request. Valid values are `query` or `fragment`. Default "
+"value is `fragment`, which means that after successful authentication will "
 "{project_name} redirect to JavaScript application with OpenID Connect "
 "parameters added in URL fragment. This is generally safer and recommended "
-"over query."
+"over `query`."
 msgstr ""
 "responseMode - ログイン・リクエストの時に{project_name}サーバーに送信するOpenID "
-"Connectレスポンス・モードを設定します。有効な値は、queryまたはfragmentです。デフォルト値はfragmentです。つまり、認証が成功した後、{project_name}はURLフラグメントに追加されたOpenID"
-" Connectパラメーターとともに、JavaScriptアプリケーションにリダイレクトされます。これは一般的にクエリーよりも安全で推奨されます。"
+"Connectレスポンス・モードを設定します。有効な値は、 `query` または `fragment` です。デフォルト値は `fragment` "
+"です。つまり、認証が成功した後、{project_name}はURLフラグメントに追加されたOpenID "
+"Connectパラメーターとともに、JavaScriptアプリケーションにリダイレクトされます。これは一般的に `query` "
+"よりも安全で推奨されます。"
 
 #. type: Plain text
 msgid ""
-"flow - Set the OpenID Connect flow. Valid values are standard, implicit or "
-"hybrid."
+"flow - Set the OpenID Connect flow. Valid values are `standard`, `implicit` "
+"or `hybrid`."
 msgstr ""
-"flow - OpenID Connectのフローを設定します。有効な値は、standard、implicit、hybridのいずれかです。"
-
-#. type: Plain text
-msgid ""
-"promiseType - If set to `native` all methods returning a promise will return"
-" a native JavaScript promise. If not set will return Keycloak specific "
-"promise objects."
-msgstr ""
-"promiseType - `native` "
-"に設定すると、Promiseを返すすべてのメソッドはネイティブのJavaScriptのPromiseを返します。設定されていない場合は、Keycloak固有のPromiseオブジェクトが返されます。"
+"flow - OpenID Connectのフローを設定します。有効な値は、 `standard` 、 `implicit` 、 `hybrid` "
+"のいずれかです。"
 
 #. type: Plain text
 msgid ""
 "enableLogging - Enables logging messages from Keycloak to the console "
-"(default is false)."
-msgstr "enableLogging - Keycloakからコンソールへのメッセージのロギングを有効にします（デフォルトはfalse）。"
+"(default is `false`)."
+msgstr "enableLogging - Keycloakからコンソールへのメッセージのロギングを有効にします（デフォルトは `false` ）。"
+
+#. type: Plain text
+msgid ""
+"pkceMethod - The method for Proof Key Code Exchange "
+"(https://tools.ietf.org/html/rfc7636[PKCE]) to use. Configuring this value "
+"enables the PKCE mechanism. Available options:"
+msgstr ""
+"pkceMethod - Proof Key Code Exchange（ "
+"https://tools.ietf.org/html/rfc7636[PKCE] "
+"）が使用するメソッド。この値を設定すると、PKCEメカニズムが有効になります。利用可能なオプションは、以下の通りです。"
+
+#. type: Plain text
+msgid "\"S256\" - The SHA256 based PKCE method"
+msgstr "\"S256\" - SHA256ベースのPKCEメソッド"
 
 #. type: Plain text
 msgid "Returns a promise that resolves when initialization completes."
@@ -1207,10 +1152,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"action - If value is 'register' then user is redirected to registration "
+"action - If value is `register` then user is redirected to registration "
 "page, otherwise to login page."
 msgstr ""
-"action - 値が 'register' の場合、ユーザーは登録ページにリダイレクトされ、そうでない場合はログイン・ページにリダイレクトされます。"
+"action - 値が `register` の場合、ユーザーは登録ページにリダイレクトされ、そうでない場合はログイン・ページにリダイレクトされます。"
 
 #. type: Plain text
 msgid ""

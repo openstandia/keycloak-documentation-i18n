@@ -16,11 +16,6 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "Example using CURL"
-msgstr ""
-
-#. type: Title ===
-#, no-wrap
 msgid "Admin REST API"
 msgstr ""
 
@@ -46,6 +41,16 @@ msgstr ""
 
 #. type: Plain text
 msgid "For complete documentation see {apidocs_link}[{apidocs_name}]."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Examples using CURL"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Authenticate with username and password"
 msgstr ""
 
 #. type: Plain text
@@ -86,6 +91,55 @@ msgid ""
 "curl \\\n"
 "  -H \"Authorization: bearer eyJhbGciOiJSUz...\" \\\n"
 "  \"http://localhost:8080/auth/admin/realms/master\"\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Authenticate with a service account"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Before being able to authenticate against the Admin REST API using a "
+"`client_id` and a `client_secret` you need to make sure the client is "
+"configured as it follows:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`client_id` is a **confidential** client that belongs to the realm *master*"
+msgstr ""
+
+#. type: Plain text
+msgid "`client_id` has `Service Accounts Enabled` option enabled"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`client_id` has a custom \"Audience\" mapper ** Included Client Audience: "
+"`security-admin-console`"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Finally, check that `client_id` has the role 'admin' assigned in the "
+"\"Service Account Roles\" tab."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"After that, you will be able to obtain an access token for the Admin REST "
+"API using `client_id` and `client_secret`:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"curl \\\n"
+"  -d \"client_id=<YOUR_CLIENT_ID>\" \\\n"
+"  -d \"client_secret=<YOUR_CLIENT_SECRET>\" \\\n"
+"  -d \"grant_type=client_credentials\" \\\n"
+"  \"http://localhost:8080/auth/realms/master/protocol/openid-connect/token\"\n"
 msgstr ""
 
 #. type: Title ===

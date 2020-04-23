@@ -1,0 +1,394 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ==
+#, no-wrap
+msgid "RH SSO 7.4"
+msgstr "RH SSO 7.4"
+
+#. type: Plain text
+msgid ""
+"The following changes have occurred from {project_name} 7.3 to "
+"{project_name} 7.4."
+msgstr "{project_name} 7.3から{project_name} 7.4に次の変更が加えられました。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Upgrade to EAP 7.3"
+msgstr "EAP 7.3へのアップグレード"
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use EAP 7.3 as the underlying "
+"container. This change does not directly involve any specific {project_name}"
+" server functionality, but a few changes relate to the migration."
+msgstr ""
+"EAP "
+"7.3をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。この変更は、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更があります。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Dependency updates"
+msgstr "依存関係の更新"
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by EAP 7.3 server. For "
+"example, the Infinispan component version is now 9.3.1.Final."
+msgstr ""
+"依存関係が、EAP "
+"7.3サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanコンポーネントのバージョンは現在9.3.1.Finalです。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Configuration changes"
+msgstr "設定の変更"
+
+#. type: Plain text
+msgid ""
+"There are a few configuration changes in the standalone(-ha).xml and "
+"domain.xml files. Follow the Upgrading the {project_name} server section to "
+"handle the migration of configuration files automatically."
+msgstr ""
+"standalone(-ha).xmおよびdomain.xmlファイルでいくつかの設定変更があります。設定ファイルの移行を自動的に処理するようん、{project_name}サーバーのアップグレードのセクションに従ってください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Cross-Datacenter replication changes"
+msgstr "クロス・データセンター・レプリケーションの変更"
+
+#. type: Plain text
+msgid ""
+"You will need to upgrade {jdgserver_name} to version {jdgserver_version}. "
+"The older version may still work, but it is not tested so it is not "
+"guaranteed to work."
+msgstr ""
+"{jdgserver_name}をバージョン{jdgserver_version}にアップグレードする必要があります。古いバージョンはまだ動作するかもしれませんが、テストされていないため、動作が保証されていません。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Authentication flows changes"
+msgstr "認証フローの変更"
+
+#. type: Plain text
+msgid ""
+"We did some refactoring and improvements related to the authentication "
+"flows, which requires attention during migration."
+msgstr "認証フローに関連するリファクタリングと改善をいくつか行いました。これにより、移行の際に注意が必要です。"
+
+#. type: Title ====
+#, no-wrap
+msgid ""
+"REQUIRED and ALTERNATIVE executions not supported at same authentication "
+"flow"
+msgstr "REQUIREDとALTERNATIVEの実行は同じ認証フローではサポートされません"
+
+#. type: Plain text
+msgid ""
+"Previously, it was possible to have REQUIRED and ALTERNATIVE executions in "
+"the same authentication flow at the same level. There were some issues with "
+"this approach and we did the refactoring in the Authentication SPI, which "
+"means that this is no longer valid. If ALTERNATIVE and REQUIRED executions "
+"are configured at the same level, the ALTERNATIVE executions are considered "
+"disabled."
+msgstr ""
+"以前は、同じレベルの同じ認証フローでREQUIREDとALTERNATIVEのエグゼキューションを設定することが可能でした。このアプローチにはいくつかの問題があり、認証SPIのリファクタリングを行ったため、これは無効になりました。ALTERNATIVEとREQUIREDのエグゼキューションが同じレベルで設定されている場合、ALTERNATIVEのエグゼキューションは無効と見なされます。"
+
+#. type: Plain text
+msgid ""
+"So when migrating to this version, your existing authentication flows will "
+"be migrated but retain the behavior of the previous version. If an "
+"authentication flow contains ALTERNATIVE executions at the same level as "
+"REQUIRED executions, the ALTERNATIVE executions are added to the separate "
+"REQUIRED subflow."
+msgstr ""
+"したがって、このバージョンに移行すると、既存の認証フローは移行されますが、以前のバージョンの動作は保持されます。認証フローにREQUIREDのエグゼキューションと同じレベルのALTERNATIVEのエグゼキューションが含まれている場合、ALTERNATIVEのエグゼキューションは別のREQUIREDのサブフローに追加されます。"
+
+#. type: Plain text
+msgid ""
+"This strategy should ensure the same or similar behavior of the each "
+"authentication flow as in the previous version. However, you may review the "
+"configuration of your authentication flow and double check that it works as "
+"expected. This recommendation applies in particular for customized "
+"authentication flows with custom authenticator implementations."
+msgstr ""
+"この戦略により、各認証フローの動作が以前のバージョンと同じまたは類似したものになるはずです。ただし、認証フローの設定を確認して、それが期待どおりに機能することを再確認できます。この推奨事項は、カスタム認証システムの実装によるカスタマイズされた認証フローに特に適用されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "OPTIONAL execution requirement removed"
+msgstr "OPTIONALのエグゼキューション要件が削除されました"
+
+#. type: Plain text
+msgid ""
+"Regarding migration, the most important change is removing support for the "
+"OPTIONAL requirement from authentication executions and replacing it with "
+"the CONDITIONAL requirement, which allows more flexibility."
+msgstr ""
+"移行に関して、最も重要な変更は、認証エグゼキューションからOPTIONAL要件のサポートを削除し、それをCONDITIONAL要件に置き換えることです。これにより、柔軟性が向上します。"
+
+#. type: Plain text
+msgid ""
+"OPTIONAL authenticators configured in the previous version are replaced with"
+" the CONDITIONAL subflows. These subflows have the Condition - User "
+"Configured condition configured as first execution, and the previously "
+"OPTIONAL authenticator (for example OTP Form) as second execution. For the "
+"user, the behavior during authentication matches the behavior of the "
+"previous version."
+msgstr ""
+"以前のバージョンで設定されていたオプションのオーセンティケーターは、CONDITIONALサブフローに置き換えられます。これらのサブフローには"
+"、最初のエグゼキューションとして設定された条件-"
+"ユーザー設定条件、および2番目のエグゼキューションとして以前のオプションのオーセンティケーター（たとえば、OTPフォーム）が含まれます。ユーザーにとって、認証中の動作は以前のバージョンの動作と一致します。"
+
+#. type: Title ====
+#, no-wrap
+msgid "SPI Changes"
+msgstr "SPIの変更"
+
+#. type: Plain text
+msgid ""
+"Some changes exist in the Java Authentication SPI and Credential Provider "
+"SPI."
+msgstr "Java認証SPIおよびクレデンシャル・プロバイダーSPIにいくつかの変更があります。"
+
+#. type: Plain text
+msgid ""
+"The interface Authenticator is not changed, but you may be affected if you "
+"develop advanced authenticators that introduce some new credential types "
+"(subclasses of CredentialModel). Changes exist on the CredentialProvider "
+"interface and introduction of some new interfaces such as "
+"CredentialValidator."
+msgstr ""
+"インターフェースAuthenticatorは変更されていませんが、いくつかの新しい認証情報タイプ（CredentialModelのサブクラス）を導入する高度な認証システムを開発すると影響を受ける可能性があります。CredentialProviderインターフェースに変更があり、CredentialValidatorなどの新しいインターフェースが導入されました。"
+
+#. type: Plain text
+msgid ""
+"Also, you may be affected if your authenticator supported the OPTIONAL "
+"execution requirement. It is recommended that you double check the latest "
+"authentication examples in the server development guide for more details."
+msgstr ""
+"また、オーセンティケーターがOPTIONALのエグゼキューション要件をサポートしている場合にも影響を受ける可能性があります。詳細については、サーバー開発ガイドの最新の認証の例を再確認することをお勧めします。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Freemarker template changes"
+msgstr "Freemarkerテンプレートの変更"
+
+#. type: Plain text
+msgid ""
+"Changes exist in the freemarker templates. You may be affected if you have "
+"your own theme with custom freemarker templates for login forms or some "
+"account forms, especially for the forms related to OTP. We recommend that "
+"you review the changes in the Freemarker templates in this version and align"
+" your templates according to it."
+msgstr ""
+"freemarkerテンプレートに変更が加えられています。ログインフォームまたは一部のアカウントフォーム、特にOTPに関連するフォーム用のカスタムFreemarkerテンプレートを含む独自のテーマがある場合、影響を受ける可能性があります。このバージョンのFreemarkerテンプレートの変更を確認し、それに応じてテンプレートを調整することをお勧めします。"
+
+#. type: Title ====
+#, no-wrap
+msgid "User credentials changes"
+msgstr "ユーザー・クレデンシャルの変更"
+
+#. type: Plain text
+msgid ""
+"We added more flexibility around storing user credentials. Among other "
+"things, every user can have multiple credentials of the same type, such as "
+"multiple OTP credentials. Some changes exist in the database schema in "
+"relation to that, however the credentials from the previous version are "
+"updated to the new format. Users can still log in with the passwords or OTP "
+"credentials defined in the previous version."
+msgstr ""
+"ユーザー・クレデンシャルの保存に関する柔軟性が向上しました。特に、すべてのユーザーは、複数のOTPクレデンシャルなど、同じタイプの複数のクレデンシャルを持つことができます。これに関連してデータベース・スキーマにいくつかの変更が存在しますが、以前のバージョンのクレデンシャルが新しい形式に更新されます。ユーザーは引き続き、以前のバージョンで定義されたパスワードまたはOTPクレデンシャルを使用してログインできます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "New optional client scope"
+msgstr "新しいオプションのクライアント・スコープ"
+
+#. type: Plain text
+msgid ""
+"We have added a microprofile-jwt optional client scope to handle the claims "
+"defined in the MicroProfile/JWT Auth Specification. This new client scope "
+"defines protocol mappers to set the username of the authenticated user to "
+"the upn claim and to set the realm roles to the groups claim."
+msgstr ""
+"MicroProfile/JWT Auth Specificationで定義されているリクエストを処理するために、オプションの "
+"`microprofile-jwt` "
+"クライアント・スコープを追加しました。この新しいクライアント・スコープは、認証されたユーザーのユーザー名をupnクレームに、レルムロールをgroupsクレームに設定するためのプロトコル・マッパーを定義します。"
+
+#. type: Plain text
+#, no-wrap
+msgid "Improved handling of user locale"
+msgstr "ユーザーロケールの処理の改善"
+
+#. type: Plain text
+msgid ""
+"A number of improvements have been made to how the locale for the login page"
+" is selected, as well as when the locale is updated for a user. See the "
+"link:{adminguide_link}[{adminguide_name}] for more details."
+msgstr ""
+"ログインページのロケールが選択される方法、およびユーザーのロケールが更新されるタイミングに多くの改良が加えられました。詳細については、 "
+"link:{adminguide_link}[{adminguide_name}] を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Legacy promise in JavaScript adapter"
+msgstr "JavaScriptのアダプターのレガシーPromise"
+
+#. type: Plain text
+msgid ""
+"You no longer need to set promiseType in the JavaScript adapter, and both "
+"are available at the same time. It is recommended to update applications to "
+"use native promise API (then and catch) as soon as possible, as the legacy "
+"API (success and error) will be removed at some point."
+msgstr ""
+"JavaScriptアダプターでpromiseTypeを設定する必要がなくなり、両方を同時に使用できるようになりました。レガシーAPI（successとerror）はいつか削除されるため、できるだけ早くネイティブPromise"
+" API（thenとcatch）を使用するようにアプリケーションを更新することをお勧めします。"
+
+#. type: Title =
+#, no-wrap
+msgid "Deploying Scripts to the Server"
+msgstr "サーバーへのスクリプトのデプロイ"
+
+#. type: Plain text
+msgid ""
+"Until now, administrators were allowed to upload scripts to the server "
+"through the {project_name} Admin Console and the RESTful Admin API. This "
+"capability is now disabled. Users should deploy scripts directly to the "
+"server. For more details, review the "
+"link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}]."
+msgstr ""
+"これまで、管理者は{project_name}管理コンソールとRESTful管理APIを介してサーバーにスクリプトをアップロードすることができました。この機能は現在無効になっています。ユーザーはスクリプトをサーバーに直接デプロイする必要があります。詳細については、"
+" link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}] "
+"を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Client Credentials in the JavaScript adapter"
+msgstr "JavaScriptアダプターのクライアント・クレデンシャル"
+
+#. type: Plain text
+msgid ""
+"In the previous releases, developers were allowed to provide client "
+"credentials to the JavaScript adapter. For now on, this capability was "
+"removed, because client-side apps are not safe to keep secrets.  Ability to "
+"propagate prompt=none to default IDP"
+msgstr ""
+"以前のリリースでは、開発者はクライアントのクレデンシャルをJavaScriptアダプターに提供できました。現時点では、この機能は削除されました。これは、クライアントサイドのアプリがシークレットを保持する上で安全ではないためです。prompt=noneをデフォルトのIDPに伝播する機能"
+
+#. type: Plain text
+msgid ""
+"We have added a switch in the OIDC identity provider configuration named "
+"Accepts prompt=none forward from client to identify IDPs that are able to "
+"handle forwarded requests that include the prompt=none query parameter."
+msgstr ""
+"転送されてきたprompt=noneクエリー・パラメーターを含むリクエストを処理できるIDPを識別するために、 Accepts prompt=none "
+"forward from clientという名前のスイッチをOIDCアイデンティティー・プロバイダーの設定に追加しました。"
+
+#. type: Plain text
+msgid ""
+"Until now, when receiving an auth request with prompt=none, a realm would "
+"return a login_required error if the user is not authenticated in the realm "
+"without checking if the user has been authenticated by an IDP. From now on, "
+"if a default IDP can be determined for the auth request (either by the use "
+"of the kc_idp_hint query param or by setting up a default IDP for the realm)"
+" and if the Accepts prompt=none forward from client switch has been enabled "
+"for the IDP, the auth request is forwarded to the IDP to check if the user "
+"has been authenticated there."
+msgstr ""
+"これまでは、ユーザーがレルムで認証されていない場合、prompt=noneで認証リクエストを受け取ると、レルムはユーザーがIDPによって認証されているかどうかを確認せずにlogin_requiredエラーを返していました。これからは、（kc_idp_hintクエリー・パラメーターを使用するか、レルムのデフォルトIDPを設定することにより、）認証リクエストに対してデフォルトのIDPが決定できる場合と、IDPに対してAccepts"
+" prompt=none forward from "
+"clientスイッチが有効になっている場合、認証リクエストはIDPに転送され、ユーザーがそこで認証されているかどうかを確認します。"
+
+#. type: Plain text
+msgid ""
+"It is important to note that this switch is only taken into account if a "
+"default IDP is specified, in which case we know where to forward the auth "
+"request without having to prompt the user to select an IDP. If a default IDP"
+" cannot be determined, we cannot assume which one will be used to fulfill "
+"the auth request so the request forwarding is not performed."
+msgstr ""
+"このスイッチは、デフォルトのIDPが指定されている場合にのみ考慮されることに注意することが重要です。この場合、ユーザーにIDPの選択を求めることなく、どこに認証リクエストを転送するかがわかります。デフォルトのIDPを決定できない場合、認証リクエストを実行するためにどのIDPが使用されるかを推測できないため、リクエストの転送は実行されません。"
+
+#. type: Title ==
+#, no-wrap
+msgid "New Default Hostname provider"
+msgstr "新しいデフォルト・ホスト名プロバイダー"
+
+#. type: Plain text
+msgid ""
+"The request and fixed hostname providers have been replaced with a new "
+"default hostname provider. The request and fixed hostname providers are now "
+"deprecated and we recommend that you switch to the default hostname provider"
+" as soon as possible."
+msgstr ""
+"リクエストと固定ホスト名プロバイダーは、新しいデフォルトのホスト名プロバイダーに置き換えられました。リクエストおよび固定ホスト名プロバイダーは廃止されました。できるだけ早くデフォルトのホスト名プロバイダーに切り替えることをお勧めします。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Deprecated or removed features"
+msgstr "非推奨または削除された機能"
+
+#. type: Plain text
+msgid "Certain features have a change in status."
+msgstr "特定の機能のステータスが変更されました。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Deprecated methods in token representation Java classes"
+msgstr "トークン表現Javaクラスの非推奨メソッド"
+
+#. type: Plain text
+msgid ""
+"In the year 2038, an int is no longer able to hold the value of seconds "
+"since 1970, as such we are working on updating these to long values. In "
+"token representation there is a further issue.  An int will by default "
+"result in 0 in the JSON representation, while it should not be included."
+msgstr ""
+"2038年には、intは1970年以降の秒の値を保持できなくなります。そのため、これらをlong値に更新する作業を行っています。トークン表現には、さらに問題があります。JSON表現でintはデフォルトで0になることを意味しますが、これを含めることはできません。"
+
+#. type: Plain text
+msgid ""
+"See the link:{apidocs_javadocs_link}[{apidocs_javadocs_name}] for further "
+"details on exact methods that have been deprecated and replacement methods."
+msgstr ""
+"廃止予定の正確なメソッドと代替メソッドの詳細については、 "
+"link:{apidocs_javadocs_link}[{apidocs_javadocs_name}] を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Uploading scripts"
+msgstr "スクリプトのアップロード"
+
+#. type: Plain text
+msgid ""
+"Upload of scripts through admin rest endpoints/console is deprecated. It "
+"will be removed at a future release."
+msgstr "管理RESTエンドポイント/コンソールを介したスクリプトのアップロードは非推奨です。将来のリリースで削除される予定です。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Authorization Services Drools Policy"
+msgstr "認可サービスのDroolsポリシー"
+
+#. type: Plain text
+msgid "The Authorization Services Drools Policy has been removed."
+msgstr "認可サービスのDroolsポリシーが削除されました。"

@@ -3,22 +3,22 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# jic_m_mito <jic-m-mito@nri.co.jp>, 2017
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#. type: Title ===
-#, no-wrap
-msgid "Example using CURL"
-msgstr "CURLを使用した例"
 
 #. type: Title ===
 #, no-wrap
@@ -53,6 +53,16 @@ msgstr ""
 #. type: Plain text
 msgid "For complete documentation see {apidocs_link}[{apidocs_name}]."
 msgstr "完全なドキュメントについては、 {apidocs_link}[{apidocs_name}] を参照してください。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Examples using CURL"
+msgstr "CURLを使用した例"
+
+#. type: Title ====
+#, no-wrap
+msgid "Authenticate with username and password"
+msgstr "ユーザー名とパスワードで認証する"
 
 #. type: Plain text
 msgid ""
@@ -108,6 +118,66 @@ msgstr ""
 "curl \\\n"
 "  -H \"Authorization: bearer eyJhbGciOiJSUz...\" \\\n"
 "  \"http://localhost:8080/auth/admin/realms/master\"\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Authenticate with a service account"
+msgstr "サービス・アカウントで認証する"
+
+#. type: Plain text
+msgid ""
+"Before being able to authenticate against the Admin REST API using a "
+"`client_id` and a `client_secret` you need to make sure the client is "
+"configured as it follows:"
+msgstr ""
+"`client_id` と` client_secret` を使用して管理REST "
+"APIに対して認証できるようにする前に、クライアントが次のように設定されていることを確認する必要があります。"
+
+#. type: Plain text
+msgid ""
+"`client_id` is a **confidential** client that belongs to the realm *master*"
+msgstr "`client_id` は、レルム *master* に属する **confidential** クライアントであること"
+
+#. type: Plain text
+msgid "`client_id` has `Service Accounts Enabled` option enabled"
+msgstr "`client_id` は、 `Service Accounts Enabled` オプションが有効になっていること"
+
+#. type: Plain text
+msgid ""
+"`client_id` has a custom \"Audience\" mapper ** Included Client Audience: "
+"`security-admin-console`"
+msgstr ""
+"`client_id` は、カスタム \"Audience\" マッパーが設定されていること\n"
+"** 含まれるClient Audience： `security-admin-console`"
+
+#. type: Plain text
+msgid ""
+"Finally, check that `client_id` has the role 'admin' assigned in the "
+"\"Service Account Roles\" tab."
+msgstr ""
+"最後に、 `client_id` にService Account Rolesタブで 'admin' のロールが割り当てられていることを確認します。"
+
+#. type: Plain text
+msgid ""
+"After that, you will be able to obtain an access token for the Admin REST "
+"API using `client_id` and `client_secret`:"
+msgstr ""
+"その後、 `client_id` と `client_secret` を使用して、以下のように管理REST APIのアクセストークンを取得できます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"curl \\\n"
+"  -d \"client_id=<YOUR_CLIENT_ID>\" \\\n"
+"  -d \"client_secret=<YOUR_CLIENT_SECRET>\" \\\n"
+"  -d \"grant_type=client_credentials\" \\\n"
+"  \"http://localhost:8080/auth/realms/master/protocol/openid-connect/token\"\n"
+msgstr ""
+"curl \\\n"
+"  -d \"client_id=<YOUR_CLIENT_ID>\" \\\n"
+"  -d \"client_secret=<YOUR_CLIENT_SECRET>\" \\\n"
+"  -d \"grant_type=client_credentials\" \\\n"
+"  \"http://localhost:8080/auth/realms/master/protocol/openid-connect/token\"\n"
 
 #. type: Title ===
 #, no-wrap

@@ -64,7 +64,7 @@ fi
 # Build translated documents
 for l in $TARGET_LANG; do
     cd $TRANSLATED_DIR/$l
-    mvn install -DskipTests=true -Dasciidoctor.attributes="project_doc_base_url=link:.." 
+    mvn install -DskipTests=true -Dasciidoctor.attributes="project_doc_base_url=.." 
     if [ "$?" -ne 0 ]; then
         echo "Translation failed!"
         exit 1

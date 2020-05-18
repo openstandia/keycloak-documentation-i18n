@@ -30,6 +30,71 @@ msgstr "1.9.0への移行"
 msgid "SAML SP Client Adapter Changes"
 msgstr "SAML SPクライアント・アダプターの変更"
 
+#. type: Labeled list
+#, no-wrap
+msgid "Dependency updates"
+msgstr "依存関係の更新"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Configuration changes"
+msgstr "設定の変更"
+
+#. type: Title ====
+#, no-wrap
+msgid "Authentication flows changes"
+msgstr "認証フローの変更"
+
+#. type: Labeled list
+#, no-wrap
+msgid "OPTIONAL execution requirement removed"
+msgstr "OPTIONALのエグゼキューション要件が削除されました"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Freemarker template changes"
+msgstr "Freemarkerテンプレートの変更"
+
+#. type: Title ====
+#, no-wrap
+msgid "User credentials changes"
+msgstr "ユーザー・クレデンシャルの変更"
+
+#. type: Title ====
+#, no-wrap
+msgid "New optional client scope"
+msgstr "新しいオプションのクライアント・スコープ"
+
+#. type: Plain text
+#, no-wrap
+msgid "Improved handling of user locale"
+msgstr "ユーザーロケールの処理の改善"
+
+#. type: Title ====
+#, no-wrap
+msgid "Legacy promise in JavaScript adapter"
+msgstr "JavaScriptのアダプターのレガシーPromise"
+
+#. type: Title =
+#, no-wrap
+msgid "Deploying Scripts to the Server"
+msgstr "サーバーへのスクリプトのデプロイ"
+
+#. type: Title ====
+#, no-wrap
+msgid "Client Credentials in the JavaScript adapter"
+msgstr "JavaScriptアダプターのクライアント・クレデンシャル"
+
+#. type: Title ==
+#, no-wrap
+msgid "New Default Hostname provider"
+msgstr "新しいデフォルト・ホスト名プロバイダー"
+
+#. type: Title ====
+#, no-wrap
+msgid "Deprecated methods in token representation Java classes"
+msgstr "トークン表現Javaクラスの非推奨メソッド"
+
 #. type: Title ====
 #, no-wrap
 msgid "New Password Hashing algorithms"
@@ -374,16 +439,6 @@ msgstr ""
 
 #. type: Labeled list
 #, no-wrap
-msgid "Dependency updates"
-msgstr "依存関係の更新"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Configuration changes"
-msgstr "設定の変更"
-
-#. type: Labeled list
-#, no-wrap
 msgid "Cross-Datacenter Replication changes"
 msgstr "クロス・データセンター・レプリケーションの変更"
 
@@ -467,11 +522,6 @@ msgstr "移行に伴う変更"
 msgid "Migrating to 9.0.1"
 msgstr "9.0.1への移行"
 
-#. type: Title ====
-#, no-wrap
-msgid "Legacy promise in JavaScript adapter"
-msgstr "JavaScriptのアダプターのレガシーPromise"
-
 #. type: Plain text
 msgid ""
 "It is no longer necessary to set promiseType in the JavaScript adapter, and "
@@ -484,15 +534,50 @@ msgstr ""
 "`success` と `error` ）はいつか削除されるため、できるだけ早くネイティブPromise API（ `then` と `catch` "
 "）を使用するようにアプリケーションを更新することをお勧めします。"
 
+#. type: Title ====
+#, no-wrap
+msgid "Duplicated top level groups"
+msgstr "重複する最上位グループ"
+
+#. type: Plain text
+msgid ""
+"Version 9.0.1 fixes a problem which could create duplicated top level groups"
+" in the realm. Nevertheless the existence of previous duplicated groups "
+"makes the upgrade process fail. The {project_name} server can be affected by"
+" this issue if it is using a H2, MariaDB, MySQL or PostgreSQL database. "
+"Before launching the upgrade, check if the server contains duplicated top "
+"level groups. For example the following SQL query can be executed at "
+"database level to list them:"
+msgstr ""
+"バージョン9.0.1では、レルムに重複した最上位グループが作成される可能性がある問題が修正されています。それでも、以前に重複したグループが存在すると、アップグレード・プロセスが失敗します。{project_name}サーバーがH2、MariaDB、MySQLまたはPostgreSQL"
+" "
+"Databaseを使用している場合、この問題の影響を受ける可能性があります。アップグレードを開始する前に、サーバーに重複した最上位グループが含まれているかどうかを確認してください。たとえば、次のSQLクエリーをデータベース・レベルで実行して、それらを一覧表示できます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is "
+"NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
+msgstr ""
+"SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is "
+"NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
+
+#. type: Plain text
+msgid ""
+"Only one top level group can exist in each realm with the same name. "
+"Duplicates should be reviewed and deleted before the upgrade. The error in "
+"the upgrade contains the message `Change Set META-INF/jpa-"
+"changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak"
+" failed.`"
+msgstr ""
+"各レルムに同じ名前で存在できる最上位グループは1つだけです。アップグレードの前に、重複を確認して削除する必要があります。アップグレードのエラーには、 "
+"`Change Set META-INF/jpa-changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-"
+"null-constraint::keycloak failed.` というメッセージが含まれます。"
+
 #. type: Title ===
 #, no-wrap
 msgid "Migrating to 9.0.0"
 msgstr "9.0.0への移行"
-
-#. type: Title ==
-#, no-wrap
-msgid "Improved handling of user locale"
-msgstr "ユーザーロケールの処理の改善"
 
 #. type: Plain text
 msgid ""
@@ -507,11 +592,6 @@ msgid ""
 msgstr ""
 "詳細については、 link:{adminguide_link}#_user_locale_selection[{adminguide_name}] "
 "を参照してください。"
-
-#. type: Title ====
-#, no-wrap
-msgid "Deprecated methods in token representation Java classes"
-msgstr "トークン表現Javaクラスの非推奨メソッド"
 
 #. type: Plain text
 msgid ""
@@ -565,17 +645,12 @@ msgid ""
 "in particular if you have some more customized authentication flows with "
 "custom authenticator implementations."
 msgstr ""
-"以前のバージョンでは、同じレベルの同じ認証フロー内にREQUIREDとALTERNATIVEのエグゼキューションを設定することが可能でした。このアプローチにはいくつかの問題があり、認証SPIでリファクタリングを行いました。つまり、これはもはや有効とは見なされません。ALTERNATIVEとREQUIREDのエグゼキューションが同じレベルで設定されている場合、ALTERNATIVEのエグゼキューションは無効と見なされます。そのため、最新バージョンに移行すると、既存の認証フローは自動的に移行され、前のバージョンと同じ動作が維持されます。一部のREQUIREDのエグゼキューションと同じレベルのALTERNATIVEのエグゼキューションが含まれている場合、ALTERNATIVEのエグゼキューションは別のREQUIREDサブフローに追加されます。これにより、前のバージョンと同様に、特定の認証フローの動作が同じまたは同様になります。認証フローの設定を再確認してテストし、すべてが期待どおりに機能することを再確認することを常にお勧めします。この推奨事項は、カスタム認証システムの実装を使用してさらにカスタマイズされた認証フローがある場合に特に当てはまります。"
+"以前のバージョンでは、同じレベルの同じ認証フロー内にREQUIREDとALTERNATIVEのエグゼキューションを設定することが可能でした。このアプローチにはいくつかの問題があり、認証SPIでリファクタリングを行いました。つまり、これはもはや有効とは見なされません。ALTERNATIVEとREQUIREDのエグゼキューションが同じレベルで設定されている場合、ALTERNATIVEのエグゼキューションは無効と見なされます。そのため、最新バージョンに移行すると、既存の認証フローは自動的に移行され、前のバージョンと同じ動作が維持されます。一部のREQUIREDのエグゼキューションと同じレベルのALTERNATIVEのエグゼキューションが含まれている場合、ALTERNATIVEのエグゼキューションは別のREQUIREDサブフローに追加されます。これにより、前のバージョンと同様に、特定の認証フローの動作が同じまたは同様になります。認証フローの設定を再確認してテストし、すべてが期待どおりに機能することを再確認することを常にお勧めします。この推奨事項は、カスタム・オーセンティケーターの実装を使用してさらにカスタマイズされた認証フローがある場合に特に当てはまります。"
 
 #. type: Title ===
 #, no-wrap
 msgid "Migrating to 8.0.0"
 msgstr "8.0.0への移行"
-
-#. type: Title ==
-#, no-wrap
-msgid "New Default Hostname provider"
-msgstr "新しいデフォルト・ホスト名プロバイダー"
 
 #. type: Plain text
 msgid ""
@@ -617,11 +692,6 @@ msgstr ""
 "`standalone(-ha).xml` と `domain.xml` "
 "にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
 
-#. type: Title =
-#, no-wrap
-msgid "Deploying Scripts to the Server"
-msgstr "サーバーへのスクリプトのデプロイ"
-
 #. type: Plain text
 msgid ""
 "Until now, administrators were allowed to upload scripts to the server "
@@ -641,11 +711,6 @@ msgstr ""
 "現時点では、この機能はデフォルトで *無効* "
 "であり、ユーザーはスクリプトをサーバーに直接デプロイすることを選択する必要があります。詳細については、link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}]を参照してください。"
 
-#. type: Title ====
-#, no-wrap
-msgid "Client Credentials in the JavaScript adapter"
-msgstr "JavaScriptアダプターのクライアント・クレデンシャル"
-
 #. type: Plain text
 msgid ""
 "In the previous releases, developers were allowed to provide client "
@@ -655,21 +720,11 @@ msgstr ""
 "以前のリリースでは、開発者はクライアントのクレデンシャルをJavaScriptアダプターに提供できました。現時点では、この機能は *削除* "
 "されました。これは、クライアントサイドのアプリがシークレットを保持する上で安全ではないためです。"
 
-#. type: Title ====
-#, no-wrap
-msgid "Authentication flows changes"
-msgstr "認証フローの変更"
-
 #. type: Plain text
 msgid ""
 "We did some refactoring and improvements related to the authentication "
 "flows, which requires some attention during migration."
 msgstr "認証フローに関連するリファクタリングと改善をいくつか行いました。これにより、移行の際に注意が必要です。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "OPTIONAL execution requirement removed"
-msgstr "OPTIONALのエグゼキューション要件が削除されました"
 
 #. type: Plain text
 msgid ""
@@ -711,11 +766,6 @@ msgstr ""
 "インターフェイスに変更があり、 `CredentialValidator` "
 "のようないくつかの新しいインターフェイスが導入されています。また、オーセンティケーターがOPTIONALのエグゼキューション要件をサポートしている場合、影響を受ける可能性があります。詳細については、サーバー開発ガイドの最新の認証の例を再確認することをお勧めします。"
 
-#. type: Labeled list
-#, no-wrap
-msgid "Freemarker template changes"
-msgstr "Freemarkerテンプレートの変更"
-
 #. type: Plain text
 msgid ""
 "There are also some changes in the freemarker templates. You may be affected"
@@ -725,11 +775,6 @@ msgid ""
 "latest {project_name} and align your templates according to it."
 msgstr ""
 "Freemarkerテンプレートにもいくつかの変更があります。ログインフォームまたは一部のアカウント・フォーム、特にOTPに関連するフォームのカスタムFreemarkerテンプレートを使用した独自のテーマがある場合、影響を受ける可能性があります。最新の{project_name}のFreemarkerテンプレートの変更を再確認し、それに応じてテンプレートを調整することをお勧めします。"
-
-#. type: Title ====
-#, no-wrap
-msgid "User credentials changes"
-msgstr "ユーザー・クレデンシャルの変更"
 
 #. type: Plain text
 msgid ""
@@ -796,11 +841,6 @@ msgid ""
 " example, Infinispan is now 9.4.8.Final."
 msgstr ""
 "依存関係が、WildFly 16サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.4.8.Finalです。"
-
-#. type: Title ====
-#, no-wrap
-msgid "New optional client scope"
-msgstr "新しいオプションのクライアント・スコープ"
 
 #. type: Plain text
 msgid ""

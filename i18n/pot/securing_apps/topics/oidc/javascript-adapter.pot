@@ -197,9 +197,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Starting with Chrome version 80 (released on February 2020), silent `check-"
-"sso` functionality will work only when the SSL / TLS connection is "
-"configured on the {project_name} side."
+"_Silent_ `check-sso` functionality is limited in some modern browsers. "
+"Please see link:#_modern_browsers[Modern Browsers with Tracking Protection "
+"Section]."
 msgstr ""
 
 #. type: Plain text
@@ -308,12 +308,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Starting with Chrome version 80 (released on February 2020), status iframe "
-"will only be able to see the special cookie over the SSL / TLS connection "
-"configured on the {project_name} side. Using an insecure connection may lead "
-"to redirecting to {project_name} every time iframe checks the status. You "
-"can avoid this behavior by disabling iframe or link:{installguide_link}"
-"#_setting_up_ssl[configuring the SSL / TLS] on the {project_name} side."
+"Session Status iframe functionality is limited in some modern browsers. "
+"Please see link:#_modern_browsers[Modern Browsers with Tracking Protection "
+"Section]."
 msgstr ""
 
 #. type: Title ====
@@ -559,6 +556,91 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
+msgid "Custom Adapters"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Sometimes it's necessary to run the JavaScript client in environments that "
+"are not supported by default (such as Capacitor). To make it possible to use "
+"the JavasScript client in these kind of unknown environments is possible to "
+"pass a custom adapter. For example a 3rd party library could provide such an "
+"adapter to make it possible to run the JavaScript client without issues:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"import Keycloak from 'keycloak-js';\n"
+"import KeycloakCapacitorAdapter from 'keycloak-capacitor-adapter';\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "const keycloak = new Keycloak();\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"keycloak.init({\n"
+"    adapter: KeycloakCapacitorAdapter,\n"
+"});\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This specific package does not exist, but it gives a pretty good example of "
+"how such an adapter could be passed into the client."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"It's also possible to make your own adapter, to do so you will have to "
+"implement the methods described in the `KeycloakAdapter` interface. For "
+"example the following TypeScript code ensures that all of the methods are "
+"properly implemented:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "import Keycloak, { KeycloakAdapter } from 'keycloak-js';\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"// Implement the 'KeycloakAdapter' interface so that all required methods are guaranteed to be present.\n"
+"const MyCustomAdapter: KeycloakAdapter = {\n"
+"    login(options) {\n"
+"        // Write your own implementation here.\n"
+"    }\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    // The other methods go here...\n"
+"};\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"keycloak.init({\n"
+"    adapter: MyCustomAdapter,\n"
+"});\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Naturally you can also do this without TypeScript by omitting the type "
+"information, but ensuring implementing the interface properly will then be "
+"left entirely up to you."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
 msgid "Earlier Browsers"
 msgstr ""
 
@@ -584,6 +666,84 @@ msgstr ""
 
 #. type: Plain text
 msgid "Promise - https://github.com/stefanpenner/es6-promise"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Modern Browsers with Tracking Protection"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the latest versions of some browsers various cookies policies are applied "
+"to prevent tracking of the users by third-parties, like SameSite in Chrome "
+"or completely blocked third-party cookies. It is expected that those "
+"policies will become even more restrictive and adopted by other browsers "
+"over time, eventually leading to cookies in third-party contexts to be "
+"completely unsupported and blocked by the browsers. The adapter features "
+"affected by this might get deprecated in the future."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Javascript adapter relies on third-party cookies for Session Status iframe, "
+"_silent_ `check-sso` and partially also for regular (non-silent) `check-"
+"sso`. Those features have limited functionality or are completely disabled "
+"based on how the browser is restrictive regarding cookies. The adapter tries "
+"to detect this setting and reacts accordingly."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Browsers with \"SameSite=Lax by Default\" Policy"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"All features are supported if SSL / TLS connection is configured on the "
+"{project_name} side as well as on the application side. See link:"
+"{installguide_link}#_setting_up_ssl[configuring the SSL / TLS]. Affected is "
+"e.g. Chrome starting with version 84."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Browsers with Blocked Third-Party Cookies"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Session Status iframe is not supported and is automatically disabled if such "
+"browser behavior is detected by the JS adapter.  This means the adapter "
+"cannot use session cookie for Single Sign-Out detection and have to rely "
+"purely on tokens. This implies that when user logs out in another window, "
+"the application using JavaScript adapter won't be logged out until it tries "
+"to refresh the Access Token. Therefore, it is recommended to set Access "
+"Token Lifespan to relatively short time, so that the logout is detected "
+"rather sooner than later. Please see link:{adminguide_link}"
+"#_timeouts[Session and Token Timeouts]."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"_Silent_ `check-sso` is not supported and falls back to regular (non-silent) "
+"`check-sso` by default. This behaviour can be changed by setting "
+"`silentCheckSsoFallback: false` in the options passed to the `init` method. "
+"In this case, `check-sso` will be completely disabled if restrictive browser "
+"behavior is detected."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Regular `check-sso` is affected as well. Since Session Status iframe is "
+"unsupported, an additional redirect to {project_name} has to be made when "
+"the adapter is initialized to check user's login status. This is different "
+"from standard behavior when the iframe is used to tell whether the user is "
+"logged in, and the redirect is performed only when logged out."
+msgstr ""
+
+#. type: Plain text
+msgid "An affected browser is e.g. Safari starting with version 13.1."
 msgstr ""
 
 #. type: Title ====
@@ -803,7 +963,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "useNonce - Adds a cryptographic nonce to verify that the authentication "
-"response matches the request (default is true)."
+"response matches the request (default is `true`)."
 msgstr ""
 
 #. type: Plain text
@@ -816,6 +976,12 @@ msgstr ""
 msgid ""
 "silentCheckSsoRedirectUri - Set the redirect uri for silent authentication "
 "check if onLoad is set to 'check-sso'."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"silentCheckSsoFallback - Enables fall back to regular `check-sso` when "
+"_silent_ `check-sso` is not supported by the browser (default is `true`)."
 msgstr ""
 
 #. type: Plain text

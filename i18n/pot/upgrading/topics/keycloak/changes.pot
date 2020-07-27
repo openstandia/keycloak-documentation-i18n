@@ -51,6 +51,24 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
+msgid "Duplicated top level groups"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Only one top level group can exist in each realm with the same name. "
+"Duplicates should be reviewed and deleted before the upgrade. The error in "
+"the upgrade contains the message `Change Set META-INF/jpa-changelog-9.0.1."
+"xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak failed.`"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
 msgid "User credentials changes"
 msgstr ""
 
@@ -433,6 +451,158 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
+msgid "Migrating to 11.0.0"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 20"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 20 as the underlying "
+"container. This does not directly involve any specific {project_name} server "
+"functionality, but there are few changes related to the migration, which are "
+"worth mentioning."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 20 server. For "
+"example, Infinispan is now 10.1.8.Final."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and `domain."
+"xml` files. You should follow the <<_install_new_version>> section to handle "
+"the migration of configuration files automatically."
+msgstr ""
+
+#. type: Plain text
+msgid "not guaranteed as they are not tested anymore."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"It is recommended to use the `protocolVersion` property added to the `remote-"
+"store` element when configuring Infinispan caches."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"When connecting to the {jdgserver_name} server 9.4.18, the recommended version of the hotrod protocol version is 2.9 as the Infinispan\n"
+"library version differs among {project_name} server and {jdgserver_name} server. For more details, see the\n"
+"Cross-Datacenter documentation.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "It is recommended to use `remoteStoreSecurityEnabled` property under `connectionsInfinispan` subsystem. For more details,\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "see the Cross-Datacenter documentation.\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "LDAP no-import bugfix"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the previous {project_name} version, when the LDAP provider was "
+"configured with `Import Users` OFF, it was possible to update the user even "
+"if some of non-LDAP mapped attributes were changed. This situation resulted "
+"in confusing behavior, when the attribute appeared to be updated, but it was "
+"not. In the current version, the update is not allowed to be performed at "
+"all if any non-LDAP mapped attributes are changed."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This should not affect most of the deployments, but some can be affected "
+"under some rare circumstances. For example if you previously tried to update "
+"a user with the admin REST API and the user had some incorrect attribute "
+"changes, the update was possible. With the current version, the update is "
+"not possible and you will be immediately informed about the reason."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "UserModel changes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The fields `username`, `email`, `firstName` and `lastName` in the "
+"`UserModel` are migrated to custom attributes as a preparation for adding "
+"more sophisticated user profiles to {project_name} in an upcoming version.  "
+"If a database contains users with custom attributes of that exact name, the "
+"custom attributes will need to be migrated before upgrading. This migration "
+"does not occur automatically. Otherwise, they will not be read from the "
+"database anymore and possibly deleted.  This situation implies that the "
+"`username` can now also be accessed and set via `UserModel."
+"getFirstAttribute(UserModel.USERNAME)`. Similar implications exist for other "
+"fields.  Implementors of SPIs subclassing the `UserModel` directly or "
+"indirectly should ensure that the behavior between `setUsername` and "
+"`setSingleAttribute(UserModel.USERNAME, ...)` (and similar for the other "
+"fields) is consistent.  Users of the policy evaluation feature have to adapt "
+"their policies if they use the number of attributes in their evaluations "
+"since every user will now have four new attributes by default."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The public API of `UserModel` has not changed, so no changes to frontend "
+"resources or SPIs accessing user data should be necessary.  The database has "
+"also not changed, yet."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Instagram IdP migrated to new the API"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Instagram IdP now uses new API as the old legacy API was deprecated. This "
+"requires getting new API credentials. For details, please refer to the link:"
+"{adminguide_link}#instagram[{adminguide_name}]."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Special attention is required for existing users that use Instagram IdP, "
+"specially the ones for whom it is the only authentication option. Such users "
+"have to login to Keycloak using Instagram IdP before September 30th, 2020. "
+"After that day they'll have to use a different authentication method (like "
+"password) to login to manually update their Instagram social link, or create "
+"a new account in Keycloak. This is because Instagram user IDs are not "
+"compatible between the old and new API, however the new API temporarily "
+"returns both new and old user IDs to allow migration. Keycloak automatically "
+"migrates the ID once user logs in."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Non-standard token introspection endpoint removed"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In previous versions, Keycloak advertized two introspection endpoints: "
+"`token_introspection_endpoint` and `introspection_endpoint`.  The latter is "
+"the one defined by https://tools.ietf.org/html/rfc8414#section-2[RFC-8414]. "
+"The former, previously deprecated, has now been removed."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 9.0.1"
 msgstr ""
 
@@ -445,11 +615,6 @@ msgid ""
 "point."
 msgstr ""
 
-#. type: Title ====
-#, no-wrap
-msgid "Duplicated top level groups"
-msgstr ""
-
 #. type: Plain text
 msgid ""
 "Version 9.0.1 fixes a problem which could create duplicated top level groups "
@@ -459,19 +624,6 @@ msgid ""
 "launching the upgrade, check if the server contains duplicated top level "
 "groups. For example the following SQL query can be executed at database "
 "level to list them:"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Only one top level group can exist in each realm with the same name. "
-"Duplicates should be reviewed and deleted before the upgrade. The error in "
-"the upgrade contains the message `Change Set META-INF/jpa-changelog-9.0.1."
-"xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak failed.`"
 msgstr ""
 
 #. type: Title ===
@@ -571,13 +723,6 @@ msgstr ""
 msgid ""
 "The dependencies were updated to the versions used by Wildfly 18 server. For "
 "example, Infinispan is now 9.4.16.Final."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"There are few configuration changes in the `standalone(-ha).xml` and `domain."
-"xml` files. You should follow the <<_install_new_version>> section to handle "
-"the migration of configuration files automatically."
 msgstr ""
 
 #. type: Plain text
@@ -697,7 +842,7 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 16 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but there are few changes related to the migration, which "
+"functionality, but there are few changes related to the migration, which are "
 "worth mentioning."
 msgstr ""
 

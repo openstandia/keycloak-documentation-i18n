@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Hiroyuki Wada <wadahiro@gmail.com>, 2017
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # 
 #, fuzzy
@@ -19,27 +19,46 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: Block title
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
 #. type: Title ===
 #, no-wrap
-msgid "Configuring the Subsystem"
-msgstr "サブシステムの設定"
+msgid "Modifying the {appserver_name} instance"
+msgstr "{appserver_name}インスタンスの変更"
 
 #. type: Plain text
 msgid ""
-"To configure the {appserver_name} instance that the application is deployed "
-"on so that this app is secured by {project_name}, complete the following "
-"steps."
+"The {appserver_name} servlet application requires additional configuration "
+"before it is secured by {project_name}."
 msgstr ""
-"このアプリケーションが{project_name}によって保護されるように、アプリケーションがデプロイされている{appserver_name}インスタンスを構成するには、次の手順を実行します。"
+"{appserver_name}サーブレット・アプリケーションは、{project_name}によってセキュリティー保護される前に追加の設定が必要です。"
+
+#. type: Plain text
+msgid "You created a client named *vanilla* in the *demo* realm."
+msgstr "*demo* レルムに *vanilla* という名前のクライアントを作成していること"
+
+#. type: Plain text
+msgid "You saved a template XML file for this client."
+msgstr "このクライアントのテンプレートXMLファイルを保存していること"
 
 #. type: Plain text
 msgid ""
-"Open the `standalone/configuration/standalone.xml` file in the "
-"{appserver_name} instance that the application is deployed on and search for"
-" the following text:"
+"Go to the `standalone/configuration` directory in your {appserver_name} root"
+" directory."
 msgstr ""
-"アプリケーションがデプロイされた{appserver_name}インスタンス内の "
-"`standalone/configuration/standalone.xml` ファイルを開き、以下のテキストを検索します。"
+"{appserver_name}のルート・ディレクトリーの `standalone/configuration` ディレクトリーに移動します。"
+
+#. type: Plain text
+msgid "Open the `standalone.xml` file and search for the following text:"
+msgstr "`standalone.xml` ファイルを開き、次のテキストを検索します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -48,14 +67,9 @@ msgstr "<subsystem xmlns=\"urn:jboss:domain:keycloak:1.1\"/>\n"
 
 #. type: Plain text
 msgid ""
-"Modify this text to prepare the file for pasting in contents from the "
-"*Keycloak OIDC JBoss Subsystem XML* template we obtained from {project_name}"
-" admin console *Installation* tab by changing the XML entry from self-"
-"closing to using a pair of opening and closing tags:"
-msgstr ""
-"このテキストを変更して、{project_name}管理コンソールの *Installation* タブで取得した *Keycloak OIDC "
-"JBoss Subsystem XML* テンプレートの内容をファイルにペーストする準備をします。XMLエントリーを自己クローズ（self-"
-"closing）から一対の開始タグと終了タグに変更します。"
+"Change the XML entry from self-closing to using a pair of opening and "
+"closing tags as shown here:"
+msgstr "次に示すように、自己終了のXMLエントリーを開始タグと終了タグのペアを使用するように変更します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -68,9 +82,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Paste the contents of the template within the `<subsystem>` element, as "
+"Paste the contents of the XML template within the `<subsystem>` element, as "
 "shown in this example:"
-msgstr "この例に示すように、 `<subsystem>` の要素内のテンプレートの内容をペーストします。"
+msgstr "この例に示すように、 `<subsystem>` の要素内のXMLテンプレートの内容をペーストします。"
 
 #. type: delimited block -
 #, no-wrap
@@ -96,8 +110,8 @@ msgstr ""
 "</subsystem>\n"
 
 #. type: Plain text
-msgid "Change the `name` to `vanilla.war`:"
-msgstr "次のように `name` を `vanilla.war` に変更してください。"
+msgid "Change `WAR MODULE NAME.war` to `vanilla.war`:"
+msgstr "`WAR MODULE NAME.war` を `vanilla.war` に変更します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -115,13 +129,3 @@ msgstr ""
 #. type: Plain text
 msgid "Reboot the application server."
 msgstr "アプリケーション・サーバーを再起動します。"
-
-#. type: Plain text
-msgid ""
-"Go to http://localhost:8080/vanilla and click *Login*. When the "
-"{project_name} login page opens, log in using the user you created in "
-"<<_create-new-user, Creating a New User>>."
-msgstr ""
-"http://localhost:8080/vanilla に移動して *Login* "
-"をクリックします。{project_name}ログインページが開いたら、<<_create-new-user, "
-"新規ユーザーの作成>>で作成したユーザーを使用してログインします。"

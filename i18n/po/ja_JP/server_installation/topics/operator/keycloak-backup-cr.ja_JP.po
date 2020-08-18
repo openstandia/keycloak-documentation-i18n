@@ -1,0 +1,415 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#. type: Block title
+#, no-wrap
+msgid "Additional resources"
+msgstr "追加のリソース"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Plain text
+msgid "You have a YAML file for this custom resource."
+msgstr "このカスタムリソース用のYAMLファイルがあること"
+
+#. type: Plain text
+msgid ""
+"You have cluster-admin permission or an equivalent level of permissions "
+"granted by an administrator."
+msgstr "cluster-adminパーミッションまたは同等のレベルのパーミッションが管理者によって付与されていること"
+
+#. type: Title ===
+#, no-wrap
+msgid "Scheduling database backups"
+msgstr "データベース・バックアップのスケジュール"
+
+#. type: Plain text
+msgid ""
+"You can use the Operator to schedule automatic backups of the database as "
+"defined by custom resources. The custom resource triggers a backup job"
+msgstr ""
+"Operatorを使用して、カスタムリソースで定義されているデータベースの自動バックアップをスケジュールできます。カスタムリソースはバックアップ・ジョブをトリガーし、"
+
+#. type: Plain text
+msgid "(or a `CronJob` in the case of Periodic Backups)"
+msgstr "（定期的なバックアップの場合は「CronJob」）"
+
+#. type: Plain text
+msgid "and reports back its status."
+msgstr "そのステータスを報告します。"
+
+#. type: Plain text
+msgid "Two options exist to schedule backups:"
+msgstr "バックアップをスケジュールするには、次の2つのオプションがあります。"
+
+#. type: Plain text
+msgid "xref:_backups-cr-aws[Backing up to AWS S3 storage]"
+msgstr "xref:_backups-cr-aws[AWS S3ストレージへのバックアップ]"
+
+#. type: Plain text
+msgid "xref:_backups-local-cr[Backing up to local storage]"
+msgstr "xref:_backups-local-cr[ローカル・ストレージへのバックアップ]"
+
+#. type: Plain text
+msgid ""
+"If you have AWS S3 storage, you can perform a one-time backup or periodic "
+"backups. If you do not have AWS S3 storage, you can back up to local "
+"storage."
+msgstr ""
+"AWS S3ストレージがある場合は、1回限りのバックアップまたは定期的なバックアップを実行できます。AWS "
+"S3ストレージがない場合は、ローカル・ストレージにバックアップできます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Backing up to AWS S3 storage"
+msgstr "AWS S3ストレージへのバックアップ"
+
+#. type: Plain text
+msgid ""
+"You can back up your database to AWS S3 storage one time or periodically. To"
+" back up your data periodically, enter a valid `CronJob` into the "
+"`schedule`."
+msgstr ""
+"データベースをAWS S3ストレージに1回または定期的にバックアップできます。データを定期的にバックアップするには、有効な `CronJob` を "
+"`schedule` に入力してください。"
+
+#. type: Plain text
+msgid ""
+"For AWS S3 storage, you create a YAML file for the backup custom resource "
+"and a YAML file for the AWS secret. The backup custom resource requires a "
+"YAML file with the following structure:"
+msgstr ""
+"AWS "
+"S3ストレージの場合、バックアップ・カスタムリソース用のYAMLファイルとAWSシークレット用のYAMLファイルを作成します。バックアップ・カスタムリソースには、次の構造のYAMLファイルが必要です。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: KeycloakBackup\n"
+"metadata:\n"
+"  name: <CR Name>\n"
+"spec:\n"
+"  aws:\n"
+"    # Optional - used only for Periodic Backups.\n"
+"    # Follows usual crond syntax (for example, use \"0 1 * * *\" to perform the backup every day at 1 AM.)\n"
+"    schedule: <Cron Job Schedule>\n"
+"    # Required - the name of the secret containing the credentials to access the S3 storage\n"
+"    credentialsSecretName: <A Secret containing S3 credentials>\n"
+msgstr ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: KeycloakBackup\n"
+"metadata:\n"
+"  name: <CR Name>\n"
+"spec:\n"
+"  aws:\n"
+"    # Optional - used only for Periodic Backups.\n"
+"    # Follows usual crond syntax (for example, use \"0 1 * * *\" to perform the backup every day at 1 AM.)\n"
+"    schedule: <Cron Job Schedule>\n"
+"    # Required - the name of the secret containing the credentials to access the S3 storage\n"
+"    credentialsSecretName: <A Secret containing S3 credentials>\n"
+
+#. type: Plain text
+msgid "The AWS secret requires a YAML file with the following structure:"
+msgstr "AWSシークレットには、次の構造のYAMLファイルが必要です。"
+
+#. type: Block title
+#, no-wrap
+msgid "AWS S3 `Secret`"
+msgstr "AWS S3 `Secret`"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"apiVersion: v1\n"
+"kind: Secret\n"
+"metadata:\n"
+"  name: <Secret Name>\n"
+"type: Opaque\n"
+"stringData:\n"
+"  AWS_S3_BUCKET_NAME: <S3 Bucket Name>\n"
+"  AWS_ACCESS_KEY_ID: <AWS Access Key ID>\n"
+"  AWS_SECRET_ACCESS_KEY: <AWS Secret Key>\n"
+msgstr ""
+"apiVersion: v1\n"
+"kind: Secret\n"
+"metadata:\n"
+"  name: <Secret Name>\n"
+"type: Opaque\n"
+"stringData:\n"
+"  AWS_S3_BUCKET_NAME: <S3 Bucket Name>\n"
+"  AWS_ACCESS_KEY_ID: <AWS Access Key ID>\n"
+"  AWS_SECRET_ACCESS_KEY: <AWS Secret Key>\n"
+
+#. type: Plain text
+msgid ""
+"Your Backup custom resource YAML file includes a `credentialsSecretName` "
+"that references a `Secret` containing AWS S3 credentials."
+msgstr ""
+"BackupカスタムリソースYAMLファイルには、AWS S3の認証情報を含む `Secret` を参照する "
+"`credentialsSecretName` が含まれています。"
+
+#. type: Plain text
+msgid "Your `KeycloakBackup` custom resource has `aws` sub-properties."
+msgstr "`KeycloakBackup` カスタムリソースには `aws` サブプロパティーがあります。"
+
+#. type: Plain text
+msgid ""
+"You have a YAML file for the AWS S3 Secret that includes a `<Secret Name>` "
+"that matches the one identified in the backup custom resource."
+msgstr ""
+"AWS S3シークレットのYAMLファイルがあり、バックアップ・カスタムリソースで識別されたものと一致する `<Secret Name>` "
+"が含まれています。"
+
+#. type: Plain text
+msgid ""
+"Create the secret with credentials: `{create_cmd} -f <secret_for_aws>.yaml`."
+" For example:"
+msgstr ""
+"`{create_cmd} -f <secret_for_aws>.yaml` のようにクレデンシャルを使用してシークレットを作成します。たとえば、"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd} -f secret.yaml\n"
+"keycloak.keycloak.org/aws_s3_secret created\n"
+msgstr ""
+"$ {create_cmd} -f secret.yaml\n"
+"keycloak.keycloak.org/aws_s3_secret created\n"
+
+#. type: Plain text
+msgid ""
+"Create a backup job: `{create_cmd} -f <backup_crname>.yaml`. For example:"
+msgstr "`{create_cmd} -f <secret_for_aws>.yaml` のようにバックアップジョブを作成します。たとえば、"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd} -f aws_one-time-backup.yaml\n"
+"keycloak.keycloak.org/aws_s3_backup created\n"
+msgstr ""
+"$ {create_cmd} -f aws_one-time-backup.yaml\n"
+"keycloak.keycloak.org/aws_s3_backup created\n"
+
+#. type: Plain text
+msgid "View a list of backup jobs:"
+msgstr "次のようにバックアップジョブの一覧を表示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get jobs\n"
+"NAME                   COMPLETIONS     DURATION     AGE\n"
+"aws_s3_backup    0/1             6s           6s\n"
+msgstr ""
+"$ {create_cmd_brief} get jobs\n"
+"NAME                   COMPLETIONS     DURATION     AGE\n"
+"aws_s3_backup    0/1             6s           6s\n"
+
+#. type: Plain text
+msgid "View the list of executed backup jobs."
+msgstr "実行されたバックアップ・ジョブの一覧を表示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get pods\n"
+"NAME                               READY    STATUS       RESTARTS    AGE\n"
+"aws_s3_backup-5b4rfdd              0/1      Completed    0           24s\n"
+"keycloak-0                         1/1      Running      0           52m\n"
+"keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m\n"
+msgstr ""
+"$ {create_cmd_brief} get pods\n"
+"NAME                               READY    STATUS       RESTARTS    AGE\n"
+"aws_s3_backup-5b4rfdd              0/1      Completed    0           24s\n"
+"keycloak-0                         1/1      Running      0           52m\n"
+"keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m\n"
+
+#. type: Plain text
+msgid "View the log of your completed backup job:"
+msgstr "次のように完了したバックアップ・ジョブのログを表示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} logs aws_s3_backup-5b4rf\n"
+"==> Component data dump completed\n"
+".\n"
+".\n"
+".\n"
+".\n"
+"[source,bash,subs=+attributes]\n"
+msgstr ""
+"$ {create_cmd_brief} logs aws_s3_backup-5b4rf\n"
+"==> Component data dump completed\n"
+".\n"
+".\n"
+".\n"
+".\n"
+"[source,bash,subs=+attributes]\n"
+
+#. type: Plain text
+msgid "The status of the backup job also appears in the AWS console."
+msgstr "バックアップ・ジョブのステータスは、AWSコンソールにも表示されます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Backing up to Local Storage"
+msgstr "ローカル・ストレージへのバックアップ"
+
+#. type: Plain text
+msgid ""
+"You can use Operator to create a backup job that performs a one-time backup "
+"to a local Persistent Volume."
+msgstr ""
+"Operatorを使用して、ローカルのPersistent Volumeへの1回限りのバックアップを実行するバックアップ・ジョブを作成できます。"
+
+#. type: Block title
+#, no-wrap
+msgid "Example YAML file for a Backup custom resource"
+msgstr "Backupカスタム・リソースのYAMLファイルの例"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: KeycloakBackup\n"
+"metadata:\n"
+"  name: test-backup\n"
+msgstr ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: KeycloakBackup\n"
+"metadata:\n"
+"  name: test-backup\n"
+
+#. type: Plain text
+msgid "Be sure to omit the `aws` sub-properties from this file."
+msgstr "このファイルから `aws` サブプロパティーを省略するようにしてください。"
+
+#. type: Plain text
+msgid ""
+"You have a `PersistentVolume` with a `claimRef` to reserve it only for a "
+"`PersistentVolumeClaim` created by the {project_name} Operator."
+msgstr ""
+"{project_name} Operatorによって作成された `PersistentVolumeClaim` に対してのみ予約するために、 "
+"`claimRef` とともに `PersistentVolume` があります。"
+
+#. type: Plain text
+msgid "Create a backup job: `{create_cmd} -f <backup_crname>`. For example:"
+msgstr "`{create_cmd} -f <backup_crname>` のようにバックアップジョブを作成します。たとえば、"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd} -f one-time-backup.yaml\n"
+"keycloak.keycloak.org/test-backup\n"
+msgstr ""
+"$ {create_cmd} -f one-time-backup.yaml\n"
+"keycloak.keycloak.org/test-backup\n"
+
+#. type: Plain text
+msgid ""
+"The Operator creates a `PersistentVolumeClaim` with the following naming "
+"scheme: `Keycloak-backup-<CR-name>`."
+msgstr ""
+"Operatorは `Keycloak-backup-<CR-name>` の命名スキームで `PersistentVolumeClaim` "
+"を作成します："
+
+#. type: Plain text
+msgid "View a list of volumes:"
+msgstr "ボリュームの一覧を表示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get pvc\n"
+"NAME                          STATUS   VOLUME\n"
+"keycloak-backup-test-backup   Bound    pvc-e242-ew022d5-093q-3134n-41-adff\n"
+"keycloak-postresql-claim      Bound    pvc-e242-vs29202-9bcd7-093q-31-zadj\n"
+msgstr ""
+"$ {create_cmd_brief} get pvc\n"
+"NAME                          STATUS   VOLUME\n"
+"keycloak-backup-test-backup   Bound    pvc-e242-ew022d5-093q-3134n-41-adff\n"
+"keycloak-postresql-claim      Bound    pvc-e242-vs29202-9bcd7-093q-31-zadj\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get jobs\n"
+"NAME           COMPLETIONS     DURATION     AGE\n"
+"test-backup    0/1             6s           6s\n"
+msgstr ""
+"$ {create_cmd_brief} get jobs\n"
+"NAME           COMPLETIONS     DURATION     AGE\n"
+"test-backup    0/1             6s           6s\n"
+
+#. type: Plain text
+msgid "View the list of executed backup jobs:"
+msgstr "実行されたバックアップ・ジョブの一覧を表示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get pods\n"
+"NAME                               READY    STATUS       RESTARTS    AGE\n"
+"test-backup-5b4rf                  0/1      Completed    0           24s\n"
+"keycloak-0                         1/1      Running      0           52m\n"
+"keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m\n"
+msgstr ""
+"$ {create_cmd_brief} get pods\n"
+"NAME                               READY    STATUS       RESTARTS    AGE\n"
+"test-backup-5b4rf                  0/1      Completed    0           24s\n"
+"keycloak-0                         1/1      Running      0           52m\n"
+"keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} logs test-backup-5b4rf\n"
+"==> Component data dump completed\n"
+".\n"
+".\n"
+".\n"
+".\n"
+msgstr ""
+"$ {create_cmd_brief} logs test-backup-5b4rf\n"
+"==> Component data dump completed\n"
+".\n"
+".\n"
+".\n"
+".\n"
+
+#. type: Plain text
+msgid ""
+"For more details on persistent volumes, see link:https://docs.openshift.com"
+"/container-platform/4.4/storage/understanding-persistent-"
+"storage.html[Understanding persistent storage]."
+msgstr ""
+"永続ボリュームの詳細については、 link:https://docs.openshift.com/container-"
+"platform/4.4/storage/understanding-persistent-storage.html[永続ストレージについて] "
+"を参照してください。"

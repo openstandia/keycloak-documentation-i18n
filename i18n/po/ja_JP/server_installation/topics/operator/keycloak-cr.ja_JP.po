@@ -1,0 +1,572 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#. type: Block title
+#, no-wrap
+msgid "Additional resources"
+msgstr "追加のリソース"
+
+#. type: Block title
+#, no-wrap
+msgid "Admin console login screen"
+msgstr "管理コンソールのログイン画面"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure "
+msgstr "手順"
+
+#. type: Title ===
+#, no-wrap
+msgid "{project_name} installation using a custom resource "
+msgstr "カスタムリソースを使用した{project_name}のインストール"
+
+#. type: Plain text
+msgid ""
+"You can use the Operator to automate the installation of {project_name} by "
+"creating a Keycloak custom resource. When you use a custom resource to "
+"install {project_name}, you create the components and services that are "
+"described here and illustrated in the graphic that follows."
+msgstr ""
+"Operatorを使用して、Keycloakカスタムリソースを作成することにより、{project_name}のインストールを自動化できます。カスタムリソースを使用して{project_name}をインストールする場合、ここで説明し、次の図に示すコンポーネントとサービスを作成します。"
+
+#. type: Plain text
+msgid ""
+"`keycloak-db-secret` - Stores properties such as the database username, "
+"password, and external address (if you connect to an external database)"
+msgstr ""
+"`keycloak-db-secret` - "
+"データベースのユーザー名、パスワード、外部アドレス（外部データベースに接続している場合）などのプロパティーを保存します"
+
+#. type: Plain text
+msgid ""
+"`credentials-<CR-Name>` - Admin username and password to log into the "
+"{project_name} admin console (the `<CR-Name>` is based on the `Keycloak` "
+"custom resource name)"
+msgstr ""
+"`credentials-<CR-Name>` - 管理コンソールにログインするための管理者ユーザー名とパスワード（ `<CR-Name>` は` "
+"Keycloak`カスタムリソース名に基づいています）"
+
+#. type: Plain text
+msgid ""
+"`keycloak` - Keycloak deployment specification that is implemented as a "
+"StatefulSet with high availability support"
+msgstr "`keycloak` - 高可用性サポートを備えたStatefulSetとして実装されるKeycloakデプロイメント仕様"
+
+#. type: Plain text
+msgid "`keycloak-postgresql` - Starts a PostgreSQL database installation"
+msgstr "`keycloak-postgresql` - PostgreSQLデータベースのインストールを開始します"
+
+#. type: Plain text
+msgid "`keycloak-discovery` Service - Performs `JDBC_PING` discovery"
+msgstr "`keycloak-discovery` Service - `JDBC_PING` 検出を実行します"
+
+#. type: Plain text
+msgid ""
+"`keycloak` Service - Connects to {project_name} through HTTPS (HTTP is not "
+"supported)"
+msgstr "`keycloak` サービス - HTTPSを介して{project_name}に接続します（HTTPはサポートされていません）"
+
+#. type: Plain text
+msgid ""
+"`keycloak-postgresql` Service - Connects an internal and external, if used, "
+"database instance"
+msgstr "`keycloak-postgresql` サービス - 内部と外部（使用されている場合）のデータベース・インスタンスを接続します"
+
+#. type: Plain text
+msgid ""
+"`keycloak` Route - The URL for accessing the {project_name} admin console "
+"from OpenShift"
+msgstr "`keycloak` ルート - OpenShiftから{project_name}管理コンソールにアクセスするためのURL"
+
+#. type: Plain text
+msgid ""
+"`keycloak` Ingress - The URL for accessing the {project_name} admin console "
+"from Kubernetes"
+msgstr "`keycloak` Ingress - Kubernetesから{project_name}管理コンソールにアクセスするためのURL"
+
+#. type: Block title
+#, no-wrap
+msgid "How Operator components and services interact"
+msgstr "Operatorコンポーネントとサービスの相互作用"
+
+#. type: Plain text
+msgid "image:{project_images}/operator-components.png[]"
+msgstr "image:{project_images}/operator-components.png[]"
+
+#. type: Title ====
+#, no-wrap
+msgid "The Keycloak custom resource"
+msgstr "Keycloakカスタムリソース"
+
+#. type: Plain text
+msgid ""
+"The Keycloak custom resource is a YAML file that defines the parameters for "
+"installation.  This file contains three properties."
+msgstr ""
+"Keycloakカスタムリソースは、インストール用のパラメーターを定義するYAMLファイルです。このファイルには3つのプロパティーが含まれています。"
+
+#. type: Plain text
+msgid ""
+"`instances` - controls the number of instances running in high availability "
+"mode."
+msgstr "`instances` - 高可用性モードで実行されているインスタンスの数を制御します。"
+
+#. type: Plain text
+msgid ""
+"`externalAccess` - if the `enabled` is `True`, the Operator creates a route "
+"for OpenShift"
+msgstr ""
+"`externalAccess` - `enabled` が `True` "
+"の場合、Operatorは{project_name}クラスターのOpenShift"
+
+#. type: Plain text
+#, no-wrap
+msgid " or an Ingress for Kubernetes\n"
+msgstr "またはKubernetesのIngress \n"
+
+#. type: Plain text
+#, no-wrap
+msgid " for the {project_name} cluster.\n"
+msgstr "のルートを作成します。\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"`externalDatabase` - applies only if you want to connect an externally "
+"hosted database. That topic is covered in the "
+"xref:_external_database[external database] section of this guide.\n"
+msgstr ""
+"`externalDatabase` - 外部でホストされているデータベースに接続する場合にのみ適用されます。このトピックについては、このガイドの "
+"xref:_external_database[外部データベース] のセクションで説明しています。\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Example YAML file for a Keycloak custom resource"
+msgstr "Keycloakカスタム・リソースのYAMLファイルの例"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"ifeval::[{project_community}==true]\n"
+"  name: example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"  name: example-sso\n"
+"endif::[]  \n"
+"  labels:\n"
+"ifeval::[{project_community}==true]\n"
+"   app: example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"    app: sso\n"
+"endif::[]  \n"
+"spec:\n"
+"  instances: 1\n"
+"  externalAccess:\n"
+"    enabled: True\n"
+msgstr ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"ifeval::[{project_community}==true]\n"
+"  name: example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"  name: example-sso\n"
+"endif::[]  \n"
+"  labels:\n"
+"ifeval::[{project_community}==true]\n"
+"   app: example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"    app: sso\n"
+"endif::[]  \n"
+"spec:\n"
+"  instances: 1\n"
+"  externalAccess:\n"
+"    enabled: True\n"
+
+#. type: delimited block =
+msgid ""
+"You can update the YAML file and the changes appear in the {project_name} "
+"admin console, however changes to the admin console do not update the custom"
+" resource."
+msgstr ""
+"YAMLファイルを更新すると、{project_name}管理コンソールに変更が表示されますが、管理コンソールで変更しても、カスタムリソースは更新されません。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Creating a Keycloak custom resource on OpenShift"
+msgstr "OpenShiftでのKeycloakカスタムリソースの作成"
+
+#. type: Plain text
+msgid ""
+"On OpenShift, you use the custom resource to create a route, which is the "
+"URL of the admin console, and find the secret, which holds the username and "
+"password for the admin console."
+msgstr ""
+"OpenShiftでは、カスタムリソースを使用してルート（管理コンソールのURL）を作成し、（管理コンソールのユーザー名とパスワードを保持する）シークレットを見つけます。"
+
+#. type: Plain text
+msgid "You have a YAML file for this custom resource."
+msgstr "このカスタムリソース用のYAMLファイルがあること"
+
+#. type: Plain text
+msgid ""
+"You have cluster-admin permission or an equivalent level of permissions "
+"granted by an administrator."
+msgstr "cluster-adminパーミッションまたは同等のレベルのパーミッションが管理者によって付与されていること"
+
+#. type: Plain text
+msgid ""
+"If you want to start tracking all Operator activities now, install the "
+"monitoring application before you create this custom resource. See xref"
+":_monitoring-operator[The Application Monitoring Operator]."
+msgstr ""
+"ここですべてのOperatorアクティビティの追跡を開始する場合は、このカスタムリソースを作成する前に監視アプリケーションをインストールしてください。 "
+"xref:_monitoring-operator[アプリケーション監視Operator] を参照してください。"
+
+#. type: Plain text
+msgid ""
+"Create a route using your YAML file: `{create_cmd} -f <filename>.yaml -n "
+"<namespace>`. For example:"
+msgstr ""
+"`{create_cmd} -f <filename>.yaml -n <namespace>` "
+"のようにYAMLファイルを使用してルートを作成します。たとえば、"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"ifeval::[{project_community}==true]\n"
+"$ {create_cmd} -f keycloak.yaml -n keycloak\n"
+"keycloak.keycloak.org/example-keycloak created\n"
+"endif::[]\n"
+"ifeval::[{project_product}==true]\n"
+"$ {create_cmd} -f sso.yaml -n sso\n"
+"keycloak.keycloak.org/example-sso created\n"
+"endif::[]\n"
+msgstr ""
+"ifeval::[{project_community}==true]\n"
+"$ {create_cmd} -f keycloak.yaml -n keycloak\n"
+"keycloak.keycloak.org/example-keycloak created\n"
+"endif::[]\n"
+"ifeval::[{project_product}==true]\n"
+"$ {create_cmd} -f sso.yaml -n sso\n"
+"keycloak.keycloak.org/example-sso created\n"
+"endif::[]\n"
+
+#. type: Plain text
+msgid "A route is created in OpenShift."
+msgstr "OpenShiftにルートが作成されます。"
+
+#. type: Plain text
+msgid "Log into the OpenShift web console."
+msgstr "OpenShift Webコンソールにログインします。"
+
+#. type: Plain text
+msgid "Select `Networking`, `Routes` and search for Keycloak."
+msgstr " `Networking` 、 `Routes` を選択し、Keycloakを検索します。"
+
+#. type: Block title
+#, no-wrap
+msgid "Routes screen in OpenShift web console"
+msgstr "OpenShift Webコンソールのルーティング画面"
+
+#. type: Plain text
+msgid "image:images/route-ocp.png[]"
+msgstr "image:images/route-ocp.png[]"
+
+#. type: Plain text
+msgid "On the screen with the Keycloak route, click the URL under `Location`."
+msgstr "Keycloakルートのある画面で、 `Location` の下のURLをクリックします。"
+
+#. type: Plain text
+msgid "The {project_name} admin console login screen appears."
+msgstr "{project_name}管理コンソールのログイン画面が表示されます。"
+
+#. type: Plain text
+msgid "image:images/login-empty.png[]"
+msgstr "image:images/login-empty.png[]"
+
+#. type: Plain text
+msgid ""
+"Locate the username and password for the admin console in the OpenShift web "
+"console; under `Workloads`, click `Secrets` and search for Keycloak."
+msgstr ""
+"OpenShift Webコンソールで管理コンソールのユーザー名とパスワードを見つけます。 `Workloads` で `Secrets` "
+"をクリックし、Keycloakを検索します。"
+
+#. type: Block title
+#, no-wrap
+msgid "Secrets screen in OpenShift web console"
+msgstr "OpenShift Webコンソールのシークレット画面"
+
+#. type: Plain text
+msgid "image:images/secrets-ocp.png[]"
+msgstr "image:images/secrets-ocp.png[]"
+
+#. type: Plain text
+msgid "Enter the username and password into the admin console login screen."
+msgstr "ユーザー名とパスワードを管理コンソールのログイン画面に入力します。"
+
+#. type: Plain text
+msgid "image:images/login-complete.png[]"
+msgstr "image:images/login-complete.png[]"
+
+#. type: Plain text
+msgid ""
+"You are now logged into an instance of {project_name} that was installed by "
+"a Keycloak custom resource. You are ready to create custom resources for "
+"realms, clients, and users."
+msgstr ""
+"これで、Keycloakカスタムリソースによってインストールされた{project_name}のインスタンスにログインしました。レルム、クライアント、およびユーザー用のカスタムリソースを作成する準備が整いました。"
+
+#. type: Block title
+#, no-wrap
+msgid "{project_name} master realm"
+msgstr "{project_name} masterレルム"
+
+#. type: Plain text
+msgid "image:images/new_install_cr.png[]"
+msgstr "image:images/new_install_cr.png[]"
+
+#. type: Plain text
+msgid "Check the status of the custom resource:"
+msgstr "カスタムリソースのステータスを確認します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ {create_cmd_brief} describe keycloak <CR-name>\n"
+msgstr "$ {create_cmd_brief} describe keycloak <CR-name>\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Creating a Keycloak custom resource on Kubernetes"
+msgstr "KubernetesでKeycloakカスタムリソースを作成する"
+
+#. type: Plain text
+msgid ""
+"On Kubernetes, you use the custom resource to create an ingress, which is "
+"the IP address of the admin console, and find the secret, which holds the "
+"username and password for that console."
+msgstr ""
+"Kubernetesでは、カスタムリソースを使用して、管理コンソールのIPアドレスであるingressを作成し、そのコンソールのユーザー名とパスワードを保持するシークレットを見つけます。"
+
+#. type: Plain text
+msgid ""
+"Create the ingress using your YAML file. `{create_cmd} -f <filename>.yaml -n"
+" <namespace>`.  For example:"
+msgstr ""
+"`{create_cmd} -f <filename>.yaml -n <namespace>` "
+"のようにYAMLファイルを使用してingressを作成します。たとえば、"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd} -f keycloak.yaml -n keycloak\n"
+"keycloak.keycloak.org/example-keycloak created\n"
+msgstr ""
+"$ {create_cmd} -f keycloak.yaml -n keycloak\n"
+"keycloak.keycloak.org/example-keycloak created\n"
+
+#. type: Plain text
+msgid ""
+"Find the ingress: `{create_cmd_brief} get ingress -n <CR-name>`. For "
+"example:"
+msgstr "`{create_cmd_brief} get ingress -n <CR-name>` のようにingressを見つけます。たとえば"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get ingress -n example-keycloak\n"
+"NAME       HOSTS                 ADDRESS     PORTS   AGE\n"
+"keycloak   keycloak.redhat.com   192.0.2.0   80      3m\n"
+msgstr ""
+"$ {create_cmd_brief} get ingress -n example-keycloak\n"
+"NAME       HOSTS                 ADDRESS     PORTS   AGE\n"
+"keycloak   keycloak.redhat.com   192.0.2.0   80      3m\n"
+
+#. type: Plain text
+msgid "Copy and paste the ADDRESS (the ingress) into a web browser."
+msgstr "ADDRESS（ingress）をコピーしてWebブラウザーに貼り付けます。"
+
+#. type: Plain text
+msgid "Locate the username and password."
+msgstr "ユーザー名とパスワードを見つけます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get secret credentials-<CR-Name> -o go-"
+"template='{{range $k,$v := .data}}{{printf \"%s: \" $k}}{{if not "
+"$v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{\"\\n\"}}{{end}}'\n"
+msgstr ""
+"$ {create_cmd_brief} get secret credentials-<CR-Name> -o go-"
+"template='{{range $k,$v := .data}}{{printf \"%s: \" $k}}{{if not "
+"$v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{\"\\n\"}}{{end}}'\n"
+
+#. type: Plain text
+msgid "Enter the username and password in the admin console login screen."
+msgstr "ユーザー名とパスワードを管理コンソールのログイン画面に入力します。"
+
+#. type: Plain text
+msgid ""
+"You are now logged into an instance of {project_name} that was installed by "
+"a Keycloak custom resource.  You are ready to create custom resources for "
+"realms, clients, and users."
+msgstr ""
+"これで、Keycloakカスタムリソースによってインストールされた{project_name}のインスタンスにログインしました。レルム、クライアント、およびユーザー用のカスタムリソースを作成する準備が整いました。"
+
+#. type: Block title
+#, no-wrap
+msgid "Admin console master realm"
+msgstr "管理コンソールmasterレルム"
+
+#. type: Block title
+#, no-wrap
+msgid "Results"
+msgstr "結果"
+
+#. type: Plain text
+msgid ""
+"After the Operator processes the custom resource, view the status with this "
+"command:"
+msgstr "Operatorがカスタムリソースを処理したら、次のコマンドでステータスを表示します。"
+
+#. type: Block title
+#, no-wrap
+msgid "Keycloak custom resource Status"
+msgstr "Keycloakカスタムリソースのステータス"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"Name:         example-keycloak\n"
+"Namespace:    keycloak\n"
+"ifeval::[{project_community}==true]\n"
+"Labels:       app=example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"Labels:       app=sso\n"
+"endif::[]  \n"
+"Annotations:  <none>\n"
+"API Version:  keycloak.org/v1alpha1\n"
+"Kind:         Keycloak\n"
+"Spec:\n"
+"  External Access:\n"
+"    Enabled:  true\n"
+"  Instances:  1\n"
+"Status:\n"
+"  Credential Secret:  credential-example-keycloak\n"
+"  Internal URL:       https://<External URL to the deployed instance>\n"
+"  Message:\n"
+"  Phase:              reconciling\n"
+"  Ready:              true\n"
+"  Secondary Resources:\n"
+"    Deployment:\n"
+"      keycloak-postgresql\n"
+"    Persistent Volume Claim:\n"
+"      keycloak-postgresql-claim\n"
+"    Prometheus Rule:\n"
+"      keycloak\n"
+"    Route:\n"
+"      keycloak\n"
+"    Secret:\n"
+"      credential-example-keycloak\n"
+"      keycloak-db-secret\n"
+"    Service:\n"
+"      keycloak-postgresql\n"
+"      keycloak\n"
+"      keycloak-discovery\n"
+"    Service Monitor:\n"
+"      keycloak\n"
+"    Stateful Set:\n"
+"      keycloak\n"
+"  Version:\n"
+"Events:\n"
+msgstr ""
+"Name:         example-keycloak\n"
+"Namespace:    keycloak\n"
+"ifeval::[{project_community}==true]\n"
+"Labels:       app=example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"Labels:       app=sso\n"
+"endif::[]  \n"
+"Annotations:  <none>\n"
+"API Version:  keycloak.org/v1alpha1\n"
+"Kind:         Keycloak\n"
+"Spec:\n"
+"  External Access:\n"
+"    Enabled:  true\n"
+"  Instances:  1\n"
+"Status:\n"
+"  Credential Secret:  credential-example-keycloak\n"
+"  Internal URL:       https://<External URL to the deployed instance>\n"
+"  Message:\n"
+"  Phase:              reconciling\n"
+"  Ready:              true\n"
+"  Secondary Resources:\n"
+"    Deployment:\n"
+"      keycloak-postgresql\n"
+"    Persistent Volume Claim:\n"
+"      keycloak-postgresql-claim\n"
+"    Prometheus Rule:\n"
+"      keycloak\n"
+"    Route:\n"
+"      keycloak\n"
+"    Secret:\n"
+"      credential-example-keycloak\n"
+"      keycloak-db-secret\n"
+"    Service:\n"
+"      keycloak-postgresql\n"
+"      keycloak\n"
+"      keycloak-discovery\n"
+"    Service Monitor:\n"
+"      keycloak\n"
+"    Stateful Set:\n"
+"      keycloak\n"
+"  Version:\n"
+"Events:\n"
+
+#. type: Plain text
+msgid ""
+"Once the installation of {project_name} completes, you are ready to xref"
+":_realm-cr[create a realm custom resource]."
+msgstr ""
+"{project_name}のインストールが完了すると、 xref:_realm-cr[レルム・カスタムリソースを作成]する準備が整います。"
+
+#. type: Plain text
+msgid ""
+"If you have an external database, you can modify the Keycloak custom "
+"resource to support it. See xref:_external_database[Connecting to an "
+"external database]."
+msgstr ""
+"外部データベースがある場合は、Keycloakカスタムリソースを変更してそれをサポートできます。 "
+"xref:_external_database[外部データベースへの接続] を参照してください。"

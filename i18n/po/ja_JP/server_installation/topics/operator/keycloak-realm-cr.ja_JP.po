@@ -1,0 +1,285 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#. type: Block title
+#, no-wrap
+msgid "Additional resources"
+msgstr "追加のリソース"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Plain text
+msgid "You have a YAML file for this custom resource."
+msgstr "このカスタムリソース用のYAMLファイルがあること。"
+
+#. type: Plain text
+msgid ""
+"You have cluster-admin permission or an equivalent level of permissions "
+"granted by an administrator."
+msgstr "cluster-adminパーミッションまたは同等のレベルのパーミッションが管理者によって付与されていること。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ {create_cmd_brief} describe keycloak <CR-name>\n"
+msgstr "$ {create_cmd_brief} describe keycloak <CR-name>\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Admin console master realm"
+msgstr "管理コンソールmasterレルム"
+
+#. type: Block title
+#, no-wrap
+msgid "Results"
+msgstr "結果"
+
+#. type: Plain text
+msgid ""
+"After the Operator processes the custom resource, view the status with this "
+"command:"
+msgstr "Operatorがカスタムリソースを処理したら、次のコマンドでステータスを表示します。"
+
+#. type: delimited block =
+msgid ""
+"You can update the YAML file and changes appear in the {project_name} admin "
+"console, however changes to the admin console do not update the custom "
+"resource."
+msgstr ""
+"YAMLファイルを更新すると、{project_name}管理コンソールに変更が表示されますが、管理コンソールで変更しても、カスタムリソースは更新されません。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Creating a realm custom resource"
+msgstr "レルム・カスタム・リソースの作成"
+
+#. type: Plain text
+msgid ""
+"You can use the Operator to create realms in {project_name} as defined by a "
+"custom resource. You define the properties of the realm custom resource in a"
+" YAML file."
+msgstr ""
+"Operatorを使用して、カスタムリソースで定義されているように{project_name}にレルムを作成できます。レルム・カスタム・リソースのプロパティーをYAMLファイルで定義します。"
+
+#. type: Block title
+#, no-wrap
+msgid "Example YAML file for a `Realm` custom resource"
+msgstr "`Realm` カスタム・リソースのYAMLファイルの例"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: KeycloakRealm\n"
+"metadata:\n"
+"  name: test\n"
+"  labels:\n"
+"ifeval::[{project_community}==true]\n"
+"    app: app=example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"    app: sso\n"
+"endif::[]  \n"
+"spec:\n"
+"  realm:\n"
+"    id: \"basic\"\n"
+"    realm: \"basic\"\n"
+"    enabled: True\n"
+"    displayName: \"Basic Realm\"\n"
+"  instanceSelector:\n"
+"    matchLabels:\n"
+"ifeval::[{project_community}==true]\n"
+"      app: example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"      app: sso\n"
+"endif::[]  \n"
+"\n"
+msgstr ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: KeycloakRealm\n"
+"metadata:\n"
+"  name: test\n"
+"  labels:\n"
+"ifeval::[{project_community}==true]\n"
+"    app: app=example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"    app: sso\n"
+"endif::[]  \n"
+"spec:\n"
+"  realm:\n"
+"    id: \"basic\"\n"
+"    realm: \"basic\"\n"
+"    enabled: True\n"
+"    displayName: \"Basic Realm\"\n"
+"  instanceSelector:\n"
+"    matchLabels:\n"
+"ifeval::[{project_community}==true]\n"
+"      app: example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"      app: sso\n"
+"endif::[]  \n"
+"\n"
+
+#. type: Plain text
+msgid ""
+"In the YAML file, the `app` under `instanceSelector` matches the label of a "
+"Keycloak custom resource. Matching these values ensures that you create the "
+"realm in the right instance of {project_name}."
+msgstr ""
+"YAMLファイルでは、 `instanceSelector` の下の `app` "
+"はKeycloakカスタムリソースのラベルと一致します。これらの値を一致させることで、{project_name}の正しいインスタンスにレルムを確実に作成できます。"
+
+#. type: Plain text
+msgid ""
+"Use this command on the YAML file that you created: `{create_cmd} -f <realm-"
+"name>.yaml`. For example:"
+msgstr "作成したYAMLファイルで `{create_cmd} -f <realm-name>.yaml` のコマンドを使用します。例えば、"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd} -f initial_realm.yaml\n"
+"keycloak.keycloak.org/test created\n"
+msgstr ""
+"$ {create_cmd} -f initial_realm.yaml\n"
+"keycloak.keycloak.org/test created\n"
+
+#. type: Plain text
+msgid "Log into the admin console for the related instance of {project_name}."
+msgstr "{project_name}の関連インスタンスの管理コンソールにログインします。"
+
+#. type: Plain text
+msgid "Click Select Realm and locate the realm that you created."
+msgstr "Select Realmをクリックして、作成したレルムを見つけます。"
+
+#. type: Plain text
+msgid "The new realm opens."
+msgstr "新規レルムが開きます。"
+
+#. type: Plain text
+msgid "image:images/test-realm-cr.png[]"
+msgstr "image:images/test-realm-cr.png[]"
+
+#. type: Block title
+#, no-wrap
+msgid "Realm custom resource status"
+msgstr "レルム・カスタム・リソースのステータス"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"Name:         example-keycloakrealm\n"
+"Namespace:    keycloak\n"
+"ifeval::[{project_community}==true]\n"
+"Labels:       app=example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"Labels:       app=sso\n"
+"endif::[]  \n"
+"Annotations:  <none>\n"
+"API Version:  keycloak.org/v1alpha1\n"
+"Kind:         KeycloakRealm\n"
+"Metadata:\n"
+"  Creation Timestamp:  2019-12-03T09:46:02Z\n"
+"  Finalizers:\n"
+"    realm.cleanup\n"
+"  Generation:        1\n"
+"  Resource Version:  804596\n"
+"  Self Link:         /apis/keycloak.org/v1alpha1/namespaces/keycloak/keycloakrealms/example-keycloakrealm\n"
+"  UID:               b7b2f883-15b1-11ea-91e6-02cb885627a6\n"
+"Spec:\n"
+"  Instance Selector:\n"
+"    Match Labels:\n"
+"ifeval::[{project_community}==true]\n"
+"      App: example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"      App: sso\n"
+"endif::[]  \n"
+"  Realm:\n"
+"    Display Name:  Basic Realm\n"
+"    Enabled:       true\n"
+"    Id:            basic\n"
+"    Realm:         basic\n"
+"Status:\n"
+"  Login URL:\n"
+"  Message:\n"
+"  Phase:      reconciling\n"
+"  Ready:      true\n"
+"Events:       <none>\n"
+"\n"
+msgstr ""
+"Name:         example-keycloakrealm\n"
+"Namespace:    keycloak\n"
+"ifeval::[{project_community}==true]\n"
+"Labels:       app=example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"Labels:       app=sso\n"
+"endif::[]  \n"
+"Annotations:  <none>\n"
+"API Version:  keycloak.org/v1alpha1\n"
+"Kind:         KeycloakRealm\n"
+"Metadata:\n"
+"  Creation Timestamp:  2019-12-03T09:46:02Z\n"
+"  Finalizers:\n"
+"    realm.cleanup\n"
+"  Generation:        1\n"
+"  Resource Version:  804596\n"
+"  Self Link:         /apis/keycloak.org/v1alpha1/namespaces/keycloak/keycloakrealms/example-keycloakrealm\n"
+"  UID:               b7b2f883-15b1-11ea-91e6-02cb885627a6\n"
+"Spec:\n"
+"  Instance Selector:\n"
+"    Match Labels:\n"
+"ifeval::[{project_community}==true]\n"
+"      App: example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"      App: sso\n"
+"endif::[]  \n"
+"  Realm:\n"
+"    Display Name:  Basic Realm\n"
+"    Enabled:       true\n"
+"    Id:            basic\n"
+"    Realm:         basic\n"
+"Status:\n"
+"  Login URL:\n"
+"  Message:\n"
+"  Phase:      reconciling\n"
+"  Ready:      true\n"
+"Events:       <none>\n"
+"\n"
+
+#. type: Plain text
+msgid ""
+"When the realm creation completes, you are ready to xref:_client-cr[create a"
+" client custom resource]."
+msgstr "レルムの作成が完了すると、 xref:_client-cr[クライアント・カスタム・リソースを作成する] 準備が整います。"

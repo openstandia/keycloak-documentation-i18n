@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
 # Yoshikazu Nojima <mail@ynojima.net>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Yoshikazu Nojima <mail@ynojima.net>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -255,12 +255,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Starting with Chrome version 80 (released on February 2020), silent `check-"
-"sso` functionality will work only when the SSL / TLS connection is "
-"configured on the {project_name} side."
+"_Silent_ `check-sso` functionality is limited in some modern browsers. "
+"Please see link:#_modern_browsers[Modern Browsers with Tracking Protection "
+"Section]."
 msgstr ""
-"Chromeバージョン80（2020年2月リリース）から、サイレント `check-sso` 機能は {project_name} 側でSSL / "
-"TLS 接続が設定されている場合のみ動作するようになりました。"
+"_Silent_ `check-sso` 機能は、一部の最新ブラウザーで制限されています。 "
+"link:#_modern_browsers[追跡保護機能を備えた最新のブラウザー]を参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -403,18 +403,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Starting with Chrome version 80 (released on February 2020), status iframe "
-"will only be able to see the special cookie over the SSL / TLS connection "
-"configured on the {project_name} side. Using an insecure connection may lead"
-" to redirecting to {project_name} every time iframe checks the status. You "
-"can avoid this behavior by disabling iframe or "
-"link:{installguide_link}#_setting_up_ssl[configuring the SSL / TLS] on the "
-"{project_name} side."
+"Session Status iframe functionality is limited in some modern browsers. "
+"Please see link:#_modern_browsers[Modern Browsers with Tracking Protection "
+"Section]."
 msgstr ""
-"Chromeバージョン80（2020年2月リリース）から、ステータスiframeは {project_name} 側で設定された SSL / TLS "
-"接続上でのみ特別なCookieが見えるようになりました。安全でない接続を使用している場合、iframeがステータスをチェックする毎に "
-"{project_name} へのリダイレクトを招くようになる場合があります。この動作は、iframeを無効化するか、{project_name}側で "
-"link:{installguide_link}#_setting_up_ssl[SSL / TLSを設定] することで回避することが可能です。"
+"Session Status iframe機能は、一部の最新ブラウザーで制限されています。 "
+"link:#_modern_browsers[追跡保護機能を備えた最新のブラウザー]を参照してください。"
 
 #. type: Title ====
 #, no-wrap
@@ -721,6 +715,110 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
+msgid "Custom Adapters"
+msgstr "カスタム・アダプター"
+
+#. type: Plain text
+msgid ""
+"Sometimes it's necessary to run the JavaScript client in environments that "
+"are not supported by default (such as Capacitor). To make it possible to use"
+" the JavasScript client in these kind of unknown environments is possible to"
+" pass a custom adapter. For example a 3rd party library could provide such "
+"an adapter to make it possible to run the JavaScript client without issues:"
+msgstr ""
+"デフォルトでサポートされていない環境（Capacitorなど）でJavaScriptクライアントを実行する必要がある場合があります。このような未知の環境でJavasScriptクライアントを使用できるようにするために、カスタム・アダプターを渡すことができます。たとえば、サードパーティーのライブラリーがそのようなアダプターを提供して、JavaScriptクライアントを問題なく実行できるようにすることができます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"import Keycloak from 'keycloak-js';\n"
+"import KeycloakCapacitorAdapter from 'keycloak-capacitor-adapter';\n"
+msgstr ""
+"import Keycloak from 'keycloak-js';\n"
+"import KeycloakCapacitorAdapter from 'keycloak-capacitor-adapter';\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "const keycloak = new Keycloak();\n"
+msgstr "const keycloak = new Keycloak();\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"keycloak.init({\n"
+"    adapter: KeycloakCapacitorAdapter,\n"
+"});\n"
+msgstr ""
+"keycloak.init({\n"
+"    adapter: KeycloakCapacitorAdapter,\n"
+"});\n"
+
+#. type: Plain text
+msgid ""
+"This specific package does not exist, but it gives a pretty good example of "
+"how such an adapter could be passed into the client."
+msgstr "この特定のパッケージは存在しませんが、そのようなアダプターをクライアントに渡す方法のかなり良い例を示しています。"
+
+#. type: Plain text
+msgid ""
+"It's also possible to make your own adapter, to do so you will have to "
+"implement the methods described in the `KeycloakAdapter` interface. For "
+"example the following TypeScript code ensures that all of the methods are "
+"properly implemented:"
+msgstr ""
+"独自のアダプターを作成することもできます。そのためには、 `KeycloakAdapter` "
+"インターフェイスで説明されているメソッドを実装する必要があります。たとえば、次のTypeScriptコードにより、すべてのメソッドが適切に実装されます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "import Keycloak, { KeycloakAdapter } from 'keycloak-js';\n"
+msgstr "import Keycloak, { KeycloakAdapter } from 'keycloak-js';\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"// Implement the 'KeycloakAdapter' interface so that all required methods are guaranteed to be present.\n"
+"const MyCustomAdapter: KeycloakAdapter = {\n"
+"    login(options) {\n"
+"        // Write your own implementation here.\n"
+"    }\n"
+msgstr ""
+"// Implement the 'KeycloakAdapter' interface so that all required methods are guaranteed to be present.\n"
+"const MyCustomAdapter: KeycloakAdapter = {\n"
+"    login(options) {\n"
+"        // Write your own implementation here.\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    // The other methods go here...\n"
+"};\n"
+msgstr ""
+"    // The other methods go here...\n"
+"};\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"keycloak.init({\n"
+"    adapter: MyCustomAdapter,\n"
+"});\n"
+msgstr ""
+"keycloak.init({\n"
+"    adapter: MyCustomAdapter,\n"
+"});\n"
+
+#. type: Plain text
+msgid ""
+"Naturally you can also do this without TypeScript by omitting the type "
+"information, but ensuring implementing the interface properly will then be "
+"left entirely up to you."
+msgstr ""
+"もちろん、タイプ情報を省略してTypeScriptを使用せずにこれを行うこともできますが、インターフェイスを適切に実装することは、完全にあなた次第です。"
+
+#. type: Title ====
+#, no-wrap
 msgid "Earlier Browsers"
 msgstr "以前のブラウザー"
 
@@ -750,6 +848,98 @@ msgstr "HTML5 History - https://github.com/devote/HTML5-History-API"
 #. type: Plain text
 msgid "Promise - https://github.com/stefanpenner/es6-promise"
 msgstr "Promise - https://github.com/stefanpenner/es6-promise"
+
+#. type: Title ====
+#, no-wrap
+msgid "Modern Browsers with Tracking Protection"
+msgstr "追跡保護を備えた最新のブラウザー"
+
+#. type: Plain text
+msgid ""
+"In the latest versions of some browsers various cookies policies are applied"
+" to prevent tracking of the users by third-parties, like SameSite in Chrome "
+"or completely blocked third-party cookies. It is expected that those "
+"policies will become even more restrictive and adopted by other browsers "
+"over time, eventually leading to cookies in third-party contexts to be "
+"completely unsupported and blocked by the browsers. The adapter features "
+"affected by this might get deprecated in the future."
+msgstr ""
+"一部のブラウザーの最新バージョンでは、さまざまなCookieポリシーが適用され、ChromeのSameSiteやサードパーティーのCookieを完全にブロックするなど、サードパーティによるユーザーの追跡を防止しています。これらのポリシーは今後さらに制限が厳しくなり、他のブラウザによって採用され、最終的にサードパーティーのコンテキストのCookieが完全にサポートされなくなり、ブラウザーによってブロックされることが予想されます。これにより影響を受けるアダプター機能は、将来廃止される可能性があります。"
+
+#. type: Plain text
+msgid ""
+"Javascript adapter relies on third-party cookies for Session Status iframe, "
+"_silent_ `check-sso` and partially also for regular (non-silent) `check-"
+"sso`. Those features have limited functionality or are completely disabled "
+"based on how the browser is restrictive regarding cookies. The adapter tries"
+" to detect this setting and reacts accordingly."
+msgstr ""
+"JavaScriptアダプターは、Session Status iframe、 _silent_ `check-sso`、および通常の（非サイレント） "
+"` check-sso` "
+"のサードパーティーのCookieに依存しています。これらの機能は、機能が制限されているか、Cookieに関するブラウザーの制限に基づいて完全に無効になっています。アダプターはこの設定を検出しようとし、それに応じて反応します。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Browsers with \"SameSite=Lax by Default\" Policy"
+msgstr "「SameSite=Lax by Default」ポリシーのブラウザー"
+
+#. type: Plain text
+msgid ""
+"All features are supported if SSL / TLS connection is configured on the "
+"{project_name} side as well as on the application side. See "
+"link:{installguide_link}#_setting_up_ssl[configuring the SSL / TLS]. "
+"Affected is e.g. Chrome starting with version 84."
+msgstr ""
+"SSL / TLS接続が{project_name}側とアプリケーション側で設定されている場合、すべての機能がサポートされます。 "
+"link:{installguide_link}#_setting_up_ssl[SSL / TLSの構成]を参照してください。影響を受けるのは "
+"バージョン84以降のChromeです。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Browsers with Blocked Third-Party Cookies"
+msgstr "サードパーティーのCookieがブロックされているブラウザー"
+
+#. type: Plain text
+msgid ""
+"Session Status iframe is not supported and is automatically disabled if such"
+" browser behavior is detected by the JS adapter.  This means the adapter "
+"cannot use session cookie for Single Sign-Out detection and have to rely "
+"purely on tokens. This implies that when user logs out in another window, "
+"the application using JavaScript adapter won't be logged out until it tries "
+"to refresh the Access Token. Therefore, it is recommended to set Access "
+"Token Lifespan to relatively short time, so that the logout is detected "
+"rather sooner than later. Please see "
+"link:{adminguide_link}#_timeouts[Session and Token Timeouts]."
+msgstr ""
+"セッション・ステータスiframeはサポートされておらず、そのようなブラウザーの動作がJSアダプターによって検出された場合は自動的に無効になります。つまり、アダプターはシングル・サインアウトの検出にセッションCookieを使用できず、純粋にトークンに依存する必要があります。これは、ユーザーが別のウィンドウでログアウトすると、JavaScriptアダプターを使用するアプリケーションは、アクセストークンをリフレッシュしようとするまでログアウトされないことを意味します。そのため、アクセストークンのライフスパンを比較的短い時間に設定して、ログアウトが検出されるのが遅くなるのを防ぐことを推奨します。e"
+" link:{adminguide_link}#_timeouts[セッションとトークンのタイムアウト] を参照してください。"
+
+#. type: Plain text
+msgid ""
+"_Silent_ `check-sso` is not supported and falls back to regular (non-silent)"
+" `check-sso` by default. This behaviour can be changed by setting "
+"`silentCheckSsoFallback: false` in the options passed to the `init` method. "
+"In this case, `check-sso` will be completely disabled if restrictive browser"
+" behavior is detected."
+msgstr ""
+"_Silent_ `check-sso` はサポートされておらず、デフォルトでは通常の（非サイレント） `check-sso` "
+"にフォールバックします。この動作は、 `init` メソッドに渡されるオプションで `silentCheckSsoFallback: false` "
+"を設定することで変更できます。この場合、ブラウザーの制限的な動作が検出されると、 `check-sso` は完全に無効になります。"
+
+#. type: Plain text
+msgid ""
+"Regular `check-sso` is affected as well. Since Session Status iframe is "
+"unsupported, an additional redirect to {project_name} has to be made when "
+"the adapter is initialized to check user's login status. This is different "
+"from standard behavior when the iframe is used to tell whether the user is "
+"logged in, and the redirect is performed only when logged out."
+msgstr ""
+"通常の `check-sso` も影響を受けます。Session Status "
+"iframeはサポートされていないため、ユーザーのログイン・ステータスを確認するためにアダプターを初期化するときに、{project_name}への追加のリダイレクトを行う必要があります。これは、iframeを使用してユーザーがログインしているかどうかを通知する標準の動作とは異なり、リダイレクトはログアウトした場合にのみ実行されます。"
+
+#. type: Plain text
+msgid "An affected browser is e.g. Safari starting with version 13.1."
+msgstr "影響を受けるブラウザーは、 バージョン13.1以降のSafariです。"
 
 #. type: Title ====
 #, no-wrap
@@ -979,7 +1169,7 @@ msgstr "optionsはオブジェクトで、以下のプロパティーがあり�
 #. type: Plain text
 msgid ""
 "useNonce - Adds a cryptographic nonce to verify that the authentication "
-"response matches the request (default is true)."
+"response matches the request (default is `true`)."
 msgstr "useNonce - 暗号化ノンスを追加して、認証レスポンスがリクエストと一致することを確認します（デフォルトはtrueです）。"
 
 #. type: Plain text
@@ -997,6 +1187,14 @@ msgid ""
 msgstr ""
 "silentCheckSsoRedirectUri - onLoadが'check-"
 "sso'に設定されている場合、サイレント認証チェックのリダイレクトURIを設定します。"
+
+#. type: Plain text
+msgid ""
+"silentCheckSsoFallback - Enables fall back to regular `check-sso` when "
+"_silent_ `check-sso` is not supported by the browser (default is `true`)."
+msgstr ""
+"silentCheckSsoFallback - _silent_ `check-sso` がブラウザーでサポートされていない場合、通常の "
+"`check-sso` へのフォールバックを有効にします（デフォルトは `true` です）。"
 
 #. type: Plain text
 msgid "token - Set an initial value for the token."

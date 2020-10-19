@@ -24,429 +24,26 @@ msgstr ""
 msgid "SAML SP Client Adapter Changes"
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "Dependency updates"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Configuration changes"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Authentication flows changes"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "OPTIONAL execution requirement removed"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Freemarker template changes"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Duplicated top level groups"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid "SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Only one top level group can exist in each realm with the same name. "
-"Duplicates should be reviewed and deleted before the upgrade. The error in "
-"the upgrade contains the message `Change Set META-INF/jpa-changelog-9.0.1."
-"xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak failed.`"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "User credentials changes"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "New optional client scope"
-msgstr ""
-
-#. type: Plain text
-#, no-wrap
-msgid "Improved handling of user locale"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Legacy promise in JavaScript adapter"
-msgstr ""
-
-#. type: Title =
-#, no-wrap
-msgid "Deploying Scripts to the Server"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Client Credentials in the JavaScript adapter"
-msgstr ""
-
-#. type: Title ==
-#, no-wrap
-msgid "New Default Hostname provider"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Deprecated methods in token representation Java classes"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "New Password Hashing algorithms"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "ID Token requires scope=openid"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Added session_state parameter to OpenID Connect Authentication Response"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The OpenID Connect Session Management specification requires that the "
-"parameter `session_state` is present in the OpenID Connect Authentication "
-"Response."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Legacy client applications registered under \"Live SDK applications\" won't "
-"work with the Microsoft Graph endpoints due to changes in the id format of "
-"the applications. If you run into an error saying that the application "
-"identifier was not found in the directory, you will have to register the "
-"client application again in the https://account.live.com/developers/"
-"applications/create[Microsoft Application Registration] portal to obtain a "
-"new application id."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Google Identity Provider updated to use Google Sign-in authentication system"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"If you run into an error saying that the application identifier was not "
-"found in the directory, you will have to register the client application "
-"again in the https://console.developers.google.com/apis/credentials[Google "
-"API Console] portal to obtain a new application id and secret."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"It is possible that you will need to adjust custom mappers for non-standard "
-"claims that were provided by Google+ user information endpoint and are "
-"provided under different name by Google Sign-in API. Please consult Google "
-"documentation for the most up-to-date information on available claims."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Existing deployments using this broker may start experiencing errors when "
-"fetching user's profile using version 2 of LinkedIn APIs. This error may be "
-"related with the lack of permissions granted to the client application used "
-"to configure the broker which may not be authorized to access the Profile "
-"API or request specific OAuth2 scopes during the authentication process."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Even for newly created LinkedIn client applications, you need to make sure "
-"that the client is able to request the `r_liteprofile` and `r_emailaddress` "
-"OAuth2 scopes, at least, as well that the client application can fetch "
-"current member's profile from the `https://api.linkedin.com/v2/me` endpoint."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Due to these privacy restrictions imposed by LinkedIn in regards to access "
-"to member's information and the limited set of claims returned by the "
-"current member's Profile API, the LinkedIn Social Broker is now using the "
-"member's email address as the default username. That means that the "
-"`r_emailaddress` is always set when sending authorization requests during "
-"the authentication."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Changes to Authorization Services"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"We added support for UMA 2.0. This version of the UMA specification "
-"introduced some important changes on how permissions are obtained from the "
-"server."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Here are the main changes introduced by UMA 2.0 support. See link:"
-"{authorizationguide_link}[{authorizationguide_name}] for details."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Authorization API was removed"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Prior to UMA 2.0 (UMA 1.0), client applications were using the Authorization "
-"API to obtain permissions from the server in the format of a RPT. The new "
-"version of UMA specification has removed the Authorization API which was "
-"also removed from {project_name}. In UMA 2.0, RPTs can now be obtained from "
-"the token endpoint by using a specific grant type.  See link:"
-"{authorizationguide_link}"
-"#_service_obtaining_permissions[{authorizationguide_name}] for details."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Entitlement API was removed"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"With the introduction of UMA 2.0, we decided to leverage the token endpoint "
-"and UMA grant type to allow obtaining RPTs from {project_name} and avoid "
-"having different APIs. The functionality provided by the Entitlement API was "
-"kept the same and is still possible to obtain permissions for a set of one "
-"or more resources and scopes or all permissions from the server in case no "
-"resource or scope is provided.  See link:{authorizationguide_link}"
-"#_service_obtaining_permissions[{authorizationguide_name}] for details."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Changes to UMA Discovery Endpoint"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"UMA Discovery document changed, see link:{authorizationguide_link}"
-"#_service_authorization_api[{authorizationguide_name}] for details."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Changes to {project_name} Authorization JavaScript Adapter"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The {project_name} Authorization JavaScript Adapter (keycloak-authz.js) "
-"changed in order to comply with the changes introduced by UMA 2.0 while "
-"keeping the same behavior as before. The main change is on how you invoke "
-"both `authorization` and `entitlement` methods which now expect a specific "
-"object type representing an authorization request. This new object type "
-"provides more flexibility on how permissions can be obtained from the server "
-"by supporting the different parameters supported by the UMA grant type.  See "
-"link:{authorizationguide_link}"
-"#_enforcer_js_adapter[{authorizationguide_name}] for details."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"One of the main changes introduced by this release is that you are no longer "
-"required to exchange access tokens with RPTs in order to access resources "
-"protected by a resource server (when not using UMA). Depending on how the "
-"policy enforcer is configured on the resource server side, you can just send "
-"regular access tokens as a bearer token and permissions will still be "
-"enforced."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Changes to {project_name} Authorization Client Java API"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"When upgrading to the new version of {project_name} Authorization Client "
-"Java API, you'll notice that some representation classes were moved to a "
-"different package in `org.keycloak:keycloak-core`."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Client Templates changed to Client Scopes"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"We added support for Client Scopes, which requires some attention during "
-"migration."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Spaces replaced in the names"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Linking Client Scopes to Clients"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Realm Default Client Scopes not linked with existing clients"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Consents need to be confirmed again"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Some configuration switches removed"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "New default client scopes"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"We have added new realm default client scopes `roles` and `web-origins`. "
-"These client scopes contain protocol mappers to add the roles of the user "
-"and allowed web origins to the token. During migration, these client scopes "
-"should be automatically added to all the OpenID Connect clients as default "
-"client scopes. Hence no setup should be required after database migration is "
-"finished."
-msgstr ""
-
-#. type: Title =====
-#, no-wrap
-msgid "Protocol mapper SPI addition"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Related to this, there is a small addition in the (unsupported) Protocol "
-"Mappers SPI. You can be affected only if you implemented a custom "
-"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
-"interface. The method has the default implementation set to return 0. If "
-"your protocol mapper implementation relies on the roles in the access token "
-"`realmAccess` or `resourceAccess` properties, you may need to increase the "
-"priority of your mapper."
-msgstr ""
-
-#. type: Title =====
-#, no-wrap
-msgid "Audience resolving"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Audiences of all the clients, for which authenticated user has at least one "
-"client role in the token, are automatically added to the `aud` claim in the "
-"access token now. On the other hand, an access token may not automatically "
-"contain the audience of the frontend client, for which it was issued. Read "
-"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Cross-Datacenter Replication changes"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You will need to upgrade {jdgserver_name} server to version "
-"{jdgserver_version}. The older version may still work, but it is"
-msgstr ""
-
-#. type: Plain text
-msgid "not guaranteed as we don't test it anymore."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"There is a need to add `protocolVersion` property with the value `2.6` to "
-"the configuration of the `remote-store` element in the"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"{project_name} configuration. This is required as there is a need to "
-"downgrade the version of HotRod protocol to be compatible with the version "
-"used by {jdgserver_name} {jdgserver_version}."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Hostname configuration"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"In previous versions it was recommended to use a filter to specify permitted "
-"hostnames. It is now possible to set a fixed hostname which makes it easier "
-"to make sure the valid hostname is used and also allows internal "
-"applications to invoke {project_name} through an alternative URL, for "
-"example an internal IP address. It is recommended that you switch to this "
-"approach in production."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"To use native JavaScript promise with the JavaScript adapter it is now "
-"required to set `promiseType` to `native` in the init options."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"In the past if native promise was available a wrapper was returned that "
-"provided both the legacy Keycloak promise and the native promise. This was "
-"causing issues as the error handler was not always set prior to the native "
-"error event, which resulted in `Uncaught (in promise)` error."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Accordingly with LinkedIn, all developers need to migrate to version 2.0 of "
-"their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social "
-"Broker."
-msgstr ""
-
 #. type: Title ==
 #, no-wrap
 msgid "Migration Changes"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 12.0.0"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Skip creation of user session for the Docker protocol authentication"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"No user session is created after successful authentication with the Docker "
+"protocol. For details, please refer to the link:{adminguide_link}"
+"#_docker[{adminguide_name}]."
 msgstr ""
 
 #. type: Title ===
@@ -467,10 +64,20 @@ msgid ""
 "worth mentioning."
 msgstr ""
 
+#. type: Title ====
+#, no-wrap
+msgid "Dependency updates"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "The dependencies were updated to the versions used by Wildfly 20 server. For "
 "example, Infinispan is now 10.1.8.Final."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Configuration changes"
 msgstr ""
 
 #. type: Plain text
@@ -478,6 +85,17 @@ msgid ""
 "There are few configuration changes in the `standalone(-ha).xml` and `domain."
 "xml` files. You should follow the <<_install_new_version>> section to handle "
 "the migration of configuration files automatically."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Cross-Datacenter Replication changes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You will need to upgrade {jdgserver_name} server to version "
+"{jdgserver_version}. The older version may still work, but it is"
 msgstr ""
 
 #. type: Plain text
@@ -606,6 +224,11 @@ msgstr ""
 msgid "Migrating to 9.0.1"
 msgstr ""
 
+#. type: Title ===
+#, no-wrap
+msgid "Legacy promise in JavaScript adapter"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "It is no longer necessary to set promiseType in the JavaScript adapter, and "
@@ -613,6 +236,11 @@ msgid ""
 "applications to use native promise API (`then` and `catch`) as soon as "
 "possible, as the legacy API (`success` and `error`) will be removed at some "
 "point."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Duplicated top level groups"
 msgstr ""
 
 #. type: Plain text
@@ -626,9 +254,27 @@ msgid ""
 "level to list them:"
 msgstr ""
 
+#. type: delimited block -
+#, no-wrap
+msgid "SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Only one top level group can exist in each realm with the same name. "
+"Duplicates should be reviewed and deleted before the upgrade. The error in "
+"the upgrade contains the message `Change Set META-INF/jpa-changelog-9.0.1."
+"xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak failed.`"
+msgstr ""
+
 #. type: Title ===
 #, no-wrap
 msgid "Migrating to 9.0.0"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "Improved handling of user locale"
 msgstr ""
 
 #. type: Plain text
@@ -641,6 +287,11 @@ msgstr ""
 msgid ""
 "See the link:{adminguide_link}#_user_locale_selection[{adminguide_name}] for "
 "more details."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Deprecated methods in token representation Java classes"
 msgstr ""
 
 #. type: Plain text
@@ -698,6 +349,11 @@ msgstr ""
 msgid "Migrating to 8.0.0"
 msgstr ""
 
+#. type: Title ==
+#, no-wrap
+msgid "New Default Hostname provider"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "The old request and fixed hostname providers have been replaced with a new "
@@ -726,6 +382,15 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
+msgid "not guaranteed as we don't test it anymore."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Deploying Scripts to the Server"
+msgstr ""
+
+#. type: Plain text
 msgid ""
 "Until now, administrators were allowed to upload scripts to the server "
 "through the {project_name} Administration Console as well as through the "
@@ -740,6 +405,11 @@ msgid ""
 "[{developerguide_jsproviders_name}]."
 msgstr ""
 
+#. type: Title ===
+#, no-wrap
+msgid "Client Credentials in the JavaScript adapter"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "In the previous releases, developers were allowed to provide client "
@@ -747,10 +417,20 @@ msgid ""
 "*removed*, because client-side apps are not safe to keep secrets."
 msgstr ""
 
+#. type: Title ===
+#, no-wrap
+msgid "Authentication flows changes"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "We did some refactoring and improvements related to the authentication "
 "flows, which requires some attention during migration."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "OPTIONAL execution requirement removed"
 msgstr ""
 
 #. type: Plain text
@@ -784,6 +464,11 @@ msgid ""
 "development guide for more details."
 msgstr ""
 
+#. type: Title ====
+#, no-wrap
+msgid "Freemarker template changes"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "There are also some changes in the freemarker templates. You may be affected "
@@ -791,6 +476,11 @@ msgid ""
 "or some account forms, especially for the forms related to OTP. It is "
 "recommended to double check changes in the Freemarker templates in the "
 "latest {project_name} and align your templates according to it."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "User credentials changes"
 msgstr ""
 
 #. type: Plain text
@@ -850,6 +540,11 @@ msgstr ""
 msgid ""
 "The dependencies were updated to the versions used by Wildfly 16 server. For "
 "example, Infinispan is now 9.4.8.Final."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "New optional client scope"
 msgstr ""
 
 #. type: Plain text
@@ -923,6 +618,11 @@ msgstr ""
 msgid "Migrating to 4.8.2"
 msgstr ""
 
+#. type: Title ===
+#, no-wrap
+msgid "Google Identity Provider updated to use Google Sign-in authentication system"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "The Google Identity Provider implementation in {project_name} up to version "
@@ -934,14 +634,133 @@ msgid ""
 "upgrade to {project_name} version 4.8.2 or later."
 msgstr ""
 
+#. type: Plain text
+msgid ""
+"If you run into an error saying that the application identifier was not "
+"found in the directory, you will have to register the client application "
+"again in the https://console.developers.google.com/apis/credentials[Google "
+"API Console] portal to obtain a new application id and secret."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"It is possible that you will need to adjust custom mappers for non-standard "
+"claims that were provided by Google+ user information endpoint and are "
+"provided under different name by Google Sign-in API. Please consult Google "
+"documentation for the most up-to-date information on available claims."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Accordingly with LinkedIn, all developers need to migrate to version 2.0 of "
+"their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social "
+"Broker."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Existing deployments using this broker may start experiencing errors when "
+"fetching user's profile using version 2 of LinkedIn APIs. This error may be "
+"related with the lack of permissions granted to the client application used "
+"to configure the broker which may not be authorized to access the Profile "
+"API or request specific OAuth2 scopes during the authentication process."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Even for newly created LinkedIn client applications, you need to make sure "
+"that the client is able to request the `r_liteprofile` and `r_emailaddress` "
+"OAuth2 scopes, at least, as well that the client application can fetch "
+"current member's profile from the `https://api.linkedin.com/v2/me` endpoint."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Due to these privacy restrictions imposed by LinkedIn in regards to access "
+"to member's information and the limited set of claims returned by the "
+"current member's Profile API, the LinkedIn Social Broker is now using the "
+"member's email address as the default username. That means that the "
+"`r_emailaddress` is always set when sending authorization requests during "
+"the authentication."
+msgstr ""
+
 #. type: Title ===
 #, no-wrap
 msgid "Migrating to 4.6.0"
 msgstr ""
 
+#. type: Title ===
+#, no-wrap
+msgid "New default client scopes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"We have added new realm default client scopes `roles` and `web-origins`. "
+"These client scopes contain protocol mappers to add the roles of the user "
+"and allowed web origins to the token. During migration, these client scopes "
+"should be automatically added to all the OpenID Connect clients as default "
+"client scopes. Hence no setup should be required after database migration is "
+"finished."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Protocol mapper SPI addition"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Related to this, there is a small addition in the (unsupported) Protocol "
+"Mappers SPI. You can be affected only if you implemented a custom "
+"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
+"interface. The method has the default implementation set to return 0. If "
+"your protocol mapper implementation relies on the roles in the access token "
+"`realmAccess` or `resourceAccess` properties, you may need to increase the "
+"priority of your mapper."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Audience resolving"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Audiences of all the clients, for which authenticated user has at least one "
+"client role in the token, are automatically added to the `aud` claim in the "
+"access token now. On the other hand, an access token may not automatically "
+"contain the audience of the frontend client, for which it was issued. Read "
+"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
+msgstr ""
+
 #. type: Title ====
 #, no-wrap
 msgid "JavaScript Adapter Promise"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To use native JavaScript promise with the JavaScript adapter it is now "
+"required to set `promiseType` to `native` in the init options."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the past if native promise was available a wrapper was returned that "
+"provided both the legacy Keycloak promise and the native promise. This was "
+"causing issues as the error handler was not always set prior to the native "
+"error event, which resulted in `Uncaught (in promise)` error."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
 msgstr ""
 
 #. type: Plain text
@@ -953,6 +772,17 @@ msgid ""
 "API. The {project_name} identity provider has been updated to use the new "
 "endpoints so if this integration is in use make sure you upgrade to "
 "{project_name} version 4.6.0 or later."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Legacy client applications registered under \"Live SDK applications\" won't "
+"work with the Microsoft Graph endpoints due to changes in the id format of "
+"the applications. If you run into an error saying that the application "
+"identifier was not found in the directory, you will have to register the "
+"client application again in the https://account.live.com/developers/"
+"applications/create[Microsoft Application Registration] portal to obtain a "
+"new application id."
 msgstr ""
 
 #. type: Title ====
@@ -972,6 +802,19 @@ msgstr ""
 msgid ""
 "The dependencies were updated to the versions used by Wildfly 14 server. For "
 "example, Infinispan is now 9.3.1.Final."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There is a need to add `protocolVersion` property with the value `2.6` to "
+"the configuration of the `remote-store` element in the"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} configuration. This is required as there is a need to "
+"downgrade the version of HotRod protocol to be compatible with the version "
+"used by {jdgserver_name} {jdgserver_version}."
 msgstr ""
 
 #. type: Title ===
@@ -1044,13 +887,44 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
+msgid "Hostname configuration"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In previous versions it was recommended to use a filter to specify permitted "
+"hostnames. It is now possible to set a fixed hostname which makes it easier "
+"to make sure the valid hostname is used and also allows internal "
+"applications to invoke {project_name} through an alternative URL, for "
+"example an internal IP address. It is recommended that you switch to this "
+"approach in production."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 4.0.0"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client Templates changed to Client Scopes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"We added support for Client Scopes, which requires some attention during "
+"migration."
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "Client Templates were changed to Client Scopes. If you had any Client "
 "Templates, their protocol mappers and role scope mappings will be preserved."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Spaces replaced in the names"
 msgstr ""
 
 #. type: Plain text
@@ -1061,11 +935,21 @@ msgid ""
 "changed to client scope `my_template`."
 msgstr ""
 
+#. type: Labeled list
+#, no-wrap
+msgid "Linking Client Scopes to Clients"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "For clients which had the client template, the corresponding client scope is "
 "now added as `Default Client Scope` to the client. So protocol mappers and "
 "role scope mappings will be preserved on the client."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Realm Default Client Scopes not linked with existing clients"
 msgstr ""
 
 #. type: Plain text
@@ -1083,12 +967,22 @@ msgid ""
 "from them and link them with client scopes), you will need to do it manually."
 msgstr ""
 
+#. type: Labeled list
+#, no-wrap
+msgid "Consents need to be confirmed again"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "The client scopes change required the refactoring of consents. Consents now "
 "point to client scopes, not to roles or protocol mappers.  Because of this "
 "change, the previously confirmed persistent consents by users are not valid "
 "anymore and users need to confirm the consent page again after the migration."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Some configuration switches removed"
 msgstr ""
 
 #. type: Plain text
@@ -1100,7 +994,120 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
+msgid "Changes to Authorization Services"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"We added support for UMA 2.0. This version of the UMA specification "
+"introduced some important changes on how permissions are obtained from the "
+"server."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Here are the main changes introduced by UMA 2.0 support. See link:"
+"{authorizationguide_link}[{authorizationguide_name}] for details."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authorization API was removed"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Prior to UMA 2.0 (UMA 1.0), client applications were using the Authorization "
+"API to obtain permissions from the server in the format of a RPT. The new "
+"version of UMA specification has removed the Authorization API which was "
+"also removed from {project_name}. In UMA 2.0, RPTs can now be obtained from "
+"the token endpoint by using a specific grant type.  See link:"
+"{authorizationguide_link}"
+"#_service_obtaining_permissions[{authorizationguide_name}] for details."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Entitlement API was removed"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"With the introduction of UMA 2.0, we decided to leverage the token endpoint "
+"and UMA grant type to allow obtaining RPTs from {project_name} and avoid "
+"having different APIs. The functionality provided by the Entitlement API was "
+"kept the same and is still possible to obtain permissions for a set of one "
+"or more resources and scopes or all permissions from the server in case no "
+"resource or scope is provided.  See link:{authorizationguide_link}"
+"#_service_obtaining_permissions[{authorizationguide_name}] for details."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes to UMA Discovery Endpoint"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"UMA Discovery document changed, see link:{authorizationguide_link}"
+"#_service_authorization_api[{authorizationguide_name}] for details."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes to {project_name} Authorization JavaScript Adapter"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} Authorization JavaScript Adapter (keycloak-authz.js) "
+"changed in order to comply with the changes introduced by UMA 2.0 while "
+"keeping the same behavior as before. The main change is on how you invoke "
+"both `authorization` and `entitlement` methods which now expect a specific "
+"object type representing an authorization request. This new object type "
+"provides more flexibility on how permissions can be obtained from the server "
+"by supporting the different parameters supported by the UMA grant type.  See "
+"link:{authorizationguide_link}"
+"#_enforcer_js_adapter[{authorizationguide_name}] for details."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"One of the main changes introduced by this release is that you are no longer "
+"required to exchange access tokens with RPTs in order to access resources "
+"protected by a resource server (when not using UMA). Depending on how the "
+"policy enforcer is configured on the resource server side, you can just send "
+"regular access tokens as a bearer token and permissions will still be "
+"enforced."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes to {project_name} Authorization Client Java API"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When upgrading to the new version of {project_name} Authorization Client "
+"Java API, you'll notice that some representation classes were moved to a "
+"different package in `org.keycloak:keycloak-core`."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 3.4.2"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Added session_state parameter to OpenID Connect Authentication Response"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The OpenID Connect Session Management specification requires that the "
+"parameter `session_state` is present in the OpenID Connect Authentication "
+"Response."
 msgstr ""
 
 #. type: Plain text
@@ -1142,6 +1149,11 @@ msgstr ""
 msgid "Migrating to 3.2.0"
 msgstr ""
 
+#. type: Title ===
+#, no-wrap
+msgid "New Password Hashing algorithms"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "We've added two new password hashing algorithms (pbkdf2-sha256 and pbkdf2-"
@@ -1156,6 +1168,11 @@ msgid ""
 "value for hashing algorithm (not specified) and iteration (20000). If you "
 "have changed the hashing iterations you need to manually change to pbkdf2-"
 "sha256 if you'd like to use the more secure hashing algorithm."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "ID Token requires scope=openid"
 msgstr ""
 
 #. type: Plain text

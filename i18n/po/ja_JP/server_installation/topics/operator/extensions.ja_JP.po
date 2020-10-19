@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Block title
+#, no-wrap
+msgid "Example YAML file for a Keycloak custom resource"
+msgstr "Keycloakカスタム・リソースのYAMLファイルの例"
+
+#. type: Plain text
+msgid ""
+"You have cluster-admin permission or an equivalent level of permissions "
+"granted by an administrator."
+msgstr "cluster-adminパーミッションまたは同等のレベルのパーミッションが管理者によって付与されていること"
+
+#. type: Title ===
+#, no-wrap
+msgid "Installing extensions and themes"
+msgstr "拡張機能とテーマのインストール"
+
+#. type: Plain text
+msgid ""
+"You can use the operator to install extensions and themes that you need for "
+"your company or organization. The extension or theme can be anything that "
+"{project_name} can consume. For example, you can add a metrics extension. "
+"You add the extension or theme to the Keycloak custom resource."
+msgstr ""
+"Operatorを使用して、会社または組織に必要な拡張機能とテーマをインストールできます。拡張機能またはテーマは、{project_name}が使用できるものであれば何でもかまいません。たとえば、メトリクス拡張を追加できます。Keycloakカスタムリソースに拡張機能またはテーマを追加します。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"  name: example-keycloak\n"
+"  labels:\n"
+"ifeval::[{project_community}==true]\n"
+"   app: keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"   app: sso\n"
+"endif::[]  \n"
+"spec:\n"
+"  instances: 1\n"
+"  extensions:\n"
+"   - <url_for_extension_or_theme>\n"
+"  externalAccess:\n"
+"    enabled: True\n"
+msgstr ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"  name: example-keycloak\n"
+"  labels:\n"
+"ifeval::[{project_community}==true]\n"
+"   app: keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"   app: sso\n"
+"endif::[]  \n"
+"spec:\n"
+"  instances: 1\n"
+"  extensions:\n"
+"   - <url_for_extension_or_theme>\n"
+"  externalAccess:\n"
+"    enabled: True\n"
+
+#. type: Plain text
+msgid "You have a YAML file for the Keycloak custom resource."
+msgstr "Keycloakカスタムリソース用のYAMLファイルがあること。"
+
+#. type: Plain text
+msgid ""
+"Edit the YAML file for the Keycloak custom resource: `{create_cmd_brief} "
+"edit <CR-name>`"
+msgstr ""
+"`{create_cmd_brief} edit <CR-name>` のようにKeycloakカスタムリソースのYAMLファイルを編集します。"
+
+#. type: Plain text
+msgid "Add a line called `extensions:` after the `instances` line."
+msgstr "`extensions:` という行を `instances` 行の後に追加します。"
+
+#. type: Plain text
+msgid "Add a URL to a JAR file for your custom extension or theme."
+msgstr "カスタム拡張機能またはテーマのJARファイルにURLを追加します。"
+
+#. type: Plain text
+msgid "Save the file."
+msgstr "ファイルを保存します。"
+
+#. type: Plain text
+msgid "The Operator downloads the extension or theme and installs it."
+msgstr "Operatorは拡張機能またはテーマをダウンロードしてインストールします。"

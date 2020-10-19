@@ -15,6 +15,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Plain text
+msgid "Configuration|Description"
+msgstr ""
+
+#. type: Plain text
 #, no-wrap
 msgid "Signature Algorithm"
 msgstr ""
@@ -27,10 +31,6 @@ msgstr ""
 #. type: Block title
 #, no-wrap
 msgid "Add Identity Provider"
-msgstr ""
-
-#. type: Plain text
-msgid "Configuration|Description"
 msgstr ""
 
 #. type: Plain text
@@ -69,6 +69,18 @@ msgstr ""
 #. type: Block title
 #, no-wrap
 msgid "SAML Config"
+msgstr ""
+
+#. type: Plain text
+msgid "Service Provider Entity ID"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is a required field and specifies the SAML Entity ID that the remote "
+"Identity Provider will use to identify requests coming from this Service "
+"Provider. By default it is set to the realm base URL `<root>/auth/realms/"
+"{realm-name}`."
 msgstr ""
 
 #. type: Plain text
@@ -210,6 +222,29 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
+msgid "Sign Service Provider Metadata"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If true, it will use the realm's keypair to sign the "
+"<<_identity_broker_saml_sp_descriptor, SAML Service Provider Metadata "
+"descriptor>>."
+msgstr ""
+
+#. type: Plain text
+msgid "Pass subject"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Whether or not a `login_hint` query parameter should be forwarded to the "
+"IDP. When provided, this login_hint parameter is added to AuthnRequest's "
+"Subject. This allows destination providers to prefill their login form. When "
+"no login_hint is provided, nothing is forwarded as an AuthnRequest Subject."
+msgstr ""
+
+#. type: Plain text
 msgid ""
 "You can also import all this configuration data by providing a URL or file "
 "that points to the SAML IDP entity descriptor of the external IDP.  If you "
@@ -227,21 +262,114 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
+msgid "Requesting specific AuthnContexts"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Some Identity Providers let the clients specify particular constraints on "
+"the authentication method used to verify the user identity (such as asking "
+"for MFA, Kerberos authentication, security requirements, and so on). These "
+"constraints are specified using particular AuthnContext criteria. A client "
+"can ask for one or more criteria and also specify how the Identity Provider "
+"should match the requested AuthnContext - exactly, or by satisfying same-or-"
+"better equivalents."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You can list the criteria your Service Provider requires by adding one or "
+"more ClassRef or DeclRef in the Requested AuthnContext Constraints section. "
+"Usually you need to provide either ClassRefs or DeclRefs; you should check "
+"with your Identity Provider documentation which values are supported. If no "
+"ClassRefs or DeclRefs are present, the Identity Provider will not enforce "
+"additional constraints."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Requested AuthnContext Constraints"
+msgstr ""
+
+#. type: Plain text
+msgid "Comparison"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The comparison method the Identity Provider should use to evaluate the "
+"context requirements. Available values are `Exact`, `Minimum`, `Maximum` or "
+"`Better`. Default value is `Exact`."
+msgstr ""
+
+#. type: Plain text
+msgid "AuthnContext ClassRefs"
+msgstr ""
+
+#. type: Plain text
+msgid "One or more AuthnContext ClassRefs that describe the required criteria."
+msgstr ""
+
+#. type: Plain text
+msgid "AuthnContext DeclRefs"
+msgstr ""
+
+#. type: Plain text
+msgid "One or more AuthnContext DeclRefs that describe the required criteria."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
 msgid "SP Descriptor"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Once you create a SAML provider, there is an `EXPORT` button that appears "
-"when viewing that provider.  Clicking this button will export a SAML SP "
-"entity descriptor which you can use to import into the external SP."
+"If you need to access the provider's SAML SP metadata, look for the "
+"`Endpoints` item in the identity provider configuration settings. It "
+"contains a link called `SAML 2.0 Service Provider Metadata` that generates "
+"the SAML entity descriptor for the Service Provider. You can either download "
+"it or copy its URL and then import it in the remote Identity Provider."
 msgstr ""
 
 #. type: Plain text
-msgid "This metadata is also available publicly by going to the URL."
+msgid "This metadata is also available publicly by going to the URL:"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
 msgid "http[s]://{host:port}/auth/realms/{realm-name}/broker/{broker-alias}/endpoint/descriptor\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Make sure to save any configuration changes before accessing the descriptor "
+"or they will not be reflected in the metadata."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Send Subject in SAML requests"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By default, a social button pointing to a SAML Identity Provider redirects "
+"the user to a login URL:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "http[s]://{host:port}/auth/realms/${realm-name}/broker/{broker-alias}/login\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Adding a query parameter named `login_hint` to this URL will add its value "
+"to SAML request as a Subject attribute. When this query parameter is absent "
+"or left empty, no subject will be added to the request."
+msgstr ""
+
+#. type: Plain text
+msgid "\"Pass subject\" option must be enabled."
 msgstr ""

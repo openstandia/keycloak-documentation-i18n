@@ -14,55 +14,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: Code block
-#, no-wrap
-msgid ""
-"curl -X POST \\\n"
-"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
-"  -H \"Authorization: Bearer ${access_token}\" \\\n"
-"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
-"  --data \"ticket=${permission_ticket}\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"If {project_name} assessment process results in issuance of permissions, it "
-"issues the RPT with which it has associated the permissions:"
-msgstr ""
-
-#. type: Block title
-#, no-wrap
-msgid "{project_name} responds to the client with the RPT"
-msgstr ""
-
-#. type: Code block
-#, no-wrap
-msgid ""
-"HTTP/1.1 200 OK\n"
-"Content-Type: application/json\n"
-"...\n"
-"{\n"
-"    \"access_token\": \"${rpt}\",\n"
-"}\n"
-msgstr ""
-
-#. type: Block title
-#, no-wrap
-msgid "{project_name} denies the authorization request"
-msgstr ""
-
-#. type: Code block
-#, no-wrap
-msgid ""
-"HTTP/1.1 403 Forbidden\n"
-"Content-Type: application/json\n"
-"...\n"
-"{\n"
-"    \"error\": \"access_denied\",\n"
-"    \"error_description\": \"request_denied\"\n"
-"}\n"
-msgstr ""
-
 #. type: Title =
 #, no-wrap
 msgid "Obtaining Permissions"
@@ -211,7 +162,7 @@ msgstr ""
 msgid ""
 "This parameter is *optional*. A boolean value indicating whether the server "
 "should create permission requests to the resources and scopes referenced by "
-"a permission ticket.  This parameter only have effect if used together with "
+"a permission ticket.  This parameter only has effect if used together with "
 "the `ticket` parameter as part of a UMA authorization process."
 msgstr ""
 
@@ -319,10 +270,59 @@ msgid ""
 "server as part of the authorization process:"
 msgstr ""
 
+#. type: Code block
+#, no-wrap
+msgid ""
+"curl -X POST \\\n"
+"  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \\\n"
+"  -H \"Authorization: Bearer ${access_token}\" \\\n"
+"  --data \"grant_type=urn:ietf:params:oauth:grant-type:uma-ticket\" \\\n"
+"  --data \"ticket=${permission_ticket}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If {project_name} assessment process results in issuance of permissions, it "
+"issues the RPT with which it has associated the permissions:"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "{project_name} responds to the client with the RPT"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 200 OK\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"access_token\": \"${rpt}\",\n"
+"}\n"
+msgstr ""
+
 #. type: Plain text
 msgid ""
 "The response from the server is just like any other response from the token "
 "endpoint when using some other grant type. The RPT can be obtained from the "
 "`access_token` response parameter. If the client is not authorized, "
 "{project_name} responds with a `403` HTTP status code:"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "{project_name} denies the authorization request"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"HTTP/1.1 403 Forbidden\n"
+"Content-Type: application/json\n"
+"...\n"
+"{\n"
+"    \"error\": \"access_denied\",\n"
+"    \"error_description\": \"request_denied\"\n"
+"}\n"
 msgstr ""

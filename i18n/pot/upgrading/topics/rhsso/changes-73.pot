@@ -14,33 +14,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Dependency updates"
 msgstr ""
 
-#. type: Labeled list
+#. type: Title ====
 #, no-wrap
 msgid "Configuration changes"
 msgstr ""
 
-#. type: Title ====
+#. type: Labeled list
 #, no-wrap
-msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
+msgid "Cross-Datacenter Replication changes"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Legacy client applications registered under \"Live SDK applications\" won't "
-"work with the Microsoft Graph endpoints due to changes in the id format of "
-"the applications. If you run into an error saying that the application "
-"identifier was not found in the directory, you will have to register the "
-"client application again in the https://account.live.com/developers/"
-"applications/create[Microsoft Application Registration] portal to obtain a "
-"new application id."
+"You will need to upgrade {jdgserver_name} server to version "
+"{jdgserver_version}. The older version may still work, but it is"
 msgstr ""
 
-#. type: Title ====
+#. type: Plain text
+msgid "not guaranteed as we don't test it anymore."
+msgstr ""
+
+#. type: Title ===
 #, no-wrap
 msgid "Google Identity Provider updated to use Google Sign-in authentication system"
 msgstr ""
@@ -61,9 +60,16 @@ msgid ""
 "documentation for the most up-to-date information on available claims."
 msgstr ""
 
-#. type: Title ====
+#. type: Title ===
 #, no-wrap
 msgid "LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Accordingly with LinkedIn, all developers need to migrate to version 2.0 of "
+"their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social "
+"Broker."
 msgstr ""
 
 #. type: Plain text
@@ -93,16 +99,146 @@ msgid ""
 "the authentication."
 msgstr ""
 
-#. type: Title ==
+#. type: Title ===
 #, no-wrap
-msgid "RH-SSO 7.3"
+msgid "New default client scopes"
 msgstr ""
 
 #. type: Plain text
-msgid "The following changes have occurred from RH-SSO 7.2 to RH-SSO 7.3."
+msgid ""
+"We have added new realm default client scopes `roles` and `web-origins`. "
+"These client scopes contain protocol mappers to add the roles of the user "
+"and allowed web origins to the token. During migration, these client scopes "
+"should be automatically added to all the OpenID Connect clients as default "
+"client scopes. Hence no setup should be required after database migration is "
+"finished."
 msgstr ""
 
 #. type: Title ====
+#, no-wrap
+msgid "Protocol mapper SPI addition"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Related to this, there is a small addition in the (unsupported) Protocol "
+"Mappers SPI. You can be affected only if you implemented a custom "
+"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
+"interface. The method has the default implementation set to return 0. If "
+"your protocol mapper implementation relies on the roles in the access token "
+"`realmAccess` or `resourceAccess` properties, you may need to increase the "
+"priority of your mapper."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Audience resolving"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Audiences of all the clients, for which authenticated user has at least one "
+"client role in the token, are automatically added to the `aud` claim in the "
+"access token now. On the other hand, an access token may not automatically "
+"contain the audience of the frontend client, for which it was issued. Read "
+"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To use native JavaScript promise with the JavaScript adapter it is now "
+"required to set `promiseType` to `native` in the init options."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the past if native promise was available a wrapper was returned that "
+"provided both the legacy Keycloak promise and the native promise. This was "
+"causing issues as the error handler was not always set prior to the native "
+"error event, which resulted in `Uncaught (in promise)` error."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Legacy client applications registered under \"Live SDK applications\" won't "
+"work with the Microsoft Graph endpoints due to changes in the id format of "
+"the applications. If you run into an error saying that the application "
+"identifier was not found in the directory, you will have to register the "
+"client application again in the https://account.live.com/developers/"
+"applications/create[Microsoft Application Registration] portal to obtain a "
+"new application id."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"There is a need to add `protocolVersion` property with the value `2.6` to "
+"the configuration of the `remote-store` element in the"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} configuration. This is required as there is a need to "
+"downgrade the version of HotRod protocol to be compatible with the version "
+"used by {jdgserver_name} {jdgserver_version}."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Hostname configuration"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In previous versions it was recommended to use a filter to specify permitted "
+"hostnames. It is now possible to set a fixed hostname which makes it easier "
+"to make sure the valid hostname is used and also allows internal "
+"applications to invoke {project_name} through an alternative URL, for "
+"example an internal IP address. It is recommended that you switch to this "
+"approach in production."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client Templates changed to Client Scopes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"We added support for Client Scopes, which requires some attention during "
+"migration."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Spaces replaced in the names"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Linking Client Scopes to Clients"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Realm Default Client Scopes not linked with existing clients"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Consents need to be confirmed again"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Some configuration switches removed"
+msgstr ""
+
+#. type: Title ===
 #, no-wrap
 msgid "Changes to Authorization Services"
 msgstr ""
@@ -203,15 +339,13 @@ msgid ""
 "different package in `org.keycloak:keycloak-core`."
 msgstr ""
 
-#. type: Labeled list
+#. type: Title ==
 #, no-wrap
-msgid "Client Templates changed to Client Scopes"
+msgid "RH-SSO 7.3"
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"We added support for Client Scopes, which requires some attention during "
-"migration."
+msgid "The following changes have occurred from RH-SSO 7.2 to RH-SSO 7.3."
 msgstr ""
 
 #. type: Plain text
@@ -221,11 +355,6 @@ msgid ""
 "will be preserved.\n"
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "Spaces replaced in the names"
-msgstr ""
-
 #. type: Plain text
 #, no-wrap
 msgid ""
@@ -233,21 +362,11 @@ msgid ""
 "not allowed in the name of client scopes. For example, a client template `my template` will be changed to client scope `my_template`.\n"
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "Linking Client Scopes to Clients"
-msgstr ""
-
 #. type: Plain text
 #, no-wrap
 msgid ""
 "For clients which had the client template, the corresponding client scope\n"
 "is now added as `Default Client Scope` to the client. So protocol mappers and role scope mappings will be preserved on the client.\n"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Realm Default Client Scopes not linked with existing clients"
 msgstr ""
 
 #. type: Plain text
@@ -261,11 +380,6 @@ msgid ""
 "update existing clients (remove protocol mappers from them and link them with client scopes), you will need to do it manually.\n"
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "Consents need to be confirmed again"
-msgstr ""
-
 #. type: Plain text
 #, no-wrap
 msgid ""
@@ -274,61 +388,11 @@ msgid ""
 "the consent page again after the migration.\n"
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "Some configuration switches removed"
-msgstr ""
-
 #. type: Plain text
 #, no-wrap
 msgid ""
 "The switch `Scope Param Required` was removed from Role Detail. The switches `Consent Required` and `Consent Text` were removed\n"
 "from the Protocol Mapper details. Those switches were replaced by the Client Scope feature.\n"
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "New default client scopes"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"We have added new realm default client scopes `roles` and `web-origins`. "
-"These client scopes contain protocol mappers to add the roles of the user "
-"and allowed web origins to the token. During migration, these client scopes "
-"should be automatically added to all the OpenID Connect clients as default "
-"client scopes. Hence no setup should be required after database migration is "
-"finished."
-msgstr ""
-
-#. type: Title =====
-#, no-wrap
-msgid "Protocol mapper SPI addition"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Related to this, there is a small addition in the (unsupported) Protocol "
-"Mappers SPI. You can be affected only if you implemented a custom "
-"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
-"interface. The method has the default implementation set to return 0. If "
-"your protocol mapper implementation relies on the roles in the access token "
-"`realmAccess` or `resourceAccess` properties, you may need to increase the "
-"priority of your mapper."
-msgstr ""
-
-#. type: Title =====
-#, no-wrap
-msgid "Audience resolving"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Audiences of all the clients, for which authenticated user has at least one "
-"client role in the token, are automatically added to the `aud` claim in the "
-"access token now. On the other hand, an access token may not automatically "
-"contain the audience of the frontend client, for which it was issued. Read "
-"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
 msgstr ""
 
 #. type: Title ===
@@ -356,66 +420,9 @@ msgid ""
 "section to handle the migration of configuration files automatically.\n"
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "Cross-Datacenter Replication changes"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You will need to upgrade {jdgserver_name} server to version "
-"{jdgserver_version}. The older version may still work, but it is"
-msgstr ""
-
-#. type: Plain text
-msgid "not guaranteed as we don't test it anymore."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"There is a need to add `protocolVersion` property with the value `2.6` to "
-"the configuration of the `remote-store` element in the"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"{project_name} configuration. This is required as there is a need to "
-"downgrade the version of HotRod protocol to be compatible with the version "
-"used by {jdgserver_name} {jdgserver_version}."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Hostname configuration"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"In previous versions it was recommended to use a filter to specify permitted "
-"hostnames. It is now possible to set a fixed hostname which makes it easier "
-"to make sure the valid hostname is used and also allows internal "
-"applications to invoke {project_name} through an alternative URL, for "
-"example an internal IP address. It is recommended that you switch to this "
-"approach in production."
-msgstr ""
-
 #. type: Title ===
 #, no-wrap
 msgid "JavaScipt Adapter Promise"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"To use native JavaScript promise with the JavaScript adapter it is now "
-"required to set `promiseType` to `native` in the init options."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"In the past if native promise was available a wrapper was returned that "
-"provided both the legacy Keycloak promise and the native promise. This was "
-"causing issues as the error handler was not always set prior to the native "
-"error event, which resulted in `Uncaught (in promise)` error."
 msgstr ""
 
 #. type: Plain text
@@ -438,11 +445,4 @@ msgid ""
 "{project_name} identity provider has been updated to use the new endpoints "
 "so if this integration is in use make sure you upgrade to the latest "
 "{project_name} version."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Accordingly with LinkedIn, all developers need to migrate to version 2.0 of "
-"their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social "
-"Broker."
 msgstr ""

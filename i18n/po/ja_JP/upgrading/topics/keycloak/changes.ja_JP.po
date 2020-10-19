@@ -5,14 +5,14 @@
 # 
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,6 +54,32 @@ msgstr "OPTIONALのエグゼキューション要件が削除されました"
 #, no-wrap
 msgid "Freemarker template changes"
 msgstr "Freemarkerテンプレートの変更"
+
+#. type: Title ====
+#, no-wrap
+msgid "Duplicated top level groups"
+msgstr "重複する最上位グループ"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is "
+"NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
+msgstr ""
+"SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is "
+"NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
+
+#. type: Plain text
+msgid ""
+"Only one top level group can exist in each realm with the same name. "
+"Duplicates should be reviewed and deleted before the upgrade. The error in "
+"the upgrade contains the message `Change Set META-INF/jpa-"
+"changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak"
+" failed.`"
+msgstr ""
+"各レルムに同じ名前で存在できる最上位グループは1つだけです。アップグレードの前に、重複を確認して削除する必要があります。アップグレードのエラーには、 "
+"`Change Set META-INF/jpa-changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-"
+"null-constraint::keycloak failed.` というメッセージが含まれます。"
 
 #. type: Title ====
 #, no-wrap
@@ -519,6 +545,197 @@ msgstr "移行に伴う変更"
 
 #. type: Title ===
 #, no-wrap
+msgid "Migrating to 11.0.0"
+msgstr "11.0.0への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 20"
+msgstr "WildFly 20へのアップグレード"
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 20 as the underlying "
+"container. This does not directly involve any specific {project_name} server"
+" functionality, but there are few changes related to the migration, which "
+"are worth mentioning."
+msgstr ""
+"WildFly "
+"20をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。これは、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更（言及する価値がある変更）があります。"
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 20 server. For"
+" example, Infinispan is now 10.1.8.Final."
+msgstr ""
+"依存関係が、WildFly 20サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在10.1.8.Finalです。"
+
+#. type: Plain text
+msgid ""
+"There are few configuration changes in the `standalone(-ha).xml` and "
+"`domain.xml` files. You should follow the <<_install_new_version>> section "
+"to handle the migration of configuration files automatically."
+msgstr ""
+"`standalone(-ha).xml` と `domain.xml` "
+"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
+
+#. type: Plain text
+msgid "not guaranteed as they are not tested anymore."
+msgstr "もうテストされていないため、保証されません。"
+
+#. type: Plain text
+msgid ""
+"It is recommended to use the `protocolVersion` property added to the "
+"`remote-store` element when configuring Infinispan caches."
+msgstr ""
+"Infinispanキャッシュを設定するときは、 `remote-store` 要素に追加された `protocolVersion` "
+"プロパティーを使用することをお勧めします。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"When connecting to the {jdgserver_name} server 9.4.18, the recommended version of the hotrod protocol version is 2.9 as the Infinispan\n"
+"library version differs among {project_name} server and {jdgserver_name} server. For more details, see the\n"
+"Cross-Datacenter documentation.\n"
+msgstr ""
+"{jdgserver_name}サーバー "
+"9.4.18に接続する場合、ホットロッド・プロトコル・バージョンの推奨バージョンは2.9です。これは、Infinispanライブラリーのバージョンが{project_name}サーバーと{jdgserver_name}サーバーで異なるためです。詳細については、クロス・データセンターのドキュメントを参照してください。\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"It is recommended to use `remoteStoreSecurityEnabled` property under "
+"`connectionsInfinispan` subsystem. For more details,\n"
+msgstr ""
+"`connectionsInfinispan` サブシステムで `remoteStoreSecurityEnabled` "
+"プロパティーを使用することをお勧めします。詳細については、\n"
+
+#. type: Plain text
+#, no-wrap
+msgid "see the Cross-Datacenter documentation.\n"
+msgstr "クロス・データセンターのドキュメントを参照してください。\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "LDAP no-import bugfix"
+msgstr "LDAPインポートしないバグの修正"
+
+#. type: Plain text
+msgid ""
+"In the previous {project_name} version, when the LDAP provider was "
+"configured with `Import Users` OFF, it was possible to update the user even "
+"if some of non-LDAP mapped attributes were changed. This situation resulted "
+"in confusing behavior, when the attribute appeared to be updated, but it was"
+" not. In the current version, the update is not allowed to be performed at "
+"all if any non-LDAP mapped attributes are changed."
+msgstr ""
+"以前のバージョンの{project_name}では、 `Import Users` "
+"がオフのLDAPプロバイダーが設定されている場合、非LDAPマップ属性の一部が変更されていてもユーザーを更新することが可能でした。この状況は、混乱を与える動作となっていました（属性が更新されているように見えても、更新されなかった）。現在のバージョンでは、LDAP以外のマップされた属性が変更された場合、更新はまったく実行できません。"
+
+#. type: Plain text
+msgid ""
+"This should not affect most of the deployments, but some can be affected "
+"under some rare circumstances. For example if you previously tried to update"
+" a user with the admin REST API and the user had some incorrect attribute "
+"changes, the update was possible. With the current version, the update is "
+"not possible and you will be immediately informed about the reason."
+msgstr ""
+"これはほとんどのデプロイメントに影響を与えることはありませんが、まれな状況で影響を受ける可能性があります。たとえば、以前に管理REST "
+"APIを使用してユーザーを更新しようとしたときに、ユーザーが誤った属性を変更しても、更新が可能でした。現在のバージョンでは、更新は不可能であり、理由がすぐに通知されます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "UserModel changes"
+msgstr "UserModelの変更"
+
+#. type: Plain text
+msgid ""
+"The fields `username`, `email`, `firstName` and `lastName` in the "
+"`UserModel` are migrated to custom attributes as a preparation for adding "
+"more sophisticated user profiles to {project_name} in an upcoming version.  "
+"If a database contains users with custom attributes of that exact name, the "
+"custom attributes will need to be migrated before upgrading. This migration "
+"does not occur automatically. Otherwise, they will not be read from the "
+"database anymore and possibly deleted.  This situation implies that the "
+"`username` can now also be accessed and set via "
+"`UserModel.getFirstAttribute(UserModel.USERNAME)`. Similar implications "
+"exist for other fields.  Implementors of SPIs subclassing the `UserModel` "
+"directly or indirectly should ensure that the behavior between `setUsername`"
+" and `setSingleAttribute(UserModel.USERNAME, ...)` (and similar for the "
+"other fields) is consistent.  Users of the policy evaluation feature have to"
+" adapt their policies if they use the number of attributes in their "
+"evaluations since every user will now have four new attributes by default."
+msgstr ""
+"`UserModel` のフィールドである `username` 、 `email` 、` firstName` および `lastName` "
+"は、次のバージョンでより洗練されたユーザー・プロファイルを{project_name}に追加する準備として、カスタム属性に移行されます。データベースにその正確な名前のカスタム属性を持つユーザーが含まれている場合、アップグレードする前にカスタム属性を移行する必要があります。この移行は自動的には行われません。そうしないと、データベースから読み込まれなくなり、削除される可能性があります。この状況は、"
+" `username` も `UserModel.getFirstAttribute(UserModel.USERNAME)` "
+"を介してアクセスおよび設定できることを意味します。他の分野にも同様の影響があります。 `UserModel` "
+"を直接または間接的にサブクラス化するSPIの実装者は、 ` setUsername` と "
+"`setSingleAttribute(UserModel.USERNAME, ...)` "
+"（および他のフィールドについても同様）の間の動作が一貫していることを確認する必要があります。ポリシーの評価機能のユーザーは、評価で属性の数を使用する場合、すべてのユーザーがデフォルトで4つの新しい属性を持つようになるため、ポリシーを適合させる必要があります。"
+
+#. type: Plain text
+msgid ""
+"The public API of `UserModel` has not changed, so no changes to frontend "
+"resources or SPIs accessing user data should be necessary.  The database has"
+" also not changed, yet."
+msgstr ""
+"`UserModel` "
+"のパブリックAPIは変更されていないため、ユーザーデータにアクセスするフロントエンド・リソースまたはSPIを変更する必要はありません。データベースもまだ変更されていません。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Instagram IdP migrated to new the API"
+msgstr "Instagram IdPが新しいAPIに移行"
+
+#. type: Plain text
+msgid ""
+"Instagram IdP now uses new API as the old legacy API was deprecated. This "
+"requires getting new API credentials. For details, please refer to the "
+"link:{adminguide_link}#instagram[{adminguide_name}]."
+msgstr ""
+"古いレガシーAPIが廃止されたため、Instagram "
+"IdPは新しいAPIを使用するようになりました。これには、新しいAPIクレデンシャルを取得する必要があります。詳しくは、 "
+"link:{adminguide_link}#instagram[{adminguide_name}] を参照してください。"
+
+#. type: Plain text
+msgid ""
+"Special attention is required for existing users that use Instagram IdP, "
+"specially the ones for whom it is the only authentication option. Such users"
+" have to login to Keycloak using Instagram IdP before September 30th, 2020. "
+"After that day they'll have to use a different authentication method (like "
+"password) to login to manually update their Instagram social link, or create"
+" a new account in Keycloak. This is because Instagram user IDs are not "
+"compatible between the old and new API, however the new API temporarily "
+"returns both new and old user IDs to allow migration. Keycloak automatically"
+" migrates the ID once user logs in."
+msgstr ""
+"Instagram "
+"IdPを使用する既存のユーザー、特にそれが唯一の認証オプションであるユーザーには、特別な注意が必要です。そのようなユーザーは、2020年9月30日までにInstagram"
+" "
+"IdPを使用してKeycloakにログインする必要があります。その日を過ぎると、ログインに別の認証方法（パスワードなど）を使用してInstagramソーシャルリンクを手動で更新するか、Keycloakに新しいアカウントを作成する必要があります"
+" "
+"。これは、InstagramのユーザーIDが古いAPIと新しいAPIの間で互換性がないためですが、新しいAPIは移行を許可するために一時的に新しいユーザーIDと古いユーザーIDの両方を返します。Keycloakは、ユーザーがログインすると、IDを自動的に移行します。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Non-standard token introspection endpoint removed"
+msgstr "非標準のトークン・イントロスペクション・エンドポイントが削除されました"
+
+#. type: Plain text
+msgid ""
+"In previous versions, Keycloak advertized two introspection endpoints: "
+"`token_introspection_endpoint` and `introspection_endpoint`.  The latter is "
+"the one defined by https://tools.ietf.org/html/rfc8414#section-2[RFC-8414]. "
+"The former, previously deprecated, has now been removed."
+msgstr ""
+"以前のバージョンでは、Keycloakは2つのイントロスペクション・エンドポイント（ `token_introspection_endpoint` と "
+"`introspection_endpoint` ）を公開していました。後者は、 "
+"https://tools.ietf.org/html/rfc8414#section-2[RFC-8414] "
+"で定義されているものです。前者は非推奨でしたが、現在は削除されています。"
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 9.0.1"
 msgstr "9.0.1への移行"
 
@@ -534,11 +751,6 @@ msgstr ""
 "`success` と `error` ）はいつか削除されるため、できるだけ早くネイティブPromise API（ `then` と `catch` "
 "）を使用するようにアプリケーションを更新することをお勧めします。"
 
-#. type: Title ====
-#, no-wrap
-msgid "Duplicated top level groups"
-msgstr "重複する最上位グループ"
-
 #. type: Plain text
 msgid ""
 "Version 9.0.1 fixes a problem which could create duplicated top level groups"
@@ -552,27 +764,6 @@ msgstr ""
 "バージョン9.0.1では、レルムに重複した最上位グループが作成される可能性がある問題が修正されています。それでも、以前に重複したグループが存在すると、アップグレード・プロセスが失敗します。{project_name}サーバーがH2、MariaDB、MySQLまたはPostgreSQL"
 " "
 "Databaseを使用している場合、この問題の影響を受ける可能性があります。アップグレードを開始する前に、サーバーに重複した最上位グループが含まれているかどうかを確認してください。たとえば、次のSQLクエリーをデータベース・レベルで実行して、それらを一覧表示できます。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is "
-"NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
-msgstr ""
-"SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is "
-"NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
-
-#. type: Plain text
-msgid ""
-"Only one top level group can exist in each realm with the same name. "
-"Duplicates should be reviewed and deleted before the upgrade. The error in "
-"the upgrade contains the message `Change Set META-INF/jpa-"
-"changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak"
-" failed.`"
-msgstr ""
-"各レルムに同じ名前で存在できる最上位グループは1つだけです。アップグレードの前に、重複を確認して削除する必要があります。アップグレードのエラーには、 "
-"`Change Set META-INF/jpa-changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-"
-"null-constraint::keycloak failed.` というメッセージが含まれます。"
 
 #. type: Title ===
 #, no-wrap
@@ -682,15 +873,6 @@ msgid ""
 " example, Infinispan is now 9.4.16.Final."
 msgstr ""
 "依存関係が、WildFly 18サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.4.16.Finalです。"
-
-#. type: Plain text
-msgid ""
-"There are few configuration changes in the `standalone(-ha).xml` and "
-"`domain.xml` files. You should follow the <<_install_new_version>> section "
-"to handle the migration of configuration files automatically."
-msgstr ""
-"`standalone(-ha).xml` と `domain.xml` "
-"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
 
 #. type: Plain text
 msgid ""
@@ -830,10 +1012,10 @@ msgid ""
 "The {project_name} server was upgraded to use Wildfly 16 as the underlying "
 "container. This does not directly involve any specific {project_name} server"
 " functionality, but there are few changes related to the migration, which "
-"worth mentioning."
+"are worth mentioning."
 msgstr ""
 "WildFly "
-"16をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。これは、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更があります。"
+"16をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。これは、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更（言及する価値がある変更）があります。"
 
 #. type: Plain text
 msgid ""

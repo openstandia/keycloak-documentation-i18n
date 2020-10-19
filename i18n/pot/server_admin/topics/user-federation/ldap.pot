@@ -47,16 +47,17 @@ msgstr ""
 msgid ""
 "By default, {project_name} will import users from LDAP into the local "
 "{project_name} user database. This copy of the user is either synchronized "
-"on demand, or through a periodic background task.  The one exception to this "
-"is passwords.  Passwords are not imported and password validation is "
-"delegated to the LDAP server.  The benefits to this approach is that all "
-"{project_name} features will work as any extra per-user data that is needed "
-"can be stored locally.  This approach also reduces load on the LDAP server "
-"as uncached users are loaded from the {project_name} database the 2nd time "
-"they are accessed.  The only load your LDAP server will have is password "
-"validation.  The downside to this approach is that when a user is first "
-"queried, this will require a {project_name} database insert.  The import "
-"will also have to be synchronized with your LDAP server as needed."
+"on demand, or through a periodic background task.  The single exception to "
+"this is the synchronization of passwords. Passwords are never imported. "
+"Their validation is always delegated to the LDAP server.  The benefits of "
+"this approach is that all {project_name} features will work as any extra per-"
+"user data that is needed can be stored locally.  The downside of this "
+"approach is that each time that a specific user is queried for the first "
+"time, a corresponding {project_name} database insert is performed.  The "
+"import may also have to be synchronized with your LDAP server. However, "
+"import synchronization is not necessary in the case that the LDAP mappers "
+"are configured to always read particular attributes from the LDAP rather "
+"than from the database."
 msgstr ""
 
 #. type: Plain text
@@ -74,6 +75,18 @@ msgstr ""
 msgid ""
 "This storage mode is controled by the `Import Users` switch.  Set to `On` to "
 "import users."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"If user import is disabled, you cannot save user profile attributes into the {project_name} database. Also you cannot save\n"
+"      metadata except for user profile metadata that are mapped to the LDAP. The single exception to this are user profile metadata,\n"
+"      which are mapped to the LDAP. This possibly includes role mappings, group mappings and other metadata based on the configuration\n"
+"      of your LDAP mappers.\n"
+"      When the attempt is made to change some of the non-LDAP mapped user data, the update of the user will not be possible. For example\n"
+"      you will not be able to disable the LDAP mapped user unless the `enabled` flag of the user is mapped to some LDAP\n"
+"      attribute (which is usually not the case).\n"
 msgstr ""
 
 #. type: Title ====
@@ -127,6 +140,17 @@ msgid ""
 "support updates of user metadata on a read-only LDAP server.  This option "
 "only applies when you are importing users from LDAP into the local "
 "{project_name} user database."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"When the LDAP provider is created, the set of initial <<_ldap_mappers,LDAP mappers>> is created. The mappers are configured on a \"best-effort\" basis\n"
+"      based on the chosen combination of the `Vendor`, `Edit Mode`, and `Import Users` switches. For example in case of UNSYNCED edit mode, the mappers are pre-configured\n"
+"      in a way that a particular user attribute is preferably read from the database instead of from the LDAP. However when you later change the edit mode,\n"
+"      the mappers configuration will not be changed as it is not easily possible to detect if they were manually changed in the meantime.\n"
+"      This means that it is recommended NOT to update the `Edit Mode` switch, but rather always decide on `Edit Mode` when creating the\n"
+"      LDAP provider. This applies for `Import Users` switch as well.\n"
 msgstr ""
 
 #. type: Title ====
@@ -321,6 +345,18 @@ msgid ""
 "contain full name of user is a common case for some LDAP deployments."
 msgstr ""
 
+#. type: Plain text
+#, no-wrap
+msgid ""
+"When registering new users in {project_name} and `Sync Registrations` is ON for the LDAP provider, the fullName mapper\n"
+"      allows the possibility of fallback to the username. This fallback is especially useful in case of the Microsoft Active Directory. The common\n"
+"      setup for the MSAD is to configure `cn` LDAP attribute as fullName and at the same time, the `cn` is usually used as `RDN LDAP Attribute`\n"
+"      in the configuration of the LDAP provider. With this setup, the fallback to the username will be used. For example when you create\n"
+"      {project_name} user \"john123\" and leave firstName and lastName empty, then fullname mapper will save \"john123\" as the value of the `cn` in LDAP.\n"
+"      When you later enter \"John Doe\" for firstName and lastName, the fullname mapper will update LDAP `cn` to the value \"John Doe\" as\n"
+"      fallback to the username will not be needed anymore.\n"
+msgstr ""
+
 #. type: Labeled list
 #, no-wrap
 msgid "Hardcoded Attribute Mapper"
@@ -433,8 +469,17 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Most of LDAP servers (Microsoft Active Directory, RHDS, FreeIPA) provide "
-"this by default. Some others (OpenLDAP, ApacheDS) may store the passwords in "
-"plain-text by default and you may need to explicitly enable password hashing "
-"for them. See the documentation of your LDAP server more details."
+"LDAP servers such as Microsoft Active Directory, RHDS or FreeIPA provide "
+"this by default. Others such as OpenLDAP or ApacheDS may store the passwords "
+"in plain-text by default unless you use the _LDAPv3 Password Modify Extended "
+"Operation_ as per *RFC3062*. The LDAPv3 Password Modify Extended Operation "
+"must be enabled explicitly in the LDAP configuration page. See the "
+"documentation of your LDAP server for more details."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Always verify that user passwords are properly hashed and not stored as "
+"plaintext by inspecting a changed directory entry using `ldapsearch` and "
+"base64 decode the `userPassword` attribute value."
 msgstr ""

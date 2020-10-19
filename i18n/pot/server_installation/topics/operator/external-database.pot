@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Prerequisites"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You have cluster-admin permission or an equivalent level of permissions "
+"granted by an administrator."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Connecting to an external database"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You can use the Operator to connect to an external PostgreSQL database by "
+"modifying the Keycloak custom resource and creating a `keycloak-db-secret` "
+"YAML file. Note that values are Base64 encoded."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Example YAML file for `keycloak-db-secret`"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"apiVersion: v1\n"
+"kind: Secret\n"
+"metadata:\n"
+"    name: keycloak-db-secret\n"
+"    namespace: keycloak\n"
+"stringData:\n"
+"    POSTGRES_DATABASE: <Database Name>\n"
+"    POSTGRES_EXTERNAL_ADDRESS: <External Database IP or URL (resolvable by K8s)>\n"
+"    POSTGRES_EXTERNAL_PORT: <External Database Port>\n"
+"    # Strongly recommended to use <'Keycloak CR-Name'-postgresql>\n"
+"    POSTGRES_HOST: <Database Service Name>\n"
+"    POSTGRES_PASSWORD: <Database Password>\n"
+"    # Required for AWS Backup functionality\n"
+"    POSTGRES_SUPERUSER: true\n"
+"    POSTGRES_USERNAME: <Database Username>\n"
+" type: Opaque\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The following properties set the hostname or IP address and port of the "
+"database."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`POSTGRES_EXTERNAL_ADDRESS` - an IP address or a hostname of the external "
+"database."
+msgstr ""
+
+#. type: Plain text
+msgid "This address needs be resolvable in a Kubernetes cluster."
+msgstr ""
+
+#. type: Plain text
+msgid "`POSTGRES_EXTERNAL_PORT` - (Optional) A database port."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The other properties work in the same way for a hosted or external database. "
+"Set them as follows:"
+msgstr ""
+
+#. type: Plain text
+msgid "`POSTGRES_DATABASE` - Database name to be used."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`POSTGRES_HOST` - The name of the `Service` used to communicate with a "
+"database. Typically `keycloak-postgresql`."
+msgstr ""
+
+#. type: Plain text
+msgid "`POSTGRES_USERNAME` - Database username"
+msgstr ""
+
+#. type: Plain text
+msgid "`POSTGRES_PASSWORD` - Database password"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`POSTGRES_SUPERUSER` - Indicates, whether backups should run as super user. "
+"Typically `true`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Keycloak custom resource requires updates to enable external database "
+"support."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Example YAML file for `Keycloak` custom resource that supports an external database"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"apiVersion: keycloak.org/v1alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"  labels:\n"
+"ifeval::[{project_community}==true]\n"
+"      app: example-keycloak\n"
+"endif::[]  \n"
+"ifeval::[{project_product}==true]\n"
+"      app: sso\n"
+"endif::[]  \n"
+"  name: example-keycloak\n"
+"  namespace: keycloak\n"
+"spec:\n"
+"  externalDatabase:\n"
+"    enabled: true\n"
+"  instances: 1\n"
+msgstr ""
+
+#. type: Plain text
+msgid "You have a YAML file for `keycloak-db-secret`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You have modified the Keycloak custom resource to set `externalDatabase` to "
+"`true`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Locate the secret for your PostgreSQL database: `{create_cmd_brief} get "
+"secret <secret_for_db> -o yaml`. For example:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get secret keycloak-db-secret -o yaml\n"
+"apiVersion: v1\n"
+"data\n"
+"  POSTGRES_DATABASE: cm9vdA==\n"
+"  POSTGRES_EXTERNAL_ADDRESS: MTcyLjE3LjAuMw==\n"
+"  POSTGRES_EXTERNAL_PORT: NTQzMg==\n"
+msgstr ""
+
+#. type: Plain text
+msgid "The `POSTGRES_EXTERNAL_ADDRESS` is in Base64 format."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Decode the value for the secret: `echo \"<encoded_secret>\" | base64 -"
+"decode`. For example:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ echo \"MTcyLjE3LjAuMw==\" | base64 -decode\n"
+"192.0.2.3\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Confirm that the decoded value matches the IP address for your database:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get pods -o wide\n"
+"NAME                        READY  STATUS    RESTARTS   AGE   IP\n"
+"keycloak-0                  1/1    Running   0          13m   192.0.2.0\n"
+"keycloak-postgresql-c8vv27m 1/1    Running   0          24m   192.0.2.3\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Confirm that `keycloak-postgresql` appears in a list of running services:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get svc\n"
+"NAME                 TYPE       CLUSTER-IP     EXTERNAL-IP  PORT(S)   AGE\n"
+"keycloak             ClusterIP  203.0.113.0    <none>       8443/TCP  27m\n"
+"keycloak-discovery   ClusterIP  None           <none>       8080/TCP  27m\n"
+"keycloak-postgresql  ClusterIP  203.0.113.1    <none>       5432/TCP  27m\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `keycloak-postgresql` service sends requests to a set of IP addresses in "
+"the backend.  These IP addresses are called endpoints."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"View the endpoints used by the `keycloak-postgresql` service to confirm that "
+"they use the IP addresses for your database:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get endpoints keycloak-postgresql\n"
+"NAME                  ENDPOINTS         AGE\n"
+"keycloak-postgresql   192.0.2.3.5432    27m\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Confirm that {project_name} is running with the external database. This "
+"example shows that everything is running:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ {create_cmd_brief} get pods\n"
+"NAME                        READY  STATUS    RESTARTS   AGE   IP\n"
+"keycloak-0                  1/1    Running   0          26m   192.0.2.0\n"
+"keycloak-postgresql-c8vv27m 1/1    Running   0          36m   192.0.2.3\n"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Additional Resources"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To back up your database using custom resources, see xref:_backup-"
+"cr[Scheduling database backups]."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For more information on Base64 encoding, see the https://kubernetes.io/docs/"
+"concepts/configuration/secret/[Kubernetes Secrets manual]."
+msgstr ""

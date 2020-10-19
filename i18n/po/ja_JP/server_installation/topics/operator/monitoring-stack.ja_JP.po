@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#. type: Block title
+#, no-wrap
+msgid "Additional resources"
+msgstr "追加のリソース"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Plain text
+msgid ""
+"You have cluster-admin permission or an equivalent level of permissions "
+"granted by an administrator."
+msgstr "cluster-adminパーミッションまたは同等のレベルのパーミッションが管理者によって付与されていること。"
+
+#. type: Plain text
+msgid "Log into the OpenShift web console."
+msgstr "OpenShift Webコンソールにログインします。"
+
+#. type: Title ===
+#, no-wrap
+msgid "The {application_monitoring_operator}"
+msgstr "{application_monitoring_operator}"
+
+#. type: Plain text
+msgid ""
+"Before using the Operator to install {project_name} or create components, we"
+" recommend that you install the {application_monitoring_operator}, which "
+"that tracks Operator activity. To view metrics for the Operator, you can use"
+" the Grafana Dashboard and Prometheus Alerts from the "
+"{application_monitoring_operator}. For example, you can view metrics such as"
+" the number of controller runtime reconciliation loops, the reconcile loop "
+"time, and errors."
+msgstr ""
+"Operatorを使用して{project_name}をインストールまたはコンポーネントを作成する前に、Operatorのアクティビティーを追跡する{application_monitoring_operator}をインストールすることをお勧めします。Operatorのメトリクスを表示するには、{application_monitoring_operator}からGrafanaダッシュボードとPrometheusアラートを使用できます。たとえば、コントローラーのランタイム・リコンシリエーション・ループの数、リコンシリエーション・ループ時間、エラーなどのメトリクスを表示できます。"
+
+#. type: Plain text
+msgid ""
+"The {project_operator} integration with the "
+"{application_monitoring_operator} requires no action. You only need to "
+"install the {application_monitoring_operator} in the cluster."
+msgstr ""
+"{project_operator}と{application_monitoring_operator}の統合に、アクションは必要ありません。クラスターに{application_monitoring_operator}をインストールするだけです。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Installing the {application_monitoring_operator}"
+msgstr "{application_monitoring_operator}のインストール"
+
+#. type: Plain text
+msgid "The {project_operator} is installed."
+msgstr "{project_operator}がインストールされていること。"
+
+#. type: Plain text
+msgid ""
+"Install the {application_monitoring_operator} by using the "
+"link:{application_monitoring_operator_installation_link}[documentation]."
+msgstr ""
+"link:{application_monitoring_operator_installation_link}[documentation] "
+"を使用して{application_monitoring_operator}をインストールします。"
+
+#. type: Plain text
+msgid ""
+"Annotate the namespace used for the {project_operator} installation. For "
+"example:"
+msgstr "{project_operator}のインストールに使用されるネームスペースに注釈を付けます。例："
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{create_cmd_brief} label namespace <namespace> monitoring-key=middleware\n"
+msgstr ""
+"{create_cmd_brief} label namespace <namespace> monitoring-key=middleware\n"
+
+#. type: Plain text
+msgid ""
+"Confirm monitoring is working by searching for Prometheus and Grafana route "
+"in the `application-monitoring` namespace."
+msgstr ""
+"`application-monitoring` "
+"ネームスペースの中のPrometheusおよびGrafanaルートを検索して、モニタリングが機能していることを確認します。"
+
+#. type: Block title
+#, no-wrap
+msgid "Routes in OpenShift web console"
+msgstr "OpenShift Webコンソールでのルート"
+
+#. type: Plain text
+msgid "image:{project_images}/operator-application-monitoring-routes.png[]"
+msgstr "image:{project_images}/operator-application-monitoring-routes.png[]"
+
+#. type: Title ====
+#, no-wrap
+msgid "Viewing Operator Metrics"
+msgstr "Operatorメトリクスの表示"
+
+#. type: Plain text
+msgid ""
+"Grafana and Promotheus each provide graphical information about Operator "
+"activities."
+msgstr "GrafanaとPrometheusはそれぞれ、Operatorアクティビティーに関するグラフィカルな情報を提供します。"
+
+#. type: Plain text
+msgid "The Operator installs a pre-defined Grafana Dashboard as shown here:"
+msgstr "Operatorは、次のような事前定義されたGrafanaダッシュボードをインストールします。"
+
+#. type: Block title
+#, no-wrap
+msgid "Grafana Dashboard"
+msgstr "Grafanaダッシュボード"
+
+#. type: Plain text
+msgid "image:{project_images}/operator-graphana-dashboard.png[]"
+msgstr "image:{project_images}/operator-graphana-dashboard.png[]"
+
+#. type: delimited block =
+msgid ""
+"If you make customizations, we recommend that you clone the Grafana "
+"Dashboard so that your changes are not overwritten during an upgrade."
+msgstr "カスタマイズを行う場合は、アップグレード中に変更が上書きされないように、Grafanaダッシュボードを複製することをお勧めします。"
+
+#. type: Plain text
+msgid ""
+"The Operator installs a set of pre-defined Prometheus Alerts as shown here:"
+msgstr "Operatorは、以下に示すように、事前定義されたPrometheusアラートのセットをインストールします。"
+
+#. type: Block title
+#, no-wrap
+msgid "Prometheus Alerts"
+msgstr "Prometheusアラート"
+
+#. type: Plain text
+msgid "image:{project_images}/operator-prometheus-alerts.png[]"
+msgstr "image:{project_images}/operator-prometheus-alerts.png[]"
+
+#. type: Plain text
+msgid ""
+"For more information, see link:https://docs.openshift.com/container-"
+"platform/latest/monitoring/cluster_monitoring/prometheus-alertmanager-and-"
+"grafana.html[Accessing Prometheus, Alertmanager, and Grafana]."
+msgstr ""
+"詳細については、 link:https://docs.openshift.com/container-"
+"platform/latest/monitoring/cluster_monitoring/prometheus-alertmanager-and-"
+"grafana.html[Accessing Prometheus, Alertmanager, and Grafana] を参照してください。"

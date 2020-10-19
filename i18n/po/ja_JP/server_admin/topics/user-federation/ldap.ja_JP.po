@@ -5,8 +5,8 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Yoshikazu Nojima <mail@ynojima.net>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
 # 
 #, fuzzy
@@ -58,18 +58,19 @@ msgstr "ストレージモード"
 msgid ""
 "By default, {project_name} will import users from LDAP into the local "
 "{project_name} user database. This copy of the user is either synchronized "
-"on demand, or through a periodic background task.  The one exception to this"
-" is passwords.  Passwords are not imported and password validation is "
-"delegated to the LDAP server.  The benefits to this approach is that all "
-"{project_name} features will work as any extra per-user data that is needed "
-"can be stored locally.  This approach also reduces load on the LDAP server "
-"as uncached users are loaded from the {project_name} database the 2nd time "
-"they are accessed.  The only load your LDAP server will have is password "
-"validation.  The downside to this approach is that when a user is first "
-"queried, this will require a {project_name} database insert.  The import "
-"will also have to be synchronized with your LDAP server as needed."
+"on demand, or through a periodic background task.  The single exception to "
+"this is the synchronization of passwords. Passwords are never imported. "
+"Their validation is always delegated to the LDAP server.  The benefits of "
+"this approach is that all {project_name} features will work as any extra "
+"per-user data that is needed can be stored locally.  The downside of this "
+"approach is that each time that a specific user is queried for the first "
+"time, a corresponding {project_name} database insert is performed.  The "
+"import may also have to be synchronized with your LDAP server. However, "
+"import synchronization is not necessary in the case that the LDAP mappers "
+"are configured to always read particular attributes from the LDAP rather "
+"than from the database."
 msgstr ""
-"デフォルトでは、{project_name}はLDAPからローカル{project_name}ユーザー・データベースにユーザーをインポートします。このユーザーのコピーは、要求に応じて同期されるか、または定期的なバックグラウンド・タスクによって同期されます。1つの例外はパスワードです。パスワードはインポートされず、パスワードの検証はLDAPサーバーに委任されます。このアプローチの利点は、必要とされる追加のユーザーごとにデータをローカルに保存できるため、すべての{project_name}機能が動作することです。また、この方法は、キャッシュされていないユーザーが2回目のアクセス時に{project_name}データベースからロードされるため、LDAPサーバーの負荷を軽減します。LDAPサーバーにかかる唯一の負荷はパスワードの検証です。このアプローチの欠点は、ユーザーが最初に照会されたときに、{project_name}のデータベースへの挿入が必要になることです。インポートも、必要に応じてLDAPサーバーと同期する必要があります。"
+"デフォルトでは、{project_name}はLDAPからローカルの{project_name}ユーザー・データベースにユーザーをインポートします。このユーザーのコピーは、オンデマンドで同期されるか、定期的なバックグラウンド・タスクを通じて同期されます。これに対する唯一の例外は、パスワードの同期です。パスワードはインポートされません。それらの検証は常にLDAPサーバーに委任されます。このアプローチの利点は、必要な追加のユーザーごとのデータをローカルに保存できるため、すべての{project_name}の機能が機能することです。このアプローチの欠点は、特定のユーザーが初めて照会されるたびに、対応する{project_name}データベースの挿入が実行されることです。インポートは、LDAPサーバーと同期する必要がある場合もあります。ただし、LDAPマッパーが常にデータベースからではなくLDAPから特定の属性を読み取るように設定されている場合、インポートの同期は必要ありません。"
 
 #. type: Plain text
 msgid ""
@@ -88,6 +89,21 @@ msgid ""
 "This storage mode is controled by the `Import Users` switch.  Set to `On` to"
 " import users."
 msgstr "このストレージモードは `Import Users` スイッチによって制御されます。ユーザーをインポートするには `On` に設定します。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"If user import is disabled, you cannot save user profile attributes into the {project_name} database. Also you cannot save\n"
+"      metadata except for user profile metadata that are mapped to the LDAP. The single exception to this are user profile metadata,\n"
+"      which are mapped to the LDAP. This possibly includes role mappings, group mappings and other metadata based on the configuration\n"
+"      of your LDAP mappers.\n"
+"      When the attempt is made to change some of the non-LDAP mapped user data, the update of the user will not be possible. For example\n"
+"      you will not be able to disable the LDAP mapped user unless the `enabled` flag of the user is mapped to some LDAP\n"
+"      attribute (which is usually not the case).\n"
+msgstr ""
+"ユーザーのインポートが無効になっている場合、ユーザー・プロファイル属性を{project_name}のデータベースに保存できません。また、LDAPにマップされているユーザー・プロファイルのメタデータ以外のメタデータは保存できません。これに対する唯一の例外は、LDAPにマップされるユーザー・プロファイルのメタデータです。これには、ロールマッピング、グループ・マッピング、およびLDAPマッパーの設定に基づくその他のメタデータが含まれる可能性があります。LDAPにマップされていないユーザーデータの一部を変更しようとした場合、ユーザーの更新はできません。たとえば、ユーザーの"
+" `enabled` "
+"フラグが何らかのLDAP属性にマップされていない限り（通常はそうではありません）、LDAPにマップされたユーザーを無効にすることはできません。\n"
 
 #. type: Title ====
 #, no-wrap
@@ -146,6 +162,22 @@ msgid ""
 "{project_name} user database."
 msgstr ""
 "ユーザー名、電子メール、姓、パスワードの変更は{project_name}ローカル・ストレージに保存されます。LDAPに同期する方法は、あなた次第です。これにより、{project_name}デプロイメントは、読み取り専用LDAPサーバー上のユーザー・メタデータの更新をサポートできます。このオプションは、LDAPからローカルの{project_name}ユーザー・データベースにユーザーをインポートする場合にのみ適用されます。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"When the LDAP provider is created, the set of initial <<_ldap_mappers,LDAP mappers>> is created. The mappers are configured on a \"best-effort\" basis\n"
+"      based on the chosen combination of the `Vendor`, `Edit Mode`, and `Import Users` switches. For example in case of UNSYNCED edit mode, the mappers are pre-configured\n"
+"      in a way that a particular user attribute is preferably read from the database instead of from the LDAP. However when you later change the edit mode,\n"
+"      the mappers configuration will not be changed as it is not easily possible to detect if they were manually changed in the meantime.\n"
+"      This means that it is recommended NOT to update the `Edit Mode` switch, but rather always decide on `Edit Mode` when creating the\n"
+"      LDAP provider. This applies for `Import Users` switch as well.\n"
+msgstr ""
+"LDAPプロバイダーが作成されると、最初の<<_ldap_mappers,LDAPマッパー>>のセットが作成されます。マッパーは、 `Vendor` 、"
+" `Edit Mode` および `Import Users` スイッチの選択された組み合わせに基づいて、 \"best-effort\" "
+"ベースで設定されます。たとえば、UNSYNCED編集モードの場合、マッパーは、特定のユーザー属性がLDAPではなくデータベースから読み取られるように事前設定されています。ただし、後で編集モードを変更しても、マッパーの設定が変更されることはありません。その間、マッパーの設定が手動で変更されたかどうかを簡単に検出することができないためです。これは、"
+" `Edit Mode` スイッチを更新しないことをお勧めしますが、LDAPプロバイダーを作成するときは常に `Edit Mode` "
+"にすることをお勧めします。これは `Import Users` スイッチにも適用されます。\n"
 
 #. type: Title ====
 #, no-wrap
@@ -370,6 +402,26 @@ msgstr ""
 "`firstName` 属性と `lastname` 属性にマップされるように指定することができます。 `cn` "
 "にユーザーのフルネームを含めることは、いくつかのLDAPデプロイメントにおいて一般的なケースです。"
 
+#. type: Plain text
+#, no-wrap
+msgid ""
+"When registering new users in {project_name} and `Sync Registrations` is ON for the LDAP provider, the fullName mapper\n"
+"      allows the possibility of fallback to the username. This fallback is especially useful in case of the Microsoft Active Directory. The common\n"
+"      setup for the MSAD is to configure `cn` LDAP attribute as fullName and at the same time, the `cn` is usually used as `RDN LDAP Attribute`\n"
+"      in the configuration of the LDAP provider. With this setup, the fallback to the username will be used. For example when you create\n"
+"      {project_name} user \"john123\" and leave firstName and lastName empty, then fullname mapper will save \"john123\" as the value of the `cn` in LDAP.\n"
+"      When you later enter \"John Doe\" for firstName and lastName, the fullname mapper will update LDAP `cn` to the value \"John Doe\" as\n"
+"      fallback to the username will not be needed anymore.\n"
+msgstr ""
+"{project_name}で新しいユーザーを登録し、LDAPプロバイダーの `Sync Registrations` "
+"がONの場合、fullNameマッパーはユーザー名へのフォールバックの可能性を許可します。このフォールバックは、Microsoft Active "
+"Directoryの場合に特に役立ちます。MSADの一般的な設定は、 `cn` LDAP属性をfullNameとして設定することです。同時に、`cn` "
+"は通常、LDAPプロバイダーの設定で `RDN LDAP` "
+"属性として使用されます。この設定では、ユーザー名へのフォールバックが使用されます。たとえば、{project_name}ユーザー \"john123\""
+" を作成し、firstNameとlastNameを空のままにすると、フルネームマッパーは \"john123\" をLDAPの `cn` "
+"の値として保存します。 後でfirstNameとlastNameに \"John Doe\" と入力すると、フルネームマッパーはLDAPの `cn` "
+"を値 \"John Doe\" に更新するため、ユーザー名へのフォールバックは不要になります。\n"
+
 #. type: Labeled list
 #, no-wrap
 msgid "Hardcoded Attribute Mapper"
@@ -501,10 +553,22 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Most of LDAP servers (Microsoft Active Directory, RHDS, FreeIPA) provide "
-"this by default. Some others (OpenLDAP, ApacheDS) may store the passwords in"
-" plain-text by default and you may need to explicitly enable password "
-"hashing for them. See the documentation of your LDAP server more details."
+"LDAP servers such as Microsoft Active Directory, RHDS or FreeIPA provide "
+"this by default. Others such as OpenLDAP or ApacheDS may store the passwords"
+" in plain-text by default unless you use the _LDAPv3 Password Modify "
+"Extended Operation_ as per *RFC3062*. The LDAPv3 Password Modify Extended "
+"Operation must be enabled explicitly in the LDAP configuration page. See the"
+" documentation of your LDAP server for more details."
 msgstr ""
-"ほとんどのLDAPサーバー（Microsoft Active "
-"Directory、RHDS、FreeIPA）はデフォルトでこれを提供します。それ以外（OpenLDAP、ApacheDS）はデフォルトで平文でパスワードを保存するかもしれません（そしてそれらに対してパスワードのハッシュ化を明示的に有効にする必要があるかもしれません）。詳しくは、ご使用のLDAPサーバーのドキュメントを参照してください。"
+"Microsoft Active Directory、RHDS、FreeIPAなどのLDAPサーバーは、デフォルトでこれを提供します。 "
+"*RFC3062* のように _LDAPv3 Password Modify Extended Operation_ "
+"を使用しない限り、OpenLDAPやApacheDSなどの他のLDAPサーバーはデフォルトでパスワードをプレーンテキストで保存する場合があります。LDAPv3パスワード変更拡張操作は、LDAP設定ページで明示的に有効にする必要があります。詳細については、LDAPサーバーのドキュメントを参照してください。"
+
+#. type: Plain text
+msgid ""
+"Always verify that user passwords are properly hashed and not stored as "
+"plaintext by inspecting a changed directory entry using `ldapsearch` and "
+"base64 decode the `userPassword` attribute value."
+msgstr ""
+"`ldapsearch` を使用して変更されたディレクトリー・エントリーを検査し、`userPassword` "
+"属性値をbase64デコードすることにより、ユーザーパスワードが適切にハッシュ化され、プレーンテキストとして保存されていないことを常に確認してください。"

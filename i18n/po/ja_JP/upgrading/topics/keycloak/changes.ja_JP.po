@@ -5,14 +5,14 @@
 # 
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,518 +30,29 @@ msgstr "1.9.0への移行"
 msgid "SAML SP Client Adapter Changes"
 msgstr "SAML SPクライアント・アダプターの変更"
 
-#. type: Labeled list
-#, no-wrap
-msgid "Dependency updates"
-msgstr "依存関係の更新"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Configuration changes"
-msgstr "設定の変更"
-
-#. type: Title ====
-#, no-wrap
-msgid "Authentication flows changes"
-msgstr "認証フローの変更"
-
-#. type: Labeled list
-#, no-wrap
-msgid "OPTIONAL execution requirement removed"
-msgstr "OPTIONALのエグゼキューション要件が削除されました"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Freemarker template changes"
-msgstr "Freemarkerテンプレートの変更"
-
-#. type: Title ====
-#, no-wrap
-msgid "Duplicated top level groups"
-msgstr "重複する最上位グループ"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is "
-"NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
-msgstr ""
-"SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is "
-"NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
-
-#. type: Plain text
-msgid ""
-"Only one top level group can exist in each realm with the same name. "
-"Duplicates should be reviewed and deleted before the upgrade. The error in "
-"the upgrade contains the message `Change Set META-INF/jpa-"
-"changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak"
-" failed.`"
-msgstr ""
-"各レルムに同じ名前で存在できる最上位グループは1つだけです。アップグレードの前に、重複を確認して削除する必要があります。アップグレードのエラーには、 "
-"`Change Set META-INF/jpa-changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-"
-"null-constraint::keycloak failed.` というメッセージが含まれます。"
-
-#. type: Title ====
-#, no-wrap
-msgid "User credentials changes"
-msgstr "ユーザー・クレデンシャルの変更"
-
-#. type: Title ====
-#, no-wrap
-msgid "New optional client scope"
-msgstr "新しいオプションのクライアント・スコープ"
-
-#. type: Plain text
-#, no-wrap
-msgid "Improved handling of user locale"
-msgstr "ユーザーロケールの処理の改善"
-
-#. type: Title ====
-#, no-wrap
-msgid "Legacy promise in JavaScript adapter"
-msgstr "JavaScriptのアダプターのレガシーPromise"
-
-#. type: Title =
-#, no-wrap
-msgid "Deploying Scripts to the Server"
-msgstr "サーバーへのスクリプトのデプロイ"
-
-#. type: Title ====
-#, no-wrap
-msgid "Client Credentials in the JavaScript adapter"
-msgstr "JavaScriptアダプターのクライアント・クレデンシャル"
-
-#. type: Title ==
-#, no-wrap
-msgid "New Default Hostname provider"
-msgstr "新しいデフォルト・ホスト名プロバイダー"
-
-#. type: Title ====
-#, no-wrap
-msgid "Deprecated methods in token representation Java classes"
-msgstr "トークン表現Javaクラスの非推奨メソッド"
-
-#. type: Title ====
-#, no-wrap
-msgid "New Password Hashing algorithms"
-msgstr "新しいパスワード・ハッシュ・アルゴリズム"
-
-#. type: Title ====
-#, no-wrap
-msgid "ID Token requires scope=openid"
-msgstr "IDトークンにはscope=openidが必要"
-
-#. type: Title ====
-#, no-wrap
-msgid ""
-"Added session_state parameter to OpenID Connect Authentication Response"
-msgstr "OpenID Connect認証レスポンスにsession_stateパラメーターを追加"
-
-#. type: Plain text
-msgid ""
-"The OpenID Connect Session Management specification requires that the "
-"parameter `session_state` is present in the OpenID Connect Authentication "
-"Response."
-msgstr ""
-"OpenID Connectセッション管理仕様では、パラメーター `session_state` がOpenID "
-"Connect認証レスポンスに存在する必要があります。"
-
-#. type: Title ====
-#, no-wrap
-msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
-msgstr "Microsoft Identity ProviderはMicrosoft Graph APIを使用するように更新されました"
-
-#. type: Plain text
-msgid ""
-"Legacy client applications registered under \"Live SDK applications\" won't "
-"work with the Microsoft Graph endpoints due to changes in the id format of "
-"the applications. If you run into an error saying that the application "
-"identifier was not found in the directory, you will have to register the "
-"client application again in the "
-"https://account.live.com/developers/applications/create[Microsoft "
-"Application Registration] portal to obtain a new application id."
-msgstr ""
-"\"Live SDK "
-"applications\"で登録された従来のクライアント・アプリケーションは、アプリケーションのID形式が変更されたため、Microsoft "
-"Graphエンドポイントでは機能しません。アプリケーション識別子がディレクトリーに見つからないというエラーが発生した場合は、新しいアプリケーションIDを取得するために"
-" https://account.live.com/developers/applications/create[Microsoft "
-"Application Registration] ポータルにクライアント・アプリケーションを再度登録する必要があります。"
-
-#. type: Title ====
-#, no-wrap
-msgid ""
-"Google Identity Provider updated to use Google Sign-in authentication system"
-msgstr "Google Identity ProviderはGoogle Sign-in認証システムを使用するように更新されました"
-
-#. type: Plain text
-msgid ""
-"If you run into an error saying that the application identifier was not "
-"found in the directory, you will have to register the client application "
-"again in the https://console.developers.google.com/apis/credentials[Google "
-"API Console] portal to obtain a new application id and secret."
-msgstr ""
-"アプリケーション識別子がディレクトリーに見つからないというエラーが発生した場合は、新しいアプリケーションIDとシークレットを取得するために、 "
-"https://console.developers.google.com/apis/credentials[Google API Console] "
-"ポータルにクライアン・トアプリケーションを再度登録する必要があります。"
-
-#. type: Plain text
-msgid ""
-"It is possible that you will need to adjust custom mappers for non-standard "
-"claims that were provided by Google+ user information endpoint and are "
-"provided under different name by Google Sign-in API. Please consult Google "
-"documentation for the most up-to-date information on available claims."
-msgstr ""
-"Google+ユーザー情報エンドポイントによって提供され、Google Sign-in "
-"APIによって別の名前で提供されている非標準のクレームについては、カスタムマッパーを調整する必要があるかもしれません。利用可能なクレームに関する最新情報については、Googleのドキュメントを参照してください。"
-
-#. type: Title ====
-#, no-wrap
-msgid "LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs"
-msgstr "LinkedIn Social BrokerがLinkedIn APIのバージョン2に更新されました"
-
-#. type: Plain text
-msgid ""
-"Existing deployments using this broker may start experiencing errors when "
-"fetching user's profile using version 2 of LinkedIn APIs. This error may be "
-"related with the lack of permissions granted to the client application used "
-"to configure the broker which may not be authorized to access the Profile "
-"API or request specific OAuth2 scopes during the authentication process."
-msgstr ""
-"このブローカーを使用している既存のデプロイメントでは、LinkedIn "
-"APIのバージョン2を使用してユーザーのプロファイルを取得する際にエラーが発生する可能性があります。このエラーは、ブローカの設定に使用されるクライアント・アプリケーションに付与されたアクセス権が不足しており、認証プロセス中にProfile"
-" APIへのアクセスや特定のOAuth2スコープの要求を許可されていない可能性があります。"
-
-#. type: Plain text
-msgid ""
-"Even for newly created LinkedIn client applications, you need to make sure "
-"that the client is able to request the `r_liteprofile` and `r_emailaddress` "
-"OAuth2 scopes, at least, as well that the client application can fetch "
-"current member's profile from the `https://api.linkedin.com/v2/me` endpoint."
-msgstr ""
-"新しく作成されたLinkedInクライアント・アプリケーションの場合でも、少なくともクライアント・アプリケーションが "
-"`https://api.linkedin.com/v2/me` エンドポイントから現在のメンバーのプロファイルを取得できるように、クライアントが "
-"`r_liteprofile` と `r_emailaddress` のOAuth2スコープを要求できることを確認する必要があります。"
-
-#. type: Plain text
-msgid ""
-"Due to these privacy restrictions imposed by LinkedIn in regards to access "
-"to member's information and the limited set of claims returned by the "
-"current member's Profile API, the LinkedIn Social Broker is now using the "
-"member's email address as the default username. That means that the "
-"`r_emailaddress` is always set when sending authorization requests during "
-"the authentication."
-msgstr ""
-"メンバーの情報へのアクセスと現在のメンバーのProfile "
-"APIによって返される限定されたクレーム・セットに関して、LinkedInによって課されたプライバシー制限のために、LinkedIn Social "
-"Brokerは現在デフォルトのユーザー名としてメンバーのメールアドレスを使用しています。つまり、認証中に認可リクエストを送信する際には常に "
-"`r_emailaddress` が設定されます。"
-
-#. type: Title ====
-#, no-wrap
-msgid "Changes to Authorization Services"
-msgstr "認可サービスの変更"
-
-#. type: Plain text
-msgid ""
-"We added support for UMA 2.0. This version of the UMA specification "
-"introduced some important changes on how permissions are obtained from the "
-"server."
-msgstr ""
-"UMA 2.0のサポートを追加しました。このバージョンのUMA仕様では、サーバーからのパーミッションの取得方法に関する重要な変更が導入されました。"
-
-#. type: Plain text
-msgid ""
-"Here are the main changes introduced by UMA 2.0 support. See "
-"link:{authorizationguide_link}[{authorizationguide_name}] for details."
-msgstr ""
-"ここでは、UMA 2.0サポートによって導入された主な変更点を示します。詳細は、 "
-"link:{authorizationguide_link}[{authorizationguide_name}] を参照してください。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Authorization API was removed"
-msgstr "Authorization APIが削除されました"
-
-#. type: Plain text
-msgid ""
-"Prior to UMA 2.0 (UMA 1.0), client applications were using the Authorization"
-" API to obtain permissions from the server in the format of a RPT. The new "
-"version of UMA specification has removed the Authorization API which was "
-"also removed from {project_name}. In UMA 2.0, RPTs can now be obtained from "
-"the token endpoint by using a specific grant type.  See "
-"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
-" for details."
-msgstr ""
-"UMA 2.0以前（UMA 1.0）では、クライアント・アプリケーションがAuthorization "
-"APIを使用して、RPTの形式でサーバーからパーミッションを取得していました。新しいバージョンのUMA仕様では、Authorization "
-"APIが削除され、{project_name}からも削除されました。UMA "
-"2.0では、特定の認可タイプを使用してトークン・エンドポイントからRPTを取得できるようになりました。詳細は、 "
-"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
-" を参照してください。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Entitlement API was removed"
-msgstr "Entitlement APIが削除されました"
-
-#. type: Plain text
-msgid ""
-"With the introduction of UMA 2.0, we decided to leverage the token endpoint "
-"and UMA grant type to allow obtaining RPTs from {project_name} and avoid "
-"having different APIs. The functionality provided by the Entitlement API was"
-" kept the same and is still possible to obtain permissions for a set of one "
-"or more resources and scopes or all permissions from the server in case no "
-"resource or scope is provided.  See "
-"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
-" for details."
-msgstr ""
-"UMA "
-"2.0の導入により、{project_name}からRPTを取得し、異なるAPIを使用することを避けるように、トークン・エンドポイントとUMAグラントタイプを活用することにしました。Entitlement"
-" "
-"APIによって提供される機能はこれまでどおり、リソースまたはスコープが提供されていない場合でも、1つ以上のリソースとスコープのセット、またはサーバーからのすべてのパーミッションを取得できます。詳細は、"
-" "
-"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
-" を参照してください。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Changes to UMA Discovery Endpoint"
-msgstr "UMA Discoveryエンドポイントの変更"
-
-#. type: Plain text
-msgid ""
-"UMA Discovery document changed, see "
-"link:{authorizationguide_link}#_service_authorization_api[{authorizationguide_name}]"
-" for details."
-msgstr ""
-"UMA Discoveryドキュメントが変更されました。詳細は "
-"link:{authorizationguide_link}#_service_authorization_api[{authorizationguide_name}]"
-" を参照してください。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Changes to {project_name} Authorization JavaScript Adapter"
-msgstr "{project_name}認可JavaScriptアダプターの変更"
-
-#. type: Plain text
-msgid ""
-"The {project_name} Authorization JavaScript Adapter (keycloak-authz.js) "
-"changed in order to comply with the changes introduced by UMA 2.0 while "
-"keeping the same behavior as before. The main change is on how you invoke "
-"both `authorization` and `entitlement` methods which now expect a specific "
-"object type representing an authorization request. This new object type "
-"provides more flexibility on how permissions can be obtained from the server"
-" by supporting the different parameters supported by the UMA grant type.  "
-"See "
-"link:{authorizationguide_link}#_enforcer_js_adapter[{authorizationguide_name}]"
-" for details."
-msgstr ""
-"以前と同じ動作を維持しながら、UMA 2.0によって導入された変更に準拠するように、{project_name}認可JavaScriptアダプター"
-"（keycloak-authz.js）が変更されました。主な変更点は、認可リクエストを表す特定のオブジェクト・タイプを想定する "
-"`authorization` メソッドと `entitlement` "
-"メソッドの両方を呼び出す方法です。この新しいオブジェクト・タイプは、UMAグラントタイプでサポートされているさまざまなパラメーターをサポートすることにより、サーバからパーミッションを取得するより柔軟な方法を提供します。詳細は、"
-" "
-"link:{authorizationguide_link}#_enforcer_js_adapter[{authorizationguide_name}]"
-" を参照してください。"
-
-#. type: Plain text
-msgid ""
-"One of the main changes introduced by this release is that you are no longer"
-" required to exchange access tokens with RPTs in order to access resources "
-"protected by a resource server (when not using UMA). Depending on how the "
-"policy enforcer is configured on the resource server side, you can just send"
-" regular access tokens as a bearer token and permissions will still be "
-"enforced."
-msgstr ""
-"このリリースで導入された主な変更の1つは、（UMAを使用しない場合）リソースサーバーによって保護されたリソースにアクセスするために、アクセストークンをRPTと交換する必要がなくなったことです。ポリシー・エンフォーサーがリソースサーバー側でどのように設定されているかに応じて、通常のアクセストークンをベアラートークンとして送信するだけで、パーミッションは引き続き適用されます。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Changes to {project_name} Authorization Client Java API"
-msgstr "{project_name}認可クライアントJava APIの変更"
-
-#. type: Plain text
-msgid ""
-"When upgrading to the new version of {project_name} Authorization Client "
-"Java API, you'll notice that some representation classes were moved to a "
-"different package in `org.keycloak:keycloak-core`."
-msgstr ""
-"新しいバージョンの{project_name}認可クライアントJava APIにアップグレードすると、いくつかのRepresentationクラスが "
-"`org.keycloak:keycloak-core` の別のパッケージに移動されたことに気付くでしょう。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Client Templates changed to Client Scopes"
-msgstr "クライアント・テンプレートがクライアント・スコープに変更されました"
-
-#. type: Plain text
-msgid ""
-"We added support for Client Scopes, which requires some attention during "
-"migration."
-msgstr "クライアント・スコープのサポートを追加しました。これは移行の際に注意が必要です。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Spaces replaced in the names"
-msgstr "名前の中の空白文字の置き換え"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Linking Client Scopes to Clients"
-msgstr "クライアントへのクライアント・スコープのリンク"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Realm Default Client Scopes not linked with existing clients"
-msgstr "既存のクライアントにリンクされていないレルム・デフォルト・クライアント・スコープ"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Consents need to be confirmed again"
-msgstr "同意を再度確認する必要があります"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Some configuration switches removed"
-msgstr "一部の設定スイッチが削除されました"
-
-#. type: Title ====
-#, no-wrap
-msgid "New default client scopes"
-msgstr "新しいデフォルト・クライアント・スコープ"
-
-#. type: Plain text
-msgid ""
-"We have added new realm default client scopes `roles` and `web-origins`. "
-"These client scopes contain protocol mappers to add the roles of the user "
-"and allowed web origins to the token. During migration, these client scopes "
-"should be automatically added to all the OpenID Connect clients as default "
-"client scopes. Hence no setup should be required after database migration is"
-" finished."
-msgstr ""
-"新しいレルムのデフォルトのクライアント・スコープ `role` と `web-origins` "
-"を追加しました。これらのクライアント・スコープには、ユーザーのロールを追加するプロトコル・マッパーとトークンに許可されたWeb起点が含まれています。移行中に、これらのクライアント・スコープはデフォルトのクライアント・スコープとしてすべてのOpenID"
-" Connectクライアントに自動的に追加されます。したがって、データベースの移行が完了した後でセットアップを行う必要はありません。"
-
-#. type: Title =====
-#, no-wrap
-msgid "Protocol mapper SPI addition"
-msgstr "Protocol Mapper SPIの追加"
-
-#. type: Plain text
-msgid ""
-"Related to this, there is a small addition in the (unsupported) Protocol "
-"Mappers SPI. You can be affected only if you implemented a custom "
-"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
-"interface. The method has the default implementation set to return 0. If "
-"your protocol mapper implementation relies on the roles in the access token "
-"`realmAccess` or `resourceAccess` properties, you may need to increase the "
-"priority of your mapper."
-msgstr ""
-"これに関連して、（サポートされていない）Protocol Mappers "
-"SPIにはわずかな追加があります。カスタムのProtocolMapperを実装した場合にのみ影響を受ける可能性があります。ProtocolMapperインターフェイスには新しい"
-" `getPriority()` "
-"メソッドがあります。このメソッドは、デフォルトの実装が0を返すように設定しています。プロトコル・マッパーの実装がアクセストークンの "
-"`realmAccess` または `resourceAccess` "
-"プロパティーにあるロールに依存している場合は、マッパーの優先度を高くする必要があります。"
-
-#. type: Title =====
-#, no-wrap
-msgid "Audience resolving"
-msgstr "オーディエンスの解決"
-
-#. type: Plain text
-msgid ""
-"Audiences of all the clients, for which authenticated user has at least one "
-"client role in the token, are automatically added to the `aud` claim in the "
-"access token now. On the other hand, an access token may not automatically "
-"contain the audience of the frontend client, for which it was issued. Read "
-"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
-msgstr ""
-"すべてのクライアント（認証されたユーザーはトークン内に少なくとも1つのクライアント・ロールを持ちます）のオーディエンスは、アクセストークン内の "
-"`aud` "
-"クレームに自動的に追加されます。一方、アクセストークンには、発行されたフロントエンド・クライアントのオーディエンスが自動的に含まれるわけではありません。詳細については、"
-" link:{adminguide_link}#_audience[{adminguide_name}] を参照してください。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Cross-Datacenter Replication changes"
-msgstr "クロス・データセンター・レプリケーションの変更"
-
-#. type: Plain text
-msgid ""
-"You will need to upgrade {jdgserver_name} server to version "
-"{jdgserver_version}. The older version may still work, but it is"
-msgstr ""
-"{jdgserver_name}サーバーをバージョン{jdgserver_version}にアップグレードする必要があります。古いバージョンはまだ動作するかもしれませんが、"
-
-#. type: Plain text
-msgid "not guaranteed as we don't test it anymore."
-msgstr "テストしていないため、動作保証されていません。"
-
-#. type: Plain text
-msgid ""
-"There is a need to add `protocolVersion` property with the value `2.6` to "
-"the configuration of the `remote-store` element in the"
-msgstr ""
-"{project_name}の設定の `remote-store` 要素の設定に値 `2.6` を持つ `protocolVersion` "
-"プロパティーを追加する必要があります。 "
-
-#. type: Plain text
-msgid ""
-"{project_name} configuration. This is required as there is a need to "
-"downgrade the version of HotRod protocol to be compatible with the version "
-"used by {jdgserver_name} {jdgserver_version}."
-msgstr ""
-"HotRodプロトコルのバージョンを {jdgserver_name} {jdgserver_version} "
-"で使用されるバージョンと互換性があるようにダウングレードする必要があるため、これが必要です。"
-
-#. type: Title ====
-#, no-wrap
-msgid "Hostname configuration"
-msgstr "ホスト名の設定"
-
-#. type: Plain text
-msgid ""
-"In previous versions it was recommended to use a filter to specify permitted"
-" hostnames. It is now possible to set a fixed hostname which makes it easier"
-" to make sure the valid hostname is used and also allows internal "
-"applications to invoke {project_name} through an alternative URL, for "
-"example an internal IP address. It is recommended that you switch to this "
-"approach in production."
-msgstr ""
-"以前のバージョンでは、フィルターを使用して許可されたホスト名を指定することが推奨されていました。有効なホスト名が使用されていることを確認しやすくするため、固定ホスト名を設定することができ、内部アプリケーションが内部IPアドレスなどの代替URLを通じて{project_name}を呼び出すことも可能になりました。本番環境では、このアプローチに切り替えることをお勧めします。"
-
-#. type: Plain text
-msgid ""
-"To use native JavaScript promise with the JavaScript adapter it is now "
-"required to set `promiseType` to `native` in the init options."
-msgstr ""
-"JavaScriptアダプターでネイティブのJavaScriptのPromiseを使用するには、initオプションで `promiseType` を "
-"`native` に設定する必要があります。"
-
-#. type: Plain text
-msgid ""
-"In the past if native promise was available a wrapper was returned that "
-"provided both the legacy Keycloak promise and the native promise. This was "
-"causing issues as the error handler was not always set prior to the native "
-"error event, which resulted in `Uncaught (in promise)` error."
-msgstr ""
-"以前は、ネイティブのPromiseが利用可能であった場合、レガシーのKeycloakのPromiseとネイティブのPromiseの両方を提供するラッパーが返されました。これにより、ネイティブのエラーイベントの前にエラーハンドラーが常に設定されていないために問題が発生していました。"
-
-#. type: Plain text
-msgid ""
-"Accordingly with LinkedIn, all developers need to migrate to version 2.0 of "
-"their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social "
-"Broker."
-msgstr ""
-"したがってLinkedInでは、すべての開発者が自分のAPIのバージョン2.0とOAuth 2.0に移行する必要があります。そのため、LinkedIn "
-"Social Brokerを更新しました。"
-
 #. type: Title ==
 #, no-wrap
 msgid "Migration Changes"
 msgstr "移行に伴う変更"
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 12.0.0"
+msgstr "12.0.0への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "Skip creation of user session for the Docker protocol authentication"
+msgstr "Dockerプロトコル認証用のユーザー・セッションの作成をスキップします"
+
+#. type: Plain text
+msgid ""
+"No user session is created after successful authentication with the Docker "
+"protocol. For details, please refer to the "
+"link:{adminguide_link}#_docker[{adminguide_name}]."
+msgstr ""
+"Dockerプロトコルによる認証が成功した後、ユーザー・セッションは作成されません。詳細については、 "
+"link:{adminguide_link}#_docker[{adminguide_name}] を参照してください。"
 
 #. type: Title ===
 #, no-wrap
@@ -563,12 +74,22 @@ msgstr ""
 "WildFly "
 "20をコンテナーとして使用するように、{project_name}サーバーがアップグレードされました。これは、特定の{project_name}サーバーの機能には直接関係しませんが、移行に関連する若干の変更（言及する価値がある変更）があります。"
 
+#. type: Title ====
+#, no-wrap
+msgid "Dependency updates"
+msgstr "依存関係の更新"
+
 #. type: Plain text
 msgid ""
 "The dependencies were updated to the versions used by Wildfly 20 server. For"
 " example, Infinispan is now 10.1.8.Final."
 msgstr ""
 "依存関係が、WildFly 20サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在10.1.8.Finalです。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Configuration changes"
+msgstr "設定の変更"
 
 #. type: Plain text
 msgid ""
@@ -578,6 +99,18 @@ msgid ""
 msgstr ""
 "`standalone(-ha).xml` と `domain.xml` "
 "にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Cross-Datacenter Replication changes"
+msgstr "クロス・データセンター・レプリケーションの変更"
+
+#. type: Plain text
+msgid ""
+"You will need to upgrade {jdgserver_name} server to version "
+"{jdgserver_version}. The older version may still work, but it is"
+msgstr ""
+"{jdgserver_name}サーバーをバージョン{jdgserver_version}にアップグレードする必要があります。古いバージョンはまだ動作するかもしれませんが、"
 
 #. type: Plain text
 msgid "not guaranteed as they are not tested anymore."
@@ -739,6 +272,11 @@ msgstr ""
 msgid "Migrating to 9.0.1"
 msgstr "9.0.1への移行"
 
+#. type: Title ===
+#, no-wrap
+msgid "Legacy promise in JavaScript adapter"
+msgstr "JavaScriptのアダプターのレガシーPromise"
+
 #. type: Plain text
 msgid ""
 "It is no longer necessary to set promiseType in the JavaScript adapter, and "
@@ -750,6 +288,11 @@ msgstr ""
 "JavaScriptアダプターでpromiseTypeを設定する必要がなくなり、両方を同時に使用できるようになりました。レガシーAPI（ "
 "`success` と `error` ）はいつか削除されるため、できるだけ早くネイティブPromise API（ `then` と `catch` "
 "）を使用するようにアプリケーションを更新することをお勧めします。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Duplicated top level groups"
+msgstr "重複する最上位グループ"
 
 #. type: Plain text
 msgid ""
@@ -765,10 +308,36 @@ msgstr ""
 " "
 "Databaseを使用している場合、この問題の影響を受ける可能性があります。アップグレードを開始する前に、サーバーに重複した最上位グループが含まれているかどうかを確認してください。たとえば、次のSQLクエリーをデータベース・レベルで実行して、それらを一覧表示できます。"
 
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is "
+"NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
+msgstr ""
+"SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is "
+"NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;\n"
+
+#. type: Plain text
+msgid ""
+"Only one top level group can exist in each realm with the same name. "
+"Duplicates should be reviewed and deleted before the upgrade. The error in "
+"the upgrade contains the message `Change Set META-INF/jpa-"
+"changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak"
+" failed.`"
+msgstr ""
+"各レルムに同じ名前で存在できる最上位グループは1つだけです。アップグレードの前に、重複を確認して削除する必要があります。アップグレードのエラーには、 "
+"`Change Set META-INF/jpa-changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-"
+"null-constraint::keycloak failed.` というメッセージが含まれます。"
+
 #. type: Title ===
 #, no-wrap
 msgid "Migrating to 9.0.0"
 msgstr "9.0.0への移行"
+
+#. type: Plain text
+#, no-wrap
+msgid "Improved handling of user locale"
+msgstr "ユーザーロケールの処理の改善"
 
 #. type: Plain text
 msgid ""
@@ -783,6 +352,11 @@ msgid ""
 msgstr ""
 "詳細については、 link:{adminguide_link}#_user_locale_selection[{adminguide_name}] "
 "を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Deprecated methods in token representation Java classes"
+msgstr "トークン表現Javaクラスの非推奨メソッド"
 
 #. type: Plain text
 msgid ""
@@ -843,6 +417,11 @@ msgstr ""
 msgid "Migrating to 8.0.0"
 msgstr "8.0.0への移行"
 
+#. type: Title ==
+#, no-wrap
+msgid "New Default Hostname provider"
+msgstr "新しいデフォルト・ホスト名プロバイダー"
+
 #. type: Plain text
 msgid ""
 "The old request and fixed hostname providers have been replaced with a new "
@@ -875,6 +454,15 @@ msgstr ""
 "依存関係が、WildFly 18サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.4.16.Finalです。"
 
 #. type: Plain text
+msgid "not guaranteed as we don't test it anymore."
+msgstr "テストしていないため、動作保証されていません。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Deploying Scripts to the Server"
+msgstr "サーバーへのスクリプトのデプロイ"
+
+#. type: Plain text
 msgid ""
 "Until now, administrators were allowed to upload scripts to the server "
 "through the {project_name} Administration Console as well as through the "
@@ -893,6 +481,11 @@ msgstr ""
 "現時点では、この機能はデフォルトで *無効* "
 "であり、ユーザーはスクリプトをサーバーに直接デプロイすることを選択する必要があります。詳細については、link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}]を参照してください。"
 
+#. type: Title ===
+#, no-wrap
+msgid "Client Credentials in the JavaScript adapter"
+msgstr "JavaScriptアダプターのクライアント・クレデンシャル"
+
 #. type: Plain text
 msgid ""
 "In the previous releases, developers were allowed to provide client "
@@ -902,11 +495,21 @@ msgstr ""
 "以前のリリースでは、開発者はクライアントのクレデンシャルをJavaScriptアダプターに提供できました。現時点では、この機能は *削除* "
 "されました。これは、クライアントサイドのアプリがシークレットを保持する上で安全ではないためです。"
 
+#. type: Title ===
+#, no-wrap
+msgid "Authentication flows changes"
+msgstr "認証フローの変更"
+
 #. type: Plain text
 msgid ""
 "We did some refactoring and improvements related to the authentication "
 "flows, which requires some attention during migration."
 msgstr "認証フローに関連するリファクタリングと改善をいくつか行いました。これにより、移行の際に注意が必要です。"
+
+#. type: Title ====
+#, no-wrap
+msgid "OPTIONAL execution requirement removed"
+msgstr "OPTIONALのエグゼキューション要件が削除されました"
 
 #. type: Plain text
 msgid ""
@@ -948,6 +551,11 @@ msgstr ""
 "インターフェイスに変更があり、 `CredentialValidator` "
 "のようないくつかの新しいインターフェイスが導入されています。また、オーセンティケーターがOPTIONALのエグゼキューション要件をサポートしている場合、影響を受ける可能性があります。詳細については、サーバー開発ガイドの最新の認証の例を再確認することをお勧めします。"
 
+#. type: Title ====
+#, no-wrap
+msgid "Freemarker template changes"
+msgstr "Freemarkerテンプレートの変更"
+
 #. type: Plain text
 msgid ""
 "There are also some changes in the freemarker templates. You may be affected"
@@ -957,6 +565,11 @@ msgid ""
 "latest {project_name} and align your templates according to it."
 msgstr ""
 "Freemarkerテンプレートにもいくつかの変更があります。ログインフォームまたは一部のアカウント・フォーム、特にOTPに関連するフォームのカスタムFreemarkerテンプレートを使用した独自のテーマがある場合、影響を受ける可能性があります。最新の{project_name}のFreemarkerテンプレートの変更を再確認し、それに応じてテンプレートを調整することをお勧めします。"
+
+#. type: Title ===
+#, no-wrap
+msgid "User credentials changes"
+msgstr "ユーザー・クレデンシャルの変更"
 
 #. type: Plain text
 msgid ""
@@ -1023,6 +636,11 @@ msgid ""
 " example, Infinispan is now 9.4.8.Final."
 msgstr ""
 "依存関係が、WildFly 16サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.4.8.Finalです。"
+
+#. type: Title ===
+#, no-wrap
+msgid "New optional client scope"
+msgstr "新しいオプションのクライアント・スコープ"
 
 #. type: Plain text
 msgid ""
@@ -1113,6 +731,12 @@ msgstr ""
 msgid "Migrating to 4.8.2"
 msgstr "4.8.2への移行"
 
+#. type: Title ===
+#, no-wrap
+msgid ""
+"Google Identity Provider updated to use Google Sign-in authentication system"
+msgstr "Google Identity ProviderはGoogle Sign-in認証システムを使用するように更新されました"
+
 #. type: Plain text
 msgid ""
 "The Google Identity Provider implementation in {project_name} up to version "
@@ -1128,15 +752,167 @@ msgstr ""
 "APIエンドポイントに依存しています。2019年3月以降、Googleは新しいGoogle Sign-in認証システムを支持してGoogle+ "
 "APIのサポートを削除します。{project_name}アイデンティティー･プロバイダーは新しいエンドポイントを使用するように更新されたため、この統合を使用している場合は、必ず{project_name}バージョン4.8.2以降にアップグレードしてください。"
 
+#. type: Plain text
+msgid ""
+"If you run into an error saying that the application identifier was not "
+"found in the directory, you will have to register the client application "
+"again in the https://console.developers.google.com/apis/credentials[Google "
+"API Console] portal to obtain a new application id and secret."
+msgstr ""
+"アプリケーション識別子がディレクトリーに見つからないというエラーが発生した場合は、新しいアプリケーションIDとシークレットを取得するために、 "
+"https://console.developers.google.com/apis/credentials[Google API Console] "
+"ポータルにクライアン・トアプリケーションを再度登録する必要があります。"
+
+#. type: Plain text
+msgid ""
+"It is possible that you will need to adjust custom mappers for non-standard "
+"claims that were provided by Google+ user information endpoint and are "
+"provided under different name by Google Sign-in API. Please consult Google "
+"documentation for the most up-to-date information on available claims."
+msgstr ""
+"Google+ユーザー情報エンドポイントによって提供され、Google Sign-in "
+"APIによって別の名前で提供されている非標準のクレームについては、カスタムマッパーを調整する必要があるかもしれません。利用可能なクレームに関する最新情報については、Googleのドキュメントを参照してください。"
+
+#. type: Title ===
+#, no-wrap
+msgid "LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs"
+msgstr "LinkedIn Social BrokerがLinkedIn APIのバージョン2に更新されました"
+
+#. type: Plain text
+msgid ""
+"Accordingly with LinkedIn, all developers need to migrate to version 2.0 of "
+"their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social "
+"Broker."
+msgstr ""
+"したがってLinkedInでは、すべての開発者が自分のAPIのバージョン2.0とOAuth 2.0に移行する必要があります。そのため、LinkedIn "
+"Social Brokerを更新しました。"
+
+#. type: Plain text
+msgid ""
+"Existing deployments using this broker may start experiencing errors when "
+"fetching user's profile using version 2 of LinkedIn APIs. This error may be "
+"related with the lack of permissions granted to the client application used "
+"to configure the broker which may not be authorized to access the Profile "
+"API or request specific OAuth2 scopes during the authentication process."
+msgstr ""
+"このブローカーを使用している既存のデプロイメントでは、LinkedIn "
+"APIのバージョン2を使用してユーザーのプロファイルを取得する際にエラーが発生する可能性があります。このエラーは、ブローカの設定に使用されるクライアント・アプリケーションに付与されたアクセス権が不足しており、認証プロセス中にProfile"
+" APIへのアクセスや特定のOAuth2スコープの要求を許可されていない可能性があります。"
+
+#. type: Plain text
+msgid ""
+"Even for newly created LinkedIn client applications, you need to make sure "
+"that the client is able to request the `r_liteprofile` and `r_emailaddress` "
+"OAuth2 scopes, at least, as well that the client application can fetch "
+"current member's profile from the `https://api.linkedin.com/v2/me` endpoint."
+msgstr ""
+"新しく作成されたLinkedInクライアント・アプリケーションの場合でも、少なくともクライアント・アプリケーションが "
+"`https://api.linkedin.com/v2/me` エンドポイントから現在のメンバーのプロファイルを取得できるように、クライアントが "
+"`r_liteprofile` と `r_emailaddress` のOAuth2スコープを要求できることを確認する必要があります。"
+
+#. type: Plain text
+msgid ""
+"Due to these privacy restrictions imposed by LinkedIn in regards to access "
+"to member's information and the limited set of claims returned by the "
+"current member's Profile API, the LinkedIn Social Broker is now using the "
+"member's email address as the default username. That means that the "
+"`r_emailaddress` is always set when sending authorization requests during "
+"the authentication."
+msgstr ""
+"メンバーの情報へのアクセスと現在のメンバーのProfile "
+"APIによって返される限定されたクレーム・セットに関して、LinkedInによって課されたプライバシー制限のために、LinkedIn Social "
+"Brokerは現在デフォルトのユーザー名としてメンバーのメールアドレスを使用しています。つまり、認証中に認可リクエストを送信する際には常に "
+"`r_emailaddress` が設定されます。"
+
 #. type: Title ===
 #, no-wrap
 msgid "Migrating to 4.6.0"
 msgstr "4.6.0への移行"
 
+#. type: Title ===
+#, no-wrap
+msgid "New default client scopes"
+msgstr "新しいデフォルト・クライアント・スコープ"
+
+#. type: Plain text
+msgid ""
+"We have added new realm default client scopes `roles` and `web-origins`. "
+"These client scopes contain protocol mappers to add the roles of the user "
+"and allowed web origins to the token. During migration, these client scopes "
+"should be automatically added to all the OpenID Connect clients as default "
+"client scopes. Hence no setup should be required after database migration is"
+" finished."
+msgstr ""
+"新しいレルムのデフォルトのクライアント・スコープ `role` と `web-origins` "
+"を追加しました。これらのクライアント・スコープには、ユーザーのロールを追加するプロトコル・マッパーとトークンに許可されたWeb起点が含まれています。移行中に、これらのクライアント・スコープはデフォルトのクライアント・スコープとしてすべてのOpenID"
+" Connectクライアントに自動的に追加されます。したがって、データベースの移行が完了した後でセットアップを行う必要はありません。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Protocol mapper SPI addition"
+msgstr "Protocol Mapper SPIの追加"
+
+#. type: Plain text
+msgid ""
+"Related to this, there is a small addition in the (unsupported) Protocol "
+"Mappers SPI. You can be affected only if you implemented a custom "
+"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
+"interface. The method has the default implementation set to return 0. If "
+"your protocol mapper implementation relies on the roles in the access token "
+"`realmAccess` or `resourceAccess` properties, you may need to increase the "
+"priority of your mapper."
+msgstr ""
+"これに関連して、（サポートされていない）Protocol Mappers "
+"SPIにはわずかな追加があります。カスタムのProtocolMapperを実装した場合にのみ影響を受ける可能性があります。ProtocolMapperインターフェイスには新しい"
+" `getPriority()` "
+"メソッドがあります。このメソッドは、デフォルトの実装が0を返すように設定しています。プロトコル・マッパーの実装がアクセストークンの "
+"`realmAccess` または `resourceAccess` "
+"プロパティーにあるロールに依存している場合は、マッパーの優先度を高くする必要があります。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Audience resolving"
+msgstr "オーディエンスの解決"
+
+#. type: Plain text
+msgid ""
+"Audiences of all the clients, for which authenticated user has at least one "
+"client role in the token, are automatically added to the `aud` claim in the "
+"access token now. On the other hand, an access token may not automatically "
+"contain the audience of the frontend client, for which it was issued. Read "
+"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
+msgstr ""
+"すべてのクライアント（認証されたユーザーはトークン内に少なくとも1つのクライアント・ロールを持ちます）のオーディエンスは、アクセストークン内の "
+"`aud` "
+"クレームに自動的に追加されます。一方、アクセストークンには、発行されたフロントエンド・クライアントのオーディエンスが自動的に含まれるわけではありません。詳細については、"
+" link:{adminguide_link}#_audience[{adminguide_name}] を参照してください。"
+
 #. type: Title ====
 #, no-wrap
 msgid "JavaScript Adapter Promise"
 msgstr "JavaScriptアダプターのPromise"
+
+#. type: Plain text
+msgid ""
+"To use native JavaScript promise with the JavaScript adapter it is now "
+"required to set `promiseType` to `native` in the init options."
+msgstr ""
+"JavaScriptアダプターでネイティブのJavaScriptのPromiseを使用するには、initオプションで `promiseType` を "
+"`native` に設定する必要があります。"
+
+#. type: Plain text
+msgid ""
+"In the past if native promise was available a wrapper was returned that "
+"provided both the legacy Keycloak promise and the native promise. This was "
+"causing issues as the error handler was not always set prior to the native "
+"error event, which resulted in `Uncaught (in promise)` error."
+msgstr ""
+"以前は、ネイティブのPromiseが利用可能であった場合、レガシーのKeycloakのPromiseとネイティブのPromiseの両方を提供するラッパーが返されました。これにより、ネイティブのエラーイベントの前にエラーハンドラーが常に設定されていないために問題が発生していました。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
+msgstr "Microsoft Identity ProviderはMicrosoft Graph APIを使用するように更新されました"
 
 #. type: Plain text
 msgid ""
@@ -1152,6 +928,22 @@ msgstr ""
 "Providerの実装では、認可とユーザー・プロファイルの取得がLive "
 "SDKエンドポイントに依存しています。2018年11月以降、Microsoftは新しいMicrosoft Graph APIを支持してLive SDK "
 "APIのサポートを削除します。{project_name}アイデンティティー･プロバイダーは新しいエンドポイントを使用するように更新されたため、この統合を使用している場合は、必ず{project_name}バージョン4.6.0以降にアップグレードしてください。"
+
+#. type: Plain text
+msgid ""
+"Legacy client applications registered under \"Live SDK applications\" won't "
+"work with the Microsoft Graph endpoints due to changes in the id format of "
+"the applications. If you run into an error saying that the application "
+"identifier was not found in the directory, you will have to register the "
+"client application again in the "
+"https://account.live.com/developers/applications/create[Microsoft "
+"Application Registration] portal to obtain a new application id."
+msgstr ""
+"\"Live SDK "
+"applications\"で登録された従来のクライアント・アプリケーションは、アプリケーションのID形式が変更されたため、Microsoft "
+"Graphエンドポイントでは機能しません。アプリケーション識別子がディレクトリーに見つからないというエラーが発生した場合は、新しいアプリケーションIDを取得するために"
+" https://account.live.com/developers/applications/create[Microsoft "
+"Application Registration] ポータルにクライアント・アプリケーションを再度登録する必要があります。"
 
 #. type: Title ====
 #, no-wrap
@@ -1174,6 +966,23 @@ msgid ""
 " example, Infinispan is now 9.3.1.Final."
 msgstr ""
 "依存関係が、WildFly 14サーバーによって使用されるバージョンに更新されました。たとえば、Infinispanは現在9.3.1.Finalです。"
+
+#. type: Plain text
+msgid ""
+"There is a need to add `protocolVersion` property with the value `2.6` to "
+"the configuration of the `remote-store` element in the"
+msgstr ""
+"{project_name}の設定の `remote-store` 要素の設定に値 `2.6` を持つ `protocolVersion` "
+"プロパティーを追加する必要があります。 "
+
+#. type: Plain text
+msgid ""
+"{project_name} configuration. This is required as there is a need to "
+"downgrade the version of HotRod protocol to be compatible with the version "
+"used by {jdgserver_name} {jdgserver_version}."
+msgstr ""
+"HotRodプロトコルのバージョンを {jdgserver_name} {jdgserver_version} "
+"で使用されるバージョンと互換性があるようにダウングレードする必要があるため、これが必要です。"
 
 #. type: Title ===
 #, no-wrap
@@ -1255,8 +1064,35 @@ msgstr "4.3.0への移行"
 
 #. type: Title ===
 #, no-wrap
+msgid "Hostname configuration"
+msgstr "ホスト名の設定"
+
+#. type: Plain text
+msgid ""
+"In previous versions it was recommended to use a filter to specify permitted"
+" hostnames. It is now possible to set a fixed hostname which makes it easier"
+" to make sure the valid hostname is used and also allows internal "
+"applications to invoke {project_name} through an alternative URL, for "
+"example an internal IP address. It is recommended that you switch to this "
+"approach in production."
+msgstr ""
+"以前のバージョンでは、フィルターを使用して許可されたホスト名を指定することが推奨されていました。有効なホスト名が使用されていることを確認しやすくするため、固定ホスト名を設定することができ、内部アプリケーションが内部IPアドレスなどの代替URLを通じて{project_name}を呼び出すことも可能になりました。本番環境では、このアプローチに切り替えることをお勧めします。"
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 4.0.0"
 msgstr "4.0.0への移行"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client Templates changed to Client Scopes"
+msgstr "クライアント・テンプレートがクライアント・スコープに変更されました"
+
+#. type: Plain text
+msgid ""
+"We added support for Client Scopes, which requires some attention during "
+"migration."
+msgstr "クライアント・スコープのサポートを追加しました。これは移行の際に注意が必要です。"
 
 #. type: Plain text
 msgid ""
@@ -1264,6 +1100,11 @@ msgid ""
 "Templates, their protocol mappers and role scope mappings will be preserved."
 msgstr ""
 "クライアント・テンプレートがクライアント・スコープに変更されました。クライアント・テンプレートがあれば、そのプロトコル・マッパーとロールスコープのマッピングは保持されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Spaces replaced in the names"
+msgstr "名前の中の空白文字の置き換え"
 
 #. type: Plain text
 msgid ""
@@ -1275,6 +1116,11 @@ msgstr ""
 "名前に空白文字を含むクライアント・テンプレートの名前は、スペースをアンダースコアに置き換えた名前に変更されました。これは、クライアント・スコープの名前に空白文字が使用できないためです。たとえば、クライアント・テンプレート"
 " `my template` はクライアントスコープ `my_template` に変更されます。"
 
+#. type: Labeled list
+#, no-wrap
+msgid "Linking Client Scopes to Clients"
+msgstr "クライアントへのクライアント・スコープのリンク"
+
 #. type: Plain text
 msgid ""
 "For clients which had the client template, the corresponding client scope is"
@@ -1283,6 +1129,11 @@ msgid ""
 msgstr ""
 "クライアント・テンプレートを持つクライアントの場合、対応するクライアント・スコープがクライアントに `Default Client Scope` "
 "として追加されます。したがって、プロトコル・マッパーとロール・スコープ・マッピングはクライアント上に保持されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Realm Default Client Scopes not linked with existing clients"
+msgstr "既存のクライアントにリンクされていないレルム・デフォルト・クライアント・スコープ"
 
 #. type: Plain text
 msgid ""
@@ -1304,6 +1155,11 @@ msgstr ""
 " Default Client "
 "Scopesが自動的に付属され、プロトコル・マッパーは付属されません。移行中に既存のクライアントを変更することはありません。たとえば、クライアントのプロトコル・マッパーなどのカスタマイズを適切に検出することが不可能なためです。既存のクライアントを更新する場合（それらからプロトコル・マッパーを削除してクライアント・スコープとリンクする場合）、手動で行う必要があります。"
 
+#. type: Labeled list
+#, no-wrap
+msgid "Consents need to be confirmed again"
+msgstr "同意を再度確認する必要があります"
+
 #. type: Plain text
 msgid ""
 "The client scopes change required the refactoring of consents. Consents now "
@@ -1313,6 +1169,11 @@ msgid ""
 "migration."
 msgstr ""
 "クライアント・スコープの変更は、同意のリファクタリングを必要としました。同意はクライアント・スコープを指し、ロールやプロトコル・マッパーは指しません。この変更により、ユーザーが以前に確認した永続的な同意はもはや有効ではなく、ユーザーは移行後に同意ページを再度確認する必要があります。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Some configuration switches removed"
+msgstr "一部の設定スイッチが削除されました"
 
 #. type: Plain text
 msgid ""
@@ -1325,8 +1186,156 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
+msgid "Changes to Authorization Services"
+msgstr "認可サービスの変更"
+
+#. type: Plain text
+msgid ""
+"We added support for UMA 2.0. This version of the UMA specification "
+"introduced some important changes on how permissions are obtained from the "
+"server."
+msgstr ""
+"UMA 2.0のサポートを追加しました。このバージョンのUMA仕様では、サーバーからのパーミッションの取得方法に関する重要な変更が導入されました。"
+
+#. type: Plain text
+msgid ""
+"Here are the main changes introduced by UMA 2.0 support. See "
+"link:{authorizationguide_link}[{authorizationguide_name}] for details."
+msgstr ""
+"ここでは、UMA 2.0サポートによって導入された主な変更点を示します。詳細は、 "
+"link:{authorizationguide_link}[{authorizationguide_name}] を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authorization API was removed"
+msgstr "Authorization APIが削除されました"
+
+#. type: Plain text
+msgid ""
+"Prior to UMA 2.0 (UMA 1.0), client applications were using the Authorization"
+" API to obtain permissions from the server in the format of a RPT. The new "
+"version of UMA specification has removed the Authorization API which was "
+"also removed from {project_name}. In UMA 2.0, RPTs can now be obtained from "
+"the token endpoint by using a specific grant type.  See "
+"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
+" for details."
+msgstr ""
+"UMA 2.0以前（UMA 1.0）では、クライアント・アプリケーションがAuthorization "
+"APIを使用して、RPTの形式でサーバーからパーミッションを取得していました。新しいバージョンのUMA仕様では、Authorization "
+"APIが削除され、{project_name}からも削除されました。UMA "
+"2.0では、特定の認可タイプを使用してトークン・エンドポイントからRPTを取得できるようになりました。詳細は、 "
+"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
+" を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Entitlement API was removed"
+msgstr "Entitlement APIが削除されました"
+
+#. type: Plain text
+msgid ""
+"With the introduction of UMA 2.0, we decided to leverage the token endpoint "
+"and UMA grant type to allow obtaining RPTs from {project_name} and avoid "
+"having different APIs. The functionality provided by the Entitlement API was"
+" kept the same and is still possible to obtain permissions for a set of one "
+"or more resources and scopes or all permissions from the server in case no "
+"resource or scope is provided.  See "
+"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
+" for details."
+msgstr ""
+"UMA "
+"2.0の導入により、{project_name}からRPTを取得し、異なるAPIを使用することを避けるように、トークン・エンドポイントとUMAグラントタイプを活用することにしました。Entitlement"
+" "
+"APIによって提供される機能はこれまでどおり、リソースまたはスコープが提供されていない場合でも、1つ以上のリソースとスコープのセット、またはサーバーからのすべてのパーミッションを取得できます。詳細は、"
+" "
+"link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}]"
+" を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes to UMA Discovery Endpoint"
+msgstr "UMA Discoveryエンドポイントの変更"
+
+#. type: Plain text
+msgid ""
+"UMA Discovery document changed, see "
+"link:{authorizationguide_link}#_service_authorization_api[{authorizationguide_name}]"
+" for details."
+msgstr ""
+"UMA Discoveryドキュメントが変更されました。詳細は "
+"link:{authorizationguide_link}#_service_authorization_api[{authorizationguide_name}]"
+" を参照してください。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes to {project_name} Authorization JavaScript Adapter"
+msgstr "{project_name}認可JavaScriptアダプターの変更"
+
+#. type: Plain text
+msgid ""
+"The {project_name} Authorization JavaScript Adapter (keycloak-authz.js) "
+"changed in order to comply with the changes introduced by UMA 2.0 while "
+"keeping the same behavior as before. The main change is on how you invoke "
+"both `authorization` and `entitlement` methods which now expect a specific "
+"object type representing an authorization request. This new object type "
+"provides more flexibility on how permissions can be obtained from the server"
+" by supporting the different parameters supported by the UMA grant type.  "
+"See "
+"link:{authorizationguide_link}#_enforcer_js_adapter[{authorizationguide_name}]"
+" for details."
+msgstr ""
+"以前と同じ動作を維持しながら、UMA 2.0によって導入された変更に準拠するように、{project_name}認可JavaScriptアダプター"
+"（keycloak-authz.js）が変更されました。主な変更点は、認可リクエストを表す特定のオブジェクト・タイプを想定する "
+"`authorization` メソッドと `entitlement` "
+"メソッドの両方を呼び出す方法です。この新しいオブジェクト・タイプは、UMAグラントタイプでサポートされているさまざまなパラメーターをサポートすることにより、サーバからパーミッションを取得するより柔軟な方法を提供します。詳細は、"
+" "
+"link:{authorizationguide_link}#_enforcer_js_adapter[{authorizationguide_name}]"
+" を参照してください。"
+
+#. type: Plain text
+msgid ""
+"One of the main changes introduced by this release is that you are no longer"
+" required to exchange access tokens with RPTs in order to access resources "
+"protected by a resource server (when not using UMA). Depending on how the "
+"policy enforcer is configured on the resource server side, you can just send"
+" regular access tokens as a bearer token and permissions will still be "
+"enforced."
+msgstr ""
+"このリリースで導入された主な変更の1つは、（UMAを使用しない場合）リソースサーバーによって保護されたリソースにアクセスするために、アクセストークンをRPTと交換する必要がなくなったことです。ポリシー・エンフォーサーがリソースサーバー側でどのように設定されているかに応じて、通常のアクセストークンをベアラートークンとして送信するだけで、パーミッションは引き続き適用されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Changes to {project_name} Authorization Client Java API"
+msgstr "{project_name}認可クライアントJava APIの変更"
+
+#. type: Plain text
+msgid ""
+"When upgrading to the new version of {project_name} Authorization Client "
+"Java API, you'll notice that some representation classes were moved to a "
+"different package in `org.keycloak:keycloak-core`."
+msgstr ""
+"新しいバージョンの{project_name}認可クライアントJava APIにアップグレードすると、いくつかのRepresentationクラスが "
+"`org.keycloak:keycloak-core` の別のパッケージに移動されたことに気付くでしょう。"
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 3.4.2"
 msgstr "3.4.2への移行"
+
+#. type: Title ===
+#, no-wrap
+msgid ""
+"Added session_state parameter to OpenID Connect Authentication Response"
+msgstr "OpenID Connect認証レスポンスにsession_stateパラメーターを追加"
+
+#. type: Plain text
+msgid ""
+"The OpenID Connect Session Management specification requires that the "
+"parameter `session_state` is present in the OpenID Connect Authentication "
+"Response."
+msgstr ""
+"OpenID Connectセッション管理仕様では、パラメーター `session_state` がOpenID "
+"Connect認証レスポンスに存在する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -1380,6 +1389,11 @@ msgstr ""
 msgid "Migrating to 3.2.0"
 msgstr "3.2.0への移行"
 
+#. type: Title ===
+#, no-wrap
+msgid "New Password Hashing algorithms"
+msgstr "新しいパスワード・ハッシュ・アルゴリズム"
+
 #. type: Plain text
 msgid ""
 "We've added two new password hashing algorithms (pbkdf2-sha256 and "
@@ -1397,6 +1411,11 @@ msgid ""
 "pbkdf2-sha256 if you'd like to use the more secure hashing algorithm."
 msgstr ""
 "既存のレルムは、パスワードポリシーにハッシュ・アルゴリズム（未指定）とイテレーション（20000）のデフォルト値が含まれている場合、アップグレードされます。ハッシュ・イテレーションを変更しており、セキュリティー上より安全なハッシュ・アルゴリズムを使用したい場合は、手動でpbkdf2-sha256に変更する必要があります。"
+
+#. type: Title ===
+#, no-wrap
+msgid "ID Token requires scope=openid"
+msgstr "IDトークンにはscope=openidが必要"
 
 #. type: Plain text
 msgid ""

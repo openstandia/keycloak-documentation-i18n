@@ -5,21 +5,25 @@
 # 
 # Translators:
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Yoshikazu Nojima <mail@ynojima.net>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Plain text
+msgid "Configuration|Description"
+msgstr "設定|説明"
 
 #. type: Plain text
 #, no-wrap
@@ -35,10 +39,6 @@ msgstr "SAML Signature Key Name"
 #, no-wrap
 msgid "Add Identity Provider"
 msgstr "アイデンティティー・プロバイダーの追加"
-
-#. type: Plain text
-msgid "Configuration|Description"
-msgstr "設定|説明"
 
 #. type: Plain text
 msgid "Backchannel Logout"
@@ -83,6 +83,20 @@ msgstr ""
 #, no-wrap
 msgid "SAML Config"
 msgstr "SAMLの設定"
+
+#. type: Plain text
+msgid "Service Provider Entity ID"
+msgstr "Service Provider Entity ID"
+
+#. type: Plain text
+msgid ""
+"This is a required field and specifies the SAML Entity ID that the remote "
+"Identity Provider will use to identify requests coming from this Service "
+"Provider. By default it is set to the realm base URL `<root>/auth/realms"
+"/{realm-name}`."
+msgstr ""
+"これは必須フィールドであり、リモート・アイデンティティー・プロバイダーがこのサービス・プロバイダーからのリクエストを識別するために使用するSAMLエンティティーIDを指定します。デフォルトでは、レルムベースURL"
+" `<root>/auth/realms/{realm-name}` に設定されています。"
 
 #. type: Plain text
 msgid "Single Sign-On Service URL"
@@ -244,6 +258,33 @@ msgid ""
 msgstr "外部IDPからのSAMLリクエストとレスポンスの署名を検証するために使用される公開証明書。"
 
 #. type: Plain text
+msgid "Sign Service Provider Metadata"
+msgstr "Sign Service Provider Metadata"
+
+#. type: Plain text
+msgid ""
+"If true, it will use the realm's keypair to sign the "
+"<<_identity_broker_saml_sp_descriptor, SAML Service Provider Metadata "
+"descriptor>>."
+msgstr ""
+"trueの場合、レルムのキーペアを使用して、 <<_identity_broker_saml_sp_descriptor, SAML Service "
+"Provider Metadata descriptor>> に署名します。"
+
+#. type: Plain text
+msgid "Pass subject"
+msgstr "Pass subject"
+
+#. type: Plain text
+msgid ""
+"Whether or not a `login_hint` query parameter should be forwarded to the "
+"IDP. When provided, this login_hint parameter is added to AuthnRequest's "
+"Subject. This allows destination providers to prefill their login form. When"
+" no login_hint is provided, nothing is forwarded as an AuthnRequest Subject."
+msgstr ""
+"`login_hint` クエリー・パラメーターをIDPに転送する必要があるかどうか。 "
+"指定すると、このlogin_hintパラメーターがAuthnRequestのサブジェクトに追加されます。これにより、宛先のプロバイダーはログインフォームに事前に入力できます。login_hintが指定されていない場合、AuthnRequestサブジェクトとして何も転送されません。"
+
+#. type: Plain text
 msgid ""
 "You can also import all this configuration data by providing a URL or file "
 "that points to the SAML IDP entity descriptor of the external IDP.  If you "
@@ -268,21 +309,89 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
+msgid "Requesting specific AuthnContexts"
+msgstr "Requesting specific AuthnContexts"
+
+#. type: Plain text
+msgid ""
+"Some Identity Providers let the clients specify particular constraints on "
+"the authentication method used to verify the user identity (such as asking "
+"for MFA, Kerberos authentication, security requirements, and so on). These "
+"constraints are specified using particular AuthnContext criteria. A client "
+"can ask for one or more criteria and also specify how the Identity Provider "
+"should match the requested AuthnContext - exactly, or by satisfying same-or-"
+"better equivalents."
+msgstr ""
+"一部のアイデンティティー・プロバイダーでは、クライアントがユーザーIDの検証に使用される認証方法に特定の制約を指定できます（MFA、Kerberos認証、セキュリティー要件などの要求など）。"
+" "
+"これらの制約は、特定のAuthnContext基準を使用して指定されます。クライアントは、1つ以上の基準を要求し、アイデンティティー・プロバイダーが要求されたAuthnContextに正確に一致する方法を指定することも、同等またはそれ以上の基準を満たすことによって指定することもできます。"
+
+#. type: Plain text
+msgid ""
+"You can list the criteria your Service Provider requires by adding one or "
+"more ClassRef or DeclRef in the Requested AuthnContext Constraints section. "
+"Usually you need to provide either ClassRefs or DeclRefs; you should check "
+"with your Identity Provider documentation which values are supported. If no "
+"ClassRefs or DeclRefs are present, the Identity Provider will not enforce "
+"additional constraints."
+msgstr ""
+"Requested AuthnContext "
+"Constraintsのセクションに1つ以上のClassRefまたはDeclRefを追加することにより、サービス・プロバイダーが必要とする基準を一覧表示できます。通常、ClassRefsまたはDeclRefsのいずれかを提供する必要があります。サポートされている値をアイデンティティー・プロバイダーのドキュメントで確認する必要があります。ClassRefまたはDeclRefが存在しない場合、アイデンティティー・プロバイダーは追加の制約を適用しません。"
+
+#. type: Block title
+#, no-wrap
+msgid "Requested AuthnContext Constraints"
+msgstr "Requested AuthnContext Constraints"
+
+#. type: Plain text
+msgid "Comparison"
+msgstr "Comparison"
+
+#. type: Plain text
+msgid ""
+"The comparison method the Identity Provider should use to evaluate the "
+"context requirements. Available values are `Exact`, `Minimum`, `Maximum` or "
+"`Better`. Default value is `Exact`."
+msgstr ""
+"アイデンティティー・プロバイダーがコンテキスト要件を評価するために使用する必要がある比較方法。使用可能な値は、 `Exact` 、 `Minimum` "
+"、 `Maximum` または `Better` です。 デフォルト値は `Exact` です。"
+
+#. type: Plain text
+msgid "AuthnContext ClassRefs"
+msgstr "AuthnContext ClassRefs"
+
+#. type: Plain text
+msgid ""
+"One or more AuthnContext ClassRefs that describe the required criteria."
+msgstr "必要な基準を説明する1つ以上のAuthnContext ClassRefs。"
+
+#. type: Plain text
+msgid "AuthnContext DeclRefs"
+msgstr "AuthnContext DeclRefs"
+
+#. type: Plain text
+msgid "One or more AuthnContext DeclRefs that describe the required criteria."
+msgstr "必要な基準を説明する1つ以上のAuthnContext DeclRefs。"
+
+#. type: Title ====
+#, no-wrap
 msgid "SP Descriptor"
 msgstr "SP記述子"
 
 #. type: Plain text
 msgid ""
-"Once you create a SAML provider, there is an `EXPORT` button that appears "
-"when viewing that provider.  Clicking this button will export a SAML SP "
-"entity descriptor which you can use to import into the external SP."
+"If you need to access the provider's SAML SP metadata, look for the "
+"`Endpoints` item in the identity provider configuration settings. It "
+"contains a link called `SAML 2.0 Service Provider Metadata` that generates "
+"the SAML entity descriptor for the Service Provider. You can either download"
+" it or copy its URL and then import it in the remote Identity Provider."
 msgstr ""
-"SAMLプロバイダーを作成すると、そのプロバイダーを表示するときに `EXPORT` "
-"ボタンも表示されます。このボタンをクリックすると、外部SPにインポートするために使用できるSAML SPエンティティー記述子がエクスポートされます。"
+"プロバイダーのSAML SPメタデータにアクセスする必要がある場合は、アイデンティティー・プロバイダーの構成設定で `Endpoints` "
+"の設定を探します。これには、サービス・プロバイダーのSAMLエンティティー記述子を生成する「SAML2.0サービス・プロバイダー・メタデータ」と呼ばれるリンクが含まれています。ダウンロードするか、URLをコピーして、リモート・アイデンティティー・プロバイダーにインポートすることができます。"
 
 #. type: Plain text
-msgid "This metadata is also available publicly by going to the URL."
-msgstr "このメタデータは、このURLにアクセスすることで一般公開されています。"
+msgid "This metadata is also available publicly by going to the URL:"
+msgstr "このメタデータは、次のURLにアクセスして公開することもできます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -292,3 +401,42 @@ msgid ""
 msgstr ""
 "http[s]://{host:port}/auth/realms/{realm-name}/broker/{broker-"
 "alias}/endpoint/descriptor\n"
+
+#. type: Plain text
+msgid ""
+"Make sure to save any configuration changes before accessing the descriptor "
+"or they will not be reflected in the metadata."
+msgstr "記述子にアクセスする前に、設定の変更を必ず保存してください。保存しないと、メタデータに反映されません。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Send Subject in SAML requests"
+msgstr "Send Subject in SAML requests"
+
+#. type: Plain text
+msgid ""
+"By default, a social button pointing to a SAML Identity Provider redirects "
+"the user to a login URL:"
+msgstr "デフォルトでは、SAMLアイデンティティー・プロバイダーを指すソーシャルボタンは、ユーザーをログインURLにリダイレクトします。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"http[s]://{host:port}/auth/realms/${realm-name}/broker/{broker-"
+"alias}/login\n"
+msgstr ""
+"http[s]://{host:port}/auth/realms/${realm-name}/broker/{broker-"
+"alias}/login\n"
+
+#. type: Plain text
+msgid ""
+"Adding a query parameter named `login_hint` to this URL will add its value "
+"to SAML request as a Subject attribute. When this query parameter is absent "
+"or left empty, no subject will be added to the request."
+msgstr ""
+"このURLに `login_hint` "
+"という名前のクエリー・パラメーターを追加すると、その値がSubject属性としてSAMLリクエストに追加されます。このクエリー・パラメーターが存在しないか空のままの場合、件名はリクエストに追加されません。"
+
+#. type: Plain text
+msgid "\"Pass subject\" option must be enabled."
+msgstr "「Pass subject」オプションを有効にする必要があります。"

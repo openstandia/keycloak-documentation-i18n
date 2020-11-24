@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
 # 
 #, fuzzy
@@ -19,15 +19,15 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Block title
+#. type: Title ==
 #, no-wrap
 msgid "Prerequisites"
 msgstr "前提条件"
 
-#. type: Title ====
+#. type: Block title
 #, no-wrap
-msgid "Endpoints"
-msgstr "エンドポイント"
+msgid "Procedure"
+msgstr "手順"
 
 #. type: Title ===
 #, no-wrap
@@ -75,11 +75,6 @@ msgstr "Go言語をインストールする必要があります。"
 #. type: Plain text
 msgid "Make must be installed."
 msgstr "Makeをインストールする必要があります。"
-
-#. type: Block title
-#, no-wrap
-msgid "Procedure"
-msgstr "手順"
 
 #. type: Plain text
 msgid "Run `make dep-install` to install all needed dependencies."
@@ -982,8 +977,9 @@ msgid ""
 msgstr ""
 "デフォルトでは、{generic_adapter_name_full}は認証のために即座にリダイレクトし、アクセス拒否のために403を返します。ほとんどのユーザーは、ユーザーにフレンドリーなサインインとアクセス拒否のページを提示したいと思うでしょう。"
 " `--signin-page=PATH` "
-"を使ってコマンドライン・オプション（または設定ファイル経由）パスをファイルに渡すことができます。サインインページには、「リダイレクト」変数がスコープに渡され、OAuthリダイレクトURLが保持されます。titleやsitenameなどの追加変数をテンプレートに渡したい場合は、"
-" `--tags title=\"This is my site\"` のように -`-tags key=pair` オプションを使用できます。変数は "
+"を使ってコマンドライン・オプション（または設定ファイル経由）パスをファイルに渡すことができます。サインインページには、 'redirect' "
+"変数がスコープに渡され、OAuthリダイレクトURLが保持されます。titleやsitenameなどの追加変数をテンプレートに渡したい場合は、 "
+"`--tags title=\"This is my site\"` のように -`-tags key=pair` オプションを使用できます。変数は "
 "`{{ .title }}` からアクセス可能です。"
 
 #. type: delimited block -
@@ -1105,10 +1101,10 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "At present the only store options supported are "
-"link:https://github.com/antirez/redis[Redis] and "
+"link:https://github.com/redis/redis[Redis] and "
 "link:https://github.com/boltdb/bolt[Boltdb]."
 msgstr ""
-"現在サポートされているストアオプションは、 link:https://github.com/antirez/redis[Redis] と "
+"現在サポートされているストアオプションは、 link:https://github.com/redis/redis[Redis] と "
 "link:https://github.com/boltdb/bolt[Boltdb] のみです。"
 
 #. type: Plain text
@@ -1239,6 +1235,11 @@ msgstr ""
 "オプションで設定されたキープアライブでサポートされています。なお、プロキシーはUNIXのソケット（ `--upstream-url "
 "unix://path/to/the/file.sock` ）を介してアップストリームにすることもできます。"
 
+#. type: Title ====
+#, no-wrap
+msgid "Endpoints"
+msgstr "エンドポイント"
+
 #. type: Plain text
 #, no-wrap
 msgid ""
@@ -1320,17 +1321,15 @@ msgstr "制限事項"
 
 #. type: Plain text
 msgid ""
-"Keep in mind link:http://browsercookielimits.squawky.net/[browser cookie "
-"limits] if you use access or refresh tokens in the browser cookie. Keycloak-"
-"generic-adapter divides the cookie automatically if your cookie is longer "
-"than 4093 bytes. Real size of the cookie depends on the content of the "
-"issued access token. Also, encryption might add additional bytes to the "
-"cookie size. If you have large cookies (>200 KB), you might reach browser "
-"cookie limits."
+"Keep in mind browser cookie limits if you use access or refresh tokens in "
+"the browser cookie. Keycloak-generic-adapter divides the cookie "
+"automatically if your cookie is longer than 4093 bytes. Real size of the "
+"cookie depends on the content of the issued access token. Also, encryption "
+"might add additional bytes to the cookie size. If you have large cookies "
+"(>200 KB), you might reach browser cookie limits."
 msgstr ""
-"ブラウザーのCookieでアクセストークンまたはリフレッシュトークンを使用する場合は、 "
-"link:http://browsercookielimits.squawky.net/[ブラウザCookieの制限] に注意してください"
-"。Keycloak-generic-"
+"ブラウザーのCookieでアクセストークンまたはリフレッシュトークンを使用する場合は、ブラウザCookieの制限に注意してください。Keycloak-"
+"generic-"
 "adapterは、Cookieが4093バイトよりも長い場合、Cookieを自動的に分割します。Cookieの実際のサイズは、発行されたアクセストークンの内容によって異なります。また、暗号化によってCookieサイズがさらに増加する可能性があります。大きなCookie（>"
 " 200 KB）の場合は、ブラウザーのCookie制限に達する可能性があります。"
 

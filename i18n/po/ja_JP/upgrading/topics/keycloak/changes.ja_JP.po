@@ -5,14 +5,14 @@
 # 
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
-# Hiroyuki Wada <wadahiro@gmail.com>, 2020
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,6 +53,63 @@ msgid ""
 msgstr ""
 "Dockerプロトコルによる認証が成功した後、ユーザー・セッションは作成されません。詳細については、 "
 "link:{adminguide_link}#_docker[{adminguide_name}] を参照してください。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to PatternFly 4"
+msgstr "PatternFly 4へのアップグレード"
+
+#. type: Plain text
+msgid ""
+"The {project_name} login theme components have been upgraded to PatternFly "
+"4.  The old PatternFly 3 runs simultaneously with the new one, so it's "
+"possible to keep PF3 components.  However, there are some changes in login "
+"theme design, so please upgrade your custom login theme despite these "
+"changes.  There is an example with the changes in "
+"`keycloak/examples/themes/theme/sunrise` folder.  No additional setup is "
+"required."
+msgstr ""
+"{project_name}ログイン・テーマ・コンポーネントがPatternFly 4にアップグレードされました。古いPatternFly "
+"3も新しいものと同時に実行されるため、PF3コンポーネントを保持することができます。ただし、ログインテーマのデザインに変更があるため、これらの変更にもかかわらず、カスタム・ログイン・テーマをアップグレードしてください。"
+" `keycloak/examples/themes/theme/sunrise` フォルダーに変更を加えた例があります。追加の設定は必要ありません。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Client Credentials Grant without refresh token by default"
+msgstr "デフォルトではクライアント・クレデンシャル・グラントでリフレッシュトークンを発行しない"
+
+#. type: Plain text
+msgid ""
+"From this {project_name} version, the OAuth2 Client Credentials Grant "
+"endpoint does not issue refresh tokens by default. This behavior is aligned "
+"with the OAuth2 specification.  As a side-effect of this change, there is no"
+" user session created on the {project_name} server side after successful "
+"Client Credentials authentication, which results in improved performance and"
+" memory consumption. Clients that use Client Credentials Grant are "
+"encouraged to stop using refresh tokens and instead always authenticate at "
+"every request with `grant_type=client_credentials` instead of using "
+"`refresh_token` as grant type.  In relation to this, {project_name} has "
+"support for revocation of access tokens in the OAuth2 Revocation Endpoint, "
+"hence clients are allowed to revoke individual access tokens if needed."
+msgstr ""
+"この{project_name}バージョンから、OAuth2クライアント・クレデンシャル・グラント・エンドポイントはデフォルトでリフレッシュトークンを発行しません。この動作は、OAuth2仕様に準拠しています。この変更の副作用として、クライアント・クレデンシャルの認証が成功した後、{project_name}サーバー側でユーザー・セッションが作成されないため、パフォーマンスとメモリー消費が改善されます。クライアント・クレデンシャル・グラントを使用するクライアントは、リフレッシュトークンの使用を停止し、代わりに、グラントタイプとして"
+" `refresh_token` を使用する代わりに、常に `grant_type=client_credentials` "
+"ですべてのリクエストを認証することをお勧めします。これに関連して、{project_name}はOAuth2 "
+"Revocationエンドポイントでのアクセストークンの取り消しをサポートしているため、クライアントは必要に応じて個々のアクセストークンを取り消すことができます。"
+
+#. type: Plain text
+msgid ""
+"For the backwards compatibility, there is a possibility to stick to the "
+"behavior of old versions. When this is used, the refresh token will be still"
+" issued after a successful authentication with the Client Credentials Grant "
+"and also the user session will be created. This can be enabled for the "
+"particular client in the {project_name} admin console, in client details in "
+"the section with `OpenID Connect Compatibility Modes` with the switch `Use "
+"Refresh Tokens For Client Credentials Grant`."
+msgstr ""
+"下位互換性のために、古いバージョンの動作のままにする可能性があります。これを使用すると、クライアント・クレデンシャル・グラントによる認証が成功した後もリフレッシュトークンが発行され、ユーザーセッションも作成されます。これは、{project_name}管理コンソールの特定のクライアントで有効にできます。クライアントの詳細の"
+" `OpenID Connect Compatibility Modes` のセクションにある `Use Refresh Tokens For "
+"Client Credentials Grant` のスイッチを使用します。"
 
 #. type: Title ===
 #, no-wrap

@@ -34,6 +34,50 @@ msgstr ""
 msgid "Migrating to 12.0.0"
 msgstr ""
 
+#. type: Title ==
+#, no-wrap
+msgid "Upgrade to Wildfly 21"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 21 as the underlying "
+"container. This does not directly involve any specific {project_name} server "
+"functionality, but a few changes related to the migration, which are worth "
+"mentioning."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Dependency updates"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 21 server. For "
+"example, Infinispan is now 11.0.4.Final."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Configuration changes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A few configuration changes exist in the `standalone(-ha).xml` and `domain."
+"xml` files. You should follow the <<_install_new_version>> section to handle "
+"the migration of configuration files automatically. If more detail is "
+"needed, because, for example, you did some configuration changes on your "
+"own, the list of the most important changes follows:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `object-memory` element of Infinispan caches is now deprecated (unused) "
+"and was replaced with the `heap-memory` element."
+msgstr ""
+
 #. type: Title ====
 #, no-wrap
 msgid "Skip creation of user session for the Docker protocol authentication"
@@ -44,6 +88,52 @@ msgid ""
 "No user session is created after successful authentication with the Docker "
 "protocol. For details, please refer to the link:{adminguide_link}"
 "#_docker[{adminguide_name}]."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to PatternFly 4"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} login theme components have been upgraded to PatternFly "
+"4.  The old PatternFly 3 runs simultaneously with the new one, so it's "
+"possible to keep PF3 components.  However, some changes to the design of the "
+"login theme were performed. Please upgrade your custom login theme due "
+"them.  An example with the necessary changes can be found in the `keycloak/"
+"examples/themes/theme/sunrise` directory.  No additional setup is required."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Client Credentials Grant without refresh token by default"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"From this {project_name} version, the OAuth2 Client Credentials Grant "
+"endpoint does not issue refresh tokens by default. This behavior is aligned "
+"with the OAuth2 specification.  As a side-effect of this change, no user "
+"session is created on the {project_name} server side after successful Client "
+"Credentials authentication, which results in improved performance and memory "
+"consumption. Clients that use Client Credentials Grant are encouraged to "
+"stop using refresh tokens and instead always authenticate at every request "
+"with `grant_type=client_credentials` instead of using `refresh_token` as "
+"grant type.  In relation to this, {project_name} has support for revocation "
+"of access tokens in the OAuth2 Revocation Endpoint, hence clients are "
+"allowed to revoke individual access tokens if needed."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For backwards compatibility, a possibility to stick to the behavior of old "
+"versions exists. When this is used, the refresh token will be still issued "
+"after a successful authentication with the Client Credentials Grant and also "
+"the user session will be created. This can be enabled for the particular "
+"client in the {project_name} admin console, in client details in the section "
+"with `OpenID Connect Compatibility Modes` with the switch `Use Refresh "
+"Tokens For Client Credentials Grant`."
 msgstr ""
 
 #. type: Title ===
@@ -60,13 +150,8 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 20 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but there are few changes related to the migration, which are "
-"worth mentioning."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Dependency updates"
+"functionality, but a few changes related to the migration, which are worth "
+"mentioning."
 msgstr ""
 
 #. type: Plain text
@@ -75,14 +160,9 @@ msgid ""
 "example, Infinispan is now 10.1.8.Final."
 msgstr ""
 
-#. type: Title ====
-#, no-wrap
-msgid "Configuration changes"
-msgstr ""
-
 #. type: Plain text
 msgid ""
-"There are few configuration changes in the `standalone(-ha).xml` and `domain."
+"A few configuration changes exist in the `standalone(-ha).xml` and `domain."
 "xml` files. You should follow the <<_install_new_version>> section to handle "
 "the migration of configuration files automatically."
 msgstr ""
@@ -176,9 +256,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The public API of `UserModel` has not changed, so no changes to frontend "
-"resources or SPIs accessing user data should be necessary.  The database has "
-"also not changed, yet."
+"The public API of `UserModel` did not change. No changes to frontend "
+"resources or SPIs accessing user data are necessary.  Also, the database did "
+"not change yet."
 msgstr ""
 
 #. type: Title ====
@@ -297,10 +377,10 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "In the year 2038 an `int` is no longer able to hold the value of seconds "
-"since 1970, as such we are working on updating these to `long` values. In "
-"token representation there is a further issue, which is an `int` will by "
-"default result in `0` in the JSON representation, while it should not be "
-"included."
+"since 1970, as such we are working on updating these to `long` values. "
+"Moreover, another issue related with processing of `int` values exists in "
+"token representation. An `int` will by default result into `0` in the JSON "
+"representation, while it should not be included."
 msgstr ""
 
 #. type: Plain text
@@ -371,8 +451,8 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 18 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but there are a few changes related to the migration, which "
-"are worth mentioning."
+"functionality, but a few changes related to the migration, which are worth "
+"mentioning."
 msgstr ""
 
 #. type: Plain text
@@ -453,15 +533,15 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There are some changes in the Java Authentication SPI and Credential "
-"Provider SPI. The interface `Authenticator` is not changed, but you may be "
-"affected if you're developing more advanced authenticators, which introduce "
-"some new credential types (subclasses of `CredentialModel`).  There are "
-"changes on the `CredentialProvider` interface and introduction of some new "
-"interfaces like `CredentialValidator`. Also you may be affected if your "
-"authenticator supported the OPTIONAL execution requirement. It is "
-"recommended to double check the latest authentication examples in the server "
-"development guide for more details."
+"Some changes exist in the Java Authentication SPI and Credential Provider "
+"SPI. The interface `Authenticator` is not changed, but you may be affected "
+"if you're developing more advanced authenticators, which introduce some new "
+"credential types (subclasses of `CredentialModel`).  There are changes on "
+"the `CredentialProvider` interface and introduction of some new interfaces "
+"like `CredentialValidator`. Also you may be affected if your authenticator "
+"supported the OPTIONAL execution requirement. It is recommended to double "
+"check the latest authentication examples in the server development guide for "
+"more details."
 msgstr ""
 
 #. type: Title ====
@@ -471,11 +551,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There are also some changes in the freemarker templates. You may be affected "
-"if you have your own theme with custom freemarker templates for login forms "
-"or some account forms, especially for the forms related to OTP. It is "
-"recommended to double check changes in the Freemarker templates in the "
-"latest {project_name} and align your templates according to it."
+"Some changes in the freemarker templates exist. You may be affected if you "
+"have your own theme with custom freemarker templates for login forms or some "
+"account forms, especially for the forms related to OTP. It is recommended to "
+"double check changes in the Freemarker templates in the latest "
+"{project_name} and align your templates according to it."
 msgstr ""
 
 #. type: Title ===
@@ -487,11 +567,11 @@ msgstr ""
 msgid ""
 "We added more flexibility around storing of user credentials. Among other "
 "things, every user can have multiple credentials of the same type, for "
-"example multiple OTP credentials. There are some changes in the database "
-"schema in relation to that, however the credentials from the previous "
-"version should be automatically updated to the new format and users should "
-"be still able to login with their passwords or OTP credentials set in the "
-"previous version."
+"example multiple OTP credentials. As a result, some changes to the database "
+"schema were performed. However the credentials from the previous version "
+"should be automatically updated to the new format and users should be still "
+"able to login with their passwords or OTP credentials set in the previous "
+"version."
 msgstr ""
 
 #. type: Title ===
@@ -508,8 +588,8 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 17 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but there are a few changes related to the migration, which "
-"are worth mentioning."
+"functionality, but a few changes related to the migration, which are worth "
+"mentioning."
 msgstr ""
 
 #. type: Plain text
@@ -532,8 +612,8 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 16 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but there are few changes related to the migration, which are "
-"worth mentioning."
+"functionality, but a few changes related to the migration, which are worth "
+"mentioning."
 msgstr ""
 
 #. type: Plain text
@@ -603,8 +683,8 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 15 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but there are few changes related to the migration, which "
-"worth mentioning."
+"functionality, but a few changes related to the migration, which are worth "
+"mentioning."
 msgstr ""
 
 #. type: Plain text
@@ -716,13 +796,13 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Related to this, there is a small addition in the (unsupported) Protocol "
-"Mappers SPI. You can be affected only if you implemented a custom "
-"ProtocolMapper. There is a new `getPriority()` method on the ProtocolMapper "
-"interface. The method has the default implementation set to return 0. If "
-"your protocol mapper implementation relies on the roles in the access token "
-"`realmAccess` or `resourceAccess` properties, you may need to increase the "
-"priority of your mapper."
+"Related to this, a small addition to the (unsupported) Protocol Mappers SPI "
+"exists. You can be affected only if you implemented a custom ProtocolMapper. "
+"A new `getPriority()` method on the ProtocolMapper interface got introduced. "
+"The method has the default implementation set to return 0. If your protocol "
+"mapper implementation relies on the roles in the access token `realmAccess` "
+"or `resourceAccess` properties, you may need to increase the priority of "
+"your mapper."
 msgstr ""
 
 #. type: Title ====
@@ -794,8 +874,8 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 14 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but there are few changes related to the migration, which "
-"worth mentioning."
+"functionality, but a few changes related to the migration, which are worth "
+"mentioning."
 msgstr ""
 
 #. type: Plain text
@@ -806,15 +886,14 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There is a need to add `protocolVersion` property with the value `2.6` to "
-"the configuration of the `remote-store` element in the"
+"The `protocolVersion` property of the `remote-store` element in the "
+"{project_name} configuration must be set to the value `2.6`."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"{project_name} configuration. This is required as there is a need to "
-"downgrade the version of HotRod protocol to be compatible with the version "
-"used by {jdgserver_name} {jdgserver_version}."
+"This is required so the version of HotRod protocol is downgraded to be "
+"compatible with the version used by {jdgserver_name} {jdgserver_version}."
 msgstr ""
 
 #. type: Title ===
@@ -831,8 +910,8 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 13 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but there are few changes related to the migration, which "
-"worth mentioning."
+"functionality, but a few changes related to the migration, which are worth "
+"mentioning."
 msgstr ""
 
 #. type: Plain text
@@ -843,7 +922,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There are few configuration changes in the `standalone(-ha).xml` and `domain."
+"A few configuration changes exist in the `standalone(-ha).xml` and `domain."
 "xml` files. You should follow the <<_install_new_version>> section to handle "
 "the migration of configuration files automatically. If more detail is "
 "needed, because, for example, you did some configuration changes on your "
@@ -858,8 +937,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There is no `jndi-attribute` on `cache-container` element in infinispan "
-"subsystem."
+"The `cache-container` element in Infinispan subsystem does not recognize the "
+"`jndi-attribute` anymore."
 msgstr ""
 
 #. type: Plain text
@@ -870,7 +949,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There is a need to remove `transaction` element from the configuration of "
+"The `transaction` element needs to be removed from the configuration of "
 "replicated caches in the {jdgserver_name} server"
 msgstr ""
 
@@ -1130,9 +1209,9 @@ msgid ""
 "authentication response. This can be done for the particular client in the "
 "{project_name} admin console, in client details in the section with `OpenID "
 "Connect Compatibility Modes`, described in "
-"<<_compatibility_with_older_adapters>>. There is the `Exclude Session State "
-"From Authentication Response` switch, which can be turned on to prevent "
-"adding the `session_state` parameter to the Authentication Response."
+"<<_compatibility_with_older_adapters>>. Dedicated `Exclude Session State "
+"From Authentication Response` switch exists, which can be turned on to "
+"prevent adding the `session_state` parameter to the Authentication Response."
 msgstr ""
 
 #. type: Plain text
@@ -1294,12 +1373,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"But there is limitation, that once you change the realm active key, the "
-"users won't be able to refresh old offline tokens anymore. So you shouldn't "
-"change the active realm key until all your users with offline tokens "
-"refreshed their tokens. Obviously newly refreshed tokens will have KID in "
-"the header, so after all users exchange their old offline tokens, you are "
-"free to change the active realm key."
+"But a limitation exists. Once you change the realm active key, the users "
+"won't be able to refresh old offline tokens anymore. So you shouldn't change "
+"the active realm key until all your users with offline tokens refreshed "
+"their tokens. Obviously newly refreshed tokens will have KID in the header, "
+"so after all users exchange their old offline tokens, you are free to change "
+"the active realm key."
 msgstr ""
 
 #. type: Title ===
@@ -1367,7 +1446,7 @@ msgstr ""
 msgid ""
 "Even if you use {project_name} in cluster, the caches `realms` and `users` "
 "defined in infinispan subsystem in `standalone-ha.xml` are always local "
-"caches now. There is separate cache `work`, which handles sending "
+"caches now. A separate cache `work` exists, which handles sending "
 "invalidation messages between cluster nodes and informing whole cluster what "
 "records in underlying `realms` and `users` caches should be invalidated."
 msgstr ""
@@ -1566,9 +1645,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"We've removed the option auth-server-url-for-backend-requests as there were "
-"issues in some scenarios when it was used. In more details, it was possible "
-"to access the Keycloak server from 2 different contexts (internal and "
+"We've removed the option auth-server-url-for-backend-requests due to issues "
+"in some scenarios when it was used. In more details, it was possible to "
+"access the Keycloak server from 2 different contexts (internal and "
 "external), which was causing issues in token validations etc."
 msgstr ""
 
@@ -1784,10 +1863,10 @@ msgstr ""
 msgid ""
 "In this version, we added `First Broker Login`, which allows you to specify "
 "what exactly should be done when new user is logged through Identity "
-"provider (or Social provider), but there is no existing Keycloak user yet "
-"linked to the social account.  As part of this work, we added option `First "
-"Login Flow` to identity providers where you can specify the flow and then "
-"you can configure this flow under `Authentication` tab in admin console."
+"provider (or Social provider), but no Keycloak user linked to the social "
+"account exists yet.  As part of this work, we added option `First Login "
+"Flow` to identity providers where you can specify the flow and then you can "
+"configure this flow under `Authentication` tab in admin console."
 msgstr ""
 
 #. type: Plain text
@@ -1820,11 +1899,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There is no change in the interface itself or method signatures.  However "
-"there is some change in behavior.  We added `First Broker Login` flow in "
-"this release and the method `IdentityProviderMapper.importNewUser` is now "
-"called after `First Broker Login` flow is finished.  So if you want to have "
-"any attribute available in `Review Profile` page, you would need to use the "
+"The interface itself and method signatures did not change. However some "
+"changes in the behavior exist.  We added `First Broker Login` flow in this "
+"release and the method `IdentityProviderMapper.importNewUser` is now called "
+"after `First Broker Login` flow is finished.  So if you want to have any "
+"attribute available in `Review Profile` page, you would need to use the "
 "method `preprocessFederatedIdentity` instead of `importNewUser` . You can "
 "set any attribute by invoke `BrokeredIdentityContext.setUserAttribute` and "
 "that will be available on `Review profile` page."
@@ -1861,11 +1940,11 @@ msgid ""
 "We did a bit of restructure and renamed some packages.  It is mainly about "
 "renaming internal packages of util classes.  The most important classes used "
 "in your application ( for example AccessToken or KeycloakSecurityContext ) "
-"as well as the SPI are still unchanged.  However there is slight chance that "
-"you will be affected and will need to update imports of your classes.  For "
-"example if you are using multitenancy and KeycloakConfigResolver, you will "
-"be affected as for example class HttpFacade was moved to different package - "
-"it is `org.keycloak.adapters.spi.HttpFacade` now."
+"as well as the SPI are still unchanged.  However, a slight chance exists "
+"that you will be affected and will need to update imports of your classes.  "
+"For example if you are using multitenancy and KeycloakConfigResolver, you "
+"will be affected as for example class HttpFacade was moved to different "
+"package - it is `org.keycloak.adapters.spi.HttpFacade` now."
 msgstr ""
 
 #. type: Title ====
@@ -1913,8 +1992,8 @@ msgid ""
 "non-clustered mode a local Infinispan cache is used.  We've also removed our "
 "custom in-memory cache and the no cache providers.  If you have realmCache "
 "or userCache set in keycloak-server.json to mem or none please remove "
-"these.  As Infinispan is the only provider there's no longer any need for "
-"the realmCache and userCache objects so these can be removed."
+"these.  As Infinispan is the only provider the realmCache and userCache "
+"objects are no longer needed and can be removed."
 msgstr ""
 
 #. type: Title ====
@@ -1928,8 +2007,7 @@ msgid ""
 "clustered mode a local Infinispan cache is used.  We've also removed the JPA "
 "and Mongo user session providers.  If you have userSession set in keycloak-"
 "server.json to mem, jpa or mongo please remove it.  As Infinispan is the "
-"only provider there's no longer any need for the userSession object so it "
-"can be removed."
+"only provider the userSession object is no longer needed and can be removed."
 msgstr ""
 
 #. type: Plain text
@@ -1968,7 +2046,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "In the past Direct Grant API (or Resource Owner Password Credentials) was "
-"disabled by default and there was an option on a realm to enable it.  The "
+"disabled by default and an option to enable it on a realm existed.  The "
 "Direct Grant API is now always enabled and the option to enable/disable for "
 "a realm is removed."
 msgstr ""
@@ -2111,10 +2189,10 @@ msgstr ""
 msgid ""
 "The value of `iss` claim in access and id tokens have changed from `realm "
 "name` to `realm url`.  This is required by OpenID Connect specification.  If "
-"you're using our adapters there's no change required, other than if you've "
-"been using bearer-only without specifying `auth-server-url` you have to add "
-"it now.  If you're using another library (or RSATokenVerifier) you need to "
-"make the corresponding changes when verifying `iss`."
+"you're using our adapters no change is required, except if you've been using "
+"bearer-only without specifying the `auth-server-url`, you have to add it "
+"now.  If you're using another library (or RSATokenVerifier) you need to make "
+"the corresponding changes when verifying `iss`."
 msgstr ""
 
 #. type: Title ====
@@ -2164,10 +2242,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Previously there was `Claims` tab in admin console for application and OAuth "
-"clients.  This was used to configure which attributes should go into access "
-"token for particular application/client.  This was removed and replaced with "
-"protocol mappers which are more flexible."
+"Previously a dedicated `Claims` tab existed in the admin console for "
+"application and OAuth clients.  This was used to configure which attributes "
+"should go into access token for particular application/client.  This was "
+"removed and replaced with protocol mappers which are more flexible."
 msgstr ""
 
 #. type: Plain text
@@ -2423,14 +2501,14 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There is a new credential type \"secret\".  Unlike other credential types, "
-"it is stored in plain text in the database and can be viewed in the admin "
-"console."
+"A new credential type \"secret\" got introduced. Unlike other credential "
+"types, it is stored in plain text in the database and can be viewed in the "
+"admin console."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"There is no longer required Application or OAuth Client credentials.  These "
+"Application and OAuth Client credentials are no longer required. These "
 "client types are now hard coded to use the \"secret\" credential type."
 msgstr ""
 

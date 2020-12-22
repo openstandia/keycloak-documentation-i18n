@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Setting SameSite value for JSESSIONID cookie"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Browsers are planning to set the default value for the `SameSite` attribute "
+"for cookies to `Lax`. This setting means that cookies will be sent to "
+"applications only if the request originates in the same domain. This "
+"behavior can affect the SAML POST binding which may become non-functional. "
+"To preserve full functionality of the SAML adapter, we recommend setting the "
+"`SameSite` value to `None` for the `JSESSIONID` cookie created by your "
+"container. Not doing so may result in resetting the container's session with "
+"each request to {project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To avoid setting the `SameSite` attribute to `None`, consider switching to "
+"the REDIRECT binding if it is acceptable, or to OIDC protocol where this "
+"workaround is not necessary."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To set the `SameSite` value to `None` for `JSESSIONID` cookie in Tomcat add "
+"following configuration to the`context.xml` of your application. Note, this "
+"will set the `SameSite` value to `None` for all cookies created by Tomcat "
+"container."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "<CookieProcessor sameSiteCookies=\"None\" />\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"It is not possible to set the `SameSite` attribute only to a subset of "
+"cookies, therefore all cookies created for your application will have this "
+"attribute set to `None`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The support for this feature is available in Tomcat from versions 9.0.29 and "
+"8.5.49."
+msgstr ""

@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Setting SameSite value for JSESSIONID cookie"
+msgstr "JSESSIONID CookieにSameSite値を設定する"
+
+#. type: Plain text
+msgid ""
+"Browsers are planning to set the default value for the `SameSite` attribute "
+"for cookies to `Lax`. This setting means that cookies will be sent to "
+"applications only if the request originates in the same domain. This "
+"behavior can affect the SAML POST binding which may become non-functional. "
+"To preserve full functionality of the SAML adapter, we recommend setting the"
+" `SameSite` value to `None` for the `JSESSIONID` cookie created by your "
+"container. Not doing so may result in resetting the container's session with"
+" each request to {project_name}."
+msgstr ""
+"各ブラウザーは、Cookieの `SameSite` 属性のデフォルト値を `Lax` "
+"に設定することを計画しています。この設定は、リクエストが同じドメインで発生した場合にのみCookieがアプリケーションに送信されることを意味します。この動作はSAML"
+" POSTバインディングに影響を与え、機能しなくなる可能性があります。SAMLアダプターの完全な機能を保持するために、コンテナーによって作成された "
+"`JSESSIONID` Cookieの `SameSite` 値を `None` "
+"に設定することをお勧めします。そうしないと、{project_name}へのリクエストごとにコンテナーのセッションがリセットされる可能性があります。"
+
+#. type: Plain text
+msgid ""
+"To avoid setting the `SameSite` attribute to `None`, consider switching to "
+"the REDIRECT binding if it is acceptable, or to OIDC protocol where this "
+"workaround is not necessary."
+msgstr ""
+"`SameSite` 属性が `None` "
+"に設定されないようにするには、許容できる場合はREDIRECTバインディングに切り替えるか、この回避策が不要な場合はOIDCプロトコルに切り替えることを検討してください。"
+
+#. type: Plain text
+msgid ""
+"To set the `SameSite` value to `None` for the `JSESSIONID` cookie in "
+"Wildfly/EAP, add a file `undertow-handlers.conf` with the following content "
+"to the `WEB-INF` directory of your application."
+msgstr ""
+"Wildfly/EAPの `JSESSIONID` Cookieの `SameSite` 値を `None` に設定するには、以下の内容のファイル "
+"`undertow-handlers.conf` をアプリケーションの `WEB-INF` ディレクトリーに追加します。"
+
+#. type: Plain text
+#, no-wrap
+msgid " samesite-cookie(mode=None, cookie-pattern=JSESSIONID)\n"
+msgstr " samesite-cookie(mode=None, cookie-pattern=JSESSIONID)\n"
+
+#. type: Plain text
+msgid ""
+"The support for this configuration is available in Wildfly from version "
+"19.1.0."
+msgstr "この設定のサポートは、バージョン19.1.0以降のWildFlyで利用できます。"

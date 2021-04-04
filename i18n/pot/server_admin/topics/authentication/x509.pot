@@ -46,7 +46,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The container ({appserver_name}) validates the certificate PKIX path and the "
+"The web container (either the reverse proxy or {appserver_name} where "
+"{project_name} is deployed) validates the certificate PKIX path and the "
 "certificate expiration"
 msgstr ""
 
@@ -104,6 +105,19 @@ msgstr ""
 
 #. type: Plain text
 msgid "In the case of the Direct Grant Flow, the server signs in the user"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Note that it is the responsibility of the web container to validate "
+"certificate PKIX path. X.509 authenticator on the {project_name} side "
+"provides just the additional support for check the certificate expiration, "
+"certificate revocation status and key usage. If you are using {project_name} "
+"deployed behind reverse proxy, make sure that your reverse proxy is "
+"configured to validate PKIX path. If you do not use reverse proxy and users "
+"directly access the {appserver_name}, you should be fine as {appserver_name} "
+"makes sure that PKIX path is validated as long as it is configured as "
+"described below."
 msgstr ""
 
 #. type: Title ===
@@ -588,6 +602,15 @@ msgid ""
 "A custom attribute which value will be matched against the certificate "
 "identity. Multiple custom attributes are relevant when attribute mapping is "
 "related to multiple values, e.g. 'Certificate Serial Number and IssuerDN'."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"It is highly recommended that attribute used here is read-only for the "
+"users. By default, only the `usercertificate` attribute is read-only by "
+"{project_name}.  If you use a different attribute name, you may need to add "
+"it to the list of read-only attributes. See the details in the link:"
+"#_read_only_user_attributes[Threat model mitigation chapter]."
 msgstr ""
 
 #. type: Labeled list

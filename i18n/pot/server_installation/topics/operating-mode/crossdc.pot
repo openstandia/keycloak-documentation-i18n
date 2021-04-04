@@ -24,6 +24,154 @@ msgstr ""
 msgid "Troubleshooting"
 msgstr ""
 
+#. type: Plain text
+msgid ""
+"`Site1` consists of {jdgserver_name} server, `server1`, and 2 {project_name} "
+"servers, `node11` and `node12` ."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`Site2` consists of {jdgserver_name} server, `server2`, and 2 {project_name} "
+"servers, `node21` and `node22` ."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{jdgserver_name} servers `server1` and `server2` are connected to each other "
+"through the RELAY2 protocol and `backup` based {jdgserver_name} caches in a "
+"similar way as described in the link:{jdgserver_crossdcdocs_link}"
+"[{jdgserver_name} documentation]."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The same details apply for `node21` and `node22`. They cluster with each "
+"other and communicate only with `server2` server using the Hot Rod protocol."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Copy the `NODE11` to 3 other directories referred later as `NODE12`, "
+"`NODE21` and `NODE22`."
+msgstr ""
+
+#. type: Plain text
+msgid "Start `NODE11` :"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE11/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Start `NODE12` :"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE12/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The cluster nodes should be connected. Something like this should be in the "
+"log of both NODE11 and NODE12:"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node11|1] (2) [node11, "
+"node12]"
+msgstr ""
+
+#. type: Plain text
+msgid "The channel name in the log might be different."
+msgstr ""
+
+#. type: Plain text
+msgid "Start `NODE21` :"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE21/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+
+#. type: Code block
+msgid "Received new cluster view for channel keycloak: [node21|0] (1) [node21]"
+msgstr ""
+
+#. type: Plain text
+msgid "Start `NODE22` :"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE22/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+
+#. type: Plain text
+msgid "It should be in cluster with `NODE21` :"
+msgstr ""
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node21|1] (2) [node21, "
+"node22]"
+msgstr ""
+
+#. type: Plain text
+msgid "Test:"
+msgstr ""
+
+#. type: Plain text
+msgid "Go to `http://node11:8080/auth/` and create the initial admin user."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Go to `http://node11:8080/auth/admin` and login as admin to admin console."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Open a second browser and go to any of nodes `http://node12:8080/auth/admin` "
+"or `http://node21:8080/auth/admin` or `http://node22:8080/auth/admin`. After "
+"login, you should be able to see the same sessions in tab `Sessions` of "
+"particular user, client or realm on all 4 servers."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Check server.logs if needed. After login or logout, the message like this "
+"should be on all the nodes `NODEXY/standalone/log/server.log` :"
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store.\n"
+"Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
+msgstr ""
+
 #. type: Title ===
 #, no-wrap
 msgid "Cross-Datacenter Replication Mode"
@@ -31,10 +179,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Cross-Datacenter Replication mode is for when you want to run {project_name} "
-"in a cluster across multiple data centers, most typically using data center "
-"sites that are in different geographic regions. When using this mode, each "
-"data center will have its own cluster of {project_name} servers."
+"Cross-Datacenter Replication mode lets you run {project_name} in a cluster "
+"across multiple data centers, most typically using data center sites that "
+"are in different geographic regions. When using this mode, each data center "
+"will have its own cluster of {project_name} servers."
 msgstr ""
 
 #. type: Plain text
@@ -69,9 +217,16 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"link:{jdgserver_crossdcdocs_link}[JBoss Data Grid Cross-Datacenter "
-"Replication] {project_name} uses JBoss Data Grid (JDG) for the replication "
-"of Infinispan data between the data centers."
+"link:{jdgserver_crossdcdocs_link}[Red Hat Data Grid Cross-Datacenter "
+"Replication] {project_name} uses Red Hat Data Grid (RHDG) for the "
+"replication of data between the data centers."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"link:https://infinispan.org/docs/11.0.x/titles/xsite/xsite."
+"html#xsite_replication[Infinispan Cross-Site Replication] replicates data "
+"across clusters in separate geographic locations."
 msgstr ""
 
 #. type: Title ====
@@ -371,24 +526,24 @@ msgid ""
 "same data center, but not with the {project_name} nodes in different data "
 "centers. A {project_name} node does not communicate directly with the "
 "{project_name} nodes from different data centers. {project_name} nodes use "
-"external JDG (actually {jdgserver_name} servers) for communication across "
-"data centers. This is done using the link:https://infinispan.org/docs/8.2.x/"
-"user_guide/user_guide.html#using_hot_rod_server[Infinispan HotRod protocol]."
+"external {jdgserver_name} servers for communication across data centers. "
+"This is done using the link:https://infinispan.org/docs/11.0.x/titles/"
+"hotrod_java/hotrod_java.html[Infinispan Hot Rod protocol]."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The Infinispan caches on the {project_name} side must be configured with the "
-"link:https://infinispan.org/docs/8.2.x/user_guide/user_guide."
-"html#remote_store[remoteStore] to ensure that data are saved to the remote "
-"cache. There is separate Infinispan cluster between JDG servers, so the data "
-"saved on JDG1 on `site1` are replicated to JDG2 on `site2` ."
+"The Infinispan caches on the {project_name} side use link:https://infinispan."
+"org/docs/stable/titles/configuring/configuring."
+"html#remote_cache_store[`remoteStore`] configuration to offload data to a "
+"remote {jdgserver_name} cluster.  {jdgserver_name} clusters in separate data "
+"centers then replicate that data to ensure it is backed up."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Finally, the receiving JDG server notifies the {project_name} servers in its "
-"cluster through the Client Listeners, which are a feature of the HotRod "
+"The receiving {jdgserver_name} server notifies the {project_name} servers in "
+"its cluster through Client Listeners, which are a feature of the Hot Rod "
 "protocol. {project_name} nodes on `site2` then update their Infinispan "
 "caches and the particular user session is also visible on {project_name} "
 "nodes on `site2`."
@@ -400,49 +555,23 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Basic setup"
+msgid "Setting up Cross DC with {jdgserver_name} {jdgserver_version}"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"For this example, we describe using two data centers, `site1` and `site2`. "
-"Each data center consists of 1 {jdgserver_name} server and 2 {project_name} "
-"servers. We will end up with 2 {jdgserver_name} servers and 4 {project_name} "
-"servers in total."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"`Site1` consists of {jdgserver_name} server, `jdg1`, and 2 {project_name} "
-"servers, `node11` and `node12` ."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"`Site2` consists of {jdgserver_name} server, `jdg2`, and 2 {project_name} "
-"servers, `node21` and `node22` ."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"{jdgserver_name} servers `jdg1` and `jdg2` are connected to each other "
-"through the RELAY2 protocol and `backup` based {jdgserver_name} caches in a "
-"similar way as described in the link:{jdgserver_crossdcdocs_link}[JDG "
-"documentation]."
+"This example for {jdgserver_name} {jdgserver_version} involves two data "
+"centers, `site1` and `site2`. Each data center consists of 1 "
+"{jdgserver_name} server and 2 {project_name} servers. We will end up with 2 "
+"{jdgserver_name} servers and 4 {project_name} servers in total."
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "{project_name} servers `node11` and `node12` form a cluster with each other, "
 "but they do not communicate directly with any server in `site2`.  They "
-"communicate with the Infinispan server `jdg1` using the HotRod protocol "
+"communicate with the Infinispan server `server1` using the Hot Rod protocol "
 "(Remote cache). See <<communication>> for the details."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The same details apply for `node21` and `node22`. They cluster with each "
-"other and communicate only with `jdg2` server using the HotRod protocol."
 msgstr ""
 
 #. type: Plain text
@@ -455,7 +584,7 @@ msgstr ""
 
 #. type: Title =====
 #, no-wrap
-msgid "{jdgserver_name} server setup"
+msgid "Setting up the {jdgserver_name} server"
 msgstr ""
 
 #. type: Plain text
@@ -466,13 +595,13 @@ msgstr ""
 msgid ""
 "Download {jdgserver_name} {jdgserver_version} server and unzip to a "
 "directory you choose. This location will be referred in later steps as "
-"`JDG1_HOME` ."
+"`SERVER1_HOME` ."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Change those things in the `JDG1_HOME/standalone/configuration/clustered."
-"xml` in the configuration of JGroups subsystem:"
+"Change those things in the `SERVER1_HOME/server/conf/infinispan-xsite.xml` "
+"in the configuration of JGroups subsystem:"
 msgstr ""
 
 #. type: Plain text
@@ -513,7 +642,7 @@ msgstr ""
 msgid ""
 "Configure the `tcp` stack to use `TCPPING` protocol instead of `MPING`. "
 "Remove the `MPING` element and replace it with the `TCPPING`. The "
-"`initial_hosts` element points to the hosts `jdg1` and `jdg2`:"
+"`initial_hosts` element points to the hosts `server1` and `server2`:"
 msgstr ""
 
 #. type: Code block
@@ -522,7 +651,7 @@ msgid ""
 "<stack name=\"tcp\">\n"
 "    <transport type=\"TCP\" socket-binding=\"jgroups-tcp\"/>\n"
 "    <protocol type=\"TCPPING\">\n"
-"        <property name=\"initial_hosts\">jdg1[7600],jdg2[7600]</property>\n"
+"        <property name=\"initial_hosts\">server1[7600],server2[7600]</property>\n"
 "        <property name=\"ergonomics\">false</property>\n"
 "    </protocol>\n"
 "    <protocol type=\"MERGE3\"/>\n"
@@ -547,8 +676,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Add this into `JDG1_HOME/standalone/configuration/clustered.xml` under cache-"
-"container named `clustered`:"
+"Add this into `SERVER1_HOME/standalone/configuration/clustered.xml` under "
+"cache-container named `clustered`:"
 msgstr ""
 
 #. type: Code block
@@ -679,15 +808,15 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Copy the server to the second location, which will be referred to later as "
-"`JDG2_HOME`."
+"`SERVER2_HOME`."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"In the `JDG2_HOME/standalone/configuration/clustered.xml` exchange `site1` "
-"with `site2` and vice versa, both in the configuration of `relay` in the "
-"JGroups subsystem and in configuration of `backups` in the cache-subsystem. "
-"For example:"
+"In the `SERVER2_HOME/standalone/configuration/clustered.xml` exchange "
+"`site1` with `site2` and vice versa, both in the configuration of `relay` in "
+"the JGroups subsystem and in configuration of `backups` in the cache-"
+"subsystem. For example:"
 msgstr ""
 
 #. type: Plain text
@@ -710,17 +839,9 @@ msgstr ""
 #. type: Code block
 #, no-wrap
 msgid ""
-"            <backups>\n"
-"                <backup site=\"site1\" ....\n"
-"                ...\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"It is currently required to have different configuration files for the JDG "
-"servers on both sites as the Infinispan subsystem does not support replacing "
-"site names with expressions. See link:https://issues.redhat.com/browse/"
-"WFLY-9458[this issue] for more details."
+"<backups>\n"
+"  <backup site=\"site1\" ....\n"
+"  ...\n"
 msgstr ""
 
 #. type: Plain text
@@ -737,48 +858,49 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "Start server `jdg1`:"
+msgid "Start server `server1`:"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"cd JDG1_HOME/bin\n"
+"cd SERVER1_HOME/bin\n"
 "./standalone.sh -c clustered.xml -Djava.net.preferIPv4Stack=true \\\n"
 "  -Djboss.default.multicast.address=234.56.78.99 \\\n"
-"  -Djboss.node.name=jdg1 -b _PUBLIC_IP_ADDRESS_\n"
+"  -Djboss.node.name=server1 -b _PUBLIC_IP_ADDRESS_\n"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Start server `jdg2`. There is a different multicast address, so the `jdg1` "
-"and `jdg2` servers are not directly clustered with each other; rather, they "
-"are just connected through the RELAY2 protocol, and the TCP JGroups stack is "
-"used for communication between them. The start up command looks like this:"
+"Start server `server2`. There is a different multicast address, so the "
+"`server1` and `server2` servers are not directly clustered with each other; "
+"rather, they are just connected through the RELAY2 protocol, and the TCP "
+"JGroups stack is used for communication between them. The start up command "
+"looks like this:"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"cd JDG2_HOME/bin\n"
+"cd SERVER2_HOME/bin\n"
 "./standalone.sh -c clustered.xml -Djava.net.preferIPv4Stack=true \\\n"
 "  -Djboss.default.multicast.address=234.56.78.100 \\\n"
-"  -Djboss.node.name=jdg2 -b _PUBLIC_IP_ADDRESS_\n"
+"  -Djboss.node.name=server2 -b _PUBLIC_IP_ADDRESS_\n"
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "To verify that channel works at this point, you may need to use JConsole and "
-"connect either to the running `JDG1` or the `JDG2` server. When you use the "
-"MBean `jgroups:type=protocol,cluster=\"cluster\",protocol=RELAY2` and "
-"operation `printRoutes`, you should see output like this:"
+"connect either to the running `SERVER1` or the `SERVER2` server. When you "
+"use the MBean `jgroups:type=protocol,cluster=\"cluster\",protocol=RELAY2` "
+"and operation `printRoutes`, you should see output like this:"
 msgstr ""
 
 #. type: Code block
 #, no-wrap
 msgid ""
-"site1 --> _jdg1:site1\n"
-"site2 --> _jdg2:site2\n"
+"site1 --> _server1:site1\n"
+"site2 --> _server2:site2\n"
 msgstr ""
 
 #. type: Plain text
@@ -789,19 +911,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid "On `JDG1` it should be like this:"
+msgid "On `SERVER1` it should be like this:"
 msgstr ""
 
 #. type: Code block
-msgid "(1) jdg1"
+msgid "(1) server1"
 msgstr ""
 
 #. type: Plain text
-msgid "And on JDG2 like this:"
+msgid "And on SERVER2 like this:"
 msgstr ""
 
 #. type: Code block
-msgid "(1) jdg2"
+msgid "(1) server2"
 msgstr ""
 
 #. type: Plain text
@@ -815,7 +937,7 @@ msgstr ""
 
 #. type: Title =====
 #, no-wrap
-msgid "{project_name} servers setup"
+msgid "Setting up {project_name} servers"
 msgstr ""
 
 #. type: Plain text
@@ -849,8 +971,8 @@ msgstr ""
 #. type: Code block
 #, no-wrap
 msgid ""
-"                  <stack name=\"udp\">\n"
-"                      <transport type=\"UDP\" socket-binding=\"jgroups-udp\" site=\"${jboss.site.name}\"/>\n"
+"<stack name=\"udp\">\n"
+"  <transport type=\"UDP\" socket-binding=\"jgroups-udp\" site=\"${jboss.site.name}\"/>\n"
 msgstr ""
 
 #. type: Plain text
@@ -1038,117 +1160,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Copy the `NODE11` to 3 other directories referred later as `NODE12`, "
-"`NODE21` and `NODE22`."
-msgstr ""
-
-#. type: Plain text
-msgid "Start `NODE11` :"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"cd NODE11/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=jdg1 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-msgstr ""
-
-#. type: Plain text
-msgid "Start `NODE12` :"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"cd NODE12/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=jdg1 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The cluster nodes should be connected. Something like this should be in the "
-"log of both NODE11 and NODE12:"
-msgstr ""
-
-#. type: Code block
-msgid ""
-"Received new cluster view for channel keycloak: [node11|1] (2) [node11, "
-"node12]"
-msgstr ""
-
-#. type: Plain text
-msgid "The channel name in the log might be different."
-msgstr ""
-
-#. type: Plain text
-msgid "Start `NODE21` :"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"cd NODE21/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=jdg2 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-msgstr ""
-
-#. type: Plain text
-msgid ""
 "It shouldn't be connected to the cluster with `NODE11` and `NODE12`, but to "
 "separate one:"
-msgstr ""
-
-#. type: Code block
-msgid "Received new cluster view for channel keycloak: [node21|0] (1) [node21]"
-msgstr ""
-
-#. type: Plain text
-msgid "Start `NODE22` :"
-msgstr ""
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"cd NODE22/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=jdg2 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-msgstr ""
-
-#. type: Plain text
-msgid "It should be in cluster with `NODE21` :"
-msgstr ""
-
-#. type: Code block
-msgid ""
-"Received new cluster view for channel keycloak: [node21|1] (2) [node21, "
-"node22]"
-msgstr ""
-
-#. type: Plain text
-msgid "Test:"
-msgstr ""
-
-#. type: Plain text
-msgid "Go to `http://node11:8080/auth/` and create the initial admin user."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Go to `http://node11:8080/auth/admin` and login as admin to admin console."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Open a second browser and go to any of nodes `http://node12:8080/auth/admin` "
-"or `http://node21:8080/auth/admin` or `http://node22:8080/auth/admin`. After "
-"login, you should be able to see the same sessions in tab `Sessions` of "
-"particular user, client or realm on all 4 servers."
 msgstr ""
 
 #. type: Plain text
@@ -1156,19 +1169,6 @@ msgid ""
 "After doing any change in Keycloak admin console (eg. update some user or "
 "some realm), the update should be immediately visible on any of 4 nodes as "
 "caches should be properly invalidated everywhere."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Check server.logs if needed. After login or logout, the message like this "
-"should be on all the nodes `NODEXY/standalone/log/server.log` :"
-msgstr ""
-
-#. type: Code block
-#, no-wrap
-msgid ""
-"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store.\n"
-"Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
 msgstr ""
 
 #. type: Title ====
@@ -1205,7 +1205,7 @@ msgstr ""
 msgid ""
 "Every datacenter can have more {jdgserver_name} servers running in the "
 "cluster. This is useful if you want some failover and better fault "
-"tolerance. The HotRod protocol used for communication between "
+"tolerance. The Hot Rod protocol used for communication between "
 "{jdgserver_name} servers and {project_name} servers has a feature that "
 "{jdgserver_name} servers will automatically send new topology to the "
 "{project_name} servers about the change in the {jdgserver_name} cluster, so "
@@ -1218,7 +1218,7 @@ msgstr ""
 msgid ""
 "It is highly recommended that a master {jdgserver_name} server is running in "
 "every site before the {project_name} servers in **any** site are started. As "
-"in our example, we started both `jdg1` and `jdg2` first, before all "
+"in our example, we started both `server1` and `server2` first, before all "
 "{project_name} servers. If you still need to run the {project_name} server "
 "and the backup site is offline, it is recommended to manually switch the "
 "backup site offline on the {jdgserver_name} servers on your site, as "
@@ -1246,7 +1246,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"You run {project_name} servers and {jdgserver_name} server `jdg1` in site "
+"You run {project_name} servers and {jdgserver_name} server `server1` in site "
 "`site1`"
 msgstr ""
 
@@ -1257,20 +1257,20 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The {project_name} server from `site1` will try to write the session to the "
-"remote cache on `jdg1` server, which is supposed to backup data to the "
-"`jdg2` server in the `site2`. See <<communication>> for more information."
+"remote cache on `server1` server, which is supposed to backup data to the "
+"`server2` server in the `site2`. See <<communication>> for more information."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Server `jdg2` is offline or unreachable from `jdg1`. So the backup from "
-"`jdg1` to `jdg2` will fail."
+"Server `server2` is offline or unreachable from `server1`. So the backup "
+"from `server1` to `server2` will fail."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The exception is thrown in `jdg1` log and the failure will be propagated "
-"from `jdg1` server to {project_name} servers as well because the default "
+"The exception is thrown in `server1` log and the failure will be propagated "
+"from `server1` server to {project_name} servers as well because the default "
 "`FAIL` backup failure policy is configured. See <<backupfailure>> for "
 "details around the backup policies."
 msgstr ""
@@ -1287,7 +1287,7 @@ msgid ""
 "network between sites is unavailable or temporarily broken (split-brain). In "
 "case this happens, it is good that {jdgserver_name} servers on `site1` are "
 "aware of the fact that {jdgserver_name} servers on `site2` are unavailable, "
-"so they will stop trying to reach the servers in the `jdg2` site and the "
+"so they will stop trying to reach the servers in the `server2` site and the "
 "backup failures won't happen. This is called `Take site offline` ."
 msgstr ""
 
@@ -1304,8 +1304,18 @@ msgstr ""
 #, no-wrap
 msgid ""
 "**Manually by admin** - Admin can use the `jconsole` or other tool and run some JMX operations to manually take the particular site offline.\n"
-"This is useful especially if the outage is planned. With `jconsole` or CLI, you can connect to the `jdg1` server and take the `site2` offline.\n"
-"More details about this are available in the link:{jdgserver_crossdcdocs_link}#taking_a_site_offline[JDG documentation].\n"
+"This is useful especially if the outage is planned. With `jconsole` or CLI, you can connect to the `server1` server and take the `site2` offline.\n"
+"More details about this are available in the\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"link:{jdgserver_crossdcdocs_link}#xsite_auto_offline-xsite[{jdgserver_name} "
+"documentation]."
+msgstr ""
+
+#. type: Plain text
+msgid "link:{jdgserver_crossdcdocs_link}[{jdgserver_name} documentation]."
 msgstr ""
 
 #. type: Plain text
@@ -1415,7 +1425,7 @@ msgid ""
 "through JMX. The operation name is `pushState`. There are few other "
 "operations to monitor status, cancel push state, and so on.  More info about "
 "state transfer is available in the link:{jdgserver_crossdcdocs_link}"
-"#pushing_state_transfer_to_sites[{jdgserver_name} docs]."
+"#cli_xsite_push-cli-ops[{jdgserver_name} docs]."
 msgstr ""
 
 #. type: Title ====
@@ -1451,7 +1461,7 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Tuning the JDG cache configuration"
+msgid "Tuning the {jdgserver_name} cache configuration"
 msgstr ""
 
 #. type: Plain text
@@ -1466,8 +1476,8 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "By default, the configuration of backup `failure-policy` in the Infinispan "
-"cache configuration in the JDG `clustered.xml` file is configured as `FAIL`. "
-"You may change it to `WARN` or `IGNORE`, as you prefer."
+"cache configuration in the {jdgserver_name} `clustered.xml` file is "
+"configured as `FAIL`. You may change it to `WARN` or `IGNORE`, as you prefer."
 msgstr ""
 
 #. type: Plain text
@@ -1541,8 +1551,8 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The difference between `WARN` and `IGNORE` is, that with `IGNORE` warnings "
-"are not written in the JDG log. See more details in the Infinispan "
-"documentation."
+"are not written in the {jdgserver_name} log. See more details in the "
+"Infinispan documentation."
 msgstr ""
 
 #. type: Block title
@@ -1885,7 +1895,7 @@ msgstr ""
 msgid ""
 "(HotRodServerHandler-6-35) ISPN000136: Error executing command ReplaceCommand,\n"
 "writing keys [[B0x033E243034396234..[39]]: org.infinispan.util.concurrent.TimeoutException: ISPN000299: Unable to acquire lock after\n"
-"0 milliseconds for key [B0x033E243034396234..[39] and requestor GlobalTx:jdg1:4353. Lock is held by GlobalTx:jdg1:4352\n"
+"0 milliseconds for key [B0x033E243034396234..[39] and requestor GlobalTx:server1:4353. Lock is held by GlobalTx:server1:4352\n"
 msgstr ""
 
 #. type: Plain text
@@ -2018,11 +2028,11 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "and you see some similar errors in the {project_name} log, it can indicate "
-"that there are incompatible versions of the HotRod protocol being used.  "
-"This is likely happen when you try to use {project_name} with the JDG 7.2 "
-"server or an old version of the Infinispan server. It will help if you add "
-"the `protocolVersion` property as an additional property to the `remote-"
-"store` element in the {project_name} configuration file. For example:"
+"that there are incompatible versions of the Hot Rod protocol being used.  "
+"This is likely happen when you try to use {project_name} with an old version "
+"of the Infinispan server. It will help if you add the `protocolVersion` "
+"property as an additional property to the `remote-store` element in the "
+"{project_name} configuration file. For example:"
 msgstr ""
 
 #. type: Code block

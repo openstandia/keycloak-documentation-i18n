@@ -19,11 +19,6 @@ msgstr ""
 msgid "Example using CURL"
 msgstr ""
 
-#. type: Title ====
-#, no-wrap
-msgid "Endpoints"
-msgstr ""
-
 #. type: Title ===
 #, no-wrap
 msgid "Other OpenID Connect Libraries"
@@ -39,6 +34,11 @@ msgid ""
 "and does not contain specific protocol details. For more information see the "
 "https://openid.net/connect/[OpenID Connect specifications] and https://tools."
 "ietf.org/html/rfc6749[OAuth2 specification]."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Endpoints"
 msgstr ""
 
 #. type: Plain text
@@ -255,6 +255,28 @@ msgid ""
 "org/html/rfc7009[OAuth 2.0 Token Revocation specification]."
 msgstr ""
 
+#. type: Title =====
+#, no-wrap
+msgid "Device Authorization Endpoint"
+msgstr ""
+
+#. type: delimited block .
+#, no-wrap
+msgid "/realms/{realm-name}/protocol/openid-connect/auth/device\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The device authorization endpoint is used to obtain a device code and a user "
+"code. It can only be invoked by confidential clients."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For more details on how to invoke on this endpoint, see https://tools.ietf."
+"org/html/rfc8628[OAuth 2.0 Device Authorization Grant specification]."
+msgstr ""
+
 #. type: Title ====
 #, no-wrap
 msgid "Validating Access Tokens"
@@ -269,14 +291,14 @@ msgid ""
 "server if you have too many validation requests going on at the same time.  "
 "{project_name} issued access tokens are https://tools.ietf.org/html/"
 "rfc7519[JSON Web Tokens (JWT)] digitally signed and encoded using https://"
-"www.rfc-editor.org/rfc/rfc7515.txt[JSON Web Signature (JWS)].  Because they "
-"are encoded in this way, this allows you to locally validate access tokens "
-"using the public key of the issuing realm.  You can either hard code the "
-"realm's public key in your validation code, or lookup and cache the public "
-"key using the <<_certificate_endpoint, certificate endpoint>> with the Key "
-"ID (KID) embedded within the JWS.  Depending what language you code in, "
-"there are a multitude of third party libraries out there that can help you "
-"with JWS validation."
+"tools.ietf.org/html/rfc7515[JSON Web Signature (JWS)].  Because they are "
+"encoded in this way, this allows you to locally validate access tokens using "
+"the public key of the issuing realm.  You can either hard code the realm's "
+"public key in your validation code, or lookup and cache the public key using "
+"the <<_certificate_endpoint, certificate endpoint>> with the Key ID (KID) "
+"embedded within the JWS.  Depending what language you code in, there are a "
+"multitude of third party libraries out there that can help you with JWS "
+"validation."
 msgstr ""
 
 #. type: Title ====
@@ -456,6 +478,33 @@ msgid ""
 "For more details refer to the https://tools.ietf.org/html/"
 "rfc6749#section-4.4[Client Credentials Grant] chapter in the OAuth 2.0 "
 "specification."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Device Authorization Grant"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Device Authorization Grant is used by clients running on internet-connected "
+"devices that have limited input capabilities or lack a suitable browser.  "
+"The application requests {project_name} a device code and a user code. "
+"{project_name} creates a device code and a user code.  {project_name} "
+"returns a response including the device code and the user code to the "
+"application.  Then the application provides the user with the user code and "
+"the verification URI. The user accesses a verification URI to be "
+"authenticated by using another browser.  The application repeatedly polls "
+"{project_name} until {project_name} completes the user authorization.  If "
+"user authentication is complete, the application obtains the device code. "
+"Then the application uses the device code along with its credentials to "
+"obtain an Access Token, Refresh Token and ID Token from {project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For more details refer to the https://tools.ietf.org/html/rfc8628[OAuth 2.0 "
+"Device Authorization Grant specification]."
 msgstr ""
 
 #. type: Title ====

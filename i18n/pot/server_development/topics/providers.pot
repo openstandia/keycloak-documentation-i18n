@@ -275,6 +275,61 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
+msgid "Use available providers"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In your provider implementation, you can use other providers available in "
+"{project_name}. The existing providers can be typically retrieved with the "
+"usage of the `KeycloakSession`, which is available to your provider as "
+"described in the section <<_implementing_spi,Implementing an SPI>>."
+msgstr ""
+
+#. type: Plain text
+msgid "{project_name} has two provider types:"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"*Single-implementation provider types* - There can be only a single active implementation of the particular provider type in {project_name} runtime.\n"
+"For example `HostnameProvider` specifies the hostname to be used by {project_name} and that is shared for the whole {project_name} server.\n"
+"Hence there can be only single implementation of this provider active for the {project_name} server. If there are multiple provider implementations available to the server runtime,\n"
+"one of them needs to be specified in the keycloak subsystem configuration in the `standalone.xml` as the default one. For example such as:\n"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"hostname\">\n"
+"    <default-provider>default</default-provider>\n"
+"    ...\n"
+"</spi>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The value `default` used as the value of `default-provider` must match the "
+"ID returned by the `ProviderFactory.getId()` of the particular provider "
+"factory implementation.  In the code, you can obtain the provider such as "
+"`keycloakSession.getProvider(HostnameProvider.class)`"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"*Multiple implementation provider types* - Those are provider types, that allow multiple implementations available and working together\n"
+"in the {project_name} runtime. For example `EventListener` provider allows to have multiple implementations available and registered, which means\n"
+"that particular event can be sent to all the listeners (jboss-logging, sysout etc). In the code, you can obtain a specified instance of the provider\n"
+"for example such as `session.getProvider(EventListener.class, \"jboss-logging\")` . You need to specify `provider_id` of the provider as the second argument\n"
+"as there can be multiple instances of this provider type as described above. The provider ID must match the ID returned by the `ProviderFactory.getId()` of the\n"
+"particular provider factory implementation. Some provider types can be retrieved with the usage of `ComponentModel` as the second argument and some (for example `Authenticator`) even\n"
+"need to be retrieved with the usage of `KeycloakSessionFactory`. It is not recommended to implement your own providers this way as it may be deprecated in the future.\n"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
 msgid "Registering provider implementations"
 msgstr ""
 

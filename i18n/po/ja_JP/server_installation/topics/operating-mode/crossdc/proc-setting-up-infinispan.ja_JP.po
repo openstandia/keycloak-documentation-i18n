@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ==
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Title =
+#, no-wrap
+msgid "Setting Up {jdgserver_name} Servers"
+msgstr "{jdgserver_name}サーバーのセットアップ"
+
+#. type: Plain text
+msgid ""
+"For Cross-Datacenter replication, you start by creating remote "
+"{jdgserver_name} clusters that can back up {project_name} data."
+msgstr ""
+"クロスデータセンター・レプリケーションの場合、{project_name}のデータをバックアップできるリモート{jdgserver_name}クラスターを作成することから始めます。"
+
+#. type: Plain text
+msgid ""
+"Download and install {jdgserver_name} Server {jdgserver_version_latest}."
+msgstr "{jdgserver_name}サーバー{jdgserver_version_latest}をダウンロードしてインストールします。"
+
+#. type: delimited block =
+msgid "{jdgserver_name} Server {jdgserver_version_latest} requires Java 11."
+msgstr "{jdgserver_name}サーバー{jdgserver_version_latest}にはJava 11が必要です。"
+
+#. type: Plain text
+msgid ""
+"Create a user to authenticate client connections from {jdgserver_name}, for "
+"example:"
+msgstr "{jdgserver_name}からのクライアント接続を認証するユーザーを作成します。次に例を示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ bin/cli.sh user create myuser -p \"qwer1234!\"\n"
+msgstr "$ bin/cli.sh user create myuser -p \"qwer1234!\"\n"
+
+#. type: delimited block =
+msgid ""
+"You specify these credentials in the Hot Rod client configuration when you "
+"create remote caches on {project_name}."
+msgstr "{project_name}にリモートキャッシュを作成するときに、HotRodクライアントの設定でこれらのクレデンシャルを指定します。"
+
+#. type: Plain text
+msgid ""
+"Create an SSL keystore and truststore to secure connections between "
+"{jdgserver_name} and {project_name}, for example:"
+msgstr ""
+"{jdgserver_name}と{project_name}の間の接続を保護するために、SSLキーストアとトラストストアを作成します。次に例を示します。"
+
+#. type: Plain text
+msgid ""
+"Create a keystore to provide an SSL identity to your {jdgserver_name} "
+"cluster"
+msgstr "キーストアを作成して、{jdgserver_name}クラスターにSSLのIDを提供します"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"keytool -genkey -alias server -keyalg RSA -keystore server.jks -keysize "
+"2048\n"
+msgstr ""
+"keytool -genkey -alias server -keyalg RSA -keystore server.jks -keysize "
+"2048\n"
+
+#. type: Plain text
+msgid "Export an SSL certificate from the keystore."
+msgstr "キーストアからSSL証明書をエクスポートします。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"keytool -exportcert -keystore server.jks -alias server -file server.crt\n"
+msgstr ""
+"keytool -exportcert -keystore server.jks -alias server -file server.crt\n"
+
+#. type: Plain text
+msgid ""
+"Import the SSL certificate into a truststore that {project_name} can use to "
+"verify the SSL identity for {jdgserver_name}."
+msgstr ""
+"{project_name}が{jdgserver_name}のSSLのIDを確認するため、使用できるトラストストアにSSL証明書をインポートします。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"keytool -importcert -keystore truststore.jks -alias server -file "
+"server.crt\n"
+msgstr ""
+"keytool -importcert -keystore truststore.jks -alias server -file "
+"server.crt\n"
+
+#. type: Plain text
+msgid "Remove `server.crt`."
+msgstr "`server.crt` を削除します。 "
+
+#. type: delimited block -
+#, no-wrap
+msgid "rm server.crt\n"
+msgstr "rm server.crt\n"

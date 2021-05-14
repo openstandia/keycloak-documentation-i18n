@@ -1,0 +1,187 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Stream-based Interfaces"
+msgstr "ストリームベースのインターフェイス"
+
+#. type: Plain text
+msgid ""
+"Many of the user storage interfaces in {project_name} contain query methods "
+"that can return potentially large sets of objects, which might lead to "
+"significant impacts in terms of memory consumption and processing time. This"
+" is especially true when only a small subset of the objects' internal state "
+"is used in the query method's logic."
+msgstr ""
+"{project_name}のユーザー・ストレージ・インターフェイスの多くには、潜在的に大きなオブジェクトのセットを返す可能性のあるクエリーメソッドが含まれているため、メモリー消費と処理時間の点で重大な影響が生じる可能性があります。これは、オブジェクトの内部状態の小さなサブセットのみがクエリーメソッドのロジックで使用される場合に特に当てはまります。"
+
+#. type: Plain text
+msgid ""
+"To provide developers with a more efficient alternative to process large "
+"data sets in these query methods, a `Streams` sub-interface has been added "
+"to user storage interfaces. These `Streams` sub-interfaces replace the "
+"original collection-based methods in the super-interfaces with stream-based "
+"variants, making the collection-based methods default. The default "
+"implementation of a collection-based query method invokes its `Stream` "
+"counterpart and collects the result into the proper collection type."
+msgstr ""
+"これらのクエリーメソッドで大規模なデータセットを処理するためのより効率的な代替手段を開発者に提供するために、ユーザー・ストレージ・インターフェイスに "
+"`Streams` サブ・インターフェイスが追加されました。これらの `Streams` "
+"サブ・インターフェイスは、スーパー・インターフェイスの元のコレクションベースのメソッドをストリームベースの異なる形に置き換え、コレクション・ベースのメソッドをデフォルトにします。コレクション・ベースのクエリーメソッドのデフォルトの実装は、対応する"
+" `Stream` を呼び出し、結果を適切なコレクション・タイプに収集します。"
+
+#. type: Plain text
+msgid ""
+"The `Streams` sub-interfaces allow for implementations to focus on the "
+"stream-based approach for processing sets of data and benefit from the "
+"potential memory and performance optimizations of that approach. The "
+"interfaces that offer a `Streams` sub-interface to be implemented include a "
+"few _<<_provider_capability_interfaces,capability interfaces>>_, all "
+"interfaces in the `org.keycloak.storage.federated` package and a few others "
+"that might be implemented depending on the scope of the custom storage "
+"implementation."
+msgstr ""
+"`Streams` "
+"サブ・インターフェイスにより、実装はデータセットを処理するためのストリームベースのアプローチにフォーカスし、そのアプローチの潜在的なメモリーとパフォーマンスの最適化から利益を得ることができます。実装される"
+" "
+"`Streams`サブ・インターフェイスを提供するインターフェイスには、いくつかの_<<_provider_capability_interfaces,"
+" ケイパビリティー・インターフェイス >>_（ "
+"`org.keycloak.storage.federated`パッケージ内のすべてのインターフェイスと、カスタムストレージ実装のスコープに応じて実装される可能性のあるその他のいくつかのインターフェイス）が含まれます。"
+
+#. type: Plain text
+msgid ""
+"See this list of the interfaces that offer a `Streams` sub-interface to "
+"developers."
+msgstr "開発者に `Streams` サブ・インターフェイスを提供するインターフェイスのリストを参照してください。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+" Package | Classes\n"
+"ifeval::[{project_community}==true]\n"
+msgstr ""
+" Package | Classes\n"
+"ifeval::[{project_community}==true]\n"
+
+#. type: Plain text
+msgid ""
+"`org.keycloak.credential` | `CredentialInputUpdater`(*), "
+"`UserCredentialStore`"
+msgstr ""
+"`org.keycloak.credential` | `CredentialInputUpdater`(*), "
+"`UserCredentialStore`"
+
+#. type: Plain text
+msgid ""
+"`org.keycloak.models` | `GroupModel`, `RoleMapperModel`, "
+"`UserCredentialManager`, `UserModel`, `UserProvider`"
+msgstr ""
+"`org.keycloak.models` | `GroupModel`, `RoleMapperModel`, "
+"`UserCredentialManager`, `UserModel`, `UserProvider`"
+
+#. type: Plain text
+msgid "`org.keycloak.models.cache` | `CachedUserModel`, `UserCache`"
+msgstr "`org.keycloak.models.cache` | `CachedUserModel`, `UserCache`"
+
+#. type: Plain text
+msgid "`org.keycloak.storage.federated` | All interfaces"
+msgstr "`org.keycloak.storage.federated` | All interfaces"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+" `org.kecyloak.storage.user` | `UserQueryProvider`(*)\n"
+"endif::[]\n"
+"ifeval::[{project_product}==true]\n"
+msgstr ""
+" `org.kecyloak.storage.user` | `UserQueryProvider`(*)\n"
+"endif::[]\n"
+"ifeval::[{project_product}==true]\n"
+
+#. type: Plain text
+msgid "`org.keycloak.credential` | `CredentialInputUpdater`(*)"
+msgstr "`org.keycloak.credential` | `CredentialInputUpdater`(*)"
+
+#. type: Plain text
+msgid "`org.keycloak.models` | `GroupModel`, `RoleMapperModel`, `UserModel`"
+msgstr "`org.keycloak.models` | `GroupModel`, `RoleMapperModel`, `UserModel`"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+" `org.kecyloak.storage.user` | `UserQueryProvider`(*)\n"
+"endif::[]\n"
+msgstr ""
+" `org.kecyloak.storage.user` | `UserQueryProvider`(*)\n"
+"endif::[]\n"
+
+#. type: Plain text
+msgid ""
+"(*) indicates the interface is a "
+"_<<_provider_capability_interfaces,capability interface>>_"
+msgstr ""
+"(*) "
+"はインターフェイスが_<<_provider_capability_interfaces,ケイパビリティー・インターフェイス>>_であることを示します"
+
+#. type: Plain text
+msgid ""
+"Custom user storage implementation that want to benefit from the streams "
+"approach should simply implement the `Streams` sub-interfaces instead of the"
+" original interfaces. For example, the following code uses the `Streams` "
+"variant of the `UserQueryProvider` interface:"
+msgstr ""
+"ストリーム・アプローチの恩恵を受けたいカスタム・ユーザー・ストレージの実装では、元のインターフェイスではなく、単に `Streams`　"
+"サブ・インターフェイスを実装する必要があります。たとえば、次のコードは、 `UserQueryProvider` インターフェイスの `Streams`"
+" の異形を使用しています。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"public class CustomQueryProvider extends UserQueryProvider.Streams {\n"
+"...\n"
+"    @Override\n"
+"    Stream<UserModel> getUsersStream(RealmModel realm, Integer firstResult, Integer maxResults) {\n"
+"        // custom logic here\n"
+"    }\n"
+msgstr ""
+"public class CustomQueryProvider extends UserQueryProvider.Streams {\n"
+"...\n"
+"    @Override\n"
+"    Stream<UserModel> getUsersStream(RealmModel realm, Integer firstResult, Integer maxResults) {\n"
+"        // custom logic here\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Override\n"
+"    Stream<UserModel> searchForUserStream(String search, RealmModel realm) {\n"
+"        // custom logic here\n"
+"    }\n"
+"...\n"
+"}\n"
+msgstr ""
+"    @Override\n"
+"    Stream<UserModel> searchForUserStream(String search, RealmModel realm) {\n"
+"        // custom logic here\n"
+"    }\n"
+"...\n"
+"}\n"

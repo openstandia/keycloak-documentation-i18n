@@ -5,14 +5,14 @@
 # 
 # Translators:
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -141,13 +141,27 @@ msgid ""
 "subflow.  If you always want to ensure that there is no duplicated account, "
 "you can mark this authenticator as `REQUIRED`. In this case, the user will "
 "see the error page if there is an existing {project_name} account and the "
-"user will need to link his identity provider account through Account "
+"user will need to link the identity provider account through Account "
 "management."
 msgstr ""
 "このオーセンティケーターは、アイデンティティー・プロバイダーのアカウントの電子メールまたはユーザー名が同じ{project_name}アカウントが、すでに存在するかどうかをチェックします。存在しない場合、オーセンティケーターは新しいローカルの{project_name}アカウントを作成し、それをアイデンティティー・プロバイダーにリンクすることで、フロー全体が終了します。それ以外の場合は、次の"
 " `Handle Existing Account` "
 "サブフローに進みます。重複したアカウントがないことを常に確認したい場合は、このオーセンティケーターを `REQUIRED` "
 "にマークすることができます。この場合、既存の{project_name}アカウントが存在する場合は、エラーページが表示され、ユーザーはアカウント管理を通じてアイデンティティー・プロバイダーのアカウントをリンクする必要があります。"
+
+#. type: Plain text
+msgid ""
+"If you want to skip the ability to create new users, but you want that users"
+" authenticated from identity provider must already exists in {project_name} "
+"with same username or email like the user from identity provider, you can "
+"create new flow and replace `Create User If Exists` authenticator with "
+"`Detect Existing Broker User` . More details in the <<Detect Existing User "
+"First Login Flow,examples below>>."
+msgstr ""
+"新しいユーザーを作成する機能をスキップしたいが、アイデンティティー・プロバイダーから認証されたユーザーが、アイデンティティー・プロバイダーのユーザーと同じユーザー名または電子メールで{project_name}にすでに存在している必要がある場合は、新しいフローを作成し、"
+" `Create User If Exists` オーセンティケーターを `Detect Existing Broker User` "
+"に置き換えることができます。詳細は <<Detect Existing User First Login Flow,examples below>> "
+"を参照してください。"
 
 #. type: Labeled list
 #, no-wrap
@@ -296,3 +310,61 @@ msgstr ""
 "この設定は、Keycloak自体が、外部アイデンティティーに対応する内部アカウントを判別できないことも意味します。したがって、 `Verify "
 "Existing Account By Re-authentication` "
 "オーセンティケーターは、ユーザーにユーザー名とパスワードの両方を提供するように要求します。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Detect Existing User First Login Flow"
+msgstr "既存のユーザーの最初のログインフローを検出する"
+
+#. type: Plain text
+msgid "In order to configure a first login flow in which:"
+msgstr "次のような最初のログインフローを設定するには、"
+
+#. type: Plain text
+msgid "only users already registered in this realm can log in,"
+msgstr "このレルムにすでに登録されているユーザーのみがログインできる"
+
+#. type: Plain text
+msgid "users are automatically linked without being prompted,"
+msgstr "ユーザーはプロンプトなしで自動的にリンクされる"
+
+#. type: Plain text
+msgid "create a new flow with the following two authenticators:"
+msgstr "次の2つのオーセンティケーターを使用して新しいフローを作成します。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Detect Existing Broker User"
+msgstr "既存のブローカー・ユーザーを検出する"
+
+#. type: Plain text
+msgid ""
+"This authenticator ensures that unique users are handled. Set the "
+"authenticator requirement to `Mandatory`."
+msgstr ""
+"このオーセンティケーターは、一意にユーザーが処理されることを保障します。オーセンティケーターの要件は `Mandatory` に設定します。"
+
+#. type: Plain text
+msgid ""
+"Automatically sets an existing user to the authentication context without "
+"any verification. Set the authenticator requirement to `Mandatory`."
+msgstr "検証なしで、既存のユーザーを認証コンテキストに自動的に設定します。オーセンティケーターの要求は `Mandatory` に設定します。"
+
+#. type: Plain text
+msgid ""
+"You have to set the `First Login Flow` of the identity provider "
+"configuration to that flow.  You could set the also set `Sync Mode` to "
+"`force` if you want to update the user profile (Last Name, First Name...) "
+"with the identity provider attributes."
+msgstr ""
+"アイデンティティー・プロバイダーの設定の `First Login Flow` "
+"にそのフローを設定する必要があります。アイデンティティー・プロバイダーの属性を使用してユーザー・プロファイル（姓、名など）を更新する場合は、 `Sync"
+" Mode` を `force` に設定することもできます。"
+
+#. type: Plain text
+msgid ""
+"This flow can be used if you want to delegate the identity to other identity"
+" providers (such as github, facebook ...) but you want to manage which users"
+" that can log in."
+msgstr ""
+"このフローは、IDを他のアイデンティティー・プロバイダー（github、facebookなど）に委任したいが、ログインできるユーザーを管理したい場合に使用できます。"

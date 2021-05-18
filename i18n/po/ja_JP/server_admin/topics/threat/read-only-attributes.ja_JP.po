@@ -1,0 +1,199 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Read-only User Attributes"
+msgstr "読み取り専用のユーザー属性"
+
+#. type: Plain text
+msgid ""
+"Typical users who are stored in {project_name} have various attributes "
+"related to their user profiles. Such attributes include email, firstName or "
+"lastname.  However users may also have attributes, which are not typical "
+"profile data, but rather metadata. The metadata attributes usually should be"
+" read-only for the users and the typical users never should have a way to "
+"update those attributes from the {project_name} user interface or Account "
+"REST API. Some of the attributes should be even read-only for the "
+"administrators when creating or updating user with the Admin REST API."
+msgstr ""
+"{project_name}に保存されている一般的なユーザーには、ユーザー・プロファイルに関連するさまざまな属性があります。このような属性には、email、firstName、またはlastnameが含まれます。ただし、ユーザーは、一般的なプロファイル・データではなく、メタデータである属性を持っている場合もあります。メタデータ属性は通常、ユーザーに対して読み取り専用である必要があり、通常のユーザーは、{project_name}ユーザー・インターフェイスまたはアカウントREST"
+" APIからこれらの属性を更新する方法を持ってはなりません。一部の属性は、管理REST "
+"APIを使用してユーザーを作成または更新するときに、管理者に対して読み取り専用にする必要があります。"
+
+#. type: Plain text
+msgid "The metadata attributes are usually attributes from those groups:"
+msgstr "メタデータ属性は通常、これらのグループの属性です。"
+
+#. type: Plain text
+msgid ""
+"Various links or metadata related to the user storage providers. For example"
+" in case of the LDAP integration, the `LDAP_ID` attribute contains the ID of"
+" the user in the LDAP server."
+msgstr ""
+"ユーザー・ストレージ・プロバイダーに関連するさまざまなリンクまたはメタデータ。たとえば、LDAP統合の場合、 `LDAP_ID` "
+"属性にはLDAPサーバー内のユーザーのIDが含まれます。"
+
+#. type: Plain text
+msgid ""
+"Metadata provisioned by User Storage. For example `createdTimestamp` "
+"provisioned from the LDAP should be always read-only by user or "
+"administrator."
+msgstr ""
+"ユーザー・ストレージによってプロビジョニングされたメタデータ。たとえば、LDAPからプロビジョニングされた `createdTimestamp` "
+"は、ユーザーまたは管理者が常に読み取り専用にする必要があります。"
+
+#. type: Plain text
+msgid ""
+"Metadata related to various authenticators. For example `KERBEROS_PRINCIPAL`"
+" attribute can contain the kerberos principal name of the particular user. "
+"Similarly attribute `usercertificate` can contain metadata related to "
+"binding the user with the data from the X.509 certificate, which is used "
+"typically when X.509 certificate authentication is enabled."
+msgstr ""
+"さまざまなオーセンティケーターに関連するメタデータ。たとえば、 `KERBEROS_PRINCIPAL` "
+"属性には、特定のユーザーのKerberosプリンシパル名を含めることができます。同様に、 `usercertificate` "
+"属性には、X.509証明書からのデータを使用してユーザーをバインドすることに関連するメタデータを含めることができます。これは通常、X.509証明書認証が有効になっている場合に使用されます。"
+
+#. type: Plain text
+msgid ""
+"Metadata related to the identificator of users by the applications/clients. "
+"For example `saml.persistent.name.id.for.my_app` can contain SAML NameID, "
+"which will be used by the client application `my_app` as the identifier of "
+"the user."
+msgstr ""
+"アプリケーション/クライアントによるユーザーの識別子に関連するメタデータ。たとえば、 "
+"`saml.persistent.name.id.for.my_app` には、クライアント・アプリケーション `my_app` "
+"がユーザーの識別子として使用するSAMLNameIDを含めることができます。"
+
+#. type: Plain text
+msgid ""
+"Metadata related to the authorization policies, which are used for the "
+"attribute based access control (ABAC). Values of those attributes may be "
+"used for the authorization decisions. Hence it is important that those "
+"attributes cannot be updated by the users."
+msgstr ""
+"属性ベースのアクセス・コントロール（ABAC）に使用される認可ポリシーに関連するメタデータ。これらの属性の値は、認可の決定に使用できます。したがって、これらの属性をユーザーが更新できないことが重要です。"
+
+#. type: Plain text
+msgid ""
+"From the long term perspective, {project_name} will have a proper User "
+"Profile SPI, which will allow fine-grained configuration of every user "
+"attribute. Currently this capability is not fully available yet. So "
+"{project_name} has the internal list of user attributes, which are read-only"
+" for the users and read-only for the administrators configured at the server"
+" level."
+msgstr ""
+"長期的な観点から、{project_name}には適切なユーザープロファイルSPIがあり、すべてのユーザー属性をきめ細かく設定できます。現在、この機能はまだ完全には利用できません。したがって、{project_name}には、ユーザー属性の内部リストがあります。これは、ユーザーに対しては読み取り専用であり、サーバーレベルで設定された管理者に対しては読み取り専用です。"
+
+#. type: Plain text
+msgid ""
+"This is the list of the read-only attributes, which are used internally by "
+"the {project_name} default providers and functionalities and hence are "
+"always read-only:"
+msgstr ""
+"これは読み取り専用属性のリストです。これらは{project_name}のデフォルトのプロバイダーと機能によって内部的に使用されるため、常に読み取り専用です。"
+
+#. type: Plain text
+msgid ""
+"For users: `KERBEROS_PRINCIPAL`, `LDAP_ID`, `LDAP_ENTRY_DN`, "
+"`CREATED_TIMESTAMP`, `createTimestamp`, `modifyTimestamp`, "
+"`userCertificate`, `saml.persistent.name.id.for.*`, `ENABLED`, "
+"`EMAIL_VERIFIED`"
+msgstr ""
+"ユーザーの場合: `KERBEROS_PRINCIPAL`, `LDAP_ID`, `LDAP_ENTRY_DN`, "
+"`CREATED_TIMESTAMP`, `createTimestamp`, `modifyTimestamp`, "
+"`userCertificate`, `saml.persistent.name.id.for.*`, `ENABLED`, "
+"`EMAIL_VERIFIED`"
+
+#. type: Plain text
+msgid ""
+"For administrators: `KERBEROS_PRINCIPAL`, `LDAP_ID`, `LDAP_ENTRY_DN`, "
+"`CREATED_TIMESTAMP`, `createTimestamp`, `modifyTimestamp`"
+msgstr ""
+"管理者の場合: `KERBEROS_PRINCIPAL`, `LDAP_ID`, `LDAP_ENTRY_DN`, "
+"`CREATED_TIMESTAMP`, `createTimestamp`, `modifyTimestamp`"
+
+#. type: Plain text
+msgid ""
+"System administrators have a way to add additional attributes to this list. "
+"The configuration is currently available at the server level.  You can add "
+"this configuration to your `standalone(-*).xml` files to the configuration "
+"of the {project_name} server subsystem:"
+msgstr ""
+"システム管理者は、このリストに属性を追加する方法があります。設定は現在、サーバーレベルで利用できます。この設定を  "
+"`standalone(-*).xml` ファイルの{project_name}サーバー・サブシステムの設定に追加できます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"userProfile\">\n"
+"    <provider name=\"legacy-user-profile\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"read-only-attributes\" value=\"[&quot;foo&quot;,&quot;bar*&quot;]\"/>\n"
+"            <property name=\"admin-read-only-attributes\" value=\"[&quot;foo&quot;]\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"userProfile\">\n"
+"    <provider name=\"legacy-user-profile\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"read-only-attributes\" value=\"[&quot;foo&quot;,&quot;bar*&quot;]\"/>\n"
+"            <property name=\"admin-read-only-attributes\" value=\"[&quot;foo&quot;]\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid ""
+"The same can be configured with the usage of the JBoss CLI with the "
+"commands:"
+msgstr "次のコマンドでJBoss CLIを使用して、同じ設定を行うことができます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=keycloak-server/spi=userProfile/:add\n"
+"/subsystem=keycloak-server/spi=userProfile/provider=legacy-user-profile/:add(properties={},enabled=true)\n"
+"/subsystem=keycloak-server/spi=userProfile/provider=legacy-user-profile/:map-put(name=properties,key=read-only-attributes,value=[foo,bar*])\n"
+"/subsystem=keycloak-server/spi=userProfile/provider=legacy-user-profile/:map-put(name=properties,key=admin-read-only-attributes,value=[foo])\n"
+msgstr ""
+"/subsystem=keycloak-server/spi=userProfile/:add\n"
+"/subsystem=keycloak-server/spi=userProfile/provider=legacy-user-profile/:add(properties={},enabled=true)\n"
+"/subsystem=keycloak-server/spi=userProfile/provider=legacy-user-profile/:map-put(name=properties,key=read-only-attributes,value=[foo,bar*])\n"
+"/subsystem=keycloak-server/spi=userProfile/provider=legacy-user-profile/:map-put(name=properties,key=admin-read-only-attributes,value=[foo])\n"
+
+#. type: Plain text
+msgid ""
+"For this example, users and administrators would not be able to update "
+"attribute `foo`. Users would not be able to edit any attributes starting "
+"with the `bar`.  So for example `bar` or `barrier`. Configuration is case "
+"insensitive, so attributes like `FOO` or `BarRier` will be denied as well "
+"for this example. The wildcard character `\\*` is supported only at the end "
+"of the attribute name, so the administrator can effectively deny all the "
+"attributes starting with the specified character. The `*` in the middle of "
+"the attribute is considered as a normal character."
+msgstr ""
+"この例では、ユーザーと管理者は属性 `foo` を更新できません。ユーザーは、 `bar` で始まる属性を編集することはできません。たとえば、 "
+"`bar` や `barrier` です。設定では大文字と小文字が区別されないため、この例では `FOO` や `BarRier` "
+"などの属性も拒否されます。ワイルドカード文字  `\\*` "
+"は属性名の末尾でのみサポートされるため、管理者は指定された文字で始まるすべての属性を効果的に拒否できます。属性の中央にある `*` "
+"は通常の文字と見なされます。"

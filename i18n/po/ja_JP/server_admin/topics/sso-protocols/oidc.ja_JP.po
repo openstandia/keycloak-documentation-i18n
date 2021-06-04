@@ -4,20 +4,25 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
-# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "Device Authorization Grant"
+msgstr "デバイス認可グラント"
 
 #. type: Title ===
 #, no-wrap
@@ -259,6 +264,41 @@ msgid ""
 msgstr ""
 "これはRESTクライアントでも使用されますが、外部ユーザーの代わりに動作するトークンを取得する代わりに、クライアントに関連付けられているサービス・アカウントのメタデータとパーミッションに基づいてトークンが作成されます。さらに詳しい情報は、<<_service_accounts,サービス・アカウント>>の章にあります。"
 
+#. type: Plain text
+msgid ""
+"This is used by clients running on internet-connected devices that have "
+"limited input capabilities or lack a suitable browser. Here's a brief "
+"summary of the protocol:"
+msgstr ""
+"これは、入力機能が制限されているか、適切なブラウザーがない、インターネットに接続されたデバイスで実行されているクライアントによって使用されます。プロトコルの簡単な概要は次のとおりです。"
+
+#. type: Plain text
+msgid ""
+"The application requests {project_name} a device code and a user code. "
+"{project_name} creates a device code and a user code. {project_name} returns"
+" a response including the device code and the user code to the application."
+msgstr ""
+"アプリケーションは{project_name}にデバイスコードとユーザーコードを要求します。{project_name}は、デバイスコードとユーザーコードを作成します。{project_name}は、デバイス"
+" コードとユーザーコードを含むレスポンスをアプリケーションに返します。"
+
+#. type: Plain text
+msgid ""
+"The application provides the user with the user code and the verification "
+"URI. The user accesses a verification URI to be authenticated by using "
+"another browser."
+msgstr ""
+"アプリケーションは、ユーザーコードと検証URIをユーザーに提供します。ユーザーは、別のブラウザーを使用して、認証を受けるための検証URIにアクセスします。"
+
+#. type: Plain text
+msgid ""
+"The application repeatedly polls {project_name} to find out if the user "
+"completed the user authorization. If user authentication is complete, the "
+"application exchanges the device code for an _identity_, _access_ and "
+"_refresh_ token."
+msgstr ""
+"アプリケーションは{project_name}を繰り返しポーリングして、ユーザーがユーザー認証を完了したかどうかを調べます。ユーザー認証が完了すると、アプリケーションはデバイス"
+" コードを _ID_ トークン、 _access_ トークン、 および _refresh_ トークンと交換します。"
+
 #. type: Title ====
 #, no-wrap
 msgid "{project_name} Server OIDC URI Endpoints"
@@ -270,10 +310,16 @@ msgid ""
 "URLs are useful if you are using a non-{project_name} client adapter to talk"
 " OIDC with the auth server.  These are all relative URLs and the root of the"
 " URL being the HTTP(S) protocol, hostname, and usually path prefixed with "
-"_/auth_: i.e. $$https://localhost:8080/auth$$"
+"_/auth_, for example $$https://localhost:8080/auth$$."
 msgstr ""
 "{project_name}が発行するOIDCエンドポイントのリストです。これらのURLは、{project_name}以外のクライアント・アダプターを使用して、認証サーバーとOIDCでやりとりしている場合に便利です。これらはすべてが相対URLであり、URLのルートはHTTP(S)プロトコル、ホスト名、通常は"
-" _/auth_ のプレフィックス付きのパスからなります。例： $$https://localhost:8080/auth$$"
+" _/auth_ のプレフィックス付きのパスからなります。たとえば、 $$https://localhost:8080/auth$$ 。"
+
+#. type: Plain text
+msgid ""
+"You can also find these endpoints under \"OpenID Endpoint Configuration\" in"
+" your realm settings."
+msgstr "これらのエンドポイントは、レルム設定の「OpenID Endpoint Configuration」の下にもあります。"
 
 #. type: Plain text
 #, no-wrap
@@ -289,6 +335,10 @@ msgid ""
 "  This is the URL endpoint for the User Info service described in the OIDC specification.\n"
 "/realms/{realm-name}/protocol/openid-connect/revoke::\n"
 "  This is the URL endpoint for OAuth 2.0 Token Revocation described in https://tools.ietf.org/html/rfc7009[RFC7009].\n"
+"/realms/{realm-name}/protocol/openid-connect/certs::\n"
+"  This is the URL endpoint for the JSON Web Key Set (JWKS) containing the public keys used to verify any JSON Web Token (jwks_uri)\n"
+"/realms/{realm-name}/protocol/openid-connect/auth/device::\n"
+"  This is the URL endpoint for Device Authorization Grant to obtain a device code and a user code.\n"
 msgstr ""
 "/realms/{realm-name}/protocol/openid-connect/auth::\n"
 "  これは、認可コード・フローで一時コードを取得するため、またはインプリシット・フロー、ダイレクト・グラント、またはクライアント・グラントを使用してトークンを取得するためのURLエンドポイントです。\n"
@@ -300,6 +350,10 @@ msgstr ""
 "  これは、OIDC仕様で説明されているUserInfoサービスのURLエンドポイントです。\n"
 "/realms/{realm-name}/protocol/openid-connect/revoke::\n"
 "  これは、 https://tools.ietf.org/html/rfc7009[RFC7009] で説明されているOAuth 2.0トークン無効化のURLエンドポイントです。\n"
+"/realms/{realm-name}/protocol/openid-connect/certs::\n"
+"これは、JSON Webトークンの検証に使用される公開鍵を含むJSON Webキー セット (JWKS) のURLエンドポイントです (jwks_uri) 。\n"
+"/realms/{realm-name}/protocol/openid-connect/auth/device::\n"
+"これは、デバイスコードとユーザーコードを取得するためのデバイス認可グラントのURLエンドポイントです。\n"
 
 #. type: Plain text
 msgid "In all of these replace _{realm-name}_ with the name of the realm."

@@ -6,20 +6,25 @@
 # Translators:
 # Shinsuke UEDA, 2017
 # Yoshikazu Nojima <mail@ynojima.net>, 2020
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
-# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Attribute :installguide_troubleshooting_name:
+#, no-wrap
+msgid "Troubleshooting"
+msgstr "トラブルシューティング"
 
 #. type: Title ===
 #, no-wrap
@@ -572,3 +577,100 @@ msgid ""
 msgstr ""
 "`ldapsearch` を使用して変更されたディレクトリー・エントリーを検査し、`userPassword` "
 "属性値をbase64デコードすることにより、ユーザーパスワードが適切にハッシュ化され、プレーンテキストとして保存されていないことを常に確認してください。"
+
+#. type: Plain text
+msgid ""
+"It is useful to increase the logging level to TRACE for the category "
+"`org.keycloak.storage.ldap`. You increase this level in the logging "
+"subsystem in the `standalone(-ha).xml` file. With this setting, many logging"
+" messages are sent to the `server.log` file in the `TRACE` level, including "
+"the logging for all queries to the LDAP server and the parameters, which "
+"were used to send the queries. When you are creating any LDAP question on "
+"user forum or JIRA, consider attaching the server log with enabled TRACE "
+"logging. If it is too big, the good alternative is to include just the "
+"snippet from server log with the messages, which were added to the log "
+"during the operation, which causes the issues to you."
+msgstr ""
+"カテゴリー `org.keycloak.storage.ldap` のログレベルをTRACEに上げると便利です。 "
+"`standalone(-ha).xml` "
+"ファイルのロギング・サブシステムでこのレベルを上げます。この設定では、LDAPサーバーへのすべてのクエリーのログと、クエリーの送信に使用されたパラメーターを含む、多くのログメッセージが"
+" `TRACE` レベルで `server.log` "
+"ファイルに送信されます。ユーザー・フォーラムまたはJIRAでLDAPの質問を作成する場合は、TRACEログを有効にしてサーバーログを添付することを検討してください。大きすぎる場合は、問題が発生する操作の際にログに追加されたメッセージとサーバーログのスニペットだけを含めることをお勧めします。"
+
+#. type: Plain text
+msgid ""
+"When you create LDAP provider, message appear in the server log in the INFO "
+"level starting with:"
+msgstr "LDAPプロバイダーを作成すると、サーバーログに次のINFOレベルでメッセージが表示されます。"
+
+#. type: Code block
+msgid "Creating new LDAP Store for the LDAP storage provider: ..."
+msgstr "Creating new LDAP Store for the LDAP storage provider: ..."
+
+#. type: Plain text
+msgid ""
+"It shows the configuration of your LDAP provider. Before you are asking the "
+"questions or reporting bugs, it will be nice to include this message to show"
+" your LDAP configuration. Eventually feel free to replace some config "
+"changes, which you do not want to include, with some placeholder values. One"
+" example is `bindDn=some-placeholder` . For `connectionUrl`, feel free to "
+"replace it as well, but it is generally useful to include at least the "
+"protocol, which was used (`ldap` vs `ldaps`)`. Similarly it can be useful to"
+" include the details for configuration of your LDAP mappers, which are "
+"displayed with the message like this at the DEBUG level:"
+msgstr ""
+"LDAPプロバイダーの設定が表示されます。質問したりバグを報告したりする前に、このメッセージを含めてLDAPの設定を表示するとよいでしょう。最終的には、含めたくない設定の変更をいくつかのプレースホルダー値で自由に置き換えてください。"
+" 一例は `bindDn=some-placeholder` です。 `connectionUrl` "
+"についても、同様に自由に置き換えることができますが、少なくとも使用されたプロトコル ( `ldap` と `ldaps` ) "
+"を含めることは一般的に役立ちます。同様に、DEBUGレベルで次のようなメッセージとともに表示されるLDAPマッパーの設定の詳細を含めると便利です。"
+
+#. type: Code block
+msgid "Mapper for provider: XXX, Mapper name: YYY, Provider: ZZZ ..."
+msgstr "Mapper for provider: XXX, Mapper name: YYY, Provider: ZZZ ..."
+
+#. type: Plain text
+msgid "Note those messages are displayed just with the enabled DEBUG logging."
+msgstr "これらのメッセージは、DEBUGロギングが有効になっている場合にのみ表示されることに注意してください。"
+
+#. type: Plain text
+msgid ""
+"For tracking the performance or connection pooling issues, consider setting "
+"the value of property `Connection Pool Debug Level` of the LDAP provider to "
+"value `all`. This will add lots of additional messages to server log with "
+"the included logging for the LDAP connection pooling. This can be used to "
+"track the issues related to connection pooling or performance."
+msgstr ""
+"パフォーマンスまたは接続プーリングの問題を追跡するには、LDAPプロバイダーのプロパティー `Connection Pool Debug Level` "
+"の値を `all` "
+"に設定することを検討してください。これにより、サーバーログにLDAP接続プーリングのログが含む多くのメッセージが追加されます。これは、接続プーリングまたはパフォーマンスに関連する問題を追跡するために使用できます。"
+
+#. type: Plain text
+msgid ""
+"After changing the configuration of connection pooling, you may need to "
+"restart the Keycloak server to enforce re-initialization of the LDAP "
+"provider connection."
+msgstr ""
+"接続プーリングの設定を変更した後、LDAPプロバイダー接続の再初期化を強制するために、Keycloakサーバーを再起動する必要がある場合があります。"
+
+#. type: Plain text
+msgid ""
+"If no more messages appear for connection pooling even after server restart,"
+" it can indicate that connection pooling does not work with your LDAP "
+"server."
+msgstr ""
+"サーバーを再起動しても接続プールに関するメッセージが表示されない場合は、接続プールがLDAPサーバーで機能していないことを示している可能性があります。"
+
+#. type: Plain text
+msgid ""
+"For the case of reporting LDAP issue, you may consider to attach some part "
+"of your LDAP tree with the target data, which causes issues in your "
+"environment. For example if login of some user takes lot of time, you can "
+"consider attach his LDAP entry showing count of `member` attributes of "
+"various \"group\" entries. In this case, it might be useful to add if those "
+"group entries are mapped to some Group LDAP mapper (or Role LDAP Mapper)  in"
+" {project_name} etc."
+msgstr ""
+"LDAPの問題を報告する場合、あなたの環境で問題を起こす可能性がある対象のデータとLDAPツリーの一部を添付することを検討してください。たとえば、あるユーザーのログインに時間がかかる場合、様々な「group」エントリーの"
+" `member` "
+"属性の数を示すLDAPエントリーを添付することを検討できます。この場合、これらのグループ・エントリーが{project_name}のグループLDAPマッパー"
+" (またはロールLDAPマッパー) などにマップされるように追加すると有益かもしれません。"

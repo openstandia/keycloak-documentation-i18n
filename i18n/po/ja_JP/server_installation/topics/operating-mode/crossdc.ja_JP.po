@@ -8,14 +8,14 @@
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2018
 # naoto watanabe <nabenao11@gmail.com>, 2018
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Block title
+#. type: Title ==
 #, no-wrap
 msgid "Prerequisites"
 msgstr "前提条件"
@@ -33,6 +33,195 @@ msgstr "前提条件"
 msgid "Troubleshooting"
 msgstr "トラブルシューティング"
 
+#. type: Plain text
+msgid ""
+"`Site1` consists of {jdgserver_name} server, `server1`, and 2 {project_name}"
+" servers, `node11` and `node12` ."
+msgstr ""
+"`Site1` は、{jdgserver_name}サーバーの `server1` と2つの{project_name}サーバーの `node11` "
+"および `node12` で構成されています。"
+
+#. type: Plain text
+msgid ""
+"`Site2` consists of {jdgserver_name} server, `server2`, and 2 {project_name}"
+" servers, `node21` and `node22` ."
+msgstr ""
+"`Site2` は、{jdgserver_name}サーバーの `server2` と2つの{project_name}サーバーの `node21` "
+"および `node22` で構成されています。"
+
+#. type: Plain text
+msgid ""
+"{jdgserver_name} servers `server1` and `server2` are connected to each other"
+" through the RELAY2 protocol and `backup` based {jdgserver_name} caches in a"
+" similar way as described in the "
+"link:{jdgserver_crossdcdocs_link}[{jdgserver_name} documentation]."
+msgstr ""
+"{jdgserver_name}サーバーである `server1` と `server2` は、 "
+"link:{jdgserver_crossdcdocs_link}[ {jdgserver_name} のドキュメント] "
+"で記載されているのと同様の方法で、RELAY2プロトコルと `backup` "
+"ベースの{jdgserver_name}キャッシュを介して相互に接続されています。"
+
+#. type: Plain text
+msgid ""
+"The same details apply for `node21` and `node22`. They cluster with each "
+"other and communicate only with `server2` server using the Hot Rod protocol."
+msgstr ""
+"同じ説明が `node21` と `node22` にも当てはまります。それらはお互いにクラスター化し、Hot Rodプロトコルを使用して、 "
+"`server2` サーバーとのみ通信します。"
+
+#. type: Plain text
+msgid ""
+"Copy the `NODE11` to 3 other directories referred later as `NODE12`, "
+"`NODE21` and `NODE22`."
+msgstr ""
+"`NODE11` を後述する `NODE12` 、 `NODE21` 、 `NODE22` という3つのディレクトリーにコピーしてください。"
+
+#. type: Plain text
+msgid "Start `NODE11` :"
+msgstr "次のように、 `NODE11` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE11/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE11/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid "Start `NODE12` :"
+msgstr "次のように、 `NODE12` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE12/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE12/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid ""
+"The cluster nodes should be connected. Something like this should be in the "
+"log of both NODE11 and NODE12:"
+msgstr "クラスター・ノードを接続する必要があります。このようなものは、NODE11とNODE12のどちらのログにも残っていなければなりません。"
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node11|1] (2) [node11, "
+"node12]"
+msgstr ""
+"Received new cluster view for channel keycloak: [node11|1] (2) [node11, "
+"node12]"
+
+#. type: Plain text
+msgid "The channel name in the log might be different."
+msgstr "ログにあるチャネル名とは異なっている可能性があります。"
+
+#. type: Plain text
+msgid "Start `NODE21` :"
+msgstr "次のように、 `NODE21` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE21/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE21/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node21|0] (1) [node21]"
+msgstr ""
+"Received new cluster view for channel keycloak: [node21|0] (1) [node21]"
+
+#. type: Plain text
+msgid "Start `NODE22` :"
+msgstr "次のように、 `NODE22` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE22/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE22/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid "It should be in cluster with `NODE21` :"
+msgstr "`NODE21` をクラスター化する必要があります。"
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node21|1] (2) [node21, "
+"node22]"
+msgstr ""
+"Received new cluster view for channel keycloak: [node21|1] (2) [node21, "
+"node22]"
+
+#. type: Plain text
+msgid "Test:"
+msgstr "次のように、テストを行ってください。"
+
+#. type: Plain text
+msgid "Go to `http://node11:8080/auth/` and create the initial admin user."
+msgstr "`http://node11:8080/auth/` に移動し、最初の管理者ユーザーを作成します。"
+
+#. type: Plain text
+msgid ""
+"Go to `http://node11:8080/auth/admin` and login as admin to admin console."
+msgstr "`http://node11:8080/auth/admin` に移動し、管理者として管理コンソールにログインします。"
+
+#. type: Plain text
+msgid ""
+"Open a second browser and go to any of nodes `http://node12:8080/auth/admin`"
+" or `http://node21:8080/auth/admin` or `http://node22:8080/auth/admin`. "
+"After login, you should be able to see the same sessions in tab `Sessions` "
+"of particular user, client or realm on all 4 servers."
+msgstr ""
+"2つ目のブラウザーを開き、 `http://node12:8080/auth/admin` または "
+"`http://node21:8080/auth/admin` もしくは `http://node22:8080/auth/admin` "
+"のいずれかのノードに移動します。ログイン後、4つのすべてのサーバー上の特定のユーザー、クライアントまたはレルムの `Sessions` "
+"タブで同じセッションを表示できます。"
+
+#. type: Plain text
+msgid ""
+"Check server.logs if needed. After login or logout, the message like this "
+"should be on all the nodes `NODEXY/standalone/log/server.log` :"
+msgstr ""
+"必要に応じてserver.logsを確認してください。ログインまたはログアウト後、以下のようなメッセージがすべての "
+"`NODEXY/standalone/log/server.log` ノードに表示される必要があります。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store.\n"
+"Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
+msgstr ""
+"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store.\n"
+"Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
+
 #. type: Title ===
 #, no-wrap
 msgid "Cross-Datacenter Replication Mode"
@@ -40,12 +229,12 @@ msgstr "クロスデータセンター・レプリケーション・モード"
 
 #. type: Plain text
 msgid ""
-"Cross-Datacenter Replication mode is for when you want to run {project_name}"
-" in a cluster across multiple data centers, most typically using data center"
-" sites that are in different geographic regions. When using this mode, each "
-"data center will have its own cluster of {project_name} servers."
+"Cross-Datacenter Replication mode lets you run {project_name} in a cluster "
+"across multiple data centers, most typically using data center sites that "
+"are in different geographic regions. When using this mode, each data center "
+"will have its own cluster of {project_name} servers."
 msgstr ""
-"クロスデータセンター・レプリケーション・モードは、複数のデータセンターを横断してクラスター内で{project_name}を実行する必要がある時のためのもので、地理的に異なる地域にあるデータセンター・サイトが一般的には最も使用されます。このモードを使用する場合、各データセンターには{project_name}サーバーの独自のクラスターがあります。"
+"クロスデータセンター・レプリケーション・モードでは、複数のデータセンターにまたがるクラスターで{project_name}を実行できます。地理的に異なる地域にあるデータセンター・サイトが一般的には最も使用されます。このモードを使用する場合、各データセンターには{project_name}サーバーの独自のクラスターがあります。"
 
 #. type: Plain text
 msgid ""
@@ -82,13 +271,22 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"link:{jdgserver_crossdcdocs_link}[JBoss Data Grid Cross-Datacenter "
-"Replication] {project_name} uses JBoss Data Grid (JDG) for the replication "
-"of Infinispan data between the data centers."
+"link:{jdgserver_crossdcdocs_link}[Red Hat Data Grid Cross-Datacenter "
+"Replication] {project_name} uses Red Hat Data Grid (RHDG) for the "
+"replication of data between the data centers."
 msgstr ""
-"link:{jdgserver_crossdcdocs_link}[JBoss Data Grid Cross-Datacenter "
-"Replication] {project_name}では、JBoss Data "
-"Grid（JDG）を使用して、データセンター間でInfinispanデータをレプリケーションします。"
+"link:{jdgserver_crossdcdocs_link}[Red Hat Data Grid Cross-Datacenter "
+"Replication] {project_name}では、Red Hat Data "
+"Grid（RHDG）を使用して、データセンター間でデータをレプリケーションします。"
+
+#. type: Plain text
+msgid ""
+"link:https://infinispan.org/docs/11.0.x/titles/xsite/xsite.html#xsite_replication[Infinispan"
+" Cross-Site Replication] replicates data across clusters in separate "
+"geographic locations."
+msgstr ""
+"link:https://infinispan.org/docs/11.0.x/titles/xsite/xsite.html#xsite_replication[Infinispan"
+" Cross-Site Replication] は、地理的に離れた場所にあるクラスター間でデータをレプリケーションします。 "
 
 #. type: Title ====
 #, no-wrap
@@ -436,36 +634,38 @@ msgid ""
 " same data center, but not with the {project_name} nodes in different data "
 "centers. A {project_name} node does not communicate directly with the "
 "{project_name} nodes from different data centers. {project_name} nodes use "
-"external JDG (actually {jdgserver_name} servers) for communication across "
-"data centers. This is done using the "
-"link:https://infinispan.org/docs/8.2.x/user_guide/user_guide.html#using_hot_rod_server[Infinispan"
-" HotRod protocol]."
+"external {jdgserver_name} servers for communication across data centers. "
+"This is done using the "
+"link:https://infinispan.org/docs/11.0.x/titles/hotrod_java/hotrod_java.html[Infinispan"
+" Hot Rod protocol]."
 msgstr ""
-"{project_name}は、Infinispanキャッシュの分割されたクラスターを複数使用します。各{project_name}ノードは、同じデータセンター内の他の{project_name}ノードと共にクラスター内にありますが、異なるデータセンターの{project_name}ノードはそのクラスター内にありません。{project_name}ノードは、異なるデータセンターの{project_name}ノードと直接通信できません。{project_name}ノードは、データセンター間の通信に外部JDG（実際には{jdgserver_name}サーバー）を使用します。これは、link:https://infinispan.org/docs/8.2.x/user_guide/user_guide.html#using_hot_rod_server[Infinispan"
-" HotRodプロトコル]を使用して行われます。"
+"{project_name}は、Infinispanキャッシュの分割されたクラスターを複数使用します。各{project_name}ノードは、同じデータセンター内の他の{project_name}ノードと共にクラスター内にありますが、異なるデータセンターの{project_name}ノードはそのクラスター内にありません。{project_name}ノードは、異なるデータセンターの{project_name}ノードと直接通信できません。{project_name}ノードは、データセンター間の通信に外部{jdgserver_name}サーバーを使用します。これは、link:https://infinispan.org/docs/11.0.x/titles/hotrod_java/hotrod_java.html[Infinispan"
+" Hot Rodプロトコル]を使用して行われます。"
 
 #. type: Plain text
 msgid ""
-"The Infinispan caches on the {project_name} side must be configured with the"
+"The Infinispan caches on the {project_name} side use "
+"link:https://infinispan.org/docs/stable/titles/configuring/configuring.html#remote_cache_store[`remoteStore`]"
+" configuration to offload data to a remote {jdgserver_name} cluster.  "
+"{jdgserver_name} clusters in separate data centers then replicate that data "
+"to ensure it is backed up."
+msgstr ""
+"{project_name}側のInfinispanキャッシュは、 "
+"ink:https://infinispan.org/docs/stable/titles/configuring/configuring.html#remote_cache_store[`remoteStore`]"
 " "
-"link:https://infinispan.org/docs/8.2.x/user_guide/user_guide.html#remote_store[remoteStore]"
-" to ensure that data are saved to the remote cache. There is separate "
-"Infinispan cluster between JDG servers, so the data saved on JDG1 on `site1`"
-" are replicated to JDG2 on `site2` ."
-msgstr ""
-"{project_name}側のInfinispanキャッシュは、データがリモート・キャッシュに保存されていることを確認するために、link:https://infinispan.org/docs/8.2.x/user_guide/user_guide.html#remote_store[remoteStore]を使用して設定する必要があります。JDGサーバー間に分割されたInfinispanクラスターがあるので、"
-" `site1` のJDG1に保存されていたデータは `site2` のJDG2にレプリケートされます。"
+"の設定を使用して、データをリモートの{jdgserver_name}クラスターにオフロードします。次に、別々のデータセンターにある{jdgserver_name}クラスターがそのデータをレプリケーションして、確実にバックアップされるようにします。"
 
 #. type: Plain text
 msgid ""
-"Finally, the receiving JDG server notifies the {project_name} servers in its"
-" cluster through the Client Listeners, which are a feature of the HotRod "
+"The receiving {jdgserver_name} server notifies the {project_name} servers in"
+" its cluster through Client Listeners, which are a feature of the Hot Rod "
 "protocol. {project_name} nodes on `site2` then update their Infinispan "
 "caches and the particular user session is also visible on {project_name} "
 "nodes on `site2`."
 msgstr ""
-"最後に、受信JDGサーバーは、HotRodプロトコルの機能であるクライアント・リスナーを介して、クラスター内の{project_name}サーバーに通知します。次に、"
-" `site2` の{project_name}ノードがInfinispanキャッシュを更新し、特定のユーザー・セッションが `site2` "
+"受信{jdgserver_name}サーバーは、Hot "
+"Rodプロトコルの機能であるクライアント・リスナーを介して、クラスター内の{project_name}サーバーに通知します。次に、 `site2` "
+"の{project_name}ノードがInfinispanキャッシュを更新し、特定のユーザー・セッションが `site2` "
 "の{project_name}ノードにも表示されます。 "
 
 #. type: Plain text
@@ -474,64 +674,29 @@ msgstr "詳細は、<<archdiagram>>を参照してください。"
 
 #. type: Title ====
 #, no-wrap
-msgid "Basic setup"
-msgstr "基本設定"
+msgid "Setting up Cross DC with {jdgserver_name} {jdgserver_version}"
+msgstr "{jdgserver_name} {jdgserver_version}を使用したクロスDCの設定"
 
 #. type: Plain text
 msgid ""
-"For this example, we describe using two data centers, `site1` and `site2`. "
-"Each data center consists of 1 {jdgserver_name} server and 2 {project_name} "
-"servers. We will end up with 2 {jdgserver_name} servers and 4 {project_name}"
-" servers in total."
+"This example for {jdgserver_name} {jdgserver_version} involves two data "
+"centers, `site1` and `site2`. Each data center consists of 1 "
+"{jdgserver_name} server and 2 {project_name} servers. We will end up with 2 "
+"{jdgserver_name} servers and 4 {project_name} servers in total."
 msgstr ""
-"この例では、 `site1` と `site2` "
-"という2つのデータセンター使用して説明します。各データセンターは、1つの{jdgserver_name}サーバーと2つの{project_name}サーバーで構成されています。合計すると、2つの{jdgserver_name}サーバーと4つの{project_name}サーバーになります。"
-
-#. type: Plain text
-msgid ""
-"`Site1` consists of {jdgserver_name} server, `jdg1`, and 2 {project_name} "
-"servers, `node11` and `node12` ."
-msgstr ""
-"`Site1` は、{jdgserver_name}サーバーの `jdg1` と2つの{project_name}サーバーの `node11` および "
-"`node12` で構成されています。"
-
-#. type: Plain text
-msgid ""
-"`Site2` consists of {jdgserver_name} server, `jdg2`, and 2 {project_name} "
-"servers, `node21` and `node22` ."
-msgstr ""
-"`Site2` は、{jdgserver_name}サーバーの `jdg2` と2つの {project_name}サーバーの `node21` および"
-" `node22` で構成されています。"
-
-#. type: Plain text
-msgid ""
-"{jdgserver_name} servers `jdg1` and `jdg2` are connected to each other "
-"through the RELAY2 protocol and `backup` based {jdgserver_name} caches in a "
-"similar way as described in the link:{jdgserver_crossdcdocs_link}[JDG "
-"documentation]."
-msgstr ""
-"{jdgserver_name}サーバーである `jdg1` と `jdg2` は、 "
-"link:{jdgserver_crossdcdocs_link}[JDGのドキュメント] で記載されているのと同様の方法で、RELAY2プロトコルと "
-"`backup` ベースの{jdgserver_name}キャッシュを介して相互に接続されています。"
+"{jdgserver_name} {jdgserver_version}のこの例には、 `site1` と `site2` "
+"の2つのデータセンターが含まれます。各データセンターは、1つの{jdgserver_name}サーバーと2つの{project_name}サーバーで構成されています。合計すると、2つの{jdgserver_name}サーバーと4つの{project_name}サーバーになります。"
 
 #. type: Plain text
 msgid ""
 "{project_name} servers `node11` and `node12` form a cluster with each other,"
 " but they do not communicate directly with any server in `site2`.  They "
-"communicate with the Infinispan server `jdg1` using the HotRod protocol "
+"communicate with the Infinispan server `server1` using the Hot Rod protocol "
 "(Remote cache). See <<communication>> for the details."
 msgstr ""
 "{project_name}サーバーである `node11` と `node12` は、お互いにクラスターを形成しますが、 `site2` "
-"内のサーバーとは直接通信はしません。それらはHotRodプロトコル （リモート・キャッシュ）を使用して、Infinispanサーバー `jdg1` "
-"と通信します。詳細については、<<communication>>を参照してください。"
-
-#. type: Plain text
-msgid ""
-"The same details apply for `node21` and `node22`. They cluster with each "
-"other and communicate only with `jdg2` server using the HotRod protocol."
-msgstr ""
-"同じ説明が `node21` と `node22` にも当てはまります。それらはお互いにクラスター化し、HotRodプロトコルを使用して、 `jdg2`"
-" サーバーとのみ通信します。"
+"内のサーバーとは直接通信はしません。それらはHot Rodプロトコル （リモート・キャッシュ）を使用して、Infinispanサーバー "
+"`server1` と通信します。詳細については、<<communication>>を参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -544,8 +709,8 @@ msgstr ""
 
 #. type: Title =====
 #, no-wrap
-msgid "{jdgserver_name} server setup"
-msgstr "{jdgserver_name}サーバーの設定"
+msgid "Setting up the {jdgserver_name} server"
+msgstr "{jdgserver_name}サーバーのセットアップ"
 
 #. type: Plain text
 msgid "Follow these steps to set up the {jdgserver_name} server:"
@@ -555,19 +720,18 @@ msgstr "{jdgserver_name}サーバーの設定は、以下の手順に沿って�
 msgid ""
 "Download {jdgserver_name} {jdgserver_version} server and unzip to a "
 "directory you choose. This location will be referred in later steps as "
-"`JDG1_HOME` ."
+"`SERVER1_HOME` ."
 msgstr ""
 "{jdgserver_name} "
-"{jdgserver_version}サーバーをダウンロードし、選択したディレクトリーに解凍します。このロケーションは、 `JDG1_HOME` "
+"{jdgserver_version}サーバーをダウンロードし、選択したディレクトリーに解凍します。このロケーションは、 `SERVER1_HOME` "
 "として後ほど参照することになります。"
 
 #. type: Plain text
 msgid ""
-"Change those things in the "
-"`JDG1_HOME/standalone/configuration/clustered.xml` in the configuration of "
-"JGroups subsystem:"
+"Change those things in the `SERVER1_HOME/server/conf/infinispan-xsite.xml` "
+"in the configuration of JGroups subsystem:"
 msgstr ""
-"JGroupsサブシステムの設定で、 `JDG1_HOME/standalone/configuration/clustered.xml` "
+"JGroupsサブシステムの設定で、 `SERVER1_HOME/server/conf/infinispan-xsite.xml` "
 "内にあるこれらを変更します。"
 
 #. type: Plain text
@@ -621,10 +785,10 @@ msgstr ""
 msgid ""
 "Configure the `tcp` stack to use `TCPPING` protocol instead of `MPING`. "
 "Remove the `MPING` element and replace it with the `TCPPING`. The "
-"`initial_hosts` element points to the hosts `jdg1` and `jdg2`:"
+"`initial_hosts` element points to the hosts `server1` and `server2`:"
 msgstr ""
 "`MPING` の代わりに、 `tcp` スタックを設定して `TCPPING` プロトコルを使用します。 `MPING` 要素を削除して "
-"`TCPPING` に置き換えます。 `initial_hosts` 要素は、ホスト `jdg1` と `jdg2` を指します。"
+"`TCPPING` に置き換えます。 `initial_hosts` 要素は、ホスト `server1` と `server2` を指します。"
 
 #. type: Code block
 #, no-wrap
@@ -632,7 +796,7 @@ msgid ""
 "<stack name=\"tcp\">\n"
 "    <transport type=\"TCP\" socket-binding=\"jgroups-tcp\"/>\n"
 "    <protocol type=\"TCPPING\">\n"
-"        <property name=\"initial_hosts\">jdg1[7600],jdg2[7600]</property>\n"
+"        <property name=\"initial_hosts\">server1[7600],server2[7600]</property>\n"
 "        <property name=\"ergonomics\">false</property>\n"
 "    </protocol>\n"
 "    <protocol type=\"MERGE3\"/>\n"
@@ -642,7 +806,7 @@ msgstr ""
 "<stack name=\"tcp\">\n"
 "    <transport type=\"TCP\" socket-binding=\"jgroups-tcp\"/>\n"
 "    <protocol type=\"TCPPING\">\n"
-"        <property name=\"initial_hosts\">jdg1[7600],jdg2[7600]</property>\n"
+"        <property name=\"initial_hosts\">server1[7600],server2[7600]</property>\n"
 "        <property name=\"ergonomics\">false</property>\n"
 "    </protocol>\n"
 "    <protocol type=\"MERGE3\"/>\n"
@@ -671,10 +835,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Add this into `JDG1_HOME/standalone/configuration/clustered.xml` under "
+"Add this into `SERVER1_HOME/standalone/configuration/clustered.xml` under "
 "cache-container named `clustered`:"
 msgstr ""
-"`JDG1_HOME/standalone/configuration/clustered.xml` の `clustered` "
+"`SERVER1_HOME/standalone/configuration/clustered.xml` の `clustered` "
 "という名前のcache-containerの下に次の設定を追加します。"
 
 #. type: Code block
@@ -870,17 +1034,17 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Copy the server to the second location, which will be referred to later as "
-"`JDG2_HOME`."
-msgstr "2つ目のロケーションにサーバーをコピーします。これは、 `JDG2_HOME` として後ほど参照することになります。"
+"`SERVER2_HOME`."
+msgstr "2つ目のロケーションにサーバーをコピーします。これは、 `SERVER2_HOME` として後ほど参照することになります。"
 
 #. type: Plain text
 msgid ""
-"In the `JDG2_HOME/standalone/configuration/clustered.xml` exchange `site1` "
-"with `site2` and vice versa, both in the configuration of `relay` in the "
-"JGroups subsystem and in configuration of `backups` in the cache-subsystem. "
-"For example:"
+"In the `SERVER2_HOME/standalone/configuration/clustered.xml` exchange "
+"`site1` with `site2` and vice versa, both in the configuration of `relay` in"
+" the JGroups subsystem and in configuration of `backups` in the cache-"
+"subsystem. For example:"
 msgstr ""
-"`JDG2_HOME/standalone/configuration/clustered.xml` では、 `site1` を `site2` "
+"`SERVER2_HOME/standalone/configuration/clustered.xml` では、 `site1` を `site2` "
 "に置き換えると、JGroupsサブシステム内の `relay` の設定とcache-subsystem内の `backups` "
 "の設定の両方において、逆の動作をします。次に例を示します。"
 
@@ -908,24 +1072,13 @@ msgstr "`backups` 要素は、以下のように表示されます。"
 #. type: Code block
 #, no-wrap
 msgid ""
-"            <backups>\n"
-"                <backup site=\"site1\" ....\n"
-"                ...\n"
+"<backups>\n"
+"  <backup site=\"site1\" ....\n"
+"  ...\n"
 msgstr ""
-"            <backups>\n"
-"                <backup site=\"site1\" ....\n"
-"                ...\n"
-
-#. type: Plain text
-msgid ""
-"It is currently required to have different configuration files for the JDG "
-"servers on both sites as the Infinispan subsystem does not support replacing"
-" site names with expressions. See "
-"link:https://issues.redhat.com/browse/WFLY-9458[this issue] for more "
-"details."
-msgstr ""
-"現時点では、Infinispanサブシステムはサイト名を式によって置き換えることはサポートしていないため、両方のサイトのJDGサーバーに異なる設定ファイルを用意する必要があります。詳細については、"
-" link:https://issues.redhat.com/browse/WFLY-9458[この課題] を参照してください。"
+"<backups>\n"
+"  <backup site=\"site1\" ....\n"
+"  ...\n"
 
 #. type: Plain text
 msgid ""
@@ -946,54 +1099,55 @@ msgstr ""
 " link:{appserver_socket_link}[_{appserver_socket_name}_] を参照してください。"
 
 #. type: Plain text
-msgid "Start server `jdg1`:"
-msgstr "`jdg1` サーバーを起動します。"
+msgid "Start server `server1`:"
+msgstr "`server1` サーバーを起動します。"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"cd JDG1_HOME/bin\n"
+"cd SERVER1_HOME/bin\n"
 "./standalone.sh -c clustered.xml -Djava.net.preferIPv4Stack=true \\\n"
 "  -Djboss.default.multicast.address=234.56.78.99 \\\n"
-"  -Djboss.node.name=jdg1 -b _PUBLIC_IP_ADDRESS_\n"
+"  -Djboss.node.name=server1 -b _PUBLIC_IP_ADDRESS_\n"
 msgstr ""
-"cd JDG1_HOME/bin\n"
+"cd SERVER1_HOME/bin\n"
 "./standalone.sh -c clustered.xml -Djava.net.preferIPv4Stack=true \\\n"
 "  -Djboss.default.multicast.address=234.56.78.99 \\\n"
-"  -Djboss.node.name=jdg1 -b _PUBLIC_IP_ADDRESS_\n"
+"  -Djboss.node.name=server1 -b _PUBLIC_IP_ADDRESS_\n"
 
 #. type: Plain text
 msgid ""
-"Start server `jdg2`. There is a different multicast address, so the `jdg1` "
-"and `jdg2` servers are not directly clustered with each other; rather, they "
-"are just connected through the RELAY2 protocol, and the TCP JGroups stack is"
-" used for communication between them. The start up command looks like this:"
+"Start server `server2`. There is a different multicast address, so the "
+"`server1` and `server2` servers are not directly clustered with each other; "
+"rather, they are just connected through the RELAY2 protocol, and the TCP "
+"JGroups stack is used for communication between them. The start up command "
+"looks like this:"
 msgstr ""
-"`jdg2` サーバーを起動します。異なるマルチキャスト・アドレスがあるため、 `jdg1` と `jdg2` "
+"`server2` サーバーを起動します。異なるマルチキャスト・アドレスがあるため、 `server1` と `server2` "
 "サーバーは互いに直接クラスター化されません。むしろ、それらはRELAY2プロトコルを介して接続されており、TCP "
 "JGroupsスタックはそれらの間の通信に使用されます。起動コマンドは次のようになります。"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"cd JDG2_HOME/bin\n"
+"cd SERVER2_HOME/bin\n"
 "./standalone.sh -c clustered.xml -Djava.net.preferIPv4Stack=true \\\n"
 "  -Djboss.default.multicast.address=234.56.78.100 \\\n"
-"  -Djboss.node.name=jdg2 -b _PUBLIC_IP_ADDRESS_\n"
+"  -Djboss.node.name=server2 -b _PUBLIC_IP_ADDRESS_\n"
 msgstr ""
-"cd JDG2_HOME/bin\n"
+"cd SERVER2_HOME/bin\n"
 "./standalone.sh -c clustered.xml -Djava.net.preferIPv4Stack=true \\\n"
 "  -Djboss.default.multicast.address=234.56.78.100 \\\n"
-"  -Djboss.node.name=jdg2 -b _PUBLIC_IP_ADDRESS_\n"
+"  -Djboss.node.name=server2 -b _PUBLIC_IP_ADDRESS_\n"
 
 #. type: Plain text
 msgid ""
 "To verify that channel works at this point, you may need to use JConsole and"
-" connect either to the running `JDG1` or the `JDG2` server. When you use the"
-" MBean `jgroups:type=protocol,cluster=\"cluster\",protocol=RELAY2` and "
-"operation `printRoutes`, you should see output like this:"
+" connect either to the running `SERVER1` or the `SERVER2` server. When you "
+"use the MBean `jgroups:type=protocol,cluster=\"cluster\",protocol=RELAY2` "
+"and operation `printRoutes`, you should see output like this:"
 msgstr ""
-"この時点でチャネルが動作していることを検証するには、JConsoleを使用し、実行中の `JDG1` または `JDG2` "
+"この時点でチャネルが動作していることを検証するには、JConsoleを使用し、実行中の `SERVER1` または `SERVER2` "
 "サーバーに接続する必要があります。MBean "
 "`jgroups:type=protocol,cluster=\"cluster\",protocol=RELAY2` および "
 "`printRoutes` オペレーションを使用すると、以下のような出力が表示されます。"
@@ -1001,11 +1155,11 @@ msgstr ""
 #. type: Code block
 #, no-wrap
 msgid ""
-"site1 --> _jdg1:site1\n"
-"site2 --> _jdg2:site2\n"
+"site1 --> _server1:site1\n"
+"site2 --> _server2:site2\n"
 msgstr ""
-"site1 --> _jdg1:site1\n"
-"site2 --> _jdg2:site2\n"
+"site1 --> _server1:site1\n"
+"site2 --> _server2:site2\n"
 
 #. type: Plain text
 msgid ""
@@ -1017,20 +1171,20 @@ msgstr ""
 "を使用すると、属性メンバーには単一のメンバーしか含まれていないということがわかります。"
 
 #. type: Plain text
-msgid "On `JDG1` it should be like this:"
-msgstr "`JDG1` では、以下のように表示されます。"
+msgid "On `SERVER1` it should be like this:"
+msgstr "`SERVER1` では、以下のように表示されます。"
 
 #. type: Code block
-msgid "(1) jdg1"
-msgstr "(1) jdg1"
+msgid "(1) server1"
+msgstr "(1) server1"
 
 #. type: Plain text
-msgid "And on JDG2 like this:"
-msgstr "`JDG2` では、以下のように表示されます。"
+msgid "And on SERVER2 like this:"
+msgstr "`SERVER2` では、以下のように表示されます。"
 
 #. type: Code block
-msgid "(1) jdg2"
-msgstr "(1) jdg2"
+msgid "(1) server2"
+msgstr "(1) server2"
 
 #. type: Plain text
 msgid ""
@@ -1046,8 +1200,8 @@ msgstr ""
 
 #. type: Title =====
 #, no-wrap
-msgid "{project_name} servers setup"
-msgstr "{project_name}サーバーの設定"
+msgid "Setting up {project_name} servers"
+msgstr "{project_name}サーバーのセットアップ"
 
 #. type: Plain text
 msgid ""
@@ -1083,11 +1237,11 @@ msgstr "`site` 属性をJGroups UDPプロトコルに追加します。"
 #. type: Code block
 #, no-wrap
 msgid ""
-"                  <stack name=\"udp\">\n"
-"                      <transport type=\"UDP\" socket-binding=\"jgroups-udp\" site=\"${jboss.site.name}\"/>\n"
+"<stack name=\"udp\">\n"
+"  <transport type=\"UDP\" socket-binding=\"jgroups-udp\" site=\"${jboss.site.name}\"/>\n"
 msgstr ""
-"                  <stack name=\"udp\">\n"
-"                      <transport type=\"UDP\" socket-binding=\"jgroups-udp\" site=\"${jboss.site.name}\"/>\n"
+"<stack name=\"udp\">\n"
+"  <transport type=\"UDP\" socket-binding=\"jgroups-udp\" site=\"${jboss.site.name}\"/>\n"
 
 #. type: Plain text
 msgid "Add the `remote-store` under `work` cache:"
@@ -1393,145 +1547,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Copy the `NODE11` to 3 other directories referred later as `NODE12`, "
-"`NODE21` and `NODE22`."
-msgstr ""
-"`NODE11` を後述する `NODE12` 、 `NODE21` 、 `NODE22` という3つのディレクトリーにコピーしてください。"
-
-#. type: Plain text
-msgid "Start `NODE11` :"
-msgstr "次のように、 `NODE11` を起動してください。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"cd NODE11/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=jdg1 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-msgstr ""
-"cd NODE11/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=jdg1 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-
-#. type: Plain text
-msgid "Start `NODE12` :"
-msgstr "次のように、 `NODE12` を起動してください。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"cd NODE12/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=jdg1 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-msgstr ""
-"cd NODE12/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=jdg1 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-
-#. type: Plain text
-msgid ""
-"The cluster nodes should be connected. Something like this should be in the "
-"log of both NODE11 and NODE12:"
-msgstr "クラスター・ノードを接続する必要があります。このようなものは、NODE11とNODE12のどちらのログにも残っていなければなりません。"
-
-#. type: Code block
-msgid ""
-"Received new cluster view for channel keycloak: [node11|1] (2) [node11, "
-"node12]"
-msgstr ""
-"Received new cluster view for channel keycloak: [node11|1] (2) [node11, "
-"node12]"
-
-#. type: Plain text
-msgid "The channel name in the log might be different."
-msgstr "ログにあるチャネル名とは異なっている可能性があります。"
-
-#. type: Plain text
-msgid "Start `NODE21` :"
-msgstr "次のように、 `NODE21` を起動してください。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"cd NODE21/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=jdg2 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-msgstr ""
-"cd NODE21/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=jdg2 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-
-#. type: Plain text
-msgid ""
 "It shouldn't be connected to the cluster with `NODE11` and `NODE12`, but to "
 "separate one:"
 msgstr "`NODE11` と `NODE12` を使用してクラスターに接続するのではなく、クラスターを分離する必要があります。"
-
-#. type: Code block
-msgid ""
-"Received new cluster view for channel keycloak: [node21|0] (1) [node21]"
-msgstr ""
-"Received new cluster view for channel keycloak: [node21|0] (1) [node21]"
-
-#. type: Plain text
-msgid "Start `NODE22` :"
-msgstr "次のように、 `NODE22` を起動してください。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"cd NODE22/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=jdg2 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-msgstr ""
-"cd NODE22/bin\n"
-"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \\\n"
-"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=jdg2 \\\n"
-"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
-
-#. type: Plain text
-msgid "It should be in cluster with `NODE21` :"
-msgstr "`NODE21` をクラスター化する必要があります。"
-
-#. type: Code block
-msgid ""
-"Received new cluster view for channel keycloak: [node21|1] (2) [node21, "
-"node22]"
-msgstr ""
-"Received new cluster view for channel keycloak: [node21|1] (2) [node21, "
-"node22]"
-
-#. type: Plain text
-msgid "Test:"
-msgstr "次のように、テストを行ってください。"
-
-#. type: Plain text
-msgid "Go to `http://node11:8080/auth/` and create the initial admin user."
-msgstr "`http://node11:8080/auth/` に移動し、最初の管理者ユーザーを作成します。"
-
-#. type: Plain text
-msgid ""
-"Go to `http://node11:8080/auth/admin` and login as admin to admin console."
-msgstr "`http://node11:8080/auth/admin` に移動し、管理者として管理コンソールにログインします。"
-
-#. type: Plain text
-msgid ""
-"Open a second browser and go to any of nodes `http://node12:8080/auth/admin`"
-" or `http://node21:8080/auth/admin` or `http://node22:8080/auth/admin`. "
-"After login, you should be able to see the same sessions in tab `Sessions` "
-"of particular user, client or realm on all 4 servers."
-msgstr ""
-"2つ目のブラウザーを開き、 `http://node12:8080/auth/admin` または "
-"`http://node21:8080/auth/admin` もしくは `http://node22:8080/auth/admin` "
-"のいずれかのノードに移動します。ログイン後、4つのすべてのサーバー上の特定のユーザー、クライアントまたはレルムの `Sessions` "
-"タブで同じセッションを表示できます。"
 
 #. type: Plain text
 msgid ""
@@ -1540,23 +1558,6 @@ msgid ""
 "caches should be properly invalidated everywhere."
 msgstr ""
 "Keycloakの管理コンソールで変更（たとえば、ユーザーやレルムの更新など）を加えた後、その変更は、すぐに4つのノードのいずれかで表示され、キャッシュがどこでも適切に無効化される必要があります。"
-
-#. type: Plain text
-msgid ""
-"Check server.logs if needed. After login or logout, the message like this "
-"should be on all the nodes `NODEXY/standalone/log/server.log` :"
-msgstr ""
-"必要に応じてserver.logsを確認してください。ログインまたはログアウト後、以下のようなメッセージがすべての "
-"`NODEXY/standalone/log/server.log` ノードに表示される必要があります。"
-
-#. type: Code block
-#, no-wrap
-msgid ""
-"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store.\n"
-"Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
-msgstr ""
-"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store.\n"
-"Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
 
 #. type: Title ====
 #, no-wrap
@@ -1598,7 +1599,7 @@ msgstr ""
 msgid ""
 "Every datacenter can have more {jdgserver_name} servers running in the "
 "cluster. This is useful if you want some failover and better fault "
-"tolerance. The HotRod protocol used for communication between "
+"tolerance. The Hot Rod protocol used for communication between "
 "{jdgserver_name} servers and {project_name} servers has a feature that "
 "{jdgserver_name} servers will automatically send new topology to the "
 "{project_name} servers about the change in the {jdgserver_name} cluster, so "
@@ -1606,14 +1607,16 @@ msgid ""
 "servers it can connect. Read the {jdgserver_name} and WildFly documentation "
 "for more details."
 msgstr ""
-"すべてのデータセンターで、より多くの{jdgserver_name}サーバーをクラスター内で実行することができます。これは、フェイルオーバーとフォールト・トレランスを強化する場合に便利です。{jdgserver_name}サーバーと{project_name}サーバー間の通信で使用されるHotRodプロトコルには、{jdgserver_name}サーバーが{jdgserver_name}クラスターの変更について、{project_name}サーバーに新しいトポロジーを自動的に送信する機能を備えています。したがって、{project_name}側のリモートストアは、どの{jdgserver_name}サーバーに接続できるのかが分かります。詳細については、{jdgserver_name}とWildFlyドキュメントを参照してください。"
+"すべてのデータセンターで、より多くの{jdgserver_name}サーバーをクラスター内で実行することができます。これは、フェイルオーバーとフォールト・トレランスを強化する場合に便利です。{jdgserver_name}サーバーと{project_name}サーバー間の通信で使用されるHot"
+" "
+"Rodプロトコルには、{jdgserver_name}サーバーが{jdgserver_name}クラスターの変更について、{project_name}サーバーに新しいトポロジーを自動的に送信する機能を備えています。したがって、{project_name}側のリモートストアは、どの{jdgserver_name}サーバーに接続できるのかが分かります。詳細については、{jdgserver_name}とWildFlyドキュメントを参照してください。"
 
 #. type: Plain text
 msgid ""
 "It is highly recommended that a master {jdgserver_name} server is running in"
 " every site before the {project_name} servers in **any** site are started. "
-"As in our example, we started both `jdg1` and `jdg2` first, before all "
-"{project_name} servers. If you still need to run the {project_name} server "
+"As in our example, we started both `server1` and `server2` first, before all"
+" {project_name} servers. If you still need to run the {project_name} server "
 "and the backup site is offline, it is recommended to manually switch the "
 "backup site offline on the {jdgserver_name} servers on your site, as "
 "described in <<onoffline>>. If you do not manually switch the unavailable "
@@ -1623,7 +1626,7 @@ msgid ""
 msgstr ""
 "**どんな** "
 "サイトの{project_name}サーバーも起動する前に、すべてのサイトでマスター{jdgserver_name}サーバーを実行することを強くお勧めします。この例では、すべての{project_name}サーバーの前に、"
-" `jdg1` と `jdg2` "
+" `server1` と `server2` "
 "の両方を最初に起動します。{project_name}サーバーをそれでも実行する必要があり、バックアップ・サイトがオフラインである場合は、<<onoffline>>での説明のとおり、サイトの{jdgserver_name}サーバー上のバックアップ・サイトを手動でオフラインに切り替えることをお勧めします。使用できない状態のサイトをオフラインに手動で切り替えることができない場合、初回起動に失敗するか、起動時にいくつか例外が発生する可能性があります。これは、失敗した操作の設定数によってバックアップ・サイトが自動的にオフラインになるまでです。"
 
 #. type: Title ====
@@ -1647,9 +1650,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"You run {project_name} servers and {jdgserver_name} server `jdg1` in site "
-"`site1`"
-msgstr "サイト `site1` で{project_name}サーバーと{jdgserver_name}サーバー `jdg1` を実行します。"
+"You run {project_name} servers and {jdgserver_name} server `server1` in site"
+" `site1`"
+msgstr ""
+"サイト `site1` で{project_name}サーバーと{jdgserver_name}サーバー `server1` を実行します。"
 
 #. type: Plain text
 msgid "Someone logs in on a {project_name} server on `site1`."
@@ -1658,28 +1662,30 @@ msgstr "いずれかのユーザーが `site1` の{project_name}サーバーに�
 #. type: Plain text
 msgid ""
 "The {project_name} server from `site1` will try to write the session to the "
-"remote cache on `jdg1` server, which is supposed to backup data to the "
-"`jdg2` server in the `site2`. See <<communication>> for more information."
+"remote cache on `server1` server, which is supposed to backup data to the "
+"`server2` server in the `site2`. See <<communication>> for more information."
 msgstr ""
-"`site1` の{project_name}サーバーは、`site2` の `jdg2` サーバーにデータをバックアップすることを想定し、 "
-"`jdg1` サーバー上のリモート・キャッシュにセッションを書き込もうとします。詳細については、<<communication>>を参照してください。"
+"`site1` の{project_name}サーバーは、`site2` の `server2` サーバーにデータをバックアップすることを想定し、 "
+"`server1` "
+"サーバー上のリモート・キャッシュにセッションを書き込もうとします。詳細については、<<communication>>を参照してください。"
 
 #. type: Plain text
 msgid ""
-"Server `jdg2` is offline or unreachable from `jdg1`. So the backup from "
-"`jdg1` to `jdg2` will fail."
+"Server `server2` is offline or unreachable from `server1`. So the backup "
+"from `server1` to `server2` will fail."
 msgstr ""
-"`jdg2` サーバーがオフラインであるか、 `jdg1` から到達できない状態なので、 `jdg1` から `jdg2` "
+"`server2` サーバーがオフラインであるか、 `server1` から到達できない状態なので、 `server1` から `server2` "
 "へのバックアップは失敗します。"
 
 #. type: Plain text
 msgid ""
-"The exception is thrown in `jdg1` log and the failure will be propagated "
-"from `jdg1` server to {project_name} servers as well because the default "
+"The exception is thrown in `server1` log and the failure will be propagated "
+"from `server1` server to {project_name} servers as well because the default "
 "`FAIL` backup failure policy is configured. See <<backupfailure>> for "
 "details around the backup policies."
 msgstr ""
-"例外は `jdg1` のログにスローされます。デフォルトの `FAIL` バックアップ失敗ポリシーが設定されているため、その失敗は `jdg1` "
+"例外は `server1` のログにスローされます。デフォルトの `FAIL` バックアップ失敗ポリシーが設定されているため、その失敗は "
+"`server1` "
 "サーバーから{project_name}サーバーにも伝播されます。バックアップ・ポリシーの詳細については、<<backupfailure>>を参照してください。"
 
 #. type: Plain text
@@ -1694,12 +1700,12 @@ msgid ""
 "network between sites is unavailable or temporarily broken (split-brain). In"
 " case this happens, it is good that {jdgserver_name} servers on `site1` are "
 "aware of the fact that {jdgserver_name} servers on `site2` are unavailable, "
-"so they will stop trying to reach the servers in the `jdg2` site and the "
+"so they will stop trying to reach the servers in the `server2` site and the "
 "backup failures won't happen. This is called `Take site offline` ."
 msgstr ""
 "使用している環境に応じて、サイト間のネットワークが利用できないか、一時的に壊れている（スプリット・ブレイン）可能性があります。これが起こった場合、 "
 "`site1` の{jdgserver_name}サーバーは、 `site2` の{jdgserver_name}サーバーが利用できないことに気付き、 "
-"`jdg2` サイトのサーバーへアクセスしようとするのを止めるため、バックアップの失敗は発生しません。これは `サイトをオフラインにする` "
+"`server2` サイトのサーバーへアクセスしようとするのを止めるため、バックアップの失敗は発生しません。これは `サイトをオフラインにする` "
 "と呼ばれています。"
 
 #. type: Block title
@@ -1715,15 +1721,27 @@ msgstr "サイトをオフラインにするには2つの方法があります�
 #, no-wrap
 msgid ""
 "**Manually by admin** - Admin can use the `jconsole` or other tool and run some JMX operations to manually take the particular site offline.\n"
-"This is useful especially if the outage is planned. With `jconsole` or CLI, you can connect to the `jdg1` server and take the `site2` offline.\n"
-"More details about this are available in the link:{jdgserver_crossdcdocs_link}#taking_a_site_offline[JDG documentation].\n"
+"This is useful especially if the outage is planned. With `jconsole` or CLI, you can connect to the `server1` server and take the `site2` offline.\n"
+"More details about this are available in the\n"
 msgstr ""
 "**管理者による手作業** - 管理者は `jconsole` "
 "または他のツールを使用して、いくつかのJMX操作を実行することで、手動で特定のサイトをオフラインにすることができます。これは、特に停止が計画されている場合に役立ちます。"
-" `jconsole` またはCLIを使用すると、 `jdg1` サーバーに接続し、 `site2` "
+" `jconsole` またはCLIを使用すると、 `server1` サーバーに接続し、 `site2` "
 "をオフラインにすることができます。この詳細については、 "
 "link:{jdgserver_crossdcdocs_link}#taking_a_site_offline[JDGドキュメント] "
 "を参照してください。\n"
+
+#. type: Plain text
+msgid ""
+"link:{jdgserver_crossdcdocs_link}#xsite_auto_offline-xsite[{jdgserver_name} "
+"documentation]."
+msgstr ""
+"link:{jdgserver_crossdcdocs_link}#xsite_auto_offline-xsite[{jdgserver_name} "
+"documentation]."
+
+#. type: Plain text
+msgid "link:{jdgserver_crossdcdocs_link}[{jdgserver_name} documentation]."
+msgstr "link:{jdgserver_crossdcdocs_link}[{jdgserver_name} documentation]."
 
 #. type: Plain text
 msgid ""
@@ -1851,14 +1869,13 @@ msgid ""
 "The state transfer can be also done on the {jdgserver_name} server side "
 "through JMX. The operation name is `pushState`. There are few other "
 "operations to monitor status, cancel push state, and so on.  More info about"
-" state transfer is available in the "
-"link:{jdgserver_crossdcdocs_link}#pushing_state_transfer_to_sites[{jdgserver_name}"
-" docs]."
+" state transfer is available in the link:{jdgserver_crossdcdocs_link"
+"}#cli_xsite_push-cli-ops[{jdgserver_name} docs]."
 msgstr ""
 "ステート・トランスファーは、JMXを介して{jdgserver_name}サーバー側でも行われます。操作名は `pushState` "
 "です。状態をモニタリングしたり、プッシュ状態をキャンセルしたりするその他の操作はほとんどありません。ステート・トランスファーの詳細については、 "
-"link:{jdgserver_crossdcdocs_link}#pushing_state_transfer_to_sites[{jdgserver_name}"
-" docs] を参照してください。"
+"link:{jdgserver_crossdcdocs_link}#cli_xsite_push-cli-ops[{jdgserver_name} "
+"docs] を参照してください。"
 
 #. type: Title ====
 #, no-wrap
@@ -1900,8 +1917,8 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Tuning the JDG cache configuration"
-msgstr "JDGキャッシュ設定のチューニング"
+msgid "Tuning the {jdgserver_name} cache configuration"
+msgstr "{jdgserver_name}キャッシュ設定のチューニング"
 
 #. type: Plain text
 msgid "This section contains tips and options for configuring your JDG cache."
@@ -1915,11 +1932,13 @@ msgstr "バックアップ失敗ポリシー"
 #. type: Plain text
 msgid ""
 "By default, the configuration of backup `failure-policy` in the Infinispan "
-"cache configuration in the JDG `clustered.xml` file is configured as `FAIL`."
-" You may change it to `WARN` or `IGNORE`, as you prefer."
+"cache configuration in the {jdgserver_name} `clustered.xml` file is "
+"configured as `FAIL`. You may change it to `WARN` or `IGNORE`, as you "
+"prefer."
 msgstr ""
-"デフォルトでは、JDGの `clustered.xml` ファイル内にあるInfinispanキャッシュ設定のバックアップの設定 `failure-"
-"policy` が `FAIL` に設定されています。必要に応じて `WARN` または `IGNORE` に変更できます。"
+"デフォルトでは、{jdgserver_name}の `clustered.xml` "
+"ファイル内にあるInfinispanキャッシュ設定のバックアップの設定 `failure-policy` が `FAIL` "
+"に設定されています。必要に応じて `WARN` または `IGNORE` に変更できます。"
 
 #. type: Plain text
 msgid ""
@@ -2010,11 +2029,11 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The difference between `WARN` and `IGNORE` is, that with `IGNORE` warnings "
-"are not written in the JDG log. See more details in the Infinispan "
-"documentation."
+"are not written in the {jdgserver_name} log. See more details in the "
+"Infinispan documentation."
 msgstr ""
 "`WARN` と `IGNORE` の違いは、 `IGNORE` "
-"では警告がJDGログに書き込まれていないことです。詳細については、Infinispanのドキュメントを参照してください。"
+"では警告が{jdgserver_name}ログに書き込まれていないことです。詳細については、Infinispanのドキュメントを参照してください。"
 
 #. type: Block title
 #, no-wrap
@@ -2434,11 +2453,11 @@ msgstr "場合によっては、{jdgserver_name}サーバーログに次のよ�
 msgid ""
 "(HotRodServerHandler-6-35) ISPN000136: Error executing command ReplaceCommand,\n"
 "writing keys [[B0x033E243034396234..[39]]: org.infinispan.util.concurrent.TimeoutException: ISPN000299: Unable to acquire lock after\n"
-"0 milliseconds for key [B0x033E243034396234..[39] and requestor GlobalTx:jdg1:4353. Lock is held by GlobalTx:jdg1:4352\n"
+"0 milliseconds for key [B0x033E243034396234..[39] and requestor GlobalTx:server1:4353. Lock is held by GlobalTx:server1:4352\n"
 msgstr ""
 "(HotRodServerHandler-6-35) ISPN000136: Error executing command ReplaceCommand,\n"
 "writing keys [[B0x033E243034396234..[39]]: org.infinispan.util.concurrent.TimeoutException: ISPN000299: Unable to acquire lock after\n"
-"0 milliseconds for key [B0x033E243034396234..[39] and requestor GlobalTx:jdg1:4353. Lock is held by GlobalTx:jdg1:4352\n"
+"0 milliseconds for key [B0x033E243034396234..[39] and requestor GlobalTx:server1:4353. Lock is held by GlobalTx:server1:4352\n"
 
 #. type: Plain text
 msgid ""
@@ -2615,15 +2634,14 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "and you see some similar errors in the {project_name} log, it can indicate "
-"that there are incompatible versions of the HotRod protocol being used.  "
-"This is likely happen when you try to use {project_name} with the JDG 7.2 "
-"server or an old version of the Infinispan server. It will help if you add "
-"the `protocolVersion` property as an additional property to the `remote-"
-"store` element in the {project_name} configuration file. For example:"
+"that there are incompatible versions of the Hot Rod protocol being used.  "
+"This is likely happen when you try to use {project_name} with an old version"
+" of the Infinispan server. It will help if you add the `protocolVersion` "
+"property as an additional property to the `remote-store` element in the "
+"{project_name} configuration file. For example:"
 msgstr ""
-"また、{project_name}ログに類似のエラーが表示された場合は、互換性のないバージョンのHotRodプロトコルが使用されていることを示しています。これは、{project_name}をJDG"
-" "
-"7.2サーバーまたは古いバージョンのInfinispanサーバーで使用しようとした場合に発生する可能性があります。{project_name}設定ファイルの"
+"また、{project_name}ログに類似のエラーが表示された場合は、互換性のないバージョンのHot "
+"Rodプロトコルが使用されていることを示しています。これは、{project_name}を古いバージョンのInfinispanサーバーで使用しようとした場合に発生する可能性があります。{project_name}設定ファイルの"
 " `remote-store` 要素に、追加のプロパティーとして `protocolVersion` "
 "プロパティーを追加すると役に立ちます。たとえば次のように設定します。"
 

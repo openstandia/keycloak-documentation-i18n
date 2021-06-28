@@ -488,6 +488,34 @@ msgstr ""
 msgid "    app.get( '/:section/:page', keycloak.protect( protectBySection ), sectionHandler );\n"
 msgstr ""
 
+#. type: Plain text
+msgid "Advanced Login Configuration:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By default, all unauthorized requests will be redirected to the "
+"{project_name} login page unless your client is bearer-only.  However, a "
+"confidential or public client may host both browsable and API endpoints. To "
+"prevent redirects on unauthenticated API requests and instead return an HTTP "
+"401, you can override the redirectToLogin function."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For example, this override checks if the URL contains /api/ and disables "
+"login redirects:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    Keycloak.prototype.redirectToLogin = function(req) {\n"
+"    var apiReqMatcher = /\\/api\\//i;\n"
+"    return !apiReqMatcher.test(req.originalUrl || req.url);\n"
+"    };\n"
+msgstr ""
+
 #. type: Title ====
 #, no-wrap
 msgid "Additional URLs"

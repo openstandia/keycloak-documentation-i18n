@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -337,6 +337,8 @@ msgid ""
 "    <bean id=\"keycloakAuthenticationProcessingFilter\" class=\"org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticationProcessingFilter\">\n"
 "        <constructor-arg name=\"authenticationManager\" ref=\"authenticationManager\" />\n"
 "    </bean>\n"
+"    <bean id=\"keycloakSecurityContextRequestFilter\"\n"
+"          class=\"org.keycloak.adapters.springsecurity.filter.KeycloakSecurityContextRequestFilter\" />\n"
 msgstr ""
 "    <bean id=\"keycloakAuthenticationEntryPoint\" class=\"org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationEntryPoint\">\n"
 "        <constructor-arg ref=\"adapterDeploymentContext\" />\n"
@@ -346,6 +348,8 @@ msgstr ""
 "    <bean id=\"keycloakAuthenticationProcessingFilter\" class=\"org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticationProcessingFilter\">\n"
 "        <constructor-arg name=\"authenticationManager\" ref=\"authenticationManager\" />\n"
 "    </bean>\n"
+"    <bean id=\"keycloakSecurityContextRequestFilter\"\n"
+"          class=\"org.keycloak.adapters.springsecurity.filter.KeycloakSecurityContextRequestFilter\" />\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -399,6 +403,7 @@ msgid ""
 "    <security:http auto-config=\"false\" entry-point-ref=\"keycloakAuthenticationEntryPoint\">\n"
 "        <security:custom-filter ref=\"keycloakPreAuthActionsFilter\" before=\"LOGOUT_FILTER\" />\n"
 "        <security:custom-filter ref=\"keycloakAuthenticationProcessingFilter\" before=\"FORM_LOGIN_FILTER\" />\n"
+"        <security:custom-filter ref=\"keycloakSecurityContextRequestFilter\" after=\"FORM_LOGIN_FILTER\" />\n"
 "        <security:intercept-url pattern=\"/customers**\" access=\"ROLE_USER\" />\n"
 "        <security:intercept-url pattern=\"/admin**\" access=\"ROLE_ADMIN\" />\n"
 "        <security:custom-filter ref=\"logoutFilter\" position=\"LOGOUT_FILTER\" />\n"
@@ -407,6 +412,7 @@ msgstr ""
 "    <security:http auto-config=\"false\" entry-point-ref=\"keycloakAuthenticationEntryPoint\">\n"
 "        <security:custom-filter ref=\"keycloakPreAuthActionsFilter\" before=\"LOGOUT_FILTER\" />\n"
 "        <security:custom-filter ref=\"keycloakAuthenticationProcessingFilter\" before=\"FORM_LOGIN_FILTER\" />\n"
+"        <security:custom-filter ref=\"keycloakSecurityContextRequestFilter\" after=\"FORM_LOGIN_FILTER\" />\n"
 "        <security:intercept-url pattern=\"/customers**\" access=\"ROLE_USER\" />\n"
 "        <security:intercept-url pattern=\"/admin**\" access=\"ROLE_ADMIN\" />\n"
 "        <security:custom-filter ref=\"logoutFilter\" position=\"LOGOUT_FILTER\" />\n"

@@ -5,43 +5,19 @@
 # 
 # Translators:
 # Hiroyuki Wada <wadahiro@gmail.com>, 2019
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#. type: Plain text
-msgid ""
-"This section describes how to secure a WAR directly by adding config and "
-"editing files within your WAR package."
-msgstr "このセクションでは、直接WARパッケージ内に設定を追加し、ファイルを編集することで、WARをセキュリティー保護する方法について説明します。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
-"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
-"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
-"      version=\"3.0\">\n"
-msgstr ""
-"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
-"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
-"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
-"      version=\"3.0\">\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid "\t<module-name>customer-portal</module-name>\n"
-msgstr "\t<module-name>customer-portal</module-name>\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -67,72 +43,23 @@ msgstr ""
 msgid "Adapter Installation"
 msgstr "アダプターのインストール"
 
-#. type: Plain text
-msgid ""
-"Finally you must specify both a `login-config` and use standard servlet "
-"security to specify role-base constraints on your URLs.  Here's an example:"
-msgstr ""
-"最後に、URLに対してロールベース制約を指定するために、 `login-config` "
-"と標準のサーブレット・セキュリティーの両方を指定する必要があります。例を次に示します。"
+#. type: Title =====
+#, no-wrap
+msgid "Required Per WAR Configuration"
+msgstr "WARごとに必要な設定"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"    <login-config>\n"
-"        <auth-method>BASIC</auth-method>\n"
-"        <realm-name>this is ignored currently</realm-name>\n"
-"    </login-config>\n"
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"      version=\"3.0\">\n"
 msgstr ""
-"    <login-config>\n"
-"        <auth-method>BASIC</auth-method>\n"
-"        <realm-name>this is ignored currently</realm-name>\n"
-"    </login-config>\n"
-
-#. type: Plain text
-msgid ""
-"The first thing you must do is create a `WEB-INF/jetty-web.xml` file in your"
-" WAR package.  This is a Jetty specific config file and you must define a "
-"Keycloak specific authenticator within it."
-msgstr ""
-"まず、WARパッケージに `WEB-INF/jetty-web.xml` "
-"ファイルを作成します。これはJetty固有の設定ファイルで、その中にKeycloak固有のAuthenticatorを定義する必要があります。"
-
-#. type: delimited block -
-#, no-wrap
-msgid ""
-"    <security-constraint>\n"
-"        <web-resource-collection>\n"
-"            <web-resource-name>Customers</web-resource-name>\n"
-"            <url-pattern>/*</url-pattern>\n"
-"        </web-resource-collection>\n"
-"        <auth-constraint>\n"
-"            <role-name>user</role-name>\n"
-"        </auth-constraint>\n"
-"        <user-data-constraint>\n"
-"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
-"        </user-data-constraint>\n"
-"    </security-constraint>\n"
-msgstr ""
-"    <security-constraint>\n"
-"        <web-resource-collection>\n"
-"            <web-resource-name>Customers</web-resource-name>\n"
-"            <url-pattern>/*</url-pattern>\n"
-"        </web-resource-collection>\n"
-"        <auth-constraint>\n"
-"            <role-name>user</role-name>\n"
-"        </auth-constraint>\n"
-"        <user-data-constraint>\n"
-"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
-"        </user-data-constraint>\n"
-"    </security-constraint>\n"
-
-#. type: Plain text
-msgid ""
-"Adapters are no longer included with the appliance or war distribution. Each"
-" adapter is a separate download on the Keycloak download site.  They are "
-"also available as a maven artifact."
-msgstr ""
-"アダプターはアプライアンスやwarには含まれていません。各アダプターは、Keycloakのダウンロード・サイトで個別にダウンロードできます。これらは、mavenのアーティファクトとしても利用できます。"
+"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
+"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
+"      version=\"3.0\">\n"
 
 #. type: Title ====
 #, no-wrap
@@ -151,15 +78,23 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
+"Adapters are no longer included with the appliance or war distribution. Each"
+" adapter is a separate download on the Keycloak download site.  They are "
+"also available as a maven artifact."
+msgstr ""
+"アダプターはアプライアンスやwarには含まれていません。各アダプターは、Keycloakのダウンロード・サイトで個別にダウンロードできます。これらは、mavenのアーティファクトとしても利用できます。"
+
+#. type: Plain text
+msgid ""
 "You must unzip the Jetty 9.x distro into Jetty 9.x's "
-"link:https://www.eclipse.org/jetty/documentation/current/startup-base-and-"
-"home.html[base directory].  Including adapter's jars within your WEB-INF/lib"
-" directory will not work! In the example below, the Jetty base is named "
-"`your-base`:"
+"link:https://www.eclipse.org/jetty/documentation/jetty-9/index.html#startup-"
+"base-and-home[base directory].  Including adapter's jars within your WEB-"
+"INF/lib directory will not work! In the example below, the Jetty base is "
+"named `your-base`:"
 msgstr ""
 "Jetty 9.x用の配布物をJetty "
-"9.xのlink:https://www.eclipse.org/jetty/documentation/current/startup-base-"
-"and-home.html[baseディレクトリー]に解凍する必要があります。WEB-"
+"9.xのlink:https://www.eclipse.org/jetty/documentation/jetty-9/index.html"
+"#startup-base-and-home[baseディレクトリー]に解凍する必要があります。WEB-"
 "INF/libディレクトリー内にアダプターのjarを含めても動作しません！以下の例では、Jettyベースの名前は `your-base` です。"
 
 #. type: delimited block -
@@ -181,10 +116,20 @@ msgstr "次に、Jettyベースの `keycloak` モジュールを有効にする�
 msgid "$ java -jar $JETTY_HOME/start.jar --add-to-startd=keycloak\n"
 msgstr "$ java -jar $JETTY_HOME/start.jar --add-to-startd=keycloak\n"
 
-#. type: Title =====
-#, no-wrap
-msgid "Required Per WAR Configuration"
-msgstr "WARごとに必要な設定"
+#. type: Plain text
+msgid ""
+"This section describes how to secure a WAR directly by adding config and "
+"editing files within your WAR package."
+msgstr "このセクションでは、直接WARパッケージ内に設定を追加し、ファイルを編集することで、WARをセキュリティー保護する方法について説明します。"
+
+#. type: Plain text
+msgid ""
+"The first thing you must do is create a `WEB-INF/jetty-web.xml` file in your"
+" WAR package.  This is a Jetty specific config file and you must define a "
+"Keycloak specific authenticator within it."
+msgstr ""
+"まず、WARパッケージに `WEB-INF/jetty-web.xml` "
+"ファイルを作成します。これはJetty固有の設定ファイルで、その中にKeycloak固有のAuthenticatorを定義する必要があります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -309,3 +254,58 @@ msgstr ""
 "KeycloakでWARをセキュリティー保護するために、WARをオープンする必要はありません。代わりに、yourwar"
 ".xmlという名前でwebappsディレクトリーにjetty-"
 "web.xmlファイルを作成します。Jettyはそれをピックアップします。このモードでは、keycloak.jsonの設定をxmlファイル内で直接宣言する必要があります。"
+
+#. type: Plain text
+msgid ""
+"Finally you must specify both a `login-config` and use standard servlet "
+"security to specify role-base constraints on your URLs.  Here's an example:"
+msgstr ""
+"最後に、URLに対してロールベース制約を指定するために、 `login-config` "
+"と標準のサーブレット・セキュリティーの両方を指定する必要があります。例を次に示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "\t<module-name>customer-portal</module-name>\n"
+msgstr "\t<module-name>customer-portal</module-name>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <security-constraint>\n"
+"        <web-resource-collection>\n"
+"            <web-resource-name>Customers</web-resource-name>\n"
+"            <url-pattern>/*</url-pattern>\n"
+"        </web-resource-collection>\n"
+"        <auth-constraint>\n"
+"            <role-name>user</role-name>\n"
+"        </auth-constraint>\n"
+"        <user-data-constraint>\n"
+"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
+"        </user-data-constraint>\n"
+"    </security-constraint>\n"
+msgstr ""
+"    <security-constraint>\n"
+"        <web-resource-collection>\n"
+"            <web-resource-name>Customers</web-resource-name>\n"
+"            <url-pattern>/*</url-pattern>\n"
+"        </web-resource-collection>\n"
+"        <auth-constraint>\n"
+"            <role-name>user</role-name>\n"
+"        </auth-constraint>\n"
+"        <user-data-constraint>\n"
+"            <transport-guarantee>CONFIDENTIAL</transport-guarantee>\n"
+"        </user-data-constraint>\n"
+"    </security-constraint>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    <login-config>\n"
+"        <auth-method>BASIC</auth-method>\n"
+"        <realm-name>this is ignored currently</realm-name>\n"
+"    </login-config>\n"
+msgstr ""
+"    <login-config>\n"
+"        <auth-method>BASIC</auth-method>\n"
+"        <realm-name>this is ignored currently</realm-name>\n"
+"    </login-config>\n"

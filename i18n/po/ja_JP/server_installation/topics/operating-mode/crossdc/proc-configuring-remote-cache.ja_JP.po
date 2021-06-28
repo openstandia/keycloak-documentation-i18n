@@ -1,0 +1,518 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# jic_m_mito <jic-m-mito@nri.co.jp>, 2021
+# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ==
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Block title
+#, no-wrap
+msgid "Additional resources"
+msgstr "追加のリソース"
+
+#. type: Title =
+#, no-wrap
+msgid "Configuring Remote Cache Stores on {project_name}"
+msgstr "{project_name}でのリモート・キャッシュ・ストアの設定"
+
+#. type: Plain text
+msgid ""
+"After you set up remote {jdgserver_name} clusters, you configure the "
+"Infinispan subsystem on {project_name} to externalize data to those clusters"
+" through remote stores."
+msgstr ""
+"リモートの{jdgserver_name}クラスターをセットアップした後、{project_name}でInfinispanサブシステムを設定して、リモートストアを介してそれらのクラスターにデータを外部化します。"
+
+#. type: Plain text
+msgid "Set up remote {jdgserver_name} clusters for cross-site configuration."
+msgstr "クロスサイト設定用にリモート{jdgserver_name}クラスターをセットアップします。"
+
+#. type: Plain text
+msgid ""
+"Create a truststore that contains the SSL certificate with the "
+"{jdgserver_name} Server identity."
+msgstr "{jdgserver_name}ServerのIDを持つSSL証明書を含むトラストストアを作成します。"
+
+#. type: Plain text
+msgid "Add the truststore to the {project_name} deployment."
+msgstr "トラストストアを{project_name}の配備に追加します。"
+
+#. type: Plain text
+msgid "Create a socket binding that points to your {jdgserver_name} cluster."
+msgstr "{jdgserver_name}クラスターを指すソケット・バインディングを作成します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<outbound-socket-binding name=\"remote-cache\"> <1>\n"
+"  <remote-destination host=\"${remote.cache.host:server_hostname}\" <2>\n"
+"                      port=\"${remote.cache.port:11222}\"/> <3>\n"
+"</outbound-socket-binding>\n"
+msgstr ""
+"<outbound-socket-binding name=\"remote-cache\"> <1>\n"
+"  <remote-destination host=\"${remote.cache.host:server_hostname}\" <2>\n"
+"                      port=\"${remote.cache.port:11222}\"/> <3>\n"
+"</outbound-socket-binding>\n"
+
+#. type: Plain text
+msgid "Names the socket binding as `remote-cache`."
+msgstr "ソケット・バインディングに `remote-cache` という名前を付けます。"
+
+#. type: Plain text
+msgid "Specifies one or more hostnames for the {jdgserver_name} cluster."
+msgstr "{jdgserver_name}クラスターに対して1つ以上のホスト名を指定します。"
+
+#. type: Plain text
+msgid "Defines the port of `11222` where the Hot Rod endpoint listens."
+msgstr "HotRodエンドポイントがリッスンする `11222` のポートを定義します。"
+
+#. type: Plain text
+msgid ""
+"Add the `org.keycloak.keycloak-model-infinispan` module to the `keycloak` "
+"cache container in the Infinispan subsystem."
+msgstr ""
+"`org.keycloak.keycloak-model-infinispan` モジュールをInfinispanサブシステムの `keycloak` "
+"キャッシュ・コンテナーに追加します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<subsystem xmlns=\"urn:jboss:domain:infinispan:11.0\">\n"
+"    <cache-container name=\"keycloak\"\n"
+"                     module=\"org.keycloak.keycloak-model-infinispan\"/>\n"
+msgstr ""
+"<subsystem xmlns=\"urn:jboss:domain:infinispan:11.0\">\n"
+"    <cache-container name=\"keycloak\"\n"
+"                     module=\"org.keycloak.keycloak-model-infinispan\"/>\n"
+
+#. type: Plain text
+msgid ""
+"Update the `work` cache in the Infinispan subsystem so it has the following "
+"configuration:"
+msgstr "Infinispanサブシステムの `work` キャッシュを更新して、次の設定にします。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<replicated-cache name=\"work\"> <1>\n"
+"    <remote-store cache=\"work\" <2>\n"
+"                  remote-servers=\"remote-cache\" <3>\n"
+"                  passivation=\"false\"\n"
+"                  fetch-state=\"false\"\n"
+"                  purge=\"false\"\n"
+"                  preload=\"false\"\n"
+"                  shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_username\">myuser</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_password\">qwer1234!</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_realm\">default</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_server_name\">infinispan</property>\n"
+"ifeval::[{project_product}==true]\n"
+"        <property name=\"infinispan.client.hotrod.sasl_mechanism\">DIGEST-MD5</property>\n"
+"endif::[]\n"
+"ifeval::[{project_community}==true]\n"
+"        <property name=\"infinispan.client.hotrod.sasl_mechanism\">SCRAM-SHA-512</property>\n"
+"endif::[]\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_file_name\">/path/to/truststore.jks</property>\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_type\">JKS</property>\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_password\">password</property>\n"
+"    </remote-store>\n"
+"</replicated-cache>\n"
+msgstr ""
+"<replicated-cache name=\"work\"> <1>\n"
+"    <remote-store cache=\"work\" <2>\n"
+"                  remote-servers=\"remote-cache\" <3>\n"
+"                  passivation=\"false\"\n"
+"                  fetch-state=\"false\"\n"
+"                  purge=\"false\"\n"
+"                  preload=\"false\"\n"
+"                  shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_username\">myuser</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_password\">qwer1234!</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_realm\">default</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_server_name\">infinispan</property>\n"
+"ifeval::[{project_product}==true]\n"
+"        <property name=\"infinispan.client.hotrod.sasl_mechanism\">DIGEST-MD5</property>\n"
+"endif::[]\n"
+"ifeval::[{project_community}==true]\n"
+"        <property name=\"infinispan.client.hotrod.sasl_mechanism\">SCRAM-SHA-512</property>\n"
+"endif::[]\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_file_name\">/path/to/truststore.jks</property>\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_type\">JKS</property>\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_password\">password</property>\n"
+"    </remote-store>\n"
+"</replicated-cache>\n"
+
+#. type: Plain text
+msgid "Names the cache in the {jdgserver_name} configuration."
+msgstr "{jdgserver_name}の設定でキャッシュに名前を付けます。"
+
+#. type: Plain text
+msgid "Names the corresponding cache on the remote {jdgserver_name} cluster."
+msgstr "リモート{jdgserver_name}クラスター上の対応するキャッシュに名前を付けます。"
+
+#. type: Plain text
+msgid "Specifies the `remote-cache` socket binding."
+msgstr "`remote-cache` ソケット・バインディングを指定します。"
+
+#. type: Plain text
+msgid ""
+"The preceding cache configuration includes recommended settings for "
+"{jdgserver_name} caches.  Hot Rod client configuration properties specify "
+"the {jdgserver_name} user credentials and SSL keystore and truststore "
+"details."
+msgstr ""
+"上記のキャッシュ設定には、{jdgserver_name}キャッシュの推奨設定が含まれています。Hot "
+"Rodクライアント設定プロパティーは、{jdgserver_name}ユーザー・クレデンシャルとSSLのキーストアおよびトラストストアの詳細を指定します。"
+
+#. type: Plain text
+msgid "Refer to the"
+msgstr "次の文書を参照してください。"
+
+#. type: Plain text
+msgid ""
+"https://infinispan.org/docs/11.0.x/titles/xsite/xsite.html"
+"#configure_clients-xsite[{jdgserver_name} documentation]"
+msgstr ""
+"https://infinispan.org/docs/11.0.x/titles/xsite/xsite.html"
+"#configure_clients-xsite[{jdgserver_name} documentation]"
+
+#. type: Plain text
+msgid ""
+"https://access.redhat.com/documentation/en-us/red_hat_data_grid/8.1/html-"
+"single/data_grid_guide_to_cross-site_replication/index#configure_clients-"
+"xsite[{jdgserver_name} documentation]"
+msgstr ""
+"https://access.redhat.com/documentation/en-us/red_hat_data_grid/8.1/html-"
+"single/data_grid_guide_to_cross-site_replication/index#configure_clients-"
+"xsite[{jdgserver_name} documentation]"
+
+#. type: Plain text
+msgid "for descriptions of each property."
+msgstr "各プロパティーの説明については"
+
+#. type: Plain text
+msgid ""
+"Add distributed caches to the Infinispan subsystem for each of the following"
+" caches:"
+msgstr "次の各キャッシュに対する分散キャッシュをInfinispanサブシステムに追加します。"
+
+#. type: Plain text
+msgid "sessions"
+msgstr "sessions"
+
+#. type: Plain text
+msgid "clientSessions"
+msgstr "clientSessions"
+
+#. type: Plain text
+msgid "offlineSessions"
+msgstr "offlineSessions"
+
+#. type: Plain text
+msgid "offlineClientSessions"
+msgstr "offlineClientSessions"
+
+#. type: Plain text
+msgid "actionTokens"
+msgstr "actionTokens"
+
+#. type: Plain text
+msgid "loginFailures"
+msgstr "loginFailures"
+
+#. type: Plain text
+msgid ""
+"For example, add a cache named `sessions` with the following configuration:"
+msgstr "たとえば、次の設定で `sessions` という名前のキャッシュを追加します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<distributed-cache name=\"sessions\" <1>\n"
+"                   owners=\"1\"> <2>\n"
+"    <remote-store cache=\"sessions\" <3>\n"
+"                  remote-servers=\"remote-cache\" <4>\n"
+"                  passivation=\"false\"\n"
+"                  fetch-state=\"false\"\n"
+"                  purge=\"false\"\n"
+"                  preload=\"false\"\n"
+"                  shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_username\">myuser</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_password\">qwer1234!</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_realm\">default</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_server_name\">infinispan</property>\n"
+"ifeval::[{project_product}==true]\n"
+"        <property name=\"infinispan.client.hotrod.sasl_mechanism\">DIGEST-MD5</property>\n"
+"endif::[]\n"
+"ifeval::[{project_community}==true]\n"
+"        <property name=\"infinispan.client.hotrod.sasl_mechanism\">SCRAM-SHA-512</property>\n"
+"endif::[]\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_file_name\">/path/to/truststore.jks</property>\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_type\">JKS</property>\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_password\">password</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+msgstr ""
+"<distributed-cache name=\"sessions\" <1>\n"
+"                   owners=\"1\"> <2>\n"
+"    <remote-store cache=\"sessions\" <3>\n"
+"                  remote-servers=\"remote-cache\" <4>\n"
+"                  passivation=\"false\"\n"
+"                  fetch-state=\"false\"\n"
+"                  purge=\"false\"\n"
+"                  preload=\"false\"\n"
+"                  shared=\"true\">\n"
+"        <property name=\"rawValues\">true</property>\n"
+"        <property name=\"marshaller\">org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_username\">myuser</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_password\">qwer1234!</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_realm\">default</property>\n"
+"        <property name=\"infinispan.client.hotrod.auth_server_name\">infinispan</property>\n"
+"ifeval::[{project_product}==true]\n"
+"        <property name=\"infinispan.client.hotrod.sasl_mechanism\">DIGEST-MD5</property>\n"
+"endif::[]\n"
+"ifeval::[{project_community}==true]\n"
+"        <property name=\"infinispan.client.hotrod.sasl_mechanism\">SCRAM-SHA-512</property>\n"
+"endif::[]\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_file_name\">/path/to/truststore.jks</property>\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_type\">JKS</property>\n"
+"        <property name=\"infinispan.client.hotrod.trust_store_password\">password</property>\n"
+"    </remote-store>\n"
+"</distributed-cache>\n"
+
+#. type: Plain text
+msgid ""
+"Configures one replica of each cache entry across the {jdgserver_name} "
+"cluster."
+msgstr "{jdgserver_name}クラスター全体で各キャッシュ・エントリーのレプリカを1つ設定します。"
+
+#. type: Plain text
+msgid ""
+"Copy the `NODE11` to 3 other directories referred later as `NODE12`, "
+"`NODE21` and `NODE22`."
+msgstr ""
+"`NODE11` を後述する `NODE12` 、 `NODE21` 、 `NODE22` という3つのディレクトリーにコピーしてください。"
+
+#. type: Plain text
+msgid "Start `NODE11` :"
+msgstr "次のように、 `NODE11` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE11/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE11/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid ""
+"If you notice the following warning messages in logs, you can safely ignore "
+"them:"
+msgstr "ログに次の警告メッセージが表示された場合は、無視しても問題ありません。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"WARN  [org.infinispan.CONFIG] (MSC service thread 1-5) ISPN000292: Unrecognized attribute 'infinispan.client.hotrod.auth_password'. Please check your configuration. Ignoring!\n"
+"WARN  [org.infinispan.CONFIG] (MSC service thread 1-5) ISPN000292: Unrecognized attribute 'infinispan.client.hotrod.auth_username'. Please check your configuration. Ignoring!\n"
+msgstr ""
+"WARN  [org.infinispan.CONFIG] (MSC service thread 1-5) ISPN000292: Unrecognized attribute 'infinispan.client.hotrod.auth_password'. Please check your configuration. Ignoring!\n"
+"WARN  [org.infinispan.CONFIG] (MSC service thread 1-5) ISPN000292: Unrecognized attribute 'infinispan.client.hotrod.auth_username'. Please check your configuration. Ignoring!\n"
+
+#. type: Plain text
+msgid "Start `NODE12` :"
+msgstr "次のように、 `NODE12` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE12/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE12/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid ""
+"The cluster nodes should be connected. Something like this should be in the "
+"log of both NODE11 and NODE12:"
+msgstr "クラスター・ノードを接続する必要があります。このようなものは、NODE11とNODE12のどちらのログにも残っていなければなりません。"
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node11|1] (2) [node11, "
+"node12]"
+msgstr ""
+"Received new cluster view for channel keycloak: [node11|1] (2) [node11, "
+"node12]"
+
+#. type: Plain text
+msgid "The channel name in the log might be different."
+msgstr "ログにあるチャネル名とは異なっている可能性があります。"
+
+#. type: Plain text
+msgid "Start `NODE21` :"
+msgstr "次のように、 `NODE21` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE21/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE21/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid ""
+"It shouldn't be connected to the cluster with `NODE11` and `NODE12`, but to "
+"a separate one:"
+msgstr "`NODE11` と `NODE12` を使用してクラスターに接続するのではなく、別のクラスターに接続する必要があります。"
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node21|0] (1) [node21]"
+msgstr ""
+"Received new cluster view for channel keycloak: [node21|0] (1) [node21]"
+
+#. type: Plain text
+msgid "Start `NODE22` :"
+msgstr "次のように、 `NODE22` を起動してください。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"cd NODE22/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+msgstr ""
+"cd NODE22/bin\n"
+"./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \\\n"
+"  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \\\n"
+"  -Djava.net.preferIPv4Stack=true -b _PUBLIC_IP_ADDRESS_\n"
+
+#. type: Plain text
+msgid "It should be in cluster with `NODE21` :"
+msgstr "`NODE21` をクラスター化する必要があります。"
+
+#. type: Code block
+msgid ""
+"Received new cluster view for channel keycloak: [node21|1] (2) [node21, "
+"node22]"
+msgstr ""
+"Received new cluster view for channel keycloak: [node21|1] (2) [node21, "
+"node22]"
+
+#. type: Plain text
+msgid "Test:"
+msgstr "次のように、テストを行ってください。"
+
+#. type: Plain text
+msgid "Go to `http://node11:8080/auth/` and create the initial admin user."
+msgstr "`http://node11:8080/auth/` に移動し、最初の管理者ユーザーを作成します。"
+
+#. type: Plain text
+msgid ""
+"Go to `http://node11:8080/auth/admin` and login as admin to admin console."
+msgstr "`http://node11:8080/auth/admin` に移動し、管理者として管理コンソールにログインします。"
+
+#. type: Plain text
+msgid ""
+"Open a second browser and go to any of nodes `http://node12:8080/auth/admin`"
+" or `http://node21:8080/auth/admin` or `http://node22:8080/auth/admin`. "
+"After login, you should be able to see the same sessions in tab `Sessions` "
+"of particular user, client or realm on all 4 servers."
+msgstr ""
+"2つ目のブラウザーを開き、 `http://node12:8080/auth/admin` または "
+"`http://node21:8080/auth/admin` もしくは `http://node22:8080/auth/admin` "
+"のいずれかのノードに移動します。ログイン後、4つのすべてのサーバー上の特定のユーザー、クライアントまたはレルムの `Sessions` "
+"タブで同じセッションを表示できます。"
+
+#. type: Plain text
+msgid ""
+"After making a change in the {project_name} Admin Console, such as modifying"
+" a user or a relam, that change should be immediately visible on any of the "
+"four nodes. Caches should be properly invalidated everywhere."
+msgstr ""
+"ユーザーやレルムの変更など、{project_name}管理コンソールで変更を加えた後、その変更は4つのノードのいずれかですぐに表示されます。キャッシュはどこでも適切に無効化する必要があります。"
+
+#. type: Plain text
+msgid ""
+"Check server.logs if needed. After login or logout, the message like this "
+"should be on all the nodes `NODEXY/standalone/log/server.log` :"
+msgstr ""
+"必要に応じてserver.logsを確認してください。ログインまたはログアウト後、以下のようなメッセージがすべての "
+"`NODEXY/standalone/log/server.log` ノードに表示される必要があります。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store.\n"
+"Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
+msgstr ""
+"2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store.\n"
+"Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'\n"
+
+#. type: Plain text
+msgid ""
+"link:https://access.redhat.com/documentation/en-us/red_hat_data_grid/8.1"
+"/html-single/configuring_data_grid/index[Data Grid Configuration Guide] + "
+"link:https://access.redhat.com/webassets/avalon/d/red-hat-data-"
+"grid/8.1/api/org/infinispan/client/hotrod/configuration/package-"
+"summary.html[Hot Rod Client Configuration API] + "
+"link:https://access.redhat.com/webassets/avalon/d/red-hat-data-"
+"grid/8.1/configdocs/[Data Grid Configuration Schema Reference]"
+msgstr ""
+"link:https://access.redhat.com/documentation/en-us/red_hat_data_grid/8.1"
+"/html-single/configuring_data_grid/index[Data Grid Configuration Guide] + "
+"link:https://access.redhat.com/webassets/avalon/d/red-hat-data-"
+"grid/8.1/api/org/infinispan/client/hotrod/configuration/package-"
+"summary.html[Hot Rod Client Configuration API] + "
+"link:https://access.redhat.com/webassets/avalon/d/red-hat-data-"
+"grid/8.1/configdocs/[Data Grid Configuration Schema Reference]"

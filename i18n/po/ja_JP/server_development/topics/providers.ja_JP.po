@@ -6,14 +6,14 @@
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2020
 # katakura__pro <h.katakura@pro-japan.co.jp>, 2020
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,6 +25,11 @@ msgstr ""
 #, no-wrap
 msgid "Authenticator"
 msgstr "オーセンティケーター"
+
+#. type: delimited block -
+#, no-wrap
+msgid "import ...\n"
+msgstr "import ...\n"
 
 #. type: Title ==
 #, no-wrap
@@ -71,11 +76,6 @@ msgstr "ThemeSelectorProviderFactoryのサンプルを次に示します。"
 #, no-wrap
 msgid "package org.acme.provider;\n"
 msgstr "package org.acme.provider;\n"
-
-#. type: delimited block -
-#, no-wrap
-msgid "import ...\n"
-msgstr "import ...\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -355,6 +355,87 @@ msgstr ""
 "        return ret;\n"
 "    }\n"
 "}\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Use available providers"
+msgstr "利用可能なプロバイダーを使用する"
+
+#. type: Plain text
+msgid ""
+"In your provider implementation, you can use other providers available in "
+"{project_name}. The existing providers can be typically retrieved with the "
+"usage of the `KeycloakSession`, which is available to your provider as "
+"described in the section <<_implementing_spi,Implementing an SPI>>."
+msgstr ""
+"プロバイダーの実装では、{project_name} で利用可能な他のプロバイダーを使用できます。通常、既存のプロバイダーは "
+"`KeycloakSession` を使用して取得できます。セクション<<_implementing_spi,SPI "
+"の実装>>で説明されているように、これをプロバイダーに利用できます。"
+
+#. type: Plain text
+msgid "{project_name} has two provider types:"
+msgstr "{project_name} には次の2つのプロバイダーのタイプがあります。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"*Single-implementation provider types* - There can be only a single active implementation of the particular provider type in {project_name} runtime.\n"
+"For example `HostnameProvider` specifies the hostname to be used by {project_name} and that is shared for the whole {project_name} server.\n"
+"Hence there can be only single implementation of this provider active for the {project_name} server. If there are multiple provider implementations available to the server runtime,\n"
+"one of them needs to be specified in the keycloak subsystem configuration in the `standalone.xml` as the default one. For example such as:\n"
+msgstr ""
+"*単一実装のプロバイダータイプ* - {project_name} "
+"ランタイムには、特定のプロバイダータイプの単一のアクティブな実装のみが存在できます。たとえば、 `HostnameProvider` "
+"は、{project_name}によって使用されるホスト名を指定し、{project_name}サーバー全体で共有されます。したがって、{project_name}サーバーに対してアクティブなこのプロバイダーの実装は"
+" 1 つしかありません。サーバーランタイムで使用できるプロバイダー実装が複数ある場合、そのうちの1つは、 `standalone.xml` "
+"のkeycloakサブシステム設定でデフォルトとして指定する必要があります。たとえば、次のようなものです。\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"hostname\">\n"
+"    <default-provider>default</default-provider>\n"
+"    ...\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"hostname\">\n"
+"    <default-provider>default</default-provider>\n"
+"    ...\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid ""
+"The value `default` used as the value of `default-provider` must match the "
+"ID returned by the `ProviderFactory.getId()` of the particular provider "
+"factory implementation.  In the code, you can obtain the provider such as "
+"`keycloakSession.getProvider(HostnameProvider.class)`"
+msgstr ""
+" `default-provider` の値として使用される `default` の値は、特定のプロバイダー・ファクトリーの実装の "
+"`ProviderFactory.getId()` によって返されるIDと一致する必要があります。 コードでは、 "
+"`keycloakSession.getProvider(HostnameProvider.class)` などのプロバイダーを取得できます。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"*Multiple implementation provider types* - Those are provider types, that allow multiple implementations available and working together\n"
+"in the {project_name} runtime. For example `EventListener` provider allows to have multiple implementations available and registered, which means\n"
+"that particular event can be sent to all the listeners (jboss-logging, sysout etc). In the code, you can obtain a specified instance of the provider\n"
+"for example such as `session.getProvider(EventListener.class, \"jboss-logging\")` . You need to specify `provider_id` of the provider as the second argument\n"
+"as there can be multiple instances of this provider type as described above. The provider ID must match the ID returned by the `ProviderFactory.getId()` of the\n"
+"particular provider factory implementation. Some provider types can be retrieved with the usage of `ComponentModel` as the second argument and some (for example `Authenticator`) even\n"
+"need to be retrieved with the usage of `KeycloakSessionFactory`. It is not recommended to implement your own providers this way as it may be deprecated in the future.\n"
+msgstr ""
+"*複数の実装プロバイダー・タイプ* - "
+"複数の実装が利用可能で、{project_name}ランタイムで一緒に動作できるプロバイダー・タイプです。たとえば、 `EventListener` "
+"プロバイダーでは、複数の実装を使用可能にして登録できます。これは、特定のイベントをすべてのリスナー (jboss-logging、sysout など) "
+"に送信できることを意味します。コードでは、例えば `session.getProvider(EventListener.class, \"jboss-"
+"logging\")` "
+"などのプロバイダーの指定されたインスタンスを取得できます。上記のように、このプロバイダー・タイプには複数のインスタンスが存在する可能性があるため、プロバイダーの"
+" `provider_id` を 2 番目の引数として指定する必要があります。プロバイダーIDは、特定のプロバイダー ファクトリ実装の "
+"`ProviderFactory.getId()` によって返されるIDと一致する必要があります。一部のプロバイダー・タイプは、2番目の引数として "
+"`ComponentModel` を使用して取得でき、一部 (たとえば `Authenticator` ) は "
+"`KeycloakSessionFactory` "
+"を使用して取得する必要さえあります。将来的に廃止される可能性があるため、この方法で独自のプロバイダーを実装することはお勧めしません。\n"
 
 #. type: Title ===
 #, no-wrap

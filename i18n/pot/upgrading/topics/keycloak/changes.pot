@@ -31,6 +31,141 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
+msgid "Migrating to 13.0.0"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Manual migration step needed"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Manual change is required when the standalone.xml contains references to any "
+"of the SmallRye modules.  SmallRye modules were removed from the underlying "
+"{appserver_name} distribution, and the server does not start if the "
+"configuration references them. Thus if the configuration in the `standalone."
+"xml` refers to these modules, the server configuration migration via "
+"`migrate-standalone.cli` fails before any changes are made to the "
+"configuration.  In such case, to perform server configuration migration, you "
+"have to manually remove all the lines that refer to SmallRye modules. In the "
+"default configuration, you need to remove specifically the following lines:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"<extension module=\"org.wildfly.extension.microprofile.config-smallrye\"/> "
+"<extension module=\"org.wildfly.extension.microprofile.health-smallrye\"/> "
+"<extension module=\"org.wildfly.extension.microprofile.metrics-smallrye\"/>"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"<subsystem xmlns=\"urn:wildfly:microprofile-config-smallrye:1.0\"/> "
+"<subsystem xmlns=\"urn:wildfly:microprofile-health-smallrye:2.0\" security-"
+"enabled=\"false\" empty-liveness-checks-status=\"${env."
+"MP_HEALTH_EMPTY_LIVENESS_CHECKS_STATUS:UP}\" empty-readiness-checks-status="
+"\"${env.MP_HEALTH_EMPTY_READINESS_CHECKS_STATUS:UP}\"/> <subsystem xmlns="
+"\"urn:wildfly:microprofile-metrics-smallrye:2.0\" security-enabled=\"false\" "
+"exposed-subsystems=\"*\" prefix=\"${wildfly.metrics.prefix:wildfly}\"/>"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Upgrade to Wildfly 23"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 23 as the underlying "
+"container. This does not directly involve any specific {project_name} server "
+"functionality, however, note these changes related to migration:"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Dependency updates"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by the Wildfly 23 server. "
+"For example, Infinispan is now `11.0.9.Final`."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Configuration changes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A few configuration changes exist in the `standalone(-ha).xml` and `domain."
+"xml` files. You should follow the <<_install_new_version>> section to handle "
+"the migration of configuration files automatically. However, here are the "
+"most important changes, which you may need if you made your own "
+"configuration changes:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `module` attribute of Infinispan cache containers is now *deprecated* "
+"(unused) and is *replaced with* the `modules` attribute,"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"representing the set of modules associated with this cache container's "
+"configuration. Moreover, there were also additional changes to attributes of "
+"various elements, originating from the use of Wildfly 23 as the underlying "
+"container. For example, the `managed-executor-service` and `managed-"
+"scheduled-executor-service` elements now recognize the new `hung-task-"
+"termination-period` attribute. See link:https://docs.wildfly.org/23/"
+"wildscribe/index.html[the Wildfly 23 full model reference] for details."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Upgrade to Wildfly 22"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 22 as the underlying "
+"container. This does not directly involve any specific {project_name} server "
+"functionality, however, note these changes related to migration:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by the Wildfly 22 server. "
+"For example, Infinispan is now `11.0.8.Final`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The link:https://docs.wildfly.org/22/Admin_Guide."
+"html#MicroProfile_Config_SmallRye[Eclipse MicroProfile Config], link:https://"
+"docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Health_SmallRye[Eclipse "
+"MicroProfile Health], and link:https://docs.wildfly.org/22/Admin_Guide."
+"html#MicroProfile_Metrics_SmallRye[Eclipse MicroProfile Metrics] subsystems "
+"are replaced with link:https://docs.wildfly.org/22/Admin_Guide."
+"html#Health[WildFly subsystem for health] and link:https://docs.wildfly."
+"org/22/Admin_Guide.html#MicroProfile_Metrics_SmallRye[WildFly subsystem for "
+"base metrics]."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The default Wildfly configuration now uses the ability to make use of an "
+"automatically generated self-signed certificate with Elytron. Refer to link:"
+"https://docs.wildfly.org/22/WildFly_Elytron_Security.html#update-wildfly-to-"
+"use-the-default-elytron-components-for-application-authentication[a "
+"dedicated `applicationSSC` server SSL context section] for details."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 12.0.2"
 msgstr ""
 
@@ -112,39 +247,19 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 21 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but a few changes related to the migration, which are worth "
-"mentioning."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Dependency updates"
+"functionality, however, note these changes related to migration:"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The dependencies were updated to the versions used by Wildfly 21 server. For "
-"example, Infinispan is now 11.0.4.Final."
-msgstr ""
-
-#. type: Title ====
-#, no-wrap
-msgid "Configuration changes"
+"The dependencies were updated to the versions used by the Wildfly 21 server. "
+"For example, Infinispan is now 11.0.4.Final."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"A few configuration changes exist in the `standalone(-ha).xml` and `domain."
-"xml` files. You should follow the <<_install_new_version>> section to handle "
-"the migration of configuration files automatically. If more detail is "
-"needed, because, for example, you did some configuration changes on your "
-"own, the list of the most important changes follows:"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The `object-memory` element of Infinispan caches is now deprecated (unused) "
-"and was replaced with the `heap-memory` element."
+"The `object-memory` element of Infinispan caches is now *deprecated* "
+"(unused) and is *replaced with* the `heap-memory` element."
 msgstr ""
 
 #. type: Title ====
@@ -219,14 +334,13 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 20 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but a few changes related to the migration, which are worth "
-"mentioning."
+"functionality, however, note these changes related to migration:"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The dependencies were updated to the versions used by Wildfly 20 server. For "
-"example, Infinispan is now 10.1.8.Final."
+"The dependencies were updated to the versions used by the Wildfly 20 server. "
+"For example, Infinispan is now 10.1.8.Final."
 msgstr ""
 
 #. type: Plain text
@@ -337,7 +451,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Instagram IdP now uses new API as the old legacy API was deprecated. This "
+"Instagram IdP now uses new API as the old legacy API was *deprecated*. This "
 "requires getting new API credentials. For details, please refer to the link:"
 "{adminguide_link}#instagram[{adminguide_name}]."
 msgstr ""
@@ -505,8 +619,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The old request and fixed hostname providers have been replaced with a new "
-"default hostname provider. The request and fixed hostname providers are now "
+"The old request and fixed hostname providers are replaced with a new default "
+"hostname provider. The request and fixed hostname providers are now "
 "deprecated and it is recommended to switch to the default hostname provider "
 "as soon as possible."
 msgstr ""
@@ -520,14 +634,13 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 18 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but a few changes related to the migration, which are worth "
-"mentioning."
+"functionality, however, note these changes related to migration:"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The dependencies were updated to the versions used by Wildfly 18 server. For "
-"example, Infinispan is now 9.4.16.Final."
+"The dependencies were updated to the versions used by the Wildfly 18 server. "
+"For example, Infinispan is now 9.4.16.Final."
 msgstr ""
 
 #. type: Plain text
@@ -587,12 +700,12 @@ msgid ""
 "Regarding migration, the most important change is removing the support for "
 "the OPTIONAL requirement from authentication executions and replacing it "
 "with the CONDITIONAL requirement, which allows more flexibility. The "
-"existing OPTIONAL authenticators configured in the previous version will be "
-"replaced with the CONDITIONAL subflows. These subflows will have the "
-"`Condition - User Configured` condition configured as first execution, and "
-"the previously OPTIONAL authenticator (for example `OTP Form`) as second "
-"execution.  From the user's point of view, the behavior during "
-"authentication should be same as in the previous version."
+"existing OPTIONAL authenticators configured in the previous version are "
+"replaced with the CONDITIONAL subflows. These subflows have the `Condition - "
+"User Configured` condition configured as first execution, and the previously "
+"OPTIONAL authenticator (for example `OTP Form`) as second execution. From "
+"the user's point of view, the behavior during authentication is the same as "
+"in the previous version."
 msgstr ""
 
 #. type: Labeled list
@@ -657,14 +770,13 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 17 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but a few changes related to the migration, which are worth "
-"mentioning."
+"functionality, however, note these changes related to migration:"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The dependencies were updated to the versions used by Wildfly 17 server. For "
-"example, Infinispan is now 9.4.14.Final."
+"The dependencies were updated to the versions used by the Wildfly 17 server. "
+"For example, Infinispan is now 9.4.14.Final."
 msgstr ""
 
 #. type: Title ===
@@ -681,14 +793,13 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 16 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but a few changes related to the migration, which are worth "
-"mentioning."
+"functionality, however, note these changes related to migration:"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The dependencies were updated to the versions used by Wildfly 16 server. For "
-"example, Infinispan is now 9.4.8.Final."
+"The dependencies were updated to the versions used by the Wildfly 16 server. "
+"For example, Infinispan is now 9.4.8.Final."
 msgstr ""
 
 #. type: Title ===
@@ -752,14 +863,13 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 15 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but a few changes related to the migration, which are worth "
-"mentioning."
+"functionality, however, note these changes related to migration:"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The dependencies were updated to the versions used by Wildfly 15 server. For "
-"example, Infinispan is now 9.4.3.Final."
+"The dependencies were updated to the versions used by the Wildfly 15 server. "
+"For example, Infinispan is now 9.4.3.Final."
 msgstr ""
 
 #. type: Title ===
@@ -943,14 +1053,13 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 14 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but a few changes related to the migration, which are worth "
-"mentioning."
+"functionality, however, note these changes related to migration:"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The dependencies were updated to the versions used by Wildfly 14 server. For "
-"example, Infinispan is now 9.3.1.Final."
+"The dependencies were updated to the versions used by the Wildfly 14 server. "
+"For example, Infinispan is now 9.3.1.Final."
 msgstr ""
 
 #. type: Plain text
@@ -979,35 +1088,25 @@ msgstr ""
 msgid ""
 "The {project_name} server was upgraded to use Wildfly 13 as the underlying "
 "container. This does not directly involve any specific {project_name} server "
-"functionality, but a few changes related to the migration, which are worth "
-"mentioning."
+"functionality, however, note these changes related to migration:"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The dependencies were updated to the versions used by Wildfly 13 server. For "
-"example, Infinispan is now 9.2.4.Final and Undertow is 2.0.9.Final"
+"The dependencies were updated to the versions used by the Wildfly 13 server. "
+"For example, Infinispan is now 9.2.4.Final and Undertow is 2.0.9.Final"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"A few configuration changes exist in the `standalone(-ha).xml` and `domain."
-"xml` files. You should follow the <<_install_new_version>> section to handle "
-"the migration of configuration files automatically. If more detail is "
-"needed, because, for example, you did some configuration changes on your "
-"own, here is a list of the most important changes:"
+"Element `eviction` on infinispan caches is now *deprecated* (unused) and is "
+"*replaced with* element `object-memory`"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Element `eviction` on infinispan caches is now deprecated (unused) and was "
-"replaced by element `object-memory`"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The `cache-container` element in Infinispan subsystem does not recognize the "
-"`jndi-attribute` anymore."
+"The `cache-container` element in Infinispan subsystem *does not recognize* "
+"the `jndi-attribute` anymore."
 msgstr ""
 
 #. type: Plain text
@@ -1137,7 +1236,7 @@ msgstr ""
 msgid ""
 "The switch `Scope Param Required` was removed from Role Detail. The switches "
 "`Consent Required` and `Consent Text` were removed from the Protocol Mapper "
-"details. Those switches were replaced by the Client Scope feature."
+"details. Those switches are replaced with the Client Scope feature."
 msgstr ""
 
 #. type: Title ===
@@ -1585,13 +1684,13 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "`databaseSchema` property deprecated"
+msgid "`databaseSchema` property *deprecated*"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The `databaseSchema` property for both JPA and Mongo is now deprecated and "
-"has been replaced by `initializeEmpty` and `migrationStrategy`. "
+"The `databaseSchema` property for both JPA and Mongo is now *deprecated* and "
+"is *replaced with* `initializeEmpty` and `migrationStrategy`. "
 "`initializeEmpty` can bet set to `true` or `false` and controls if an empty "
 "database should be initialized. `migrationStrategy` can be set to `update`, "
 "`validate` and `manual`. `manual` is only supported for relational databases "
@@ -1789,7 +1888,7 @@ msgstr ""
 msgid ""
 "In 1.2 we deprecated a number of endpoints that where not consistent with "
 "the OpenID Connect specifications, these have now been removed.  This also "
-"applies to the validate token endpoints that was replaced with the new "
+"applies to the validate token endpoint that is replaced with the new "
 "introspect endpoint in 1.8."
 msgstr ""
 
@@ -2314,7 +2413,7 @@ msgid ""
 "Previously a dedicated `Claims` tab existed in the admin console for "
 "application and OAuth clients.  This was used to configure which attributes "
 "should go into access token for particular application/client.  This was "
-"removed and replaced with protocol mappers which are more flexible."
+"removed and is replaced with protocol mappers which are more flexible."
 msgstr ""
 
 #. type: Plain text

@@ -7,13 +7,13 @@
 # n.watanabe <nwatanabe.ase@gmail.com>, 2018
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,11 +25,6 @@ msgstr ""
 #, no-wrap
 msgid "Troubleshooting"
 msgstr "トラブルシューティング"
-
-#. type: Title ====
-#, no-wrap
-msgid "Features"
-msgstr "機能"
 
 #. type: Title ===
 #, no-wrap
@@ -59,9 +54,11 @@ msgstr "SSL/TLSハンドシェイク中に、サーバーとクライアント�
 
 #. type: Plain text
 msgid ""
-"The container ({appserver_name}) validates the certificate PKIX path and the"
-" certificate expiration"
-msgstr "コンテナ（{appserver_name}）は、証明書のPKIXパスと有効期限を検証します。"
+"The web container (either the reverse proxy or {appserver_name} where "
+"{project_name} is deployed) validates the certificate PKIX path and the "
+"certificate expiration"
+msgstr ""
+"Webコンテナー（リバース・プロキシーまたは{project_name}がデプロイされている{appserver_name}のいずれか）は、証明書のPKIXパスと証明書の有効期限を検証します。"
 
 #. type: Plain text
 msgid ""
@@ -119,6 +116,25 @@ msgstr ""
 #. type: Plain text
 msgid "In the case of the Direct Grant Flow, the server signs in the user"
 msgstr "ダイレクト・グラント・フローの場合、サーバーはユーザーをサインインします。"
+
+#. type: Plain text
+msgid ""
+"Note that it is the responsibility of the web container to validate "
+"certificate PKIX path. X.509 authenticator on the {project_name} side "
+"provides just the additional support for check the certificate expiration, "
+"certificate revocation status and key usage. If you are using {project_name}"
+" deployed behind reverse proxy, make sure that your reverse proxy is "
+"configured to validate PKIX path. If you do not use reverse proxy and users "
+"directly access the {appserver_name}, you should be fine as {appserver_name}"
+" makes sure that PKIX path is validated as long as it is configured as "
+"described below."
+msgstr ""
+"証明書のPKIXパスを検証するのはWebコンテナーの責任であることに注意してください。{project_name}側のX.509オーセンティケーターは、証明書の有効期限、証明書の失効ステータス、およびキーの使用状況を確認するための追加サポートを提供します。リバース・プロキシーの背後にデプロイされた{project_name}を使用している場合は、リバース・プロキシーがPKIXパスを検証するように設定されていることを確認してください。リバース・プロキシーを使用せず、ユーザーが{appserver_name}に直接アクセスする場合は、{appserver_name}が、以下に説明するように設定されている限り、PKIXパスが検証されていることを確認するので問題ありません。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Features"
+msgstr "機能"
 
 #. type: Labeled list
 #, no-wrap
@@ -680,6 +696,18 @@ msgid ""
 msgstr ""
 "値が証明書IDと照合されるカスタム属性。属性マッピングが複数の値に関連している場合、複数のカスタム属性が関係します。例：'証明書のシリアル番号と発行者DN'。"
 
+#. type: Plain text
+msgid ""
+"It is highly recommended that attribute used here is read-only for the "
+"users. By default, only the `usercertificate` attribute is read-only by "
+"{project_name}.  If you use a different attribute name, you may need to add "
+"it to the list of read-only attributes. See the details in the "
+"link:#_read_only_user_attributes[Threat model mitigation chapter]."
+msgstr ""
+"ここで使用する属性は、ユーザーに対して読み取り専用にすることを強くお勧めします。デフォルトでは、 `usercertificate` "
+"属性のみが{project_name}によって読み取り専用になります。別の属性名を使用する場合は、それを読み取り専用属性のリストに追加する必要がある場合があります。"
+" link:#_read_only_user_attributes[脅威モデルの軽減の章] の詳細を参照してください。"
+
 #. type: Labeled list
 #, no-wrap
 msgid "`CRL Checking Enabled` (optional)"
@@ -960,7 +988,7 @@ msgid ""
 "for the client certificate and client certificate chain can be configured "
 "and their proper names."
 msgstr ""
-"クライアント証明書とクライアント証明書チェーンのHTTPヘッダーの構成方法と固有名詞の詳細については、HAProxyのドキュメントを参照してください。"
+"クライアント証明書とクライアント証明書チェーンのHTTPヘッダーの構成方法と固有名の詳細については、HAProxyのドキュメントを参照してください。"
 
 #. type: Title =====
 #, no-wrap

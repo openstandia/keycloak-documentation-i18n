@@ -87,6 +87,56 @@ msgid ""
 "migrated if the database schema has changed in the new version."
 msgstr "データベース・スキーマが新バージョンに変更されていた場合、この設定でサーバーを起動すると、データベースは自動的に移行されます。"
 
+#. type: Plain text
+msgid ""
+"Creating an index on huge tables with millions of records can easily take a "
+"huge amount of time and potentially cause major service disruption on "
+"upgrades.  For those cases, we added a threshold (the number of records) for"
+" automated index creation.  By default, this threshold is `100000` records."
+"  When the number of records is higher than the threshold, the index is not "
+"created automatically, and there will be a warning message in server logs "
+"including SQL commands which can be applied later manually."
+msgstr ""
+"数百万のレコードを含む巨大なテーブルにインデックスを作成すると、簡単に膨大な時間がかかり、アップグレード時にサービスが大幅に中断する可能性があります。そのような場合のために、自動インデックス作成のしきい値（レコード数）を追加しました。デフォルトでは、このしきい値は"
+" "
+"`100000`レコードです。レコード数がしきい値を超えると、インデックスは自動的に作成されず、後で手動で適用できるSQLコマンドを含む警告メッセージがサーバーログに表示されます。"
+
+#. type: Plain text
+msgid ""
+"To change the threshold, set the `indexCreationThreshold` property, value "
+"for the default `connectionsLiquibase` provider:"
+msgstr ""
+"しきい値を変更するには、デフォルトの `connectionsLiquibase` プロバイダーの値である "
+"`indexCreationThreshold` プロパティーを設定します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"connectionsLiquibase\">\n"
+"    <provider name=\"default\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"indexCreationThreshold\" value=\"100000\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"connectionsLiquibase\">\n"
+"    <provider name=\"default\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"indexCreationThreshold\" value=\"100000\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=keycloak-server/spi=connectionsLiquibase/:add(default-provider=default)\n"
+"/subsystem=keycloak-server/spi=connectionsLiquibase/provider=default/:add(properties={indexCreationThreshold => \"100000\"},enabled=true)\n"
+msgstr ""
+"/subsystem=keycloak-server/spi=connectionsLiquibase/:add(default-provider=default)\n"
+"/subsystem=keycloak-server/spi=connectionsLiquibase/provider=default/:add(properties={indexCreationThreshold => \"100000\"},enabled=true)\n"
+
 #. type: Title ===
 #, no-wrap
 msgid "Manual Relational Database Migration"

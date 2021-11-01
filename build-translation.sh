@@ -61,6 +61,13 @@ if [ "$?" -ne 0 ]; then
 fi
 
 
+# Quick Hack
+# Remove '|* ' from oidc.adoc
+for l in $TARGET_LANG; do
+    sed -i -e "s/^|\* /|/g" $TRANSLATED_DIR/$l/server_admin/topics/sso-protocols/oidc.adoc
+done
+
+
 # Build translated documents
 for l in $TARGET_LANG; do
     cd $TRANSLATED_DIR/$l

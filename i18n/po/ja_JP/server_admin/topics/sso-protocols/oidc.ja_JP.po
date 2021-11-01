@@ -4,14 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hiroyuki Wada <wadahiro@gmail.com>, 2019
+# Shinsuke UEDA, 2021
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# Hiroyuki Wada <wadahiro@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,6 +24,28 @@ msgstr ""
 #, no-wrap
 msgid "Device Authorization Grant"
 msgstr "デバイス認可グラント"
+
+#. type: Title =====
+#, no-wrap
+msgid "Client Initiated Backchannel Authentication Grant"
+msgstr "Client Initiated Backchannel Authentication Grant"
+
+#. type: Plain text
+msgid ""
+"The client requests {project_name} an auth_req_id that identifies the "
+"authentication request made by the client. {project_name} creates the "
+"auth_req_id."
+msgstr ""
+"クライアントは、クライアントによって行われた認証リクエストを識別するauth_req_idを{project_name}に要求します。{project_name}はauth_req_idを作成します。"
+
+#. type: Plain text
+msgid ""
+"After receiving this auth_req_id, this client repeatedly needs to poll "
+"{project_name} to obtain an Access Token, Refresh Token and ID Token from "
+"{project_name} in return for the auth_req_id until the user is "
+"authenticated."
+msgstr ""
+"このauth_req_idを受信した後、このクライアントは{project_name}を繰り返しポーリングして、ユーザーが認証されるまでauth_req_idと引き換えに{project_name}からアクセストークン、リフレッシュトークン、IDトークンを取得する必要があります。"
 
 #. type: Title ===
 #, no-wrap
@@ -82,6 +105,24 @@ msgstr ""
 " _アクセストークン_ を受け取ります。この _アクセストークン_ はレルムによってデジタル署名されます。クライアントはこの _アクセストークン_ "
 "を使用して、リモートサービスのREST呼び出しを行うことができます。REST サービスは _アクセストークン_ "
 "を抽出し、トークンの署名を検証し、トークン内のアクセス情報に基づいて、リクエストを処理するかどうかを決定します。"
+
+#. type: Plain text
+msgid ""
+"An administrator carries out the following operations on the `Admin Console`"
+" :"
+msgstr "管理者は、 `管理コンソール` で次の操作を行います。"
+
+#. type: Plain text
+msgid "Configure items and click `Save`."
+msgstr "アイテムを設定し、 `Save` をクリックします。"
+
+#. type: Plain text
+msgid "The configurable items and their description follow."
+msgstr "設定可能な項目とその説明は次のとおりです。"
+
+#. type: Plain text
+msgid "Configuration|Description"
+msgstr "設定|説明"
 
 #. type: Title ====
 #, no-wrap
@@ -299,6 +340,490 @@ msgstr ""
 "アプリケーションは{project_name}を繰り返しポーリングして、ユーザーがユーザー認証を完了したかどうかを調べます。ユーザー認証が完了すると、アプリケーションはデバイス"
 " コードを _ID_ トークン、 _access_ トークン、 および _refresh_ トークンと交換します。"
 
+#. type: Plain text
+msgid ""
+"This is used by clients who want to initiate the authentication flow by "
+"communicating with the OpenID Provider directly without redirect through the"
+" user's browser like OAuth 2.0's authorization code grant. Here's a brief "
+"summary of the protocol:"
+msgstr ""
+"これは、OAuth "
+"2.0の認可コードグラントのように、ユーザーのブラウザーを介してリダイレクトせずに、OpenIDプロバイダーと直接通信することによって認証フローを開始したいクライアントによって使用されます。プロトコルの概要は次のとおりです。"
+
+#. type: Plain text
+msgid ""
+"An administrator can configure Client Initiated Backchannel Authentication "
+"(CIBA) related operations as `CIBA Policy` per realm."
+msgstr ""
+"管理者は、Client Initiated Backchannel Authentication (CIBA) 関連の操作をレルムごとの `CIBA "
+"Policy` として設定できます。"
+
+#. type: Plain text
+msgid ""
+"Also please refer to other places of {project_name} documentation like "
+"link:{adapterguide_link}#_backchannel_authentication_endpoint[Backchannel "
+"Authentication Endpoint section] of {adapterguide_name} and "
+"link:{adapterguide_link}#_client_initiated_backchannel_authentication_grant[Client"
+" Initiated Backchannel Authentication Grant section] of {adapterguide_name}."
+msgstr ""
+"また、{adapterguide_name}の "
+"link:{adapterguide_link}#_backchannel_authentication_endpoint[Backchannel "
+"AuthenticationEndpointのセクション] や{adapterguide_name}の "
+"link:{adapterguide_link}#_client_initiated_backchannel_authentication_grant[ClientInitiated"
+" Backchannel Authentication Grant] "
+"のセクションなど、{project_name}ドキュメントの他の場所も参照してください。"
+
+#. type: Title ======
+#, no-wrap
+msgid "CIBA Policy"
+msgstr "CIBAポリシー"
+
+#. type: Plain text
+msgid "Open the `Authentication -> CIBA Policy` tab."
+msgstr "`Authentication -> CIBA Policy` タブを開きます."
+
+#. type: Plain text
+msgid "Backchannel Token Delivery Mode"
+msgstr "Backchannel Token Delivery Mode"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Specifying how the CD (Consumption Device) gets the authentication result and related tokens. There are three modes, \"poll\", \"ping\" and \"push\". {project_name} only supports \"poll\". The default setting is \"poll\". This configuration is required.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5[CIBA Specification].\n"
+msgstr ""
+"CD（Consumption "
+"Device）には認証結果と関連トークンを取得する方法を指定します。\"poll\"、\"ping\"、\"push\"の3つのモードがあります。{project_name}は\"poll\"のみをサポートします。デフォルト設定は\"poll\"です。この設定は必須です。詳細については、"
+" https://openid.net/specs/openid-client-initiated-backchannel-"
+"authentication-core-1_0.html#rfc.section.5[CIBA Specification] を参照してください。\n"
+
+#. type: Plain text
+msgid "Expires In"
+msgstr "Expires In"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The expiration time of the \"auth_req_id\" in seconds since the authentication request was received. The default setting is 120. This configuration is required.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#successful_authentication_request_acknowdlegment[CIBA Specification].\n"
+msgstr ""
+"認証リクエストを受信してからの\"auth_req_id\"の有効期限（秒単位）。デフォルトの設定は120です。この設定は必須です。詳細については、 "
+"https://openid.net/specs/openid-client-initiated-backchannel-authentication-"
+"core-1_0.html#successful_authentication_request_acknowdlegment[CIBA "
+"Specification] を参照してください。\n"
+
+#. type: Plain text
+msgid "Interval"
+msgstr "Interval"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The interval in seconds the CD (Consumption Device) needs to wait for between polling requests to the token endpoint. The default setting is 5. This configuration is optional.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#successful_authentication_request_acknowdlegment[CIBA Specification].\n"
+msgstr ""
+"CD（Consumption "
+"Device）がトークン・エンドポイントへのポーリング・リクエスト間で待機する必要がある秒単位の間隔。デフォルト設定は5です。この設定はオプションです。詳細については、"
+" https://openid.net/specs/openid-client-initiated-backchannel-"
+"authentication-core-"
+"1_0.html#successful_authentication_request_acknowdlegment[CIBA "
+"Specification] を参照してください。\n"
+
+#. type: Plain text
+msgid "Authentication Requested User Hint"
+msgstr "Authentication Requested User Hint"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The way of identifying the end-user for whom authentication is being requested. The default setting is \"login_hint\".  There are three modes, \"login_hint\", \"login_hint_token\" and \"id_token_hint\". {project_name} only supports \"login_hint\". This configuration is required.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.7.1[CIBA Specification].\n"
+msgstr ""
+"認証が要求されているエンドユーザーを識別する方法。デフォルト設定は\"login_hint\"です。\"login_hint\"、\"login_hint_token\"、\"id_token_hint\"の3つのモードがあります。{project_name}は\"login_hint\"のみをサポートします。この設定は必須です。詳細については、"
+" https://openid.net/specs/openid-client-initiated-backchannel-"
+"authentication-core-1_0.html#rfc.section.5[CIBA Specification] を参照してください。\n"
+
+#. type: Title ======
+#, no-wrap
+msgid "Provider Setting"
+msgstr "プロバイダー設定"
+
+#. type: Plain text
+msgid "The CIBA grant uses the following two providers."
+msgstr "CIBAグラントは、次の2つのプロバイダーを使用します。"
+
+#. type: Plain text
+msgid ""
+"Authentication Channel Provider : provides the communication between "
+"{project_name} and the entity that actually authenticates the user via AD "
+"(Authentication Device)."
+msgstr ""
+"認証チャネル・プロバイダー：{project_name}と、AD（Authentication "
+"Device）を介してユーザーを実際に認証するエンティティーとの間の通信を提供します。"
+
+#. type: Plain text
+msgid ""
+"User Resolver Provider : get `UserModel` of {project_name} from the "
+"information provided by the client to identify the user."
+msgstr ""
+"User Resolver Provider：クライアントから提供された情報から{project_name}の `UserModel` "
+"を取得して、ユーザーを識別します。"
+
+#. type: Plain text
+msgid ""
+"{project_name} has both default providers. However, the administrator needs "
+"to set up Authentication Channel Provider like this:"
+msgstr ""
+"{project_name}には両方のデフォルト・プロバイダーがあります。ただし、管理者は次のように認証チャネルプロバイダーを設定する必要があります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"ciba-auth-channel\">\n"
+"    <default-provider>ciba-http-auth-channel</default-provider>\n"
+"    <provider name=\"ciba-http-auth-channel\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"httpAuthenticationChannelUri\" value=\"https://backend.internal.example.com/auth\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"ciba-auth-channel\">\n"
+"    <default-provider>ciba-http-auth-channel</default-provider>\n"
+"    <provider name=\"ciba-http-auth-channel\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"httpAuthenticationChannelUri\" value=\"https://backend.internal.example.com/auth\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Plain text
+msgid "httpAuthenticationChannelUri"
+msgstr "httpAuthenticationChannelUri"
+
+#. type: Plain text
+msgid ""
+"Specifying URI of the entity that actually authenticates the user via AD "
+"(Authentication Device)."
+msgstr "AD（Authentication Device）を介して実際にユーザーを認証するエンティティーのURIを指定します。"
+
+#. type: Title ======
+#, no-wrap
+msgid "Authentication Channel Provider"
+msgstr "Authentication Channel Provider"
+
+#. type: Plain text
+msgid ""
+"CIBA standard document does not specify how to authenticate the user by AD. "
+"Therefore, it might be implemented at the discretion of products. "
+"{project_name} delegates this authentication to an external authentication "
+"entity. To communicate with the authentication entity, {project_name} "
+"provides Authentication Channel Provider."
+msgstr ""
+"CIBA標準ドキュメントでは、ADによるユーザーの認証方法は指定されていません。したがって、製品の判断で実装される可能性があります。{project_name}は、この認証を外部認証エンティティーに委任します。認証エンティティーと通信するために、{project_name}は認証チャネルプロバイダーを提供します。"
+
+#. type: Plain text
+msgid ""
+"Its implementation of {project_name} assumes that the authentication entity "
+"is under the control of the administrator of {project_name} so that "
+"{project_name} trusts the authentication entity. It is not recommended to "
+"use the authentication entity that the administrator of {project_name} "
+"cannot control."
+msgstr ""
+"{project_name}の実装は、認証エンティティーが{project_name}の管理者の制御下にあることを前提としているため、{project_name}は認証エンティティーを信頼します。{project_name}の管理者が制御できない認証エンティティーを使用することはお勧めしません。"
+
+#. type: Plain text
+msgid ""
+"Authentication Channel Provider is provided as SPI provider so that users of"
+" {project_name} can implement their own provider in order to meet their "
+"environment. {project_name} provides its default provider called HTTP "
+"Authentication Channel Provider that uses HTTP to communicate with the "
+"authentication entity."
+msgstr ""
+"認証チャネル・プロバイダーはSPIプロバイダーとして提供されるため、{project_name}のユーザーは、環境に合わせて独自のプロバイダーを実装できます。{project_name}は、HTTPを使用して認証エンティティーと通信するHTTP認証チャネル・プロバイダーと呼ばれるデフォルトのプロバイダーを提供します。"
+
+#. type: Plain text
+msgid ""
+"If a user of {project_name} user want to use the HTTP Authentication Channel"
+" Provider, they need to know its contract between {project_name} and the "
+"authentication entity consisting of the following two parts."
+msgstr ""
+"{project_name}のユーザーがHTTP認証チャネルプロバイダーを使用する場合、{project_name}と次の2つの部分で構成される認証エンティティーとの間のコントラクトを知る必要があります。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Delegation Request/Response"
+msgstr "Authentication Delegation Request/Response"
+
+#. type: Plain text
+msgid ""
+"  {project_name} sends an authentication request to the authentication "
+"entity."
+msgstr "{project_name}は、認証リクエストを認証エンティティーに送信します。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Result Notification/ACK"
+msgstr "Authentication Result Notification/ACK"
+
+#. type: Plain text
+msgid ""
+"  The authentication entity notifies the result of the authentication to "
+"{project_name}."
+msgstr "認証エンティティーは、認証の結果を{project_name}に通知します。"
+
+#. type: Plain text
+msgid ""
+"Authentication Delegation Request/Response consists of the following "
+"messaging."
+msgstr "認証委任リクエスト/レスポンスは、次のメッセージで構成されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Delegation Request"
+msgstr "Authentication Delegation Request"
+
+#. type: Plain text
+msgid ""
+"The request is sent from {project_name} to the authentication entity to ask "
+"it for user authentication by AD."
+msgstr "リクエストは{project_name}から認証エンティティーに送信され、ADによるユーザー認証を要求します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "POST [delegation_reception]\n"
+msgstr "POST [delegation_reception]\n"
+
+#. type: Plain text
+msgid "Headers"
+msgstr "Headers"
+
+#. type: Plain text
+msgid "Name|Value|Description"
+msgstr "名前|値|説明"
+
+#. type: Plain text
+msgid "Content-Type|application/json|The message body is json formatted."
+msgstr "Content-Type|application/json|メッセージ本文はJSON形式です。"
+
+#. type: Plain text
+msgid ""
+"Authorization|Bearer [token]|The [token] is used when the authentication "
+"entity notifies the result of the authentication to {project_name}."
+msgstr ""
+"Authorization|Bearer "
+"[token]|[トークン]は、認証エンティティーが認証の結果を{project_name}に通知するときに使用されます。"
+
+#. type: Plain text
+msgid "Parameters"
+msgstr "Parameters"
+
+#. type: Plain text
+msgid "Type|Name|Description"
+msgstr "タイプ|名前|説明"
+
+#. type: Plain text
+msgid "Path"
+msgstr "Path"
+
+#. type: Plain text
+msgid ""
+"delegation_reception|The endpoint provided by the authentication entity to "
+"receive the delegation request"
+msgstr "delegation_reception|委任リクストを受信するために認証エンティティーによって提供されるエンドポイント"
+
+#. type: Plain text
+msgid "Body"
+msgstr "Body"
+
+#. type: Plain text
+msgid "Name|Description"
+msgstr "名前|説明"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"login_hint|It tells the authentication entity who is authenticated by AD. +\n"
+"By default, it is the user's \"username\". +\n"
+"This field is required and was defined by CIBA standard document.\n"
+msgstr ""
+"login_hint|ADによって認証された認証エンティティーに通知します。 +\n"
+"デフォルトでは、これはユーザーの\"username\"です。 +\n"
+"このフィールドは必須であり、CIBA標準ドキュメントによって定義されています。\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"scope|It tells which scopes the authentication entity gets consent from the authenticated user. +\n"
+"This field is required and was defined by CIBA standard document.\n"
+msgstr ""
+"scope|認証エンティティーが認証されたユーザーから同意を得るスコープを示します。 +\n"
+"このフィールドは必須であり、CIBA標準ドキュメントによって定義されています。\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"is_consent_required|It shows whether the authentication entity needs to get consent from the authenticated user about the scope. +\n"
+" This field is required.\n"
+msgstr ""
+"is_consent_required|認証エンティティーがスコープについて認証されたユーザーから同意を得る必要があるかどうかを示します。 +\n"
+"この項目は必須です。\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"binding_message|Its value is intended to be shown in both CD and AD's UI to make the user recognize that the authentication by AD is triggered by CD. +\n"
+"This field is optional and was defined by CIBA standard document.\n"
+msgstr ""
+"binding_message|その値は、CDとADのUIの両方に表示され、ADによる認証がCDによってトリガーされたことをユーザーに認識させることを目的としています。 +\n"
+"このフィールドはオプションであり、CIBA標準ドキュメントによって定義されています。\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"acr_values|It tells the requesting Authentication Context Class Reference from CD. +\n"
+"This field is optional and was defined by CIBA standard document.\n"
+msgstr ""
+"acr_values|CDから要求している認証コンテキストクラス参照を通知します。 +\n"
+"このフィールドはオプションであり、CIBA標準ドキュメントによって定義されています。\n"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Delegation Response"
+msgstr "Authentication Delegation Response"
+
+#. type: Plain text
+msgid ""
+"The response is returned from the authentication entity to {project_name} to"
+" notify that the authentication entity received the authentication request "
+"from {project_name}."
+msgstr ""
+"認証エンティティーから{project_name}にレスポンスが返され、認証エンティティーが{project_name}から認証リクエストを受信したことが通知されます。"
+
+#. type: Plain text
+msgid "Responses"
+msgstr "Responses"
+
+#. type: Plain text
+msgid "HTTP Status Code|Description"
+msgstr "HTTPステータスコード|説明"
+
+#. type: Plain text
+msgid ""
+"204|It notifies {project_name} of receiving the authentication delegation "
+"request."
+msgstr "204|認証委任リクエストを受信したことを{project_name}に通知します。"
+
+#. type: Plain text
+msgid ""
+"Authentication Result Notification/ACK consists of the following messaging."
+msgstr "認証結果通知/ACKは以下のメッセージで構成されています。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Result Notification"
+msgstr "認証結果通知"
+
+#. type: Plain text
+msgid ""
+"The authentication entity sends the result of the authentication request to "
+"{project_name}."
+msgstr "認証エンティティーは、認証リクエストの結果を{project_name}に送信します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"POST /auth/realms/[realm]/protocol/openid-connect/ext/ciba/auth/callback\n"
+msgstr ""
+"POST /auth/realms/[realm]/protocol/openid-connect/ext/ciba/auth/callback\n"
+
+#. type: Plain text
+msgid ""
+"Authorization|Bearer [token]|The [token] must be the one the authentication "
+"entity has received from {project_name} in Authentication Delegation "
+"Request."
+msgstr ""
+"認可|ベアラー[トークン]|[トークン]は、認証エンティティーが認証委任リクエストで{project_name}から受信したものである必要があります。"
+
+#. type: Plain text
+msgid "realm|The realm name"
+msgstr "レルム|レルム名"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"status|It tells the result of user authentication by AD. +\n"
+"It must be one of the following status. +\n"
+"  SUCCEED : The authentication by AD has been successfully completed. +\n"
+"  UNAUTHORIZED : The authentication by AD has not been completed. +\n"
+"  CANCELLED : The authentication by AD has been cancelled by the user.\n"
+msgstr ""
+"status|ADによるユーザー認証の結果を示します。 +\n"
+"以下のステータスのいずれかでなければなりません。 +\n"
+"  SUCCEED：ADによる認証が正常に完了しました。 +\n"
+"UNAUTHORIZED：ADによる認証が完了していません。 +\n"
+"CANCELLED：ADによる認証がユーザーによってキャンセルされました。\n"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Result ACK"
+msgstr "Authentication Result ACK"
+
+#. type: Plain text
+msgid ""
+"The response is returned from {project_name} to the authentication entity to"
+" notify {project_name} received the result of user authentication by AD from"
+" the authentication entity."
+msgstr ""
+"レスポンスは{project_name}から認証エンティティーに返され、認証エンティティーからADによるユーザー認証の結果を{project_name}が受信したことを通知します。"
+
+#. type: Plain text
+msgid ""
+"200|It notifies the authentication entity of receiving the notification of "
+"the authentication result."
+msgstr "200|認証結果の通知を受信したことを認証エンティティーに通知します。"
+
+#. type: Title ======
+#, no-wrap
+msgid "User Resolver Provider"
+msgstr "User Resolver Provider"
+
+#. type: Plain text
+msgid ""
+"Even if the same user, its representation may differ in each CD, "
+"{project_name} and the authentication entity."
+msgstr "同じユーザーであっても、その表現はCD、{project_name}、および認証エンティティーごとに異なる場合があります。"
+
+#. type: Plain text
+msgid ""
+"For CD, {project_name} and the authentication entity to recognize the same "
+"user, this User Resolver Provider converts their own user representations "
+"among them."
+msgstr ""
+"CD、{project_name}、および認証エンティティーが同じユーザーを認識するために、このユーザー・リゾルバー・プロバイダーは、それらの間で独自のユーザー表現を変換します。"
+
+#. type: Plain text
+msgid ""
+"User Resolver Provider is provided as SPI provider so that users of "
+"{project_name} can implement their own provider in order to meet their "
+"environment. {project_name} provides its default provider called Default "
+"User Resolver Provider that has the following characteristics."
+msgstr ""
+"ユーザー・リゾルバー・プロバイダーはSPIプロバイダーとして提供されるため、{project_name}のユーザーは、環境に合わせて独自のプロバイダーを実装できます。{project_name}は、次の特性を持つDefault"
+" User ResolverProviderと呼ばれるデフォルト・プロバイダーを提供します。"
+
+#. type: Plain text
+msgid "Only support `login_hint` parameter and is used as default."
+msgstr "`login_hint` パラメーターのみをサポートし、デフォルトとして使用されます。"
+
+#. type: Plain text
+msgid ""
+"`username` of UserModel in {project_name} is used to represent the user on "
+"CD, {project_name} and the authentication entity."
+msgstr ""
+"{project_name}のUserModelの `username` "
+"は、CD、{project_name}、および認証エンティティーのユーザーを表すために使用されます。"
+
 #. type: Title ====
 #, no-wrap
 msgid "{project_name} Server OIDC URI Endpoints"
@@ -326,9 +851,10 @@ msgstr "これらのエンドポイントは、レルム設定の「OpenID Endpo
 msgid ""
 "/realms/{realm-name}/protocol/openid-connect/auth::\n"
 "  This is the URL endpoint for obtaining a temporary code in the Authorization Code Flow or for obtaining tokens via the\n"
-"  Implicit Flow, Direct Grants, or Client Grants.\n"
+"  Implicit Flow or Hybrid Flow.\n"
 "/realms/{realm-name}/protocol/openid-connect/token::\n"
-"  This is the URL endpoint for the Authorization Code Flow to turn a temporary code into a token.\n"
+"  This is the URL endpoint for the Authorization Code Flow to turn a temporary code into a token, or for obtaining tokens\n"
+"  directly via Resource Owner Password Credentials (Direct Access Grants) or Client Credentials.\n"
 "/realms/{realm-name}/protocol/openid-connect/logout::\n"
 "  This is the URL endpoint for performing logouts.\n"
 "/realms/{realm-name}/protocol/openid-connect/userinfo::\n"
@@ -339,11 +865,13 @@ msgid ""
 "  This is the URL endpoint for the JSON Web Key Set (JWKS) containing the public keys used to verify any JSON Web Token (jwks_uri)\n"
 "/realms/{realm-name}/protocol/openid-connect/auth/device::\n"
 "  This is the URL endpoint for Device Authorization Grant to obtain a device code and a user code.\n"
+"/realms/{realm-name}/protocol/openid-connect/ext/ciba/auth::\n"
+"  This is the URL endpoint for Client Initiated Backchannel Authentication Grant to obtain an auth_req_id that identifies the authentication request made by the client.\n"
 msgstr ""
 "/realms/{realm-name}/protocol/openid-connect/auth::\n"
-"  これは、認可コード・フローで一時コードを取得するため、またはインプリシット・フロー、ダイレクト・グラント、またはクライアント・グラントを使用してトークンを取得するためのURLエンドポイントです。\n"
+"  これは、認可コード・フローで一時コードを取得するため、またはインプリシット・フローまたはハイブリット・フローを使用してトークンを取得するためのURLエンドポイントです。\n"
 "/realms/{realm-name}/protocol/openid-connect/token::\n"
-"  これは、一時コードをトークンに変換する認可コード・フローのURLエンドポイントです。\n"
+"  これは、一時コードをトークンに変換する、またはリソースオーナーのパスワード・クレデンシャル（ダイレクト・アクセス・グラント）またはクライアント・クレデンシャルを介してトークンを直接取得するための認可コードフローのURLエンドポイントです。\n"
 "/realms/{realm-name}/protocol/openid-connect/logout::\n"
 "  これは、ログアウトを実行するためのURLエンドポイントです。\n"
 "/realms/{realm-name}/protocol/openid-connect/userinfo::\n"
@@ -351,9 +879,11 @@ msgstr ""
 "/realms/{realm-name}/protocol/openid-connect/revoke::\n"
 "  これは、 https://tools.ietf.org/html/rfc7009[RFC7009] で説明されているOAuth 2.0トークン無効化のURLエンドポイントです。\n"
 "/realms/{realm-name}/protocol/openid-connect/certs::\n"
-"これは、JSON Webトークンの検証に使用される公開鍵を含むJSON Webキー セット (JWKS) のURLエンドポイントです (jwks_uri) 。\n"
+"これは、JSON Webトークンの検証に使用される公開鍵を含むJSON Webキー セット（JWKS）のURLエンドポイントです（jwks_uri）。\n"
 "/realms/{realm-name}/protocol/openid-connect/auth/device::\n"
 "これは、デバイスコードとユーザーコードを取得するためのデバイス認可グラントのURLエンドポイントです。\n"
+"/realms/{realm-name}/protocol/openid-connect/ext/ciba/auth::\n"
+"これは、クライアントによって行われた認証リクエストを識別するauth_req_idを取得するためのクライアント主導のバックチャネル認証グラントのURLエンドポイントです。\n"
 
 #. type: Plain text
 msgid "In all of these replace _{realm-name}_ with the name of the realm."

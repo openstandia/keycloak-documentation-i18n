@@ -608,6 +608,41 @@ msgstr ""
 "    app.get( '/:section/:page', keycloak.protect( protectBySection ), "
 "sectionHandler );\n"
 
+#. type: Plain text
+msgid "Advanced Login Configuration:"
+msgstr "高度なログイン設定："
+
+#. type: Plain text
+msgid ""
+"By default, all unauthorized requests will be redirected to the "
+"{project_name} login page unless your client is bearer-only.  However, a "
+"confidential or public client may host both browsable and API endpoints. To "
+"prevent redirects on unauthenticated API requests and instead return an HTTP"
+" 401, you can override the redirectToLogin function."
+msgstr ""
+"デフォルトでは、クライアントがbearer-"
+"onlyでない限り、許可されていないすべてのリクエストは{project_name}のログインページにリダイレクトされます。ただし、コンフィデンシャル・クライアントまたはパブリック・クライアントは、閲覧可能なエンドポイントとAPIエンドポイントの両方をホストする場合があります。認証されていないAPIリクエストでのリダイレクトを防ぎ、代わりにHTTP"
+" 401を返すようにするために、redirectToLogin関数をオーバーライドできます。"
+
+#. type: Plain text
+msgid ""
+"For example, this override checks if the URL contains /api/ and disables "
+"login redirects:"
+msgstr "たとえば、このオーバーライドは、URLに/api/が含まれているかどうかを確認し、ログイン・リダイレクトを無効にします。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    Keycloak.prototype.redirectToLogin = function(req) {\n"
+"    var apiReqMatcher = /\\/api\\//i;\n"
+"    return !apiReqMatcher.test(req.originalUrl || req.url);\n"
+"    };\n"
+msgstr ""
+"    Keycloak.prototype.redirectToLogin = function(req) {\n"
+"    var apiReqMatcher = /\\/api\\//i;\n"
+"    return !apiReqMatcher.test(req.originalUrl || req.url);\n"
+"    };\n"
+
 #. type: Title ====
 #, no-wrap
 msgid "Additional URLs"

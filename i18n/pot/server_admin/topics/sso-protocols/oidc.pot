@@ -19,6 +19,25 @@ msgstr ""
 msgid "Device Authorization Grant"
 msgstr ""
 
+#. type: Title =====
+#, no-wrap
+msgid "Client Initiated Backchannel Authentication Grant"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The client requests {project_name} an auth_req_id that identifies the "
+"authentication request made by the client. {project_name} creates the "
+"auth_req_id."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"After receiving this auth_req_id, this client repeatedly needs to poll "
+"{project_name} to obtain an Access Token, Refresh Token and ID Token from "
+"{project_name} in return for the auth_req_id until the user is authenticated."
+msgstr ""
+
 #. type: Title ===
 #, no-wrap
 msgid "OpenID Connect"
@@ -60,6 +79,24 @@ msgid ""
 "_access token_.  The REST service extracts the _access token_, verifies the "
 "signature of the token, then decides based on access information within the "
 "token whether or not to process the request."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"An administrator carries out the following operations on the `Admin "
+"Console` :"
+msgstr ""
+
+#. type: Plain text
+msgid "Configure items and click `Save`."
+msgstr ""
+
+#. type: Plain text
+msgid "The configurable items and their description follow."
+msgstr ""
+
+#. type: Plain text
+msgid "Configuration|Description"
 msgstr ""
 
 #. type: Title ====
@@ -238,6 +275,418 @@ msgid ""
 "_refresh_ token."
 msgstr ""
 
+#. type: Plain text
+msgid ""
+"This is used by clients who want to initiate the authentication flow by "
+"communicating with the OpenID Provider directly without redirect through the "
+"user's browser like OAuth 2.0's authorization code grant. Here's a brief "
+"summary of the protocol:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"An administrator can configure Client Initiated Backchannel Authentication "
+"(CIBA) related operations as `CIBA Policy` per realm."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Also please refer to other places of {project_name} documentation like link:"
+"{adapterguide_link}#_backchannel_authentication_endpoint[Backchannel "
+"Authentication Endpoint section] of {adapterguide_name} and link:"
+"{adapterguide_link}"
+"#_client_initiated_backchannel_authentication_grant[Client Initiated "
+"Backchannel Authentication Grant section] of {adapterguide_name}."
+msgstr ""
+
+#. type: Title ======
+#, no-wrap
+msgid "CIBA Policy"
+msgstr ""
+
+#. type: Plain text
+msgid "Open the `Authentication -> CIBA Policy` tab."
+msgstr ""
+
+#. type: Plain text
+msgid "Backchannel Token Delivery Mode"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Specifying how the CD (Consumption Device) gets the authentication result and related tokens. There are three modes, \"poll\", \"ping\" and \"push\". {project_name} only supports \"poll\". The default setting is \"poll\". This configuration is required.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5[CIBA Specification].\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Expires In"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The expiration time of the \"auth_req_id\" in seconds since the authentication request was received. The default setting is 120. This configuration is required.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#successful_authentication_request_acknowdlegment[CIBA Specification].\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Interval"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The interval in seconds the CD (Consumption Device) needs to wait for between polling requests to the token endpoint. The default setting is 5. This configuration is optional.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#successful_authentication_request_acknowdlegment[CIBA Specification].\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Authentication Requested User Hint"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The way of identifying the end-user for whom authentication is being requested. The default setting is \"login_hint\".  There are three modes, \"login_hint\", \"login_hint_token\" and \"id_token_hint\". {project_name} only supports \"login_hint\". This configuration is required.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.7.1[CIBA Specification].\n"
+msgstr ""
+
+#. type: Title ======
+#, no-wrap
+msgid "Provider Setting"
+msgstr ""
+
+#. type: Plain text
+msgid "The CIBA grant uses the following two providers."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authentication Channel Provider : provides the communication between "
+"{project_name} and the entity that actually authenticates the user via AD "
+"(Authentication Device)."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"User Resolver Provider : get `UserModel` of {project_name} from the "
+"information provided by the client to identify the user."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} has both default providers. However, the administrator needs "
+"to set up Authentication Channel Provider like this:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"ciba-auth-channel\">\n"
+"    <default-provider>ciba-http-auth-channel</default-provider>\n"
+"    <provider name=\"ciba-http-auth-channel\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"httpAuthenticationChannelUri\" value=\"https://backend.internal.example.com/auth\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+
+#. type: Plain text
+msgid "httpAuthenticationChannelUri"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Specifying URI of the entity that actually authenticates the user via AD "
+"(Authentication Device)."
+msgstr ""
+
+#. type: Title ======
+#, no-wrap
+msgid "Authentication Channel Provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"CIBA standard document does not specify how to authenticate the user by AD. "
+"Therefore, it might be implemented at the discretion of products. "
+"{project_name} delegates this authentication to an external authentication "
+"entity. To communicate with the authentication entity, {project_name} "
+"provides Authentication Channel Provider."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Its implementation of {project_name} assumes that the authentication entity "
+"is under the control of the administrator of {project_name} so that "
+"{project_name} trusts the authentication entity. It is not recommended to "
+"use the authentication entity that the administrator of {project_name} "
+"cannot control."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authentication Channel Provider is provided as SPI provider so that users of "
+"{project_name} can implement their own provider in order to meet their "
+"environment. {project_name} provides its default provider called HTTP "
+"Authentication Channel Provider that uses HTTP to communicate with the "
+"authentication entity."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If a user of {project_name} user want to use the HTTP Authentication Channel "
+"Provider, they need to know its contract between {project_name} and the "
+"authentication entity consisting of the following two parts."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Delegation Request/Response"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"  {project_name} sends an authentication request to the authentication "
+"entity."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Result Notification/ACK"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"  The authentication entity notifies the result of the authentication to "
+"{project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authentication Delegation Request/Response consists of the following "
+"messaging."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Delegation Request"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The request is sent from {project_name} to the authentication entity to ask "
+"it for user authentication by AD."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "POST [delegation_reception]\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Headers"
+msgstr ""
+
+#. type: Plain text
+msgid "Name|Value|Description"
+msgstr ""
+
+#. type: Plain text
+msgid "Content-Type|application/json|The message body is json formatted."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authorization|Bearer [token]|The [token] is used when the authentication "
+"entity notifies the result of the authentication to {project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid "Parameters"
+msgstr ""
+
+#. type: Plain text
+msgid "Type|Name|Description"
+msgstr ""
+
+#. type: Plain text
+msgid "Path"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"delegation_reception|The endpoint provided by the authentication entity to "
+"receive the delegation request"
+msgstr ""
+
+#. type: Plain text
+msgid "Body"
+msgstr ""
+
+#. type: Plain text
+msgid "Name|Description"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"login_hint|It tells the authentication entity who is authenticated by AD. +\n"
+"By default, it is the user's \"username\". +\n"
+"This field is required and was defined by CIBA standard document.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"scope|It tells which scopes the authentication entity gets consent from the authenticated user. +\n"
+"This field is required and was defined by CIBA standard document.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"is_consent_required|It shows whether the authentication entity needs to get consent from the authenticated user about the scope. +\n"
+" This field is required.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"binding_message|Its value is intended to be shown in both CD and AD's UI to make the user recognize that the authentication by AD is triggered by CD. +\n"
+"This field is optional and was defined by CIBA standard document.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"acr_values|It tells the requesting Authentication Context Class Reference from CD. +\n"
+"This field is optional and was defined by CIBA standard document.\n"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Delegation Response"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The response is returned from the authentication entity to {project_name} to "
+"notify that the authentication entity received the authentication request "
+"from {project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid "Responses"
+msgstr ""
+
+#. type: Plain text
+msgid "HTTP Status Code|Description"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"204|It notifies {project_name} of receiving the authentication delegation "
+"request."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authentication Result Notification/ACK consists of the following messaging."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Result Notification"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The authentication entity sends the result of the authentication request to "
+"{project_name}."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "POST /auth/realms/[realm]/protocol/openid-connect/ext/ciba/auth/callback\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authorization|Bearer [token]|The [token] must be the one the authentication "
+"entity has received from {project_name} in Authentication Delegation Request."
+msgstr ""
+
+#. type: Plain text
+msgid "realm|The realm name"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"status|It tells the result of user authentication by AD. +\n"
+"It must be one of the following status. +\n"
+"  SUCCEED : The authentication by AD has been successfully completed. +\n"
+"  UNAUTHORIZED : The authentication by AD has not been completed. +\n"
+"  CANCELLED : The authentication by AD has been cancelled by the user.\n"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Result ACK"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The response is returned from {project_name} to the authentication entity to "
+"notify {project_name} received the result of user authentication by AD from "
+"the authentication entity."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"200|It notifies the authentication entity of receiving the notification of "
+"the authentication result."
+msgstr ""
+
+#. type: Title ======
+#, no-wrap
+msgid "User Resolver Provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Even if the same user, its representation may differ in each CD, "
+"{project_name} and the authentication entity."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For CD, {project_name} and the authentication entity to recognize the same "
+"user, this User Resolver Provider converts their own user representations "
+"among them."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"User Resolver Provider is provided as SPI provider so that users of "
+"{project_name} can implement their own provider in order to meet their "
+"environment. {project_name} provides its default provider called Default "
+"User Resolver Provider that has the following characteristics."
+msgstr ""
+
+#. type: Plain text
+msgid "Only support `login_hint` parameter and is used as default."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`username` of UserModel in {project_name} is used to represent the user on "
+"CD, {project_name} and the authentication entity."
+msgstr ""
+
 #. type: Title ====
 #, no-wrap
 msgid "{project_name} Server OIDC URI Endpoints"
@@ -263,9 +712,10 @@ msgstr ""
 msgid ""
 "/realms/{realm-name}/protocol/openid-connect/auth::\n"
 "  This is the URL endpoint for obtaining a temporary code in the Authorization Code Flow or for obtaining tokens via the\n"
-"  Implicit Flow, Direct Grants, or Client Grants.\n"
+"  Implicit Flow or Hybrid Flow.\n"
 "/realms/{realm-name}/protocol/openid-connect/token::\n"
-"  This is the URL endpoint for the Authorization Code Flow to turn a temporary code into a token.\n"
+"  This is the URL endpoint for the Authorization Code Flow to turn a temporary code into a token, or for obtaining tokens\n"
+"  directly via Resource Owner Password Credentials (Direct Access Grants) or Client Credentials.\n"
 "/realms/{realm-name}/protocol/openid-connect/logout::\n"
 "  This is the URL endpoint for performing logouts.\n"
 "/realms/{realm-name}/protocol/openid-connect/userinfo::\n"
@@ -276,6 +726,8 @@ msgid ""
 "  This is the URL endpoint for the JSON Web Key Set (JWKS) containing the public keys used to verify any JSON Web Token (jwks_uri)\n"
 "/realms/{realm-name}/protocol/openid-connect/auth/device::\n"
 "  This is the URL endpoint for Device Authorization Grant to obtain a device code and a user code.\n"
+"/realms/{realm-name}/protocol/openid-connect/ext/ciba/auth::\n"
+"  This is the URL endpoint for Client Initiated Backchannel Authentication Grant to obtain an auth_req_id that identifies the authentication request made by the client.\n"
 msgstr ""
 
 #. type: Plain text

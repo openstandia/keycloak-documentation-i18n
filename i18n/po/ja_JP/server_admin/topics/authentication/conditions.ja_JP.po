@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # Hiroyuki Wada <wadahiro@gmail.com>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -140,3 +140,106 @@ msgid ""
 "You can negate the output.  In other words, the attribute should not be "
 "present."
 msgstr "出力を否定することができます。つまり、属性が存在してはいけないということです。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Explicitly deny/allow access in conditional flows"
+msgstr "条件付きフローでのアクセスを明示的に拒否/許可する"
+
+#. type: Plain text
+msgid ""
+"You can allow or deny access to resources in a conditional flow.  The two "
+"authenticators `Deny Access` and `Allow Access` control access to the "
+"resources by conditions."
+msgstr ""
+"条件付きフローでリソースへのアクセスを許可または拒否できます。2つのオーセンティケーター `Deny Access` と `Allow Access` "
+"は、条件によってリソースへのアクセスを制御します。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "`Allow Access`"
+msgstr "`Allow Access`"
+
+#. type: Plain text
+msgid ""
+"Authenticator will always successfully authenticate.  This authenticator is "
+"not configurable."
+msgstr "オーセンティケーターは常に正常に認証されます。このオーセンティケーターは設定できません。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "`Deny Access`"
+msgstr "`Deny Access`"
+
+#. type: Plain text
+msgid ""
+"Access will always be denied.  You can define an error message, which will "
+"be shown to the user.  You can provide these fields:"
+msgstr "アクセスは常に拒否されます。ユーザーに表示されるエラーメッセージを定義できます。次のフィールドを指定できます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Error message:"
+msgstr "Error message:"
+
+#. type: Plain text
+msgid ""
+"Error message which will be shown to the user.  The error message could be "
+"provided as a particular message or as a property in order to use it with "
+"localization.  (i.e \"_You do not have the role 'admin'._\", _my-property-"
+"deny_ in messages properties)  Leave blank for the default message defined "
+"as property `access-denied`."
+msgstr ""
+"ユーザーに表示されるエラーメッセージ。エラーメッセージは、ローカリゼーションで使用するために、特定のメッセージまたはプロパティーとして提供できます（つまり、メッセージ・プロパティーに"
+" \"_You do not have the role 'admin'._\", _my-property-deny_ ）。プロパティー "
+"`access-denied` として定義されているデフォルトのメッセージは空白のままにします。"
+
+#. type: Plain text
+msgid ""
+"Here is an example how to deny access to all users who do not have the role "
+"`role1` and show an error message defined by a property `deny-role1`.  This "
+"example includes `Condition - User Role` and `Deny Access` executions."
+msgstr ""
+"これは、ロール `role1` を持たないすべてのユーザーへのアクセスを拒否し、プロパティー `deny-role1` "
+"で定義されたエラーメッセージを表示する方法の例です。この例には、 `Condition - User Role` および `Deny Access` "
+"のエグゼキューションが含まれます。"
+
+#. type: Block title
+#, no-wrap
+msgid "Browser flow"
+msgstr "ブラウザーフロー"
+
+#. type: Plain text
+msgid "image:images/deny-access-flow.png[]"
+msgstr "image:images/deny-access-flow.png[]"
+
+#. type: Block title
+#, no-wrap
+msgid "Condition - User Role configuration"
+msgstr "条件 - ユーザーロールの設定"
+
+#. type: Plain text
+msgid "image:images/deny-access-role-condition.png[]"
+msgstr "image:images/deny-access-role-condition.png[]"
+
+#. type: Block title
+#, no-wrap
+msgid ""
+"Configuration of the `Deny Access` is really easy. You can specify an "
+"arbitrary alias and required message like this:"
+msgstr "`Deny Access` の設定はとても簡単です。次のように、任意のエイリアスと必要なメッセージを指定できます。"
+
+#. type: Plain text
+msgid "image:images/deny-access-execution-cond.png[]"
+msgstr "image:images/deny-access-execution-cond.png[]"
+
+#. type: Plain text
+msgid ""
+"The last thing is defining the property with an error message in the login "
+"theme `messages_en.properties` (for English):"
+msgstr "最後に、ログインテーマの `messages_en.properties`（英語の場合）でエラーメッセージを含むプロパティーを定義します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "deny-role1 = You do not have required role!\n"
+msgstr "deny-role1 = You do not have required role!\n"

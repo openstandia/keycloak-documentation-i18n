@@ -1,0 +1,740 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#, no-wrap
+msgid "Name"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "Description"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Required"
+msgstr ""
+
+#. type: Plain text
+msgid "email"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "User Profile"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In {project_name} a user is associated with a set of attributes. These "
+"attributes are used to better describe and identify users within "
+"{project_name} as well as to pass over additional information to "
+"applications about them."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A user profile defines a well-defined schema for representing user "
+"attributes and how they are managed within a realm. By providing a "
+"consistent view over user information, it allows administrators to control "
+"the different aspects on how attributes are managed as well as to make a lot "
+"easier to extend {project_name} to support additional attributes."
+msgstr ""
+
+#. type: Plain text
+msgid "Among other capabilities, user profile enables administrators to:"
+msgstr ""
+
+#. type: Plain text
+msgid "Define a schema for user attributes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Define whether an attribute is required based on contextual information (e."
+"g.: if required only for users, or admins, or both, or depending on the "
+"scope being requested.)"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Define specific permissions for viewing and editing user attributes, making "
+"possible to adhere to strong privacy requirements where some attributes can "
+"not be seen or be changed by third-parties (including administrators)"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Dynamically enforce user profile compliance so that user information is "
+"always updated and in compliance with the metadata and rules associated with "
+"attributes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Define validation rules on a per-attribute basis by leveraging the built-in "
+"validators or writing custom ones"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The User Profile capabilities are backed by the User Profile SPI. By "
+"default, there are two providers you can choose from:"
+msgstr ""
+
+#. type: Plain text
+msgid "Legacy User Profile Provider (`legacy-user-profile`)"
+msgstr ""
+
+#. type: Plain text
+msgid "Declarative User Profile Provider (`declarative-user-profile`)"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The legacy provider is enabled by default, and it provides a basic user "
+"profile configuration based on the user root attributes such as e-mail, "
+"first and last names."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"On the other hand, the declarative provider gives you a lot more flexibility "
+"to define the user profile configuration to a realm through the "
+"administration console and a well-defined JSON schema."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the next sections, we'll be looking at how to use the declarative "
+"provider to define your own user profile configuration."
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"In the future, the `declarative-user-profile` provider is going to replace "
+"the legacy provider and become the default."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Enabling the Declarative User Profile"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In addition to enabling the `declarative_user_profile` feature, you should "
+"use the link:{installguide_link}#_start_cli[CLI] to set the `declarative-"
+"user-profile` provider as the default provider as follows:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ /subsystem=keycloak-server/spi=userProfile:add(default-provider=declarative-user-profile)\n"
+msgstr ""
+
+#. type: Plain text
+msgid "After setting the default provider, make sure to restart the server."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Managing the User Profile"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The user profile configuration is managed on a per-realm basis. For that, "
+"click on the `Realm Settings` link on the left side menu and then click on "
+"the `User Profile` tab."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "User Profile Attributes"
+msgstr ""
+
+#. type: Plain text
+msgid "image:{project_images}/user-profile-attributes.png[]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the `Attributes` sub-tab you have a list of the attributes currently "
+"associated with the user profile. By default, {project_name} uses a "
+"configuration based on the user root attributes and very similar to the "
+"configuration used by the legacy provider."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the `JSON Editor` sub-tab you can view and edit the configuration using a "
+"well-defined JSON schema."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the next section, you are going to learn how to manage the configuration "
+"from the `Attributes` sub-tab."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Managing Attributes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"At the `Attributes` sub-tab you should be able to create, edit, and delete "
+"the attributes associated with the user profile."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To define a new attribute and associate it with the user profile, click on "
+"the `Create` button in the top-right corner of the attribute listing."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Attribute Configuration"
+msgstr ""
+
+#. type: Plain text
+msgid "image:{project_images}/user-profile-create-attribute.png[]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When configuring the attribute you should be able to define the following "
+"settings:"
+msgstr ""
+
+#. type: Plain text
+msgid "The name of the attribute. This setting is required."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Set the attribute as required. If enabled, the attribute must be set by "
+"users and administrators. Otherwise, the attribute is optional."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Permission"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In this section, you can define read and write permissions for users and "
+"administrators."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Validation"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In this section, you can define custom validations when updating the "
+"attribute."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Annotation"
+msgstr ""
+
+#. type: Plain text
+msgid "In this section, you can associate annotations to the attribute."
+msgstr ""
+
+#. type: Title =
+#, no-wrap
+msgid "Managing Permissions"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the `Permission` section, you can define the level of access users and "
+"administrators have to read and write to an attribute."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Attribute Permission"
+msgstr ""
+
+#. type: Plain text
+msgid "image:{project_images}/user-profile-permission.png[]"
+msgstr ""
+
+#. type: Plain text
+msgid "For that, you should be able to use the following settings:"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Can user view?"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If enabled, users can view the attribute. Otherwise, users don't have access "
+"to the attribute."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Can user edit?"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If enabled, users can view and edit the attribute. Otherwise, users don't "
+"have access to write to the attribute."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Can admin view?"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If enabled, administrators can view the attribute. Otherwise, administrators "
+"don't have access to the attribute."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Can admin edit?"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If enabled, administrators can view and edit the attribute. Otherwise, "
+"administrators don't have access to write to the attribute."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Managing Validations"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In the `Validation` section, you can choose from different forms of "
+"validation to make sure the attribute value conforms to specific rules."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Attribute Validation"
+msgstr ""
+
+#. type: Plain text
+msgid "image:{project_images}/user-profile-validation.png[]"
+msgstr ""
+
+#. type: Plain text
+msgid "{project_name} provides different validators out of the box:"
+msgstr ""
+
+#. type: Named 'cols' AttributeList argument for style 'cols'
+#, no-wrap
+msgid "2*"
+msgstr ""
+
+#. type: Plain text
+msgid "not-empty"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Check that input value is not empty. It means it is not null for all data "
+"types."
+msgstr ""
+
+#. type: Plain text
+msgid "not-blank"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Check that a string value is not empty. It means it is not null nor empty."
+msgstr ""
+
+#. type: Plain text
+msgid "length"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Check the length of a string value based on a minimum and maximum length."
+msgstr ""
+
+#. type: Plain text
+msgid "integer"
+msgstr ""
+
+#. type: Plain text
+msgid "Check if the value is an integer."
+msgstr ""
+
+#. type: Plain text
+msgid "double"
+msgstr ""
+
+#. type: Plain text
+msgid "Check if the value is a number."
+msgstr ""
+
+#. type: Plain text
+msgid "uri"
+msgstr ""
+
+#. type: Plain text
+msgid "Check if the value is a valid URI."
+msgstr ""
+
+#. type: Plain text
+msgid "pattern"
+msgstr ""
+
+#. type: Plain text
+msgid "Check if the value matches a specific RegEx pattern."
+msgstr ""
+
+#. type: Plain text
+msgid "Check if the value has a valid e-mail format."
+msgstr ""
+
+#. type: Plain text
+msgid "local-date"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Check if the value has a valid format based on the realm and/or user locale."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Managing Annotations"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In order to pass additional information to frontends, attributes can be "
+"decorated with annotations to dictate how attributes should be rendered. "
+"This capability is mainly useful when extending {project_name} themes to "
+"render pages dynamically based on the annotations associated with attributes."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Attribute Annotation"
+msgstr ""
+
+#. type: Plain text
+msgid "image:{project_images}/user-profile-annotation.png[]"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Using the JSON Configuration"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The user profile configuration is stored using a well-defined JSON schema. "
+"You can choose from editing the user profile configuration directly by "
+"clicking on the `JSON Editor` sub-tab."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "JSON Configuration"
+msgstr ""
+
+#. type: Plain text
+msgid "image:{project_images}/user-profile-json-config.png[]"
+msgstr ""
+
+#. type: Plain text
+msgid "The JSON schema is defined as follows:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"attributes\": [\n"
+"    {\n"
+"      \"name\": \"myattribute\",\n"
+"      \"required\": {\n"
+"        \"roles\": [ \"user\", \"admin\" ],\n"
+"        \"scopes\": [ \"foo\", \"bar\" ]\n"
+"      },\n"
+"      \"permissions\": {\n"
+"        \"view\": [ \"admin\", \"user\" ],\n"
+"        \"edit\": [ \"admin\", \"user\" ]\n"
+"      },\n"
+"      \"annotations\": {\n"
+"        \"myannotation\": \"myannotation-value\"\n"
+"      }\n"
+"    }\n"
+"  ]\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid "The schema supports as many attributes as you need."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For each attribute you should define a `name` and, optionally, the "
+"`required`, `permission`, and the `annotations` settings."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Required Property"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `required` setting defines whether an attribute is required. "
+"{project_name} allows you to set an attribute as required based on different "
+"conditions."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When the `required` setting is defined as an empty object, the attribute is "
+"always required."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"attributes\": [\n"
+"    {\n"
+"      \"name\": \"myattribute\",\n"
+"      \"required\": {}\n"
+"  ]\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"On the other hand, you can choose to make the attribute required only for "
+"users, or administrators, or both. As well as mark the attribute as required "
+"only in case a specific scope is requested when the user is authenticating "
+"in {project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To mark an attribute as required for a user and/or administrator, set the "
+"`roles` property as follows:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"attributes\": [\n"
+"    {\n"
+"      \"name\": \"myattribute\",\n"
+"      \"required\": {\n"
+"        \"roles\": [\"user\"]\n"
+"      }\n"
+"  ]\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `roles` property expects an array whose values can be either `user` or "
+"`admin`, depending on whether the attribute should be required by the user "
+"or the administrator, respectively."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Similarly, you can choose to make the attribute required when a set of one "
+"or more scopes is requested by a client when authenticating a user. For "
+"that, you can use the `scopes` property as follows:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"attributes\": [\n"
+"    {\n"
+"      \"name\": \"myattribute\",\n"
+"      \"required\": {\n"
+"        \"scopes\": [\"foo\"]\n"
+"      }\n"
+"  ]\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `scopes` property is an array whose values can be any string "
+"representing a client scope."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Permissions Property"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The attribute-level `permissions` property can be used to define the read "
+"and write permissions to an attribute. The permissions are set based on "
+"whether these operations can be performed on the attribute by a user, or "
+"administrator, or both."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"attributes\": [\n"
+"    {\n"
+"      \"name\": \"myattribute\",\n"
+"      \"permissions\": {\n"
+"        \"view\": [\"admin\"],\n"
+"        \"edit\": [\"user\"]\n"
+"      }\n"
+"  ]\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Both `view` and `edit` properties expect an array whose values can be either "
+"`user` or `admin`, depending on whether the attribute is viewable or "
+"editable by the user or the administrator, respectively."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When the `edit` permission is granted, the `view` permission is implicitly "
+"granted."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Annotations Property"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The attribute-level `annotation` property can be used to associate "
+"additional metadata to attributes. Annotations are mainly useful for passing "
+"over additional information about attributes to frontends rendering user "
+"attributes based on the user profile configuration. Each annotation is a key/"
+"value pair."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"{\n"
+"  \"attributes\": [\n"
+"    {\n"
+"      \"name\": \"myattribute\",\n"
+"      \"annotations\": {\n"
+"        \"foo\": [\"foo-value\"],\n"
+"        \"bar\": [\"bar-value\"]\n"
+"      }\n"
+"  ]\n"
+"}\n"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Verifying User Profile"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In order to make sure user profiles are in compliance with the "
+"configuration, administrators may use the `VerifyProfile` required action to "
+"eventually force users to update their profiles when authenticating to "
+"{project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When enabled, the `VerifyProfile` action is going to perform the following "
+"steps when the user is authenticating:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Check whether the user profile is fully compliant with the user profile "
+"configuration set to the realm."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If not, perform an additional step during the authentication so that the "
+"user can update his/her profile."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If the user profile is compliant with the configuration, no additional step "
+"is performed, and the user continues with the authentication process."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The `VerifyProfile` action is similar to the `UpdateProfile`. However, it "
+"leverages all the capabilities provided by the user profile configuration to "
+"dynamically render the attributes defined in the user profile configuration."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By default, the `VerifyProfile` action is disabled. To enabled it, click on "
+"the `Authentication` link on the left side menu and then click on the "
+"`Required Actions` tab. At this tab, click on the `Register` button and "
+"select the `VerifyProfile` action."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Registring the VerifyProfile Required Action"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"image:{project_images}/user-profile-register-verify-profile-action.png[]"
+msgstr ""

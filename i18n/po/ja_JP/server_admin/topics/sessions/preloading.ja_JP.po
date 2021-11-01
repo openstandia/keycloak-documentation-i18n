@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2021
+# Hiroyuki Wada <wadahiro@gmail.com>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Offline Sessions Preloading"
+msgstr "オフライン・セッションの事前読み込み"
+
+#. type: Plain text
+msgid ""
+"In addition to {jdgserver_name} caches, offline sessions are stored in a "
+"database which means they will be available even after server restart.  By "
+"default, the offline sessions are preloaded from the database into the "
+"{jdgserver_name} caches during the server startup.  However this approach "
+"has a drawback if there are many offline sessions to be preloaded. It can "
+"significantly slow down the server startup time."
+msgstr ""
+"{jdgserver_name}キャッシュに加えて、オフライン・セッションはデータベースに保存されます。つまり、サーバーの再起動後もオフライン・セッションを利用できます。デフォルトでは、オフライン・セッションは、サーバーの起動時にデータベースから{jdgserver_name}キャッシュにプリロードされます。ただし、プリロードするオフラインセッションが多数ある場合、このアプローチには欠点があります。サーバーの起動時間が大幅に遅くなる可能性があります。"
+
+#. type: Plain text
+msgid ""
+"To overcome this problem, {project_name} can be configured to fetch offline "
+"sessions into the {jdgserver_name} caches on demand.  It can be achieved by "
+"setting `preloadOfflineSessionsFromDatabase` property in `userSessions` SPI "
+"to `false`."
+msgstr ""
+"この問題を克服するために、{project_name}は、オフライン・セッションをオンデマンドで{jdgserver_name}キャッシュにフェッチするように設定できます。これは、"
+" `userSessions` SPIの `preloadOfflineSessionsFromDatabase`プロパティーを `false` "
+"に設定することで実現できます。"
+
+#. type: Plain text
+msgid ""
+"The following example shows how to configure lazy offline sessions loading."
+msgstr "次の例は、遅延オフラインセッションローディングを設定する方法を示しています。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
+"    ...\n"
+"    <spi name=\"userSessions\">\n"
+"        <default-provider>infinispan</default-provider>\n"
+"        <provider name=\"infinispan\" enabled=\"true\">\n"
+"            <properties>\n"
+"                <property name=\"preloadOfflineSessionsFromDatabase\" value=\"false\"/>\n"
+"            </properties>\n"
+"        </provider>\n"
+"    </spi>\n"
+"    ...\n"
+"</subsystem>\n"
+msgstr ""
+"<subsystem xmlns=\"urn:jboss:domain:keycloak-server:1.1\">\n"
+"    ...\n"
+"    <spi name=\"userSessions\">\n"
+"        <default-provider>infinispan</default-provider>\n"
+"        <provider name=\"infinispan\" enabled=\"true\">\n"
+"            <properties>\n"
+"                <property name=\"preloadOfflineSessionsFromDatabase\" value=\"false\"/>\n"
+"            </properties>\n"
+"        </provider>\n"
+"    </spi>\n"
+"    ...\n"
+"</subsystem>\n"
+
+#. type: Plain text
+msgid "Equivalent configuration using CLI commands:"
+msgstr "CLIコマンドを使用した同等の設定は以下になります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=keycloak-server/spi=userSessions:add(default-provider=infinispan)\n"
+"/subsystem=keycloak-server/spi=userSessions/provider=infinispan:add(properties={preloadOfflineSessionsFromDatabase => \"false\"},enabled=true)\n"
+msgstr ""
+"/subsystem=keycloak-server/spi=userSessions:add(default-provider=infinispan)\n"
+"/subsystem=keycloak-server/spi=userSessions/provider=infinispan:add(properties={preloadOfflineSessionsFromDatabase => \"false\"},enabled=true)\n"

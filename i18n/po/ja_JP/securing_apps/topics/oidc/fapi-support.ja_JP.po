@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# Hiroyuki Wada <wadahiro@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Financial-grade API (FAPI) Support"
+msgstr "Financial-grade API（FAPI）のサポート"
+
+#. type: Plain text
+msgid ""
+"{project_name} makes it easier for administrators to make sure that their "
+"clients are compliant with the https://openid.net/specs/openid-financial-"
+"api-part-1-1_0.html[Financial-grade API Security Profile 1.0 - Part 1: "
+"Baseline] and https://openid.net/specs/openid-financial-api-"
+"part-2-1_0.html[Financial-grade API Security Profile 1.0 - Part 2: "
+"Advanced]. This compliance means that the {project_name} server will verify "
+"the requirements for the authorization server, which are mentioned in the "
+"specifications. {project_name} adapters do not have any specific support for"
+" the FAPI, hence the required validations on the client (application)  side "
+"may need to be still done manually or through some other third-party "
+"solutions."
+msgstr ""
+"{project_name}を使用すると、管理者はクライアントが https://openid.net/specs/openid-financial-"
+"api-part-1-1_0.html[Financial-grade API Security Profile 1.0 - Part 1: "
+"Baseline] および https://openid.net/specs/openid-financial-api-"
+"part-2-1_0.html[Financial-grade API Security Profile 1.0 - Part 2: Advanced]"
+" "
+"に準拠していることを簡単に確認できます。この準拠は、{project_name}サーバーが、仕様に記載されている認可サーバーの要件を検証することを意味します。{project_name}アダプターはFAPIを特別にサポートしていないため、クライアント（アプリケーション）側で必要な検証を、手動または他のサードパーティー・ソリューションを介して実行する必要がある場合があります。"
+
+#. type: Title ====
+#, no-wrap
+msgid "FAPI client profiles"
+msgstr "FAPIクライアント・プロファイル"
+
+#. type: Plain text
+msgid ""
+"To make sure that your clients are FAPI compliant, you can configure Client "
+"Policies in your realm as described in the "
+"link:{adminguide_link}#_client_policies[{adminguide_name}] and link them to "
+"the global client profiles for FAPI support, which are automatically "
+"available in each realm. You can use either `fapi-1-baseline` or "
+"`fapi-1-advanced` profile based on which FAPI profile you need your clients "
+"to conform with."
+msgstr ""
+"クライアントがFAPIに準拠していることを確認するには、 "
+"link:{adminguide_link}#_client_policies[{adminguide_name}] "
+"で説明されているように、レルムでクライアント・ポリシーを設定し、それらをFAPIサポートのグローバル・クライアント・プロファイルにリンクします。これは各レルムで自動的に利用可能になります。クライアントが準拠する必要のあるFAPIプロファイルに基づいて、"
+" `fapi-1-baseline` または `fapi-1-advanced` プロファイルのいずれかを使用できます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "TLS considerations"
+msgstr "TLSに関する考慮事項"
+
+#. type: Plain text
+msgid ""
+"As confidential information is being exchanged, all interactions shall be "
+"encrypted with TLS (HTTPS). Moreover, there are some requirements in the "
+"FAPI specification for the cipher suites and TLS protocol versions used. To "
+"match these requirements, you can consider configure allowed ciphers. This "
+"configuration can be done in the "
+"`KEYCLOAK_HOME/standalone/configuration/standalone-*.xml` file in the "
+"Elytron subsystem. For example this element can be added under `tls` -> "
+"`server-ssl-contexts`"
+msgstr ""
+"機密情報が交換されるため、すべてのやり取りはTLS（HTTPS）で暗号化される必要があります。さらに、使用される暗号スイートとTLSプロトコルのバージョンに対してFAPI仕様にはいくつかの要件があります。これらの要件を満たすために、許可された暗号の設定を検討できます。この設定は、Elytronサブシステムの"
+" `KEYCLOAK_HOME/standalone/configuration/standalone-*.xml` "
+"ファイルで行うことができます。たとえば、この要素は `tls` -> `server-ssl-contexts` の下に追加できます。"
+
+#. type: Plain text
+msgid ""
+"<server-ssl-context name=\"kcSSLContext\" want-client-auth=\"true\" "
+"protocols=\"TLSv1.2\" \\ key-manager=\"kcKeyManager\" trust-"
+"manager=\"kcTrustManager\" \\ cipher-suite-"
+"filter=\"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\""
+" protocols=\"TLSv1.2\" />"
+msgstr ""
+"<server-ssl-context name=\"kcSSLContext\" want-client-auth=\"true\" "
+"protocols=\"TLSv1.2\" \\ key-manager=\"kcKeyManager\" trust-"
+"manager=\"kcTrustManager\" \\ cipher-suite-"
+"filter=\"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\""
+" protocols=\"TLSv1.2\" />"
+
+#. type: Plain text
+msgid ""
+"The references to `kcKeyManager` and `kcTrustManager` refers to the "
+"corresponding Keystore and Truststore. See the documentation of Wildfly "
+"Elytron subsystem for more details and also other parts of {project_name} "
+"documentation such as link:{installguide_link}#_network[Network Setup "
+"Section] or link:{adminguide_link}#_x509[X.509 Authentication Section]."
+msgstr ""
+"`kcKeyManager` と `kcTrustManager` "
+"への参照は、対応するキーストアとトラストストアを参照します。詳細については、Wildfly "
+"Elytronサブシステムのドキュメントを参照してください。また、 "
+"link:{installguide_link}#_network[ネットワークのセットアップのセクション]] や "
+"link:{adminguide_link}#_x509[X.509認証のセクション] "
+"などの{project_name}ドキュメントの他の部分も参照してください。"

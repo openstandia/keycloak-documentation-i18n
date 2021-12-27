@@ -1,0 +1,533 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Shinsuke UEDA, 2021
+# KojiNose <knose.dev@gmail.com>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# Hiroyuki Wada <wadahiro@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ==
+#, no-wrap
+msgid "Configuration"
+msgstr "設定"
+
+#. type: Plain text
+#, no-wrap
+msgid "Updating a client"
+msgstr "クライアントの更新"
+
+#. type: Title ===
+#, no-wrap
+msgid "Client Policies"
+msgstr "クライアント・ポリシー"
+
+#. type: Plain text
+msgid ""
+"To make it easy to secure client applications, it is beneficial to realize "
+"the following points in a unified way."
+msgstr "クライアント・アプリケーションのセキュリティー保護を容易にするために、以下の点を統一的に実現することが有益です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Setting policies on what configuration a client can have"
+msgstr "クライアントが持つことができる構成に関するポリシーの設定"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Validation of client configurations"
+msgstr "クライアント設定の検証"
+
+#. type: Plain text
+msgid ""
+"Conformance to a required security standards and profiles such as Financial-"
+"grade API (FAPI)"
+msgstr "Financial-grade API（FAPI）などの必要なセキュリティー標準およびプロファイルへの準拠"
+
+#. type: Plain text
+msgid ""
+"To realize these points in a unified way, _Client Policies_ concept is "
+"introduced."
+msgstr "これらの点を統一的に実現するために、 _クライアント・ポリシー_ の概念が導入されています。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Use-cases"
+msgstr "ユースケース"
+
+#. type: Plain text
+msgid "Client Policies realize the following points mentioned as follows."
+msgstr "クライアント・ポリシーは、以下を実現します。"
+
+#. type: Plain text
+msgid ""
+"Configuration settings on the client can be enforced by client policies "
+"during client creation/update, but also during OpenID Connect requests to "
+"{project_name} server, which are related to particular client.  "
+"{project_name} supports similar thing also through the Client Registration "
+"Policies described in the "
+"link:{adapterguide_link}#_client_registration_policies[{adapterguide_name}]."
+"  However, Client Registration Policies can only cover OIDC Dynamic Client "
+"Registration. Client Policies cover not only what Client Registration "
+"Policies can do, but other client registration and configuration ways. The "
+"current plans are for Client Registration to be replaced by Client Policies."
+msgstr ""
+"クライアントの構成設定は、クライアントの作成/更新中だけでなく、特定のクライアントに関連する{project_name}サーバーへのOpenID "
+"Connectリクエスト中にもクライアント・ポリシーによって適用できます。{project_name}は、 "
+"link:{adapterguide_link}#_client_registration_policies[{adapterguide_name}] "
+"で説明されているクライアント登録ポリシーを通じても同様のことをサポートしています。ただし、クライアント登録ポリシーは、OIDC動的クライアント登録のみを対象としています。クライアント・ポリシーは、クライアント登録ポリシーで実行できることだけでなく、他のクライアント登録および設定方法も対象としています。現在の計画では、クライアント登録はクライアント・ポリシーに置き換えられます。"
+
+#. type: Plain text
+msgid ""
+"{project_name} supports validation whether the client follows settings like "
+"Proof Key for Code Exchange, Request Object Signing Algorithm, Holder-of-Key"
+" Token, and so on on some endpoints like Authorization Endpoint, Token "
+"Endpoint, and so on.  These can be specified by each setting item (on Admin "
+"Console, switch, pulldown menu and so on). To make the client application "
+"secure, the administrator needs to set many settings in the appropriate way,"
+" which makes it difficult for the administrator to secure the client "
+"application.  Client Policies can do these validation of client "
+"configurations mentioned just above and they can also be used to auto-"
+"configure some client configuration switches to meet the advanced security "
+"requirements. In the future, individual client configuration settings may be"
+" replaced by Client Policies directly performing required validations."
+msgstr ""
+"{project_name}は、認可エンドポイント、トークン・エンドポイントなどのいくつかのエンドポイントで、Proof Key for Code "
+"Exchange、リクエストオブジェクトの署名アルゴリズム、Holder-of-Key "
+"Tokenなどの設定にクライアントが従っているかどうかの検証をサポートします。これらは、各設定項目（管理コンソール上、スイッチ、プルダウンメニューなど）で指定できます。クライアント・アプリケーションをセキュアにするためには、管理者が多くの設定を適切に行う必要があり、それは困難です。クライアント・ポリシーは、ちょうど上で述べたクライアント設定のこれらの検証を行うことができ、また、高度なセキュリティー要件を満たすために、いくつかのクライアント設定スイッチを自動設定するために使用することができます。将来的には、個々のクライアント設定に代わって、クライアント・ポリシーが必要な検証を直接行うようになるかもしれません。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Conformance to a required security standards and profiles such as FAPI"
+msgstr "FAPIなどの必要なセキュリティー標準やプロファイルへの準拠"
+
+#. type: Plain text
+msgid ""
+"The _Global client profiles_ are client profiles pre-configured in "
+"{project_name} by default. They are pre-configured to be compliant with "
+"standard security profiles like link:{adapterguide_link}#_fapi-"
+"support[FAPI], which makes it easy for the administrator to secure their "
+"client application to be compliant with the particular security profile. At "
+"this moment, {project_name} has global profiles for the support of FAPI 1 "
+"specification. The administrator will just need to configure the client "
+"policies to specify which clients should be compliant with the FAPI. The "
+"administrator can configure client profiles and client policies, so that "
+"{project_name} clients can be easily made compliant with various other "
+"security profiles like SPA, Native App, Open Banking and so on."
+msgstr ""
+"_Global client profiles_ "
+"は、{project_name}にデフォルトで設定されているクライアント・プロファイルです。link:{adapterguide_link}#_fapi-"
+"support[FAPI] "
+"のような標準的なセキュリティー・プロファイルに準拠するようにあらかじめ設定されているので、管理者は簡単にクライアント・アプリケーションを特定のセキュリティー・プロファイルに準拠するように保護することができます。現時点では、{project_name}は"
+" FAPI 1 "
+"仕様をサポートするためのグローバル・プロファイルを持っています。管理者は、どのクライアントがFAPIに準拠すべきかを指定するために、クライアント・ポリシーを設定する必要があるだけです。管理者はクライアント・プロファイルとクライアント・ポリシーを設定することで、{project_name}のクライアントをSPA、ネイティブアプリ、オープン・バンキングなど、他のさまざまなセキュリティー・プロファイルに簡単に準拠させることができます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Protocol"
+msgstr "プロトコル"
+
+#. type: Plain text
+msgid ""
+"The client policy concept is independent of any specific protocol. However, "
+"{project_name} currently supports it only just for the "
+"link:{adapterguide_link}#_oidc[OpenID Connect (OIDC) protocol]."
+msgstr ""
+"クライアント・ポリシーのコンセプトは、特定のプロトコルに依存しません。しかし、{project_name}は現在、link:{adapterguide_link}#_oidc[OpenID"
+" Connect（OIDC）プロトコル]に対してのみ、これをサポートしています。"
+
+#. type: Title =
+#, no-wrap
+msgid "Architecture"
+msgstr "アーキテクチャー"
+
+#. type: Plain text
+msgid ""
+"Client Policies consists of the four building blocks: Condition, Executor, "
+"Profile and Policy."
+msgstr ""
+"クライアント・ポリシーは、4つのビルディング・ブロックから構成されています。Condition、Executor、Profile、Policyです。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Condition"
+msgstr "Condition"
+
+#. type: Plain text
+msgid ""
+"A condition determines to which client a policy is adopted and when it is "
+"adopted. Some conditions are checked at the time of client create/update "
+"when some other conditions are checked during client requests (OIDC "
+"Authorization request, Token endpoint request and so on). The condition "
+"checks whether one specified criteria is satisfied. For example, some "
+"condition checks whether the access type of the client is confidential."
+msgstr ""
+"Conditionとは、あるポリシーがどのクライアントにいつ採用されるかを決めるものです。あるConditionは、クライアントの作成・更新時にチェックされ、他の条件は、クライアントのリクエスト（OIDC認可リクエスト、トークン・エンドポイント・リクエストなど）時にチェックされます。Conditionは、指定された1つの条件を満たすかどうかをチェックします。例えば、クライアントのアクセスタイプがconfidentialであるかどうかをチェックするConditionがあります。"
+
+#. type: Plain text
+msgid ""
+"The condition can not be used solely by itself. It can be used in a "
+"<<_client_policy_policy,policy>> that is described afterwards."
+msgstr ""
+"このConditionは単独で使用することはできません。後述の<<_client_policy_policy,policy>>の中で使用することができます。"
+
+#. type: Plain text
+msgid ""
+"A condition can be configurable the same as other configurable providers. "
+"What can be configured depends on each condition's nature."
+msgstr ""
+"Conditionは、他の設定可能なプロバイダーと同様に設定することができます。設定可能な内容は、各Conditionの性質によって異なります。"
+
+#. type: Plain text
+msgid "The following conditions are provided:"
+msgstr "以下のConditionがあります。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "The way of creating/updating a client"
+msgstr "クライアントの作成・更新方法"
+
+#. type: Plain text
+msgid ""
+"Dynamic Client Registration (Anonymous or Authenticated with Initial access "
+"token or Registration access token)"
+msgstr "動的クライアント登録（Anonymousまたは初期アクセストークンや登録アクセストークンによる認証）"
+
+#. type: Plain text
+msgid "Admin REST API (Admin Console and so on)"
+msgstr "管理REST API（管理コンソールなど）"
+
+#. type: Plain text
+msgid ""
+"So for example when creating a client, a condition can be configured to "
+"evaluate to true when this client is created by OIDC Dynamic Client "
+"Registration without initial access token (Anonymous Dynamic Client "
+"Registration). So this condition can be used for example to ensure that all "
+"clients registered through OIDC Dynamic Client Registration are FAPI "
+"compliant."
+msgstr ""
+"そのため、例えばクライアントを作成する際に、そのクライアントが初期アクセストークンなしのOIDC動的クライアント登録（Anonymousの動的クライアント登録）によって作成された場合、Conditionを真と評価するように設定することが可能です。このConditionを利用することで、例えば、OIDC動的クライアント登録で登録されたクライアントがすべてFAPIに準拠していることを確認することができます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid ""
+"Author of a client (Checked by presence to the particular role or group)"
+msgstr "クライアントの作成者（特定のロールまたはグループへのプレゼンスでチェックされます）"
+
+#. type: Plain text
+msgid ""
+"On OpenID Connect dynamic client registration, an author of a client is the "
+"end user who was authenticated to get an access token for generating a new "
+"client, not Service Account of the existing client that actually accesses "
+"the registration endpoint with the access token. On registration by Admin "
+"REST API, an author of a client is the end user like the administrator of "
+"the {project_name}."
+msgstr ""
+"OpenID "
+"Connectの動的クライアント登録において、クライアントの作成者とは、新しいクライアントを生成するためのアクセストークンを取得するために認証されたエンドユーザであり、アクセストークンを使用して登録エンドポイントに実際にアクセスした既存クライアントのサービス・アカウントではありません。管理REST"
+" APIによる登録の場合、クライアントのオーサーは{project_name}の管理者のようなエンドユーザーです。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client Access Type (confidential, public, bearer-only)"
+msgstr "クライアント・アクセス・タイプ（confidential、public、bearer-only）"
+
+#. type: Plain text
+msgid ""
+"For example when a client sends an authorization request, a policy is "
+"adopted if this client is confidential."
+msgstr "例えば、クライアントが認可リクエストを送信したとき、このクライアントがconfidentialであれば、ポリシーが採用されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client Scope"
+msgstr "クライアント・スコープ"
+
+#. type: Plain text
+msgid ""
+"Evaluates to true if the client has a particular client scope (either as "
+"default or as an optional scope used in current request). This can be used "
+"for example to ensure that OIDC authorization requests with scope `fapi-"
+"example-scope` need to be FAPI compliant."
+msgstr ""
+"クライアントが特定のクライアント・スコープ（デフォルトあるいは現在のリクエストで使用されるオプションのスコープ）を持っている場合にtrueと評価されます。これは例えば、"
+" `fapi-example-scope` "
+"というスコープを持つOIDC認可リクエストが、FAPIに準拠している必要があることを保証するために使うことができます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client Role"
+msgstr "クライアントロール"
+
+#. type: Plain text
+msgid "Applies for clients with the client role of the specified name"
+msgstr "指定された名前のクライアントロールを持つクライアントに適用されます"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client Domain Name, Host or IP Address"
+msgstr "クライアントのドメイン名、ホストまたはIPアドレス"
+
+#. type: Plain text
+msgid ""
+"Applied for specific domain names of client. Or for the cases when the "
+"administrator registers/updates client from particular Host or IP Address."
+msgstr ""
+"クライアントの特定のドメイン名に対して適用されます。または、管理者が特定のホストまたはIPアドレスからクライアントを登録・更新する場合に適用されます。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Any Client"
+msgstr "任意のクライアント"
+
+#. type: Plain text
+msgid ""
+"This condition always evaluates to true. It can be used for example to "
+"ensure that all clients in the particular realm are FAPI compliant."
+msgstr ""
+"このConditionは常にtrueと評価されます。これは、たとえば特定のレルム内のすべてのクライアントがFAPIに準拠していることを確認するために使用します。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Executor"
+msgstr "Executor"
+
+#. type: Plain text
+msgid ""
+"An executor specifies what action is executed on a client to which a policy "
+"is adopted. The executor executes one or several specified actions. For "
+"example, some executor checks whether the value of the parameter "
+"`redirect_uri` in the authorization request matches exactly with one of the "
+"pre-registered redirect URIs on Authorization Endpoint and rejects this "
+"request if not."
+msgstr ""
+"Executorは、ポリシーが採用されたクライアントで実行されるアクションを指定します。Executorは、指定された1つまたは複数のアクションを実します。例えば、あるExecutorは認可リクエストのパラメータ"
+" `redirect_uri` "
+"の値が認可エンドポイントに予め登録されているリダイレクトURIのいずれかと正確に一致するかどうかを調べ、一致しない場合はこのリクエストを拒否します。"
+
+#. type: Plain text
+msgid ""
+"The executor can not be used solely by itself. It can be used in a "
+"<<_client_policy_profile,profile>> that is described afterwards."
+msgstr ""
+"Executorは単体では使用できません。後述する<<_client_policy_profile,profile>>の中で使用することができます。"
+
+#. type: Plain text
+msgid ""
+"An executor can be configurable the same as other configurable providers. "
+"What can be configured depends on the nature of each executor."
+msgstr "Executorは、他の設定可能なプロバイダーと同様に設定することができます。何が設定できるかは、各Executorの性質に依存します。"
+
+#. type: Plain text
+msgid ""
+"An executor acts on various events. An executor implementation can ignore "
+"certain types of events (For example, executor for checking OIDC `request` "
+"object acts just on the OIDC authorization request). Events are:"
+msgstr ""
+"Executorは、さまざまなイベントに対して動作します。Executorの実装は、ある種のイベントを無視することができます（例えば、OIDC "
+"`request` オブジェクトをチェックするExecutorは、OIDC認可リクエストに対してのみ動作します）。以下のイベントがあります。"
+
+#. type: Plain text
+msgid ""
+"Creating a client (including creation through dynamic client registration)"
+msgstr "クライアントの作成（動的クライアント登録による作成も含みます）"
+
+#. type: Plain text
+msgid "Sending an authorization request"
+msgstr "認可リクエストの送信"
+
+#. type: Plain text
+msgid "Sending a token request"
+msgstr "トークン・リクエストの送信"
+
+#. type: Plain text
+msgid "Sending a token refresh request"
+msgstr "トークン・リフレッシュ・リクエストの送信"
+
+#. type: Plain text
+msgid "Sending a token revocation request"
+msgstr "トークン無効化リクエストの送信"
+
+#. type: Plain text
+msgid "Sending a token introspection request"
+msgstr "トークン・イントロスペクション・リクエストの送信"
+
+#. type: Plain text
+msgid "Sending a userinfo request"
+msgstr "UserInfoリクエストの送信"
+
+#. type: Plain text
+msgid "Sending a logout request with a refresh token"
+msgstr "リフレッシュ・トークン付きのログアウト・リクエストの送信"
+
+#. type: Plain text
+msgid ""
+"On each event, an executor can work in multiple phases. For example, on "
+"creating/updating a client, the executor can modify the client configuration"
+" by auto-configure specific client settings. After that, the executor "
+"validates this configuration in validation phase."
+msgstr ""
+"各イベントにおいて、Executorは複数のフェーズで動作します。例えば、クライアントを作成・更新する場合、Executorは特定のクライアント設定を自動構成することによって、クライアント設定を変更することができます。その後、Executorは検証フェーズでこの設定を検証します。"
+
+#. type: Plain text
+msgid ""
+"One of several purposes for this executor is to realize the security "
+"requirements of client conformance profiles like FAPI. To do so, the "
+"following executors are needed:"
+msgstr ""
+"このExecutorのいくつかの目的の一つは、FAPIのようなクライアントのコンフォーマンス・プロファイルのセキュリティー要件を実現することです。そのためには、以下のExecutorが必要です。"
+
+#. type: Plain text
+msgid ""
+"Enforce secure <<_client-credentials,Client Authentication method>> is used "
+"for the client"
+msgstr "セキュアな<<_client-credentials,クライアント認証メソッド>>をクライアントに使用することを強制"
+
+#. type: Plain text
+msgid ""
+"Enforce <<_mtls-client-certificate-bound-tokens,Holder-of-key tokens>> are "
+"used"
+msgstr "<<_mtls-client-certificate-bound-tokens,Holder-of-keyとIークン>>の使用を強制"
+
+#. type: Plain text
+msgid ""
+"Enforce <<_proof-key-for-code-exchange,Proof Key for Code Exchange (PKCE)>> "
+"is used"
+msgstr ""
+"<<_proof-key-for-code-exchange,Proof Key for Code Exchange（PKCE）>>の使用を強制"
+
+#. type: Plain text
+msgid ""
+"Enforce secure signature algorithm for <<_client-credentials,Signed JWT "
+"client authentication (private-key-jwt)>> is used"
+msgstr ""
+"<<_client-credentials,Signed JWTクライアント認証（private-key-"
+"jwt）>>にセキュアな署名アルゴリズムを使用することを強制"
+
+#. type: Plain text
+msgid ""
+"Enforce HTTPS redirect URI and make sure that configured redirect URI does "
+"not contain wildcards"
+msgstr "HTTPSリダイレクトURIを強制し、設定したリダイレクトURIにワイルドカードが含まれないように強制"
+
+#. type: Plain text
+msgid "Enforce OIDC `request` object satisfying high security level"
+msgstr "高いセキュリティー・レベルを満たすOIDC `request` オブジェクトを強制"
+
+#. type: Plain text
+msgid ""
+"Enforce Response Type of OIDC Hybrid Flow including ID Token used as "
+"_detached signature_ as described in the FAPI 1 specification, which means "
+"that ID Token returned from Authorization response won't contain user "
+"profile data"
+msgstr ""
+"FAPI 1 仕様にあるように、認可レスポンスで返されるIDトークンにユーザー・プロフィールのデータが含まれず、 _detached "
+"signature_ として使用するOIDCハイブリッド・フローのレスポンスタイプを強制"
+
+#. type: Plain text
+msgid ""
+"Enforce more secure `state` and `nonce` parameters treatment for preventing "
+"CSRF"
+msgstr "CSRFを防止するため、より安全な `state` と `nonce` パラメーターの処理を強制"
+
+#. type: Plain text
+msgid "Enforce more secure signature algorithm when client registration"
+msgstr "クライアント登録時に、よりセキュアな署名アルゴリズムを強制"
+
+#. type: Title =====
+#, no-wrap
+msgid "Profile"
+msgstr "Profile"
+
+#. type: Plain text
+msgid ""
+"A profile consists of several executors, which can realize a security "
+"profile like FAPI. Profile can be configured by the Admin REST API (Admin "
+"Console) together with its executors.  Two _global profiles_ exist and they "
+"are configured in {project_name} by default with pre-configured executors "
+"compliant with the FAPI Baseline and FAPI Advanced specifications.  More "
+"details exist in the FAPI section of the link:{adapterguide_link}#_fapi-"
+"support[{adapterguide_name}]."
+msgstr ""
+"Profileは複数のExecutorで構成され、FAPIのようなセキュリティー・プロファイルを実現することができます。プロファイルは、管理REST "
+"API（管理コンソール）を用いて、Executorとともに設定することができます。2つの _global profiles_ "
+"が存在し、これらはデフォルトで{project_name}に設定され、FAPI BaselineとFAPI "
+"Advancedの仕様に準拠したExecutorが事前に設定されています。詳細は link:{adapterguide_link}#_fapi-"
+"support[{adapterguide_name}] のFAPIセクションに記載されています。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Policy"
+msgstr "Policy"
+
+#. type: Plain text
+msgid ""
+"A policy consists of several conditions and profiles. The policy can be "
+"adopted to clients satisfying all conditions of this policy. The policy "
+"refers several profiles and all executors of these profiles execute their "
+"task against the client that this policy is adopted to."
+msgstr ""
+"Policyは、いくつかのConditionとProfileから構成されます。Policyは、このPolicyのすべてのConditionを満たすクライアントに採用されます。PolicyはいくつかのProfileを参照し，そのProfileのExecutgorはすべて，このPolicyが採用されたクライアントに対してタスクを実行します。"
+
+#. type: Plain text
+msgid ""
+"Policies, profiles, conditions, executors can be configured by Admin REST "
+"API, which means also the Admin Console. To do so, there is a tab _Realm_ ->"
+" _Realm Settings_ -> _Client Policies_ , which means the administrator can "
+"have client policies per realm."
+msgstr ""
+"Policy、Profile、Condition、Executorは、管理REST "
+"API、つまり管理コンソールでも設定することができます。これを行うには、 _Realm_ -> _Realm Settings_ -> _Client "
+"Policies_ というタブがあり、管理者はレルムごとにクライアント・ポリシーを持つことができます。"
+
+#. type: Plain text
+msgid ""
+"The _Global Client Profiles_ are automatically available in each realm. "
+"However there are no client policies configured by default. This means that "
+"the administrator is always required to create any client policy if they "
+"want for example the clients of his realm to be FAPI compliant. Global "
+"profiles cannot be updated, but the administrator can easily use them as a "
+"template and create their own profile if they want to do some slight changes"
+" in the global profile configurations.  There is JSON Editor available in "
+"the Admin Console, which simplifies the creation of new profile based on "
+"some global profile."
+msgstr ""
+"_Global Client Profiles_ "
+"は各レルムで自動的に利用できます。しかし、デフォルトでは、クライアント・ポリシーは設定されていません。これは、例えば自分のレルムのクライアントをFAPIに準拠させたい場合、管理者が常にクライアント・ポリシーを作成する必要があることを意味します。グローバル・プロファイルは更新できませんが、グローバル・プロファイルの設定を少し変更したい場合、管理者は簡単にテンプレートとして使用し、独自のプロファイルを作成することができます。管理者コンソールにはJSONエディターがあり、グローバル・プロファイルに基づいた新しいプロファイルを簡単に作成することができます。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Backward Compatibility"
+msgstr "後方互換性"
+
+#. type: Plain text
+msgid ""
+"Client Policies can replace Client Registration Policies described in the "
+"link:{adapterguide_link}#_client_registration_policies[{adapterguide_name}]."
+"  However, Client Registration Policies also still co-exist. This means that"
+" for example during a Dynamic Client Registration request to create/update a"
+" client, both client policies and client registration policies are applied."
+msgstr ""
+"クライアント・ポリシーは、link:{adapterguide_link}#_client_registration_policies[{adapterguide_name}]で説明したクライアント登録ポリシーに置き換えることができます。しかし、クライアント登録ポリシーもまだ共存しています。つまり、たとえばクライアントを作成・更新するための動的クライアント登録要求の際に、クライアント・ポリシーとクライアント登録ポリシーの両方が適用されます。"
+
+#. type: Plain text
+msgid ""
+"The current plans are for the Client Registration Policies feature to be "
+"removed and the existing client registration policies will be migrated into "
+"new client policies automatically."
+msgstr ""
+"現在の計画では、クライアント登録ポリシー機能は削除され、既存のクライアント登録ポリシーは自動的に新しいクライアント・ポリシーに移行される予定です。"

@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2021
+# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2021
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # Hiroyuki Wada <wadahiro@gmail.com>, 2021
 # 
@@ -56,8 +57,8 @@ msgstr "OpenID Connect"
 msgid ""
 "link:https://openid.net/connect/[OpenID Connect] (OIDC) is an authentication"
 " protocol that is an extension of "
-"link:https://tools.ietf.org/html/rfc6749[OAuth 2.0].  While OAuth 2.0 is "
-"only a framework for building authorization protocols and is mainly "
+"link:https://datatracker.ietf.org/doc/html/rfc6749[OAuth 2.0].  While OAuth "
+"2.0 is only a framework for building authorization protocols and is mainly "
 "incomplete, OIDC is a full-fledged authentication and authorization "
 "protocol.  OIDC also makes heavy use of the link:https://jwt.io[Json Web "
 "Token] (JWT) set of standards.  These standards define an identity token "
@@ -65,7 +66,8 @@ msgid ""
 "and web-friendly way."
 msgstr ""
 "link:https://openid.net/connect/[OpenID Connect] （OIDC）は "
-"link:https://tools.ietf.org/html/rfc6749[OAuth 2.0] を拡張した認証プロトコルです。OAuth "
+"link:https://datatracker.ietf.org/doc/html/rfc6749[OAuth 2.0] "
+"を拡張した認証プロトコルです。OAuth "
 "2.0が認可プロトコルのみを構築するためのフレームワークで、不完全であるのに対し、OIDCは完成された認証および認可のプロトコルです。OIDCはまた、 "
 "link:https://jwt.io[Json Web Token] "
 "（JWT）の標準セットを多用します。これらの標準は、コンパクトでWebフレンドリーな方法で、アイデンティティー・トークンのJSON形式とデジタル署名、データ暗号化の方法を定義します。"
@@ -123,6 +125,11 @@ msgstr "設定可能な項目とその説明は次のとおりです。"
 #. type: Plain text
 msgid "Configuration|Description"
 msgstr "設定|説明"
+
+#. type: Title =====
+#, no-wrap
+msgid "Backchannel Logout"
+msgstr "Backchannel Logout"
 
 #. type: Title ====
 #, no-wrap
@@ -226,11 +233,11 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "{project_name} also supports the optional "
-"https://tools.ietf.org/html/rfc7636[Proof Key for Code Exchange] "
+"https://datatracker.ietf.org/doc/html/rfc7636[Proof Key for Code Exchange] "
 "specification."
 msgstr ""
-"{project_name}は、オプションの https://tools.ietf.org/html/rfc7636[Proof Key for "
-"Code Exchange] の仕様もサポートしています。"
+"{project_name}は、オプションの https://datatracker.ietf.org/doc/html/rfc7636[Proof "
+"Key for Code Exchange] の仕様もサポートしています。"
 
 #. type: Title =====
 #, no-wrap
@@ -710,9 +717,9 @@ msgstr "HTTPステータスコード|説明"
 
 #. type: Plain text
 msgid ""
-"204|It notifies {project_name} of receiving the authentication delegation "
+"201|It notifies {project_name} of receiving the authentication delegation "
 "request."
-msgstr "204|認証委任リクエストを受信したことを{project_name}に通知します。"
+msgstr "201|認証委任リクエストを受信したことを{project_name}に通知します。"
 
 #. type: Plain text
 msgid ""
@@ -826,6 +833,87 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
+msgid "OIDC Logout"
+msgstr "OIDCログアウト"
+
+#. type: Plain text
+msgid ""
+"OIDC has three different specifications relevant to logout mechanisms, all "
+"of these are currently in draft status:"
+msgstr "OIDCには、ログアウト機構に関連する3つの異なる仕様があり、これらはすべて現在ドラフトの状態です。"
+
+#. type: Plain text
+msgid ""
+"https://openid.net/specs/openid-connect-session-1_0.html[Session Management]"
+msgstr ""
+"https://openid.net/specs/openid-connect-session-1_0.html[Session Management]"
+
+#. type: Plain text
+msgid ""
+"https://openid.net/specs/openid-connect-frontchannel-1_0.html[Front-Channel "
+"Logout]"
+msgstr ""
+"https://openid.net/specs/openid-connect-frontchannel-1_0.html[Front-Channel "
+"Logout]"
+
+#. type: Plain text
+msgid ""
+"https://openid.net/specs/openid-connect-backchannel-1_0.html[Back-Channel "
+"Logout]"
+msgstr ""
+"https://openid.net/specs/openid-connect-backchannel-1_0.html[Back-Channel "
+"Logout]"
+
+#. type: Plain text
+msgid ""
+"Again since all of this is described in the OIDC specification we will only "
+"give a brief overview here."
+msgstr "繰り返しになりますが、これはすべてOIDCの仕様で説明されているため、ここでは簡単な概要のみを示します。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Session Management"
+msgstr "Session Management"
+
+#. type: Plain text
+msgid ""
+"This is a browser-based logout. The application obtains session status "
+"information from {project_name} at a regular basis.  When the session is "
+"terminated at {project_name} the application will notice and trigger it's "
+"own logout."
+msgstr ""
+"これはブラウザーベースのログアウトです。アプリケーションは、定期的に{project_name}からセッション・ステータス情報を取得します。セッションが{project_name}で終了すると、アプリケーションはそれに気づき、自身のログアウトをトリガーします。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Frontchannel Logout"
+msgstr "Frontchannel Logout"
+
+#. type: Plain text
+msgid ""
+"This is also a browser-based logout. In contrast to the Session Managment "
+"based logout approach {project_name} will send logout requests to the "
+"clients. Applications or clients need to have a frontchannel logout URL "
+"registered at {project_name}.  After triggering a logout at {project_name}, "
+"it will send logout requests to these registered URLs that will terminate "
+"the client sessions."
+msgstr ""
+"これもブラウザーベースのログアウトです。セッション管理ベースのログアウトのアプローチとは対照的に、{project_name}はクライアントにログアウト・リクエストを送信します。アプリケーションまたはクライアントは、{project_name}に登録されたフロントチャネル・ログアウトURLを実装している必要があります。{project_name}でログアウトをトリガーした後、クライアント・セッションを終了するこれらの登録済みURLにログアウト・リクエストを送信します。"
+
+#. type: Plain text
+msgid ""
+"This is a non browser-based logout that uses direct backchannel "
+"communication between {project_name} and clients.  {project_name} sends a "
+"HTTP POST request containing a logout token to all clients logged into "
+"{project_name}. These requests are sent to a registered backchannel logout "
+"URLs at {project_name} and are supposed to trigger a logout at client side."
+msgstr ""
+"これは、{project_name}とクライアント間の直接バックチャネル通信を使用する非ブラウザーベースのログアウトです。{project_name}は、ログアウト・トークンを含むHTTP"
+" "
+"POSTリクエストを{project_name}にログインしているすべてのクライアントに送信します。これらのリクエストは、{project_name}の登録済みバックチャネル・ログアウトURLに送信され、クライアント側でログアウトをトリガーすることになっています。"
+
+#. type: Title ====
+#, no-wrap
 msgid "{project_name} Server OIDC URI Endpoints"
 msgstr "{project_name}サーバーOIDC URIエンドポイント"
 
@@ -860,13 +948,15 @@ msgid ""
 "/realms/{realm-name}/protocol/openid-connect/userinfo::\n"
 "  This is the URL endpoint for the User Info service described in the OIDC specification.\n"
 "/realms/{realm-name}/protocol/openid-connect/revoke::\n"
-"  This is the URL endpoint for OAuth 2.0 Token Revocation described in https://tools.ietf.org/html/rfc7009[RFC7009].\n"
+"  This is the URL endpoint for OAuth 2.0 Token Revocation described in https://datatracker.ietf.org/doc/html/rfc7009[RFC7009].\n"
 "/realms/{realm-name}/protocol/openid-connect/certs::\n"
 "  This is the URL endpoint for the JSON Web Key Set (JWKS) containing the public keys used to verify any JSON Web Token (jwks_uri)\n"
 "/realms/{realm-name}/protocol/openid-connect/auth/device::\n"
 "  This is the URL endpoint for Device Authorization Grant to obtain a device code and a user code.\n"
 "/realms/{realm-name}/protocol/openid-connect/ext/ciba/auth::\n"
 "  This is the URL endpoint for Client Initiated Backchannel Authentication Grant to obtain an auth_req_id that identifies the authentication request made by the client.\n"
+"/realms/{realm-name}/protocol/openid-connect/logout/backchannel-logout::\n"
+"  This is the URL endpoint for performing backchannel logouts described in the OIDC specification.\n"
 msgstr ""
 "/realms/{realm-name}/protocol/openid-connect/auth::\n"
 "  これは、認可コード・フローで一時コードを取得するため、またはインプリシット・フローまたはハイブリット・フローを使用してトークンを取得するためのURLエンドポイントです。\n"
@@ -877,13 +967,15 @@ msgstr ""
 "/realms/{realm-name}/protocol/openid-connect/userinfo::\n"
 "  これは、OIDC仕様で説明されているUserInfoサービスのURLエンドポイントです。\n"
 "/realms/{realm-name}/protocol/openid-connect/revoke::\n"
-"  これは、 https://tools.ietf.org/html/rfc7009[RFC7009] で説明されているOAuth 2.0トークン無効化のURLエンドポイントです。\n"
+"  これは、 https://datatracker.ietf.org/doc/html/rfc7009[RFC7009] で説明されているOAuth 2.0トークン無効化のURLエンドポイントです。\n"
 "/realms/{realm-name}/protocol/openid-connect/certs::\n"
 "これは、JSON Webトークンの検証に使用される公開鍵を含むJSON Webキー セット（JWKS）のURLエンドポイントです（jwks_uri）。\n"
 "/realms/{realm-name}/protocol/openid-connect/auth/device::\n"
 "これは、デバイスコードとユーザーコードを取得するためのデバイス認可グラントのURLエンドポイントです。\n"
 "/realms/{realm-name}/protocol/openid-connect/ext/ciba/auth::\n"
 "これは、クライアントによって行われた認証リクエストを識別するauth_req_idを取得するためのクライアント主導のバックチャネル認証グラントのURLエンドポイントです。\n"
+"/realms/{realm-name}/protocol/openid-connect/logout/backchannel-logout::\n"
+"これは、OIDC仕様で説明されているバックチャネル・ログアウトを実行するためのURLエンドポイントです。\n"
 
 #. type: Plain text
 msgid "In all of these replace _{realm-name}_ with the name of the realm."

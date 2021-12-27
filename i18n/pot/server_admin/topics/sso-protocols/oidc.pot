@@ -46,7 +46,7 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "link:https://openid.net/connect/[OpenID Connect] (OIDC) is an authentication "
-"protocol that is an extension of link:https://tools.ietf.org/html/"
+"protocol that is an extension of link:https://datatracker.ietf.org/doc/html/"
 "rfc6749[OAuth 2.0].  While OAuth 2.0 is only a framework for building "
 "authorization protocols and is mainly incomplete, OIDC is a full-fledged "
 "authentication and authorization protocol.  OIDC also makes heavy use of the "
@@ -97,6 +97,11 @@ msgstr ""
 
 #. type: Plain text
 msgid "Configuration|Description"
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Backchannel Logout"
 msgstr ""
 
 #. type: Title ====
@@ -181,8 +186,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"{project_name} also supports the optional https://tools.ietf.org/html/"
-"rfc7636[Proof Key for Code Exchange] specification."
+"{project_name} also supports the optional https://datatracker.ietf.org/doc/"
+"html/rfc7636[Proof Key for Code Exchange] specification."
 msgstr ""
 
 #. type: Title =====
@@ -588,7 +593,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"204|It notifies {project_name} of receiving the authentication delegation "
+"201|It notifies {project_name} of receiving the authentication delegation "
 "request."
 msgstr ""
 
@@ -689,6 +694,77 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
+msgid "OIDC Logout"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"OIDC has three different specifications relevant to logout mechanisms, all "
+"of these are currently in draft status:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"https://openid.net/specs/openid-connect-session-1_0.html[Session Management]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"https://openid.net/specs/openid-connect-frontchannel-1_0.html[Front-Channel "
+"Logout]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"https://openid.net/specs/openid-connect-backchannel-1_0.html[Back-Channel "
+"Logout]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Again since all of this is described in the OIDC specification we will only "
+"give a brief overview here."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Session Management"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is a browser-based logout. The application obtains session status "
+"information from {project_name} at a regular basis.  When the session is "
+"terminated at {project_name} the application will notice and trigger it's "
+"own logout."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Frontchannel Logout"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is also a browser-based logout. In contrast to the Session Managment "
+"based logout approach {project_name} will send logout requests to the "
+"clients. Applications or clients need to have a frontchannel logout URL "
+"registered at {project_name}.  After triggering a logout at {project_name}, "
+"it will send logout requests to these registered URLs that will terminate "
+"the client sessions."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is a non browser-based logout that uses direct backchannel "
+"communication between {project_name} and clients.  {project_name} sends a "
+"HTTP POST request containing a logout token to all clients logged into "
+"{project_name}. These requests are sent to a registered backchannel logout "
+"URLs at {project_name} and are supposed to trigger a logout at client side."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
 msgid "{project_name} Server OIDC URI Endpoints"
 msgstr ""
 
@@ -721,13 +797,15 @@ msgid ""
 "/realms/{realm-name}/protocol/openid-connect/userinfo::\n"
 "  This is the URL endpoint for the User Info service described in the OIDC specification.\n"
 "/realms/{realm-name}/protocol/openid-connect/revoke::\n"
-"  This is the URL endpoint for OAuth 2.0 Token Revocation described in https://tools.ietf.org/html/rfc7009[RFC7009].\n"
+"  This is the URL endpoint for OAuth 2.0 Token Revocation described in https://datatracker.ietf.org/doc/html/rfc7009[RFC7009].\n"
 "/realms/{realm-name}/protocol/openid-connect/certs::\n"
 "  This is the URL endpoint for the JSON Web Key Set (JWKS) containing the public keys used to verify any JSON Web Token (jwks_uri)\n"
 "/realms/{realm-name}/protocol/openid-connect/auth/device::\n"
 "  This is the URL endpoint for Device Authorization Grant to obtain a device code and a user code.\n"
 "/realms/{realm-name}/protocol/openid-connect/ext/ciba/auth::\n"
 "  This is the URL endpoint for Client Initiated Backchannel Authentication Grant to obtain an auth_req_id that identifies the authentication request made by the client.\n"
+"/realms/{realm-name}/protocol/openid-connect/logout/backchannel-logout::\n"
+"  This is the URL endpoint for performing backchannel logouts described in the OIDC specification.\n"
 msgstr ""
 
 #. type: Plain text

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SOURCE_REPO=https://github.com/keycloak/keycloak-documentation.git
-SOURCE_REVISION=14.0.0
+SOURCE_REVISION=15.0.2
 SOURCE_DIR=source
 TRANSLATED_DIR=translated
 TARGET_LANG=ja_JP

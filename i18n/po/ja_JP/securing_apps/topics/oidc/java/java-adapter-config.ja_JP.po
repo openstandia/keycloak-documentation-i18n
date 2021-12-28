@@ -4,15 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hiroyuki Wada <wadahiro@gmail.com>, 2019
 # Yoshikazu Nojima <mail@ynojima.net>, 2020
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# jic_m_mito <jic-m-mito@nri.co.jp>, 2021
+# Hiroyuki Wada <wadahiro@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,8 +23,18 @@ msgstr ""
 
 #. type: Labeled list
 #, no-wrap
+msgid "socket-timeout-millis"
+msgstr "socket-timeout-millis"
+
+#. type: Labeled list
+#, no-wrap
 msgid "connection-pool-size"
 msgstr "connection-pool-size"
+
+#. type: Labeled list
+#, no-wrap
+msgid "connection-ttl-millis"
+msgstr "connection-ttl-millis"
 
 #. type: Labeled list
 #, no-wrap
@@ -114,6 +125,9 @@ msgstr ""
 #, no-wrap
 msgid ""
 "   \"connection-pool-size\" : 20,\n"
+"   \"socket-timeout-millis\": 5000,\n"
+"   \"connection-timeout-millis\": 6000,\n"
+"   \"connection-ttl-millis\": 500,\n"
 "   \"disable-trust-manager\": false,\n"
 "   \"allow-any-hostname\" : false,\n"
 "   \"truststore\" : \"path/to/truststore.jks\",\n"
@@ -130,6 +144,9 @@ msgid ""
 "}\n"
 msgstr ""
 "   \"connection-pool-size\" : 20,\n"
+"   \"socket-timeout-millis\": 5000,\n"
+"   \"connection-timeout-millis\": 6000,\n"
+"   \"connection-ttl-millis\": 500,\n"
 "   \"disable-trust-manager\": false,\n"
 "   \"allow-any-hostname\" : false,\n"
 "   \"truststore\" : \"path/to/truststore.jks\",\n"
@@ -209,8 +226,8 @@ msgid ""
 "adapter will break."
 msgstr ""
 "レルム公開鍵のPEM形式です。これは管理コンソールから取得できます。これは _OPTIONAL_ "
-"であり、設定することはお勧めしません。これが設定されていない場合、アダプターは必要に応じて（{project_name}の鍵をローテーションさせる場合など）、{project_name}から常に再ダウンロードします。しかし"
-"、realm-public-"
+"であり、設定することはお勧めしません。これが設定されていない場合、アダプターは必要に応じて（{project_name}の鍵をローテーションさせる場合など）、{project_name}から常に再ダウンロードします。しかし、realm-"
+"public-"
 "keyが設定されている場合、アダプターは{project_name}から新しい鍵をダウンロードすることは無いので、{project_name}の鍵をローテーションするとアダプターが正常に動作しなくなります。"
 
 #. type: Labeled list
@@ -267,7 +284,7 @@ msgid ""
 " role mappings for the user. If false, it will look at the realm level for "
 "user role mappings.  This is _OPTIONAL_.  The default value is _false_."
 msgstr ""
-"trueに設定すると、アダプターは、ユーザーのアプリケーション・レベルのロール・マッピングのトークンを調べます。falseの場合、ユーザー・ロール・マッピングのレルム・レベルを確認します。これは"
+"trueに設定すると、アダプターはトークン内を調べて、ユーザーのアプリケーション・レベルのロール・マッピングを探します。falseの場合、レルム・レベルのユーザー・ロール・マッピングを探します。これは"
 " _OPTIONAL_ です。デフォルト値は _false_ です。 "
 
 #. type: Labeled list
@@ -383,8 +400,8 @@ msgid ""
 " unauthenticated users of the web application to the Keycloak login page, "
 "but send an HTTP `401` status code to unauthenticated SOAP or REST clients "
 "instead as they would not understand a redirect to the login page.  Keycloak"
-" auto-detects SOAP or REST clients based on typical headers like `X"
-"-Requested-With`, `SOAPAction` or `Accept`.  The default value is _false_."
+" auto-detects SOAP or REST clients based on typical headers like "
+"`X-Requested-With`, `SOAPAction` or `Accept`.  The default value is _false_."
 msgstr ""
 "アプリケーションがWebアプリケーションとWebサービス（SOAPやRESTなど）の両方を提供する場合は、これを __true__ "
 "に設定する必要があります。 "
@@ -446,6 +463,41 @@ msgid ""
 msgstr ""
 "この設定オプションは、{project_name}サーバーにプールすべき接続数を定義します。これは _OPTIONAL_ です。デフォルトは `20` "
 "です。"
+
+#. type: Plain text
+msgid ""
+"Timeout for socket waiting for data after establishing the connection in "
+"milliseconds.  Maximum time of inactivity between two data packets.  A "
+"timeout value of zero is interpreted as an infinite timeout.  A negative "
+"value is interpreted as undefined (system default if applicable).  The "
+"default value is `-1`.  This is _OPTIONAL_."
+msgstr ""
+"コネクション確立後のソケットのデータ待ちタイムアウト（ミリ秒）。2つのデータパケット間の最大非アクティブ時間です。タイムアウト値が0の場合、無限大のタイムアウトとして解釈されます。負の値は、未定義と解釈されます（該当する場合はシステムのデフォルト）。デフォルト値は"
+" `-1` です。これは _OPTIONAL_ です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "connection-timeout-millis"
+msgstr "connection-timeout-millis"
+
+#. type: Plain text
+msgid ""
+"Timeout for establishing the connection with the remote host in "
+"milliseconds.  A timeout value of zero is interpreted as an infinite "
+"timeout.  A negative value is interpreted as undefined (system default if "
+"applicable).  The default value is `-1`.  This is _OPTIONAL_."
+msgstr ""
+"リモートホストとのコネクションを確立する際のタイムアウトをミリ秒単位で指定します。タイムアウト値0は無限大のタイムアウトとして解釈されます。負の値は未定義と解釈されます（該当する場合はシステムのデフォルト）。デフォルト値は"
+" `-1` です。これは _OPTIONAL_ です。"
+
+#. type: Plain text
+msgid ""
+"Connection time-to-live for client in milliseconds.  A value less than or "
+"equal to zero is interpreted as an infinite value.  The default value is "
+"`-1`.  This is _OPTIONAL_."
+msgstr ""
+"クライアントのコネクション存続時間をミリ秒単位で指定します。0以下の値は無限大の値として解釈されます。デフォルト値は `-1` です。これは "
+"_OPTIONAL_ です。"
 
 #. type: Plain text
 msgid ""

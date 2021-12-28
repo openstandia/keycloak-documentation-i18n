@@ -4,21 +4,51 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Yoshikazu Nojima <mail@ynojima.net>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Yoshikazu Nojima <mail@ynojima.net>, 2020\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Plain text
+msgid ""
+"Timeout for socket waiting for data after establishing the connection in "
+"milliseconds.  Maximum time of inactivity between two data packets.  A "
+"timeout value of zero is interpreted as an infinite timeout.  A negative "
+"value is interpreted as undefined (system default if applicable).  The "
+"default value is `-1`.  This is _OPTIONAL_."
+msgstr ""
+"コネクション確立後のソケットのデータ待ちタイムアウトをミリ秒単位で指定します。2つのデータパケット間の最大非アクティブ時間です。タイムアウト値が0の場合、無限大のタイムアウトとして解釈されます。負の値は、未定義と解釈されます（該当する場合はシステムのデフォルト）。デフォルト値は"
+" `-1` です。これは _OPTIONAL_ です。"
+
+#. type: Plain text
+msgid ""
+"Timeout for establishing the connection with the remote host in "
+"milliseconds.  A timeout value of zero is interpreted as an infinite "
+"timeout.  A negative value is interpreted as undefined (system default if "
+"applicable).  The default value is `-1`.  This is _OPTIONAL_."
+msgstr ""
+"リモートホストとのコネクションを確立する際のタイムアウトをミリ秒単位で指定します。タイムアウト値0は無限大のタイムアウトとして解釈されます。負の値は未定義と解釈されます（該当する場合はシステムのデフォルト）。デフォルト値は"
+" `-1` です。これは _OPTIONAL_ です。"
+
+#. type: Plain text
+msgid ""
+"Connection time-to-live for client in milliseconds.  A value less than or "
+"equal to zero is interpreted as an infinite value.  The default value is "
+"`-1`.  This is _OPTIONAL_."
+msgstr ""
+"クライアントのコネクション存続時間をミリ秒単位で指定します。0以下の値は無限大の値として解釈されます。デフォルト値は `-1` です。これは "
+"_OPTIONAL_ です。"
 
 #. type: Plain text
 msgid ""
@@ -78,7 +108,10 @@ msgid ""
 "            clientKeystorePassword=\"pwd\"\n"
 "            truststore=\"classpath:truststore.jks\"\n"
 "            truststorePassword=\"pwd\"\n"
-"            proxyUrl=\"http://proxy/\" />\n"
+"            proxyUrl=\"http://proxy/\"\n"
+"            socketTimeout=\"5000\"\n"
+"            connectionTimeout=\"6000\"\n"
+"            connectionTtl=\"500\" />\n"
 msgstr ""
 "<HttpClient connectionPoolSize=\"10\"\n"
 "            disableTrustManager=\"false\"\n"
@@ -87,7 +120,10 @@ msgstr ""
 "            clientKeystorePassword=\"pwd\"\n"
 "            truststore=\"classpath:truststore.jks\"\n"
 "            truststorePassword=\"pwd\"\n"
-"            proxyUrl=\"http://proxy/\" />\n"
+"            proxyUrl=\"http://proxy/\"\n"
+"            socketTimeout=\"5000\"\n"
+"            connectionTimeout=\"6000\"\n"
+"            connectionTtl=\"500\" />\n"
 
 #. type: Labeled list
 #, no-wrap
@@ -172,3 +208,18 @@ msgstr "proxyUrl"
 #. type: Plain text
 msgid "URL to HTTP proxy to use for HTTP connections.  This is _OPTIONAL_."
 msgstr "HTTP接続に使用するHTTPプロキシーのURLです。これは _OPTIONAL_ です。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "socketTimeout"
+msgstr "socketTimeout"
+
+#. type: Labeled list
+#, no-wrap
+msgid "connectionTimeout"
+msgstr "connectionTimeout"
+
+#. type: Labeled list
+#, no-wrap
+msgid "connectionTtl"
+msgstr "connectionTtl"

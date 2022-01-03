@@ -16,6 +16,11 @@ msgstr ""
 
 #. type: Block title
 #, no-wrap
+msgid "Procedure"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
 msgid "Linux/Unix"
 msgstr ""
 
@@ -26,7 +31,7 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "Domain Clustered Mode"
+msgid "Using domain clustered mode"
 msgstr ""
 
 #. type: Plain text
@@ -39,11 +44,11 @@ msgstr ""
 msgid ""
 "Running a cluster in standard mode can quickly become aggravating as the "
 "cluster grows in size.  Every time you need to make a configuration change, "
-"you have to perform it on each node in the cluster.  Domain mode solves this "
-"problem by providing a central place to store and publish configurations.  "
-"It can be quite complex to set up, but it is worth it in the end.  This "
-"capability is built into the {appserver_name} Application Server which "
-"{project_name} derives from."
+"you perform it on each node in the cluster.  Domain mode solves this problem "
+"by providing a central place to store and publish configurations.  It can be "
+"quite complex to set up, but it is worth it in the end.  This capability is "
+"built into the {appserver_name} Application Server which {project_name} "
+"derives from."
 msgstr ""
 
 #. type: Plain text
@@ -127,7 +132,7 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Domain Configuration"
+msgid "Domain configuration"
 msgstr ""
 
 #. type: Plain text
@@ -261,7 +266,7 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Host Controller Configuration"
+msgid "Host controller configuration"
 msgstr ""
 
 #. type: Plain text
@@ -313,7 +318,7 @@ msgid ""
 "authentication server instance.  It has a `port-offset` setting.  Any "
 "network port defined in the _domain.xml_ `socket-binding-group` or the "
 "server group will have the value of `port-offset` added to it.  For this "
-"example domain setup we do this so that ports opened by the load balancer "
+"sample domain setup, we do this so that ports opened by the load balancer "
 "server don't conflict with the authentication server instance that is "
 "started."
 msgstr ""
@@ -331,7 +336,7 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Server Instance Working Directories"
+msgid "Server instance working directories"
 msgstr ""
 
 #. type: Plain text
@@ -353,9 +358,9 @@ msgstr ""
 msgid "image:{project_images}/domain-server-dir.png[]"
 msgstr ""
 
-#. type: Block title
+#. type: Title ====
 #, no-wrap
-msgid "Domain Boot Script"
+msgid "Booting in domain clustered mode"
 msgstr ""
 
 #. type: Plain text
@@ -363,6 +368,11 @@ msgid ""
 "When running the server in domain mode, there is a specific script you need "
 "to run to boot the server depending on your operating system.  These scripts "
 "live in the _bin/_ directory of the server distribution."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Domain Boot Script"
 msgstr ""
 
 #. type: Plain text
@@ -391,14 +401,13 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Clustered Domain Example"
+msgid "Testing with a sample clustered domain"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"You can test drive clustering using the out-of-the-box _domain.xml_ "
-"configuration.  This example domain is meant to run on one machine and boots "
-"up:"
+"You can test drive clustering using the sample _domain.xml_ configuration.  "
+"This sample domain is meant to run on one machine and boots up:"
 msgstr ""
 
 #. type: Plain text
@@ -410,41 +419,53 @@ msgid "an HTTP load balancer"
 msgstr ""
 
 #. type: Plain text
-msgid "2 {project_name} server instances"
+msgid "two {project_name} server instances"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"To simulate running a cluster on two machines, you'll need to run the "
-"`domain.sh` script twice to start two separate host controllers.  The first "
-"will be the master host controller which will start a domain controller, an "
-"HTTP load balancer, and one {project_name} authentication server instance.  "
-"The second will be a slave host controller that only starts up an "
+"Run the `domain.sh` script twice to start two separate host controllers."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The first one is the master host controller that starts a domain controller, "
+"an HTTP load balancer, and one {project_name} authentication server "
+"instance.  The second one is a slave host controller that starts up only an "
 "authentication server instance."
 msgstr ""
 
-#. type: Title =====
-#, no-wrap
-msgid "Setup Slave Connection to Domain Controller"
+#. type: Plain text
+msgid ""
+"Configure the slave host controller so that it can talk securely to the "
+"domain controller. Perform these steps:"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Before you can boot things up though, you have to configure the slave host "
-"controller so that it can talk securely to the domain controller.  If you do "
-"not do this, then the slave host will not be able to obtain the centralized "
-"configuration from the domain controller.  To set up a secure connection, "
-"you have to create a server admin user and a secret that will be shared "
-"between the master and the slave.  You do this by running the `.../bin/add-"
-"user.sh` script."
+"If you omit these steps, the slave host cannot obtain the centralized "
+"configuration from the domain controller."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"When you run the script select `Management User` and answer `yes` when it "
-"asks you if the new user is going to be used for one AS process to connect "
-"to another.  This will generate a secret that you'll need to cut and paste "
-"into the _.../domain/configuration/host-slave.xml_ file."
+"Set up a secure connection by creating a server admin user and a secret that "
+"are shared between the master and the slave."
+msgstr ""
+
+#. type: Plain text
+msgid "Run the `.../bin/add-user.sh` script."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Select `Management User` when the script asks about the type of user to add."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This choice generates a secret that you cut and paste into the _.../domain/"
+"configuration/host-slave.xml_ file."
 msgstr ""
 
 #. type: Block title
@@ -484,16 +505,16 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The add-user.sh does not add user to {project_name} server but to the "
-"underlying JBoss Enterprise Application Platform. The credentials used and "
-"generated in the above script are only for example purpose. Please use the "
-"ones generated on your system."
+"The add-user.sh script does not add the user to the {project_name} server "
+"but to the underlying JBoss Enterprise Application Platform. The credentials "
+"used and generated in this script are only for demonstration purposes. "
+"Please use the ones generated on your system."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Next, cut and paste the secret value into the _.../domain/configuration/host-"
-"slave.xml_ file as follows:"
+"Cut and paste the secret value into the _.../domain/configuration/host-slave."
+"xml_ file as follows:"
 msgstr ""
 
 #. type: delimited block -
@@ -509,8 +530,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"You will also need to add the _username_ of the created user in the _.../"
-"domain/configuration/host-slave.xml_ file:"
+"Add the _username_ of the created user in the _.../domain/configuration/host-"
+"slave.xml_ file:"
 msgstr ""
 
 #. type: delimited block -
@@ -518,15 +539,10 @@ msgstr ""
 msgid "     <remote security-realm=\"ManagementRealm\" username=\"admin\">\n"
 msgstr ""
 
-#. type: Title =====
-#, no-wrap
-msgid "Run the Boot Scripts"
-msgstr ""
-
 #. type: Plain text
 msgid ""
-"Since we're simulating a two node cluster on one development machine, you'll "
-"run the boot script twice:"
+"Run the boot script twice to simulate a two node cluster on one development "
+"machine."
 msgstr ""
 
 #. type: Block title
@@ -550,5 +566,5 @@ msgid "$ domain.sh --host-config=host-slave.xml\n"
 msgstr ""
 
 #. type: Plain text
-msgid "To try it out, open your browser and go to http://localhost:8080/auth."
+msgid "Open your browser and go to http://localhost:8080/auth to try it out."
 msgstr ""

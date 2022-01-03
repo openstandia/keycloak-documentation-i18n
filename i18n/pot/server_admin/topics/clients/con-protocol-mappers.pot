@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title =
+#, no-wrap
+msgid "OIDC token and SAML assertion mappings"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Applications receiving ID tokens, access tokens, or SAML assertions may "
+"require different roles and user metadata."
+msgstr ""
+
+#. type: Plain text
+msgid "You can use {project_name} to:"
+msgstr ""
+
+#. type: Plain text
+msgid "Hardcode roles, claims and custom attributes."
+msgstr ""
+
+#. type: Plain text
+msgid "Pull user metadata into a token or assertion."
+msgstr ""
+
+#. type: Plain text
+msgid "Rename roles."
+msgstr ""
+
+#. type: Plain text
+msgid "You perform these actions in the *Mappers* tab in the Admin Console."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Mappers tab"
+msgstr ""
+
+#. type: Plain text
+msgid "image:{project_images}/mappers-oidc.png[]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"New clients do not have built-in mappers but they can inherit some mappers "
+"from client scopes. See the <<_client_scopes, client scopes section>> for "
+"more details."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Protocol mappers map items (such as an email address, for example) to a "
+"specific claim in the identity and access token. The function of a mapper "
+"should be self explanatory from its name. You add pre-configured mappers by "
+"clicking *Add Builtin*."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Each mapper has a set of common settings. Additional settings are available, "
+"depending on the mapper type. Click *Edit* next to a mapper to access the "
+"configuration screen to adjust these settings."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Mapper config"
+msgstr ""
+
+#. type: Plain text
+msgid "image:{project_images}/mapper-config.png[]"
+msgstr ""
+
+#. type: Plain text
+msgid "Details on each option can be viewed by hovering over its tooltip."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You can use most OIDC mappers to control where the claim gets placed. You "
+"opt to include or exclude the claim from the _id_ and _access_ tokens by "
+"adjusting the *Add to ID token* and *Add to access token* switches."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Priority order"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Mapper implementations have _priority order_. _Priority order_ is not the "
+"configuration property of the mapper. It is the property of the concrete "
+"implementation of the mapper."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Mappers are sorted by the order in the list of mappers. The changes in the "
+"token or assertion are applied in that order with the lowest applying first. "
+"Therefore, the implementations that are dependent on other implementations "
+"are processed in the necessary order."
+msgstr ""
+
+#. type: Plain text
+msgid "For example, to compute the roles which will be included with a token:"
+msgstr ""
+
+#. type: Plain text
+msgid "Resolve audiences based on those roles."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Process a JavaScript script that uses the roles and audiences already "
+"available in the token."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "OIDC user session note mappers"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"User session details are defined using mappers and are automatically "
+"included when you use or enable a feature on a client. Click *Add builtin* "
+"to include session details."
+msgstr ""
+
+#. type: Plain text
+msgid "Impersonated user sessions provide the following details:"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*IMPERSONATOR_ID*: The ID of an impersonating user.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*IMPERSONATOR_USERNAME*: The username of an impersonating user.\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Service account sessions provide the following details:"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*clientId*: The client ID of the service account.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*clientAddress*: The remote host IP of the service account's authenticated device.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*clientHost*: The remote host name of the service account's authenticated device.\n"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Script mapper"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Use the *Script Mapper* to map claims to tokens by running user-defined "
+"JavaScript code. For more details about deploying scripts to the server, see "
+"link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}]."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When scripts deploy, you should be able to select the deployed scripts from "
+"the list of available mappers."
+msgstr ""

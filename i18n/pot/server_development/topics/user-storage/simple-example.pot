@@ -28,11 +28,6 @@ msgstr ""
 
 #. type: Block title
 #, no-wrap
-msgid "User Federation"
-msgstr ""
-
-#. type: Block title
-#, no-wrap
 msgid "Configured Provider"
 msgstr ""
 
@@ -240,7 +235,7 @@ msgid ""
 "    @Override\n"
 "    public boolean isConfiguredFor(RealmModel realm, UserModel user, String credentialType) {\n"
 "        String password = properties.getProperty(user.getUsername());\n"
-"        return credentialType.equals(CredentialModel.PASSWORD) && password != null;\n"
+"        return credentialType.equals(PasswordCredentialModel.TYPE) && password != null;\n"
 "    }\n"
 msgstr ""
 
@@ -249,7 +244,7 @@ msgstr ""
 msgid ""
 "    @Override\n"
 "    public boolean supportsCredentialType(String credentialType) {\n"
-"        return credentialType.equals(CredentialModel.PASSWORD);\n"
+"        return credentialType.equals(PasswordCredentialModel.TYPE);\n"
 "    }\n"
 msgstr ""
 
@@ -315,7 +310,7 @@ msgstr ""
 msgid ""
 "    @Override\n"
 "    public boolean updateCredential(RealmModel realm, UserModel user, CredentialInput input) {\n"
-"        if (input.getType().equals(CredentialModel.PASSWORD)) throw new ReadOnlyException(\"user is read only for this update\");\n"
+"        if (input.getType().equals(PasswordCredentialModel.TYPE)) throw new ReadOnlyException(\"user is read only for this update\");\n"
 msgstr ""
 
 #. type: delimited block -
@@ -543,6 +538,11 @@ msgstr ""
 msgid ""
 "You enable user storage providers per realm within the `User Federation` "
 "page in the administration console."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "User Federation"
 msgstr ""
 
 #. type: Plain text

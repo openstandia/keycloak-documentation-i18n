@@ -14,6 +14,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Title ==
+#, no-wrap
+msgid "Prerequisites"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr ""
+
 #. type: Block title
 #, no-wrap
 msgid "Declare Your JDBC Drivers"
@@ -21,7 +31,7 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "Package the JDBC Driver"
+msgid "Packaging the JDBC driver"
 msgstr ""
 
 #. type: Plain text
@@ -29,18 +39,26 @@ msgid ""
 "Find and download the JDBC driver JAR for your RDBMS. Before you can use "
 "this driver, you must package it up into a module and install it into the "
 "server. Modules define JARs that are loaded into the {project_name} "
-"classpath and the dependencies those JARs have on other modules. They are "
-"pretty simple to set up."
+"classpath and the dependencies those JARs have on other modules."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Within the _.../modules/_ directory of your {project_name} distribution, you "
-"need to create a directory structure to hold your module definition.  The "
-"convention is use the Java package name of the JDBC driver for the name of "
-"the directory structure. For PostgreSQL, create the directory _org/"
-"postgresql/main_. Copy your database driver JAR into this directory and "
-"create an empty _module.xml_ file within it too."
+"Create a directory structure to hold your module definition within the _.../"
+"modules/_ directory of your {project_name} distribution."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The convention is use the Java package name of the JDBC driver for the name "
+"of the directory structure. For PostgreSQL, create the directory _org/"
+"postgresql/main_."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Copy your database driver JAR into this directory and create an empty "
+"_module.xml_ file within it too."
 msgstr ""
 
 #. type: Block title
@@ -49,13 +67,11 @@ msgid "Module Directory"
 msgstr ""
 
 #. type: Plain text
-msgid "image:{project_images}/db-module.png[]"
+msgid "image:{project_images}/db-module.png[Module Directory]"
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"After you have done this, open up the _module.xml_ file and create the "
-"following XML:"
+msgid "Open up the _module.xml_ file and create the following XML:"
 msgstr ""
 
 #. type: Block title
@@ -66,7 +82,7 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"<?xml version=\"1.0\" ?>\n"
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 "<module xmlns=\"urn:jboss:module:1.3\" name=\"org.postgresql\">\n"
 msgstr ""
 
@@ -74,7 +90,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "    <resources>\n"
-"        <resource-root path=\"postgresql-9.4.1212.jar\"/>\n"
+"        <resource-root path=\"postgresql-VERSION.jar\"/>\n"
 "    </resources>\n"
 msgstr ""
 
@@ -91,35 +107,72 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The module name should match the directory structure of your module. So, "
-"_org/postgresql_ maps to `org.postgresql`. The `resource-root path` "
-"attribute should specify the JAR filename of the driver.  The rest are just "
-"the normal dependencies that any JDBC driver JAR would have."
-msgstr ""
-
-#. type: Title ===
-#, no-wrap
-msgid "Declare and Load JDBC Driver"
+"_org/postgresql_ maps to `org.postgresql`."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The next thing you have to do is declare your newly packaged JDBC driver "
-"into your deployment profile so that it loads and becomes available when the "
-"server boots up. Where you perform this action depends on your <<_operating-"
-"mode, operating mode>>. If you're deploying in standard mode, edit _.../"
-"standalone/configuration/standalone.xml_.  If you're deploying in standard "
-"clustering mode, edit _.../standalone/configuration/standalone-ha.xml_.  If "
-"you're deploying in domain mode, edit _.../domain/configuration/domain.xml_. "
-"In domain mode, you'll need to make sure you edit the profile you are using: "
-"either `auth-server-standalone` or `auth-server-clustered`"
+"The `resource-root path` attribute should specify the JAR filename of the "
+"driver."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The rest are just the normal dependencies that any JDBC driver JAR would "
+"have."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Declaring and loading the JDBC driver"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You declare your JDBC into your deployment profile so that it loads and "
+"becomes available when the server boots up."
+msgstr ""
+
+#. type: Plain text
+msgid "You have packaged the JDBC driver."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Declare your JDBC driver by editing one of these files based on your "
+"deployment mode:"
+msgstr ""
+
+#. type: Plain text
+msgid "For standard mode, edit _.../standalone/configuration/standalone.xml_."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For standard clustering mode, edit _.../standalone/configuration/standalone-"
+"ha.xml_."
+msgstr ""
+
+#. type: Plain text
+msgid "For domain mode, edit _.../domain/configuration/domain.xml_."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"In domain mode, make sure you edit the profile you are using: either `auth-"
+"server-standalone` or `auth-server-clustered`"
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "Within the profile, search for the `drivers` XML block within the "
-"`datasources` subsystem. You should see a pre-defined driver declared for "
-"the H2 JDBC driver. This is where you'll declare the JDBC driver for your "
-"external database."
+"`datasources` subsystem."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"You should see a pre-defined driver declared for the H2 JDBC driver. This is "
+"where you'll declare the JDBC driver for your external database."
 msgstr ""
 
 #. type: Block title
@@ -143,13 +196,27 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
+msgid "Within the `drivers` XML block, declare an additional JDBC driver."
+msgstr ""
+
+#. type: Plain text
+msgid "Assign any `name` to this driver."
+msgstr ""
+
+#. type: Plain text
 msgid ""
-"Within the `drivers` XML block you'll need to declare an additional JDBC "
-"driver.  It needs to have a `name` which you can choose to be anything you "
-"want.  You specify the `module` attribute which points to the `module` "
-"package you created earlier for the driver JAR.  Finally you have to specify "
-"the driver's Java class.  Here's an example of installing PostgreSQL driver "
-"that lives in the module example defined earlier in this chapter."
+"Specify the `module` attribute which points to the `module` package that you "
+"created earlier for the driver JAR."
+msgstr ""
+
+#. type: Plain text
+msgid "Specify the driver's Java class."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Here's an example of installing a PostgreSQL driver that lives in the module "
+"example defined earlier in this chapter."
 msgstr ""
 
 #. type: delimited block -

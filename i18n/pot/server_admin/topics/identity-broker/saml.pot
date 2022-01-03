@@ -14,23 +14,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr ""
+
+#. type: Plain text
+msgid "Click *Identity Providers* in the menu."
+msgstr ""
+
 #. type: Plain text
 msgid "Configuration|Description"
 msgstr ""
 
-#. type: Plain text
-#, no-wrap
-msgid "Signature Algorithm"
-msgstr ""
-
-#. type: Plain text
-#, no-wrap
-msgid "SAML Signature Key Name"
-msgstr ""
-
 #. type: Block title
 #, no-wrap
-msgid "Add Identity Provider"
+msgid "Add identity provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Enter your initial configuration options. See <<_general-idp-config, General "
+"IDP Configuration>> for more information about configuration options."
 msgstr ""
 
 #. type: Title =====
@@ -49,22 +54,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"To begin configuring an SAML v2.0 provider, go to the `Identity Providers` "
-"left menu item and select `SAML v2.0` from the `Add provider` drop down "
-"list.  This will bring you to the `Add identity provider` page."
-msgstr ""
-
-#. type: Plain text
-msgid "image:{project_images}/saml-add-identity-provider.png[]"
+msgid "From the `Add provider` list, select `SAML v2.0`."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"The initial configuration options on this page are described in <<_general-"
-"idp-config, General IDP Configuration>>.  You must define the SAML "
-"configuration options as well.  They basically describe the SAML IDP you are "
-"communicating with."
+"image:{project_images}/saml-add-identity-provider.png[Add Identity Provider]"
 msgstr ""
 
 #. type: Block title
@@ -78,10 +73,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This is a required field and specifies the SAML Entity ID that the remote "
-"Identity Provider will use to identify requests coming from this Service "
-"Provider. By default it is set to the realm base URL `<root>/auth/realms/"
-"{realm-name}`."
+"The SAML Entity ID that the remote Identity Provider uses to identify "
+"requests from this Service Provider. By default, this setting is set to the "
+"realms base URL `<root>/auth/realms/{realm-name}`."
 msgstr ""
 
 #. type: Plain text
@@ -89,10 +83,10 @@ msgid "Single Sign-On Service URL"
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"This is a required field and specifies the SAML endpoint to start the authentication process.  If your SAML IDP publishes an IDP entity descriptor, the value of\n"
-" this field will be specified there.\n"
+"The SAML endpoint that starts the authentication process.  If your SAML IDP "
+"publishes an IDP entity descriptor, the value of this field is specified "
+"there."
 msgstr ""
 
 #. type: Plain text
@@ -100,14 +94,14 @@ msgid "Single Logout Service URL"
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"This is an optional field that specifies the SAML logout endpoint. If your SAML IDP publishes an IDP entity descriptor, the value of\n"
-" this field will be specified there.\n"
+"The SAML logout endpoint. If your SAML IDP publishes an IDP entity "
+"descriptor, the value of this field is specified there."
 msgstr ""
 
 #. type: Plain text
-msgid "Enable if your SAML IDP supports backchannel logout."
+msgid ""
+"Toggle this switch to *ON* if your SAML IDP supports back channel logout."
 msgstr ""
 
 #. type: Plain text
@@ -116,8 +110,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Specifies the URI reference corresponding to a name identifier format. "
-"Defaults to `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`."
+"The URI reference corresponding to a name identifier format. By default, "
+"{project_name} sets it to `urn:oasis:names:tc:SAML:2.0:nameid-format:"
+"persistent`."
 msgstr ""
 
 #. type: Plain text
@@ -139,9 +134,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"If Principal is set to either \"Attribute [Name]\" or \"Attribute [Friendly "
-"Name]\", this field will specify the name or the friendly name of the "
-"identifying attribute, respectively."
+"If a Principal type is non-blank, this field specifies the name (\"Attribute "
+"[Name]\") or the friendly name (\"Attribute [Friendly Name]\") of the "
+"identifying attribute."
 msgstr ""
 
 #. type: Plain text
@@ -160,9 +155,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"When this realm responds to any SAML requests sent by the external IDP, "
-"which SAML binding should be used? If set to `off`, then the Redirect "
-"Binding will be used."
+"Controls the SAML binding in response to any SAML requests sent by an "
+"external IDP. When *OFF*, {project_name} uses Redirect Binding."
 msgstr ""
 
 #. type: Plain text
@@ -171,9 +165,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"When this realm requests authentication from the external SAML IDP, which "
-"SAML binding should be used? If set to `off`, then the Redirect Binding will "
-"be used."
+"Controls the SAML binding when requesting authentication from an external "
+"IDP. When *OFF*, {project_name} uses Redirect Binding."
 msgstr ""
 
 #. type: Plain text
@@ -182,25 +175,29 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"If true, it will use the realm's keypair to sign requests sent to the "
-"external SAML IDP."
+"When *ON*, {project_name} uses the realm's keypair to sign requests sent to "
+"the external SAML IDP."
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"If `Want AuthnRequests Signed` is on, then you can also pick the signature "
-"algorithm to use."
+msgid "Signature Algorithm"
+msgstr ""
+
+#. type: Plain text
+msgid "If *Want AuthnRequests Signed* is *ON*, the signature algorithm to use."
+msgstr ""
+
+#. type: Plain text
+msgid "SAML Signature Key Name"
 msgstr ""
 
 #. type: Plain text
 #, no-wrap
 msgid ""
-"Signed SAML documents sent via POST binding contain identification of signing key in `KeyName`\n"
-" element. This by default contains {project_name} key ID. However various external SAML IDPs might\n"
-" expect a different key name or no key name at all. This switch controls whether `KeyName`\n"
-" contains key ID (option `KEY_ID`), subject from certificate corresponding to the realm key\n"
-" (option `CERT_SUBJECT` - expected for instance by Microsoft Active Directory Federation\n"
-" Services), or that the key name hint is completely omitted from the SAML message (option `NONE`).\n"
+"Signed SAML documents sent using POST binding contain the identification of signing key in `KeyName` element, which, by default, contains the {project_name} key ID. External SAML IDPs can expect a different key name. This switch controls whether `KeyName` contains:\n"
+"* `KEY_ID` - Key ID.\n"
+"* `CERT_SUBJECT` - the subject from the certificate corresponding to the realm key. Microsoft Active Directory Federation Services expect `CERT_SUBJECT`.\n"
+"* `NONE` - {project_name} omits the key name hint from the SAML message.\n"
 msgstr ""
 
 #. type: Plain text
@@ -209,8 +206,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Indicates that the user will be forced to enter their credentials at the "
-"external IDP even if they are already logged in."
+"The user must enter their credentials at the external IDP even when the user "
+"is already logged in."
 msgstr ""
 
 #. type: Plain text
@@ -219,9 +216,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Whether or not the realm should expect that SAML requests and responses from "
-"the external IDP to be digitally signed.  It is highly recommended you turn "
-"this on!"
+"When *ON*, the realm expects SAML requests and responses from the external "
+"IDP to be digitally signed."
 msgstr ""
 
 #. type: Plain text
@@ -230,8 +226,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The public certificate that will be used to validate the signatures of SAML "
-"requests and responses from the external IDP."
+"The public certificate {project_name} uses to validate the signatures of "
+"SAML requests and responses from the external IDP."
 msgstr ""
 
 #. type: Plain text
@@ -240,7 +236,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"If true, it will use the realm's keypair to sign the "
+"When *ON*, {project_name} uses the realm's key pair to sign the "
 "<<_identity_broker_saml_sp_descriptor, SAML Service Provider Metadata "
 "descriptor>>."
 msgstr ""
@@ -251,10 +247,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Whether or not a `login_hint` query parameter should be forwarded to the "
-"IDP. When provided, this login_hint parameter is added to AuthnRequest's "
-"Subject. This allows destination providers to prefill their login form. When "
-"no login_hint is provided, nothing is forwarded as an AuthnRequest Subject."
+"Controls if {project_name} forwards a `login_hint` query parameter to the "
+"IDP. {project_name} adds this field's value to the login_hint parameter in "
+"the AuthnRequest's Subject so destination providers can pre-fill their login "
+"form."
 msgstr ""
 
 #. type: Plain text
@@ -280,18 +276,13 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"You can also import all this configuration data by providing a URL or file "
-"that points to the SAML IDP entity descriptor of the external IDP.  If you "
-"are connecting to a {project_name} external IDP, you can import the IDP "
-"settings from the URL `<root>/auth/realms/{realm-name}/protocol/saml/"
-"descriptor`.  This link is an XML document describing metadata about the IDP."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"You can also import all this configuration data by providing a URL or XML "
-"file that points to the entity descriptor of the external SAML IDP you want "
-"to connect to."
+"You can import all configuration data by providing a URL or a file pointing "
+"to the SAML IDP entity descriptor of the external IDP. If you are connecting "
+"to a {project_name} external IDP, you can import the IDP settings from the "
+"URL `<root>/auth/realms/{realm-name}/protocol/saml/descriptor`. This link is "
+"an XML document describing metadata about the IDP. You can also import all "
+"this configuration data by providing a URL or XML file pointing to the "
+"external SAML IDP's entity descriptor to connect to."
 msgstr ""
 
 #. type: Title ====
@@ -301,23 +292,22 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Some Identity Providers let the clients specify particular constraints on "
-"the authentication method used to verify the user identity (such as asking "
-"for MFA, Kerberos authentication, security requirements, and so on). These "
-"constraints are specified using particular AuthnContext criteria. A client "
-"can ask for one or more criteria and also specify how the Identity Provider "
-"should match the requested AuthnContext - exactly, or by satisfying same-or-"
-"better equivalents."
+"Identity Providers facilitate clients specifying constraints on the "
+"authentication method verifying the user identity. For example, asking for "
+"MFA, Kerberos authentication, or security requirements. These constraints "
+"use particular AuthnContext criteria. A client can ask for one or more "
+"criteria and specify how the Identity Provider must match the requested "
+"AuthnContext, exactly, or by satisfying other equivalents."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"You can list the criteria your Service Provider requires by adding one or "
-"more ClassRef or DeclRef in the Requested AuthnContext Constraints section. "
-"Usually you need to provide either ClassRefs or DeclRefs; you should check "
-"with your Identity Provider documentation which values are supported. If no "
-"ClassRefs or DeclRefs are present, the Identity Provider will not enforce "
-"additional constraints."
+"You can list the criteria your Service Provider requires by adding ClassRefs "
+"or DeclRefs in the Requested AuthnContext Constraints section. Usually, you "
+"need to provide either ClassRefs or DeclRefs, so check with your Identity "
+"Provider documentation which values are supported. If no ClassRefs or "
+"DeclRefs are present, the Identity Provider does not enforce additional "
+"constraints."
 msgstr ""
 
 #. type: Block title
@@ -331,9 +321,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The comparison method the Identity Provider should use to evaluate the "
-"context requirements. Available values are `Exact`, `Minimum`, `Maximum` or "
-"`Better`. Default value is `Exact`."
+"The method the Identity Provider uses to evaluate the context requirements. "
+"The available values are `Exact`, `Minimum`, `Maximum`, or `Better`. The "
+"default value is `Exact`."
 msgstr ""
 
 #. type: Plain text
@@ -341,7 +331,7 @@ msgid "AuthnContext ClassRefs"
 msgstr ""
 
 #. type: Plain text
-msgid "One or more AuthnContext ClassRefs that describe the required criteria."
+msgid "The AuthnContext ClassRefs describing the required criteria."
 msgstr ""
 
 #. type: Plain text
@@ -349,7 +339,7 @@ msgid "AuthnContext DeclRefs"
 msgstr ""
 
 #. type: Plain text
-msgid "One or more AuthnContext DeclRefs that describe the required criteria."
+msgid "The AuthnContext DeclRefs describing the required criteria."
 msgstr ""
 
 #. type: Title ====
@@ -359,15 +349,15 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"If you need to access the provider's SAML SP metadata, look for the "
-"`Endpoints` item in the identity provider configuration settings. It "
-"contains a link called `SAML 2.0 Service Provider Metadata` that generates "
-"the SAML entity descriptor for the Service Provider. You can either download "
-"it or copy its URL and then import it in the remote Identity Provider."
+"When you access the provider's SAML SP metadata, look for the `Endpoints` "
+"item in the identity provider configuration settings. It contains a `SAML "
+"2.0 Service Provider Metadata` link which generates the SAML entity "
+"descriptor for the Service Provider. You can download the descriptor or copy "
+"its URL and then import it into the remote Identity Provider."
 msgstr ""
 
 #. type: Plain text
-msgid "This metadata is also available publicly by going to the URL:"
+msgid "This metadata is also available publicly by going to the following URL:"
 msgstr ""
 
 #. type: delimited block -
@@ -377,19 +367,18 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Make sure to save any configuration changes before accessing the descriptor "
-"or they will not be reflected in the metadata."
+"Ensure you save any configuration changes before accessing the descriptor."
 msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Send Subject in SAML requests"
+msgid "Send subject in SAML requests"
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "By default, a social button pointing to a SAML Identity Provider redirects "
-"the user to a login URL:"
+"the user to the following login URL:"
 msgstr ""
 
 #. type: delimited block -
@@ -399,11 +388,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Adding a query parameter named `login_hint` to this URL will add its value "
-"to SAML request as a Subject attribute. When this query parameter is absent "
-"or left empty, no subject will be added to the request."
+"Adding a query parameter named `login_hint` to this URL adds the parameter's "
+"value to SAML request as a Subject attribute. If this query parameter is "
+"empty, {project_name} does not add a subject to the request."
 msgstr ""
 
 #. type: Plain text
-msgid "\"Pass subject\" option must be enabled."
+msgid ""
+"Enable the \"Pass subject\" option to send the subject in SAML requests."
 msgstr ""

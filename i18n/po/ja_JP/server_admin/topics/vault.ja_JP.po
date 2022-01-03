@@ -5,14 +5,14 @@
 # 
 # Translators:
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2019
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
-# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# Hiroyuki Wada <wadahiro@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,14 +22,33 @@ msgstr ""
 
 #. type: Title ==
 #, no-wrap
-msgid "Using Vault to Obtain Secrets"
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Block title
+#, no-wrap
+msgid "Additional resources"
+msgstr "追加のリソース"
+
+#. type: Plain text
+msgid "For example:"
+msgstr "例："
+
+#. type: Title ==
+#, no-wrap
+msgid "Using a Vault to Obtain Secrets"
 msgstr "ボールトを使用してシークレットを取得する"
 
 #. type: Plain text
 msgid ""
 "Several fields in the administration support obtaining the value of a secret"
 " from an external vault."
-msgstr "管理のいくつかのフィールドは、外部ボールトからのシークレット値の取得をサポートしています。"
+msgstr "管理画面のいくつかのフィールドでは、外部ボールトからのシークレット値の取得をサポートしています。"
 
 #. type: Plain text
 msgid ""
@@ -137,9 +156,9 @@ msgid ""
 " doubled in realm name)."
 msgstr ""
 "このディレクトリー内のファイルは、レルム名とアンダースコアを前に付けたシークレット名として命名する必要があります。シークレット名またはレルム名内のすべての下線は、ファイル名で二重にする必要があります。たとえば、"
-" `sso_realm` というレルム内のフィールドの場合、 `secret-name` という名前のシークレットへの参照は `${vault"
-".secret-name}` と記述され、検索されるファイル名は `sso+++__+++realm+++_+++secret-name` "
-"（アンダースコアがレルム名で2重になっていることに注意してください）。"
+" `sso_realm` というレルム内のフィールドの場合、 `secret-name` という名前のシークレットへの参照は "
+"`${vault.secret-name}` と記述され、検索されるファイル名は `sso+++__+++realm+++_+++secret-"
+"name` （アンダースコアがレルム名で2重になっていることに注意してください）。"
 
 #. type: Plain text
 msgid ""
@@ -550,3 +569,364 @@ msgid ""
 "provider and use the key resolver that is created by the custom factory."
 msgstr ""
 "上記の設定は、{project_name}にカスタムElytronプロバイダーをセットアップし、カスタム・ファクトリーによって作成されたキーリゾルバーを使用するように指示します。"
+
+#. type: Title ===
+#, no-wrap
+msgid "Sample Configuration"
+msgstr "サンプル設定"
+
+#. type: Plain text
+msgid ""
+"The following is an example of configuring a vault and credential store.  "
+"The procedure involves two parts:"
+msgstr "以下は、ボールトとクレデンシャル・ストアを構成する例です。この手順には次の2つの部分があります。"
+
+#. type: Plain text
+msgid ""
+"Creating the credential store and a vault, where the credential store and "
+"vault passwords are in plain text."
+msgstr "クレデンシャル・ストアとボールトを作成します。クレデンシャル・ストアとボールトのパスワードは平文です。"
+
+#. type: Plain text
+msgid ""
+"Updating the credential store and vault to have the password use a mask "
+"provided by `elytron-tool.sh`."
+msgstr "パスワードに `elytron-tool.sh` で提供されたマスクを使用するように、クレデンシャル・ストアとボールトを更新します。"
+
+#. type: Plain text
+msgid ""
+"In this example, the test target used is an LDAP instance with `BIND DN "
+"credential: secret12`. The target is mapped using user federation in the "
+"realm `ldaptest`."
+msgstr ""
+"この例では、 `BIND DN credential: secret12` "
+"を設定したLDAPインスタンスをテスト対象として使用します。このテスト対象は、レルム `ldaptest` "
+"のユーザー・フェデレーションを使用してマッピングされています。"
+
+#. type: Title ====
+#, no-wrap
+msgid "Configuring the credential store and vault without a mask"
+msgstr "マスクを使用しないクレデンシャル・ストアおよびボールトの設定"
+
+#. type: Plain text
+msgid ""
+"You create the credential store and a vault where the credential store and "
+"vault passwords are in plain text."
+msgstr "クレデンシャル・ストアとボールトを作成し、クレデンシャル・ストアとボールトのパスワードをプレーンテキストにします。"
+
+#. type: Plain text
+msgid "A running LDAP instance has `BIND DN credential: secret12`."
+msgstr "稼働中のLDAPインスタンスは、 `BIND DN credential: secret12` を持っています。"
+
+#. type: Plain text
+msgid ""
+"The alias uses the format <realm-name>_< key-value> when using the default "
+"key resolver. In this case, the instance is running in the realm `ldaptest` "
+"and `ldaptest_ldap_secret` is the alias that corresponds to the value "
+"`ldap_secret` in that realm."
+msgstr ""
+"デフォルトのキーリゾルバーを使用する場合、エイリアスは<realm-name>_<key-"
+"value>という形式を使用します。この例では、インスタンスはレルム `ldaptest` で動作しており、 "
+"`ldaptest_ldap_secret` はそのレルムの `ldap_secret` の値に対応するエイリアスです。"
+
+#. type: Plain text
+msgid ""
+"The resolver replaces underscore characters with double underscore "
+"characters in the realm and key names. For example, for the key "
+"`ldaptest_ldap_secret`, the final key will be `ldaptest_ldap__secret`."
+msgstr ""
+"リゾルバーは、レルム名とキー名のアンダースコア文字をダブル・アンダースコア文字に置き換えます。例えば、キーが "
+"`ldaptest_ldap_secret` の場合、最終的なキーは `ldaptest_ldap__secret` となります。"
+
+#. type: Plain text
+msgid "Create the Elytron credential store."
+msgstr "Elytronのクレデンシャル・ストアを作成します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"[standalone@localhost:9990 /] /subsystem=elytron/credential-store=test-"
+"store:add(create=true, location=/home/test/test-store.p12, credential-"
+"reference={clear-text=testpwd1!},implementation-"
+"properties={keyStoreType=PKCS12})\n"
+msgstr ""
+"[standalone@localhost:9990 /] /subsystem=elytron/credential-store=test-"
+"store:add(create=true, location=/home/test/test-store.p12, credential-"
+"reference={clear-text=testpwd1!},implementation-"
+"properties={keyStoreType=PKCS12})\n"
+
+#. type: Plain text
+msgid "Add an alias to the credential store."
+msgstr "クレデンシャル・ストアにエイリアスを追加します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=elytron/credential-store=test-store:add-"
+"alias(alias=ldaptest_ldap__secret,secret-value=secret12)\n"
+msgstr ""
+"/subsystem=elytron/credential-store=test-store:add-"
+"alias(alias=ldaptest_ldap__secret,secret-value=secret12)\n"
+
+#. type: Plain text
+msgid ""
+"Notice how the resolver causes the key `ldaptest_ldap__secret` to use double"
+" underscores."
+msgstr "リゾルバーでは、キー `ldaptest_ldap__secret` にダブル・アンダースコアが使われていることに注目してください。"
+
+#. type: Plain text
+msgid ""
+"List the aliases from the credential store to inspect the contents of the "
+"keystore that is produced by Elytron."
+msgstr "クレデンシャル・ストアからエイリアスをリストアップして、Elytronが生成するキーストアのコンテンツを検査します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"keytool -list -keystore /home/test/test-store.p12 -storetype PKCS12 -storepass testpwd1!\n"
+"Keystore type: PKCS12\n"
+"Keystore provider: SUN\n"
+msgstr ""
+"keytool -list -keystore /home/test/test-store.p12 -storetype PKCS12 -storepass testpwd1!\n"
+"Keystore type: PKCS12\n"
+"Keystore provider: SUN\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid "Your keystore contains 1 entries\n"
+msgstr "キーストアには1つのエントリーがあります。\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"ldaptest_ldap__secret/passwordcredential/clear/, Oct 12, 2020, "
+"SecretKeyEntry, \n"
+msgstr ""
+"ldaptest_ldap__secret/passwordcredential/clear/, Oct 12, 2020, "
+"SecretKeyEntry, \n"
+
+#. type: Plain text
+msgid "Configure the vault SPI in {project_name}."
+msgstr "{project_name}でボールトSPIを設定します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=keycloak-server/spi=vault:add(default-provider=elytron-cs-"
+"keystore)\n"
+msgstr ""
+"/subsystem=keycloak-server/spi=vault:add(default-provider=elytron-cs-"
+"keystore)\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=keycloak-server/spi=vault/provider=elytron-cs-"
+"keystore:add(enabled=true, properties={location=>/home/test/test-store.p12, "
+"secret=>testpwd1!, keyStoreType=>PKCS12})\n"
+msgstr ""
+"/subsystem=keycloak-server/spi=vault/provider=elytron-cs-"
+"keystore:add(enabled=true, properties={location=>/home/test/test-store.p12, "
+"secret=>testpwd1!, keyStoreType=>PKCS12})\n"
+
+#. type: Plain text
+msgid ""
+"At this point, the vault and credentials store passwords are not masked."
+msgstr "この時点では、ボールトとクレデンシャル・ストアのパスワードはマスクされていません。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"        <spi name=\"vault\">\n"
+"                <default-provider>elytron-cs-keystore</default-provider>\n"
+"                <provider name=\"elytron-cs-keystore\" enabled=\"true\">\n"
+"                    <properties>\n"
+"                        <property name=\"location\" value=\"/home/test/test-store.p12\"/>\n"
+"                        <property name=\"secret\" value=\"testpwd1!\"/>\n"
+"                        <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"                    </properties>\n"
+"                </provider>\n"
+"            </spi>\n"
+msgstr ""
+"        <spi name=\"vault\">\n"
+"                <default-provider>elytron-cs-keystore</default-provider>\n"
+"                <provider name=\"elytron-cs-keystore\" enabled=\"true\">\n"
+"                    <properties>\n"
+"                        <property name=\"location\" value=\"/home/test/test-store.p12\"/>\n"
+"                        <property name=\"secret\" value=\"testpwd1!\"/>\n"
+"                        <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"                    </properties>\n"
+"                </provider>\n"
+"            </spi>\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"         <credential-stores>\n"
+"                <credential-store name=\"test-store\" location=\"/home/test/test-store.p12\" create=\"true\">\n"
+"                    <implementation-properties>\n"
+"                        <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"                    </implementation-properties>\n"
+"                    <credential-reference clear-text=\"testpwd1!\"/>\n"
+"                </credential-store>\n"
+"         </credential-stores>\n"
+msgstr ""
+"         <credential-stores>\n"
+"                <credential-store name=\"test-store\" location=\"/home/test/test-store.p12\" create=\"true\">\n"
+"                    <implementation-properties>\n"
+"                        <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"                    </implementation-properties>\n"
+"                    <credential-reference clear-text=\"testpwd1!\"/>\n"
+"                </credential-store>\n"
+"         </credential-stores>\n"
+
+#. type: Plain text
+msgid ""
+"In the LDAP provider, replace `binDN credential` with "
+"`${vault.ldap_secret}`."
+msgstr "LDAPプロバイダーで、 `binDN credential` を `${vault.ldap_secret}` に置き換えてください。"
+
+#. type: Plain text
+msgid "Test your LDAP connection."
+msgstr "LDAP接続をテストしてください。"
+
+#. type: Block title
+#, no-wrap
+msgid "LDAP Vault"
+msgstr "LDAPボールト"
+
+#. type: Plain text
+msgid "image:images/ldap-vault.png[LDAP Vault]"
+msgstr "image:images/ldap-vault.png[LDAP Vault]"
+
+#. type: Title ====
+#, no-wrap
+msgid "Masking the password in the credential store and vault"
+msgstr "クレデンシャル・ストアとボールトでのパスワードのマスキング"
+
+#. type: Plain text
+msgid ""
+"You can now update the credential store and vault to have passwords that use"
+" a mask provided by `elytron-tool.sh`."
+msgstr ""
+"`elytron-tool.sh` が提供するマスクを使用したパスワードを設定するように、クレデンシャル・ストアとボールトを更新することができます。"
+
+#. type: Plain text
+msgid ""
+"Create a masked password using values for the `salt` and the `iteration` "
+"parameters:"
+msgstr "`salt` と `iteration` パラメーターの値を使用して、マスクされたパスワードを作成します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"$ EAP_HOME/bin/elytron-tool.sh mask --salt SALT --iteration ITERATION_COUNT "
+"--secret PASSWORD\n"
+msgstr ""
+"$ EAP_HOME/bin/elytron-tool.sh mask --salt SALT --iteration ITERATION_COUNT "
+"--secret PASSWORD\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"elytron-tool.sh mask --salt 12345678 --iteration 123 --secret testpwd1!\n"
+"MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123\n"
+msgstr ""
+"elytron-tool.sh mask --salt 12345678 --iteration 123 --secret testpwd1!\n"
+"MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123\n"
+
+#. type: Plain text
+msgid ""
+"Update the Elytron credential store configuration to use the masked "
+"password."
+msgstr "マスクされたパスワードを使用するように、Elytronのクレデンシャル・ストアの設定を更新します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=elytron/credential-store=cs-store:write-"
+"attribute(name=credential-reference.clear-"
+"text,value=\"MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123\")\n"
+msgstr ""
+"/subsystem=elytron/credential-store=cs-store:write-"
+"attribute(name=credential-reference.clear-"
+"text,value=\"MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123\")\n"
+
+#. type: Plain text
+msgid ""
+"Update the {project_name} vault configuration to use the masked password."
+msgstr "マスクされたパスワードを使用するように{project_name}ボールトの設定を更新します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"/subsystem=keycloak-server/spi=vault/provider=elytron-cs-keystore:remove()\n"
+"/subsystem=keycloak-server/spi=vault/provider=elytron-cs-keystore:add(enabled=true, properties={location=>/home/test/test-store.p12, secret=>”MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123”, keyStoreType=>PKCS12})\n"
+msgstr ""
+"/subsystem=keycloak-server/spi=vault/provider=elytron-cs-keystore:remove()\n"
+"/subsystem=keycloak-server/spi=vault/provider=elytron-cs-keystore:add(enabled=true, properties={location=>/home/test/test-store.p12, secret=>”MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123”, keyStoreType=>PKCS12})\n"
+
+#. type: Plain text
+msgid "The vault and credential store are now masked:"
+msgstr "ボールトとクレデンシャル・ストアが次のようにマスクされます。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"        <spi name=\"vault\">\n"
+"                <default-provider>elytron-cs-keystore</default-provider>\n"
+"                <provider name=\"elytron-cs-keystore\" enabled=\"true\">\n"
+"                    <properties>\n"
+"                        <property name=\"location\" value=\"/home/test/test-store.p12\"/>\n"
+"                        <property name=\"secret\" value=\"MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123\"/>\n"
+"                        <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"                    </properties>\n"
+"                </provider>\n"
+"            </spi>\n"
+"         ....\n"
+"         .....\n"
+"         <credential-stores>\n"
+"                <credential-store name=\"test-store\" location=\"/home/test/test-store.p12\" create=\"true\">\n"
+"                    <implementation-properties>\n"
+"                        <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"                    </implementation-properties>\n"
+"                    <credential-reference clear-text=\"MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123\"/>\n"
+"                </credential-store>\n"
+"         </credential-stores>\n"
+msgstr ""
+"        <spi name=\"vault\">\n"
+"                <default-provider>elytron-cs-keystore</default-provider>\n"
+"                <provider name=\"elytron-cs-keystore\" enabled=\"true\">\n"
+"                    <properties>\n"
+"                        <property name=\"location\" value=\"/home/test/test-store.p12\"/>\n"
+"                        <property name=\"secret\" value=\"MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123\"/>\n"
+"                        <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"                    </properties>\n"
+"                </provider>\n"
+"            </spi>\n"
+"         ....\n"
+"         .....\n"
+"         <credential-stores>\n"
+"                <credential-store name=\"test-store\" location=\"/home/test/test-store.p12\" create=\"true\">\n"
+"                    <implementation-properties>\n"
+"                        <property name=\"keyStoreType\" value=\"PKCS12\"/>\n"
+"                    </implementation-properties>\n"
+"                    <credential-reference clear-text=\"MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123\"/>\n"
+"                </credential-store>\n"
+"         </credential-stores>\n"
+
+#. type: Plain text
+msgid ""
+"You can now test the connection to the LDAP using `${vault.ldap_secret}`."
+msgstr "これで、 `${vault.ldap_secret}` を使用してLDAPへの接続をテストすることができます。"
+
+#. type: Plain text
+msgid ""
+"For more information about the Elytron tool, see "
+"link:https://access.redhat.com/documentation/en-"
+"us/red_hat_jboss_enterprise_application_platform/7.3/html/how_to_configure_server_security/securely_storing_credentials#cred_store_elytron_client[Using"
+" Credential Stores with Elytron Client]."
+msgstr ""
+"Elytronツールの詳細については、 link:https://access.redhat.com/documentation/en-"
+"us/red_hat_jboss_enterprise_application_platform/7.3/html/how_to_configure_server_security/securely_storing_credentials#cred_store_elytron_client[Using"
+" Credential Stores with Elytron Client] を参照してください。"

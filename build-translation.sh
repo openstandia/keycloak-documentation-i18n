@@ -76,7 +76,12 @@ for l in $TARGET_LANG; do
         echo "Translation failed!"
         exit 1
     fi 
+
+    # Quick Hack
+    # Fix "link:.."
+    find $TRANSLATED_DIR/$l -type f -name index.html | xargs sed -i -e 's|href="link:\.\.|href="..|g'
 done
+
 
 
 # Archive

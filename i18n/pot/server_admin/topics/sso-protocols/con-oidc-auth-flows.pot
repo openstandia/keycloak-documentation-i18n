@@ -1,0 +1,814 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+msgid ""
+"The client requests {project_name} an auth_req_id that identifies the "
+"authentication request made by the client. {project_name} creates the "
+"auth_req_id."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"After receiving this auth_req_id, this client repeatedly needs to poll "
+"{project_name} to obtain an Access Token, Refresh Token and ID Token from "
+"{project_name} in return for the auth_req_id until the user is authenticated."
+msgstr ""
+
+#. type: Plain text
+msgid "Configuration|Description"
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Backchannel Logout"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "OIDC auth flows"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"OIDC has several methods, or flows, that clients or applications can use to "
+"authenticate users and receive _identity_ and _access_ tokens.  The method "
+"depends on the type of application or client requesting access."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Authorization Code Flow"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Authorization Code Flow is a browser-based protocol and suits "
+"authenticating and authorizing browser-based applications. It uses browser "
+"redirects to obtain _identity_ and _access_ tokens."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A user connects to an application using a browser. The application detects "
+"the user is not logged into the application."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The application redirects the browser to {project_name} for authentication."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The application passes a callback URL as a query parameter in the browser "
+"redirect. {project_name} uses the parameter upon successful authentication."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} authenticates the user and creates a one-time, short lived, "
+"temporary code."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} redirects to the application using the callback URL and adds "
+"the temporary code as a query parameter in the callback URL."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The application extracts the temporary code and makes a background REST "
+"invocation to {project_name} to exchange the code for an _identity_ and "
+"_access_ and _refresh_ token.  To prevent replay attacks, the temporary code "
+"cannot be used more than once."
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"A system is vulnerable to a stolen token for the lifetime of that token. For "
+"security and scalability reasons, access tokens are generally set to expire "
+"quickly so subsequent token requests fail. If a token expires, an "
+"application can obtain a new access token using the additional _refresh_ "
+"token sent by the login protocol."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"_Confidential_ clients provide client secrets when they exchange the "
+"temporary codes for tokens. _Public_ clients are not required to provide "
+"client secrets.  _Public_ clients are secure when HTTPS is strictly enforced "
+"and redirect URIs registered for the client are strictly controlled.  HTML5/"
+"JavaScript clients have to be _public_ clients because there is no way to "
+"securely transmit the client secret to HTML5/JavaScript clients. For more "
+"details, see the xref:assembly-managing-clients_{context}[Managing Clients] "
+"chapter."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} also supports the https://datatracker.ietf.org/doc/html/"
+"rfc7636[Proof Key for Code Exchange] specification."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Implicit Flow"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Implicit Flow is a browser-based protocol. It is similar to the "
+"Authorization Code Flow but with fewer requests and no refresh tokens."
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"The possibility exists of _access_ tokens leaking in the browser history "
+"when tokens are transmitted via redirect URIs (see below)."
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"Also, this flow does not provide clients with refresh tokens. Therefore, "
+"access tokens have to be long-lived or users have to re-authenticate when "
+"they expire."
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"We do not advise using this flow. This flow is supported because it is in "
+"the OIDC and OAuth 2.0 specification."
+msgstr ""
+
+#. type: Plain text
+msgid "The protocol works as follows:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The application passes a callback URL as a query parameter in the browser "
+"redirect. {project_name} uses the query parameter upon successful "
+"authentication."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} authenticates the user and creates an _identity_ and _access_ "
+"token. {project_name} redirects to the application using the callback URL "
+"and additionally adds the _identity_ and _access_ tokens as a query "
+"parameter in the callback URL."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The application extracts the _identity_ and _access_ tokens from the "
+"callback URL."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Resource owner password credentials grant (Direct Access Grants)"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"_Direct Access Grants_ are used by REST clients to obtain tokens on behalf "
+"of users.  It is a HTTP POST request that contains:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The credentials of the user. The credentials are sent within form parameters."
+msgstr ""
+
+#. type: Plain text
+msgid "The id of the client."
+msgstr ""
+
+#. type: Plain text
+msgid "The clients secret (if it is a confidential client)."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The HTTP response contains the _identity_, _access_, and _refresh_ tokens."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Client credentials grant"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The _Client Credentials Grant_ creates a token based on the metadata and "
+"permissions of a service account associated with the client instead of "
+"obtaining a token that works on behalf of an external user. _Client "
+"Credentials Grants_ are used by REST clients."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"See the <<_service_accounts,Service Accounts>> chapter for more information."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Device authorization grant"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is used by clients running on internet-connected devices that have "
+"limited input capabilities or lack a suitable browser. Here's a brief "
+"summary of the protocol:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The application requests {project_name} a device code and a user code. "
+"{project_name} creates a device code and a user code. {project_name} returns "
+"a response including the device code and the user code to the application."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The application provides the user with the user code and the verification "
+"URI. The user accesses a verification URI to be authenticated by using "
+"another browser."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The application repeatedly polls {project_name} to find out if the user "
+"completed the user authorization. If user authentication is complete, the "
+"application exchanges the device code for an _identity_, _access_ and "
+"_refresh_ token."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Client initiated backchannel authentication grant"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This feature is used by clients who want to initiate the authentication flow "
+"by communicating with the OpenID Provider directly without redirect through "
+"the user's browser like OAuth 2.0's authorization code grant. Here's a brief "
+"summary of the protocol:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"An administrator can configure Client Initiated Backchannel Authentication "
+"(CIBA) related operations as `CIBA Policy` per realm."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Also please refer to other places of {project_name} documentation like link:"
+"{adapterguide_link}#_backchannel_authentication_endpoint[Backchannel "
+"Authentication Endpoint section] of {adapterguide_name} and link:"
+"{adapterguide_link}"
+"#_client_initiated_backchannel_authentication_grant[Client Initiated "
+"Backchannel Authentication Grant section] of {adapterguide_name}."
+msgstr ""
+
+#. type: Title ======
+#, no-wrap
+msgid "CIBA Policy"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"An administrator carries out the following operations on the `Admin "
+"Console` :"
+msgstr ""
+
+#. type: Plain text
+msgid "Open the `Authentication -> CIBA Policy` tab."
+msgstr ""
+
+#. type: Plain text
+msgid "Configure items and click `Save`."
+msgstr ""
+
+#. type: Plain text
+msgid "The configurable items and their description follow."
+msgstr ""
+
+#. type: Plain text
+msgid "Backchannel Token Delivery Mode"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Specifying how the CD (Consumption Device) gets the authentication result and related tokens. There are three modes, \"poll\", \"ping\" and \"push\". {project_name} only supports \"poll\". The default setting is \"poll\". This configuration is required.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5[CIBA Specification].\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Expires In"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The expiration time of the \"auth_req_id\" in seconds since the authentication request was received. The default setting is 120. This configuration is required.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#successful_authentication_request_acknowdlegment[CIBA Specification].\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Interval"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The interval in seconds the CD (Consumption Device) needs to wait for between polling requests to the token endpoint. The default setting is 5. This configuration is optional.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#successful_authentication_request_acknowdlegment[CIBA Specification].\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Authentication Requested User Hint"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The way of identifying the end-user for whom authentication is being requested. The default setting is \"login_hint\".  There are three modes, \"login_hint\", \"login_hint_token\" and \"id_token_hint\". {project_name} only supports \"login_hint\". This configuration is required.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.7.1[CIBA Specification].\n"
+msgstr ""
+
+#. type: Title ======
+#, no-wrap
+msgid "Provider Setting"
+msgstr ""
+
+#. type: Plain text
+msgid "The CIBA grant uses the following two providers."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authentication Channel Provider : provides the communication between "
+"{project_name} and the entity that actually authenticates the user via AD "
+"(Authentication Device)."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"User Resolver Provider : get `UserModel` of {project_name} from the "
+"information provided by the client to identify the user."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} has both default providers. However, the administrator needs "
+"to set up Authentication Channel Provider like this:"
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"ciba-auth-channel\">\n"
+"    <default-provider>ciba-http-auth-channel</default-provider>\n"
+"    <provider name=\"ciba-http-auth-channel\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"httpAuthenticationChannelUri\" value=\"https://backend.internal.example.com/auth\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+
+#. type: Plain text
+msgid "httpAuthenticationChannelUri"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Specifying URI of the entity that actually authenticates the user via AD "
+"(Authentication Device)."
+msgstr ""
+
+#. type: Title ======
+#, no-wrap
+msgid "Authentication Channel Provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"CIBA standard document does not specify how to authenticate the user by AD. "
+"Therefore, it might be implemented at the discretion of products. "
+"{project_name} delegates this authentication to an external authentication "
+"entity. To communicate with the authentication entity, {project_name} "
+"provides Authentication Channel Provider."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Its implementation of {project_name} assumes that the authentication entity "
+"is under the control of the administrator of {project_name} so that "
+"{project_name} trusts the authentication entity. It is not recommended to "
+"use the authentication entity that the administrator of {project_name} "
+"cannot control."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authentication Channel Provider is provided as SPI provider so that users of "
+"{project_name} can implement their own provider in order to meet their "
+"environment. {project_name} provides its default provider called HTTP "
+"Authentication Channel Provider that uses HTTP to communicate with the "
+"authentication entity."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If a user of {project_name} user want to use the HTTP Authentication Channel "
+"Provider, they need to know its contract between {project_name} and the "
+"authentication entity consisting of the following two parts."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Delegation Request/Response"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"  {project_name} sends an authentication request to the authentication "
+"entity."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Result Notification/ACK"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"  The authentication entity notifies the result of the authentication to "
+"{project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authentication Delegation Request/Response consists of the following "
+"messaging."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Delegation Request"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The request is sent from {project_name} to the authentication entity to ask "
+"it for user authentication by AD."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "POST [delegation_reception]\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Headers"
+msgstr ""
+
+#. type: Plain text
+msgid "Name|Value|Description"
+msgstr ""
+
+#. type: Plain text
+msgid "Content-Type|application/json|The message body is json formatted."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authorization|Bearer [token]|The [token] is used when the authentication "
+"entity notifies the result of the authentication to {project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid "Parameters"
+msgstr ""
+
+#. type: Plain text
+msgid "Type|Name|Description"
+msgstr ""
+
+#. type: Plain text
+msgid "Path"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"delegation_reception|The endpoint provided by the authentication entity to "
+"receive the delegation request"
+msgstr ""
+
+#. type: Plain text
+msgid "Body"
+msgstr ""
+
+#. type: Plain text
+msgid "Name|Description"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"login_hint|It tells the authentication entity who is authenticated by AD. +\n"
+"By default, it is the user's \"username\". +\n"
+"This field is required and was defined by CIBA standard document.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"scope|It tells which scopes the authentication entity gets consent from the authenticated user. +\n"
+"This field is required and was defined by CIBA standard document.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"is_consent_required|It shows whether the authentication entity needs to get consent from the authenticated user about the scope. +\n"
+" This field is required.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"binding_message|Its value is intended to be shown in both CD and AD's UI to make the user recognize that the authentication by AD is triggered by CD. +\n"
+"This field is optional and was defined by CIBA standard document.\n"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"acr_values|It tells the requesting Authentication Context Class Reference from CD. +\n"
+"This field is optional and was defined by CIBA standard document.\n"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Delegation Response"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The response is returned from the authentication entity to {project_name} to "
+"notify that the authentication entity received the authentication request "
+"from {project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid "Responses"
+msgstr ""
+
+#. type: Plain text
+msgid "HTTP Status Code|Description"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"201|It notifies {project_name} of receiving the authentication delegation "
+"request."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authentication Result Notification/ACK consists of the following messaging."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Result Notification"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The authentication entity sends the result of the authentication request to "
+"{project_name}."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "POST /auth/realms/[realm]/protocol/openid-connect/ext/ciba/auth/callback\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Authorization|Bearer [token]|The [token] must be the one the authentication "
+"entity has received from {project_name} in Authentication Delegation Request."
+msgstr ""
+
+#. type: Plain text
+msgid "realm|The realm name"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"status|It tells the result of user authentication by AD. +\n"
+"It must be one of the following status. +\n"
+"  SUCCEED : The authentication by AD has been successfully completed. +\n"
+"  UNAUTHORIZED : The authentication by AD has not been completed. +\n"
+"  CANCELLED : The authentication by AD has been cancelled by the user.\n"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authentication Result ACK"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The response is returned from {project_name} to the authentication entity to "
+"notify {project_name} received the result of user authentication by AD from "
+"the authentication entity."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"200|It notifies the authentication entity of receiving the notification of "
+"the authentication result."
+msgstr ""
+
+#. type: Title ======
+#, no-wrap
+msgid "User Resolver Provider"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Even if the same user, its representation may differ in each CD, "
+"{project_name} and the authentication entity."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For CD, {project_name} and the authentication entity to recognize the same "
+"user, this User Resolver Provider converts their own user representations "
+"among them."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"User Resolver Provider is provided as SPI provider so that users of "
+"{project_name} can implement their own provider in order to meet their "
+"environment. {project_name} provides its default provider called Default "
+"User Resolver Provider that has the following characteristics."
+msgstr ""
+
+#. type: Plain text
+msgid "Only support `login_hint` parameter and is used as default."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`username` of UserModel in {project_name} is used to represent the user on "
+"CD, {project_name} and the authentication entity."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "OIDC Logout"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"OIDC has three different specifications relevant to logout mechanisms, all "
+"of these are currently in draft status:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"https://openid.net/specs/openid-connect-session-1_0.html[Session Management]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"https://openid.net/specs/openid-connect-frontchannel-1_0.html[Front-Channel "
+"Logout]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"https://openid.net/specs/openid-connect-backchannel-1_0.html[Back-Channel "
+"Logout]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Again since all of this is described in the OIDC specification we will only "
+"give a brief overview here."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Session Management"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is a browser-based logout. The application obtains session status "
+"information from {project_name} at a regular basis.  When the session is "
+"terminated at {project_name} the application will notice and trigger it's "
+"own logout."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Frontchannel Logout"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is also a browser-based logout where the logout starts by redirecting "
+"the user to a specific endpoint at {project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Once the user is redirected to the logout endpoint, {project_name} is going "
+"to send logout requests to clients to let them to invalidate their local "
+"user sessions, and potentially redirect the user to some URL once the logout "
+"process is finished."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Depending on the client configuration, logout requests can be sent to "
+"clients through the front-channel or through the back-channel."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To configure clients to receive logout requests through the front-channel, "
+"look at the <<_front-channel-logout, Front-Channel Logout>> client setting. "
+"When using this method, consider the following:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Logout requests sent by {project_name} to clients rely on the browser and on "
+"embedded `iframes` that are rendered for the logout page."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By being based on `iframes`, front-channel logout might be impacted by "
+"Content Security Policies (CSP) and logout requests might be blocked."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If the user closes the browser prior to rendering the logout page or before "
+"logout requests are actually sent to clients, their sessions at the client "
+"might not be invalidated."
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"Consider using Back-Channel Logout as it provides a more reliable and secure "
+"approach to log out users and terminate their sessions on the clients."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If the client is not enabled with front-channel logout, then {project_name} "
+"is going to try first to send logout requests through the back-channel using "
+"the <<_back-channel-logout-url, Back-Channel Logout URL>>. If not defined, "
+"the server is going to fall back to using the <<_admin-url, Admin URL>>."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is a non browser-based logout that uses direct backchannel "
+"communication between {project_name} and clients.  {project_name} sends a "
+"HTTP POST request containing a logout token to all clients logged into "
+"{project_name}. These requests are sent to a registered backchannel logout "
+"URLs at {project_name} and are supposed to trigger a logout at client side."
+msgstr ""

@@ -14,6 +14,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr ""
+
 #. type: Title ===
 #, no-wrap
 msgid "Setting up HTTPS/SSL"
@@ -76,7 +81,7 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Enabling SSL/HTTPS for the {project_name} Server"
+msgid "Enabling SSL/HTTPS for the {project_name} server"
 msgstr ""
 
 #. type: Plain text
@@ -106,8 +111,8 @@ msgstr ""
 msgid ""
 "In order to allow HTTPS connections, you need to obtain a self signed or "
 "third-party signed certificate and import it into a Java keystore before you "
-"can enable HTTPS in the web container you are deploying the {project_name} "
-"Server to."
+"can enable HTTPS in the web container where you are deploying the "
+"{project_name} Server."
 msgstr ""
 
 #. type: Title ======
@@ -146,22 +151,22 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"You should answer `What is your first and last name ?` question with the DNS "
-"name of the machine you're installing the server on.  For testing purposes, "
-"`localhost` should be used.  After executing this command, the `keycloak."
-"jks` file will be generated in the same directory as you executed the "
-"`keytool` command in."
+"When you see the question `What is your first and last name ?`, supply the "
+"DNS name of the machine where you are installing the server. For testing "
+"purposes, `localhost` should be used.  After executing this command, the "
+"`keycloak.jks` file will be generated in the same directory as you executed "
+"the `keytool` command in."
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "If you want a third-party signed certificate, but don't have one, you can "
-"obtain one for free at http://www.cacert.org[cacert.org].  You'll have to do "
-"a little set up first before doing this though."
+"obtain one for free at http://www.cacert.org[cacert.org].  However, you "
+"first need to use the following procedure."
 msgstr ""
 
 #. type: Plain text
-msgid "The first thing to do is generate a Certificate Request:"
+msgid "Generate a Certificate Request:"
 msgstr ""
 
 #. type: delimited block -
@@ -171,8 +176,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Where `yourdomain` is a DNS name for which this certificate is generated "
-"for.  Keytool generates the request:"
+"Where `yourdomain` is a DNS name for which this certificate is generated.  "
+"Keytool generates the request:"
 msgstr ""
 
 #. type: delimited block -
@@ -196,11 +201,21 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
+msgid "Send this CA request to your Certificate Authority (CA)."
+msgstr ""
+
+#. type: Plain text
+msgid "The CA will issue you a signed certificate and send it to you."
+msgstr ""
+
+#. type: Plain text
+msgid "Obtain and import the root certificate of the CA."
+msgstr ""
+
+#. type: Plain text
 msgid ""
-"Send this ca request to your CA.  The CA will issue you a signed certificate "
-"and send it to you.  Before you import your new cert, you must obtain and "
-"import the root certificate of the CA.  You can download the cert from CA "
-"(ie.: root.crt) and import as follows:"
+"You can download the cert from CA (in other words: root.crt) and import as "
+"follows:"
 msgstr ""
 
 #. type: delimited block -
@@ -209,8 +224,7 @@ msgid "$ keytool -import -keystore keycloak.jks -file root.crt -alias root\n"
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"Last step is to import your new CA generated certificate to your keystore:"
+msgid "Import your new CA generated certificate to your keystore:"
 msgstr ""
 
 #. type: delimited block -
@@ -226,13 +240,26 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Now that you have a Java keystore with the appropriate certificates, you "
-"need to configure your {project_name} installation to use it.  First, you "
-"must edit the _standalone.xml_, _standalone-ha.xml_, or _host.xml_ file to "
-"use the keystore and enable HTTPS. You may then either move the keystore "
-"file to the _configuration/_ directory of your deployment or the file in a "
-"location you choose and provide an absolute path to it. If you are using "
-"absolute paths, remove the optional `relative-to` parameter from your "
-"configuration (See <<_operating-mode, operating mode>>)."
+"need to configure your {project_name} installation to use it."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Edit the _standalone.xml_, _standalone-ha.xml_, or _host.xml_ file to use "
+"the keystore and enable HTTPS."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Either move the keystore file to the _configuration/_ directory of your "
+"deployment or the file in a location you choose and provide an absolute path "
+"to it."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If you are using absolute paths, remove the optional `relative-to` parameter "
+"from your configuration (See <<_operating-mode, operating mode>>)."
 msgstr ""
 
 #. type: Plain text
@@ -253,12 +280,12 @@ msgstr ""
 msgid ""
 "If using domain mode, the commands should be executed in every host using "
 "the `/host=<host_name>/` prefix (in order to create the `security-realm` in "
-"all of them), like this, which you would repeat for each host:"
+"all of them). Here is an example, which you would repeat for each host:"
 msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "$ /host=<host_name>/core-service=management/security-realm=UndertowRealm/server-identity=ssl:add(keystore-path=keycloak.jks, keystore-relative-to=jboss.server.config.dir, keystore-password=secret)\n"
+msgid "$ /host=<host_name>/core-service=management/security-realm=UndertowRealm/server-identity=ssl:add(keystore-path=keycloak.jks, keystore-relative-to=jboss.domain.config.dir, keystore-password=secret)\n"
 msgstr ""
 
 #. type: Plain text
@@ -281,9 +308,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Next, in the standalone or each domain configuration file, search for any "
-"instances of `security-realm`. Modify the `https-listener` to use the "
-"created realm:"
+"In the standalone or each domain configuration file, search for any "
+"instances of `security-realm`."
+msgstr ""
+
+#. type: Plain text
+msgid "Modify the `https-listener` to use the created realm:"
 msgstr ""
 
 #. type: delimited block -

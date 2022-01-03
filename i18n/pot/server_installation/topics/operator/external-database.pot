@@ -43,8 +43,8 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "You can use the Operator to connect to an external PostgreSQL database by "
-"modifying the Keycloak custom resource and creating a `keycloak-db-secret` "
-"YAML file. Note that values are Base64 encoded."
+"creating a `keycloak-db-secret` YAML file and setting Keycloak CR "
+"externalDatabase property to enabled. Note that values are Base64 encoded."
 msgstr ""
 
 #. type: Block title
@@ -64,13 +64,12 @@ msgid ""
 "    POSTGRES_DATABASE: <Database Name>\n"
 "    POSTGRES_EXTERNAL_ADDRESS: <External Database IP or URL (resolvable by K8s)>\n"
 "    POSTGRES_EXTERNAL_PORT: <External Database Port>\n"
-"    # Strongly recommended to use <'Keycloak CR-Name'-postgresql>\n"
-"    POSTGRES_HOST: <Database Service Name>\n"
 "    POSTGRES_PASSWORD: <Database Password>\n"
 "    # Required for AWS Backup functionality\n"
-"    POSTGRES_SUPERUSER: true\n"
+"    POSTGRES_SUPERUSER: \"true\"\n"
 "    POSTGRES_USERNAME: <Database Username>\n"
-" type: Opaque\n"
+"    SSLMODE: <TLS configuration for the Database connection>\n"
+"type: Opaque\n"
 msgstr ""
 
 #. type: Plain text
@@ -104,12 +103,6 @@ msgid "`POSTGRES_DATABASE` - Database name to be used."
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"`POSTGRES_HOST` - The name of the `Service` used to communicate with a "
-"database. Typically `keycloak-postgresql`."
-msgstr ""
-
-#. type: Plain text
 msgid "`POSTGRES_USERNAME` - Database username"
 msgstr ""
 
@@ -119,8 +112,51 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"`POSTGRES_SUPERUSER` - Indicates, whether backups should run as super user. "
+"`POSTGRES_SUPERUSER` - Indicates whether backups should run as super user. "
 "Typically `true`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`SSL_MODE` - Indicates whether to use TLS on the connection to the external "
+"PostgreSQL database. Check the possible https://www.postgresql.org/docs/"
+"current/libpq-ssl.html[values]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When `SSL_MODE` is enabled, the operator searches for a secret called "
+"`keycloak-db-ssl-cert-secret` containing the `root.crt` that has been used "
+"by the PostgreSQL database. Creating the secret is optional and the secret "
+"is used only when you want to verify the Database's certificate (for example "
+"`SSLMODE: verify-ca`). Here is an example :"
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Example YAML file for `TLS Secret` to be used by the operator."
+msgstr ""
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"apiVersion: v1\n"
+"kind: Secret\n"
+"metadata:\n"
+"  name: keycloak-db-ssl-cert-secret\n"
+"  namespace: keycloak\n"
+"type: Opaque\n"
+"data:\n"
+"  root.crt: {root.crt base64}\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Operator will create a Service named `keycloak-postgresql`. This Service "
+"is configured by the Operator to expose the external database based on the "
+"content of `POSTGRES_EXTERNAL_ADDRESS`. {project_name} uses this Service to "
+"connect to the Database, which means it does not connect to the Database "
+"directly but rather through this Service."
 msgstr ""
 
 #. type: Plain text

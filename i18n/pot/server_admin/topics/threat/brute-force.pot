@@ -14,35 +14,54 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr ""
+
 #. type: Title ====
 #, no-wrap
-msgid "Password Policies"
+msgid "Password policies"
 msgstr ""
 
-#. type: Attribute :adminguide_bruteforce_name:
+#. type: Title ===
 #, no-wrap
-msgid "Password guess: brute force attacks"
+msgid "Brute force attacks"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"A brute force attack happens when an attacker is trying to guess a user's "
-"password.  {project_name} has some limited brute force detection "
-"capabilities.  If turned on, a user account will be temporarily disabled if "
-"a threshold of login failures is reached.  To enable this feature go to the "
-"`Realm Settings` left menu item, click on the `Security Defenses` tab, then "
-"additional go to the `Brute Force Detection` sub-tab."
+"A brute force attack attempts to guess a user's password by trying to log in "
+"multiple times. {project_name} has brute force detection capabilities and "
+"can temporarily disable a user account if the number of login failures "
+"exceeds a specified threshold."
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"{project_name} disables brute force detection by default. Enable this "
+"feature to protect against brute force attacks."
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"Brute Force Detection is disabled by default. Enabling this feature is "
-"highly recommended to protect against this type of attack."
+msgid "To enable this protection:"
+msgstr ""
+
+#. type: Plain text
+msgid "Click *Realm Settings* in the menu"
+msgstr ""
+
+#. type: Plain text
+msgid "Click the *Security Defenses* tab."
+msgstr ""
+
+#. type: Plain text
+msgid "Click the *Brute Force Detection* tab."
 msgstr ""
 
 #. type: Block title
 #, no-wrap
-msgid "Brute Force Detection"
+msgid "Brute force detection"
 msgstr ""
 
 #. type: Plain text
@@ -51,21 +70,20 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"There are 2 different configurations for brute force detection; permanent "
-"lockout and temporary lockout. Permanent lockout will disable a user's "
-"account after an attack is detected; the account will be disabled until an "
-"administrator renables it. Temporary lockout will disable a user's account "
-"for a time period after an attack is detected; the time period for which the "
-"account is disabled increases the longer the attack continues."
+"{project_name} can deploy permanent lockout and temporary lockout actions "
+"when it detects an attack. Permanent lockout disables a user account until "
+"an administrator re-enables it. Temporary lockout disables a user account "
+"for a specific period of time. The time period that the account is disabled "
+"increases as the attack continues."
 msgstr ""
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"When user is temporarily locked and attempt to login, the default error "
-"message `Invalid username or password` is shown.  This is the same error "
-"message as the message displayed when invalid username or invalid password "
-"is provided. This is by design as we do not want to reveal to the attacker "
-"that user is temporarily disabled."
+"When a user is temporarily locked and attempts to log in, {project_name} "
+"displays the default `Invalid username or password` error message. This "
+"message is the same error message as the message displayed for an invalid "
+"username or invalid password to ensure the attacker is unaware the account "
+"is disabled."
 msgstr ""
 
 #. type: Plain text
@@ -73,77 +91,51 @@ msgstr ""
 msgid "*Common Parameters*\n"
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
+#. type: Plain text
+msgid "Name |Description |Default"
+msgstr ""
+
+#. type: Plain text
 msgid "Max Login Failures"
 msgstr ""
 
-#. type: delimited block =
-msgid "Maximum number of login failures permitted. Default value is 30."
+#. type: Plain text
+msgid "The maximum number of login failures."
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
-msgid "Quick Login Check Milli Seconds"
+#. type: Plain text
+msgid "30 failures."
 msgstr ""
 
-#. type: delimited block =
-msgid "Minimum time required between login attempts. Default is 1000."
+#. type: Plain text
+msgid "Quick Login Check Milliseconds"
 msgstr ""
 
-#. type: Labeled list
-#, no-wrap
+#. type: Plain text
+msgid "The minimum time between login attempts."
+msgstr ""
+
+#. type: Plain text
+msgid "1000 milliseconds."
+msgstr ""
+
+#. type: Plain text
 msgid "Minimum Quick Login Wait"
 msgstr ""
 
-#. type: delimited block =
+#. type: Plain text
 msgid ""
-"Minimum amount of time the user will be temporarily disabled if logins "
-"attempts are quicker than _Quick Login Check Milli Seconds_. Default is 1 "
-"minute."
+"The minimum time the user is disabled when login attempts are quicker than "
+"_Quick Login Check Milliseconds_."
+msgstr ""
+
+#. type: Plain text
+msgid "1 minute."
 msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid "*Temporary Lockout Parameters*\n"
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Wait Increment"
-msgstr ""
-
-#. type: delimited block =
-msgid ""
-"Amount of time added to the time a user is temporarily disabled after each "
-"time _Max Login Failures_ is reached. Default is 1 minute."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Max Wait"
-msgstr ""
-
-#. type: delimited block =
-msgid ""
-"The maximum amount of time for which a user will be temporarily disabled. "
-"Default is 15 minutes."
-msgstr ""
-
-#. type: Labeled list
-#, no-wrap
-msgid "Failure Reset Time"
-msgstr ""
-
-#. type: delimited block =
-msgid ""
-"Time after which the failure count will be reset; timer runs from the last "
-"failed login. Default is 12 hours."
-msgstr ""
-
-#. type: Plain text
-#, no-wrap
-msgid "*Permanent Lockout Algorithm*\n"
+msgid "*Permanent Lockout Flow*\n"
 msgstr ""
 
 #. type: delimited block =
@@ -169,15 +161,56 @@ msgstr ""
 
 #. type: delimited block =
 msgid ""
-"Else if time between this failure and the last failure is less than _Quick "
-"Login Check Milli Seconds_ ... Temporarily disable user for _Minimum Quick "
-"Login Wait_"
+"Else if the time between this failure and the last failure is less than "
+"_Quick Login Check Milliseconds_ ... Temporarily disable user for _Minimum "
+"Quick Login Wait_"
 msgstr ""
 
 #. type: delimited block =
 msgid ""
-"When a user is disabled they can not login until an administrator enables "
-"the user; enabling an account resets `count`."
+"When {project_name} disables a user, the user cannot log in until an "
+"administrator enables the user. Enabling an account resets the `count`."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "*Temporary Lockout Parameters*\n"
+msgstr ""
+
+#. type: Plain text
+msgid "Wait Increment"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The time added to the time a user is temporarily disabled when the user's "
+"login attempts exceed _Max Login Failures_."
+msgstr ""
+
+#. type: Plain text
+msgid "Max Wait"
+msgstr ""
+
+#. type: Plain text
+msgid "The maximum time a user is temporarily disabled."
+msgstr ""
+
+#. type: Plain text
+msgid "15 minutes."
+msgstr ""
+
+#. type: Plain text
+msgid "Failure Reset Time"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The time when the failure count resets. The timer runs from the last failed "
+"login."
+msgstr ""
+
+#. type: Plain text
+msgid "12 hours."
 msgstr ""
 
 #. type: Plain text
@@ -187,57 +220,51 @@ msgstr ""
 
 #. type: delimited block =
 msgid ""
-"If time between this failure and the last failure is greater than _Failure "
-"Reset Time_ ... Reset `count`"
+"If the time between this failure and the last failure is greater than "
+"_Failure Reset Time_ ... Reset `count`"
 msgstr ""
 
 #. type: delimited block =
 msgid ""
 "Calculate `wait` using _Wait Increment_ * (`count` / _Max Login Failures_). "
-"The division is an integer division so will always be rounded down to a "
-"whole number"
+"The division is an integer division rounded down to a whole number"
 msgstr ""
 
 #. type: delimited block =
 msgid ""
-"If `wait` equals 0 and time between this failure and the last failure is "
-"less than _Quick Login Check Milli Seconds_ then set `wait` to _Minimum "
-"Quick Login Wait_ instead ... Temporarily disable the user for the smaller "
-"of `wait` and _Max Wait_ seconds"
+"If `wait` equals 0 and the time between this failure and the last failure is "
+"less than _Quick Login Check Milliseconds_, set `wait` to _Minimum Quick "
+"Login Wait_.  ... Temporarily disable the user for the smaller of `wait` and "
+"_Max Wait_ seconds"
 msgstr ""
 
 #. type: delimited block =
 msgid ""
-"Login failures when a user is temporarily disabled do not increment `count`."
+"'count` does not increment when a temporarily disabled account commits a "
+"login failure."
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "The downside of {project_name} brute force detection is that the server "
-"becomes vulnerable to denial of service attacks.  An attacker can simply try "
-"to guess passwords for any accounts it knows and these account will be "
-"disabled.  Eventually we will expand this functionality to take client IP "
-"address into account when deciding whether to block a user."
+"becomes vulnerable to denial of service attacks. When implementing a denial "
+"of service attack, an attacker can attempt to log in by guessing passwords "
+"for any accounts it knows and eventually causing {project_name} to disable "
+"the accounts."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"A better option might be a tool like http://www.fail2ban.org/wiki/index.php/"
-"Main_Page[Fail2Ban].  You can point this service at the {project_name} "
-"server's log file.  {project_name} logs every login failure and client IP "
-"address that had the failure.  Fail2Ban can be used to modify firewalls "
-"after it detects an attack to block connections from specific IP addresses."
+"Consider using intrusion prevention software (IPS). {project_name} logs "
+"every login failure and client IP address failure. You can point the IPS to "
+"the {project_name} server's log file, and the IPS can modify firewalls to "
+"block connections from these IP addresses."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Another thing you should do to prevent password guess is to have a complex "
-"enough password policy to ensure that users pick hard to guess passwords.  "
-"See the <<_password-policies, Password Policies>> chapter for more details."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The best way to prevent password guessing though is to set up the server to "
-"use a one-time-password (OTP)."
+"Ensure you have a complex password policy to force users to choose complex "
+"passwords. See the <<_password-policies, Password Policies>> chapter for "
+"more information. Prevent password guessing by setting up the {project_name} "
+"server to use one-time-passwords."
 msgstr ""

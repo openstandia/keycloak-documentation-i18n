@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Example"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Protocol"
+msgstr ""
+
+#. [id="con-client-scopes_{context}"]//
+#. type: Title =
+#, no-wrap
+msgid "Client scopes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Use {project_name} to define a shared client configuration in an entity "
+"called a _client scope_. A _client scope_ configures <<_protocol-mappers, "
+"protocol mappers>> and <<_role_scope_mappings, role scope mappings>> for "
+"multiple clients."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Client scopes also support the OAuth 2 *scope* parameter. Client "
+"applications use this parameter to request claims or roles in the access "
+"token, depending on the requirement of the application."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When you create a client scope, choose the *Protocol*. Clients linked in the "
+"same scope must have the same protocol."
+msgstr ""
+
+#. type: Plain text
+msgid "Each realm has a set of pre-defined built-in client scopes in the menu."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"SAML protocol: The *role_list*. This scope contains one protocol mapper for "
+"the roles list in the SAML assertion."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"OpenID Connect protocol: Several client scopes are available: ** *roles*"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This scope is not defined in the OpenID Connect specification and is not "
+"added automatically to the *scope* claim in the access token. This scope has "
+"mappers, which are used to add the roles of the user to the access token and "
+"add audiences for clients that have at least one client role. These mappers "
+"are described in more detail in the <<_audience_resolve, Audience section>>."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "** *web-origins*\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This scope is also not defined in the OpenID Connect specification and not "
+"added to the *scope* claiming the access token. This scope is used to add "
+"allowed web origins to the access token *allowed-origins* claim."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "** *microprofile-jwt*\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This scope handles claims defined in the https://wiki.eclipse.org/"
+"MicroProfile/JWT_Auth[MicroProfile/JWT Auth Specification]. This scope "
+"defines a user property mapper for the *upn* claim and a realm role mapper "
+"for the *groups* claim. These mappers can be changed so different properties "
+"can be used to create the MicroProfile/JWT specific claims."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid "** *offline_access*\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This scope is used in cases when clients need to obtain offline tokens. More "
+"details on offline tokens is available in the <<_offline-access, Offline "
+"Access section>> and in the https://openid.net/specs/openid-connect-core-1_0."
+"html#OfflineAccess[OpenID Connect specification]."
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"** *profile*\n"
+"** *email*\n"
+"** *address*\n"
+"** *phone*\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The client scopes *profile*, *email*, *address* and *phone* are defined in "
+"the https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims[OpenID "
+"Connect specification]. These scopes do not have any role scope mappings "
+"defined but they do have protocol mappers defined. These mappers correspond "
+"to the claims defined in the OpenID Connect specification."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For example, when you open the *phone* client scope and open the *Mappers* "
+"tab, you will see the protocol mappers which correspond to the claims "
+"defined in the specification for the scope *phone*."
+msgstr ""
+
+#. type: Block title
+#, no-wrap
+msgid "Client scope mappers"
+msgstr ""
+
+#. type: Plain text
+msgid "image:{project_images}/client-scopes-phone.png[]"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When the *phone* client scope is linked to a client, the client "
+"automatically inherits all the protocol mappers defined in the *phone* "
+"client scope. Access tokens issued for this client contain the phone number "
+"information about the user, assuming that the user has a defined phone "
+"number."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Built-in client scopes contain the protocol mappers as defined in the "
+"specification. You are free to edit client scopes and create, update, or "
+"remove any protocol mappers or role scope mappings."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Consent related settings"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Client scopes contain options related to the consent screen. Those options "
+"are useful if the linked client if *Consent Required* is enabled on the "
+"client."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Display On Consent Screen"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If *Display On Consent Screen* is enabled, and the scope is added to a "
+"client that requires consent, the text specified in *Consent Screen Text* "
+"will be displayed on the consent screen. This text is shown when the user is "
+"authenticated and before the user is redirected from {project_name} to the "
+"client. If *Display On Consent Screen* is disabled, this client scope will "
+"not be displayed on the consent screen."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Consent Screen Text"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The text displayed on the consent screen when this client scope is added to "
+"a client when consent required defaults to the name of client scope. The "
+"value for this text can be customised by specifying a substitution variable "
+"with *${var-name}* strings. The customised value is configured within the "
+"property files in your theme. See the link:{developerguide_link}"
+"[{developerguide_name}] for more information on customisation."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Link client scope with the client"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Linking between a client scope and a client is configured in the *Client "
+"Scopes* tab of the client. Two ways of linking between client scope and "
+"client are available."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Default Client Scopes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This setting is applicable to the OpenID Connect and SAML clients. Default "
+"client scopes are applied when issuing OpenID Connect tokens or SAML "
+"assertions for a client. The client will inherit Protocol Mappers and Role "
+"Scope Mappings that are defined on the client scope. For the OpenID Connect "
+"Protocol, the Mappers and Role Scope Mappings are always applied, regardless "
+"of the value used for the scope parameter in the OpenID Connect "
+"authorization request."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Optional Client Scopes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This setting is applicable only for OpenID Connect clients. Optional client "
+"scopes are applied when issuing tokens for this client but only when "
+"requested by the *scope* parameter in the OpenID Connect authorization "
+"request."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For this example, assume the client has *profile* and *email* linked as "
+"default client scopes, and *phone* and *address* linked as optional client "
+"scopes. The client uses the value of the scope parameter when sending a "
+"request to the OpenID Connect authorization endpoint."
+msgstr ""
+
+#. type: delimited block -
+#, no-wrap
+msgid "scope=openid phone\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The scope parameter contains the string, with the scope values divided by "
+"spaces. The value *openid* is the meta-value used for all OpenID Connect "
+"requests. The token will contain mappers and role scope mappings from the "
+"default client scopes *profile* and *email* as well as *phone*, an optional "
+"client scope requested by the scope parameter."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Evaluating Client Scopes"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Client scopes permissions"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When issuing tokens to a user, the client scope applies only if the user is "
+"permitted to use it."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"When a client scope does not have any role scope mappings defined, each user "
+"is permitted to use this client scope. However, when a client scope has role "
+"scope mappings defined, the user must be a member of at least one of the "
+"roles. There must be an intersection between the user roles and the roles of "
+"the client scope. Composite roles are factored into evaluating this "
+"intersection."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If a user is not permitted to use the client scope, no protocol mappers or "
+"role scope mappings will be used when generating tokens. The client scope "
+"will not appear in the _scope_ value in the token."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Realm default client scopes"
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Scopes explained"
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Client scope"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Client scopes are entities in {project_name} that are configured at the "
+"realm level and can be linked to clients. Client scopes are referenced by "
+"their name when a request is sent to the {project_name} authorization "
+"endpoint with a corresponding value of the *scope* parameter. See the "
+"<<_client_scopes_linking, client scopes linking>> section for more details."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Role scope mapping"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is available under the *Scope* tab of a client or client scope. Use "
+"*Role scope mapping* to limit the roles that can be used in the access "
+"tokens. See the <<_role_scope_mappings, Role Scope Mappings section>> for "
+"more details."
+msgstr ""
+
+#. type: Labeled list
+#, no-wrap
+msgid "Authorization scopes"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The *Authorization Scope* covers the actions that can be performed in the "
+"application. See the link:{authorizationguide_link}[Authorization Services "
+"Guide] for more details."
+msgstr ""

@@ -6,19 +6,24 @@
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
 # Hiroyuki Wada <wadahiro@gmail.com>, 2019
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
 
 #. type: Title ===
 #, no-wrap
@@ -87,7 +92,7 @@ msgstr "各レルム用のSSLモードは、{project_name}管理コンソール�
 
 #. type: Title ====
 #, no-wrap
-msgid "Enabling SSL/HTTPS for the {project_name} Server"
+msgid "Enabling SSL/HTTPS for the {project_name} server"
 msgstr "{project_name}サーバー用SSL/HTTPSの有効化"
 
 #. type: Plain text
@@ -118,10 +123,10 @@ msgstr "証明書とJavaキーストアの作成"
 msgid ""
 "In order to allow HTTPS connections, you need to obtain a self signed or "
 "third-party signed certificate and import it into a Java keystore before you"
-" can enable HTTPS in the web container you are deploying the {project_name} "
-"Server to."
+" can enable HTTPS in the web container where you are deploying the "
+"{project_name} Server."
 msgstr ""
-"HTTPS接続が許可されるには、{project_name}サーバーがデプロイされているwebコンテナー内でHTTPSを有効にする前に、自己署名証明書または第三者署名証明書を取得してJavaキーストアにインポートする必要があります。"
+"HTTPS接続が許可されるには、{project_name}サーバーがデプロイされているWebコンテナー内でHTTPSを有効にする前に、自己署名証明書または第三者署名証明書を取得してJavaキーストアにインポートする必要があります。"
 
 #. type: Title ======
 #, no-wrap
@@ -178,28 +183,28 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"You should answer `What is your first and last name ?` question with the DNS"
-" name of the machine you're installing the server on.  For testing purposes,"
-" `localhost` should be used.  After executing this command, the "
+"When you see the question `What is your first and last name ?`, supply the "
+"DNS name of the machine where you are installing the server. For testing "
+"purposes, `localhost` should be used.  After executing this command, the "
 "`keycloak.jks` file will be generated in the same directory as you executed "
 "the `keytool` command in."
 msgstr ""
-"`What is your first and last name ?` という質問にはサーバーをインストールしたマシンのDNS名を答えてください。 "
+"`What is your first and last name ?` という質問には、サーバーをインストールしたマシンのDNS名を答えてください。 "
 "テスト目的なので、 `localhost` を使用します。このコマンドを実行すると、 `keytool` コマンドが実行されたのと同じディレクトリー内で"
 " `keycloak.jks` ファイルが生成されます。"
 
 #. type: Plain text
 msgid ""
 "If you want a third-party signed certificate, but don't have one, you can "
-"obtain one for free at http://www.cacert.org[cacert.org].  You'll have to do"
-" a little set up first before doing this though."
+"obtain one for free at http://www.cacert.org[cacert.org].  However, you "
+"first need to use the following procedure."
 msgstr ""
 "第三者署名証明書が必要だが用意していない場合、 http://www.cacert.org[cacert.org] "
-"から無料で取得することができます。しかしこの方法で取得する前に、少し設定が必要になります。 "
+"から無料で取得することができます。ただし、その前に以下の手順が必要となります。"
 
 #. type: Plain text
-msgid "The first thing to do is generate a Certificate Request:"
-msgstr "まず、証明書署名要求を生成します。"
+msgid "Generate a Certificate Request:"
+msgstr "証明書要求の生成"
 
 #. type: delimited block -
 #, no-wrap
@@ -212,8 +217,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Where `yourdomain` is a DNS name for which this certificate is generated "
-"for.  Keytool generates the request:"
+"Where `yourdomain` is a DNS name for which this certificate is generated.  "
+"Keytool generates the request:"
 msgstr "`yourdomain` はこの証明書が生成されるDNS名になります。Keytoolにより以下のように生成されます。"
 
 #. type: delimited block -
@@ -252,13 +257,22 @@ msgstr ""
 "-----END NEW CERTIFICATE REQUEST-----\n"
 
 #. type: Plain text
+msgid "Send this CA request to your Certificate Authority (CA)."
+msgstr "このCAリクエストを認証局（CA）に送信します。"
+
+#. type: Plain text
+msgid "The CA will issue you a signed certificate and send it to you."
+msgstr "CAは署名入りの証明書を発行し、あなたに送ります。"
+
+#. type: Plain text
+msgid "Obtain and import the root certificate of the CA."
+msgstr "CAのルート証明書を入手してインポートする。"
+
+#. type: Plain text
 msgid ""
-"Send this ca request to your CA.  The CA will issue you a signed certificate"
-" and send it to you.  Before you import your new cert, you must obtain and "
-"import the root certificate of the CA.  You can download the cert from CA "
-"(ie.: root.crt) and import as follows:"
-msgstr ""
-"この証明書署名要求を認証局に送信します。認証局は署名された証明書を発行し、送り返します。ただし、新しい証明書をインポートする前に、まず認証局のルート証明書を取得してインポートする必要があります。認証局からルート証明書（例：root.crt）をダウンロードし、以下のとおりインポートします。"
+"You can download the cert from CA (in other words: root.crt) and import as "
+"follows:"
+msgstr "CAから証明書をダウンロードして（つまり、root.crt）、以下のようにインポートすることができます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -266,9 +280,8 @@ msgid "$ keytool -import -keystore keycloak.jks -file root.crt -alias root\n"
 msgstr "$ keytool -import -keystore keycloak.jks -file root.crt -alias root\n"
 
 #. type: Plain text
-msgid ""
-"Last step is to import your new CA generated certificate to your keystore:"
-msgstr "最後に、以下のように新しい認証局の生成した証明書をキーストアにインポートします。"
+msgid "Import your new CA generated certificate to your keystore:"
+msgstr "新しいCAが生成した証明書をキーストアにインポートします。"
 
 #. type: delimited block -
 #, no-wrap
@@ -287,19 +300,34 @@ msgstr "キーストアを使用するための{project_name}設定"
 #. type: Plain text
 msgid ""
 "Now that you have a Java keystore with the appropriate certificates, you "
-"need to configure your {project_name} installation to use it.  First, you "
-"must edit the _standalone.xml_, _standalone-ha.xml_, or _host.xml_ file to "
-"use the keystore and enable HTTPS. You may then either move the keystore "
-"file to the _configuration/_ directory of your deployment or the file in a "
-"location you choose and provide an absolute path to it. If you are using "
-"absolute paths, remove the optional `relative-to` parameter from your "
-"configuration (See <<_operating-mode, operating mode>>)."
+"need to configure your {project_name} installation to use it."
 msgstr ""
-"適切な証明書を含むJavaキーストアができたため、それを使用するように{project_name}のインストールを設定する必要があります。まず、キーストアを使用してHTTPSを有効にするために、"
-" _standalone.xml_ 、 _standalone-ha.xml_ 、または _host.xml_ "
-"の各ファイルを編集する必要があります。その後、キーストア・ファイルをデプロイメントの _configuration/_ "
-"ディレクトリーに移動するか、または任意の場所に配置して絶対パスを指定します。絶対パスを使用している場合は、設定からオプションの `relative-"
-"to` パラメーターを削除してください（<<_operating-mode, 動作モード>>を参照）。"
+"適切な証明書を含むJavaキーストアができたので、それを使用するために{project_name}のインストール環境を設定する必要があります。"
+
+#. type: Plain text
+msgid ""
+"Edit the _standalone.xml_, _standalone-ha.xml_, or _host.xml_ file to use "
+"the keystore and enable HTTPS."
+msgstr ""
+"キーストアを使用し、HTTPSを有効にするために、_standalone.xml_ 、 _standalone-ha.xml_ 、 _host.xml_"
+" のいずれかのファイルを編集します。"
+
+#. type: Plain text
+msgid ""
+"Either move the keystore file to the _configuration/_ directory of your "
+"deployment or the file in a location you choose and provide an absolute path"
+" to it."
+msgstr ""
+"キーストアファイルをデプロイメントの _configuration/_ "
+"ディレクトリーに移動するか、またはファイルを任意の場所に移動し、そこへの絶対パスを指定してください。"
+
+#. type: Plain text
+msgid ""
+"If you are using absolute paths, remove the optional `relative-to` parameter"
+" from your configuration (See <<_operating-mode, operating mode>>)."
+msgstr ""
+"絶対パスを使用する場合は、オプションの `relative-to` パラメーターを設定から削除してください（<<_operating-mode, "
+"operating mode>>を参照してください）。"
 
 #. type: Plain text
 msgid "Add the new `security-realm` element using the CLI:"
@@ -325,21 +353,21 @@ msgstr ""
 msgid ""
 "If using domain mode, the commands should be executed in every host using "
 "the `/host=<host_name>/` prefix (in order to create the `security-realm` in "
-"all of them), like this, which you would repeat for each host:"
+"all of them). Here is an example, which you would repeat for each host:"
 msgstr ""
 "ドメインモードを使用している場合は、コマンドはすべてのホストで `/host=<host_name>/` "
-"プレフィックスを使用して実行します（すべてのホストで `security-realm` を作成するために）。次のように、各ホスト分繰り返します。"
+"プレフィックスを使用して実行します（すべてのホストで `security-realm` を作成するために）。次の例のように、各ホスト分繰り返します。"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"$ /host=<host_name>/core-service=management/security-realm=UndertowRealm"
-"/server-identity=ssl:add(keystore-path=keycloak.jks, keystore-relative-"
-"to=jboss.server.config.dir, keystore-password=secret)\n"
+"$ /host=<host_name>/core-service=management/security-"
+"realm=UndertowRealm/server-identity=ssl:add(keystore-path=keycloak.jks, "
+"keystore-relative-to=jboss.domain.config.dir, keystore-password=secret)\n"
 msgstr ""
-"$ /host=<host_name>/core-service=management/security-realm=UndertowRealm"
-"/server-identity=ssl:add(keystore-path=keycloak.jks, keystore-relative-"
-"to=jboss.server.config.dir, keystore-password=secret)\n"
+"$ /host=<host_name>/core-service=management/security-"
+"realm=UndertowRealm/server-identity=ssl:add(keystore-path=keycloak.jks, "
+"keystore-relative-to=jboss.domain.config.dir, keystore-password=secret)\n"
 
 #. type: Plain text
 msgid ""
@@ -368,12 +396,13 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Next, in the standalone or each domain configuration file, search for any "
-"instances of `security-realm`. Modify the `https-listener` to use the "
-"created realm:"
-msgstr ""
-"次に、スタンドアローンまたは各ドメイン設定ファイルで、 `security-realm` "
-"のインスタンスを検索します。作成したレルムを使用するように、次のように `https-listener` を修正します。"
+"In the standalone or each domain configuration file, search for any "
+"instances of `security-realm`."
+msgstr "スタンドアローンの設定ファイルまたは各ドメインの設定ファイル内で、 `security-realm` のインスタンスを探します。"
+
+#. type: Plain text
+msgid "Modify the `https-listener` to use the created realm:"
+msgstr "作成したレルムを使用するように `https-listener` を変更します。"
 
 #. type: delimited block -
 #, no-wrap

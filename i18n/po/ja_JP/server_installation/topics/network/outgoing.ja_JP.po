@@ -6,13 +6,13 @@
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr "設定可能なオプションは、以下のとおりです。"
 
 #. type: Title ===
 #, no-wrap
-msgid "Outgoing HTTP Requests"
+msgid "Outgoing HTTP requests"
 msgstr "外部へのHTTPリクエスト"
 
 #. type: Plain text
@@ -205,7 +205,7 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Proxy Mappings for Outgoing HTTP Requests"
+msgid "Proxy mappings for outgoing HTTP requests"
 msgstr "送信HTTPリクエストのプロキシー・マッピング"
 
 #. type: Plain text
@@ -230,8 +230,8 @@ msgid ""
 " determines the proxy-uri to use.  If none of the configured patterns match "
 "for the given hostname then no proxy is used."
 msgstr ""
-"送信するHTTPリクエストのプロキシーを判別するために、ターゲットホスト名が、設定されたホスト名パターンと照合されます。最初に一致するパターンで"
-"、使用するproxy-uriが決定します。指定されたホスト名と一致する設定済みのパターンが無い場合、プロキシーは使用されません。"
+"送信するHTTPリクエストのプロキシーを判別するために、ターゲットホスト名が、設定されたホスト名パターンと照合されます。最初に一致するパターンで、使用するproxy-"
+"uriが決定します。指定されたホスト名と一致する設定済みのパターンが無い場合、プロキシーは使用されません。"
 
 #. type: Plain text
 msgid ""
@@ -355,8 +355,106 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Outgoing HTTPS Request Truststore"
-msgstr "外部へのHTTPSリクエストのトラストストア"
+msgid "Using standard environment variables"
+msgstr "標準的な環境変数の使用"
+
+#. type: Plain text
+msgid ""
+"Alternatively, it is possible to use standard environment variables to "
+"configure the proxy mappings, that is `HTTP_PROXY`, `HTTPS_PROXY` and "
+"`NO_PROXY` variables."
+msgstr ""
+"代わりに，標準的な環境変数を使ってプロキシー・マッピングを設定することも可能です（ `HTTP_PROXY` 、 `HTTPS_PROXY` 、 "
+"`NO_PROXY` ）。"
+
+#. type: Plain text
+msgid ""
+"The `HTTP_PROXY` and `HTTPS_PROXY` variables represent the proxy server that"
+" should be used for all outgoing HTTP requests.  {project_name} does not "
+"differ between the two. If both are specified, `HTTPS_PROXY` takes the "
+"precedence regardless of the actual scheme the proxy server uses."
+msgstr ""
+"変数 `HTTP_PROXY` と `HTTPS_PROXY` は、すべての送信HTTPリクエストに使用されるべきプロキシーサーバーを表しています。 "
+"{project_name}は、両者の間に違いはありません。両方が指定された場合は、プロキシーサーバーが実際に使用するスキームに関わらず、`HTTPS_PROXY`"
+" が優先されます。"
+
+#. type: Plain text
+msgid ""
+"The `NO_PROXY` variable is used to define a comma separated list of "
+"hostnames that should not use the proxy.  If a hostname is specified, all "
+"its prefixes (subdomains) are also excluded from using proxy."
+msgstr ""
+"`NO_PROXY` "
+"変数は、プロキシーを使用してはいけないホスト名のリストをカンマ区切りで定義するのに使われます。ホスト名が指定された場合、そのすべてのプレフィックス（サブドメイン）もプロキシーの使用から除外されます。"
+
+#. type: Plain text
+msgid "Take the following example:"
+msgstr "次のような例があります。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"HTTPS_PROXY=https://www-proxy.acme.com:8080\n"
+"NO_PROXY=google.com,login.facebook.com\n"
+msgstr ""
+"HTTPS_PROXY=https://www-proxy.acme.com:8080\n"
+"NO_PROXY=google.com,login.facebook.com\n"
+
+#. type: Plain text
+msgid ""
+"In this example, all outgoing HTTP requests will use `\\https://www-"
+"proxy.acme.com:8080` proxy server except for requests to for example "
+"`login.google.com`, `google.com`, `auth.login.facebook.com`. However, for "
+"example `groups.facebook.com` will be routed through the proxy."
+msgstr ""
+"この例では、たとえば `login.google.com` 、 `google.com` 、 `auth.login.facebook.com` "
+"へのリクエストを除き、すべての送信HTTPリクエストが `https://www-proxy.acme.com:8080` "
+"プロキシー・サーバーを使用します。ただし、たとえば `groups.facebook.com` などのリクエストはプロキシーを経由します。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"The environment variables can be lowercase or uppercase. Lowercase takes precedence. For example if both `HTTP_PROXY` and\n"
+"       `http_proxy` are defined, `http_proxy` will be used.\n"
+msgstr ""
+"環境変数は、小文字でも大文字でもOKです。小文字の方が優先されます。たとえば、 `HTTP_PROXY` と `http_proxy` "
+"の両方が定義されている場合、  `http_proxy` が使用されます。\n"
+
+#. type: Plain text
+msgid ""
+"If proxy mappings are defined using the subsystem configuration (as "
+"described above), the environment variables are not considered by "
+"{project_name}. This scenario applies in case no proxy server should be used"
+" despite having for example `HTTP_PROXY` environment variable defined. To do"
+" so, you can specify a generic no proxy route as follows:"
+msgstr ""
+"サブシステム設定を使用してプロキシー・マッピングを定義する場合 "
+"（上記のとおり）、環境変数は{project_name}では考慮されません。このシナリオは、例えば `HTTP_PROXY` "
+"環境変数が定義されているにもかかわらず、プロキシー・サーバーを使用しない場合に適用されます。これを行うには、以下のように一般的なプロキシーのないルートを指定します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<spi name=\"connectionsHttpClient\">\n"
+"    <provider name=\"default\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"proxy-mappings\" value=\".*;NO_PROXY\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+msgstr ""
+"<spi name=\"connectionsHttpClient\">\n"
+"    <provider name=\"default\" enabled=\"true\">\n"
+"        <properties>\n"
+"            <property name=\"proxy-mappings\" value=\".*;NO_PROXY\"/>\n"
+"        </properties>\n"
+"    </provider>\n"
+"</spi>\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "Outgoing HTTPS request truststore"
+msgstr "発信するHTTPSリクエスト truststore"
 
 #. type: Plain text
 msgid ""
@@ -426,7 +524,6 @@ msgid ""
 "            <property name=\"file\" value=\"path to your .jks file containing public certificates\"/>\n"
 "            <property name=\"password\" value=\"password\"/>\n"
 "            <property name=\"hostname-verification-policy\" value=\"WILDCARD\"/>\n"
-"            <property name=\"enabled\" value=\"true\"/>\n"
 "        </properties>\n"
 "    </provider>\n"
 "</spi>\n"
@@ -437,7 +534,6 @@ msgstr ""
 "            <property name=\"file\" value=\"path to your .jks file containing public certificates\"/>\n"
 "            <property name=\"password\" value=\"password\"/>\n"
 "            <property name=\"hostname-verification-policy\" value=\"WILDCARD\"/>\n"
-"            <property name=\"enabled\" value=\"true\"/>\n"
 "        </properties>\n"
 "    </provider>\n"
 "</spi>\n"
@@ -457,10 +553,11 @@ msgid ""
 "host of the server they are talking to.  This is what the trustore does.  "
 "The keystore contains one or more trusted host certificates or certificate "
 "authorities.  This truststore file should only contain public certificates "
-"of your secured hosts.  This is _REQUIRED_ if `enabled` is true."
+"of your secured hosts.  This is _REQUIRED_ if any of these properties are "
+"defined."
 msgstr ""
 "Javaキーストア・ファイルへのパスです。HTTPSリクエストでは、通信を行うサーバーのホストを検証する必要があります。これはトラストストアの役割です。キーストアには、1つ以上の信頼できるホスト証明書または認証局が含まれています。このトラストストア・ファイルには、セキュリティー保護されたホストのパブリック証明書のみを含めるべきです。"
-" `enabled` がtrueの場合、これは _REQUIRED_ です。"
+" これらのプロパティーのいずれかが定義されている場合、これは _REQUIRED_ です。"
 
 #. type: Labeled list
 #, no-wrap
@@ -468,8 +565,10 @@ msgid "password"
 msgstr "password"
 
 #. type: Plain text
-msgid "Password for the truststore.  This is _REQUIRED_ if `enabled` is true."
-msgstr "トラストストア用のパスワードです。 `enabled` がtrueの場合、これは _REQUIRED_ です。"
+msgid ""
+"Password of the keystore.  This is _REQUIRED_ if any of these properties are"
+" defined."
+msgstr "キーストアのパスワード。これらのプロパティーのいずれかが定義されている場合、これは _REQUIRED_ です。"
 
 #. type: Labeled list
 #, no-wrap
@@ -495,17 +594,3 @@ msgstr ""
 #, no-wrap
 msgid "*.foo.com. `STRICT` CN must match hostname exactly.\n"
 msgstr "*.foo.comです。 `STRICT` の場合、CNはホスト名と正確に一致する必要があります。\n"
-
-#. type: Labeled list
-#, no-wrap
-msgid "enabled"
-msgstr "enabled"
-
-#. type: Plain text
-msgid ""
-"If false (default value), truststore configuration will be ignored, and "
-"certificate checking will fall back to JSSE configuration as described.  If "
-"set to true, you must configure `file`, and `password` for the truststore."
-msgstr ""
-"false（デフォルト値）の場合、トラストストアの設定は無視され、証明書チェックは前述のJSSE設定にフォールバックします。trueに設定されている場合は、トラストストア用に"
-" `file` と `password` を設定する必要があります。"

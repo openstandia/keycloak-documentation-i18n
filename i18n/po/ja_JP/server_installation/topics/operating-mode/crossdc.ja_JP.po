@@ -8,14 +8,14 @@
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2018
 # naoto watanabe <nabenao11@gmail.com>, 2018
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # Hiroyuki Wada <wadahiro@gmail.com>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -224,24 +224,23 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "Cross-Datacenter Replication Mode"
-msgstr "クロスデータセンター・レプリケーション・モード"
+msgid "Using cross-site replication mode"
+msgstr "クロスサイトレプリケーションモードの使用"
 
 #. type: Plain text
 msgid ""
-"Cross-Datacenter Replication mode lets you run {project_name} in a cluster "
-"across multiple data centers, most typically using data center sites that "
-"are in different geographic regions. When using this mode, each data center "
-"will have its own cluster of {project_name} servers."
+"Use cross-site replication mode to run {project_name} in a cluster across "
+"multiple data centers. Typically you use data center sites that are in "
+"different geographic regions. When using this mode, each data center will "
+"have its own cluster of {project_name} servers."
 msgstr ""
-"クロスデータセンター・レプリケーション・モードでは、複数のデータセンターにまたがるクラスターで{project_name}を実行できます。地理的に異なる地域にあるデータセンター・サイトが一般的には最も使用されます。このモードを使用する場合、各データセンターには{project_name}サーバーの独自のクラスターがあります。"
+"クロスサイトレプリケーションモードを使用して、複数のデータセンターにまたがるクラスタで{project_name}を実行します。一般的には、異なる地域にあるデータセンターのサイトを使用します。このモードを使用すると、各データセンターには{project_name}サーバーの独自のクラスターがあります。"
 
 #. type: Plain text
 msgid ""
 "This documentation will refer to the following example architecture diagram "
-"to illustrate and describe a simple Cross-Datacenter Replication use case."
-msgstr ""
-"このドキュメントでは、次のアーキテクチャー図の例を参照して、単純なクロスデータセンター・レプリケーションのユースケースを図解および説明します。"
+"to illustrate and describe a simple cross-site replication use case."
+msgstr "このドキュメントでは、以下のアーキテクチャ図の例を参照して、シンプルなクロスサイトレプリケーションの使用例を説明します。"
 
 #. type: Block title
 #, no-wrap
@@ -261,23 +260,23 @@ msgstr "これは高度なトピックのため、最初に以下を読み、背
 #. type: Plain text
 msgid ""
 "link:{installguide_clustering_link}[Clustering with {project_name}] When "
-"setting up for Cross-Datacenter Replication, you will use more independent "
+"setting up for cross-site replication, you will use more independent "
 "{project_name} clusters, so you must understand how a cluster works and the "
 "basic concepts and requirements such as load balancing, shared databases, "
 "and multicasting."
 msgstr ""
-"link:{installguide_clustering_link}[{project_name}によるクラスタリング] "
-"クロスデータセンター・レプリケーションを設定する場合、より独立した{project_name}クラスターを使用するため、クラスターの仕組みや、ロード・バランシング、共有データベース、マルチキャストなどの基本的な概念と要件を理解する必要があります。"
+"link:{installguide_clustering_link}[Clustering with {project_name}] "
+"クロスサイトレプリケーションを設定する場合、より独立した {project_name} "
+"クラスタを使用することになりますので、クラスタの仕組みや、ロードバランシング、共有データベース、マルチキャストなどの基本的な概念や要件を理解しておく必要があります。"
 
 #. type: Plain text
 msgid ""
-"link:{jdgserver_crossdcdocs_link}[Red Hat Data Grid Cross-Datacenter "
-"Replication] {project_name} uses Red Hat Data Grid (RHDG) for the "
-"replication of data between the data centers."
+"link:{jdgserver_crossdcdocs_link}[Red Hat Data Grid Cross-Site Replication] "
+"{project_name} uses Red Hat Data Grid (RHDG) for the replication of data "
+"between the data centers."
 msgstr ""
-"link:{jdgserver_crossdcdocs_link}[Red Hat Data Grid Cross-Datacenter "
-"Replication] {project_name}では、Red Hat Data "
-"Grid（RHDG）を使用して、データセンター間でデータをレプリケーションします。"
+"link:{jdgserver_crossdcdocs_link}[Red Hat Data Grid Cross-Site Replication] "
+"{project_name}では、データセンター間のデータのレプリケーションにRed Hat Data Grid（RHDG）を使用しています。"
 
 #. type: Plain text
 msgid ""
@@ -296,8 +295,8 @@ msgstr "技術的な詳細"
 #. type: Plain text
 msgid ""
 "This section provides an introduction to the concepts and details of how "
-"{project_name} Cross-Datacenter Replication is accomplished."
-msgstr "このセクションでは、{project_name}クロスデータセンター・レプリケーションの仕組みについて概念と詳細について説明します。"
+"{project_name} cross-site replication is accomplished."
+msgstr "ここでは、{project_name} クロスサイトレプリケーションがどのように実現されているか、その概念と詳細について紹介します。"
 
 #. type: Labeled list
 #, no-wrap
@@ -328,15 +327,14 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "In our example architecture, there are two data centers called `site1` and "
-"`site2`. For Cross-Datacenter Replication, we must make sure that both "
-"sources of data work reliably and that {project_name} servers from `site1` "
-"are eventually able to read the data saved by {project_name} servers on "
-"`site2` ."
+"`site2`. For cross-site replication, we must make sure that both sources of "
+"data work reliably and that {project_name} servers from `site1` are "
+"eventually able to read the data saved by {project_name} servers on `site2` "
+"."
 msgstr ""
-"このアーキテクチャーの例では、 `site1` と `site2` "
-"と呼ばれる2つのデータセンターがあります。クロスデータセンター・レプリケーションでは、両方のデータソースが確実に動作し、 `site2` "
-"の{project_name}サーバーによって保存されたデータを `site1` "
-"の{project_name}サーバーが最終的に読み取ることができるようにする必要があります。"
+"このアーキテクチャの例では、`site1`と`site2`という2つのデータセンターがあります。クロスサイトレプリケーションでは、両方のデータソースが確実に動作し、最終的に"
+" `site1` の {project_name} サーバが `site2` の {project_name} "
+"サーバが保存したデータを読み取れるようにしなければなりません。"
 
 #. type: Plain text
 msgid "Based on the environment, you have the option to decide if you prefer:"
@@ -414,9 +412,9 @@ msgstr "モード"
 
 #. type: Plain text
 msgid ""
-"According your requirements, there are two basic operating modes for Cross-"
-"Datacenter Replication:"
-msgstr "要件に応じて、クロスデータセンター・レプリケーションには2つの基本的な動作モードがあります。"
+"According your requirements, there are two basic operating modes for cross-"
+"site replication:"
+msgstr "必要に応じて、クロスサイトレプリケーションには2つの基本的な動作モードがあります。"
 
 #. type: Plain text
 msgid ""
@@ -465,17 +463,16 @@ msgid ""
 "{project_name} uses a relational database management system (RDBMS) to "
 "persist some metadata about realms, clients, users, and so on. See "
 "link:{installguide_database_link}[this chapter] of the server installation "
-"guide for more details. In a Cross-Datacenter Replication setup, we assume "
-"that either both data centers talk to the same database or that every data "
-"center has its own database node and both database nodes are synchronously "
+"guide for more details. In a cross-site replication setup, we assume that "
+"either both data centers talk to the same database or that every data center"
+" has its own database node and both database nodes are synchronously "
 "replicated across the data centers. In both cases, it is required that when "
 "a {project_name} server on `site1` persists some data and commits the "
 "transaction, those data are immediately visible by subsequent DB "
 "transactions on `site2`."
 msgstr ""
-"{project_name}は、リレーショナル・データベース・マネジメント・システム（RDBMS）を使用して、レルム、クライアント、ユーザーなどのメタデータを保持します。詳細については、サーバーインストールガイドのlink:{installguide_database_link}[この章]を参照してください。クロスデータセンター・レプリケーションのセットアップでは、両方のデータセンターが同じデータベースと通信するか、すべてのデータセンターに独自のデータベース・ノードがあり、両方のデータベース・ノードがデータセンター間で同期レプリケートされると想定しています。どちらの場合でも、"
-" `site1` の{project_name}サーバーがデータを保持してトランザクションをコミットすると、 `site2` "
-"の後続のDBトランザクションによって、それらのデータがすぐに表示される必要があります。"
+"{project_name} "
+"は、リレーショナル・データベース管理システム（RDBMS）を使用して、レルム、クライアント、ユーザーなどに関するいくつかのメタデータを永続化します。詳細は、サーバーインストールガイドのlink:{installguide_database_link}[本章]を参照してください。クロスサイトレプリケーションの設定では、両方のデータセンターが同じデータベースと通信するか、各データセンターが独自のデータベースノードを持ち、両方のデータベースノードがデータセンター間で同期的にレプリケートされることを想定しています。どちらの場合も、`site1`の{project_name}サーバがデータを永続化してトランザクションをコミットすると、`site2`の後続のDBトランザクションからそれらのデータがすぐに見えるようにすることが必要です。"
 
 #. type: Plain text
 msgid ""
@@ -634,26 +631,31 @@ msgid ""
 " same data center, but not with the {project_name} nodes in different data "
 "centers. A {project_name} node does not communicate directly with the "
 "{project_name} nodes from different data centers. {project_name} nodes use "
-"external {jdgserver_name} servers for communication across data centers. "
-"This is done using the "
-"link:https://infinispan.org/docs/11.0.x/titles/hotrod_java/hotrod_java.html[Infinispan"
-" Hot Rod protocol]."
+"external JDG (actually {jdgserver_name} servers) for communication across "
+"data centers. This is done using the "
+"link:https://infinispan.org/docs/10.1.x/titles/server/server.html#hot_rod[Infinispan"
+" HotRod protocol]."
 msgstr ""
-"{project_name}は、Infinispanキャッシュの分割されたクラスターを複数使用します。各{project_name}ノードは、同じデータセンター内の他の{project_name}ノードと共にクラスター内にありますが、異なるデータセンターの{project_name}ノードはそのクラスター内にありません。{project_name}ノードは、異なるデータセンターの{project_name}ノードと直接通信できません。{project_name}ノードは、データセンター間の通信に外部{jdgserver_name}サーバーを使用します。これは、link:https://infinispan.org/docs/11.0.x/titles/hotrod_java/hotrod_java.html[Infinispan"
-" Hot Rodプロトコル]を使用して行われます。"
+"{project_name} は、Infinispan のキャッシュを複数の独立したクラスターで使用しています。すべての {project_name} "
+"ノードは、同じデータセンターにある他の {project_name} ノードとはクラスター内にありますが、異なるデータセンターにある "
+"{project_name} ノードとはクラスター内にありません。project_name} ノードは、異なるデータセンターの "
+"{project_name} ノードとは直接通信しません。{project_name} ノードは、データセンター間の通信に外部の JDG（実際には "
+"{jdgserver_name} サーバー）を使用します。これは "
+"link:https://infinispan.org/docs/10.1.x/titles/server/server.html#hot_rod[Infinispan"
+" HotRod protocol]を使用して行われます。"
 
 #. type: Plain text
 msgid ""
-"The Infinispan caches on the {project_name} side use "
-"link:https://infinispan.org/docs/stable/titles/configuring/configuring.html#remote_cache_store[`remoteStore`]"
-" configuration to offload data to a remote {jdgserver_name} cluster.  "
-"{jdgserver_name} clusters in separate data centers then replicate that data "
-"to ensure it is backed up."
-msgstr ""
-"{project_name}側のInfinispanキャッシュは、 "
-"ink:https://infinispan.org/docs/stable/titles/configuring/configuring.html#remote_cache_store[`remoteStore`]"
+"The Infinispan caches on the {project_name} side must be configured with the"
 " "
-"の設定を使用して、データをリモートの{jdgserver_name}クラスターにオフロードします。次に、別々のデータセンターにある{jdgserver_name}クラスターがそのデータをレプリケーションして、確実にバックアップされるようにします。"
+"link:https://infinispan.org/docs/10.1.x/titles/configuring/configuring.html#remote_cache_store[remoteStore]"
+" to ensure that data are saved to the remote cache. There is separate "
+"Infinispan cluster between JDG servers, so the data saved on JDG1 on `site1`"
+" are replicated to JDG2 on `site2` ."
+msgstr ""
+"project_name}側のInfinispanキャッシュにはlink:https://infinispan.org/docs/10.1.x/titles/configuring/configuring.html#remote_cache_store[remoteStore]を設定して、データがリモートキャッシュに保存されるようにする必要があります。JDG"
+" サーバー間には別の Infinispan クラスターがあるので、`site1` の JDG1 に保存されたデータは `site2` の JDG2 "
+"に複製されます。"
 
 #. type: Plain text
 msgid ""
@@ -674,8 +676,9 @@ msgstr "詳細は、<<archdiagram>>を参照してください。"
 
 #. type: Title ====
 #, no-wrap
-msgid "Setting up Cross DC with {jdgserver_name} {jdgserver_version}"
-msgstr "{jdgserver_name} {jdgserver_version}を使用したクロスDCの設定"
+msgid ""
+"Setting up cross-site replication with {jdgserver_name} {jdgserver_version}"
+msgstr "{jdgserver_name}でクロスサイトレプリケーションを設定する。{jdgserver_version}"
 
 #. type: Plain text
 msgid ""
@@ -1561,14 +1564,14 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Administration of Cross DC deployment"
-msgstr "Cross DCデプロイメントの管理"
+msgid "Administration of cross-site deployment"
+msgstr "クロスサイト展開の管理"
 
 #. type: Plain text
 msgid ""
-"This section contains some tips and options related to Cross-Datacenter "
-"Replication."
-msgstr "このセクションでは、クロスデータセンター・レプリケーションに関するオプションとヒントについて説明します。"
+"This section contains some tips and options related to cross-site "
+"replication."
+msgstr "このセクションでは、クロスサイトレプリケーションに関連するヒントやオプションをご紹介します。"
 
 #. type: Plain text
 msgid ""
@@ -1732,14 +1735,6 @@ msgstr ""
 "を参照してください。\n"
 
 #. type: Plain text
-msgid ""
-"link:{jdgserver_crossdcdocs_link}#xsite_auto_offline-xsite[{jdgserver_name} "
-"documentation]."
-msgstr ""
-"link:{jdgserver_crossdcdocs_link}#xsite_auto_offline-xsite[{jdgserver_name} "
-"documentation]."
-
-#. type: Plain text
 msgid "link:{jdgserver_crossdcdocs_link}[{jdgserver_name} documentation]."
 msgstr "link:{jdgserver_crossdcdocs_link}[{jdgserver_name} documentation]."
 
@@ -1869,13 +1864,13 @@ msgid ""
 "The state transfer can be also done on the {jdgserver_name} server side "
 "through JMX. The operation name is `pushState`. There are few other "
 "operations to monitor status, cancel push state, and so on.  More info about"
-" state transfer is available in the link:{jdgserver_crossdcdocs_link"
-"}#cli_xsite_push-cli-ops[{jdgserver_name} docs]."
+" state transfer is available in the "
+"link:{jdgserver_crossdcdocs_link}[{jdgserver_name} docs]."
 msgstr ""
-"ステート・トランスファーは、JMXを介して{jdgserver_name}サーバー側でも行われます。操作名は `pushState` "
-"です。状態をモニタリングしたり、プッシュ状態をキャンセルしたりするその他の操作はほとんどありません。ステート・トランスファーの詳細については、 "
-"link:{jdgserver_crossdcdocs_link}#cli_xsite_push-cli-ops[{jdgserver_name} "
-"docs] を参照してください。"
+"状態の転送は、JMXを通じて{jdgserver_name}サーバー側でも行うことができます。操作名は `pushState` "
+"です。この他にも、状態を監視したり、プッシュ状態をキャンセルしたりする操作がいくつかあります。  "
+"状態の転送についての詳細は、リンク先の{jdgserver_crossdcdocs_link}[{jdgserver_name} "
+"docs]をご覧ください。"
 
 #. type: Title ====
 #, no-wrap
@@ -2096,11 +2091,11 @@ msgstr "SYNCまたはASYNCバックアップ"
 msgid ""
 "An important part of the `backup` element is the `strategy` attribute. You "
 "must decide whether it needs to be `SYNC` or `ASYNC`. We have 7 caches which"
-" might be Cross-Datacenter Replication aware, and these can be configured in"
-" 3 different modes regarding cross-dc:"
+" might be cross-site replication aware, and these can be configured in 3 "
+"different modes regarding cross-site:"
 msgstr ""
-"`backup` 要素の重要な部分は `strategy` 属性です。 `SYNC` と `ASYNC` "
-"のどちらが必要かを決める必要があります。クロスデータセンター・レプリケーションを認識できる7つのキャッシュがあり、これらは、クロスデータセンターに対する次の3つの異なるモードで設定できます。"
+"backup` 要素の重要な部分は `strategy` "
+"属性です。これを`SYNC`にするか`ASYNC`にするかを決めなければなりません。クロスサイトレプリケーションを意識したキャッシュが7つあり、これらはクロスサイトに関して3つの異なるモードで構成することができます。"
 
 #. type: Plain text
 msgid "SYNC backup"
@@ -2422,8 +2417,7 @@ msgid ""
 "add the log snippets to the mails or put the logs somewhere and reference "
 "them in the email."
 msgstr ""
-"<<serversetup>>の説明に従って、DEBUGロギングを有効にします。たとえば、ログインして2番目のサイトで新しいセッションが利用できないと思われる場合は、{project_name}サーバーログをチェックし、<<serversetup>>で説明したようにリスナーがトリガーされていることを確認してください"
-"。keycloak-"
+"<<serversetup>>の説明に従って、DEBUGロギングを有効にします。たとえば、ログインして2番目のサイトで新しいセッションが利用できないと思われる場合は、{project_name}サーバーログをチェックし、<<serversetup>>で説明したようにリスナーがトリガーされていることを確認してください。keycloak-"
 "userメーリングリストに質問したい場合は、電子メール内の両方のデータセンターの{project_name}サーバーからログファイルを送信すると便利です。ログスニペットをメールに追加するか、ログをどこかに置いて電子メールで参照してください。"
 
 #. type: Plain text

@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,6 +20,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Block title
+#, no-wrap
+msgid "Additional Resources"
+msgstr "追加のリソース"
+
+#. type: Title ==
 #, no-wrap
 msgid "Prerequisites"
 msgstr "前提条件"
@@ -43,11 +48,12 @@ msgstr "外部データベースへの接続"
 #. type: Plain text
 msgid ""
 "You can use the Operator to connect to an external PostgreSQL database by "
-"modifying the Keycloak custom resource and creating a `keycloak-db-secret` "
-"YAML file. Note that values are Base64 encoded."
+"creating a `keycloak-db-secret` YAML file and setting Keycloak CR "
+"externalDatabase property to enabled. Note that values are Base64 encoded."
 msgstr ""
-"Operatorを使用して、Keycloakカスタムリソースを変更し、 `keycloak-db-secret` "
-"YAMLファイルを作成することにより、外部PostgreSQLデータベースに接続できます。値はBase64でエンコードされていることに注意してください。"
+"Operatorを使って外部のPostgreSQLデータベースに接続するには、`keycloak-db-"
+"secret`というYAMLファイルを作成し、Keycloak CR "
+"externalDatabaseプロパティをenabledに設定します。値はBase64エンコードされることに注意してください。"
 
 #. type: Block title
 #, no-wrap
@@ -66,13 +72,12 @@ msgid ""
 "    POSTGRES_DATABASE: <Database Name>\n"
 "    POSTGRES_EXTERNAL_ADDRESS: <External Database IP or URL (resolvable by K8s)>\n"
 "    POSTGRES_EXTERNAL_PORT: <External Database Port>\n"
-"    # Strongly recommended to use <'Keycloak CR-Name'-postgresql>\n"
-"    POSTGRES_HOST: <Database Service Name>\n"
 "    POSTGRES_PASSWORD: <Database Password>\n"
 "    # Required for AWS Backup functionality\n"
-"    POSTGRES_SUPERUSER: true\n"
+"    POSTGRES_SUPERUSER: \"true\"\n"
 "    POSTGRES_USERNAME: <Database Username>\n"
-" type: Opaque\n"
+"    SSLMODE: <TLS configuration for the Database connection>\n"
+"type: Opaque\n"
 msgstr ""
 "apiVersion: v1\n"
 "kind: Secret\n"
@@ -83,13 +88,12 @@ msgstr ""
 "    POSTGRES_DATABASE: <Database Name>\n"
 "    POSTGRES_EXTERNAL_ADDRESS: <External Database IP or URL (resolvable by K8s)>\n"
 "    POSTGRES_EXTERNAL_PORT: <External Database Port>\n"
-"    # Strongly recommended to use <'Keycloak CR-Name'-postgresql>\n"
-"    POSTGRES_HOST: <Database Service Name>\n"
 "    POSTGRES_PASSWORD: <Database Password>\n"
 "    # Required for AWS Backup functionality\n"
-"    POSTGRES_SUPERUSER: true\n"
+"    POSTGRES_SUPERUSER: \"true\"\n"
 "    POSTGRES_USERNAME: <Database Username>\n"
-" type: Opaque\n"
+"    SSLMODE: <TLS configuration for the Database connection>\n"
+"type: Opaque\n"
 
 #. type: Plain text
 msgid ""
@@ -122,14 +126,6 @@ msgid "`POSTGRES_DATABASE` - Database name to be used."
 msgstr "`POSTGRES_DATABASE` - 使用するデータベース名。"
 
 #. type: Plain text
-msgid ""
-"`POSTGRES_HOST` - The name of the `Service` used to communicate with a "
-"database. Typically `keycloak-postgresql`."
-msgstr ""
-"`POSTGRES_HOST` - データベースとの通信に使用される `Service` の名前。通常は `keycloak-postgresql` "
-"です。"
-
-#. type: Plain text
 msgid "`POSTGRES_USERNAME` - Database username"
 msgstr "`POSTGRES_USERNAME` - データベースのユーザー名"
 
@@ -139,10 +135,68 @@ msgstr "`POSTGRES_PASSWORD` - データベースのパスワード"
 
 #. type: Plain text
 msgid ""
-"`POSTGRES_SUPERUSER` - Indicates, whether backups should run as super user. "
+"`POSTGRES_SUPERUSER` - Indicates whether backups should run as super user. "
 "Typically `true`."
+msgstr "POSTGRES_SUPERUSER` - バックアップをスーパーユーザーとして実行するかどうかを示します。通常は `true` です。"
+
+#. type: Plain text
+msgid ""
+"`SSL_MODE` - Indicates whether to use TLS on the connection to the external "
+"PostgreSQL database. Check the possible "
+"https://www.postgresql.org/docs/current/libpq-ssl.html[values]"
 msgstr ""
-"`POSTGRES_SUPERUSER` - バックアップをスーパーユーザーとして実行する必要があるかどうかを示します。通常は `true` です。"
+"SSL_MODE` - 外部のPostgreSQLデータベースへの接続でTLSを使用するかどうかを示します。可能な "
+"https://www.postgresql.org/docs/current/libpq-ssl.html[値]を確認してください。"
+
+#. type: Plain text
+msgid ""
+"When `SSL_MODE` is enabled, the operator searches for a secret called "
+"`keycloak-db-ssl-cert-secret` containing the `root.crt` that has been used "
+"by the PostgreSQL database. Creating the secret is optional and the secret "
+"is used only when you want to verify the Database's certificate (for example"
+" `SSLMODE: verify-ca`). Here is an example :"
+msgstr ""
+"SSL_MODE`を有効にすると、オペレータはPostgreSQLデータベースで使用されている`root.crt`を含む`keycloak-db-"
+"ssl-cert-"
+"secret`というシークレットを検索します。シークレットの作成はオプションで、データベースの証明書を検証したい場合（例：`SSLMODE: "
+"verify-ca`）にのみシークレットが使用されます。以下に例を示します。"
+
+#. type: Block title
+#, no-wrap
+msgid "Example YAML file for `TLS Secret` to be used by the operator."
+msgstr "オペレーターが使用する`TLS Secret`のYAMLファイルの例。"
+
+#. type: Code block
+#, no-wrap
+msgid ""
+"apiVersion: v1\n"
+"kind: Secret\n"
+"metadata:\n"
+"  name: keycloak-db-ssl-cert-secret\n"
+"  namespace: keycloak\n"
+"type: Opaque\n"
+"data:\n"
+"  root.crt: {root.crt base64}\n"
+msgstr ""
+"apiVersion: v1\n"
+"kind: Secret\n"
+"metadata:\n"
+"  name: keycloak-db-ssl-cert-secret\n"
+"  namespace: keycloak\n"
+"type: Opaque\n"
+"data:\n"
+"  root.crt: {root.crt base64}\n"
+
+#. type: Plain text
+msgid ""
+"The Operator will create a Service named `keycloak-postgresql`. This Service"
+" is configured by the Operator to expose the external database based on the "
+"content of `POSTGRES_EXTERNAL_ADDRESS`. {project_name} uses this Service to "
+"connect to the Database, which means it does not connect to the Database "
+"directly but rather through this Service."
+msgstr ""
+"運営者は `keycloak-postgresql` "
+"という名前のサービスを作成します。このサービスは、`POSTGRES_EXTERNAL_ADDRESS`の内容に基づいて外部データベースを公開するように運営者が設定します。{project_name}はこのサービスを使ってデータベースに接続しますが、これはデータベースに直接接続するのではなく、このサービスを介して接続することを意味します。"
 
 #. type: Plain text
 msgid ""
@@ -330,11 +384,6 @@ msgstr ""
 "NAME                        READY  STATUS    RESTARTS   AGE   IP\n"
 "keycloak-0                  1/1    Running   0          26m   192.0.2.0\n"
 "keycloak-postgresql-c8vv27m 1/1    Running   0          36m   192.0.2.3\n"
-
-#. type: Block title
-#, no-wrap
-msgid "Additional Resources"
-msgstr "追加のリソース"
 
 #. type: Plain text
 msgid ""

@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,20 +19,20 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Block title
+#. type: Title ==
 #, no-wrap
 msgid "Prerequisites"
 msgstr "前提条件"
 
 #. type: Block title
 #, no-wrap
-msgid "Additional resources"
-msgstr "追加のリソース"
+msgid "Procedure"
+msgstr "手順"
 
 #. type: Block title
 #, no-wrap
-msgid "Procedure"
-msgstr "手順"
+msgid "Additional resources"
+msgstr "追加のリソース"
 
 #. type: Plain text
 msgid ""
@@ -64,8 +64,8 @@ msgstr "Operator Lifecycle Managerを使用したインストール"
 
 #. type: Plain text
 msgid ""
-"You can install the Operator on an xref:_openshift-olm[OpenShift] or xref"
-":_kubernetes-olm[Kubernetes] cluster."
+"You can install the Operator on an xref:_openshift-olm[OpenShift] or "
+"xref:_kubernetes-olm[Kubernetes] cluster."
 msgstr ""
 "Operatorは、 xref:_openshift-olm[OpenShift] または xref:_kubernetes-"
 "olm[Kubernetes] クラスターにインストールできます。"
@@ -76,8 +76,8 @@ msgid "Installation on an OpenShift cluster"
 msgstr "OpenShiftクラスターへのインストール"
 
 #. type: Plain text
-msgid "Perform this procedure on an OpenShift 4.4 cluster."
-msgstr "OpenShift 4.4クラスターでこの手順を実行します。"
+msgid "Perform this procedure on an OpenShift cluster."
+msgstr "この手順は、OpenShiftクラスター上で行います。"
 
 #. type: Plain text
 msgid "Open the OpenShift Container Platform web console."
@@ -206,8 +206,8 @@ msgid ""
 msgstr ""
 "Operatorのインストールが完了すると、最初のカスタムリソースを作成する準備が整います。 "
 "xref:_keycloak_cr[{project_name} カスタムリソースを使用したインストール] "
-"を参照してください。ただし、カスタムリソースを作成する前にすべてのOperatorアクティビティーの追跡を開始する場合は、 xref"
-":_monitoring-operator[Application Monitoring Operator] を参照してください。"
+"を参照してください。ただし、カスタムリソースを作成する前にすべてのOperatorアクティビティーの追跡を開始する場合は、 "
+"xref:_monitoring-operator[Application Monitoring Operator] を参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -250,8 +250,8 @@ msgstr "ネームスペース `myproject` などの新しいネームスペー�
 
 #. type: delimited block -
 #, no-wrap
-msgid "$ {create_cmd} namespace myproject\n"
-msgstr "$ {create_cmd} namespace myproject\n"
+msgid "$ {create_cmd_brief} create namespace myproject\n"
+msgstr "$ {create_cmd_brief} create namespace myproject\n"
 
 #. type: Plain text
 msgid "Deploy a role, role binding, and service account for the Operator:"
@@ -284,10 +284,32 @@ msgstr "Operatorが実行されていることを確認します。"
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"$ {create_cmd_brief} get deployment keycloak-operator\n"
+"$ {create_cmd_brief} get deployment keycloak-operator -n myproject\n"
 "NAME                READY   UP-TO-DATE   AVAILABLE   AGE\n"
 "keycloak-operator   1/1     1            1           41s\n"
 msgstr ""
-"$ {create_cmd_brief} get deployment keycloak-operator\n"
+"$ {create_cmd_brief} get deployment keycloak-operator -n myproject\n"
 "NAME                READY   UP-TO-DATE   AVAILABLE   AGE\n"
 "keycloak-operator   1/1     1            1           41s\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Using the {project_operator} in production environment"
+msgstr "本番環境での{project_operator}の使用"
+
+#. type: Plain text
+msgid "The usage of embedded DB is not supported in a production environment."
+msgstr "本番環境では、埋め込みDBの使用はサポートされていません。"
+
+#. type: Plain text
+msgid ""
+"Backup CRD is deprecated and not supported in a production environment."
+msgstr "バックアップCRDは非推奨で、本番環境ではサポートされていません。"
+
+#. type: Plain text
+msgid ""
+"We fully support using the rest of the CRDs in production, despite the "
+"`v1alpha1` version. We do not plan to make any breaking changes in this CRDs"
+" version."
+msgstr ""
+"私たちは、`v1alpha1`バージョンにもかかわらず、残りのCRDをプロダクションで使用することを完全にサポートします。このCRDのバージョンでは、破壊的な変更を行う予定はありません。"

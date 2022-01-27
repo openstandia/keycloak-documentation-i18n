@@ -5,14 +5,13 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2017
-# Hiroyuki Wada <wadahiro@gmail.com>, 2019
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,82 +21,101 @@ msgstr ""
 
 #. type: Title ==
 #, no-wrap
-msgid "Export and Import"
-msgstr "エクスポートとインポート"
+msgid "Importing and exporting the database"
+msgstr "データベースのインポートとエクスポート"
 
 #. type: Plain text
 msgid ""
-"{project_name} has the ability to export and import the entire database.  "
-"This can be especially useful if you want to migrate your whole "
-"{project_name} database from one environment to another or migrate to a "
-"different database (for example from MySQL to Oracle). Export and import is "
-"triggered at server boot time and its parameters are passed in via Java "
-"system properties.  It is important to note that because import and export "
-"happens at server startup, no other actions should be taken on the server or"
-" the database while this happens."
+"{project_name} includes the ability to export and import its entire "
+"database."
+msgstr "{project_name}には、データベース全体をエクスポート、インポートする機能があります。"
+
+#. type: Plain text
+msgid ""
+"You can migrate the whole {project_name} database from one environment to "
+"another or migrate to another database. The export/import triggers at server"
+" boot time, and its parameters pass through Java properties."
 msgstr ""
-"{project_name}には、データベース全体をエクスポートおよびインポートする機能があります。これは、{project_name}データベース全体をある環境から別の環境に移行する場合や、別のデータベース（MySQLからOracleなど）に移行する場合に特に便利です。エクスポートとインポートはサーバーの起動時にトリガーされ、そのパラメーターはJavaのシステム・プロパティーを介して渡されます。インポートとエクスポートはサーバーの起動時に行われるため、この間にサーバーまたはデータベースに対して、他には何もしないように注意することが重要です。"
+"project_name} "
+"データベース全体をある環境から別の環境に移行したり、別のデータベースに移行することができます。エクスポート/インポートはサーバーの起動時にトリガーされ、そのパラメータはJavaプロパティを介して渡されます。"
+
+#. type: delimited block =
+msgid ""
+"Because import and export trigger at server startup, take no actions on the "
+"server or the database during export/import."
+msgstr "インポートとエクスポートはサーバーの起動時に行われるため、エクスポート/インポート中はサーバーやデータベースに対して何もしないでください。"
 
 #. type: Plain text
-msgid "You can export/import your database either to:"
-msgstr "次のどちらかでデータベースをエクスポート/インポートすることができます。"
+msgid "You can export/import your database to:"
+msgstr "データベースをエクスポート/インポートすることができます。"
 
 #. type: Plain text
-msgid "Directory on local filesystem"
-msgstr "ローカル・ファイルシステム上のディレクトリー"
+msgid "A directory on the filesystem."
+msgstr "ファイルシステム上のディレクトリです。"
 
 #. type: Plain text
-msgid "Single JSON file on your filesystem"
-msgstr "ファイルシステム上の単一のJSONファイル"
+msgid "A single JSON file on your filesystem."
+msgstr "ファイルシステム上の単一のJSONファイル。"
 
 #. type: Plain text
 msgid ""
-"When importing using the directory strategy, note that the files need to "
-"follow the naming convention specified below.  If you are importing files "
-"which were previously exported, the files already follow this convention."
+"When importing from a directory, the filenames must follow this naming "
+"convention:"
+msgstr "ディレクトリからインポートする場合、ファイル名はこの命名規則に従わなければなりません。"
+
+#. type: Plain text
+msgid ""
+"<REALM_NAME>-realm.json. For example, \"acme-roadrunner-affairs-realm.json\""
+" for the realm named \"acme-roadrunner-affairs\"."
 msgstr ""
-"ディレクトリー方式を使用してインポートする場合、ファイルは以下で指定された命名規則に従う必要があることに注意してください。以前にエクスポートしたファイルをインポートする場合、ファイルはすでにこの規則に従っています。"
+"<REALM_NAME>-realm.json. For example, \"acme-roadrunner-affairs-realm.json\""
+" for the realm named \"acme-roadrunner-affairs\"."
 
 #. type: Plain text
 msgid ""
-"<REALM_NAME>-realm.json, such as \"acme-roadrunner-affairs-realm.json\" for "
-"the realm named \"acme-roadrunner-affairs\""
-msgstr ""
-"<REALM_NAME>-realm.json（\"acme-roadrunner-affairs\"という名前のレルムの場合は、\"acme-"
-"roadrunner-affairs-realm.json\"）"
-
-#. type: Plain text
-msgid ""
-"<REALM_NAME>-users-<INDEX>.json, such as \"acme-roadrunner-affairs-"
-"users-0.json\" for the first users file of the realm named \"acme-"
+"<REALM_NAME>-users-<INDEX>.json. For example, \"acme-roadrunner-affairs-"
+"users-0.json\" for the first user's file of the realm named \"acme-"
 "roadrunner-affairs\""
 msgstr ""
-"<REALM_NAME>-users-<INDEX>.json（\"acme-roadrunner-"
-"affairs\"という名前のレルムにおける1つ目のユーザーファイルの場合は、\"acme-roadrunner-affairs-"
-"users-0.json\"）"
+"<REALM_NAME>-users-<INDEX>.json. For example, \"acme-roadrunner-affairs-"
+"users-0.json\" for the first user's file of the realm named \"acme-"
+"roadrunner-affairs\""
 
 #. type: Plain text
 msgid ""
-"If you export to a directory, you can also specify the number of users that "
-"will be stored in each JSON file."
-msgstr "ディレクトリーにエクスポートする場合は、各JSONファイルに格納されるユーザー数を指定することもできます。"
+"If you export to a directory, you can specify the number of users stored in "
+"each JSON file."
+msgstr "ディレクトリにエクスポートする場合は、各JSONファイルに格納されるユーザー数を指定できます。"
 
-#. type: Plain text
-#, no-wrap
+#. type: delimited block =
 msgid ""
-"If you have bigger amount of users in your database (500 or more), it's highly recommended to export into directory rather\n"
-"      than to single file. Exporting into single file may lead to the very big file. Also the directory provider is using separate transaction for each \"page\" (file with users),\n"
-"      which leads to much better performance.\n"
-"      Default count of users per file (and transaction) is 50, which showed us best performance, but you have possibility to override (See below).\n"
-"      Exporting to single file is using one transaction per whole export and one per whole import, which results in bad performance with large amount of users.\n"
+"Exporting into single files can produce large files, so if your database "
+"contains more than 500 users, export to a directory and not a single file. "
+"Exporting many users into a directory performs optimally as the directory "
+"provider uses a separate transaction for each \"page\" (a file of users)."
 msgstr ""
-"データベースに多数のユーザー（500以上）が存在する場合、単一のファイルではなくディレクトリーにエクスポートすることを強くお勧めします。1つのファイルにエクスポートすると、非常に大きなファイルになる可能性があります。また、ディレクトリー・プロバイダーは、各"
-" "
-"\"ページ\"（ユーザーを含むファイル）ごとに個別のトランザクションを使用しており、パフォーマンスが大幅に向上します。ファイル（およびトランザクション）あたりのユーザーのデフォルト数は50で、これが最高のパフォーマンスを示しましたが、上書きすることもできます（下記参照）。1つのファイルにエクスポートすると、エクスポート全体で1つのトランザクションが使用され、インポート全体においても1つのトランザクションが使用されることになります。その結果、大量のユーザーだとパフォーマンスが低下します。\n"
+"1つのファイルにエクスポートするとファイルサイズが大きくなるため、データベースに500人以上のユーザーが含まれる場合は、1つのファイルではなくディレクトリにエクスポートしてください。多数のユーザーをディレクトリにエクスポートすると、ディレクトリプロバイダーが各「ページ」（ユーザーのファイル）に対して個別のトランザクションを使用するため、最適なパフォーマンスが得られます。"
+
+#. type: delimited block =
+msgid ""
+"The default count of users per file and per transaction is fifty, but you "
+"can override this number. See <<_keycloak-migration-usersPerFile, "
+"keycloak.migration.usersPerFile>> for more information."
+msgstr ""
+"1ファイル、1トランザクションあたりのユーザー数のデフォルトは50人ですが、この数を上書きすることができます。詳しくは<_keycloak-"
+"migration-usersPerFile, keycloak.migration.usersPerFile>&lt;&gt;</_keycloak-"
+"migration-usersPerFile,>をご覧ください。"
+
+#. type: delimited block =
+msgid ""
+"Exporting to or importing from a single file uses one transaction, which can"
+" impair performance if the database contains many users."
+msgstr ""
+"1つのファイルへのエクスポート、または1つのファイルからのインポートは1つのトランザクションを使用するため、データベースに多くのユーザーが含まれている場合、パフォーマンスが低下する可能性があります。"
 
 #. type: Plain text
-msgid "To export into unencrypted directory you can use:"
-msgstr "暗号化されていないディレクトリーにエクスポートするには、次のようにします。"
+msgid "To export into an unencrypted directory:"
+msgstr "暗号化されていないディレクトリにエクスポートするには"
 
 #. type: delimited block -
 #, no-wrap
@@ -109,8 +127,8 @@ msgstr ""
 "-Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=<DIR TO EXPORT TO>\n"
 
 #. type: Plain text
-msgid "To export into single JSON file you can use:"
-msgstr "一つのJSONファイルにエクスポートするには、次のようにします。"
+msgid "To export into single JSON file:"
+msgstr "単一のJSONファイルにエクスポートする。"
 
 #. type: delimited block -
 #, no-wrap
@@ -123,11 +141,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"And similarly for import just use `-Dkeycloak.migration.action=import` "
-"instead of `export` .  Here's an example of importing:"
+"Similarly, for importing,use `-Dkeycloak.migration.action=import` rather "
+"than `export`. For example:"
 msgstr ""
-"同様にインポートするには `export` の代わりに `-Dkeycloak.migration.action=import` "
-"を使います。次はインポートの例です。"
+"同様に、インポートする場合は、`export`ではなく、`-Dkeycloak.migration.action=import`としてください。例えば、以下のようになります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -141,118 +158,112 @@ msgstr ""
 "-Dkeycloak.migration.strategy=OVERWRITE_EXISTING\n"
 
 #. type: Plain text
-msgid "Other available options are:"
-msgstr "その他の利用可能なオプションは次のとおりです。"
+msgid "Other command line options include:"
+msgstr "その他のコマンドラインオプションは以下の通りです。"
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"-Dkeycloak.migration.realmName::\n"
-"  This property is used if you want to export just one specified realm instead of all.\n"
-"  If not specified, then all realms will be exported.\n"
+"-Dkeycloak.migration.realmName:: Use this property to export one "
+"specifically named realm. If this parameter is not specified, all realms "
+"export."
 msgstr ""
-"-Dkeycloak.migration.realmName::\n"
-"  このプロパティーは、すべてのレルムではなく、指定されたレルムを1つだけエクスポートする場合に使用されます。\n"
-"  指定しないと、すべてのレルムがエクスポートされます。\n"
+"-Dkeycloak.migration.realmName::このプロパティを使用して、指定された 1 "
+"つのレルムをエクスポートします。このパラメータが指定されていない場合は、すべてのレルムがエクスポートされます。"
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"-Dkeycloak.migration.usersExportStrategy::\n"
-"  This property is used to specify where users are exported.\n"
-"  Possible values are:\n"
+"-Dkeycloak.migration.usersExportStrategy:: This property specifies where "
+"users export to. Possible values include:"
 msgstr ""
-"-Dkeycloak.migration.usersExportStrategy::\n"
-"  このプロパティーは、ユーザーのエクスポート先を指定するために使用します。\n"
-"  可能な値は次のとおりです。\n"
+"-Dkeycloak.migration.usersExportStrategy::このプロパティは、ユーザーがどこにエクスポートするかを指定します。可能な値は次のとおりです。"
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"DIFFERENT_FILES - Users will be exported into different files according to "
-"the maximum number of users per file. This is default value.\n"
+"DIFFERENT_FILES - Users export into different files subject to the maximum "
+"<<_keycloak-migration-usersPerFile, number of users per file>>. "
+"DIFFERENT_FILES is the default value for this property."
 msgstr ""
-"DIFFERENT_FILES - ユーザーはファイルごとの最大ユーザー数に応じて異なるファイルにエクスポートされます。これはデフォルト値です。\n"
+"DIFFERENT_FILES - ユーザーは、最大<_keycloak-migration-usersPerFile, number of users"
+" per file>&lt;&gt;</_keycloak-migration-"
+"usersPerFile,>を条件として、異なるファイルにエクスポートします。<_keycloak-migration-usersPerFile, "
+"number of users per file>DIFFERENT_FILESは、このプロパティのデフォルト値です。</_keycloak-"
+"migration-usersPerFile,>"
 
 #. type: Plain text
-#, no-wrap
-msgid "SKIP - Exporting of users will be skipped completely.\n"
-msgstr "SKIP - ユーザーのエクスポートは完全にスキップされます。\n"
+msgid "SKIP - {project_name} skips exporting users."
+msgstr "SKIP - {project_name} ユーザーのエクスポートをスキップします。"
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"REALM_FILE - All users will be exported to same file with the realm "
-"settings. (The result will be a file like \"foo-realm.json\" with both realm"
-" data and users.)\n"
+"REALM_FILE - Users export to the same file with the realm settings. The file"
+" is similar to \"foo-realm.json\" with realm data and users."
 msgstr ""
-"REALM_FILE - すべてのユーザーは、レルム設定とともに同じファイルにエクスポートされます。（レルムデータとユーザーの両方を含む \"foo-"
-"realm.json\" のようなファイルになります。）\n"
+"REALM_FILE - ユーザーは、レルム設定のある同じファイルにエクスポートします。このファイルは \"foo-realm.json "
+"\"と同様に、realmデータとユーザーが含まれています。"
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"SAME_FILE - All users will be exported to same file but different from the "
-"realm file. (The result will be a file like \"foo-realm.json\" with realm "
-"data and \"foo-users.json\" with users.)\n"
+"SAME_FILE - Users export to the same file but different from the realm file."
+" The result is similar to \"foo-realm.json\" with realm data and \"foo-"
+"users.json\" with users."
 msgstr ""
-"SAME_FILE - すべてのユーザーは同じファイルにエクスポートされますが、レルムファイルとは別になります。（レルムデータを含む \"foo-"
-"realm.json\" とユーザーを含む \"foo-users.json\" のようなファイルになります。）\n"
+"SAME_FILE - ユーザーは同じファイルにエクスポートされますが、realmファイルとは異なります。realmのデータは \"foo-"
+"realm.json\"、ユーザは \"foo-users.json \"のような結果になります。"
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"-Dkeycloak.migration.usersPerFile::\n"
-"  This property is used to specify the number of users per file (and also per DB transaction). It's 50 by default.\n"
-"  It's used only if usersExportStrategy is DIFFERENT_FILES\n"
+"-Dkeycloak.migration.usersPerFile:: This property specifies the number of "
+"users per file and database transaction. By default, its value is fifty. "
+"{project_name} uses this property if keycloak.migration.usersExportStrategy "
+"is DIFFERENT_FILES."
 msgstr ""
-"-Dkeycloak.migration.usersPerFile::\n"
-"  このプロパティーは、ファイルごとの（およびDBトランザクションごとの）ユーザー数を指定するために使用されます。デフォルトでは50です。\n"
-"  DIFFERENT_FILESの場合にのみ使用されます。\n"
+"-Dkeycloak.migration.usersPerFile：：このプロパティは、ファイルおよびデータベーストランザクションごとのユーザー数を指定します。デフォルトでは、その値は"
+" 50 "
+"です。{project_name}は、keycloak.migration.usersExportStrategyがDIFFERENT_FILESの場合、このプロパティを使用します。"
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"-Dkeycloak.migration.strategy::\n"
-"  This property is used during import.\n"
-"  It can be used to specify how to proceed if a realm with same name already exists in the database where you are going to import data.\n"
-"  Possible values are:\n"
+"-Dkeycloak.migration.strategy:: {project_name} uses this property when "
+"importing. It specifies how to proceed when a realm with the same name "
+"already exists in the database."
 msgstr ""
-"-Dkeycloak.migration.strategy::\n"
-"  このプロパティーはインポート時に使用されます。\n"
-"  データをインポートするデータベースに、同じ名前のレルムがすでに存在する場合、どのように進めるかを指定するために使用できます。\n"
-"  可能な値は次のとおりです。\n"
+"-Dkeycloak.migration.strategy::{project_name} "
+"インポート時にこのプロパティを使用します。同じ名前のレルムがすでにデータベースに存在する場合の処理方法を指定します。"
 
 #. type: Plain text
-#, no-wrap
-msgid ""
-"IGNORE_EXISTING - Ignore importing if a realm of this name already exists.\n"
-msgstr "IGNORE_EXISTING - この名前のレルムがすでに存在する場合は、インポートを無視します。\n"
-
-#. type: Plain text
-#, no-wrap
-msgid ""
-"OVERWRITE_EXISTING - Remove existing realm and import it again with new data"
-" from the JSON file.\n"
-msgstr "OVERWRITE_EXISTING - 既存のレルムを削除し、新しいデータをJSONファイルから再度インポートします。\n"
-
-#. type: Plain text
-#, no-wrap
-msgid ""
-"If you want to fully migrate one environment to another and ensure that the new environment will contain the same data\n"
-"as the old one, you can specify this.\n"
-msgstr "ある環境を別の環境に完全に移行し、新しい環境に古い環境と同じデータが含まれていることを保障したい場合には、これを指定します。\n"
+msgid "Possible values are:"
+msgstr "設定可能な値は以下の通りです。"
 
 #. type: Plain text
 msgid ""
-"When importing realm files that weren't exported before, the option "
-"`keycloak.import` can be used.  If more than one realm file needs to be "
-"imported, a comma separated list of file names can be specified.  This is "
-"more appropriate than the cases before, as this will happen only after the "
-"master realm has been initialized.  Examples:"
+"IGNORE_EXISTING - Do not import a realm if a realm with the same name "
+"already exists."
+msgstr "IGNORE_EXISTING - 同じ名前のレルムがすでに存在する場合、そのレルムをインポートしません。"
+
+#. type: Plain text
+msgid ""
+"OVERWRITE_EXISTING - Remove the existing realm and import the realm again "
+"with new data from the JSON file. Use this value to migrate from one "
+"environment to another fully."
 msgstr ""
-"これまでにエクスポートされていないレルムファイルをインポートする場合、 `keycloak.import` "
-"オプションを使用することができます。複数のレルムファイルをインポートする必要がある場合は、ファイル名のカンマ区切りリストを指定できます。これは、masterレルムが初期化された後にのみ行われるため、前の場合よりも適切です。例："
+"OVERWRITE_EXISTING - "
+"既存のレルムを削除し、JSONファイルからの新しいデータで再びレルムをインポートします。ある環境から別の環境に完全に移行するために、この値を使用します。"
+
+#. type: Plain text
+msgid ""
+"If you are importing files that are not from a {project_name} export, use "
+"the `keycloak.import` option. If you are importing more than one realm file,"
+" specify a comma-separated list of filenames. A list of filenames is more "
+"suitable than the previous cases because this happens after {project_name} "
+"initializes the master realm."
+msgstr ""
+"{project_name} のエクスポートからではないファイルをインポートする場合は、`keycloak.import` "
+"オプションを使用してください。複数のレルムファイルをインポートする場合は、コンマで区切ったファイル名のリストを指定します。これは "
+"{project_name} がマスターレルムを初期化した後に行われるので、ファイル名のリストはこれまでのケースよりも適しています。"
+
+#. type: Plain text
+msgid "Examples:"
+msgstr "例"
 
 #. type: Plain text
 msgid "-Dkeycloak.import=/tmp/realm1.json"
@@ -264,69 +275,73 @@ msgstr "-Dkeycloak.import=/tmp/realm1.json,/tmp/realm2.json"
 
 #. type: Plain text
 msgid ""
-"The mechanism based on `keycloak.import` cannot be used together with the "
-"other mechanism based on `keycloak.migration.X` properties.  If it is used "
-"together, the `keycloak.import` will be ignored. The `keycloak.import` "
-"mechanism always ignores the realms, which already exist in {project_name}. "
-"Generally the `keycloak.import` mechanism can be convenient for some "
-"development purposes, but if more flexibility is needed, we recommend that "
-"you stick with the mechanism based on `keycloak.migration.X` properties."
+"You cannot use the `keycloak.import` parameter with `keycloak.migration.X` "
+"parameters. If you use these parameters together, {project_name} ignores the"
+" `keycloak.import` parameter. The `keycloak.import` mechanism ignores the "
+"realms which already exist in {project_name}. The `keycloak.import` "
+"mechanism is convenient for development purposes, but if more flexibility is"
+" needed, use the `keycloak.migration.X` parameters."
 msgstr ""
-"`keycloak.import` に基づくメカニズムは、 `keycloak.migration.X` "
-"プロパティーに基づく他のメカニズムとともに使用できません。一緒に使用すると、 `keycloak.import` は無視されます。 "
-"`keycloak.import` メカニズムは、すでに{project_name}に存在するレルムを常に無視します。一般的に、 "
-"`keycloak.import` メカニズムは開発目的には便利ですが、より柔軟性が必要な場合は、 `keycloak.migration.X` "
-"プロパティーに基づくメカニズムを使用することをお勧めします。"
+"keycloak.import` パラメータを `keycloak.migration.X` "
+"パラメータと一緒に使用することはできません。これらのパラメータを一緒に使った場合、{project_name} は `keycloak.import` "
+"パラメータを無視します。keycloak.import` メカニズムは {project_name} "
+"に既に存在するレルムを無視します。`keycloak.import` メカニズムは開発目的には便利ですが、より柔軟性が必要な場合は "
+"`keycloak.migration.X` パラメータを使用してください。"
 
 #. type: Title ===
 #, no-wrap
 msgid "Admin console export/import"
 msgstr "管理コンソールでのエクスポート/インポート"
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"Import of most resources can be performed from the admin console as well as "
-"export of most resources.  Export of users is not supported."
+"{project_name} imports most resources from the Admin Console as well as "
+"exporting most resources. {project_name} does not support the export of "
+"users."
 msgstr ""
-"ほとんどのリソースのインポートは、ほとんどのリソースのエクスポートと同様に、管理コンソールから実行することができます。ユーザーのエクスポートはサポートされていません。"
+"{project_name} "
+"アドミンコンソールからほとんどのリソースをインポートし、またほとんどのリソースをエクスポートしています。{project_name} "
+"は、ユーザーのエクスポートをサポートしていません。"
 
 #. type: Plain text
 msgid ""
-"Attributes containing secrets or private information will be masked in "
-"export file. Export files obtained via Admin Console are thus not "
-"appropriate for backups or data transfer between servers. Only boot-time "
-"exports are appropriate for that."
+"{project_name} masks attributes containing secrets or private information in"
+" the export file. Export files from the Admin Console are not suitable for "
+"backups or data transfer between servers. Only boot-time exports are "
+"suitable for backups or data transfer between servers."
 msgstr ""
-"エクスポート・ファイルの中の機密情報または個人情報を含む属性は、マスクされます。管理コンソールから取得したエクスポート・ファイルは、バックアップやサーバー間のデータ転送には適切ではありません。ブート時のエクスポートだけが、それらに対して適切です。"
+"{project_name} "
+"エクスポートファイルに含まれる秘密やプライベートな情報を含む属性をマスクします。管理者コンソールからのエクスポートファイルは、バックアップやサーバー間のデータ転送には適していません。バックアップやサーバー間のデータ転送に適しているのは、起動時のエクスポートのみです。"
+
+#. type: delimited block =
+msgid ""
+"You can use the files created during an export to import from the Admin "
+"Console. You can export from one realm and import to another realm, or you "
+"can export from one server and import to another."
+msgstr ""
+"エクスポート時に作成されたファイルを使用して、アドミンコンソールからインポートすることができます。あるレルムからエクスポートして別のレルムにインポートしたり、あるサーバーからエクスポートして別のサーバーにインポートしたりすることができます。"
+
+#. type: Plain text
+msgid "The admin console export/import permits one realm per file only."
+msgstr "管理コンソールのエクスポート/インポートでは、1ファイルにつき1つのレルムのみが許可されます。"
 
 #. type: Plain text
 msgid ""
-"The files created during a \"startup\" export can also be used to import "
-"from the admin UI.  This way, you can export from one realm and import to "
-"another realm. Or, you can export from one server and import to another."
+"The Admin Console import can overwrite resources. Use this feature with "
+"caution, especially on a production server. JSON files from the Admin "
+"Console Export operation are not appropriate for data import because they "
+"contain invalid values for secrets."
 msgstr ""
-"\"スタートアップ\" "
-"エクスポート中に作成されたファイルは、管理UIからインポートするために使用することもできます。これにより、あるレルムからエクスポートして別のレルムにインポートすることができます。また、あるサーバーからエクスポートして別のサーバーにインポートすることもできます。"
-
-#. type: Plain text
-msgid "The admin console export/import allows just one realm per file."
-msgstr "管理コンソールでのエクスポート/インポートでは、ファイルごとに1つのレルムしか使用できません。"
+"管理者コンソールのインポートでは、リソースを上書きすることができます。この機能は、特に運用サーバーでは注意して使用してください。管理者コンソールのエクスポート操作による"
+" JSON ファイルには、シークレットの無効な値が含まれているため、データのインポートには適していません。"
 
 #. type: Plain text
 msgid ""
-"The admin console import allows you to \"overwrite\" resources if you "
-"choose.  Use this feature with caution, especially on a production system. "
-"Export .json files from Admin Console Export operation are generally not "
-"appropriate for data import since they contain invalid values for secrets."
+"You can use the Admin Console to export clients, groups, and roles. If the "
+"database in your realm contains many clients, groups, and roles, the export "
+"may take a long time to conclude, and the {project_name} server may not "
+"respond to user requests. Use this feature with caution, especially on a "
+"production server."
 msgstr ""
-"管理コンソールでのインポートにより、リソースを\"上書き\"することができます（そのように選択した場合）。この機能は、特に実動システムでは注意して使用してください。管理コンソールのエクスポート操作からエクスポートした.jsonファイルは、シークレットに対して無効な値が含まれているため、通常データのインポートには適切ではありません。"
-
-#. type: Plain text
-msgid ""
-"The admin console export allows you to export clients, groups, and roles. If"
-" there is a great number of any of these assets in your realm, the operation"
-" may take some time to complete. During that time server may not be "
-"responsive to user requests.  Use this feature with caution, especially on a"
-" production system."
-msgstr ""
-"管理コンソールでのエクスポートでは、クライアント、グループ、およびロールをエクスポートできます。レルム内にこれらの数が多い場合、操作には時間がかかることがあります。この間、サーバーはユーザーのリクエストに応答しない可能性があります。この機能は、特にプロダクション・システムでは注意して使用してください。"
+"Admin Console "
+"を使用して、クライアント、グループ、およびロールをエクスポートすることができます。レルムのデータベースに多数のクライアント、グループ、およびロールが含まれている場合、エクスポートの完了までに時間がかかり、{project_name}サーバがユーザの要求に応答しないことがあります。この機能は、特に本番サーバーでは注意して使用してください。"

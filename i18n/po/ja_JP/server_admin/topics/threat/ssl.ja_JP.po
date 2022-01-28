@@ -3,11 +3,14 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,39 +20,38 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "SSL/HTTPS Requirement"
+msgid "SSL/HTTPS requirement"
 msgstr "SSL/HTTPS要件"
 
 #. type: Plain text
 msgid ""
-"If you do not use SSL/HTTPS for all communication between the {project_name}"
-" auth server and the clients it secures, you will be very vulnerable to man "
-"in the middle attacks.  OAuth 2.0/OpenID Connect uses access tokens for "
-"security.  Without SSL/HTTPS, attackers can sniff your network and obtain an"
-" access token.  Once they have an access token they can do any operation "
-"that the token has been given permission for."
+"OAuth 2.0/OpenID Connect uses access tokens for security. Attackers can scan"
+" your network for access tokens and use them to perform malicious operations"
+" for which the token has permission. This attack is known as a man-in-the-"
+"middle attack. Use SSL/HTTPS for communication between the {project_name} "
+"auth server and the clients {project_name} secures to prevent man-in-the-"
+"middle attacks."
 msgstr ""
-"{project_name}認証サーバーとそれが保護するクライアントの間のすべての通信にSSL/HTTPSを使用しないと、中間者攻撃に非常に脆弱になります。OAuth"
-" 2.0/OpenID "
-"Connectはセキュリティーのためにアクセストークンを使用します。SSL/HTTPSなしでは、攻撃者はネットワークを盗聴してアクセストークンを取得することができます。アクセストークンを取得すれば、トークンにアクセス許可が与えられたあらゆる操作を実行できます。"
+"OAuth 2.0/OpenID "
+"Connectでは、セキュリティのためにアクセストークンを使用しています。攻撃者は、ネットワークをスキャンしてアクセストークンを探し、それを使って、トークンが許可している悪意のある操作を実行することができます。この攻撃は、「中間者攻撃」と呼ばれています。中間者攻撃を防ぐために、{project_name}"
+" auth サーバと {project_name} セキュリティを担当するクライアント間の通信には SSL/HTTPS を使用してください。"
 
 #. type: Plain text
 msgid ""
-"{project_name} has <<_ssl_modes,three modes for SSL/HTTPS>>.  SSL can be "
-"hard to set up, so out of the box, {project_name} allows non-HTTPS "
-"communication over private IP addresses like localhost, 192.168.x.x, and "
-"other private IP addresses.  In production, you should make sure SSL is "
-"enabled and required across the board."
+"{project_name} has <<_ssl_modes,three modes for SSL/HTTPS>>. SSL is complex "
+"to set up, so {project_name} allows non-HTTPS communication over private IP "
+"addresses such as localhost, 192.168.x.x, and other private IP addresses. In"
+" production, ensure you enable SSL and SSL is compulsory for all operations."
 msgstr ""
-"{project_name}は<<_ssl_modes,SSL/HTTPSの3つのモード>>を持っています。SSLは設定が難しいのですぐにセットアップできるように、{project_name}はデフォルトでlocalhost、192.168.x.x、その他のプライベートIPアドレスを介した非HTTPS通信を許可します。プロダクション環境では、SSLが有効になっており全面的に必要とされることを確認する必要があります。"
+"{project_name} には &lt;&lt;_ssl_modes,SSL/HTTPSの3つのモード&gt;&gt; "
+"があります。SSLは設定が複雑なので、{project_name}ではlocalhostや192.168.x.xなどのプライベートIPアドレスでの非HTTPS通信を許可しています。本番環境では、確実にSSLを有効にし、すべての操作にSSLが必須となります。"
 
 #. type: Plain text
 msgid ""
-"On the adapter/client side, {project_name} allows you to turn off the SSL "
-"trust manager.  The trust manager ensures identity the client is talking to."
-"  It checks the DNS domain name against the server's certificate.  In "
-"production you should make sure that each of your client adapters is "
-"configured to use a truststore.  Otherwise you are vulnerable to DNS man in "
-"the middle attacks."
+"On the adapter/client-side, you can disable the SSL trust manager. The trust"
+" manager ensures the client's identity that {project_name} communicates with"
+" is valid and ensures the DNS domain name against the server's certificate. "
+"In production, ensure that each of your client adapters uses a truststore to"
+" prevent DNS man-in-the-middle attacks."
 msgstr ""
-"アダプター/クライアント側では、{project_name}を使用してSSLトラスト・マネージャーを無効にすることができます。トラスト・マネージャーは、クライアントが通信している相手のアイデンティティーを保証します。DNSドメイン名をサーバーの証明書と照合してチェックします。プロダクション環境では、各クライアント・アダプターがトラストストアを使用するように設定されていることを確認する必要があります。そうでない場合、DNSの中間者攻撃に脆弱です。"
+"アダプタ/クライアント側では、SSLトラストマネージャーを無効にすることができます。トラストマネージャーは、{project_name}が通信するクライアントのIDが有効であることを確認し、サーバーの証明書に対するDNSドメイン名を確認します。本番環境では、DNSの中間者攻撃を防ぐために、各クライアントアダプタがトラストストアを使用していることを確認してください。"

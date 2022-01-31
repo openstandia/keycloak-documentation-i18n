@@ -4,15 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Hiroyuki Wada <wadahiro@gmail.com>, 2019
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2022
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,10 +19,44 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: Title ==
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
 #. type: Block title
 #, no-wrap
-msgid "Add Identity Provider"
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Plain text
+msgid "Click *Save*."
+msgstr "*Save* をクリックします。"
+
+#. type: Plain text
+msgid "Click *Identity Providers* in the menu."
+msgstr "メニューの *Identity Providers* をクリックします。"
+
+#. type: Block title
+#, no-wrap
+msgid "Add identity provider"
 msgstr "アイデンティティー・プロバイダーの追加"
+
+#. type: Plain text
+msgid "Copy the value of *Redirect URI* to your clipboard."
+msgstr "Redirect URI* の値をクリップボードにコピーしてください。"
+
+#. type: Plain text
+msgid ""
+"In {project_name}, paste the value of the *Client ID* into the *Client ID* "
+"field."
+msgstr "{project_name}では、*Client ID* の値を *Client ID* フィールドに貼り付けます。"
+
+#. type: Plain text
+msgid ""
+"In {project_name}, paste the value of the *Client Secret* into the *Client "
+"Secret* field."
+msgstr "{project_name}では、*Client Secret* の値を *Client Secret* フィールドに貼り付けます。"
 
 #. type: Title ====
 #, no-wrap
@@ -31,37 +64,18 @@ msgid "OpenShift 3"
 msgstr "OpenShift 3"
 
 #. type: Plain text
-msgid ""
-"OpenShift Online is currently in the developer preview mode. This "
-"documentation has been based on on-premise installations and local "
-"`minishift` development environment."
-msgstr ""
-"OpenShift Onlineは現在、開発者プレビューモードになっています。このドキュメントは、オンプレミスでのインストールとローカルの "
-"`minishift` 開発環境に基づいています。"
+msgid "From the `Add provider` list, select `Openshift`."
+msgstr "`Add provider` のリストから `Openshift` を選択します。"
 
 #. type: Plain text
 msgid ""
-"There are a just a few steps you have to complete to be able to enable login"
-" with OpenShift.  First, go to the `Identity Providers` left menu item and "
-"select `OpenShift` from the `Add provider` drop down list.  This will bring "
-"you to the `Add identity provider` page."
+"image:images/openshift-add-identity-provider.png[Add Identity Provider]"
 msgstr ""
-"OpenShiftでログインできるようにするには、いくつかのステップを完了する必要があります。まず、左のメニュー項目の `Identity "
-"Providers` に移動し、 `Add provider` のドロップダウン・リストから `OpenShift` を選択します。これにより、 "
-"`Add identity provider` ページが表示されます。"
+"image:images/openshift-add-identity-provider.png[Add Identity Provider]"
 
 #. type: Plain text
-msgid "image:images/openshift-add-identity-provider.png[]"
-msgstr "image:images/openshift-add-identity-provider.png[]"
-
-#. type: Block title
-#, no-wrap
-msgid "Registering OAuth client"
-msgstr "OAuthクライアントの登録"
-
-#. type: delimited block =
-msgid "You can register your client using `oc` command line tool."
-msgstr "`oc` コマンドライン・ツールを使ってクライアントを登録することができます。"
+msgid "Register your client using the `oc` command-line tool."
+msgstr "コマンドライン・ツール `oc` を使って、クライアントを登録します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -99,83 +113,83 @@ msgstr ""
 "リクエスト・パラメーターとして渡されます。"
 
 #. type: Plain text
-msgid "`secret` is used as the `client_secret` request parameter."
-msgstr "`secret` は `client_secret` リクエスト・パラメーターとして使われます。"
+msgid ""
+"The `secret` {project_name} uses for the `client_secret` request parameter."
+msgstr "`client_secret` のリクエスト・パラメーターには、{project_name}の `secret` を使用します。"
 
 #. type: Plain text
 msgid ""
 "The `redirect_uri` parameter specified in requests to "
 "`_<openshift_master>_/oauth/authorize` and "
 "`_<openshift_master>_/oauth/token` must be equal to (or prefixed by) one of "
-"the URIs in `redirectURIs`."
+"the URIs in `redirectURIs`. You can obtain this from the *Redirect URI* "
+"field in the Identity Provider screen"
 msgstr ""
-"`_<openshift_master>_/oauth/authorize` と `_<openshift_master>_/oauth/token` "
-"へのリクエストで指定された `redirect_uri` パラメーターは、 `redirectURIs` "
-"の（または接頭辞付きの）URIの一つと等しくなければなりません。"
+"`_<openshift_master>_/oauth/authorize` および "
+"`_<openshift_master>_/oauth/token` へのリクエストで指定された `redirect_uri` パラメーターは、 "
+"`redirectURIs` のURIの1つと一致する（または前方一致する）必要があります。これは、アイデンティティー・プロバイダー画面の "
+"*リダイレクトURI* フィールドから取得できます。"
 
 #. type: Plain text
 msgid ""
-"The `grantMethod` is used to determine what action to take when this client "
-"requests tokens and has not yet been granted access by the user."
+"The `grantMethod` {project_name} uses to determine the action when this "
+"client requests tokens but has not been granted access by the user."
 msgstr ""
 "`grantMethod` "
-"は、このクライアントがトークンを要求し、ユーザーによってまだアクセスが許可されていないときに、行うアクションを決定するために使用されます。"
-
-#. type: delimited block =
-msgid ""
-"Use client ID and secret defined by `oc create` command to enter them back "
-"on the {project_name} `Add identity provider` page.  Go back to "
-"{project_name} and specify those items."
-msgstr ""
-"`oc create` コマンドで定義されたクライアントIDとシークレットを使用して、{project_name}の `Add identity "
-"provider` ページに入力します。{project_name}に戻り、それらの項目を入力します。"
-
-#. type: delimited block =
-msgid ""
-"Please refer to https://docs.okd.io/latest/authentication/configuring-oauth-"
-"clients.html#oauth-register-additional-client_configuring-oauth-"
-"clients[official OpenShift documentation] for more detailed guides."
-msgstr ""
-"詳細なガイドについては、 https://docs.okd.io/latest/authentication/configuring-oauth-"
-"clients.html#oauth-register-additional-client_configuring-oauth-"
-"clients[official OpenShift documentation] を参照してください。"
+"は、このクライアントがトークンを要求したがユーザーからのアクセスが許可されていない場合のアクションを決定するために{project_name}が使用します"
+" 。"
 
 #. type: Title ====
 #, no-wrap
 msgid "OpenShift 4"
 msgstr "OpenShift 4"
 
-#. type: delimited block =
+#. type: Plain text
+msgid "Installation of https://stedolan.github.io/jq/[jq]."
+msgstr "https://stedolan.github.io/jq/[jq] のインストール。"
+
+#. type: Plain text
+msgid ""
+"`X509_CA_BUNDLE` configured in the container and set to "
+"`/var/run/secrets/kubernetes.io/serviceaccount/ca.crt`."
+msgstr ""
+"コンテナに設定された`X509_CA_BUNDLE`には、`/var/run/secrets/kubernetes.io/serviceaccount/ca.crt`が設定されています。"
+
+#. type: Plain text
+msgid ""
+"Run the following command on the command line and note the OpenShift 4 API "
+"URL output."
+msgstr "コマンドラインで以下のコマンドを実行し、OpenShift 4 APIのURL出力をメモします。"
+
+#. type: delimited block -
 #, no-wrap
 msgid ""
-"Prior to configuring OpenShift 4 Identity Provider, please locate the correct OpenShift 4 API URL up.\n"
-"In some scenarios, that URL might be hidden from users. The easiest way to obtain it is to invoke the following command (this might require installing `jq` command separately) `curl -s -k -H \"Authorization: Bearer $(oc whoami -t)\" \\https://<openshift-user-facing-api-url>/apis/config.openshift.io/v1/infrastructures/cluster | jq \".status.apiServerURL\"`. In most cases, the address will be protected by HTTPS. Therefore, it is essential to configure `X509_CA_BUNDLE` in the container and set it to `/var/run/secrets/kubernetes.io/serviceaccount/ca.crt`. Otherwise, {project_name} won't be able to communicate\n"
-" with the API Server.\n"
+"curl -s -k -H \"Authorization: Bearer $(oc whoami -t)\" "
+"\\https://<openshift-user-facing-api-"
+"url>/apis/config.openshift.io/v1/infrastructures/cluster | jq "
+"\".status.apiServerURL\"\n"
 msgstr ""
-"OpenShift 4 Identity Providerを設定する前に、正しいOpenShift 4 API URLを見つけてください。一部のシナリオでは、そのURLはユーザーから隠されている場合があります。これを取得する最も簡単な方法は、次のコマンドを呼び出すことです（ `jq` コマンドを個別にインストールする必要がある場合があります） `curl -s -k -H \"Authorization: Bearer $(oc whoami -t)\" \\https://<openshift-user-facing-api-url>/apis/config.openshift.io/v1/infrastructures/cluster | jq \".status.apiServerURL\"` \n"
-"ほとんどの場合、アドレスはHTTPSによって保護されます。したがって、コンテナで `X509_CA_BUNDLE` を設定し、 `/var/run/secrets/kubernetes.io/serviceaccount/ca.crt` に設定することが不可欠です。そうしないと、{project_name}はAPIサーバーと通信できません。\n"
+"curl -s -k -H \"Authorization: Bearer $(oc whoami -t)\" "
+"\\https://<openshift-user-facing-api-"
+"url>/apis/config.openshift.io/v1/infrastructures/cluster | jq "
+"\".status.apiServerURL\"\n"
 
-#. type: delimited block =
+#. type: Plain text
+msgid "Click *Identity Providers* in the {project_name} menu."
+msgstr "{project_name} メニューの *Identity Providers* をクリックします。"
+
+#. type: Plain text
 msgid ""
-"There are a just a few steps you have to complete to be able to enable login"
-" with OpenShift 4.  First, go to the `Identity Providers` left menu item and"
-" select `OpenShift v4` from the `Add provider` drop down list.  This will "
-"bring you to the `Add identity provider` page."
+"image:images/openshift-4-add-identity-provider.png[Add Identity Provider]"
 msgstr ""
-"OpenShift 4でログインできるようにするには、いくつかのステップを完了する必要があります。まず、左のメニュー項目の `Identity "
-"Providers` に移動し、 `Add provider` のドロップダウン・リストから `OpenShift 4` を選択します。これにより、 "
-"`Add identity provider` ページが表示されます。"
-
-#. type: delimited block =
-msgid "image:images/openshift-4-add-identity-provider.png[]"
-msgstr "image:images/openshift-4-add-identity-provider.png[]"
+"image:images/openshift-4-add-identity-provider.png[Add Identity Provider]"
 
 #. type: delimited block -
 #, no-wrap
 msgid ""
 "$ oc create -f <(echo '\n"
 "kind: OAuthClient\n"
-"apiVersion: v1\n"
+"apiVersion: oauth.openshift.io/v1\n"
 "metadata:\n"
 " name: keycloak-broker <1>\n"
 "secret: \"...\" <2>\n"
@@ -186,7 +200,7 @@ msgid ""
 msgstr ""
 "$ oc create -f <(echo '\n"
 "kind: OAuthClient\n"
-"apiVersion: v1\n"
+"apiVersion: oauth.openshift.io/v1\n"
 "metadata:\n"
 " name: keycloak-broker <1>\n"
 "secret: \"...\" <2>\n"
@@ -199,16 +213,20 @@ msgstr ""
 msgid ""
 "The `name` of your OAuth client. Passed as `client_id` request parameter "
 "when making requests to `_<openshift_master>_/oauth/authorize` and "
-"`_<openshift_master>_/oauth/token`. The `name` parameter needs to be the "
-"same"
+"`_<openshift_master>_/oauth/token`. The `name` parameter must be the same in"
+" the `OAuthClient` object and the {project_name} configuration."
 msgstr ""
-"OAuthクライアントの `name` です。 `_<openshift_master>_/oauth/authorize` と "
-"`_<openshift_master>_/oauth/token` へのリクエストを行うときに `client_id` "
-"リクエスト・パラメーターとして渡されます。 `name` パラメーターは、"
+"OAuth クライアントの `name` です。これは<openshift_master>`__/oauth/authorize` "
+"や<openshift_master>`__/oauth/token`</openshift_master></openshift_master> "
+"へのリクエストの際に `client_id` "
+"というリクエストパラメータとして渡されます。<openshift_master><openshift_master>name` "
+"パラメータは、`OAuthClient` オブジェクトと {project_name} "
+"のコンフィギュレーションで同じでなければなりません。</openshift_master></openshift_master>"
 
 #. type: Plain text
-msgid "in `OAuthClient` object as well as in {project_name} configuration."
-msgstr "`OAuthClient` オブジェクトと{project_name}の設定で同じにする必要があります。"
+msgid ""
+"The `secret` {project_name} uses as the `client_secret` request parameter."
+msgstr "secret` {project_name} は、`client_secret` のリクエストパラメータとして使用します。"
 
 #. type: Plain text
 msgid ""
@@ -216,36 +234,24 @@ msgid ""
 "`_<openshift_master>_/oauth/authorize` and "
 "`_<openshift_master>_/oauth/token` must be equal to (or prefixed by) one of "
 "the URIs in `redirectURIs`. The easiest way to configure it correctly is to "
-"copy-paste"
+"copy-paste it from {project_name} OpenShift 4 Identity Provider "
+"configuration page (`Redirect URI` field)."
 msgstr ""
-"`_<openshift_master>_/oauth/authorize` および "
-"`_<openshift_master>_/oauth/token` へのリクエストで指定された `redirect_uri` パラメーターは、 "
-"`redirectURIs` のURIの1つと一致する（または前方一致する）必要があります。正しく設定する最も簡単な方法は、"
+"<openshift_master>__/oauth/authorize` "
+"と<openshift_master>`__/oauth/token`</openshift_master></openshift_master> "
+"へのリクエストで指定される `redirect_uri` "
+"パラメータ<openshift_master><openshift_master>は、`redirectURIs` に含まれる URI "
+"のいずれかと等しい (または前に付いている) "
+"必要があります</openshift_master></openshift_master>。<openshift_master><openshift_master>正しく設定する最も簡単な方法は、{project_name}"
+" からコピーペーストすることです。OpenShift 4 Identity Provider の設定ページ (`Redirect URI` "
+"フィールド)からコピーペーストします。</openshift_master></openshift_master>"
 
 #. type: Plain text
 msgid ""
-"it from {project_name} OpenShift 4 Identity Provider configuration page "
-"(`Redirect URI` field)."
+"See https://docs.okd.io/latest/authentication/configuring-oauth-"
+"clients.html#oauth-register-additional-client_configuring-oauth-"
+"clients[official OpenShift documentation] for more information."
 msgstr ""
-"{project_name} OpenShift 4 Identity Providerの設定ページから（ `Redirect URI` "
-"フィールド）、コピー・アンド・ペーストすることです。"
-
-#. type: delimited block =
-msgid ""
-"Use the client ID and secret defined by `oc create` command to enter them "
-"back on the {project_name} `Add identity provider` page.  Go back to "
-"{project_name} and specify those items."
-msgstr ""
-"`oc create` コマンドで定義されたクライアントIDとシークレットを使用して、{project_name}の `Add identity "
-"provider` ページに入力します。{project_name}に戻り、それらの項目を入力します。"
-
-#. type: delimited block =
-#, no-wrap
-msgid ""
-"The OpenShift API server returns `The client is not authorized to request a token using this method` whenever `OAuthClient`\n"
-" `name`, `secret` or `redirectURIs` is incorrect. Make sure you copy-pasted them into {project_name} OpenShift 4 Identity Provider page correctly.\n"
-msgstr ""
-"OpenShift APIサーバーは、 `OAuthClient` 、 `name` 、 `secret` 、または `redirectURIs` "
-"が正しくない場合、 `The client is not authorized to request a token using this "
-"method` を返します。それらを{project_name} OpenShift 4 Identity "
-"Providerページに正しくコピー・アンド・ペーストしてください。\n"
+"詳しくは、https://docs.okd.io/latest/authentication/configuring-oauth-"
+"clients.html#oauth-register-additional-client_configuring-oauth-"
+"clients[OpenShiftの公式ドキュメント]をご覧ください。"

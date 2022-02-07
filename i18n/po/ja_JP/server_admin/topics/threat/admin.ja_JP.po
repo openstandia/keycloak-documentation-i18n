@@ -4,15 +4,13 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
-# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,65 +20,55 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "Admin Endpoints and Console"
+msgid "Admin endpoints and Admin Console"
 msgstr "管理エンドポイントと管理コンソール"
 
 #. type: Plain text
 msgid ""
-"The {project_name} administrative REST API and the web console are exposed "
-"by default on the same port as non-admin usage. If access to the admin "
-"console is not needed externally, we recommend not exposing the admin "
-"endpoints on the Internet."
+"{project_name} exposes the administrative REST API and the web console on "
+"the same port as non-administrative usage by default. Do not expose "
+"administrative endpoints externally if external access is not necessary. If "
+"you need to expose administrative endpoints externally, you can expose them "
+"directly in {project_name} or use a proxy."
 msgstr ""
-"{project_name}管理REST "
-"APIとWebコンソールは、非管理用途と同じポートにデフォルトで公開されています。管理コンソールへのアクセスが外部から必要ない場合は、管理エンドポイントをインターネットに公開しないことをお勧めします。"
+"{project_name} デフォルトでは、管理用REST "
+"APIとWebコンソールを、非管理用と同じポートで公開します。外部からのアクセスが必要でない場合は、管理用エンドポイントを外部に公開しないでください。管理用エンドポイントを外部に公開する必要がある場合は、{project_name}で直接公開するか、プロキシを使用します。"
 
 #. type: Plain text
 msgid ""
-"This can be achieved either directly in {project_name} or with a proxy such "
-"as Apache or nginx."
-msgstr "これは、{project_name}で直接行うことも、ApacheやNginxなどのプロキシーで行うこともできます。"
-
-#. type: Plain text
-msgid ""
-"For the proxy option please follow the documentation for the proxy. You need"
-" to control access to any requests to `/auth/admin`."
+"To expose endpoints by using a proxy, consult the documentation for the "
+"proxy. You need to control access to requests to the `/auth/admin` endpoint."
 msgstr ""
-"プロキシー・オプションについては、プロキシーのマニュアルを参照してください。 `/auth/admin` "
-"へのリクエストのアクセスを制御する必要があります。"
+"プロキシを使ってエンドポイントを公開するには、そのプロキシのドキュメントを参照してください。/auth/admin` "
+"エンドポイントへのリクエストへのアクセスを制御する必要があります。"
 
 #. type: Plain text
 msgid ""
-"To achieve this directly in {project_name} there are a few options. This "
-"document covers two options, IP restriction and separate ports."
-msgstr ""
-"これを{project_name}で直接実現するには、いくつかのオプションがあります。このドキュメントでは、IP制限とポートの分離の2つのオプションについて説明します。"
+"Two options are available in {project_name} to expose endpoints directly, IP"
+" restriction and separate ports."
+msgstr "{project_name}では、エンドポイントを直接公開するために、IP制限とセパレートポートの2つのオプションが用意されています。"
 
 #. type: Plain text
 msgid ""
-"Once the admin console is no longer accessible on the frontend URL of "
-"Keycloak, you need to configure a fixed admin URL in the default hostname "
+"When the Admin Console becomes inaccessible on the frontend URL of "
+"{project_name}, configure a fixed admin URL in the default hostname "
 "provider."
 msgstr ""
-"{project_name}のフロントエンドURLで管理コンソールにアクセスできなくなったら、デフォルトのホスト名プロバイダーで固定値の管理URLを設定する必要があります。"
+"フロントエンドのURL {project_name} でAdmin "
+"Consoleにアクセスできなくなった場合は、デフォルトのホストネームプロバイダに固定の管理用URLを設定してください。"
 
 #. type: Title ====
 #, no-wrap
-msgid "IP Restriction"
+msgid "IP restriction"
 msgstr "IP制限"
 
 #. type: Plain text
 msgid ""
-"It is possible to restrict access to `/auth/admin` to only specific IP "
-"addresses."
-msgstr "`/auth/admin` へのアクセスを特定のIPアドレスだけに制限することが可能です。"
-
-#. type: Plain text
-msgid ""
-"The following example restricts access to `/auth/admin` to IP addresses in "
-"the range `10.0.0.1` to `10.0.0.255`."
+"You can restrict access to `/auth/admin` to only specific IP addresses. For "
+"example, restrict access to `/auth/admin` to IP addresses in the range "
+"`10.0.0.1` to `10.0.0.255`."
 msgstr ""
-"次の例では、 `/auth/admin` へのアクセスを `10.0.0.1` から `10.0.0.255` の範囲のIPアドレスに制限しています。"
+"特定のIPアドレスのみに`/auth/admin`へのアクセスを制限することができます。例えば、`/auth/admin`へのアクセスを、`10.0.0.1`から`10.0.0.255`の範囲のIPアドレスに制限することができます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -116,8 +104,10 @@ msgstr ""
 "</subsystem>\n"
 
 #. type: Plain text
-msgid "Equivalent configuration using CLI commands:"
-msgstr "CLIコマンドを使用した同等の設定は以下になります。"
+msgid ""
+"You can also restrict access to specific IP addresses by using these CLI "
+"commands.:"
+msgstr "また、これらのCLIコマンドを使って、特定のIPアドレスへのアクセスを制限することもできます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -128,31 +118,26 @@ msgstr ""
 "/subsystem=undertow/configuration=filter/expression-filter=ipAccess:add(,expression=\"path-prefix[/auth/admin] -> ip-access-control(acl={'10.0.0.0/24 allow'})\")\n"
 "/subsystem=undertow/server=default-server/host=default-host/filter-ref=ipAccess:add()\n"
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"For IP restriction if you are using a proxy it is important to configure it "
-"correctly to make sure {project_name} receives the client IP address and not"
-" the proxy IP address"
+"For IP restriction using a proxy, configure the proxy to ensure "
+"{project_name} receives the client IP address and not the proxy IP address."
 msgstr ""
-"IP制限において、プロキシーを使用している場合は、プロキシーのIPアドレスではなく、クライアントのIPアドレスで{project_name}が受け取るようにIPを正しく設定することが重要です。"
+"プロキシを使用してIP制限を行う場合は、{project_name}がプロキシのIPアドレスではなく、クライアントのIPアドレスを受信するようにプロキシを設定してください。"
 
 #. type: Title ====
 #, no-wrap
-msgid "Port Restriction"
+msgid "Port restriction"
 msgstr "ポート制限"
 
 #. type: Plain text
 msgid ""
-"It is possible to expose `/auth/admin` to a different port that is not "
-"exposed on the Internet."
-msgstr "`/auth/admin` をインターネットに公開されていない別のポートに公開することが可能です。"
-
-#. type: Plain text
-msgid ""
-"The following example exposes `/auth/admin` on port `8444` while not "
-"permitting access with the default port `8443`."
+"You can expose `/auth/admin` to a different unexposed port. For example, "
+"expose `/auth/admin` on port `8444` and prevent access to the default port "
+"`8443`."
 msgstr ""
-"次の例では、 `/auth/admin` をポート `8444` で公開しますが、デフォルトポート `8443` ではアクセスを許可しません。"
+"`/auth/admin` を別の未公開ポートに公開することができます。例えば、`/auth/admin` をポート `8444` "
+"で公開し、デフォルトのポート `8443` へのアクセスを防ぐことができます。"
 
 #. type: delimited block -
 #, no-wrap
@@ -213,6 +198,13 @@ msgstr ""
 "    ...\n"
 "</socket-binding-group>\n"
 
+#. type: Plain text
+msgid ""
+"You can expose `/auth/admin` on port `8444` and prevent access to the "
+"default port `8443` by using CLI commands:"
+msgstr ""
+"CLIコマンドを使って、`/auth/admin`をポート`8444`に公開し、デフォルトのポート`8443`にはアクセスできないようにすることができます。"
+
 #. type: delimited block -
 #, no-wrap
 msgid ""
@@ -225,13 +217,13 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"/subsystem=undertow/server=default-server/https-listener=https-admin:add"
-"(socket-binding=https-admin, security-realm=ApplicationRealm, enable-"
-"http2=true)\n"
+"/subsystem=undertow/server=default-server/https-listener=https-"
+"admin:add(socket-binding=https-admin, security-realm=ApplicationRealm, "
+"enable-http2=true)\n"
 msgstr ""
-"/subsystem=undertow/server=default-server/https-listener=https-admin:add"
-"(socket-binding=https-admin, security-realm=ApplicationRealm, enable-"
-"http2=true)\n"
+"/subsystem=undertow/server=default-server/https-listener=https-"
+"admin:add(socket-binding=https-admin, security-realm=ApplicationRealm, "
+"enable-http2=true)\n"
 
 #. type: delimited block -
 #, no-wrap

@@ -3,11 +3,14 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,59 +19,52 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. type: Title ===
-#: source/server_admin/topics/threat/csrf.adoc:2
 #, no-wrap
-msgid "CSRF Attacks"
+msgid "CSRF attacks"
 msgstr "CSRF攻撃"
 
 #. type: Plain text
-#: source/server_admin/topics/threat/csrf.adoc:7
 msgid ""
-"Cross-site request forgery (CSRF) is a web-based attack whereby HTTP "
-"requests are transmitted from a user that the web site trusts or has "
-"authenticated with(e.g. via HTTP redirects or HTML forms).  Any site that "
-"uses cookie based authentication is vulnerable to these types of attacks.  "
-"These attacks are mitigated by matching a state cookie against a posted form"
-" or query parameter."
+"A Cross-site request forgery (CSRF) attack uses HTTP requests from users "
+"that websites have already authenticated. Any site using cookie-based "
+"authentication is vulnerable to CSRF attacks. You can mitigate these attacks"
+" by matching a state cookie against a posted form or query parameter."
 msgstr ""
-"クロスサイト・リクエスト・フォージェリ（CSRF）は、ウェブサイトが信頼するユーザーまたは（HTTPリダイレクトやHTMLフォームを介して）認証されたユーザーからHTTPリクエストが送信される、ウェブベースの攻撃です。Cookieベースの認証を使用するサイトは、これらの種類の攻撃に対して脆弱です。これらの攻撃は、ポストされたフォームまたはクエリー・パラメーターとstate"
-" Cookieの状態を照合することによって緩和されます。"
+"クロスサイトリクエストフォージェリ（CSRF）攻撃は、ウェブサイトが既に認証したユーザーからのHTTPリクエストを利用します。Cookie "
+"ベースの認証を使用しているサイトは、CSRF "
+"攻撃に対して脆弱です。このような攻撃は、投稿されたフォームやクエリパラメータに対してステートクッキーを照合することで軽減できます。"
 
 #. type: Plain text
-#: source/server_admin/topics/threat/csrf.adoc:10
 msgid ""
-"The OAuth 2.0 login specification requires that a state cookie be used and "
-"matched against a transmitted state parameter.  {project_name} fully "
-"implements this part of the specification so all logins are protected."
+"The OAuth 2.0 login specification requires that a state cookie matches "
+"against a transmitted state parameter. {project_name} fully implements this "
+"part of the specification, so all logins are protected."
 msgstr ""
-"OAuth 2.0ログイン仕様では、state "
-"Cookieを使用し、送信されたstateパラメーターと照合する必要があります。{project_name}は仕様のこの部分を完全に実装しているので、すべてのログインが保護されます。"
+"OAuth 2.0のログイン仕様では、ステートクッキーが送信されたステートパラメータと一致することが要求されています。{project_name} "
+"は、この仕様の一部を完全に実装しているため、すべてのログインが保護されます。"
 
 #. type: Plain text
-#: source/server_admin/topics/threat/csrf.adoc:15
 msgid ""
-"The {project_name} Admin Console is a pure JavaScript/HTML5 application that"
-" makes REST calls to the backend {project_name} admin REST API.  These calls"
-" all require bearer token authentication and are made via JavaScript Ajax "
-"calls.  CSRF does not apply here.  The admin REST API can also be configured"
-" to validate the CORS origins as well."
+"The {project_name} Admin Console is a JavaScript/HTML5 application that "
+"makes REST calls to the backend {project_name} admin REST API. These calls "
+"all require bearer token authentication and consist of JavaScript Ajax "
+"calls, so CSRF is impossible. You can configure the admin REST API to "
+"validate the CORS origins."
 msgstr ""
-"{project_name}管理コンソールは、バックエンドの{project_name}管理REST "
-"APIに対してREST呼び出しを行う純粋なJavaScript/HTML5アプリケーションです。これらの呼び出しはすべてベアラートークン認証を必要とし、JavaScript"
-" Ajax呼び出しによって行われます。CSRFはここでは適用されません。管理REST APIは、CORS "
-"Originを検証するように設定することもできます。"
+"{project_name} のアドミンコンソールは、バックエンドの {project_name} admin REST API に REST "
+"呼び出しを行う JavaScript/HTML5 アプリケーションです。これらの呼び出しはすべてベアラートークン認証を必要とし、JavaScript の"
+" Ajax 呼び出しで構成されているため、CSRF は不可能です。CORS オリジンを検証するように admin REST API "
+"を設定することができます。"
 
 #. type: Plain text
-#: source/server_admin/topics/threat/csrf.adoc:18
 msgid ""
-"The only part of {project_name} that really falls into CSRF is the user "
-"account management pages.  To mitigate this {project_name} sets a state "
-"cookie and also embeds the value of this state cookie within hidden form "
-"fields or query parameters in action links.  This query or form parameter is"
-" checked against the state cookie to verify that the call was made by the "
-"user."
+"The user account management section in {project_name} can be vulnerable to "
+"CSRF. To prevent CSRF attacks, {project_name} sets a state cookie and embeds"
+" the value of this cookie in hidden form fields or query parameters within "
+"action links. {project_name} checks the query/form parameter against the "
+"state cookie to verify that the user makes the call."
 msgstr ""
-"CSRFに実際に該当する{project_name}の唯一の部分は、ユーザー・アカウント管理ページです。これを緩和するため、{project_name}はstate"
-" Cookieを設定し、このstate "
-"Cookieの値をhiddenフォーム・フィールドまたはアクションリンクのクエリー・パラメーターに埋め込みます。このクエリーまたはフォームのパラメーターは、state"
-" Cookieと照合されて、呼び出しがユーザーによって行われたことを検証します。"
+"{project_name} のユーザアカウント管理セクションは、CSRFに対して脆弱な可能性があります。CSRF "
+"攻撃を防ぐために、{project_name} "
+"は、ステートクッキーを設定し、このクッキーの値をアクションリンク内の隠しフォームフィールドやクエリパラメータに埋め込みます。{project_name}"
+" は、クエリ/フォームパラメータをステートクッキーと照合して、ユーザが呼び出しを行ったことを確認します。"

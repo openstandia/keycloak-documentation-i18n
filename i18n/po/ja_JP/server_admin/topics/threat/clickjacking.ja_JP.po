@@ -5,19 +5,29 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2017
-# Hiroyuki Wada <wadahiro@gmail.com>, 2021
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Plain text
+msgid "Click the *Security Defenses* tab."
+msgstr "*Security Defenses* タブをクリックします。"
 
 #. type: Title ===
 #, no-wrap
@@ -26,15 +36,15 @@ msgstr "クリック・ジャッキング"
 
 #. type: Plain text
 msgid ""
-"With clickjacking, a malicious site loads the target site in a transparent "
-"iFrame overlaid on top of a set of dummy buttons that are carefully "
-"constructed to be placed directly under important buttons on the target "
-"site.  When a user clicks a visible button, they are actually clicking a "
-"button (such as a \"login\" button) on the hidden page.  An attacker can "
-"steal a user's authentication credentials and access their resources."
+"Clickjacking is a technique of tricking users into clicking on a user "
+"interface element different from what users perceive. A malicious site loads"
+" the target site in a transparent iFrame, overlaid on top of a set of dummy "
+"buttons placed directly under important buttons on the target site. When a "
+"user clicks a visible button, they are clicking a button on the hidden page."
+" An attacker can steal a user's authentication credentials and access their "
+"resources by using this method."
 msgstr ""
-"クリック・ジャッキングは、悪意のあるサイトが標的サイトを透明なIFrameで読み込み、注意深く構築されたダミーボタンのセットを標的サイトの重要なボタンに位置するように上に重ねます。ユーザーが表示されているボタンをクリックすると、実際には隠されたページのボタン（\"ログイン\""
-" ボタンなど）をクリックしています。攻撃者は、ユーザーの認証クレデンシャル情報を盗み、リソースにアクセスできます。"
+"クリックジャッキングとは、ユーザーが認識しているものとは異なるユーザーインターフェース要素をクリックさせて、ユーザーを騙す手法です。悪意のあるサイトでは、対象サイトの重要なボタンの直下に配置されたダミーのボタン群の上に、透明なiFrameを重ねてロードします。ユーザーが見えるボタンをクリックすると、隠れたページのボタンをクリックしたことになります。攻撃者は、この方法を使ってユーザーの認証情報を盗み、ユーザーのリソースにアクセスすることができます。"
 
 #. type: Plain text
 msgid ""
@@ -43,21 +53,32 @@ msgid ""
 "https://datatracker.ietf.org/doc/html/rfc7034[X-FRAME_OPTIONS] and "
 "http://www.w3.org/TR/CSP/[Content-Security-Policy].  You should take a look "
 "at the definition of both of these headers as there is a lot of fine-grain "
-"browser access you can control.  In the admin console you can specify the "
-"values these headers will have.  Go to the `Realm Settings` left menu item "
-"and click the `Security Defenses` tab and make sure you are on the `Headers`"
-" sub-tab."
+"browser access you can control."
 msgstr ""
-"デフォルトでは、{project_name}によるすべてのレスポンスは、これが起こらないように特定のブラウザー・ヘッダーを設定します。具体的には、 "
-"https://datatracker.ietf.org/doc/html/rfc7034[X-FRAME-OPTIONS] と "
-"http://www.w3.org/TR/CSP/[Content-Security-Policy] "
-"を設定します。細かい粒度のブラウザー・アクセスが制御できるので、これらのヘッダーの両方の定義を見てください。管理コンソールでは、これらのヘッダーに含める値を指定できます。左メニュー項目"
-" `Realm Settings` に移動し、 `Security Defenses` タブをクリックし、 `Headers` "
-"サブタブにいることを確認します。"
+"デフォルトでは、{project_name}によるすべての応答は、この現象を防ぐことができるいくつかの特定のブラウザヘッダを設定します。  "
+"具体的には、https://datatracker.ietf.org/doc/html/rfc7034[X-FRAME_OPTIONS]とhttp://www.w3.org/TR/CSP/[Content-"
+"Security-Policy]が設定されます。  "
+"この2つのヘッダの定義を見ると、ブラウザのアクセスを細かく制御できる部分がたくさんあるので、ぜひ参考にしてみてください。"
 
 #. type: Plain text
-msgid "image:{project_images}/security-headers.png[]"
-msgstr "image:{project_images}/security-headers.png[]"
+msgid ""
+"In the Admin Console, you can specify the values of the X-FRAME_OPTIONS and "
+"Content-Security-Policy headers."
+msgstr ""
+"アドミンコンソールでは、X-FRAME_OPTIONSヘッダーとContent-Security-Policyヘッダーの値を指定することができます。"
+
+#. type: Plain text
+msgid "Click the *Realm Settings* menu item."
+msgstr "メニュー項目の「Realm Settings」をクリックします。"
+
+#. type: Block title
+#, no-wrap
+msgid "Security Defenses"
+msgstr "セキュリティ・ディフェンス"
+
+#. type: Plain text
+msgid "image:{project_images}/security-headers.png[Security Defences]"
+msgstr "image:{project_images}/security-headers.png[Security Defences]"
 
 #. type: Plain text
 msgid ""

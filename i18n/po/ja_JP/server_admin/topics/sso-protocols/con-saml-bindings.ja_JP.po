@@ -1,0 +1,176 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Hiroyuki Wada <wadahiro@gmail.com>, 2022
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
+"Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Title ====
+#, no-wrap
+msgid "SAML bindings"
+msgstr "SAMLバインディング"
+
+#. type: Plain text
+msgid "{project_name} supports three binding types."
+msgstr "{project_name} は、3つのバインディングタイプに対応しています。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Redirect binding"
+msgstr "リダイレクトバインディング"
+
+#. type: Plain text
+msgid ""
+"_Redirect_ binding uses a series of browser redirect URIs to exchange "
+"information."
+msgstr "_Redirect_バインディングは、一連のブラウザのリダイレクトURIを使用して情報を交換します。"
+
+#. type: Plain text
+msgid ""
+"A user connects to an application using a browser. The application detects "
+"the user is not authenticated."
+msgstr "あるユーザーがブラウザーを使ってアプリケーションに接続する。アプリケーションは、ユーザーが認証されていないことを検出します。"
+
+#. type: Plain text
+msgid ""
+"The application generates an XML authentication request document and encodes"
+" it as a query parameter in a URI. The URI is used to redirect to the "
+"{project_name} server. Depending on your settings, the application can also "
+"digitally sign the XML document and include the signature as a query "
+"parameter in the redirect URI to {project_name}.  This signature is used to "
+"validate the client that sends the request."
+msgstr ""
+"アプリケーションはXML認証要求文書を生成し、URIのクエリパラメータとしてエンコードする。このURIは、{project_name}サーバへのリダイレクトに使用されます。設定によっては、アプリケーションはXMLドキュメントにデジタル署名し、その署名を{project_name}へのリダイレクトURIのクエリパラメータとして含めることもできます。"
+"  この署名は、リクエストを送信したクライアントを検証するために使用されます。"
+
+#. type: Plain text
+msgid "The browser redirects to {project_name}."
+msgstr "ブラウザは{project_name}にリダイレクトされます。"
+
+#. type: Plain text
+msgid ""
+"The server extracts the XML auth request document and verifies the digital "
+"signature, if required."
+msgstr "サーバはXML認証要求文書を抽出し、必要であれば電子署名を検証する。"
+
+#. type: Plain text
+msgid "The user enters their authentication credentials."
+msgstr "ユーザーは認証情報を入力する。"
+
+#. type: Plain text
+msgid ""
+"After authentication, the server generates an XML authentication response "
+"document. The document contains a SAML assertion that holds metadata about "
+"the user, including name, address, email, and any role mappings the user "
+"has.  The document is usually digitally signed using XML signatures, and may"
+" also be encrypted."
+msgstr ""
+"認証後、サーバーはXML認証応答文書を生成する。この文書には、名前、住所、電子メール、およびユーザが持つすべてのロールマッピングなど、ユーザに関するメタデータを保持する"
+" SAML アサーションが含まれる。  この文書は、通常、XML署名を使用してデジタル署名され、暗号化されることもある。"
+
+#. type: Plain text
+msgid ""
+"The XML authentication response document is encoded as a query parameter in "
+"a redirect URI. The URI brings the browser back to the application.  The "
+"digital signature is also included as a query parameter."
+msgstr ""
+"XML認証応答文書は、リダイレクトURIのクエリパラメータとしてエンコードされる。このURIにより、ブラウザはアプリケーションに戻ります。  "
+"デジタル署名もクエリパラメータとして含まれます。"
+
+#. type: Plain text
+msgid ""
+"The application receives the redirect URI and extracts the XML document."
+msgstr "アプリケーションはリダイレクトURIを受け取り、XMLドキュメントを抽出する。"
+
+#. type: Plain text
+msgid ""
+"The application verifies the realm's signature to ensure it is receiving a "
+"valid authentication response.  The information inside the SAML assertion is"
+" used to make access decisions or display user data."
+msgstr ""
+"アプリケーションは realm の署名を検証し、有効な認証応答を受け取っていることを確認します。  SAML "
+"アサーション内の情報は、アクセスの判断やユーザデータの表示に使用されます。"
+
+#. type: Title =====
+#, no-wrap
+msgid "POST binding"
+msgstr "POSTバインディング"
+
+#. type: Plain text
+msgid ""
+"_POST_ binding is similar to _Redirect_ binding but _POST_ binding exchanges"
+" XML documents using POST requests instead of using GET requests. _POST_ "
+"Binding uses JavaScript to make the browser send a POST request to the "
+"{project_name} server or application when exchanging documents. HTTP "
+"responds with an HTML document which contains an HTML form containing "
+"embedded JavaScript.  When the page loads, the JavaScript automatically "
+"invokes the form."
+msgstr ""
+"POST_バインディングは_Redirect_バインディングと似ていますが、_POST_バインディングはGETリクエストの代わりにPOSTリクエストを使ってXMLドキュメントを交換します。_POST_バインディングは、ドキュメントを交換する際にJavaScriptを使用して、ブラウザが{project_name}サーバやアプリケーションにPOSTリクエストを送信するようにします。HTTPは、JavaScriptが埋め込まれたHTMLフォームを含むHTMLドキュメントで応答します。"
+"  ページがロードされると、JavaScriptは自動的にフォームを呼び出します。"
+
+#. type: Plain text
+msgid "_POST_ binding is recommended due to two restrictions:"
+msgstr "2つの制約があるため、_POST_バインディングを推奨します。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"*Security* -- With _Redirect_ binding, the SAML response is part of the URL."
+" It is less secure as it is possible to capture the response in logs.\n"
+msgstr ""
+"*セキュリティ* -- "
+"_Redirect_バインディングでは、SAMLレスポンスはURLの一部となる。これは、ログにレスポンスを記録することが可能であるため、安全性が低い。\n"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"*Size* -- Sending the document in the HTTP payload provides more scope for "
+"large amounts of data than in a limited URL.\n"
+msgstr ""
+"*サイズ* -- HTTPペイロードでドキュメントを送信することで、限られたURLで送信するよりも大量のデータに対してより広い範囲を提供します。\n"
+
+#. type: Title =====
+#, no-wrap
+msgid "ECP"
+msgstr "ECP"
+
+#. type: Plain text
+msgid ""
+"Enhanced Client or Proxy (ECP) is a SAML v.2.0 profile which allows the "
+"exchange of SAML attributes outside the context of a web browser. It is "
+"often used by REST or SOAP-based clients."
+msgstr ""
+"拡張クライアントまたはプロキシ（ECP）は、SAML v.2.0 プロファイルであり、Web ブラウザのコンテキスト外で SAML "
+"属性の交換を可能にするものである。これは、REST または SOAP ベースのクライアントでよく使用される。"
+
+#. type: Title ====
+#, no-wrap
+msgid "{project_name} Server SAML URI Endpoints"
+msgstr "{project_name}サーバーSAML URIエンドポイント"
+
+#. type: Plain text
+msgid "{project_name} has one endpoint for all SAML requests."
+msgstr "{project_name} は、すべてのSAMLリクエストに対して1つのエンドポイントを持つ。"
+
+#. type: Plain text
+msgid "`http(s)://authserver.host/auth/realms/{realm-name}/protocol/saml`"
+msgstr "`http(s)://authserver.host/auth/realms/{realm-name}/protocol/saml`"
+
+#. type: Plain text
+msgid "All bindings use this endpoint."
+msgstr "すべてのバインディングはこのエンドポイントを使用します。"

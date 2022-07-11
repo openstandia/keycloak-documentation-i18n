@@ -5,14 +5,14 @@
 # 
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # Hiroyuki Wada <wadahiro@gmail.com>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,6 +34,57 @@ msgstr "SAML SPクライアント・アダプターの変更"
 #, no-wrap
 msgid "Migration Changes"
 msgstr "移行に伴う変更"
+
+#. type: Title ===
+#, no-wrap
+msgid "Migrating to 16.0.0"
+msgstr "16.0.0への移行"
+
+#. type: Title ====
+#, no-wrap
+msgid "Proxy environment variables"
+msgstr "プロキシー環境変数"
+
+#. type: Plain text
+msgid ""
+"{project_name} now respects the standard `HTTP_PROXY`, `HTTPS_PROXY` and "
+"`NO_PROXY` environment variables for outgoing HTTP requests. This change "
+"could lead to unexpected use of a proxy server if you have for example the "
+"`HTTP_PROXY` variable defined but have no explicit proxy mappings specified "
+"in your SPI configuration. To prevent {project_name} from using those "
+"environment variables, you can explicitly create a no proxy route for all "
+"requests as `.*;NO_PROXY`."
+msgstr ""
+"{project_name}は、HTTPリクエストの送信時に標準の `HTTP_PROXY` 、 `HTTPS_PROXY` 、 `NO_PROXY` "
+"環境変数を尊重するようになりました。この変更により、たとえば `HTTP_PROXY` "
+"変数が定義されていて、SPIの設定に明示的なプロキシー・マッピングが指定されていない場合、予期せぬプロキシー・サーバーの使用が発生する可能性があります。{project_name}"
+" がこれらの環境変数を使用しないようにするには、すべてのリクエストに対して `.*;NO_PROXY` "
+"として明示的にノー・プロキシー・ルートを作成することができます。"
+
+#. type: Plain text
+msgid ""
+"For more details, see the link:{installguide_link}#_proxy_env_vars[related "
+"chapter in the {installguide_name}]."
+msgstr ""
+"詳しくは link:{installguide_link}#_proxy_env_vars[{installguide_name}の関連する章] "
+"を参照してください。"
+
+#. type: Title ==
+#, no-wrap
+msgid "Deprecated features in the {project_operator}"
+msgstr "{project_operator}で非推奨の機能"
+
+#. type: Plain text
+msgid ""
+"With this release, we have deprecated and/or marked as unsupported some "
+"features in the {project_operator}. This concerns the Backup CRD and the "
+"operator managed Postgres Database. For more details, please see the "
+"link:{installguide_link}#_operator_production_usage[related chapter in the "
+"{installguide_name}]."
+msgstr ""
+"本リリースでは、{project_operator}の機能の一部を非推奨とし、サポート対象外としました。これは、Backup "
+"CRDとオペレーター管理のPostgres Databaseに関するものです。詳細については、 "
+"link:{installguide_link}#_operator_production_usage[{installguide_name}の関連する章]を参照してください。"
 
 #. type: Title ===
 #, no-wrap
@@ -330,6 +381,73 @@ msgstr ""
 "`Valid Redirect URIs` "
 "オプションと同様に、ワイルドカードまたは相対パスを使用する可能性がありますが、セキュリティー上の理由から、通常はできるだけ具体的な値を使用することをお勧めします。"
 
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 22 as the underlying "
+"container. This does not directly involve any specific {project_name} server"
+" functionality, but a few changes related to the migration, which are worth "
+"mentioning."
+msgstr ""
+"{project_name}サーバーは、基盤となるコンテナーとしてWildfly "
+"22を使用するようにアップグレードされました。これは、特定の{project_name}サーバーの機能に直接関わるものではありませんが、移行に関連するいくつかの変更点があり、言及する価値があります。"
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 22 server. For"
+" example, Infinispan is now `11.0.8.Final`."
+msgstr ""
+"依存関係はWildfly 22サーバーで使用されるバージョンに更新されました。たとえば、Infinispanは現在 `11.0.8.Final` です。"
+
+#. type: Plain text
+msgid ""
+"A few configuration changes exist in the `standalone(-ha).xml` and "
+"`domain.xml` files. You should follow the <<_install_new_version>> section "
+"to handle the migration of configuration files automatically. If more detail"
+" is needed, because, for example, you did some configuration changes on your"
+" own, the list of the most important changes follows:"
+msgstr ""
+"`standalone(-ha).xml` と `domain.xml` "
+"にはいくつかの設定変更があります。設定ファイルの自動移行を処理するには、<<_install_new_version>>セクションに従ってください。たとえば、自分で設定を変更したため、より詳細な情報が必要な場合を考慮して、最も重要な変更の一覧を以下に示します。"
+
+#. type: Plain text
+msgid ""
+"The "
+"link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Config_SmallRye[Eclipse"
+" MicroProfile Config], "
+"link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Health_SmallRye[Eclipse"
+" MicroProfile Health], and "
+"link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Metrics_SmallRye[Eclipse"
+" MicroProfile Metrics] subsystems were replaced by "
+"link:https://docs.wildfly.org/22/Admin_Guide.html#Health[WildFly subsystem "
+"for health] and "
+"link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Metrics_SmallRye[WildFly"
+" subsystem for base metrics]."
+msgstr ""
+"link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Config_SmallRye[Eclipse"
+" MicroProfile "
+"Config]、link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Health_SmallRye[Eclipse"
+" MicroProfile Health]、および "
+"link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Metrics_SmallRye[Eclipse"
+" MicroProfile Metrics] サブシステムは "
+"link:https://docs.wildfly.org/22/Admin_Guide.html#Health[WildFly subsystem "
+"for health] および "
+"link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Metrics_SmallRye[WildFly"
+" subsystem for base metrics]で置き換えられました。"
+
+#. type: Plain text
+msgid ""
+"The default Wildfly configuration now utilizes the ability to make use of an"
+" automatically generated self-signed certificate with Elytron. Refer to "
+"link:https://docs.wildfly.org/22/WildFly_Elytron_Security.html#update-"
+"wildfly-to-use-the-default-elytron-components-for-application-"
+"authentication[a dedicated `applicationSSC` server SSL context section] for "
+"details."
+msgstr ""
+"Wildflyのデフォルト設定では、Elytronで自動的に生成された自己署名証明書を利用する機能が利用できるようになりました。詳細はlink:https://docs.wildfly.org/22/WildFly_Elytron_Security.html#update-"
+"wildfly-to-use-the-default-elytron-components-for-application-"
+"authentication[a dedicated `applicationSSC` server SSL context "
+"section]を参照してください。"
+
 #. type: Title ===
 #, no-wrap
 msgid "Migrating to 12.0.0"
@@ -622,7 +740,7 @@ msgstr ""
 " "
 "。これは、InstagramのユーザーIDが古いAPIと新しいAPIの間で互換性がないためですが、新しいAPIは移行を許可するために一時的に新しいユーザーIDと古いユーザーIDの両方を返します。Keycloakは、ユーザーがログインすると、IDを自動的に移行します。"
 
-#. type: Title ====
+#. type: Title ===
 #, no-wrap
 msgid "Non-standard token introspection endpoint removed"
 msgstr "非標準のトークン・イントロスペクション・エンドポイントが削除されました"
@@ -1249,12 +1367,12 @@ msgid ""
 "client role in the token, are automatically added to the `aud` claim in the "
 "access token now. On the other hand, an access token may not automatically "
 "contain the audience of the frontend client, for which it was issued. Read "
-"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
+"the link:{adminguide_link}#audience-support[{adminguide_name}] for more "
+"details."
 msgstr ""
-"すべてのクライアント（認証されたユーザーはトークン内に少なくとも1つのクライアント・ロールを持ちます）のオーディエンスは、アクセストークン内の "
-"`aud` "
-"クレームに自動的に追加されます。一方、アクセストークンには、発行されたフロントエンド・クライアントのオーディエンスが自動的に含まれるわけではありません。詳細については、"
-" link:{adminguide_link}#_audience[{adminguide_name}] を参照してください。"
+"認証されたユーザが少なくとも一つのクライアントロールを持つすべてのクライアントのオーディエンスは、現在アクセストークンの `aud` claim "
+"に自動的に追加されます。一方、アクセストークンは、それが発行されたフロントエンドクライアントのオーディエンスを自動的に含まない場合があります。詳しくは "
+"link:{adminguide_link}#audience-support[{adminguide_name}] をご覧ください。"
 
 #. type: Title ====
 #, no-wrap
@@ -1639,9 +1757,10 @@ msgid ""
 "link:{authorizationguide_link}#_enforcer_js_adapter[{authorizationguide_name}]"
 " for details."
 msgstr ""
-"以前と同じ動作を維持しながら、UMA 2.0によって導入された変更に準拠するように、{project_name}認可JavaScriptアダプター"
-"（keycloak-authz.js）が変更されました。主な変更点は、認可リクエストを表す特定のオブジェクト・タイプを想定する "
-"`authorization` メソッドと `entitlement` "
+"以前と同じ動作を維持しながら、UMA "
+"2.0によって導入された変更に準拠するように、{project_name}認可JavaScriptアダプター（keycloak-"
+"authz.js）が変更されました。主な変更点は、認可リクエストを表す特定のオブジェクト・タイプを想定する `authorization` メソッドと "
+"`entitlement` "
 "メソッドの両方を呼び出す方法です。この新しいオブジェクト・タイプは、UMAグラントタイプでサポートされているさまざまなパラメーターをサポートすることにより、サーバからパーミッションを取得するより柔軟な方法を提供します。詳細は、"
 " "
 "link:{authorizationguide_link}#_enforcer_js_adapter[{authorizationguide_name}]"
@@ -2288,8 +2407,8 @@ msgid ""
 "auth-method in web.xml)"
 msgstr ""
 "以前は、SAMLまたはOIDCのKeycloakサブシステム・アダプターを、WildFlyまたはJBoss "
-"EAPにすでにインストールしていた場合に、Keycloakを使用していたか否かに関わらず、全てのアプリケーションにKeycloakクライアントのjarを自動的に含めていました。現在は、そのアダプターのためにKeycloak認証を（サブシステムまたはweb"
-".xml内のauth-methodを通じて）有効にしている場合にのみ、これらのライブラリーはデプロイメントに追加されることになります。"
+"EAPにすでにインストールしていた場合に、Keycloakを使用していたか否かに関わらず、全てのアプリケーションにKeycloakクライアントのjarを自動的に含めていました。現在は、そのアダプターのためにKeycloak認証を（サブシステムまたはweb.xml内のauth-"
+"methodを通じて）有効にしている場合にのみ、これらのライブラリーはデプロイメントに追加されることになります。"
 
 #. type: Title ====
 #, no-wrap
@@ -2411,13 +2530,13 @@ msgstr "OAuth2トークン・イントロスペクション"
 #. type: Plain text
 msgid ""
 "In order to add more compliance with OAuth2 specification, we added a new "
-"endpoint for token introspection.  The new endpoint can reached at `/realms"
-"/{realm-name}/protocols/openid-connect/token/introspect` and it is solely "
-"based on `RFC-7662`."
+"endpoint for token introspection.  The new endpoint can reached at "
+"`/realms/{realm-name}/protocols/openid-connect/token/introspect` and it is "
+"solely based on `RFC-7662`."
 msgstr ""
-"OAuth2の仕様により合わせるために、トークン・イントロスペクション用の新しいエンドポイントを追加しました。新しいエンドポイントは `/realms"
-"/{realm-name}/protocols/openid-connect/token/introspect` で取得することができ、 "
-"`RFC-7662` にのみ基づいています。"
+"OAuth2の仕様により合わせるために、トークン・イントロスペクション用の新しいエンドポイントを追加しました。新しいエンドポイントは "
+"`/realms/{realm-name}/protocols/openid-connect/token/introspect` で取得することができ、"
+" `RFC-7662` にのみ基づいています。"
 
 #. type: Plain text
 msgid ""
@@ -2427,8 +2546,7 @@ msgid ""
 "provides a more standard and secure introspection endpoint."
 msgstr ""
 "`/realms/{realm-name}/protocols/openid-connect/validate` "
-"エンドポイントは現在廃止されています。新しいイントロスペクション・エンドポイントにできるだけ早く移動することを強くお勧めします。この変更の理由は"
-"、RFC-7662が、より標準的でセキュリティー上安全なイントロスペクション・エンドポイントが提供していることです。"
+"エンドポイントは現在廃止されています。新しいイントロスペクション・エンドポイントにできるだけ早く移動することを強くお勧めします。この変更の理由は、RFC-7662が、より標準的でセキュリティー上安全なイントロスペクション・エンドポイントが提供していることです。"
 
 #. type: Plain text
 msgid ""
@@ -2544,8 +2662,8 @@ msgid ""
 "error codes.  See documentation for more details if you want to catch and "
 "handle adapter error conditions."
 msgstr ""
-"web.xml内のform-error-pageは、クライアント・アダプター認証エラーにより動作しなくなりました"
-"。さまざまなHTTPエラーコード用にerror-"
+"web.xml内のform-error-"
+"pageは、クライアント・アダプター認証エラーにより動作しなくなりました。さまざまなHTTPエラーコード用にerror-"
 "pageを定義する必要があります。アダプターのエラー条件を確認および処理したい場合、詳細はドキュメントを参照してください。"
 
 #. type: Title ====
@@ -2670,8 +2788,7 @@ msgid ""
 "  As Infinispan is the only provider the realmCache and userCache objects "
 "are no longer needed and can be removed."
 msgstr ""
-"Infinispanは現在デフォルトでレルムとユーザーのキャッシュ・プロバイダーのみとなっています。非クラスターモードでは、ローカルのInfinispanキャッシュが使用されます。また、カスタムのイン・メモリー・キャッシュと非キャッシュ・プロバイダーは削除しました"
-"。realmCacheまたはuserCacheがkeycloak-"
+"Infinispanは現在デフォルトでレルムとユーザーのキャッシュ・プロバイダーのみとなっています。非クラスターモードでは、ローカルのInfinispanキャッシュが使用されます。また、カスタムのイン・メモリー・キャッシュと非キャッシュ・プロバイダーは削除しました。realmCacheまたはuserCacheがkeycloak-"
 "server.jsonでmemまたはnoneに設定されている場合は、それらを削除してください。Infinispanは、realmCacheとuserCacheのオブジェクトを必要としなくなった唯一のプロバイダーなので、それらを削除することができます。"
 
 #. type: Title ====
@@ -2687,8 +2804,7 @@ msgid ""
 "server.json to mem, jpa or mongo please remove it.  As Infinispan is the "
 "only provider the userSession object is no longer needed and can be removed."
 msgstr ""
-"Infinispanは現在デフォルトで唯一のユーザー・セッション・プロバイダーです。非クラスター・モードでは、ローカルのInfinispanキャッシュが使用されます。また、JPAとMongoユーザー・セッション・プロバイダーを削除しました。ユーザー"
-"・セッションをkeycloak-"
+"Infinispanは現在デフォルトで唯一のユーザー・セッション・プロバイダーです。非クラスター・モードでは、ローカルのInfinispanキャッシュが使用されます。また、JPAとMongoユーザー・セッション・プロバイダーを削除しました。ユーザー・セッションをkeycloak-"
 "server.jsonでmem、jpaまたはmongoに設定している場合、それを削除してください。Infinispanは、ユーザー・セッションのオブジェクトを必要としなくなった唯一のプロバイダーなので、それを削除することができます。"
 
 #. type: Plain text
@@ -2910,17 +3026,18 @@ msgid ""
 "parameters are used to select the required flow.  The old endpoints "
 "(`/realms/{realm-name}/protocols/openid-connect/login`, `/realms/{realm-"
 "name}/protocols/openid-connect/grants/access`, `/realms/{realm-"
-"name}/protocols/openid-connect/refresh`, `/realms/{realm-name}/protocols"
-"/openid-connect/access/codes`) are now deprecated and will be removed in a "
-"future version."
+"name}/protocols/openid-connect/refresh`, `/realms/{realm-"
+"name}/protocols/openid-connect/access/codes`) are now deprecated and will be"
+" removed in a future version."
 msgstr ""
 "OpenID "
 "Connect仕様に合わせるために、認証とトークンのエンドポイントは、単一の認証エンドポイントと単一のトークン・エンドポイントを持つように変更されました。仕様どおりに"
 " `response_type` と `grant_type` パラメーターが使用され、必要なフローを選択できるようになります。古いエンドポイント( "
 "`/realms/{realm-name}/protocols/openid-connect/login` , `/realms/{realm-"
 "name}/protocols/openid-connect/grants/access` , `/realms/{realm-"
-"name}/protocols/openid-connect/refresh` , `/realms/{realm-name}/protocols"
-"/openid-connect/access/codes` )は現在廃止されており、今後の新しいバージョンでは削除されます。"
+"name}/protocols/openid-connect/refresh` , `/realms/{realm-"
+"name}/protocols/openid-connect/access/codes` "
+")は現在廃止されており、今後の新しいバージョンでは削除されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -3055,8 +3172,8 @@ msgid ""
 " extension module name is org.keycloak.keycloak-as7-subsystem."
 msgstr ""
 "as7-eap-subsystemとkeycloak-wildfly-subsystemは、1つのkeycloak-"
-"subsystemに統合されました。既存のstandalone.xmlまたはdomain.xmlを持っている場合は、ファイルの先頭あたりを編集し、拡張モジュール名をorg.keycloak"
-".keycloak-subsystemに変更する必要があります。AS7だけは、拡張モジュール名がorg.keycloak.keycloak-"
+"subsystemに統合されました。既存のstandalone.xmlまたはdomain.xmlを持っている場合は、ファイルの先頭あたりを編集し、拡張モジュール名をorg.keycloak.keycloak-"
+"subsystemに変更する必要があります。AS7だけは、拡張モジュール名がorg.keycloak.keycloak-"
 "as7-subsystemになります。"
 
 #. type: Plain text
@@ -3106,8 +3223,8 @@ msgid ""
 "logging audit listener through the admin console."
 msgstr ""
 "情報レベルのロギングの多くがデバッグレベルに変更されました。また、デフォルトではレルムにjboss-"
-"logging監査リスナーが無くなりました。ユーザーがログイン、ログアウト、パスワードの変更などをする際にログの出力が必要な場合は"
-"、管理コンソールでjboss-logging監査リスナーを有効にしてください。"
+"logging監査リスナーが無くなりました。ユーザーがログイン、ログアウト、パスワードの変更などをする際にログの出力が必要な場合は、管理コンソールでjboss-"
+"logging監査リスナーを有効にしてください。"
 
 #. type: Title ===
 #, no-wrap

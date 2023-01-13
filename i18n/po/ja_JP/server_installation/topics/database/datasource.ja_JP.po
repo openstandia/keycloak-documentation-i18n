@@ -3,11 +3,15 @@
 # This file is distributed under the same license as the keycloak-documentation-i18n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Hiroyuki Wada <wadahiro@gmail.com>, 2018
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2017\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,25 +19,34 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: Title ==
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
 #. type: Block title
 #, no-wrap
-msgid "Declare Your JDBC Drivers"
-msgstr "JDBCドライバーの宣言"
+msgid "Procedure"
+msgstr "手順"
 
 #. type: Title ===
 #, no-wrap
-msgid "Modify the {project_name} Datasource"
+msgid "Modifying the {project_name} datasource"
 msgstr "{project_name}データソースの変更"
 
 #. type: Plain text
 msgid ""
-"After declaring your JDBC driver, you have to modify the existing datasource"
-" configuration that {project_name} uses to connect it to your new external "
-"database.  You'll do this within the same configuration file and XML block "
-"that you registered your JDBC driver in.  Here's an example that sets up the"
-" connection to your new database:"
+"You modify the existing datasource configuration that {project_name} uses to"
+" connect it to your new external database.  You'll do this within the same "
+"configuration file and XML block that you registered your JDBC driver in.  "
+"Here's an example that sets up the connection to your new database:"
 msgstr ""
-"JDBCドライバーを宣言したら、{project_name}が新しい外部データベースに接続するために使用する既存のデータソース設定を変更する必要があります。これは、JDBCドライバーを登録したのと同じ設定ファイルとXMLブロック内で行います。サンプルとして、新しいデータベースへの接続を設定すると以下のとおりになります。"
+"{project_name}が新しい外部データベースに接続するために使用する既存のデータソース設定を変更します。これは、JDBCドライバーを登録したのと同じ設定ファイルとXMLブロック内で行います。サンプルとして、新しいデータベースへの接続を設定すると以下のとおりになります。"
+
+#. type: Block title
+#, no-wrap
+msgid "Declare Your JDBC Drivers"
+msgstr "JDBCドライバーの宣言"
 
 #. type: delimited block -
 #, no-wrap
@@ -75,19 +88,30 @@ msgstr ""
 "  </subsystem>\n"
 
 #. type: Plain text
-msgid ""
-"Search for the `datasource` definition for `KeycloakDS`.  You'll first need "
-"to modify the `connection-url`.  The documentation for your vendor's JDBC "
-"implementation should specify the format for this connection URL value."
-msgstr ""
-"`KeycloakDS` 用の `datasource` 定義を検索します。まず `connection-url` "
-"を変更する必要があります。この接続URL値の形式は、ベンダーのJDBC実装のドキュメントで指定されています。"
+msgid "You have already declared your JDBC driver."
+msgstr "JDBCドライバーはすでに宣言しています。"
+
+#. type: Plain text
+msgid "Search for the `datasource` definition for `KeycloakDS`."
+msgstr "`KeycloakDS` の `datasource` 定義を検索します。"
 
 #. type: Plain text
 msgid ""
-"Next define the `driver` you will use.  This is the logical name of the JDBC"
-" driver you declared in the previous section of this chapter."
-msgstr "次に、使用する `driver` を定義します。これは、この章の前のセクションで宣言したJDBCドライバーの論理名になります。"
+"You'll first need to modify the `connection-url`.  The documentation for "
+"your vendor's JDBC implementation should specify the format for this "
+"connection URL value."
+msgstr ""
+"まず `connection-url` を変更する必要があります。この接続URL値の形式は、ベンダーのJDBC実装のドキュメントで指定されています。"
+
+#. type: Plain text
+msgid "Define the `driver` you will use."
+msgstr "次に、使用する `driver` を定義します。"
+
+#. type: Plain text
+msgid ""
+"This is the logical name of the JDBC driver you declared in the previous "
+"section of this chapter."
+msgstr "これは、この章の前のセクションで宣言したJDBCドライバーの論理名になります。"
 
 #. type: Plain text
 msgid ""
@@ -102,12 +126,13 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Finally, with PostgreSQL at least, you need to define the database username "
-"and password that is needed to connect to the database.  You may be worried "
-"that this is in clear text in the example.  There are methods to obfuscate "
-"this, but this is beyond the scope of this guide."
+"Define the database username and password that is needed to connect to the "
+"database.  This step is necessary for at least PostgreSQL. You may be "
+"concerned that these credentials are in clear text in the example. Methods "
+"exist to obfuscate these credentials, but these methods are beyond the scope"
+" of this guide."
 msgstr ""
-"最後に、少なくともPostgreSQLでは、データベースへの接続に必要なデータベースのユーザー名とパスワードを定義する必要があります。このサンプルでは、これが簡単なテキストであることを心配されるかもしれませんが、難読化する方法は複数あります。しかし、それはこのガイドの範囲外となります。"
+"データベースへの接続に必要なデータベースのユーザー名とパスワードを定義します。このステップは少なくともPostgreSQLでは必要です。この例では、これらのクレデンシャルが平文で表示されていることが気になるかもしれません。これらのクレデンシャルを難読化する方法がありますが、その方法はこのガイドの範囲外です。"
 
 #. type: Plain text
 msgid ""

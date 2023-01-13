@@ -687,10 +687,10 @@ msgid ""
 "execution and the `Password with OTP` flow are set to *Alternative*. If they"
 " are set to *Required*, the user has to enter WebAuthn, password, and OTP."
 msgstr ""
-"ユーザーがWebAuthnのパスワードレス認証情報を記録している場合、この認証情報を使って直接ログインすることができます。これがパスワードレスログインです。WebAuthn"
-" Passwordless` の実行と `Password with OTP` フローが *Alternative* に設定されているため、ユーザーは "
-"*Password with OTP* "
-"を選択することもできます。これらが*Required*に設定されている場合、ユーザはWebAuthn、パスワード、OTPを入力する必要があります。"
+"ユーザーがWebAuthnのパスワードレス・クレデンシャルを記録している場合、このクレデンシャルを使って直接ログインすることができます。これがパスワードレス・ログインです。"
+" `WebAuthn Passwordless` のエグゼキューションと `Password with OTP` フローが *Alternative* "
+"に設定されているため、ユーザーは *Password with OTP* を選択することもできます。これらが *Required* "
+"に設定されている場合、ユーザーはWebAuthn、パスワード、OTPを入力する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -701,8 +701,9 @@ msgid ""
 "credentials, the user must enter the password and then the OTP. If the user "
 "has no OTP credential, they will be asked to record one."
 msgstr ""
-"WebAuthnパスワードレス認証で*Try another "
-"way*リンクを選択した場合、ユーザは`パスワード`と`セキュリティキー`（WebAuthnパスワードレス）のどちらかを選択することができます。パスワードを選択した場合、ユーザは割り当てられたワンタイムパスワードでログインを続ける必要があります。WebAuthnの認証情報を持っていない場合、ユーザーはパスワードを入力し、次にOTPを入力する必要があります。ユーザーが"
+"WebAuthnパスワードレス認証で *Try another way* リンクを選択した場合、ユーザーは `Password` と `Security"
+" Key` "
+"（WebAuthnパスワードレス）のどちらかを選択することができます。パスワードを選択した場合、ユーザーは割り当てられたワンタイムパスワードでログインを続ける必要があります。WebAuthnのクレデンシャルを持っていない場合、ユーザーはパスワードを入力し、次にOTPを入力する必要があります。ユーザーが"
 " OTP クレデンシャルを持っていない場合は、OTP を記録するように求められます。"
 
 #. type: delimited block =
@@ -712,17 +713,16 @@ msgid ""
 "credential. For a user to have a Webauthn credential, an administrator must "
 "add a required action to the user. Do this by:"
 msgstr ""
-"WebAuthn Passwordless の実行が *Required* ではなく *Alternative* "
-"に設定されているため、このフローはユーザーに WebAuthn クレデンシャルの登録を要求することはありません。ユーザーに Webauthn "
-"クレデンシャルを持たせるためには、管理者がそのユーザーに必須アクションを追加する必要があります。これを行うには"
+"WebAuthn Passwordlessのエグゼキューションが *Required* ではなく *Alternative* "
+"に設定されているため、このフローはユーザーにWebAuthnクレデンシャルの登録を要求することはありません。ユーザーにWebauthnクレデンシャルを持たせるためには、管理者がそのユーザーに必須アクションを追加する必要があります。これを行うには、以下のようにします。"
 
 #. type: delimited block =
 msgid ""
 "Enabling the *Webauthn Register Passwordless* required action in the realm "
 "(see the <<_webauthn,WebAuthn>> documentation)."
 msgstr ""
-"レルムで*Webauthn Register "
-"Passwordless*の必須アクションを有効にします(&lt;&gt;の<_webauthn,WebAuthn>ドキュメントを</_webauthn,WebAuthn>参照<_webauthn,WebAuthn>)</_webauthn,WebAuthn>。"
+"レルムで *Webauthn Register Passwordless* "
+"の必須アクションを有効にします（<<_webauthn,WebAuthn>>のドキュメントを参照してください）。"
 
 #. type: delimited block =
 msgid ""
@@ -730,7 +730,7 @@ msgid ""
 "xref:ref-user-credentials_{context}[Credentials] management menu."
 msgstr ""
 "ユーザーの xref:ref-user-credentials_{context}[Credentials] 管理メニューの *Credential "
-"Reset* 部分を使用して、必要なアクションを設定すること。"
+"Reset* 部分を使用した必須アクションの設定。"
 
 #. type: delimited block =
 msgid ""
@@ -742,29 +742,30 @@ msgid ""
 "unnecessary for {project_name} and sub-optimal for user experience. To "
 "correct this problem, you can:"
 msgstr ""
-"このような高度なフローを作成すると、副作用が発生することがあります。例えば、ユーザーのパスワードをリセットする機能を有効にした場合、パスワードフォームからアクセスできるようになります。デフォルトの"
+"このような高度なフローを作成すると、副作用が発生することがあります。たとえば、ユーザーのパスワードをリセットする機能を有効にした場合、パスワードフォームからアクセスできるようになります。デフォルトの"
 " `Reset Credentials` フローでは、ユーザーはユーザー名を入力しなければなりません。ユーザーは `Browser Password-"
-"less` フローですでにユーザー名を入力しているので、このアクションは {project_name} "
-"にとって不要であり、ユーザーエクスペリエンスにとって最適とは言えません。この問題を修正するには、次のようにします。"
+"less` "
+"フローですでにユーザー名を入力しているので、このアクションは{project_name}にとって不要であり、ユーザー・エクスペリエンスにとって最適とは言えません。この問題を修正するには、次のようにします。"
 
 #. type: delimited block =
 msgid ""
 "Copy the `Reset Credentials` flow. Set its name to `Reset Credentials for "
 "password-less`, for example."
 msgstr ""
-"Reset Credentials` フローをコピーします。その名前を、例えば `Reset Credentials for password-"
+"`Reset Credentials` フローをコピーします。その名前を、たとえば `Reset Credentials for password-"
 "less` に設定します。"
 
 #. type: delimited block =
 msgid "Select *Delete* in the *Actions* menu of the *Choose user* execution."
-msgstr "ユーザー選択」実行の「アクション」メニューで「削除」を選択します。"
+msgstr "*Choose user* のエグゼキューションの *Actions* メニューで *Delete* を選択します。"
 
 #. type: delimited block =
 msgid ""
 "In the *Bindings* menu, change the reset credential flow from *Reset "
 "Credentials* to *Reset Credentials for password-less*"
 msgstr ""
-"バインディング*メニューで、クレデンシャルのリセットフローを*クレデンシャルのリセット*から*パスワードなしのクレデンシャルのリセット*に変更します。"
+"*Bindings* メニューで、クレデンシャルのリセットフローを *Reset Credentials* から *Reset Credentials "
+"for password-less*に変更します。"
 
 #. type: Title ===
 #, no-wrap

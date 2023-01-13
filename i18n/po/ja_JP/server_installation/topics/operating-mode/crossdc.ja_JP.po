@@ -225,7 +225,7 @@ msgstr ""
 #. type: Title ===
 #, no-wrap
 msgid "Using cross-site replication mode"
-msgstr "クロスサイトレプリケーションモードの使用"
+msgstr "クロスサイト・レプリケーション・モードの使用"
 
 #. type: Plain text
 msgid ""
@@ -234,13 +234,13 @@ msgid ""
 "different geographic regions. When using this mode, each data center will "
 "have its own cluster of {project_name} servers."
 msgstr ""
-"クロスサイトレプリケーションモードを使用して、複数のデータセンターにまたがるクラスタで{project_name}を実行します。一般的には、異なる地域にあるデータセンターのサイトを使用します。このモードを使用すると、各データセンターには{project_name}サーバーの独自のクラスターがあります。"
+"クロスサイト・レプリケーション・モードを使用して、複数のデータセンターにまたがるクラスターで{project_name}を実行します。一般的には、異なる地域にあるデータセンターのサイトを使用します。このモードを使用すると、各データセンターは{project_name}サーバーの独自のクラスターを持つことになります。"
 
 #. type: Plain text
 msgid ""
 "This documentation will refer to the following example architecture diagram "
 "to illustrate and describe a simple cross-site replication use case."
-msgstr "このドキュメントでは、以下のアーキテクチャ図の例を参照して、シンプルなクロスサイトレプリケーションの使用例を説明します。"
+msgstr "このドキュメントでは、以下のアーキテクチャー図の例を参照して、シンプルなクロスサイト・レプリケーションのユースケースを説明します。"
 
 #. type: Block title
 #, no-wrap
@@ -265,9 +265,8 @@ msgid ""
 "basic concepts and requirements such as load balancing, shared databases, "
 "and multicasting."
 msgstr ""
-"link:{installguide_clustering_link}[Clustering with {project_name}] "
-"クロスサイトレプリケーションを設定する場合、より独立した {project_name} "
-"クラスタを使用することになりますので、クラスタの仕組みや、ロードバランシング、共有データベース、マルチキャストなどの基本的な概念や要件を理解しておく必要があります。"
+"link:{installguide_clustering_link}[{project_name}によるクラスタリング] "
+"クロスデータセンター・レプリケーションを設定する場合、より独立した{project_name}クラスターを使用するため、クラスターの仕組みや、ロード・バランシング、共有データベース、マルチキャストなどの基本的な概念と要件を理解する必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -276,7 +275,7 @@ msgid ""
 "between the data centers."
 msgstr ""
 "link:{jdgserver_crossdcdocs_link}[Red Hat Data Grid Cross-Site Replication] "
-"{project_name}では、データセンター間のデータのレプリケーションにRed Hat Data Grid（RHDG）を使用しています。"
+"{project_name}では、Red Hat Data Grid（RHDG）を使用して、データセンター間でデータをレプリケーションします。"
 
 #. type: Plain text
 msgid ""
@@ -296,7 +295,7 @@ msgstr "技術的な詳細"
 msgid ""
 "This section provides an introduction to the concepts and details of how "
 "{project_name} cross-site replication is accomplished."
-msgstr "ここでは、{project_name} クロスサイトレプリケーションがどのように実現されているか、その概念と詳細について紹介します。"
+msgstr "このセクションでは、{project_name}クロスサイト・レプリケーションの仕組みについて概念と詳細について説明します。"
 
 #. type: Labeled list
 #, no-wrap
@@ -332,9 +331,10 @@ msgid ""
 "eventually able to read the data saved by {project_name} servers on `site2` "
 "."
 msgstr ""
-"このアーキテクチャの例では、`site1`と`site2`という2つのデータセンターがあります。クロスサイトレプリケーションでは、両方のデータソースが確実に動作し、最終的に"
-" `site1` の {project_name} サーバが `site2` の {project_name} "
-"サーバが保存したデータを読み取れるようにしなければなりません。"
+"このアーキテクチャーの例では、 `site1` と `site2` "
+"と呼ばれる2つのデータセンターがあります。クロスサイト・レプリケーションでは、両方のデータソースが確実に動作し、 `site2` "
+"の{project_name}サーバーによって保存されたデータを `site1` "
+"の{project_name}サーバーが最終的に読み取ることができるようにする必要があります。"
 
 #. type: Plain text
 msgid "Based on the environment, you have the option to decide if you prefer:"
@@ -414,7 +414,7 @@ msgstr "モード"
 msgid ""
 "According your requirements, there are two basic operating modes for cross-"
 "site replication:"
-msgstr "必要に応じて、クロスサイトレプリケーションには2つの基本的な動作モードがあります。"
+msgstr "要件に応じて、クロスサイト・レプリケーションには2つの基本的な動作モードがあります。"
 
 #. type: Plain text
 msgid ""
@@ -471,8 +471,9 @@ msgid ""
 "transaction, those data are immediately visible by subsequent DB "
 "transactions on `site2`."
 msgstr ""
-"{project_name} "
-"は、リレーショナル・データベース管理システム（RDBMS）を使用して、レルム、クライアント、ユーザーなどに関するいくつかのメタデータを永続化します。詳細は、サーバーインストールガイドのlink:{installguide_database_link}[本章]を参照してください。クロスサイトレプリケーションの設定では、両方のデータセンターが同じデータベースと通信するか、各データセンターが独自のデータベースノードを持ち、両方のデータベースノードがデータセンター間で同期的にレプリケートされることを想定しています。どちらの場合も、`site1`の{project_name}サーバがデータを永続化してトランザクションをコミットすると、`site2`の後続のDBトランザクションからそれらのデータがすぐに見えるようにすることが必要です。"
+"{project_name}は、リレーショナル・データベース・マネジメント・システム（RDBMS）を使用して、レルム、クライアント、ユーザーなどのメタデータを保持します。詳細については、サーバーインストールガイドのlink:{installguide_database_link}[この章]を参照してください。クロスサイト・レプリケーションのセットアップでは、両方のデータセンターが同じデータベースと通信するか、すべてのデータセンターに独自のデータベース・ノードがあり、両方のデータベース・ノードがデータセンター間で同期レプリケートされると想定しています。どちらの場合でも、"
+" `site1` の{project_name}サーバーがデータを保持してトランザクションをコミットすると、 `site2` "
+"の後続のDBトランザクションによって、それらのデータがすぐに表示される必要があります。"
 
 #. type: Plain text
 msgid ""
@@ -636,13 +637,10 @@ msgid ""
 "link:https://infinispan.org/docs/10.1.x/titles/server/server.html#hot_rod[Infinispan"
 " HotRod protocol]."
 msgstr ""
-"{project_name} は、Infinispan のキャッシュを複数の独立したクラスターで使用しています。すべての {project_name} "
-"ノードは、同じデータセンターにある他の {project_name} ノードとはクラスター内にありますが、異なるデータセンターにある "
-"{project_name} ノードとはクラスター内にありません。project_name} ノードは、異なるデータセンターの "
-"{project_name} ノードとは直接通信しません。{project_name} ノードは、データセンター間の通信に外部の JDG（実際には "
-"{jdgserver_name} サーバー）を使用します。これは "
+"{project_name}は、Infinispanキャッシュの分割されたクラスターを複数使用します。各{project_name}ノードは、同じデータセンター内の他の{project_name}ノードと共にクラスター内にありますが、異なるデータセンターの{project_name}ノードはそのクラスター内にありません。{project_name}ノードは、異なるデータセンターの{project_name}ノードと直接通信できません。{project_name}ノードは、データセンター間の通信に外部JDG（実際には{jdgserver_name}サーバー）を使用します。これは、"
+" "
 "link:https://infinispan.org/docs/10.1.x/titles/server/server.html#hot_rod[Infinispan"
-" HotRod protocol]を使用して行われます。"
+" HotRodプロトコル] を使用して行われます。"
 
 #. type: Plain text
 msgid ""
@@ -653,9 +651,10 @@ msgid ""
 "Infinispan cluster between JDG servers, so the data saved on JDG1 on `site1`"
 " are replicated to JDG2 on `site2` ."
 msgstr ""
-"project_name}側のInfinispanキャッシュにはlink:https://infinispan.org/docs/10.1.x/titles/configuring/configuring.html#remote_cache_store[remoteStore]を設定して、データがリモートキャッシュに保存されるようにする必要があります。JDG"
-" サーバー間には別の Infinispan クラスターがあるので、`site1` の JDG1 に保存されたデータは `site2` の JDG2 "
-"に複製されます。"
+"{project_name}側のInfinispanキャッシュは、データがリモート・キャッシュに保存されていることを確認するために、 "
+"link:https://infinispan.org/docs/10.1.x/titles/configuring/configuring.html#remote_cache_store[remoteStore]"
+" を使用して設定する必要があります。JDGサーバー間に分割されたInfinispanクラスターがあるので、 `site1` "
+"のJDG1に保存されていたデータは `site2` のJDG2にレプリケートされます。"
 
 #. type: Plain text
 msgid ""
@@ -678,7 +677,7 @@ msgstr "詳細は、<<archdiagram>>を参照してください。"
 #, no-wrap
 msgid ""
 "Setting up cross-site replication with {jdgserver_name} {jdgserver_version}"
-msgstr "{jdgserver_name}でクロスサイトレプリケーションを設定する。{jdgserver_version}"
+msgstr "{jdgserver_name} {jdgserver_version}でのクロスサイト・レプリケーションの設定"
 
 #. type: Plain text
 msgid ""
@@ -1565,13 +1564,13 @@ msgstr ""
 #. type: Title ====
 #, no-wrap
 msgid "Administration of cross-site deployment"
-msgstr "クロスサイト展開の管理"
+msgstr "クロスサイト・デプロイメントの管理"
 
 #. type: Plain text
 msgid ""
 "This section contains some tips and options related to cross-site "
 "replication."
-msgstr "このセクションでは、クロスサイトレプリケーションに関連するヒントやオプションをご紹介します。"
+msgstr "このセクションでは、クロスサイト・レプリケーションに関連するヒントやオプションをご紹介します。"
 
 #. type: Plain text
 msgid ""
@@ -1867,10 +1866,9 @@ msgid ""
 " state transfer is available in the "
 "link:{jdgserver_crossdcdocs_link}[{jdgserver_name} docs]."
 msgstr ""
-"状態の転送は、JMXを通じて{jdgserver_name}サーバー側でも行うことができます。操作名は `pushState` "
-"です。この他にも、状態を監視したり、プッシュ状態をキャンセルしたりする操作がいくつかあります。  "
-"状態の転送についての詳細は、リンク先の{jdgserver_crossdcdocs_link}[{jdgserver_name} "
-"docs]をご覧ください。"
+"ステート・トランスファーは、JMXを介して{jdgserver_name}サーバー側でも行われます。操作名は `pushState` "
+"です。状態をモニタリングしたり、プッシュ状態をキャンセルしたりするその他の操作はほとんどありません。ステート・トランスファーの詳細については、 "
+"link:{jdgserver_crossdcdocs_link}[{jdgserver_name} docs] を参照してください。"
 
 #. type: Title ====
 #, no-wrap
@@ -2094,8 +2092,8 @@ msgid ""
 " might be cross-site replication aware, and these can be configured in 3 "
 "different modes regarding cross-site:"
 msgstr ""
-"backup` 要素の重要な部分は `strategy` "
-"属性です。これを`SYNC`にするか`ASYNC`にするかを決めなければなりません。クロスサイトレプリケーションを意識したキャッシュが7つあり、これらはクロスサイトに関して3つの異なるモードで構成することができます。"
+"`backup` 要素の重要な部分は `strategy` 属性です。 `SYNC` と `ASYNC` "
+"のどちらが必要かを決める必要があります。クロスサイト・レプリケーションを認識できる7つのキャッシュがあり、これらは、クロスサイトに対する次の3つの異なるモードで設定できます。"
 
 #. type: Plain text
 msgid "SYNC backup"

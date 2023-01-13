@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
-# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2022
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,24 +19,20 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Block title
+#. type: Title ==
 #, no-wrap
 msgid "Prerequisites"
 msgstr "前提条件"
 
 #. type: Block title
 #, no-wrap
-msgid "Additional resources"
-msgstr "追加のリソース"
-
-#. type: Block title
-#, no-wrap
 msgid "Procedure"
 msgstr "手順"
 
-#. type: Plain text
-msgid "You have a YAML file for this custom resource."
-msgstr "このカスタムリソース用のYAMLファイルがあること。"
+#. type: Block title
+#, no-wrap
+msgid "Additional resources"
+msgstr "追加のリソース"
 
 #. type: Plain text
 msgid ""
@@ -44,24 +40,19 @@ msgid ""
 "granted by an administrator."
 msgstr "cluster-adminパーミッションまたは同等のレベルのパーミッションが管理者によって付与されていること。"
 
-#. type: delimited block -
-#, no-wrap
-msgid "$ {create_cmd_brief} describe keycloak <CR-name>\n"
-msgstr "$ {create_cmd_brief} describe keycloak <CR-name>\n"
+#. type: Plain text
+msgid "You have a YAML file for this custom resource."
+msgstr "このカスタムリソース用のYAMLファイルがあること。"
 
 #. type: Block title
 #, no-wrap
 msgid "Results"
 msgstr "結果"
 
-#. type: Plain text
-msgid ""
-"If you have an external database, you can modify the Keycloak custom "
-"resource to support it. See xref:_external_database[Connecting to an "
-"external database]."
-msgstr ""
-"外部データベースがある場合は、Keycloakカスタムリソースを変更してそれをサポートできます。 "
-"xref:_external_database[外部データベースへの接続] を参照してください。"
+#. type: delimited block -
+#, no-wrap
+msgid "$ {create_cmd_brief} describe keycloak <CR-name>\n"
+msgstr "$ {create_cmd_brief} describe keycloak <CR-name>\n"
 
 #. type: Plain text
 msgid "Log into the admin console for the related instance of {project_name}."
@@ -108,6 +99,9 @@ msgid ""
 "    email: \"user@example.com\"\n"
 "    enabled: True\n"
 "    emailVerified: False\n"
+"    credentials:\n"
+"      - type: \"password\"\n"
+"        value: \"12345\"\n"
 "    realmRoles:\n"
 "      - \"offline_access\"\n"
 "    clientRoles:\n"
@@ -136,6 +130,9 @@ msgstr ""
 "    email: \"user@example.com\"\n"
 "    enabled: True\n"
 "    emailVerified: False\n"
+"    credentials:\n"
+"      - type: \"password\"\n"
+"        value: \"12345\"\n"
 "    realmRoles:\n"
 "      - \"offline_access\"\n"
 "    clientRoles:\n"
@@ -181,21 +178,27 @@ msgid "Search for the user that you defined in the YAML file."
 msgstr "YAMLファイルで定義したユーザーを検索します。"
 
 #. type: Plain text
-msgid "The user is in the list."
-msgstr "ユーザーが一覧に含まれています。"
+msgid "You may need to switch to a different realm to find the user."
+msgstr "ユーザーを見つけるには、別のレルムに切り替える必要があるかもしれません。"
 
 #. type: Plain text
-msgid "image:images/user_list.png[]"
-msgstr "image:images/user_list.png[]"
+msgid "image:images/realm_user.png[]"
+msgstr "image:images/realm_user.png[]."
 
 #. type: Plain text
 msgid ""
-"After a user is created, the Operator creates a Secret containing the both "
-"username and password using the following naming pattern: `credential-<realm"
-" name>-<username>-<namespace>`. Here's an example:"
+"After a user is created, the Operator creates a Secret using the following "
+"naming pattern: `credential-<realm name>-<username>-<namespace>`, containing"
+" the username and, if it has been specified in the CR `credentials` "
+"attribute, the password."
 msgstr ""
-"ユーザーの作成後、Operatorは `credential-<realm name>-<username>-<namespace>` "
-"の命名パターンを使用して、ユーザー名とパスワードの両方を含むシークレットを作成します。次に例を示します。"
+"ユーザーが作成されると、Operatorは: `credential-<realm name>-<username>-<namespace>` "
+"のネーミングパターンでシークレットを作成します。これには、ユーザー名と、CRの `credential` "
+"属性で指定されている場合はパスワードを含みます。"
+
+#. type: Plain text
+msgid "Here's an example:"
+msgstr "以下は例です。"
 
 #. type: Block title
 #, no-wrap
@@ -300,6 +303,15 @@ msgstr ""
 "  Message:\n"
 "  Phase:    reconciled\n"
 "Events:     <none>\n"
+
+#. type: Plain text
+msgid ""
+"If you have an external database, you can modify the Keycloak custom "
+"resource to support it. See xref:_external_database[Connecting to an "
+"external database]."
+msgstr ""
+"外部データベースがある場合は、Keycloakカスタムリソースを変更してそれをサポートできます。 "
+"xref:_external_database[外部データベースへの接続] を参照してください。"
 
 #. type: Plain text
 msgid ""

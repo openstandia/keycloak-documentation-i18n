@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
+# Hiroyuki Wada <wadahiro@gmail.com>, 2017
 # Shinsuke UEDA, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
-# Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,82 +20,77 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: Title ===
+#, no-wrap
+msgid "Administering sessions"
+msgstr "セッションの管理"
+
+#. type: Plain text
+msgid ""
+"To see a top-level view of the active clients and sessions in "
+"{project_name}, click *Sessions* from the menu."
+msgstr ""
+"{project_name}でアクティブなクライアントとセッションのトップレベルのビューを表示するには、メニューから *Sessions* "
+"をクリックします。"
+
 #. type: Block title
 #, no-wrap
 msgid "Sessions"
 msgstr "セッション"
 
-#. type: Title ===
-#, no-wrap
-msgid "Administering Sessions"
-msgstr "セッションの管理"
-
 #. type: Plain text
-msgid ""
-"If you go to the `Sessions` left menu item you can see a top level view of "
-"the number of sessions that are currently active in the realm."
-msgstr "左のメニュー項目 `Sessions` をクリックすると、現在そのレルムでアクティブなセッション数のトップレベルのビューが表示されます。"
-
-#. type: Plain text
-msgid "image:{project_images}/sessions.png[]"
-msgstr "image:{project_images}/sessions.png[]"
-
-#. type: Plain text
-msgid ""
-"A list of clients is given and how many active sessions there currently are "
-"for that client. You can also log out all users in the realm by clicking the"
-" `Logout all` button on the right side of this list."
-msgstr ""
-"クライアントと、そのクライアントに現在アクティブなセッションの数が一覧表示されます。また、この一覧表示の右側にある `Logout all` "
-"ボタンをクリックして、レルム内のすべてのユーザーをログアウトすることもできます。"
+msgid "image:{project_images}/sessions.png[Sessions]"
+msgstr "image:{project_images}/sessions.png[Sessions]"
 
 #. type: Title ====
 #, no-wrap
-msgid "Limitations of the `Logout all` Operation"
-msgstr "`Logout all` 操作の制限事項"
+msgid "The *Logout all* Operation"
+msgstr "*Logout all* の操作"
 
 #. type: Plain text
 msgid ""
-"Any SSO cookies set will now be invalid and clients that request "
-"authentication in active browser sessions will now have to re-login.  Only "
-"certain clients are notified of this logout event, specifically clients that"
-" are using the {project_name} OIDC client adapter. Other client types, such "
-"as SAML, will not receive a backchannel logout request."
-msgstr ""
-"すべてのSSO "
-"Cookieセットが無効になり、アクティブなブラウザー・セッションで認証を要求するクライアントは再ログインする必要があります。このログアウト・イベントは、特定のクライアント（特に、{project_name}"
-" "
-"OIDCクライアント・アダプターを使用しているクライアント）にのみ通知されます。SAMLのような他のクライアント・タイプはバックチャネル・ログアウト・リクエストを受信しません。"
+"You can log out all users in the realm by clicking the *Logout all* button."
+msgstr "*Logout all* ボタンをクリックすると、レルム内のすべてのユーザーをログアウトすることができます。"
 
 #. type: Plain text
 msgid ""
-"It is important to note that any outstanding access tokens are not revoked "
-"by clicking `Logout all`.  They have to expire naturally.  You have to push "
-"a <<_revocation-policy, revocation policy>> out to clients, but that also "
-"only works with clients using the {project_name} OIDC client adapter."
+"When you click the *Logout all* button, all SSO cookies become invalid, and "
+"clients requesting authentication within active browser sessions must log in"
+" again. {project_name} notifies clients by using the {project_name} OIDC "
+"client adapter of the logout event. Client types such as SAML do not receive"
+" a back-channel logout request."
 msgstr ""
-"`Logout all` をクリックしても、未処理のアクセストークンは取り消されないことに注意することが重要です。それらは失効する必要があります"
-"。<<_revocation-policy, 失効ポリシー>>をクライアントにプッシュする必要がありますが、これも{project_name} "
-"OIDCクライアント・アダプターを使用するクライアントだけで機能します。"
+"*Logout all* "
+"ボタンをクリックすると、すべてのSSOクッキーが無効になり、アクティブなブラウザー・セッション内で認証を要求しているクライアントは再度ログインする必要があります。{project_name}は、OIDCクライアント・アダプターを使用して、ログアウト・イベントをクライアントに通知します。SAMLなどのクライアント・タイプは、バックチャネルのログアウト・リクエストを受信しません。"
+
+#. type: delimited block =
+msgid ""
+"Clicking *Logout all* does not revoke outstanding access tokens. Outstanding"
+" tokens must expire naturally. For clients using the {project_name} OIDC "
+"client adapter, you can push a <<_revocation-policy, revocation policy>> to "
+"revoke the token, but this does not work for other adapters."
+msgstr ""
+"*Logout all* "
+"をクリックしても、未使用のアクセストークンは無効化されません。未使用のトークンは自然に失効する必要があります。OIDCクライアント・アダプターを使用しているクライアントの場合、<<_revocation-"
+"policy, 無効化ポリシー>>をプッシュしてトークンを無効化させることができますが、他のアダプターの場合はうまくいきません。"
 
 #. type: Title ====
 #, no-wrap
-msgid "Application Drilldown"
-msgstr "アプリケーションのドリルダウン"
+msgid "Application navigation"
+msgstr "アプリケーション・ナビゲーション"
 
 #. type: Plain text
 msgid ""
-"On the `Sessions` page, you can also drill down to each client. This will "
-"bring you to the `Sessions` tab of that client.  Clicking on the `Show "
-"Sessions` button there allows you to see which users are logged into that "
-"application."
+"On the `Sessions` page, you can click on each client to go to that client's "
+"`Sessions` tab. Click the *Show Sessions* button there to see which users "
+"are in the application."
 msgstr ""
-"`Sessions` ページでは、各クライアントにドリルダウンすることもできます。これにより、そのクライアントの `Sessions` "
-"タブが表示されます。 `Show Sessions` ボタンをクリックすると、そのアプリケーションにログインしているユーザーを参照できます。"
+"`Sessions` ページで、各クライアントをクリックすると、そのクライアントの`Sessions` タブに移動することができます。そこにある "
+"*Show Sessions* ボタンをクリックすると、どのユーザーがアプリケーションに参加しているかがわかります。"
 
 #. type: Block title
 #, no-wrap
-msgid "Application Sessions"
+msgid "Application sessions"
 msgstr "アプリケーション・セッション"
 
 #. type: Plain text
@@ -104,14 +99,14 @@ msgstr "image:{project_images}/application-sessions.png[]"
 
 #. type: Title ====
 #, no-wrap
-msgid "User Drilldown"
-msgstr "ユーザーのドリルダウン"
+msgid "User navigation"
+msgstr "ユーザー・ナビゲーション"
 
 #. type: Plain text
 msgid ""
 "If you go to the `Sessions` tab of an individual user, you can also view the"
-" session information."
-msgstr "個々のユーザーの `Sessions` タブに移動すると、セッション情報を表示することもできます。"
+" user's session information."
+msgstr "個々のユーザーの `Sessions` タブを開くと、そのユーザーのセッション情報を見ることもできます。"
 
 #. type: Block title
 #, no-wrap

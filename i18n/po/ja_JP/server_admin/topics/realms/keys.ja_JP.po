@@ -6,15 +6,14 @@
 # Translators:
 # katakura__pro <h.katakura@pro-japan.co.jp>, 2017
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
-# Hiroyuki Wada <wadahiro@gmail.com>, 2020
-# Yoshikazu Nojima <mail@ynojima.net>, 2020
+# Hiroyuki Wada <wadahiro@gmail.com>, 2022
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Yoshikazu Nojima <mail@ynojima.net>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,10 +21,28 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: Title ==
+#, no-wrap
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Plain text
+msgid "Click *Save*."
+msgstr "*Save* をクリックします。"
+
+#. type: Plain text
+msgid "Click *Clients* in the menu."
+msgstr "メニューの *Clients* をクリックします。"
+
 #. type: Title ===
 #, no-wrap
-msgid "Realm Keys"
-msgstr "レルム鍵"
+msgid "Configuring realm keys"
+msgstr "レルム鍵の設定"
 
 #. type: Plain text
 msgid ""
@@ -52,24 +69,35 @@ msgid ""
 msgstr "レルムが作成されると、鍵ペアと自己署名証明書が自動的に生成されます。"
 
 #. type: Plain text
-msgid ""
-"To view the active keys for a realm select the realm in the admin console "
-"click on `Realm settings` then `Keys`. This will show the currently active "
-"keys for the realm."
-msgstr ""
-"レルムでアクティブな鍵を表示するには、管理コンソールでレルムを選択し、 `Realm settings` から `Keys` "
-"をクリックします。これにより、レルムの現在有効な鍵が表示されます。"
+msgid "Select the realm in the Admin Console."
+msgstr "管理コンソールでレルムを選択します。"
+
+#. type: Plain text
+msgid "Click *Realm settings*."
+msgstr "*Realm settings* をクリックします。"
+
+#. type: Plain text
+msgid "Click *Keys*."
+msgstr "*Keys* をクリックします。"
+
+#. type: Plain text
+msgid "Click *Passive* to view passive keys."
+msgstr "パッシブ鍵を表示するには、 *Passive* をクリックします。"
+
+#. type: Plain text
+msgid "Click *Disabled* to view disabled keys."
+msgstr "無効な鍵を表示するには、 *Disabled* をクリックします。"
 
 #. type: Plain text
 msgid ""
-"To view passive or disabled keys select `Passive` or `Disabled`.  A keypair "
-"can have the status `Active`, but still not be selected as the currently "
-"active keypair for the realm.  The selected active pair which is used for "
-"signatures is selected based on the first key provider sorted by priority "
-"that is able to provide an active keypair."
+"A keypair can have the status `Active`, but still not be selected as the "
+"currently active keypair for the realm.  The selected active pair which is "
+"used for signatures is selected based on the first key provider sorted by "
+"priority that is able to provide an active keypair."
 msgstr ""
-"パッシブな鍵または無効な鍵を表示するには、 `Passive` または `Disabled` を選択します。鍵ペアのステータスは `Active` "
-"にできますが、レルムで現在アクティブな鍵ペアとしてはまだ選択されません。署名のために使用されるアクティブな鍵ペアは、優先度によってソートされた最初の鍵プロバイダーが選択されます。"
+"鍵ペアのステータスが `Active` "
+"であっても、そのレルムで現在アクティブな鍵ペアとして選択されないことがあります。署名に使用されるアクティブな鍵ペアは、アクティブな鍵ペアを提供できる、 "
+"優先順位の高い最初の鍵プロバイダーに基づき選択されます。"
 
 #. type: Title ====
 #, no-wrap
@@ -78,11 +106,11 @@ msgstr "鍵のローテーション"
 
 #. type: Plain text
 msgid ""
-"It's recommended to regularly rotate keys. To do so you should start by "
-"creating new keys with a higher priority than the existing active keys. Or "
-"create new keys with the same priority and making the previous keys passive."
+"We recommend that you regularly rotate keys. To do so, start by creating new"
+" keys with a higher priority than the existing active keys. Or create new "
+"keys with the same priority and making the previous keys passive."
 msgstr ""
-"鍵を定期的にローテーションさせることをお勧めします。ローテーションを行うには、既存のアクティブな鍵よりも優先度の高い新しい鍵を作成することから始めます。または、同じ優先度で新しい鍵を作成し、以前の鍵をパッシブにします。"
+"定期的に鍵をローテーションすることをお勧めします。そのためには、既存のアクティブな鍵よりも高い優先順位を持つ新しい鍵を作成することから始めます。または、同じ優先順位の新しい鍵を作成し、以前の鍵をパッシブにします。"
 
 #. type: Plain text
 msgid ""
@@ -99,26 +127,22 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"How long you wait to delete old keys is a tradeoff between security and "
-"making sure all cookies and tokens are updated.  In general it should be "
-"acceptable to drop old keys after a few weeks. Users that have not been "
-"active in the period between the new keys where added and the old keys "
-"removed will have to re-authenticate."
+"The frequency of deleting old keys is a tradeoff between security and making"
+" sure all cookies and tokens are updated. Consider creating new keys every "
+"three to six months and deleting old keys one to two months after you create"
+" the new keys. If a user was inactive in the period between the new keys "
+"being added and the old keys being removed, that user will have to re-"
+"authenticate."
 msgstr ""
-"古い鍵を削除するのにどれくらいかかるのかは、セキュリティーと、すべてのCookieとトークンが確実に更新される時間とのトレードオフです。一般的には、数週間後に古い鍵を削除することが可能となるべきでしょう。追加された新しい鍵と古い鍵が削除されるまでの間にアクティブでなかったユーザーは、再認証する必要があります。"
+"古い鍵を削除する頻度は、セキュリティーとすべてのCookieとトークンの更新を確認することとのトレードオフになります。新しい鍵は3〜6カ月ごとに作成し、古い鍵は新しい鍵を作成してから1〜2カ月後に削除することを検討してください。新しい鍵が追加されてから古い鍵が削除されるまでの間にユーザーが活動していなかった場合、そのユーザーは再認証を行う必要があります。"
 
 #. type: Plain text
 msgid ""
-"This also applies to offline tokens. To make sure they are updated the "
-"applications need to refresh the tokens before the old keys are removed."
+"Rotating keys also applies to offline tokens. To make sure they are updated,"
+" the applications need to refresh the tokens before the old keys are "
+"removed."
 msgstr ""
-"これは、オフライン・トークンにも適用されます。トークンが更新されていることを確認するには、古い鍵が削除される前にアプリケーションでトークンをリフレッシュする必要があります。"
-
-#. type: Plain text
-msgid ""
-"As a guideline, it may be a good idea to create new keys every 3-6 months "
-"and delete old keys 1-2 months after the new keys were created."
-msgstr "ガイドラインとして、3～6か月ごとに新しい鍵を作成し、新しい鍵が作成されてから1～2か月後に古い鍵を削除することをお勧めします。"
+"鍵のローテーションは、オフライントークンにも適用されます。確実に更新されるように、アプリケーションは古い鍵が削除される前にトークンをリフレッシュする必要があります。"
 
 #. type: Title ====
 #, no-wrap
@@ -126,22 +150,32 @@ msgid "Adding a generated keypair"
 msgstr "鍵ペアの追加"
 
 #. type: Plain text
-msgid ""
-"To add a new generated keypair select `Providers` and choose `rsa-generated`"
-" from the dropdown. You can change the priority to make sure the new keypair"
-" becomes the active keypair. You can also change the `keysize` if you want "
-"smaller or larger keys (default is 2048, supported values are 1024, 2048 and"
-" 4096)."
-msgstr ""
-"新しい鍵ペアを追加するには、 `Providers` を選択し、ドロップダウンから `rsa-generated` "
-"を選択します。優先順位を変更して、新しい鍵ペアがアクティブな鍵ペアになるようにすることができます。より小さい、またはより大きい鍵を必要とする場合、 "
-"`鍵のサイズ` を変更することもできます（デフォルトは2048、サポートされている値は1024、2048、および4096）。"
+msgid "Click the *Keys* tab."
+msgstr "*Keys* タブをクリックします。"
+
+#. type: Plain text
+msgid "Click the *Providers* tab."
+msgstr "*Providers* タブをクリックします。"
+
+#. type: Plain text
+msgid "Click *Add keystore* and select *rsa-generated*."
+msgstr "*Add keystore* をクリックし、 *rsa-generated* を選択します。"
 
 #. type: Plain text
 msgid ""
-"Click `Save` to add the new keys. This will generated a new keypair "
-"including a self-signed certificate."
-msgstr "新しい鍵を追加するには `Save` をクリックしてください。これにより、自己署名証明書を含む新しい鍵ペアが生成されます。"
+"Enter a number in the *Priority* field. This number determines if the new "
+"key pair becomes the active key pair."
+msgstr "*Priority* の欄に数字を入力します。この番号によって、新しい鍵ペアがアクティブな鍵ペアになるかどうかが決まります。"
+
+#. type: Plain text
+msgid "Select a value for *keysize*."
+msgstr "*keysize* の値を選択します。"
+
+#. type: Plain text
+msgid ""
+"This action will generated a new keypair including a self-signed "
+"certificate."
+msgstr "この操作により、自己署名入り証明書を含む新しいキーペアが生成されます。"
 
 #. type: Plain text
 msgid ""
@@ -166,22 +200,27 @@ msgstr ""
 "を選択します。優先順位を変更することで、新しい鍵ペアをアクティブな鍵ペアにすることができます。"
 
 #. type: Plain text
-msgid ""
-"Click on `Select file` for `Private RSA Key` to upload your private key. The"
-" file should be encoded in PEM format. You don't need to upload the public "
-"key as it is automatically extracted from the private key."
-msgstr ""
-"秘密鍵をアップロードするには、 `Private RSA Key` の `Select file` "
-"をクリックしてください。ファイルはPEM形式でエンコードする必要があります。公開鍵は、秘密鍵から自動的に抽出されるため、アップロードする必要はありません。"
+msgid "A private key file. The file must be PEM formatted."
+msgstr "秘密鍵のファイルです。PEM形式のファイルである必要があります。"
 
 #. type: Plain text
-#, no-wrap
+msgid "Click *Add keystore* and select *rsa*."
+msgstr "*Add keystore* をクリックし、 *rsa* を選択します。"
+
+#. type: Plain text
 msgid ""
-"If you have a signed certificate for the keys click on `Select file` next to `X509 Certificate`. If you don't have one\n"
-" you can skip this and a self-signed certificate will be generated.\n"
+"Click *Select file* beside *Private RSA Key* to upload the private key file."
+msgstr "*Private RSA Key*の横にある *Select file* をクリックして、秘密鍵ファイルをアップロードします。"
+
+#. type: Plain text
+msgid ""
+"If you have a signed certificate for your private key, click *Select file* "
+"beside *X509 Certificate* to upload the certificate file. {project_name} "
+"autmatically generates a self-signed certificate if you do not upload a "
+"certificate."
 msgstr ""
-"鍵の署名付き証明書を持っている場合、 `X509 Certificate` の横の `Select file` "
-"をクリックしてください。持っていない場合は、これをスキップすることができ、自己署名証明書が生成されます。\n"
+"秘密鍵の署名付き証明書がある場合は、 *X509 Certificate* の横にある *Select file* "
+"をクリックして、証明書ファイルをアップロードしてください。証明書をアップロードしない場合、{project_name}は自動的に自己署名証明書を生成します。"
 
 #. type: Title ====
 #, no-wrap
@@ -199,11 +238,31 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Fill in the values for `Keystore`, `Keystore Password`, `Key Alias` and `Key"
-" Password` and click on `Save`."
+"For the associated certificate chain to be loaded it must be imported to the"
+" Java Keystore file with the same `Key Alias` used to load the keypair."
 msgstr ""
-"`Keystore` 、 `Keystore Password` 、 `Key Alias` 、 `Key Password` の値を入力し、 "
-"`Save` をクリックします。"
+"関連する証明書チェーンを読み込むためには、キーペアを読み込むために使用したのと同じ `Key Alias` "
+"を使って、JavaのKeystoreファイルにインポートする必要があります。"
+
+#. type: Plain text
+msgid "Click *Add keystore* and select *java-keystore*."
+msgstr "*Add keystore* をクリックし、 *java-keystore* を選択します。"
+
+#. type: Plain text
+msgid "Enter a value for *Keystore*."
+msgstr "*Keystore* に値を入力します。"
+
+#. type: Plain text
+msgid "Enter a value for *Keystore Password*."
+msgstr "*Keystore Password* に値を入力します。"
+
+#. type: Plain text
+msgid "Enter a value for *Key Alias*."
+msgstr "*Key Alias* に値を入力します。"
+
+#. type: Plain text
+msgid "Enter a value for *Key Password*."
+msgstr "*Key Password* に値を入力します。"
 
 #. type: Title ====
 #, no-wrap
@@ -211,14 +270,20 @@ msgid "Making keys passive"
 msgstr "鍵をパッシブにする"
 
 #. type: Plain text
-msgid ""
-"Locate the keypair in `Active` then click on the provider in the `Provider` "
-"column. This will take you to the configuration screen for the key provider "
-"for the keys. Click on `Active` to turn it `OFF`, then click on `Save`. The "
-"keys will no longer be active and can only be used for verifying signatures."
-msgstr ""
-"`Active` で鍵ペアを見つけて、 `Provider` 列のプロバイダーをクリックします。これにより、鍵のプロバイダーの設定画面が表示されます。 "
-"`Active` のスイッチをクリックして `OFF` にし、 `Save` をクリックします。鍵はアクティブでなくなり、署名の検証にのみ使用できます。"
+msgid "Click Realm settings."
+msgstr "Realm settingsをクリックします。"
+
+#. type: Plain text
+msgid "Click the *Active* tab."
+msgstr "*Active* タブをクリックします。"
+
+#. type: Plain text
+msgid "Click the provider of the key you want to make passive."
+msgstr "パッシブ化したい鍵のプロバイダーをクリックします。"
+
+#. type: Plain text
+msgid "Toggle *Active* to *OFF*."
+msgstr "*Active* を *OFF* に切り替えます。"
 
 #. type: Title ====
 #, no-wrap
@@ -226,18 +291,8 @@ msgid "Disabling keys"
 msgstr "鍵の無効化"
 
 #. type: Plain text
-msgid ""
-"Locate the keypair in `Active` then click on the provider in the `Provider` "
-"column. This will take you to the configuration screen for the key provider "
-"for the keys. Click on `Enabled` to turn it `OFF`, then click on `Save`. The"
-" keys will no longer be enabled."
-msgstr ""
-"`Active` で鍵ペアを見つけて、 `Provider` 列のプロバイダーをクリックします。これにより、鍵のプロバイダーの設定画面が表示されます。 "
-"`Enabled` のスイッチをクリックして `OFF` にし、 `Save` をクリックします。鍵は無効化されます。"
-
-#. type: Plain text
-msgid "Alternatively, you can delete the provider from the `Providers` table."
-msgstr "また、 `Providers` テーブルからプロバイダーを削除することもできます。"
+msgid "Toggle *Enabled* to *OFF*."
+msgstr "*Enabled* を *OFF* に切り替えます。"
 
 #. type: Title ====
 #, no-wrap
@@ -247,26 +302,47 @@ msgstr "鍵の漏洩"
 #. type: Plain text
 msgid ""
 "{project_name} has the signing keys stored just locally and they are never "
-"shared with the client applications, users or other entities. However if you"
-" think that your realm signing key was compromised, you should first "
+"shared with the client applications, users or other entities. However, if "
+"you think that your realm signing key was compromised, you should first "
 "generate new keypair as described above and then immediately remove the "
 "compromised keypair."
 msgstr ""
-"{project_name}では署名鍵がローカルに格納されており、クライアント・アプリケーション、ユーザーまたは他のエンティティーと共有されることはありません。しかし、レルムの署名鍵が漏洩したと思われる場合は、先に説明したように新しい鍵ペアを生成してから、即座に漏洩した鍵ペアを削除する必要があります。"
+"{project_name}は、署名鍵をローカルにのみ保存し、クライアント・アプリケーションやユーザーまたは他のエンティティーと共有することはありません。しかし、レルムの署名鍵が漏洩したと思われる場合は、まず上記のように新しい鍵ペアを生成し、漏洩した鍵ペアを直ちに削除する必要があります。"
+
+#. type: Plain text
+msgid "Alternatively, you can delete the provider from the `Providers` table."
+msgstr "また、 `Providers` テーブルからプロバイダーを削除することもできます。"
+
+#. type: Plain text
+msgid "Click *security-admin-console*."
+msgstr "*security-admin-console* をクリックします。"
+
+#. type: Plain text
+msgid "Click the *Revocation* tab."
+msgstr "*Revocation* タブをクリックします。"
+
+#. type: Plain text
+msgid "Click *Set to now*."
+msgstr "*Set to now* をクリックします。"
+
+#. type: Plain text
+msgid "Click *Push*."
+msgstr "*Push* クリックします。"
 
 #. type: Plain text
 msgid ""
-"Then to ensure that client applications won't accept the tokens signed by "
-"the compromised key, you should update and push not-before policy for the "
-"realm, which is doable from the admin console. Pushing new policy will "
-"ensure that client applications won't accept the existing tokens signed by "
-"the compromised key, but also the client application will be forced to "
-"download new keypair from the {project_name}, hence the tokens signed by the"
-" compromised key won't be valid anymore. Note that your REST and "
-"confidential clients must have set `Admin URL`, so that {project_name} is "
-"able to send them the request about pushed not-before policy."
+"Pushing the not-before policy ensures that client applications do not accept"
+" the existing tokens signed by the compromised key. The client application "
+"is forced to download new key pairs from {project_name} also so the tokens "
+"signed by the compromised key will be invalid."
 msgstr ""
-"次に、クライアント・アプリケーションが漏洩した鍵で署名されたトークンを受け入れないようにするためには、管理コンソールから実行可能なレルムのnot-"
-"beforeポリシーを更新して適用する必要があります。新しいポリシーを適用すると、クライアント・アプリケーションは、漏洩した鍵で署名された既存のトークンを受け入れなくなり、クライアント・アプリケーションは{project_name}から新しい鍵ペアをダウンロードすることになります。したがって、漏洩した鍵で署名されたトークンは有効でなくなります。RESTとコンフィデンシャル・クライアントは"
-" `Admin URL` を設定する必要があるので、{project_name}は適用されたnot-"
-"beforeポリシーに関するリクエストを送ることができます。"
+"not-"
+"beforeポリシーをプッシュすることで、クライアント・アプリケーションは、漏洩した鍵によって署名された既存のトークンを受け入れないようにすることができます。クライアント・アプリケーションは、{project_name}から新しいキーペアをダウンロードすることを強制されるので、漏洩した鍵によって署名されたトークンは無効となります。"
+
+#. type: delimited block =
+msgid ""
+"REST and confidential clients must set *Admin URL* so {project_name} can "
+"send clients the pushed not-before policy request."
+msgstr ""
+"RESTとコンフィデンシャル・クライアントは、{project_name}がプッシュされたnot-"
+"beforeポリシー・リクエストをクライアントに送信できるように、 *Admin URL* を設定する必要があります。"

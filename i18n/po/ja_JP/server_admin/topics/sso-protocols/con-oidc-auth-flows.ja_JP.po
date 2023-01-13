@@ -58,8 +58,8 @@ msgid ""
 "authenticate users and receive _identity_ and _access_ tokens.  The method "
 "depends on the type of application or client requesting access."
 msgstr ""
-"OIDCには、クライアントやアプリケーションがユーザーを認証し、_identity_および_access_トークンを受け取るために使用できるいくつかの方法、またはフローがあります。"
-"  その方法は、アクセスを要求するアプリケーションやクライアントの種類によって異なります。"
+"OIDCには、クライアントやアプリケーションがユーザーを認証し、 _IDトークン_ および _アクセストークン_ "
+"を受け取るために使用できるいくつかの方法、またはフローがあります。その方法は、アクセスを要求するアプリケーションやクライアントの種類によって異なります。"
 
 #. type: Title =====
 #, no-wrap
@@ -72,41 +72,40 @@ msgid ""
 "authenticating and authorizing browser-based applications. It uses browser "
 "redirects to obtain _identity_ and _access_ tokens."
 msgstr ""
-"認可コードフローは、ブラウザベースのプロトコルであり、ブラウザベースのアプリケーションの認証と認可に適しています。ブラウザのリダイレクトを利用して、_identity_および_access_トークンを取得します。"
+"認可コードフローは、ブラウザーベースのプロトコルであり、ブラウザーベースのアプリケーションの認証と認可に適しています。ブラウザーのリダイレクトを利用して、"
+" _IDトークン_ および _アクセストークン_ を取得します。"
 
 #. type: Plain text
 msgid ""
 "A user connects to an application using a browser. The application detects "
 "the user is not logged into the application."
 msgstr ""
-"あるユーザーがブラウザーを使ってアプリケーションに接続する。アプリケーションは、ユーザーがアプリケーションにログインしていないことを検出します。"
+"ユーザーがブラウザーを使ってアプリケーションにアクセスします。アプリケーションは、ユーザーがアプリケーションにログインしていないことを検出します。"
 
 #. type: Plain text
 msgid ""
 "The application redirects the browser to {project_name} for authentication."
-msgstr "アプリケーションは、認証のためにブラウザを{project_name}にリダイレクトします。"
+msgstr "アプリケーションは、認証のためにブラウザーを{project_name}にリダイレクトします。"
 
 #. type: Plain text
 msgid ""
 "The application passes a callback URL as a query parameter in the browser "
 "redirect. {project_name} uses the parameter upon successful authentication."
 msgstr ""
-"アプリケーションは、ブラウザのリダイレクトのクエリパラメータとしてコールバックURLを渡します。{project_name} "
-"は、認証に成功するとそのパラメータを使用します。"
+"アプリケーションは、ブラウザーのリダイレクトのクエリー・パラメーターとしてコールバックURLを渡します。{project_name}は、認証に成功するとそのパラメーターを使用します。"
 
 #. type: Plain text
 msgid ""
 "{project_name} authenticates the user and creates a one-time, short lived, "
 "temporary code."
-msgstr "{project_name} は、ユーザーを認証し、1回限りの短命の一時的なコードを作成する。"
+msgstr "{project_name}は、ユーザーを認証し、1回限りの短命の一時的なコードを作成します。"
 
 #. type: Plain text
 msgid ""
 "{project_name} redirects to the application using the callback URL and adds "
 "the temporary code as a query parameter in the callback URL."
 msgstr ""
-"{project_name} "
-"は、コールバックURLを用いてアプリケーションにリダイレクトし、コールバックURLのクエリパラメータとしてテンポラリコードを追加します。"
+"{project_name}は、コールバックURLを用いてアプリケーションにリダイレクトし、コールバックURLのクエリー・パラメーターとして一時コードを追加します。"
 
 #. type: Plain text
 msgid ""
@@ -126,8 +125,8 @@ msgid ""
 "application can obtain a new access token using the additional _refresh_ "
 "token sent by the login protocol."
 msgstr ""
-"システムは、盗まれたトークンの有効期間中、そのトークンに対して脆弱です。セキュリティとスケーラビリティの観点から、アクセストークンは一般にすぐに期限切れになるように設定されており、それ以降のトークン要求には失敗します。トークンの有効期限が切れた場合、アプリケーションはログインプロトコルによって送信される追加の"
-" _refresh_ トークンを使用して新しいアクセストークンを取得することができます。"
+"システムは、盗まれたトークンの有効期間中、そのトークンに対して脆弱です。セキュリティーとスケーラビリティーの観点から、アクセストークンは一般にすぐに期限切れになるように設定されており、それ以降のトークンリクエストには失敗します。トークンの有効期限が切れた場合、アプリケーションはログイン・プロトコルによって送信される追加の"
+" _リフレッシュ_ トークンを使用して新しいアクセストークンを取得することができます。"
 
 #. type: Plain text
 msgid ""
@@ -140,10 +139,10 @@ msgid ""
 "more details, see the xref:assembly-managing-clients_{context}[Managing "
 "Clients] chapter."
 msgstr ""
-"機密性の高いクライアントは、一時的なコードをトークンに交換する際にクライアントシークレットを提供します。公開クライアントは、クライアントシークレットの提供は必要ありません。"
-"  Publicクライアントは、HTTPSを厳密に実施し、クライアントに登録されるリダイレクトURIを厳密に管理することで安全性を確保します。  "
-"HTML5/JavaScriptクライアントは、クライアントシークレットを安全に送信する方法がないため、_public_クライアントである必要があります。詳しくは"
-" xref:assembly-managing-clients_{context}[Managing Clients] の章を参照してください。"
+"_コンフィデンシャル_ "
+"・クライアントは、一時的なコードをトークンに交換する際にクライアント・シークレットを提供します。パブリック・クライアントは、クライアント・シークレットの提供は必要ありません。パブリック・クライアントは、HTTPSを厳密に実施し、クライアントに登録されるリダイレクトURIを厳密に管理することで安全性を確保します。HTML5/JavaScriptクライアントは、クライアント・シークレットを安全に送信する方法がないため、"
+" _パブリック_ クライアントである必要があります。詳しくは xref:assembly-managing-"
+"clients_{context}[クライアントの管理] の章を参照してください。"
 
 #. type: Plain text
 msgid ""
@@ -151,8 +150,8 @@ msgid ""
 "https://datatracker.ietf.org/doc/html/rfc7636[Proof Key for Code Exchange] "
 "specification."
 msgstr ""
-"{project_name} は、https://datatracker.ietf.org/doc/html/rfc7636[Proof Key for"
-" Code Exchange]仕様にも対応しています。"
+"{project_name}は、 https://datatracker.ietf.org/doc/html/rfc7636[Proof Key for"
+" Code Exchange] の仕様にも対応しています。"
 
 #. type: Title =====
 #, no-wrap
@@ -164,13 +163,13 @@ msgid ""
 "The Implicit Flow is a browser-based protocol. It is similar to the "
 "Authorization Code Flow but with fewer requests and no refresh tokens."
 msgstr ""
-"Implicit Flowは、ブラウザベースのプロトコルである。認可コードフローと似ているが、リクエスト数が少なく、リフレッシュトークンもない。"
+"インプリシット・フローは、ブラウザーベースのプロトコルです。認可コードフローと似ているが、リクエスト数が少なく、リフレッシュ・トークンもありません。"
 
 #. type: delimited block =
 msgid ""
 "The possibility exists of _access_ tokens leaking in the browser history "
 "when tokens are transmitted via redirect URIs (see below)."
-msgstr "トークンをリダイレクトURIで送信する場合、_access_トークンがブラウザの履歴に漏れる可能性があります（下記参照）。"
+msgstr "トークンをリダイレクトURIで送信する場合、 _アクセス_ トークンがブラウザーの履歴に漏れる可能性があります（下記参照）。"
 
 #. type: delimited block =
 msgid ""
@@ -178,14 +177,13 @@ msgid ""
 "access tokens have to be long-lived or users have to re-authenticate when "
 "they expire."
 msgstr ""
-"また、このフローでは、クライアントにリフレッシュ・トークンを提供しない。したがって、アクセストークンは長寿命でなければならず、また、アクセストークンの有効期限が切れると、ユーザーは再認証をしなければならない。"
+"また、このフローでは、クライアントにリフレッシュトークンを提供しません。したがって、アクセストークンは長寿命でなければならず、また、アクセストークンの有効期限が切れると、ユーザーは再認証をしなければならない。"
 
 #. type: delimited block =
 msgid ""
 "We do not advise using this flow. This flow is supported because it is in "
 "the OIDC and OAuth 2.0 specification."
-msgstr ""
-"このフローを使用することはお勧めしません。このフローがサポートされているのは、OIDC と OAuth 2.0 の仕様に含まれているからです。"
+msgstr "このフローを使用することはお勧めしません。このフローがサポートされているのは、OIDCとOAuth 2.0の仕様に含まれているからです。"
 
 #. type: Plain text
 msgid "The protocol works as follows:"
@@ -197,8 +195,7 @@ msgid ""
 "redirect. {project_name} uses the query parameter upon successful "
 "authentication."
 msgstr ""
-"アプリケーションは、ブラウザのリダイレクトにコールバックURLをクエリパラメータとして渡します。{project_name} "
-"は、認証に成功するとクエリパラメータを使用します。"
+"アプリケーションは、ブラウザーのリダイレクトにコールバックURLをクエリー・パラメーターとして渡します。{project_name}は、認証に成功すとクエリー・パラメーターを使用します。"
 
 #. type: Plain text
 msgid ""
@@ -207,9 +204,9 @@ msgid ""
 "and additionally adds the _identity_ and _access_ tokens as a query "
 "parameter in the callback URL."
 msgstr ""
-"{project_name} は、ユーザーを認証し、_identity_ と _access_ トークンを作成します。{project_name} "
-"はコールバックURLを使用してアプリケーションにリダイレクトし、さらに _identity_ と _access_ "
-"トークンをコールバックURLのクエリパラメータとして追加します。"
+"{project_name}は、ユーザーを認証し、 _ID_ トークンと _アクセス_ "
+"トークンを作成します。{project_name}はコールバックURLを使用してアプリケーションにリダイレクトし、さらに _ID_ トークンと "
+"_アクセス_ トークンをコールバックURLのクエリー・パラメーターとして追加します。"
 
 #. type: Plain text
 msgid ""
@@ -220,21 +217,21 @@ msgstr "アプリケーションは、コールバックURLから _ID_ トーク
 #. type: Title =====
 #, no-wrap
 msgid "Resource owner password credentials grant (Direct Access Grants)"
-msgstr "リソース所有者のパスワードクレデンシャルグラント（直接アクセスグラント）"
+msgstr "リソース・オーナー・パスワード・クレデンシャル・グラント（Direct Access Grants）"
 
 #. type: Plain text
 msgid ""
 "_Direct Access Grants_ are used by REST clients to obtain tokens on behalf "
 "of users.  It is a HTTP POST request that contains:"
 msgstr ""
-"ダイレクトアクセスグラント_は、RESTクライアントがユーザーの代わりにトークンを取得するために使用されます。  これは、HTTP POST "
-"リクエストで、以下を含みます。"
+"_Direct Access Grants_ は、RESTクライアントがユーザーの代わりにトークンを取得するために使用されます。これは、HTTP "
+"POSTリクエストで、以下を含みます。"
 
 #. type: Plain text
 msgid ""
 "The credentials of the user. The credentials are sent within form "
 "parameters."
-msgstr "ユーザーのクレデンシャル。資格情報はフォームのパラメータで送信されます。"
+msgstr "ユーザーのクレデンシャル。クレデンシャルはフォームのパラメーターで送信されます。"
 
 #. type: Plain text
 msgid "The id of the client."
@@ -242,17 +239,17 @@ msgstr "クライアントのID。"
 
 #. type: Plain text
 msgid "The clients secret (if it is a confidential client)."
-msgstr "クライアントの秘密(機密クライアントの場合)。"
+msgstr "クライアントのシークレット（コンフィデンシャル・クライアントの場合）。"
 
 #. type: Plain text
 msgid ""
 "The HTTP response contains the _identity_, _access_, and _refresh_ tokens."
-msgstr "HTTP レスポンスには、_identity_、_access_、_refresh_ の各トークンが含まれます。"
+msgstr "HTTP レスポンスには、 _ID_ トークン、 _アクセス_ トークン、 _リフレッシュ_ トークンが含まれます。"
 
 #. type: Title =====
 #, no-wrap
 msgid "Client credentials grant"
-msgstr "クライアント認証の付与"
+msgstr "クライアント・クレデンシャル・グラント"
 
 #. type: Plain text
 msgid ""
@@ -261,21 +258,19 @@ msgid ""
 "obtaining a token that works on behalf of an external user. _Client "
 "Credentials Grants_ are used by REST clients."
 msgstr ""
-"_Client Credentials Grant_ "
-"は、外部ユーザーの代わりに動作するトークンを取得するのではなく、クライアントに関連付けられたサービスアカウントのメタデータと権限に基づいてトークンを作成します。_Client"
-" Credentials Grants_ は REST クライアントによって使用されます。"
+"_クライアント・クレデンシャル・グラント_ "
+"は、外部ユーザーの代わりに動作するトークンを取得するのではなく、クライアントに関連付けられたサービス・アカウントのメタデータとパーミッションに基づいてトークンを作成します。"
+" _クライアント・クレデンシャル・グラント_ は REST クライアントによって使用されます。"
 
 #. type: Plain text
 msgid ""
 "See the <<_service_accounts,Service Accounts>> chapter for more information."
-msgstr ""
-"詳しくは&lt;&gt;の<_service_accounts,Service "
-"Accounts>章を</_service_accounts,Service>ご覧ください。"
+msgstr "詳しくは<<_service_accounts,サービス・アカウント>>の章を参照してください。"
 
 #. type: Title =====
 #, no-wrap
 msgid "Device authorization grant"
-msgstr "デバイス認証の付与"
+msgstr "デバイス認可グラント"
 
 #. type: Plain text
 msgid ""
@@ -315,7 +310,7 @@ msgstr ""
 #. type: Title =====
 #, no-wrap
 msgid "Client initiated backchannel authentication grant"
-msgstr "クライアントが開始したバックチャネル認証の付与"
+msgstr "クライアント起点バックチャネル認証グラント"
 
 #. type: Plain text
 msgid ""
@@ -325,7 +320,7 @@ msgid ""
 "brief summary of the protocol:"
 msgstr ""
 "この機能は、OAuth "
-"2.0の認可コード付与のようにユーザのブラウザを通してリダイレクトすることなく、OpenIDプロバイダと直接通信して認証フローを開始させたいクライアントが使用します。以下はプロトコルの概要です。"
+"2.0の認可コードグラントのようにユーザーのブラウザーを通してリダイレクトすることなく、OpenIDプロバイダーと直接通信して認証フローを開始させたいクライアントが使用します。以下はプロトコルの概要です。"
 
 #. type: Plain text
 msgid ""

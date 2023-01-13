@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Shinsuke UEDA, 2017
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# katakura__pro <h.katakura@pro-japan.co.jp>, 2022
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,28 +21,46 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Plain text
-#, no-wrap
-msgid "Update Password"
-msgstr "Update Password"
-
 #. type: Block title
 #, no-wrap
-msgid "Login Events"
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Plain text
+#, no-wrap
+msgid "Logout"
+msgstr "ログアウト"
+
+#. type: Plain text
+msgid "Click *Events* in the menu."
+msgstr "メニューの *Events* をクリックします。"
+
+#. type: Plain text
+msgid "Click the *Config* tab."
+msgstr "*Config* タブをクリックします。"
+
+#. type: Plain text
+msgid "image:{project_images}/login-events-config.png[Event Configuration]"
+msgstr "image:{project_images}/login-events-config.png[Event Configuration]"
+
+#. type: Title ===
+#, no-wrap
+msgid "Login events"
 msgstr "ログインイベント"
 
 #. type: Plain text
 msgid ""
-"Login events occur for things like when a user logs in successfully, when "
-"somebody enters in a bad password, or when a user account is updated.  Every"
-" single event that happens to a user can be recorded and viewed.  By "
-"default, no events are stored or viewed in the Admin Console.  Only error "
-"events are logged to the console and the server's log file.  To start "
-"persisting you'll need to enable storage.  Go to the `Events` left menu item"
-" and select the `Config` tab."
+"You can record and view every event that affects users. {project_name} "
+"triggers login events for actions such as successful user login, a user "
+"entering an incorrect password, or a user account updating. By default, "
+"{project_name} does not store or display events in the Admin Console. Only "
+"the error events are logged to the Admin Console and the server’s log file."
 msgstr ""
-"ログインイベントは、ユーザーが正常にログインしたとき、誰かが間違ったパスワードを入力したとき、またはユーザー・アカウントが更新されたときなどに発生します。ユーザーに起こるすべてのイベントを記録して表示することができます。デフォルトでは、イベントは保存されず、管理コンソールに表示されることもありません。エラーイベントのみがコンソールとサーバーのログファイルに記録されます。永続化を開始するには、保存を有効にする必要があります。左側の"
-" `Events` メニュー項目に行き、 `Config` タブを選択してください。"
+"ユーザーに影響を与えるすべてのイベントを記録し、表示することができます。{project_name}は、ユーザーのログイン成功、ユーザーの不正なパスワード入力、ユーザー・アカウントの更新などのアクションに対してログインイベントをトリガーします。デフォルトでは、{project_name}は管理コンソールにイベントを保存または表示しません。エラーイベントのみが管理コンソールとサーバーのログファイルに記録されます。"
+
+#. type: Plain text
+msgid "To start saving events, enable storage."
+msgstr "イベントの保存を開始するには、ストレージを有効にします。"
 
 #. type: Block title
 #, no-wrap
@@ -49,15 +68,8 @@ msgid "Event Configuration"
 msgstr "イベント設定"
 
 #. type: Plain text
-msgid "image:{project_images}/login-events-config.png[]"
-msgstr "image:{project_images}/login-events-config.png[]"
-
-#. type: Plain text
-msgid ""
-"To start storing events you'll need to turn the `Save Events` switch to on "
-"under the `Login Events Settings`."
-msgstr ""
-"イベントの保存を開始するには、 `Login Events Settings` の `Save Events` スイッチをオンにする必要があります。"
+msgid "Toggle *Save Events* to *ON*."
+msgstr "*Save Events* を *ON* に切り替えます。"
 
 #. type: Block title
 #, no-wrap
@@ -65,157 +77,233 @@ msgid "Save Events"
 msgstr "イベントの保存"
 
 #. type: Plain text
-msgid "image:{project_images}/login-events-settings.png[]"
-msgstr "image:{project_images}/login-events-settings.png[]"
+msgid "image:{project_images}/login-events-settings.png[Save Events]"
+msgstr "image:{project_images}/login-events-settings.png[Save Events]"
+
+#. type: Plain text
+msgid "Specify the events to store in the *Saved Types* field."
+msgstr "保存するイベントを *Saved Types* フィールドに指定します。"
+
+#. type: Plain text
+msgid "You can click the *Clear events* button to delete all events."
+msgstr "*Clear events* ボタンをクリックすると、すべてのイベントを消去できます。"
 
 #. type: Plain text
 msgid ""
-"The `Saved Types` field allows you to specify which event types you want to "
-"store in the event store.  The `Clear events` button allows you to delete "
-"all the events in the database. The `Expiration` field allows you to specify"
-" how long you want to keep events stored.  Once you've enabled storage of "
-"login events and decided on your settings, don't forget to click the `Save` "
-"button on the bottom of this page."
+"Specify the length of time to store events in the *Expiration* field. When "
+"you enable login event storage and enable your settings, click the *Save* "
+"button."
 msgstr ""
-"`Saved Types` フィールドでは、イベントストアに保存するイベントタイプを指定することができます。 `Clear events` "
-"ボタンで、データベース内のすべてのイベントを削除できます。 `Expiration` "
-"フィールドでは、イベントを保存する期間を指定することができます。ログインイベントの保存を有効にして設定を決定したら、このページの下部にある `Save`"
-" ボタンをクリックすることを忘れないでください。"
+"*Expiration* 欄に、イベントを保存する期間を指定します。ログインイベントの保存を有効にし、設定を有効にしたら、 *Save* "
+"ボタンをクリックします。"
 
 #. type: Plain text
-msgid "To view events, go to the `Login Events` tab."
-msgstr "イベントを表示するには、 `Login Events` タブに移動します。"
-
-#. type: Plain text
-msgid "image:{project_images}/login-events.png[]"
-msgstr "image:{project_images}/login-events.png[]"
-
-#. type: Plain text
-msgid ""
-"As you can see, there's a lot of information stored and, if you are storing "
-"every event, there are a lot of events stored for each login action.  The "
-"`Filter` button on this page allows you to filter which events you are "
-"actually interested in."
-msgstr ""
-"見てのとおり、多くの情報が保存されています。すべてのイベントを保存している場合は、ログイン・アクションごとに多数のイベントが保存されています。このページの"
-" `Filter` ボタンを使用すると、実際に関心のあるイベントをフィルタリングすることができます。"
+msgid "Click the *Login Events* tab to view the events."
+msgstr "ログインイベント*タブをクリックすると、イベントが表示されます。"
 
 #. type: Block title
 #, no-wrap
-msgid "Login Event Filter"
+msgid "Login Events"
+msgstr "ログインイベント"
+
+#. type: Plain text
+msgid "image:{project_images}/login-events.png[Login Events]"
+msgstr "image:{project_images}/login-events.png[Login Events]"
+
+#. type: Plain text
+msgid "You can filter events using the *Filter* button."
+msgstr "*Filter* ボタンを使って、イベントをフィルターできます。"
+
+#. type: Block title
+#, no-wrap
+msgid "Login Events Filter"
 msgstr "ログインイベント・フィルター"
 
 #. type: Plain text
-msgid "image:{project_images}/login-events-filter.png[]"
-msgstr "image:{project_images}/login-events-filter.png[]"
+msgid "image:{project_images}/login-events-filter.png[Login Events Filter]"
+msgstr "image:{project_images}/login-events-filter.png[Login Events Filter]"
 
 #. type: Plain text
 msgid ""
-"In this screenshot, we're filtering only `Login` events.  Clicking the "
-"`Update` button runs the filter."
-msgstr ""
-"このスクリーンショットでは、 `Login` イベントのみをフィルタリングしています。 `Update` "
-"ボタンをクリックするとフィルターが実行されます。"
+"In this example, we filter only `Login` events. Click *Update* to run the "
+"filter."
+msgstr "この例では、 `Login` イベントのみをフィルタリングします。フィルターを実行するには、 *Update* をクリックします。"
 
 #. type: Title ====
 #, no-wrap
-msgid "Event Types"
+msgid "Event types"
 msgstr "イベントの種類"
 
 #. type: Plain text
-msgid "Login events:"
-msgstr "ログインイベント："
+#, no-wrap
+msgid "*Login events:*\n"
+msgstr "*Login events:*\n"
+
+#. type: Named 'cols' AttributeList argument for style 'cols'
+#, no-wrap
+msgid "2"
+msgstr "2"
 
 #. type: Plain text
-msgid "Login - A user has logged in."
-msgstr "Login - ユーザーがログインしました。"
+msgid "Event |Description"
+msgstr "イベント |説明"
 
 #. type: Plain text
-msgid "Register - A user has registered."
-msgstr "Register - ユーザーが登録しました。"
+msgid "Login"
+msgstr "Login"
 
 #. type: Plain text
-msgid "Logout - A user has logged out."
-msgstr "Logout - ユーザーがログアウトしました。"
+msgid "A user logs in."
+msgstr "ユーザーがログインした。"
+
+#. type: Plain text
+msgid "Register"
+msgstr "Register"
+
+#. type: Plain text
+msgid "A user registers."
+msgstr "ユーザーが登録された。"
+
+#. type: Plain text
+msgid "A user logs out."
+msgstr "ユーザーがログアウトした。"
+
+#. type: Plain text
+msgid "Code to Token"
+msgstr "Code to Token"
+
+#. type: Plain text
+msgid "An application, or client, exchanges a code for a token."
+msgstr "アプリケーション（クライアント）がコードとトークンを交換した。"
+
+#. type: Plain text
+msgid "Refresh Token"
+msgstr "Refresh Token"
+
+#. type: Plain text
+msgid "An application, or client, refreshes a token."
+msgstr "アプリケーション、またはクライアントがトークンをリフレッシュした。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*Account events:*\n"
+msgstr "*Account events:*\n"
+
+#. type: Plain text
+msgid "Social Link"
+msgstr "Social Link"
+
+#. type: Plain text
+msgid "A user account links to a social media provider."
+msgstr "ユーザー・アカウントが、ソーシャル・メディア・プロバイダーとリンクされた。"
+
+#. type: Plain text
+msgid "Remove Social Link"
+msgstr "Remove Social Link"
+
+#. type: Plain text
+msgid "The link from a social media account to a user account severs."
+msgstr "ソーシャル・メディア・アカウントからユーザー・アカウントへのリンクが切れた。"
+
+#. type: Plain text
+msgid "Update Email"
+msgstr "Update Email"
+
+#. type: Plain text
+msgid "An email address for an account changes."
+msgstr "アカウントのメールアドレスが変更された。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Update Profile"
+msgstr "Update Profile"
+
+#. type: Plain text
+msgid "A profile for an account changes."
+msgstr "アカウントのプロファイルが変更された。"
+
+#. type: Plain text
+msgid "Send Password Reset"
+msgstr "Send Password Reset"
+
+#. type: Plain text
+msgid "{project_name} sends a password reset email."
+msgstr "{project_name}がパスワード・リセット・メールを送信した。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Update Password"
+msgstr "Update Password"
+
+#. type: Plain text
+msgid "The password for an account changes."
+msgstr "アカウントのパスワードが変更された。"
+
+#. type: Plain text
+msgid "Update TOTP"
+msgstr "Update TOTP"
 
 #. type: Plain text
 msgid ""
-"Code to Token - An application/client has exchanged a code for a token."
-msgstr "Code to Token - アプリケーション/クライアントがコードをトークンに交換しました。"
+"The Time-based One-time Password (TOTP) settings for an account changes."
+msgstr "アカウントのTOTP（Time-based One-time Password）の設定が変更された。"
 
 #. type: Plain text
-msgid "Refresh Token - An application/client has refreshed a token."
-msgstr "Refresh Token - アプリケーション/クライアントがトークンをリフレッシュしました。"
+msgid "Remove TOTP"
+msgstr "Remove TOTP"
 
 #. type: Plain text
-msgid "Account events:"
-msgstr "アカウントイベント："
+msgid "{project_name} removes TOTP from an account."
+msgstr "{project_name}がアカウントからTOTPを削除した。"
 
 #. type: Plain text
-msgid "Social Link - An account has been linked to a social provider."
-msgstr "Social Link - アカウントはソーシャル・プロバイダーにリンクされました。"
+msgid "Send Verify Email"
+msgstr "Send Verify Email"
 
 #. type: Plain text
-msgid ""
-"Remove Social Link - A social provider has been removed from an account."
-msgstr "Remove Social Link - ソーシャル・プロバイダーがアカウントから削除されました。"
+msgid "{project_name} sends an email verification email."
+msgstr "{project_name}が確認メールを送信した。"
+
+#. type: Labeled list
+#, no-wrap
+msgid "Verify Email"
+msgstr "Verify Email"
 
 #. type: Plain text
-msgid "Update Email - The email address for an account has changed."
-msgstr "Update Email - アカウントのメールアドレスが変更されました。"
+msgid "{project_name} verifies the email address for an account."
+msgstr "{project_name}がアカウントのメールアドレスを確認した。"
 
 #. type: Plain text
-msgid "Update Profile - The profile for an account has changed."
-msgstr "Update Profile - アカウントのプロファイルが変更されました。"
-
-#. type: Plain text
-msgid "Send Password Reset - A password reset email has been sent."
-msgstr "Send Password Reset - パスワードリセット・メールが送信されました。"
-
-#. type: Plain text
-msgid "Update Password - The password for an account has changed."
-msgstr "Update Password - アカウントのパスワードが変更されました。"
-
-#. type: Plain text
-msgid "Update TOTP - The TOTP settings for an account have changed."
-msgstr "Update TOTP - アカウントのTOTP設定が変更されました。"
-
-#. type: Plain text
-msgid "Remove TOTP - TOTP has been removed from an account."
-msgstr "Remove TOTP - TOTPがアカウントから削除されました。"
-
-#. type: Plain text
-msgid "Send Verify Email - An email verification email has been sent."
-msgstr "Send Verify Email - メールアドレス検証のメールが送信されました。"
-
-#. type: Plain text
-msgid "Verify Email - The email address for an account has been verified."
-msgstr "Verify Email - アカウントのメールアドレスが検証されました。"
-
-#. type: Plain text
-msgid "For all events there is a corresponding error event."
-msgstr "すべてのイベントに対応するエラーイベントがあります。"
+msgid "Each event has a corresponding error event."
+msgstr "各イベントには、対応するエラーイベントがあります。"
 
 #. type: Title ====
 #, no-wrap
-msgid "Event Listener"
+msgid "Event listener"
 msgstr "イベントリスナー"
 
 #. type: Plain text
 msgid ""
-"Event listeners listen for events and perform an action based on that event."
-"  There are two built-in listeners that come with {project_name}: Logging "
-"Event Listener and Email Event Listener."
+"Event listeners listen for events and perform actions based on that event. "
+"{project_name} includes two built-in listeners, the Logging Event Listener "
+"and Email Event Listener."
 msgstr ""
-"イベントリスナーは、イベントを待ち受け、そのイベントに基づいてアクションを実行します。 "
-"{project_name}にはロギング・イベントリスナーと電子メール・イベントリスナーの2つのビルトインのリスナーがあります。"
+"イベントリスナーは、イベントをリスニングし、そのイベントに基づいてアクションを実行します。{project_name}には、ロギング・イベント・リスナーと電子メール・イベント・リスナーという2つの組み込みリスナーがあります。"
+
+#. type: Title =====
+#, no-wrap
+msgid "The logging event listener"
+msgstr "ロギング・イベント・リスナー"
 
 #. type: Plain text
 msgid ""
-"The Logging Event Listener writes to a log file whenever an error event "
-"occurs and is enabled by default.  Here's an example log message:"
-msgstr ""
-"ロギング・イベントリスナーは、エラーイベントが発生したときにログファイルに書き込みます。デフォルトで有効になっています。次に、ログメッセージの例を示します。"
+"When the Logging Event Listener is enabled, this listener writes to a log "
+"file when an error event occurs."
+msgstr "Logging Event Listenerが有効な場合、このリスナーはエラーイベントが発生したときにログファイルに書き込みます。"
+
+#. type: Plain text
+msgid "An example log message from a Logging Event Listener:"
+msgstr "ロギング・イベント・リスナーからのログメッセージの例です。"
 
 #. type: delimited block -
 #, no-wrap
@@ -236,33 +324,48 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This logging is very useful if you want to use a tool like Fail2Ban to "
-"detect if there is a hacker bot somewhere that is trying to guess user "
-"passwords.  You can parse the log file for `LOGIN_ERROR` and pull out the IP"
-" Address. Then feed this information into Fail2Ban so that it can help "
-"prevent attacks."
-msgstr ""
-"このロギングは、Fail2Banのようなツールを使用して、ユーザーのパスワードを推測しようとしているハッカーのボットがあるかどうかを検出する場合に非常に便利です。"
-" `LOGIN_ERROR` "
-"のログファイルを解析してIPアドレスを抜き出すことができます。その後、攻撃を防ぐことができるように、この情報をFail2Banに与えます。"
+"You can use the Logging Event Listener to protect against hacker bot "
+"attacks:"
+msgstr "ロギング・イベント・リスナーを使用すると、ハッカーボット攻撃から保護することができます。"
+
+#. type: Plain text
+msgid "Parse the log file for the `LOGIN_ERROR` event."
+msgstr "`LOGIN_ERROR` イベントのログファイルを解析します。"
+
+#. type: Plain text
+msgid "Extract the IP Address of the failed login event."
+msgstr "ログインに失敗したイベントのIPアドレスを抽出します。"
 
 #. type: Plain text
 msgid ""
-"The Logging Event Listener logs events to the `org.keycloak.events` logger "
-"category. By default debug log events are not included in server logs."
-msgstr ""
-"ロギング・イベントリスナーは、イベントを `org.keycloak.events` "
-"ロガーカテゴリーに記録します。デフォルトでは、デバッグログ・イベントはサーバーログに含まれません。"
+"Send the IP address to an intrusion prevention software framework tool."
+msgstr "侵入防止ソフトウェア・フレームワーク・ツールにIPアドレスを送信します。"
 
 #. type: Plain text
 msgid ""
-"To include debug log events in server logs, edit the `standalone.xml` file "
-"and change the log level used by the Logging Event listener. Alternately, "
-"you can configure the log level for `org.keycloak.events`."
+"The Logging Event Listener logs events to the `org.keycloak.events` log "
+"category. {project_name} does not include debug log events in server logs, "
+"by default."
 msgstr ""
-"サーバーログにデバッグログ・イベントを含めるには、 `standalone.xml` "
-"ファイルを編集し、ロギング・イベントリスナーで使用されるログレベルを変更します。または、 `org.keycloak.events` "
-"のログレベルを設定できます。"
+"ロギング・イベント・リスナーはイベントを `org.keycloak.events` "
+"ログカテゴリーに記録します。{project_name}は、デフォルトでは、デバッグ・ログ・イベントをサーバーログに含めません。"
+
+#. type: Plain text
+msgid "To include debug log events in server logs:"
+msgstr "サーバーログにデバッグログイベントを含めるには、以下のようにします。"
+
+#. type: Plain text
+msgid "Edit the `standalone.xml` file."
+msgstr "`standalone.xml` ファイルを編集します。"
+
+#. type: Plain text
+msgid "Change the log level used by the Logging Event listener."
+msgstr "ロギング・イベント・リスナーが使用するログレベルを変更します。"
+
+#. type: Plain text
+msgid ""
+"Alternately, you can configure the log level for `org.keycloak.events`."
+msgstr "代わりに、 `org.keycloak.events` のログレベルを設定できます。"
 
 #. type: Plain text
 msgid "For example, to change the log level add the following:"
@@ -320,49 +423,61 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Valid values for the log levels are `debug`, `info`, `warn`, `error`, and "
+"The valid values for log levels are `debug`, `info`, `warn`, `error`, and "
 "`fatal`."
-msgstr "ログレベルの有効な値は、 `debug` 、`info` 、 `warn` 、 `error` 、および `fatal` です。"
+msgstr "ログレベルに有効な値は `debug`、`info`、`warn`、`error`、および `fatal` です。"
+
+#. type: Title =====
+#, no-wrap
+msgid "The Email Event Listener"
+msgstr "電子メール・イベント・リスナー"
 
 #. type: Plain text
 msgid ""
 "The Email Event Listener sends an email to the user's account when an event "
-"occurs."
-msgstr "電子メール・イベントリスナーは、イベントが発生したときにユーザーのアカウントに電子メールを送信します。"
+"occurs and supports the following events:"
+msgstr "電子メール・イベント・リスナーは、イベントが発生するとユーザーのアカウントにメールを送信し、以下のイベントをサポートします。"
 
 #. type: Plain text
-msgid "Currently, the Email Event Listener supports the following events:"
-msgstr "現在、電子メール・イベントリスナーは次のイベントをサポートしています。"
+msgid "Login Error."
+msgstr "ログインエラー。"
 
 #. type: Plain text
-msgid "Login Error"
-msgstr "Login Error"
+msgid "Update Password."
+msgstr "パスワードの更新。"
 
 #. type: Plain text
-msgid "Update TOTP"
-msgstr "Update TOTP"
+msgid "Update Time-based One-time Password (TOTP)."
+msgstr "タイムベースワンタイムパスワード（TOTP）の更新。"
 
 #. type: Plain text
-msgid "Remove TOTP"
-msgstr "Remove TOTP"
+msgid "Remove Time-based One-time Password (TOTP)."
+msgstr "時間ベースのワンタイムパスワード（TOTP）の削除。"
+
+#. type: Plain text
+msgid "To enable the Email Listener:"
+msgstr "電子メール・イベント・リスナーを有効にするには、次のようにします。"
+
+#. type: Plain text
+msgid "Click *Events* from the menu."
+msgstr "メニューから *Events* をクリックします。"
+
+#. type: Plain text
+msgid "Click the *Event Listeners* field."
+msgstr "*Event Listeners* フィールドをクリックします。"
+
+#. type: Plain text
+msgid "Select `email`."
+msgstr "`email` を選択します。"
 
 #. type: Plain text
 msgid ""
-"To enable the Email Listener go to the `Config` tab and click on the `Event "
-"Listeners` field.  This will show a drop down list box where you can select "
-"email."
+"You can exclude events by editing the `standalone.xml`, `standalone-ha.xml`,"
+" or `domain.xml` configuration files included in your distribution. For "
+"example:"
 msgstr ""
-"電子メールリスナーを有効にするには `Config` タブに行き、 `Event Listeners` "
-"フィールドをクリックしてください。これにより、電子メールを選択できるドロップダウン・リストボックスが表示されます。"
-
-#. type: Plain text
-msgid ""
-"You can exclude one or more events by editing the `standalone.xml`, "
-"`standalone-ha.xml`, or `domain.xml` that comes with your distribution and "
-"adding for example:"
-msgstr ""
-"1つまたは複数のイベントを除外するには、配布物に付属している `standalone.xml` 、`standalone-ha.xml` 、 "
-"`domain.xml` を編集して、次のように追加します。"
+"イベントを除外するには、配布物に含まれる `standalone.xml` 、 `standalone-ha.xml` 、 `domain.xml` "
+"の設定ファイルを編集してください。たとえば、以下のようにします。"
 
 #. type: delimited block -
 #, no-wrap
@@ -385,13 +500,13 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"You can also set up a maximum length of the Event detail stored in the "
-"database by editing `standalone.xml`, `standalone-ha.xml`, or `domain.xml`. "
-"This setting can be useful in case some field (e.g. redirect_uri) is very "
-"long. Here is an example of defining the maximum length.:"
+"You can set a maximum length of the Event detail in the database by editing "
+"the `standalone.xml`, `standalone-ha.xml`, or `domain.xml` configuration "
+"files. This setting is useful if a field (for example, redirect_uri) is "
+"long. For example:"
 msgstr ""
-"また、 `standalone.xml` 、`standalone-ha.xml` 、または `domain.xml` "
-"を編集して、データベースに保存されるイベントの詳細の最大長を設定することもできます。この設定は、一部のフィールド（redirect_uriなど）が非常に長い場合に役立ちます。以下に、最大長を定義する例を示します。"
+"`standalone.xml` 、 `standalone-ha.xml` または `domain.xml` "
+"設定ファイルを編集することで、データベース内のイベント詳細の最大長を設定することができます。この設定は、あるフィールド（例えば、redirect_uri）が長い場合に便利です。たとえば、以下のようにします。"
 
 #. type: delimited block -
 #, no-wrap
@@ -415,7 +530,8 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "See the link:{installguide_link}[{installguide_name}] for more details on "
-"where the `standalone.xml`, `standalone-ha.xml`, or `domain.xml` file lives."
+"the location of the `standalone.xml`, `standalone-ha.xml`, or `domain.xml` "
+"files."
 msgstr ""
-"`standalone.xml` 、 `standalone-ha.xml` 、 `domain.xml` ファイルがどこにあるかの詳細は "
+"`standalone.xml` 、 `standalone-ha.xml` 、 `domain.xml` ファイルの場所については "
 "link:{installguide_link}[{installguide_name}] を参照してください。"

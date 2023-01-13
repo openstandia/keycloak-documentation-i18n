@@ -5,13 +5,13 @@
 # 
 # Translators:
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,6 +34,10 @@ msgstr "アダプターのインストール"
 msgid "Multi Tenancy"
 msgstr "マルチテナンシー"
 
+#. type: Plain text
+msgid "<[[_spring_security_adapter]]"
+msgstr "<[[_spring_security_adapter]]"
+
 #. type: Title ====
 #, no-wrap
 msgid "Spring Security Adapter"
@@ -54,7 +58,7 @@ msgstr ""
 msgid ""
 "Unlike the other Keycloak Adapters, you should not configure your security "
 "in web.xml.  However, keycloak.json is still required.  In order for Single "
-"Sign Out work properly you have to define a session listener."
+"Sign Out to work properly you have to define a session listener."
 msgstr ""
 "他のKeycloakアダプターとは異なり、web.xmlにセキュリティーを設定しないでください。ただし、 `keycloak.json` "
 "は依然として必要です。シングル・サインアウトが適切に機能するためには、セッション・リスナーを定義する必要があります。"
@@ -180,7 +184,7 @@ msgid ""
 "    @Bean\n"
 "    @Override\n"
 "    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {\n"
-"        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());\n"
+"        return new RegisterSessionAuthenticationStrategy(buildSessionRegistry());\n"
 "    }\n"
 msgstr ""
 "    /**\n"
@@ -189,7 +193,20 @@ msgstr ""
 "    @Bean\n"
 "    @Override\n"
 "    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {\n"
-"        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());\n"
+"        return new RegisterSessionAuthenticationStrategy(buildSessionRegistry());\n"
+"    }\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"    @Bean\n"
+"    protected SessionRegistry buildSessionRegistry() {\n"
+"        return new SessionRegistryImpl();\n"
+"    }\n"
+msgstr ""
+"    @Bean\n"
+"    protected SessionRegistry buildSessionRegistry() {\n"
+"        return new SessionRegistryImpl();\n"
 "    }\n"
 
 #. type: delimited block -
@@ -226,8 +243,8 @@ msgid ""
 "applications and `NullAuthenticatedSessionStrategy` for bearer-only "
 "applications."
 msgstr ""
-"パブリックまたはコンフィデンシャルなアプリケーションの場合は `RegisterSessionAuthenticationStrategy` の"
-"、bearer-onlyアプリケーションの場合は `NullAuthenticatedSessionStrategy` "
+"パブリックまたはコンフィデンシャルなアプリケーションの場合は `RegisterSessionAuthenticationStrategy` "
+"の、bearer-onlyアプリケーションの場合は `NullAuthenticatedSessionStrategy` "
 "のタイプのセッション認証ストラテジーBeanを提供する必要があります。"
 
 #. type: Plain text
@@ -243,11 +260,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The `@KeycloakConfiguration` annotation is a metadata annotion that defines "
-"all annotations that are needed to integrate {project_name} in Spring "
-"Security. If you have a complexe Spring Security setup you can simply have a"
-" look ath the annotations of the `@KeycloakConfiguration` annotation and "
-"create your own custom meta annotation or just use specific Spring "
+"The `@KeycloakConfiguration` annotation is a metadata annotation that "
+"defines all annotations that are needed to integrate {project_name} in "
+"Spring Security. If you have a complex Spring Security setup you can simply "
+"have a look at the annotations of the `@KeycloakConfiguration` annotation "
+"and create your own custom meta annotation or just use specific Spring "
 "annotations for the {project_name} adapter."
 msgstr ""
 "`@KeycloakConfiguration` アノテーションは、Spring "
@@ -350,6 +367,15 @@ msgstr ""
 "    </bean>\n"
 "    <bean id=\"keycloakSecurityContextRequestFilter\"\n"
 "          class=\"org.keycloak.adapters.springsecurity.filter.KeycloakSecurityContextRequestFilter\" />\n"
+
+#. type: delimited block -
+#, no-wrap
+msgid ""
+"<bean id=\"keycloakSecurityContextRequestFilter\"\n"
+"     class=\"org.keycloak.adapters.springsecurity.filter.KeycloakSecurityContextRequestFilter\" />\n"
+msgstr ""
+"<bean id=\"keycloakSecurityContextRequestFilter\"\n"
+"     class=\"org.keycloak.adapters.springsecurity.filter.KeycloakSecurityContextRequestFilter\" />\n"
 
 #. type: delimited block -
 #, no-wrap

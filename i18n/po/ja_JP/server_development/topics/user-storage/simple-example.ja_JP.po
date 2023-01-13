@@ -6,14 +6,14 @@
 # Translators:
 # Shinsuke UEDA, 2017
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,18 +37,13 @@ msgstr "    }\n"
 
 #. type: Block title
 #, no-wrap
-msgid "User Federation"
-msgstr "ユーザー・フェデレーション"
+msgid "Configured Provider"
+msgstr "設定プロバイダー"
 
 #. type: Title ====
 #, no-wrap
 msgid "Packaging and Deployment"
 msgstr "パッケージ化とデプロイ"
-
-#. type: Block title
-#, no-wrap
-msgid "Configured Provider"
-msgstr "設定プロバイダー"
 
 #. type: Title ===
 #, no-wrap
@@ -326,13 +321,13 @@ msgid ""
 "    @Override\n"
 "    public boolean isConfiguredFor(RealmModel realm, UserModel user, String credentialType) {\n"
 "        String password = properties.getProperty(user.getUsername());\n"
-"        return credentialType.equals(CredentialModel.PASSWORD) && password != null;\n"
+"        return credentialType.equals(PasswordCredentialModel.TYPE) && password != null;\n"
 "    }\n"
 msgstr ""
 "    @Override\n"
 "    public boolean isConfiguredFor(RealmModel realm, UserModel user, String credentialType) {\n"
 "        String password = properties.getProperty(user.getUsername());\n"
-"        return credentialType.equals(CredentialModel.PASSWORD) && password != null;\n"
+"        return credentialType.equals(PasswordCredentialModel.TYPE) && password != null;\n"
 "    }\n"
 
 #. type: delimited block -
@@ -340,12 +335,12 @@ msgstr ""
 msgid ""
 "    @Override\n"
 "    public boolean supportsCredentialType(String credentialType) {\n"
-"        return credentialType.equals(CredentialModel.PASSWORD);\n"
+"        return credentialType.equals(PasswordCredentialModel.TYPE);\n"
 "    }\n"
 msgstr ""
 "    @Override\n"
 "    public boolean supportsCredentialType(String credentialType) {\n"
-"        return credentialType.equals(CredentialModel.PASSWORD);\n"
+"        return credentialType.equals(PasswordCredentialModel.TYPE);\n"
 "    }\n"
 
 #. type: delimited block -
@@ -431,11 +426,11 @@ msgstr ""
 msgid ""
 "    @Override\n"
 "    public boolean updateCredential(RealmModel realm, UserModel user, CredentialInput input) {\n"
-"        if (input.getType().equals(CredentialModel.PASSWORD)) throw new ReadOnlyException(\"user is read only for this update\");\n"
+"        if (input.getType().equals(PasswordCredentialModel.TYPE)) throw new ReadOnlyException(\"user is read only for this update\");\n"
 msgstr ""
 "    @Override\n"
 "    public boolean updateCredential(RealmModel realm, UserModel user, CredentialInput input) {\n"
-"        if (input.getType().equals(CredentialModel.PASSWORD)) throw new ReadOnlyException(\"user is read only for this update\");\n"
+"        if (input.getType().equals(PasswordCredentialModel.TYPE)) throw new ReadOnlyException(\"user is read only for this update\");\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -736,6 +731,11 @@ msgid ""
 "You enable user storage providers per realm within the `User Federation` "
 "page in the administration console."
 msgstr "管理コンソールの `User Federation` ページ内で、レルム毎にユーザー・ストレージ・プロバイダーを有効にします。"
+
+#. type: Block title
+#, no-wrap
+msgid "User Federation"
+msgstr "ユーザー・フェデレーション"
 
 #. type: Plain text
 msgid "image:{project_images}/empty-user-federation-page.png[]"

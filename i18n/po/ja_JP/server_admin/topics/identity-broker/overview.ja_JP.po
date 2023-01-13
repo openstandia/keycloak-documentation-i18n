@@ -4,14 +4,13 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hiroyuki Wada <wadahiro@gmail.com>, 2019
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,157 +20,143 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "Brokering Overview"
+msgid "Brokering overview"
 msgstr "ブローカリングの概要"
 
 #. type: Plain text
 msgid ""
-"When using {project_name} as an identity broker, users are not forced to "
-"provide their credentials in order to authenticate in a specific realm.  "
-"Instead, they are presented with a list of identity providers from which "
-"they can authenticate."
+"When using {project_name} as an identity broker, {project_name} does not "
+"force users to provide their credentials to authenticate in a specific "
+"realm. {project_name} displays a list of identity providers from which they "
+"can authenticate."
 msgstr ""
-"{project_name}をアイデンティティー・ブローカーとして使用する場合、ユーザーは特定のレルムで認証するためにクレデンシャルを提供する必要はありません。代わりに、認証可能なアイデンティティー・プロバイダーのリストが提示されます。"
+"アイデンティティー・ブローカーとして{project_name}を使用する場合、{project_name}は、特定のレルムで認証するためのクレデンシャルの提供をユーザーに強制しません。{project_name}は、ユーザーが認証できるアイデンティティー・プロバイダーのリストを表示します。"
 
 #. type: Plain text
 msgid ""
-"You can also configure a default identity provider. In this case the user "
-"will not be given a choice, but will instead be redirected directly to the "
-"default provider."
+"If you configure a default identity provider, {project_name} redirects users"
+" to the default provider."
 msgstr ""
-"また、デフォルトのアイデンティティー・プロバイダーを設定することもできます。この場合、ユーザーには選択肢が与えられず、デフォルトのプロバイダーに直接リダイレクトされます。"
+"デフォルトのアイデンティティー・プロバイダーを設定している場合、{project_name}はユーザーをデフォルトのプロバイダーにリダイレクトします。"
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"The following diagram demonstrates the steps involved when using "
-"{project_name} to broker an external identity provider:"
-msgstr "次の図は、{project_name}を使用して外部アイデンティティー・プロバイダーを仲介するときに、必要な手順を示しています。"
+"Different protocols may require different authentication flows. All the "
+"identity providers supported by {project_name} use the following flow."
+msgstr ""
+"プロトコルによっては、異なる認証フローが必要になる場合があります。{project_name}がサポートするすべてのアイデンティティー・プロバイダーは、以下のフローを使用します。"
 
 #. type: Block title
 #, no-wrap
-msgid "Identity Broker Flow"
-msgstr "アイデンティティー・ブローカーのフロー"
+msgid "Identity broker flow"
+msgstr "アイデンティティー・ブローカー・フロー"
 
 #. type: Plain text
-msgid "image:images/identity_broker_flow.png[]"
-msgstr "image:images/identity_broker_flow.png[]"
+msgid "image:images/identity_broker_flow.png[Identity broker flow]"
+msgstr "image:images/identity_broker_flow.png[Identity broker flow]"
 
 #. type: Plain text
 msgid ""
-"User is not authenticated and requests a protected resource in a client "
+"The unauthenticated user requests a protected resource in a client "
 "application."
-msgstr "ユーザーは認証しておらず、クライアント・アプリケーションの保護されたリソースを要求します。"
+msgstr "認証されていないユーザーが、クライアント・アプリケーションで保護されたリソースを要求します。"
 
 #. type: Plain text
 msgid ""
-"The client applications redirects the user to {project_name} to "
-"authenticate."
-msgstr "クライアント・アプリケーションは、ユーザーを認証するために{project_name}にリダイレクトさせます。"
+"The client application redirects the user to {project_name} to authenticate."
+msgstr "クライアント・アプリケーションは、ユーザーを{project_name} にリダイレクトし、認証を行います。"
 
 #. type: Plain text
 msgid ""
-"At this point the user is presented with the login page where there is a "
-"list of identity providers configured in a realm."
-msgstr "この時点で、レルムに設定されているアイデンティティー・プロバイダーのリストがあるログインページがユーザーに表示されます。"
+"{project_name} displays the login page with a list of identity providers "
+"configured in a realm."
+msgstr "{project_name}は、レルムに設定されているアイデンティティー・プロバイダーの一覧を含むログインページを表示します。"
 
 #. type: Plain text
 msgid ""
-"User selects one of the identity providers by clicking on its respective "
-"button or link."
-msgstr "ユーザーは、各ボタンまたはリンクをクリックしてアイデンティティー・プロバイダーの1つを選択します。"
+"The user selects one of the identity providers by clicking its button or "
+"link."
+msgstr "ユーザーは、ボタンやリンクをクリックして、いずれかのアイデンティティー・プロバイダーを選択します。"
 
 #. type: Plain text
 msgid ""
 "{project_name} issues an authentication request to the target identity "
-"provider asking for authentication and the user is redirected to the login "
-"page of the identity provider.  The connection properties and other "
-"configuration options for the identity provider were previously set by the "
-"administrator in the Admin Console."
+"provider requesting authentication and redirects the user to the identity "
+"provider's login page. The administrator has already set the connection "
+"properties and other configuration options for the Admin Console's identity "
+"provider."
 msgstr ""
-"{project_name}は、ターゲットのアイデンティティー・プロバイダーに認証を要求する認証リクエストを発行し、ユーザーはアイデンティティー・プロバイダーのログイン・ページにリダイレクトされます。アイデンティティー・プロバイダーの接続プロパティーとその他の設定オプションは、管理者が管理コンソールで前もって設定したものになります。"
+"{project_name}は、対象のアイデンティティー・プロバイダーに認証を要求する認証リクエストを発行し、ユーザーをアイデンティティー・プロバイダーのログインページにリダイレクトします。管理者は、管理コンソールのアイデンティティー・プロバイダーの接続プロパティーやその他の設定オプションをすでに設定しています。"
 
 #. type: Plain text
 msgid ""
-"User provides his credentials or consent in order to authenticate with the "
-"identity provider."
-msgstr "ユーザーは、アイデンティティー・プロバイダーで認証するために自分のクレデンシャルか同意を提供します。"
+"The user provides credentials or consents to authenticate with the identity "
+"provider."
+msgstr "ユーザーはアイデンティティー・プロバイダーを認証するためのクレデンシャルまたは同意を提供します。"
 
 #. type: Plain text
 msgid ""
-"Upon a successful authentication by the identity provider, the user is "
-"redirected back to {project_name} with an authentication response.  Usually "
-"this response contains a security token that will be used by {project_name} "
-"to trust the authentication performed by the identity provider and retrieve "
-"information about the user."
+"Upon successful authentication by the identity provider, the user redirects "
+"back to {project_name} with an authentication response. Usually, the "
+"response contains a security token used by {project_name} to trust the "
+"identity provider's authentication and retrieve user information."
 msgstr ""
-"アイデンティティー・プロバイダーによる認証が成功すると、ユーザーは認証レスポンスとともに{project_name}にリダイレクトされます。通常、このレスポンスには、{project_name}によって使用されるセキュリティー・トークンが含まれています。セキュリティー・トークンは、アイデンティティー・プロバイダーによって実行された認証を信頼し、そのユーザーに関する情報を取得するために使用されます。"
+"アイデンティティー・プロバイダーによる認証が成功すると、ユーザーは認証レスポンスとともに{project_name}にリダイレクトして戻ります。通常、このレスポンスには{project_name}がアイデンティティー・プロバイダーの認証を信頼してユーザー情報を取得するために使用するセキュリティー・トークンが含まれています。"
 
 #. type: Plain text
 msgid ""
-"Now {project_name} is going to check if the response from the identity "
-"provider is valid.  If valid, it will import and create a new user or just "
-"skip that if the user already exists.  If it is a new user, {project_name} "
-"may ask the identity provider for information about the user if that info "
-"doesn't already exist in the token.  This is what we call _identity "
-"federation_.  If the user already exists {project_name} may ask him to link "
-"the identity returned from the identity provider with the existing account."
-"  We call this process _account linking_.  What exactly is done is "
-"configurable and can be specified by setup of "
-"<<_identity_broker_first_login,First Login Flow>>. At the end of this step, "
-"{project_name} authenticates the user and issues its own token in order to "
-"access the requested resource in the service provider."
+"{project_name} checks if the response from the identity provider is valid.  "
+"If valid, {project_name} imports and creates a user if the user does not "
+"already exist. {project_name} may ask the identity provider for further user"
+" information if the token does not contain that information. This behavior "
+"is _identity federation_.  If the user already exists, {project_name} may "
+"ask the user to link the identity returned from the identity provider with "
+"the existing account. This behavior is _account linking_. With "
+"{project_name}, you can configure _Account linking_ and specify it in the "
+"<<_identity_broker_first_login,First Login Flow>>. At this step, "
+"{project_name} authenticates the user and issues its token to access the "
+"requested resource in the service provider."
 msgstr ""
-"{project_name}は、アイデンティティー・プロバイダーからのレスポンスが有効かどうかを確認します。有効な場合は、新しいユーザーをインポートして作成するか、ユーザーがすでに存在する場合はそれをスキップします。新しいユーザーである場合、そのユーザーに関する情報がまだトークンに存在しなければ、{project_name}はその情報をアイデンティティー・プロバイダーに要求することがあります。これが"
-" _アイデンティティー・フェデレーション_ "
-"と呼ばれるものです。ユーザーがすでに存在している場合、{project_name}は、アイデンティティー・プロバイダーから返されたアイデンティティーを既存のアカウントとリンクするように依頼する可能性があります。このプロセスを"
-" _アカウントリンク_ と呼びます。正しく行われるように設定可能であり、<<_identity_broker_first_login, First "
+"{project_name}は、アイデンティティー・プロバイダーからのレスポンスが有効かどうかをチェックします。有効であれば、{project_name}は、ユーザーがまだ存在していない場合、ユーザーをインポートして作成します。{project_name}は、トークンにユーザー情報が含まれていない場合、アイデンティティー・プロバイダーにさらなるユーザー情報を求めることがあります。この動作が"
+" _アイデンティティー・フェデレーション_ です。  "
+"ユーザーがすでに存在している場合、{project_name}は、アイデンティティー・プロバイダーから返されたアイデンティティーを既存のアカウントとリンクさせるようユーザーに求めることがあります。この動作は"
+" _アカウント・リンキング_ "
+"です。{project_name}では、_アカウント・リンキング_を設定し、<<_identity_broker_first_login,First "
 "Login "
-"Flow>>の設定によって指定することができます。このステップの終わりに、{project_name}はユーザーを認証し、サービス・プロバイダー内の要求されたリソースにアクセスするために独自のトークンを発行します。"
+"Flow>>で指定します。この段階で、{project_name}はユーザーを認証し、サービス・プロバイダーで要求されたリソースにアクセスするためのトークンを発行します。"
 
 #. type: Plain text
 msgid ""
-"Once the user is locally authenticated, {project_name} redirects the user to"
-" the service provider by sending the token previously issued during the "
-"local authentication."
+"When the user authenticates, {project_name} redirects the user to the "
+"service provider by sending the token previously issued during the local "
+"authentication."
 msgstr ""
-"ユーザーがローカルで認証されると、{project_name}は、ローカル認証時に先に発行されたトークンを送信してユーザーをサービス・プロバイダーにリダイレクトします。"
+"ユーザーが認証されると、{project_name}は、ローカル認証時に以前に発行されたトークンを送信して、ユーザーをサービス・プロバイダーにリダイレクトします。"
 
 #. type: Plain text
 msgid ""
-"The service provider receives the token from {project_name} and allows "
+"The service provider receives the token from {project_name} and permits "
 "access to the protected resource."
-msgstr "サービス・プロバイダーは{project_name}からトークンを受け取り、保護されたリソースへのアクセスを許可します。"
+msgstr "サービス・プロバイダーは {project_name}からトークンを受け取り、保護されたリソースへのアクセスを許可します。"
 
 #. type: Plain text
 msgid ""
-"There are some variations of this flow that we will talk about later.  For "
-"instance, instead of presenting a list of identity providers, the client "
-"application can request a specific one.  Or you can tell {project_name} to "
-"force the user to provide additional information before federating his "
-"identity."
+"Variations of this flow are possible. For example, the client application "
+"can request a specific identity provider rather than displaying a list of "
+"them, or you can set {project_name} to force users to provide additional "
+"information before federating their identity."
 msgstr ""
-"このフローにはいくつかのバリエーションがありますので、後ほど説明します。たとえば、アイデンティティー・プロバイダーのリストを提示する代わりに、クライアント・アプリケーションは特定のプロバイダーを要求することができます。または、ユーザーが自分のアイデンティティーを統合する前に、ユーザーに追加の情報提供を強制させるように{project_name}に指示できます。"
-
-#. type: Plain text
-#, no-wrap
-msgid ""
-"Different protocols may require different authentication flows.\n"
-"      At this moment, all the identity providers supported by {project_name} use a flow just like described above.\n"
-"      However, regardless of the protocol in use, user experience should be pretty much the same.\n"
-msgstr ""
-"プロトコルが異なれば、異なる認証フローが必要になる場合があります。\n"
-"現時点では、{project_name}でサポートされているすべてのアイデンティティー・プロバイダーは、上で説明したものと同様のフローを使用します。\n"
-"ただし、使用しているプロトコルに関係なく、ユーザー・エクスペリエンスはほぼ同じになるはずです。\n"
+"このフローのバリエーションは可能です。たとえば、クライアント・アプリケーションは、特定のアイデンティティー・プロバイダーのリストを表示するのではなく、特定のアイデンティティー・プロバイダーを要求することができます。また、{project_name}を設定して、アイデンティティーを連携させる前にユーザーに追加情報の提供を強制することもできます。"
 
 #. type: Plain text
 msgid ""
-"As you may notice, at the end of the authentication process {project_name} "
-"will always issue its own token to client applications.  What this means is "
-"that client applications are completely decoupled from external identity "
-"providers.  They don't need to know which protocol (eg.: SAML, OpenID "
-"Connect, OAuth, etc) was used or how the user's identity was validated.  "
-"They only need to know about {project_name}."
+"At the end of the authentication process, {project_name} issues its token to"
+" client applications. Client applications are separate from the external "
+"identity providers, so they cannot see the client application's protocol or "
+"how they validate the user's identity. The provider only needs to know about"
+" {project_name}."
 msgstr ""
-"気づいたかもしれませんが、認証プロセスの終わりに{project_name}は常に独自のトークンをクライアント・アプリケーションに発行します。これは、クライアント・アプリケーションが外部アイデンティティー・プロバイダーと完全に分離されていることを意味します。クライアント・アプリケーションは、どのプロトコル（例：SAML、OpenID"
-" "
-"Connect、OAuthなど）が使用されたか、またはユーザーのアイデンティティーがどのように検証されたかを知る必要はなく、{project_name}について知る必要があるだけです。"
+"認証プロセスの最後に、{project_name}はそのトークンをクライアント・アプリケーションに発行します。クライアント・アプリケーションは外部の "
+"アイデンティティー・プロバイダーとは別のものなので、クライアント・アプリケーショ "
+"ンのプロトコルや、ユーザーのアイデンティティーをどのように検証するかを見ることはできません。プロバイダーは "
+"{project_name}のことだけを知っていればよいのです。"

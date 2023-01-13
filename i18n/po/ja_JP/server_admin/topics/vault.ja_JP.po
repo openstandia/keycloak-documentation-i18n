@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2019
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # Hiroyuki Wada <wadahiro@gmail.com>, 2022
+# Tsukasa Amano <t.amano@pro-japan.co.jp>, 2022
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2022\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,47 +36,49 @@ msgid "Additional resources"
 msgstr "追加のリソース"
 
 #. type: Plain text
+msgid "ifeval::[{project_community}==true]"
+msgstr "ifeval::[{project_community}==true]"
+
+#. type: Plain text
 msgid "For example:"
 msgstr "例："
 
 #. type: Title ==
 #, no-wrap
-msgid "Using a Vault to Obtain Secrets"
+msgid "Using a vault to obtain secrets"
 msgstr "ボールトを使用してシークレットを取得する"
 
 #. type: Plain text
 msgid ""
-"Several fields in the administration support obtaining the value of a secret"
-" from an external vault."
-msgstr "管理画面のいくつかのフィールドでは、外部ボールトからのシークレット値の取得をサポートしています。"
-
-#. type: Plain text
-msgid ""
-"To obtain a secret from a vault instead of entering it directly, enter the "
-"following specially crafted string into the appropriate field: "
-"`**${vault.**_key_**}**` where you replace the `_key_` with the name of the "
-"secret as recognized by the vault."
+"To obtain a secret from a vault rather than entering it directly, enter the "
+"following specially crafted string into the appropriate field:"
 msgstr ""
-"直接入力する代わりにボールトからシークレットを取得するには、次の特別に細工された文字列を適切なフィールドに入力します。 "
-"`**${vault.**_key_**}**` （ `_key_` をボールトによって認識されるシークレットの名前で置き換えます。）"
+"シークレットを直接入力するのではなく、ボールトからシークレットを取得するには、以下のような特別な細工をした文字列を該当するフィールドに入力します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "**${vault.**_key_**}**\n"
+msgstr "**${vault.**_key_**}**\n"
+
+#. type: Plain text
+msgid "where the `_key_` is the name of the secret recognized by the vault."
+msgstr "ここで、`_key_` はボールトが認識するシークレットの名前です。"
 
 #. type: Plain text
 msgid ""
-"In order to prevent secrets from leaking across realms, implementations may "
-"combine the realm name with the `_key_` obtained from the vault expression. "
-"This means that the `_key_` won't directly map to an entry in the vault, but"
-" rather be used to create the final entry name according to the algorithm "
-"used to combine it with the realm name."
+"To prevent secrets from leaking across realms, {project_name} combines the "
+"realm name with the `_key_` obtained from the vault expression. This method "
+"means that the `_key_` does not directly map to an entry in the vault but "
+"creates the final entry name according to the algorithm used to combine the "
+"`_key_` with the realm name."
 msgstr ""
-"シークレットがレルム間で漏洩するのを防ぐために、実装では、レルム名をボールト式から取得した `_key_` と組み合わせる場合があります。つまり、 "
-"`_key_` "
-"はボールト内のエントリーに直接マップされず、レルム名と組み合わせるために使用されるアルゴリズムに従って最終的なエントリー名を作成するために使用されます。"
+"レルム間でシークレットが漏れるのを防ぐために、 {project_name}はレルム名とボールトの式から得られる `_key_` "
+"を組み合わせます。この方法では、 `_key_` はデータボールトのエントリーに直接マッピングされませんが、 `_key_` "
+"とレルム名を組み合わせたアルゴリズムに従って、最終的なエントリー名を作成することになります。"
 
 #. type: Plain text
-msgid ""
-"Currently, the secret can be obtained from the vault in the following "
-"fields:"
-msgstr "現在、次のフィールドについてはボールトからシークレットを取得できます。"
+msgid "You can obtain the secret from the vault in the following fields:"
+msgstr "以下のフィールドで、ボールトのシークレットを取得することができます。"
 
 #. type: Labeled list
 #, no-wrap
@@ -84,7 +86,7 @@ msgid "SMTP password"
 msgstr "SMTPパスワード"
 
 #. type: Plain text
-msgid "In realm <<_email,SMTP settings>>"
+msgid "In the realm <<_email,SMTP settings>>"
 msgstr "レルムの<<_email,SMTP設定>>"
 
 #. type: Labeled list
@@ -93,7 +95,7 @@ msgid "LDAP bind credential"
 msgstr "LDAPバインド・クレデンシャル"
 
 #. type: Plain text
-msgid "In <<_ldap,LDAP settings>> of LDAP-based user federation."
+msgid "In the <<_ldap,LDAP settings>> of LDAP-based user federation."
 msgstr "LDAPベースのユーザー・フェデレーションの<<_ldap,LDAP設定>>内。"
 
 #. type: Labeled list
@@ -103,76 +105,77 @@ msgstr "OIDCアイデンティティー・プロバイダー・シークレッ�
 
 #. type: Plain text
 msgid ""
-"In _Client Secret_ inside identity provider <<_identity_broker_oidc,OpenID "
-"Connect Config>>"
+"In the _Client Secret_ inside identity provider "
+"<<_identity_broker_oidc,OpenID Connect Config>>"
 msgstr ""
 "アイデンティティー・プロバイダー<<_identity_broker_oidc,OpenID Connect設定>>内の _Client Secret_"
 " 内。"
 
 #. type: Plain text
 msgid ""
-"To use a vault, a vault provider must be registered within {project_name}.  "
-"It is possible to either use a built-in provider described below or "
-"implement your own provider. See the "
-"link:{developerguide_link}[{developerguide_name}] for more information."
+"To use a vault, register a vault provider in {project_name}. You can use the"
+" providers described <<_providers, here>> or implement your provider. See "
+"the link:{developerguide_link}[{developerguide_name}] for more information."
 msgstr ""
-"ボールトを使用するには、{project_name}内にボールト・プロバイダーを登録する必要があります。以下で説明する組み込みプロバイダーを使用するか、独自のプロバイダーを実装することができます。詳細については、リンクlink:{developerguide_link}[{developerguide_name}]を参照してください。"
+"ボールトを使用するには、{project_name}にボールト・プロバイダーを登録します。プロバイダーは<<_providers, "
+"ここ>>で説明されているものを使用するか、自分で実装することができます。詳しくは "
+"link:{developerguide_link}[{developerguide_name}] を参照してください。"
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"There is at most one vault provider active per {project_name} instance at "
-"any given time, and the vault provider in each instance within the cluster "
-"has to be configured consistently."
+"{project_name} permits a maximum of one active vault provider per "
+"{project_name} instance at a time. Configure the vault provider in each "
+"instance within the cluster consistently."
 msgstr ""
-"{project_name}インスタンスごとにアクティブなボールト・プロバイダーは常に最大1つであり、クラスター内の各インスタンスのボールト・プロバイダーは一貫して設定される必要があります。"
+"{project_name}では、{project_name}インスタンスごとに、一度に最大1つのアクティブなデータ・ボールト・プロバイダーが許可され "
+"ます。クラスター内の各インスタンスでデータ・ボールト・プロバイダーを一貫して設定します。"
 
 #. type: Title ===
 #, no-wrap
-msgid "Kubernetes / OpenShift Files Plaintext Vault Provider"
-msgstr "Kubernetes / OpenShift Files Plaintext ボールト・プロバイダー"
+msgid "Kubernetes / OpenShift files plain-text vault provider"
+msgstr "Kubernetes / OpenShift files plain-text ボールト・プロバイダー"
 
 #. type: Plain text
 msgid ""
 "{project_name} supports vault implementation for "
 "https://kubernetes.io/docs/concepts/configuration/secret/[Kubernetes "
-"secrets]. These secrets can be mounted as data volumes, and they appear as a"
-" directory with a flat file structure, where each secret is represented by a"
-" file whose name is the secret name, and contents of that file is the secret"
-" value."
+"secrets]. You can mount Kubernetes secrets as data volumes, and they appear "
+"as a directory with a flat-file structure. {project_name} represents each "
+"secret as a file with the file's name as the secret name and the file's "
+"contents as the secret value."
 msgstr ""
-"{project_name}は、 "
-"https://kubernetes.io/docs/concepts/configuration/secret/[Kubernetes "
-"secrets] "
-"のボールト実装をサポートしています。これらのシークレットはデータボリュームとしてマウントでき、フラットファイル構造のディレクトリーとして表示されます。各シークレットは名前がシークレット名であり、そのファイルの内容がシークレット値です。"
+"{project_name}は、https://kubernetes.io/docs/concepts/configuration/secret/[Kubernetes"
+" secrets]のVault実装をサポートしています。Kubernetes "
+"secretsはデータボリュームとしてマウントでき、フラットファイル構造を持つディレクトリとして表示されます。{project_name} "
+"は、各シークレットをファイルとして表現し、ファイル名をシークレット名、ファイルの内容をシークレット値として表現します。"
 
 #. type: Plain text
 msgid ""
-"The files within this directory have to be named as secret name prefixed by "
-"realm name and an underscore. All underscores within the secret name or the "
-"realm name have to be doubled in the file name. For example, for a field "
-"within a realm called `sso_realm`, a reference to a secret with name "
-"`secret-name` would be written as `${vault.secret-name}`, and the file name "
-"looked up would be `sso+++__+++realm+++_+++secret-name` (note the underscore"
-" doubled in realm name)."
+"You must name the files within this directory as the secret name prefixed by"
+" the realm name and an underscore. Double all underscores within the secret "
+"name or the realm name in the file name. For example, for a field within a "
+"realm named `sso_realm`, a reference to a secret with the name `secret-name`"
+" would be written as `${vault.secret-name}`, and the file name looked up "
+"would be `sso+++__+++realm+++_+++secret-name`. Note the underscore doubled "
+"in realm name."
 msgstr ""
-"このディレクトリー内のファイルは、レルム名とアンダースコアを前に付けたシークレット名として命名する必要があります。シークレット名またはレルム名内のすべての下線は、ファイル名で二重にする必要があります。たとえば、"
-" `sso_realm` というレルム内のフィールドの場合、 `secret-name` という名前のシークレットへの参照は "
-"`${vault.secret-name}` と記述され、検索されるファイル名は `sso+++__+++realm+++_+++secret-"
-"name` （アンダースコアがレルム名で2重になっていることに注意してください）。"
+"このディレクトリ内のファイル名は、secret名の前にrealm名とアンダースコアを付けた名前にする必要があります。ファイル名中の秘密名またはレルム名中のアンダースコアをすべてダブルにします。例えば、`sso_realm`というrealm内のフィールドで、"
+" `secret-name` という名前のsecretを参照する場合、 `${vault.secret-name}` と書き、検索するファイル名は "
+"`sso+++__+realm+++_+++secret-name` となります。realm名のアンダースコアが2つであることに注意してください。"
 
 #. type: Plain text
 msgid ""
-"To use this type of secret store, you have to declare the `files-plaintext` "
-"vault provider in standalone.xml, and set its parameter for the directory "
-"that contains the mounted volume. The following example shows the `files-"
-"plaintext` provider with the directory where vault files are searched for "
-"set to `standalone/configuration/vault` relative to {project_name} base "
+"To use this type of secret store, you must declare the `files-plaintext` "
+"vault provider in the standalone.xml file and set its parameter for the "
+"directory containing the mounted volume. This example shows the `files-"
+"plaintext` provider with the directory where vault files are searched set to"
+" `standalone/configuration/vault` relative to the {project_name} base "
 "directory:"
 msgstr ""
-"このタイプのシークレット・ストアを使用するには、standalone.xmlで `files-plaintext` "
-"ボールト・プロバイダーを宣言し、マウントされたボリュームを含むディレクトリーのパラメーターを設定する必要があります。次の例は、{project_name}ベース・ディレクトリーに対して"
-" `standalone/configuration/vault` に設定されたボールトファイルが検索されるディレクトリーを持つ `files-"
-"plaintext` プロバイダーを示しています。"
+"このタイプの秘密結社を使用するには、standalone.xml ファイルで `files-plaintext` "
+"プロバイダを宣言し、マウントされたボリュームを含むディレクトリをそのパラメータに設定する必要があります。この例では、`files-plaintext` "
+"プロバイダーが、{project_name} ベースディレクトリからの相対パスで、データ保管庫ファイルが検索されるディレクトリを "
+"`standalone/configuration/vault` に設定したものを示しています。"
 
 #. type: delimited block -
 #, no-wrap
@@ -204,44 +207,44 @@ msgstr "CLIコマンドを使用した同等の設定は以下になります。
 msgid ""
 "/subsystem=keycloak-server/spi=vault/:add\n"
 "/subsystem=keycloak-server/spi=vault/provider=files-plaintext/:add(enabled=true,properties={dir => \"${jboss.home.dir}/standalone/configuration/vault\"})\n"
+"/subsystem=keycloak-server/spi=vault:write-attribute(name=default-provider,value=files-plaintext)\n"
 msgstr ""
 "/subsystem=keycloak-server/spi=vault/:add\n"
 "/subsystem=keycloak-server/spi=vault/provider=files-plaintext/:add(enabled=true,properties={dir => \"${jboss.home.dir}/standalone/configuration/vault\"})\n"
+"/subsystem=keycloak-server/spi=vault:write-attribute(name=default-provider,value=files-plaintext)\n"
 
 #. type: Title ===
 #, no-wrap
-msgid "Elytron Credential Store Vault Provider"
+msgid "Elytron credential store vault provider"
 msgstr "Elytron Credential Storeボールト・プロバイダー"
 
 #. type: Plain text
 msgid ""
 "{project_name} also provides support for reading secrets stored in an "
-"Elytron credential store. The `elytron-cs-keystore` vault provider is "
-"capable of retrieving secrets from the keystore-based implementation of the "
-"credential store, which is also the default implementation provided by "
-"Elytron."
+"Elytron credential store. The `elytron-cs-keystore` vault provider can "
+"retrieve secrets from the credential store's keystore based implementation, "
+"which is also the default implementation Elytron provides."
 msgstr ""
-"{project_name}は、Elytronクレデンシャル・ストアに保存されているシークレットを読み取るためのサポートも提供します。 "
-"`elytron-cs-keystore` "
-"ボールト・プロバイダーは、クレデンシャル・ストアのキーストア・ベースの実装からシークレットを取得できます。これは、Elytronが提供するデフォルトの実装でもあります。"
+"{project_name}はElytronのクレデンシャルストアに保存されているシークレットの読み込みもサポートしています。elytron-cs-"
+"keystore`データ保管庫プロバイダは、Elytronが提供するデフォルトの実装である、キーストアに基づく実装から秘密を取得することが可能です。"
 
 #. type: Plain text
 msgid ""
-"This credential store is backed by a keystore (`JCEKS` is the default "
-"format, but it is possible to use other formats such as `PKCS12`)  and users"
-" can create and manage the store contents using either the `elytron` "
-"subsystem in WildFly/JBoss EAP, or using the `elytron-tool.sh` script."
+"A keystore backs this credential store. `JCEKS` is the default format, but "
+"you can use other formats such as `PKCS12`. Users can create and manage the "
+"store contents using the `elytron` subsystem in WildFly/JBoss EAP, or the "
+"`elytron-tool.sh` script."
 msgstr ""
-"このクレデンシャル・ストアはキーストア（ `JCEKS` がデフォルトのフォーマットですが、 `PKCS12` "
-"などの他のフォーマットを使用することもできます）に支えられており、ユーザーはWildFly/JBoss EAPの `elytron` "
-"サブシステムかを使用して（または `elytron-tool.sh` スクリプトを使用して）、ストアコンテンツを作成および管理できます。"
+"このクレデンシャルストアをバックアップするのがキーストアである。JCEKS` がデフォルトのフォーマットですが、`PKCS12` "
+"などの他のフォーマットも使用できます。ユーザーは WildFly/JBoss EAP の `elytron` サブシステム、または `elytron-"
+"tool.sh` スクリプトを使用してストアのコンテンツを作成および管理することができます。"
 
 #. type: Plain text
 msgid ""
-"To use this provider, you have to declare the `elytron-cs-keystore` in the "
+"To use this provider, you must declare the `elytron-cs-keystore` in the "
 "`keycloak-server` subsystem and set the location and master secret of the "
-"keystore that was created by Elytron. An example of the minimal "
-"configuration for the provider follows:"
+"keystore created by Elytron. An example of the minimal configuration for the"
+" provider follows:"
 msgstr ""
 "このプロバイダーを使用するには、 `keycloak-server` サブシステムで `elytron-cs-keystore` "
 "を宣言し、Elytronによって作成されたキーストアの場所とマスター・シークレットを設定する必要があります。プロバイダーの最小設定の例を以下に示します。"
@@ -271,9 +274,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"If the underlying keystore has a format other than `JCEKS`, this format has "
-"to be informed using the `keyStoreType`:"
-msgstr "基になるキーストアの形式が `JCEKS` 以外の場合、この形式は `keyStoreType` を使用して通知する必要があります。"
+"If the underlying keystore has a format different from `JCEKS`, you must "
+"specify this format by using the `keyStoreType`:"
+msgstr ""
+"もし、基盤となるキーストアが `JCEKS` と異なるフォーマットである場合、 `keyStoreType` "
+"を使ってそのフォーマットを指定する必要があります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -302,12 +307,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"For the secret, the `elytron-cs-keystore` provider supports both clear-text "
-"values (as shown above) and also values that were masked using the `elytron-"
-"tool.sh` script:"
+"For the secret, the `elytron-cs-keystore` provider supports clear-text "
+"values and masked values by using the `elytron-tool.sh` script:"
 msgstr ""
-"シークレットのために、上記のような `elytron-cs-keystore` プロバイダーはクリアテキスト値と次のような `elytron-"
-"tool.sh` スクリプトを使用してマスクされた値の両方をサポートしています。"
+"secretについては、`elytron-cs-keystore` プロバイダが `elytron-tool.sh` "
+"スクリプトを用いてクリアテキストの値とマスクされた値をサポートしています。"
 
 #. type: delimited block -
 #, no-wrap
@@ -326,43 +330,40 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"For more detailed information on how to create/manage elytron credential "
-"stores, as well as how to mask keystore secrets, please refer to the Elytron"
-" documentation."
+"For more information about creating and managing elytron credential stores "
+"and masking keystore secrets, see the Elytron documentation."
 msgstr ""
-"Elytronクレデンシャル・ストアを作成/管理する方法、およびキーストア・シークレットをマスクする方法の詳細については、Elytronのドキュメントを参照してください。"
+"elytronのクレデンシャルストアの作成と管理、およびキーストアの秘密のマスキングに関する詳細については、Elytronのドキュメントを参照してください。"
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"The `elytron-cs-keystore` vault provider has been implemented as a WildFly "
-"extension and as such is only available if the {project_name} server runs on"
-" WildFly/JBoss EAP."
+"{project_name} implements the `elytron-cs-keystore` vault provider as a "
+"WildFly extension and is available if the {project_name} server runs on "
+"WildFly/JBoss EAP only."
 msgstr ""
-"`elytron-cs-keystore` "
-"ボールト・プロバイダーはWildFly拡張機能として実装されているため、{project_name}サーバーがWildFly/JBoss "
-"EAPで実行されている場合にのみ使用できます。"
+"{project_name} は `elytron-cs-keystore` データ保管庫プロバイダーを WildFly "
+"拡張として実装し、{project_name} サーバが WildFly/JBoss EAP 上でのみ動作する場合に利用可能です。"
 
 #. type: Title ===
 #, no-wrap
-msgid "Key Resolvers"
+msgid "Key resolvers"
 msgstr "キーリゾルバー"
 
 #. type: Plain text
 msgid ""
-"All built-in providers support the configuration of one or more key "
-"resolvers. A key resolver essentially implements the algorithm or strategy "
-"for combining the realm name with the key (as obtained from the "
-"`${vault.key}` expression) into the final entry name that will be used to "
-"retrieve the secret from the vault. The `keyResolvers` property is used to "
-"configure the resolvers that are to be used by the provider. The value is a "
-"comma-separated list of resolver names. An example of configuration for the "
-"`files-plaintext` provider follows:"
+"All built-in providers support the configuration of key resolvers. A key "
+"resolver implements the algorithm or strategy for combining the realm name "
+"with the key, obtained from the `${vault.key}` expression, into the final "
+"entry name used to retrieve the secret from the vault. {project_name} uses "
+"the `keyResolvers` property to configure the resolvers that the provider "
+"uses. The value is a comma-separated list of resolver names. An example of "
+"the configuration for the `files-plaintext` provider follows:"
 msgstr ""
-"すべての組み込みプロバイダーは、1つ以上のキーリゾルバーの設定をサポートしています。キーリゾルバーは基本的に、レルム名とキー（ "
-"`${vault.key}` "
-"式から得られる）を組み合わせて、ボールトからシークレットを取得するために使用される最終的なエントリー名を得るアルゴリズムまたは戦略を実装します。 "
-"`keyResolvers` プロパティーは、プロバイダーが使用するリゾルバーを設定するために使用されます。値はリゾルバー名のカンマ区切りのリストです。"
-" `files-plaintext` プロバイダーの設定例は次のとおりです。"
+"すべての組み込みプロバイダはキーリゾルバの設定をサポートしています。キーリゾルバは、レルム名と `${vault.key}` "
+"式から得られるキーを組み合わせて、データ保管庫から秘密を取得するための最終的なエントリ名にするアルゴリズムや戦略を実装しています。{project_name}は"
+" `keyResolvers` "
+"プロパティを使用して、プロバイダが使用するリゾルバを設定します。この値は、カンマで区切られたリゾルバ名のリストです。files-plaintext` "
+"プロバイダの設定の例を以下に示します。"
 
 #. type: delimited block -
 #, no-wrap
@@ -389,87 +390,115 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The resolvers are executed in the same order that they are declared in the "
-"configuration. For each resolver, the final entry name produced by the "
-"resolver that combines the realm with the vault key is used to search for "
-"the secret in the vault.  If a secret is found, it is immediately returned. "
-"If not, the next resolver is used and this continues until a non-empty "
-"secret is found or all resolvers have been tried, in which case an empty "
-"secret is returned. In the example above, first the `REALM_UNDERSCORE_KEY` "
-"resolver is used. If an entry is found in the vault with the name it "
-"produces, it is returned.  If not, then the `KEY_ONLY` resolver is used. "
-"Again, if an entry is found in the vault with the name it produces, it is "
-"returned. If not, an empty secret is returned since there are no more "
-"resolvers to be used."
+"The resolvers run in the same order you declare them in the configuration. "
+"For each resolver, {project_name} uses the last entry name the resolver "
+"produces, which combines the realm with the vault key to search for the "
+"vault's secret. If {project_name} finds a secret, it returns the secret. If "
+"not, {project_name} uses the next resolver. This search continues until "
+"{project_name} finds a non-empty secret or runs out of resolvers. If "
+"{project_name} finds no secret, {project_name} returns an empty secret."
 msgstr ""
-"リゾルバーは、設定で宣言されている順序で実行されます。各リゾルバーについて、レルムとボールトキーを組み合わせたリゾルバーによって生成された最終エントリー名は、ボールト内のシークレットを検索するために使用されます。シークレットが見つかると、すぐに返されます。そうでない場合は、次のリゾルバーが使用され、空でないシークレットが見つかるか、すべてのリゾルバーが試行されるまでこれが続きます。この場合、空のシークレットが返されます。上記の例では、最初に"
-" `REALM_UNDERSCORE_KEY` "
-"リゾルバーが使用されます。ボールトで生成された名前のエントリーが見つかった場合、そのエントリが返されます。そうでない場合、 `KEY_ONLY` "
-"リゾルバーが使用されます。繰り返しになりますが、ボールトで生成された名前のエントリーが見つかった場合、そのエントリーが返されます。そうでない場合は、使用するリゾルバーがなくなるため、空のシークレットが返されます。"
+"リゾルバは、構成で宣言したのと同じ順序で実行される。各リゾルバに対して、{project_name} "
+"はリゾルバが最後に生成したエントリ名を使用し、レルムとデータ保管庫の鍵を組み合わせてデータ保管庫の秘密を検索する。project_name} "
+"が秘密を見つけた場合、その秘密を返す。見つからない場合、{project_name} は次のリゾルバを使用する。この探索は {project_name}"
+" が空でない秘密を見つけるか、リゾルバを使い果たすまで続けられる。project_name} が秘密を見つけない場合、{project_name} "
+"は空の秘密を返す。"
+
+#. type: Plain text
+msgid ""
+"In the previous example, {project_name} uses the `REALM_UNDERSCORE_KEY` "
+"resolver first. If {project_name} finds an entry in the vault that using "
+"that resolver, {project_name} returns that entry. If not, {project_name} "
+"searches again using the `KEY_ONLY` resolver. If {project_name} finds an "
+"entry by using the `KEY_ONLY` resolver, {project_name} returns that entry. "
+"If {project_name} uses all resolvers, {project_name} returns an empty "
+"secret."
+msgstr ""
+"先ほどの例では、{project_name} が最初に `REALM_UNDERSCORE_KEY` リゾルバを使用します。もし "
+"{project_name} がそのリゾルバを使ったエントリを金庫の中に見つけたら、 {project_name} "
+"はそのエントリを返します。見つからない場合、{project_name} は `KEY_ONLY` "
+"リゾルバを使って再度検索を行います。project_name} が `KEY_ONLY` リゾルバを使ってエントリーを見つけた場合、 "
+"{project_name} はそのエントリーを返します。project_name} が全てのリゾルバを使用した場合、{project_name} "
+"は空の秘密を返す。"
 
 #. type: Plain text
 msgid "A list of the currently available resolvers follows:"
 msgstr "現在利用可能なリゾルバーのリストは次のとおりです。"
 
 #. type: Plain text
-msgid ""
-"`KEY_ONLY`: the realm name is ignored and the key from the vault expression "
-"is used as is."
-msgstr "`KEY_ONLY` ：レルム名は無視され、ボールト式のキーがそのまま使用されます。"
+msgid "Name |Description"
+msgstr "名前 |説明"
+
+#. type: Plain text
+msgid "KEY_ONLY"
+msgstr "KEY_ONLY"
 
 #. type: Plain text
 msgid ""
-"`REALM_UNDERSCORE_KEY`: the realm and key are combined using an underscore "
-"`_` character. Occurrences of underscore in either the realm or key are "
-"escaped by another underscore character. So if the realm is called "
-"`master_realm` and the key is `smtp_key`, the combined key will be "
+"{project_name} ignores the realm name and uses the key from the vault "
+"expression."
+msgstr "{project_name}はrealm名を無視し、vault式のキーを使用します。"
+
+#. type: Plain text
+msgid "REALM_UNDERSCORE_KEY"
+msgstr "REALM_UNDERSCORE_KEY"
+
+#. type: Plain text
+msgid ""
+"{project_name} combines the realm and key by using an underscore character. "
+"{project_name} escapes occurrences of underscores in the realm or key with "
+"another underscore character. For example, if the realm is called "
+"`master_realm` and the key is `smtp_key`, the combined key is "
 "`master+++__+++realm_smtp+++__+++key`."
 msgstr ""
-"`REALM_UNDERSCORE_KEY` ：レルムとキーは、アンダースコア `_` "
-"文字を使用して結合されます。レルムまたはキーでのアンダースコアの出現は、別のアンダースコア文字によってエスケープされます。したがって、レルムが "
-"`master_realm` と呼ばれ、キーが `smtp_key` である場合、結合されたキーは "
-"`master+++__+++realm_smtp+++__+++key` になります。"
+"{project_name} は、レルムとキーをアンダースコア文字で結合したものです。{project_name} は、realm や key "
+"に含まれるアンダースコアを別のアンダースコア文字でエスケープします。例えば、realmが `master_realm` で key が "
+"`smtp_key` であれば、結合された key は `master+++__+++realm_smtp+++__+++key` となります。"
+
+#. type: Plain text
+msgid "REALM_FILESEPARATOR_KEY"
+msgstr "REALM_FILESEPARATOR_KEY"
 
 #. type: Plain text
 msgid ""
-"`REALM_FILESEPARATOR_KEY`: the realm and key are combined using the platform"
-" file separator character. This is useful in situations where the keys are "
-"grouped by realm using a directory structure."
+"{project_name} combines the realm and key by using the platform file "
+"separator character."
+msgstr "{project_name} は、プラットフォームファイルのセパレータ文字を使用して、レルムとキーを結合します。"
+
+#. type: Plain text
+msgid "FACTORY_PROVIDED"
+msgstr "FACTORY_PROVIDED"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+" {project_name} combines the realm and key by using the vault provider factory's `VaultKeyResolver`, allowing the creation of a custom key resolver by extending an existing factory and implementing the `getFactoryResolver` method.\n"
+"endif::[]\n"
 msgstr ""
-"`REALM_FILESEPARATOR_KEY` "
-"：レルムとキーは、プラットフォーム・ファイル・セパレーター文字を使用して結合されます。これは、キーがレルムによってディレクトリー構造を使用してグループ化されている状況で役立ちます。"
+"{project_name} は、Vaultプロバイダのファクトリーの `VaultKeyResolver` を使ってレルムとキーを結合します。既存のファクトリーを拡張して `getFactoryResolver` メソッドを実装すれば、カスタムキーリゾルバーを作成することも可能です。\n"
+"endif::[].\n"
 
 #. type: Plain text
 msgid ""
-"`FACTORY_PROVIDED`: the realm and key are combined using the "
-"`VaultKeyResolver` that is provided by the vault provider factory, allowing "
-"the creation of a custom key resolver by extending an existing factory and "
-"implementing the `getFactoryResolver` method."
+"If you have not configured a resolver for the built-in providers, "
+"{project_name} selects the `REALM_UNDERSCORE_KEY`."
 msgstr ""
-"`FACTORY_PROVIDED` ：レルムとキーは、ボールト・プロバイダー・ファクトリーによって提供される `VaultKeyResolver` "
-"を使用して結合されます。これにより、既存のファクトリーを拡張し、 `getFactoryResolver` "
-"メソッドを実装することにより、カスタム・キーリゾルバーを作成できます。"
+"ビルトインプロバイダのリゾルバを設定していない場合、{project_name} は `REALM_UNDERSCORE_KEY` を選択します。"
 
 #. type: Plain text
 msgid ""
-"If no resolver is configured for the built-in providers, the "
-"`REALM_UNDERSCORE_KEY` is selected by default."
-msgstr "組み込みプロバイダーにリゾルバーが設定されていない場合、デフォルトで `REALM_UNDERSCORE_KEY` が選択されます。"
-
-#. type: Plain text
-msgid ""
-"The `FACTORY_PROVIDED` resolver provides a hook that can be used to "
+"The `FACTORY_PROVIDED` resolver provides a hook that you can use to "
 "implement a custom resolver by extending the provider factory of choice and "
-"overriding the `getFactoryResolver` method so it returns the custom "
+"overriding the `getFactoryResolver` method, so it returns the custom "
 "resolver. For example, if you want to use the `elytron-cs-keystore` provider"
-" but none of the built-in resolvers match the format used in your keystore, "
+" but the built-in resolvers do not match the format used in your keystore, "
 "you can extend the `ElytronCSKeystoreProvider` and implement the "
 "`getFactoryResolver` method:"
 msgstr ""
-"`FACTORY_PROVIDED` リゾルバーは、選択したプロバイダー・ファクトリーを拡張し、 `getFactoryResolver` "
-"メソッドをオーバーライドしてカスタム・リゾルバーを返すことにより、カスタム・リゾルバーを実装するために使用できるフックを提供します。たとえば、 "
-"`elytron-cs-keystore` プロバイダーを使用したいが、組み込みリゾルバーがキーストアで使用されている形式と一致しない場合、 "
-"`ElytronCSKeystoreProvider` を拡張して `getFactoryResolver` メソッドを実装できます。"
+"FACTORY_PROVIDED` リゾルバは、任意のプロバイダーファクトリを拡張して `getFactoryResolver` "
+"メソッドをオーバーライドすることで、カスタムリゾルバを実装するために使用するフックを提供します。例えば、 `elytron-cs-keystore` "
+"プロバイダを使用したいが、組み込みのリゾルバはキーストアで使用するフォーマットにマッチしない場合、 "
+"`ElytronCSKeystoreProvider` を拡張して `getFactoryResolver` メソッドを実装すればよいでしょう。"
 
 #. type: delimited block -
 #, no-wrap
@@ -513,28 +542,26 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "The custom factory returns a key resolver that combines the realm and key "
-"with a triple `#` character. So an entry would look like "
-"`master_realm###smtp_key`, for example. This factory must then be installed "
-"just like any custom provider."
+"with a triple # character. For example, an entry would be "
+"`master_realm###smtp_key`. Install this factory like any custom provider."
 msgstr ""
-"カスタム・ファクトリーは、レルムとキーを3つの `#` 文字で組み合わせるキーリゾルバーを返します。たとえば、エントリーは "
-"`master_realm###smtp_key` "
-"のようになります。このファクトリーは、カスタム・プロバイダーと同じようにインストールする必要があります。"
+"カスタムファクトリは、realmとkeyをトリプル#文字で結合したキーリゾルバを返します。たとえば、`master_realm##smtp_key` "
+"のようなエントリーがあります。このファクトリーは、他のカスタムプロバイダと同様にインストールします。"
+
+#. type: delimited block =
+msgid ""
+"The custom factory must override both the `getFactoryResolver` and `getId` "
+"methods. The second method is necessary so that you can properly configure "
+"the custom factory in {project_name}."
+msgstr ""
+"カスタムファクトリは `getFactoryResolver` と `getId` メソッドの両方をオーバーライドする必要があります。2番目のメソッドは"
+" {project_name} でカスタムファクトリを適切に設定できるようにするために必要です。"
 
 #. type: Plain text
 msgid ""
-"Note that the custom factory must override both the `getFactoryResolver` and"
-" `getId` methods. The second method is needed so that we can properly "
-"configure the custom factory in {project_name}."
-msgstr ""
-"カスタム・ファクトリーは `getFactoryResolver` と `getId` "
-"メソッドの両方をオーバーライドする必要があることに注意してください。2番目のメソッドは、{project_name}でカスタム・ファクトリーを適切に設定するために必要です。"
-
-#. type: Plain text
-msgid ""
-"To install and use the above custom provider the configuration would look "
-"something like this:"
-msgstr "上記のカスタム・プロバイダーをインストールして使用する設定は、次のようになります。"
+"To install and use the previous custom provider, the configuration would "
+"look similar to this:"
+msgstr "以前のカスタムプロバイダをインストールして使用するには、次のような構成になります。"
 
 #. type: delimited block -
 #, no-wrap
@@ -565,10 +592,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The configuration above tells {project_name} to setup the custom Elytron "
-"provider and use the key resolver that is created by the custom factory."
+"This configuration makes {project_name} set up the custom Elytron provider "
+"and use the key resolver that the custom factory creates."
 msgstr ""
-"上記の設定は、{project_name}にカスタムElytronプロバイダーをセットアップし、カスタム・ファクトリーによって作成されたキーリゾルバーを使用するように指示します。"
+"この設定により、{project_name} "
+"はカスタムElytronプロバイダを設定し、カスタムファクトリが作成するキーリゾルバを使用するようになります。"
 
 #. type: Title ===
 #, no-wrap
@@ -700,10 +728,10 @@ msgstr "キーストアには1つのエントリーがあります。\n"
 #, no-wrap
 msgid ""
 "ldaptest_ldap__secret/passwordcredential/clear/, Oct 12, 2020, "
-"SecretKeyEntry, \n"
+"SecretKeyEntry,\n"
 msgstr ""
 "ldaptest_ldap__secret/passwordcredential/clear/, Oct 12, 2020, "
-"SecretKeyEntry, \n"
+"SecretKeyEntry,\n"
 
 #. type: Plain text
 msgid "Configure the vault SPI in {project_name}."

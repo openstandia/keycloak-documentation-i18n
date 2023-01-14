@@ -50,13 +50,6 @@ msgid "$ {create_cmd_brief} describe keycloak <CR-name>\n"
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"If you have an external database, you can modify the Keycloak custom "
-"resource to support it. See xref:_external_database[Connecting to an "
-"external database]."
-msgstr ""
-
-#. type: Plain text
 msgid "Log into the admin console for the related instance of {project_name}."
 msgstr ""
 
@@ -99,6 +92,9 @@ msgid ""
 "    email: \"user@example.com\"\n"
 "    enabled: True\n"
 "    emailVerified: False\n"
+"    credentials:\n"
+"      - type: \"password\"\n"
+"        value: \"12345\"\n"
 "    realmRoles:\n"
 "      - \"offline_access\"\n"
 "    clientRoles:\n"
@@ -143,18 +139,23 @@ msgid "Search for the user that you defined in the YAML file."
 msgstr ""
 
 #. type: Plain text
-msgid "The user is in the list."
+msgid "You may need to switch to a different realm to find the user."
 msgstr ""
 
 #. type: Plain text
-msgid "image:images/user_list.png[]"
+msgid "image:images/realm_user.png[]"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"After a user is created, the Operator creates a Secret containing the both "
-"username and password using the following naming pattern: `credential-<realm "
-"name>-<username>-<namespace>`. Here's an example:"
+"After a user is created, the Operator creates a Secret using the following "
+"naming pattern: `credential-<realm name>-<username>-<namespace>`, containing "
+"the username and, if it has been specified in the CR `credentials` "
+"attribute, the password."
+msgstr ""
+
+#. type: Plain text
+msgid "Here's an example:"
 msgstr ""
 
 #. type: Block title
@@ -220,6 +221,13 @@ msgid ""
 "  Message:\n"
 "  Phase:    reconciled\n"
 "Events:     <none>\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If you have an external database, you can modify the Keycloak custom "
+"resource to support it. See xref:_external_database[Connecting to an "
+"external database]."
 msgstr ""
 
 #. type: Plain text

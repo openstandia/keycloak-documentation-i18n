@@ -20,19 +20,18 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "Session and Token Timeouts"
+msgid "Session and token timeouts"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"{project_name} gives you fine grain control of session, cookie, and token "
-"timeouts.  This is all done on the `Tokens` tab in the `Realm Settings` left "
-"menu item."
+"{project_name} includes control of the session, cookie, and token timeouts "
+"through the *Tokens* tab in the *Realm Settings* menu."
 msgstr ""
 
 #. type: Block title
 #, no-wrap
-msgid "Tokens Tab"
+msgid "Tokens tab"
 msgstr ""
 
 #. type: Plain text
@@ -40,15 +39,15 @@ msgid "image:{project_images}/tokens-tab.png[]"
 msgstr ""
 
 #. type: Plain text
-msgid "Let's walk through each of the items on this page."
-msgstr ""
-
-#. type: Plain text
 msgid "Default Signature Algorithm"
 msgstr ""
 
 #. type: Plain text
-msgid "The default algorithm that is used to assign tokens for this realm."
+msgid "The default algorithm used to assign tokens for the realm."
+msgstr ""
+
+#. type: Plain text
+msgid "[[_revoke-refresh-token]]"
 msgstr ""
 
 #. type: Plain text
@@ -57,10 +56,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"For OIDC clients that are doing the refresh token flow, this flag, if on, "
-"will revoke that refresh token and issue another token with the request that "
-"the client has to use. The result is that each refresh token is used only "
-"once."
+"When *ON*, {project_name} revokes refresh tokens and issues another token "
+"that the client must use. This action applies to OIDC clients performing the "
+"refresh token flow."
 msgstr ""
 
 #. type: Plain text
@@ -68,10 +66,13 @@ msgid "SSO Session Idle"
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"Also pertains to OIDC clients.  If the user is not active for longer than this timeout, the user session will be invalidated.  The idle timeout is reset by a client requesting authentication or by a refresh token request.\n"
-"There is a small window of time that is always added to the idle timeout before the session  invalidation takes effect. See the note below.\n"
+"This setting is for OIDC clients only. If a user is inactive for longer than "
+"this timeout, the user session is invalidated. This timeout value resets "
+"when clients request authentication or send a refresh token request. "
+"{project_name} adds a window of time to the idle timeout before the session "
+"invalidation takes effect. See the <<_idle_timeouts_note, note>> later in "
+"this section."
 msgstr ""
 
 #. type: Plain text
@@ -79,10 +80,7 @@ msgid "SSO Session Max"
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"Maximum time before a user session is expired and invalidated. This option "
-"controls the maximum time that a user session can remain active, regardless "
-"of user activity."
+msgid "The maximum time before a user session expires."
 msgstr ""
 
 #. type: Plain text
@@ -90,11 +88,12 @@ msgid "SSO Session Idle Remember Me"
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"Same as the standard SSO Session Idle configuration but specific to logins with Remember Me enabled. It allows for the specification of longer\n"
-" session idle timeouts when Remember Me is selected during the login process. It is an optional configuration and if not set to a value\n"
-"greater than 0 it uses the same idle timeout as set in the SSO Session Idle configuration.\n"
+"This setting is similar to the standard SSO Session Idle configuration but "
+"specific to logins with *Remember Me* enabled. Users can specify longer "
+"session idle timeouts when they click *Remember Me* when logging in. This "
+"setting is an optional configuration and, if its value is not greater than "
+"zero, it uses the same idle timeout as the SSO Session Idle configuration."
 msgstr ""
 
 #. type: Plain text
@@ -102,11 +101,16 @@ msgid "SSO Session Max Remember Me"
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"Same as the standard SSO Session Max but specific to logins with Remember Me enabled. It allows for the specification of longer lived\n"
-" sessions when Remember Me is selected during the login process. It is an optional configuration and if not set to a value greater than 0\n"
-" it uses the same session lifespan as set in the SSO Session Max configuration.\n"
+"This setting is similar to the standard SSO Session Max but specific to "
+"*Remember Me* logins. Users can specify longer sessions when they click "
+"*Remember Me* when logging in. This setting is an optional configuration "
+"and, if its value is not greater than zero, it uses the same session "
+"lifespan as the SSO Session Max configuration."
+msgstr ""
+
+#. type: Plain text
+msgid "[[_offline-session-idle]]"
 msgstr ""
 
 #. type: Plain text
@@ -114,10 +118,16 @@ msgid "Offline Session Idle"
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"For <<_offline-access, offline access>>, this is the time the session is allowed to remain idle before the offline token is revoked.\n"
-"There is a small window of time that is always added to the idle timeout before the session  invalidation takes effect. See the note below.\n"
+"This setting is for <<_offline-access, offline access>>. The amount of time "
+"the session remains idle before {project_name} revokes its offline token. "
+"{project_name} adds a window of time to the idle timeout before the session "
+"invalidation takes effect. See the <<_idle_timeouts_note, note>> later in "
+"this section."
+msgstr ""
+
+#. type: Plain text
+msgid "[[_offline-session-max-limited]]"
 msgstr ""
 
 #. type: Plain text
@@ -126,10 +136,14 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"For <<_offline-access, offline access>>, if this flag is on, Offline Session "
-"Max is enabled to control the maximum time the offline token can remain "
-"active, regardless of user activity. Also Client Offline Session Idle and "
+"This setting is for <<_offline-access, offline access>>. If this flag is "
+"*ON*, Offline Session Max can control the maximum time the offline token "
+"remains active, regardless of user activity. Client Offline Session Idle and "
 "Client Offline Session Max are enabled."
+msgstr ""
+
+#. type: Plain text
+msgid "[[_offline-session-max]]"
 msgstr ""
 
 #. type: Plain text
@@ -138,9 +152,10 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"For <<_offline-access, offline access>>, this is the maximum time before the "
-"corresponding offline token is revoked.  This option controls the maximum "
-"time the offline token can remain active, regardless of user activity."
+"This setting is for <<_offline-access, offline access>>, and it is the "
+"maximum time before {project_name} revokes the corresponding offline token. "
+"This option controls the maximum amount of time the offline token remains "
+"active, regardless of user activity."
 msgstr ""
 
 #. type: Plain text
@@ -149,13 +164,13 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"For <<_offline-access, offline access>>, if the user is not active for "
-"longer than this timeout, offline token requests will bump the idle timeout. "
-"It allows for the specification of a shorter idle timeout of offline token "
-"than offline session idle timeout. However, it can be overridden on "
-"individual clients. It is an optional configuration and if not set to a "
-"value bigger than 0, it uses the same idle timeout set in the Offline "
-"Session Idle configuration."
+"This setting is for <<_offline-access, offline access>>. If a user is "
+"inactive for longer than this timeout, offline token requests bump the idle "
+"timeout. This setting specifies a shorter idle timeout of an offline token "
+"than the offline session idle. Users can override this setting for "
+"individual clients. This setting is an optional configuration and, when set "
+"to zero, uses the same idle timeout in the Offline Session Idle "
+"configuration."
 msgstr ""
 
 #. type: Plain text
@@ -164,12 +179,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"For <<_offline-access, offline access>>, the maximum time before a offline "
-"token is expired and invalidated. It allows for the specification of a "
-"shorter timeout of offline token than offline session timeout. However, it "
-"can be overridden on individual clients. It is an optional configuration and "
-"if not set to a value bigger than 0, it uses the same idle timeout set in "
-"the Offline Session Max configuration."
+"This setting is for <<_offline-access, offline access>>. The maximum time "
+"before an offline token expires and invalidates. This setting specifies a "
+"shorter token timeout than an offline session timeout, but users can "
+"override it for individual clients. This setting is an optional "
+"configuration and, when set to zero, uses the same idle timeout in the "
+"Offline Session Max configuration."
 msgstr ""
 
 #. type: Plain text
@@ -178,12 +193,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"If the user is not active for longer than this timeout, refresh token "
-"requests will bump the idle timeout. It allows for the specification of a "
-"shorter idle timeout of refresh token than session idle timeout. And it can "
-"be overridden on individual clients. It is an optional configuration and if "
-"not set to a value bigger than 0 it uses the same idle timeout set in the "
-"SSO Session Idle configuration."
+"If the user is inactive for longer than this timeout, refresh token requests "
+"bump the idle timeout. This setting specifies a shorter idle timeout of "
+"refresh tokens than the session idle timeout, but users can override it for "
+"individual clients. This setting is an optional configuration and, when set "
+"to zero, uses the same idle timeout in the SSO Session Idle configuration."
 msgstr ""
 
 #. type: Plain text
@@ -192,11 +206,11 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"The maximum time before a refresh token is expired and invalidated. It "
-"allows for the specification of a shorter timeout of refresh token than "
-"session timeout. And it can be overridden on individual clients. It is an "
-"optional configuration and if not set to a value bigger than 0 it uses the "
-"same idle timeout set in the SSO Session Max configuration."
+"The maximum time before a refresh token expires and invalidates. This "
+"setting specifies a shorter timeout of refresh tokens than the session "
+"timeout, but users can override it for individual clients. This setting is "
+"an optional configuration and, when set to zero, uses the same idle timeout "
+"in the SSO Session Max configuration."
 msgstr ""
 
 #. type: Plain text
@@ -205,7 +219,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"When an OIDC access token is created, this value affects the expiration."
+"When {project_name} creates an OIDC access token, this value controls the "
+"lifetime of the token."
 msgstr ""
 
 #. type: Plain text
@@ -214,8 +229,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"With the Implicit Flow no refresh token is provided. For this reason there's "
-"a separate timeout for access tokens created with the Implicit Flow."
+"With the Implicit Flow, {project_name} does not provide a refresh token. A "
+"separate timeout exists for access tokens created by the Implicit Flow."
 msgstr ""
 
 #. type: Plain text
@@ -224,8 +239,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This is the maximum time that a client has to finish the Authorization Code "
-"Flow in OIDC."
+"The maximum time before clients must finish the Authorization Code Flow in "
+"OIDC."
 msgstr ""
 
 #. type: Plain text
@@ -234,8 +249,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Total time a login must take.  If authentication takes longer than this time "
-"then the user will have to start the authentication process over."
+"The total time a logging in must take. If authentication takes longer than "
+"this time, the user must start the authentication process again."
 msgstr ""
 
 #. type: Plain text
@@ -244,7 +259,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Maximum time a user can spend on any one page in the authentication process."
+"The Maximum time users can spend on any one page during the authentication "
+"process."
 msgstr ""
 
 #. type: Plain text
@@ -253,9 +269,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Maximum time before an action permit sent by a user (e.g. forgot password e-"
-"mail) is expired. This value is recommended to be short because it is "
-"expected that the user would react to self-created action quickly."
+"The maximum time before a user's action permission expires. Keep this value "
+"short because users generally react to self-created actions quickly."
 msgstr ""
 
 #. type: Plain text
@@ -264,9 +279,9 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Maximum time before an action permit sent to a user by an admin is expired. "
-"This value is recommended to be long to allow admins send e-mails for users "
-"that are currently offline. The default timeout can be overridden right "
+"The maximum time before an action permission sent to a user by an "
+"administrator expires. Keep this value long to allow administrators to send "
+"e-mails to offline users. An administrator can override the default timeout "
 "before issuing the token."
 msgstr ""
 
@@ -276,22 +291,24 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Permits the possibility of having independent timeouts per operation (for "
-"example, e-mail verification, forgot password, user actions and Identity "
-"Provider E-mail Verification). This field is optional. If nothing is "
-"specified, it defaults to the value configured at _User-Initiated Action "
-"Lifespan_."
+"Specifies independent timeouts per individual operation (for example, e-mail "
+"verification, forgot password, user actions, and Identity Provider E-mail "
+"Verification). This value defaults to the value configured at _User-"
+"Initiated Action Lifespan_."
 msgstr ""
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"For idle timeouts, there is a small window of time (2 minutes) during which "
-"the session is kept unexpired. For example, when you have timeout set to 30 "
-"minutes, it will be actually 32 minutes before the session is expired. This "
-"is needed for some corner-case scenarios in cluster and cross-datacenter "
-"environments, in cases where the token was refreshed on one cluster node for "
-"a very short time before the expiration and the other cluster nodes would in "
-"the meantime incorrectly consider the session as expired, because they had "
-"not yet received the message about successful refresh from the node which "
-"did the refresh."
+"For idle timeouts, a two-minute window of time exists that the session is "
+"active. For example, when you have the timeout set to 30 minutes, it will be "
+"32 minutes before the session expires."
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"This action is necessary for some scenarios in cluster and cross-data center "
+"environments where the token refreshes on one cluster node a short time "
+"before the expiration and the other cluster nodes incorrectly consider the "
+"session as expired because they have not yet received the message about a "
+"successful refresh from the refreshing node."
 msgstr ""

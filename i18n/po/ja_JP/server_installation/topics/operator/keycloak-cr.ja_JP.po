@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
 # Hiroyuki Wada <wadahiro@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Block title
+#. type: Title ==
 #, no-wrap
 msgid "Prerequisites"
 msgstr "前提条件"
 
 #. type: Block title
 #, no-wrap
-msgid "Additional resources"
-msgstr "追加のリソース"
+msgid "Procedure "
+msgstr "手順"
 
 #. type: Block title
 #, no-wrap
@@ -36,13 +36,44 @@ msgstr "管理コンソールのログイン画面"
 
 #. type: Block title
 #, no-wrap
-msgid "Procedure "
-msgstr "手順"
+msgid "Additional resources"
+msgstr "追加のリソース"
+
+#. type: Block title
+#, no-wrap
+msgid "Example YAML file for a Keycloak custom resource"
+msgstr "Keycloakカスタム・リソースのYAMLファイルの例"
+
+#. type: Plain text
+msgid ""
+"You have cluster-admin permission or an equivalent level of permissions "
+"granted by an administrator."
+msgstr "cluster-adminパーミッションまたは同等のレベルのパーミッションが管理者によって付与されていること。"
+
+#. type: Plain text
+msgid "You have a YAML file for this custom resource."
+msgstr "このカスタムリソース用のYAMLファイルがあること。"
+
+#. type: Block title
+#, no-wrap
+msgid "Results"
+msgstr "結果"
+
+#. type: Plain text
+msgid ""
+"After the Operator processes the custom resource, view the status with this "
+"command:"
+msgstr "Operatorがカスタムリソースを処理したら、次のコマンドでステータスを表示します。"
+
+#. type: delimited block -
+#, no-wrap
+msgid "$ {create_cmd_brief} describe keycloak <CR-name>\n"
+msgstr "$ {create_cmd_brief} describe keycloak <CR-name>\n"
 
 #. type: Title ===
 #, no-wrap
-msgid "{project_name} installation using a custom resource "
-msgstr "カスタムリソースを使用した{project_name}のインストール"
+msgid "Installing {project_name} using a custom resource "
+msgstr "カスタムリソースを使用した{project_name}のインストール "
 
 #. type: Plain text
 msgid ""
@@ -139,34 +170,36 @@ msgstr "`instances` - 高可用性モードで実行されているインスタ�
 msgid ""
 "`externalAccess` - if the `enabled` is `True`, the Operator creates a route "
 "for OpenShift"
-msgstr ""
-"`externalAccess` - `enabled` が `True` "
-"の場合、Operatorは{project_name}クラスターのOpenShift"
+msgstr "`externalAccess` - `enabled` が `True` の場合、OperatorはOpenShiftのルート"
 
 #. type: Plain text
 #, no-wrap
 msgid " or an Ingress for Kubernetes\n"
-msgstr "またはKubernetesのIngress \n"
-
-#. type: Plain text
-#, no-wrap
-msgid " for the {project_name} cluster.\n"
-msgstr "のルートを作成します。\n"
+msgstr "または{project_name}クラスターのKubernetesのIngressを作成します。\n"
 
 #. type: Plain text
 #, no-wrap
 msgid ""
-"`externalDatabase` - applies only if you want to connect an externally "
-"hosted database. That topic is covered in the "
-"xref:_external_database[external database] section of this guide.\n"
-msgstr ""
-"`externalDatabase` - 外部でホストされているデータベースに接続する場合にのみ適用されます。このトピックについては、このガイドの "
-"xref:_external_database[外部データベース] のセクションで説明しています。\n"
+" for the {project_name} cluster. You can set `host` to override the "
+"automatically chosen host name for Route\n"
+msgstr "Routeに自動的に選択されたホスト名を上書きするように `host` を設定するか、\n"
 
-#. type: Block title
+#. type: Plain text
 #, no-wrap
-msgid "Example YAML file for a Keycloak custom resource"
-msgstr "Keycloakカスタム・リソースのYAMLファイルの例"
+msgid " or default value `keycloak.local` set for Ingress.\n"
+msgstr "Ingressにデフォルト値の `keycloak.local` を設定できます。\n"
+
+#. type: Plain text
+msgid ""
+"`externalDatabase` - in order to connect to an externally hosted database. "
+"That topic is covered in the xref:_external_database[external database] "
+"section of this guide. Setting it to false should be used only for testing "
+"purposes and will install an embedded PostgreSQL database. Be aware that "
+"externalDatabase:false is *NOT* supported in production environments."
+msgstr ""
+"externalDatabase` - 外部でホストされているデータベースに接続するために使用します。これについては、このガイドの "
+"xref:_external_database[外部データベース] "
+"の項で説明します。これをfalseに設定すると、組み込み式のPostgreSQLデータベースがインストールされますので、テスト目的でのみ使用してください。externalDatabase:falseは本番環境ではサポートされていないことに注意してください。"
 
 #. type: Code block
 #, no-wrap
@@ -235,20 +268,10 @@ msgstr ""
 "OpenShiftでは、カスタムリソースを使用してルート（管理コンソールのURL）を作成し、（管理コンソールのユーザー名とパスワードを保持する）シークレットを見つけます。"
 
 #. type: Plain text
-msgid "You have a YAML file for this custom resource."
-msgstr "このカスタムリソース用のYAMLファイルがあること。"
-
-#. type: Plain text
-msgid ""
-"You have cluster-admin permission or an equivalent level of permissions "
-"granted by an administrator."
-msgstr "cluster-adminパーミッションまたは同等のレベルのパーミッションが管理者によって付与されていること。"
-
-#. type: Plain text
 msgid ""
 "If you want to start tracking all Operator activities now, install the "
-"monitoring application before you create this custom resource. See xref"
-":_monitoring-operator[The Application Monitoring Operator]."
+"monitoring application before you create this custom resource. See "
+"xref:_monitoring-operator[The Application Monitoring Operator]."
 msgstr ""
 "ここですべてのOperatorアクティビティの追跡を開始する場合は、このカスタムリソースを作成する前に監視アプリケーションをインストールしてください。 "
 "xref:_monitoring-operator[アプリケーション監視Operator] を参照してください。"
@@ -361,11 +384,6 @@ msgstr "image:images/new_install_cr.png[]"
 msgid "Check the status of the custom resource:"
 msgstr "カスタムリソースのステータスを確認します。"
 
-#. type: delimited block -
-#, no-wrap
-msgid "$ {create_cmd_brief} describe keycloak <CR-name>\n"
-msgstr "$ {create_cmd_brief} describe keycloak <CR-name>\n"
-
 #. type: Title ====
 #, no-wrap
 msgid "Creating a Keycloak custom resource on Kubernetes"
@@ -424,13 +442,13 @@ msgstr "ユーザー名とパスワードを見つけます。"
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"$ {create_cmd_brief} get secret credentials-<CR-Name> -o go-"
-"template='{{range $k,$v := .data}}{{printf \"%s: \" $k}}{{if not "
-"$v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{\"\\n\"}}{{end}}'\n"
+"$ {create_cmd_brief} get secret credential-<CR-Name> -o go-template='{{range"
+" $k,$v := .data}}{{printf \"%s: \" $k}}{{if not $v}}{{$v}}{{else}}{{$v | "
+"base64decode}}{{end}}{{\"\\n\"}}{{end}}'\n"
 msgstr ""
-"$ {create_cmd_brief} get secret credentials-<CR-Name> -o go-"
-"template='{{range $k,$v := .data}}{{printf \"%s: \" $k}}{{if not "
-"$v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{\"\\n\"}}{{end}}'\n"
+"$ {create_cmd_brief} get secret credential-<CR-Name> -o go-template='{{range"
+" $k,$v := .data}}{{printf \"%s: \" $k}}{{if not $v}}{{$v}}{{else}}{{$v | "
+"base64decode}}{{end}}{{\"\\n\"}}{{end}}'\n"
 
 #. type: Plain text
 msgid "Enter the username and password in the admin console login screen."
@@ -448,17 +466,6 @@ msgstr ""
 #, no-wrap
 msgid "Admin console master realm"
 msgstr "管理コンソールmasterレルム"
-
-#. type: Block title
-#, no-wrap
-msgid "Results"
-msgstr "結果"
-
-#. type: Plain text
-msgid ""
-"After the Operator processes the custom resource, view the status with this "
-"command:"
-msgstr "Operatorがカスタムリソースを処理したら、次のコマンドでステータスを表示します。"
 
 #. type: Block title
 #, no-wrap
@@ -558,16 +565,17 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Once the installation of {project_name} completes, you are ready to xref"
-":_realm-cr[create a realm custom resource]."
+"Once the installation of {project_name} completes, you are ready to "
+"xref:_realm-cr[create a realm custom resource]."
 msgstr ""
 "{project_name}のインストールが完了すると、 xref:_realm-cr[レルム・カスタムリソースを作成] する準備が整います。"
 
 #. type: Plain text
 msgid ""
-"If you have an external database, you can modify the Keycloak custom "
-"resource to support it. See xref:_external_database[Connecting to an "
-"external database]."
+"An external database is the supported option and needs to be enabled in the "
+"Keycloak custom resource. You can disable this option only for testing and "
+"enable it when you switch to a production environment. See "
+"xref:_external_database[Connecting to an external database]."
 msgstr ""
-"外部データベースがある場合は、Keycloakカスタムリソースを変更してそれをサポートできます。 "
-"xref:_external_database[外部データベースへの接続] を参照してください。"
+"外部データベースは、サポートされているオプションで、Keycloakのカスタムリソースで有効にする必要があります。テスト時のみこのオプションを無効にして、プロダクション環境に切り替えたときに有効にすることができます。xref:_external_database[Connecting"
+" to an external database]を参照してください。"

@@ -4,15 +4,13 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# katakura__pro <h.katakura@pro-japan.co.jp>, 2017
-# Hiroyuki Wada <wadahiro@gmail.com>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2019
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2019\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,148 +20,172 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "OTP Policies"
-msgstr "OTPポリシー"
+msgid "One Time Password (OTP) policies"
+msgstr "ワンタイムパスワード（OTP）ポリシー"
 
 #. type: Plain text
 msgid ""
-"{project_name} has a number of policies you can set up for your FreeOTP or "
-"Google Authenticator One-Time Password generator.  Click on the "
-"`Authentication` left menu item and go to the `OTP Policy` tab."
+"{project_name} has several policies for setting up a FreeOTP or Google "
+"Authenticator One-Time Password generator. Click the *Authentication* menu "
+"and click the *OTP Policy* tab."
 msgstr ""
-"{project_name}には、FreeOTPまたは、Googleオーセンティケーターのワンタイム・パスワード・ジェネレーター用に設定できる、いくつかのポリシーがあります。"
-" 左メニュー項目の `Authentication` をクリックし、`OTP Policy` タブを表示します。"
+"{project_name}には、FreeOTPやGoogle "
+"Authenticatorのワンタイム・パスワード・ジェネレーターを設定するためのポリシーがいくつかあります。 *Authentication* "
+"メニューをクリックし、 *OTP Policy* タブをクリックします。"
 
 #. type: Block title
 #, no-wrap
-msgid "OTP Policy"
-msgstr "OTP Policy"
+msgid "Otp policy"
+msgstr "OTPポリシー"
 
 #. type: Plain text
-msgid "image:{project_images}/otp-policy.png[]"
-msgstr "image:{project_images}/otp-policy.png[]"
+msgid "image:{project_images}/otp-policy.png[OTP Policy]"
+msgstr "image:{project_images}/otp-policy.png[OTP Policy]"
 
 #. type: Plain text
 msgid ""
-"Any policies you set here will be used to validate one-time passwords.  When"
-" configuring OTP, FreeOTP and Google Authenticator can scan a QR code that "
-"is generated on the OTP set up page that {project_name} has.  The bar code "
-"is also generated from information configured on the `OTP Policy` tab."
+"{project_name} generates a QR code on the OTP set-up page, based on "
+"information configured in the *OTP Policy* tab. FreeOTP and Google "
+"Authenticator scan the QR code when configuring OTP."
 msgstr ""
-"ここで設定したポリシーは、ワンタイム・パスワードの検証に使用されます。OTPを設定するとき、FreeOTPとGoogleオーセンティケーターは{project_name}が持つOTP設定ページで生成されたQRコードをスキャンすることができます。このバーコードは"
-" `OTP Policy` タブで設定された情報から生成されます。"
+"{project_name}は、 *OTP Policy* "
+"タブで設定した情報を元に、OTP設定画面でQRコードを生成します。FreeOTPとGoogle "
+"Authenticatorは、OTP設定時にこのQRコードを読み取ります。"
 
 #. type: Title ====
 #, no-wrap
-msgid "TOTP vs. HOTP"
-msgstr "TOTP vs. HOTP"
+msgid "Time-based or counter-based one time passwords"
+msgstr "タイムベースまたはカウンターベースのワンタイムパスワード"
 
 #. type: Plain text
 msgid ""
-"There are two different algorithms to choose from for your OTP generators.  "
-"Time Based (TOTP) and Counter Based (HOTP).  For TOTP, your token generator "
-"will hash the current time and a shared secret.  The server validates the "
-"OTP by comparing all the hashes within a certain window of time to the "
-"submitted value.  So, TOTPs are valid only for a short window of time "
-"(usually 30 seconds).  For HOTP a shared counter is used instead of the "
-"current time.  The server increments the counter with each successful OTP "
-"login.  So, valid OTPs only change after a successful login."
-msgstr ""
-"OTPジェネレーターには、時間ベース（TOTP）およびカウンターベース（HOTP）の2つのアルゴリズムがあります。TOTPの場合、トークン・ジェネレーターは現在の時刻と共有パスワードをハッシュ化します。サーバーは、特定の時間枠内のすべてのハッシュをサブミットされた値と比較することによってOTPを検証します。したがって、TOTPは短い時間枠（通常は30秒）でのみ有効です。HOTPの場合、現在の時刻の代わりに共有カウンターが使用されます。サーバーは、成功したOTPログインごとにカウンターをインクリメントします。したがって、有効なOTPはログインが成功した後にのみ変更されます。"
+"The algorithms available in {project_name} for your OTP generators are time-"
+"based and counter-based."
+msgstr "OTPジェネレーターに使用できる{project_name}のアルゴリズムは、タイムベースとカウンターベースがあります。"
 
 #. type: Plain text
 msgid ""
-"TOTP is considered a little more secure because the matchable OTP is only "
-"valid for a short window of time while the OTP for HOTP can be valid for an "
-"indeterminate amount of time.  HOTP is much more user friendly as the user "
-"won't have to hurry to enter in their OTP before the time interval is up.  "
-"With the way {project_name} has implemented TOTP this distinction becomes a "
-"little more blurry.  HOTP requires a database update every time the server "
-"wants to increment the counter.  This can be a performance drain on the "
-"authentication server when there is heavy load.  So, to provide a more "
-"efficient alternative, TOTP does not remember passwords used.  This bypasses"
-" the need to do any DB updates, but the downside is that TOTPs can be re-"
-"used in the valid time interval.  For future versions of {project_name} it "
-"is planned that you will be able to configure whether TOTP checks older OTPs"
-" in the time interval."
+"With Time-Based One Time Passwords (TOTP), the token generator will hash the"
+" current time and a shared secret.  The server validates the OTP by "
+"comparing the hashes within a window of time to the submitted value.  TOTPs "
+"are valid for a short window of time."
 msgstr ""
-"TOTPは、短い時間枠でのみ有効であるため、HOTPより少し安全です。HOTPは、ユーザーが急いでOTPを入力する必要がないため、ユーザー・フレンドリーです。{project_name}がTOTPを実装した方法では、この区別はもう少しぼやけてしまいます。HOTPは、サーバーがカウンターをインクリメントするたびにデータベースを更新する必要があります。これは、負荷が大きいときに認証サーバー上でパフォーマンスが低下する可能性があります。より効率的な代替手段を提供するために、TOTPは使用されるパスワードを覚えていません。これにより、DBの更新は不要ですが、有効な時間間隔でTOTPを再利用できるという欠点があります。将来のバージョンの{project_name}では、TOTPが時間間隔内に古いOTPをチェックするかどうかを設定できるようになる予定です。"
+"タイムベースのワンタイムパスワード（TOTP）では、トークン生成器が現在の時刻と共有のシークレットをハッシュ化します。サーバーは、時間枠内のハッシュと提出された値を比較することで、OTPを検証します。TOTPは、短い時間枠の中で有効です。"
+
+#. type: Plain text
+msgid ""
+"With Counter-Based One Time Passwords (HOTP), {project_name} uses a shared "
+"counter rather than the current time. The {project_name} server increments "
+"the counter with each successful OTP login. Valid OTPs change after a "
+"successful login."
+msgstr ""
+"カウンターベースのワンタイムパスワード（HOTP）では、{project_name} "
+"は現在時刻ではなく、共有カウンターを使用します。project_name}サーバーは、OTPログインが成功するたびにカウンターを増加させる。有効なOTPはログインに成功すると変化します。"
+
+#. type: Plain text
+msgid ""
+"TOTP is more secure than HOTP because the matchable OTP is valid for a short"
+" window of time, while the OTP for HOTP is valid for an indeterminate amount"
+" of time. HOTP is more user-friendly than TOTP because no time limit exists "
+"to enter the OTP."
+msgstr ""
+"TOTPは、HOTPのOTPが不定期に有効なのに対し、マッチング可能なOTPが短時間で有効なため、HOTPよりも安全性が高い。HOTPは、OTPの入力に時間制限がないため、TOTPよりもユーザーフレンドリーである。"
+
+#. type: Plain text
+msgid ""
+"HOTP requires a database update every time the server increments the "
+"counter. This update is a performance drain on the authentication server "
+"during heavy load. To increase efficiency, TOTP does not remember passwords "
+"used, so there is no need to perform database updates. The drawback is that "
+"it is possible to re-use TOTPs in the valid time interval."
+msgstr ""
+"HOTPは、サーバーがカウンターをインクリメントするたびに、データベースの更新を必要とします。この更新は、高負荷時に認証サーバーのパフォーマンスを低下させる。効率を上げるため、TOTPは使用したパスワードを記憶しないので、データベースの更新を行う必要はありません。欠点は、有効時間内にTOTPを再利用することが可能なことである。"
 
 #. type: Title ====
 #, no-wrap
-msgid "TOTP Configuration Options"
-msgstr "TOTP設定オプション"
+msgid "TOTP configuration options"
+msgstr "TOTPの設定オプション"
 
-#. type: Labeled list
+#. type: Title =====
 #, no-wrap
-msgid "OTP Hash Algorithm"
-msgstr "OTP Hash Algorithm"
-
-#. type: Plain text
-msgid "Default is SHA1, more secure options are SHA256 and SHA512."
-msgstr "デフォルトはSHA1です。より安全なオプションはSHA256とSHA512です。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Number of Digits"
-msgstr "Number of Digits"
+msgid "OTP hash algorithm"
+msgstr "OTP hash algorithm"
 
 #. type: Plain text
 msgid ""
-"How many characters is the OTP? Short means more user friendly as it is less"
-" the user has to type.  More means more security."
+"The default algorithm is SHA1. The other, more secure options are SHA256 and"
+" SHA512."
+msgstr "デフォルトのアルゴリズムはSHA1です。他の、より安全なオプションは、SHA256とSHA512です。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Number of digits"
+msgstr "Number of digits"
+
+#. type: Plain text
+msgid ""
+"The length of the OTP.  Short OTP's are user-friendly, easier to type, and "
+"easier to remember. Longer OTP's are more secure than shorter OTP's."
+msgstr "OTPの長さ。  短いOTPはユーザーフレンドリーで、入力が簡単で、覚えやすい。長いOTPは、短いOTPよりも安全です。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Look ahead window"
+msgstr "Look ahead window"
+
+#. type: Plain text
+msgid ""
+"The number of intervals the server attempts to match the hash. This option "
+"is present in {project_name} if the clock of the TOTP generator or "
+"authentication server become out-of-sync. The default value of 1 is "
+"adequate. For example, if the time interval for a token is 30 seconds, the "
+"default value of 1 means it will accept valid tokens in the 30-second "
+"window. Every increment of this value increases the valid window by 30 "
+"seconds."
 msgstr ""
-"OTPの文字数。短い場合、ユーザーが入力する文字数が少なくなるため、ユーザー・フレンドリーです。長い場合、セキュリティーの強度が高まります。"
+"サーバーがハッシュの照合を試みる間隔数。このオプションは、TOTP生成器または認証サーバの時計が同期していない場合に{project_name} "
+"に存在する。デフォルトの1が適切である。たとえば、トークンの時間間隔が30秒の場合、デフォルト値の1は、30秒のウィンドウで有効なトークンを受け入れることを意味する。この値を1つ増やすごとに、有効なウィンドウが30秒ずつ長くなります。"
 
-#. type: Labeled list
+#. type: Title =====
 #, no-wrap
-msgid "Look Ahead Window"
-msgstr "Look Ahead Window"
+msgid "OTP token period"
+msgstr "OTP token period"
 
 #. type: Plain text
 msgid ""
-"How many intervals ahead should the server try and match the hash? This "
-"exists so just in case the clock of the TOTP generator or authentication "
-"server get out of sync.  The default value of 1 is usually good enough.  For"
-" example, if the time interval for a new token is every 30 seconds, the "
-"default value of 1 means that it will only accept valid tokens in that 30 "
-"second window.  Each increment of this config value will increase the valid "
-"window by 30 seconds."
-msgstr ""
-"サーバーがハッシュの照合を先行して試行する間隔。この設定は、TOTPジェネレーターまたは認証サーバーの時計が同期しなくなった場合に備えて存在します。通常は1というデフォルト値で十分です。たとえば、新しいトークンの時間間隔が30秒ごとの場合、デフォルト値1は、その30秒の枠内の有効なトークンのみを受け入れることを意味します。この設定値を増やすごとに有効な枠が30秒ずつ増加します。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "OTP Token Period"
-msgstr "OTP Token Period"
-
-#. type: Plain text
-msgid ""
-"Time interval in seconds during which the server will match a hash. Each "
-"time the interval passes, a new TOTP will be generated by the token "
-"generator."
-msgstr "サーバーがハッシュと一致するまでの時間間隔（秒）。間隔が経過するたびに、トークン・ジェネレーターによって新しいTOTPが生成されます。"
+"The time interval in seconds the server matches a hash. Each time the "
+"interval passes, the token generator generates a TOTP."
+msgstr "サーバーがハッシュを照合する時間間隔(秒)。この間隔が経過するたびに、トークン生成器はTOTPを生成する。"
 
 #. type: Title ====
 #, no-wrap
-msgid "HOTP Configuration Options"
-msgstr "HOTP設定オプション"
+msgid "HOTP configuration options"
+msgstr "HOTP configuration options"
 
 #. type: Plain text
 msgid ""
-"How many counters ahead should the server try and match the hash? The "
-"default value is 1.  This exists to cover the case where the user's counter "
-"gets ahead of the server's.  This can often happen as users often increment "
-"the counter manually too many times by accident.  This value really should "
-"be increased to a value of 10 or so."
+"The length of the OTP.  Short OTPs are user-friendly, easier to type, and "
+"easier to remember. Longer OTPs are more secure than shorter OTPs."
 msgstr ""
-"サーバーが、ハッシュの照合を先行して試行するカウンターの数。デフォルト値は1です。これは、ユーザーのカウンターがサーバーよりも先行することをカバーするために存在します。ユーザーが頻繁にカウンターを手動で何回も増やすことが多いために、サーバーのカウンターと差分が発生します。この値は、実際の利用においては10程度に増やす必要があります。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Initial Counter"
-msgstr "Initial Counter"
+"OTPの長さ。  短いOTPはユーザーフレンドリーで、入力が簡単で、覚えやすい。長いワンタイムパスワードは、短いワンタイムパスワードよりも安全です。"
 
 #. type: Plain text
-msgid "What is the value of the initial counter?"
-msgstr "最初のカウンターの値。"
+msgid ""
+"The number of intervals the server attempts to match the hash. This option "
+"is present in {project_name} if the clock of the TOTP generator or "
+"authentication server become out-of-sync. The default value of 1 is "
+"adequate. This option is present in {project_name} to cover when the user's "
+"counter gets ahead of the server."
+msgstr ""
+"サーバーがハッシュの照合を試みる間隔数。このオプションは、TOTP生成器または認証サーバの時計が同期していない場合に{project_name} "
+"に存在する。デフォルトの1が適切である。このオプションは {project_name} "
+"にあり、ユーザのカウンタがサーバより先に進んでしまった場合に対応する。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Initial counter"
+msgstr "Initial counter"
+
+#. type: Plain text
+msgid "The value of the initial counter."
+msgstr "初期カウンターの値。"

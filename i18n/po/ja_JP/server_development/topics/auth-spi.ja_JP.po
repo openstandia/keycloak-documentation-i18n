@@ -6,14 +6,14 @@
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2018
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # Hiroyuki Wada <wadahiro@gmail.com>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1336,8 +1336,8 @@ msgid ""
 "This sets the status of the execution as CHALLENGE and if the execution is Required, this JAX-RS Response object will be sent to the browser.\n"
 msgstr ""
 "LoginFormsProvider.createForm()を呼び出すと、JAX-RS "
-"Responseオブジェクトが返されます。次に、このレスポンスで渡すAuthenticationFlowContext.challenge()を呼び出します。これにより、エグゼキューションのステータスがCHALLENGEに設定され、エグゼキューションがREQUIREDの場合"
-"、このJAX-RSレスポンスのオブジェクトがブラウザーに送信されます。\n"
+"Responseオブジェクトが返されます。次に、このレスポンスで渡すAuthenticationFlowContext.challenge()を呼び出します。これにより、エグゼキューションのステータスがCHALLENGEに設定され、エグゼキューションがREQUIREDの場合、このJAX-"
+"RSレスポンスのオブジェクトがブラウザーに送信されます。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1505,7 +1505,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "@Override\n"
-"    public CredentialTypeMetadata getCredentialTypeMetadata() {\n"
+"    public CredentialTypeMetadata getCredentialTypeMetadata(CredentialTypeMetadataContext metadataContext) {\n"
 "        return CredentialTypeMetadata.builder()\n"
 "                .type(getType())\n"
 "                .category(CredentialTypeMetadata.Category.TWO_FACTOR)\n"
@@ -1517,7 +1517,7 @@ msgid ""
 "    }\n"
 msgstr ""
 "@Override\n"
-"    public CredentialTypeMetadata getCredentialTypeMetadata() {\n"
+"    public CredentialTypeMetadata getCredentialTypeMetadata(CredentialTypeMetadataContext metadataContext) {\n"
 "        return CredentialTypeMetadata.builder()\n"
 "                .type(getType())\n"
 "                .category(CredentialTypeMetadata.Category.TWO_FACTOR)\n"
@@ -1531,13 +1531,14 @@ msgstr ""
 #. type: delimited block -
 #, no-wrap
 msgid ""
-"Last method in SecretQuestionCredentialProvider class is getCredentialTypeMetadata(), which is an abstract method of CredentialProvider\n"
-"interface. Each Credential provider has to provide and implement this method. The method returns an instance of CredentialTypeMetadata,\n"
+"The last method to implement in the SecretQuestionCredentialProvider class is getCredentialTypeMetadata(CredentialTypeMetadataContext metadataContext), which is an abstract method of the CredentialProvider interface. Each Credential provider has to provide and implement this method. The method returns an instance of CredentialTypeMetadata,\n"
 "which should at least include type and category of authenticator, displayName and removable item. In this example, the builder\n"
 "takes type of authenticator from method getType(), category is Two Factor (the authenticator can be used as second factor of authentication)\n"
 "and removable, which is set up to false (user can't remove some previously registered credentials).\n"
 msgstr ""
-"SecretQuestionCredentialProviderクラスの最後のメソッドは、CredentialProviderの抽象メソッドであるgetCredentialTypeMetadata()です。各クレデンシャル・プロバイダーは、このメソッドを提供および実装する必要があります。このメソッドは、CredentialTypeMetadataのインスタンスを返します。これには、少なくともオーセンティケーターのタイプとカテゴリー、displayName、および取り外し可能なアイテムが含まれている必要があります。この例では、ビルダーはメソッドgetType()からオーセンティケーターのタイプを取り、カテゴリーは2要素（オーセンティケーターは認証の2番目の要素として使用できます）かつ取り外し可能で、falseに設定されています（ユーザーは以前に登録されたクレデンシャルを削除できません）。\n"
+"SecretQuestionCredentialProviderクラスに実装する最後のメソッドは、CredentialProviderインターフェイスの抽象メソッドであるgetCredentialTypeMetadata(CredentialTypeMetadataContext"
+" "
+"metadataContext)です。各クレデンシャル・プロバイダーは、このメソッドを提供および実装する必要があります。このメソッドは、CredentialTypeMetadataのインスタンスを返します。これには、少なくともオーセンティケーターのタイプとカテゴリー、displayName、および取り外し可能なアイテムが含まれている必要があります。この例では、ビルダーはメソッドgetType()からオーセンティケーターのタイプを取り、カテゴリーは2要素（オーセンティケーターは認証の2番目の要素として使用できます）かつ取り外し可能で、falseに設定されています（ユーザーは以前に登録されたクレデンシャルを削除できません）。\n"
 
 #. type: delimited block -
 #, no-wrap
@@ -1745,9 +1746,8 @@ msgid ""
 "This file should be added to the `theme-resources/templates` in your JAR, see <<_theme_resource,Theme Resource Provider>> for more details.\n"
 msgstr ""
 "{project_name}には、Freemarker<<_themes,テーマとエンジン・テンプレート>> "
-"が付属しています。オーセンティケーター・クラスのauthenticate()内で呼び出されたcreateForm()メソッドは"
-"、ログインテーマ内のsecret-question.ftlファイルからHTMLページを構築します。このファイルは、JAR内の `theme-"
-"resources/templates` "
+"が付属しています。オーセンティケーター・クラスのauthenticate()内で呼び出されたcreateForm()メソッドは、ログインテーマ内のsecret-"
+"question.ftlファイルからHTMLページを構築します。このファイルは、JAR内の `theme-resources/templates` "
 "に追加する必要があります。詳細については、<<_theme_resource,テーマ・リソース・プロバイダ>>を参照してください。\n"
 
 #. type: delimited block -
@@ -2609,8 +2609,8 @@ msgid ""
 "But the client authentication can be also used directly by you during `Direct Access grants` (represented by OAuth2 `Resource Owner Password Credentials Flow`)\n"
 "or during `Service account` authentication (represented by OAuth2 `Client Credentials Flow`).\n"
 msgstr ""
-"{project_name}は実際には、 https://openid.net/specs/openid-connect-core-"
-"1_0.html[OpenID Connect] "
+"{project_name}は実際には、 https://openid.net/specs/openid-connect-"
+"core-1_0.html[OpenID Connect] "
 "クライアント・アプリケーションのためのプラグイン可能な認証をサポートしています。クライアント（アプリケーション）の認証は、{project_name}アダプターがバックチャネル・リクエストを{project_name}サーバーに送信中に内部で使用されます（認証が成功した後にコードとアクセストークンを交換する要求をしたり、リフレッシュトークンを要求したりするなど）。しかし、"
 " `ダイレクト・アクセス・グラント` （OAuth2により表される `Resource Owner Password Credentials Flow`"
 " ）または `サービス・アカウント` 認証（OAuth2により表される `Client Credentials Flow` "
@@ -2664,8 +2664,8 @@ msgid ""
 "See the demo example and especially the `examples/preconfigured-demo/product-app` for the example application showing\n"
 "the application using client authentication with signed JWT.\n"
 msgstr ""
-"署名付きJWTでクライアント認証を使用するアプリケーションを示すアプリケーションの例については、デモのサンプルと、特に `examples"
-"/preconfigured-demo/product-app` を参照してください。\n"
+"署名付きJWTでクライアント認証を使用するアプリケーションを示すアプリケーションの例については、デモのサンプルと、特に "
+"`examples/preconfigured-demo/product-app` を参照してください。\n"
 
 #. type: delimited block -
 #, no-wrap

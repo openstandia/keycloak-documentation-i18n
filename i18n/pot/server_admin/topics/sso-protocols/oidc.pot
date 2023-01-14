@@ -82,20 +82,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-msgid ""
-"An administrator carries out the following operations on the `Admin "
-"Console` :"
-msgstr ""
-
-#. type: Plain text
-msgid "Configure items and click `Save`."
-msgstr ""
-
-#. type: Plain text
-msgid "The configurable items and their description follow."
-msgstr ""
-
-#. type: Plain text
 msgid "Configuration|Description"
 msgstr ""
 
@@ -104,90 +90,9 @@ msgstr ""
 msgid "Backchannel Logout"
 msgstr ""
 
-#. type: Title ====
-#, no-wrap
-msgid "OIDC Auth Flows"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"OIDC has different ways for a client or application to authenticate a user "
-"and receive an _identity_ and _access_ token.  Which path you use depends "
-"greatly on the type of application or client requesting access.  All of "
-"these flows are described in the OIDC and OAuth 2.0 specifications so only a "
-"brief overview will be provided here."
-msgstr ""
-
 #. type: Title =====
 #, no-wrap
 msgid "Authorization Code Flow"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"This is a browser-based protocol and it is what we recommend you use to "
-"authenticate and authorize browser-based applications.  It makes heavy use "
-"of browser redirects to obtain an _identity_ and _access_ token.  Here's a "
-"brief summary:"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Browser visits application.  The application notices the user is not logged "
-"in, so it redirects the browser to {project_name} to be authenticated.  The "
-"application passes along a callback URL (a redirect URL) as a query "
-"parameter in this browser redirect that {project_name} will use when it "
-"finishes authentication."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"{project_name} authenticates the user and creates a one-time, very short "
-"lived, temporary code.  {project_name} redirects back to the application "
-"using the callback URL provided earlier and additionally adds the temporary "
-"code as a query parameter in the callback URL."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"The application extracts the temporary code and makes a background out of "
-"band REST invocation to {project_name} to exchange the code for an "
-"_identity_, _access_ and _refresh_ token.  Once this temporary code has been "
-"used once to obtain the tokens, it can never be used again.  This prevents "
-"potential replay attacks."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"It is important to note that _access_ tokens are usually short lived and "
-"often expired after only minutes.  The additional _refresh_ token that was "
-"transmitted by the login protocol allows the application to obtain a new "
-"access token after it expires.  This refresh protocol is important in the "
-"situation of a compromised system.  If access tokens are short lived, the "
-"whole system is only vulnerable to a stolen token for the lifetime of the "
-"access token.  Future refresh token requests will fail if an admin has "
-"revoked access.  This makes things more secure and more scalable."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"Another important aspect of this flow is the concept of a _public_ vs. a "
-"_confidential_ client.  _Confidential_ clients are required to provide a "
-"client secret when they exchange the temporary codes for tokens.  _Public_ "
-"clients are not required to provide this client secret.  _Public_ clients "
-"are perfectly fine so long as HTTPS is strictly enforced and you are very "
-"strict about what redirect URIs are registered for the client.  HTML5/"
-"JavaScript clients always have to be _public_ clients because there is no "
-"way to transmit the client secret to them in a secure manner.  Again, this "
-"is ok so long as you use HTTPS and strictly enforce redirect URI "
-"registration.  This guide goes more detail into this in the <<_clients, "
-"Managing Clients>> chapter."
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"{project_name} also supports the optional https://datatracker.ietf.org/doc/"
-"html/rfc7636[Proof Key for Code Exchange] specification."
 msgstr ""
 
 #. type: Title =====
@@ -197,58 +102,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This is a browser-based protocol that is similar to Authorization Code Flow "
-"except there are fewer requests and no refresh tokens involved.  We do not "
-"recommend this flow as there remains the possibility of _access_ tokens "
-"being leaked in the browser history as tokens are transmitted via redirect "
-"URIs (see below).  Also, since this flow doesn't provide the client with a "
-"refresh token, access tokens would either have to be long-lived or users "
-"would have to re-authenticate when they expired.  This flow is supported "
-"because it is in the OIDC and OAuth 2.0 specification.  Here's a brief "
-"summary of the protocol:"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"{project_name} authenticates the user and creates an _identity_ and _access_ "
-"token.  {project_name} redirects back to the application using the callback "
-"URL provided earlier and additionally adding the _identity_ and _access_ "
-"tokens as query parameters in the callback URL."
-msgstr ""
-
-#. type: Plain text
-msgid ""
 "The application extracts the _identity_ and _access_ tokens from the "
 "callback URL."
-msgstr ""
-
-#. type: Title =====
-#, no-wrap
-msgid "Resource Owner Password Credentials Grant (Direct Access Grants)"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"This is referred to in the Admin Console as _Direct Access Grants_. This is "
-"used by REST clients that want to obtain a token on behalf of a user.  It is "
-"one HTTP POST request that contains the credentials of the user as well as "
-"the id of the client and the client's secret (if it is a confidential "
-"client).  The user's credentials are sent within form parameters.  The HTTP "
-"response contains _identity_, _access_, and _refresh_ tokens."
-msgstr ""
-
-#. type: Title =====
-#, no-wrap
-msgid "Client Credentials Grant"
-msgstr ""
-
-#. type: Plain text
-msgid ""
-"This is also used by REST clients, but instead of obtaining a token that "
-"works on behalf of an external user, a token is created based on the "
-"metadata and permissions of a service account that is associated with the "
-"client.  More info together with example is in <<_service_accounts,Service "
-"Accounts>> chapter."
 msgstr ""
 
 #. type: Plain text
@@ -282,14 +137,6 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This is used by clients who want to initiate the authentication flow by "
-"communicating with the OpenID Provider directly without redirect through the "
-"user's browser like OAuth 2.0's authorization code grant. Here's a brief "
-"summary of the protocol:"
-msgstr ""
-
-#. type: Plain text
-msgid ""
 "An administrator can configure Client Initiated Backchannel Authentication "
 "(CIBA) related operations as `CIBA Policy` per realm."
 msgstr ""
@@ -310,19 +157,25 @@ msgid "CIBA Policy"
 msgstr ""
 
 #. type: Plain text
+msgid ""
+"An administrator carries out the following operations on the `Admin "
+"Console` :"
+msgstr ""
+
+#. type: Plain text
 msgid "Open the `Authentication -> CIBA Policy` tab."
 msgstr ""
 
 #. type: Plain text
-msgid "Backchannel Token Delivery Mode"
+msgid "Configure items and click `Save`."
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
-msgid ""
-"Specifying how the CD (Consumption Device) gets the authentication result and related tokens. There are three modes, \"poll\", \"ping\" and \"push\". {project_name} only supports \"poll\" and \"ping\" modes.\n"
-"The default setting is \"poll\". This configuration is used as the default mode for clients, however every client can override the mode.\n"
-" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5[CIBA Specification].\n"
+msgid "The configurable items and their description follow."
+msgstr ""
+
+#. type: Plain text
+msgid "Backchannel Token Delivery Mode"
 msgstr ""
 
 #. type: Plain text
@@ -572,13 +425,6 @@ msgid ""
 "This field is optional and was defined by CIBA standard document.\n"
 msgstr ""
 
-#. type: Plain text
-msgid ""
-"Besides the mentioned parameters, any custom parameter that is sent to the "
-"Backchannel Authentication Endpoint, will be forwarded to Channel Provider "
-"as well."
-msgstr ""
-
 #. type: Labeled list
 #, no-wrap
 msgid "Authentication Delegation Response"
@@ -747,19 +593,64 @@ msgid ""
 "own logout."
 msgstr ""
 
-#. type: Title =====
-#, no-wrap
-msgid "Frontchannel Logout"
+#. type: Plain text
+msgid ""
+"This is also a browser-based logout where the logout starts by redirecting "
+"the user to a specific endpoint at {project_name}."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"This is also a browser-based logout. In contrast to the Session Managment "
-"based logout approach {project_name} will send logout requests to the "
-"clients. Applications or clients need to have a frontchannel logout URL "
-"registered at {project_name}.  After triggering a logout at {project_name}, "
-"it will send logout requests to these registered URLs that will terminate "
-"the client sessions."
+"Once the user is redirected to the logout endpoint, {project_name} is going "
+"to send logout requests to clients to let them to invalidate their local "
+"user sessions, and potentially redirect the user to some URL once the logout "
+"process is finished."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Depending on the client configuration, logout requests can be sent to "
+"clients through the front-channel or through the back-channel."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To configure clients to receive logout requests through the front-channel, "
+"look at the <<_front-channel-logout, Front-Channel Logout>> client setting. "
+"When using this method, consider the following:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Logout requests sent by {project_name} to clients rely on the browser and on "
+"embedded `iframes` that are rendered for the logout page."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"By being based on `iframes`, front-channel logout might be impacted by "
+"Content Security Policies (CSP) and logout requests might be blocked."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If the user closes the browser prior to rendering the logout page or before "
+"logout requests are actually sent to clients, their sessions at the client "
+"might not be invalidated."
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"Consider using Back-Channel Logout as it provides a more reliable and secure "
+"approach to log out users and terminate their sessions on the clients."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"If the client is not enabled with front-channel logout, then {project_name} "
+"is going to try first to send logout requests through the back-channel using "
+"the <<_back-channel-logout-url, Back-Channel Logout URL>>. If not defined, "
+"the server is going to fall back to using the <<_admin-url, Admin URL>>."
 msgstr ""
 
 #. type: Plain text
@@ -769,6 +660,165 @@ msgid ""
 "HTTP POST request containing a logout token to all clients logged into "
 "{project_name}. These requests are sent to a registered backchannel logout "
 "URLs at {project_name} and are supposed to trigger a logout at client side."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "OIDC Auth Flows"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"OIDC has different ways for a client or application to authenticate a user "
+"and receive an _identity_ and _access_ token.  Which path you use depends "
+"greatly on the type of application or client requesting access.  All of "
+"these flows are described in the OIDC and OAuth 2.0 specifications so only a "
+"brief overview will be provided here."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is a browser-based protocol and it is what we recommend you use to "
+"authenticate and authorize browser-based applications.  It makes heavy use "
+"of browser redirects to obtain an _identity_ and _access_ token.  Here's a "
+"brief summary:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Browser visits application.  The application notices the user is not logged "
+"in, so it redirects the browser to {project_name} to be authenticated.  The "
+"application passes along a callback URL (a redirect URL) as a query "
+"parameter in this browser redirect that {project_name} will use when it "
+"finishes authentication."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} authenticates the user and creates a one-time, very short "
+"lived, temporary code.  {project_name} redirects back to the application "
+"using the callback URL provided earlier and additionally adds the temporary "
+"code as a query parameter in the callback URL."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The application extracts the temporary code and makes a background out of "
+"band REST invocation to {project_name} to exchange the code for an "
+"_identity_, _access_ and _refresh_ token.  Once this temporary code has been "
+"used once to obtain the tokens, it can never be used again.  This prevents "
+"potential replay attacks."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"It is important to note that _access_ tokens are usually short lived and "
+"often expired after only minutes.  The additional _refresh_ token that was "
+"transmitted by the login protocol allows the application to obtain a new "
+"access token after it expires.  This refresh protocol is important in the "
+"situation of a compromised system.  If access tokens are short lived, the "
+"whole system is only vulnerable to a stolen token for the lifetime of the "
+"access token.  Future refresh token requests will fail if an admin has "
+"revoked access.  This makes things more secure and more scalable."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Another important aspect of this flow is the concept of a _public_ vs. a "
+"_confidential_ client.  _Confidential_ clients are required to provide a "
+"client secret when they exchange the temporary codes for tokens.  _Public_ "
+"clients are not required to provide this client secret.  _Public_ clients "
+"are perfectly fine so long as HTTPS is strictly enforced and you are very "
+"strict about what redirect URIs are registered for the client.  HTML5/"
+"JavaScript clients always have to be _public_ clients because there is no "
+"way to transmit the client secret to them in a secure manner.  Again, this "
+"is ok so long as you use HTTPS and strictly enforce redirect URI "
+"registration.  This guide goes more detail into this in the xref:assembly-"
+"managing-clients_{context}[Managing Clients] chapter."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} also supports the optional https://datatracker.ietf.org/doc/"
+"html/rfc7636[Proof Key for Code Exchange] specification."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is a browser-based protocol that is similar to Authorization Code Flow "
+"except there are fewer requests and no refresh tokens involved.  We do not "
+"recommend this flow as there remains the possibility of _access_ tokens "
+"being leaked in the browser history as tokens are transmitted via redirect "
+"URIs (see below).  Also, since this flow doesn't provide the client with a "
+"refresh token, access tokens would either have to be long-lived or users "
+"would have to re-authenticate when they expired.  This flow is supported "
+"because it is in the OIDC and OAuth 2.0 specification.  Here's a brief "
+"summary of the protocol:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} authenticates the user and creates an _identity_ and _access_ "
+"token.  {project_name} redirects back to the application using the callback "
+"URL provided earlier and additionally adding the _identity_ and _access_ "
+"tokens as query parameters in the callback URL."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Resource Owner Password Credentials Grant (Direct Access Grants)"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is referred to in the Admin Console as _Direct Access Grants_. This is "
+"used by REST clients that want to obtain a token on behalf of a user.  It is "
+"one HTTP POST request that contains the credentials of the user as well as "
+"the id of the client and the client's secret (if it is a confidential "
+"client).  The user's credentials are sent within form parameters.  The HTTP "
+"response contains _identity_, _access_, and _refresh_ tokens."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Client Credentials Grant"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is also used by REST clients, but instead of obtaining a token that "
+"works on behalf of an external user, a token is created based on the "
+"metadata and permissions of a service account that is associated with the "
+"client.  More info together with example is in <<_service_accounts,Service "
+"Accounts>> chapter."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"This is used by clients who want to initiate the authentication flow by "
+"communicating with the OpenID Provider directly without redirect through the "
+"user's browser like OAuth 2.0's authorization code grant. Here's a brief "
+"summary of the protocol:"
+msgstr ""
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Specifying how the CD (Consumption Device) gets the authentication result and related tokens. There are three modes, \"poll\", \"ping\" and \"push\". {project_name} only supports \"poll\" and \"ping\" modes.\n"
+"The default setting is \"poll\". This configuration is used as the default mode for clients, however every client can override the mode.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5[CIBA Specification].\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Besides the mentioned parameters, any custom parameter that is sent to the "
+"Backchannel Authentication Endpoint, will be forwarded to Channel Provider "
+"as well."
+msgstr ""
+
+#. type: Title =====
+#, no-wrap
+msgid "Front-Channel Logout"
 msgstr ""
 
 #. type: Title ====

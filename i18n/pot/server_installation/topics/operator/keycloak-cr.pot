@@ -67,7 +67,7 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
-msgid "{project_name} installation using a custom resource "
+msgid "Installing {project_name} using a custom resource "
 msgstr ""
 
 #. type: Plain text
@@ -168,12 +168,21 @@ msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid " for the {project_name} cluster.\n"
+msgid " for the {project_name} cluster. You can set `host` to override the automatically chosen host name for Route\n"
 msgstr ""
 
 #. type: Plain text
 #, no-wrap
-msgid "`externalDatabase` - applies only if you want to connect an externally hosted database. That topic is covered in the xref:_external_database[external database] section of this guide.\n"
+msgid " or default value `keycloak.local` set for Ingress.\n"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"`externalDatabase` - in order to connect to an externally hosted database. "
+"That topic is covered in the xref:_external_database[external database] "
+"section of this guide. Setting it to false should be used only for testing "
+"purposes and will install an embedded PostgreSQL database. Be aware that "
+"externalDatabase:false is *NOT* supported in production environments."
 msgstr ""
 
 #. type: Code block
@@ -370,7 +379,7 @@ msgstr ""
 
 #. type: delimited block -
 #, no-wrap
-msgid "$ {create_cmd_brief} get secret credentials-<CR-Name> -o go-template='{{range $k,$v := .data}}{{printf \"%s: \" $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{\"\\n\"}}{{end}}'\n"
+msgid "$ {create_cmd_brief} get secret credential-<CR-Name> -o go-template='{{range $k,$v := .data}}{{printf \"%s: \" $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{\"\\n\"}}{{end}}'\n"
 msgstr ""
 
 #. type: Plain text
@@ -450,7 +459,8 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"If you have an external database, you can modify the Keycloak custom "
-"resource to support it. See xref:_external_database[Connecting to an "
-"external database]."
+"An external database is the supported option and needs to be enabled in the "
+"Keycloak custom resource. You can disable this option only for testing and "
+"enable it when you switch to a production environment. See xref:"
+"_external_database[Connecting to an external database]."
 msgstr ""

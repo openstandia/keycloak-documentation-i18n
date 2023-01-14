@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Nomura Research Institute, Ltd.
+# This file is distributed under the same license as the keycloak-documentation-i18n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: keycloak-documentation-i18n  \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ===
+#, no-wrap
+msgid "Docker registry v2 authentication"
+msgstr ""
+
+#. type: delimited block =
+msgid ""
+"Docker authentication is disabled by default. To enable docker "
+"authentication, see link:{installguide_profile_link}"
+"[{installguide_profile_name}]."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"link:https://docs.docker.com/registry/spec/auth/[Docker Registry V2 "
+"Authentication] is a protocol, similar to OIDC, that authenticates users "
+"against Docker registries.  {project_name}'s implementation of this protocol "
+"lets Docker clients use a {project_name} authentication server authenticate "
+"against a registry. This protocol uses standard token and signature "
+"mechanisms but it does deviate from a true OIDC implementation. It deviates "
+"by using a very specific JSON format for requests and responses as well as "
+"mapping repository names and permissions to the OAuth scope mechanism."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Docker authentication flow"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The authentication flow is described in the link:https://docs.docker.com/"
+"registry/spec/auth/token/[Docker API documentation]. The following is a "
+"summary from the perspective of the {project_name} authentication server:"
+msgstr ""
+
+#. type: Plain text
+msgid "Perform a `docker login`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Docker client requests a resource from the Docker registry.  If the "
+"resource is protected and no authentication token is in the request, the "
+"Docker registry server responds with a 401 HTTP message with some "
+"information on the permissions that are required and the location of the "
+"authorization server."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Docker client constructs an authentication request based on the 401 HTTP "
+"message from the Docker registry. The client uses the locally cached "
+"credentials (from the `docker login` command) as part of the link:https://"
+"datatracker.ietf.org/doc/html/rfc2617[HTTP Basic Authentication] request to "
+"the {project_name} authentication server."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} authentication server attempts to authenticate the user "
+"and return a JSON body containing an OAuth-style Bearer token."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Docker client receives a bearer token from the JSON response and uses it "
+"in the authorization header to request the protected resource."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The Docker registry receives the new request for the protected resource with "
+"the token from the {project_name} server. The registry validates the token "
+"and grants access to the requested resource (if appropriate)."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} does not create a browser SSO session after successful "
+"authentication with the Docker protocol. The browser SSO session does not "
+"use the Docker protocol as it cannot refresh tokens or obtain the status of "
+"a token or session from the {project_name} server; therefore a browser SSO "
+"session is not necessary. For more details, see the <<_transient-session, "
+"transient session>> section."
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "{project_name} Docker Registry v2 Authentication Server URI Endpoints"
+msgstr ""
+
+#. type: Plain text
+msgid "{project_name} has one endpoint for all Docker auth v2 requests."
+msgstr ""
+
+#. type: Plain text
+msgid "`http(s)://authserver.host/auth/realms/{realm-name}/protocol/docker-v2`"
+msgstr ""

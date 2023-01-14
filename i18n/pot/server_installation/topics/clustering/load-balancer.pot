@@ -14,9 +14,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: Attribute :installguide_loadbalancer_name:
+#. type: Block title
 #, no-wrap
-msgid "Setting Up a Load Balancer or Proxy"
+msgid "Procedure"
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
+msgid "Setting Up a load balancer or proxy"
 msgstr ""
 
 #. type: Plain text
@@ -45,7 +50,7 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Identifying Client IP Addresses"
+msgid "Identifying client IP addresses"
 msgstr ""
 
 #. type: Plain text
@@ -192,13 +197,13 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Enable HTTPS/SSL with a Reverse Proxy"
+msgid "Enabling HTTPS/SSL with a reverse proxy"
 msgstr ""
 
 #. type: Plain text
 msgid ""
 "Assuming that your reverse proxy doesn't use port 8443 for SSL you also need "
-"to configure what port HTTPS traffic is redirected to."
+"to configure to what port the HTTPS traffic is redirected."
 msgstr ""
 
 #. type: delimited block -
@@ -221,8 +226,7 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Then add a new `socket-binding` element to the `socket-binding-group` "
-"element:"
+"Add a new `socket-binding` element to the `socket-binding-group` element:"
 msgstr ""
 
 #. type: delimited block -
@@ -238,27 +242,44 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Verify Configuration"
+msgid "Verifying the configuration"
+msgstr ""
+
+#. type: Plain text
+msgid "You can verify the reverse proxy or load balancer configuration"
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"You can verify the reverse proxy or load balancer configuration by opening "
-"the path `/auth/realms/master/.well-known/openid-configuration` through the "
-"reverse proxy. For example if the reverse proxy address is `\\https://acme."
-"com/` then open the URL `\\https://acme.com/auth/realms/master/.well-known/"
-"openid-configuration`. This will show a JSON document listing a number of "
-"endpoints for {project_name}. Make sure the endpoints starts with the "
-"address (scheme, domain and port) of your reverse proxy or load balancer. By "
-"doing this you make sure that {project_name} is using the correct endpoint."
+"Open the path `/auth/realms/master/.well-known/openid-configuration` through "
+"the reverse proxy."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"You should also verify that {project_name} sees the correct source IP "
-"address for requests. To check this, you can try to login to the admin "
-"console with an invalid username and/or password. This should show a warning "
-"in the server log something like this:"
+"For example if the reverse proxy address is `\\https://acme.com/` then open "
+"the URL `\\https://acme.com/auth/realms/master/.well-known/openid-"
+"configuration`. This will show a JSON document listing a number of endpoints "
+"for {project_name}."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Make sure the endpoints starts with the address (scheme, domain and port) of "
+"your reverse proxy or load balancer. By doing this you make sure that "
+"{project_name} is using the correct endpoint."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"Verify that {project_name} sees the correct source IP address for requests."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"To check this, you can try to login to the Admin Console with an invalid "
+"username and/or password. This should show a warning in the server log "
+"something like this:"
 msgstr ""
 
 #. type: delimited block -
@@ -267,15 +288,15 @@ msgid "08:14:21,287 WARN  XNIO-1 task-45 [org.keycloak.events] type=LOGIN_ERROR,
 msgstr ""
 
 #. type: Plain text
-#, no-wrap
 msgid ""
-"Check that the value of `ipAddress` is the IP address of the machine you tried to login with and not the IP address\n"
-" of the reverse proxy or load balancer.\n"
+"Check that the value of `ipAddress` is the IP address of the machine you "
+"tried to login with and not the IP address of the reverse proxy or load "
+"balancer."
 msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Using the Built-In Load Balancer"
+msgid "Using the built-in load balancer"
 msgstr ""
 
 #. type: Plain text
@@ -306,17 +327,16 @@ msgid ""
 "them on the command line"
 msgstr ""
 
-#. type: Title =====
-#, no-wrap
-msgid "Register a New Host With Load Balancer"
+#. type: Plain text
+msgid ""
+"Open _domain.xml_ so you can registering the new host slave with the load "
+"balancer configuration."
 msgstr ""
 
 #. type: Plain text
 msgid ""
-"Let's look first at registering the new host slave with the load balancer "
-"configuration in _domain.xml_.  Open this file and go to the undertow "
-"configuration in the `load-balancer` profile.  Add a new `host` definition "
-"called `remote-host3` within the `reverse-proxy` XML block."
+"Go to the undertow configuration in the `load-balancer` profile.  Add a new "
+"`host` definition called `remote-host3` within the `reverse-proxy` XML block."
 msgstr ""
 
 #. type: Block title
@@ -350,9 +370,12 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"Next go down to the `load-balancer-sockets` `socket-binding-group` and add "
-"the `outbound-socket-binding` for `remote-host3`.  This new binding needs to "
-"point to the host and port of the new host."
+"Go down to the `load-balancer-sockets` `socket-binding-group` and add the "
+"`outbound-socket-binding` for `remote-host3`."
+msgstr ""
+
+#. type: Plain text
+msgid "This new binding needs to point to the host and port of the new host."
 msgstr ""
 
 #. type: Block title
@@ -379,7 +402,7 @@ msgstr ""
 
 #. type: Title =====
 #, no-wrap
-msgid "Master Bind Addresses"
+msgid "Master bind addresses"
 msgstr ""
 
 #. type: Plain text
@@ -397,7 +420,7 @@ msgstr ""
 
 #. type: Title =====
 #, no-wrap
-msgid "Host Slave Bind Addresses"
+msgid "Host slave bind addresses"
 msgstr ""
 
 #. type: Plain text
@@ -424,9 +447,9 @@ msgid ""
 "management address of the master host."
 msgstr ""
 
-#. type: Title ====
+#. type: Block title
 #, no-wrap
-msgid "Configuring Other Load Balancers"
+msgid "Additional resources"
 msgstr ""
 
 #. type: Plain text

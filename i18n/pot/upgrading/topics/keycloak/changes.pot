@@ -31,6 +31,47 @@ msgstr ""
 
 #. type: Title ===
 #, no-wrap
+msgid "Migrating to 16.0.0"
+msgstr ""
+
+#. type: Title ====
+#, no-wrap
+msgid "Proxy environment variables"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"{project_name} now respects the standard `HTTP_PROXY`, `HTTPS_PROXY` and "
+"`NO_PROXY` environment variables for outgoing HTTP requests. This change "
+"could lead to unexpected use of a proxy server if you have for example the "
+"`HTTP_PROXY` variable defined but have no explicit proxy mappings specified "
+"in your SPI configuration. To prevent {project_name} from using those "
+"environment variables, you can explicitly create a no proxy route for all "
+"requests as `.*;NO_PROXY`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"For more details, see the link:{installguide_link}#_proxy_env_vars[related "
+"chapter in the {installguide_name}]."
+msgstr ""
+
+#. type: Title ==
+#, no-wrap
+msgid "Deprecated features in the {project_operator}"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"With this release, we have deprecated and/or marked as unsupported some "
+"features in the {project_operator}. This concerns the Backup CRD and the "
+"operator managed Postgres Database. For more details, please see the link:"
+"{installguide_link}#_operator_production_usage[related chapter in the "
+"{installguide_name}]."
+msgstr ""
+
+#. type: Title ===
+#, no-wrap
 msgid "Migrating to 14.0.0"
 msgstr ""
 
@@ -252,6 +293,51 @@ msgid ""
 "use wildcards or relative paths similarly such as the `Valid Redirect URIs` "
 "option, however for security purposes, we typically recommend to use as "
 "specific value as possible."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The {project_name} server was upgraded to use Wildfly 22 as the underlying "
+"container. This does not directly involve any specific {project_name} server "
+"functionality, but a few changes related to the migration, which are worth "
+"mentioning."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The dependencies were updated to the versions used by Wildfly 22 server. For "
+"example, Infinispan is now `11.0.8.Final`."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"A few configuration changes exist in the `standalone(-ha).xml` and `domain."
+"xml` files. You should follow the <<_install_new_version>> section to handle "
+"the migration of configuration files automatically. If more detail is "
+"needed, because, for example, you did some configuration changes on your "
+"own, the list of the most important changes follows:"
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The link:https://docs.wildfly.org/22/Admin_Guide."
+"html#MicroProfile_Config_SmallRye[Eclipse MicroProfile Config], link:https://"
+"docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Health_SmallRye[Eclipse "
+"MicroProfile Health], and link:https://docs.wildfly.org/22/Admin_Guide."
+"html#MicroProfile_Metrics_SmallRye[Eclipse MicroProfile Metrics] subsystems "
+"were replaced by link:https://docs.wildfly.org/22/Admin_Guide."
+"html#Health[WildFly subsystem for health] and link:https://docs.wildfly."
+"org/22/Admin_Guide.html#MicroProfile_Metrics_SmallRye[WildFly subsystem for "
+"base metrics]."
+msgstr ""
+
+#. type: Plain text
+msgid ""
+"The default Wildfly configuration now utilizes the ability to make use of an "
+"automatically generated self-signed certificate with Elytron. Refer to link:"
+"https://docs.wildfly.org/22/WildFly_Elytron_Security.html#update-wildfly-to-"
+"use-the-default-elytron-components-for-application-authentication[a "
+"dedicated `applicationSSC` server SSL context section] for details."
 msgstr ""
 
 #. type: Title ===
@@ -490,7 +576,7 @@ msgid ""
 "migrates the ID once user logs in."
 msgstr ""
 
-#. type: Title ====
+#. type: Title ===
 #, no-wrap
 msgid "Non-standard token introspection endpoint removed"
 msgstr ""
@@ -1017,7 +1103,8 @@ msgid ""
 "client role in the token, are automatically added to the `aud` claim in the "
 "access token now. On the other hand, an access token may not automatically "
 "contain the audience of the frontend client, for which it was issued. Read "
-"the link:{adminguide_link}#_audience[{adminguide_name}] for more details."
+"the link:{adminguide_link}#audience-support[{adminguide_name}] for more "
+"details."
 msgstr ""
 
 #. type: Title ====

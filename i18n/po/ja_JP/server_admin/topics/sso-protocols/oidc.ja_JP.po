@@ -6,14 +6,14 @@
 # Translators:
 # Shinsuke UEDA, 2021
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2021
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
 # Hiroyuki Wada <wadahiro@gmail.com>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2021\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,20 +109,6 @@ msgstr ""
 "を抽出し、トークンの署名を検証し、トークン内のアクセス情報に基づいて、リクエストを処理するかどうかを決定します。"
 
 #. type: Plain text
-msgid ""
-"An administrator carries out the following operations on the `Admin Console`"
-" :"
-msgstr "管理者は、 `管理コンソール` で次の操作を行います。"
-
-#. type: Plain text
-msgid "Configure items and click `Save`."
-msgstr "アイテムを設定し、 `Save` をクリックします。"
-
-#. type: Plain text
-msgid "The configurable items and their description follow."
-msgstr "設定可能な項目とその説明は次のとおりです。"
-
-#. type: Plain text
 msgid "Configuration|Description"
 msgstr "設定|説明"
 
@@ -131,113 +117,10 @@ msgstr "設定|説明"
 msgid "Backchannel Logout"
 msgstr "Backchannel Logout"
 
-#. type: Title ====
-#, no-wrap
-msgid "OIDC Auth Flows"
-msgstr "OIDC認証フロー"
-
-#. type: Plain text
-msgid ""
-"OIDC has different ways for a client or application to authenticate a user "
-"and receive an _identity_ and _access_ token.  Which path you use depends "
-"greatly on the type of application or client requesting access.  All of "
-"these flows are described in the OIDC and OAuth 2.0 specifications so only a"
-" brief overview will be provided here."
-msgstr ""
-"OIDCには、クライアントまたはアプリケーションがユーザーを認証し、 _ID_ トークンおよび _アクセス_ "
-"トークンを受け取るさまざまな方法があります。どの方法を使用するかは、アクセスを要求するアプリケーションまたはクライアントのタイプによって大きく異なります。これらのフローはすべてOIDCおよびOAuth"
-" 2.0の仕様で説明されていますので、ここでは簡単な概要のみを説明します。"
-
 #. type: Title =====
 #, no-wrap
 msgid "Authorization Code Flow"
 msgstr "認可コード・フロー"
-
-#. type: Plain text
-msgid ""
-"This is a browser-based protocol and it is what we recommend you use to "
-"authenticate and authorize browser-based applications.  It makes heavy use "
-"of browser redirects to obtain an _identity_ and _access_ token.  Here's a "
-"brief summary:"
-msgstr ""
-"これはブラウザーベースのプロトコルであり、ブラウザーベースのアプリケーションの認証と認可に使用することをお勧めします。 _ID_ トークンと "
-"_アクセス_ トークンを取得するために、ブラウザーのリダイレクトを頻繁に使用します。概要を以下に示します。"
-
-#. type: Plain text
-msgid ""
-"Browser visits application.  The application notices the user is not logged "
-"in, so it redirects the browser to {project_name} to be authenticated.  The "
-"application passes along a callback URL (a redirect URL) as a query "
-"parameter in this browser redirect that {project_name} will use when it "
-"finishes authentication."
-msgstr ""
-"ブラウザーがアプリケーションにアクセスします。アプリケーションは、ユーザーがログインしていないことを検知し、認証させるためにブラウザーを{project_name}にリダイレクトします。アプリケーションは、{project_name}が認証を完了したときに使用するブラウザー・リダイレクトのコールバックURL（リダイレクトURL）をクエリー・パラメーターとして渡します。"
-
-#. type: Plain text
-msgid ""
-"{project_name} authenticates the user and creates a one-time, very short "
-"lived, temporary code.  {project_name} redirects back to the application "
-"using the callback URL provided earlier and additionally adds the temporary "
-"code as a query parameter in the callback URL."
-msgstr ""
-"{project_name}はユーザーを認証し、1回限りで非常に存続期間の短い、一時的なコードを作成します。{project_name}は、以前に提供されたコールバックURLを使用してアプリケーションにリダイレクトします。コールバックURLには、クエリー・パラメーターとして一時コードが追加されます。"
-
-#. type: Plain text
-msgid ""
-"The application extracts the temporary code and makes a background out of "
-"band REST invocation to {project_name} to exchange the code for an "
-"_identity_, _access_ and _refresh_ token.  Once this temporary code has been"
-" used once to obtain the tokens, it can never be used again.  This prevents "
-"potential replay attacks."
-msgstr ""
-"アプリケーションは一時コードを抽出し、それを _ID_ トークン、 _アクセス_ トークンおよび _リフレッシュ_ "
-"トークンと交換するため、バックグラウンドで帯域外の{project_name}へのREST呼び出しを行います。この一時コードを一度使用してトークンを取得すると、それを再び使用することはできません。これにより潜在的なリプレイ攻撃が防止されます。"
-
-#. type: Plain text
-msgid ""
-"It is important to note that _access_ tokens are usually short lived and "
-"often expired after only minutes.  The additional _refresh_ token that was "
-"transmitted by the login protocol allows the application to obtain a new "
-"access token after it expires.  This refresh protocol is important in the "
-"situation of a compromised system.  If access tokens are short lived, the "
-"whole system is only vulnerable to a stolen token for the lifetime of the "
-"access token.  Future refresh token requests will fail if an admin has "
-"revoked access.  This makes things more secure and more scalable."
-msgstr ""
-"_アクセス_ トークンは通常短命であり、しばしば数分後に失効されることに注意することが重要です。ログイン・プロトコルによって送信された追加の "
-"_リフレッシュ_ "
-"トークンにより、アプリケーションは有効期限が切れた後に新しいアクセストークンを取得できます。このリフレッシュ・プロトコルは、システムが侵害された状況で重要です。アクセストークンが短命である場合、システム全体は、アクセストークンの存続期間中に盗まれたトークンに対してのみ脆弱です。管理者がアクセスを取り消した場合、その後のリフレッシュトークン・リクエストは失敗します。これにより、より安全でスケーラブルになります。"
-
-#. type: Plain text
-msgid ""
-"Another important aspect of this flow is the concept of a _public_ vs. a "
-"_confidential_ client.  _Confidential_ clients are required to provide a "
-"client secret when they exchange the temporary codes for tokens.  _Public_ "
-"clients are not required to provide this client secret.  _Public_ clients "
-"are perfectly fine so long as HTTPS is strictly enforced and you are very "
-"strict about what redirect URIs are registered for the client.  "
-"HTML5/JavaScript clients always have to be _public_ clients because there is"
-" no way to transmit the client secret to them in a secure manner.  Again, "
-"this is ok so long as you use HTTPS and strictly enforce redirect URI "
-"registration.  This guide goes more detail into this in the <<_clients, "
-"Managing Clients>> chapter."
-msgstr ""
-"このフローのもう一つの重要な側面は、 _パブリック_ ・クライアント対 _コンフィデンシャル_ ・クライアントの概念です。 _コンフィデンシャル_ "
-"・クライアントは、トークンと一時コードを交換するときにクライアント・シークレットを提供する必要があります。 _パブリック_ "
-"・クライアントはこのクライアント・シークレットを提供する必要がありません。 _パブリック_ "
-"・クライアントは、HTTPSが厳格に実施されており、クライアントにリダイレクトURIの登録が非常に厳密に行われている限り問題ありません。HTML5/JavaScriptクライアントは、常に安全な方法でクライアント・シークレットを送信する方法がないため、必ず"
-" _パブリック_ "
-"・クライアントでなければなりません。前述のとおり、HTTPSを使用し、リダイレクトURI登録を厳密に実施する限り、これは問題ありません。これに関するガイドは、<<_clients,"
-" クライアントの管理>>の章で詳しく説明しています。"
-
-#. type: Plain text
-msgid ""
-"{project_name} also supports the optional "
-"https://datatracker.ietf.org/doc/html/rfc7636[Proof Key for Code Exchange] "
-"specification."
-msgstr ""
-"{project_name}は、オプションの https://datatracker.ietf.org/doc/html/rfc7636[Proof "
-"Key for Code Exchange] の仕様もサポートしています。"
 
 #. type: Title =====
 #, no-wrap
@@ -246,71 +129,9 @@ msgstr "インプリシット・フロー"
 
 #. type: Plain text
 msgid ""
-"This is a browser-based protocol that is similar to Authorization Code Flow "
-"except there are fewer requests and no refresh tokens involved.  We do not "
-"recommend this flow as there remains the possibility of _access_ tokens "
-"being leaked in the browser history as tokens are transmitted via redirect "
-"URIs (see below).  Also, since this flow doesn't provide the client with a "
-"refresh token, access tokens would either have to be long-lived or users "
-"would have to re-authenticate when they expired.  This flow is supported "
-"because it is in the OIDC and OAuth 2.0 specification.  Here's a brief "
-"summary of the protocol:"
-msgstr ""
-"これは、リクエストが少なく、リフレッシュトークンが含まれていない点を除いて、認可コードフローと同様のブラウザーベースのプロトコルです。トークンがリダイレクトURI（以下を参照）を介して送信されるため、ブラウザーの履歴に"
-" _アクセス_ "
-"トークンがリークする可能性があるため、このフローはお勧めしません。また、このフローではクライアントにリフレッシュトークンが提供されないため、アクセストークンを長くするか、期限切れになったときに再認証する必要があります。このフローは、OIDCおよびOAuth"
-" 2.0の仕様にあるため、サポートされています。プロトコルの概要を以下に示します。"
-
-#. type: Plain text
-msgid ""
-"{project_name} authenticates the user and creates an _identity_ and _access_"
-" token.  {project_name} redirects back to the application using the callback"
-" URL provided earlier and additionally adding the _identity_ and _access_ "
-"tokens as query parameters in the callback URL."
-msgstr ""
-"{project_name}はユーザーを認証し、 _ID_ トークンと _アクセス_ "
-"トークンを作成します。{project_name}は、前述のコールバックURLを使用してアプリケーションにリダイレクトし、さらに _ID_ トークンと "
-"_アクセス_ トークンをクエリー・パラメーターとしてコールバックURLに追加します。"
-
-#. type: Plain text
-msgid ""
 "The application extracts the _identity_ and _access_ tokens from the "
 "callback URL."
 msgstr "アプリケーションは、コールバックURLから _ID_ トークンと _アクセス_ トークンを抽出します。"
-
-#. type: Title =====
-#, no-wrap
-msgid "Resource Owner Password Credentials Grant (Direct Access Grants)"
-msgstr "リソース・オーナー・パスワード・クレデンシャル・グラント（ダイレクト・アクセス・グラント）"
-
-#. type: Plain text
-msgid ""
-"This is referred to in the Admin Console as _Direct Access Grants_. This is "
-"used by REST clients that want to obtain a token on behalf of a user.  It is"
-" one HTTP POST request that contains the credentials of the user as well as "
-"the id of the client and the client's secret (if it is a confidential "
-"client).  The user's credentials are sent within form parameters.  The HTTP "
-"response contains _identity_, _access_, and _refresh_ tokens."
-msgstr ""
-"これは、管理コンソールでは _Direct Access Grants_ "
-"と呼ばれます。ユーザーに代わってトークンを取得するRESTクライアントによって使用されます。これは、クライアントIDとクライアント・シークレット（コンフィデンシャル・クライアントの場合）と同様に、ユーザーのクレデンシャルを含む1つのHTTP"
-" POSTリクエストとなります。ユーザーのクレデンシャルは、フォーム・パラメーター内で送信されます。HTTPレスポンスには、 _ID_  トークン、 "
-"_アクセス_ トークン、および _リフレッシュ_ トークンが含まれています。"
-
-#. type: Title =====
-#, no-wrap
-msgid "Client Credentials Grant"
-msgstr "クライアント・クレデンシャル・グラント"
-
-#. type: Plain text
-msgid ""
-"This is also used by REST clients, but instead of obtaining a token that "
-"works on behalf of an external user, a token is created based on the "
-"metadata and permissions of a service account that is associated with the "
-"client.  More info together with example is in <<_service_accounts,Service "
-"Accounts>> chapter."
-msgstr ""
-"これはRESTクライアントでも使用されますが、外部ユーザーの代わりに動作するトークンを取得する代わりに、クライアントに関連付けられているサービス・アカウントのメタデータとパーミッションに基づいてトークンが作成されます。さらに詳しい情報は、<<_service_accounts,サービス・アカウント>>の章にあります。"
 
 #. type: Plain text
 msgid ""
@@ -349,16 +170,6 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"This is used by clients who want to initiate the authentication flow by "
-"communicating with the OpenID Provider directly without redirect through the"
-" user's browser like OAuth 2.0's authorization code grant. Here's a brief "
-"summary of the protocol:"
-msgstr ""
-"これは、OAuth "
-"2.0の認可コードグラントのように、ユーザーのブラウザーを介してリダイレクトせずに、OpenIDプロバイダーと直接通信することによって認証フローを開始したいクライアントによって使用されます。プロトコルの概要は次のとおりです。"
-
-#. type: Plain text
-msgid ""
 "An administrator can configure Client Initiated Backchannel Authentication "
 "(CIBA) related operations as `CIBA Policy` per realm."
 msgstr ""
@@ -386,23 +197,26 @@ msgid "CIBA Policy"
 msgstr "CIBAポリシー"
 
 #. type: Plain text
+msgid ""
+"An administrator carries out the following operations on the `Admin Console`"
+" :"
+msgstr "管理者は、 `管理コンソール` で次の操作を行います。"
+
+#. type: Plain text
 msgid "Open the `Authentication -> CIBA Policy` tab."
 msgstr "`Authentication -> CIBA Policy` タブを開きます."
 
 #. type: Plain text
-msgid "Backchannel Token Delivery Mode"
-msgstr "Backchannel Token Delivery Mode"
+msgid "Configure items and click `Save`."
+msgstr "アイテムを設定し、 `Save` をクリックします。"
 
 #. type: Plain text
-#, no-wrap
-msgid ""
-"Specifying how the CD (Consumption Device) gets the authentication result and related tokens. There are three modes, \"poll\", \"ping\" and \"push\". {project_name} only supports \"poll\" and \"ping\" modes.\n"
-"The default setting is \"poll\". This configuration is used as the default mode for clients, however every client can override the mode.\n"
-" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5[CIBA Specification].\n"
-msgstr ""
-"CD（Consumption Device）には認証結果と関連トークンを取得する方法を指定します。\"poll\"、\"ping\"、\"push\"の3つのモードがあります。{project_name}は\"poll\"と\"ping\"モードのみをサポートします。\n"
-"デフォルトの設定は\"poll\"です。この設定はクライアントのデフォルトモードとして使用されますが、すべてのクライアントがモードをオーバーライドすることができます。\n"
-"詳細については、 https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5[CIBA Specification] を参照してください。\n"
+msgid "The configurable items and their description follow."
+msgstr "設定可能な項目とその説明は次のとおりです。"
+
+#. type: Plain text
+msgid "Backchannel Token Delivery Mode"
+msgstr "Backchannel Token Delivery Mode"
 
 #. type: Plain text
 msgid "Expires In"
@@ -694,13 +508,6 @@ msgstr ""
 "acr_values|CDから要求している認証コンテキストクラス参照を通知します。 +\n"
 "このフィールドはオプションであり、CIBA標準ドキュメントによって定義されています。\n"
 
-#. type: Plain text
-msgid ""
-"Besides the mentioned parameters, any custom parameter that is sent to the "
-"Backchannel Authentication Endpoint, will be forwarded to Channel Provider "
-"as well."
-msgstr "上記のパラメータ以外にも，バックチャネル認証エンドポイントに送信されたカスタムパラメーターは，チャネル・プロバイダーに転送されます。"
-
 #. type: Labeled list
 #, no-wrap
 msgid "Authentication Delegation Response"
@@ -891,21 +698,79 @@ msgid ""
 msgstr ""
 "これはブラウザーベースのログアウトです。アプリケーションは、定期的に{project_name}からセッション・ステータス情報を取得します。セッションが{project_name}で終了すると、アプリケーションはそれに気づき、自身のログアウトをトリガーします。"
 
-#. type: Title =====
-#, no-wrap
-msgid "Frontchannel Logout"
-msgstr "Frontchannel Logout"
+#. type: Plain text
+msgid ""
+"This is also a browser-based logout where the logout starts by redirecting "
+"the user to a specific endpoint at {project_name}."
+msgstr ""
+"これもブラウザー・ベースのログアウトで、ログアウトが始まると、ユーザーは{project_name}の特定のエンドポイントにリダイレクトされます。"
 
 #. type: Plain text
 msgid ""
-"This is also a browser-based logout. In contrast to the Session Managment "
-"based logout approach {project_name} will send logout requests to the "
-"clients. Applications or clients need to have a frontchannel logout URL "
-"registered at {project_name}.  After triggering a logout at {project_name}, "
-"it will send logout requests to these registered URLs that will terminate "
-"the client sessions."
+"Once the user is redirected to the logout endpoint, {project_name} is going "
+"to send logout requests to clients to let them to invalidate their local "
+"user sessions, and potentially redirect the user to some URL once the logout"
+" process is finished."
 msgstr ""
-"これもブラウザーベースのログアウトです。セッション管理ベースのログアウトのアプローチとは対照的に、{project_name}はクライアントにログアウト・リクエストを送信します。アプリケーションまたはクライアントは、{project_name}に登録されたフロントチャネル・ログアウトURLを実装している必要があります。{project_name}でログアウトをトリガーした後、クライアント・セッションを終了するこれらの登録済みURLにログアウト・リクエストを送信します。"
+"ユーザーがログアウト・エンドポイントにリダイレクトされると、{project_name}はクライアントにログアウト・リクエストを送信して、ローカル・ユーザー・セッションを無効にし、ログアウト・プロセスが終了したらユーザーを何らかのURLにリダイレクトするようにします。"
+
+#. type: Plain text
+msgid ""
+"Depending on the client configuration, logout requests can be sent to "
+"clients through the front-channel or through the back-channel."
+msgstr ""
+"クライアントの設定により、ログアウト・リクエストは、フロントチャネルを介してクライアントに送信される場合と、バックチャネルを介して送信される場合があります。"
+
+#. type: Plain text
+msgid ""
+"To configure clients to receive logout requests through the front-channel, "
+"look at the <<_front-channel-logout, Front-Channel Logout>> client setting. "
+"When using this method, consider the following:"
+msgstr ""
+"フロントチャネルでログアウト・リクエストを受信するようにクライアントを設定するには、<<_front-channel-logout, Front-"
+"Channel Logout>>のクライアントの設定を見てください。この方法を使用する場合、以下の点を考慮してください。"
+
+#. type: Plain text
+msgid ""
+"Logout requests sent by {project_name} to clients rely on the browser and on"
+" embedded `iframes` that are rendered for the logout page."
+msgstr ""
+"{project_name}がクライアントに送信するログアウト・リクエストは、ブラウザーと、ログアウトページでレンダリングされる埋め込みの "
+"`iframe` に依存しています。"
+
+#. type: Plain text
+msgid ""
+"By being based on `iframes`, front-channel logout might be impacted by "
+"Content Security Policies (CSP) and logout requests might be blocked."
+msgstr ""
+"フロントチャネルのログアウトは、「iframe」に基づいているため、コンテンツ・セキュリティー・ポリシー（CSP）の影響を受け、ログアウト・リクエストがブロックされる可能性があります。"
+
+#. type: Plain text
+msgid ""
+"If the user closes the browser prior to rendering the logout page or before "
+"logout requests are actually sent to clients, their sessions at the client "
+"might not be invalidated."
+msgstr ""
+"ログアウトページを表示する前、またはログアウト・リクエストが実際にクライアントに送信される前にユーザーがブラウザーを閉じた場合、クライアントでのセッションが無効にならない可能性があります。"
+
+#. type: delimited block =
+msgid ""
+"Consider using Back-Channel Logout as it provides a more reliable and secure"
+" approach to log out users and terminate their sessions on the clients."
+msgstr ""
+"ユーザーをログアウトさせ、クライアント上のセッションを終了させるには、より信頼性が高く安全な方法であるバックチャネル・ログアウトの使用を検討してください。"
+
+#. type: Plain text
+msgid ""
+"If the client is not enabled with front-channel logout, then {project_name} "
+"is going to try first to send logout requests through the back-channel using"
+" the <<_back-channel-logout-url, Back-Channel Logout URL>>. If not defined, "
+"the server is going to fall back to using the <<_admin-url, Admin URL>>."
+msgstr ""
+"クライアントがフロントチャネル・ログアウトを有効にしていない場合、{project_name}はまず<<_back-channel-logout-"
+"url, Back-Channel Logout URL>>を使ってバックチャネルでログアウト・リクエストを送ろうとします。<_back-"
+"channel-logout-url, Back-Channel Logout URL>定義されていない場合、サーバーは<<_admin-url, "
+"Admin URL>>の使用に戻ります。"
 
 #. type: Plain text
 msgid ""
@@ -918,6 +783,204 @@ msgstr ""
 "これは、{project_name}とクライアント間の直接バックチャネル通信を使用する非ブラウザーベースのログアウトです。{project_name}は、ログアウト・トークンを含むHTTP"
 " "
 "POSTリクエストを{project_name}にログインしているすべてのクライアントに送信します。これらのリクエストは、{project_name}の登録済みバックチャネル・ログアウトURLに送信され、クライアント側でログアウトをトリガーすることになっています。"
+
+#. type: Title ====
+#, no-wrap
+msgid "OIDC Auth Flows"
+msgstr "OIDC認証フロー"
+
+#. type: Plain text
+msgid ""
+"OIDC has different ways for a client or application to authenticate a user "
+"and receive an _identity_ and _access_ token.  Which path you use depends "
+"greatly on the type of application or client requesting access.  All of "
+"these flows are described in the OIDC and OAuth 2.0 specifications so only a"
+" brief overview will be provided here."
+msgstr ""
+"OIDCには、クライアントまたはアプリケーションがユーザーを認証し、 _ID_ トークンおよび _アクセス_ "
+"トークンを受け取るさまざまな方法があります。どの方法を使用するかは、アクセスを要求するアプリケーションまたはクライアントのタイプによって大きく異なります。これらのフローはすべてOIDCおよびOAuth"
+" 2.0の仕様で説明されていますので、ここでは簡単な概要のみを説明します。"
+
+#. type: Plain text
+msgid ""
+"This is a browser-based protocol and it is what we recommend you use to "
+"authenticate and authorize browser-based applications.  It makes heavy use "
+"of browser redirects to obtain an _identity_ and _access_ token.  Here's a "
+"brief summary:"
+msgstr ""
+"これはブラウザーベースのプロトコルであり、ブラウザーベースのアプリケーションの認証と認可に使用することをお勧めします。 _ID_ トークンと "
+"_アクセス_ トークンを取得するために、ブラウザーのリダイレクトを頻繁に使用します。概要を以下に示します。"
+
+#. type: Plain text
+msgid ""
+"Browser visits application.  The application notices the user is not logged "
+"in, so it redirects the browser to {project_name} to be authenticated.  The "
+"application passes along a callback URL (a redirect URL) as a query "
+"parameter in this browser redirect that {project_name} will use when it "
+"finishes authentication."
+msgstr ""
+"ブラウザーがアプリケーションにアクセスします。アプリケーションは、ユーザーがログインしていないことを検知し、認証させるためにブラウザーを{project_name}にリダイレクトします。アプリケーションは、{project_name}が認証を完了したときに使用するブラウザー・リダイレクトのコールバックURL（リダイレクトURL）をクエリー・パラメーターとして渡します。"
+
+#. type: Plain text
+msgid ""
+"{project_name} authenticates the user and creates a one-time, very short "
+"lived, temporary code.  {project_name} redirects back to the application "
+"using the callback URL provided earlier and additionally adds the temporary "
+"code as a query parameter in the callback URL."
+msgstr ""
+"{project_name}はユーザーを認証し、1回限りで非常に存続期間の短い、一時的なコードを作成します。{project_name}は、以前に提供されたコールバックURLを使用してアプリケーションにリダイレクトします。コールバックURLには、クエリー・パラメーターとして一時コードが追加されます。"
+
+#. type: Plain text
+msgid ""
+"The application extracts the temporary code and makes a background out of "
+"band REST invocation to {project_name} to exchange the code for an "
+"_identity_, _access_ and _refresh_ token.  Once this temporary code has been"
+" used once to obtain the tokens, it can never be used again.  This prevents "
+"potential replay attacks."
+msgstr ""
+"アプリケーションは一時コードを抽出し、それを _ID_ トークン、 _アクセス_ トークンおよび _リフレッシュ_ "
+"トークンと交換するため、バックグラウンドで帯域外の{project_name}へのREST呼び出しを行います。この一時コードを一度使用してトークンを取得すると、それを再び使用することはできません。これにより潜在的なリプレイ攻撃が防止されます。"
+
+#. type: Plain text
+msgid ""
+"It is important to note that _access_ tokens are usually short lived and "
+"often expired after only minutes.  The additional _refresh_ token that was "
+"transmitted by the login protocol allows the application to obtain a new "
+"access token after it expires.  This refresh protocol is important in the "
+"situation of a compromised system.  If access tokens are short lived, the "
+"whole system is only vulnerable to a stolen token for the lifetime of the "
+"access token.  Future refresh token requests will fail if an admin has "
+"revoked access.  This makes things more secure and more scalable."
+msgstr ""
+"_アクセス_ トークンは通常短命であり、しばしば数分後に失効されることに注意することが重要です。ログイン・プロトコルによって送信された追加の "
+"_リフレッシュ_ "
+"トークンにより、アプリケーションは有効期限が切れた後に新しいアクセストークンを取得できます。このリフレッシュ・プロトコルは、システムが侵害された状況で重要です。アクセストークンが短命である場合、システム全体は、アクセストークンの存続期間中に盗まれたトークンに対してのみ脆弱です。管理者がアクセスを取り消した場合、その後のリフレッシュトークン・リクエストは失敗します。これにより、より安全でスケーラブルになります。"
+
+#. type: Plain text
+msgid ""
+"Another important aspect of this flow is the concept of a _public_ vs. a "
+"_confidential_ client.  _Confidential_ clients are required to provide a "
+"client secret when they exchange the temporary codes for tokens.  _Public_ "
+"clients are not required to provide this client secret.  _Public_ clients "
+"are perfectly fine so long as HTTPS is strictly enforced and you are very "
+"strict about what redirect URIs are registered for the client.  "
+"HTML5/JavaScript clients always have to be _public_ clients because there is"
+" no way to transmit the client secret to them in a secure manner.  Again, "
+"this is ok so long as you use HTTPS and strictly enforce redirect URI "
+"registration.  This guide goes more detail into this in the xref:assembly-"
+"managing-clients_{context}[Managing Clients] chapter."
+msgstr ""
+"このフローのもう一つの重要な点は、 _public_ と _confidential_ のクライアントの概念です。 _confidential_ "
+"のクライアントは、一時的なコードをトークンに交換する際に、クライアント・シークレットを提供する必要があります。パブリック・クライアントは、このクライアント・シークレットを提供する必要はありません。"
+" _Public_ "
+"クライアントは、HTTPSが厳密に適用され、クライアントのために登録されるリダイレクトURIが非常に厳密である限り、全く問題ありません。HTML5/JavaScriptクライアントは、クライアント・シークレットを安全な方法で送信する方法がないため、常に"
+" _public_ クライアントでなければなりません。繰り返しになりますが、HTTPS を使用し、リダイレクト URI "
+"の登録を厳密に実施していれば問題ありません。このガイドでは、 xref:assembly-managing-"
+"clients_{context}[Managing Clients]  の章で詳しく説明しています。"
+
+#. type: Plain text
+msgid ""
+"{project_name} also supports the optional "
+"https://datatracker.ietf.org/doc/html/rfc7636[Proof Key for Code Exchange] "
+"specification."
+msgstr ""
+"{project_name}は、オプションの https://datatracker.ietf.org/doc/html/rfc7636[Proof "
+"Key for Code Exchange] の仕様もサポートしています。"
+
+#. type: Plain text
+msgid ""
+"This is a browser-based protocol that is similar to Authorization Code Flow "
+"except there are fewer requests and no refresh tokens involved.  We do not "
+"recommend this flow as there remains the possibility of _access_ tokens "
+"being leaked in the browser history as tokens are transmitted via redirect "
+"URIs (see below).  Also, since this flow doesn't provide the client with a "
+"refresh token, access tokens would either have to be long-lived or users "
+"would have to re-authenticate when they expired.  This flow is supported "
+"because it is in the OIDC and OAuth 2.0 specification.  Here's a brief "
+"summary of the protocol:"
+msgstr ""
+"これは、リクエストが少なく、リフレッシュトークンが含まれていない点を除いて、認可コードフローと同様のブラウザーベースのプロトコルです。トークンがリダイレクトURI（以下を参照）を介して送信されるため、ブラウザーの履歴に"
+" _アクセス_ "
+"トークンがリークする可能性があるため、このフローはお勧めしません。また、このフローではクライアントにリフレッシュトークンが提供されないため、アクセストークンを長くするか、期限切れになったときに再認証する必要があります。このフローは、OIDCおよびOAuth"
+" 2.0の仕様にあるため、サポートされています。プロトコルの概要を以下に示します。"
+
+#. type: Plain text
+msgid ""
+"{project_name} authenticates the user and creates an _identity_ and _access_"
+" token.  {project_name} redirects back to the application using the callback"
+" URL provided earlier and additionally adding the _identity_ and _access_ "
+"tokens as query parameters in the callback URL."
+msgstr ""
+"{project_name}はユーザーを認証し、 _ID_ トークンと _アクセス_ "
+"トークンを作成します。{project_name}は、前述のコールバックURLを使用してアプリケーションにリダイレクトし、さらに _ID_ トークンと "
+"_アクセス_ トークンをクエリー・パラメーターとしてコールバックURLに追加します。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Resource Owner Password Credentials Grant (Direct Access Grants)"
+msgstr "リソース・オーナー・パスワード・クレデンシャル・グラント（ダイレクト・アクセス・グラント）"
+
+#. type: Plain text
+msgid ""
+"This is referred to in the Admin Console as _Direct Access Grants_. This is "
+"used by REST clients that want to obtain a token on behalf of a user.  It is"
+" one HTTP POST request that contains the credentials of the user as well as "
+"the id of the client and the client's secret (if it is a confidential "
+"client).  The user's credentials are sent within form parameters.  The HTTP "
+"response contains _identity_, _access_, and _refresh_ tokens."
+msgstr ""
+"これは、管理コンソールでは _Direct Access Grants_ "
+"と呼ばれます。ユーザーに代わってトークンを取得するRESTクライアントによって使用されます。これは、クライアントIDとクライアント・シークレット（コンフィデンシャル・クライアントの場合）と同様に、ユーザーのクレデンシャルを含む1つのHTTP"
+" POSTリクエストとなります。ユーザーのクレデンシャルは、フォーム・パラメーター内で送信されます。HTTPレスポンスには、 _ID_  トークン、 "
+"_アクセス_ トークン、および _リフレッシュ_ トークンが含まれています。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Client Credentials Grant"
+msgstr "クライアント・クレデンシャル・グラント"
+
+#. type: Plain text
+msgid ""
+"This is also used by REST clients, but instead of obtaining a token that "
+"works on behalf of an external user, a token is created based on the "
+"metadata and permissions of a service account that is associated with the "
+"client.  More info together with example is in <<_service_accounts,Service "
+"Accounts>> chapter."
+msgstr ""
+"これはRESTクライアントでも使用されますが、外部ユーザーの代わりに動作するトークンを取得する代わりに、クライアントに関連付けられているサービス・アカウントのメタデータとパーミッションに基づいてトークンが作成されます。さらに詳しい情報は、<<_service_accounts,サービス・アカウント>>の章にあります。"
+
+#. type: Plain text
+msgid ""
+"This is used by clients who want to initiate the authentication flow by "
+"communicating with the OpenID Provider directly without redirect through the"
+" user's browser like OAuth 2.0's authorization code grant. Here's a brief "
+"summary of the protocol:"
+msgstr ""
+"これは、OAuth "
+"2.0の認可コードグラントのように、ユーザーのブラウザーを介してリダイレクトせずに、OpenIDプロバイダーと直接通信することによって認証フローを開始したいクライアントによって使用されます。プロトコルの概要は次のとおりです。"
+
+#. type: Plain text
+#, no-wrap
+msgid ""
+"Specifying how the CD (Consumption Device) gets the authentication result and related tokens. There are three modes, \"poll\", \"ping\" and \"push\". {project_name} only supports \"poll\" and \"ping\" modes.\n"
+"The default setting is \"poll\". This configuration is used as the default mode for clients, however every client can override the mode.\n"
+" For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5[CIBA Specification].\n"
+msgstr ""
+"CD（Consumption Device）には認証結果と関連トークンを取得する方法を指定します。\"poll\"、\"ping\"、\"push\"の3つのモードがあります。{project_name}は\"poll\"と\"ping\"モードのみをサポートします。\n"
+"デフォルトの設定は\"poll\"です。この設定はクライアントのデフォルトモードとして使用されますが、すべてのクライアントがモードをオーバーライドすることができます。\n"
+"詳細については、 https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5[CIBA Specification] を参照してください。\n"
+
+#. type: Plain text
+msgid ""
+"Besides the mentioned parameters, any custom parameter that is sent to the "
+"Backchannel Authentication Endpoint, will be forwarded to Channel Provider "
+"as well."
+msgstr "上記のパラメータ以外にも，バックチャネル認証エンドポイントに送信されたカスタムパラメーターは，チャネル・プロバイダーに転送されます。"
+
+#. type: Title =====
+#, no-wrap
+msgid "Front-Channel Logout"
+msgstr "フロントチャンネルのログアウト"
 
 #. type: Title ====
 #, no-wrap

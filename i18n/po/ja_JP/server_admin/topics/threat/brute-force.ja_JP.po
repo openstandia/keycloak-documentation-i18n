@@ -6,13 +6,13 @@
 # Translators:
 # Shinsuke UEDA, 2017
 # Hiroyuki Wada <wadahiro@gmail.com>, 2018
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2020
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2020\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,33 +20,56 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. type: Attribute :adminguide_bruteforce_name:
+#. type: Block title
 #, no-wrap
-msgid "Password guess: brute force attacks"
-msgstr "パスワード推測：ブルートフォース攻撃"
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Title ====
+#, no-wrap
+msgid "Password policies"
+msgstr "パスワードポリシー"
+
+#. type: Title ===
+#, no-wrap
+msgid "Brute force attacks"
+msgstr "ブルートフォースアタック"
 
 #. type: Plain text
 msgid ""
-"A brute force attack happens when an attacker is trying to guess a user's "
-"password.  {project_name} has some limited brute force detection "
-"capabilities.  If turned on, a user account will be temporarily disabled if "
-"a threshold of login failures is reached.  To enable this feature go to the "
-"`Realm Settings` left menu item, click on the `Security Defenses` tab, then "
-"additional go to the `Brute Force Detection` sub-tab."
+"A brute force attack attempts to guess a user's password by trying to log in"
+" multiple times. {project_name} has brute force detection capabilities and "
+"can temporarily disable a user account if the number of login failures "
+"exceeds a specified threshold."
 msgstr ""
-"ブルートフォース攻撃は、攻撃者がユーザーのパスワードを推測しようとしているときに発生します。{project_name}にはいくつかの限定的なブルートフォースの検出機能があります。オンにすると、ログイン失敗のしきい値に達した場合に、ユーザー・アカウントが一時的に無効になります。この機能を有効にするには、左側のメニューの"
-" `Realm Settings` に移動し、 `Security Defenses` タブをクリックし、さらに `Brute Force "
-"Detection` サブタブに移動します。"
+"ブルートフォース攻撃とは、何度もログインを試みてユーザーのパスワードを推測しようとする攻撃のことです。{project_name}にはブルートフォース検知機能があり、ログイン失敗回数が指定した閾値を超えた場合、ユーザー・アカウントを一時的に無効にすることができます。"
+
+#. type: delimited block =
+msgid ""
+"{project_name} disables brute force detection by default. Enable this "
+"feature to protect against brute force attacks."
+msgstr ""
+"{project_name}はデフォルトで、ブルートフォース検知を無効にします。この機能を有効にすると、ブルートフォース攻撃から保護されます。"
 
 #. type: Plain text
-msgid ""
-"Brute Force Detection is disabled by default. Enabling this feature is "
-"highly recommended to protect against this type of attack."
-msgstr "ブルートフォース検出はデフォルトで無効になっています。このタイプの攻撃から保護するには、この機能を有効にすることを強くお勧めします。"
+msgid "To enable this protection:"
+msgstr "この保護機能を有効にするには以下のようにします。"
+
+#. type: Plain text
+msgid "Click *Realm Settings* in the menu"
+msgstr "メニューの *Realm Settings* をクリックします。"
+
+#. type: Plain text
+msgid "Click the *Security Defenses* tab."
+msgstr "*Security Defenses* タブをクリックします。"
+
+#. type: Plain text
+msgid "Click the *Brute Force Detection* tab."
+msgstr "*Brute Force Detection* タブをクリックします。"
 
 #. type: Block title
 #, no-wrap
-msgid "Brute Force Detection"
+msgid "Brute force detection"
 msgstr "ブルートフォース検出"
 
 #. type: Plain text
@@ -55,105 +78,78 @@ msgstr "image:{project_images}/brute-force.png[]"
 
 #. type: Plain text
 msgid ""
-"There are 2 different configurations for brute force detection; permanent "
-"lockout and temporary lockout. Permanent lockout will disable a user's "
-"account after an attack is detected; the account will be disabled until an "
-"administrator renables it. Temporary lockout will disable a user's account "
-"for a time period after an attack is detected; the time period for which the"
-" account is disabled increases the longer the attack continues."
+"{project_name} can deploy permanent lockout and temporary lockout actions "
+"when it detects an attack. Permanent lockout disables a user account until "
+"an administrator re-enables it. Temporary lockout disables a user account "
+"for a specific period of time. The time period that the account is disabled "
+"increases as the attack continues."
 msgstr ""
-"ブルートフォースの検出には2つの異なる設定があります。永続的なロックアウトと一時的なロックアウトです。永続的なロックアウトは、攻撃が検出されるとユーザーのアカウントを無効にします。管理者が再びアカウントを有効にするまで、アカウントは無効になります。一時的なロックアウトは、攻撃が検出されるとユーザーのアカウントを一定期間、無効にします。アカウントが無効になっている期間は、攻撃が継続する時間が長くなるほど長くなります。"
+"{project_name}は、攻撃を検知すると、永久ロックアウトと一時ロックアウトのアクションを配備できます。永久ロックアウトは、管理者が再び有効にするまでユーザー・アカウントを無効にします。一時的ロックアウトは、一定期間、ユーザー・アカウントを無効にします。攻撃が続くと、アカウントが無効になる期間は長くなります。"
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"When user is temporarily locked and attempt to login, the default error "
-"message `Invalid username or password` is shown.  This is the same error "
-"message as the message displayed when invalid username or invalid password "
-"is provided. This is by design as we do not want to reveal to the attacker "
-"that user is temporarily disabled."
+"When a user is temporarily locked and attempts to log in, {project_name} "
+"displays the default `Invalid username or password` error message. This "
+"message is the same error message as the message displayed for an invalid "
+"username or invalid password to ensure the attacker is unaware the account "
+"is disabled."
 msgstr ""
-"一時的にロックされたユーザーがログインしようとすると、デフォルトのエラーメッセージ `Invalid username or password` "
-"が表示されます。これは、無効なユーザー名または無効なパスワードが指定されたときに表示されるメッセージと同じエラーメッセージです。ユーザーが一時的に無効にされていることを攻撃者に明らかにしたくないので、これは仕様によるものです。"
+"ユーザーが一時的にロックされている状態でログインしようとすると、{project_name}はデフォルトの `Invalid username or "
+"password` "
+"エラーメッセージを表示します。このメッセージは、無効なユーザー名や無効なパスワードの場合に表示されるメッセージと同じもので、攻撃者がアカウントが無効になっていることに気づかないようになっています。"
 
 #. type: Plain text
 #, no-wrap
 msgid "*Common Parameters*\n"
 msgstr "*共通パラメーター*\n"
 
-#. type: Labeled list
-#, no-wrap
+#. type: Plain text
+msgid "Name |Description |Default"
+msgstr "名称|説明|デフォルト"
+
+#. type: Plain text
 msgid "Max Login Failures"
 msgstr "Max Login Failures"
 
-#. type: delimited block =
-msgid "Maximum number of login failures permitted. Default value is 30."
-msgstr "許可されたログイン失敗の最大回数。デフォルト値は30です。"
+#. type: Plain text
+msgid "The maximum number of login failures."
+msgstr "ログイン失敗の最大回数。"
 
-#. type: Labeled list
-#, no-wrap
-msgid "Quick Login Check Milli Seconds"
-msgstr "Quick Login Check Milli Seconds"
+#. type: Plain text
+msgid "30 failures."
+msgstr "30回失敗"
 
-#. type: delimited block =
-msgid "Minimum time required between login attempts. Default is 1000."
-msgstr "ログイン試行の間に必要な最小時間。デフォルトは1000です。"
+#. type: Plain text
+msgid "Quick Login Check Milliseconds"
+msgstr "Quick Login Check Milliseconds"
 
-#. type: Labeled list
-#, no-wrap
+#. type: Plain text
+msgid "The minimum time between login attempts."
+msgstr "ログインを試みるまでの最小時間。"
+
+#. type: Plain text
+msgid "1000 milliseconds."
+msgstr "1000ミリ秒"
+
+#. type: Plain text
 msgid "Minimum Quick Login Wait"
 msgstr "Minimum Quick Login Wait"
 
-#. type: delimited block =
+#. type: Plain text
 msgid ""
-"Minimum amount of time the user will be temporarily disabled if logins "
-"attempts are quicker than _Quick Login Check Milli Seconds_. Default is 1 "
-"minute."
+"The minimum time the user is disabled when login attempts are quicker than "
+"_Quick Login Check Milliseconds_."
 msgstr ""
-"ログインの試行が _Quick Login Check Milli Seconds_ "
-"より早い場合に、ユーザーが一時的に無効になる最小時間。デフォルトは1分です。"
+"ログイン試行が _Quick Login Check Milliseconds_ よりも早かった場合に、ユーザーを無効にする最小の時間です。"
+
+#. type: Plain text
+msgid "1 minute."
+msgstr "1分"
 
 #. type: Plain text
 #, no-wrap
-msgid "*Temporary Lockout Parameters*\n"
-msgstr "*一時ロックアウト・パラメーター*\n"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Wait Increment"
-msgstr "Wait Increment"
-
-#. type: delimited block =
-msgid ""
-"Amount of time added to the time a user is temporarily disabled after each "
-"time _Max Login Failures_ is reached. Default is 1 minute."
-msgstr "_Max Login Failures_ に達するたびにユーザーが一時的に無効にされた時間に加算される時間。デフォルトは1分です。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Max Wait"
-msgstr "Max Wait"
-
-#. type: delimited block =
-msgid ""
-"The maximum amount of time for which a user will be temporarily disabled. "
-"Default is 15 minutes."
-msgstr "ユーザーが一時的に無効になる最大時間。デフォルトは15分です。"
-
-#. type: Labeled list
-#, no-wrap
-msgid "Failure Reset Time"
-msgstr "Failure Reset Time"
-
-#. type: delimited block =
-msgid ""
-"Time after which the failure count will be reset; timer runs from the last "
-"failed login. Default is 12 hours."
-msgstr "失敗回数がリセットされるまでの時間。タイマーは最後に失敗したログインから実行されます。デフォルトは12時間です。"
-
-#. type: Plain text
-#, no-wrap
-msgid "*Permanent Lockout Algorithm*\n"
-msgstr "*永続的ロックアウト・アルゴリズム*\n"
+msgid "*Permanent Lockout Flow*\n"
+msgstr "*Permanent Lockout Flow*\n"
 
 #. type: delimited block =
 msgid "On successful login"
@@ -178,19 +174,60 @@ msgstr "`count` が _Max Login Failures_ より大きい場合 ... ユーザー�
 
 #. type: delimited block =
 msgid ""
-"Else if time between this failure and the last failure is less than _Quick "
-"Login Check Milli Seconds_ ... Temporarily disable user for _Minimum Quick "
-"Login Wait_"
+"Else if the time between this failure and the last failure is less than "
+"_Quick Login Check Milliseconds_ ... Temporarily disable user for _Minimum "
+"Quick Login Wait_"
 msgstr ""
-"そうでなければ、この失敗と最後の失敗との間の時間が _Quick Login Check Milli Seconds_ 未満の場合 ... "
-"_Minimum Quick Login Wait_ の間、一時的にユーザーを無効にします"
+"今回の失敗と前回の失敗の間の時間が _Quick Login Check Milliseconds_ よりも短ければ ... _Minimum "
+"Quick Login Wait_ の間、ユーザーを一時的に無効にする"
 
 #. type: delimited block =
 msgid ""
-"When a user is disabled they can not login until an administrator enables "
-"the user; enabling an account resets `count`."
+"When {project_name} disables a user, the user cannot log in until an "
+"administrator enables the user. Enabling an account resets the `count`."
 msgstr ""
-"ユーザーが無効になっている場合、管理者がユーザーを有効にするまでログインできません。アカウントを有効にすると `count` がリセットされます。"
+"{project_name}がユーザーを無効にすると、管理者がそのユーザーを有効にするまで、そのユーザーはログインできなくなります。アカウントを有効にすると、`count`がリセットされます。"
+
+#. type: Plain text
+#, no-wrap
+msgid "*Temporary Lockout Parameters*\n"
+msgstr "*一時ロックアウト・パラメーター*\n"
+
+#. type: Plain text
+msgid "Wait Increment"
+msgstr "Wait Increment"
+
+#. type: Plain text
+msgid ""
+"The time added to the time a user is temporarily disabled when the user's "
+"login attempts exceed _Max Login Failures_."
+msgstr "ユーザーのログイン試行回数が _Max Login Failures_ を超えたときに、ユーザーが一時的に無効になる時間を加算した時間。"
+
+#. type: Plain text
+msgid "Max Wait"
+msgstr "Max Wait"
+
+#. type: Plain text
+msgid "The maximum time a user is temporarily disabled."
+msgstr "ユーザーが一時的に無効になる最大時間。"
+
+#. type: Plain text
+msgid "15 minutes."
+msgstr "15分"
+
+#. type: Plain text
+msgid "Failure Reset Time"
+msgstr "Failure Reset Time"
+
+#. type: Plain text
+msgid ""
+"The time when the failure count resets. The timer runs from the last failed "
+"login."
+msgstr "失敗回数がリセットされる時間です。このタイマーは、最後に失敗したログインから実行されます。"
+
+#. type: Plain text
+msgid "12 hours."
+msgstr "12時間"
 
 #. type: Plain text
 #, no-wrap
@@ -199,74 +236,61 @@ msgstr "*一時的ロックアウト・アルゴリズム*\n"
 
 #. type: delimited block =
 msgid ""
-"If time between this failure and the last failure is greater than _Failure "
-"Reset Time_ ... Reset `count`"
-msgstr "この失敗と最後の失敗との間の時間が _Failure Reset Time_ より大きい場合 ... `count` をリセットします"
+"If the time between this failure and the last failure is greater than "
+"_Failure Reset Time_ ... Reset `count`"
+msgstr "今回の故障から前回の故障までの時間が _Failure Reset Time_ よりも長い場合 ... `count` をリセットします。"
 
 #. type: delimited block =
 msgid ""
 "Calculate `wait` using _Wait Increment_ * (`count` / _Max Login Failures_). "
-"The division is an integer division so will always be rounded down to a "
-"whole number"
+"The division is an integer division rounded down to a whole number"
 msgstr ""
-"_Wait Increment_ *（ `count` / _Max Login Failures_ ）を使って `wait` "
-"を計算します。除算は整数除算なので、常に整数に切り捨てられます"
+"_Wait Increment_ * (`count` / _Max Login Failures_) を使って `wait` "
+"を計算します。除算は整数に切り捨てられた整数除算です。"
 
 #. type: delimited block =
 msgid ""
-"If `wait` equals 0 and time between this failure and the last failure is "
-"less than _Quick Login Check Milli Seconds_ then set `wait` to _Minimum "
-"Quick Login Wait_ instead ... Temporarily disable the user for the smaller "
-"of `wait` and _Max Wait_ seconds"
+"If `wait` equals 0 and the time between this failure and the last failure is"
+" less than _Quick Login Check Milliseconds_, set `wait` to _Minimum Quick "
+"Login Wait_.  ... Temporarily disable the user for the smaller of `wait` and"
+" _Max Wait_ seconds"
 msgstr ""
-"`wait` が0に等しく、この失敗と最後の失敗との間の時間が _Quick Login Check Milli Seconds_ より小さい場合、 "
-"`wait` に _Minimum Quick Login Wait_ を設定します。... `wait` と _Max Wait_ "
-"秒のうち小さい方の値を一時的に無効にします"
+"`wait` が0で、今回の失敗と前回の失敗の間の時間が  _Quick Login Check Milliseconds_ 以下の場合、 `wait`"
+" を _Minimum Quick Login Wait_ に設定します。  ... `wait` と _Max Wait_ "
+"の秒数が小さい間、ユーザーを一時的に無効にします。"
 
 #. type: delimited block =
 msgid ""
-"Login failures when a user is temporarily disabled do not increment `count`."
-msgstr "ユーザーが一時的に無効になったときのログイン失敗に対しては、 `count` をインクリメントしません。"
+"'count` does not increment when a temporarily disabled account commits a "
+"login failure."
+msgstr "一時的に無効化されたアカウントがログインに失敗しても、 'count` は増加しません。"
 
 #. type: Plain text
 msgid ""
 "The downside of {project_name} brute force detection is that the server "
-"becomes vulnerable to denial of service attacks.  An attacker can simply try"
-" to guess passwords for any accounts it knows and these account will be "
-"disabled.  Eventually we will expand this functionality to take client IP "
-"address into account when deciding whether to block a user."
+"becomes vulnerable to denial of service attacks. When implementing a denial "
+"of service attack, an attacker can attempt to log in by guessing passwords "
+"for any accounts it knows and eventually causing {project_name} to disable "
+"the accounts."
 msgstr ""
-"{project_name}のブルートフォース検出の欠点は、サーバーがDoS攻撃に対して脆弱になることです。攻撃者が、自分の知っているアカウントのパスワード推測を試みるだけで、アカウントは無効になります。最終的には、ユーザーをブロックするかどうかを決定する際にクライアントのIPアドレスを考慮に入れるように、この機能を拡張する予定です。"
+"{project_name}のブルートフォース検出の欠点は、サーバーがサービス拒否攻撃に対して脆弱になることです。サービス拒否攻撃を行う場合、攻撃者は知っているアカウントのパスワードを推測してログインを試み、最終的に{project_name}のアカウントを無効にすることができます。"
 
 #. type: Plain text
 msgid ""
-"A better option might be a tool like "
-"http://www.fail2ban.org/wiki/index.php/Main_Page[Fail2Ban].  You can point "
-"this service at the {project_name} server's log file.  {project_name} logs "
-"every login failure and client IP address that had the failure.  Fail2Ban "
-"can be used to modify firewalls after it detects an attack to block "
-"connections from specific IP addresses."
+"Consider using intrusion prevention software (IPS). {project_name} logs "
+"every login failure and client IP address failure. You can point the IPS to "
+"the {project_name} server's log file, and the IPS can modify firewalls to "
+"block connections from these IP addresses."
 msgstr ""
-"より良いオプションは、 http://www.fail2ban.org/wiki/index.php/Main_Page[Fail2Ban] "
-"のようなツールです。このサービスに、{project_name}サーバーのログファイルを指定できます。 "
-"{project_name}は、失敗したすべてのログイン失敗とクライアントIPアドレスを記録します。攻撃を検出した後、特定のIPアドレスからの接続をブロックするようにファイアウォールを変更するために、Fail2Banを使用できます。"
-
-#. type: Title ===
-#, no-wrap
-msgid "Password Policies"
-msgstr "パスワード・ポリシー"
+"侵入防止ソフトウェア（IPS）の使用を検討します。{project_name}は、ログインの失敗やクライアントのIPアドレスの失敗をすべて記録します。IPSは{project_name}サーバーのログファイルを指定することができ、IPSはこれらのIPアドレスからの接続をブロックするようにファイアウォールを変更することができます。"
 
 #. type: Plain text
 msgid ""
-"Another thing you should do to prevent password guess is to have a complex "
-"enough password policy to ensure that users pick hard to guess passwords.  "
-"See the <<_password-policies, Password Policies>> chapter for more details."
+"Ensure you have a complex password policy to force users to choose complex "
+"passwords. See the <<_password-policies, Password Policies>> chapter for "
+"more information. Prevent password guessing by setting up the {project_name}"
+" server to use one-time-passwords."
 msgstr ""
-"パスワード推測を防ぐために行うべきもう1つの作業は、推測が難しいパスワードをユーザーが選択するように、複雑なパスワードポリシーを持つことです。詳細については"
-"、<<_password-policies, パスワード・ポリシー>>の章を参照してください。"
-
-#. type: Plain text
-msgid ""
-"The best way to prevent password guessing though is to set up the server to "
-"use a one-time-password (OTP)."
-msgstr "ただし、パスワードが推測されないようにする最善の方法は、ワンタイム・パスワード（OTP）を使用するようにサーバーを設定することです。"
+"複雑なパスワード・ポリシーを設定して、ユーザーに複雑なパスワードを選択させるようにしてください。詳しくは<<_password-policies, "
+"Password "
+"Policies>>を参照してください。{project_name}サーバーでワンタイムパスワードを使用するように設定することで、パスワードの推測を防ぐことができます。"

@@ -5,14 +5,13 @@
 # 
 # Translators:
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2018
-# Hiroyuki Wada <wadahiro@gmail.com>, 2020
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2021
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: keycloak-documentation-i18n\n"
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2021\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2022\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,86 +19,87 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. type: Block title
+#, no-wrap
+msgid "Procedure"
+msgstr "手順"
+
+#. type: Plain text
+msgid "Click *Authentication* in the menu."
+msgstr "メニューの *Authentication* をクリックします。"
+
 #. type: Title ===
 #, no-wrap
-msgid "First Login Flow"
+msgid "First login flow"
 msgstr "初回ログインフロー"
 
 #. type: Plain text
 msgid ""
-"When a user logs in through identity brokering some aspects of the user are "
-"imported and linked within the realm's local database.  When {project_name} "
-"successfully authenticates users through an external identity provider there"
-" can be two situations:"
+"When users log in through identity brokering, {project_name} imports and "
+"links aspects of the user within the realm's local database. When "
+"{project_name} successfully authenticates users through an external identity"
+" provider, two situations can exist:"
 msgstr ""
-"ユーザーがアイデンティティー・ブローカリングを介してログインすると、ユーザー情報が部分的にインポートされ、レルムのローカル・データベース内でリンクされます。{project_name}が外部アイデンティティー・プロバイダーを通じてユーザーを正常に認証すると、次の2つの状況が発生する可能性があります。"
+"ユーザーがアイデンティティー・ブローカリングによってログインするとき、 "
+"{project_name}はレルムのローカル・データベース内のユーザーの情報をインポートしてリンクします。{project_name}が外部のアイデンティティー・プロバイダーを通じてユーザーの認証に成功した場合、2つの状況が存在する可能性があります。"
 
 #. type: Plain text
 msgid ""
-"There is already a {project_name} user account imported and linked with the "
-"authenticated identity provider account.  In this case, {project_name} will "
-"just authenticate as the existing user and redirect back to application."
+"{project_name} has already imported and linked a user account with the "
+"authenticated identity provider account. In this case, {project_name} "
+"authenticates as the existing user and redirects back to the application."
 msgstr ""
-"認証済みのアイデンティティー・プロバイダー・アカウントをインポートしてリンクした{project_name}ユーザー・アカウントがすでに存在する場合、{project_name}は既存のユーザーとして認証され、アプリケーションにリダイレクトされます。"
+"{project_name}は、すでにユーザー・アカウントをインポートし、認証されたアイデンティティー・プロバイダーのアカウントとリンクしています。この場合、{project_name}は既存のユーザーとして認証し、アプリケーションにリダイレクトして戻ります。"
 
 #. type: Plain text
 msgid ""
-"There is not yet an existing {project_name} user account imported and linked"
-" for this external user.  Usually you just want to register and import the "
-"new account into {project_name} database, but what if there is an existing "
-"{project_name} account with the same email? Automatically linking the "
-"existing local account to the external identity provider is a potential "
-"security hole as you can't always trust the information you get from the "
-"external identity provider."
+"No account exists for this user in {project_name}. Usually, you register and"
+" import a new account into the {project_name} database, but there may be an "
+"existing {project_name} account with the same email address. Automatically "
+"linking the existing local account to the external identity provider is a "
+"potential security hole. You cannot always trust the information you get "
+"from the external identity provider."
 msgstr ""
-"外部ユーザー用にインポートされてリンクされている既存の{project_name}ユーザー・アカウントがまだ無い場合、通常は、新しいアカウントを登録して{project_name}データベースにインポートするだけですが、既存の{project_name}アカウントに同じメールがある場合はどうなるでしょうか？"
-" "
-"既存のローカル・アカウントを外部アイデンティティー・プロバイダーに自動的にリンクすることは、外部アイデンティティー・プロバイダーから取得した情報を常に信頼できるとは限らないため、潜在的なセキュリティー・ホールになります。"
+"{project_name}にこのユーザーのアカウントが存在しません。通常、{project_name}のデータベースに新しいアカウントを登録してインポートしますが、同じ電子メールアドレスを持つ既存の{project_name}アカウントが存在する場合があります。既存のローカル・アカウントを外部のアイデンティティー・プロバイダーに自動的にリンクすることは、セキュリティー・ホールになる可能性があります。外部のアイデンティティー・プロバイダーから得られる情報を常に信用することはできません。"
 
 #. type: Plain text
 msgid ""
 "Different organizations have different requirements when dealing with some "
-"of the conflicts and situations listed above.  For this, there is a `First "
-"Login Flow` option in the IDP settings which allows you to choose a "
-"<<_authentication-flows, workflow>> that will be used after a user logs in "
-"from an external IDP the first time.  By default it points to `first broker "
-"login` flow, but you can configure and use your own flow and use different "
-"flows for different identity providers."
+"of these situations. With {project_name}, you can use the `First Login Flow`"
+" option in the IDP settings to choose a <<_authentication-flows, workflow>> "
+"for a user logging in from an external IDP for the first time. By default, "
+"the `First Login Flow` option points to the `first broker login` flow, but "
+"you can use your flow or different flows for different identity providers."
 msgstr ""
-"何らかの競合や上記の状況に対処する際の要件は組織によって異なります。このため、IDPの設定には `First Login Flow` "
-"オプションがあります。このオプションを使用すると、初めて外部IDPからユーザーがログインした後に使用される<<_authentication-"
-"flows, ワークフロー>>が選択できます。デフォルトでは、 `first broker login` "
-"フローが指定されていますが、独自のフローを設定して使用し、異なるアイデンティティー・プロバイダーに対して異なるフローを使用することができます。"
+"このようないくつかの状況に対処する際、組織によって要件が異なります。{project_name}では、IDPの設定の `First Login "
+"Flow` オプションを使用して、外部IDPから初めてログインするユーザーの<<_authentication-flows, "
+"ワークフロー>>を選択することができます。デフォルトでは、 `First Login Flow` オプションは、 `first broker "
+"login` "
+"フローを指していますが、独自のフローを使用することもできますし、異なるアイデンティティー・プロバイダー用の異なるフローを使用することもできます。"
 
 #. type: Plain text
 msgid ""
-"The flow itself is configured in admin console under `Authentication` tab.  "
-"When you choose `First Broker Login` flow, you will see what authenticators "
-"are used by default.  You can re-configure the existing flow. (For example "
-"you can disable some authenticators, mark some of them as `required`, "
-"configure some authenticators, etc)."
+"The flow is in the Admin Console under the *Authentication* tab. When you "
+"choose the `First Broker Login` flow, you see the authenticators used by "
+"default. You can re-configure the existing flow. For example, you can "
+"disable some authenticators, mark some of them as `required`, or configure "
+"some authenticators."
 msgstr ""
-"フロー自体は、管理コンソールの `Authentication` タブで設定します。 `First Broker Login` "
-"フローを選択すると、デフォルトでどのオーセンティケーターが使用されているかが分かります。既存のフローを再設定することができます（たとえば、いくつかのオーセンティケーターを無効にしたり、それらのうちのいくつかを"
-" `必須` としてマークしたり、いくつかのオーセンティケーターを設定する、など）。"
+"フローは、管理コンソールの *Authentication* タブにあります。 `First Broker Login` "
+"フローを選択すると、デフォルトで使用されるオーセンティケーターが表示されます。既存のフローを再設定することができます。たとえば、いくつかのオーセンティケーターを無効にしたり、いくつかのオーセンティケーターを「必須」とマークしたり、いくつかのオーセンティケーターを設定したりすることができます。"
 
 #. type: Plain text
 msgid ""
-"You can also create a new authentication flow and/or write your own "
-"Authenticator implementations and use it in your flow.  See "
-"link:{developerguide_link}[{developerguide_name}] for more details."
+"You can also create a new authentication flow, write your own Authenticator "
+"implementations, and use it in your flow. See "
+"link:{developerguide_link}[{developerguide_name}] for more information."
 msgstr ""
-"また、新しい認証フローを作成したり、独自の認証プロバイダー実装を作成して、そのフローで使用することもできます。詳細については、link:{developerguide_link}[{developerguide_name}]を参照してください。"
+"また、新しい認証フローを作成し、独自のオーセンティケーターの実装を記述し、フローで使用することもできます。詳しくはlink:{developerguide_link}[{developerguide_name}]を参照してください。"
 
 #. type: Title ====
 #, no-wrap
-msgid "Default First Login Flow"
-msgstr "デフォルトの初回ログインフロー"
-
-#. type: Plain text
-msgid ""
-"Let's describe the default behavior provided by `First Broker Login` flow."
-msgstr "`First Broker Login` フローによって提供されるデフォルトの動作について説明します。"
+msgid "Default first login flow authenticators"
+msgstr "デフォルトのFirst Login Flowオーセンティケーター"
 
 #. type: Labeled list
 #, no-wrap
@@ -108,23 +108,41 @@ msgstr "Review Profile"
 
 #. type: Plain text
 msgid ""
-"This authenticator might display the profile info page, where the user can "
-"review their profile retrieved from an identity provider.  The authenticator"
-" is configurable.  You can set the `Update Profile On First Login` option.  "
-"When `On`, users will be always presented with the profile page asking for "
-"additional information in order to federate their identities.  When "
-"`missing`, users will be presented with the profile page only if some "
-"mandatory information (email, first name, last name) is not provided by the "
-"identity provider.  If `Off`, the profile page won't be displayed, unless "
-"user clicks in later phase on `Review profile info` link (page displayed in "
-"later phase by `Confirm Link Existing Account` authenticator)."
+"This authenticator displays the profile information page, so the users can "
+"review their profile that {project_name} retrieves from an identity "
+"provider."
 msgstr ""
-"このオーセンティケーターは、プロファイル情報ページを表示することができ、ユーザーはアイデンティティー・プロバイダーから取得したプロファイルを確認できます。オーセンティケーターは設定可能です。"
-" `Update Profile On First Login` オプションを設定できます。 `On` "
-"にすると、ユーザーには自分のアイデンティティーを統合するために追加情報を求めるプロファイル・ページが常に提示されます。 `missing` "
-"の場合、アイデンティティー・プロバイダーによっていくつかの必須情報（電子メール、名、姓）が提供されない場合にのみ、プロファイル・ページがユーザーに提示されます。"
-" `Off` の場合、 `Review profile info` リンク（後のフェーズで `Confirm Link Existing "
-"Account` オーセンティケーターによって表示されるページ）を後のフェーズでユーザーがクリックしない限り、プロファイル・ページは表示されません。"
+"このオーセンティケーターは、プロファイル情報ページを表示するので、ユーザーは{project_name}がアイデンティティー・プロバイダーから取得した自分のプロファイルを確認することができます。"
+
+#. type: Plain text
+msgid ""
+"You can set the `Update Profile On First Login` option in the *Actions* "
+"menu."
+msgstr "*Actions* メニューの `Update Profile On First Login` オプションで設定できます。"
+
+#. type: Plain text
+msgid ""
+"When *ON*, users are presented with the profile page requesting additional "
+"information to federate the user's identities."
+msgstr "*ON* の場合は、ユーザーのアイデンティティーを連携させるための追加情報を要求するプロファイル・ページが表示されます。"
+
+#. type: Plain text
+msgid ""
+"When *missing*, users are presented with the profile page if the identity "
+"provider does not provide mandatory information, such as email, first name, "
+"or last name."
+msgstr ""
+"*missing* "
+"の場合、アイデンティティー・プロバイダーが電子メール、姓、名などの必須情報を提供していない場合、ユーザーにはプロファイル・ページが表示されます。"
+
+#. type: Plain text
+msgid ""
+"When *OFF*, the profile page does not display unless the user clicks in a "
+"later phase on the `Review profile info` link in the page displayed by the "
+"`Confirm Link Existing Account` authenticator."
+msgstr ""
+"*OFF* の場合、ユーザーが後の段階で `Confirm Link Existing Account` オーセンティケーターで表示されるページの "
+"`Review profile info` のリンクをクリックしない限り、プロファイル・ページは表示されません。"
 
 #. type: Labeled list
 #, no-wrap
@@ -151,17 +169,35 @@ msgstr ""
 
 #. type: Plain text
 msgid ""
-"If you want to skip the ability to create new users, but you want that users"
-" authenticated from identity provider must already exists in {project_name} "
-"with same username or email like the user from identity provider, you can "
-"create new flow and replace `Create User If Exists` authenticator with "
-"`Detect Existing Broker User` . More details in the <<Detect Existing User "
-"First Login Flow,examples below>>."
+"This authenticator verifies that there is already a {project_name} account "
+"with the same email or username as the identity provider's account."
 msgstr ""
-"新しいユーザーを作成する機能をスキップしたいが、アイデンティティー・プロバイダーから認証されたユーザーが、アイデンティティー・プロバイダーのユーザーと同じユーザー名または電子メールで{project_name}にすでに存在している必要がある場合は、新しいフローを作成し、"
-" `Create User If Exists` オーセンティケーターを `Detect Existing Broker User` "
-"に置き換えることができます。詳細は <<Detect Existing User First Login Flow,examples below>> "
-"を参照してください。"
+"このオーセンティケーターは、アイデンティティー・プロバイダーのアカウントと同じ電子メールまたはユーザー名を持つ{project_name}アカウントがすでに存在することを検証します。"
+
+#. type: Plain text
+msgid ""
+"If an account does not exist, the authenticator creates a local "
+"{project_name} account, links this account with the identity provider, and "
+"terminates the flow."
+msgstr ""
+"アカウントが存在しない場合、オーセンティケーターはローカルの "
+"{project_name}アカウントを作成し、このアカウントをアイデンティティー・プロバイダーとリンクし、フローを終了します。"
+
+#. type: Plain text
+msgid ""
+"If an account exists, the authenticator implements the next `Handle Existing"
+" Account` sub-flow."
+msgstr "アカウントが存在する場合、オーセンティケーターは次の `Handle Existing Account` サブフローを実行します。"
+
+#. type: Plain text
+msgid ""
+"To ensure there is no duplicated account, you can mark this authenticator as"
+" `REQUIRED`. The user sees the error page if a {project_name} account "
+"exists, and users must link their identity provider account through Account "
+"management."
+msgstr ""
+"重複するアカウントがないように、このオーセンティケーターを `REQUIRED` "
+"としてマークすることができます。{project_name}のアカウントが存在する場合、ユーザーにはエラーページが表示され、ユーザーはアカウント管理を通じてアイデンティティー・プロバイダーのアカウントをリンクする必要があります。"
 
 #. type: Labeled list
 #, no-wrap
@@ -170,18 +206,28 @@ msgstr "Confirm Link Existing Account"
 
 #. type: Plain text
 msgid ""
-"On the info page, the user will see that there is an existing {project_name}"
-" account with the same email.  They can review their profile again and use "
-"different email or username (flow is restarted and goes back to `Review "
-"Profile` authenticator).  Or they can confirm that they want to link their "
-"identity provider account with their existing {project_name} account.  "
-"Disable this authenticator if you don't want users to see this confirmation "
-"page, but go straight to linking identity provider account by email "
+"On the information page, users see a {project_name} account with the same "
+"email. Users can review their profile again and use a different email or "
+"username. The flow restarts and goes back to the `Review Profile` "
+"authenticator."
+msgstr ""
+"情報ページで、ユーザーには同じ電子メールを使用した{project_name}のアカウントが表示されます。ユーザーは自分のプロファイルを再度確認し、異なる電子メールまたはユーザー名を使用できます。フローが再スタートして、`Review"
+" Profile` オーセンティケーターに戻ります。"
+
+#. type: Plain text
+msgid ""
+"Alternatively, users can confirm that they want to link their identity "
+"provider account with their existing {project_name} account."
+msgstr ""
+"あるいは、ユーザーは、アイデンティティー・プロバイダーのアカウントを既存の{project_name}アカウントとリンクさせることを確認することができます。"
+
+#. type: Plain text
+msgid ""
+"Disable this authenticator if you do not want users to see this confirmation"
+" page and go straight to linking identity provider account by email "
 "verification or re-authentication."
 msgstr ""
-"情報ページに、同じ電子メールを持つ既存の{project_name}アカウントがあることが分かります。ユーザーは自身のプロファイルをもう一度見直し、別の電子メールまたはユーザー名を使用することができます（フローが再開され、"
-" `Review Profile` "
-"オーセンティケーターに戻ります）。または、アイデンティティー・プロバイダーのアカウントと既存の{project_name}のアカウントをリンクさせたいかどうかをユーザーに確認できます。ユーザーにこの確認ページが表示されないようにする場合は、このオーセンティケーターを無効にしますが、電子メールの確認または再認証によって、アイデンティティー・プロバイダーのアカウントを直接リンクするようにしてください。"
+"ユーザーにこの確認ページを表示させず、電子メール認証または再認証によるアイデンティティー・プロバイダーのアカウントのリンクに直行させたい場合は、このオーセンティケーターを無効にします。"
 
 #. type: Labeled list
 #, no-wrap
@@ -190,15 +236,24 @@ msgstr "Verify Existing Account By Email"
 
 #. type: Plain text
 msgid ""
-"This authenticator is `ALTERNATIVE` by default, so it's used only if the "
-"realm has SMTP setup configured.  It will send email to the user, where they"
-" can confirm that they want to link the identity provider with their "
-"{project_name} account.  Disable this if you don't want to confirm linking "
-"by email, but instead you always want users to reauthenticate with their "
-"password (and alternatively OTP)."
+"This authenticator is `ALTERNATIVE` by default. {project_name} uses this "
+"authenticator if the realm has an SMTP setup configured."
 msgstr ""
-"このオーセンティケーターは、デフォルトでは `ALTERNATIVE` "
-"であるため、レルムにSMTPが設定されている場合にのみ使用されます。ユーザーにメールが送信され、アイデンティティー・プロバイダーと{project_name}アカウントをリンクさせたいかどうかを確認できます。電子メールによるリンクを確認したくないが、代わりに、ユーザーに常にパスワード（またはOTP）で再認証させたい場合は、これを無効にしてください。"
+"このオーセンティケーターはデフォルトでは `ALTERNATIVE` "
+"です。{project_name}は、レルムにSMTPの設定がある場合、このオーセンティケーターを使用します。"
+
+#. type: Plain text
+msgid ""
+"The authenticator sends an email to users to confirm that they want to link "
+"the identity provider with their {project_name} account."
+msgstr ""
+"オーセンティケーターは、ユーザーに電子メールを送信して、アイデンティティー・プロバイダーを自分の{project_name}アカウントとリンクさせることを確認します。"
+
+#. type: Plain text
+msgid ""
+"Disable this authenticator if you do not want to confirm linking by email, "
+"but want users to reauthenticate with their password."
+msgstr "リンク確認を電子メールで行わず、ユーザーにパスワードで再認証させたい場合は、このオーセンティケーターを無効にします。"
 
 #. type: Labeled list
 #, no-wrap
@@ -207,43 +262,54 @@ msgstr "Verify Existing Account By Re-authentication"
 
 #. type: Plain text
 msgid ""
-"This authenticator is used if email authenticator is disabled or not "
-"available (SMTP not configured for realm). It will display a login screen "
-"where the user needs to authenticate to link their {project_name} account "
-"with the Identity provider.  User can also re-authenticate with some "
-"different identity provider, which is already linked to their {project_name}"
-" account.  You can also force users to use OTP. Otherwise it's optional and "
-"used only if OTP is already set for the user account."
+"Use this authenticator if the email authenticator is not available. For "
+"example, you have not configured SMTP for your realm. This authenticator "
+"displays a login screen for users to authenticate to link their "
+"{project_name} account with the Identity Provider."
 msgstr ""
-"このオーセンティケーターは、電子メールのオーセンティケーターが無効であるか、または使用できない場合に使用されます（レルムに対してSMTPが設定されていない場合）。{project_name}アカウントとアイデンティティー・プロバイダーをリンクするために、認証する必要があるログイン画面が表示されます。また、ユーザーは、自分の{project_name}アカウントにすでにリンクされている別のアイデンティティー・プロバイダーで再認証することもできます。ユーザーに強制的にOTPを使用させることもできます。それ以外の場合はオプションで、すでにOTPがユーザー・アカウントに設定されている場合にのみ使用されます。"
+"電子メール・オーセンティケーターが利用できない場合に、このオーセンティケーターを使用します。たとえば、レルムにSMTPを設定していない場合などです。このオーセンティケーターは、{project_name}アカウントをアイデンティティー・プロバイダーにリンクするためにユーザーが認証するためのログイン画面を表示します。"
+
+#. type: Plain text
+msgid ""
+"Users can also re-authenticate with another identity provider already linked"
+" to their {project_name} account."
+msgstr ""
+"ユーザーは、自分の{project_name}アカウントにすでにリンクされている別のアイデンティティー・プロバイダーで再認証することもできます。"
+
+#. type: Plain text
+msgid ""
+"You can force users to use OTP. Otherwise, it is optional and used if you "
+"have set OTP for the user account."
+msgstr ""
+"ユーザーにOTPの使用を強制することができます。それ以外の場合はオプションで、ユーザー・アカウントにOTPを設定している場合に使用されます。"
 
 #. type: Title ====
 #, no-wrap
-msgid "Automatically Link Existing First Login Flow"
-msgstr "自動リンクの初回ログインフロー"
+msgid "Automatically link existing first login flow"
+msgstr "既存の初回ログインフローを自動的にリンクする"
 
-#. type: Plain text
+#. type: delimited block =
 msgid ""
-"The AutoLink authenticator would be dangerous in a generic environment where"
-" users can register themselves using arbitrary usernames/email addresses. Do"
-" not use this authenticator unless registration of users is carefully "
-"curated and usernames/email addresses are assigned, not requested."
+"The AutoLink authenticator is dangerous in a generic environment where users"
+" can register themselves using arbitrary usernames or email addresses. Do "
+"not use this authenticator unless you are carefully curating user "
+"registration and assigning usernames and email addresses."
 msgstr ""
-"AutoLinkオーセンティケーターは、ユーザーが任意のユーザー名/電子メールアドレスを使用して自分自身を登録できる一般的な環境では危険です。ユーザーの登録が慎重に行われ、ユーザー名/電子メールアドレスが（要求されるのではなく）割り当てられていない限り、このオーセンティケーターを使用しないでください。"
+"AutoLinkオーセンティケーターは、ユーザーが任意のユーザー名や電子メールアドレスを使って自分を登録できるような一般的な環境では危険です。ユーザーの登録を慎重に管理し、ユーザー名や電子メールアドレスを割り当てる場合を除き、このオーセンティケーターを使用しないでください。"
 
 #. type: Plain text
 msgid ""
-"In order to configure a first login flow in which users are automatically "
-"linked without being prompted, create a new flow with the following two "
-"authenticators:"
+"To configure a first login flow that links users automatically without "
+"prompting, create a new flow with the following two authenticators:"
+msgstr "プロンプトを表示せずにユーザーを自動的にリンクする初回ログインフローを構成するには、次の2つの認証子を持つ新しいフローを作成します。"
+
+#. type: Plain text
+msgid ""
+"This authenticator ensures {project_name} handles unique users. Set the "
+"authenticator requirement to *Alternative*."
 msgstr ""
-"プロンプトを表示せずにユーザーを自動的にリンクする最初のログインフローを設定するには、次の2つのオーセンティケーターを使用して新しいフローを作成します。"
-
-#. type: Plain text
-msgid ""
-"This authenticator ensures that unique users are handled. Set the "
-"authenticator requirement to \"Alternative\"."
-msgstr "このオーセンティケーターは、一意にユーザーが処理されることを保障します。オーセンティケーターの要件は\"Alternative\"に設定します。"
+"このオーセンティケーターは{project_name}がユニークなユーザーを扱うことを保証します。オーセンティケーターの要件を "
+"*Alternative* に設定します。"
 
 #. type: Labeled list
 #, no-wrap
@@ -252,53 +318,73 @@ msgstr "Automatically Set Existing User"
 
 #. type: Plain text
 msgid ""
-"Automatically sets an existing user to the authentication context without "
-"any verification. Set the authenticator requirement to \"Alternative\"."
-msgstr "検証なしで、既存のユーザーを認証コンテキストに自動的に設定します。オーセンティケーターの要求は\"Alternative\"に設定します。"
-
-#. type: Plain text
-msgid ""
-"The described setup uses two authenticators. This setup is the simplest one,"
-" but it is possible to use other authenticators according to your needs. For"
-" example, you can add the Review Profile authenticator to the beginning of "
-"the flow if you still want end users to confirm their profile information. "
-"You can also add authentication mechanisms to this flow, forcing a user to "
-"verify his credentials. This would require a more complex flow, for example "
-"setting the \"Automatically Set Existing User\" and \"Password Form\" as "
-"\"Required\" in an \"Alternative\" sub-flow."
+"This authenticator sets an existing user to the authentication context "
+"without verification. Set the authenticator requirement to \"Alternative\"."
 msgstr ""
-"記載されたセットアップでは2つのオーセンティケーターが使用されます。このセットアップは最も簡単なものですが、必要に応じて他のオーセンティケーターを使用することもできます。たとえば、エンドユーザーにプロファイル情報の確認を依頼したい場合は、フローの先頭にReview"
-" "
-"Profileオーセンティケーターを追加することができます。また、このフローに認証メカニズムを追加して、ユーザーにクレデンシャルの確認を強制することもできます。これには、より複雑なフローが必要になります。たとえば、\"Alternative\"サブフローで\"Automatically"
-" Set Existing User\"と\"Password Form\"を\"Required\"に設定します。"
+"このオーセンティケーターは、既存のユーザーを検証なしで認証コンテキストに設定します。オーセンティケーターの要件を \"Alternative\" "
+"に設定します。"
+
+#. type: delimited block =
+msgid ""
+"This setup is the simplest setup available, but it is possible to use other "
+"authenticators. For example:"
+msgstr "この設定は、最もシンプルな設定ですが、他のオーセンティケーターを使用することも可能です。例えば、以下のようになります。"
+
+#. type: delimited block =
+msgid ""
+"You can add the Review Profile authenticator to the beginning of the flow if"
+" you want end users to confirm their profile information."
+msgstr ""
+"エンドユーザーに自分のプロファイル情報を確認してもらいたい場合は、Review "
+"Profileオーセンティケーターをフローの最初に追加することができます。"
+
+#. type: delimited block =
+msgid ""
+"You can add authentication mechanisms to this flow, forcing a user to verify"
+" their credentials. Adding authentication mechanisms requires a complex "
+"flow. For example, you can set the \"Automatically Set Existing User\" and "
+"\"Password Form\" as \"Required\" in an \"Alternative\" sub-flow."
+msgstr ""
+"このフローに認証機構を追加して、ユーザーにクレデンシャルを確認させることができます。認証機構を追加するには、複雑なフローが必要です。たとえば、 "
+"\"Alternative\" サブフローで、 \"Automatically Set Existing User\" と \"Password "
+"Form\" を \"Required\" に設定することができます。"
 
 #. type: Title ====
 #, no-wrap
-msgid "Disabling Automatic User Creation"
-msgstr "自動ユーザー作成の無効化"
+msgid "Disabling automatic user creation"
+msgstr "ユーザーの自動作成を無効にする"
 
 #. type: Plain text
 msgid ""
-"The Default first login flow will look up a Keycloak account matching the "
-"external identity, and will then offer to link them; if there is no matching"
-" Keycloak account, it will automatically create one.  This default behavior "
-"may be unsuitable for some setups, for example, when using read-only LDAP "
-"user store (which means all users are pre-created).  In this case, automatic"
-" user creation should be turned off. To disable user creation:"
+"The Default first login flow looks up the {project_name} account matching "
+"the external identity and offers to link them. If no matching {project_name}"
+" account exists, the flow automatically creates one."
 msgstr ""
-"デフォルトの最初のログインフローは、外部アイデンティティーと一致するKeycloakアカウントを検索し、それらをリンクすることを提案します。一致するKeycloakアカウントがない場合は、自動的に作成されます。このデフォルトの動作は、たとえば読み取り専用のLDAPユーザーストアを使用する場合（つまり、すべてのユーザーが事前に作成されている場合）など、設定によっては適さない場合があります。この場合、自動ユーザー作成をオフにする必要があります。ユーザーの作成を無効にするには以下を実施します。"
+"デフォルトの初回ログインフローは、外部のアイデンティティーに一致する{project_name}アカウントを検索し、それらのリンクを提案します。一致する{project_name}アカウントが存在しない場合、フローは自動的にアカウントを作成します。"
 
 #. type: Plain text
-msgid "open the `First Broker Login` flow configuration;"
-msgstr "`First Broker Login` フロー設定を開く。"
+msgid ""
+"This default behavior may be unsuitable for some setups. One example is when"
+" you use a read-only LDAP user store, where all users are pre-created. In "
+"this case, you must switch off automatic user creation."
+msgstr ""
+"このデフォルトの動作は、いくつかのセットアップには適していないかもしれません。例えば、読み取り専用のLDAPユーザーストアを使用していて、すべてのユーザーがあらかじめ作成されている場合です。このような場合には、ユーザーの自動作成をオフにする必要があります。"
 
 #. type: Plain text
-msgid "set `Create User If Unique` to `DISABLED`;"
-msgstr "`Create User If Unique` を `DISABLED` に設定する。"
+msgid "To disable user creation:"
+msgstr "ユーザーの作成を無効にするには、以下を行います。"
 
 #. type: Plain text
-msgid "set `Confirm Link Existing Account` to `DISABLED`."
-msgstr "`Confirm Link Existing Account` を `DISABLED` に設定する。"
+msgid "Select *First Broker Login* from the list."
+msgstr "リストから *First Broker Login* を選択します。"
+
+#. type: Plain text
+msgid "Set *Create User If Unique* to *DISABLED*."
+msgstr "*Create User If Unique \"を *DISABLED* に設定してください。"
+
+#. type: Plain text
+msgid "Set *Confirm Link Existing Account* to *DISABLED*."
+msgstr "*Confirm Link Existing Account* を *DISABLED* に設定してください。"
 
 #. type: Plain text
 msgid ""
@@ -313,8 +399,8 @@ msgstr ""
 
 #. type: Title ====
 #, no-wrap
-msgid "Detect Existing User First Login Flow"
-msgstr "既存のユーザーの最初のログインフローを検出する"
+msgid "Detect existing user first login flow"
+msgstr "既存ユーザーの初回ログインフローの検出"
 
 #. type: Plain text
 msgid "In order to configure a first login flow in which:"
@@ -368,3 +454,13 @@ msgid ""
 " that can log in."
 msgstr ""
 "このフローは、IDを他のアイデンティティー・プロバイダー（github、facebookなど）に委任したいが、ログインできるユーザーを管理したい場合に使用できます。"
+
+#. type: Plain text
+msgid ""
+"With this configuration, {project_name} is unable to determine which "
+"internal account corresponds to the external identity. The *Verify Existing "
+"Account By Re-authentication* authenticator asks the provider for the "
+"username and password."
+msgstr ""
+"この設定では、{project_name}は、どの内部アカウントが外部アイデンティティーに対応するかを判断できません。 *Verify Existing"
+" Account By Re-authentication* オーセンティケーターは、プロバイダーにユーザー名とパスワードを要求します。"

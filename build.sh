@@ -58,10 +58,16 @@ for version in `ls $DIR/src`; do
       rm -rf $DOC_DIST_DIR/*
 
       cp $docname/index.html $DOC_DIST_DIR/
-      cp -r $docname/images $DOC_DIST_DIR/
+
+      if [ -d $docname/images ]; then
+        cp -r $docname/images $DOC_DIST_DIR/
+      fi
+
       if [ -d $docname/keycloak-images ]; then
         cp -r $docname/keycloak-images $DOC_DIST_DIR/
       fi
+
+      sed -e "s|@VERSION@|$version|g" $DIR/site/index.html.tmpl > $DIST_DIR/$version/index.html
     fi
   done
 done

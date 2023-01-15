@@ -7,6 +7,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+    permissions:
+      id-token: write
+      contents: read
     container:
       image: openstandia/keycloak-documentation-i18n:asciidoctor
       options: -v ${{ github.workspace }}:/build
@@ -14,4 +18,40 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build documents
         run: /build/build.sh
+      - name: Configure AWS credentials from IAM Role
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::898353857660:role/keycloak-documentation-i18n-github-action
+          aws-region: ap-northeast-1
+      - name: Clean s3 for deleted branches 
+        run: |
+          S3_BRANCHES=`aws s3 ls s3://keycloak-documentation/ | grep PRE | sed -e "s|.*PRE \(.*\)/.*|\1|" | grep -v "^review$"`
+          GIT_BRANCHES=`git branch -r | sed -e "s|.* origin/||"` 
+          GIT_TAGS=`git ls-remote --tags | sed -e "s|.*refs/tags/\(.*\)|\1|"`
+          echo "--- S3 Folders ---"
+          echo "$S3_BRANCHES"
+          echo "--- GIT Branches ---"
+          echo "$GIT_BRANCHES"
+          echo "--- GIT Tags ---"
+          echo "$GIT_TAGS"
+          echo "--------------------"
+          set +e
+          for sb in ${S3_BRANCHES}; do
+            echo "$GIT_BRANCHES" | grep "^${sb}$" > /dev/null
+            if [ $? -ne 0 ] && [ -n "${sb}" ]; then
+              echo "'${sb}' branch has already been deleted, but let's check in tags before cleaning the s3 folder..."
+              echo "$GIT_TAGS" | grep "^${sb}$" > /dev/null
+              if [ $? -ne 0 ] && [ -n "${sb}" ]; then
+                echo "'${sb}' branch/tag has already been deleted, let's clean the s3 folder..."
+                aws s3 rm s3://keycloak-documentation/${sb} --recursive
+              else
+                echo "'${sb}' exists as a tag, skip cleaning."
+              fi
+            else
+              echo "'${sb}' exists as a branch, skip cleaning."
+            fi
+          done
+      - name: Upload to s3
+        run: |
+          aws s3 sync ./dist/ s3://keycloak-documentation/preview/ --delete
 

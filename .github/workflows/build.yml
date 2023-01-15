@@ -1,0 +1,15 @@
+name: Build
+on:
+  push:
+    branches:
+      - transifex
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: openstandia/keycloak-documentation-i18n:asciidoctor
+    steps:
+      - name: Build documents
+        run: ./build.sh
+

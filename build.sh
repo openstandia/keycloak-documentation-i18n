@@ -12,6 +12,8 @@ DOCS="\
   upgrading \
   release_notes"
 
+TARGET_LANG=ja_JP
+
 BUILD_DIR=$DIR/build
 DIST_DIR=$DIR/dist
 
@@ -45,13 +47,14 @@ for version in `ls $DIR/src`; do
         -a docinfo1=true \
         -a project_buildType=archive \
         -a language=$docname \
-        -a po-directory=$DIR/translations/ja_JP/$version/ \
+        -a po-directory=$DIR/translations/$TARGET_LANG/$version/ \
         -a toc-title=目次 \
         -a nofooter=true \
         -a project_doc_base_url=link:.. \
         $TARGET
 
-      DOC_DIST_DIR=$DIST_DIR/$version/$docname
+      DOC_VERSION_DIR=$DIST_DIR/$version
+      DOC_DIST_DIR=$DOC_VERSION_DIR/$TARGET_LANG/$docname
       echo "Copy resources to $DOC_DIST_DIR"
 
       mkdir -p $DOC_DIST_DIR
@@ -67,7 +70,8 @@ for version in `ls $DIR/src`; do
         cp -r $docname/keycloak-images $DOC_DIST_DIR/
       fi
 
-      sed -e "s|@VERSION@|$version|g" $DIR/site/index.html.tmpl > $DIST_DIR/$version/index.html
+      sed -e "s|@VERSION@|$version|g" $DIR/site/index.html.tmpl > $DOC_VERSION_DIR/index.html
+      cp $DIR/site/*.png $DOC_VERSION_DIR/
     fi
   done
 done

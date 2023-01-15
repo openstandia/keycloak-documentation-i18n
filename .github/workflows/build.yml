@@ -1,0 +1,32 @@
+name: Preview Build
+on:
+  push:
+    branches:
+      - develop
+      - transifex
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+    permissions:
+      id-token: write
+      contents: read
+    container:
+      image: openstandia/keycloak-documentation-i18n:asciidoctor
+      options: -v ${{ github.workspace }}:/build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build documents
+        run: /build/build.sh
+      - name: Configure AWS credentials from IAM Role
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::898353857660:role/keycloak-documentation-i18n-github-action
+          aws-region: ap-northeast-1
+      - name: Sync to s3
+        run: |
+          aws s3 sync ./dist/ s3://keycloak-documentation/preview/ --delete
+          aws s3 cp ./site/index.html s3://keycloak-documentation/preview/
+

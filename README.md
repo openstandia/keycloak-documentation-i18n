@@ -27,7 +27,7 @@ First, clone this repository:
 
 To build Translated Keycloak Documentation run:
 
-    ./build-translation.sh
+    ./build.sh
 
 You can then view the documentation by opening translated/dist/{LANG}/index.html.
 

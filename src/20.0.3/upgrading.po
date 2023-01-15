@@ -1,0 +1,2512 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "{upgradingguide_name}"
+msgstr ""
+
+msgid "*{release_header_guide}* icon:angle-down[]"
+msgstr ""
+
+msgid "{gettingstarted_link}[{gettingstarted_name_short}]"
+msgstr ""
+
+msgid "{adapterguide_link}[{adapterguide_name_short}]"
+msgstr ""
+
+msgid "{adminguide_link}[{adminguide_name_short}]"
+msgstr ""
+
+msgid "{developerguide_link}[{developerguide_name_short}]"
+msgstr ""
+
+msgid "{authorizationguide_link}[{authorizationguide_name_short}]"
+msgstr ""
+
+msgid "{releasenotes_link}[{releasenotes_name_short}]"
+msgstr ""
+
+msgid "Version *{project_version}* _{release_header_latest_link}[Click here for latest]_"
+msgstr ""
+
+msgid "Upgrading Keycloak"
+msgstr ""
+
+msgid "This guide describes how to upgrade {project_name}. It is recommended that you start by upgrading the {project_name} server first and {project_name} adapters second."
+msgstr ""
+
+msgid "Before upgrading make sure to read the instructions carefully and carefully review the changes listed in <<migration-changes,Migration Changes>>."
+msgstr ""
+
+msgid "Upgrading the {project_name} server"
+msgstr ""
+
+msgid "Preparing for upgrading"
+msgstr ""
+
+msgid "Before you upgrade, be aware of the order in which you need to perform the upgrade steps. In particular, be sure to upgrade {project_name} server before you upgrade the adapters."
+msgstr ""
+
+msgid "In a minor upgrade of {project_name}, all user sessions are lost. After the upgrade, all users will have to log in again."
+msgstr ""
+
+msgid "Procedure"
+msgstr ""
+
+msgid "Back up the old installation (configuration, themes, and so on)."
+msgstr ""
+
+msgid "Back up the database using instructions in the documentation for your relational database."
+msgstr ""
+
+msgid "Upgrade the {project_name} server."
+msgstr ""
+
+msgid "The database will no longer be compatible with the old server after the upgrade."
+msgstr ""
+
+msgid "If you need to revert the upgrade, first restore the old installation, and then restore the database from the backup copy."
+msgstr ""
+
+msgid "Upgrade the adapters."
+msgstr ""
+
+msgid "It is important that you upgrade {project_name} server before upgrading the adapters."
+msgstr ""
+
+msgid "Prerequisites"
+msgstr ""
+
+msgid "Handle any open transactions and delete the data/tx-object-store/ transaction directory."
+msgstr ""
+
+msgid "Download the new server archive"
+msgstr ""
+
+msgid "Move the downloaded archive to the desired location."
+msgstr ""
+
+msgid "Extract the archive. This step installs a clean instance of the latest {project_name} release."
+msgstr ""
+
+msgid "Copy `conf/`, `providers/` and `themes/` from the previous installation to the new installation."
+msgstr ""
+
+msgid "Database migration"
+msgstr ""
+
+msgid "{project_name} can automatically migrate the database schema, or you can choose to do it manually. By default the database is automatically migrated when you start the new installation for the first time."
+msgstr ""
+
+msgid "Automatic relational database migration"
+msgstr ""
+
+msgid "To enable automatic upgrading of the database schema, set the migration-strategy property value to \"update\" for the default connections-jpa provider:"
+msgstr ""
+
+msgid "kc.[sh|bat] start --spi-connections-jpa-legacy-migration-strategy=update"
+msgstr ""
+
+msgid "When you start the server with this setting your database is automatically migrated if the database schema has changed in the new version."
+msgstr ""
+
+msgid "Creating an index on huge tables with millions of records can easily take a huge amount of time and potentially cause major service disruption on upgrades. For those cases, we added a threshold (the number of records) for automated index creation. By default, this threshold is `300000` records. When the number of records is higher than the threshold, the index is not created automatically, and there will be a warning message in server logs including SQL commands which can be applied later manually."
+msgstr ""
+
+msgid "To change the threshold, set the `index-creation-threshold` property, value for the default `connections-liquibase` provider:"
+msgstr ""
+
+msgid "kc.[sh|bat] start --spi-connections-liquibase-default-index-creation-threshold=300000"
+msgstr ""
+
+msgid "Manual relational database migration"
+msgstr ""
+
+msgid "To enable manual upgrading of the database schema, set the migration-strategy property value to \"manual\" for the default connections-jpa provider:"
+msgstr ""
+
+msgid "kc.[sh|bat] start --spi-connections-jpa-legacy-migration-strategy=manual"
+msgstr ""
+
+msgid "When you start the server with this configuration it checks if the database needs to be migrated. The required changes are written to an SQL file that you can review and manually run against the database. For further details on how to apply this file to the database, see the documentation for the relational database you're using. After the changes have been written to the file, the server exits."
+msgstr ""
+
+msgid "Theme migration"
+msgstr ""
+
+msgid "If you have created any custom themes they must be migrated to the new server. Any changes to the built-in themes might need to be reflected in your custom themes, depending on which aspects you have customized."
+msgstr ""
+
+msgid "You must copy your custom themes from the old server `themes` directory to the new server `themes` directory. After that you need to review the changes below and consider if the changes need to be applied to your custom theme."
+msgstr ""
+
+msgid "In summary:"
+msgstr ""
+
+msgid "If you have customized any of the changed templates listed below you need to compare the template from the base theme to see if there are changes you need to apply."
+msgstr ""
+
+msgid "If you have customized any of the styles and are extending the {project_name} themes you need to review the changes to the styles. If you are extending the base theme you can skip this step."
+msgstr ""
+
+msgid "If you have customized messages you might need to change the key or value or to add additional messages."
+msgstr ""
+
+msgid "Migrating templates"
+msgstr ""
+
+msgid "If you have customized any of the templates you need to carefully review the changes that have been made to the templates to decide if you need to apply these changes to your customized templates. Most likely you will need to apply the same changes to your customized templates. If you have not customized any of the listed templates you can skip this section."
+msgstr ""
+
+msgid "A best practice is to use a diff tool to compare the templates to see what changes you might need to make to your customized template. If you have only made minor changes it is simpler to compare the updated template to your customized template. However, if you have made many changes it might be easier to compare the new template to your customized old template, as this will show you what changes you need to make."
+msgstr ""
+
+msgid "The following screenshot compares the info.ftl template from the Login theme and an example custom theme:"
+msgstr ""
+
+msgid "Comparison of the updated version of a Login theme template with an example custom Login theme template"
+msgstr ""
+
+msgid "image:images/theme-migration-meld-info-1.png[]"
+msgstr ""
+
+msgid "From this comparison it is easy to identify that the first change (`Hello world!!`) was a customization, while the second change (`if pageRedirectUri`) is a change to the base theme. By copying the second change to your custom template, you have successfully updated your customized template."
+msgstr ""
+
+msgid "For the alternative approach the following screenshot compares the info.ftl template from the old installation with the updated info.ftl template from the new installation:"
+msgstr ""
+
+msgid "Comparison of the Login theme template from the old installation with the updated version of the Login theme template"
+msgstr ""
+
+msgid "image:images/theme-migration-meld-info-2.png[]"
+msgstr ""
+
+msgid "From this comparison it is easy to identify what has been changed in the base template. You will then manually have to make the same changes to your modified template. Since this approach is not as simple as the first approach, only use this approach if the first one is not feasible."
+msgstr ""
+
+msgid "Migrating messages"
+msgstr ""
+
+msgid "If you have added support for another language, you need to apply all the changes listed above. If you have not added support for another language, you might not need to change anything; you only have to make changes if you have changed an affected message in your theme."
+msgstr ""
+
+msgid "For added values, review the value of the message in the base theme to determine if you need to customize that message."
+msgstr ""
+
+msgid "For renamed keys, rename the key in your custom theme."
+msgstr ""
+
+msgid "For changed values, check the value in the base theme to determine if you need to make changes to your custom theme."
+msgstr ""
+
+msgid "Migrating styles"
+msgstr ""
+
+msgid "If you are inheriting styles from the keycloak or rh-sso themes you might need to update your custom styles to reflect changes made to the styles from the built-in themes."
+msgstr ""
+
+msgid "A best practice is to use a diff tool to compare the changes to stylesheets between the old server installation and the new server installation."
+msgstr ""
+
+msgid "For example, using the diff command:"
+msgstr ""
+
+msgid ""
+"$ diff {project_dirref}_OLD/themes/keycloak/login/resources/css/login.css \\\n"
+"{project_dirref}_NEW/themes/keycloak/login/resources/css/login.css"
+msgstr ""
+
+msgid "Review the changes and determine if they affect your custom styling."
+msgstr ""
+
+msgid "Upgrading {project_name} adapters"
+msgstr ""
+
+msgid "It is important that you upgrade {project_name} server first, and then upgrade the adapters. Earlier versions of the adapter might work with later versions of {project_name} server, but earlier versions of {project_name} server might not work with later versions of the adapter."
+msgstr ""
+
+msgid "Compatibility with older adapters"
+msgstr ""
+
+msgid "As mentioned above, we try to support newer release versions of {project_name} server working with older release versions of the adapters. However, in some cases we need to include fixes on the {project_name} server side which may break compatibility with older versions of the adapters. For example, when we implement new aspects of the OpenID Connect specification, which older client adapter versions were not aware of."
+msgstr ""
+
+msgid "In those cases, we added Compatibility modes. For OpenId Connect clients, there is a section named `OpenID Connect Compatibility Modes` in the {project_name} admin console, on the page with client details. Here, you can disable some new aspects of the {project_name} server to preserve compatibility with older client adapters. More details are available in the tool tips of individual switches."
+msgstr ""
+
+msgid "Upgrading the EAP adapter"
+msgstr ""
+
+msgid "To upgrade the {appserver_name} adapter, complete the following steps:"
+msgstr ""
+
+msgid "Download the new adapter archive."
+msgstr ""
+
+msgid "Remove the previous adapter modules by deleting the `{appserver_dirref}/modules/system/add-ons/keycloak/` directory."
+msgstr ""
+
+msgid "Unzip the downloaded archive into `{appserver_dirref}`."
+msgstr ""
+
+msgid "Upgrading the JavaScript adapter"
+msgstr ""
+
+msgid "To upgrade a JavaScript adapter that has been copied to your web application, perform the following procedure."
+msgstr ""
+
+msgid "Overwrite the keycloak.js file in your application with the keycloak.js file from the downloaded archive."
+msgstr ""
+
+msgid "Upgrading the Node.js adapter"
+msgstr ""
+
+msgid "To upgrade a Node.js adapter that has been copied to your web application, perform the following procedure."
+msgstr ""
+
+msgid "Remove the existing Node.js adapter directory"
+msgstr ""
+
+msgid "Unzip the updated file into its place"
+msgstr ""
+
+msgid "Change the dependency for keycloak-connect in the package.json of your application"
+msgstr ""
+
+msgid "Upgrading the {project_name} Admin Client"
+msgstr ""
+
+msgid "It is important that you upgrade the {project_name} server first, and then upgrade the admin-client. Earlier versions of the admin-client might work with later versions of {project_name} server, but earlier versions of {project_name} server might not work with later versions of the admin-client. It is recommended to use the admin-client version that matches the used {project_name} server version."
+msgstr ""
+
+msgid "Migration Changes"
+msgstr ""
+
+msgid "Migrating to 20.0.0"
+msgstr ""
+
+msgid "RESTEasy Version Update"
+msgstr ""
+
+msgid "Updated the RESTEasy version of Keycloak Admin REST Client to the next major version."
+msgstr ""
+
+msgid "H2 Version Update"
+msgstr ""
+
+msgid "{project_name} ships for development purposes with an H2 database driver. As it is intended for development purposes only, it should never be used in a production environment."
+msgstr ""
+
+msgid "In this release, the H2 driver has been upgraded from version 1.x to version 2.x. This change might require changes to the H2 JDBC URL or migration of the H2 database files in an existing Keycloak setup."
+msgstr ""
+
+msgid "Changes to the H2 JDBC URL"
+msgstr ""
+
+msgid "For Keycloak to run with its JPA legacy store with H2 version 2.x, the JDBC URL requires the attribute `NON_KEYWORDS=VALUE`."
+msgstr ""
+
+msgid "In a setup where H2 is initialized by Keycloak without extra parameters, Keycloak will append the attribute automatically. This is the default for development setups."
+msgstr ""
+
+msgid "If an H2 JDBC URL is provided on the command line or in a configuration file, and it already contains the `NON_KEYWORDS=` attribute in the JDBC URL, this attribute needs to be amended with the `VALUE` keyword."
+msgstr ""
+
+msgid "If the connection factory for the H2 database is initialized outside Keycloak, that initialization needs to take care of adding the `NON_KEYWORDS` attribute."
+msgstr ""
+
+msgid "See the H2 documentation http://www.h2database.com/html/commands.html#set_non_keywords[on the `NON_KEYWORDS` attribute] for details."
+msgstr ""
+
+msgid "Upgrade of H2 database files"
+msgstr ""
+
+msgid "H2 database base files created with H2 version 1.x should not be used with version 2.x."
+msgstr ""
+
+msgid "Purge existing H2 database files to start with an empty database, export and import the realms using Keycloak's export and import functionality, or refer to the http://www.h2database.com/html/migration-to-v2.html[migration notes on the H2 database project's website] for details on how to migrate H2 database contents."
+msgstr ""
+
+msgid "Breaking changes in the new version of Keycloak Operator"
+msgstr ""
+
+msgid "In order to use the newest version of the Keycloak Operator, the manual reinstallation and upgrade of your CRs are required. There’s no automated migration."
+msgstr ""
+
+msgid "This release contains the following breaking changes in Keycloak CRs:"
+msgstr ""
+
+msgid "serverConfiguration free-form field was renamed"
+msgstr ""
+
+msgid "From now on it’s called `additionalOptions`. The idea behind this decision is to align it more with the Keycloak Quarkus distribution and achieve/preserve a naming consistency. `serverConfiguration` can be still used for configuring options that haven’t got a declared alternative in Keycloak custom resources (CRs). A good example of such use can be service providers."
+msgstr ""
+
+msgid "Ingress options were refined"
+msgstr ""
+
+msgid "In the past, it used to be defined via the `disableDefaultIngress` property. We decided to clarify it a bit, thus from now on you can use the following structure to control your ingress settings:"
+msgstr ""
+
+msgid ""
+"spec:\n"
+"    ...\n"
+"    ingress:\n"
+"      enabled: false"
+msgstr ""
+
+msgid "HTTP options were added"
+msgstr ""
+
+msgid "Similarly, like with ingress, you can define multiple HTTP options in a better structural manner:"
+msgstr ""
+
+msgid ""
+"spec:\n"
+"    ...\n"
+"  http:\n"
+"    httpEnabled: true\n"
+"    httpPort: 80\n"
+"    httpsPort: 443\n"
+"    tlsSecret: my-tls-secret"
+msgstr ""
+
+msgid "Hostname options were added"
+msgstr ""
+
+msgid "Last but not least, the hostname options were also changed:"
+msgstr ""
+
+msgid ""
+"spec:\n"
+"    ...\n"
+"  hostname:\n"
+"    hostname: [keycloak-server-hostname]\n"
+"    admin: [admin-console-hostname]\n"
+"    adminUrl: [admin-console-base-url]\n"
+"    strict: [true|false]\n"
+"    strictBackchannel: [true|false]"
+msgstr ""
+
+msgid "Some fields are no longer required"
+msgstr ""
+
+msgid "The `hostname` and `tlsSecret` fields are now optional to align with the Quarkus distribution configuration. With that we also removed the possibility to set `INSECURE-DISABLE` special value to those fields. In order to disable hostname checks and enable HTTP, please follow the same approach as with the Quarkus distribution, i.e. set `strict: false`, `strictBackchannel: false` and `httpEnabled: true` fields."
+msgstr ""
+
+msgid "OLM channel was changed to fast"
+msgstr ""
+
+msgid "The default channel of Keycloak Operator Lifecycle Manager was changed to `fast`."
+msgstr ""
+
+msgid "Deprecated methods from data providers and models were removed"
+msgstr ""
+
+msgid "Prior to Keycloak 15, there was a clean-up of provider and model interfaces where we deprecated some methods. Javadoc of these methods contained a corresponding replacement method (see Javadoc of Keycloak 19 release). In this release the methods were removed. The following is a list of all changed classes."
+msgstr ""
+
+msgid "The most common patterns for deprecating and removing the methods are the following."
+msgstr ""
+
+msgid "Streamification - interfaces now contain only Stream-based methods."
+msgstr ""
+
+msgid "For example in https://github.com/keycloak/keycloak/blob/19.0.3/server-spi/src/main/java/org/keycloak/models/GroupProvider.java[`GroupProvider`] interface"
+msgstr ""
+
+msgid ""
+"@Deprecated\n"
+"List<GroupModel> getGroups(RealmModel realm);"
+msgstr ""
+
+msgid "was replaced by"
+msgstr ""
+
+msgid "Stream<GroupModel> getGroupsStream(RealmModel realm);"
+msgstr ""
+
+msgid "More details on streamification work can be found in https://issues.redhat.com/browse/KEYCLOAK-14011[KEYCLOAK-14011]."
+msgstr ""
+
+msgid "Consistent parameter ordering - methods now have strict parameter ordering where `RealmModel` is always the first parameter."
+msgstr ""
+
+msgid "For example in https://github.com/keycloak/keycloak/blob/19.0.3/server-spi/src/main/java/org/keycloak/storage/user/UserLookupProvider.java[`UserLookupProvider`] interface"
+msgstr ""
+
+msgid ""
+"@Deprecated\n"
+"UserModel getUserById(String id, RealmModel realm);"
+msgstr ""
+
+msgid "UserModel getUserById(RealmModel realm, String id)"
+msgstr ""
+
+msgid "List of changed interfaces"
+msgstr ""
+
+msgid "(`o.k.` stands for `org.keycloak.` package)"
+msgstr ""
+
+msgid "`server-spi` module"
+msgstr ""
+
+msgid "`o.k.credential.CredentialInputUpdater`"
+msgstr ""
+
+msgid "`o.k.credential.UserCredentialStore`"
+msgstr ""
+
+msgid "`o.k.models.ClientProvider`"
+msgstr ""
+
+msgid "`o.k.models.ClientSessionContext`"
+msgstr ""
+
+msgid "`o.k.models.GroupModel`"
+msgstr ""
+
+msgid "`o.k.models.GroupProvider`"
+msgstr ""
+
+msgid "`o.k.models.KeyManager`"
+msgstr ""
+
+msgid "`o.k.models.KeycloakSessionFactory`"
+msgstr ""
+
+msgid "`o.k.models.ProtocolMapperContainerModel`"
+msgstr ""
+
+msgid "`o.k.models.RealmModel`"
+msgstr ""
+
+msgid "`o.k.models.RealmProvider`"
+msgstr ""
+
+msgid "`o.k.models.RoleContainerModel`"
+msgstr ""
+
+msgid "`o.k.models.RoleMapperModel`"
+msgstr ""
+
+msgid "`o.k.models.RoleModel`"
+msgstr ""
+
+msgid "`o.k.models.RoleProvider`"
+msgstr ""
+
+msgid "`o.k.models.ScopeContainerModel`"
+msgstr ""
+
+msgid "`o.k.models.UserCredentialManager`"
+msgstr ""
+
+msgid "`o.k.models.UserModel`"
+msgstr ""
+
+msgid "`o.k.models.UserProvider`"
+msgstr ""
+
+msgid "`o.k.models.UserSessionProvider`"
+msgstr ""
+
+msgid "`o.k.models.utils.RoleUtils`"
+msgstr ""
+
+msgid "`o.k.sessions.AuthenticationSessionProvider`"
+msgstr ""
+
+msgid "`o.k.storage.client.ClientLookupProvider`"
+msgstr ""
+
+msgid "`o.k.storage.group.GroupLookupProvider`"
+msgstr ""
+
+msgid "`o.k.storage.user.UserLookupProvider`"
+msgstr ""
+
+msgid "`o.k.storage.user.UserQueryProvider`"
+msgstr ""
+
+msgid "`server-spi-private` module"
+msgstr ""
+
+msgid "`o.k.events.EventQuery`"
+msgstr ""
+
+msgid "`o.k.events.admin.AdminEventQuery`"
+msgstr ""
+
+msgid "`o.k.keys.KeyProvider`"
+msgstr ""
+
+msgid "All changes are linked to the following https://github.com/keycloak/keycloak/issues/14720[issue]."
+msgstr ""
+
+msgid "Migrating to 19.0.2"
+msgstr ""
+
+msgid "OpenID Connect Logout Prompt"
+msgstr ""
+
+msgid "At Keycloak 18.0.0, the logout is now compatible with the new OIDC specification, which changed the handling for the url parameters. However, to also remain compatible with earlier versions, a compatibility flag is introduced. See the link:{upgradingguide_link}#openid-connect-logout[{upgradingguide_name}] for further information for the backwards compatibility option, which allows your application to still use the old format for the url parameters."
+msgstr ""
+
+msgid "While the url parameters can now be configured to be compatible, there was still one incompatibility with keycloak 17 and earlier releases. If the user does not provide a valid `idTokenHint`, a logout prompt appears instead of a successful logout redirect. Therefore, a new compatibility flag `suppress-logout-confirmation-screen` is introduced to suppress the logout screen."
+msgstr ""
+
+msgid "You can enable this parameter when you start the server by entering the following command:"
+msgstr ""
+
+msgid "bin/kc.[sh|bat] --spi-login-protocol-openid-connect-suppress-logout-confirmation-screen=true start"
+msgstr ""
+
+msgid "With this configuration, you can still use the logout endpoint without a user prompt."
+msgstr ""
+
+msgid "The backwards compatibility switch will be removed in some future version - probably Keycloak 23. You are encouraged to update your clients as soon as possible as described above rather than rely on this switch."
+msgstr ""
+
+msgid "Deploying scripts through SAML javascript protocol mapper"
+msgstr ""
+
+msgid "Until now, administrators, which used SAML javascript protocol mapper on their SAML clients or client scopes, were allowed to upload scripts to the server through the {project_name} Administration Console as well as through the RESTful Admin API."
+msgstr ""
+
+msgid "For now on, this capability is *disabled* and users should deploy scripts directly to the server. This behaviour is aligned with other script based providers. For more details, please take a look at link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}]."
+msgstr ""
+
+msgid "UserInfo Endpoint Changes"
+msgstr ""
+
+msgid "Error response changes"
+msgstr ""
+
+msgid "The UserInfo endpoint is now returning error responses fully compliant with https://datatracker.ietf.org/doc/html/rfc6750[RFC 6750] (The OAuth 2.0 Authorization Framework: Bearer Token Usage). Error code and description (if available) are provided as `WWW-Authenticate` challenge attributes rather than JSON object fields. The responses will be the following, depending on the error condition:"
+msgstr ""
+
+msgid "In case no access token is provided:"
+msgstr ""
+
+msgid ""
+"401 Unauthorized\n"
+"WWW-Authenticate: Bearer realm=\"myrealm\""
+msgstr ""
+
+msgid "In case several methods are used simultaneously to provide an access token (for example, Authorization header + POST access_token parameter), or POST parameters are duplicated:"
+msgstr ""
+
+msgid ""
+"400 Bad Request\n"
+"WWW-Authenticate: Bearer realm=\"myrealm\", error=\"invalid_request\", error_description=\"...\""
+msgstr ""
+
+msgid "In case an access token is missing `openid` scope:"
+msgstr ""
+
+msgid ""
+"403 Forbidden\n"
+"WWW-Authenticate: Bearer realm=\"myrealm\", error=\"insufficient_scope\", error_description=\"Missing openid scope\""
+msgstr ""
+
+msgid "In case of inability to resolve cryptographic keys for UserInfo response signing/encryption:"
+msgstr ""
+
+msgid "500 Internal Server Error"
+msgstr ""
+
+msgid "In case of a token validation error, a `401 Unauthorized` is returned in combination with the `invalid_token` error code. This error includes user and client related checks and actually captures all the remaining error cases:"
+msgstr ""
+
+msgid ""
+"401 Unauthorized\n"
+"WWW-Authenticate: Bearer realm=\"myrealm\", error=\"invalid_token\", error_description=\"...\""
+msgstr ""
+
+msgid "Other Changes"
+msgstr ""
+
+msgid "It is now required for access tokens to have the `openid` scope, which is stipulated by UserInfo being a feature specific to OpenID Connect and not OAuth 2.0. If the `openid` scope is missing from the token, the request will be denied with a `403 Forbidden` (see above)."
+msgstr ""
+
+msgid "UserInfo now checks the user status, and returns the `invalid_token` response if the user is disabled."
+msgstr ""
+
+msgid "Migrating to 19.0.0"
+msgstr ""
+
+msgid "New Admin Console is now the default console"
+msgstr ""
+
+msgid "The new admin console is now the default console in Keycloak. If you are not able to start using the new admin console it is possible to continue to use the old admin console by disabling the new console, by for example running:"
+msgstr ""
+
+msgid "bin/kc.sh start-dev --features-disabled=admin2"
+msgstr ""
+
+msgid "An alternative approach to continue using the old admin console is to set the theme for the master realm or any other realm to `keycloak`."
+msgstr ""
+
+msgid "As the new admin console is significantly different to the old admin console, is now based on React and uses a newer version of PatternFly, any custom themes will most likely have to be re-implemented from scratch. To create a custom theme for the new admin console the theme should extend `keycloak.v2` instead of `keycloak`."
+msgstr ""
+
+msgid "If you have explicitly set the admin console theme to `keycloak` for the master realm or any other realm, it will continue to use the old admin console. To update to the new admin console you need to change the theme to `keycloak.v2`."
+msgstr ""
+
+msgid "The old admin console will be removed in Keycloak 21."
+msgstr ""
+
+msgid "Changes to the server configuration and startup"
+msgstr ""
+
+msgid "Before this release, you would use the `--auto-build` when running the `start` command to tell the server to conditionally run a `build` if any build option has changed prior to starting the server."
+msgstr ""
+
+msgid "In this release, the `--auto-build` flag is *deprecated* and you no longer need to use it to indicate that you want to set build options when starting the server. Instead, the server is always going to run a `build` by default prior to starting the server if any build option has changed. The new behavior improves the overall experience when configuring and starting the server by making it optional, although highly recommended, to run a `build` command beforehand in order to achieve the best startup time and memory footprint."
+msgstr ""
+
+msgid "Now, in order to achieve the best startup time and memory footprint, set the `--optimized` option to disable the new default behavior. The `--optimized` flag tells the server that checking for and running a `build` directly as part of the startup is not needed:"
+msgstr ""
+
+msgid "kc.sh start --optimized"
+msgstr ""
+
+msgid "If you are already using a custom image to set build options and run an optimized Keycloak container, make sure you set the `--optimized` option when invoking the `start` command."
+msgstr ""
+
+msgid "For more details, please take a look at the https://www.keycloak.org/server/configuration[Configuration Guide] and the https://www.keycloak.org/server/containers[Containers Guide]."
+msgstr ""
+
+msgid "Potentially breaking changes to the health endpoints"
+msgstr ""
+
+msgid "Before {project_name} 19.0.0, the quarkus based {project_name} distribution always enabled the following non-application endpoints unintentionally:"
+msgstr ""
+
+msgid "/q/health"
+msgstr ""
+
+msgid "/q/health/live"
+msgstr ""
+
+msgid "/q/health/ready"
+msgstr ""
+
+msgid "/q/metrics"
+msgstr ""
+
+msgid "Starting in {project_name} 19.0.0, these endpoints are **disabled** and a request will result in a 404 HTTP status-code. If you are using the `/q/...` endpoints, make sure to change your probes and monitoring systems to use the intended health endpoints instead when upgrading to {project_name} 19.0.0."
+msgstr ""
+
+msgid "The intended health endpoints are:"
+msgstr ""
+
+msgid "/health"
+msgstr ""
+
+msgid "/health/live"
+msgstr ""
+
+msgid "/health/ready"
+msgstr ""
+
+msgid "/metrics"
+msgstr ""
+
+msgid "Apart from disabling the /q/ endpoints, these are the other improvements made to the health endpoints:"
+msgstr ""
+
+msgid "The `health/live` endpoint used for liveness probes is now decoupled from the database connections health, to match current good practices and to not have the same behaviour as the `health/ready` endpoint. As a result, the database check is not shown in the `checks:` array anymore when calling `/health/live`, so when there is a database hiccup, the liveness probe will still return HTTP status-code 200 and a status of UP, so no pod restart may be triggered."
+msgstr ""
+
+msgid "The `health/ready` endpoint used for readiness probes still checks for a working database connection. Make sure you have not only `health-enabled=true` but also `metrics-enabled=true` set in your configuration, to enable the database check, resulting in an effective readiness probe. It will return HTTP status-code 503 and a status of DOWN when the database connection is not in a healthy state."
+msgstr ""
+
+msgid "Expect more enhancements in this area in the future. For more information, see the https://www.keycloak.org/server/health[Health guide]"
+msgstr ""
+
+msgid "Changes using GELF / centralized log management"
+msgstr ""
+
+msgid "As stated in the release notes, Keycloak now supports gelf logging for centralized logging systems out of the box."
+msgstr ""
+
+msgid "When you added the gelf related quarkus jars yourself in a prior version, make sure to switch to the supported configuration options in the https://www.keycloak.org/server/logging#_centralized_logging_using_gelf[logging guide] and remove your jars from the `providers` folder."
+msgstr ""
+
+msgid "Changes affecting developers"
+msgstr ""
+
+msgid "{project_name} undergoes large refactoring, which impacts existing code. Some of these changes require updates to existing code. These are in more detailed described below."
+msgstr ""
+
+msgid "Rationale for changes"
+msgstr ""
+
+msgid "{project_name} has several limitations; for example, downtime is needed for upgrading a {project_name} cluster. To address the limitations, an in-depth refactor has been initiated."
+msgstr ""
+
+msgid "The changes in this version are mostly attached to storage refactoring and a preparation of a new storage, called map storage. This storage will eventually replace the current storage, which will be called a _legacy store_ with this version. The legacy store will still be available in {project_name} for several more versions."
+msgstr ""
+
+msgid "The new store imposes a strict separation of responsibility between the service and storage layers. For that reason, the service layer's visibility of an object's origin will be restricted, so it will not be able to discriminate between cached or non-cached objects, or objects originating from local or federated storage."
+msgstr ""
+
+msgid "User storage SPI will become deprecated. It will be supported for several more versions, but will be eventually replaced by the Map Storage SPI, which will offer the ability to create custom storages for any recognized area, such as users, roles, clients, or groups."
+msgstr ""
+
+msgid "Extensions that rely on the level of detail available to services in the legacy store will need adjustment to retain this ability for the full deprecation period of the legacy store. The following section describes how that adjustment is accomplished."
+msgstr ""
+
+msgid "Using a legacy and map store is mutually exclusive; one store cannot be used while the other is active."
+msgstr ""
+
+msgid "Changes in the module structure"
+msgstr ""
+
+msgid "As part of introducing the new storage functionality, several public APIs around storage functionality in `KeycloakSession` have been consolidated, and some have been deprecated and will be removed in one of the next versions. Three new modules have been introduced, and data-oriented code from `server-spi`, `server-spi-private`, and `services` modules have been moved there:"
+msgstr ""
+
+msgid "`org.keycloak:keycloak-model-legacy`"
+msgstr ""
+
+msgid "Contains all public facing APIs from the legacy store, such as the User Storage API."
+msgstr ""
+
+msgid "`org.keycloak:keycloak-model-legacy-private`"
+msgstr ""
+
+msgid "Contains private implementations that relate to user storage management, such as storage `*Manager` classes."
+msgstr ""
+
+msgid "`org.keycloak:keycloak-model-legacy-services`"
+msgstr ""
+
+msgid "Contains all REST endpoints that directly operate on the legacy store, and have no meaning in the new store."
+msgstr ""
+
+msgid "These modules will be available as long as legacy stores will be supported. After that period, they will be removed."
+msgstr ""
+
+msgid "This change impacts deployments of existing user storage providers in the Wildfly distribution. If your user storage provider is deployed as a WAR archive, you need to add the `META-INF/jboss-deployment-structure.xml` file into that archive stating the modified dependencies as shown below:"
+msgstr ""
+
+msgid ""
+"<jboss-deployment-structure xmlns=\"urn:jboss:deployment-structure:1.2\">\n"
+"    <deployment>\n"
+"        <dependencies>\n"
+"            <module name=\"org.keycloak.keycloak-model-legacy\" meta-inf=\"import\"/>\n"
+"        </dependencies>\n"
+"    </deployment>\n"
+"</jboss-deployment-structure>"
+msgstr ""
+
+msgid "Changes in `KeycloakSession`"
+msgstr ""
+
+msgid "`KeycloakSession` has been simplified. Several methods have been deprecated in `KeycloakSession` and will be removed in a future version."
+msgstr ""
+
+msgid "`KeycloakSession` session contains several methods for obtaining a provider for a particular object type, such as for a `UserProvider` there are `users()`, `userLocalStorage()`, `userCache()`, `userStorageManager()`, and `userFederatedStorage()`. This situation may be confusing for the developer who has to understand the exact meaning of each method, and depends on current store layout. The new store does not distinguish federated from local storage."
+msgstr ""
+
+msgid "For those reasons, only the `users()` method will be kept in `KeycloakSession`, and should replace all other calls listed above. The rest of the methods are deprecated, and will eventually be removed. The same pattern of deprecation applies to methods of other object areas, such as `clients()` or `groups()`. All methods ending in `++*StorageManager()++` and `++*LocalStorage++()` now throw an exception when being called, as there is no direct replacement in the new store. The next section describes how to migrate those calls to the new API or use the legacy API while using the old store."
+msgstr ""
+
+msgid "The deprecated methods in KeycloakSession will be removed in a future release. The `keycloak-model-legacy-*` modules will be available for a longer time and will eventually be removed."
+msgstr ""
+
+msgid "Migrating existing providers that do not depend on the legacy store"
+msgstr ""
+
+msgid "The existing providers need no migration if they do not call a deprecated method, which should be the case for most providers."
+msgstr ""
+
+msgid "If the provider uses deprecated methods, but does not rely on local versus non-local storage, changing a call from the now deprecated `userLocalStorage()` to the method `users()` is the best option. Be aware that the semantics change here as the new method involves a cache if that has been enabled in the local setup."
+msgstr ""
+
+msgid "Before migration: accessing a deprecated API that now throws an exception"
+msgstr ""
+
+msgid "session**.userLocalStorage()**;"
+msgstr ""
+
+msgid "After migration: accessing the new API caller does not depend on the legacy storage API"
+msgstr ""
+
+msgid "session**.users()**;"
+msgstr ""
+
+msgid "Migrating existing providers that depend on the legacy store"
+msgstr ""
+
+msgid "In the rare case when a custom provider needs to distinguish between the mode of a particular provider, access to the deprecated objects is provided by using the `LegacyStoreManagers` data store provider. This option will be available only if the legacy modules are part of the deployment."
+msgstr ""
+
+msgid "After migration: accessing the old functionality via the LegacyStoreManagers API"
+msgstr ""
+
+msgid "((LegacyDatastoreProvider) session.getProvider(DatastoreProvider.class))**.userLocalStorage()**;"
+msgstr ""
+
+msgid "Some user storage related APIs have been wrapped in `org.keycloak.storage.UserStorageUtil` for convenience."
+msgstr ""
+
+msgid "Creating custom storage providers"
+msgstr ""
+
+msgid "The API for creating a custom storage provider has not been fully stabilized yet, though it is available as a tech preview. See the `MapStorageProvider` SPI and its Javadoc for details. The availability of the new API is a priority for the next Keycloak version."
+msgstr ""
+
+msgid "Changes to `RealmModel`"
+msgstr ""
+
+msgid "The methods getUserStorageProviders`, `getUserStorageProvidersStream`, `getClientStorageProviders`, `getClientStorageProvidersStream`, `getRoleStorageProviders` and `getRoleStorageProvidersStream` have been removed. Code which depends on these methods and runs with the legacy storage enabled should cast the instance as follows:"
+msgstr ""
+
+msgid "Before migration: code will not compile due to the changed API"
+msgstr ""
+
+msgid "realm**.getClientStorageProvidersStream()**...;"
+msgstr ""
+
+msgid "After migration: cast the instance to the legacy interface"
+msgstr ""
+
+msgid "((LegacyRealmModel) realm)**.getClientStorageProvidersStream()**...;"
+msgstr ""
+
+msgid "Similarly, code that used to implement the interface `RealmModel` and wants to provide these methods should implement the new interface `LegacyRealmModel`. This interface is a sub-interface of `RealmModel` and includes the old methods:"
+msgstr ""
+
+msgid "Before migration: code implements the old interface"
+msgstr ""
+
+msgid ""
+"public class MyClass extends RealmModel {\n"
+"    /* might not compile due to @Override annotations for methods no longer present\n"
+"       in the interface RealmModel. */\n"
+"    /* ... */\n"
+"}"
+msgstr ""
+
+msgid "After migration: code implements the new interface"
+msgstr ""
+
+msgid ""
+"public class MyClass extends LegacyRealmModel {\n"
+"    /* ... */\n"
+"}"
+msgstr ""
+
+msgid "Interface `UserCache` moved to the legacy module"
+msgstr ""
+
+msgid "As the caching status of objects will be transparent to services, the interface `UserCache` has been moved to the module `keycloak-legacy`. Calls to `session.userCache()` will therefore return only a `UserProvider`, which is a breaking change."
+msgstr ""
+
+msgid "Code that depends on the legacy implementation should access the `UserCache` directly. While such calls might be necessary while caching with the legacy store is used, it will not be necessary when using the new map store, as that one handles caching transparently."
+msgstr ""
+
+msgid "Before migration: code will not compile due to a changed return type"
+msgstr ""
+
+msgid ""
+"// session.userCache() might return null, null-check omitted for brevity.\n"
+"session**.userCache()**.evict(realm, user);"
+msgstr ""
+
+msgid "After migration: use the API directly"
+msgstr ""
+
+msgid ""
+"// session.getProvider(UserCache.class) might return null, null-check omitted for brevity.\n"
+"session.**getProvider(UserCache.class)**.evict(realm, user);"
+msgstr ""
+
+msgid "To trigger the invalidation of a realm, instead of using the `UserCache` API, consider triggering an event:"
+msgstr ""
+
+msgid ""
+"UserCache cache = session.getProvider(UserCache.class);\n"
+"if (cache != null) cache.clear();"
+msgstr ""
+
+msgid "After migration: use the invalidation API"
+msgstr ""
+
+msgid "session.invalidate(InvalidationHandler.ObjectType.REALM, realm.getId());"
+msgstr ""
+
+msgid "Credential management for users"
+msgstr ""
+
+msgid "Credentials for users were previously managed using `session.userCredentialManager()._method_(realm, user, \\...)`. The new way is to leverage `user.credentialManager()._method_(\\...)`. This form gets the credential functionality closer to the API of users, and does not rely on prior knowledge of the user credential's location in regard to realm and storage."
+msgstr ""
+
+msgid "The old APIs have been deprecated, and will only work when the legacy storage is enabled in the deployment. The new APIs will work with both old and new storages."
+msgstr ""
+
+msgid "Before migration: accessing a deprecated API"
+msgstr ""
+
+msgid "session.userCredentialManager()**.createCredential**(realm, user, credentialModel)"
+msgstr ""
+
+msgid "After migration: accessing the new API"
+msgstr ""
+
+msgid "user.credentialManager()**.createStoredCredential**(credentialModel)"
+msgstr ""
+
+msgid "For a custom `UserStorageProvider`, there is a new method `credentialManager()` that needs to be implemented when returning a `UserModel`. As those providers run in an environment with the legacy storage enabled, those must return an instance of the `LegacyUserCredentialManager`:"
+msgstr ""
+
+msgid "Before migration: code will not compile due to the new method `credentialManager()` required by `UserModel`"
+msgstr ""
+
+msgid ""
+"public class MyUserStorageProvider implements UserLookupProvider, ... {\n"
+"    /* ... */\n"
+"    protected UserModel createAdapter(RealmModel realm, String username) {\n"
+"        return new AbstractUserAdapter(session, realm, model) {\n"
+"            @Override\n"
+"            public String getUsername() {\n"
+"                return username;\n"
+"            }\n"
+"        };\n"
+"    }\n"
+"}"
+msgstr ""
+
+msgid "After migration: implementation of the API `UserModel.credentialManager()` for the legacy store."
+msgstr ""
+
+msgid ""
+"public class MyUserStorageProvider implements UserLookupProvider, ... {\n"
+"    /* ... */\n"
+"    protected UserModel createAdapter(RealmModel realm, String username) {\n"
+"        return new AbstractUserAdapter(session, realm, model) {\n"
+"            @Override\n"
+"            public String getUsername() {\n"
+"                return username;\n"
+"            }\n"
+"\n"
+"            @Override\n"
+"            public SubjectCredentialManager credentialManager() {\n"
+"                return new LegacyUserCredentialManager(session, realm, this);\n"
+"            }\n"
+"        };\n"
+"    }\n"
+"}"
+msgstr ""
+
+msgid "Deprecated `podDisruptionBudget` in the legacy {project_operator}"
+msgstr ""
+
+msgid "With this release, we have deprecated `podDisruptionBudget` field in the Keycloak CR of the https://github.com/keycloak/keycloak-operator[legacy {project_operator}]. This optional field will be ignored when the Operator is deployed on Kubernetes version 1.25 and higher."
+msgstr ""
+
+msgid "As a workaround, you can manually create the Pod Disruption Budget in your cluster, for example:"
+msgstr ""
+
+msgid ""
+"apiVersion: policy/v1\n"
+"kind: PodDisruptionBudget\n"
+"metadata:\n"
+"  labels:\n"
+"    app: keycloak\n"
+"  name: keycloak\n"
+"spec:\n"
+"  maxUnavailable: 1\n"
+"  selector:\n"
+"    matchLabels:\n"
+"      component: keycloak"
+msgstr ""
+
+msgid "See also the https://kubernetes.io/docs/tasks/run-application/configure-pdb/[Kubernetes Documentation]."
+msgstr ""
+
+msgid "Deployment changes in the new {project_operator}"
+msgstr ""
+
+msgid "The new {project_operator} now uses `StatefulSet` instead of `Deployment` for Keycloak deployments. There's no automated migration in place given the Operator is a tech preview in this release. If you are using the new Operator with 18.0.z, please make sure to back up, delete and recreate your Keycloak CR after the upgrade to 19.0.0."
+msgstr ""
+
+msgid "Migrating to 18.0.0"
+msgstr ""
+
+msgid "Step-up authentication"
+msgstr ""
+
+msgid "Step-up authentication is a new feature. This feature provides the `acr` client scope, which contains a protocol mapper that is supposed to add the `acr` claim in the token. The `acr` claim is not added automatically now as it was before this version, but it is added with the usage of this client scope and protocol mapper."
+msgstr ""
+
+msgid "The client scope is added as a realm \"default\" client scope and hence will be added to all newly created clients. For performance reasons, the client scope is not automatically added to all existing clients during migration. The clients will not have an `acr` claim by default after the migration. Consider these possible actions:"
+msgstr ""
+
+msgid "If you do not plan to use step-up authentication feature, but you rely on the `acr` claim in the token, you can disable `step_up_authentication` feature. The claim will be added with the value `1` in case of normal authentication and `0` in case of SSO authentication."
+msgstr ""
+
+msgid "Add `acr` client scope to your clients manually by admin REST API or admin console. This is needed especially if you want to use step-up authentication. If you have a large number of clients in the realm and want to use `acr` claim for all of them, you can trigger some SQL similar to this against your DB. However, remember to clear the cache or restart the server if {project_name} is already started:"
+msgstr ""
+
+msgid ""
+"insert into CLIENT_SCOPE_CLIENT (CLIENT_ID, SCOPE_ID, DEFAULT_SCOPE) select CLIENT.ID as CLIENT_ID, CLIENT_SCOPE.ID as SCOPE_ID, true as DEFAULT_SCOPE\n"
+"from CLIENT_SCOPE, CLIENT where CLIENT_SCOPE.REALM_ID='test' and CLIENT_SCOPE.NAME='acr' and CLIENT.REALM_ID='test' and CLIENT.PROTOCOL='openid-connect';"
+msgstr ""
+
+msgid "OpenID Connect Logout"
+msgstr ""
+
+msgid "Previous versions of {project_name} had supported automatic logout of the user and redirecting to the application by opening logout endpoint URL such as `http(s)://example-host/auth/realms/my-realm-name/protocol/openid-connect/logout?redirect_uri=encodedRedirectUri`. While that implementation was easy to use, it had potentially negative impact on performance and security. The new version has better support for logout based on the OpenID Connect RP-Initiated Logout specification. The parameter `redirect_uri` is no longer supported; also, in the new version, the user needs to confirm the logout. It is possible to omit the confirmation and do automatic redirect to the application when you include parameter `post_logout_redirect_uri` together with the parameter `id_token_hint` with the ID Token used for login."
+msgstr ""
+
+msgid "The existing deployments are affected in the following ways:"
+msgstr ""
+
+msgid "If your application directly uses links to logout endpoint with the `redirect_uri` parameter, you may be required to change this as described above. Consider either removing the `redirect_uri` parameter entirely or replacing it with the `id_token_hint` and `post_logout_redirect_uri` parameters."
+msgstr ""
+
+msgid "If you use java adapters and your application does logout by call `httpServletRequest.logout()`, you are not affected because this call uses the backchannel variant of the logout endpoint and that one was not changed."
+msgstr ""
+
+msgid "If you use the latest javascript adapter, you are also not affected. However if your application uses an older version of the JavaScript adapter, you are affected as this adapter uses the variant of the logout endpoint with the deprecated `redirect_uri` parameter. In this case, you may need to upgrade to the latest version of the JavaScript adapter."
+msgstr ""
+
+msgid "For the Node.js adapter, the same guideline applies as for the JavaScript adapter. You are encouraged to update to the latest version as the older version of the adapter uses the deprecated `redirect_uri` parameter. With the latest Node.js adapter, you are not affected as long as you use the logout based on the `/logout` URL as described in the documentation or in the Node.js adapter example. However, in the case when your application directly uses the method `keycloak.logoutUrl`, you can consider adding `idTokenHint` as the second argument to this method. The possibility to add `idTokenHint` as second argument was newly added in this version. The `idTokenHint` needs to be a valid ID Token that was obtained during the login. Adding `idTokenHint` is optional, but if you omit it, your users will need to confirm the logout screen as described earlier. Also they will not be redirected back to the application after logout."
+msgstr ""
+
+msgid "There is a backwards compatibility option, which allows your application to still use the old format of the `redirect_uri` parameter."
+msgstr ""
+
+msgid "bin/kc.[sh|bat] --spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true start"
+msgstr ""
+
+msgid "With this configuration, you can still use the format with the `redirect_uri` parameter. Note the confirmation screen will be needed if the `id_token_hint` is omitted."
+msgstr ""
+
+msgid "Removal of the `upload-scripts` feature"
+msgstr ""
+
+msgid "Previous versions of {project_name} had supported managing JavaScript code through the management interfaces like the administrations console and REST API. Starting from this version this is no longer possible, and you should now deploy your scripts to the server in order to configure the following providers:"
+msgstr ""
+
+msgid "OpenID Connect Script Mapper"
+msgstr ""
+
+msgid "Script Authenticator (Authentication Execution)"
+msgstr ""
+
+msgid "JavaScript Policies"
+msgstr ""
+
+msgid "More details about how to deploy scripts to the server are available in the https://www.keycloak.org/docs/latest/server_development/#_script_providers[documentation]. Note that to use scripts, you are still required to enable the `scripts` technology preview feature."
+msgstr ""
+
+msgid "kc.[sh|bat] start --auto-build --features=preview"
+msgstr ""
+
+msgid "When deploying scripts, the server is going to automatically create their corresponding providers so that you can select them when configuring authentication flows, mappers, and authorization policies."
+msgstr ""
+
+msgid "In general, the steps to update your realms are the following:"
+msgstr ""
+
+msgid "Before upgrading, remove any script provider you are using."
+msgstr ""
+
+msgid "After the upgrade, deploy your scripts following the instructions in the https://www.keycloak.org/docs/latest/server_development/#_script_providers[documentation]."
+msgstr ""
+
+msgid "Update your authentication flows, mappers, and the client authorization settings to use the providers created from the scripts deployed to the server."
+msgstr ""
+
+msgid "Account console Patternfly upgrade"
+msgstr ""
+
+msgid "The Patternfly (PF) React libraries have been updated, `@patternfly/react-core` from v3.153.3 to v4.147.0, `@patternfly/react-icons` from v3.15.16 to v 4.11.8, and `@patternfly/react-styles` from v3.7.14 to v4.11.8. Several minor UI updates were made to bring the account console into alignment with PF design standards."
+msgstr ""
+
+msgid "Custom developed account UIs might not be compatible with these updates due to the breaking changes in PF. Most breaking changes should be resolvable by updating props on PF components."
+msgstr ""
+
+msgid "Resources:"
+msgstr ""
+
+msgid "[Patternfly docs](https://www.patternfly.org)"
+msgstr ""
+
+msgid "Components known to have breaking changes:"
+msgstr ""
+
+msgid "Alert"
+msgstr ""
+
+msgid "`action` prop changed to `actionClose`"
+msgstr ""
+
+msgid "Expandable"
+msgstr ""
+
+msgid "renamed to `ExpandableSection`"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "size attr now uses `TitleSizes`"
+msgstr ""
+
+msgid "DataListContent"
+msgstr ""
+
+msgid "`noPadding` changed to `hasNoPadding`"
+msgstr ""
+
+msgid "Grid, Stack, Level, Gallery"
+msgstr ""
+
+msgid "`gutter` attr changed to `hasGutter`"
+msgstr ""
+
+msgid "Modal"
+msgstr ""
+
+msgid "sizing control changed from, e.g. `isLarge`, to use `ModalVariant`, e.g. `variant={ModalVariant.large}`"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "`ariaLabelTypeAhead` to `typeAheadAriaLabel`"
+msgstr ""
+
+msgid "`isExpanded` to `isOpen`"
+msgstr ""
+
+msgid "`ariaLabelledBy` to `aria-labelledby`"
+msgstr ""
+
+msgid "`noPadding` to `hasNoPadding`"
+msgstr ""
+
+msgid "Quarkus distribution: Split metrics-enabled option into health-enabled and metrics-enabled"
+msgstr ""
+
+msgid "The `metrics-enabled` option now only enables the metrics for {project_name}. To enable the readiness and liveness health endpoints, there's a new boolean option `health-enabled`. This allows more fine-grained usage of these options, e.g. enabling metrics but not enabling readiness/liveness probes for on-premise use cases. In order to keep the same behaviour as before when `metrics-enabled=true` was set, you need to additionally set `health-enabled=true` when building {project_name}."
+msgstr ""
+
+msgid "Migrating to 17.0.0"
+msgstr ""
+
+msgid "Default distribution is now powered by Quarkus"
+msgstr ""
+
+msgid "The default distribution of Keycloak is now powered by Quarkus, which brings a number of breaking changes to you configure Keycloak and deploy custom providers. For more information check out the https://www.keycloak.org/migration/migrating-to-quarkus[Quarkus Migration Guide]."
+msgstr ""
+
+msgid "The WildFly distribution of Keycloak is now deprecated, with support ending June 2022. We recommend migrating to the Quarkus distribution as soon as possible. However, if you need to remain on the legacy WildFly distribution for some time, there are some changes to consider:"
+msgstr ""
+
+msgid "Container images for the legacy distribution tags have changed. To use the legacy distribution use the tags `legacy` or `17.0.0-legacy`."
+msgstr ""
+
+msgid "Download on the website for the legacy distribution has changed to `keycloak-legacy-17.0.0.[zip|tar.gz]`."
+msgstr ""
+
+msgid "If you encounter problems migrating to the Quarkus distribution, missing ability to configure something, or have general ideas and feedback, please open a discussion in https://github.com/keycloak/keycloak/discussions/categories/keycloak-x-quarkus-distribution[GitHub Discussions]."
+msgstr ""
+
+msgid "Migrating from the preview Quarkus distribution"
+msgstr ""
+
+msgid "A number of things have changed since the preview Quarkus distribution was released in Keycloak 15.1.0. The ideal way to learn about what's changed is to check out the new https://www.keycloak.org/guides#server[Server guides]. In summary, the changes include:"
+msgstr ""
+
+msgid "Container now published to `quay.io/keycloak/keycloak:latest` and `quay.io/keycloak/keycloak:17.0.0`"
+msgstr ""
+
+msgid "Download on website renamed to `keycloak-17.0.0.[zip|tar.gz]`."
+msgstr ""
+
+msgid "`conf/keycloak.properties` changed to `conf/keycloak.conf`, which unifies configuration keys between the config file and CLI arguments."
+msgstr ""
+
+msgid "Clearer separation between `build options` and `runtime configuration`."
+msgstr ""
+
+msgid "Custom Quarkus configuration is done through `conf/quarkus.properties`."
+msgstr ""
+
+msgid "`h2-mem` and `h2-file` databases renamed to `dev-mem` and `dev-file`."
+msgstr ""
+
+msgid "Features are now enabled/disabled with `--features` and `--features-disabled` replacing the previous approach that had a separate config key for each feature."
+msgstr ""
+
+msgid "Runtime configuration can no longer be passed to `kc.[sh|bat] build` and is no longer persisted in the build"
+msgstr ""
+
+msgid "Logging level and format is now configured with `--log-level` and `--log-format`, while in the past these had to be configured using unsupported Quarkus properties."
+msgstr ""
+
+msgid "Client Policies Migration : client-scopes"
+msgstr ""
+
+msgid "If you used a policy including client-scopes condition and edited JSON document directly, you will need to change the \"scope\" field name in a JSON document to \"scopes\"."
+msgstr ""
+
+msgid "Liquibase upgraded to version 4.6.2"
+msgstr ""
+
+msgid "Liquibase was updated from version 3.5.5 to 4.6.2, which includes, among other things, several bug fixes, and a new way of registering custom extensions using `ServiceLoader`."
+msgstr ""
+
+msgid "Migration from previous Keycloak versions to Keycloak 17.0.0 has been extensively tested with all currently supported databases, but we would like to stress the importance of closely following the <<_upgrading,Upgrading Guide>>, specifically of *backing up existing database before upgrade*. While we did our best to test the consequences of the Liquibase upgrade, some installations could be using specific setup unknown to us."
+msgstr ""
+
+msgid "Migrating to 16.0.0"
+msgstr ""
+
+msgid "WildFly 25 upgrade"
+msgstr ""
+
+msgid "WildFly 25 deprecates the legacy security subsystem that among other things was used to configure TLS. Due to the amount of changes we are not able to provide migration scripts as we have done in the past."
+msgstr ""
+
+msgid "We recommend that rather than copying configuration files from previous versions of Keycloak that you start with the default configuration files provided in Keycloak 16 and apply the relevant changes."
+msgstr ""
+
+msgid "Configuration for the Keycloak subsystem can be copied directly."
+msgstr ""
+
+msgid "For more information around the Elytron subsystem refer to the https://docs.wildfly.org/25/WildFly_Elytron_Security.html[WildFly documentation]."
+msgstr ""
+
+msgid "We are really sorry for this inconvenience and understand this will make it significantly harder for everyone to upgrade to Keycloak 16, but we simply have not been able to find an alternative approach."
+msgstr ""
+
+msgid "One thing worth pointing out is the switch to Quarkus distribution, which we plan to make fully supported in Keycloak 17, will make it significantly easier to configure and upgrade Keycloak."
+msgstr ""
+
+msgid "For more information on WildFly 25 refer to the https://www.wildfly.org/news/2021/10/05/WildFly25-Final-Released/[WildFly 25 release notes]."
+msgstr ""
+
+msgid "Proxy environment variables"
+msgstr ""
+
+msgid "{project_name} now respects the standard `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables for outgoing HTTP requests. This change could lead to unexpected use of a proxy server if you have for example the `HTTP_PROXY` variable defined but have no explicit proxy mappings specified in your SPI configuration. To prevent {project_name} from using those environment variables, you can explicitly create a no proxy route for all requests as `.*;NO_PROXY`."
+msgstr ""
+
+msgid "Deprecated features in the {project_operator}"
+msgstr ""
+
+msgid "With this release, we have deprecated and/or marked as unsupported some features in the {project_operator}. This concerns the Backup CRD and the operator managed Postgres Database."
+msgstr ""
+
+msgid "Keycloak Operator examples including unsupported Metrics extension"
+msgstr ""
+
+msgid "Previously, an unsupported metrics extension was added in the example for the creation of the Keycloak CR by the {project_operator}. This has been removed."
+msgstr ""
+
+msgid "Migrating to 14.0.0"
+msgstr ""
+
+msgid "Client policies migration"
+msgstr ""
+
+msgid "The Client policies feature was a preview feature since Keycloak 12 and did not have proper support. If you tried this feature and configured some client policies or client profiles in Keycloak 12 or Keycloak 13, then you will need to configure your client policies and client profiles again in the new version. The format of the configuration changed significantly as it was only a preview and hence we do not provide automatic migration of client policies and client profiles created in Keycloak 12 or Keycloak 13."
+msgstr ""
+
+msgid "Migrating to 13.0.0"
+msgstr ""
+
+msgid "Manual migration step needed"
+msgstr ""
+
+msgid "Manual change is required when the standalone.xml contains references to any of the SmallRye modules. SmallRye modules were removed from the underlying {appserver_name} distribution, and the server does not start if the configuration references them. Thus if the configuration in the `standalone.xml` refers to these modules, the server configuration migration via `migrate-standalone.cli` fails before any changes are made to the configuration. In such case, to perform server configuration migration, you have to manually remove all the lines that refer to SmallRye modules. In the default configuration, you need to remove specifically the following lines:"
+msgstr ""
+
+msgid ""
+"<extension module=\"org.wildfly.extension.microprofile.config-smallrye\"/>\n"
+"<extension module=\"org.wildfly.extension.microprofile.health-smallrye\"/>\n"
+"<extension module=\"org.wildfly.extension.microprofile.metrics-smallrye\"/>"
+msgstr ""
+
+msgid ""
+"<subsystem xmlns=\"urn:wildfly:microprofile-config-smallrye:1.0\"/>\n"
+"<subsystem xmlns=\"urn:wildfly:microprofile-health-smallrye:2.0\" security-enabled=\"false\" empty-liveness-checks-status=\"${env.MP_HEALTH_EMPTY_LIVENESS_CHECKS_STATUS:UP}\" empty-readiness-checks-status=\"${env.MP_HEALTH_EMPTY_READINESS_CHECKS_STATUS:UP}\"/>\n"
+"<subsystem xmlns=\"urn:wildfly:microprofile-metrics-smallrye:2.0\" security-enabled=\"false\" exposed-subsystems=\"*\" prefix=\"${wildfly.metrics.prefix:wildfly}\"/>"
+msgstr ""
+
+msgid "Upgrade to Wildfly 23"
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 23 as the underlying container. This does not directly involve any specific {project_name} server functionality, however, note these changes related to migration:"
+msgstr ""
+
+msgid "Dependency updates"
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by the Wildfly 23 server. For example, Infinispan is now `11.0.9.Final`."
+msgstr ""
+
+msgid "Configuration changes"
+msgstr ""
+
+msgid "A few configuration changes exist in the `standalone(-ha).xml` and `domain.xml` files. You should follow the <<_install_new_version>> section to handle the migration of configuration files automatically. However, here are the most important changes, which you may need if you made your own configuration changes:"
+msgstr ""
+
+msgid "The `module` attribute of Infinispan cache containers is now *deprecated* (unused) and is *replaced with* the `modules` attribute, representing the set of modules associated with this cache container's configuration. Moreover, there were also additional changes to attributes of various elements, originating from the use of Wildfly 23 as the underlying container. For example, the `managed-executor-service` and `managed-scheduled-executor-service` elements now recognize the new `hung-task-termination-period` attribute. See link:https://docs.wildfly.org/23/wildscribe/index.html[the Wildfly 23 full model reference] for details."
+msgstr ""
+
+msgid "Upgrade to Wildfly 22"
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 22 as the underlying container. This does not directly involve any specific {project_name} server functionality, however, note these changes related to migration:"
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by the Wildfly 22 server. For example, Infinispan is now `11.0.8.Final`."
+msgstr ""
+
+msgid "The link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Config_SmallRye[Eclipse MicroProfile Config], link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Health_SmallRye[Eclipse MicroProfile Health], and link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Metrics_SmallRye[Eclipse MicroProfile Metrics] subsystems are replaced with link:https://docs.wildfly.org/22/Admin_Guide.html#Health[WildFly subsystem for health] and link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Metrics_SmallRye[WildFly subsystem for base metrics]."
+msgstr ""
+
+msgid "The default Wildfly configuration now uses the ability to make use of an automatically generated self-signed certificate with Elytron. Refer to link:https://docs.wildfly.org/22/WildFly_Elytron_Security.html#update-wildfly-to-use-the-default-elytron-components-for-application-authentication[a dedicated `applicationSSC` server SSL context section] for details."
+msgstr ""
+
+msgid "Migrating to 12.0.2"
+msgstr ""
+
+msgid "Read-only attributes"
+msgstr ""
+
+msgid "There was added support for the read-only user attributes. This includes the user attributes, which are not supposed to be edited by the user or by the administrator when updating user with REST API or with the {project_name} user interfaces. It can be important especially if you use:"
+msgstr ""
+
+msgid "Custom user storage providers"
+msgstr ""
+
+msgid "Custom authenticators"
+msgstr ""
+
+msgid "Custom JavaScript authorization policies, which establish authorization based on some user attribute"
+msgstr ""
+
+msgid "X.509 authenticator with custom attribute for mapping the X.509 certificate to the user identity"
+msgstr ""
+
+msgid "Any other custom functionality, where some of the user attributes are used as the metadata for storing authentication/authorization/identity context rather than simple user profile information."
+msgstr ""
+
+msgid "See the details in the link:{adminguide_link}#_read_only_user_attributes[Threat model mitigation chapter]."
+msgstr ""
+
+msgid "Valid Request URIs"
+msgstr ""
+
+msgid "If you use the OpenID Connect parameter `request_uri`, a requirement exists that your client needs to have `Valid Request URIs` configured. This can be configured through the admin console on the client details page or through the admin REST API or client registration API. Valid Request URIs need to contain the list of Request URI values, which are permitted for the particular client. This is to avoid SSRF attacks. There is possibility to use wildcards or relative paths similarly such as the `Valid Redirect URIs` option, however for security purposes, we typically recommend to use as specific value as possible."
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 22 as the underlying container. This does not directly involve any specific {project_name} server functionality, but a few changes related to the migration, which are worth mentioning."
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by Wildfly 22 server. For example, Infinispan is now `11.0.8.Final`."
+msgstr ""
+
+msgid "A few configuration changes exist in the `standalone(-ha).xml` and `domain.xml` files. You should follow the <<_install_new_version>> section to handle the migration of configuration files automatically. If more detail is needed, because, for example, you did some configuration changes on your own, the list of the most important changes follows:"
+msgstr ""
+
+msgid "The link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Config_SmallRye[Eclipse MicroProfile Config], link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Health_SmallRye[Eclipse MicroProfile Health], and link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Metrics_SmallRye[Eclipse MicroProfile Metrics] subsystems were replaced by link:https://docs.wildfly.org/22/Admin_Guide.html#Health[WildFly subsystem for health] and link:https://docs.wildfly.org/22/Admin_Guide.html#MicroProfile_Metrics_SmallRye[WildFly subsystem for base metrics]."
+msgstr ""
+
+msgid "The default Wildfly configuration now utilizes the ability to make use of an automatically generated self-signed certificate with Elytron. Refer to link:https://docs.wildfly.org/22/WildFly_Elytron_Security.html#update-wildfly-to-use-the-default-elytron-components-for-application-authentication[a dedicated `applicationSSC` server SSL context section] for details."
+msgstr ""
+
+msgid "Migrating to 12.0.0"
+msgstr ""
+
+msgid "Upgrade to Wildfly 21"
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 21 as the underlying container. This does not directly involve any specific {project_name} server functionality, however, note these changes related to migration:"
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by the Wildfly 21 server. For example, Infinispan is now 11.0.4.Final."
+msgstr ""
+
+msgid "The `object-memory` element of Infinispan caches is now *deprecated* (unused) and is *replaced with* the `heap-memory` element."
+msgstr ""
+
+msgid "Skip creation of user session for the Docker protocol authentication"
+msgstr ""
+
+msgid "No user session is created after successful authentication with the Docker protocol. For details, please refer to the link:{adminguide_link}#_docker[{adminguide_name}]."
+msgstr ""
+
+msgid "Upgrade to PatternFly 4"
+msgstr ""
+
+msgid "The {project_name} login theme components have been upgraded to PatternFly 4. The old PatternFly 3 runs simultaneously with the new one, so it's possible to keep PF3 components. However, some changes to the design of the login theme were performed. Please upgrade your custom login theme due them. An example with the necessary changes can be found in the `keycloak/examples/themes/theme/sunrise` directory. No additional setup is required."
+msgstr ""
+
+msgid "Client Credentials Grant without refresh token by default"
+msgstr ""
+
+msgid "From this {project_name} version, the OAuth2 Client Credentials Grant endpoint does not issue refresh tokens by default. This behavior is aligned with the OAuth2 specification. As a side effect of this change, no user session is created on the {project_name} server side after successful Client Credentials authentication, which results in improved performance and memory consumption. Clients that use Client Credentials Grant are encouraged to stop using refresh tokens and instead always authenticate at every request with `grant_type=client_credentials` instead of using `refresh_token` as grant type. In relation to this, {project_name} has support for revocation of access tokens in the OAuth2 Revocation Endpoint, hence clients are allowed to revoke individual access tokens if needed."
+msgstr ""
+
+msgid "For backwards compatibility, a possibility to stick to the behavior of old versions exists. When this is used, the refresh token will be still issued after a successful authentication with the Client Credentials Grant and also the user session will be created. This can be enabled for the particular client in the {project_name} admin console, in client details in the section with `OpenID Connect Compatibility Modes` with the switch `Use Refresh Tokens For Client Credentials Grant`."
+msgstr ""
+
+msgid "Migrating to 11.0.0"
+msgstr ""
+
+msgid "Upgrade to Wildfly 20"
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 20 as the underlying container. This does not directly involve any specific {project_name} server functionality, however, note these changes related to migration:"
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by the Wildfly 20 server. For example, Infinispan is now 10.1.8.Final."
+msgstr ""
+
+msgid "A few configuration changes exist in the `standalone(-ha).xml` and `domain.xml` files. You should follow the <<_install_new_version>> section to handle the migration of configuration files automatically."
+msgstr ""
+
+msgid "Cross-Datacenter Replication changes"
+msgstr ""
+
+msgid "You will need to upgrade {jdgserver_name} server to version {jdgserver_version}. The older version may still work, but it is not guaranteed as they are not tested anymore."
+msgstr ""
+
+msgid "It is recommended to use the `protocolVersion` property added to the `remote-store` element when configuring Infinispan caches. When connecting to the {jdgserver_name} server 9.4.18, the recommended version of the hotrod protocol version is 2.9 as the Infinispan library version differs among {project_name} server and {jdgserver_name} server. For more details, see the Cross-Datacenter documentation."
+msgstr ""
+
+msgid "It is recommended to use `remoteStoreSecurityEnabled` property under `connectionsInfinispan` subsystem. For more details, see the Cross-Datacenter documentation."
+msgstr ""
+
+msgid "LDAP no-import bugfix"
+msgstr ""
+
+msgid "In the previous {project_name} version, when the LDAP provider was configured with `Import Users` OFF, it was possible to update the user even if some of non-LDAP mapped attributes were changed. This situation resulted in confusing behavior, when the attribute appeared to be updated, but it was not. In the current version, the update is not allowed to be performed at all if any non-LDAP mapped attributes are changed."
+msgstr ""
+
+msgid "This should not affect most of the deployments, but some can be affected under some rare circumstances. For example if you previously tried to update a user with the admin REST API and the user had some incorrect attribute changes, the update was possible. With the current version, the update is not possible and you will be immediately informed about the reason."
+msgstr ""
+
+msgid "UserModel changes"
+msgstr ""
+
+msgid "The fields `username`, `email`, `firstName` and `lastName` in the `UserModel` are migrated to custom attributes as a preparation for adding more sophisticated user profiles to {project_name} in an upcoming version. If a database contains users with custom attributes of that exact name, the custom attributes will need to be migrated before upgrading. This migration does not occur automatically. Otherwise, they will not be read from the database anymore and possibly deleted. This situation implies that the `username` can now also be accessed and set via `UserModel.getFirstAttribute(UserModel.USERNAME)`. Similar implications exist for other fields. Implementors of SPIs subclassing the `UserModel` directly or indirectly should ensure that the behavior between `setUsername` and `setSingleAttribute(UserModel.USERNAME, ...)` (and similar for the other fields) is consistent. Users of the policy evaluation feature have to adapt their policies if they use the number of attributes in their evaluations since every user will now have four new attributes by default."
+msgstr ""
+
+msgid "The public API of `UserModel` did not change. No changes to frontend resources or SPIs accessing user data are necessary. Also, the database did not change yet."
+msgstr ""
+
+msgid "Instagram IdP migrated to new the API"
+msgstr ""
+
+msgid "Instagram IdP now uses new API as the old legacy API was *deprecated*. This requires getting new API credentials. For details, please refer to the link:{adminguide_link}#instagram[{adminguide_name}]."
+msgstr ""
+
+msgid "Special attention is required for existing users that use Instagram IdP, specially the ones for whom it is the only authentication option. Such users have to log in to Keycloak using Instagram IdP before September 30th, 2020. After that day they'll have to use a different authentication method (like password) to log in to manually update their Instagram social link, or create a new account in Keycloak. This is because Instagram user IDs are not compatible between the old and new API, however the new API temporarily returns both new and old user IDs to allow migration. Keycloak automatically migrates the ID once user logs in."
+msgstr ""
+
+msgid "Non-standard token introspection endpoint removed"
+msgstr ""
+
+msgid "In previous versions, Keycloak advertised two introspection endpoints: `token_introspection_endpoint` and `introspection_endpoint`. The latter is the one defined by https://datatracker.ietf.org/doc/html/rfc8414#section-2[RFC-8414]. The former, previously deprecated, has now been removed."
+msgstr ""
+
+msgid "Migrating to 9.0.1"
+msgstr ""
+
+msgid "Legacy promise in JavaScript adapter"
+msgstr ""
+
+msgid "It is no longer necessary to set promiseType in the JavaScript adapter, and both are available at the same time. It is recommended to update applications to use native promise API (`then` and `catch`) as soon as possible, as the legacy API (`success` and `error`) will be removed at some point."
+msgstr ""
+
+msgid "Duplicated top level groups"
+msgstr ""
+
+msgid "Version 9.0.1 fixes a problem which could create duplicated top level groups in the realm. Nevertheless the existence of previous duplicated groups makes the upgrade process fail. The {project_name} server can be affected by this issue if it is using an H2, MariaDB, MySQL or PostgreSQL database. Before launching the upgrade, check if the server contains duplicated top level groups. For example the following SQL query can be executed at database level to list them:"
+msgstr ""
+
+msgid "SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) > 1;"
+msgstr ""
+
+msgid "Only one top level group can exist in each realm with the same name. Duplicates should be reviewed and deleted before the upgrade. The error in the upgrade contains the message `Change Set META-INF/jpa-changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak failed.`"
+msgstr ""
+
+msgid "Migrating to 9.0.0"
+msgstr ""
+
+msgid "Improved handling of user locale"
+msgstr ""
+
+msgid "A number of improvements have been made to how the locale for the login page is selected, as well as when the locale is updated for a user."
+msgstr ""
+
+msgid "See the link:{adminguide_link}#_user_locale_selection[{adminguide_name}] for more details."
+msgstr ""
+
+msgid "Deprecated methods in token representation Java classes"
+msgstr ""
+
+msgid "In the year 2038 an `int` is no longer able to hold the value of seconds since 1970, as such we are working on updating these to `long` values. Moreover, another issue related with processing of `int` values exists in token representation. An `int` will by default result into `0` in the JSON representation, while it should not be included."
+msgstr ""
+
+msgid "See JavaDocs for further details on exact methods that have been deprecated and replacement methods."
+msgstr ""
+
+msgid "Migrating to 8.0.2"
+msgstr ""
+
+msgid "More authentication flows changes"
+msgstr ""
+
+msgid "REQUIRED and ALTERNATIVE executions not supported at same flow"
+msgstr ""
+
+msgid "In previous version, it was possible to have REQUIRED and ALTERNATIVE executions in the same authentication flow at the same level. There were some issues with this approach and we did the refactoring in the Authentication SPI, which means that this is not considered valid anymore. If ALTERNATIVE and REQUIRED executions are configured at the same level, the ALTERNATIVE executions are considered disabled. So when migrating to the newest version, your existing authentication flows will be automatically migrated preserved the same behavior as existed in the previous version. If they contain ALTERNATIVE executions at the same level as some REQUIRED executions, then the ALTERNATIVE executions will be added to the separate REQUIRED subflow. This should ensure same/similar behavior of the particular authentication flow as in the previous version. We always recommend to double-check the configuration of your authentication flow and test it to double-check that everything works as expected. This recommendation is true in particular if you have some more customized authentication flows with custom authenticator implementations."
+msgstr ""
+
+msgid "Migrating to 8.0.0"
+msgstr ""
+
+msgid "New default Hostname provider"
+msgstr ""
+
+msgid "The old request and fixed hostname providers are replaced with a new default hostname provider. The request and fixed hostname providers are now deprecated and it is recommended to switch to the default hostname provider as soon as possible."
+msgstr ""
+
+msgid "Upgrade to Wildfly 18"
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 18 as the underlying container. This does not directly involve any specific {project_name} server functionality, however, note these changes related to migration:"
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by the Wildfly 18 server. For example, Infinispan is now 9.4.16.Final."
+msgstr ""
+
+msgid "You will need to upgrade {jdgserver_name} server to version {jdgserver_version}. The older version may still work, but it is not guaranteed as we don't test it anymore."
+msgstr ""
+
+msgid "Deploying scripts to the server"
+msgstr ""
+
+msgid "Until now, administrators were allowed to upload scripts to the server through the {project_name} Administration Console as well as through the RESTful Admin API."
+msgstr ""
+
+msgid "For now on, this capability is *disabled* by default and users should prefer to deploy scripts directly to the server. For more details, please take a look at link:{developerguide_jsproviders_link}[{developerguide_jsproviders_name}]."
+msgstr ""
+
+msgid "Client credentials in the JavaScript adapter"
+msgstr ""
+
+msgid "In the previous releases, developers were allowed to provide client credentials to the JavaScript adapter. For now on, this capability was *removed*, because client-side apps are not safe to keep secrets."
+msgstr ""
+
+msgid "Authentication flows changes"
+msgstr ""
+
+msgid "We did some refactoring and improvements related to the authentication flows, which requires some attention during migration."
+msgstr ""
+
+msgid "OPTIONAL execution requirement removed"
+msgstr ""
+
+msgid "Regarding migration, the most important change is removing the support for the OPTIONAL requirement from authentication executions and replacing it with the CONDITIONAL requirement, which allows more flexibility. The existing OPTIONAL authenticators configured in the previous version are replaced with the CONDITIONAL subflows. These subflows have the `Condition - User Configured` condition configured as first execution, and the previously OPTIONAL authenticator (for example `OTP Form`) as second execution. From the user's point of view, the behavior during authentication is the same as in the previous version."
+msgstr ""
+
+msgid "Changes in the Java SPI"
+msgstr ""
+
+msgid "Some changes exist in the Java Authentication SPI and Credential Provider SPI. The interface `Authenticator` is not changed, but you may be affected if you're developing more advanced authenticators, which introduce some new credential types (subclasses of `CredentialModel`). There are changes on the `CredentialProvider` interface and introduction of some new interfaces like `CredentialValidator`. Also you may be affected if your authenticator supported the OPTIONAL execution requirement. It is recommended to double-check the latest authentication examples in the server development guide for more details."
+msgstr ""
+
+msgid "Freemarker template changes"
+msgstr ""
+
+msgid "Some changes in the freemarker templates exist. You may be affected if you have your own theme with custom freemarker templates for login forms or some account forms, especially for the forms related to OTP. It is recommended to double-check changes in the Freemarker templates in the latest {project_name} and align your templates according to it."
+msgstr ""
+
+msgid "User credentials changes"
+msgstr ""
+
+msgid "We added more flexibility around storing of user credentials. Among other things, every user can have multiple credentials of the same type, for example multiple OTP credentials. As a result, some changes to the database schema were performed. However the credentials from the previous version should be automatically updated to the new format and users should be still able to login with their passwords or OTP credentials set in the previous version."
+msgstr ""
+
+msgid "Migrating to 7.0.0"
+msgstr ""
+
+msgid "Upgrade to Wildfly 17"
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 17 as the underlying container. This does not directly involve any specific {project_name} server functionality, however, note these changes related to migration:"
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by the Wildfly 17 server. For example, Infinispan is now 9.4.14.Final."
+msgstr ""
+
+msgid "Migrating to 6.0.0"
+msgstr ""
+
+msgid "Upgrade to Wildfly 16"
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 16 as the underlying container. This does not directly involve any specific {project_name} server functionality, however, note these changes related to migration:"
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by the Wildfly 16 server. For example, Infinispan is now 9.4.8.Final."
+msgstr ""
+
+msgid "New optional client scope"
+msgstr ""
+
+msgid "We have added a new `microprofile-jwt` optional client scope to handle the claims defined in the https://wiki.eclipse.org/MicroProfile/JWT_Auth[MicroProfile/JWT Auth Specification]. This new client scope defines protocol mappers to set the username of the authenticated user to the `upn` claim and to set the realm roles to the `groups` claim."
+msgstr ""
+
+msgid "Ability to propagate prompt=none to default IDP"
+msgstr ""
+
+msgid "We have added a new switch in the OIDC identity provider configuration named `Accepts prompt=none forward from client` to identify IDPs that are able to handle forwarded requests that include the `prompt=none` query parameter."
+msgstr ""
+
+msgid "Until now, when receiving an auth request with `prompt=none` a realm would return a `login_required` error if the user is not authenticated in the realm without checking if the user has been authenticated by an IDP. From now on, if a default IDP can be determined for the auth request (either by the use of the `kc_idp_hint` query param or by setting up a default IDP for the realm) and if the `Accepts prompt=none forward from client` switch has been enabled for the IDP, the auth request is forwarded to the IDP to check if the user has been authenticated there."
+msgstr ""
+
+msgid "It is important to note that this switch is only taken into account if a default IDP is specified, in which case we know where to forward the auth request without having to prompt the user to select an IDP. If a default IDP cannot be determined we cannot assume which one will be used to fulfill the auth request so the request forwarding is not performed."
+msgstr ""
+
+msgid "Migrating to 5.0.0"
+msgstr ""
+
+msgid "Upgrade to Wildfly 15"
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 15 as the underlying container. This does not directly involve any specific {project_name} server functionality, however, note these changes related to migration:"
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by the Wildfly 15 server. For example, Infinispan is now 9.4.3.Final."
+msgstr ""
+
+msgid "Migrating to 4.8.2"
+msgstr ""
+
+msgid "Google Identity Provider updated to use Google Sign-in authentication system"
+msgstr ""
+
+msgid "The Google Identity Provider implementation in {project_name} up to version 4.8.1 relies on the Google+ API endpoints for authorization and obtaining the user profile. From March 2019 onwards, Google is removing support for the Google+ API in favor of the new Google Sign-in authentication system. The {project_name} identity provider has been updated to use the new endpoints so if this integration is in use make sure you upgrade to {project_name} version 4.8.2 or later."
+msgstr ""
+
+msgid "If you run into an error saying that the application identifier was not found in the directory, you will have to register the client application again in the https://console.cloud.google.com/apis/credentials[Google API Console] portal to obtain a new application id and secret."
+msgstr ""
+
+msgid "It is possible that you will need to adjust custom mappers for non-standard claims that were provided by Google+ user information endpoint and are provided under different name by Google Sign-in API. Please consult Google documentation for the most up-to-date information on available claims."
+msgstr ""
+
+msgid "LinkedIn social broker updated to Version 2 of LinkedIn APIs"
+msgstr ""
+
+msgid "Accordingly with LinkedIn, all developers need to migrate to version 2.0 of their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social Broker."
+msgstr ""
+
+msgid "Existing deployments using this broker may start experiencing errors when fetching user's profile using version 2 of LinkedIn APIs. This error may be related with the lack of permissions granted to the client application used to configure the broker which may not be authorized to access the Profile API or request specific OAuth2 scopes during the authentication process."
+msgstr ""
+
+msgid "Even for newly created LinkedIn client applications, you need to make sure that the client is able to request the `r_liteprofile` and `r_emailaddress` OAuth2 scopes, at least, as well that the client application can fetch current member's profile from the `https://api.linkedin.com/v2/me` endpoint."
+msgstr ""
+
+msgid "Due to these privacy restrictions imposed by LinkedIn in regards to access to member's information and the limited set of claims returned by the current member's Profile API, the LinkedIn Social Broker is now using the member's email address as the default username. That means that the `r_emailaddress` is always set when sending authorization requests during the authentication."
+msgstr ""
+
+msgid "Migrating to 4.6.0"
+msgstr ""
+
+msgid "New default client scopes"
+msgstr ""
+
+msgid "We have added new realm default client scopes `roles` and `web-origins`. These client scopes contain protocol mappers to add the roles of the user and allowed web origins to the token. During migration, these client scopes should be automatically added to all the OpenID Connect clients as default client scopes. Hence no setup should be required after database migration is finished."
+msgstr ""
+
+msgid "Protocol mapper SPI addition"
+msgstr ""
+
+msgid "Related to this, a small addition to the (unsupported) Protocol Mappers SPI exists. You can be affected only if you implemented a custom ProtocolMapper. A new `getPriority()` method on the ProtocolMapper interface got introduced. The method has the default implementation set to return 0. If your protocol mapper implementation relies on the roles in the access token `realmAccess` or `resourceAccess` properties, you may need to increase the priority of your mapper."
+msgstr ""
+
+msgid "Audience resolving"
+msgstr ""
+
+msgid "Audiences of all the clients, for which authenticated user has at least one client role in the token, are automatically added to the `aud` claim in the access token now. On the other hand, an access token may not automatically contain the audience of the frontend client, for which it was issued. Read the link:{adminguide_link}#audience-support[{adminguide_name}] for more details."
+msgstr ""
+
+msgid "JavaScript adapter promise"
+msgstr ""
+
+msgid "To use native JavaScript promise with the JavaScript adapter it is now required to set `promiseType` to `native` in the init options."
+msgstr ""
+
+msgid "In the past if native promise was available a wrapper was returned that provided both the legacy Keycloak promise and the native promise. This was causing issues as the error handler was not always set prior to the native error event, which resulted in `Uncaught (in promise)` error."
+msgstr ""
+
+msgid "Microsoft Identity Provider updated to use the Microsoft Graph API"
+msgstr ""
+
+msgid "The Microsoft Identity Provider implementation in {project_name} up to version 4.5.0 relies on the Live SDK endpoints for authorization and obtaining the user profile. From November 2018 onwards, Microsoft is removing support for the Live SDK API in favor of the new Microsoft Graph API. The {project_name} identity provider has been updated to use the new endpoints so if this integration is in use make sure you upgrade to {project_name} version 4.6.0 or later."
+msgstr ""
+
+msgid "Legacy client applications registered under \"Live SDK applications\" won't work with the Microsoft Graph endpoints due to changes in the id format of the applications. If you run into an error saying that the application identifier was not found in the directory, you will have to register the client application again in the https://account.live.com/developers/applications/create[Microsoft Application Registration] portal to obtain a new application id."
+msgstr ""
+
+msgid "Upgrade to Wildfly 14"
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 14 as the underlying container. This does not directly involve any specific {project_name} server functionality, however, note these changes related to migration:"
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by the Wildfly 14 server. For example, Infinispan is now 9.3.1.Final."
+msgstr ""
+
+msgid "Migrating to 4.4.0"
+msgstr ""
+
+msgid "Upgrade to Wildfly 13"
+msgstr ""
+
+msgid "The {project_name} server was upgraded to use Wildfly 13 as the underlying container. This does not directly involve any specific {project_name} server functionality, however, note these changes related to migration:"
+msgstr ""
+
+msgid "The dependencies were updated to the versions used by the Wildfly 13 server. For example, Infinispan is now 9.2.4.Final and Undertow is 2.0.9.Final"
+msgstr ""
+
+msgid "Element `eviction` on infinispan caches is now *deprecated* (unused) and is *replaced with* element `object-memory`"
+msgstr ""
+
+msgid "The `cache-container` element in Infinispan subsystem *does not recognize* the `jndi-attribute` anymore."
+msgstr ""
+
+msgid "You don't need to configure security anymore in the {jdgserver_name} server configuration file."
+msgstr ""
+
+msgid "The `transaction` element needs to be removed from the configuration of replicated caches in the {jdgserver_name} server configuration file. This is needed because of the infinispan bug https://issues.redhat.com/browse/ISPN-9323."
+msgstr ""
+
+msgid "Migration to 4.3.0"
+msgstr ""
+
+msgid "Hostname configuration"
+msgstr ""
+
+msgid "In previous versions it was recommended to use a filter to specify permitted hostnames. It is now possible to set a fixed hostname which makes it easier to make sure the valid hostname is used and also allows internal applications to invoke {project_name} through an alternative URL, for example an internal IP address. It is recommended that you switch to this approach in production."
+msgstr ""
+
+msgid "Migrating to 4.0.0"
+msgstr ""
+
+msgid "Client Templates changed to Client Scopes"
+msgstr ""
+
+msgid "We added support for Client Scopes, which requires some attention during migration."
+msgstr ""
+
+msgid "Client Templates were changed to Client Scopes. If you had any Client Templates, their protocol mappers and role scope mappings will be preserved."
+msgstr ""
+
+msgid "Spaces replaced in the names"
+msgstr ""
+
+msgid "Client templates with the space character in the name were renamed by replacing spaces with an underscore, because spaces are not allowed in the name of client scopes. For example, a client template `my template` will be changed to client scope `my_template`."
+msgstr ""
+
+msgid "Linking Client Scopes to Clients"
+msgstr ""
+
+msgid "For clients which had the client template, the corresponding client scope is now added as `Default Client Scope` to the client. So protocol mappers and role scope mappings will be preserved on the client."
+msgstr ""
+
+msgid "Realm Default Client Scopes not linked with existing clients"
+msgstr ""
+
+msgid "During the migration, the list of built-in client scopes is added to each realm as well as list of `Realm Default Client Scopes`. However, existing clients are NOT upgraded and new client scopes are NOT automatically added to them. Also all the protocol mappers and role scope mappings are kept on existing clients. In the new version, when you create a new client, it automatically has Realm Default Client Scopes attached to it and it does not have any protocol mappers attached to it. We did not change existing clients during migration as it would be impossible to properly detect customizations, which you will have for protocol mappers of the clients, for example. If you want to update existing clients (remove protocol mappers from them and link them with client scopes), you will need to do it manually."
+msgstr ""
+
+msgid "Consents need to be confirmed again"
+msgstr ""
+
+msgid "The client scopes change required the refactoring of consents. Consents now point to client scopes, not to roles or protocol mappers. Because of this change, the previously confirmed persistent consents by users are not valid anymore and users need to confirm the consent page again after the migration."
+msgstr ""
+
+msgid "Some configuration switches removed"
+msgstr ""
+
+msgid "The switch `Scope Param Required` was removed from Role Detail. The switches `Consent Required` and `Consent Text` were removed from the Protocol Mapper details. Those switches are replaced with the Client Scope feature."
+msgstr ""
+
+msgid "Changes to Authorization Services"
+msgstr ""
+
+msgid "We added support for UMA 2.0. This version of the UMA specification introduced some important changes on how permissions are obtained from the server."
+msgstr ""
+
+msgid "Here are the main changes introduced by UMA 2.0 support. See link:{authorizationguide_link}[{authorizationguide_name}] for details."
+msgstr ""
+
+msgid "Authorization API was removed"
+msgstr ""
+
+msgid "Prior to UMA 2.0 (UMA 1.0), client applications were using the Authorization API to obtain permissions from the server in the format of an RPT. The new version of UMA specification has removed the Authorization API which was also removed from {project_name}. In UMA 2.0, RPTs can now be obtained from the token endpoint by using a specific grant type. See link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}] for details."
+msgstr ""
+
+msgid "Entitlement API was removed"
+msgstr ""
+
+msgid "With the introduction of UMA 2.0, we decided to leverage the token endpoint and UMA grant type to allow obtaining RPTs from {project_name} and avoid having different APIs. The functionality provided by the Entitlement API was kept the same and is still possible to obtain permissions for a set of one or more resources and scopes or all permissions from the server in case no resource or scope is provided. See link:{authorizationguide_link}#_service_obtaining_permissions[{authorizationguide_name}] for details."
+msgstr ""
+
+msgid "Changes to UMA Discovery Endpoint"
+msgstr ""
+
+msgid "UMA Discovery document changed, see link:{authorizationguide_link}#_service_authorization_api[{authorizationguide_name}] for details."
+msgstr ""
+
+msgid "Changes to {project_name} Authorization JavaScript adapter"
+msgstr ""
+
+msgid "The {project_name} Authorization JavaScript adapter (keycloak-authz.js) changed in order to comply with the changes introduced by UMA 2.0 while keeping the same behavior as before. The main change is on how you invoke both `authorization` and `entitlement` methods which now expect a specific object type representing an authorization request. This new object type provides more flexibility on how permissions can be obtained from the server by supporting the different parameters supported by the UMA grant type. See link:{authorizationguide_link}#_enforcer_js_adapter[{authorizationguide_name}] for details."
+msgstr ""
+
+msgid ""
+"One of the main changes introduced by this release is that you are no longer required to exchange access tokens with RPTs in\n"
+"order to access resources protected by a resource server (when not using UMA). Depending on how the policy enforcer is configured on the resource server side, you can just send regular\n"
+"access tokens as a bearer token and permissions will still be enforced."
+msgstr ""
+
+msgid "Changes to {project_name} Authorization Client Java API"
+msgstr ""
+
+msgid "When upgrading to the new version of {project_name} Authorization Client Java API, you'll notice that some representation classes were moved to a different package in `org.keycloak:keycloak-core`."
+msgstr ""
+
+msgid "Migrating to 3.4.2"
+msgstr ""
+
+msgid "Added session_state parameter to OpenID Connect Authentication Response"
+msgstr ""
+
+msgid "The OpenID Connect Session Management specification requires that the parameter `session_state` is present in the OpenID Connect Authentication Response."
+msgstr ""
+
+msgid "In past releases, we did not have this parameter, but now {project_name} adds this parameter by default, as required by the specification."
+msgstr ""
+
+msgid "However, some OpenID Connect / OAuth2 adapters, and especially older {project_name} adapters, may have issues with this new parameter."
+msgstr ""
+
+msgid "For example, the parameter will be always present in the browser URL after successful authentication to the client application. In these cases, it may be useful to disable adding the `session_state` parameter to the authentication response. This can be done for the particular client in the {project_name} admin console, in client details in the section with `OpenID Connect Compatibility Modes`, described in <<_compatibility_with_older_adapters>>. Dedicated `Exclude Session State From Authentication Response` switch exists, which can be turned on to prevent adding the `session_state` parameter to the Authentication Response."
+msgstr ""
+
+msgid "The parameter `session_state` was added in 3.4.2, however the switch `Exclude Session State From Authentication Response` was added in 4.0.0.Beta1. If your {project_name} server is on 3.4.2 or 3.4.3 and you have issues with `session_state` parameter, you will need to upgrade the server to 4.0.0.Beta1 or newer."
+msgstr ""
+
+msgid "Migrating to 3.2.0"
+msgstr ""
+
+msgid "New password hashing algorithms"
+msgstr ""
+
+msgid "We've added two new password hashing algorithms (pbkdf2-sha256 and pbkdf2-sha512). New realms will use the pbkdf2-sha256 hashing algorithm with 27500 hashing iterations. Since pbkdf2-sha256 is slightly faster than pbkdf2 the iterations was increased to 27500 from 20000."
+msgstr ""
+
+msgid "Existing realms are upgraded if the password policy contains the default value for hashing algorithm (not specified) and iteration (20000). If you have changed the hashing iterations you need to manually change to pbkdf2-sha256 if you'd like to use the more secure hashing algorithm."
+msgstr ""
+
+msgid "ID Token requires scope=openid"
+msgstr ""
+
+msgid "OpenID Connect specification requires that parameter `scope` with value `openid` is used in initial authorization request. So in {project_name} 2.1.0 we changed our adapters to use `scope=openid` in the redirect URI to {project_name}. Now we changed the server part too and ID token will be sent to the application just if `scope=openid` is really used. If it's not used, then ID token will be skipped and just Access token and Refresh token will be sent to the application. This also allows that you can omit the generation of ID Token on purpose - for example for space or performance purposes."
+msgstr ""
+
+msgid "Direct grants (OAuth2 Resource Owner Password Credentials Grant) and Service accounts login (OAuth2 Client credentials grant) also don't use ID Token by default now. You need to explicitly add `scope=openid` parameter to have ID Token included."
+msgstr ""
+
+msgid "Authentication sessions and Action tokens"
+msgstr ""
+
+msgid "We are working on support for multiple datacenters. As the initial step, we introduced authentication session and action tokens. Authentication session replaces Client session, which was used in previous versions. Action tokens are currently used especially for the scenarios, where the authenticator or requiredActionProvider requires sending email to the user and requires user to click on the link in email."
+msgstr ""
+
+msgid "Here are concrete changes related to this, which may affect you for the migration."
+msgstr ""
+
+msgid "First change related to this is introducing new Infinispan caches `authenticationSessions` and `actionTokens` in `standalone.xml` or `standalone-ha.xml`. If you use our migration CLI, you don't need to care much as your `standalone(-ha).xml` files will be migrated automatically."
+msgstr ""
+
+msgid "Second change is changing of some signatures in methods of authentication SPI. This may affect you if you use custom `Authenticator` or `RequiredActionProvider`. Classes `AuthenticationFlowContext` and `RequiredActionContext` now allow to retrieve authentication session instead of client session."
+msgstr ""
+
+msgid "We also added some initial support for sticky sessions. You may want to change your load balancer/proxy server and configure it if you don't want to suffer from it and want to have better performance. The route is added to the new `AUTH_SESSION_ID` cookie. More info in the clustering documentation."
+msgstr ""
+
+msgid "Another change is, that `token.getClientSession()` was removed. This may affect you for example if you're using Client Initiated Identity Broker Linking feature."
+msgstr ""
+
+msgid "The `ScriptBasedAuthenticator` changed the binding name from `clientSession` to `authenticationSession`, so you would need to update your scripts if you're using this authenticator."
+msgstr ""
+
+msgid "Finally we added some new timeouts to the admin console. This allows you for example to specify different timeouts for the email actions triggered by admin and by user himself."
+msgstr ""
+
+msgid "Migrating to 2.5.1"
+msgstr ""
+
+msgid "Migration of old offline tokens"
+msgstr ""
+
+msgid "If you migrate from version 2.2.0 or older and you used offline tokens, then your offline tokens didn't have KID in the token header. We added KID to the token header in 2.3.0 together with the ability to have multiple realm keys, so {project_name} is able to find the correct key based on the token KID."
+msgstr ""
+
+msgid "For the offline tokens without KID, {project_name} 2.5.1 will always use the active realm key to find the proper key for the token verification. In other words, migration of old offline tokens will work. So for example, your user requested offline token in 1.9.8, then you migrate from 1.9.8 to 2.5.1 and then your user will be still able to refresh his old offline token in 2.5.1 version."
+msgstr ""
+
+msgid "But a limitation exists. Once you change the realm active key, the users won't be able to refresh old offline tokens anymore. So you shouldn't change the active realm key until all your users with offline tokens refreshed their tokens. Obviously newly refreshed tokens will have KID in the header, so after all users exchange their old offline tokens, you are free to change the active realm key."
+msgstr ""
+
+msgid "Migrating to 2.5.0"
+msgstr ""
+
+msgid "Changes to the Infinispan caches"
+msgstr ""
+
+msgid "The `realms` cache defined in the infinispan subsystem in `standalone.xml` or `standalone-ha.xml` configuration file, now has the eviction with the 10000 records by default. This is the same default as the `users` cache."
+msgstr ""
+
+msgid "Also the `authorization` cache now doesn't have any eviction on it by default."
+msgstr ""
+
+msgid "Migrating to 2.4.0"
+msgstr ""
+
+msgid "Server SPI split into Server SPI and Sever SPI Private"
+msgstr ""
+
+msgid "The keycloak-server-spi module has been split into keycloak-server-spi and keycloak-server-spi-private. APIs within keycloak-server-spi will not change between minor releases, while we reserve the right and may quite likely change APIs in keycloak-server-spi-private between minor releases."
+msgstr ""
+
+msgid "Key encryption algorithm in SAML assertions"
+msgstr ""
+
+msgid "Key in SAML assertions and documents are now encrypted using RSA-OAEP encryption scheme. If you want to use encrypted assertions, make sure that service providers understand this encryption scheme. In the unlikely case that SP would not be able to handle the new scheme, {project_name} can be made to use legacy RSA-v1.5 encryption scheme when started with system property `keycloak.saml.key_trans.rsa_v1.5` set to `true`."
+msgstr ""
+
+msgid "Infinispan caches realms and users are always local"
+msgstr ""
+
+msgid "Even if you use {project_name} in cluster, the caches `realms` and `users` defined in infinispan subsystem in `standalone-ha.xml` are always local caches now. A separate cache `work` exists, which handles sending invalidation messages between cluster nodes and informing whole cluster what records in underlying `realms` and `users` caches should be invalidated."
+msgstr ""
+
+msgid "Migrating to 2.3.0"
+msgstr ""
+
+msgid "Default max results on paginated endpoints"
+msgstr ""
+
+msgid "All Admin REST API endpoints that support pagination now have a default max results set to 100. If you want to return  more than 100 entries you need to explicitly specify that with `?max=<RESULTS>`."
+msgstr ""
+
+msgid "`realm-public-key` adapter property not recommended"
+msgstr ""
+
+msgid "In 2.3.0 release we added support for Public Key Rotation. When admin rotates the realm keys in Keycloak admin console, the Client Adapter will be able to recognize it and automatically download new public key from Keycloak. However this automatic download of new keys is done just if you don't have `realm-public-key` option in your adapter with the hardcoded public key. For this reason, we don't recommend to use `realm-public-key` option in adapter configuration anymore."
+msgstr ""
+
+msgid "Note this option is still supported, but it may be useful just if you really want to have hardcoded public key in your adapter configuration and never download the public key from Keycloak. In theory, one reason for this can be to avoid man-in-the-middle attack if you have untrusted network between adapter and Keycloak, however in that case, it is much better option to use HTTPS, which will secure all the requests between adapter and Keycloak."
+msgstr ""
+
+msgid "Added Infinispan cache `keys`"
+msgstr ""
+
+msgid "In this release, we added new cache `keys` to the infinispan subsystem, which is defined in `standalone.xml` or `standalone-ha.xml` configuration file. It has also some eviction and expiration defined. This cache is internally used for caching the external public keys of the entities trusted by the server (Identity providers or clients, which uses authentication with signed JWT)."
+msgstr ""
+
+msgid "Migrating to 2.2.0"
+msgstr ""
+
+msgid "`databaseSchema` property *deprecated*"
+msgstr ""
+
+msgid "The `databaseSchema` property for both JPA and Mongo is now *deprecated* and is *replaced with* `initializeEmpty` and `migrationStrategy`. `initializeEmpty` can bet set to `true` or `false` and controls if an empty database should be initialized. `migrationStrategy` can be set to `update`, `validate` and `manual`. `manual` is only supported for relational databases and will write an SQL file with the required changes to the database schema. Please note that for Oracle database, the created SQL file contains `SET DEFINE OFF` command understood by Oracle SQL clients. Should the script be consumed by any other client, please replace the lines with equivalent command of the tool of your choice that disables variable expansion or remove it completely if such functionality is not applicable."
+msgstr ""
+
+msgid "Changes in Client's Valid Redirect URIs"
+msgstr ""
+
+msgid "The following scenarios are affected:"
+msgstr ""
+
+msgid "When a Valid Redirect URI with query component is saved in a Client (e.g. `\\http://localhost/auth?foo=bar`), `redirect_uri` in authorization request must exactly match this URI (or other registered URI in this Client)."
+msgstr ""
+
+msgid "When a Valid Redirect URI without a query component is saved in a Client, `redirect_uri` must exactly match as well."
+msgstr ""
+
+msgid "Wildcards in registered Valid Redirect URIs are no longer supported when query component is present in this URI, so the `redirect_uri` needs to exactly match this saved URI as well."
+msgstr ""
+
+msgid "Fragments in registered Valid Redirect URIs (like `\\http://localhost/auth#fragment`) are no longer allowed."
+msgstr ""
+
+msgid "Authenticate by default removed from Identity Providers"
+msgstr ""
+
+msgid "Identity providers no longer has an option to set it as a default authentication provider. Instead go to Authentication, select the `Browser` flow and configure the `Identity Provider Redirector`. It has an option to set the default identity provider."
+msgstr ""
+
+msgid "Migrating to 2.0.0"
+msgstr ""
+
+msgid "Upgrading from 1.0.0.Final no longer supported"
+msgstr ""
+
+msgid "Upgrading from 1.0.0.Final is no longer supported. To upgrade to this version upgrade to 1.9.8.Final prior to upgrading to 2.0.0."
+msgstr ""
+
+msgid "Migrating to 1.9.5"
+msgstr ""
+
+msgid "Default password hashing interval increased to 20K"
+msgstr ""
+
+msgid "The default password hashing interval for new realms has been increased to 20K (from 1 previously). This change will have an impact on performance when users authenticate. For example with the old default (1) it takes less than 1 ms to hash a password, but with the new default (20K) the same operation can take 50-100 ms."
+msgstr ""
+
+msgid "Migrating to 1.9.3"
+msgstr ""
+
+msgid "Add User script renamed"
+msgstr ""
+
+msgid "The script to add admin users to Keycloak has been renamed to `add-user-keycloak`."
+msgstr ""
+
+msgid "Migrating to 1.9.2"
+msgstr ""
+
+msgid "Adapter option auth-server-url-for-backend-requests removed"
+msgstr ""
+
+msgid "We've removed the option auth-server-url-for-backend-requests due to issues in some scenarios when it was used. In more details, it was possible to access the Keycloak server from 2 different contexts (internal and external), which was causing issues in token validations etc."
+msgstr ""
+
+msgid "If you still want to use the optimization of network, which this option provided (avoid the application to send backchannel requests through load balancer but send them to local Keycloak server directly) you may need to handle it at hosts configuration (DNS) level."
+msgstr ""
+
+msgid "Migrating to 1.9.0"
+msgstr ""
+
+msgid "Themes and providers directory moved"
+msgstr ""
+
+msgid "We've moved the themes and providers directories from `standalone/configuration/themes` and `standalone/configuration/providers` to `themes` and `providers` respectively. If you have added custom themes and providers you need to move them to the new location. You also need to update `keycloak-server.json` as it's changed due to this."
+msgstr ""
+
+msgid "Adapter subsystems only bring in dependencies if Keycloak is on"
+msgstr ""
+
+msgid "Previously, if you had installed our SAML or OIDC Keycloak subsystem adapters into WildFly or JBoss EAP, we would automatically include Keycloak client jars into EVERY application irregardless if you were using Keycloak or not. These libraries are now only added to your deployment if you have Keycloak authentication turned on for that adapter (via the subsystem, or auth-method in web.xml)"
+msgstr ""
+
+msgid "Client Registration service endpoints moved"
+msgstr ""
+
+msgid "The Client Registration service endpoints have been moved from `{realm-name}/clients` to `{realm-name}/clients-registrations`."
+msgstr ""
+
+msgid "Session state parameter in authentication response renamed"
+msgstr ""
+
+msgid "In the OpenID Connect authentication response we used to return the session state as `session-state` this is not correct according to the specification and has been renamed to `session_state`."
+msgstr ""
+
+msgid "Deprecated OpenID Connect endpoints"
+msgstr ""
+
+msgid "In 1.2 we deprecated a number of endpoints that where not consistent with the OpenID Connect specifications, these have now been removed. This also applies to the validate token endpoint that is replaced with the new introspect endpoint in 1.8."
+msgstr ""
+
+msgid "Updates to theme templates"
+msgstr ""
+
+msgid "Feedback in template.ftl has been moved and format has changed slightly."
+msgstr ""
+
+msgid "Module and source code reorganization"
+msgstr ""
+
+msgid "Most of our modules and source code have been consolidated into two maven modules:  keycloak-server-spi and keycloak-services. SPI interfaces are in server-spi, implementations are in keycloak-services. All JPA dependent modules have been consolidated under keycloak-model-jpa. Same goes with mongo and Infinispan under modules keycloak-model-mongo and keycloak-model-infinispan."
+msgstr ""
+
+msgid "For adapters, session id changed after login"
+msgstr ""
+
+msgid "To plug a security attack vector, for platforms that support it (Tomcat 8, Undertow/WildFly, Jetty 9), the Keycloak OIDC and SAML adapters will change the session id after login. You can turn off this behavior check adapter config switches."
+msgstr ""
+
+msgid "SAML SP Client adapter changes"
+msgstr ""
+
+msgid "Keycloak SAML SP Client adapter now requires a specific endpoint, `/saml` to be registered with your IDP."
+msgstr ""
+
+msgid "Migrating to 1.8.0"
+msgstr ""
+
+msgid "Admin account"
+msgstr ""
+
+msgid "In previous releases we shipped with a default admin user with a default password, this has now been removed. If you are doing a new installation of 1.8 you will have to create an admin user as a first step."
+msgstr ""
+
+msgid "OAuth2 token introspection"
+msgstr ""
+
+msgid "In order to add more compliance with OAuth2 specification, we added a new endpoint for token introspection. The new endpoint can reached at `/realms/{realm-name}/protocols/openid-connect/token/introspect` and it is solely based on `RFC-7662`."
+msgstr ""
+
+msgid "The `/realms/{realm-name}/protocols/openid-connect/validate` endpoint is now deprecated and we strongly recommend you to move to the new introspection endpoint as soon as possible. The reason for this change is that RFC-7662 provides a more standard and secure introspection endpoint."
+msgstr ""
+
+msgid "The new token introspection URL can now be obtained from OpenID Connect Provider's configuration at `/realms/{realm-name}/.well-known/openid-configuration`. There you will find a claim with name `token_introspection_endpoint` within the response. Only `confidential clients` are allowed to invoke the new endpoint, where these clients will be usually acting as a resource server and looking for token metadata in order to perform local authorization checks."
+msgstr ""
+
+msgid "Migrating to 1.7.0.CR1"
+msgstr ""
+
+msgid "Direct access grants disabled by default for clients"
+msgstr ""
+
+msgid "In order to add more compliance with OpenID Connect specification, we added flags into admin console to Client Settings page, where you can enable/disable various kinds of OpenID Connect/OAuth2 flows (Standard flow, Implicit flow, Direct Access Grants, Service Accounts). As part of this, we have `Direct Access Grants` (corresponds to OAuth2 `Resource Owner Password Credentials Grant`) disabled by default for new clients."
+msgstr ""
+
+msgid "Clients migrated from previous version have `Direct Access Grants` enabled just if they had flag `Direct Grants Only` on. The `Direct Grants Only` flag was removed as if you enable Direct Access Grants and disable both Standard+Implicit flow, you will achieve same effect."
+msgstr ""
+
+msgid "We also added built-in client `admin-cli` to each realm. This client has `Direct Access Grants` enabled. So if you're using Admin REST API or Keycloak admin-client, you should update your configuration to use `admin-cli` instead of `security-admin-console` as the latter one doesn't have direct access grants enabled anymore by default."
+msgstr ""
+
+msgid "Option 'Update Profile On First Login' moved from Identity provider to Review Profile authenticator"
+msgstr ""
+
+msgid "In this version, we added `First Broker Login`, which allows you to specify what exactly should be done when new user is logged through Identity provider (or Social provider), but no Keycloak user linked to the social account exists yet. As part of this work, we added option `First Login Flow` to identity providers where you can specify the flow and then you can configure this flow under `Authentication` tab in admin console."
+msgstr ""
+
+msgid "We also removed the option `Update Profile On First Login` from the Identity provider settings and moved it to the configuration of `Review Profile` authenticator. So once you specify which flow should be used for your Identity provider (by default it's `First Broker Login` flow), you go to `Authentication` tab, select the flow and then you configure the option under `Review Profile` authenticator."
+msgstr ""
+
+msgid "Element 'form-error-page' in web.xml not supported anymore"
+msgstr ""
+
+msgid "form-error-page in web.xml will no longer work for client adapter authentication errors. You must define an error-page for the various HTTP error codes. See documentation for more details if you want to catch and handle adapter error conditions."
+msgstr ""
+
+msgid "IdentityProviderMapper changes"
+msgstr ""
+
+msgid "The interface itself and method signatures did not change. However some changes in the behavior exist. We added `First Broker Login` flow in this release and the method `IdentityProviderMapper.importNewUser` is now called after `First Broker Login` flow is finished. So if you want to have any attribute available in `Review Profile` page, you would need to use the method `preprocessFederatedIdentity` instead of `importNewUser` . You can set any attribute by invoke `BrokeredIdentityContext.setUserAttribute` and that will be available on `Review profile` page."
+msgstr ""
+
+msgid "Migrating to 1.6.0.Final"
+msgstr ""
+
+msgid "Option that refresh tokens are not reusable anymore"
+msgstr ""
+
+msgid "Old versions of Keycloak allowed reusing refresh tokens multiple times. Keycloak still permits this, but also have an option `Revoke refresh token` to disallow it. Option is under token settings in admin console. When a refresh token is used to obtain a new access token a new refresh token is also included. When option is enabled, then this new refresh token should be used next time the access token is refreshed. It won't be possible to reuse old refresh token multiple times."
+msgstr ""
+
+msgid "Some packages renamed"
+msgstr ""
+
+msgid "We did a bit of restructure and renamed some packages. It is mainly about renaming internal packages of util classes. The most important classes used in your application ( for example AccessToken or KeycloakSecurityContext ) as well as the SPI are still unchanged. However, a slight chance exists that you will be affected and will need to update imports of your classes. For example if you are using multitenancy and KeycloakConfigResolver, you will be affected as for example class HttpFacade was moved to different package - it is `org.keycloak.adapters.spi.HttpFacade` now."
+msgstr ""
+
+msgid "Persisting user sessions"
+msgstr ""
+
+msgid "We added support for offline tokens in this release, which means that we are persisting \"offline\" user sessions into database now. If you are not using offline tokens, nothing will be persisted for you, so you don't need to care about worse performance for more DB writes. However in all cases, you will need to update `standalone/configuration/keycloak-server.json` and add `userSessionPersister` like this:"
+msgstr ""
+
+msgid ""
+"\"userSessionPersister\": {\n"
+"    \"provider\": \"jpa\"\n"
+"},"
+msgstr ""
+
+msgid "If you want sessions to be persisted in Mongo instead of classic RDBMS, use provider `mongo` instead."
+msgstr ""
+
+msgid "Migrating to 1.5.0.Final"
+msgstr ""
+
+msgid "Realm and User cache providers"
+msgstr ""
+
+msgid "Infinispan is now the default and only realm and user cache providers. In non-clustered mode a local Infinispan cache is used. We've also removed our custom in-memory cache and the no cache providers. If you have realmCache or userCache set in keycloak-server.json to mem or none please remove these. As Infinispan is the only provider the realmCache and userCache objects are no longer needed and can be removed."
+msgstr ""
+
+msgid "Uses Session providers"
+msgstr ""
+
+msgid "Infinispan is now the default and only user session provider. In non-clustered mode a local Infinispan cache is used. We've also removed the JPA and Mongo user session providers. If you have userSession set in keycloak-server.json to mem, jpa or mongo please remove it. As Infinispan is the only provider the userSession object is no longer needed and can be removed."
+msgstr ""
+
+msgid "For anyone that wants to achieve increased durability of user sessions this can be achieved by configuring the user session cache with more than one owner or use a replicated cache. It's also possible to configure Infinispan to persist caches, although that would have impacts on performance."
+msgstr ""
+
+msgid "Contact details removed from registration and account management"
+msgstr ""
+
+msgid "In the default theme we have now removed the contact details from the registration page and account management. The admin console now lists all the users attributes, not just contact specific attributes. The admin console also has the ability to add/remove attributes to a user. If you want to add contact details, please refer to the address theme included in the examples."
+msgstr ""
+
+msgid "Migrating to 1.3.0.Final"
+msgstr ""
+
+msgid "Direct Grant API always enabled"
+msgstr ""
+
+msgid "In the past Direct Grant API (or Resource Owner Password Credentials) was disabled by default and an option to enable it on a realm existed. The Direct Grant API is now always enabled and the option to enable/disable for a realm is removed."
+msgstr ""
+
+msgid "Database changed"
+msgstr ""
+
+msgid "There are again few database changes. Remember to back up your database prior to upgrading."
+msgstr ""
+
+msgid "UserFederationProvider changed"
+msgstr ""
+
+msgid "There are few minor changes in UserFederationProvider interface. You may need to sync your implementation when upgrade to newer version and upgrade few methods, which has changed signature. Changes are really minor, but were needed to improve performance of federation."
+msgstr ""
+
+msgid "WildFly 9.0.0.Final"
+msgstr ""
+
+msgid "Following on from the distribution changes that was done in the last release the standalone download of Keycloak is now based on WildFly 9.0.0.Final. This also affects the overlay which can only be deployed to WildFly 9.0.0.Final or JBoss EAP 6.4.0.GA. WildFly 8.2.0.Final is no longer supported for the server."
+msgstr ""
+
+msgid "WildFly, JBoss EAP and JBoss AS7 adapters"
+msgstr ""
+
+msgid "There are now 3 separate adapter downloads for WildFly, JBoss EAP and JBoss AS7:"
+msgstr ""
+
+msgid "eap6"
+msgstr ""
+
+msgid "wf9"
+msgstr ""
+
+msgid "wf8"
+msgstr ""
+
+msgid "as7"
+msgstr ""
+
+msgid "Make sure you grab the correct one."
+msgstr ""
+
+msgid "You also need to update standalone.xml as the extension module and subsystem definition has changed. See link:{adapterguide_link}[{adapterguide_name}] for details."
+msgstr ""
+
+msgid "Migrating from 1.2.0.Beta1 to 1.2.0.RC1"
+msgstr ""
+
+msgid "Distribution changes"
+msgstr ""
+
+msgid "Keycloak is now available in 3 downloads: standalone, overlay and demo bundle. The standalone is intended for production and non-JEE developers. Overlay is aimed at adding Keycloak to an existing WildFly 8.2 or EAP 6.4 installation and is mainly for development. Finally we have a demo (or dev) bundle that is aimed at developers getting started with Keycloak. This bundle contains a WildFly server, with Keycloak server and adapter included. It also contains all documentation and examples."
+msgstr ""
+
+msgid "This release contains again a number of changes to the database. The biggest one is Application and OAuth client merge. Remember to back up your database prior to upgrading."
+msgstr ""
+
+msgid "Application and OAuth client merge"
+msgstr ""
+
+msgid "Application and OAuth clients are now merged into `Clients`. The UI of admin console is updated and database as well. Your data from database should be automatically updated. The previously set Applications will be converted into Clients with `Consent required` switch off and OAuth Clients will be converted into Clients with this switch on."
+msgstr ""
+
+msgid "Migrating from 1.1.0.Final to 1.2.0.Beta1"
+msgstr ""
+
+msgid "This release contains a number of changes to the database. Remember to back up your database prior to upgrading."
+msgstr ""
+
+msgid "`iss` in access and id tokens"
+msgstr ""
+
+msgid "The value of `iss` claim in access and id tokens have changed from `realm name` to `realm url`. This is required by OpenID Connect specification. If you're using our adapters no change is required, except if you've been using bearer-only without specifying the `auth-server-url`, you have to add it now. If you're using another library (or RSATokenVerifier) you need to make the corresponding changes when verifying `iss`."
+msgstr ""
+
+msgid "OpenID Connect endpoints"
+msgstr ""
+
+msgid "To comply with OpenID Connect specification the authentication and token endpoints have been changed to having a single authentication endpoint and a single token endpoint. As per-spec `response_type` and `grant_type` parameters are used to select the required flow. The old endpoints (`/realms/{realm-name}/protocols/openid-connect/login`, `/realms/{realm-name}/protocols/openid-connect/grants/access`, `/realms/{realm-name}/protocols/openid-connect/refresh`, `/realms/{realm-name}/protocols/openid-connect/access/codes`) are now deprecated and will be removed in a future version."
+msgstr ""
+
+msgid "Theme changes"
+msgstr ""
+
+msgid "The layout of themes has changed. The directory hierarchy used to be `type/name` this is now changed to `name/type`. For example a login theme named `sunrise` used to be deployed to `standalone/configuration/themes/login/sunrise`, which is now moved to `standalone/configuration/themes/sunrise/login`. This change was done to make it easier to have groups of the different types for the same theme into one folder."
+msgstr ""
+
+msgid "If you deployed themes as a JAR in the past you had to create a custom theme loader which required Java code. This has been simplified to only requiring a plain text file (`META-INF/keycloak-themes.json`) to describe the themes included in a JAR."
+msgstr ""
+
+msgid "Claims changes"
+msgstr ""
+
+msgid "Previously a dedicated `Claims` tab existed in the admin console for application and OAuth clients. This was used to configure which attributes should go into access token for particular application/client. This was removed and is replaced with protocol mappers which are more flexible."
+msgstr ""
+
+msgid "You don't need to care about migration of database from previous version. We did migration scripts for both RDBMS and Mongo, which should ensure that claims configured for particular application/client will be converted into corresponding protocol mappers (Still it's safer to back up DB before migrating to newer version though). Same applies for exported JSON representation from previous version."
+msgstr ""
+
+msgid "Social migration to identity brokering"
+msgstr ""
+
+msgid "We refactored social providers SPI and replaced it with Identity Brokering SPI, which is more flexible. The `Social` tab in admin console is renamed to `Identity Provider` tab."
+msgstr ""
+
+msgid "Again you don't need to care about migration of database from previous version similarly like for Claims/protocol mappers. Both configuration of social providers and \"social links\" to your users will be converted to corresponding Identity providers."
+msgstr ""
+
+msgid "Only required action from you would be to change allowed `Redirect URI` in the admin console of particular 3rd party social providers. You can first go to the Keycloak admin console and copy Redirect URI from the page where you configure the identity provider. Then you can simply paste this as allowed Redirect URI to the admin console of 3rd party provider (IE. Facebook admin console)."
+msgstr ""
+
+msgid "Migrating from 1.1.0.Beta1 to 1.1.0.Beta2"
+msgstr ""
+
+msgid "adapters are now a separate download.  They are not included in appliance and war distribution.  We have too many now and the distro is getting bloated."
+msgstr ""
+
+msgid "`org.keycloak.adapters.tomcat7.KeycloakAuthenticatorValve` +`org.keycloak.adapters.tomcat.KeycloakAuthenticatorValve`"
+msgstr ""
+
+msgid "JavaScript adapter now has idToken and idTokenParsed properties. If you use idToken to retrieve first name, email, etc. you need to change this to idTokenParsed."
+msgstr ""
+
+msgid "The as7-eap-subsystem and keycloak-wildfly-subsystem have been merged into one keycloak-subsystem.  If you have an existing standalone.xml or domain.xml, you will need edit near the top of the file and change the extension module name to org.keycloak.keycloak-subsystem. For AS7 only, the extension module name is org.keycloak.keycloak-as7-subsystem."
+msgstr ""
+
+msgid "Server installation is no longer supported on AS7.  You can still use AS7 as an application client."
+msgstr ""
+
+msgid "Migrating from 1.0.x.Final to 1.1.0.Beta1"
+msgstr ""
+
+msgid "RealmModel JPA and Mongo storage schema has changed"
+msgstr ""
+
+msgid "UserSessionModel JPA and Mongo storage schema has changed as these interfaces have been refactored"
+msgstr ""
+
+msgid "Upgrade your adapters, old adapters are not compatible with Keycloak 1.1.  We interpreted JSON Web Token and OIDC ID Token specification incorrectly.  'aud' claim must be the client id, we were storing the realm name in there and validating it."
+msgstr ""
+
+msgid "Migrating from 1.0 RC-1 to RC-2"
+msgstr ""
+
+msgid "A lot of info level logging has been changed to debug. Also, a realm no longer has the jboss-logging audit listener by default. If you want log output when users login, logout, change passwords, etc. enable the jboss-logging audit listener through the admin console."
+msgstr ""
+
+msgid "Migrating from 1.0 Beta 4 to RC-1"
+msgstr ""
+
+msgid "logout REST API has been refactored.  The GET request on the logout URI does not take a session_state parameter anymore.  You must be logged in in order to log out the session. You can also POST to the logout REST URI.  This action requires a valid refresh token to perform the logout. The signature is the same as refresh token minus the grant type form parameter.  See documentation for details."
+msgstr ""
+
+msgid "Migrating from 1.0 Beta 1 to Beta 4"
+msgstr ""
+
+msgid "LDAP/AD configuration is changed.  It is no longer under the \"Settings\" page.  It is now under Users->Federation.  Add Provider will show you an \"ldap\" option."
+msgstr ""
+
+msgid "Authentication SPI has been removed and rewritten.  The new SPI is UserFederationProvider and is more flexible."
+msgstr ""
+
+msgid "`ssl-not-required` +`ssl-required` +`all` +`external` +`none`"
+msgstr ""
+
+msgid "DB Schema has changed again."
+msgstr ""
+
+msgid "Created applications now have a full scope by default.  This means that you don't have to configure the scope of an application if you don't want to."
+msgstr ""
+
+msgid "Format of JSON file for importing realm data was changed. Now role mappings is available under the JSON record of particular user."
+msgstr ""
+
+msgid "Migrating from 1.0 Alpha 4 to Beta 1"
+msgstr ""
+
+msgid "DB Schema has changed.  We have added export of the database to Beta 1, but not the ability to import the database from older versions. This will be supported in future releases."
+msgstr ""
+
+msgid "For all clients except bearer-only applications, you must specify at least one redirect URI.  Keycloak will not allow you to log in unless you have specified a valid redirect URI for that application."
+msgstr ""
+
+msgid "Direct Grant API +`ON`"
+msgstr ""
+
+msgid "standalone/configuration/keycloak-server.json"
+msgstr ""
+
+msgid "JavaScript adapter"
+msgstr ""
+
+msgid "Session Timeout"
+msgstr ""
+
+msgid "Migrating from 1.0 Alpha 2 to Alpha 3"
+msgstr ""
+
+msgid "SkeletonKeyToken, SkeletonKeyScope, SkeletonKeyPrincipal, and SkeletonKeySession have been renamed to: AccessToken, AccessScope, KeycloakPrincipal, and KeycloakAuthenticatedSession respectively."
+msgstr ""
+
+msgid "ServletOAuthClient.getBearerToken() method signature has changed.  It now returns an AccessTokenResponse so that you can obtain a refresh token too."
+msgstr ""
+
+msgid "adapters now check the access token expiration with every request.  If the token is expired, they will attempt to invoke a refresh on the auth server using a saved refresh token."
+msgstr ""
+
+msgid "Subject in AccessToken has been changed to the User ID."
+msgstr ""
+
+msgid "Migrating from 1.0 Alpha 1 to Alpha 2"
+msgstr ""
+
+msgid "DB Schema has changed.  We don't have any data migration utilities yet as of Alpha 2."
+msgstr ""
+
+msgid "JBoss and WildFly adapters are now installed via a {appserver_name} subsystem.  Please review the adapter installation documentation.  Edits to standalone.xml are now required."
+msgstr ""
+
+msgid "A new credential type \"secret\" got introduced. Unlike other credential types, it is stored in plain text in the database and can be viewed in the admin console."
+msgstr ""
+
+msgid "Application and OAuth Client credentials are no longer required. These client types are now hard coded to use the \"secret\" credential type."
+msgstr ""
+
+msgid "Because of the \"secret\" credential change to Application and OAuth Client, you'll have to update your keycloak.json configuration files and regenerate a secret within the Application or OAuth Client credentials tab in the administration console."
+msgstr ""

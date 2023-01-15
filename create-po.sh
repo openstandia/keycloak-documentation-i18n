@@ -3,18 +3,41 @@
 DIR=$(cd $(dirname $0); pwd)
 cd $DIR
 
-VERSION=$1
+DOCS="\
+  server_installation \
+  securing_apps \
+  server_admin \
+  server_development \
+  authorization_services \
+  upgrading \
+  release_notes"
 
-mkdir -p src/$VERSION
+BUILD_DIR=$DIR/build
 
-for file in `ls source`; do
-  TARGET=source/$file/index.adoc
+mkdir -p $BUILD_DIR
+git clone https://github.com/keycloak/keycloak-documentation $BUILD_DIR
+cd $BUILD_DIR
 
-  if [ -f $TARGET ]; then 
-    echo $file
+for version in `ls $DIR/src`; do
+  echo "Checkout $version"
 
-    asciidoctor -r asciidoctor-i18n -a language=${file} -a po-directory=./src/$VERSION $TARGET
-  fi
+  git reset --hard && git clean -xf
+  git checkout $version
 
+  for docname in $DOCS; do
+    TARGET=$docname/index.adoc
+
+    if [ -f $TARGET ]; then
+      echo "Build $docname"
+
+      asciidoctor \
+        -b html5 \
+        -r asciidoctor-i18n \
+        -a project_buildType=archive \
+        -a language=$docname \
+        -a po-directory=$DIR/src/$version/ \
+        $TARGET
+    fi
+  done
 done
 

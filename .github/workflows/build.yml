@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: openstandia/keycloak-documentation-i18n:asciidoctor
+      options: -v ${{ github.workspace }}:/build
     steps:
+      - uses: actions/checkout@v2
       - name: Build documents
-        run: ./build.sh
+        run: /build/build.sh
 

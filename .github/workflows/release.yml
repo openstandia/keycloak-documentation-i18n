@@ -2,8 +2,7 @@ name: Preview Build
 on:
   push:
     branches:
-      - develop
-      - transifex
+      - main
 
 jobs:
   build:
@@ -43,7 +42,7 @@ jobs:
             for version in `ls ./dist | sed "s|/||"`; do
               if [ -d ./dist/$version/$language ]; then
                 echo "Sync $version/$language to S3 release dir"
-                aws s3 sync ./dist/$version/$language s3://keycloak-documentation/preview/$version/$language --delete
+                aws s3 sync ./dist/$version/$language s3://keycloak-documentation/$version/$language --delete
               fi
             done
           done

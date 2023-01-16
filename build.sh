@@ -18,6 +18,9 @@ BUILD_DIR=$DIR/build
 DIST_DIR=$DIR/dist
 
 mkdir -p $DIST_DIR
+cp $BUILD_DIR/site/index.html $DIST_DIR/
+cp $BUILD_DIR/site/*.png $DIST_DIR/
+
 mkdir -p $BUILD_DIR
 git clone https://github.com/keycloak/keycloak-documentation $BUILD_DIR
 cd $BUILD_DIR

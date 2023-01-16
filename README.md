@@ -1,8 +1,6 @@
 Keycloak Documentation translation project
 ======================
 
-[![CircleCI](https://circleci.com/gh/openstandia/keycloak-documentation-i18n.svg?style=svg)](https://circleci.com/gh/openstandia/keycloak-documentation-i18n)
-
 Support Languages
 -------------------------------
 Support languages are as follows.
@@ -27,9 +25,9 @@ First, clone this repository:
 
 To build Translated Keycloak Documentation run:
 
-    ./build.sh
+    docker run --rm -w /build -v (pwd):/build openstandia/keycloak-documentation-i18n:asciidoctor /build/build.sh translations/{LANG}/{VERSION}
 
-You can then view the documentation by opening translated/dist/{LANG}/index.html.
+You can then view the documentation by opening dist/{VERSION}/index.html.
 
 License
 -------

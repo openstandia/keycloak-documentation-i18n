@@ -1,0 +1,49 @@
+name: Preview Build
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+    permissions:
+      id-token: write
+      contents: read
+    container:
+      image: openstandia/keycloak-documentation-i18n:asciidoctor
+      options: -v ${{ github.workspace }}:/build
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        with:
+          separator: ","
+          files: translations/**
+
+      - name: Build documents
+        run: /build/build.sh ${{ steps.changed-files.outputs.all_changed_files }}
+
+      - name: Configure AWS credentials from IAM Role
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::898353857660:role/keycloak-documentation-i18n-github-action
+          aws-region: ap-northeast-1
+
+      - name: Sync to s3
+        run: |
+          for language in `ls ./translations | sed "s|/||"`; do
+            for version in `ls ./dist | sed "s|/||"`; do
+              if [ -d ./dist/$version/$language ]; then
+                echo "Sync $version/$language to S3 release dir"
+                aws s3 sync ./dist/$version/$language s3://keycloak-documentation/$version/$language --delete
+              fi
+            done
+          done
+

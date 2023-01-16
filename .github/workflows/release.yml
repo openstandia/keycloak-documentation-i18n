@@ -38,6 +38,10 @@ jobs:
 
       - name: Sync to s3
         run: |
+          aws s3 cp ./site/index.html s3://keycloak-documentation/
+          aws s3 cp ./site/keycloak_logo.png s3://keycloak-documentation/
+          aws s3 cp ./site/openstandia_logo.png s3://keycloak-documentation/
+
           for language in `ls ./translations | sed "s|/||"`; do
             for version in `ls ./dist | sed "s|/||"`; do
               if [ -d ./dist/$version/$language ]; then

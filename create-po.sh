@@ -17,12 +17,18 @@ BUILD_DIR=$DIR/build
 mkdir -p $BUILD_DIR
 git clone https://github.com/keycloak/keycloak-documentation $BUILD_DIR
 cd $BUILD_DIR
+git fetch --tags
 
 for version in `ls $DIR/src`; do
-  echo "Checkout $version"
+  TAG=`git tag --list "${version}" | sort | tail -n 1`
+  if [ -z "$TAG" ]; then
+    TAG=`git tag --list "${version}.*" | sort | tail -n 1`
+  fi
+
+  echo "Checkout $TAG"
 
   git reset --hard && git clean -xf
-  git checkout $version
+  git checkout $TAG
 
   for docname in $DOCS; do
     TARGET=$docname/index.adoc

@@ -12,7 +12,7 @@ echo "---------------"
 
 if [[ "$CHANGE_FILES" = "" ]]; then
   echo "No build"
-  exit 1
+  exit 0
 fi
 
 BUILD_DIR=$DIR/build

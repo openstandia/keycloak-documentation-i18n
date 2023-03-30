@@ -5,12 +5,12 @@
 # Tsukasa Amano <t.amano@pro-japan.co.jp>, 2023
 # Yoshikazu Nojima <mail@ynojima.net>, 2023
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2023
-# Kohei Tamura <ktamura.biz.80@gmail.com>, 2023
 # Hiroyuki Wada <wadahiro@gmail.com>, 2023
+# Kohei Tamura <ktamura.biz.80@gmail.com>, 2023
 # 
 msgid ""
 msgstr ""
-"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2023\n"
+"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2023\n"
 "Language-Team: Japanese (Japan) (https://www.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language: ja_JP\n"
@@ -158,7 +158,7 @@ msgstr ""
 "Linuxにおいては、セキュリティー・ポリシーにより `/dev/random` の使用が義務付けられている場合を除き、ランダムデータのソースとして "
 "`/dev/urandom` "
 "を使用することをお勧めします。エントロピー不足が原因で{project_name}が固まるのを防ぐことができます。Oracle JDK "
-"8およびOpenJDK 8でこれを使用するには、 起動時の `java.security.egd` システム・プロパティーを "
+"8およびOpenJDK 8でこれを使用するには、起動時の `java.security.egd` システム・プロパティーを "
 "`file:/dev/urandom` に設定してください。"
 
 msgid "Installing the Keycloak server"
@@ -1381,7 +1381,7 @@ msgid "See the <<archdiagram>> for more details."
 msgstr "詳細は、<<archdiagram>>を参照してください。"
 
 msgid "Setting up cross-site replication"
-msgstr ""
+msgstr "クロスサイト・レプリケーションの設定"
 
 msgid ""
 "Use the following procedures for {jdgserver_name} {jdgserver_version_latest}"
@@ -1396,6 +1396,8 @@ msgid ""
 "Check the {jdgserver_name} documentation for any steps that do not work as "
 "described."
 msgstr ""
+"{jdgserver_name}の正確な手順は、{jdgserver_name} "
+"8.1に適用されるこの手順と若干異なる場合があります。説明通りに動作しない手順については、{jdgserver_name}のドキュメントを確認してください。"
 
 msgid ""
 "This example for {jdgserver_name} {jdgserver_version_latest} involves two "
@@ -2376,6 +2378,8 @@ msgid ""
 "usually be taken offline automatically. This is done due the configuration "
 "of `take-offline` element inside the cache configuration."
 msgstr ""
+"**自動的作業** - 数回バックアップに失敗した後、通常は `site2` が自動的にオフラインになります。これは、キャッシュ設定内の `take-"
+"offline` 要素の設定によって行われます。"
 
 msgid "<take-offline min-wait=\"60000\" after-failures=\"3\" />"
 msgstr "<take-offline min-wait=\"60000\" after-failures=\"3\" />"
@@ -2867,11 +2871,13 @@ msgid ""
 "so that you have some understanding of how things work. It is also wise to "
 "read this entire document to have some understanding of things."
 msgstr ""
+"まず、 xref:assembly-setting-up-crossdc[クロスサイト・レプリケーションの設定] "
+"の手順を実行し、それを動作させて、どのように動作するかをある程度理解することをお勧めします。また、このドキュメント全体を読んで、仕様をある程度理解しておくことも賢明です。"
 
 msgid ""
 "For the {project_name} servers, you should see a message such as this during"
 " the server startup:"
-msgstr ""
+msgstr "{project_name}サーバーの場合、サーバーの起動時に次のようなメッセージが表示されます。"
 
 msgid ""
 "18:09:30,156 INFO  [org.keycloak.connections.infinispan.DefaultInfinispanConnectionProviderFactory] (ServerService Thread Pool -- 54)\n"
@@ -2890,6 +2896,7 @@ msgid ""
 " only the {project_name} servers from the same data center are in cluster "
 "with each other. This can be also checked in JConsole through the GMS view."
 msgstr ""
+"同じデータセンターの{project_name}サーバーだけが互いにクラスターになっているなど、{project_name}サーバーが期待通りにクラスターになっていることを確認します。これは、JConsoleのGMSビューからも確認できます。"
 
 msgid ""
 "If there are exceptions during startup of {project_name} server like this:"
@@ -3648,10 +3655,10 @@ msgid "W3C Web Authentication (WebAuthn)"
 msgstr "W3C Web Authentication（WebAuthn）"
 
 msgid "update_email"
-msgstr ""
+msgstr "update_email"
 
 msgid "Update Email Workflow"
-msgstr ""
+msgstr "電子メールのワークフローの更新"
 
 msgid "To enable all preview features start the server with:"
 msgstr "すべてのプレビュー機能を有効にするには、次のようにサーバーを起動します。"
@@ -7085,6 +7092,8 @@ msgid ""
 " ignored when the Operator is deployed on Kubernetes version 1.25 and "
 "higher."
 msgstr ""
+"Keycloak CRの `podDisruptionBudget` フィールドは非推奨であり、OperatorがKubernetes "
+"1.25以降にデプロイされた場合は無視される予定です。"
 
 msgid ""
 "We fully support using the rest of the CRDs in production, despite the "

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
-msgid "Note that since `String` objects are immutable, their content cannot be discarded by overriding with random garbage. Even though measures have been taken in the default `VaultStringSecret` implementation to prevent internalizing ``String``s, the secrets stored in `String` objects would live at least to the next GC round. Thus using plain byte and character arrays and buffers is preferable."
+msgid "{developerguide_name}"
 msgstr ""
 
 msgid "*{release_header_guide}* icon:angle-down[]"
@@ -66,9 +66,6 @@ msgid "Examples of using CURL"
 msgstr ""
 
 msgid "Authenticating with a username and password"
-msgstr ""
-
-msgid "The following example assumes that you created the user `admin` with the password `password` in the `master` realm as shown in the link:{gettingstarted_link}[{gettingstarted_name}] tutorial."
 msgstr ""
 
 msgid "Procedure"
@@ -964,9 +961,6 @@ msgid ""
 "}"
 msgstr ""
 
-msgid "It is recommended that your provider factory implementation returns unique id by method `getId()`. However there can be some exceptions to this rule as mentioned below in the <<_override_builtin_providers,Overriding providers>> section."
-msgstr ""
-
 msgid "{project_name} creates a single instance of provider factories which makes it possible to store state for multiple requests. Provider instances are created by calling create on the factory for each request so these should be light-weight object."
 msgstr ""
 
@@ -1036,33 +1030,6 @@ msgid ""
 "        return session.getContext().getRealm().getLoginTheme();\n"
 "    }\n"
 "}"
-msgstr ""
-
-msgid "Override built-in providers"
-msgstr ""
-
-msgid "As mentioned above, it is recommended that your `ProviderFactory` implementations use unique ID. However at the same time, it can be useful to override one of the {project_name} built-in providers. The recommended way for this is still ProviderFactory implementation with unique ID and then for instance set the default provider as specified in the link:https://www.keycloak.org/server/configuration-provider[Configuring Providers] guide. On the other hand, this may not be always possible."
-msgstr ""
-
-msgid "For instance when you need some customizations to default OpenID Connect protocol behaviour and you want to override default {project_name} implementation of `OIDCLoginProtocolFactory` you need to preserve same providerId. As for example admin console, OIDC protocol well-known endpoint and various other things rely on the ID of the protocol factory being `openid-connect`."
-msgstr ""
-
-msgid "For this case, it is highly recommended to implement method `order()` of your custom implementation and make sure that it has higher order than the built-in implementation."
-msgstr ""
-
-msgid ""
-"public class CustomOIDCLoginProtocolFactory extends OIDCLoginProtocolFactory {\n"
-"\n"
-"    // Some customizations here\n"
-"\n"
-"    @Override\n"
-"    public int order() {\n"
-"        return 1;\n"
-"    }\n"
-"}"
-msgstr ""
-
-msgid "In case of multiple implementations with same provider ID, only the one with highest order will be used by {project_name} runtime."
 msgstr ""
 
 msgid "Show info from your SPI implementation in the Admin Console"
@@ -1343,6 +1310,58 @@ msgstr ""
 msgid "Once you have a JAR file with a descriptor and the scripts you want to deploy, you just need to copy the JAR to the {project_name} `providers/` directory, then run `bin/kc.[sh|bat] build`."
 msgstr ""
 
+msgid "Deploy the script engine on Java 15 and later"
+msgstr ""
+
+msgid "To run the scripts, JavaScript providers require that a JavaScript engine is available in your Java application. Java 14 and lower versions include the Nashorn JavaScript Engine. It is automatically available as part of the Java itself and JavaScript providers are able to use this script engine by default. However, for Java 15 or higher versions, the script engine is not part of the Java itself. It needs to be added to your server because {project_name} does not have any script engine by default. Java 15 and higher versions require an extra step when deploying script providers - adding the script engine of your choice to your distribution."
+msgstr ""
+
+msgid "You can use any script engine. However, we only test with the Nashorn JavaScript Engine. The following steps assume that this engine is used:"
+msgstr ""
+
+msgid "Install the script engine by copying the nashorn script engine JAR and its dependencies directly to the `KEYCLOAK_HOME/providers` directory. In the `pom.xml` file of your script project, you can declare the dependency such as this in the `dependencies` section:"
+msgstr ""
+
+msgid ""
+"<dependency>\n"
+"    <groupId>org.openjdk.nashorn</groupId>\n"
+"    <artifactId>nashorn-core</artifactId>\n"
+"    <version>15.3</version>\n"
+"</dependency>"
+msgstr ""
+
+msgid "and declare `maven-dependency-plugin` in the `plugins` section to copy the dependencies to the specified directory:"
+msgstr ""
+
+msgid ""
+"<plugin>\n"
+"    <groupId>org.apache.maven.plugins</groupId>\n"
+"    <artifactId>maven-dependency-plugin</artifactId>\n"
+"    <executions>\n"
+"        <execution>\n"
+"                <id>copy-dependencies-quarkus</id>\n"
+"                <phase>package</phase>\n"
+"            <goals>\n"
+"                <goal>copy-dependencies</goal>\n"
+"            </goals>\n"
+"            <configuration>\n"
+"                <outputDirectory>${project.build.directory}/keycloak-server-copy/providers</outputDirectory>\n"
+"                <includeArtifactIds>nashorn-core,asm,asm-util,asm-commons</includeArtifactIds>\n"
+"            </configuration>\n"
+"        </execution>\n"
+"    </executions>\n"
+"</plugin>"
+msgstr ""
+
+msgid "Once the project is built, copy the script engine and its dependencies to the `KEYCLOAK_HOME/providers` directory."
+msgstr ""
+
+msgid "cp target/keycloak-server-copy/providers/*.jar KEYCLOAK_HOME/providers/"
+msgstr ""
+
+msgid "After re-augment the distribution with `kc.sh build`, the script engine should be deployed and your script providers should work."
+msgstr ""
+
 msgid "Available SPIs"
 msgstr ""
 
@@ -1437,9 +1456,6 @@ msgid "For more details, take a look at the example distribution at `providers/d
 msgstr ""
 
 msgid "<<_extensions_rest,Custom REST endpoints>>"
-msgstr ""
-
-msgid "Add custom JPA entities to the Keycloak data model"
 msgstr ""
 
 msgid "If the {project_name} data model does not exactly match your desired solution, or if you want to add some core functionality to {project_name}, or when you have your own REST endpoint, you might want to extend the {project_name} data model. We enable you to add your own JPA entities to the {project_name} JPA `EntityManager` ."
@@ -2802,30 +2818,6 @@ msgstr ""
 msgid "If your user provider implementation is using some user attributes as the metadata attributes for linking/establishing the user identity, then please make sure that users are not able to edit the attributes and the corresponding attributes are read-only. The example is the `LDAP_ID` attribute, which the built-in {project_name} LDAP provider is using for to store the ID of the user on the LDAP server side. See the details in the link:{adminguide_link}#_read_only_user_attributes[Threat model mitigation chapter]."
 msgstr ""
 
-msgid "There are two sample projects in link:{quickstartRepo_link}[{quickstartRepo_name}]. Each quickstart has a `README` file with instructions on how to build, deploy, and test the sample project. The following table provides a brief description of the available User Storage SPI quickstarts:"
-msgstr ""
-
-msgid "User Storage SPI Quickstarts"
-msgstr ""
-
-msgid "Name"
-msgstr ""
-
-msgid "Description"
-msgstr ""
-
-msgid "{quickstartRepo_link}/tree/latest/user-storage-jpa[user-storage-jpa]"
-msgstr ""
-
-msgid "Demonstrates implementing a user storage provider using EJB and JPA."
-msgstr ""
-
-msgid "{quickstartRepo_link}/tree/latest/user-storage-simple[user-storage-simple]"
-msgstr ""
-
-msgid "Demonstrates implementing a user storage provider using a simple properties file that contains username/password key pairs."
-msgstr ""
-
 msgid "Provider interfaces"
 msgstr ""
 
@@ -2940,6 +2932,9 @@ msgid "If you have examined the `UserStorageProvider` interface closely you migh
 msgstr ""
 
 msgid "SPI"
+msgstr ""
+
+msgid "Description"
 msgstr ""
 
 msgid "`org.keycloak.storage.user.UserLookupProvider`"
@@ -4325,5 +4320,5 @@ msgstr ""
 msgid "The example uses `KeycloakSession.vault()` as the entrypoint for accessing the secrets. Using the `VaultProvider.obtainSecret` method directly is indeed also possible. However the `vault()` method has the benefit of ability to interpret the raw secret (which is generally a byte array) as a character array (via `vault().getCharSecret()`) or a `String` (via `vault().getStringSecret()`) in addition to obtaining the original uninterpreted value (via `vault().getRawSecret()` method)."
 msgstr ""
 
-msgid "Server Developer Guide"
+msgid "Note that since `String` objects are immutable, their content cannot be discarded by overriding with random garbage. Even though measures have been taken in the default `VaultStringSecret` implementation to prevent internalizing ``String``s, the secrets stored in `String` objects would live at least to the next GC round. Thus using plain byte and character arrays and buffers is preferable."
 msgstr ""

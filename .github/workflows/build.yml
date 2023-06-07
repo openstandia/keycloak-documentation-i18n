@@ -29,7 +29,9 @@ jobs:
           files: translations/**
 
       - name: Build documents
-        run: /build/build.sh ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          apt-get update && apt-get install -y bc
+          /build/build.sh ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Configure AWS credentials from IAM Role
         uses: aws-actions/configure-aws-credentials@v1

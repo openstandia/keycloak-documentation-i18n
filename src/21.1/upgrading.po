@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
-msgid "Because of the \"secret\" credential change to Application and OAuth Client, you'll have to update your keycloak.json configuration files and regenerate a secret within the Application or OAuth Client credentials tab in the administration console."
+msgid "{upgradingguide_name}"
 msgstr ""
 
 msgid "*{release_header_guide}* icon:angle-down[]"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Before upgrading make sure to read the instructions carefully and carefully review the changes listed in <<migration-changes,Migration Changes>>."
 msgstr ""
 
-msgid "Upgrading the Keycloak server"
+msgid "Upgrading the {project_name} server"
 msgstr ""
 
 msgid "Preparing for upgrading"
@@ -220,7 +220,7 @@ msgstr ""
 msgid "Review the changes and determine if they affect your custom styling."
 msgstr ""
 
-msgid "Upgrading Keycloak adapters"
+msgid "Upgrading {project_name} adapters"
 msgstr ""
 
 msgid "It is important that you upgrade {project_name} server first, and then upgrade the adapters. Earlier versions of the adapter might work with later versions of {project_name} server, but earlier versions of {project_name} server might not work with later versions of the adapter."
@@ -274,58 +274,13 @@ msgstr ""
 msgid "Change the dependency for keycloak-connect in the package.json of your application"
 msgstr ""
 
-msgid "Upgrading the Keycloak Admin Client"
+msgid "Upgrading the {project_name} Admin Client"
 msgstr ""
 
 msgid "It is important that you upgrade the {project_name} server first, and then upgrade the admin-client. Earlier versions of the admin-client might work with later versions of {project_name} server, but earlier versions of {project_name} server might not work with later versions of the admin-client. It is recommended to use the admin-client version that matches the used {project_name} server version."
 msgstr ""
 
 msgid "Migration Changes"
-msgstr ""
-
-msgid "Migrating to 21.1.0"
-msgstr ""
-
-msgid "Javascript engine available by default on the classpath"
-msgstr ""
-
-msgid "In the previous version, when Keycloak was used on Java 17 with Javascript providers (Script authenticator, Javascript authorization policy or Script protocol mappers for OIDC and SAML clients), it was needed to copy javascript engine to the distribution. This is no longer needed as Nashorn javascript engine is available in Keycloak server by default. When you deploy script providers, it is recommended to not copy the nashorn script engine and it's dependencies into the Keycloak distribution."
-msgstr ""
-
-msgid "Change of the default Client ID mapper of Service Account Client"
-msgstr ""
-
-msgid "Default `Client ID` mapper of `Service Account Client` has been changed. `Token Claim Name` field value has been changed from `clientId` to `client_id`. `client_id` claim is compliant with OAuth2 specifications:"
-msgstr ""
-
-msgid "https://datatracker.ietf.org/doc/html/rfc9068#section-2.2[JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens]"
-msgstr ""
-
-msgid "https://www.rfc-editor.org/rfc/rfc7662#section-2.2[OAuth 2.0 Token Introspection]"
-msgstr ""
-
-msgid "https://datatracker.ietf.org/doc/html/rfc8693#section-4.3[OAuth 2.0 Token Exchange]"
-msgstr ""
-
-msgid "`clientId` userSession note still exists."
-msgstr ""
-
-msgid "Keycloak JS adapter must be instanciated with the <code>new</code> operator"
-msgstr ""
-
-msgid "Historically it has been possible to create an instance of the Keycloak JS adapter by calling the `Keycloak()` function directly:"
-msgstr ""
-
-msgid "const keycloak = Keycloak();"
-msgstr ""
-
-msgid "To align this with modern conventions in the JavaScript world it has been possible to use the https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new[`new` operator] to create an instance instead:"
-msgstr ""
-
-msgid "const keycloak = new Keycloak();"
-msgstr ""
-
-msgid "The function-style constructor has been deprecated for a while, but starting this version we will actively log a deprecation message when it used. This style of constructor will be removed in a future version so make sure to migrate your code to use the `new` operator."
 msgstr ""
 
 msgid "Migrating to 21.0.2"
@@ -418,7 +373,7 @@ msgstr ""
 msgid "In Keycloak 13 there was introduced `UserLoginFailureProvider` and some methods from `UserSessionProvider` were moved there. The methods in `UserSessionProvider` were deprecated and now has been removed. Javadoc of these methods contained a corresponding replacement (see Javadoc of Keycloak 20 release)."
 msgstr ""
 
-msgid "Custom themes using old admin console won&#8217;t work"
+msgid "Custom themes using old admin console won't work"
 msgstr ""
 
 msgid "The old admin console, which was deprecated in previous versions, was finally removed. This also means that your custom themes, which were using it as parent theme or importing from it, won't work. It is highly recommended to not deploy such themes at all as extending old admin console is not applicable anymore and there can be issues in Keycloak (at least warnings or errors in the logs) with such themes deployed."
@@ -951,7 +906,7 @@ msgid ""
 "</jboss-deployment-structure>"
 msgstr ""
 
-msgid "Changes in <code>KeycloakSession</code>"
+msgid "Changes in `KeycloakSession`"
 msgstr ""
 
 msgid "`KeycloakSession` has been simplified. Several methods have been deprecated in `KeycloakSession` and will be removed in a future version."
@@ -1008,7 +963,7 @@ msgstr ""
 msgid "The API for creating a custom storage provider has not been fully stabilized yet, though it is available as a tech preview. See the `MapStorageProvider` SPI and its Javadoc for details. The availability of the new API is a priority for the next Keycloak version."
 msgstr ""
 
-msgid "Changes to <code>RealmModel</code>"
+msgid "Changes to `RealmModel`"
 msgstr ""
 
 msgid "The methods getUserStorageProviders`, `getUserStorageProvidersStream`, `getClientStorageProviders`, `getClientStorageProvidersStream`, `getRoleStorageProviders` and `getRoleStorageProvidersStream` have been removed. Code which depends on these methods and runs with the legacy storage enabled should cast the instance as follows:"
@@ -1049,7 +1004,7 @@ msgid ""
 "}"
 msgstr ""
 
-msgid "Interface <code>UserCache</code> moved to the legacy module"
+msgid "Interface `UserCache` moved to the legacy module"
 msgstr ""
 
 msgid "As the caching status of objects will be transparent to services, the interface `UserCache` has been moved to the module `keycloak-legacy`. Calls to `session.userCache()` will therefore return only a `UserProvider`, which is a breaking change."
@@ -1112,7 +1067,7 @@ msgstr ""
 msgid "For a custom `UserStorageProvider`, there is a new method `credentialManager()` that needs to be implemented when returning a `UserModel`. As those providers run in an environment with the legacy storage enabled, those must return an instance of the `LegacyUserCredentialManager`:"
 msgstr ""
 
-msgid "Before migration: code will not compile due to the new method <code>credentialManager()</code> required by <code>UserModel</code>"
+msgid "Before migration: code will not compile due to the new method `credentialManager()` required by `UserModel`"
 msgstr ""
 
 msgid ""
@@ -1129,7 +1084,7 @@ msgid ""
 "}"
 msgstr ""
 
-msgid "After migration: implementation of the API <code>UserModel.credentialManager()</code> for the legacy store."
+msgid "After migration: implementation of the API `UserModel.credentialManager()` for the legacy store."
 msgstr ""
 
 msgid ""
@@ -1151,7 +1106,7 @@ msgid ""
 "}"
 msgstr ""
 
-msgid "Deprecated <code>podDisruptionBudget</code> in the legacy Keycloak Operator"
+msgid "Deprecated `podDisruptionBudget` in the legacy {project_operator}"
 msgstr ""
 
 msgid "With this release, we have deprecated `podDisruptionBudget` field in the Keycloak CR of the https://github.com/keycloak/keycloak-operator[legacy {project_operator}]. This optional field will be ignored when the Operator is deployed on Kubernetes version 1.25 and higher."
@@ -1177,7 +1132,7 @@ msgstr ""
 msgid "See also the https://kubernetes.io/docs/tasks/run-application/configure-pdb/[Kubernetes Documentation]."
 msgstr ""
 
-msgid "Deployment changes in the new Keycloak Operator"
+msgid "Deployment changes in the new {project_operator}"
 msgstr ""
 
 msgid "The new {project_operator} now uses `StatefulSet` instead of `Deployment` for Keycloak deployments. There's no automated migration in place given the Operator is a tech preview in this release. If you are using the new Operator with 18.0.z, please make sure to back up, delete and recreate your Keycloak CR after the upgrade to 19.0.0."
@@ -1236,7 +1191,7 @@ msgstr ""
 msgid "With this configuration, you can still use the format with the `redirect_uri` parameter. Note the confirmation screen will be needed if the `id_token_hint` is omitted."
 msgstr ""
 
-msgid "Removal of the <code>upload-scripts</code> feature"
+msgid "Removal of the `upload-scripts` feature"
 msgstr ""
 
 msgid "Previous versions of {project_name} had supported managing JavaScript code through the management interfaces like the administrations console and REST API. Starting from this version this is no longer possible, and you should now deploy your scripts to the server in order to configure the following providers:"
@@ -1449,7 +1404,7 @@ msgstr ""
 msgid "{project_name} now respects the standard `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables for outgoing HTTP requests. This change could lead to unexpected use of a proxy server if you have for example the `HTTP_PROXY` variable defined but have no explicit proxy mappings specified in your SPI configuration. To prevent {project_name} from using those environment variables, you can explicitly create a no proxy route for all requests as `.*;NO_PROXY`."
 msgstr ""
 
-msgid "Deprecated features in the Keycloak Operator"
+msgid "Deprecated features in the {project_operator}"
 msgstr ""
 
 msgid "With this release, we have deprecated and/or marked as unsupported some features in the {project_operator}. This concerns the Backup CRD and the operator managed Postgres Database."
@@ -2169,7 +2124,7 @@ msgstr ""
 msgid "All Admin REST API endpoints that support pagination now have a default max results set to 100. If you want to return  more than 100 entries you need to explicitly specify that with `?max=<RESULTS>`."
 msgstr ""
 
-msgid "<code>realm-public-key</code> adapter property not recommended"
+msgid "`realm-public-key` adapter property not recommended"
 msgstr ""
 
 msgid "In 2.3.0 release we added support for Public Key Rotation. When admin rotates the realm keys in Keycloak admin console, the Client Adapter will be able to recognize it and automatically download new public key from Keycloak. However this automatic download of new keys is done just if you don't have `realm-public-key` option in your adapter with the hardcoded public key. For this reason, we don't recommend to use `realm-public-key` option in adapter configuration anymore."
@@ -2178,7 +2133,7 @@ msgstr ""
 msgid "Note this option is still supported, but it may be useful just if you really want to have hardcoded public key in your adapter configuration and never download the public key from Keycloak. In theory, one reason for this can be to avoid man-in-the-middle attack if you have untrusted network between adapter and Keycloak, however in that case, it is much better option to use HTTPS, which will secure all the requests between adapter and Keycloak."
 msgstr ""
 
-msgid "Added Infinispan cache <code>keys</code>"
+msgid "Added Infinispan cache `keys`"
 msgstr ""
 
 msgid "In this release, we added new cache `keys` to the infinispan subsystem, which is defined in `standalone.xml` or `standalone-ha.xml` configuration file. It has also some eviction and expiration defined. This cache is internally used for caching the external public keys of the entities trusted by the server (Identity providers or clients, which uses authentication with signed JWT)."
@@ -2187,13 +2142,13 @@ msgstr ""
 msgid "Migrating to 2.2.0"
 msgstr ""
 
-msgid "<code>databaseSchema</code> property <strong>deprecated</strong>"
+msgid "`databaseSchema` property *deprecated*"
 msgstr ""
 
 msgid "The `databaseSchema` property for both JPA and Mongo is now *deprecated* and is *replaced with* `initializeEmpty` and `migrationStrategy`. `initializeEmpty` can bet set to `true` or `false` and controls if an empty database should be initialized. `migrationStrategy` can be set to `update`, `validate` and `manual`. `manual` is only supported for relational databases and will write an SQL file with the required changes to the database schema. Please note that for Oracle database, the created SQL file contains `SET DEFINE OFF` command understood by Oracle SQL clients. Should the script be consumed by any other client, please replace the lines with equivalent command of the tool of your choice that disables variable expansion or remove it completely if such functionality is not applicable."
 msgstr ""
 
-msgid "Changes in Client&#8217;s Valid Redirect URIs"
+msgid "Changes in Client's Valid Redirect URIs"
 msgstr ""
 
 msgid "The following scenarios are affected:"
@@ -2499,7 +2454,7 @@ msgstr ""
 msgid "This release contains a number of changes to the database. Remember to back up your database prior to upgrading."
 msgstr ""
 
-msgid "<code>iss</code> in access and id tokens"
+msgid "`iss` in access and id tokens"
 msgstr ""
 
 msgid "The value of `iss` claim in access and id tokens have changed from `realm name` to `realm url`. This is required by OpenID Connect specification. If you're using our adapters no change is required, except if you've been using bearer-only without specifying the `auth-server-url`, you have to add it now. If you're using another library (or RSATokenVerifier) you need to make the corresponding changes when verifying `iss`."
@@ -2655,5 +2610,5 @@ msgstr ""
 msgid "Application and OAuth Client credentials are no longer required. These client types are now hard coded to use the \"secret\" credential type."
 msgstr ""
 
-msgid "Upgrading Guide"
+msgid "Because of the \"secret\" credential change to Application and OAuth Client, you'll have to update your keycloak.json configuration files and regenerate a secret within the Application or OAuth Client credentials tab in the administration console."
 msgstr ""

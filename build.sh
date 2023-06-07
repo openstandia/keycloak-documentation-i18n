@@ -40,10 +40,20 @@ for language in `ls $DIR/translations`; do
       echo $CHANGE_FILES | grep -q translations/$language/$version
 
       if [[ $? -eq 0 ]]; then
-        echo "Checkout $version"
+        TAG=`git tag --list "${version}" | sort | tail -n 1`
+        if [ -z "$TAG" ]; then
+          TAG=`git tag --list "${version}.*" | sort | tail -n 1`
+        fi
+
+        echo "Checkout $version ($TAG)"
 
         git reset --hard && git clean -xf
-        git checkout $version
+        git checkout $TAG
+
+        if [[ $? -ne 0 ]]; then
+          echo "Failed to checkout: $version ($TAG)"
+          exit 1
+        fi
 
         for pofile in `ls $DIR/src/$version`; do
           docname=`echo $pofile | sed "s/\.po//"`

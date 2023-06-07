@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
-msgid "{adminguide_name}"
+msgid "$ kcadm delete \"authentication/config/dd91611a-d25c-421a-87e2-227c18421833\" -r examplerealm"
 msgstr ""
 
 msgid "*{release_header_guide}* icon:angle-down[]"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Version *{project_version}* _{release_header_latest_link}[Click here for latest]_"
 msgstr ""
 
-msgid "{project_name} features and concepts"
+msgid "Keycloak features and concepts"
 msgstr ""
 
 msgid "{project_name} is a single sign on solution for web apps and RESTful web services.  The goal of {project_name} is to make security simple so that it is easy for application developers to secure the apps and services they have deployed in their organization.  Security features that developers normally have to write for themselves are provided out of the box and are easily tailorable to the individual requirements of your organization.  {project_name} provides customizable user interfaces for login, registration, administration, and account management.  You can also use {project_name} as an integration platform to hook it into existing LDAP and Active Directory servers.  You can also delegate authentication to third party identity providers like Facebook and Google."
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Supports any platform/language that has an OpenID Connect Relying Party library or SAML 2.0 Service Provider library."
 msgstr ""
 
-msgid "Basic {project_name} operations"
+msgid "Basic Keycloak operations"
 msgstr ""
 
 msgid "{project_name} is a separate server that you manage on your network.  Applications are configured to point to and be secured by this server.  {project_name} uses open protocol standards like link:https://openid.net/connect/[OpenID Connect] or link:http://saml.xml.org/saml-specifications[SAML 2.0] to secure your applications.  Browser applications redirect a user's browser from the application to the {project_name} authentication server where they enter their credentials.  This redirection is important because users are completely isolated from applications and applications never see a user's credentials.  Applications instead are given an identity token or assertion that is cryptographically signed.  These tokens can have identity information like username, address, email, and other profile data.  They can also hold permission data so that applications can make authorization decisions.  These tokens can also be used to make secure invocations on REST-based services."
@@ -528,7 +528,7 @@ msgstr ""
 msgid "*Envelope from* denotes the https://en.wikipedia.org/wiki/Bounce_address[Bounce Address] used for the *Return-Path* SMTP-Header for the mails sent (optional)."
 msgstr ""
 
-msgid "Connection & Authentication"
+msgid "Connection &amp; Authentication"
 msgstr ""
 
 msgid "Host"
@@ -1131,7 +1131,7 @@ msgstr ""
 msgid "The `Use Truststore SPI` configuration property, in the LDAP federation provider configuration, controls the truststore SPI. By default, {project_name} sets the property to `Only for ldaps`, which is adequate for most deployments.  {project_name} uses the Truststore SPI if the connection URL to LDAP starts with `ldaps` only."
 msgstr ""
 
-msgid "Synchronizing LDAP users to {project_name}"
+msgid "Synchronizing LDAP users to Keycloak"
 msgstr ""
 
 msgid "If you set the *Import Users* option, the LDAP Provider handles importing LDAP users into the {project_name} local database. The first time a user logs in, the LDAP provider imports the LDAP user into the {project_name} database and validates the LDAP password. This first time a user logs in is the only time {project_name} imports the user. If you click the *Users*  menu in the Admin Console and click the *View all users* button, you only see the LDAP users authenticated at least once by {project_name}. {project_name} imports users this way, so this operation does not trigger an import of the entire LDAP user database."
@@ -1849,7 +1849,7 @@ msgstr ""
 msgid "image:images/enable-delete-account-action.png[]"
 msgstr ""
 
-msgid "Giving a user the *delete-account* role"
+msgid "Giving a user the <strong>delete-account</strong> role"
 msgstr ""
 
 msgid "You can give specific users a role that allows account deletion."
@@ -3013,7 +3013,7 @@ msgstr ""
 msgid "In regards to theming, if you already have customizations to the legacy templates (those hardcoded with user root attributes) your custom templates won't be used when rendering user-facing forms but the new templates that render these forms dynamically. Ideally, you should avoid having any customizations to templates and try to stick with the behavior provided by these new templates to dynamically render forms for you. If they are still not enough to address your requirements, you can either customize them or provide us with any feedback so that we discuss whether it makes sense to enhance the new templates."
 msgstr ""
 
-msgid "Personal data collected by {project_name}"
+msgid "Personal data collected by Keycloak"
 msgstr ""
 
 msgid "By default, {project_name} collects the following data:"
@@ -3517,7 +3517,7 @@ msgstr ""
 msgid "image:images/full-client-scope.png[Full scope]"
 msgstr ""
 
-msgid "By default, the effective roles of scopes are every declared role in the realm. To change this default behavior, toggle *Full Scope Allowed* to *ON* and declare the specific roles you want in each client. You can also use <<_client_scopes, client scopes>> to define the same role scope mappings for a set of clients."
+msgid "By default, the effective roles of scopes are every declared role in the realm. To change this default behavior, toggle *Full Scope Allowed* to *OFF* and declare the specific roles you want in each client. You can also use <<_client_scopes, client scopes>> to define the same role scope mappings for a set of clients."
 msgstr ""
 
 msgid "Partial scope"
@@ -3976,7 +3976,7 @@ msgstr ""
 msgid "If all executions evaluate as _true_, the _Conditional_ sub-flow acts as _Required_."
 msgstr ""
 
-msgid "If all executions evaluate as _false_, the _Conditional_ sub-flow acts as _Disabled_."
+msgid "If any executions evaluate as _false_, the _Conditional_ sub-flow acts as _Disabled_."
 msgstr ""
 
 msgid "If you do not set an execution, the _Conditional_ sub-flow acts as _Disabled_."
@@ -4514,6 +4514,9 @@ msgstr ""
 msgid "{project_name} returns to the application. {project_name} and the application communicate through OpenID Connect or SAML messages. {project_name} acts as a broker to Kerberos/SPNEGO login. Therefore {project_name} authenticating through Kerberos is hidden from the application."
 msgstr ""
 
+msgid "The https://www.ietf.org/rfc/rfc4559.txt[Negotiate] www-authenticate scheme allows NTLM as a fallback to Kerberos and on some web browsers in Windows NTLM is supported by default.  If a www-authenticate challenge comes from a server outside a browsers permitted list, users may encounter an NTLM dialog prompt.  A user would need to click the cancel button on the dialog to continue as Keycloak does not support this mechanism.  This situation can happen if Intranet web browsers are not strictly configured or if Keycloak serves users in both the Intranet and Internet.  A https://github.com/keycloak/keycloak/issues/8989[custom authenticator] can be used to restrict Negotiate challenges to a whitelist of hosts."
+msgstr ""
+
 msgid "Perform the following steps to set up Kerberos authentication:"
 msgstr ""
 
@@ -4558,7 +4561,7 @@ msgstr ""
 msgid "Ensure the keytab file `/tmp/http.keytab` is accessible on the host where {project_name} is running."
 msgstr ""
 
-msgid "Setup and configuration of {project_name} server"
+msgid "Setup and configuration of Keycloak server"
 msgstr ""
 
 msgid "Install a Kerberos client on your machine."
@@ -4651,7 +4654,7 @@ msgstr ""
 msgid "Example setups"
 msgstr ""
 
-msgid "{Project_name} and FreeIPA docker image"
+msgid "Keycloak and FreeIPA docker image"
 msgstr ""
 
 msgid "When you install https://www.docker.com/[docker], run a docker image with the FreeIPA server installed. FreeIPA provides an integrated security solution with MIT Kerberos and 389 LDAP server. The image also contains a {project_name} server configured with an LDAP Federation provider and enabled SPNEGO/Kerberos authentication against the FreeIPA server. See details https://github.com/mposolda/keycloak-freeipa-docker/blob/master/README.md[here]."
@@ -5574,7 +5577,7 @@ msgstr ""
 msgid "image:images/deny-access-role-condition.png[Deny access role settings]"
 msgstr ""
 
-msgid "Configuration of the `Deny Access` is really easy. You can specify an arbitrary Alias and required message like this:"
+msgid "Configuration of the <code>Deny Access</code> is really easy. You can specify an arbitrary Alias and required message like this:"
 msgstr ""
 
 msgid "image:images/deny-access-execution-cond.png[Deny access execution settings]"
@@ -5892,7 +5895,7 @@ msgstr ""
 msgid "image:images/github-add-identity-provider.png[Add Identity Provider]"
 msgstr ""
 
-msgid "In a separate browser tab, https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app[create an OAUTH app]."
+msgid "In a separate browser tab, https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app[create an OAUTH app]."
 msgstr ""
 
 msgid "Enter the value of *Redirect URI* into the `Authorization callback URL` field when creating the app."
@@ -6472,6 +6475,12 @@ msgstr ""
 msgid "The SAML Entity ID that the remote Identity Provider uses to identify requests from this Service Provider. By default, this setting is set to the realms base URL `<root>{kc_realms_path}/{realm-name}`."
 msgstr ""
 
+msgid "Identity Provider Entity ID"
+msgstr ""
+
+msgid "The Entity ID used to validate the Issuer for received SAML assertions. If empty, no Issuer validation is performed."
+msgstr ""
+
 msgid "Single Sign-On Service URL"
 msgstr ""
 
@@ -6529,10 +6538,38 @@ msgstr ""
 msgid "When *ON*, {project_name} uses the realm's keypair to sign requests sent to the external SAML IDP."
 msgstr ""
 
+msgid "Want Assertions Signed"
+msgstr ""
+
+msgid "Indicates whether this service provider expects a signed Assertion."
+msgstr ""
+
+msgid "Want Assertions Encrypted"
+msgstr ""
+
+msgid "Indicates whether this service provider expects an encrypted Assertion."
+msgstr ""
+
 msgid "Signature Algorithm"
 msgstr ""
 
-msgid "If *Want AuthnRequests Signed* is *ON*, the signature algorithm to use."
+msgid ""
+"If *Want AuthnRequests Signed* is *ON*, the signature algorithm to use. Note that `SHA1` based algorithms are deprecated and may be removed in a future release.\n"
+"We recommend to use some more secure algorithm instead of `*_SHA1`. Also, with `*_SHA1` algorithms, verifying signatures\n"
+"do not work if the SAML identity provider (for example another instance of {project_name}) runs on Java 17 or higher."
+msgstr ""
+
+msgid "Encryption Algorithm"
+msgstr ""
+
+msgid ""
+"Encryption algorithm, which is used by SAML IDP for encryption of SAML\n"
+"documents, assertions, or IDs. The corresponding decryption key for decrypt\n"
+"SAML document parts will be chosen based on this configured algorithm and\n"
+"should be available in realm keys for the encryption (ENC) usage. If the\n"
+"algorithm is not configured, any supported algorithm is allowed and a\n"
+"decryption key will be chosen based on the algorithm specified in SAML document\n"
+"itself."
 msgstr ""
 
 msgid "SAML Signature Key Name"
@@ -6915,10 +6952,10 @@ msgstr ""
 msgid "Detect Existing Broker User"
 msgstr ""
 
-msgid "This authenticator ensures that unique users are handled. Set the authenticator requirement to `Mandatory`."
+msgid "This authenticator ensures that unique users are handled. Set the authenticator requirement to `REQUIRED`."
 msgstr ""
 
-msgid "Automatically sets an existing user to the authentication context without any verification. Set the authenticator requirement to `Mandatory`."
+msgid "Automatically sets an existing user to the authentication context without any verification. Set the authenticator requirement to `REQUIRED`."
 msgstr ""
 
 msgid "You have to set the `First Login Flow` of the identity provider configuration to that flow. You could set the also set `Sync Mode` to `force` if you want to update the user profile (Last Name, First Name...) with the identity provider attributes."
@@ -7101,7 +7138,7 @@ msgstr ""
 msgid "The application requests {project_name} a device code and a user code. {project_name} creates a device code and a user code. {project_name} returns a response including the device code and the user code to the application."
 msgstr ""
 
-msgid "The application provides the user with the user code and the verification URI. The user accesses a verification URI to be authenticated by using another browser."
+msgid "The application provides the user with the user code and the verification URI. The user accesses a verification URI to be authenticated by using another browser. You could define a short verification_uri that will be redirected to Keycloak verification URI (/realms/realm_name/device)outside Keycloak - fe in a proxy."
 msgstr ""
 
 msgid "The application repeatedly polls {project_name} to find out if the user completed the user authorization. If user authentication is complete, the application exchanges the device code for an _identity_, _access_ and _refresh_ token."
@@ -7458,7 +7495,7 @@ msgstr ""
 msgid "This is a non-browser-based logout that uses direct backchannel communication between {project_name} and clients. {project_name} sends a HTTP POST request containing a logout token to all clients logged into {project_name}. These requests are sent to a registered backchannel logout URLs at {project_name} and are supposed to trigger a logout at client side."
 msgstr ""
 
-msgid "{project_name} server OIDC URI endpoints"
+msgid "Keycloak server OIDC URI endpoints"
 msgstr ""
 
 msgid "The following is a list of OIDC endpoints that {project_name} publishes. These endpoints can be used when a non-{project_name} client adapter uses OIDC to communicate with the authentication server. They are all relative URLs. The root of the URL consists of the HTTP(S) protocol, hostname, and optionally the path:  For example"
@@ -7599,7 +7636,7 @@ msgstr ""
 msgid "Enhanced Client or Proxy (ECP) is a SAML v.2.0 profile which allows the exchange of SAML attributes outside the context of a web browser. It is often used by REST or SOAP-based clients."
 msgstr ""
 
-msgid "{project_name} Server SAML URI Endpoints"
+msgid "Keycloak Server SAML URI Endpoints"
 msgstr ""
 
 msgid "{project_name} has one endpoint for all SAML requests."
@@ -7686,7 +7723,7 @@ msgstr ""
 msgid "{project_name} does not create a browser SSO session after successful authentication with the Docker protocol. The browser SSO session does not use the Docker protocol as it cannot refresh tokens or obtain the status of a token or session from the {project_name} server; therefore a browser SSO session is not necessary. For more details, see the <<_transient-session, transient session>> section."
 msgstr ""
 
-msgid "{project_name} Docker Registry v2 Authentication Server URI Endpoints"
+msgid "Keycloak Docker Registry v2 Authentication Server URI Endpoints"
 msgstr ""
 
 msgid "{project_name} has one endpoint for all Docker auth v2 requests."
@@ -9290,7 +9327,7 @@ msgstr ""
 msgid "*Signature Algorithm*"
 msgstr ""
 
-msgid "The algorithm used in signing SAML documents."
+msgid "The algorithm used in signing SAML documents. Note that `SHA1` based algorithms are deprecated and may be removed in a future release. We recommend the use of some more secure algorithm instead of `*_SHA1`. Also, with `*_SHA1` algorithms, verifying signatures do not work if the SAML client runs on Java 17 or higher."
 msgstr ""
 
 msgid "*SAML Signature Key Name*"
@@ -10031,6 +10068,9 @@ msgstr ""
 msgid "Enforce <<_secret_rotation, Client Secret Rotation>>"
 msgstr ""
 
+msgid "Enforce Client Registration Access Token"
+msgstr ""
+
 msgid "Enforce checking if a client is the one to which an intent was issued in a use case where an intent is issued before starting an authorization code flow to get an access token like UK OpenBanking"
 msgstr ""
 
@@ -10073,13 +10113,13 @@ msgstr ""
 msgid "To obtain a secret from a vault rather than entering it directly, enter the following specially crafted string into the appropriate field:"
 msgstr ""
 
-msgid "**${vault.**_key_**}**"
+msgid "${vault.key}"
 msgstr ""
 
-msgid "where the `_key_` is the name of the secret recognized by the vault."
+msgid "where the `key` is the name of the secret recognized by the vault."
 msgstr ""
 
-msgid "To prevent secrets from leaking across realms, {project_name} combines the realm name with the `_key_` obtained from the vault expression. This method means that the `_key_` does not directly map to an entry in the vault but creates the final entry name according to the algorithm used to combine the `_key_` with the realm name."
+msgid "To prevent secrets from leaking across realms, {project_name} combines the realm name with the `key` obtained from the vault expression. This method means that the `key` does not directly map to an entry in the vault but creates the final entry name according to the algorithm used to combine the `key` with the realm name."
 msgstr ""
 
 msgid "You can obtain the secret from the vault in the following fields:"
@@ -10688,7 +10728,7 @@ msgstr ""
 msgid "Clickjacking is a technique of tricking users into clicking on a user interface element different from what users perceive. A malicious site loads the target site in a transparent iFrame, overlaid on top of a set of dummy buttons placed directly under important buttons on the target site. When a user clicks a visible button, they are clicking a button on the hidden page. An attacker can steal a user's authentication credentials and access their resources by using this method."
 msgstr ""
 
-msgid "By default, every response by {project_name} sets some specific HTTP headers that can prevent this from happening. Specifically, it sets https://datatracker.ietf.org/doc/html/rfc7034[X-Frame-Options] and http://www.w3.org/TR/CSP/[Content-Security-Policy]. You should take a look at the definition of both of these headers as there is a lot of fine-grain browser access you can control."
+msgid "By default, every response by {project_name} sets some specific HTTP headers that can prevent this from happening. Specifically, it sets https://datatracker.ietf.org/doc/html/rfc7034[X-Frame-Options] and https://www.w3.org/TR/CSP/[Content-Security-Policy]. You should take a look at the definition of both of these headers as there is a lot of fine-grain browser access you can control."
 msgstr ""
 
 msgid "In the Admin Console, you can specify the values of the X-Frame-Options and Content-Security-Policy headers."
@@ -11904,7 +11944,7 @@ msgstr ""
 msgid "$ kcadm.sh delete clients/c7b8547f-e748-4333-95d0-410b76b3f4a3 -r demorealm"
 msgstr ""
 
-msgid "Adding or removing roles for client's service account"
+msgid "Adding or removing roles for client&#8217;s service account"
 msgstr ""
 
 msgid "A client's service account is a user account with username `service-account-CLIENT_ID`. You can perform the same user operations on this account as a regular account."
@@ -11972,7 +12012,7 @@ msgstr ""
 msgid "$ kcadm.sh delete users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm"
 msgstr ""
 
-msgid "Resetting a user's password"
+msgid "Resetting a user&#8217;s password"
 msgstr ""
 
 msgid "Use the dedicated `set-password` command to reset a user's password."
@@ -12083,7 +12123,7 @@ msgstr ""
 msgid "$ kcadm.sh remove-roles -r demorealm --uusername testuser --cclientid realm-management --rolename create-client --rolename view-users"
 msgstr ""
 
-msgid "Listing a user's sessions"
+msgid "Listing a user&#8217;s sessions"
 msgstr ""
 
 msgid "Identify the user's ID,"
@@ -12734,5 +12774,5 @@ msgstr ""
 msgid "Run the `delete` command on the `authentication/config/ID` endpoint."
 msgstr ""
 
-msgid "$ kcadm delete \"authentication/config/dd91611a-d25c-421a-87e2-227c18421833\" -r examplerealm"
+msgid "Server Administration Guide"
 msgstr ""

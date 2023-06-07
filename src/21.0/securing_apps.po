@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
-msgid "{adapterguide_name}"
+msgid "Direct naked exchanges are quite dangerous.  You are putting a lot of trust in the calling client that it will never leak out its client credentials.  If those credentials are leaked, then the thief can impersonate anybody in your system.  This is in direct contrast to confidential clients that have existing tokens.  You have two factors of authentication, the access token and the client credentials, and you're only dealing with one user.  So use direct naked exchanges sparingly."
 msgstr ""
 
 msgid "*{release_header_guide}* icon:angle-down[]"
@@ -2232,7 +2232,7 @@ msgstr ""
 msgid "You also need to configure `Valid Redirect URIs` and `Web Origins`. Be as specific as possible as failing to do so may result in a security vulnerability."
 msgstr ""
 
-msgid "Once the client is created click on the `Installation` tab select `Keycloak OIDC JSON` for `Format Option` then click `Download`. The downloaded `keycloak.json` file should be hosted on your web server at the same location as your HTML pages."
+msgid "Once the client is created click on the `Action` tab in the upper right corner and select `Download adapter config`. Select `Keycloak OIDC JSON` for `Format Option` then click `Download`. The downloaded `keycloak.json` file should be hosted on your web server at the same location as your HTML pages."
 msgstr ""
 
 msgid "Alternatively, you can skip the configuration file and manually configure the adapter."
@@ -4110,7 +4110,7 @@ msgstr ""
 msgid "signatureAlgorithm"
 msgstr ""
 
-msgid "This is the signature algorithm that the IDP expects signed documents to use. Allowed values are: `RSA_SHA1`, `RSA_SHA256`, `RSA_SHA512`, and `DSA_SHA1`. This setting is _OPTIONAL_ and defaults to `RSA_SHA256`."
+msgid " This is the signature algorithm that the IDP expects signed documents to use.  Allowed values are: `RSA_SHA1`, `RSA_SHA256`, `RSA_SHA512`, and `DSA_SHA1`.  This setting is _OPTIONAL_  and defaults to `RSA_SHA256`. Note that `SHA1` based algorithms are deprecated and can be removed in the future. We recommend the use of some more secure algorithm instead of `*_SHA1`. Also, with `*_SHA1` algorithms, verifying signatures  do not work if the SAML server (usually {project_name}) runs on Java 17 or higher."
 msgstr ""
 
 msgid "signatureCanonicalizationMethod"
@@ -4507,7 +4507,7 @@ msgstr ""
 msgid "All standard servlet settings except the `auth-method` setting."
 msgstr ""
 
-msgid "Securing WARs using the {project_name} SAML Subsystem"
+msgid "Securing WARs using the Keycloak SAML Subsystem"
 msgstr ""
 
 msgid "You do not have to open a WAR to secure it with {project_name}. Alternatively, you can externally secure it via the {project_name} SAML Adapter Subsystem. While you don't have to specify KEYCLOAK-SAML as an `auth-method`, you still have to define the `security-constraints` in `web.xml`. You do not, however, have to create a `WEB-INF/keycloak-saml.xml` file. This metadata is instead defined within the XML in your server's `domain.xml` or `standalone.xml` subsystem configuration section."
@@ -5097,7 +5097,7 @@ msgstr ""
 msgid "Click *Download* to download a ZIP file that contains the XML descriptor and PEM files you need."
 msgstr ""
 
-msgid "Configuring mod_auth_mellon with {project_name}"
+msgid "Configuring mod_auth_mellon with Keycloak"
 msgstr ""
 
 msgid "There are two hosts involved:"
@@ -5272,7 +5272,7 @@ msgid ""
 "mv ${file_prefix}.xml /etc/httpd/saml2/mellon_metadata.xml"
 msgstr ""
 
-msgid "Adding the Mellon Service Provider to the {project_name} Identity Provider"
+msgid "Adding the Mellon Service Provider to the Keycloak Identity Provider"
 msgstr ""
 
 msgid "Assumption: The {project_name} IdP has already been installed on the $idp_host."
@@ -5409,7 +5409,7 @@ msgstr ""
 msgid "You have now set up both {project_name} as a SAML IdP in the test_realm and mod_auth_mellon as SAML SP protecting the URL $sp_host/protected (and everything beneath it) by authenticating against the ``$idp_host`` IdP."
 msgstr ""
 
-msgid "Configuring a Docker registry to use {project_name}"
+msgid "Configuring a Docker registry to use Keycloak"
 msgstr ""
 
 msgid "Docker authentication is disabled by default. To enable see the https://www.keycloak.org/server/features[Enabling and disabling features] guide."
@@ -5564,13 +5564,16 @@ msgstr ""
 msgid "Registration Access Token"
 msgstr ""
 
-msgid "When you create a client through the Client Registration Service the response will include a registration access token. The registration access token provides access to retrieve the client configuration later, but also to update or delete the client. The registration access token is included with the request in the same way as a bearer token or initial access token. Registration access tokens are only valid once, when it's used the response will include a new token."
+msgid "When you create a client through the Client Registration Service the response will include a registration access token. The registration access token provides access to retrieve the client configuration later, but also to update or delete the client. The registration access token is included with the request in the same way as a bearer token or initial access token."
+msgstr ""
+
+msgid "By default, registration access token rotation is enabled. This means a registration access token is only valid once. When the token is used, the response will include a new token. Note that registration access token rotation can be disabled by using link:{adminguide_link}#_client_policies[Client Policies]."
 msgstr ""
 
 msgid "If a client was created outside of the Client Registration Service it won't have a registration access token associated with it. You can create one through the admin console. This can also be useful if you lose the token for a particular client. To create a new token find the client in the admin console and click on `Credentials`. Then click on `Generate registration access token`."
 msgstr ""
 
-msgid "{project_name} Representations"
+msgid "Keycloak Representations"
 msgstr ""
 
 msgid "The `default` client registration provider can be used to create, retrieve, update and delete a client. It uses {project_name} Client Representation format which provides support for configuring clients exactly as they can be configured through the admin console, including for example configuring protocol mappers."
@@ -5594,7 +5597,7 @@ msgstr ""
 msgid "To delete the Client Representation perform an HTTP DELETE request to: `{kc_realms_path}/<realm>/clients-registrations/default/<client id>`"
 msgstr ""
 
-msgid "{project_name} adapter configuration"
+msgid "Keycloak adapter configuration"
 msgstr ""
 
 msgid "The `installation` client registration provider can be used to retrieve the adapter configuration for a client. In addition to token authentication you can also authenticate with client credentials using HTTP basic authentication. To do this include the following header in the request:"
@@ -6212,7 +6215,7 @@ msgstr ""
 msgid "Internal token to internal token exchange"
 msgstr ""
 
-msgid "With an internal token to token exchange you have an existing token minted to a specific client and you want to exchange this token for a new one minted for a different target client.  Why would you want to do this?  This generally happens+ when a client has a token minted for itself, and needs to make additional requests to other applications that require different claims and permissions within the access token.  Other reasons this type of exchange might be required is if you need to perform a \"permission downgrade\" where your app needs to invoke on a less trusted app and you don't want to propagate your current access token."
+msgid "With an internal token to token exchange you have an existing token minted to a specific client and you want to exchange this token for a new one minted for a different target client.  Why would you want to do this?  This generally happens when a client has a token minted for itself, and needs to make additional requests to other applications that require different claims and permissions within the access token.  Other reasons this type of exchange might be required is if you need to perform a \"permission downgrade\" where your app needs to invoke on a less trusted app and you don't want to propagate your current access token."
 msgstr ""
 
 msgid "Granting permission for the exchange"
@@ -6369,6 +6372,49 @@ msgstr ""
 msgid "image:images/exchange-idp-permission-setup.png[Identity Provider Exchange Permission Setup]"
 msgstr ""
 
+msgid "Click *Policies* tab to create a client policy."
+msgstr ""
+
+msgid "image:images/exchange-idp-client-policy.png[Client Policy Creation]"
+msgstr ""
+
+msgid "Enter the starting client that is the authenticated client that is requesting a token exchange."
+msgstr ""
+
+msgid "Return to the identity provider's *token-exchange* permission and add the client policy you just defined."
+msgstr ""
+
+msgid "image:images/exchange-idp-apply-policy.png[Apply Client Policy]"
+msgstr ""
+
+msgid "When your client is exchanging an existing internal token to an external one, you provide the `requested_issuer` parameter.  The parameter must be the alias of a configured identity provider."
+msgstr ""
+
+msgid ""
+"curl -X POST \\\n"
+"    -d \"client_id=starting-client\" \\\n"
+"    -d \"client_secret=the client secret\" \\\n"
+"    --data-urlencode \"grant_type=urn:ietf:params:oauth:grant-type:token-exchange\" \\\n"
+"    -d \"subject_token=....\" \\\n"
+"    --data-urlencode \"requested_token_type=urn:ietf:params:oauth:token-type:access_token\" \\\n"
+"    -d \"requested_issuer=google\" \\\n"
+"    http://localhost:8080{kc_realms_path}/myrealm/protocol/openid-connect/token"
+msgstr ""
+
+msgid "The `subject_token` parameter must be an access token for the target realm.  The `requested_token_type` parameter must be `urn:ietf:params:oauth:token-type:access_token` or left blank.  No other requested token type is supported at this time.  Here's an example successful JSON response you get back from this call."
+msgstr ""
+
+msgid ""
+"{\n"
+"   \"access_token\" : \"....\",\n"
+"   \"expires_in\" : 3600\n"
+"   \"account-link-url\" : \"https://....\"\n"
+"}"
+msgstr ""
+
+msgid "If the external identity provider is not linked for whatever reason, you will get an HTTP 400 response code with this JSON document:"
+msgstr ""
+
 msgid ""
 "{\n"
 "   \"error\" : \"....\",\n"
@@ -6497,9 +6543,6 @@ msgstr ""
 msgid "image:images/exchange-users-client-policy.png[Client Policy Creation]"
 msgstr ""
 
-msgid "Enter the starting client that is the authenticated client that is requesting a token exchange."
-msgstr ""
-
 msgid "Return to the users' *impersonation* permission and add the client policy you just defined."
 msgstr ""
 
@@ -6542,5 +6585,5 @@ msgstr ""
 msgid "It is possible to exchange social tokens provided by Facebook, Google, etc. for a realm token.  Be careful and vigilante on what the exchange token is allowed to do as it's not hard to create fake accounts on these social websites.  Use default roles, groups, and identity provider mappers to control what attributes and roles are assigned to the external social user."
 msgstr ""
 
-msgid "Direct naked exchanges are quite dangerous.  You are putting a lot of trust in the calling client that it will never leak out its client credentials.  If those credentials are leaked, then the thief can impersonate anybody in your system.  This is in direct contrast to confidential clients that have existing tokens.  You have two factors of authentication, the access token and the client credentials, and you're only dealing with one user.  So use direct naked exchanges sparingly."
+msgid "Securing Applications and Services Guide"
 msgstr ""

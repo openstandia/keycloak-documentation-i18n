@@ -12,14 +12,32 @@ DOCS="\
   upgrading \
   release_notes"
 
-BUILD_DIR=$DIR/build
+BUILD_DIR1=$DIR/build1
+BUILD_DIR2=$DIR/build2
 
-mkdir -p $BUILD_DIR
-git clone https://github.com/keycloak/keycloak-documentation $BUILD_DIR
-cd $BUILD_DIR
+mkdir -p $BUILD_DIR1
+git clone https://github.com/keycloak/keycloak-documentation $BUILD_DIR1
+cd $BUILD_DIR1
+git fetch --tags
+
+mkdir -p $BUILD_DIR2
+git clone https://github.com/keycloak/keycloak $BUILD_DIR2
+cd $BUILD_DIR2
 git fetch --tags
 
 for version in `ls $DIR/src`; do
+  # Resolve build dir by the target version
+  if [[ $version == 1* ]]; then
+      cd $BUILD_DIR1
+      echo "Use old repository for $version"
+  elif [[ "$(echo "$version < 21.1" | bc)" -eq 1 ]]; then
+      cd $BUILD_DIR1
+      echo "Use old repository for $version"
+  else
+      cd $BUILD_DIR2/docs/documentation
+      echo "Use new repository for $version"
+  fi
+
   TAG=`git tag --list "${version}" | sort | tail -n 1`
   if [ -z "$TAG" ]; then
     TAG=`git tag --list "${version}.*" | sort | tail -n 1`

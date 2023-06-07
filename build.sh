@@ -15,20 +15,27 @@ if [[ "$CHANGE_FILES" = "" ]]; then
   exit 0
 fi
 
-BUILD_DIR=$DIR/build
+BUILD_DIR1=$DIR/build1
+BUILD_DIR2=$DIR/build2
 DIST_DIR=$DIR/dist
 
 echo "Clean $DIST_DIR"
 rm -rf $DIST_DIR
 mkdir -p $DIST_DIR
 
-echo "Clean $BUILD_DIR"
-rm -rf $BUILD_DIR
-mkdir -p $BUILD_DIR
+echo "Clean $BUILD_DIR1"
+rm -rf $BUILD_DIR1
+mkdir -p $BUILD_DIR1
 
-echo "Clone keycloak-documentation"
-git clone https://github.com/keycloak/keycloak-documentation $BUILD_DIR
-cd $BUILD_DIR
+echo "Clean $BUILD_DIR2"
+rm -rf $BUILD_DIR2
+mkdir -p $BUILD_DIR2
+
+echo "Clone keycloak-documentation (old repository)"
+git clone https://github.com/keycloak/keycloak-documentation $BUILD_DIR1
+
+echo "Clone keycloak"
+git clone https://github.com/keycloak/keycloak $BUILD_DIR2
 
 for language in `ls $DIR/translations`; do
   # Check the target language files is changed
@@ -36,6 +43,18 @@ for language in `ls $DIR/translations`; do
 
   if [[ $? -eq 0 ]]; then
     for version in `ls $DIR/translations/$language`; do
+      # Resolve build dir by the target version
+      if [[ $version == 1* ]]; then
+          cd $BUILD_DIR1
+          echo "Use old repository for $version"
+      elif [[ "$(echo "$version < 21.1" | bc)" -eq 1 ]]; then
+          cd $BUILD_DIR1
+          echo "Use old repository for $version"
+      else
+          cd $BUILD_DIR2/docs/documentation
+          echo "Use new repository for $version"
+      fi
+
       # Check the target version files is changed
       echo $CHANGE_FILES | grep -q translations/$language/$version
 

@@ -1,0 +1,598 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Keycloak Operator guide"
+msgstr ""
+
+msgid "Keycloak Operator Installation"
+msgstr ""
+
+msgid "Installing the Keycloak Operator"
+msgstr ""
+
+msgid "This guide describes how to install the Keycloak Operator in a Kubernetes or OpenShift cluster."
+msgstr ""
+
+msgid "Installing by using the Operator Lifecycle Manager"
+msgstr ""
+
+msgid "The recommended way to install the Keycloak Operator in Kubernetes environments is to use the Operator Lifecycle Manager (OLM)."
+msgstr ""
+
+msgid "Prerequisites"
+msgstr ""
+
+msgid "Make sure OLM is installed in your environment. For details, see https://github.com/operator-framework/operator-lifecycle-manager/blob/master/doc/install/install.md#install-a-release[Installing OLM]."
+msgstr ""
+
+msgid "Be sure that you have cluster-admin permission or an equivalent level of permissions granted by an administrator."
+msgstr ""
+
+msgid "Using the OpenShift web console"
+msgstr ""
+
+msgid "The following procedure describes how to install the Keycloak Operator. However, for general instructions on installing Operators using OLM, see https://olm.operatorframework.io/docs/tasks/install-operator-with-olm/[Install your operator with OLM]. In the default Catalog, the Keycloak Operator is named `keycloak-operator`. Make sure to use the `fast` channel to find the operator."
+msgstr ""
+
+msgid "Perform this procedure on an OpenShift cluster."
+msgstr ""
+
+msgid "Open the OpenShift Container Platform web console."
+msgstr ""
+
+msgid "In the left column, click *Home*, *Operators*, *OperatorHub*."
+msgstr ""
+
+msgid "Search for \"keycloak\" on the search input box."
+msgstr ""
+
+msgid "Select the Keycloak Operator from the list of results."
+msgstr ""
+
+msgid "Follow the instructions on the screen."
+msgstr ""
+
+msgid "Make sure you are installing from the *fast* channel:"
+msgstr ""
+
+msgid "Installing by using kubectl without Operator Lifecycle Manager"
+msgstr ""
+
+msgid "You can install the Operator on a vanilla Kubernetes cluster by using `kubectl` commands:"
+msgstr ""
+
+msgid "Install the CRDs by entering the following commands:"
+msgstr ""
+
+msgid ""
+"kubectl apply -f https://raw.githubusercontent.com/keycloak/keycloak-k8s-resources/{version}/kubernetes/keycloaks.k8s.keycloak.org-v1.yml\n"
+"kubectl apply -f https://raw.githubusercontent.com/keycloak/keycloak-k8s-resources/{version}/kubernetes/keycloakrealmimports.k8s.keycloak.org-v1.yml"
+msgstr ""
+
+msgid "Install the Keycloak Operator deployment by entering the following command:"
+msgstr ""
+
+msgid "kubectl apply -f https://raw.githubusercontent.com/keycloak/keycloak-k8s-resources/{version}/kubernetes/kubernetes.yml"
+msgstr ""
+
+msgid "Currently the Operator watches only the namespace where the Operator is installed."
+msgstr ""
+
+msgid "Basic Keycloak deployment"
+msgstr ""
+
+msgid "Performing a basic Keycloak deployment"
+msgstr ""
+
+msgid "This guide describes how to perform a basic Keycloak Deployment on Kubernetes or OpenShift using the Operator."
+msgstr ""
+
+msgid "Preparing for deployment"
+msgstr ""
+
+msgid "Once the Keycloak Operator is installed and running in the cluster namespace, you can set up the other deployment prerequisites."
+msgstr ""
+
+msgid "Database"
+msgstr ""
+
+msgid "Hostname"
+msgstr ""
+
+msgid "TLS Certificate and associated keys"
+msgstr ""
+
+msgid "A database should be available and accessible from the cluster namespace where Keycloak is installed. For a list of supported databases, see link:{links_server_db_url}[{links_server_db_name}]. The Keycloak Operator does not manage the database and you need to provision it yourself. Consider verifying your cloud provider offering or using a database operator such as https://access.crunchydata.com/documentation/postgres-operator/latest/[Crunchy]."
+msgstr ""
+
+msgid "For development purposes, you can use an ephemeral PostgreSQL pod installation. To provision it, enter the following commands:"
+msgstr ""
+
+msgid ""
+"cat <<EOF >> example-postgres.yaml\n"
+"apiVersion: apps/v1\n"
+"kind: StatefulSet\n"
+"metadata:\n"
+"  name: postgresql-db\n"
+"spec:\n"
+"  serviceName: postgresql-db-service\n"
+"  selector:\n"
+"    matchLabels:\n"
+"      app: postgresql-db\n"
+"  replicas: 1\n"
+"  template:\n"
+"    metadata:\n"
+"      labels:\n"
+"        app: postgresql-db\n"
+"    spec:\n"
+"      containers:\n"
+"        - name: postgresql-db\n"
+"          image: postgres:latest\n"
+"          env:\n"
+"            - name: POSTGRES_PASSWORD\n"
+"              value: testpassword\n"
+"            - name: PGDATA\n"
+"              value: /data/pgdata\n"
+"            - name: POSTGRES_DB\n"
+"              value: keycloak\n"
+"---\n"
+"apiVersion: v1\n"
+"kind: Service\n"
+"metadata:\n"
+"  name: postgres-db\n"
+"spec:\n"
+"  selector:\n"
+"    app: postgresql-db\n"
+"  type: LoadBalancer\n"
+"  ports:\n"
+"  - port: 5432\n"
+"    targetPort: 5432\n"
+"EOF\n"
+"kubectl apply -f example-postgres.yaml"
+msgstr ""
+
+msgid "For a production ready installation, you need a hostname that can be used to contact Keycloak. See link:{links_server_hostname_url}[{links_server_hostname_name}] for the available configurations."
+msgstr ""
+
+msgid "For development purposes, this guide will use `test.keycloak.org`."
+msgstr ""
+
+msgid "TLS Certificate and key"
+msgstr ""
+
+msgid "See your Certification Authority to obtain the certificate and the key."
+msgstr ""
+
+msgid "For development purposes, you can enter this command to obtain a self-signed certificate:"
+msgstr ""
+
+msgid "openssl req -subj '/CN=test.keycloak.org/O=Test Keycloak./C=US' -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem"
+msgstr ""
+
+msgid "You should install it in the cluster namespace as a Secret by entering this command:"
+msgstr ""
+
+msgid "kubectl create secret tls example-tls-secret --cert certificate.pem --key key.pem"
+msgstr ""
+
+msgid "Deploying Keycloak"
+msgstr ""
+
+msgid "To deploy Keycloak, you create a Custom Resource (CR) based on the Keycloak Custom Resource Definition (CRD)."
+msgstr ""
+
+msgid "Consider storing the Database credentials in a separate Secret. Enter the following commands:"
+msgstr ""
+
+msgid ""
+"kubectl create secret generic keycloak-db-secret \\\n"
+"  --from-literal=username=[your_database_username] \\\n"
+"  --from-literal=password=[your_database_password]"
+msgstr ""
+
+msgid "You can customize several fields using the Keycloak CRD. However, for a basic deployment, you can enter the following example commands:"
+msgstr ""
+
+msgid ""
+"cat <<EOF >> example-kc.yaml\n"
+"apiVersion: k8s.keycloak.org/v2alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"  name: example-kc\n"
+"spec:\n"
+"  instances: 1\n"
+"  db:\n"
+"    vendor: postgres\n"
+"    host: postgres-db\n"
+"    usernameSecret:\n"
+"      name: keycloak-db-secret\n"
+"      key: username\n"
+"    passwordSecret:\n"
+"      name: keycloak-db-secret\n"
+"      key: password\n"
+"  http:\n"
+"    tlsSecret: example-tls-secret\n"
+"  hostname:\n"
+"    hostname: test.keycloak.org\n"
+"EOF\n"
+"kubectl apply -f example-kc.yaml"
+msgstr ""
+
+msgid "To check that the Keycloak instance has been provisioned in the cluster, check the status of the created CR by entering the following command:"
+msgstr ""
+
+msgid "kubectl get keycloaks/example-kc -o go-template='{{range .status.conditions}}CONDITION: {{.type}}{{\"\\n\"}}  STATUS: {{.status}}{{\"\\n\"}}  MESSAGE: {{.message}}{{\"\\n\"}}{{end}}'"
+msgstr ""
+
+msgid "When the deployment is ready, look for output similar to the following:"
+msgstr ""
+
+msgid ""
+"CONDITION: Ready\n"
+"  STATUS: true\n"
+"  MESSAGE:\n"
+"CONDITION: HasErrors\n"
+"  STATUS: false\n"
+"  MESSAGE:\n"
+"CONDITION: RollingUpdate\n"
+"  STATUS: false\n"
+"  MESSAGE:"
+msgstr ""
+
+msgid "Accessing the Keycloak deployment"
+msgstr ""
+
+msgid "The Keycloak deployment is exposed through a basic Ingress and is accessible through the provided hostname. If the default ingress does not fit your use case, disable it by setting `ingress` spec with `enabled` property to `false` value:"
+msgstr ""
+
+msgid ""
+"cat <<EOF >> example-kc.yaml\n"
+"apiVersion: k8s.keycloak.org/v2alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"  name: example-kc\n"
+"spec:\n"
+"    ...\n"
+"    ingress:\n"
+"      enabled: false\n"
+"EOF\n"
+"kubectl apply -f example-kc.yaml"
+msgstr ""
+
+msgid "You can provide an alternative ingress resource pointing to the service `<keycloak-cr-name>-service`."
+msgstr ""
+
+msgid "For debugging and development purposes, consider directly connecting to the Keycloak service using a port forward. For example, enter this command:"
+msgstr ""
+
+msgid "kubectl port-forward service/example-kc-service 8443:8443"
+msgstr ""
+
+msgid "Accessing the Admin Console"
+msgstr ""
+
+msgid "When deploying Keycloak, the operator generates an arbitrary initial admin `username` and `password` and stores those credentials as a Kubernetes basic-auth Secret in the same namespace as the CR."
+msgstr ""
+
+msgid "Change the default admin credentials and enable MFA in Keycloak before going to production."
+msgstr ""
+
+msgid "To fetch the initial admin credentials, you have to read and decode a Kubernetes Secret. The Secret name is derived from the Keycloak CR name plus the fixed suffix `-initial-admin`. To get the username and password for the `example-kc` CR, enter the following commands:"
+msgstr ""
+
+msgid ""
+"kubectl get secret example-kc-initial-admin -o jsonpath='{.data.username}' | base64 --decode\n"
+"kubectl get secret example-kc-initial-admin -o jsonpath='{.data.password}' | base64 --decode"
+msgstr ""
+
+msgid "You can use those credentials to access the Admin Console or the Admin REST API."
+msgstr ""
+
+msgid "Keycloak Realm Import"
+msgstr ""
+
+msgid "Importing a Keycloak Realm"
+msgstr ""
+
+msgid "Using the Keycloak Operator, you can perform a realm import for the Keycloak Deployment."
+msgstr ""
+
+msgid "If a Realm with the same name already exists in Keycloak, it will not be overwritten."
+msgstr ""
+
+msgid "The Realm Import CR only supports creation of new realms and does not update or delete those. Changes to the realm performed directly on Keycloak are not synced back in the CR."
+msgstr ""
+
+msgid "Creating a Realm Import Custom Resource"
+msgstr ""
+
+msgid "The following is an example of a Realm Import Custom Resource (CR):"
+msgstr ""
+
+msgid ""
+"apiVersion: k8s.keycloak.org/v2alpha1\n"
+"kind: KeycloakRealmImport\n"
+"metadata:\n"
+"  name: my-realm-kc\n"
+"spec:\n"
+"  keycloakCRName: <name of the keycloak CR>\n"
+"  realm:\n"
+"    ..."
+msgstr ""
+
+msgid "This CR should be created in the same namespace as the Keycloak Deployment CR, defined in the field `keycloakCRName`. The `realm` field accepts a full https://www.keycloak.org/docs-api/{majorMinorVersion}/rest-api/index.html#_realmrepresentation[RealmRepresentation]."
+msgstr ""
+
+msgid "The recommended way to obtain a `RealmRepresentation` is by leveraging the export functionality link:{links_server_importExport_url}[{links_server_importExport_name}]."
+msgstr ""
+
+msgid "Export the Realm to a single file."
+msgstr ""
+
+msgid "Convert the JSON file to YAML."
+msgstr ""
+
+msgid "Copy and paste the obtained YAML file as body for the `realm` key, making sure the indentation is correct."
+msgstr ""
+
+msgid "Applying the Realm Import CR"
+msgstr ""
+
+msgid "Use `kubectl` to create the CR in the correct cluster namespace:"
+msgstr ""
+
+msgid ""
+"cat <<EOF >> example-realm-import.yaml\n"
+"apiVersion: k8s.keycloak.org/v2alpha1\n"
+"kind: KeycloakRealmImport\n"
+"metadata:\n"
+"  name: my-realm-kc\n"
+"spec:\n"
+"  keycloakCRName: <name of the keycloak CR>\n"
+"  realm:\n"
+"    id: example-realm\n"
+"    realm: example-realm\n"
+"    displayName: ExampleRealm\n"
+"    enabled: true\n"
+"EOF\n"
+"kubectl apply -f example-realm-import.yaml"
+msgstr ""
+
+msgid "To check the status of the running import, enter the following command:"
+msgstr ""
+
+msgid "kubectl get keycloakrealmimports/my-realm-kc -o go-template='{{range .status.conditions}}CONDITION: {{.type}}{{\"\\n\"}}  STATUS: {{.status}}{{\"\\n\"}}  MESSAGE: {{.message}}{{\"\\n\"}}{{end}}'"
+msgstr ""
+
+msgid "When the import has successfully completed, the output will look like the following example:"
+msgstr ""
+
+msgid ""
+"CONDITION: Done\n"
+"  STATUS: true\n"
+"  MESSAGE:\n"
+"CONDITION: Started\n"
+"  STATUS: false\n"
+"  MESSAGE:\n"
+"CONDITION: HasErrors\n"
+"  STATUS: false\n"
+"  MESSAGE:"
+msgstr ""
+
+msgid "Advanced configuration"
+msgstr ""
+
+msgid "This guide describes how to use Custom Resources (CRs) for advanced configuration of your Keycloak deployment."
+msgstr ""
+
+msgid "Server configuration details"
+msgstr ""
+
+msgid "Many server options are exposed as first-class citizen fields in the Keycloak CR. The structure of the CR is based on the configuration structure of Keycloak. For example, to configure the `https-port` of the server, follow a similar pattern in the CR and use the `httpsPort` field. The following example is a complex server configuration; however, it illustrates the relationship between server options and the Keycloak CR:"
+msgstr ""
+
+msgid ""
+"apiVersion: k8s.keycloak.org/v2alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"  name: example-kc\n"
+"spec:\n"
+"  db:\n"
+"    vendor: postgres\n"
+"    usernameSecret:\n"
+"      name: usernameSecret\n"
+"      key: usernameSecretKey\n"
+"    passwordSecret:\n"
+"      name: passwordSecret\n"
+"      key: passwordSecretKey\n"
+"    host: host\n"
+"    database: database\n"
+"    port: 123\n"
+"    schema: schema\n"
+"    poolInitialSize: 1\n"
+"    poolMinSize: 2\n"
+"    poolMaxSize: 3\n"
+"  http:\n"
+"    httpEnabled: true\n"
+"    httpPort: 8180\n"
+"    httpsPort: 8543\n"
+"    tlsSecret: my-tls-secret\n"
+"  hostname:\n"
+"    hostname: my-hostname\n"
+"    admin: my-admin-hostname\n"
+"    strict: false\n"
+"    strictBackchannel: false\n"
+"  features:\n"
+"    enabled:\n"
+"      - docker\n"
+"      - authorization\n"
+"    disabled:\n"
+"      - admin\n"
+"      - step-up-authentication\n"
+"  transaction:\n"
+"    xaEnabled: false"
+msgstr ""
+
+msgid "For a list of options, see the Keycloak CRD. For details on configuring options, see link:{links_server_all-config_url}[{links_server_all-config_name}]."
+msgstr ""
+
+msgid "Additional options"
+msgstr ""
+
+msgid "Some expert server options are unavailable as dedicated fields in the Keycloak CR. The following are examples of omitted fields:"
+msgstr ""
+
+msgid "Fields that require deep understanding of the underlying Keycloak implementation"
+msgstr ""
+
+msgid "Fields that are not relevant to a Kubernetes environment"
+msgstr ""
+
+msgid "Fields for provider configuration because they are dynamic based on the used provider implementation"
+msgstr ""
+
+msgid "The `additionalOptions` field of the Keycloak CR enables Keycloak to accept any available configuration in the form of key-value pairs. You can use this field to include any option that is omitted in the Keycloak CR. For details on configuring options, see link:{links_server_all-config_url}[{links_server_all-config_name}]."
+msgstr ""
+
+msgid "The values can be expressed as plain text strings or Kubernetes Secret references as shown in this example:"
+msgstr ""
+
+msgid ""
+"apiVersion: k8s.keycloak.org/v2alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"  name: example-kc\n"
+"spec:\n"
+"  ...\n"
+"  additionalOptions:\n"
+"    - name: spi-connections-http-client-default-connection-pool-size\n"
+"      secret: # Secret reference\n"
+"        name: http-client-secret # name of the Secret\n"
+"        key: poolSize # name of the Key in the Secret\n"
+"    - name: spi-email-template-mycustomprovider-enabled\n"
+"      value: true # plain text value"
+msgstr ""
+
+msgid "Secret References"
+msgstr ""
+
+msgid "Secret References are used by some dedicated options in the Keycloak CR, such as `tlsSecret`, or as a value in `additionalOptions`."
+msgstr ""
+
+msgid "When specifying a Secret Reference, make sure that a Secret containing the referenced keys is present in the same namespace as the CR referencing it. Along with the Keycloak Server Deployment, the Operator adds special labels to the referenced Secrets to watch for changes."
+msgstr ""
+
+msgid "When a referenced Secret is modified, the Operator performs a rolling restart of the Keycloak Deployment to pick up the changes."
+msgstr ""
+
+msgid "Unsupported features"
+msgstr ""
+
+msgid "The `unsupported` field of the CR contains highly experimental configuration options that are not completely tested and supported."
+msgstr ""
+
+msgid "Pod Template"
+msgstr ""
+
+msgid "The Pod Template is a raw API representation that is used for the Kubernetes Deployment Template. This field is a temporary workaround in case no supported field exists at the top level of the CR for your use case. For a long-term solution, consider opening a GitHub issue to address your needs."
+msgstr ""
+
+msgid "The Operator merges the fields of the provided template with the values generated by the Operator for the specific Deployment. With this feature, you have access to a high level of customizations. However, no guarantee exists that the Deployment will work as expected."
+msgstr ""
+
+msgid "The following example illustrates injecting labels, annotations, volumes, and volume mounts:"
+msgstr ""
+
+msgid ""
+"apiVersion: k8s.keycloak.org/v2alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"  name: example-kc\n"
+"spec:\n"
+"  ...\n"
+"  unsupported:\n"
+"    podTemplate:\n"
+"      metadata:\n"
+"        labels:\n"
+"          my-label: \"keycloak\"\n"
+"      spec:\n"
+"        containers:\n"
+"          - volumeMounts:\n"
+"              - name: test-volume\n"
+"                mountPath: /mnt/test\n"
+"        volumes:\n"
+"          - name: test-volume\n"
+"            secret:\n"
+"              secretName: keycloak-additional-secret"
+msgstr ""
+
+msgid "Disabling required options"
+msgstr ""
+
+msgid "Keycloak and the Keycloak Operator provide the best production-ready experience with security in mind. However, during the development phase, you can disable key security features."
+msgstr ""
+
+msgid "Specifically, you can disable the hostname and TLS as shown in the following example:"
+msgstr ""
+
+msgid ""
+"apiVersion: k8s.keycloak.org/v2alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"  name: example-kc\n"
+"spec:\n"
+"  ...\n"
+"  http:\n"
+"    httpEnabled: true\n"
+"  hostname:\n"
+"    strict: false\n"
+"    strictBackchannel: false"
+msgstr ""
+
+msgid "Using custom Keycloak images"
+msgstr ""
+
+msgid "Keycloak custom image with the Operator"
+msgstr ""
+
+msgid "With the Keycloak Custom Resource (CR), you can specify a custom container image for the Keycloak server."
+msgstr ""
+
+msgid "To ensure full compatibility of Operator and Operand, make sure that the version of Keycloak release used in the custom image is aligned with the version of the operator."
+msgstr ""
+
+msgid "Best practice"
+msgstr ""
+
+msgid "When using the default Keycloak image, the server will perform a costly re-augmentation every time a Pod starts. To avoid this delay, you can provide a custom image with the augmentation built-in from the build time of the image."
+msgstr ""
+
+msgid "With a custom image, you can also specify the Keycloak _build-time_ configurations and extensions during the build of the container."
+msgstr ""
+
+msgid "For instructions on how to build such an image, see link:{links_server_containers_url}[{links_server_containers_name}]."
+msgstr ""
+
+msgid "Providing a custom Keycloak image"
+msgstr ""
+
+msgid "To provide a custom image, you define the `image` field in the Keycloak CR as shown in this example:"
+msgstr ""
+
+msgid ""
+"apiVersion: k8s.keycloak.org/v2alpha1\n"
+"kind: Keycloak\n"
+"metadata:\n"
+"  name: example-kc\n"
+"spec:\n"
+"  instances: 1\n"
+"  image: quay.io/my-company/my-keycloak:latest\n"
+"  http:\n"
+"    tlsSecret: example-tls-secret\n"
+"  hostname:\n"
+"    hostname: test.keycloak.org"
+msgstr ""
+
+msgid "With custom images, every build time option passed either through a dedicated field or the `additionalOptions` is ignored."
+msgstr ""

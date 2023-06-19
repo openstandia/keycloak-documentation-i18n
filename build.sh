@@ -76,6 +76,11 @@ for language in `ls $DIR/translations`; do
 
         for pofile in `ls $DIR/src/$version`; do
           docname=`echo $pofile | sed "s/\.po//"`
+
+          if [[ "$pofile" = "getting-started" -o "$pofile" = "migration" -o "$pofile" = "operator" -o "$pofile" = "server" ]]; then
+            continue
+          fi
+
           TARGET=$docname/index.adoc
 
           echo "Build $language/$version/$docname"

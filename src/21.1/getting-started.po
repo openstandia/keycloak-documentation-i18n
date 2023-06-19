@@ -1,0 +1,395 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Keycloak getting started guide"
+msgstr ""
+
+msgid "OpenJDK"
+msgstr ""
+
+msgid "Before you start"
+msgstr ""
+
+msgid "Make sure you have https://openjdk.java.net/[OpenJDK 11] or a higher version installed."
+msgstr ""
+
+msgid "Download Keycloak"
+msgstr ""
+
+msgid "Download and extract https://github.com/keycloak/keycloak/releases/download/{version}/keycloak-{version}.zip[keycloak-{version}.zip] from the Keycloak website."
+msgstr ""
+
+msgid "After extracting this file, you should have a directory named keycloak-{version}."
+msgstr ""
+
+msgid "Start Keycloak"
+msgstr ""
+
+msgid "From a terminal, open the keycloak-{version} directory."
+msgstr ""
+
+msgid "Enter the following command:"
+msgstr ""
+
+msgid "On Linux, run:"
+msgstr ""
+
+msgid "bin/kc.sh start-dev"
+msgstr ""
+
+msgid "On Windows, run:"
+msgstr ""
+
+msgid "bin/kc.bat start-dev"
+msgstr ""
+
+msgid "Create an admin user"
+msgstr ""
+
+msgid "Keycloak has no default admin user. You need to create an admin user before you can start Keycloak."
+msgstr ""
+
+msgid "Open http://localhost:8080/[http://localhost:8080/]."
+msgstr ""
+
+msgid "Fill in the form with your preferred username and password."
+msgstr ""
+
+msgid "Log in to the Admin Console"
+msgstr ""
+
+msgid "Go to the {links-admin-console}."
+msgstr ""
+
+msgid "Log in with the username and password you created earlier."
+msgstr ""
+
+msgid "Create a realm"
+msgstr ""
+
+msgid "A realm in Keycloak is equivalent to a tenant. Each realm allows an administrator to create isolated groups of applications and users. Initially, Keycloak includes a single realm, called `master`. Use this realm only for managing Keycloak and not for managing any applications."
+msgstr ""
+
+msgid "Use these steps to create the first realm."
+msgstr ""
+
+msgid "Open the {links-admin-console}."
+msgstr ""
+
+msgid "Click the word *master* in the top-left corner, then click *Create realm*."
+msgstr ""
+
+msgid "Enter `myrealm` in the *Realm name* field."
+msgstr ""
+
+msgid "Click *Create*."
+msgstr ""
+
+msgid "Create a user"
+msgstr ""
+
+msgid "Initially, the realm has no users. Use these steps to create a user:"
+msgstr ""
+
+msgid "Click *Users* in the left-hand menu."
+msgstr ""
+
+msgid "Click *Create new user*."
+msgstr ""
+
+msgid "Fill in the form with the following values:"
+msgstr ""
+
+msgid "*Username*: `myuser`"
+msgstr ""
+
+msgid "*First name*: any first name"
+msgstr ""
+
+msgid "*Last name*: any last name"
+msgstr ""
+
+msgid "This user needs a password to log in. To set the initial password:"
+msgstr ""
+
+msgid "Click *Credentials* at the top of the page."
+msgstr ""
+
+msgid "Fill in the *Set password* form with a password."
+msgstr ""
+
+msgid "Toggle *Temporary* to *Off* so that the user does not need update this password at the first login."
+msgstr ""
+
+msgid "Log in to the Account Console"
+msgstr ""
+
+msgid "You can now log in to the Account Console to verify this user is configured correctly."
+msgstr ""
+
+msgid "Open the {links-account-console}."
+msgstr ""
+
+msgid "Log in with `myuser` and the password you created earlier."
+msgstr ""
+
+msgid "As a user in the Account Console, you can manage your account including modifying your profile, adding two-factor authentication, and including identity provider accounts."
+msgstr ""
+
+msgid "Secure the first application"
+msgstr ""
+
+msgid "To secure the first application, you start by registering the application with your Keycloak instance:"
+msgstr ""
+
+msgid "Click *Clients*."
+msgstr ""
+
+msgid "Click *Create client*"
+msgstr ""
+
+msgid "*Client type*: `OpenID Connect`"
+msgstr ""
+
+msgid "*Client ID*: `myclient`"
+msgstr ""
+
+msgid "Click *Next*"
+msgstr ""
+
+msgid "Confirm that *Standard flow* is enabled."
+msgstr ""
+
+msgid "Click *Save*."
+msgstr ""
+
+msgid "After the client is created, make these updates to the client:"
+msgstr ""
+
+msgid "Scroll down to *Access settings*."
+msgstr ""
+
+msgid "Set *Valid redirect URIs* to `+https://www.keycloak.org/app/*+`"
+msgstr ""
+
+msgid "Set *Web origins* to `+https://www.keycloak.org+`"
+msgstr ""
+
+msgid "To confirm the client was created successfully, you can use the SPA testing application on the https://www.keycloak.org/app/[Keycloak website]."
+msgstr ""
+
+msgid "Open https://www.keycloak.org/app/."
+msgstr ""
+
+msgid "Click *Save* to use the default configuration."
+msgstr ""
+
+msgid "Click *Sign in* to authenticate to this application using the Keycloak server you started earlier."
+msgstr ""
+
+msgid "Taking the next step"
+msgstr ""
+
+msgid "Before you run Keycloak in production, consider the following actions:"
+msgstr ""
+
+msgid "Switch to a production ready database such as PostgreSQL."
+msgstr ""
+
+msgid "Configure SSL with your own certificates."
+msgstr ""
+
+msgid "Switch the admin password to a more secure password."
+msgstr ""
+
+msgid "For more information, see the https://www.keycloak.org/guides#server[server guides]."
+msgstr ""
+
+msgid "Docker"
+msgstr ""
+
+msgid "Make sure you have Docker installed."
+msgstr ""
+
+msgid "From a terminal, enter the following command to start Keycloak:"
+msgstr ""
+
+msgid "{containerCommand} run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:{version} start-dev"
+msgstr ""
+
+msgid "This command starts Keycloak exposed on the local port 8080 and creates an initial admin user with the username `admin` and password `admin`."
+msgstr ""
+
+msgid "Podman"
+msgstr ""
+
+msgid "Make sure you have Podman installed."
+msgstr ""
+
+msgid "Kubernetes"
+msgstr ""
+
+msgid "Make sure you have Minikube installed, ideally with the Ingress addon enabled."
+msgstr ""
+
+msgid "To check if you have the Ingress addon enabled, enter the following command:"
+msgstr ""
+
+msgid "minikube addons list"
+msgstr ""
+
+msgid "If the Ingress addon is not enabled, enter the following command to enable it:"
+msgstr ""
+
+msgid "minikube addons enable ingress"
+msgstr ""
+
+msgid "The Keycloak QuickStarts repository includes some example files to help deploy Keycloak to Kubernetes."
+msgstr ""
+
+msgid "As a first step, create the Keycloak deployment and service by entering the following command:"
+msgstr ""
+
+msgid "kubectl create -f https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/latest/kubernetes-examples/keycloak.yaml"
+msgstr ""
+
+msgid "This command starts Keycloak on Kubernetes and creates an initial admin user with the username `admin` and password `admin`."
+msgstr ""
+
+msgid "Access Keycloak with Ingress addon enabled"
+msgstr ""
+
+msgid "Now create an Ingress for Keycloak by entering the following command:"
+msgstr ""
+
+msgid ""
+"wget -q -O - https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/latest/kubernetes-examples/keycloak-ingress.yaml | \\\n"
+"sed \"s/KEYCLOAK_HOST/keycloak.$(minikube ip).nip.io/\" | \\\n"
+"kubectl create -f -"
+msgstr ""
+
+msgid "If `wget` and `sed` are not available, download the file and manually edit the file replacing `KEYCLOAK_HOST` with `keycloak.<minikube ip address>.nip.io`."
+msgstr ""
+
+msgid "Enter the following command to see the Keycloak URLs:"
+msgstr ""
+
+msgid ""
+"KEYCLOAK_URL=https://keycloak.$(minikube ip).nip.io &&\n"
+"echo \"\" &&\n"
+"echo \"Keycloak:                 $KEYCLOAK_URL\" &&\n"
+"echo \"Keycloak Admin Console:   $KEYCLOAK_URL/admin\" &&\n"
+"echo \"Keycloak Account Console: $KEYCLOAK_URL/realms/myrealm/account\" &&\n"
+"echo \"\""
+msgstr ""
+
+msgid "Access Keycloak without Ingress"
+msgstr ""
+
+msgid "If the Ingress addon is not enabled, enter the following command in a separate shell:"
+msgstr ""
+
+msgid "minikube tunnel"
+msgstr ""
+
+msgid "You can now access Keycloak from the following URL:"
+msgstr ""
+
+msgid ""
+"KEYCLOAK_URL=http://$(minikube ip):$(kubectl get services/keycloak -o go-template='{{(index .spec.ports 0).nodePort}}') &&\n"
+"echo \"\" &&\n"
+"echo \"Keycloak:                 $KEYCLOAK_URL\" &&\n"
+"echo \"Keycloak Admin Console:   $KEYCLOAK_URL/admin\" &&\n"
+"echo \"Keycloak Account Console: $KEYCLOAK_URL/realms/myrealm/account\" &&\n"
+"echo \"\""
+msgstr ""
+
+msgid "Remember these URLs. You need them as you follow the instructions in this guide. The URL for the Account Console does not work yet as you need to create the realm first."
+msgstr ""
+
+msgid "OpenShift"
+msgstr ""
+
+msgid "Install https://code-ready.github.io/crc/[Red Hat Code Ready Containers] and follow the steps in the documentation to install a local OpenShift cluster."
+msgstr ""
+
+msgid "Make sure the cluster is functional by entering the following command:"
+msgstr ""
+
+msgid "crc status"
+msgstr ""
+
+msgid "Look for output similar to the following to confirm the cluster is working."
+msgstr ""
+
+msgid ""
+"CRC VM:          Running\n"
+"OpenShift:       Running\n"
+"..."
+msgstr ""
+
+msgid "Log in as the user `developer`:"
+msgstr ""
+
+msgid "oc login -u developer -p developer"
+msgstr ""
+
+msgid "Create a project called `keycloak` by entering the following command:"
+msgstr ""
+
+msgid "oc new-project keycloak"
+msgstr ""
+
+msgid "To start a Keycloak server in your project, enter the following command:"
+msgstr ""
+
+msgid ""
+"oc process -f https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/latest/openshift-examples/keycloak.yaml \\\n"
+"    -p KEYCLOAK_ADMIN=admin \\\n"
+"    -p KEYCLOAK_ADMIN_PASSWORD=admin \\\n"
+"    -p NAMESPACE=keycloak \\\n"
+"| oc create -f -"
+msgstr ""
+
+msgid "Once the command above completes, look for a message similar to this:"
+msgstr ""
+
+msgid ""
+"service/keycloak created\n"
+"route.route.openshift.io/keycloak created\n"
+"deploymentconfig.apps.openshift.io/keycloak created."
+msgstr ""
+
+msgid "At this point, OpenShift will provision a Keycloak pod and related resources. As part of the process, OpenShift will try to pull the Keycloak server image. This operation might take some time depending on your network connection."
+msgstr ""
+
+msgid "To make sure Keycloak is provisioned, execute the following command:"
+msgstr ""
+
+msgid "oc get pods"
+msgstr ""
+
+msgid "After a while, look for a message similar to the following; it indicates the pod is ready:"
+msgstr ""
+
+msgid ""
+"NAME                READY     STATUS      RESTARTS   AGE\n"
+"keycloak-1-deploy   0/1       Completed   0          1h\n"
+"keycloak-1-l9kdx    1/1       Running     0          1h"
+msgstr ""
+
+msgid "Once the server is provisioned, enter the following command to find out the Keycloak URLs:"
+msgstr ""
+
+msgid ""
+"KEYCLOAK_URL=https://$(oc get route keycloak --template='{{ .spec.host }}') &&\n"
+"echo \"\" &&\n"
+"echo \"Keycloak:                 $KEYCLOAK_URL\" &&\n"
+"echo \"Keycloak Admin Console:   $KEYCLOAK_URL/admin\" &&\n"
+"echo \"Keycloak Account Console: $KEYCLOAK_URL/realms/myrealm/account\" &&\n"
+"echo \"\""
+msgstr ""
+
+msgid "Remember these URLs as you will need them throughout this guide. The URL for the account console won't work right now as you will need to create the realm first."
+msgstr ""

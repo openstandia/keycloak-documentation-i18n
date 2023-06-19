@@ -11,8 +11,8 @@ echo $CHANGE_FILES
 echo "---------------"
 
 if [[ "$CHANGE_FILES" = "" ]]; then
-  echo "No build"
-  exit 0
+  echo "Full build"
+  FULL_BUILD=true
 fi
 
 BUILD_DIR1=$DIR/build1
@@ -41,7 +41,7 @@ for language in `ls $DIR/translations`; do
   # Check the target language files is changed
   echo $CHANGE_FILES | grep -q translations/$language
 
-  if [[ $? -eq 0 ]]; then
+  if [[ $? -eq 0 ]] || [[ "$FULL_BUILD" = "true" ]]; then
     for version in `ls $DIR/translations/$language`; do
       # Resolve build dir by the target version
       if [[ $version == 1* ]]; then
@@ -58,7 +58,7 @@ for language in `ls $DIR/translations`; do
       # Check the target version files is changed
       echo $CHANGE_FILES | grep -q translations/$language/$version
 
-      if [[ $? -eq 0 ]]; then
+      if [[ $? -eq 0 ]] || [[ "$FULL_BUILD" = "true" ]]; then
         TAG=`git tag --list "${version}" | sort | tail -n 1`
         if [ -z "$TAG" ]; then
           TAG=`git tag --list "${version}.*" | sort | tail -n 1`
@@ -76,6 +76,11 @@ for language in `ls $DIR/translations`; do
 
         for pofile in `ls $DIR/src/$version`; do
           docname=`echo $pofile | sed "s/\.po//"`
+
+          if [ "$docname" = "getting-started" ] || [ "$docname" = "migration" ] || [ "$docname" = "operator" ] || [ "$docname" = "server" ]; then
+            continue
+          fi
+
           TARGET=$docname/index.adoc
 
           echo "Build $language/$version/$docname"

@@ -1,12 +1,12 @@
 # 
 # Translators:
 # jic_m_mito <jic-m-mito@nri.co.jp>, 2023
-# Hiroyuki Wada <wadahiro@gmail.com>, 2023
 # Kohei Tamura <ktamura.biz.80@gmail.com>, 2023
+# Hiroyuki Wada <wadahiro@gmail.com>, 2023
 # 
 msgid ""
 msgstr ""
-"Last-Translator: Kohei Tamura <ktamura.biz.80@gmail.com>, 2023\n"
+"Last-Translator: Hiroyuki Wada <wadahiro@gmail.com>, 2023\n"
 "Language-Team: Japanese (Japan) (https://app.transifex.com/openstandia/teams/79437/ja_JP/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language: ja_JP\n"
@@ -36,10 +36,8 @@ msgstr "{authorizationguide_link}[{authorizationguide_name_short}]"
 msgid "{releasenotes_link}[{releasenotes_name_short}]"
 msgstr "{releasenotes_link}[{releasenotes_name_short}]"
 
-msgid ""
-"Version *{project_version}* _{release_header_latest_link}[Click here for "
-"latest]_"
-msgstr "バージョン *{project_version}* _{release_header_latest_link}[最新はこちらをクリック]_"
+msgid "Version *{project_version}*"
+msgstr "バージョン *{project_version}*"
 
 msgid "Upgrading Keycloak"
 msgstr "Keycloakのアップグレード"
@@ -485,6 +483,94 @@ msgstr ""
 
 msgid "Migration Changes"
 msgstr "移行に伴う変更"
+
+msgid "Migrating to 21.1.0"
+msgstr "21.1.0への移行"
+
+msgid "Javascript engine available by default on the classpath"
+msgstr "クラスパス上でデフォルトで利用できるJavaScriptエンジン"
+
+msgid ""
+"In the previous version, when Keycloak was used on Java 17 with Javascript "
+"providers (Script authenticator, Javascript authorization policy or Script "
+"protocol mappers for OIDC and SAML clients), it was needed to copy "
+"javascript engine to the distribution. This is no longer needed as Nashorn "
+"javascript engine is available in Keycloak server by default. When you "
+"deploy script providers, it is recommended to not copy the nashorn script "
+"engine and it's dependencies into the Keycloak distribution."
+msgstr ""
+"以前のバージョンでは、KeycloakをJava "
+"17上でJavaScriptプロバイダー（スクリプト・オーセンティケーター、JavaScript認可ポリシー、OIDCおよびSAMLクライアント用のスクリプト・プロトコル・マッパー）を使用する場合、JavaScriptエンジンを配布物にコピーする必要がありました。NashornのJavaScriptエンジンはKeycloakサーバーでデフォルトで利用可能なため、この必要はもうありません。スクリプト・プロバイダーを導入する際には、Nashornスクリプト・エンジンとその依存関係をKeycloakの配布物にコピーしないことをお勧めします。"
+
+msgid "Change of the default Client ID mapper of Service Account Client"
+msgstr "Service Account ClientのデフォルトのクライアントIDマッパーの変更"
+
+msgid ""
+"Default `Client ID` mapper of `Service Account Client` has been changed. "
+"`Token Claim Name` field value has been changed from `clientId` to "
+"`client_id`. `client_id` claim is compliant with OAuth2 specifications:"
+msgstr ""
+"`Service Account Client` のデフォルトの `Client ID` マッパーが変更されました。 `Token Claim "
+"Name` フィールドの値が `clientId` から `client_id` に変更されました。 `client_id` "
+"クレームは以下のOAuth2の仕様に準拠しています。"
+
+msgid ""
+"https://datatracker.ietf.org/doc/html/rfc9068#section-2.2[JSON Web Token "
+"(JWT) Profile for OAuth 2.0 Access Tokens]"
+msgstr ""
+"https://datatracker.ietf.org/doc/html/rfc9068#section-2.2[JSON Web Token "
+"(JWT) Profile for OAuth 2.0 Access Tokens]"
+
+msgid ""
+"https://www.rfc-editor.org/rfc/rfc7662#section-2.2[OAuth 2.0 Token "
+"Introspection]"
+msgstr ""
+"https://www.rfc-editor.org/rfc/rfc7662#section-2.2[OAuth 2.0 Token "
+"Introspection]"
+
+msgid ""
+"https://datatracker.ietf.org/doc/html/rfc8693#section-4.3[OAuth 2.0 Token "
+"Exchange]"
+msgstr ""
+"https://datatracker.ietf.org/doc/html/rfc8693#section-4.3[OAuth 2.0 Token "
+"Exchange]"
+
+msgid "`clientId` userSession note still exists."
+msgstr "`clientId` ユーザー・セッション・ノートはまだ存在しています。"
+
+msgid "Keycloak JS adapter must be instanciated with the `new` operator"
+msgstr "Keycloak JSアダプターは `new` 演算子でインスタンス化する必要があります"
+
+msgid ""
+"Historically it has been possible to create an instance of the Keycloak JS "
+"adapter by calling the `Keycloak()` function directly:"
+msgstr ""
+"これまで、Keycloak JSアダプターのインスタンスを作成するには、 `Keycloak()` 関数を以下のように直接呼び出すことが可能でした。"
+
+msgid "const keycloak = Keycloak();"
+msgstr "const keycloak = Keycloak();"
+
+msgid ""
+"To align this with modern conventions in the JavaScript world it has been "
+"possible to use the https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Operators/new[`new` operator] to create an "
+"instance instead:"
+msgstr ""
+"これをJavaScriptの世界の現代的な慣習に合わせるために、代わりに以下のように https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Operators/new[`new` 演算子] "
+"を使ってインスタンスを生成することができるようになりました。"
+
+msgid "const keycloak = new Keycloak();"
+msgstr "const keycloak = new Keycloak();"
+
+msgid ""
+"The function-style constructor has been deprecated for a while, but starting"
+" this version we will actively log a deprecation message when it used. This "
+"style of constructor will be removed in a future version so make sure to "
+"migrate your code to use the `new` operator."
+msgstr ""
+"関数型コンストラクタはしばらく非推奨でしたが、このバージョンから、使用時に非推奨メッセージを積極的に記録するようにしました。このスタイルのコンストラクタは将来のバージョンで削除される予定なので、"
+" `new` 演算子を使用するようにコードを移行することを確認してください。"
 
 msgid "Migrating to 21.0.2"
 msgstr "21.0.2への移行"

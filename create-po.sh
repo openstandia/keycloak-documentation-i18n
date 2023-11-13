@@ -26,6 +26,11 @@ cd $BUILD_DIR2
 git fetch --tags
 
 for version in `ls $DIR/src`; do
+  if [[ $version != $1 ]]; then
+      echo "Skipping $version"
+      continue
+  fi
+
   # Resolve build dir by the target version
   if [[ $version == 1* ]]; then
       cd $BUILD_DIR1

@@ -384,9 +384,6 @@ msgstr ""
 msgid "Click a question mark *?* icon to show a tooltip text that describes that field. The image above shows the tooltip in action."
 msgstr ""
 
-msgid "Export files from the Admin Console are not suitable for backups or data transfer between servers. Only boot-time exports are suitable for backups or data transfer between servers."
-msgstr ""
-
 msgid "The master realm"
 msgstr ""
 
@@ -703,9 +700,6 @@ msgid "Forgot password link"
 msgstr ""
 
 msgid "image:images/forgot-password-link.png[Forgot Password Link]"
-msgstr ""
-
-msgid "Specify `Host` and `From` in the *Email* tab in order for Keycloak to be able to send the reset email."
 msgstr ""
 
 msgid "Click this link to bring users where they can enter their username or email address and receive an email with a link to reset their credentials."
@@ -1658,21 +1652,6 @@ msgid "image:images/registration-link.png[]"
 msgstr ""
 
 msgid "A user must add profile information to the registration form to complete registration. The registration form can be customized by removing or adding the fields that must be completed by a user."
-msgstr ""
-
-msgid "Clarification on identity brokering and admin API"
-msgstr ""
-
-msgid "Even when self-registrations is disabled, new users can be still added to {project_name} by either:"
-msgstr ""
-
-msgid "Administrator can add new users with the usage of admin console (or admin REST API)"
-msgstr ""
-
-msgid "When identity brokering is enabled, new users authenticated by identity provider may be automatically added/registered in {project_name} storage. See the <<_identity_broker_first_login, First login flow section in the Identity Brokering chapter>> for more information."
-msgstr ""
-
-msgid "Also users coming from the <<_user-storage-federation, 3rd-party user storage>> (for example LDAP) are automatically available in {project_name} when the particular user storage is enabled"
 msgstr ""
 
 msgid "For more information on customizing user registration, see the link:{developerguide_link}[{developerguide_name}]."
@@ -3706,10 +3685,13 @@ msgstr ""
 msgid "Password policy image:images/password-policy.png[Password Policy]"
 msgstr ""
 
-msgid "After saving the policy, {project_name} enforces the policy for new users."
+msgid "After saving the policy, {project_name} enforces the policy for new users and sets an Update Password action for existing users to ensure they change their password the next time they log in. For example:"
 msgstr ""
 
-msgid "The new policy will not be effective for existing users. Therefore, make sure that you set the password policy from the beginning of the realm creation or add \"Update password\" to existing users  or use \"Expire password\" to make sure that users update their passwords in next \"N\" days, which will actually adjust to new password policies."
+msgid "Failed password policy"
+msgstr ""
+
+msgid "image:images/failed-password-policy.png[Failed Password Policy]"
 msgstr ""
 
 msgid "Password policy types"
@@ -3802,28 +3784,16 @@ msgstr ""
 msgid "{project_name} compares passwords in a case-insensitive manner. All passwords in the blacklist must be lowercase."
 msgstr ""
 
-msgid "The value of the blacklist file must be the name of the blacklist file, for example, `100k_passwords.txt`."
+msgid "The value of the blacklist file must be the name of the blacklist file."
 msgstr ""
 
-msgid "Blacklist files resolve against `+${kc.home.dir}/data/password-blacklists/+` by default. Customize this path using:"
+msgid "Blacklist files resolve against `${jboss.server.data.dir}/password-blacklists/` by default. Customize this path using:"
 msgstr ""
 
-msgid "The `keycloak.password.blacklists.path` system property."
+msgid "The `keycloak.password.blacklists.path` property."
 msgstr ""
 
-msgid "The `blacklistsPath` property of the `passwordBlacklist` policy SPI configuration. To configure the blacklist folder using the CLI, use `--spi-password-policy-password-blacklist-blacklists-path=/path/to/blacklistsFolder`."
-msgstr ""
-
-msgid "A note about False Positives"
-msgstr ""
-
-msgid "The current implementation uses a BloomFilter for fast and memory efficient containment checks, such as whether a given password is contained in a blacklist, with the possibility for false positives."
-msgstr ""
-
-msgid "By default a false positive probability of `0.01%` is used."
-msgstr ""
-
-msgid "To change the false positive probability by CLI configuration, use `--spi-password-policy-password-blacklist-false-positive-probability=0.00001`"
+msgid "The `blacklistsPath` property of the `passwordBlacklist` policy SPI configuration."
 msgstr ""
 
 msgid "One Time Password (OTP) policies"
@@ -3913,7 +3883,7 @@ msgstr ""
 msgid "Authentication flows"
 msgstr ""
 
-msgid "An _authentication flow_ is a container of authentications, screens, and actions, during log in, registration, and other {project_name} workflows."
+msgid "An _authentication flow_ is a container of authentications, screens, and actions, during log in, registration, and other {project_name} workflows. To view all the flows, actions, and checks, each flow requires:"
 msgstr ""
 
 msgid "Built-in flows"
@@ -4493,28 +4463,16 @@ msgstr ""
 msgid "Optionally, add a custom error message to be displayed when the limit is reached."
 msgstr ""
 
-msgid "Note that the user session limits should be added to your bound *Browser flow*, *Direct grant flow*, *Reset credentials* and also to any *Post broker login flow*. The authenticator should be added at the point when the user is already known during authentication (usually at the end of the authentication flow) and should be typically REQUIRED. Note that it is not possible to have ALTERNATIVE and REQUIRED executions at the same level."
+msgid "Note that the user session limits should be added to your bound *Browser flow*, *Direct grant flow*, *Reset credentials* and also to any *Post broker login flow*. The authenticator should be added at the point when the user is already known during authentication (usually at the end of the authentication flow) and should be typically REQUIRED. Note that it is not possible to have ALTERNATIVE and REQUIRED executions at the same level. For example for the default browser flow, it may be necessary to wrap the existing flow as a REQUIRED level-1 subflow and add `User Session Count Limiter` to the same level as this new subflow. Example of such flow is below."
 msgstr ""
 
-msgid "For most of authenticators like `Direct grant flow`, `Reset credentials` or `Post broker login flow`, it is recommended to add the authenticator as REQUIRED at the end of the authentication flow. Here is an example for the `Reset credentials` flow:"
+msgid "image:images/authentication-user-session-limits.png[Authentication User Session Limits Flow]"
 msgstr ""
 
-msgid "image:images/authentication-user-session-limits-resetcred.png[Authentication User Session Limits Reset Credentials Flow]"
+msgid "Currently, the administrator is responsible for maintaining consistency between the different configurations."
 msgstr ""
 
-msgid "For `Browser` flow, consider not adding the Session Limits authenticator at the top level flow. This recommendation is due to the `Cookie` authenticator, which automatically re-authenticates users based on SSO cookie. It is at the top level and it is better to not check session limits during SSO re-authentication because a user session already exists. So instead, consider adding a separate ALTERNATIVE subflow, such as the following `authenticate-user-with-session-limit` example at the same level like `Cookie`. Then you can add a REQUIRED subflow, in the following `real-authentication-subflow`example, as a nested subflow of `authenticate-user-with-session-limit` and add a `User Session Limit` at the same level as well. Inside the `real-authentication-subflow`, you can add real authenticators in a similar fashion to the default browser flow. The following example flow allows to users to authenticate with an identity provider or with password and OTP:"
-msgstr ""
-
-msgid "image:images/authentication-user-session-limits-browser.png[Authentication User Session Limits Browser Flow]"
-msgstr ""
-
-msgid "Regarding `Post Broker login flow`,  you can add the `User Session Limits` as the only authenticator in the authentication flow  as long as you have no other authenticators that you  trigger after authentication with your identity provider.  However, make sure that this flow is configured as `Post Broker Flow` at your identity providers. This requirement exists needed so that the authentication with Identity providers also participates in the session limits."
-msgstr ""
-
-msgid "Currently, the administrator is responsible for maintaining consistency between the different configurations. So make sure that all your flows use same the configuration of `User Session Limits`."
-msgstr ""
-
-msgid "User session limit feature is not available for CIBA."
+msgid "Note also that the user session limit feature is not available for CIBA."
 msgstr ""
 
 msgid "Script Authenticator"
@@ -5997,9 +5955,6 @@ msgstr ""
 msgid "From the *Application type* list, select *Web application*."
 msgstr ""
 
-msgid "Use the *Redirect URI* in your clipboard as the *Authorized redirect URIs*"
-msgstr ""
-
 msgid "Note *Your Client ID* and *Your Client Secret*."
 msgstr ""
 
@@ -6977,9 +6932,6 @@ msgid "Set *Confirm Link Existing Account* to *DISABLED*."
 msgstr ""
 
 msgid "This configuration also implies that {project_name} itself won't be able to determine which internal account would correspond to the external identity. Therefore, the `Verify Existing Account By Re-authentication` authenticator will ask the user to provide both username and password."
-msgstr ""
-
-msgid "Enabling or disabling user creation by identity provider is completely independent on the realm <<con-user-registration_{context}, User Registration switch>>. You can have enabled user-creation by identity provider and at the same time disabled user self-registration in the realm login settings or vice-versa."
 msgstr ""
 
 msgid "Detect existing user first login flow"
@@ -9201,7 +9153,7 @@ msgstr ""
 msgid "image:images/audience_mapper.png[]"
 msgstr ""
 
-msgid "From the <<_client_installation, Client details tab>> of the *good-service* client, you can generate the adapter configuration and confirm that _verify-token-audience_  is set to *true*. This action forces the adapter to verify the audience if you use this configuration."
+msgid "From the <<_client_installation, Installation tab>> of the *good-service* client, you can generate the adapter configuration and you can confirm that _verify-token-audience_ option will be set to *true*. This forces the adapter to verify the audience if you use this configuration."
 msgstr ""
 
 msgid "You need to ensure that the confidential client is able to request *good-service* as an audience in its tokens."
@@ -9456,12 +9408,6 @@ msgstr ""
 msgid "_Artifact_ Binding URL for the Logout Service. When set together with the `Force Artifact Binding` option, _Artifact_ binding is forced for both login and logout flows. _Artifact_ binding is not used for logout unless this property is set."
 msgstr ""
 
-msgid "*Logout Service SOAP Binding URL*"
-msgstr ""
-
-msgid "Redirect Binding URL for the Logout Service. Only applicable if *back channel logout* is used."
-msgstr ""
-
 msgid "*Artifact Binding URL*"
 msgstr ""
 
@@ -9673,9 +9619,6 @@ msgid "Service account sessions provide the following details:"
 msgstr ""
 
 msgid "*clientId*: The client ID of the service account."
-msgstr ""
-
-msgid "*client_id*: The client ID of the service account."
 msgstr ""
 
 msgid "*clientAddress*: The remote host IP of the service account's authenticated device."
@@ -10770,10 +10713,10 @@ msgstr ""
 msgid "System administrators have a way to add additional attributes to this list. The configuration is currently available at the server level."
 msgstr ""
 
-msgid "You can add this configuration by using the `spi-user-profile-declarative-user-profile-read-only-attributes` and ``spi-user-profile-declarative-user-profile-admin-read-only-attributes` options. For example:"
+msgid "You can add this configuration by using the `spi-user-profile-legacy-user-profile-read-only-attributes` and ``spi-user-profile-legacy-user-profile-admin-read-only-attributes` options. For example:"
 msgstr ""
 
-msgid "kc.[sh|bat] start --spi-user-profile-declarative-user-profile-read-only-attributes=foo,bar*"
+msgid "kc.[sh|bat] start --spi-user-profile-legacy-user-profile-read-only-attributes=foo,bar*"
 msgstr ""
 
 msgid "For this example, users and administrators would not be able to update attribute `foo`. Users would not be able to edit any attributes starting with the `bar`. So for example `bar` or `barrier`. Configuration is case-insensitive, so attributes like `FOO` or `BarRier` will be denied as well for this example. The wildcard character `\\*` is supported only at the end of the attribute name, so the administrator can effectively deny all the attributes starting with the specified character. The `*` in the middle of the attribute is considered as a normal character."

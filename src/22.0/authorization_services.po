@@ -386,378 +386,22 @@ msgstr ""
 msgid "For more information on permission tickets, see <<_service_user_managed_access, User-Managed Access>> and the https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-09.html[UMA] specification."
 msgstr ""
 
-msgid "Getting started"
+msgid "Getting Started"
 msgstr ""
 
-msgid "Before you can use this tutorial, you need to complete the installation of {project_name} and create the initial admin user as shown in the link:{gettingstarted_link}[{gettingstarted_name}] tutorial. There is one caveat to this. You have to run a separate {appserver_name} instance on the same machine as {project_name} Server. This separate instance will run your Java Servlet application. Because of this you will have to run the {project_name} under a different port so that there are no port conflicts when running on the same machine. Use the `jboss.socket.binding.port-offset` system property on the command line. The value of this property is a number that will be added to the base value of every port opened by {project_name} Server."
+msgid "If you are using Wildfly, Spring Boot, or Quarkus, you can look at the following quickstarts and documentation to quickly get started with {project_name} Authorization Services:"
 msgstr ""
 
-msgid "To boot {project_name} Server:"
+msgid "{quickstartRepo_link}/tree/latest/jakarta/servlet-authz-client[Securing a JakartaEE Application in Wildfly]"
 msgstr ""
 
-msgid "Linux/Unix"
+msgid "{quickstartRepo_link}/tree/latest/spring/rest-authz-resource-server[Securing a Spring Boot Application]"
 msgstr ""
 
-msgid "$ .../bin/kc.sh start-dev --http-port 8180"
+msgid "link:https://quarkus.io/guides/security-keycloak-authorization[Securing Quarkus Applications]"
 msgstr ""
 
-msgid "Windows"
-msgstr ""
-
-msgid "> ...\\bin\\kc.bat start-dev --http-port 8180"
-msgstr ""
-
-msgid "After installing and booting both servers you should be able to access {project_name} Admin Console at http://localhost:8180/auth/admin/ and also the {appserver_name} instance at http://localhost:8080."
-msgstr ""
-
-msgid "For more details about installing and configuring {appserver_name} instances, see link:{adapterguide_link}[{adapterguide_name}]."
-msgstr ""
-
-msgid "Securing a servlet application"
-msgstr ""
-
-msgid "The purpose of this getting started guide is to get you up and running as quickly as possible so that you can experiment with and test various authorization features provided by {project_name}. This quick tour relies heavily on the default database and server configurations and does not cover complex deployment options. For more information on features or configuration options, see the appropriate sections in this documentation."
-msgstr ""
-
-msgid "This guide explains key concepts about {project_name} Authorization Services:"
-msgstr ""
-
-msgid "Enabling fine-grained authorization for a client application"
-msgstr ""
-
-msgid "Configuring a client application to be a resource server, with protected resources"
-msgstr ""
-
-msgid "Defining permissions and authorization policies to govern access to protected resources"
-msgstr ""
-
-msgid "Enabling policy enforcement in your applications."
-msgstr ""
-
-msgid "Creating a realm and a user"
-msgstr ""
-
-msgid "The first step in this tutorial is to create a realm and a user in that realm. Then, within the realm we will create a single client application, which then becomes a <<_overview_terminology, resource server>> for which you need to enable authorization services."
-msgstr ""
-
-msgid "Procedure"
-msgstr ""
-
-msgid "Create a realm with a name *hello-world-authz*. Once created, a page similar to the following is displayed:"
-msgstr ""
-
-msgid "Realm hello-world-authz"
-msgstr ""
-
-msgid "image:images/getting-started/hello-world/create-realm.png[alt=\"Realm hello-world-authz\"]"
-msgstr ""
-
-msgid "Click *Users*."
-msgstr ""
-
-msgid "The user list page displays where you can create a user."
-msgstr ""
-
-msgid "Click *Create user*."
-msgstr ""
-
-msgid "Complete the *Username*, *Email*, *First Name*, and *Last Name* fields."
-msgstr ""
-
-msgid "Toggle *User Enabled* to *ON*."
-msgstr ""
-
-msgid "Click *Create*."
-msgstr ""
-
-msgid "Add User"
-msgstr ""
-
-msgid "image:images/getting-started/hello-world/create-user.png[alt=\"Add User\"]"
-msgstr ""
-
-msgid "Set a password for the user by clicking the *Credentials* tab."
-msgstr ""
-
-msgid "Set user password"
-msgstr ""
-
-msgid "image:images/getting-started/hello-world/reset-user-pwd.png[alt=\"Set user password\"]"
-msgstr ""
-
-msgid "Complete the *New Password* and *Password Confirmation* fields and toggle *Temporary* to *OFF*."
-msgstr ""
-
-msgid "Click *Save*."
-msgstr ""
-
-msgid "Click *Save password*."
-msgstr ""
-
-msgid "Enabling authorization services"
-msgstr ""
-
-msgid "You can enable authorization services in an existing client application configured to use the OpenID Connect Protocol. You can also create a client using the following procedure."
-msgstr ""
-
-msgid "Click *Clients* in the menu."
-msgstr ""
-
-msgid "Fill in the *Client type*."
-msgstr ""
-
-msgid "Click *Next*."
-msgstr ""
-
-msgid "Toggle *Client authentication* to *ON*."
-msgstr ""
-
-msgid "Toggle *Authorization* to *ON*."
-msgstr ""
-
-msgid "Scroll down to the *Capability config* section."
-msgstr ""
-
-msgid "Fill in the *Root URL* field."
-msgstr ""
-
-msgid "Create client application"
-msgstr ""
-
-msgid "image:images/getting-started/hello-world/create-client.png[alt=\"Create client application\"]"
-msgstr ""
-
-msgid "A new *Authorization* tab is displayed for the client."
-msgstr ""
-
-msgid "Client Settings"
-msgstr ""
-
-msgid "image:images/getting-started/hello-world/enable-authz.png[alt=\"Client Settings\"]"
-msgstr ""
-
-msgid "Click the *Authorization* tab."
-msgstr ""
-
-msgid "An Authorization Settings page similar to the following is displayed:"
-msgstr ""
-
-msgid "Authorization settings"
-msgstr ""
-
-msgid "image:images/getting-started/hello-world/authz-settings.png[alt=\"Authorization settings\"]"
-msgstr ""
-
-msgid "When you enable authorization services for a client application, {project_name} automatically creates several default settings for your client authorization configuration."
-msgstr ""
-
-msgid "<<_resource_server_enable_authorization, Enabling authorization services>>"
-msgstr ""
-
-msgid "<<_resource_server_default_config, Default configuration>>"
-msgstr ""
-
-msgid "Build, deploy, and test your application"
-msgstr ""
-
-msgid "Now that the *app-authz-vanilla* resource server (or client) is properly configured and authorization services are enabled, it can be deployed to the server."
-msgstr ""
-
-msgid "The project and code for the application you are going to deploy is available in link:{quickstartRepo_link}[{quickstartRepo_name}].  You will need the following installed on your machine and available in your PATH before you can continue:"
-msgstr ""
-
-msgid "Java JDK 8"
-msgstr ""
-
-msgid "Apache Maven 3.1.1 or higher"
-msgstr ""
-
-msgid "Git"
-msgstr ""
-
-msgid "You can obtain the code by cloning the repository at {quickstartRepo_link}. The quickstarts are designed to work with the most recent Keycloak release."
-msgstr ""
-
-msgid "Follow these steps to download the code."
-msgstr ""
-
-msgid "Clone Project"
-msgstr ""
-
-msgid "$ git clone {quickstartRepo_link}"
-msgstr ""
-
-msgid "The application we are about to build and deploy is located at"
-msgstr ""
-
-msgid "$ cd {quickstartRepo_dir}/app-authz-jee-vanilla"
-msgstr ""
-
-msgid "Obtaining the adapter configuration"
-msgstr ""
-
-msgid "You must first obtain the adapter configuration before building and deploying the application."
-msgstr ""
-
-msgid "Log into the Admin Console."
-msgstr ""
-
-msgid "In the client listing, click the *app-authz-vanilla* client application. The Client Settings page opens."
-msgstr ""
-
-msgid "From the *Action* list, select *Download adapter config*."
-msgstr ""
-
-msgid "From the Format Option list, select *Keycloak OIDC JSON*."
-msgstr ""
-
-msgid "The adapter configuration is displayed in JSON format."
-msgstr ""
-
-msgid "Click *Download*."
-msgstr ""
-
-msgid "Adapter configuration"
-msgstr ""
-
-msgid "image:images/getting-started/hello-world/adapter-config.png[alt=\"Adapter configuration\"]"
-msgstr ""
-
-msgid "Move the file `keycloak.json` to the `app-authz-jee-vanilla/config` directory."
-msgstr ""
-
-msgid "Optionally, specify a redirection URL."
-msgstr ""
-
-msgid "By default, the policy enforcer responds with a `403` status code when the user lacks permission to access protected resources on the resource server. However, you can also specify a redirection URL for unauthorized users. To specify a redirection URL, edit the *keycloak.json* file that you updated and replace the `policy-enforcer` configuration with the following:"
-msgstr ""
-
-msgid ""
-"\"policy-enforcer\": {\n"
-"    \"on-deny-redirect-to\" : \"/app-authz-vanilla/error.jsp\"\n"
-"}"
-msgstr ""
-
-msgid "This change specifies to the policy enforcer to redirect users to a `/app-authz-vanilla/error.jsp` page if a user does not have the necessary permissions to access a protected resource, rather than an unhelpful `403 Unauthorized` message."
-msgstr ""
-
-msgid "Building and deploying the application"
-msgstr ""
-
-msgid "To build and deploy the application execute the following command:"
-msgstr ""
-
-msgid ""
-"$ cd {quickstartRepo_dir}/app-authz-jee-vanilla\n"
-"$ mvn clean package wildfly:deploy"
-msgstr ""
-
-msgid "Testing the application"
-msgstr ""
-
-msgid "If your application was successfully deployed, you can access it at http://localhost:8080/app-authz-vanilla[http://localhost:8080/app-authz-vanilla]. The {project_name} Login page opens."
-msgstr ""
-
-msgid "Login page"
-msgstr ""
-
-msgid "image:images/getting-started/hello-world/login-page.png[alt=\"Login page\"]"
-msgstr ""
-
-msgid "Log in as *alice* using the password you specified for that user. The following page is displayed:"
-msgstr ""
-
-msgid "Hello World Authz main page"
-msgstr ""
-
-msgid "image:images/getting-started/hello-world/main-page.png[alt=\"Hello World Authz main page\"]"
-msgstr ""
-
-msgid "The <<_resource_server_default_config, default settings>> defined by {project_name} when you enable authorization services for a client application provide a simple policy that always grants access to the resources protected by this policy."
-msgstr ""
-
-msgid "You can start by changing the default permissions and policies and test how your application responds, or even create new policies using the different <<_policy_overview, policy types>> provided by {project_name}."
-msgstr ""
-
-msgid "There are a plenty of things you can do now to test this application. For example, you can change the default policy by clicking the `Authorization` tab for the client, then client on the `Policies` tab, then click on the `Default Policy` in the list. Now we are going to change the `Logic` to `Negative` using the dropdown list in this page."
-msgstr ""
-
-msgid "Log out of the demo application and log in again."
-msgstr ""
-
-msgid "You can no longer access the application."
-msgstr ""
-
-msgid "image:images/getting-started/hello-world/access-denied-page.png[alt=\"Access Denied page\"]"
-msgstr ""
-
-msgid "<<_policy_overview, Policy types>>"
-msgstr ""
-
-msgid "Next steps"
-msgstr ""
-
-msgid "There are additional things you can do, such as:"
-msgstr ""
-
-msgid "Create a scope, define a policy and permission for it, and test it on the application side. Can the user perform an action (or anything else represented by the scope you created)?"
-msgstr ""
-
-msgid "Create different types of policies and associate these policies with the `Default Permission`."
-msgstr ""
-
-msgid "Apply multiple policies to the `Default Permission` and test the behavior. For example, combine multiple policies and change the `Decision Strategy` accordingly."
-msgstr ""
-
-msgid "For more information about how to view and test permissions inside your application see <<_enforcer_authorization_context, Obtaining the authorization context>>."
-msgstr ""
-
-msgid "Authorization quickstarts"
-msgstr ""
-
-msgid "In addition to the *app-authz-jee-vanilla* quickstart that was used as a sample application in the previous section, the link:{quickstartRepo_link}[{quickstartRepo_name}] contains other applications that make use of the authorization services described in this documentation."
-msgstr ""
-
-msgid "The authorization quickstarts have been designed so that authorization services are displayed in different scenarios and using different technologies and integrations. It is not meant as a comprehensive set of all the possible use cases involving authorization but they should provide a starting point for users interested in understanding how the authorization services can be used in their own applications."
-msgstr ""
-
-msgid "Each quickstart has a `README` file with instructions on how to build, deploy, and test the sample application. The following table provides a brief description of the available authorization quickstarts:"
-msgstr ""
-
-msgid "Name"
-msgstr ""
-
-msgid "Description"
-msgstr ""
-
-msgid "{quickstartRepo_link}/tree/latest/app-authz-jee-servlet[app-authz-jee-servlet]"
-msgstr ""
-
-msgid "Demonstrates how to enable fine-grained authorization to a Jakarta EE application in order to protect specific resources and build a dynamic menu based on the permissions obtained from a {Project_Name} Server."
-msgstr ""
-
-msgid "{quickstartRepo_link}/tree/latest/app-authz-jee-vanilla[app-authz-jee-vanilla]"
-msgstr ""
-
-msgid "Demonstrates how to enable fine-grained authorization to a Jakarta EE application and use the default authorization settings to protect all resources in the application."
-msgstr ""
-
-msgid "{quickstartRepo_link}/tree/latest/app-authz-rest-springboot[app-authz-rest-springboot]"
-msgstr ""
-
-msgid "Demonstrates how to protect a SpringBoot REST service using {Project_Name} Authorization Services."
-msgstr ""
-
-msgid "{quickstartRepo_link}/tree/latest/app-authz-springboot[app-authz-springboot]"
-msgstr ""
-
-msgid "Demonstrates how to write a SpringBoot Web application where both authentication and authorization aspects are managed by {Project_Name}."
-msgstr ""
-
-msgid "{quickstartRepo_link}/tree/latest/app-authz-uma-photoz[app-authz-uma-photoz]"
-msgstr ""
-
-msgid "A simple application based on HTML5+AngularJS+JAX-RS that demonstrates how to enable User-Managed Access to your application and let users manage permissions for their resources."
+msgid "{adapterguide_link_nodejs_adapter}[Securing Node.js Applications]"
 msgstr ""
 
 msgid "Managing resource servers"
@@ -776,6 +420,9 @@ msgid "Creating a client application"
 msgstr ""
 
 msgid "The first step to enable {project_name} Authorization Services is to create the client application that you want to turn into a resource server."
+msgstr ""
+
+msgid "Procedure"
 msgstr ""
 
 msgid "Click *Clients*."
@@ -799,7 +446,13 @@ msgstr ""
 msgid "Type the `Client ID` of the client. For example, _my-resource-server_."
 msgstr ""
 
+msgid "Click *Next*."
+msgstr ""
+
 msgid "Toggle *Client authentication* to ON."
+msgstr ""
+
+msgid "Click *Save*."
 msgstr ""
 
 msgid "Type the `Root URL` for your application. For example:"
@@ -811,7 +464,13 @@ msgstr ""
 msgid "Click *Save*. The client is created and the client Settings page opens. A page similar to the following is displayed:"
 msgstr ""
 
+msgid "Client Settings"
+msgstr ""
+
 msgid "image:images/resource-server/client-enable-authz.png[alt=\"Client Settings\"]"
+msgstr ""
+
+msgid "Enabling authorization services"
 msgstr ""
 
 msgid "You can turn your OIDC client into a resource server and enable fine-grained authorization."
@@ -1006,6 +665,9 @@ msgid "Permissions"
 msgstr ""
 
 msgid "Exporting a configuration file"
+msgstr ""
+
+msgid "Click *Clients* in the menu."
 msgstr ""
 
 msgid "Click the client you created as a resource server."
@@ -1837,6 +1499,12 @@ msgstr ""
 msgid "Execution and Runtime Attributes"
 msgstr ""
 
+msgid "Name"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
 msgid "kc.time.date_time"
 msgstr ""
 
@@ -2154,6 +1822,18 @@ msgid "**permission**"
 msgstr ""
 
 msgid "This parameter is *optional*. A string representing a set of one or more resources and scopes the client is seeking access. This parameter can be defined multiple times in order to request permission for multiple resource and scopes. This parameter is an extension to `urn:ietf:params:oauth:grant-type:uma-ticket` grant type in order to allow clients to send authorization requests without a permission ticket. The format of the string must be: `RESOURCE_ID#SCOPE_ID`. For instance: `Resource A#Scope A`, `Resource A#Scope A, Scope B, Scope C`, `Resource A`, `#Scope A`."
+msgstr ""
+
+msgid "**permission_resource_format**"
+msgstr ""
+
+msgid "This parameter is *optional*. A string representing a format indicating the resource in the `permission` parameter. Possible values are `id` and `uri`. `id` indicates the format is `RESOURCE_ID`. `uri` indicates the format is `URI`. If not specified, the default is `id`."
+msgstr ""
+
+msgid "**permission_resource_matching_uri**"
+msgstr ""
+
+msgid "This parameter is *optional*. A boolean value that indicates whether to use path matching when representing resources in URI format in the `permission` parameter. If not specified, the default is false."
 msgstr ""
 
 msgid "**audience**"
@@ -2478,6 +2158,9 @@ msgid "Managing access to users resources"
 msgstr ""
 
 msgid "Users can manage access to their resources using the {project_name} Account Console. To enable this functionality, you must first enable User-Managed Access for your realm."
+msgstr ""
+
+msgid "Log into the Admin Console."
 msgstr ""
 
 msgid "Click *Realm Settings* in the menu."
@@ -3000,7 +2683,7 @@ msgstr ""
 msgid "{tech_feature_name} is *Deprecated* and will be removed in future releases. This feature is disabled by default."
 msgstr ""
 
-msgid "To enable start the server with `{tech_feature_setting}` . For more details see the https://www.keycloak.org/server/features[Enabling and disabling features] guide."
+msgid "To enable start the server with `{tech_feature_setting}` . For more details see the https://www.keycloak.org/server/features[Enabling and disabling features] {section}."
 msgstr ""
 
 msgid ""
@@ -3408,22 +3091,15 @@ msgstr ""
 msgid "A PEP is responsible for enforcing access decisions from the {project_name} server where these decisions are taken by evaluating the policies associated with a protected resource. It acts as a filter or interceptor in your application in order to check whether or not a particular request to a protected resource can be fulfilled based on the permissions granted by these decisions."
 msgstr ""
 
-msgid "Permissions are enforced depending on the protocol you are using. When using UMA, the policy enforcer always expects an RPT as a bearer token in order to decide whether or not a request can be served. That means clients should first obtain an RPT from {project_name} before sending requests to the resource server."
-msgstr ""
-
-msgid "However, if you are not using UMA, you can also send regular access tokens to the resource server. In this case, the policy enforcer will try to obtain permissions directly from the server."
-msgstr ""
-
-msgid "If you are using any of the {project_name} OIDC adapters, you can easily enable the policy enforcer by adding the following property to your *keycloak.json* file:"
-msgstr ""
-
-msgid "keycloak.json"
+msgid "{project_name} provides built-in support for enabling the *{project_name} Policy Enforcer* to Java applications with built-in support to secure JakartaEE-compliant frameworks and web containers. If you are using Maven, you should configure the following dependency to your project:"
 msgstr ""
 
 msgid ""
-"{\n"
-" \"policy-enforcer\": {}\n"
-"}"
+"<dependency>\n"
+"    <groupId>org.keycloak</groupId>\n"
+"    <artifactId>keycloak-policy-enforcer</artifactId>\n"
+"    <version>${keycloak.version}</version>\n"
+"</dependency>"
 msgstr ""
 
 msgid "When you enable the policy enforcer all requests sent to your application are intercepted and access to protected resources will be granted depending on the permissions granted by {project_name} to the identity making the request."
@@ -3432,72 +3108,34 @@ msgstr ""
 msgid "Policy enforcement is strongly linked to your application's paths and the <<_resource_overview, resources>> you created for a resource server using the {project_name} Administration Console. By default, when you create a resource server, {project_name} creates a <<_resource_server_default_config, default configuration>> for your resource server so you can enable policy enforcement quickly."
 msgstr ""
 
-msgid "To enable policy enforcement for your application, add the following property to your *keycloak.json* file:"
+msgid "The policy enforcer configuration uses a JSON format and most of the time you don't need to set anything if you want to automatically resolve the protected paths based on the resources available from your resource server."
+msgstr ""
+
+msgid "If you want to manually define the resources being protected, you can use a slightly more verbose format:"
 msgstr ""
 
 msgid ""
 "{\n"
-"  \"policy-enforcer\": {}\n"
+"  \"enforcement-mode\" : \"ENFORCING\",\n"
+"  \"paths\": [\n"
+"    {\n"
+"      \"path\" : \"/users/*\",\n"
+"      \"methods\" : [\n"
+"        {\n"
+"          \"method\": \"GET\",\n"
+"          \"scopes\" : [\"urn:app.com:scopes:view\"]\n"
+"        },\n"
+"        {\n"
+"          \"method\": \"POST\",\n"
+"          \"scopes\" : [\"urn:app.com:scopes:create\"]\n"
+"        }\n"
+"      ]\n"
+"    }\n"
+"  ]\n"
 "}"
 msgstr ""
 
-msgid "Or a little more verbose if you want to manually define the resources being protected:"
-msgstr ""
-
-msgid ""
-"{\n"
-"  \"policy-enforcer\": {\n"
-"    \"user-managed-access\" : {},\n"
-"    \"enforcement-mode\" : \"ENFORCING\",\n"
-"    \"paths\": [\n"
-"      {\n"
-"        \"path\" : \"/someUri/*\",\n"
-"        \"methods\" : [\n"
-"          {\n"
-"            \"method\": \"GET\",\n"
-"            \"scopes\" : [\"urn:app.com:scopes:view\"]\n"
-"          },\n"
-"          {\n"
-"            \"method\": \"POST\",\n"
-"            \"scopes\" : [\"urn:app.com:scopes:create\"]\n"
-"          }\n"
-"        ]\n"
-"      },\n"
-"      {\n"
-"        \"name\" : \"Some Resource\",\n"
-"        \"path\" : \"/usingPattern/{id}\",\n"
-"        \"methods\" : [\n"
-"          {\n"
-"            \"method\": \"DELETE\",\n"
-"            \"scopes\" : [\"urn:app.com:scopes:delete\"]\n"
-"          }\n"
-"        ]\n"
-"      },\n"
-"      {\n"
-"        \"path\" : \"/exactMatch\"\n"
-"      },\n"
-"      {\n"
-"        \"name\" : \"Admin Resources\",\n"
-"        \"path\" : \"/usingWildCards/*\"\n"
-"      }\n"
-"    ]\n"
-"  }\n"
-"}"
-msgstr ""
-
-msgid "Here is a description of each configuration option:"
-msgstr ""
-
-msgid "*policy-enforcer*"
-msgstr ""
-
-msgid "Specifies the configuration options that define how policies are actually enforced and optionally the paths you want to protect. If not specified, the policy enforcer queries the server for all resources associated with the resource server being protected. In this case, you need to ensure the resources are properly configured with a <<_resource_create_uri, URIS>> property that matches the paths you want to protect."
-msgstr ""
-
-msgid "*user-managed-access*"
-msgstr ""
-
-msgid "Specifies that the adapter uses the UMA protocol. If specified, the adapter queries the server for permission tickets and returns them to clients according to the UMA specification. If not specified, the policy enforcer will be able to enforce permissions based on regular access tokens or RPTs. In this case, before denying access to the resource when the token lacks permission, the policy enforcer will try to obtain permissions directly from the server."
+msgid "The following is a description of each configuration option:"
 msgstr ""
 
 msgid "*enforcement-mode*"
@@ -3509,13 +3147,19 @@ msgstr ""
 msgid "*ENFORCING*"
 msgstr ""
 
+msgid "(default mode) Requests are denied by default even when no policy is associated with a given resource."
+msgstr ""
+
 msgid "*PERMISSIVE*"
+msgstr ""
+
+msgid "Requests are allowed even when no policy is associated with a given resource."
 msgstr ""
 
 msgid "*DISABLED*"
 msgstr ""
 
-msgid "Completely disables the evaluation of policies and allows access to any resource. When `enforcement-mode` is `DISABLED` applications are still able to obtain all permissions granted by {project_name} through the <<_enforcer_authorization_context, Authorization Context>>"
+msgid "Completely disables the evaluation of policies and allows access to any resource. When `enforcement-mode` is `DISABLED`, applications are still able to obtain all permissions granted by {project_name} through the <<_enforcer_authorization_context, Authorization Context>>"
 msgstr ""
 
 msgid "*on-deny-redirect-to*"
@@ -3545,7 +3189,7 @@ msgstr ""
 msgid "*paths*"
 msgstr ""
 
-msgid "Specifies the paths to protect. This configuration is optional. If not defined, the policy enforcer will discover all paths by fetching the resources you defined to your application in {project_name}, where these resources are defined with `URIS` representing some paths in your application."
+msgid "Specifies the paths to protect. This configuration is optional. If not defined, the policy enforcer  discovers all paths by fetching the resources you defined to your application in {project_name}, where these resources are defined with `URIS` representing some paths in your application."
 msgstr ""
 
 msgid "*name*"
@@ -3611,7 +3255,7 @@ msgstr ""
 msgid "*lazy-load-paths*"
 msgstr ""
 
-msgid "Specifies how the adapter should fetch the server for resources associated with paths in your application. If *true*, the policy enforcer is going to fetch resources on-demand accordingly with the path being requested. This configuration is specially useful when you don't want to fetch all resources from the server during deployment (in case you have provided no `paths`) or in case you have defined only a sub set of `paths` and want to fetch others on-demand."
+msgid "Specifies how the adapter should fetch the server for resources associated with paths in your application. If *true*, the policy enforcer is going to fetch resources on-demand accordingly with the path being requested. This configuration is specially useful when you do not want to fetch all resources from the server during deployment (in case you have provided no `paths`) or in case you have defined only a sub set of `paths` and want to fetch others on-demand."
 msgstr ""
 
 msgid "*http-method-as-scope*"
@@ -3650,32 +3294,35 @@ msgstr ""
 msgid "Here are several examples showing how you can extract claims from an HTTP request:"
 msgstr ""
 
+msgid "keycloak.json"
+msgstr ""
+
 msgid ""
-"\"policy-enforcer\": {\n"
-"    \"paths\": [\n"
-"      {\n"
-"        \"path\": \"/protected/resource\",\n"
-"        \"claim-information-point\": {\n"
-"          \"claims\": {\n"
-"            \"claim-from-request-parameter\": \"{request.parameter['a']}\",\n"
-"            \"claim-from-header\": \"{request.header['b']}\",\n"
-"            \"claim-from-cookie\": \"{request.cookie['c']}\",\n"
-"            \"claim-from-remoteAddr\": \"{request.remoteAddr}\",\n"
-"            \"claim-from-method\": \"{request.method}\",\n"
-"            \"claim-from-uri\": \"{request.uri}\",\n"
-"            \"claim-from-relativePath\": \"{request.relativePath}\",\n"
-"            \"claim-from-secure\": \"{request.secure}\",\n"
-"            \"claim-from-json-body-object\": \"{request.body['/a/b/c']}\",\n"
-"            \"claim-from-json-body-array\": \"{request.body['/d/1']}\",\n"
-"            \"claim-from-body\": \"{request.body}\",\n"
-"            \"claim-from-static-value\": \"static value\",\n"
-"            \"claim-from-multiple-static-value\": [\"static\", \"value\"],\n"
-"            \"param-replace-multiple-placeholder\": \"Test {keycloak.access_token['/custom_claim/0']} and {request.parameter['a']} \"\n"
-"          }\n"
+"{\n"
+"  \"paths\": [\n"
+"    {\n"
+"      \"path\": \"/protected/resource\",\n"
+"      \"claim-information-point\": {\n"
+"        \"claims\": {\n"
+"          \"claim-from-request-parameter\": \"{request.parameter['a']}\",\n"
+"          \"claim-from-header\": \"{request.header['b']}\",\n"
+"          \"claim-from-cookie\": \"{request.cookie['c']}\",\n"
+"          \"claim-from-remoteAddr\": \"{request.remoteAddr}\",\n"
+"          \"claim-from-method\": \"{request.method}\",\n"
+"          \"claim-from-uri\": \"{request.uri}\",\n"
+"          \"claim-from-relativePath\": \"{request.relativePath}\",\n"
+"          \"claim-from-secure\": \"{request.secure}\",\n"
+"          \"claim-from-json-body-object\": \"{request.body['/a/b/c']}\",\n"
+"          \"claim-from-json-body-array\": \"{request.body['/d/1']}\",\n"
+"          \"claim-from-body\": \"{request.body}\",\n"
+"          \"claim-from-static-value\": \"static value\",\n"
+"          \"claim-from-multiple-static-value\": [\"static\", \"value\"],\n"
+"          \"param-replace-multiple-placeholder\": \"Test {keycloak.access_token['/custom_claim/0']} and {request.parameter['a']}\"\n"
 "        }\n"
 "      }\n"
-"    ]\n"
-"  }"
+"    }\n"
+"  ]\n"
+"}"
 msgstr ""
 
 msgid "Obtaining information from an external HTTP service"
@@ -3685,55 +3332,64 @@ msgid "Here are several examples showing how you can extract claims from an exte
 msgstr ""
 
 msgid ""
-"\"policy-enforcer\": {\n"
-"    \"paths\": [\n"
-"      {\n"
-"        \"path\": \"/protected/resource\",\n"
-"        \"claim-information-point\": {\n"
-"          \"http\": {\n"
-"            \"claims\": {\n"
-"              \"claim-a\": \"/a\",\n"
-"              \"claim-d\": \"/d\",\n"
-"              \"claim-d0\": \"/d/0\",\n"
-"              \"claim-d-all\": [\"/d/0\", \"/d/1\"]\n"
-"            },\n"
-"            \"url\": \"http://mycompany/claim-provider\",\n"
-"            \"method\": \"POST\",\n"
-"            \"headers\": {\n"
-"              \"Content-Type\": \"application/x-www-form-urlencoded\",\n"
-"              \"header-b\": [\"header-b-value1\", \"header-b-value2\"],\n"
-"              \"Authorization\": \"Bearer {keycloak.access_token}\"\n"
-"            },\n"
-"            \"parameters\": {\n"
-"              \"param-a\": [\"param-a-value1\", \"param-a-value2\"],\n"
-"              \"param-subject\": \"{keycloak.access_token['/sub']}\",\n"
-"              \"param-user-name\": \"{keycloak.access_token['/preferred_username']}\",\n"
-"              \"param-other-claims\": \"{keycloak.access_token['/custom_claim']}\"\n"
-"            }\n"
+"{\n"
+"  \"paths\": [\n"
+"    {\n"
+"      \"path\": \"/protected/resource\",\n"
+"      \"claim-information-point\": {\n"
+"        \"http\": {\n"
+"          \"claims\": {\n"
+"            \"claim-a\": \"/a\",\n"
+"            \"claim-d\": \"/d\",\n"
+"            \"claim-d0\": \"/d/0\",\n"
+"            \"claim-d-all\": [\n"
+"              \"/d/0\",\n"
+"              \"/d/1\"\n"
+"            ]\n"
+"          },\n"
+"          \"url\": \"http://mycompany/claim-provider\",\n"
+"          \"method\": \"POST\",\n"
+"          \"headers\": {\n"
+"            \"Content-Type\": \"application/x-www-form-urlencoded\",\n"
+"            \"header-b\": [\n"
+"              \"header-b-value1\",\n"
+"              \"header-b-value2\"\n"
+"            ],\n"
+"            \"Authorization\": \"Bearer {keycloak.access_token}\"\n"
+"          },\n"
+"          \"parameters\": {\n"
+"            \"param-a\": [\n"
+"              \"param-a-value1\",\n"
+"              \"param-a-value2\"\n"
+"            ],\n"
+"            \"param-subject\": \"{keycloak.access_token['/sub']}\",\n"
+"            \"param-user-name\": \"{keycloak.access_token['/preferred_username']}\",\n"
+"            \"param-other-claims\": \"{keycloak.access_token['/custom_claim']}\"\n"
 "          }\n"
 "        }\n"
 "      }\n"
-"    ]\n"
-"  }"
+"    }\n"
+"  ]\n"
+"}"
 msgstr ""
 
 msgid "Static claims"
 msgstr ""
 
 msgid ""
-"\"policy-enforcer\": {\n"
-"    \"paths\": [\n"
-"      {\n"
-"        \"path\": \"/protected/resource\",\n"
-"        \"claim-information-point\": {\n"
-"          \"claims\": {\n"
-"            \"claim-from-static-value\": \"static value\",\n"
-"            \"claim-from-multiple-static-value\": [\"static\", \"value\"],\n"
-"          }\n"
+"{\n"
+"  \"paths\": [\n"
+"    {\n"
+"      \"path\": \"/protected/resource\",\n"
+"      \"claim-information-point\": {\n"
+"        \"claims\": {\n"
+"          \"claim-from-static-value\": \"static value\",\n"
+"          \"claim-from-multiple-static-value\": [\"static\", \"value\"]\n"
 "        }\n"
 "      }\n"
-"    ]\n"
-"  }"
+"    }\n"
+"  ]\n"
+"}"
 msgstr ""
 
 msgid "Claim information provider SPI"
@@ -3807,15 +3463,8 @@ msgid "Obtaining the Authorization Context in a Servlet Container"
 msgstr ""
 
 msgid ""
-"    HttpServletRequest request = ... // obtain javax.servlet.http.HttpServletRequest\n"
-"    KeycloakSecurityContext keycloakSecurityContext =\n"
-"        (KeycloakSecurityContext) request\n"
-"            .getAttribute(KeycloakSecurityContext.class.getName());\n"
-"    AuthorizationContext authzContext =\n"
-"        keycloakSecurityContext.getAuthorizationContext();"
-msgstr ""
-
-msgid "For more details about how you can obtain a `KeycloakSecurityContext` consult the adapter configuration. The example above should be sufficient to obtain the context when running an application using any of the servlet containers supported by {project_name}."
+"    HttpServletRequest request = // obtain javax.servlet.http.HttpServletRequest\n"
+"    AuthorizationContext authzContext = (AuthorizationContext) request.getAttribute(AuthorizationContext.class.getName());"
 msgstr ""
 
 msgid "The authorization context helps give you more control over the decisions made and returned by the server. For example, you can use it to build a dynamic menu where items are hidden or shown depending on the permissions associated with a resource or scope."
@@ -3855,7 +3504,7 @@ msgid ""
 "}"
 msgstr ""
 
-msgid "Although both examples address the same requirements, they do so in different ways. In RBAC, roles only _implicitly_ define access for their resources. With {project_name} you gain the capability to create more manageable code that focuses directly on your resources whether you are using RBAC, attribute-based access control (ABAC), or any other BAC variant. Either you have the permission for a given resource or scope, or you don't."
+msgid "Although both examples address the same requirements, they do so in different ways. In RBAC, roles only _implicitly_ define access for their resources. With {project_name}, you gain the capability to create more manageable code that focuses directly on your resources whether you are using RBAC, attribute-based access control (ABAC), or any other BAC variant. Either you have the permission for a given resource or scope, or you do not have that permission."
 msgstr ""
 
 msgid "Now, suppose your security requirements have changed and in addition to project managers, PMOs can also create new projects."
@@ -3890,7 +3539,7 @@ msgstr ""
 msgid "<script src=\"http://...{kc_js_path}/keycloak-authz.js\"></script>"
 msgstr ""
 
-msgid "Once you do that, you can create a `KeycloakAuthorization` instance as follows:"
+msgid "Next, you can create a `KeycloakAuthorization` instance as follows:"
 msgstr ""
 
 msgid ""
@@ -4049,7 +3698,7 @@ msgstr ""
 msgid "Configuring TLS/HTTPS"
 msgstr ""
 
-msgid "When the server is using HTTPS, ensure your adapter is configured as follows:"
+msgid "When the server is using HTTPS, ensure your policy enforcer is configured as follows:"
 msgstr ""
 
 msgid ""

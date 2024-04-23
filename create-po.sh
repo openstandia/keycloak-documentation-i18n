@@ -26,6 +26,11 @@ cd $BUILD_DIR2
 git fetch --tags
 
 for version in `ls $DIR/src`; do
+  if [[ $version != $1 ]]; then
+      echo "Skipping $version"
+      continue
+  fi
+
   # Resolve build dir by the target version
   if [[ $version == 1* ]]; then
       cd $BUILD_DIR1
@@ -41,6 +46,13 @@ for version in `ls $DIR/src`; do
   TAG=`git tag --list "${version}" | sort | tail -n 1`
   if [ -z "$TAG" ]; then
     TAG=`git tag --list "${version}.*" | sort | tail -n 1`
+  fi
+
+  # Workaround to lock in community released versions
+  fixed_tag=`grep "^$version " $DIR/lock-version.txt | cut -d' ' -f2`
+  if [ -n "$fixed_tag" ]; then
+    TAG=$fixed_tag
+    echo "Use locked version $version => $TAG"
   fi
 
   echo "Checkout $TAG"

@@ -32,22 +32,52 @@ msgstr ""
 msgid "Planning for securing applications and services"
 msgstr ""
 
-msgid "{project_name} supports both OpenID Connect (an extension to OAuth 2.0) and SAML 2.0. When securing clients and services the first thing you need to decide is which of the two you are going to use. If you want you can also choose to secure some with OpenID Connect and others with SAML."
+msgid "As an OAuth2, OpenID Connect, and SAML compliant server, {project_name} can secure any application and service as long as the technology stack they are using supports any of these protocols. For more details about the security protocols supported by {project_name}, consider looking at link:{adminguide_link}#sso-protocols[{adminguide_name}]."
 msgstr ""
 
-msgid "To secure clients and services you are also going to need an adapter or library for the protocol you've selected. {project_name} comes with its own adapters for selected platforms, but it is also possible to use generic OpenID Connect Relying Party and SAML Service Provider libraries."
+msgid "Most of the support for some of these protocols is already available from the programming language, framework, or reverse proxy they are using. Leveraging the support already available from the application ecosystem is a key aspect to make your application fully compliant with security standards and best practices, so that you avoid vendor lock-in."
 msgstr ""
 
-msgid "Client adapters"
+msgid "For some programming languages, {project_name} provides libraries that try to fill the gap for the lack of support of a particular security protocol or to provide a more rich and tightly coupled integration with the server. These libraries are known by *Keycloak Client Adapters*, and they should be used as a last resort if you cannot rely on what is available from the application ecosystem."
 msgstr ""
 
-msgid "{project_name} client adapters are libraries that make it very easy to secure applications and services with {project_name}. We call them adapters rather than libraries as they provide a tight integration to the underlying platform and framework. This makes our adapters easy to use and they require less boilerplate code than what is typically required by a library."
+msgid "Basic steps to secure applications and services"
 msgstr ""
 
-msgid "Supported Platforms"
+msgid "These are the basic steps for securing an application or a service in {project_name}."
 msgstr ""
 
-msgid "{project_name} enables you to protect applications running on different platforms and using different technology stacks using OpenID Connect and SAML protocols."
+msgid "Register a client to a realm using one of these options:"
+msgstr ""
+
+msgid "The {project_name} Admin Console"
+msgstr ""
+
+msgid "The client registration service"
+msgstr ""
+
+msgid "The CLI"
+msgstr ""
+
+msgid "Enable OpenID Connect or SAML protocols in your application using one these options:"
+msgstr ""
+
+msgid "Leveraging existing OpenID Connect and SAML support from the application ecosystem"
+msgstr ""
+
+msgid "Using a {project_name} Adapter"
+msgstr ""
+
+msgid "This guide provides the detailed instructions for these steps. You can find more details in the link:{adminguide_link}[Server Administration Guide] about how to register a client to {project_name} through the administration console."
+msgstr ""
+
+msgid "Getting Started"
+msgstr ""
+
+msgid "The link:{quickstartRepo_link}[{quickstartRepo_name}] provides examples about how to secure applications and services using different programming languages and frameworks. By going through their documentation and codebase, you will understand the bare minimum changes required in your application and service in order to secure it with {project_name}."
+msgstr ""
+
+msgid "Also, see the following sections for recommendations for trusted and well-known client-side implementations for both OpenID Connect and SAML protocols."
 msgstr ""
 
 msgid "OpenID Connect"
@@ -56,25 +86,28 @@ msgstr ""
 msgid "Java"
 msgstr ""
 
-msgid "<<_jboss_adapter,JBoss EAP>>"
+msgid "{quickstartRepo_link}/tree/latest/jakarta/servlet-authz-client[Wildfly Elytron OIDC]"
 msgstr ""
 
-msgid "<<_jboss_adapter,WildFly>>"
+msgid "{quickstartRepo_link}/tree/latest/spring/rest-authz-resource-server[Spring Boot]"
 msgstr ""
 
-msgid "<<_tomcat_adapter,Tomcat>>"
+msgid "<<_jboss_adapter, {project_name} Wildfly Adapter>> (Deprecated)"
 msgstr ""
 
-msgid "<<_jetty9_adapter,Jetty 9>>"
+msgid "<<_tomcat_adapter,{project_name} Tomcat Adapter>> (Deprecated)"
 msgstr ""
 
-msgid "<<_servlet_filter_adapter,Servlet Filter>>"
+msgid "<<_jetty9_adapter,{project_name} Jetty 9>> (Deprecated)"
 msgstr ""
 
-msgid "<<_spring_boot_adapter,Spring Boot>>"
+msgid "<<_servlet_filter_adapter,{project_name} Servlet Filter>> (Deprecated)"
 msgstr ""
 
-msgid "<<_spring_security_adapter,Spring Security>>"
+msgid "<<_spring_boot_adapter,{project_name} Spring Boot>> (Deprecated)"
+msgstr ""
+
+msgid "<<_spring_security_adapter,{project_name} Spring Security>> (Deprecated)"
 msgstr ""
 
 msgid "JavaScript (client-side)"
@@ -92,25 +125,25 @@ msgstr ""
 msgid "C#"
 msgstr ""
 
-msgid "https://github.com/dylanplecki/KeycloakOwinAuthentication[OWIN] (community)"
+msgid "https://github.com/dylanplecki/KeycloakOwinAuthentication[OWIN]"
 msgstr ""
 
 msgid "Python"
 msgstr ""
 
-msgid "https://pypi.org/project/oic/[oidc] (generic)"
+msgid "https://pypi.org/project/oic/[oidc]"
 msgstr ""
 
 msgid "Android"
 msgstr ""
 
-msgid "https://github.com/openid/AppAuth-Android[AppAuth] (generic)"
+msgid "https://github.com/openid/AppAuth-Android[AppAuth]"
 msgstr ""
 
 msgid "iOS"
 msgstr ""
 
-msgid "https://github.com/openid/AppAuth-iOS[AppAuth] (generic)"
+msgid "https://github.com/openid/AppAuth-iOS[AppAuth]"
 msgstr ""
 
 msgid "Apache HTTP Server"
@@ -140,54 +173,6 @@ msgstr ""
 msgid "<<_mod_auth_mellon,mod_auth_mellon>>"
 msgstr ""
 
-msgid "Supported Protocols"
-msgstr ""
-
-msgid "{project_name} supports both OpenID Connect and SAML protocols."
-msgstr ""
-
-msgid "link:https://openid.net/connect/[OpenID Connect] (OIDC) is an authentication protocol that is an extension of link:https://datatracker.ietf.org/doc/html/rfc6749[OAuth 2.0]. While OAuth 2.0 is only a framework for building authorization protocols and is mainly incomplete, OIDC is a full-fledged authentication and authorization protocol.  OIDC also makes heavy use of the link:https://jwt.io[Json Web Token] (JWT) set of standards.  These standards define an identity token JSON format and ways to digitally sign and encrypt that data in a compact and web-friendly way."
-msgstr ""
-
-msgid "There are really two types of use cases when using OIDC.  The first is an application that asks the {project_name} server to authenticate a user for them.  After a successful login, the application will receive an _identity token_ and an _access token_.  The _identity token_ contains information about the user such as username, email, and other profile information.  The _access token_ is digitally signed by the realm and contains access information (like user role mappings) that the application can use to determine what resources the user is allowed to access on the application."
-msgstr ""
-
-msgid "The second type of use cases is that of a client that wants to gain access to remote services.  In this case, the client asks {project_name} to obtain an _access token_ it can use to invoke on other remote services on behalf of the user.  {project_name} authenticates the user then asks the user for consent to grant access to the client requesting it.  The client then receives the _access token_.  This _access token_ is digitally signed by the realm.  The client can make REST invocations on remote services using this _access token_.  The REST service extracts the _access token_, verifies the signature of the token, then decides based on access information within the token whether or not to process the request."
-msgstr ""
-
-msgid "SAML 2.0"
-msgstr ""
-
-msgid "link:http://saml.xml.org/saml-specifications[SAML 2.0] is a similar specification to OIDC but a lot older and more mature.  It has its roots in SOAP and the plethora of WS-* specifications so it tends to be a bit more verbose than OIDC.  SAML 2.0 is primarily an authentication protocol that works by exchanging XML documents between the authentication server and the application.  XML signatures and encryption are used to verify requests and responses."
-msgstr ""
-
-msgid "In {project_name} SAML serves two types of use cases: browser applications and REST invocations."
-msgstr ""
-
-msgid "There are really two types of use cases when using SAML.  The first is an application that asks the {project_name} server to authenticate a user for them.  After a successful login, the application will receive an XML document that contains something called a SAML assertion that specifies various attributes about the user.  This XML document is digitally signed by the realm and contains access information (like user role mappings) that the application can use to determine what resources the user is allowed to access on the application."
-msgstr ""
-
-msgid "The second type of use cases is that of a client that wants to gain access to remote services.  In this case, the client asks {project_name} to obtain a SAML assertion it can use to invoke on other remote services on behalf of the user."
-msgstr ""
-
-msgid "OpenID Connect vs. SAML"
-msgstr ""
-
-msgid "Choosing between OpenID Connect and SAML is not just a matter of using a newer protocol (OIDC) instead of the older more mature protocol (SAML)."
-msgstr ""
-
-msgid "In most cases {project_name} recommends using OIDC."
-msgstr ""
-
-msgid "SAML tends to be a bit more verbose than OIDC."
-msgstr ""
-
-msgid "Beyond verbosity of exchanged data, if you compare the specifications you'll find that OIDC was designed to work with the web while SAML was retrofitted to work on top of the web.  For example, OIDC is also more suited for HTML5/JavaScript applications because it is easier to implement on the client side than SAML. As tokens are in the JSON format, they are easier to consume by JavaScript. You will also find several nice features that make implementing security in your web applications easier. For example, check out the link:https://openid.net/specs/openid-connect-session-1_0.html#ChangeNotification[iframe trick] that the specification uses to easily determine if a user is still logged in or not."
-msgstr ""
-
-msgid "SAML has its uses though. As you see the OIDC specifications evolve you see they implement more and more features that SAML has had for years. What we often see is that people pick SAML over OIDC because of the perception that it is more mature and also because they already have existing applications that are secured with it."
-msgstr ""
-
 msgid "Terminology"
 msgstr ""
 
@@ -209,46 +194,296 @@ msgstr ""
 msgid "`A service account` is a type of client that is able to obtain tokens on its own behalf."
 msgstr ""
 
-msgid "Basic steps to secure applications and services"
-msgstr ""
-
-msgid "These are the basic steps for securing an application or a service in {project_name}."
-msgstr ""
-
-msgid "Configure a client using one of these options:"
-msgstr ""
-
-msgid "A {project_name} adapter"
-msgstr ""
-
-msgid "A generic OpenID connect or SAML library"
-msgstr ""
-
-msgid "Register a client using one of these options:"
-msgstr ""
-
-msgid "The {project_name} Admin Console"
-msgstr ""
-
-msgid "The client registration service"
-msgstr ""
-
-msgid "The CLI"
-msgstr ""
-
-msgid "Additional resources"
-msgstr ""
-
-msgid "This guide provides the detailed instructions for these steps. Related information exists in the link:{adminguide_link}[Server Administration Guide]. That guide provides instructions for using Admin Console to create a client. Creating a client is the same task as registering a client using the {project_name} Client Registration Service."
-msgstr ""
-
 msgid "Using OpenID Connect to secure applications and services"
 msgstr ""
 
-msgid "This section describes how you can secure applications and services with OpenID Connect using either {project_name} adapters or generic OpenID Connect Relying Party libraries."
+msgid "This section describes how you can secure applications and services with OpenID Connect using {project_name}."
 msgstr ""
 
-msgid "Java adapters"
+msgid "Available Endpoints"
+msgstr ""
+
+msgid "As a fully-compliant OpenID Connect Provider implementation, {project_name} exposes a set of endpoints that applications and services can use to authenticate and authorize their users."
+msgstr ""
+
+msgid "This section describes some of the key endpoints that your application and service should be use when interacting with {project_name}."
+msgstr ""
+
+msgid "Endpoints"
+msgstr ""
+
+msgid "The most important endpoint to understand is the `well-known` configuration endpoint. It lists endpoints and other configuration options relevant to the OpenID Connect implementation in {project_name}. The endpoint is:"
+msgstr ""
+
+msgid "/realms/{realm-name}/.well-known/openid-configuration"
+msgstr ""
+
+msgid "To obtain the full URL, add the base URL for {project_name} and replace `{realm-name}` with the name of your realm. For example:"
+msgstr ""
+
+msgid "\\http://localhost:8080{kc_realms_path}/master/.well-known/openid-configuration"
+msgstr ""
+
+msgid "Some RP libraries retrieve all required endpoints from this endpoint, but for others you might need to list the endpoints individually."
+msgstr ""
+
+msgid "Authorization endpoint"
+msgstr ""
+
+msgid "/realms/{realm-name}/protocol/openid-connect/auth"
+msgstr ""
+
+msgid "The authorization endpoint performs authentication of the end-user. This authentication is done by redirecting the user agent to this endpoint."
+msgstr ""
+
+msgid "For more details see the https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint[Authorization Endpoint] section in the OpenID Connect specification."
+msgstr ""
+
+msgid "Token endpoint"
+msgstr ""
+
+msgid "/realms/{realm-name}/protocol/openid-connect/token"
+msgstr ""
+
+msgid "The token endpoint is used to obtain tokens. Tokens can either be obtained by exchanging an authorization code or by supplying credentials directly depending on what flow is used. The token endpoint is also used to obtain new access tokens when they expire."
+msgstr ""
+
+msgid "For more details, see the https://openid.net/specs/openid-connect-core-1_0.html#TokenEndpoint[Token Endpoint] section in the OpenID Connect specification."
+msgstr ""
+
+msgid "Userinfo endpoint"
+msgstr ""
+
+msgid "/realms/{realm-name}/protocol/openid-connect/userinfo"
+msgstr ""
+
+msgid "The userinfo endpoint returns standard claims about the authenticated user; this endpoint is protected by a bearer token."
+msgstr ""
+
+msgid "For more details, see the https://openid.net/specs/openid-connect-core-1_0.html#UserInfo[Userinfo Endpoint] section in the OpenID Connect specification."
+msgstr ""
+
+msgid "Logout endpoint"
+msgstr ""
+
+msgid "/realms/{realm-name}/protocol/openid-connect/logout"
+msgstr ""
+
+msgid "The logout endpoint logs out the authenticated user."
+msgstr ""
+
+msgid "The user agent can be redirected to the endpoint, which causes the active user session to be logged out. The user agent is then redirected back to the application."
+msgstr ""
+
+msgid "The endpoint can also be invoked directly by the application. To invoke this endpoint directly, the refresh token needs to be included as well as the credentials required to authenticate the client."
+msgstr ""
+
+msgid "Certificate endpoint"
+msgstr ""
+
+msgid "/realms/{realm-name}/protocol/openid-connect/certs"
+msgstr ""
+
+msgid "The certificate endpoint returns the public keys enabled by the realm, encoded as a JSON Web Key (JWK). Depending on the realm settings, one or more keys can be enabled for verifying tokens. For more information, see the link:{adminguide_link}[{adminguide_name}] and the https://datatracker.ietf.org/doc/html/rfc7517[JSON Web Key specification]."
+msgstr ""
+
+msgid "Introspection endpoint"
+msgstr ""
+
+msgid "/realms/{realm-name}/protocol/openid-connect/token/introspect"
+msgstr ""
+
+msgid "The introspection endpoint is used to retrieve the active state of a token. In other words, you can use it to validate an access or refresh token. This endpoint can only be invoked by confidential clients."
+msgstr ""
+
+msgid "For more details on how to invoke on this endpoint, see https://datatracker.ietf.org/doc/html/rfc7662[OAuth 2.0 Token Introspection specification]."
+msgstr ""
+
+msgid "Dynamic Client Registration endpoint"
+msgstr ""
+
+msgid "/realms/{realm-name}/clients-registrations/openid-connect"
+msgstr ""
+
+msgid "The dynamic client registration endpoint is used to dynamically register clients."
+msgstr ""
+
+msgid "For more details, see the <<_client_registration,Client Registration chapter>> and the https://openid.net/specs/openid-connect-registration-1_0.html[OpenID Connect Dynamic Client Registration specification]."
+msgstr ""
+
+msgid "Token Revocation endpoint"
+msgstr ""
+
+msgid "/realms/{realm-name}/protocol/openid-connect/revoke"
+msgstr ""
+
+msgid "The token revocation endpoint is used to revoke tokens. Both refresh tokens and access tokens are supported by this endpoint. When revoking a refresh token, the user consent for the corresponding client is also revoked."
+msgstr ""
+
+msgid "For more details on how to invoke on this endpoint, see https://datatracker.ietf.org/doc/html/rfc7009[OAuth 2.0 Token Revocation specification]."
+msgstr ""
+
+msgid "Device Authorization endpoint"
+msgstr ""
+
+msgid "/realms/{realm-name}/protocol/openid-connect/auth/device"
+msgstr ""
+
+msgid "The device authorization endpoint is used to obtain a device code and a user code. It can be invoked by confidential or public clients."
+msgstr ""
+
+msgid "For more details on how to invoke on this endpoint, see https://datatracker.ietf.org/doc/html/rfc8628[OAuth 2.0 Device Authorization Grant specification]."
+msgstr ""
+
+msgid "Backchannel Authentication endpoint"
+msgstr ""
+
+msgid "/realms/{realm-name}/protocol/openid-connect/ext/ciba/auth"
+msgstr ""
+
+msgid "The backchannel authentication endpoint is used to obtain an auth_req_id that identifies the authentication request made by the client. It can only be invoked by confidential clients."
+msgstr ""
+
+msgid "For more details on how to invoke on this endpoint, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html[OpenID Connect Client Initiated Backchannel Authentication Flow specification]."
+msgstr ""
+
+msgid "Also refer to other places of {project_name} documentation like <<_client_initiated_backchannel_authentication_grant,Client Initiated Backchannel Authentication Grant section of this guide>> and link:{adminguide_link}#_client_initiated_backchannel_authentication_grant[Client Initiated Backchannel Authentication Grant section] of {adminguide_name}."
+msgstr ""
+
+msgid "Supported Grant Types"
+msgstr ""
+
+msgid "This section describes the different grant types available to relaying parties."
+msgstr ""
+
+msgid "Authorization code"
+msgstr ""
+
+msgid "The Authorization Code flow redirects the user agent to {project_name}. Once the user has successfully authenticated with {project_name}, an Authorization Code is created and the user agent is redirected back to the application. The application then uses the authorization code along with its credentials to obtain an Access Token, Refresh Token and ID Token from {project_name}."
+msgstr ""
+
+msgid "The flow is targeted towards web applications, but is also recommended for native applications, including mobile applications, where it is possible to embed a user agent."
+msgstr ""
+
+msgid "For more details refer to the https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[Authorization Code Flow] in the OpenID Connect specification."
+msgstr ""
+
+msgid "Implicit"
+msgstr ""
+
+msgid "The Implicit flow works similarly to the Authorization Code flow, but instead of returning an Authorization Code, the Access Token and ID Token is returned. This approach reduces the need for the extra invocation to exchange the Authorization Code for an Access Token. However, it does not include a Refresh Token. This results in the need to permit Access Tokens with a long expiration; however, that approach is not practical because it is very hard to invalidate these tokens. Alternatively, you can require a new redirect to obtain a new Access Token once the initial Access Token has expired. The Implicit flow is useful if the application only wants to authenticate the user and deals with logout itself."
+msgstr ""
+
+msgid "You can instead use a Hybrid flow where both the Access Token and an Authorization Code are returned."
+msgstr ""
+
+msgid "One thing to note is that both the Implicit flow and Hybrid flow have potential security risks as the Access Token may be leaked through web server logs and browser history. You can somewhat mitigate this problem by using short expiration for Access Tokens."
+msgstr ""
+
+msgid "For more details, see the https://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth[Implicit Flow] in the OpenID Connect specification."
+msgstr ""
+
+msgid "Resource Owner Password Credentials"
+msgstr ""
+
+msgid "Resource Owner Password Credentials, referred to as Direct Grant in {project_name}, allows exchanging user credentials for tokens. Using this flow is not recommended unlesss it is essential. Examples where this flow could be useful are legacy applications and command-line interfaces."
+msgstr ""
+
+msgid "The limitations of using this flow include:"
+msgstr ""
+
+msgid "User credentials are exposed to the application"
+msgstr ""
+
+msgid "Applications need login pages"
+msgstr ""
+
+msgid "Application needs to be aware of the authentication scheme"
+msgstr ""
+
+msgid "Changes to authentication flow requires changes to application"
+msgstr ""
+
+msgid "No support for identity brokering or social login"
+msgstr ""
+
+msgid "Flows are not supported (user self-registration, required actions, and so on.)"
+msgstr ""
+
+msgid "For a client to be permitted to use the Resource Owner Password Credentials grant, the client has to have the `Direct Access Grants Enabled` option enabled."
+msgstr ""
+
+msgid "This flow is not included in OpenID Connect, but is a part of the OAuth 2.0 specification."
+msgstr ""
+
+msgid "For more details, see the https://datatracker.ietf.org/doc/html/rfc6749#section-4.3[Resource Owner Password Credentials Grant] chapter in the OAuth 2.0 specification."
+msgstr ""
+
+msgid "Example using CURL"
+msgstr ""
+
+msgid "The following example shows how to obtain an access token for a user in the realm `master` with username `user` and password `password`. The example is using the confidential client `myclient`:"
+msgstr ""
+
+msgid ""
+"curl \\\n"
+"  -d \"client_id=myclient\" \\\n"
+"  -d \"client_secret=40cc097b-2a57-4c17-b36a-8fdf3fc2d578\" \\\n"
+"  -d \"username=user\" \\\n"
+"  -d \"password=password\" \\\n"
+"  -d \"grant_type=password\" \\\n"
+"  \"http://localhost:8080{kc_realms_path}/master/protocol/openid-connect/token\""
+msgstr ""
+
+msgid "Client credentials"
+msgstr ""
+
+msgid "Client Credentials are used when clients (applications and services) want to obtain access on behalf of themselves rather than on behalf of a user. For example, these credentials can  be useful for background services that apply changes to the system in general rather than for a specific user."
+msgstr ""
+
+msgid "{project_name} provides support for clients to authenticate either with a secret or with public/private keys."
+msgstr ""
+
+msgid "For more details, see the https://datatracker.ietf.org/doc/html/rfc6749#section-4.4[Client Credentials Grant] chapter in the OAuth 2.0 specification."
+msgstr ""
+
+msgid "Device Authorization Grant"
+msgstr ""
+
+msgid "Device Authorization Grant is used by clients running on internet-connected devices that have limited input capabilities or lack a suitable browser. . The application requests {project_name} a device code and a user code. . {project_name} creates a device code and a user code. . {project_name} returns a response including the device code and the user code to the application. . The application provides the user with the user code and the verification URI. The user accesses a verification URI to be authenticated by using another browser. . The application repeatedly polls {project_name} until {project_name} completes the user authorization. . If user authentication is complete, the application obtains the device code. . The application uses the device code along with its credentials to obtain an Access Token, Refresh Token and ID Token from {project_name}."
+msgstr ""
+
+msgid "For more details, see  the https://datatracker.ietf.org/doc/html/rfc8628[OAuth 2.0 Device Authorization Grant specification]."
+msgstr ""
+
+msgid "Client Initiated Backchannel Authentication Grant"
+msgstr ""
+
+msgid "Client Initiated Backchannel Authentication Grant is used by clients who want to initiate the authentication flow by communicating with the OpenID Provider directly without redirect through the user's browser like OAuth 2.0's authorization code grant."
+msgstr ""
+
+msgid "The client requests from {project_name} an auth_req_id that identifies the authentication request made by the client. {project_name} creates the auth_req_id."
+msgstr ""
+
+msgid "After receiving this auth_req_id, this client repeatedly needs to poll {project_name} to obtain an Access Token, Refresh Token, and ID Token from {project_name} in return for the auth_req_id until the user is authenticated."
+msgstr ""
+
+msgid "In case that client uses `ping` mode, it does not need to repeatedly poll the token endpoint, but it can wait for the notification sent by {project_name} to the specified Client Notification Endpoint. The Client Notification Endpoint can be configured in the {project_name} Admin Console. The details of the contract for Client Notification Endpoint are described in the CIBA specification."
+msgstr ""
+
+msgid "For more details, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html[OpenID Connect Client Initiated Backchannel Authentication Flow specification]."
+msgstr ""
+
+msgid "Also refer to other places of {project_name} documentation such as <<_backchannel_authentication_endpoint,Backchannel Authentication Endpoint of this guide>> and link:{adminguide_link}#_client_initiated_backchannel_authentication_grant[Client Initiated Backchannel Authentication Grant section] of {adminguide_name}. For the details about FAPI CIBA compliance, see the <<_fapi-support,FAPI section of this guide>>."
+msgstr ""
+
+msgid "{project_name} Java adapters"
+msgstr ""
+
+msgid "{project_name} Java Adapters are now deprecated and will be removed in a future release. No further enhancements or features will be added to the adapters until then."
+msgstr ""
+
+msgid "For more details about how to integrate {project_name} with Java applications, consider looking at the {quickstartRepo_link}[Keycloak Quickstart GitHub Repository]."
 msgstr ""
 
 msgid "{project_name} comes with a range of different adapters for Java application. Selecting the correct adapter depends on the target platform."
@@ -257,7 +492,7 @@ msgstr ""
 msgid "All Java adapters share a set of common configuration options described in the <<_java_adapter_config,Java Adapters Config>> chapter."
 msgstr ""
 
-msgid "Java adapter configuration"
+msgid "Configuration"
 msgstr ""
 
 msgid "Each Java adapter supported by {project_name} can be configured by a simple JSON file. This is what one might look like:"
@@ -578,6 +813,15 @@ msgstr ""
 msgid "JBoss EAP/WildFly adapter"
 msgstr ""
 
+msgid "This adapter is deprecated and will be removed in a future release of Keycloak. No further enhancements or new features will be added to this adapter."
+msgstr ""
+
+msgid "We recommend that you switch to the Elytron OIDC library to secure your applications. This library has a similar configuration to the Keycloak WildFly adapters, so you can expect a smooth migration of your applications."
+msgstr ""
+
+msgid "For more details about how to integrate {project_name} with JakartaEE applications running on latest Wildfly/EAP, consider looking at the {quickstartRepo_link}[Keycloak Quickstart GitHub Repository]."
+msgstr ""
+
 msgid "To be able to secure WAR apps deployed on JBoss EAP, WildFly or JBoss AS, you must install and configure the {project_name} adapter subsystem. You then have two options to secure your WARs."
 msgstr ""
 
@@ -591,9 +835,6 @@ msgid "Both methods are described in this section."
 msgstr ""
 
 msgid "Adapters are available as a separate archive depending on what server version you are using."
-msgstr ""
-
-msgid "We test and maintain adapters only with the most recent version of WildFly available upon the release. Once a new version of WildFly is released, the current adapters become deprecated and support for them will be removed after next WildFly release. The other alternative is to switch your applications from WildFly to the JBoss EAP, as the JBoss EAP adapter is supported for much longer period."
 msgstr ""
 
 msgid "Procedure"
@@ -783,6 +1024,12 @@ msgstr ""
 msgid "Spring Boot adapter"
 msgstr ""
 
+msgid "We recommend that you leverage the OAuth2/OpenID Connect support from Spring Security."
+msgstr ""
+
+msgid "For more details about how to integrate {project_name} with Spring Boot applications, consider looking at the {quickstartRepo_link}[Keycloak Quickstart GitHub Repository]."
+msgstr ""
+
 msgid "Installing the Spring Boot adapter"
 msgstr ""
 
@@ -970,7 +1217,7 @@ msgstr ""
 msgid "Download the {project_name} Jetty 9.4 adapter ZIP archive from the link:https://www.keycloak.org/downloads[Keycloak Downloads] site."
 msgstr ""
 
-msgid "Unzip the Jetty 9.4 distro into Jetty 9.4's link:https://www.eclipse.org/jetty/documentation/jetty-9/index.html[base directory]. In the example below, the Jetty base is named `your-base`:"
+msgid "Unzip the Jetty 9.4 distro into Jetty 9.4's link:https://eclipse.dev/jetty/documentation/jetty-9/index.html[base directory]. In the example below, the Jetty base is named `your-base`:"
 msgstr ""
 
 msgid ""
@@ -1563,10 +1810,7 @@ msgstr ""
 msgid "For other OSGi runtimes, please refer to the runtime documentation on how to install the adapter bundle and its dependencies."
 msgstr ""
 
-msgid "If your OSGi platform is Apache Karaf with Pax Web, you should consider using https://access.redhat.com/products/red-hat-single-sign-on[Red Hat Single Sign-On] 7.x JBoss Fuse 7 adapters instead."
-msgstr ""
-
-msgid "Configuration"
+msgid "If your OSGi platform is Apache Karaf with Pax Web, you should consider using https://access.redhat.com/products/red-hat-single-sign-on/[Red Hat Single Sign-On] 7.x JBoss Fuse 7 adapters instead."
 msgstr ""
 
 msgid "First, the adapter needs to be registered as a servlet filter with the OSGi HTTP Service. The most common ways to do this are programmatic (for example via bundle activator) and declarative (using OSGi annotations). We recommend using the latter since it simplifies the process of dynamically registering and un-registering the filter:"
@@ -1973,7 +2217,7 @@ msgstr ""
 msgid "The client must have the private key and certificate. For  {project_name} this is available through the traditional `keystore` file, which is either available on the client application's classpath or somewhere on the file system."
 msgstr ""
 
-msgid "Once the client application is started, it allows to download its public key in https://self-issued.info/docs/draft-ietf-jose-json-web-key.html[JWKS] format using a URL such as \\http://myhost.com/myapp/k_jwks, assuming that \\http://myhost.com/myapp is the base URL of your client application. This URL can be used by {project_name} (see below)."
+msgid "Once the client application is started, it allows to download its public key in https://datatracker.ietf.org/doc/html/rfc7517[JWKS] format using a URL such as \\http://myhost.com/myapp/k_jwks, assuming that \\http://myhost.com/myapp is the base URL of your client application. This URL can be used by {project_name} (see below)."
 msgstr ""
 
 msgid "During authentication, the client generates a JWT token and signs it with its private key and sends it to {project_name} in the particular backchannel request (for example, code-to-token request) in the `client_assertion` parameter."
@@ -2234,110 +2478,93 @@ msgstr ""
 msgid "This may have a significant impact on performance. Only enable this feature if you can't rely on backchannel messages to propagate logout and not before     policies. Another thing to consider is that by default access tokens has a short expiration so even if logout is not propagated the token will expire within     minutes of the logout."
 msgstr ""
 
-msgid "JavaScript adapter"
+msgid "{project_name} JavaScript adapter"
 msgstr ""
 
-msgid "{project_name} comes with a client-side JavaScript library that can be used to secure HTML5/JavaScript applications. The JavaScript adapter has built-in support for Cordova applications."
+msgid "{project_name} comes with a client-side JavaScript library called `keycloak-js` that can be used to secure web applications. The adapter also comes with built-in support for Cordova applications."
 msgstr ""
 
-msgid "A good practice is to include the JavaScript adapter in your application using a package manager like NPM or Yarn. The `keycloak-js` package is available on the following locations:"
+msgid "The adapter is distributed in several ways, but we recommend that you install the https://www.npmjs.com/package/keycloak-js[`keycloak-js`] package from NPM:"
 msgstr ""
 
-msgid "NPM: https://www.npmjs.com/package/keycloak-js"
+msgid "npm install keycloak-js"
 msgstr ""
 
-msgid "Yarn: https://yarnpkg.com/package/keycloak-js"
+msgid "Alternatively, the library can be retrieved directly from the {project_name} server at `{kc_js_path}/keycloak.js` and is also distributed as a ZIP archive. We are however considering the inclusion of the adapter directly from the Keycloak server as deprecated, and this functionality might be removed in the future."
 msgstr ""
 
-msgid "Alternatively, the library can be retrieved directly from the {project_name} server at `{kc_js_path}/keycloak.js` and is also distributed as a ZIP archive."
+msgid "{project_name} server configuration"
 msgstr ""
 
-msgid "One important thing to note about using client-side applications is that the client has to be a public client as there is no secure way to store client credentials in a client-side application. This makes it very important to make sure the redirect URIs you have configured for the client are correct and as specific as possible."
+msgid "One important thing to consider about using client-side applications is that the client has to be a public client as there is no secure way to store client credentials in a client-side application. This consideration makes it very important to make sure the redirect URIs you have configured for the client are correct and as specific as possible."
 msgstr ""
 
-msgid "To use the JavaScript adapter you must first create a client for your application in the {project_name} Admin Console. Make sure `public` is selected for `Access Type`.  You achieve this in Capability config by turning OFF client authentication toggle."
+msgid "To use the adapter, create a client for your application in the {project_name} Admin Console. Make the client public by toggling *Client authentication*  to *Off*  on the *Capability config* page."
 msgstr ""
 
 msgid "You also need to configure `Valid Redirect URIs` and `Web Origins`. Be as specific as possible as failing to do so may result in a security vulnerability."
 msgstr ""
 
-msgid "Once the client is created click on the `Action` tab in the upper right corner and select `Download adapter config`. Select `Keycloak OIDC JSON` for `Format Option` then click `Download`. The downloaded `keycloak.json` file should be hosted on your web server at the same location as your HTML pages."
+msgid "Using the adapter"
 msgstr ""
 
-msgid "Alternatively, you can skip the configuration file and manually configure the adapter."
-msgstr ""
-
-msgid "The following example shows how to initialize the JavaScript adapter:"
+msgid "The following example shows how to initialize the adapter. Make sure that you replace the options passed to the `Keycloak` constructor with those of the client you have configured."
 msgstr ""
 
 msgid ""
-"<html>\n"
-"<head>\n"
-"    <script src=\"keycloak.js\"></script>\n"
-"    <script>\n"
-"        function initKeycloak() {\n"
-"            const keycloak = new Keycloak();\n"
-"            keycloak.init().then(function(authenticated) {\n"
-"                alert(authenticated ? 'authenticated' : 'not authenticated');\n"
-"            }).catch(function() {\n"
-"                alert('failed to initialize');\n"
-"            });\n"
-"        }\n"
-"    </script>\n"
-"</head>\n"
-"<body onload=\"initKeycloak()\">\n"
-"    <!-- your page content goes here -->\n"
-"</body>\n"
-"</html>"
-msgstr ""
-
-msgid "If the `keycloak.json` file is in a different location you can specify it:"
-msgstr ""
-
-msgid "const keycloak = new Keycloak('http://localhost:8080/myapp/keycloak.json');"
-msgstr ""
-
-msgid "Alternatively, you can pass in a JavaScript object with the required configuration instead:"
-msgstr ""
-
-msgid ""
+"import Keycloak from 'keycloak-js';\n"
+"\n"
 "const keycloak = new Keycloak({\n"
 "    url: 'http://keycloak-server${kc_base_path}',\n"
 "    realm: 'myrealm',\n"
 "    clientId: 'myapp'\n"
-"});"
+"});\n"
+"\n"
+"try {\n"
+"    const authenticated = await keycloak.init();\n"
+"    console.log(`User is ${authenticated ? 'authenticated' : 'not authenticated'}`);\n"
+"} catch (error) {\n"
+"    console.error('Failed to initialize adapter:', error);\n"
+"}"
 msgstr ""
 
-msgid "By default to authenticate you need to call the `login` function. However, there are two options available to make the adapter automatically authenticate. You can pass `login-required` or `check-sso` to the init function. `login-required` will authenticate the client if the user is logged-in to {project_name} or display the login page if not. `check-sso` will only authenticate the client if the user is already logged-in, if the user is not logged-in the browser will be redirected back to the application and remain unauthenticated."
+msgid "To authenticate, you call the `login` function. Two options exist to make the adapter automatically authenticate. You can pass `login-required` or `check-sso` to the `init()` function."
 msgstr ""
 
-msgid "You can configure a _silent_ `check-sso` option. With this feature enabled, your browser won't do a full redirect to the {project_name} server and back to your application, but this action will be performed in a hidden iframe, so your application resources only need to be loaded and parsed once by the browser when the app is initialized and not again after the redirect back from {project_name} to your app. This is particularly useful in case of SPAs (Single Page Applications)."
+msgid "`login-required` authenticates the client if the user is logged in to {project_name} or displays the login page if the user is not logged in."
 msgstr ""
 
-msgid "To enable the _silent_ `check-sso`, you have to provide a `silentCheckSsoRedirectUri` attribute in the init method. This URI needs to be a valid endpoint in the application (and of course it must be configured as a valid redirect for the client in the {project_name} Admin Console):"
+msgid "`check-sso` only authenticates the client if the user is already logged in. If the user is not logged in, the browser is redirected back to the application and remains unauthenticated."
+msgstr ""
+
+msgid "You can configure a _silent_ `check-sso` option. With this feature enabled, your browser will not perform a full redirect to the {project_name} server and back to your application, but this action will be performed in a hidden iframe. Therefore, your application resources are only loaded and parsed once by the browser, namely when the application is initialized and not again after the redirect back from {project_name} to your application. This approach is particularly useful in case of SPAs (Single Page Applications)."
+msgstr ""
+
+msgid "To enable the _silent_ `check-sso`, you provide a `silentCheckSsoRedirectUri` attribute in the init method. Make sure this URI is a valid endpoint in the application; it must be configured as a valid redirect for the client in the {project_name} Admin Console:"
 msgstr ""
 
 msgid ""
 "keycloak.init({\n"
 "    onLoad: 'check-sso',\n"
-"    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html'\n"
-"})"
+"    silentCheckSsoRedirectUri: `${location.origin}/silent-check-sso.html`\n"
+"});"
 msgstr ""
 
 msgid "The page at the silent check-sso redirect uri is loaded in the iframe after successfully checking your authentication state and retrieving the tokens from the {project_name} server. It has no other task than sending the received tokens to the main application and should only look like this:"
 msgstr ""
 
 msgid ""
+"<!doctype html>\n"
 "<html>\n"
 "<body>\n"
 "    <script>\n"
-"        parent.postMessage(location.href, location.origin)\n"
+"        parent.postMessage(location.href, location.origin);\n"
 "    </script>\n"
 "</body>\n"
 "</html>"
 msgstr ""
 
-msgid "Please keep in mind that this page at the specified location must be provided by the application itself and is _not_ part of the JavaScript adapter!"
+msgid "Remember that this page must be served by your application at the specified location in `silentCheckSsoRedirectUri` and is _not_ part of the adapter."
 msgstr ""
 
 msgid "_Silent_ `check-sso` functionality is limited in some modern browsers. Please see the <<_modern_browsers,Modern Browsers with Tracking Protection Section>>."
@@ -2349,52 +2576,42 @@ msgstr ""
 msgid ""
 "keycloak.init({\n"
 "    onLoad: 'login-required'\n"
-"})"
+"});"
 msgstr ""
 
 msgid "After the user is authenticated the application can make requests to RESTful services secured by {project_name} by including the bearer token in the `Authorization` header. For example:"
 msgstr ""
 
 msgid ""
-"const loadData = function () {\n"
-"    document.getElementById('username').innerText = keycloak.subject;\n"
-"\n"
-"    const url = 'http://localhost:8080/restful-service';\n"
-"\n"
-"    const req = new XMLHttpRequest();\n"
-"    req.open('GET', url, true);\n"
-"    req.setRequestHeader('Accept', 'application/json');\n"
-"    req.setRequestHeader('Authorization', 'Bearer ' + keycloak.token);\n"
-"\n"
-"    req.onreadystatechange = function () {\n"
-"        if (req.readyState == 4) {\n"
-"            if (req.status == 200) {\n"
-"                alert('Success');\n"
-"            } else if (req.status == 403) {\n"
-"                alert('Forbidden');\n"
-"            }\n"
+"async function fetchUsers() {\n"
+"    const response = await fetch('/api/users', {\n"
+"        headers: {\n"
+"            accept: 'application/json',\n"
+"            authorization: `Bearer ${keycloak.token}`\n"
 "        }\n"
-"    }\n"
+"    });\n"
 "\n"
-"    req.send();\n"
-"};"
+"    return response.json();\n"
+"}"
 msgstr ""
 
-msgid "One thing to keep in mind is that the access token by default has a short life expiration so you may need to refresh the access token prior to sending the request. You can do this by the `updateToken` method. The `updateToken` method returns a promise which makes it easy to invoke the service only if the token was successfully refreshed and display an error to the user if it wasn't. For example:"
+msgid "One thing to keep in mind is that the access token by default has a short life expiration so you may need to refresh the access token prior to sending the request. You refresh this token by calling the `updateToken()` method. This method returns a Promise, which makes it easy to invoke the service only if the token was successfully refreshed and displays an error to the user if it was not refreshed. For example:"
 msgstr ""
 
 msgid ""
-"keycloak.updateToken(30).then(function() {\n"
-"    loadData();\n"
-"}).catch(function() {\n"
-"    alert('Failed to refresh token');\n"
-"});"
+"try {\n"
+"    await keycloak.updateToken(30);\n"
+"} catch (error) {\n"
+"    console.error('Failed to refresh token:', error);\n"
+"}\n"
+"\n"
+"const users = await fetchUsers();"
 msgstr ""
 
 msgid "Session Status iframe"
 msgstr ""
 
-msgid "By default, the JavaScript adapter creates a hidden iframe that is used to detect if a Single-Sign Out has occurred. This does not require any network traffic, instead the status is retrieved by looking at a special status cookie. This feature can be disabled by setting `checkLoginIframe: false` in the options passed to the `init` method."
+msgid "By default, the adapter creates a hidden iframe that is used to detect if a Single-Sign Out has occurred. This iframe does not require any network traffic. Instead the status is retrieved by looking at a special status cookie. This feature can be disabled by setting `checkLoginIframe: false` in the options passed to the `init()` method."
 msgstr ""
 
 msgid "You should not rely on looking at this cookie directly. Its format can change and it's also associated with the URL of the {project_name} server, not your application."
@@ -2406,19 +2623,19 @@ msgstr ""
 msgid "Implicit and hybrid flow"
 msgstr ""
 
-msgid "By default, the JavaScript adapter uses the https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[Authorization Code] flow."
+msgid "By default, the adapter uses the https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[Authorization Code] flow."
 msgstr ""
 
-msgid "With this flow the {project_name} server returns an authorization code, not an authentication token, to the application. The JavaScript adapter exchanges the `code` for an access token and a refresh token after the browser is redirected back to the application."
+msgid "With this flow,  the {project_name} server returns an authorization code, not an authentication token, to the application. The JavaScript adapter exchanges the `code` for an access token and a refresh token after the browser is redirected back to the application."
 msgstr ""
 
-msgid "{project_name} also supports the https://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth[Implicit] flow where an access token is sent immediately after successful authentication with {project_name}. This may have better performance than standard flow, as there is no additional request to exchange the code for tokens, but it has implications when the access token expires."
+msgid "{project_name} also supports the https://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth[Implicit] flow where an access token is sent immediately after successful authentication with {project_name}. This flow may have better performance than the standard flow because no additional request exists to exchange the code for tokens, but it has implications when the access token expires."
 msgstr ""
 
 msgid "However, sending the access token in the URL fragment can be a security vulnerability. For example the token could be leaked through web server logs and or browser history."
 msgstr ""
 
-msgid "To enable implicit flow, you need to enable the `Implicit Flow Enabled` flag for the client in the {project_name} Admin Console. You also need to pass the parameter `flow` with value `implicit` to `init` method:"
+msgid "To enable implicit flow, you enable the *Implicit Flow Enabled* flag for the client in the {project_name} Admin Console. You also pass the parameter `flow` with the value `implicit` to `init` method:"
 msgstr ""
 
 msgid ""
@@ -2427,13 +2644,13 @@ msgid ""
 "})"
 msgstr ""
 
-msgid "One thing to note is that only an access token is provided and there is no refresh token. This means that once the access token has expired the application has to do the redirect to the {project_name} again to obtain a new access token."
+msgid "Note that only an access token is provided and no refresh token exists. This situation means that once the access token has expired, the application has to redirect to {project_name} again to obtain a new access token."
 msgstr ""
 
 msgid "{project_name} also supports the https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth[Hybrid] flow."
 msgstr ""
 
-msgid "This requires the client to have both the `Standard Flow Enabled` and `Implicit Flow Enabled` flags enabled in the admin console. The {project_name} server will then send both the code and tokens to your application. The access token can be used immediately while the code can be exchanged for access and refresh tokens. Similar to the implicit flow, the hybrid flow is good for performance because the access token is available immediately. But, the token is still sent in the URL, and the security vulnerability mentioned earlier may still apply."
+msgid "This flow requires the client to have both the *Standard Flow*  and *Implicit Flow*  enabled in the Admin Console. The {project_name} server then sends both the code and tokens to your application. The access token can be used immediately while the code can be exchanged for access and refresh tokens. Similar to the implicit flow, the hybrid flow is good for performance because the access token is available immediately. But, the token is still sent in the URL, and the security vulnerability mentioned earlier may still apply."
 msgstr ""
 
 msgid "One advantage in the Hybrid flow is that the refresh token is made available to the application."
@@ -2445,16 +2662,16 @@ msgstr ""
 msgid ""
 "keycloak.init({\n"
 "    flow: 'hybrid'\n"
-"})"
+"});"
 msgstr ""
 
 msgid "Hybrid Apps with Cordova"
 msgstr ""
 
-msgid "Keycloak support hybrid mobile apps developed with https://cordova.apache.org/[Apache Cordova]. The JavaScript adapter has two modes for this: `cordova` and `cordova-native`:"
+msgid "{project_name} supports hybrid mobile apps developed with https://cordova.apache.org/[Apache Cordova]. The adapter has two modes for this: `cordova` and `cordova-native`:"
 msgstr ""
 
-msgid "The default is cordova, which the adapter will automatically select if no adapter type has been configured and window.cordova is present. When logging in, it will open an https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-inappbrowser/[InApp Browser] that lets the user interact with {project_name} and afterwards returns to the app by redirecting to `http://localhost`. Because of this, you must whitelist this URL as a valid redirect-uri in the client configuration section of the Admin Console."
+msgid "The default is `cordova`, which the adapter automatically selects if no adapter type has been explicitly configured and `window.cordova` is present. When logging in, it opens an https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-inappbrowser/[InApp Browser] that lets the user interact with {project_name} and afterwards returns to the app by redirecting to `http://localhost`. Because of this behavior, you whitelist this URL as a valid redirect-uri in the client configuration section of the Admin Console."
 msgstr ""
 
 msgid "While this mode is easy to set up, it also has some disadvantages:"
@@ -2472,19 +2689,19 @@ msgstr ""
 msgid "Use this example app to help you get started: https://github.com/keycloak/keycloak/tree/master/examples/cordova"
 msgstr ""
 
-msgid "The alternative mode `cordova-native` takes a different approach. It opens the login page using the system's browser. After the user has authenticated, the browser redirects back into the app using a special URL. From there, the {project_name} adapter can finish the login by reading the code or token from the URL."
+msgid "The alternative mode  is`cordova-native`, which takes a different approach. It opens the login page using the system's browser. After the user has authenticated, the browser redirects back into the application using a special URL. From there, the {project_name} adapter can finish the login by reading the code or token from the URL."
 msgstr ""
 
-msgid "You can activate the native mode by passing the adapter type `cordova-native` to the `init` method:"
+msgid "You can activate the native mode by passing the adapter type `cordova-native` to the `init()` method:"
 msgstr ""
 
 msgid ""
 "keycloak.init({\n"
 "    adapter: 'cordova-native'\n"
-"})"
+"});"
 msgstr ""
 
-msgid "This adapter required two additional plugins:"
+msgid "This adapter requires two additional plugins:"
 msgstr ""
 
 msgid "https://github.com/google/cordova-plugin-browsertab[cordova-plugin-browsertab]: allows the app to open webpages in the system's browser"
@@ -2496,10 +2713,10 @@ msgstr ""
 msgid "The technical details for linking to an app differ on each platform and special setup is needed. Please refer to the Android and iOS sections of the https://github.com/e-imaxina/cordova-plugin-deeplinks/blob/master/README.md[deeplinks plugin documentation] for further instructions."
 msgstr ""
 
-msgid "There are different kinds of links for opening apps: custom schemes (i.e. `myapp://login` or `android-app://com.example.myapp/https/example.com/login`) and https://developer.apple.com/ios/universal-links/[Universal Links (iOS)]) / https://developer.android.com/training/app-links/deep-linking[Deep Links (Android)]. While the former are easier to set up and tend to work more reliably, the later offer extra security as they are unique and only the owner of a domain can register them. Custom-URLs are deprecated on iOS. We recommend that you use universal links, combined with a fallback site with a custom-url link on it for best reliability."
+msgid "Different kinds of links exist for opening apps: * custom schemes, such as `myapp://login` or `android-app://com.example.myapp/https/example.com/login` * https://developer.apple.com/ios/universal-links/[Universal Links (iOS)]) / https://developer.android.com/training/app-links/deep-linking[Deep Links (Android)]. While the former are easier to set up and tend to work more reliably, the latter offer extra security because they are unique and only the owner of a domain can register them. Custom-URLs are deprecated on iOS.  For best reliability, we recommend that you use universal links combined with a fallback site that uses a custom-url link."
 msgstr ""
 
-msgid "Furthermore, we recommend the following steps to improve compatibility with the Keycloak Adapter:"
+msgid "Furthermore, we recommend the following steps to improve compatibility with the adapter:"
 msgstr ""
 
 msgid "Universal Links on iOS seem to work more reliably with `response-mode` set to `query`"
@@ -2517,7 +2734,7 @@ msgstr ""
 msgid "Custom Adapters"
 msgstr ""
 
-msgid "Sometimes it's necessary to run the JavaScript client in environments that are not supported by default (such as Capacitor). To make it possible to use the JavasScript client in these kind of unknown environments is possible to pass a custom adapter. For example a 3rd party library could provide such an adapter to make it possible to run the JavaScript client without issues:"
+msgid "In some situations, you may need to run the adapter in environments that are not supported by default, such as Capacitor. To use the JavasScript client in these environments, you can pass a custom adapter. For example, a third-party library could provide such an adapter to make it possible to reliably run the adapter:"
 msgstr ""
 
 msgid ""
@@ -2559,55 +2776,37 @@ msgstr ""
 msgid "Naturally you can also do this without TypeScript by omitting the type information, but ensuring implementing the interface properly will then be left entirely up to you."
 msgstr ""
 
-msgid "Earlier Browsers"
-msgstr ""
-
-msgid "The JavaScript adapter depends on Base64 (window.btoa and window.atob), HTML5 History API and optionally the Promise API. If you need to support browsers that do not have these available (for example, IE9) you need to add polyfillers."
-msgstr ""
-
-msgid "Example polyfill libraries:"
-msgstr ""
-
-msgid "Base64 - https://github.com/davidchambers/Base64.js"
-msgstr ""
-
-msgid "HTML5 History - https://github.com/devote/HTML5-History-API"
-msgstr ""
-
-msgid "Promise - https://github.com/stefanpenner/es6-promise"
-msgstr ""
-
 msgid "Modern Browsers with Tracking Protection"
 msgstr ""
 
-msgid "In the latest versions of some browsers various cookies policies are applied to prevent tracking of the users by third-parties, like SameSite in Chrome or completely blocked third-party cookies. It is expected that those policies will become even more restrictive and adopted by other browsers over time, eventually leading to cookies in third-party contexts to be completely unsupported and blocked by the browsers. The adapter features affected by this might get deprecated in the future."
+msgid "In the latest versions of some browsers, various cookies policies are applied to prevent tracking of the users by third parties, such as SameSite in Chrome or completely blocked third-party cookies. Those policies are likely to become more restrictive and adopted by other browsers over time. Eventually cookies in third-party contexts may become completely unsupported and blocked by the browsers. As a result, the affected adapter features might ultimately be deprecated."
 msgstr ""
 
-msgid "Javascript adapter relies on third-party cookies for Session Status iframe, _silent_ `check-sso` and partially also for regular (non-silent) `check-sso`. Those features have limited functionality or are completely disabled based on how the browser is restrictive regarding cookies. The adapter tries to detect this setting and reacts accordingly."
+msgid "The adapter relies on third-party cookies for Session Status iframe, _silent_ `check-sso` and partially also for regular (non-silent) `check-sso`. Those features have limited functionality or are completely disabled based on how restrictive the browser is regarding cookies. The adapter tries to detect this setting and reacts accordingly."
 msgstr ""
 
 msgid "Browsers with \"SameSite=Lax by Default\" Policy"
 msgstr ""
 
-msgid "All features are supported if SSL / TLS connection is configured on the {project_name} side as well as on the application side. Affected is for example Chrome starting with version 84."
+msgid "All features are supported if SSL / TLS connection is configured on the {project_name} side as well as on the application side.  For example, Chrome is affected starting with version 84."
 msgstr ""
 
 msgid "Browsers with Blocked Third-Party Cookies"
 msgstr ""
 
-msgid "Session Status iframe is not supported and is automatically disabled if such browser behavior is detected by the JS adapter. This means the adapter cannot use session cookie for Single Sign-Out detection and have to rely purely on tokens. This implies that when user logs out in another window, the application using JavaScript adapter won't be logged out until it tries to refresh the Access Token. Therefore, it is recommended to set Access Token Lifespan to relatively short time, so that the logout is detected rather sooner than later. Please see link:{adminguide_link}#_timeouts[Session and Token Timeouts]."
+msgid "Session Status iframe is not supported and is automatically disabled if such browser behavior is detected by the adapter. This means the adapter cannot use a session cookie for Single Sign-Out detection and must rely purely on tokens. As a result, when a user logs out in another window, the application using the adapter will not be logged out until the application tries to refresh the Access Token. Therefore, consider setting the Access Token Lifespan to a relatively short time, so that the logout is detected as soon as possible. For more details, see link:{adminguide_link}#_timeouts[Session and Token Timeouts]."
 msgstr ""
 
-msgid "_Silent_ `check-sso` is not supported and falls back to regular (non-silent) `check-sso` by default. This behaviour can be changed by setting `silentCheckSsoFallback: false` in the options passed to the `init` method. In this case, `check-sso` will be completely disabled if restrictive browser behavior is detected."
+msgid "_Silent_ `check-sso` is not supported and falls back to regular (non-silent) `check-sso` by default. This behavior can be changed by setting `silentCheckSsoFallback: false` in the options passed to the `init` method. In this case, `check-sso` will be completely disabled if restrictive browser behavior is detected."
 msgstr ""
 
-msgid "Regular `check-sso` is affected as well. Since Session Status iframe is unsupported, an additional redirect to {project_name} has to be made when the adapter is initialized to check user's login status. This is different from standard behavior when the iframe is used to tell whether the user is logged in, and the redirect is performed only when logged out."
+msgid "Regular `check-sso` is affected as well. Since Session Status iframe is unsupported, an additional redirect to {project_name} has to be made when the adapter is initialized to check the user's login status. This check is different from the standard behavior when the iframe is used to tell whether the user is logged in, and the redirect is performed only when the user is logged out."
 msgstr ""
 
 msgid "An affected browser is for example Safari starting with version 13.1."
 msgstr ""
 
-msgid "JavaScript Adapter Reference"
+msgid "API Reference"
 msgstr ""
 
 msgid "Constructor"
@@ -2790,6 +2989,9 @@ msgstr ""
 msgid "messageReceiveTimeout - Set a timeout in milliseconds for waiting for message responses from the Keycloak server. This is used, for example, when waiting for a message during 3rd party cookies check. The default value is 10000."
 msgstr ""
 
+msgid "locale - When onLoad is 'login-required', sets the 'ui_locales' query param in compliance with https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest[section 3.1.2.1 of the OIDC 1.0 specification]."
+msgstr ""
+
 msgid "Returns a promise that resolves when initialization completes."
 msgstr ""
 
@@ -2911,12 +3113,12 @@ msgid "Returns a promise that resolves with the profile."
 msgstr ""
 
 msgid ""
-"keycloak.loadUserProfile()\n"
-"    .then(function(profile) {\n"
-"        alert(JSON.stringify(profile, null, \"  \"))\n"
-"    }).catch(function() {\n"
-"        alert('Failed to load user profile');\n"
-"    });"
+"try {\n"
+"    const profile = await keycloak.loadUserProfile();\n"
+"    console.log('Retrieved user profile:', profile);\n"
+"} catch (error) {\n"
+"    console.error('Failed to load user profile:', error);\n"
+"}"
 msgstr ""
 
 msgid "*isTokenExpired(minValidity)*"
@@ -2935,16 +3137,12 @@ msgid "Returns a promise that resolves with a boolean indicating whether or not 
 msgstr ""
 
 msgid ""
-"keycloak.updateToken(5)\n"
-"    .then(function(refreshed) {\n"
-"        if (refreshed) {\n"
-"            alert('Token was successfully refreshed');\n"
-"        } else {\n"
-"            alert('Token is still valid');\n"
-"        }\n"
-"    }).catch(function() {\n"
-"        alert('Failed to refresh the token, or the session has expired');\n"
-"    });"
+"try {\n"
+"    const refreshed = await keycloak.updateToken(5);\n"
+"    console.log(refreshed ? 'Token was refreshed' : 'Token is still valid');\n"
+"} catch (error) {\n"
+"    console.error('Failed to refresh the token:', error);\n"
+"}"
 msgstr ""
 
 msgid "*clearToken()*"
@@ -2959,10 +3157,10 @@ msgstr ""
 msgid "Callback Events"
 msgstr ""
 
-msgid "The adapter supports setting callback listeners for certain events. Keep in mind that these have to be set before the call to the `init` function."
+msgid "The adapter supports setting callback listeners for certain events. Keep in mind that these have to be set before the call to the `init()` method."
 msgstr ""
 
-msgid "keycloak.onAuthSuccess = function() { alert('authenticated'); }"
+msgid "keycloak.onAuthSuccess = () => console.log('Authenticated!');"
 msgstr ""
 
 msgid "The available events are:"
@@ -2989,7 +3187,7 @@ msgstr ""
 msgid "*onTokenExpired* - Called when the access token is expired. If a refresh token is available the token can be refreshed with updateToken, or in cases where it is not (that is, with implicit flow) you can redirect to the login screen to obtain a new access token."
 msgstr ""
 
-msgid "Node.js adapter"
+msgid "{project_name} Node.js adapter"
 msgstr ""
 
 msgid "{project_name} provides a Node.js adapter built on top of https://github.com/senchalabs/connect[Connect] to protect server-side JavaScript apps - the goal was to be flexible enough to integrate with frameworks like https://expressjs.com/[Express.js]."
@@ -3348,7 +3546,7 @@ msgstr ""
 msgid "Complete example"
 msgstr ""
 
-msgid "A complete example using the Node.js adapter usage can be found in {quickstartRepo_link}/tree/latest/service-nodejs/[Keycloak quickstarts for Node.js]"
+msgid "A complete example using the Node.js adapter usage can be found in {quickstartRepo_link}/tree/latest/nodejs/resource-server[Keycloak quickstarts for Node.js]"
 msgstr ""
 
 msgid "mod_auth_openidc Apache HTTPD Module"
@@ -3410,313 +3608,6 @@ msgstr ""
 msgid "Further information on how to configure mod_auth_openidc can be found on the https://github.com/OpenIDC/mod_auth_openidc[mod_auth_openidc] project page."
 msgstr ""
 
-msgid "Other OpenID Connect libraries"
-msgstr ""
-
-msgid "{project_name} can be secured by supplied adapters that are usually easier to use and provide better integration with {project_name}. However, if an adapter is not available for your programming language, framework, or platform you might opt to use a generic OpenID Connect Relying Party (RP) library instead. This chapter describes details specific to {project_name} and does not contain specific protocol details. For more information see the https://openid.net/connect/[OpenID Connect specifications] and https://datatracker.ietf.org/doc/html/rfc6749[OAuth2 specification]."
-msgstr ""
-
-msgid "Endpoints"
-msgstr ""
-
-msgid "The most important endpoint to understand is the `well-known` configuration endpoint. It lists endpoints and other configuration options relevant to the OpenID Connect implementation in {project_name}. The endpoint is:"
-msgstr ""
-
-msgid "/realms/{realm-name}/.well-known/openid-configuration"
-msgstr ""
-
-msgid "To obtain the full URL, add the base URL for {project_name} and replace `{realm-name}` with the name of your realm. For example:"
-msgstr ""
-
-msgid "\\http://localhost:8080{kc_realms_path}/master/.well-known/openid-configuration"
-msgstr ""
-
-msgid "Some RP libraries retrieve all required endpoints from this endpoint, but for others you might need to list the endpoints individually."
-msgstr ""
-
-msgid "Authorization endpoint"
-msgstr ""
-
-msgid "/realms/{realm-name}/protocol/openid-connect/auth"
-msgstr ""
-
-msgid "The authorization endpoint performs authentication of the end-user. This is done by redirecting the user agent to this endpoint."
-msgstr ""
-
-msgid "For more details see the https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint[Authorization Endpoint] section in the OpenID Connect specification."
-msgstr ""
-
-msgid "Token endpoint"
-msgstr ""
-
-msgid "/realms/{realm-name}/protocol/openid-connect/token"
-msgstr ""
-
-msgid "The token endpoint is used to obtain tokens. Tokens can either be obtained by exchanging an authorization code or by supplying credentials directly depending on what flow is used. The token endpoint is also used to obtain new access tokens when they expire."
-msgstr ""
-
-msgid "For more details see the https://openid.net/specs/openid-connect-core-1_0.html#TokenEndpoint[Token Endpoint] section in the OpenID Connect specification."
-msgstr ""
-
-msgid "Userinfo endpoint"
-msgstr ""
-
-msgid "/realms/{realm-name}/protocol/openid-connect/userinfo"
-msgstr ""
-
-msgid "The userinfo endpoint returns standard claims about the authenticated user, and is protected by a bearer token."
-msgstr ""
-
-msgid "For more details see the https://openid.net/specs/openid-connect-core-1_0.html#UserInfo[Userinfo Endpoint] section in the OpenID Connect specification."
-msgstr ""
-
-msgid "Logout endpoint"
-msgstr ""
-
-msgid "/realms/{realm-name}/protocol/openid-connect/logout"
-msgstr ""
-
-msgid "The logout endpoint logs out the authenticated user."
-msgstr ""
-
-msgid "The user agent can be redirected to the endpoint, in which case the active user session is logged out. Afterward the user agent is redirected back to the application."
-msgstr ""
-
-msgid "The endpoint can also be invoked directly by the application. To invoke this endpoint directly the refresh token needs to be included as well as the credentials required to authenticate the client."
-msgstr ""
-
-msgid "Certificate endpoint"
-msgstr ""
-
-msgid "/realms/{realm-name}/protocol/openid-connect/certs"
-msgstr ""
-
-msgid "The certificate endpoint returns the public keys enabled by the realm, encoded as a JSON Web Key (JWK). Depending on the realm settings there can be one or more keys enabled for verifying tokens. For more information see the link:{adminguide_link}[{adminguide_name}] and the https://datatracker.ietf.org/doc/html/rfc7517[JSON Web Key specification]."
-msgstr ""
-
-msgid "Introspection endpoint"
-msgstr ""
-
-msgid "/realms/{realm-name}/protocol/openid-connect/token/introspect"
-msgstr ""
-
-msgid "The introspection endpoint is used to retrieve the active state of a token. In other words, you can use it to validate an access or refresh token. It can only be invoked by confidential clients."
-msgstr ""
-
-msgid "For more details on how to invoke on this endpoint, see https://datatracker.ietf.org/doc/html/rfc7662[OAuth 2.0 Token Introspection specification]."
-msgstr ""
-
-msgid "Dynamic Client Registration endpoint"
-msgstr ""
-
-msgid "/realms/{realm-name}/clients-registrations/openid-connect"
-msgstr ""
-
-msgid "The dynamic client registration endpoint is used to dynamically register clients."
-msgstr ""
-
-msgid "For more details see the <<_client_registration,Client Registration chapter>> and the https://openid.net/specs/openid-connect-registration-1_0.html[OpenID Connect Dynamic Client Registration specification]."
-msgstr ""
-
-msgid "Token Revocation endpoint"
-msgstr ""
-
-msgid "/realms/{realm-name}/protocol/openid-connect/revoke"
-msgstr ""
-
-msgid "The token revocation endpoint is used to revoke tokens. Both refresh tokens and access tokens are supported by this endpoint. When revoking a refresh token the user consent for the corresponding client is also revoked."
-msgstr ""
-
-msgid "For more details on how to invoke on this endpoint, see https://datatracker.ietf.org/doc/html/rfc7009[OAuth 2.0 Token Revocation specification]."
-msgstr ""
-
-msgid "Device Authorization endpoint"
-msgstr ""
-
-msgid "/realms/{realm-name}/protocol/openid-connect/auth/device"
-msgstr ""
-
-msgid "The device authorization endpoint is used to obtain a device code and a user code. It can be invoked by confidential or public clients."
-msgstr ""
-
-msgid "For more details on how to invoke on this endpoint, see https://datatracker.ietf.org/doc/html/rfc8628[OAuth 2.0 Device Authorization Grant specification]."
-msgstr ""
-
-msgid "Backchannel Authentication endpoint"
-msgstr ""
-
-msgid "/realms/{realm-name}/protocol/openid-connect/ext/ciba/auth"
-msgstr ""
-
-msgid "The backchannel authentication endpoint is used to obtain an auth_req_id that identifies the authentication request made by the client. It can only be invoked by confidential clients."
-msgstr ""
-
-msgid "For more details on how to invoke on this endpoint, see https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html[OpenID Connect Client Initiated Backchannel Authentication Flow specification]."
-msgstr ""
-
-msgid "Also please refer to other places of {project_name} documentation like <<_client_initiated_backchannel_authentication_grant,Client Initiated Backchannel Authentication Grant section of this guide>> and link:{adminguide_link}#_client_initiated_backchannel_authentication_grant[Client Initiated Backchannel Authentication Grant section] of {adminguide_name}."
-msgstr ""
-
-msgid "Validating access tokens"
-msgstr ""
-
-msgid "If you need to manually validate access tokens issued by {project_name} you can invoke the <<_token_introspection_endpoint,Introspection Endpoint>>. The downside to this approach is that you have to make a network invocation to the {project_name} server.  This can be slow and possibly overload the server if you have too many validation requests going on at the same time.  {project_name} issued access tokens are https://datatracker.ietf.org/doc/html/rfc7519[JSON Web Tokens (JWT)] digitally signed and encoded using https://datatracker.ietf.org/doc/html/rfc7515[JSON Web Signature (JWS)]. Because they are encoded in this way, this allows you to locally validate access tokens using the public key of the issuing realm.  You can either hard code the realm's public key in your validation code, or lookup and cache the public key using the <<_certificate_endpoint, certificate endpoint>> with the Key ID (KID) embedded within the JWS.  Depending on what language you code in, there are a multitude of third party libraries out there that can help you with JWS validation."
-msgstr ""
-
-msgid "Flows"
-msgstr ""
-
-msgid "Authorization code"
-msgstr ""
-
-msgid "The Authorization Code flow redirects the user agent to {project_name}. Once the user has successfully authenticated with {project_name} an Authorization Code is created and the user agent is redirected back to the application. The application then uses the authorization code along with its credentials to obtain an Access Token, Refresh Token and ID Token from {project_name}."
-msgstr ""
-
-msgid "The flow is targeted towards web applications, but is also recommended for native applications, including mobile applications, where it is possible to embed a user agent."
-msgstr ""
-
-msgid "For more details refer to the https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[Authorization Code Flow] in the OpenID Connect specification."
-msgstr ""
-
-msgid "Implicit"
-msgstr ""
-
-msgid "The Implicit flow redirects works similarly to the Authorization Code flow, but instead of returning an Authorization Code the Access Token and ID Token is returned. This reduces the need for the extra invocation to exchange the Authorization Code for an Access Token. However, it does not include a Refresh Token. This results in the need to either permit Access Tokens with a long expiration, which is problematic as it's very hard to invalidate these. Or requires a new redirect to obtain new Access Token once the initial Access Token has expired. The Implicit flow is useful if the application only wants to authenticate the user and deals with logout itself."
-msgstr ""
-
-msgid "There's also a Hybrid flow where both the Access Token and an Authorization Code is returned."
-msgstr ""
-
-msgid "One thing to note is that both the Implicit flow and Hybrid flow has potential security risks as the Access Token may be leaked through web server logs and browser history. This is somewhat mitigated by using short expiration for Access Tokens."
-msgstr ""
-
-msgid "For more details refer to the https://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth[Implicit Flow] in the OpenID Connect specification."
-msgstr ""
-
-msgid "Resource Owner Password Credentials"
-msgstr ""
-
-msgid "Resource Owner Password Credentials, referred to as Direct Grant in {project_name}, allows exchanging user credentials for tokens. It's not recommended to use this flow unless you absolutely need to. Examples where this could be useful are legacy applications and command-line interfaces."
-msgstr ""
-
-msgid "There are a number of limitations of using this flow, including:"
-msgstr ""
-
-msgid "User credentials are exposed to the application"
-msgstr ""
-
-msgid "Applications need login pages"
-msgstr ""
-
-msgid "Application needs to be aware of the authentication scheme"
-msgstr ""
-
-msgid "Changes to authentication flow requires changes to application"
-msgstr ""
-
-msgid "No support for identity brokering or social login"
-msgstr ""
-
-msgid "Flows are not supported (user self-registration, required actions, etc.)"
-msgstr ""
-
-msgid "For a client to be permitted to use the Resource Owner Password Credentials grant the client has to have the `Direct Access Grants Enabled` option enabled."
-msgstr ""
-
-msgid "This flow is not included in OpenID Connect, but is a part of the OAuth 2.0 specification."
-msgstr ""
-
-msgid "For more details refer to the https://datatracker.ietf.org/doc/html/rfc6749#section-4.3[Resource Owner Password Credentials Grant] chapter in the OAuth 2.0 specification."
-msgstr ""
-
-msgid "Example using CURL"
-msgstr ""
-
-msgid "The following example shows how to obtain an access token for a user in the realm `master` with username `user` and password `password`. The example is using the confidential client `myclient`:"
-msgstr ""
-
-msgid ""
-"curl \\\n"
-"  -d \"client_id=myclient\" \\\n"
-"  -d \"client_secret=40cc097b-2a57-4c17-b36a-8fdf3fc2d578\" \\\n"
-"  -d \"username=user\" \\\n"
-"  -d \"password=password\" \\\n"
-"  -d \"grant_type=password\" \\\n"
-"  \"http://localhost:8080{kc_realms_path}/master/protocol/openid-connect/token\""
-msgstr ""
-
-msgid "Client credentials"
-msgstr ""
-
-msgid "Client Credentials is used when clients (applications and services) wants to obtain access on behalf of themselves rather than on behalf of a user. This can for example be useful for background services that applies changes to the system in general rather than for a specific user."
-msgstr ""
-
-msgid "{project_name} provides support for clients to authenticate either with a secret or with public/private keys."
-msgstr ""
-
-msgid "For more details refer to the https://datatracker.ietf.org/doc/html/rfc6749#section-4.4[Client Credentials Grant] chapter in the OAuth 2.0 specification."
-msgstr ""
-
-msgid "Device Authorization Grant"
-msgstr ""
-
-msgid "Device Authorization Grant is used by clients running on internet-connected devices that have limited input capabilities or lack a suitable browser. The application requests {project_name} a device code and a user code. {project_name} creates a device code and a user code. {project_name} returns a response including the device code and the user code to the application. Then the application provides the user with the user code and the verification URI. The user accesses a verification URI to be authenticated by using another browser. The application repeatedly polls {project_name} until {project_name} completes the user authorization. If user authentication is complete, the application obtains the device code. Then the application uses the device code along with its credentials to obtain an Access Token, Refresh Token and ID Token from {project_name}."
-msgstr ""
-
-msgid "For more details refer to the https://datatracker.ietf.org/doc/html/rfc8628[OAuth 2.0 Device Authorization Grant specification]."
-msgstr ""
-
-msgid "Client Initiated Backchannel Authentication Grant"
-msgstr ""
-
-msgid "Client Initiated Backchannel Authentication Grant is used by clients who want to initiate the authentication flow by communicating with the OpenID Provider directly without redirect through the user's browser like OAuth 2.0's authorization code grant."
-msgstr ""
-
-msgid "The client requests {project_name} an auth_req_id that identifies the authentication request made by the client. {project_name} creates the auth_req_id."
-msgstr ""
-
-msgid "After receiving this auth_req_id, this client repeatedly needs to poll {project_name} to obtain an Access Token, Refresh Token and ID Token from {project_name} in return for the auth_req_id until the user is authenticated."
-msgstr ""
-
-msgid "In case that client uses `ping` mode, it does not need to repeatedly poll the token endpoint, but it can wait for the notification sent by {project_name} to the specified Client Notification Endpoint. The Client Notification Endpoint can be configured in the {project_name} Admin Console. The details of the contract for Client Notification Endpoint are described in the CIBA specification."
-msgstr ""
-
-msgid "For more details refer to https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html[OpenID Connect Client Initiated Backchannel Authentication Flow specification]."
-msgstr ""
-
-msgid "Also please refer to other places of {project_name} documentation like <<_backchannel_authentication_endpoint,Backchannel Authentication Endpoint of this guide>> and link:{adminguide_link}#_client_initiated_backchannel_authentication_grant[Client Initiated Backchannel Authentication Grant section] of {adminguide_name}. For the details about FAPI CIBA compliance, please refer to the <<_fapi-support,FAPI section of this guide>>."
-msgstr ""
-
-msgid "Redirect URIs"
-msgstr ""
-
-msgid "When using the redirect based flows it's important to use valid redirect uris for your clients. The redirect uris should be as specific as possible. This especially applies to client-side (public clients) applications. Failing to do so could result in:"
-msgstr ""
-
-msgid "Open redirects - this can allow attackers to create spoof links that looks like they are coming from your domain"
-msgstr ""
-
-msgid "Unauthorized entry - when users are already authenticated with {project_name} an attacker can use a public client where redirect uris have not be configured correctly to gain access by redirecting the user without the users knowledge"
-msgstr ""
-
-msgid "In production for web applications always use `https` for all redirect URIs. Do not allow redirects to http."
-msgstr ""
-
-msgid "There's also a few special redirect URIs:"
-msgstr ""
-
-msgid "`$$http://localhost$$`"
-msgstr ""
-
-msgid "This redirect URI is useful for native applications and allows the native application to create a web server on a random port that can be used to obtain the authorization code. This redirect uri allows any port."
-msgstr ""
-
-msgid "`urn:ietf:wg:oauth:2.0:oob`"
-msgstr ""
-
-msgid "If its not possible to start a web server in the client (or a browser is not available) it is possible to use the special `urn:ietf:wg:oauth:2.0:oob` redirect uri. When this redirect uri is used {project_name} displays a page with the code in the title and in a box on the page. The application can either detect that the browser title has changed, or the user can copy/paste the code manually to the application. With this redirect uri it is also possible for a user to use a different device to obtain a code to paste back to the application."
-msgstr ""
-
 msgid "Financial-grade API (FAPI) Support"
 msgstr ""
 
@@ -3762,7 +3653,49 @@ msgstr ""
 msgid "TLS considerations"
 msgstr ""
 
-msgid "As confidential information is being exchanged, all interactions shall be encrypted with TLS (HTTPS). Moreover, there are some requirements in the FAPI specification for the cipher suites and TLS protocol versions used. To match these requirements, you can consider configure allowed ciphers. This configuration can be done by setting the `https-protocols` and `https-cipher-suites` options. {project_name} uses `TLSv1.3` by default and hence it is possibly not needed to change the default settings. However it may be needed to adjust ciphers if you need to fall back to lower TLS version for some reason. For more details, see https://www.keycloak.org/server/enabletls[Configuring TLS] guide."
+msgid "As confidential information is being exchanged, all interactions shall be encrypted with TLS (HTTPS). Moreover, there are some requirements in the FAPI specification for the cipher suites and TLS protocol versions used. To match these requirements, you can consider configure allowed ciphers. This configuration can be done by setting the `https-protocols` and `https-cipher-suites` options. {project_name} uses `TLSv1.3` by default and hence it is possibly not needed to change the default settings. However it may be needed to adjust ciphers if you need to fall back to lower TLS version for some reason. For more details, see https://www.keycloak.org/server/enabletls[Configuring TLS] {section}."
+msgstr ""
+
+msgid "Recommendations"
+msgstr ""
+
+msgid "This section describes some recommendations when securing your applications with {project_name}."
+msgstr ""
+
+msgid "Validating access tokens"
+msgstr ""
+
+msgid "If you need to manually validate access tokens issued by {project_name}, you can invoke the <<_token_introspection_endpoint,Introspection Endpoint>>. The downside to this approach is that you have to make a network invocation to the {project_name} server.  This can be slow and possibly overload the server if you have too many validation requests going on at the same time.  {project_name} issued access tokens are https://datatracker.ietf.org/doc/html/rfc7519[JSON Web Tokens (JWT)] digitally signed and encoded using https://datatracker.ietf.org/doc/html/rfc7515[JSON Web Signature (JWS)]. Because they are encoded in this way, you can locally validate access tokens using the public key of the issuing realm.  You can either hard code the realm's public key in your validation code, or lookup and cache the public key using the <<_certificate_endpoint, certificate endpoint>> with the Key ID (KID) embedded within the JWS.  Depending on what language you code in, many third party libraries exist and they can help you with JWS validation."
+msgstr ""
+
+msgid "Redirect URIs"
+msgstr ""
+
+msgid "When using the redirect based flows, be sure to use valid redirect uris for your clients. The redirect uris should be as specific as possible. This especially applies to client-side (public clients) applications. Failing to do so could result in:"
+msgstr ""
+
+msgid "Open redirects - this can allow attackers to create spoof links that looks like they are coming from your domain"
+msgstr ""
+
+msgid "Unauthorized entry - when users are already authenticated with {project_name}, an attacker can use a public client where redirect uris have not be configured correctly to gain access by redirecting the user without the users knowledge"
+msgstr ""
+
+msgid "In production for web applications always use `https` for all redirect URIs. Do not allow redirects to http."
+msgstr ""
+
+msgid "A few special redirect URIs also exist:"
+msgstr ""
+
+msgid "`$$http://127.0.0.1$$`"
+msgstr ""
+
+msgid "This redirect URI is useful for native applications and allows the native application to create a web server on a random port that can be used to obtain the authorization code. This redirect uri allows any port. Note that per https://datatracker.ietf.org/doc/html/rfc8252#section-8.3[OAuth 2.0 for Native Apps], the use of `localhost` is *not* recommended and the IP literal `127.0.0.1` should be used instead."
+msgstr ""
+
+msgid "`urn:ietf:wg:oauth:2.0:oob`"
+msgstr ""
+
+msgid "If you cannot start a web server in the client (or a browser is not available), you can use the special `urn:ietf:wg:oauth:2.0:oob` redirect uri. When this redirect uri is used, {project_name} displays a page with the code in the title and in a box on the page. The application can either detect that the browser title has changed, or the user can copy and paste the code manually to the application. With this redirect uri, a user can use a different device to obtain a code to paste back to the application."
 msgstr ""
 
 msgid "Using SAML to secure applications and services"
@@ -4490,10 +4423,10 @@ msgstr ""
 
 msgid ""
 "\n"
-"<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n"
-"      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
-"      xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n"
-"      version=\"3.0\">\n"
+"<web-app xmlns=\"https://jakarta.ee/xml/ns/jakartaee\"\n"
+"         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+"         xsi:schemaLocation=\"https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd\"\n"
+"         version=\"6.0\">\n"
 "\n"
 "\t<module-name>customer-portal</module-name>\n"
 "\n"
@@ -4620,6 +4553,9 @@ msgstr ""
 msgid "Tomcat SAML adapters"
 msgstr ""
 
+msgid "The {project_name} Tomcat SAML adapter is deprecated. We recommend that you use another client adapter if possible."
+msgstr ""
+
 msgid "To be able to secure WAR apps deployed on Tomcat 8 or 9 you must install the Keycloak Tomcat SAML adapter into your Tomcat installation. You then have to provide some extra configuration in each WAR you deploy to Tomcat."
 msgstr ""
 
@@ -4665,6 +4601,9 @@ msgid "The support for this feature is available in Tomcat from versions 9.0.29 
 msgstr ""
 
 msgid "Jetty SAML adapters"
+msgstr ""
+
+msgid "The {project_name} Jetty SAML adapter is deprecated. We recommend that you use another client adapter if possible."
 msgstr ""
 
 msgid "To be able to secure WAR apps deployed on Jetty you must install the {project_name} Jetty 9.4 SAML adapter into your Jetty installation. You then provide some extra configuration in each WAR you deploy to Jetty."
@@ -4998,7 +4937,7 @@ msgstr ""
 msgid "The best way to troubleshoot problems is to turn on debugging for SAML in both the client adapter and {project_name} Server. Using your logging framework, set the log level to `DEBUG` for the `org.keycloak.saml` package. Turning this on allows you to see the SAML requests and response documents being sent to and from the server."
 msgstr ""
 
-msgid "SAML offers the same functionality as OIDC for <<_multi_tenancy,Multi Tenancy>>, meaning that a single target application (WAR) can be secured with multiple {project_name} realms. The realms can be located on the same {project_name} instance or on different instances."
+msgid "SAML offers Multi Tenancy, meaning that a single target application (WAR) can be secured with multiple {project_name} realms. The realms can be located on the same {project_name} instance or on different instances."
 msgstr ""
 
 msgid "To do this, the application must have multiple `keycloak-saml.xml` adapter configuration files."
@@ -5085,6 +5024,9 @@ msgid "Keycloak SAML SP Client Adapter now requires a specific endpoint, `/saml`
 msgstr ""
 
 msgid "mod_auth_mellon Apache HTTPD Module"
+msgstr ""
+
+msgid "{project_name} does not provide any official support to mod_auth_mellon. The instructions below are best-effort and may not be up-to-date. We recommend that you stick to official mod_auth_mellon documentation for more details."
 msgstr ""
 
 msgid "The https://github.com/latchset/mod_auth_mellon[mod_auth_mellon] module is an Apache HTTPD plugin for SAML. If your language/environment supports using Apache HTTPD as a proxy, then you can use mod_auth_mellon to secure your web application with SAML. For more details on this module see the _mod_auth_mellon_ GitHub repo."
@@ -5444,7 +5386,7 @@ msgstr ""
 msgid "Configuring a Docker registry to use {project_name}"
 msgstr ""
 
-msgid "Docker authentication is disabled by default. To enable see the https://www.keycloak.org/server/features[Enabling and disabling features] guide."
+msgid "Docker authentication is disabled by default. To enable see the https://www.keycloak.org/server/features[Enabling and disabling features] {section}."
 msgstr ""
 
 msgid "This section describes how you can configure a Docker registry to use {project_name} as its authentication server."
@@ -5578,7 +5520,7 @@ msgstr ""
 msgid "The recommended approach to registering new clients is by using initial access tokens. An initial access token can only be used to create clients and has a configurable expiration as well as a configurable limit on how many clients can be created."
 msgstr ""
 
-msgid "An initial access token can be created through the admin console. To create a new initial access token first select the realm in the admin console, then click on `Realm Settings` in the menu on the left, followed by `Client Registration` in the tabs displayed in the page. Then finally click on `Initial Access Tokens` sub-tab."
+msgid "An initial access token can be created through the admin console. To create a new initial access token first select the realm in the admin console, then click on `Client` in the menu on the left, followed by `Initial access token` in the tabs displayed in the page."
 msgstr ""
 
 msgid "You will now be able to see any existing initial access tokens. If you have access you can delete tokens that are no longer required. You can only retrieve the value of the token when you are creating it. To create a new token click on `Create`. You can now optionally add how long the token should be valid, also how many clients can be created using the token. After you click on `Save` the token value is displayed."
@@ -6106,7 +6048,7 @@ msgstr ""
 msgid "To enable start the server with `--features=preview` or `--features={tech_feature_id}`"
 msgstr ""
 
-msgid "To use more than the <<_internal-token-to-internal-token-exchange,Internal Token to Internal Token Exchange>> flow, also enable the `admin_fine_grained_authz` feature. For details, see the https://www.keycloak.org/server/features[Enabling and disabling features] guide."
+msgid "To use more than the <<_internal-token-to-internal-token-exchange,Internal Token to Internal Token Exchange>> flow, also enable the `admin_fine_grained_authz` feature. For details, see the https://www.keycloak.org/server/features[Enabling and disabling features] {section}."
 msgstr ""
 
 msgid "How token exchange works"

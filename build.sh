@@ -64,6 +64,13 @@ for language in `ls $DIR/translations`; do
           TAG=`git tag --list "${version}.*" | sort | tail -n 1`
         fi
 
+        # Workaround to lock in community released versions
+        fixed_tag=`grep "^$version " $DIR/lock-version.txt | cut -d' ' -f2`
+        if [ -n "$fixed_tag" ]; then
+          TAG=$fixed_tag
+          echo "Use locked version $version => $TAG"
+        fi
+
         echo "Checkout $version ($TAG)"
 
         git reset --hard && git clean -xf
